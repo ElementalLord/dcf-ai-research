@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { diversifyBroadEvidence, rankApprovedClaims } from "@/lib/corpus/retrieval";
+import { diversifyBroadEvidence, rankApprovedClaims, shouldUseSemanticRetrieval } from "@/lib/corpus/retrieval";
+import { modelRerankEnabled } from "@/lib/corpus/rerank";
 import type { RetrievedPassage } from "@/lib/corpus/types";
 import { lexicalSearchExpression, routeParameterCodes } from "@/lib/corpus/routing";
 
@@ -74,5 +75,17 @@ describe("retrieval regression", () => {
   it("keeps claims matching one meaningful term for multi-concept questions", () => {
     const results = rankApprovedClaims("How did Vishvamitra's tapas evolve?", approvedRows);
     expect(results.map((item) => item.claimId)).toContain("claim-2");
+  });
+
+  it("uses semantic embeddings only as a local retrieval fallback", () => {
+    expect(shouldUseSemanticRetrieval(2, 0)).toBe(false);
+    expect(shouldUseSemanticRetrieval(0, 2)).toBe(false);
+    expect(shouldUseSemanticRetrieval(1, 0)).toBe(true);
+  });
+
+  it("keeps model reranking opt-in so normal asks use deterministic local ranking", () => {
+    expect(modelRerankEnabled(undefined)).toBe(false);
+    expect(modelRerankEnabled("false")).toBe(false);
+    expect(modelRerankEnabled("true")).toBe(true);
   });
 });

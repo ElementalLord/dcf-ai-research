@@ -40,6 +40,10 @@ function isBroadProfileQuestion(question: string, terms: Set<string>): boolean {
   return terms.size === 0 || isBroadSynthesisQuestion(question);
 }
 
+export function shouldUseSemanticRetrieval(claimCount: number, lexicalCount: number): boolean {
+  return claimCount + lexicalCount < 2;
+}
+
 export function diversifyBroadEvidence(evidence: RetrievedEvidence[], limit = 15): RetrievedEvidence[] {
   const selected: RetrievedEvidence[] = [];
   const passageCounts = new Map<string, number>();
@@ -254,16 +258,6 @@ export async function retrieveEvidence(
     .eq("allow_live_fetch", true)
     .eq("evidence_use_status", "approved");
 
-  const embeddingStarted = performance.now();
-  const embeddingTask = Promise.race([
-    embedTexts([question])
-      .then((vectors) => ({ vector: vectors[0] || null, reason: null as string | null }))
-      .catch((error: unknown) => ({ vector: null, reason: `query_embedding_failed: ${error instanceof Error ? error.message : "Embedding unavailable."}` })),
-    new Promise<{ vector: null; reason: string }>((resolve) => {
-      setTimeout(() => resolve({ vector: null, reason: "query_embedding_timeout" }), 4_000);
-    }),
-  ]);
-
   const [lexicalResult, claimsResult, inventoryResult, liveSourceCountResult] = await Promise.all([
     lexicalPromise, claimsPromise, inventoryPromise, liveSourceCountPromise,
   ]);
@@ -283,14 +277,25 @@ export async function retrieveEvidence(
   let semanticFallbackReason: string | null = null;
   let semanticError: string | null = null;
   let semantic: RetrievedPassage[] = [];
-  const shouldUseSemantic = claims.length + lexical.length < 2;
+  let queryEmbeddingRequested = false;
+  const shouldUseSemantic = shouldUseSemanticRetrieval(claims.length, lexical.length);
   if (embeddingCount === 0) {
     semanticFallbackReason = "no_embeddings_available";
     semanticError = `No approved ${configuration.canonicalName} chunks currently have embeddings.`;
   } else if (!shouldUseSemantic) {
     semanticFallbackReason = "semantic_skipped_sufficient_lexical_claim_candidates";
   } else {
-    const embedding = await embeddingTask;
+    queryEmbeddingRequested = true;
+    const embeddingStarted = performance.now();
+    const embedding = await Promise.race([
+      embedTexts([question])
+        .then((vectors) => ({ vector: vectors[0] || null, reason: null as string | null }))
+        .catch((error: unknown) => ({ vector: null, reason: `query_embedding_failed: ${error instanceof Error ? error.message : "Embedding unavailable."}` })),
+      new Promise<{ vector: null; reason: string }>((resolve) => {
+        setTimeout(() => resolve({ vector: null, reason: "query_embedding_timeout" }), 4_000);
+      }),
+    ]);
+    latenciesMs.semantic = Math.round(performance.now() - embeddingStarted);
     semanticFallbackReason = embedding.reason;
     if (embedding.vector) {
       const vectorResult = await supabaseAdmin.rpc("search_source_chunks_vector", {
@@ -306,7 +311,7 @@ export async function retrieveEvidence(
       semantic = ((semanticError ? [] : vectorResult.data || []) as Array<Record<string, unknown>>).map((row) => passageFromRpc(row, "semantic", personalityId, configuration.canonicalName)).filter(isFresh);
     }
   }
-  latenciesMs.semantic = Math.round(performance.now() - embeddingStarted);
+  latenciesMs.semantic ??= 0;
   if (lexical.length === 0 && claims.length === 0) semantic = semantic.filter((item) => (item.semanticScore || 0) >= 0.52);
   else semantic = semantic.filter((item) => (item.semanticScore || 0) >= 0.32);
   logStage("LEXICAL_SEARCH", { results: lexical.length, ms: latenciesMs.lexical });
@@ -365,6 +370,7 @@ export async function retrieveEvidence(
       rerankedEvidence: reranked.map((item) => item.id),
       finalSelectedEvidenceCount: reranked.length,
       semanticFallbackReason,
+      queryEmbeddingRequested,
       latenciesMs,
     },
   };

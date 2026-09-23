@@ -147,6 +147,7 @@ export type RetrievalDebug = {
   rerankedEvidence: string[];
   finalSelectedEvidenceCount: number;
   semanticFallbackReason: string | null;
+  queryEmbeddingRequested?: boolean;
   generationFallbackReason?: string | null;
   latenciesMs: Record<string, number>;
 };

@@ -41,6 +41,10 @@ function deterministicOrder(
     .map(({ item }) => item);
 }
 
+export function modelRerankEnabled(value = process.env.ENABLE_MODEL_RERANK): boolean {
+  return value === "true";
+}
+
 export async function rerankEvidence(
   question: string,
   evidence: RetrievedEvidence[],
@@ -51,7 +55,7 @@ export async function rerankEvidence(
     personalityAliases: options.personalityAliases || [],
     termAliases: options.termAliases || [],
   });
-  if (ordered.length <= 32) return ordered.slice(0, maxSelected);
+  if (ordered.length <= 32 || !modelRerankEnabled()) return ordered.slice(0, maxSelected);
   const candidates = ordered.slice(0, 32);
   const prompt = `You are a retrieval reranker. Return JSON only as {"ids":["..."]}.
 Rank evidence strictly by how directly it helps answer the question.
