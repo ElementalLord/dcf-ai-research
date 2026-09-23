@@ -5,9 +5,10 @@ import { assertRequestSize, corpusErrorResponse } from "@/lib/corpus/api";
 import { CorpusError } from "@/lib/corpus/errors";
 
 const askSchema = z.object({
-  personalityId: z.string().uuid(),
+  personalityId: z.string().uuid().optional(),
+  personalityIds: z.array(z.string().uuid()).min(1).max(3).optional(),
   question: z.string().trim().min(2).max(4_000),
-});
+}).refine((value) => Boolean(value.personalityId || value.personalityIds?.length), "At least one personality is required.");
 
 export async function POST(request: NextRequest) {
   try {
@@ -16,7 +17,8 @@ export async function POST(request: NextRequest) {
     if (!parsed.success) {
       throw new CorpusError("INVALID_INPUT", "A valid personality and question are required.", 400);
     }
-    const result = await answerQuestion(parsed.data.question, parsed.data.personalityId);
+    const ids = parsed.data.personalityIds?.length ? parsed.data.personalityIds : [parsed.data.personalityId!];
+    const result = await answerQuestion(parsed.data.question, ids.length === 1 ? ids[0] : ids);
     return NextResponse.json(result);
   } catch (error) {
     return corpusErrorResponse(error);

@@ -7,11 +7,15 @@ import { logStage, stageTimer } from "./observability";
 import { normalizeForMatch } from "./text";
 import { rerankEvidence } from "./rerank";
 import type { ParameterField, RetrievedClaim, RetrievedEvidence, RetrievedPassage, RetrievalDebug } from "./types";
+import { evidencePolicyMode, eligibleClaimOrigins } from "./approval-policy";
+import { loadPersonalityConfiguration } from "./personality-context";
+import { canonicalizeTerms, normalizedAliases, type TermAliasRecord } from "./personality-config";
 
 type ParameterRow = {
   id: string;
   code: string;
   name: string;
+  routing_hints: string[] | null;
   parameter_fields: Array<{ id: string; code: string; label: string }> | null;
 };
 
@@ -19,12 +23,15 @@ function unwrap<T>(value: T | T[] | null | undefined): T | null {
   return Array.isArray(value) ? value[0] || null : value || null;
 }
 
-function questionTerms(question: string): Set<string> {
+function questionTerms(question: string, personalityAliases: string[] = [], termAliases: TermAliasRecord[] = []): Set<string> {
   const ignored = new Set([
     "the", "and", "that", "this", "with", "from", "what", "when", "where", "which", "were", "was",
-    "are", "did", "does", "how", "who", "his", "her", "their", "about", "vishvamitra", "vishwamitra", "visvamitra",
+    "are", "did", "does", "how", "who", "his", "her", "their", "about",
   ]);
-  const terms = normalizeForMatch(question).split(" ").filter((term) => term.length > 2 && !ignored.has(term));
+  for (const alias of personalityAliases) {
+    for (const token of normalizeForMatch(alias).split(" ")) ignored.add(token);
+  }
+  const terms = canonicalizeTerms(question, termAliases).split(" ").filter((term) => term.length > 2 && !ignored.has(term));
   const references = (question.match(/\b\d+(?:\.\d+)+\b/g) || []).flatMap((reference) => reference.split("."));
   return new Set([...terms.flatMap((term) => (term.length > 4 && term.endsWith("s") ? [term, term.slice(0, -1)] : [term])), ...references]);
 }
@@ -54,21 +61,13 @@ export function diversifyBroadEvidence(evidence: RetrievedEvidence[], limit = 15
   return selected;
 }
 
-export function rankApprovedClaims(question: string, rows: Array<Record<string, unknown>>): RetrievedClaim[] {
-  const terms = questionTerms(question);
+export function rankApprovedClaims(
+  question: string,
+  rows: Array<Record<string, unknown>>,
+  options: { personalityAliases?: string[]; termAliases?: TermAliasRecord[]; personalityId?: string; personalityName?: string } = {},
+): RetrievedClaim[] {
+  const terms = questionTerms(question, options.personalityAliases, options.termAliases);
   const broad = isBroadProfileQuestion(question, terms);
-  const broadPriority: Record<string, number> = {
-    role: 10,
-    textual_contribution: 9,
-    social_role: 8,
-    historical_context: 7,
-    parampara: 6,
-    tapas_sadhana: 5,
-    inner_qualities: 4,
-    contested: 3,
-    philosophy: 2,
-    contemporary_relevance: 1,
-  };
   const stem = (term: string) => term === "taught" ? "teach" : term.replace(/(ing|ers?|ed)$/i, "");
   const ranked = rows
     .map((row) => {
@@ -89,7 +88,10 @@ export function rankApprovedClaims(question: string, rows: Array<Record<string, 
         const matches = [...tokens].some((token) => token === term || (termStem.length >= 4 && stem(token) === termStem));
         return sum + (matches ? 1 : 0);
       }, 0);
-      const score = broad ? broadPriority[String(parameter?.code || "")] || 0 : termScore;
+      const parameterSortOrder = Number(parameter?.sort_order);
+      const score = broad
+        ? Number.isFinite(parameterSortOrder) ? 1_000 - parameterSortOrder : 0
+        : termScore;
       return {
         score,
         group: String(parameter?.id || field?.id || "unclassified"),
@@ -100,6 +102,10 @@ export function rankApprovedClaims(question: string, rows: Array<Record<string, 
           text: String(row.claim_text),
           claimKind: String(row.claim_kind || "unknown"),
           certainty: String(row.certainty || "unknown"),
+          approvalOrigin: String(row.approval_origin || "imported_existing"),
+          evidenceType: String(row.evidence_type || "uncertain"),
+          personalityId: options.personalityId,
+          personalityName: options.personalityName,
           parameterName: parameter?.name ? String(parameter.name) : null,
           fieldLabel: field?.label ? String(field.label) : null,
           sourceTitle: source?.title ? String(source.title) : null,
@@ -138,7 +144,7 @@ export function rankApprovedClaims(question: string, rows: Array<Record<string, 
     .map(({ item }) => item);
 }
 
-function passageFromRpc(row: Record<string, unknown>, kind: "lexical" | "semantic"): RetrievedPassage {
+function passageFromRpc(row: Record<string, unknown>, kind: "lexical" | "semantic", personalityId: string, personalityName: string): RetrievedPassage {
   const metadata = row.metadata && typeof row.metadata === "object" ? row.metadata as Record<string, unknown> : {};
   return {
     kind: "passage",
@@ -155,6 +161,8 @@ function passageFromRpc(row: Record<string, unknown>, kind: "lexical" | "semanti
     sourceUrl: row.source_url ? String(row.source_url) : null,
     sourceType: row.source_type ? String(row.source_type) : null,
     sourceStatus: String(row.source_status),
+    personalityId,
+    personalityName,
     origin: metadata.origin === "live_cache" ? "live_cache" : "permanent",
     retrievedAt: metadata.retrievedAt ? String(metadata.retrievedAt) : null,
     cacheExpiresAt: metadata.cacheExpiresAt ? String(metadata.cacheExpiresAt) : null,
@@ -163,8 +171,15 @@ function passageFromRpc(row: Record<string, unknown>, kind: "lexical" | "semanti
   };
 }
 
-export async function retrieveEvidence(question: string, personalityId: string): Promise<{
+export async function retrieveEvidence(
+  question: string,
+  personalityId: string,
+  options: { additionalPersonalityAliases?: string[] } = {},
+): Promise<{
   personality: string;
+  personalityId: string;
+  personalityAliases: string[];
+  termAliases: TermAliasRecord[];
   parameters: Array<{ code: string; name: string }>;
   parameterFieldIds: string[];
   evidence: RetrievedEvidence[];
@@ -172,24 +187,21 @@ export async function retrieveEvidence(question: string, personalityId: string):
 }> {
   const latenciesMs: Record<string, number> = {};
   const stopRoute = stageTimer("ROUTING");
-  const { data: personality, error: personalityError } = await supabaseAdmin
-    .from("personalities")
-    .select("id, canonical_name, personality_categories(is_primary, category_id)")
-    .eq("id", personalityId)
-    .single();
-  if (personalityError) throw new CorpusError("RETRIEVAL_FAILED", "The selected personality could not be loaded.", 404, { cause: personalityError });
-  const memberships = (personality.personality_categories || []) as Array<{ is_primary: boolean; category_id: string }>;
-  const categoryId = memberships.find((membership) => membership.is_primary)?.category_id || memberships[0]?.category_id;
-  if (!categoryId) throw new CorpusError("RETRIEVAL_FAILED", "The personality has no research category.", 422);
+  const configuration = await loadPersonalityConfiguration(personalityId);
+  const aliases = [...new Set([
+    ...normalizedAliases(configuration.canonicalName, configuration.aliases),
+    ...(options.additionalPersonalityAliases || []).map(normalizeForMatch).filter(Boolean),
+  ])];
+  const policyMode = evidencePolicyMode();
   const { data: parameterData, error: parameterError } = await supabaseAdmin
     .from("parameters")
-    .select("id, code, name, parameter_fields(id, code, label)")
-    .eq("category_id", categoryId)
+    .select("id, code, name, routing_hints, parameter_fields(id, code, label)")
+    .eq("category_id", configuration.categoryId)
     .order("sort_order");
   if (parameterError) throw new CorpusError("RETRIEVAL_FAILED", "The research framework could not be loaded.", 500, { cause: parameterError });
   const parameters = (parameterData || []) as ParameterRow[];
-  const broadQuestion = isBroadProfileQuestion(question, questionTerms(question));
-  const localCodes = routeParameterCodes(question, parameters.map((parameter) => parameter.code));
+  const broadQuestion = isBroadProfileQuestion(question, questionTerms(question, aliases, configuration.termAliases));
+  const localCodes = routeParameterCodes(question, parameters.map((parameter) => ({ code: parameter.code, routingHints: parameter.routing_hints })));
   const selectedCodes = [...new Set(localCodes)].slice(0, 4);
   const selectedParameters = selectedCodes.length > 0 ? parameters.filter((parameter) => selectedCodes.includes(parameter.code)) : [];
   const fields: ParameterField[] = selectedParameters.flatMap((parameter) =>
@@ -205,7 +217,7 @@ export async function retrieveEvidence(question: string, personalityId: string):
   latenciesMs.routing = stopRoute();
   logStage("ROUTING", { parameters: selectedParameters.length, ms: latenciesMs.routing });
 
-  const searchExpression = lexicalSearchExpression(question);
+  const searchExpression = lexicalSearchExpression(question, aliases, configuration.termAliases);
   // Expert fields guide routing and live tagging, but must not become hard knowledge boundaries.
   // Lexical/vector relevance remains bounded by personality, scores, and result limits.
   const stopLexical = stageTimer("LEXICAL_SEARCH");
@@ -221,14 +233,15 @@ export async function retrieveEvidence(question: string, personalityId: string):
   const claimsPromise = supabaseAdmin
     .from("claims")
     .select(`
-      id, claim_text, claim_kind, certainty, review_status,
-      parameter_fields(id, code, label, parameters(id, code, name)),
+      id, claim_text, claim_kind, certainty, review_status, approval_origin, evidence_type,
+      parameter_fields(id, code, label, parameters(id, code, name, sort_order)),
       claim_sources(relationship, evidence_excerpt, page_or_section,
         sources(id, title, author, publisher_or_institution, source_type, url, citation, source_status)),
       claim_chunks(relationship, source_chunks(id, textual_layer))
     `, { count: "exact" })
     .eq("personality_id", personalityId)
     .eq("review_status", "approved")
+    .in("approval_origin", eligibleClaimOrigins(policyMode))
     .limit(500);
   const inventoryPromise = supabaseAdmin.rpc("get_retrieval_inventory", { personality_uuid: personalityId });
   const liveSourceCountPromise = supabaseAdmin
@@ -257,9 +270,9 @@ export async function retrieveEvidence(question: string, personalityId: string):
   if (inventoryResult.error) console.warn("Retrieval inventory unavailable:", inventoryResult.error.message);
   if (liveSourceCountResult.error) console.warn("Approved-source count unavailable:", liveSourceCountResult.error.message);
   const isFresh = (item: RetrievedPassage) => item.origin !== "live_cache" || !item.cacheExpiresAt || new Date(item.cacheExpiresAt) > new Date();
-  const lexical = ((lexicalError ? [] : lexicalResult.data || []) as Array<Record<string, unknown>>).map((row) => passageFromRpc(row, "lexical")).filter(isFresh);
+  const lexical = ((lexicalError ? [] : lexicalResult.data || []) as Array<Record<string, unknown>>).map((row) => passageFromRpc(row, "lexical", personalityId, configuration.canonicalName)).filter(isFresh);
   const approvedClaimRows = (claimRetrievalError ? [] : claimsResult.data || []) as Array<Record<string, unknown>>;
-  const claims = rankApprovedClaims(question, approvedClaimRows);
+  const claims = rankApprovedClaims(question, approvedClaimRows, { personalityAliases: aliases, termAliases: configuration.termAliases, personalityId, personalityName: configuration.canonicalName });
   const inventory = inventoryResult.data && typeof inventoryResult.data === "object"
     ? inventoryResult.data as Record<string, unknown>
     : {};
@@ -270,7 +283,7 @@ export async function retrieveEvidence(question: string, personalityId: string):
   const shouldUseSemantic = claims.length + lexical.length < 2;
   if (embeddingCount === 0) {
     semanticFallbackReason = "no_embeddings_available";
-    semanticError = "No approved Vishvamitra chunks currently have embeddings.";
+    semanticError = `No approved ${configuration.canonicalName} chunks currently have embeddings.`;
   } else if (!shouldUseSemantic) {
     semanticFallbackReason = "semantic_skipped_sufficient_lexical_claim_candidates";
   } else {
@@ -287,7 +300,7 @@ export async function retrieveEvidence(question: string, personalityId: string):
       });
       semanticError = vectorResult.error?.message || null;
       if (vectorResult.error) semanticFallbackReason = `vector_rpc_failed: ${vectorResult.error.message}`;
-      semantic = ((semanticError ? [] : vectorResult.data || []) as Array<Record<string, unknown>>).map((row) => passageFromRpc(row, "semantic")).filter(isFresh);
+      semantic = ((semanticError ? [] : vectorResult.data || []) as Array<Record<string, unknown>>).map((row) => passageFromRpc(row, "semantic", personalityId, configuration.canonicalName)).filter(isFresh);
     }
   }
   latenciesMs.semantic = Math.round(performance.now() - embeddingStarted);
@@ -301,20 +314,26 @@ export async function retrieveEvidence(question: string, personalityId: string):
   latenciesMs.merge = stopMerge();
   logStage("MERGE", { unique: merged.length, ms: latenciesMs.merge });
   const stopRerank = stageTimer("RERANK");
-  const rerankedCandidates = await rerankEvidence(question, merged, broadQuestion ? 24 : 16);
+  const rerankedCandidates = await rerankEvidence(question, merged, broadQuestion ? 24 : 16, { personalityAliases: aliases, termAliases: configuration.termAliases });
   const reranked = broadQuestion ? diversifyBroadEvidence(rerankedCandidates, 15) : rerankedCandidates;
   latenciesMs.rerank = stopRerank();
   logStage("RERANK", { selected: reranked.length, ms: latenciesMs.rerank });
 
   return {
-    personality: personality.canonical_name,
+    personality: configuration.canonicalName,
+    personalityId,
+    personalityAliases: aliases,
+    termAliases: configuration.termAliases,
     parameters: selectedParameters.map((parameter) => ({ code: parameter.code, name: parameter.name })),
     parameterFieldIds: fields.map((field) => field.id),
     evidence: reranked,
     debug: {
       executionMode: "FAST",
       routingStrategy: selectedCodes.length > 0 ? "deterministic" : "broad",
-      selectedPersonality: personality.canonical_name,
+      selectedPersonality: configuration.canonicalName,
+      selectedPersonalityId: personalityId,
+      selectedPersonalities: [{ id: personalityId, name: configuration.canonicalName }],
+      evidencePolicyMode: policyMode,
       selectedParameters: selectedParameters.map((parameter) => ({ code: parameter.code, name: parameter.name })),
       lexicalResults: lexical.length,
       semanticResults: semantic.length,

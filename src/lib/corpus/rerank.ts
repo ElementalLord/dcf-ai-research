@@ -2,25 +2,32 @@ import { CorpusError } from "./errors";
 import { generateText, parseGeminiJson } from "./gemini";
 import { normalizeForMatch, truncateText } from "./text";
 import type { RetrievedEvidence } from "./types";
+import { canonicalizeTerms, type TermAliasRecord } from "./personality-config";
 
 function evidenceKey(item: RetrievedEvidence): string {
   return item.kind === "claim" ? `claim:${item.claimId}` : `passage:${item.chunkId}`;
 }
 
-function canonical(value: string): string {
-  return normalizeForMatch(value)
-    .replace(/\b(?:vasishta|vashishta|vasishtha|vasista|vashista)\b/g, "vasistha")
+function canonical(value: string, termAliases: TermAliasRecord[]): string {
+  return canonicalizeTerms(value, termAliases)
     .replace(/\b(?:legacy|contributions?)\b/g, "contribution");
 }
 
-function deterministicOrder(question: string, evidence: RetrievedEvidence[]): RetrievedEvidence[] {
-  const ignored = new Set(["the", "and", "what", "who", "how", "why", "his", "her", "with", "from", "about", "into", "role", "play", "played", "story", "explain", "relationship", "relation", "significance", "significant", "major", "vishvamitra", "vishwamitra", "visvamitra"]);
-  const terms = [...new Set(canonical(question).split(" ").filter((term) => (term.length > 2 || /^\d+$/.test(term)) && !ignored.has(term)))];
+function deterministicOrder(
+  question: string,
+  evidence: RetrievedEvidence[],
+  options: { personalityAliases: string[]; termAliases: TermAliasRecord[] },
+): RetrievedEvidence[] {
+  const ignored = new Set(["the", "and", "what", "who", "how", "why", "his", "her", "with", "from", "about", "into", "role", "play", "played", "story", "explain", "relationship", "relation", "significance", "significant", "major"]);
+  for (const alias of options.personalityAliases) {
+    for (const token of normalizeForMatch(alias).split(" ")) ignored.add(token);
+  }
+  const terms = [...new Set(canonical(question, options.termAliases).split(" ").filter((term) => (term.length > 2 || /^\d+$/.test(term)) && !ignored.has(term)))];
   const score = (item: RetrievedEvidence) => {
     const metadata = item.kind === "claim"
       ? `${item.parameterName || ""} ${item.fieldLabel || ""}`
       : `${item.sourceTitle} ${item.sectionTitle || ""} ${item.pageOrSection || ""} ${item.textualLayer || ""}`;
-    const searchable = canonical(`${metadata} ${item.text}`);
+    const searchable = canonical(`${metadata} ${item.text}`, options.termAliases);
     const relevance = terms.reduce((sum, term) => {
       const occurrences = Math.min(3, searchable.split(term).length - 1);
       const firstIndex = searchable.indexOf(term);
@@ -38,8 +45,12 @@ export async function rerankEvidence(
   question: string,
   evidence: RetrievedEvidence[],
   maxSelected = 16,
+  options: { personalityAliases?: string[]; termAliases?: TermAliasRecord[] } = {},
 ): Promise<RetrievedEvidence[]> {
-  const ordered = deterministicOrder(question, evidence);
+  const ordered = deterministicOrder(question, evidence, {
+    personalityAliases: options.personalityAliases || [],
+    termAliases: options.termAliases || [],
+  });
   if (ordered.length <= 32) return ordered.slice(0, maxSelected);
   const candidates = ordered.slice(0, 32);
   const prompt = `You are a retrieval reranker. Return JSON only as {"ids":["..."]}.

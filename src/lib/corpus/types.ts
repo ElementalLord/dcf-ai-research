@@ -51,6 +51,8 @@ export type RetrievedPassage = {
   sourceUrl: string | null;
   sourceType: string | null;
   sourceStatus: string;
+  personalityId?: string;
+  personalityName?: string;
   origin?: "permanent" | "live_cache";
   retrievedAt?: string | null;
   cacheExpiresAt?: string | null;
@@ -66,6 +68,10 @@ export type RetrievedClaim = {
   text: string;
   claimKind: string;
   certainty: string;
+  approvalOrigin: string;
+  evidenceType: string;
+  personalityId?: string;
+  personalityName?: string;
   parameterName: string | null;
   fieldLabel: string | null;
   sourceTitle: string | null;
@@ -95,12 +101,20 @@ export type Citation = {
   textualLayer: string | null;
   retrievedAt?: string | null;
   excerpt: string;
+  personalityId?: string;
+  personalityName?: string;
+  approvalOrigin?: string;
+  evidenceType?: string;
 };
 
 export type RetrievalDebug = {
   executionMode: "FAST" | "EXPANDED" | "RESEARCH";
   routingStrategy: "deterministic" | "broad" | "model";
   selectedPersonality: string;
+  selectedPersonalityId?: string;
+  selectedPersonalities?: Array<{ id: string; name: string }>;
+  evidencePolicyMode?: "test" | "strict";
+  comparisonMode?: boolean;
   selectedParameters: Array<{ code: string; name: string }>;
   lexicalResults: number;
   semanticResults: number;

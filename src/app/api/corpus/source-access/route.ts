@@ -23,6 +23,9 @@ const baseSchema = z.object({
   cacheTtlHours: z.number().int().min(1).max(8_760).default(168),
   notes: z.string().trim().max(2_000).nullable().optional(),
   isActive: z.boolean().default(true),
+  approvalOrigin: z.enum(["human_manual", "mentor_review", "system_test_bulk", "imported_existing"]).default("human_manual"),
+  approvalNote: z.string().trim().max(2_000).nullable().optional(),
+  approvedByLabel: z.string().trim().max(200).nullable().optional(),
 });
 const updateSchema = baseSchema.partial().extend({ id: z.string().uuid() });
 
@@ -58,6 +61,10 @@ function normalizedRow(input: z.infer<typeof baseSchema>) {
     cache_ttl_hours: input.cacheTtlHours,
     notes: input.notes || null,
     is_active: input.isActive,
+    approval_origin: input.approvalOrigin,
+    approval_note: input.approvalNote || null,
+    approved_by_label: input.approvedByLabel || null,
+    approved_at: input.evidenceUseStatus === "approved" ? new Date().toISOString() : null,
   };
 }
 
@@ -118,6 +125,9 @@ export async function PATCH(request: NextRequest) {
       cacheTtlHours: updates.cacheTtlHours ?? existing.cache_ttl_hours,
       notes: updates.notes === undefined ? existing.notes : updates.notes,
       isActive: updates.isActive ?? existing.is_active,
+      approvalOrigin: updates.approvalOrigin ?? existing.approval_origin,
+      approvalNote: updates.approvalNote === undefined ? existing.approval_note : updates.approvalNote,
+      approvedByLabel: updates.approvedByLabel === undefined ? existing.approved_by_label : updates.approvedByLabel,
     });
     const { data, error } = await supabaseAdmin.from("approved_source_access").update(normalizedRow(complete)).eq("id", id).select("*").single();
     if (error) throw new CorpusError("DATABASE_FAILED", "The source-access rule could not be updated.", 500, { cause: error });

@@ -8,8 +8,8 @@ export async function GET(request: NextRequest) {
   if (denied) return denied;
   try {
     const requestedId = request.nextUrl.searchParams.get("personalityId");
-    let personalityQuery = supabaseAdmin.from("personalities").select("id, canonical_name");
-    personalityQuery = requestedId ? personalityQuery.eq("id", requestedId) : personalityQuery.ilike("canonical_name", "Vishvamitra");
+    let personalityQuery = supabaseAdmin.from("personalities").select("id, canonical_name").order("canonical_name");
+    personalityQuery = requestedId ? personalityQuery.eq("id", requestedId) : personalityQuery;
     const { data: personality, error: personalityError } = await personalityQuery.limit(1).single();
     if (personalityError) throw new CorpusError("DATABASE_FAILED", "The diagnostic personality could not be loaded.", 404, { cause: personalityError });
 

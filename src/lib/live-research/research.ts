@@ -6,9 +6,13 @@ import { discoverApprovedUrls } from "./live-search";
 import { loadActiveSourceRules } from "./source-registry";
 import { assessEvidenceSufficiency } from "./sufficiency";
 
-export async function retrieveWithApprovedResearch(question: string, personalityId: string) {
-  const local = await retrieveEvidence(question, personalityId);
-  const decision = assessEvidenceSufficiency(question, local.evidence);
+export async function retrieveWithApprovedResearch(
+  question: string,
+  personalityId: string,
+  options: { additionalPersonalityAliases?: string[] } = {},
+) {
+  const local = await retrieveEvidence(question, personalityId, options);
+  const decision = assessEvidenceSufficiency(question, local.evidence, { personalityAliases: local.personalityAliases, termAliases: local.termAliases });
   local.debug.executionMode = decision.mode;
   local.debug.localEvidenceSufficient = decision.sufficient;
   local.debug.localEvidenceCoverage = decision.coverage;
@@ -31,7 +35,7 @@ export async function retrieveWithApprovedResearch(question: string, personality
 
   local.debug.liveResearchTriggered = true;
   const stopSearch = stageTimer("APPROVED_SEARCH");
-  const discovery = await discoverApprovedUrls(question, rules, decision.mode === "RESEARCH" ? 8 : 4);
+  const discovery = await discoverApprovedUrls(question, rules, decision.mode === "RESEARCH" ? 8 : 4, { personalityId, personalityAliases: local.personalityAliases, termAliases: local.termAliases });
   local.debug.latenciesMs.liveSearch = stopSearch();
   local.debug.approvedSourcesConsidered = discovery.approvedSourcesConsidered;
   local.debug.liveUrlsRejected = discovery.rejected;
@@ -67,9 +71,9 @@ export async function retrieveWithApprovedResearch(question: string, personality
     return local;
   }
 
-  const refreshed = await retrieveEvidence(question, personalityId);
+  const refreshed = await retrieveEvidence(question, personalityId, options);
   refreshed.debug.executionMode = decision.mode;
-  const refreshedDecision = assessEvidenceSufficiency(question, refreshed.evidence);
+  const refreshedDecision = assessEvidenceSufficiency(question, refreshed.evidence, { personalityAliases: refreshed.personalityAliases, termAliases: refreshed.termAliases });
   refreshed.debug.localEvidenceSufficient = refreshedDecision.sufficient;
   refreshed.debug.localEvidenceCoverage = refreshedDecision.coverage;
   refreshed.debug.localEvidenceSufficiencyReason = refreshedDecision.reason;

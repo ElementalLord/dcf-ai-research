@@ -3,6 +3,7 @@ import { CorpusError } from "./errors";
 import { generateText, parseGeminiJson } from "./gemini";
 import { normalizedClaim, tokenJaccard } from "./dedupe";
 import { truncateText } from "./text";
+import { selectPrimaryCategory } from "./personality-config";
 
 const CLAIM_KINDS = new Set([
   "established_fact",
@@ -43,12 +44,15 @@ type ExtractionPayload = {
   relationships?: ExtractedRelationship[];
 };
 
+export type ProposalType = "claims" | "events" | "relationships";
+
 function extractionPrompt(
   personality: string,
   layer: string | null,
   fieldCodes: string[],
   chunkId: string,
   text: string,
+  proposalTypes: ProposalType[],
 ): string {
   return `Extract research proposals from one source passage. Return JSON only with keys claims, events, relationships.
 
@@ -56,6 +60,7 @@ PERSONALITY: ${personality}
 TEXTUAL LAYER: ${layer || "not specified"}
 CHUNK ID: ${chunkId}
 VALID PARAMETER FIELD CODES: ${fieldCodes.join(", ")}
+REQUESTED PROPOSAL TYPES: ${proposalTypes.join(", ")}
 
 Rules:
 - Claims must be atomic and directly supported by the passage.
@@ -69,6 +74,7 @@ Rules:
 - Events use narrative chronology labels when appropriate, never invented modern dates.
 - Relationships must name the other person and remain evidence-bound.
 - Omit proposals that the passage does not support.
+- Return empty arrays for proposal types that were not requested.
 
 JSON shape:
 {"claims":[{"claimText":"...","parameterFieldCode":"...","claimKind":"traditional_account","certainty":"high","confidence":0.9,"note":"direct passage"}],"events":[{"title":"...","summary":"...","eventType":"...","chronologyLabel":"..."}],"relationships":[{"objectName":"...","relationshipType":"...","description":"..."}]}
@@ -81,11 +87,13 @@ export async function extractCandidateProposals(input: {
   sourceId: string;
   personalityId: string;
   limit?: number;
+  proposalTypes?: ProposalType[];
 }): Promise<{ claims: number; duplicates: number; events: number; relationships: number; processedChunks: number }> {
   const limit = Math.min(Math.max(input.limit || 10, 1), 25);
-  const [{ data: personality, error: personalityError }, { data: fields, error: fieldsError }, { data: chunks, error: chunksError }] = await Promise.all([
-    supabaseAdmin.from("personalities").select("id, canonical_name").eq("id", input.personalityId).single(),
-    supabaseAdmin.from("parameter_fields").select("id, code, label"),
+  const proposalTypes = [...new Set(input.proposalTypes || ["claims", "events", "relationships"])] as ProposalType[];
+  const enabledProposalTypes = new Set(proposalTypes);
+  const [{ data: personality, error: personalityError }, { data: chunks, error: chunksError }] = await Promise.all([
+    supabaseAdmin.from("personalities").select("id, canonical_name, personality_categories(category_id, is_primary)").eq("id", input.personalityId).single(),
     supabaseAdmin
       .from("source_chunks")
       .select("id, chunk_text, textual_layer")
@@ -94,9 +102,16 @@ export async function extractCandidateProposals(input: {
       .order("chunk_index")
       .limit(limit),
   ]);
-  if (personalityError || fieldsError || chunksError) {
-    throw new CorpusError("CLAIM_EXTRACTION_FAILED", "Candidate extraction inputs could not be loaded.", 500, { cause: personalityError || fieldsError || chunksError });
+  if (personalityError || chunksError) {
+    throw new CorpusError("CLAIM_EXTRACTION_FAILED", "Candidate extraction inputs could not be loaded.", 500, { cause: personalityError || chunksError });
   }
+  const membership = selectPrimaryCategory((personality.personality_categories || []) as Array<{ category_id: string; is_primary: boolean }>);
+  if (!membership) throw new CorpusError("CLAIM_EXTRACTION_FAILED", "The personality has no research framework.", 422);
+  const { data: fields, error: fieldsError } = await supabaseAdmin
+    .from("parameter_fields")
+    .select("id, code, label, parameters!inner(category_id)")
+    .eq("parameters.category_id", membership.category_id);
+  if (fieldsError) throw new CorpusError("CLAIM_EXTRACTION_FAILED", "The personality research framework could not be loaded.", 500, { cause: fieldsError });
 
   const [{ data: existingClaims }, { data: existingCandidates }, { data: existingEvents }, { data: existingRelationships }] = await Promise.all([
     supabaseAdmin.from("claims").select("id, claim_text").eq("personality_id", input.personalityId).limit(1000),
@@ -118,7 +133,7 @@ export async function extractCandidateProposals(input: {
     let payload: ExtractionPayload;
     try {
       const { text } = await generateText(
-        extractionPrompt(personality.canonical_name, chunk.textual_layer, [...fieldMap.keys()], chunk.id, chunk.chunk_text),
+        extractionPrompt(personality.canonical_name, chunk.textual_layer, [...fieldMap.keys()], chunk.id, chunk.chunk_text, proposalTypes),
         { timeoutMs: 40_000, errorCode: "CLAIM_EXTRACTION_FAILED" },
       );
       payload = parseGeminiJson<ExtractionPayload>(text);
@@ -127,7 +142,7 @@ export async function extractCandidateProposals(input: {
       throw new CorpusError("CLAIM_EXTRACTION_FAILED", "Gemini returned invalid extraction data.", 502, { cause: error });
     }
 
-    for (const proposal of (payload.claims || []).slice(0, 12)) {
+    for (const proposal of (enabledProposalTypes.has("claims") ? payload.claims || [] : []).slice(0, 12)) {
       const claimText = proposal.claimText?.trim();
       const fieldId = proposal.parameterFieldCode ? fieldMap.get(proposal.parameterFieldCode) : undefined;
       if (!claimText || !fieldId) continue;
@@ -156,7 +171,7 @@ export async function extractCandidateProposals(input: {
       else claimsCreated += 1;
     }
 
-    for (const event of (payload.events || []).slice(0, 4)) {
+    for (const event of (enabledProposalTypes.has("events") ? payload.events || [] : []).slice(0, 4)) {
       if (!event.title?.trim() || !event.summary?.trim()) continue;
       const normalized = normalizedClaim(event.title);
       if (knownEvents.has(normalized)) continue;
@@ -186,7 +201,7 @@ export async function extractCandidateProposals(input: {
       eventsCreated += 1;
     }
 
-    for (const relationship of (payload.relationships || []).slice(0, 6)) {
+    for (const relationship of (enabledProposalTypes.has("relationships") ? payload.relationships || [] : []).slice(0, 6)) {
       if (!relationship.objectName?.trim() || !relationship.relationshipType?.trim() || !relationship.description?.trim()) continue;
       const normalized = normalizedClaim(`${relationship.objectName} ${relationship.relationshipType} ${relationship.description}`);
       if (knownRelationships.has(normalized)) continue;

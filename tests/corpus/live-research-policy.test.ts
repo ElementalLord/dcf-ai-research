@@ -1,8 +1,16 @@
 import { describe, expect, it } from "vitest";
 import { buildBoundedContext, DEFAULT_MAX_CONTEXT_CHARACTERS, DEFAULT_MAX_EVIDENCE } from "@/lib/corpus/context";
 import type { RetrievedPassage } from "@/lib/corpus/types";
-import { assessEvidenceSufficiency } from "@/lib/live-research/sufficiency";
+import { assessEvidenceSufficiency as assessEvidenceSufficiencyRaw } from "@/lib/live-research/sufficiency";
 import { isFreshCacheRecord } from "@/lib/live-research/cache-policy";
+
+function assessEvidenceSufficiency(...args: Parameters<typeof assessEvidenceSufficiencyRaw>) {
+  return assessEvidenceSufficiencyRaw(args[0], args[1], {
+    personalityAliases: ["Vishvamitra", "Vishwamitra", "Visvamitra"],
+    termAliases: [],
+    ...(args[2] || {}),
+  });
+}
 
 function passage(index: number, text: string, layer = "VEDIC"): RetrievedPassage {
   return { kind: "passage", id: `passage:${index}`, chunkId: `${index}`, sourceId: `source:${index % 3}`, text,
@@ -36,7 +44,13 @@ describe("local-first and scale policies", () => {
   it("treats Vasistha transliteration variants as the same retrieval concept", () => {
     const decision = assessEvidenceSufficiency("Explain Vishvamitra's relationship with Vasistha.", [
       passage(1, "Vishvamitra bargains with Sage Vashishta for Shabala, and Vashishta refuses.", "EPIC"),
-    ]);
+    ], {
+      personalityAliases: ["Vishvamitra", "Vishwamitra", "Visvamitra"],
+      termAliases: [
+        { canonicalTerm: "vasistha", alias: "vasistha" },
+        { canonicalTerm: "vasistha", alias: "vashishta" },
+      ],
+    });
     expect(decision.sufficient).toBe(true);
   });
 

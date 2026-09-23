@@ -24,6 +24,8 @@ type Source = {
   url: string | null;
   citation: string | null;
   source_status: string;
+  approval_origin: string;
+  approval_note: string | null;
 };
 
 type ClaimSource = {
@@ -68,6 +70,11 @@ type Claim = {
     | "approved"
     | "rejected";
   researcher_notes: string | null;
+  approval_origin: string;
+  approval_note: string | null;
+  approved_at: string | null;
+  approved_by_label: string | null;
+  evidence_type: string;
   created_at: string;
   parameter_fields:
     | ParameterField
@@ -75,6 +82,12 @@ type Claim = {
     | null;
   claim_sources: ClaimSource[];
   claim_reviews: Review[];
+  claim_chunks: Array<{
+    relationship: string;
+    confidence: number | null;
+    link_method: string | null;
+    source_chunks: { id: string; page_or_section: string | null; textual_layer: string | null; chunk_text: string; sources: { id: string; title: string; url: string | null } | Array<{ id: string; title: string; url: string | null }> | null } | Array<{ id: string; page_or_section: string | null; textual_layer: string | null; chunk_text: string; sources: { id: string; title: string; url: string | null } | Array<{ id: string; title: string; url: string | null }> | null }> | null;
+  }>;
 };
 
 export default function ReviewPage() {
@@ -89,6 +102,7 @@ export default function ReviewPage() {
 
   const [reviewerName, setReviewerName] =
     useState("Naitik Patel");
+  const [approvalOrigin, setApprovalOrigin] = useState<"human_manual" | "mentor_review">("human_manual");
 
   const [reviewNotes, setReviewNotes] =
     useState<Record<string, string>>({});
@@ -133,18 +147,7 @@ export default function ReviewPage() {
 
       setPersonalities(list);
 
-      const vishvamitra =
-        list.find(
-          (person: Personality) =>
-            person.canonical_name ===
-            "Vishvamitra"
-        );
-
-      if (vishvamitra) {
-        setPersonalityId(
-          vishvamitra.id
-        );
-      } else if (list.length > 0) {
+      if (list.length > 0) {
         setPersonalityId(
           list[0].id
         );
@@ -285,6 +288,7 @@ export default function ReviewPage() {
             notes:
               reviewNotes[claimId] ||
               "",
+            approvalOrigin,
           }),
         }
       );
@@ -347,7 +351,7 @@ export default function ReviewPage() {
         </div>
 
         <section className="mb-8 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
-          <div className="grid gap-5 md:grid-cols-2">
+          <div className="grid gap-5 md:grid-cols-3">
 
             <Field label="Personality">
               <select
@@ -386,6 +390,12 @@ export default function ReviewPage() {
                 }
                 className="input"
               />
+            </Field>
+            <Field label="Approval origin">
+              <select className="input" value={approvalOrigin} onChange={(event) => setApprovalOrigin(event.target.value as "human_manual" | "mentor_review")}>
+                <option value="human_manual">Human/manual</option>
+                <option value="mentor_review">Mentor review</option>
+              </select>
             </Field>
           </div>
         </section>
@@ -596,7 +606,12 @@ function ClaimCard({
             claim.certainty
           )}
         />
+        <SmallInfo label="Evidence type" value={pretty(claim.evidence_type)} />
+        <SmallInfo label="Approval origin" value={pretty(claim.approval_origin)} />
       </div>
+
+      {claim.approval_origin === "system_test_bulk" && <div className="mb-5 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950"><strong>Internal testing approval.</strong> This is usable in test policy mode and is not equivalent to mentor sign-off.</div>}
+      {claim.approval_note && <p className="mb-5 text-sm text-zinc-600">Approval note: {claim.approval_note}</p>}
 
       {claim.researcher_notes && (
         <div className="mb-5">
@@ -661,6 +676,7 @@ function ClaimCard({
                           )}
                         </span>
                       )}
+                      {source?.approval_origin && <span className="rounded-full bg-zinc-100 px-2.5 py-1 text-xs">Origin: {pretty(source.approval_origin)}</span>}
                     </div>
 
                     <p className="font-semibold">
@@ -728,6 +744,15 @@ function ClaimCard({
             No evidence linked.
           </div>
         )}
+      </div>
+
+      <div className="mb-6">
+        <h4 className="mb-3 font-semibold">Exact chunk evidence</h4>
+        {claim.claim_chunks?.length ? <div className="space-y-3">{claim.claim_chunks.map((link) => {
+          const chunk = Array.isArray(link.source_chunks) ? link.source_chunks[0] : link.source_chunks;
+          const source = chunk ? (Array.isArray(chunk.sources) ? chunk.sources[0] : chunk.sources) : null;
+          return <details key={`${claim.id}:${chunk?.id || link.link_method}`} className="rounded-xl border p-4"><summary className="cursor-pointer text-sm font-medium">{source?.title || "Linked passage"} · {chunk?.page_or_section || "No location"} · {link.link_method || "manual"} · confidence {link.confidence ?? "unscored"}</summary>{chunk && <><p className="mt-3 text-xs text-zinc-500">{chunk.textual_layer || "Textual layer not specified"} · chunk {chunk.id}</p><p className="mt-3 whitespace-pre-wrap rounded-lg bg-zinc-50 p-3 text-sm leading-6">{chunk.chunk_text}</p></>}</details>;
+        })}</div> : <div className="rounded-xl border border-dashed p-4 text-sm text-zinc-500">No exact chunk evidence linked.</div>}
       </div>
 
       {claim.claim_reviews?.length >

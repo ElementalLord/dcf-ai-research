@@ -16,6 +16,7 @@ Open:
 - `http://localhost:3000/` — research claim entry and progress
 - `http://localhost:3000/review` — human claim review
 - `http://localhost:3000/corpus` — internal corpus ingestion, tagging, embeddings, proposal review, and retrieval debug
+- `http://localhost:3000/corpus/onboard` — reusable personality/source onboarding and evidence-depth coverage
 - `http://localhost:3000/corpus/sources` — approved internet scopes, separate evidence authorization, and live-cache inspection
 - `http://localhost:3000/ask` — grounded question answering with inspectable citations
 
@@ -27,7 +28,9 @@ Questions are routed into the existing expert parameter framework. Retrieval com
 
 Local evidence is assessed before any network activity. Sufficient questions remain in `FAST` mode. Weak or cross-layer questions may enter `EXPANDED` or `RESEARCH` mode, where the backend can discover and fetch only URLs permitted by `approved_source_access`. Exact-URL and path-prefix rules override broader domain rules. Fetches also reject unsafe schemes, credentials, non-standard ports, private/link-local addresses, oversized responses, excessive redirects, and redirects outside the registry.
 
-Network access authorization, source evidence approval, and human claim approval are independent states. Successful approved fetches use ETag/Last-Modified validators and a configurable TTL in `live_research_cache`; extracted passages are deterministically chunked into the corpus with live-cache provenance. A repeated valid request uses the local/cache path rather than refetching the page.
+Network access authorization, source evidence approval, claim review status, approval origin, and evidence type are independent states. Successful approved fetches use ETag/Last-Modified validators and a configurable TTL in `live_research_cache`; extracted passages are deterministically chunked into the corpus with live-cache provenance. A repeated valid request uses the local/cache path rather than refetching the page.
+
+`EVIDENCE_POLICY_MODE=test` permits approved test-bulk and imported claims for internal evaluation. `EVIDENCE_POLICY_MODE=strict` restricts claim retrieval to approved human/manual or mentor-reviewed material; direct passages remain governed by source evidence approval. Test-bulk approval is never presented as mentor sign-off.
 
 Candidate claims, events, and relationships remain proposals. Accepting a candidate creates a normal `needs_review` claim; only the existing human review workflow can make it approved knowledge.
 

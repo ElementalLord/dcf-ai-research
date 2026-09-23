@@ -63,6 +63,17 @@ export async function ingestSections(input: IngestionInput): Promise<{
         .from("chunk_personalities")
         .upsert(personalityRows, { onConflict: "chunk_id,personality_id" });
       if (tagError) throw tagError;
+      const { error: sourceMappingError } = await supabaseAdmin.from("source_personalities").upsert(
+        input.personalityIds.map((personalityId) => ({
+          source_id: input.sourceId,
+          personality_id: personalityId,
+          relationship: "ingested_for",
+          confidence: 1,
+          mapping_method: "manual",
+        })),
+        { onConflict: "source_id,personality_id" },
+      );
+      if (sourceMappingError) throw sourceMappingError;
     }
 
     const fieldRows = activeIds.flatMap((chunkId) =>

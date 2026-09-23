@@ -26,15 +26,32 @@ describe("retrieval regression", () => {
     expect(results[0].claimId).toBe("claim-1");
   });
 
+  it("uses the selected framework's sort order for broad questions", () => {
+    const rows = [
+      { ...approvedRows[0], id: "late", parameter_fields: { id: "late-field", label: "Late", parameters: { id: "late-parameter", code: "category_specific_late", name: "Late", sort_order: 90 } } },
+      { ...approvedRows[1], id: "first", parameter_fields: { id: "first-field", label: "First", parameters: { id: "first-parameter", code: "category_specific_first", name: "First", sort_order: 1 } } },
+    ];
+    expect(rankApprovedClaims("Who is this person?", rows)[0].claimId).toBe("first");
+  });
+
   it("routes common questions deterministically without selecting every parameter", () => {
-    const codes = ["role", "textual_contribution", "tapas_sadhana", "social_role", "historical_context"];
-    expect(routeParameterCodes("What is the significance of Rigveda 3.33?", codes)).toContain("textual_contribution");
-    expect(routeParameterCodes("Who is Vishvamitra?", codes)).toEqual([]);
+    const parameters = [
+      { code: "role", routingHints: ["role"] },
+      { code: "textual_contribution", routingHints: ["rigveda", "hymn"] },
+      { code: "tapas_sadhana", routingHints: ["tapas"] },
+      { code: "social_role", routingHints: ["relationship"] },
+      { code: "historical_context", routingHints: ["history"] },
+    ];
+    expect(routeParameterCodes("What is the significance of Rigveda 3.33?", parameters)).toContain("textual_contribution");
+    expect(routeParameterCodes("Who is the selected personality?", parameters)).toEqual([]);
   });
 
   it("preserves exact numeric references in lexical search", () => {
     expect(lexicalSearchExpression("What is significant about Rigveda 3.33?")).toContain("33");
-    expect(lexicalSearchExpression("Explain the relationship with Vasistha")).toContain("vashishta");
+    expect(lexicalSearchExpression("Explain the relationship with Vasistha", [], [
+      { canonicalTerm: "vasistha", alias: "vasistha" },
+      { canonicalTerm: "vasistha", alias: "vashishta" },
+    ])).toContain("vashishta");
   });
 
   it("prevents one source from dominating a broad profile", () => {

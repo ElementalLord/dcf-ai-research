@@ -24,6 +24,9 @@ type AskResult = {
     excerpt: string;
     claimId?: string;
     chunkId?: string;
+    personalityName?: string;
+    approvalOrigin?: string;
+    evidenceType?: string;
   }>;
   conflicts?: Array<{ type: string; message: string; layers?: string[] }>;
   debug?: {
@@ -46,17 +49,7 @@ export default function AskClient({
   personalities,
   loadError,
 }: AskClientProps) {
-  const preferredPersonality =
-    personalities.find(
-      (person) =>
-        person.canonical_name.localeCompare("Vishvamitra", undefined, {
-          sensitivity: "base",
-        }) === 0,
-    ) || personalities[0];
-
-  const [personalityId, setPersonalityId] = useState(
-    preferredPersonality?.id || "",
-  );
+  const [personalityIds, setPersonalityIds] = useState<string[]>(personalities[0]?.id ? [personalities[0].id] : []);
   const [question, setQuestion] = useState("");
   const [result, setResult] = useState<AskResult | null>(null);
   const [loading, setLoading] = useState(false);
@@ -76,7 +69,7 @@ export default function AskClient({
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          personalityId,
+          personalityIds,
           question,
         }),
       }, 120_000);
@@ -147,28 +140,9 @@ export default function AskClient({
           className="mt-8 space-y-5 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm"
         >
           <div>
-            <label
-              htmlFor="personality"
-              className="mb-2 block text-sm font-medium"
-            >
-              Personality
-            </label>
-
-            <select
-              id="personality"
-              required
-              value={personalityId}
-              onChange={(e) => setPersonalityId(e.target.value)}
-              className="input"
-            >
-              <option value="">Select personality</option>
-
-              {personalities.map((person) => (
-                <option key={person.id} value={person.id}>
-                  {person.canonical_name}
-                </option>
-              ))}
-            </select>
+            <p className="mb-2 block text-sm font-medium">Personality {personalities.length > 1 && "or intentional comparison set"}</p>
+            <div className="grid gap-2 sm:grid-cols-2">{personalities.map((person) => <label key={person.id} className="rounded-xl border p-3 text-sm"><input type="checkbox" className="mr-2" checked={personalityIds.includes(person.id)} onChange={() => setPersonalityIds((current) => current.includes(person.id) ? current.filter((id) => id !== person.id) : current.length < 3 ? [...current, person.id] : current)} />{person.canonical_name}</label>)}</div>
+            {personalities.length === 1 && <p className="mt-2 text-xs text-zinc-500">Add another configured personality through the onboarding workflow before running a comparison.</p>}
           </div>
 
           <div>
@@ -185,13 +159,13 @@ export default function AskClient({
               rows={4}
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
-              placeholder="What are Vishvamitra's major textual contributions?"
+              placeholder="What are this personality's major textual contributions?"
               className="input resize-y"
             />
           </div>
 
           <button
-            disabled={loading || !personalityId}
+            disabled={loading || personalityIds.length === 0}
             className="w-full rounded-xl bg-zinc-900 px-5 py-4 font-semibold text-white disabled:opacity-50"
           >
             {loading ? "Asking Gemini..." : "Ask Gemini"}
@@ -241,7 +215,10 @@ export default function AskClient({
                         [{citation.id}] {citation.title}
                       </summary>
                       <div className="mt-3 space-y-2 text-sm text-zinc-700">
-                        <p>{citation.kind === "approved_claim" ? "Human-approved claim" : "Direct passage from an approved source"}</p>
+                        <p>{citation.kind === "approved_claim" ? "Approved claim" : "Direct passage from an approved source"}</p>
+                        {citation.personalityName && <p>Personality: {citation.personalityName}</p>}
+                        {citation.approvalOrigin && <p>Approval origin: {citation.approvalOrigin}</p>}
+                        {citation.evidenceType && <p>Evidence type: {citation.evidenceType}</p>}
                         {citation.author && <p>Author: {citation.author}</p>}
                         {citation.institution && <p>Institution: {citation.institution}</p>}
                         {citation.textualLayer && <p>Textual layer: {citation.textualLayer}</p>}

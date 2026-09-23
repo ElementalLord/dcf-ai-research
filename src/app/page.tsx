@@ -84,6 +84,20 @@ type ProgressData = {
     totalClaims: number;
     approvedClaims: number;
   };
+  corpusCoverage?: {
+    disclaimer: string;
+    overall: {
+      sources: number;
+      chunks: number;
+      embeddedChunks: number;
+      parameterTaggedChunks: number;
+      claimsWithExactPassages: number;
+      exactPassageCoveragePercent: number;
+      textualLayers: number;
+      events: number;
+      relationships: number;
+    };
+  };
 };
 
 export default function Home() {
@@ -550,7 +564,7 @@ export default function Home() {
                       progress.overall
                         .totalFields
                     }{" "}
-                    fields researched
+                    fields containing claims
                   </p>
                 </div>
               )}
@@ -569,7 +583,7 @@ export default function Home() {
 
                 <div className="mb-6 grid gap-3 sm:grid-cols-3">
                   <Metric
-                    label="Research fields"
+                    label="Fields with claims"
                     value={`${progress.overall.coveredFields}/${progress.overall.totalFields}`}
                   />
 
@@ -587,6 +601,8 @@ export default function Home() {
                     )}
                   />
                 </div>
+
+                {progress.corpusCoverage && <><p className="mb-4 rounded-lg bg-amber-50 p-3 text-sm text-amber-900">{progress.corpusCoverage.disclaimer}</p><div className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4"><Metric label="Source chunks / embedded" value={`${progress.corpusCoverage.overall.chunks}/${progress.corpusCoverage.overall.embeddedChunks}`} /><Metric label="Claims with exact passages" value={`${progress.corpusCoverage.overall.claimsWithExactPassages} (${progress.corpusCoverage.overall.exactPassageCoveragePercent}%)`} /><Metric label="Sources / textual layers" value={`${progress.corpusCoverage.overall.sources}/${progress.corpusCoverage.overall.textualLayers}`} /><Metric label="Events / relationships" value={`${progress.corpusCoverage.overall.events}/${progress.corpusCoverage.overall.relationships}`} /></div></>}
 
                 <div className="space-y-3">
                   {progress.parameters.map(
@@ -618,7 +634,7 @@ export default function Home() {
                               {
                                 parameter.totalFields
                               }{" "}
-                              fields researched
+                              fields containing claims
                               {" · "}
                               {
                                 parameter.totalClaims
@@ -1139,7 +1155,7 @@ export default function Home() {
                         e.target.value
                       )
                     }
-                    placeholder="e.g. p. 52 or Rigveda 3.62.10"
+                    placeholder="e.g. p. 52 or section 3.62.10"
                     className="input"
                   />
                 </Field>

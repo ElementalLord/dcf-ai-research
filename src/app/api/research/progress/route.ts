@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase-admin";
+import { loadPersonalityCoverage } from "@/lib/corpus/onboarding";
 
 export async function GET(request: NextRequest) {
   try {
@@ -182,6 +183,7 @@ export async function GET(request: NextRequest) {
             (coveredFields / totalFields) * 100
           );
 
+    const corpusCoverage = await loadPersonalityCoverage(personalityId);
     return NextResponse.json({
       category,
       parameters: parameterProgress,
@@ -192,6 +194,7 @@ export async function GET(request: NextRequest) {
         totalClaims,
         approvedClaims,
       },
+      corpusCoverage: corpusCoverage.coverage,
     });
   } catch (error: any) {
     console.error("Progress error:", error);

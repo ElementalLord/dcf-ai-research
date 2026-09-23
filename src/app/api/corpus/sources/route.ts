@@ -8,6 +8,9 @@ import { normalizeSourceUrl } from "@/lib/corpus/source-dedupe";
 const updateSchema = z.object({
   sourceId: z.string().uuid(),
   status: z.enum(["candidate", "approved", "rejected"]),
+  approvalOrigin: z.enum(["human_manual", "mentor_review"]).default("human_manual"),
+  approvalNote: z.string().trim().max(2_000).optional(),
+  approvedByLabel: z.string().trim().min(1).max(200).default("Corpus reviewer"),
 });
 
 const createSchema = z.object({
@@ -25,7 +28,7 @@ export async function GET(request: NextRequest) {
     const [{ data: sources, error: sourceError }, { data: chunks, error: chunkError }, { data: candidates, error: candidateError }] = await Promise.all([
       supabaseAdmin
         .from("sources")
-        .select("id, title, author, publisher_or_institution, source_type, source_status, url, ingestion_status, ingested_at, last_ingestion_error, textual_layer")
+        .select("id, title, author, publisher_or_institution, source_type, source_status, approval_origin, approval_note, approved_at, approved_by_label, url, ingestion_status, ingested_at, last_ingestion_error, textual_layer")
         .order("title"),
       supabaseAdmin.from("source_chunks").select("id, source_id, embedding_status, chunk_personalities(count), chunk_parameter_fields(count)").eq("is_active", true),
       supabaseAdmin.from("candidate_claims").select("id, status, source_chunks(source_id)").in("status", ["pending", "needs_review"]),
@@ -63,7 +66,15 @@ export async function PATCH(request: NextRequest) {
     assertRequestSize(request);
     const parsed = updateSchema.safeParse(await request.json());
     if (!parsed.success) throw new CorpusError("INVALID_INPUT", "A valid source review decision is required.", 400);
-    const { error } = await supabaseAdmin.from("sources").update({ source_status: parsed.data.status }).eq("id", parsed.data.sourceId);
+    const { error } = await supabaseAdmin.from("sources").update({
+      source_status: parsed.data.status,
+      ...(parsed.data.status === "approved" ? {
+        approval_origin: parsed.data.approvalOrigin,
+        approval_note: parsed.data.approvalNote || "Approved in the corpus source review interface.",
+        approved_at: new Date().toISOString(),
+        approved_by_label: parsed.data.approvedByLabel,
+      } : {}),
+    }).eq("id", parsed.data.sourceId);
     if (error) throw new CorpusError("DATABASE_FAILED", "The source status could not be updated.", 500, { cause: error });
     return NextResponse.json({ success: true, ...parsed.data });
   } catch (error) {
@@ -103,6 +114,7 @@ export async function POST(request: NextRequest) {
         url: normalizedUrl,
         citation: parsed.data.citation || null,
         source_status: "candidate",
+        approval_origin: "human_manual",
         ingestion_status: "not_ingested",
       })
       .select("id, title")

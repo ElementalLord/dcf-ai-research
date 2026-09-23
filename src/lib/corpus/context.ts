@@ -20,8 +20,8 @@ export function buildBoundedContext(
     const citationId = item.kind === "claim" ? `C${++claimIndex}` : `S${++sourceIndex}`;
     const body = truncateText(item.text, 4_500);
     const record = item.kind === "claim"
-      ? `[${citationId}] HUMAN-APPROVED CLAIM\nType: ${item.claimKind}\nCertainty: ${item.certainty}\nTextual layer: ${item.textualLayer || "not specified"}\nClaim: ${body}\nSource: ${item.sourceTitle || "not linked"}\nLocation: ${item.pageOrSection || "not specified"}`
-      : `[${citationId}] DIRECT PASSAGE FROM AN APPROVED SOURCE\nSource type: ${item.sourceType || "not specified"}\nTextual layer: ${item.textualLayer || "not specified"}\nSource: ${item.sourceTitle}\nLocation: ${item.pageOrSection || item.sectionTitle || "not specified"}\nPassage: ${body}`;
+      ? `[${citationId}] APPROVED CLAIM\nPersonality: ${item.personalityName || "not specified"}\nApproval origin: ${item.approvalOrigin}\nEvidence type: ${item.evidenceType}\nType: ${item.claimKind}\nCertainty: ${item.certainty}\nTextual layer: ${item.textualLayer || "not specified"}\nClaim: ${body}\nSource: ${item.sourceTitle || "not linked"}\nLocation: ${item.pageOrSection || "not specified"}`
+      : `[${citationId}] DIRECT PASSAGE FROM AN APPROVED SOURCE\nPersonality: ${item.personalityName || "not specified"}\nSource type: ${item.sourceType || "not specified"}\nTextual layer: ${item.textualLayer || "not specified"}\nSource: ${item.sourceTitle}\nLocation: ${item.pageOrSection || item.sectionTitle || "not specified"}\nPassage: ${body}`;
 
     if (records.length > 0 && characters + record.length > maxCharacters) break;
     records.push(record);
@@ -41,6 +41,10 @@ export function buildBoundedContext(
       textualLayer: item.textualLayer,
       retrievedAt: item.kind === "passage" ? item.retrievedAt : null,
       excerpt: body,
+      personalityId: item.personalityId,
+      personalityName: item.personalityName,
+      approvalOrigin: item.kind === "claim" ? item.approvalOrigin : undefined,
+      evidenceType: item.kind === "claim" ? item.evidenceType : undefined,
     });
   }
 

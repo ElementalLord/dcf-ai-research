@@ -60,6 +60,7 @@ export async function POST(request: NextRequest) {
           url: sourceUrl?.trim() || null,
           citation: sourceCitation?.trim() || null,
           source_status: "candidate",
+          approval_origin: "human_manual",
         })
         .select("id")
         .single();
@@ -85,6 +86,14 @@ export async function POST(request: NextRequest) {
         claim_kind: claimKind || "established_fact",
         certainty: certainty || "unknown",
         review_status: "draft",
+        approval_origin: "human_manual",
+        evidence_type: claimKind === "traditional_account" || claimKind === "textual_tradition"
+          ? "traditional_narrative"
+          : claimKind === "scholarly_interpretation"
+            ? "scholarly_interpretation"
+            : claimKind === "contested"
+              ? "contested"
+              : "uncertain",
         researcher_notes: researcherNotes?.trim() || null,
       })
       .select("id")
@@ -110,6 +119,14 @@ export async function POST(request: NextRequest) {
 
       throw evidenceError;
     }
+
+    await supabaseAdmin.from("source_personalities").upsert({
+      source_id: sourceId,
+      personality_id: personalityId,
+      relationship: "supports_claims",
+      confidence: 1,
+      mapping_method: "claim_link",
+    }, { onConflict: "source_id,personality_id" });
 
     return NextResponse.json({
       success: true,

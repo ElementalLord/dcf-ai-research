@@ -21,6 +21,11 @@ export async function GET(request: NextRequest) {
         claim_kind,
         certainty,
         review_status,
+        approval_origin,
+        approval_note,
+        approved_at,
+        approved_by_label,
+        evidence_type,
         researcher_notes,
         created_at,
 
@@ -53,7 +58,22 @@ export async function GET(request: NextRequest) {
             source_type,
             url,
             citation,
-            source_status
+            source_status,
+            approval_origin,
+            approval_note
+          )
+        ),
+
+        claim_chunks (
+          relationship,
+          confidence,
+          link_method,
+          source_chunks (
+            id,
+            page_or_section,
+            textual_layer,
+            chunk_text,
+            sources (id, title, url)
           )
         ),
 
