@@ -52,7 +52,7 @@ QUESTION: ${question}
 
 ${candidates.map((item) => `ID ${evidenceKey(item)}\nTYPE ${item.kind}\n${truncateText(item.text, 850)}`).join("\n\n")}`;
   try {
-    const { text } = await generateText(prompt, { timeoutMs: 25_000, errorCode: "RERANK_FAILED" });
+    const { text } = await generateText(prompt, { timeoutMs: 5_000, errorCode: "RERANK_FAILED" });
     const parsed = parseGeminiJson<{ ids?: string[] }>(text);
     const byId = new Map(candidates.map((item) => [evidenceKey(item), item]));
     const selected = (parsed.ids || []).map((id) => byId.get(id)).filter((item): item is RetrievedEvidence => Boolean(item));

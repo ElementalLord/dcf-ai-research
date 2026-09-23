@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:run": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "corpus:vishvamitra": "node scripts/vishvamitra-corpus-runner.mjs"
   },
   "dependencies": {
     "@google/genai": "^2.23.0",

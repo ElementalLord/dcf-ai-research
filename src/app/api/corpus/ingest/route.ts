@@ -56,16 +56,19 @@ export async function POST(request: NextRequest) {
         if (!parsed.data.text?.trim()) throw new CorpusError("NO_TEXT_EXTRACTED", "Pasted source text is required.", 400);
         sections = [{ title: null, pageOrSection: null, text: parsed.data.text }];
       } else {
-        let sourceUrl = parsed.data.url;
-        if (!sourceUrl) {
-          const { data, error } = await supabaseAdmin.from("sources").select("url").eq("id", sourceId).single();
-          if (error || !data.url) throw new CorpusError("INVALID_INPUT", "This source does not have a URL.", 400);
-          sourceUrl = data.url;
-        }
+        const { data: source, error } = await supabaseAdmin.from("sources").select("url, metadata").eq("id", sourceId).single();
+        if (error) throw new CorpusError("DATABASE_FAILED", "The source could not be loaded.", 500, { cause: error });
+        const sourceUrl = parsed.data.url || source.url;
         if (!sourceUrl) throw new CorpusError("INVALID_INPUT", "This source does not have a URL.", 400);
         const extracted = await extractUrl(sourceUrl);
         sections = extracted.sections;
-        await supabaseAdmin.from("sources").update({ url: extracted.finalUrl, metadata: { fetched_content_type: extracted.contentType } }).eq("id", sourceId);
+        await supabaseAdmin.from("sources").update({
+          url: extracted.finalUrl,
+          metadata: {
+            ...((source.metadata && typeof source.metadata === "object") ? source.metadata as Record<string, unknown> : {}),
+            fetched_content_type: extracted.contentType,
+          },
+        }).eq("id", sourceId);
       }
     }
 

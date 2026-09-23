@@ -131,7 +131,7 @@ export function rankApprovedClaims(question: string, rows: Array<Record<string, 
     return selected;
   }
   const maximumScore = ranked[0]?.score || 0;
-  const minimumScore = terms.size >= 2 ? 2 : maximumScore >= 1 ? 1 : Number.POSITIVE_INFINITY;
+  const minimumScore = maximumScore >= 1 ? 1 : Number.POSITIVE_INFINITY;
   return ranked
     .filter(({ score }) => score >= minimumScore)
     .slice(0, 24)
@@ -229,7 +229,7 @@ export async function retrieveEvidence(question: string, personalityId: string):
     `, { count: "exact" })
     .eq("personality_id", personalityId)
     .eq("review_status", "approved")
-    .limit(80);
+    .limit(500);
   const inventoryPromise = supabaseAdmin.rpc("get_retrieval_inventory", { personality_uuid: personalityId });
   const liveSourceCountPromise = supabaseAdmin
     .from("approved_source_access")

@@ -52,6 +52,32 @@ describe("local-first and scale policies", () => {
     ]).sufficient).toBe(true);
   });
 
+  it("uses source and layer metadata for corpus-level and cross-layer questions", () => {
+    expect(assessEvidenceSufficiency("What evidence links Vishvamitra to Rigveda Mandala 3?", [
+      passage(1, "This hymn is attributed to the family of the named seer.", "Rigveda — Mandala 3"),
+    ]).sufficient).toBe(true);
+
+    const comparison = assessEvidenceSufficiency(
+      "How does the Rigvedic Vishvamitra differ from the Vishvamitra portrayed in the Ramayana?",
+      [
+        passage(1, "The hymn presents a seer speaking with rivers.", "Rigveda — Mandala 3"),
+        passage(2, "The epic presents a royal ascetic guiding Rama.", "Ramayana — Bala Kanda"),
+      ],
+    );
+    expect(comparison.sufficient).toBe(true);
+    expect(comparison.mode).toBe("FAST");
+  });
+
+  it("does not require intent verbs when the requested facts are covered", () => {
+    expect(assessEvidenceSufficiency("Trace Vishvamitra's development from king to Brahmarshi.", [
+      passage(1, "The narrative begins with King Kaushika.", "Ramayana — Bala Kanda"),
+      passage(2, "Vasistha later acknowledges him as a Brahmarshi.", "Ramayana — Bala Kanda"),
+    ]).sufficient).toBe(true);
+    expect(assessEvidenceSufficiency("How did Vishvamitra's tapas evolve?", [
+      passage(3, "Vishvamitra renews increasingly severe tapas after each interruption.", "Ramayana — Bala Kanda"),
+    ]).sufficient).toBe(true);
+  });
+
   it("uses a valid cache record and expires it deterministically", () => {
     const now = new Date("2026-01-01T00:00:00Z");
     expect(isFreshCacheRecord({ fetch_status: "ready", source_id: "s", expires_at: "2026-01-02T00:00:00Z" }, now)).toBe(true);

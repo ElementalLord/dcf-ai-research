@@ -115,6 +115,8 @@ export type RetrievalDebug = {
   approvedLiveSourceCount: number;
   cacheResults: number;
   localEvidenceSufficient: boolean;
+  localEvidenceCoverage?: number;
+  localEvidenceSufficiencyReason?: string;
   liveResearchTriggered: boolean;
   approvedSourcesConsidered: string[];
   liveUrlsAccepted: string[];

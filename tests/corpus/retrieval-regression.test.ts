@@ -48,4 +48,9 @@ describe("retrieval regression", () => {
     expect(selected.filter((item) => item.kind === "passage" && item.sourceId === "one")).toHaveLength(3);
     expect(selected).toHaveLength(5);
   });
+
+  it("keeps claims matching one meaningful term for multi-concept questions", () => {
+    const results = rankApprovedClaims("How did Vishvamitra's tapas evolve?", approvedRows);
+    expect(results.map((item) => item.claimId)).toContain("claim-2");
+  });
 });

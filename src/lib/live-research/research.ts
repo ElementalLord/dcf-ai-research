@@ -11,6 +11,8 @@ export async function retrieveWithApprovedResearch(question: string, personality
   const decision = assessEvidenceSufficiency(question, local.evidence);
   local.debug.executionMode = decision.mode;
   local.debug.localEvidenceSufficient = decision.sufficient;
+  local.debug.localEvidenceCoverage = decision.coverage;
+  local.debug.localEvidenceSufficiencyReason = decision.reason;
   if (decision.sufficient) {
     local.debug.liveResearchSkipReason = "LOCAL_EVIDENCE_SUFFICIENT";
     logStage("LIVE_RESEARCH", { triggered: false, reason: "local_sufficient" });
@@ -67,7 +69,10 @@ export async function retrieveWithApprovedResearch(question: string, personality
 
   const refreshed = await retrieveEvidence(question, personalityId);
   refreshed.debug.executionMode = decision.mode;
-  refreshed.debug.localEvidenceSufficient = assessEvidenceSufficiency(question, refreshed.evidence).sufficient;
+  const refreshedDecision = assessEvidenceSufficiency(question, refreshed.evidence);
+  refreshed.debug.localEvidenceSufficient = refreshedDecision.sufficient;
+  refreshed.debug.localEvidenceCoverage = refreshedDecision.coverage;
+  refreshed.debug.localEvidenceSufficiencyReason = refreshedDecision.reason;
   refreshed.debug.liveResearchTriggered = true;
   refreshed.debug.approvedSourcesConsidered = local.debug.approvedSourcesConsidered;
   refreshed.debug.liveUrlsAccepted = local.debug.liveUrlsAccepted;
