@@ -51,6 +51,9 @@ export type RetrievedPassage = {
   sourceUrl: string | null;
   sourceType: string | null;
   sourceStatus: string;
+  origin?: "permanent" | "live_cache";
+  retrievedAt?: string | null;
+  cacheExpiresAt?: string | null;
   lexicalScore?: number;
   semanticScore?: number;
   fusedScore?: number;
@@ -90,15 +93,38 @@ export type Citation = {
   url: string | null;
   pageOrSection: string | null;
   textualLayer: string | null;
+  retrievedAt?: string | null;
   excerpt: string;
 };
 
 export type RetrievalDebug = {
+  executionMode: "FAST" | "EXPANDED" | "RESEARCH";
+  routingStrategy: "deterministic" | "broad" | "model";
   selectedPersonality: string;
   selectedParameters: Array<{ code: string; name: string }>;
   lexicalResults: number;
   semanticResults: number;
   approvedClaimResults: number;
+  totalApprovedClaimsForPersonality: number;
+  approvedClaimsBeforeParameterFilter: number;
+  approvedClaimsAfterParameterFilter: number;
+  totalChunksForPersonality: number;
+  chunksBeforeParameterFilter: number;
+  chunksAfterParameterFilter: number;
+  embeddingCountForPersonality: number;
+  approvedLiveSourceCount: number;
+  cacheResults: number;
+  localEvidenceSufficient: boolean;
+  liveResearchTriggered: boolean;
+  approvedSourcesConsidered: string[];
+  liveUrlsAccepted: string[];
+  liveUrlsRejected: Array<{ url: string; reason: string }>;
+  liveFetches: number;
+  cacheHits: number;
+  liveResearchSkipReason: "LOCAL_EVIDENCE_SUFFICIENT" | "NO_APPROVED_LIVE_SOURCES" | "NO_APPROVED_URLS_DISCOVERED" | "LIVE_FETCH_FAILED" | null;
+  lexicalError: string | null;
+  semanticError: string | null;
+  claimRetrievalError: string | null;
   mergedCandidates: number;
   rerankedEvidence: string[];
   finalSelectedEvidenceCount: number;

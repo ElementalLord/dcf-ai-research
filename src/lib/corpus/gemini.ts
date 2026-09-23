@@ -38,31 +38,39 @@ export async function generateText(
     }
   }
 
-  let interactionError: unknown;
-  try {
-    const response = await withTimeout(
-      ai.interactions.create({ model: GENERATION_MODEL, input: prompt }),
-      Math.min(timeoutMs, 15_000),
-    );
-    const text = response.output_text?.trim();
-    if (!text) throw new CorpusError(errorCode, "Gemini returned no text.", 502);
-    return { text, interactionId: response.id || null };
-  } catch (error) {
-    interactionError = error;
-  }
-
+  const isQuotaError = (error: unknown) => {
+    const detail = `${error instanceof Error ? error.message : String(error)} ${JSON.stringify(error)}`.toLowerCase();
+    return detail.includes("429") || detail.includes("resource_exhausted") || detail.includes("quota");
+  };
+  let generationError: unknown;
   try {
     const response = await withTimeout(
       ai.models.generateContent({ model: GENERATION_MODEL, contents: prompt }),
-      Math.min(Math.max(timeoutMs - 15_000, 5_000), 30_000),
+      Math.min(timeoutMs, 8_000),
     );
     const text = response.text?.trim();
     if (!text) throw new CorpusError(errorCode, "Gemini returned no text.", 502);
     return { text, interactionId: null };
   } catch (error) {
+    generationError = error;
+    if (isQuotaError(error)) {
+      generationUnavailableUntil = Date.now() + 60_000;
+      throw new CorpusError(errorCode, "Gemini generation quota is temporarily unavailable.", 503, { cause: error });
+    }
+  }
+
+  try {
+    const response = await withTimeout(
+      ai.interactions.create({ model: GENERATION_MODEL, input: prompt }),
+      Math.min(Math.max(timeoutMs - 8_000, 5_000), 12_000),
+    );
+    const text = response.output_text?.trim();
+    if (!text) throw new CorpusError(errorCode, "Gemini returned no text.", 502);
+    return { text, interactionId: response.id || null };
+  } catch (error) {
     generationUnavailableUntil = Date.now() + 60_000;
     throw new CorpusError(errorCode, "Gemini generation is temporarily unavailable.", 503, {
-      cause: error || interactionError,
+      cause: error || generationError,
     });
   }
 }

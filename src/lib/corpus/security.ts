@@ -18,7 +18,7 @@ function isPrivateIpv4(address: string): boolean {
   );
 }
 
-function isPrivateIp(address: string): boolean {
+export function isPrivateIp(address: string): boolean {
   const normalized = address.toLowerCase();
   if (isIP(normalized) === 4) return isPrivateIpv4(normalized);
   if (isIP(normalized) === 6) {
@@ -49,7 +49,7 @@ export async function assertSafePublicUrl(rawUrl: string): Promise<URL> {
   }
   const hostname = url.hostname.toLowerCase().replace(/\.$/, "");
   if (hostname === "localhost" || hostname.endsWith(".localhost") || hostname.endsWith(".local")) {
-    throw new CorpusError("UNSAFE_URL", "Local network source URLs are not allowed.", 400);
+    throw new CorpusError("SSRF_BLOCKED", "Local network source URLs are not allowed.", 403);
   }
 
   const addresses = isIP(hostname)
@@ -59,7 +59,7 @@ export async function assertSafePublicUrl(rawUrl: string): Promise<URL> {
     throw new CorpusError("FETCH_FAILED", "The source hostname could not be resolved.", 422);
   }
   if (addresses.some(({ address }) => isPrivateIp(address))) {
-    throw new CorpusError("UNSAFE_URL", "Private or local network source URLs are not allowed.", 400);
+    throw new CorpusError("SSRF_BLOCKED", "Private or local network source URLs are not allowed.", 403);
   }
   return url;
 }

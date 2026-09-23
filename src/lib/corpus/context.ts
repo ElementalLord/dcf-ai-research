@@ -39,6 +39,7 @@ export function buildBoundedContext(
       url: item.sourceUrl,
       pageOrSection: item.pageOrSection,
       textualLayer: item.textualLayer,
+      retrievedAt: item.kind === "passage" ? item.retrievedAt : null,
       excerpt: body,
     });
   }

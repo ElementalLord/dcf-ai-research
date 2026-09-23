@@ -68,5 +68,12 @@ export function lexicalSearchExpression(question: string): string {
   const terms = normalizeForMatch(question)
     .split(" ")
     .filter((term) => term.length > 2 && !stopWords.has(term));
-  return [...new Set(terms)].slice(0, 10).join(" OR ") || normalizeForMatch(question);
+  const referenceTerms = (question.match(/\b\d+(?:\.\d+)+\b/g) || []).flatMap((reference) => reference.split("."));
+  const nameVariants = terms.some((term) => ["vasistha", "vashishta", "vasishtha", "vasista", "vashista"].includes(term))
+    ? ["vasistha", "vashishta", "vasishtha", "vasista", "vashista"]
+    : [];
+  const selected = [...new Set([...terms, ...referenceTerms, ...nameVariants])].slice(0, 12);
+  if (selected.length > 0) return selected.join(" OR ");
+  if (/vishva?mitra|vishwamitra|visvamitra/i.test(question)) return "vishvamitra OR vishwamitra OR visvamitra";
+  return "";
 }

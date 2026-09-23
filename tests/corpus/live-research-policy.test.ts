@@ -1,0 +1,68 @@
+import { describe, expect, it } from "vitest";
+import { buildBoundedContext, DEFAULT_MAX_CONTEXT_CHARACTERS, DEFAULT_MAX_EVIDENCE } from "@/lib/corpus/context";
+import type { RetrievedPassage } from "@/lib/corpus/types";
+import { assessEvidenceSufficiency } from "@/lib/live-research/sufficiency";
+import { isFreshCacheRecord } from "@/lib/live-research/cache-policy";
+
+function passage(index: number, text: string, layer = "VEDIC"): RetrievedPassage {
+  return { kind: "passage", id: `passage:${index}`, chunkId: `${index}`, sourceId: `source:${index % 3}`, text,
+    sectionTitle: null, pageOrSection: null, textualLayer: layer, sourceTitle: `Source ${index}`, sourceAuthor: null,
+    sourceInstitution: null, sourceUrl: null, sourceType: "primary", sourceStatus: "approved", lexicalScore: 1 };
+}
+
+describe("local-first and scale policies", () => {
+  it("keeps supported local questions in FAST mode and escalates unsupported ones", () => {
+    const supported = assessEvidenceSufficiency("Who taught Rama Bala and Atibala?", [passage(1, "Vishvamitra taught Rama the disciplines Bala and Atibala.", "EPIC")]);
+    expect(supported.sufficient).toBe(true);
+    expect(supported.mode).toBe("FAST");
+    const unsupported = assessEvidenceSufficiency("What was Vishvamitra's favorite food?", []);
+    expect(unsupported.sufficient).toBe(false);
+    expect(unsupported.mode).toBe("EXPANDED");
+  });
+
+  it("does not mistake a Bala Kanda mention for evidence that Bala and Atibala were taught", () => {
+    const decision = assessEvidenceSufficiency("Who taught Rama Bala and Atibala?", [
+      passage(1, "Vishvamitra is a major character in the Bala Kanda of the Ramayana.", "EPIC"),
+    ]);
+    expect(decision.sufficient).toBe(false);
+  });
+
+  it("requires multiple textual layers for a Rigveda/Ramayana comparison", () => {
+    const decision = assessEvidenceSufficiency("How does the Rigvedic Vishvamitra differ from the Vishvamitra in the Ramayana?", [passage(1, "Rigvedic hymn evidence", "VEDIC")]);
+    expect(decision.sufficient).toBe(false);
+    expect(decision.mode).toBe("RESEARCH");
+  });
+
+  it("treats Vasistha transliteration variants as the same retrieval concept", () => {
+    const decision = assessEvidenceSufficiency("Explain Vishvamitra's relationship with Vasistha.", [
+      passage(1, "Vishvamitra bargains with Sage Vashishta for Shabala, and Vashishta refuses.", "EPIC"),
+    ]);
+    expect(decision.sufficient).toBe(true);
+  });
+
+  it("recognizes direct Rama, textual-legacy, and Rigveda evidence without over-demanding wording", () => {
+    expect(assessEvidenceSufficiency("What role did Vishvamitra play in Rama's story?", [
+      passage(1, "Vishvamitra serves as Rama's ascetic teacher and guide.", "EPIC"),
+    ]).sufficient).toBe(true);
+    expect(assessEvidenceSufficiency("What are Vishvamitra's major textual contributions?", [
+      passage(2, "His distinctive textual legacy includes the Third Mandala tradition.", "VEDIC"),
+    ]).sufficient).toBe(true);
+    expect(assessEvidenceSufficiency("What is the significance of Rigveda 3.33 in relation to Vishvamitra?", [
+      passage(3, "Rigveda 3.33 contains the river dialogue associated with Vishvamitra.", "VEDIC"),
+    ]).sufficient).toBe(true);
+  });
+
+  it("uses a valid cache record and expires it deterministically", () => {
+    const now = new Date("2026-01-01T00:00:00Z");
+    expect(isFreshCacheRecord({ fetch_status: "ready", source_id: "s", expires_at: "2026-01-02T00:00:00Z" }, now)).toBe(true);
+    expect(isFreshCacheRecord({ fetch_status: "ready", source_id: "s", expires_at: "2025-12-31T00:00:00Z" }, now)).toBe(false);
+  });
+
+  it("bounds final evidence and context with five thousand candidates", () => {
+    const evidence = Array.from({ length: 5_000 }, (_, index) => passage(index, `Evidence ${index} ${"text ".repeat(400)}`));
+    const result = buildBoundedContext(evidence);
+    expect(result.selected.length).toBeLessThanOrEqual(DEFAULT_MAX_EVIDENCE);
+    expect(result.context.length).toBeLessThanOrEqual(DEFAULT_MAX_CONTEXT_CHARACTERS);
+    expect(result.selected.length).toBeGreaterThan(0);
+  });
+});

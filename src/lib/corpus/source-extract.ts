@@ -2,36 +2,13 @@ import * as cheerio from "cheerio";
 import { PDFParse } from "pdf-parse";
 import type { DocumentSection } from "./types";
 import { CorpusError } from "./errors";
-import { assertSafePublicUrl } from "./security";
 import { normalizeWhitespace } from "./text";
+import { fetchApprovedResource } from "@/lib/live-research/live-fetch";
+import { loadActiveSourceRules } from "@/lib/live-research/source-registry";
 
-const MAX_REMOTE_BYTES = 15 * 1024 * 1024;
 const MAX_PDF_BYTES = 20 * 1024 * 1024;
 
-async function safeFetch(rawUrl: string, redirects = 0): Promise<Response> {
-  if (redirects > 5) throw new CorpusError("FETCH_FAILED", "The source URL redirected too many times.", 422);
-  const url = await assertSafePublicUrl(rawUrl);
-  const response = await fetch(url, {
-    redirect: "manual",
-    headers: { "User-Agent": "DCF-AI-Research-Corpus/1.0" },
-    signal: AbortSignal.timeout(20_000),
-  }).catch((error) => {
-    throw new CorpusError("FETCH_FAILED", "The source URL could not be fetched.", 422, { cause: error });
-  });
-  if (response.status >= 300 && response.status < 400) {
-    const location = response.headers.get("location");
-    if (!location) throw new CorpusError("FETCH_FAILED", "The source redirected without a destination.", 422);
-    return safeFetch(new URL(location, url).toString(), redirects + 1);
-  }
-  if (!response.ok) {
-    throw new CorpusError("FETCH_FAILED", `The source returned HTTP ${response.status}.`, 422);
-  }
-  const size = Number(response.headers.get("content-length") || 0);
-  if (size > MAX_REMOTE_BYTES) throw new CorpusError("FETCH_FAILED", "The remote source exceeds the 15 MB limit.", 413);
-  return response;
-}
-
-function sectionsFromHtml(html: string): DocumentSection[] {
+export function sectionsFromHtml(html: string): DocumentSection[] {
   const $ = cheerio.load(html);
   $("script,style,noscript,nav,footer,header,aside,form,svg,canvas,iframe").remove();
   const root = $("main,article,[role='main']").first().length
@@ -60,20 +37,17 @@ function sectionsFromHtml(html: string): DocumentSection[] {
   return sections;
 }
 
-export async function extractUrl(rawUrl: string): Promise<{
-  sections: DocumentSection[];
-  contentType: string;
-  finalUrl: string;
-}> {
-  const response = await safeFetch(rawUrl);
-  const bytes = new Uint8Array(await response.arrayBuffer());
-  if (bytes.byteLength > MAX_REMOTE_BYTES) throw new CorpusError("FETCH_FAILED", "The remote source exceeds the 15 MB limit.", 413);
-  const contentType = response.headers.get("content-type")?.toLowerCase() || "";
-  if (contentType.includes("application/pdf") || rawUrl.toLowerCase().endsWith(".pdf")) {
-    return { sections: await extractPdf(bytes), contentType: "application/pdf", finalUrl: response.url || rawUrl };
+export async function extractRemoteBytes(
+  bytes: Uint8Array,
+  contentTypeValue: string,
+  finalUrl: string,
+): Promise<DocumentSection[]> {
+  const contentType = contentTypeValue.toLowerCase();
+  if (contentType.includes("application/pdf") || finalUrl.toLowerCase().endsWith(".pdf")) {
+    return extractPdf(bytes);
   }
-  if (!contentType.includes("text/html") && !contentType.includes("text/plain") && contentType) {
-    throw new CorpusError("FETCH_FAILED", `Unsupported source content type: ${contentType}.`, 415);
+  if (!contentType.includes("text/html") && !contentType.includes("text/plain") && !contentType.includes("application/xhtml+xml")) {
+    throw new CorpusError("UNSUPPORTED_CONTENT_TYPE", `Unsupported source content type: ${contentType || "unknown"}.`, 415);
   }
   const decoded = new TextDecoder().decode(bytes);
   const sections = contentType.includes("text/plain")
@@ -82,7 +56,23 @@ export async function extractUrl(rawUrl: string): Promise<{
   if (!sections.some((section) => section.text.trim())) {
     throw new CorpusError("NO_TEXT_EXTRACTED", "No useful text could be extracted from the source URL.", 422);
   }
-  return { sections, contentType: contentType || "text/html", finalUrl: response.url || rawUrl };
+  return sections;
+}
+
+export async function extractUrl(rawUrl: string): Promise<{
+  sections: DocumentSection[];
+  contentType: string;
+  finalUrl: string;
+}> {
+  const rules = await loadActiveSourceRules();
+  const response = await fetchApprovedResource(rawUrl, {
+    rules,
+    requireEvidenceApproval: false,
+    capability: "ingest",
+  });
+  if (!response.bytes) throw new CorpusError("NO_TEXT_EXTRACTED", "The approved source returned no content.", 422);
+  const sections = await extractRemoteBytes(response.bytes, response.contentType, response.finalUrl);
+  return { sections, contentType: response.contentType, finalUrl: response.finalUrl };
 }
 
 export async function extractPdf(data: Uint8Array): Promise<DocumentSection[]> {

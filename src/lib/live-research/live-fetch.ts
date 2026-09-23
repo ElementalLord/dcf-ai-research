@@ -1,0 +1,121 @@
+import "server-only";
+import { CorpusError } from "@/lib/corpus/errors";
+import { assertSafePublicUrl } from "@/lib/corpus/security";
+import {
+  assertRedirectApproved,
+  assertUrlApprovedForResearch,
+  type SourceCapability,
+  type SourceAccessRule,
+} from "./source-policy";
+
+const MAX_LIVE_BYTES = 12 * 1024 * 1024;
+const MAX_REDIRECTS = 5;
+const ALLOWED_TYPES = ["text/html", "text/plain", "application/xhtml+xml", "application/pdf", "application/xml", "text/xml"];
+
+export type ApprovedFetchResult = {
+  access: SourceAccessRule;
+  requestedUrl: string;
+  finalUrl: string;
+  status: number;
+  contentType: string;
+  etag: string | null;
+  lastModified: string | null;
+  bytes: Uint8Array | null;
+};
+
+type FetchOptions = {
+  rules: SourceAccessRule[];
+  requireEvidenceApproval?: boolean;
+  etag?: string | null;
+  lastModified?: string | null;
+  acceptXml?: boolean;
+  fetchImpl?: typeof fetch;
+  networkValidator?: (url: string) => Promise<URL>;
+  capability?: SourceCapability;
+};
+
+async function readBounded(response: Response): Promise<Uint8Array> {
+  const declared = Number(response.headers.get("content-length") || 0);
+  if (declared > MAX_LIVE_BYTES) throw new CorpusError("CONTENT_TOO_LARGE", "The approved source exceeds the 12 MB live-fetch limit.", 413);
+  if (!response.body) return new Uint8Array();
+  const reader = response.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.byteLength;
+    if (total > MAX_LIVE_BYTES) {
+      await reader.cancel();
+      throw new CorpusError("CONTENT_TOO_LARGE", "The approved source exceeded the 12 MB live-fetch limit.", 413);
+    }
+    chunks.push(value);
+  }
+  const combined = new Uint8Array(total);
+  let offset = 0;
+  for (const chunk of chunks) {
+    combined.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return combined;
+}
+
+export async function fetchApprovedResource(rawUrl: string, options: FetchOptions): Promise<ApprovedFetchResult> {
+  const fetchImpl = options.fetchImpl || fetch;
+  const validateNetwork = options.networkValidator || assertSafePublicUrl;
+  const requestedUrl = rawUrl;
+  let current = rawUrl;
+  const capability = options.capability || "fetch";
+  let access = assertUrlApprovedForResearch(current, options.rules, capability, options.requireEvidenceApproval ?? true);
+
+  for (let redirect = 0; redirect <= MAX_REDIRECTS; redirect += 1) {
+    const safeUrl = await validateNetwork(current);
+    const headers = new Headers({
+      Accept: options.acceptXml
+        ? "application/xml,text/xml,text/html;q=0.8,text/plain;q=0.7"
+        : "text/html,application/xhtml+xml,text/plain,application/pdf;q=0.9",
+      "User-Agent": "DCF-AI-Research/1.0 (+controlled-approved-source-research)",
+    });
+    if (redirect === 0 && options.etag) headers.set("If-None-Match", options.etag);
+    if (redirect === 0 && options.lastModified) headers.set("If-Modified-Since", options.lastModified);
+
+    let response: Response;
+    try {
+      response = await fetchImpl(safeUrl, { redirect: "manual", headers, signal: AbortSignal.timeout(15_000) });
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "TimeoutError") {
+        throw new CorpusError("FETCH_TIMEOUT", "The approved source timed out.", 504, { cause: error });
+      }
+      throw new CorpusError("FETCH_FAILED", "The approved source could not be fetched.", 502, { cause: error });
+    }
+
+    if (response.status >= 300 && response.status < 400) {
+      if (redirect === MAX_REDIRECTS) throw new CorpusError("FETCH_FAILED", "The approved source redirected too many times.", 502);
+      const location = response.headers.get("location");
+      if (!location) throw new CorpusError("FETCH_FAILED", "The approved source redirected without a destination.", 502);
+      current = new URL(location, safeUrl).toString();
+      access = assertRedirectApproved(current, options.rules, capability, options.requireEvidenceApproval ?? true);
+      continue;
+    }
+
+    if (response.status === 304) {
+      return { access, requestedUrl, finalUrl: safeUrl.toString(), status: 304, contentType: response.headers.get("content-type") || "", etag: response.headers.get("etag"), lastModified: response.headers.get("last-modified"), bytes: null };
+    }
+    if (!response.ok) throw new CorpusError("FETCH_FAILED", `The approved source returned HTTP ${response.status}.`, 502);
+    const contentType = (response.headers.get("content-type") || "").toLowerCase();
+    if (contentType && !ALLOWED_TYPES.some((allowed) => contentType.includes(allowed))) {
+      throw new CorpusError("UNSUPPORTED_CONTENT_TYPE", `The approved source returned ${contentType}.`, 415);
+    }
+    return {
+      access,
+      requestedUrl,
+      finalUrl: safeUrl.toString(),
+      status: response.status,
+      contentType: contentType || "text/html",
+      etag: response.headers.get("etag"),
+      lastModified: response.headers.get("last-modified"),
+      bytes: await readBounded(response),
+    };
+  }
+  throw new CorpusError("FETCH_FAILED", "The approved source could not be fetched.", 502);
+}

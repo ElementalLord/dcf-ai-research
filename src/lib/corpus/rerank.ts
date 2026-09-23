@@ -1,10 +1,37 @@
 import { CorpusError } from "./errors";
 import { generateText, parseGeminiJson } from "./gemini";
-import { truncateText } from "./text";
+import { normalizeForMatch, truncateText } from "./text";
 import type { RetrievedEvidence } from "./types";
 
 function evidenceKey(item: RetrievedEvidence): string {
   return item.kind === "claim" ? `claim:${item.claimId}` : `passage:${item.chunkId}`;
+}
+
+function canonical(value: string): string {
+  return normalizeForMatch(value)
+    .replace(/\b(?:vasishta|vashishta|vasishtha|vasista|vashista)\b/g, "vasistha")
+    .replace(/\b(?:legacy|contributions?)\b/g, "contribution");
+}
+
+function deterministicOrder(question: string, evidence: RetrievedEvidence[]): RetrievedEvidence[] {
+  const ignored = new Set(["the", "and", "what", "who", "how", "why", "his", "her", "with", "from", "about", "into", "role", "play", "played", "story", "explain", "relationship", "relation", "significance", "significant", "major", "vishvamitra", "vishwamitra", "visvamitra"]);
+  const terms = [...new Set(canonical(question).split(" ").filter((term) => (term.length > 2 || /^\d+$/.test(term)) && !ignored.has(term)))];
+  const score = (item: RetrievedEvidence) => {
+    const metadata = item.kind === "claim"
+      ? `${item.parameterName || ""} ${item.fieldLabel || ""}`
+      : `${item.sourceTitle} ${item.sectionTitle || ""} ${item.pageOrSection || ""} ${item.textualLayer || ""}`;
+    const searchable = canonical(`${metadata} ${item.text}`);
+    const relevance = terms.reduce((sum, term) => {
+      const occurrences = Math.min(3, searchable.split(term).length - 1);
+      const firstIndex = searchable.indexOf(term);
+      const earlySummaryBoost = firstIndex >= 0 ? Math.max(0, 8 - Math.floor(firstIndex / 50)) : 0;
+      return sum + occurrences + earlySummaryBoost;
+    }, 0);
+    return relevance * 100 + (item.fusedScore || 0);
+  };
+  return evidence.map((item, index) => ({ item, index, score: score(item) }))
+    .sort((left, right) => right.score - left.score || left.index - right.index)
+    .map(({ item }) => item);
 }
 
 export async function rerankEvidence(
@@ -12,8 +39,9 @@ export async function rerankEvidence(
   evidence: RetrievedEvidence[],
   maxSelected = 16,
 ): Promise<RetrievedEvidence[]> {
-  if (evidence.length <= maxSelected) return evidence;
-  const candidates = evidence.slice(0, 32);
+  const ordered = deterministicOrder(question, evidence);
+  if (ordered.length <= 32) return ordered.slice(0, maxSelected);
+  const candidates = ordered.slice(0, 32);
   const prompt = `You are a retrieval reranker. Return JSON only as {"ids":["..."]}.
 Rank evidence strictly by how directly it helps answer the question.
 Do not add facts and do not answer the question.

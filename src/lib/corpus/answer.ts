@@ -1,7 +1,7 @@
 import { buildBoundedContext } from "./context";
 import { generateText } from "./gemini";
 import { logStage, stageTimer } from "./observability";
-import { retrieveEvidence } from "./retrieval";
+import { retrieveWithApprovedResearch } from "@/lib/live-research/research";
 import { truncateText } from "./text";
 
 const ABSTENTION = "The approved knowledge base does not currently contain enough evidence to answer that fully.";
@@ -29,7 +29,19 @@ function extractiveFallback(
 }
 
 export async function answerQuestion(question: string, personalityId: string) {
-  const retrieval = await retrieveEvidence(question, personalityId);
+  const retrieval = await retrieveWithApprovedResearch(question, personalityId);
+  if (!retrieval.debug.localEvidenceSufficient) {
+    return {
+      personality: retrieval.personality,
+      question,
+      answer: ABSTENTION,
+      retrievedParameters: retrieval.parameters,
+      citations: [],
+      evidence: [],
+      conflicts: [],
+      debug: retrieval.debug,
+    };
+  }
   const bounded = buildBoundedContext(retrieval.evidence);
   retrieval.debug.finalSelectedEvidenceCount = bounded.selected.length;
   if (!bounded.context) {
