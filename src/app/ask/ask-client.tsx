@@ -168,7 +168,14 @@ export default function AskClient({ personalities, loadError }: AskClientProps) 
   async function ask(event: React.FormEvent) {
     event.preventDefault();
     const submittedQuestion = question.trim();
-    if (!submittedQuestion) return;
+    if (!submittedQuestion) {
+      questionRef.current?.focus();
+      return;
+    }
+    if (personalityIds.length === 0) {
+      setError("Choose a personality before asking your question.");
+      return;
+    }
     setLoading(true);
     setError("");
 
@@ -255,11 +262,34 @@ export default function AskClient({ personalities, loadError }: AskClientProps) 
 
             <div className="mt-5 border-t border-stone-200 pt-5">
               <label htmlFor="question" className="block font-serif text-xl font-semibold text-slate-950">Ask a question about {selectedName}</label>
-              <div className="relative mt-3 rounded-xl border border-stone-300 bg-white transition focus-within:border-teal-700 focus-within:ring-4 focus-within:ring-teal-700/10">
-                <textarea ref={questionRef} id="question" required rows={3} value={question} disabled={loading} onChange={(event) => setQuestion(event.target.value)} onKeyDown={(event) => { if ((event.metaKey || event.ctrlKey) && event.key === "Enter") event.currentTarget.form?.requestSubmit(); }} placeholder={`What would you like to understand about ${selectedName}?`} className="block w-full resize-none rounded-xl bg-transparent px-4 pb-14 pt-4 text-base leading-7 text-slate-900 outline-none placeholder:text-stone-400 disabled:cursor-wait disabled:bg-stone-50" aria-describedby="question-help" />
-                <div className="absolute bottom-3 left-4 right-3 flex items-center justify-between gap-3">
-                  <span id="question-help" className="hidden text-xs text-stone-400 sm:inline">⌘ Enter to ask</span>
-                  <button disabled={loading || personalityIds.length === 0 || !question.trim()} className="ml-auto inline-flex items-center gap-2 rounded-lg bg-slate-950 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 disabled:cursor-not-allowed disabled:opacity-40">{loading ? "Researching…" : "Ask"} {!loading && <ArrowUp />}</button>
+              <div className="mt-3 overflow-hidden rounded-xl border border-stone-300 bg-white transition focus-within:border-teal-700 focus-within:ring-4 focus-within:ring-teal-700/10">
+                <textarea
+                  ref={questionRef}
+                  id="question"
+                  required
+                  rows={3}
+                  value={question}
+                  disabled={loading}
+                  onChange={(event) => setQuestion(event.target.value)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) {
+                      event.preventDefault();
+                      event.currentTarget.form?.requestSubmit();
+                    }
+                  }}
+                  placeholder={`What would you like to understand about ${selectedName}?`}
+                  className="block w-full resize-y bg-transparent px-4 py-4 text-base leading-7 text-slate-900 outline-none placeholder:text-stone-400 disabled:cursor-wait disabled:bg-stone-50"
+                  aria-describedby="question-help"
+                />
+                <div className="flex items-center justify-between gap-3 border-t border-stone-200 bg-[#fbfaf7] px-3 py-2.5">
+                  <span id="question-help" className="text-xs text-stone-500">Enter to ask<span className="hidden sm:inline"> · Shift+Enter for a new line</span></span>
+                  <button
+                    type="submit"
+                    disabled={loading || personalityIds.length === 0}
+                    className="inline-flex min-w-24 items-center justify-center gap-2 rounded-lg bg-slate-950 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    {loading ? "Researching…" : "Ask"} {!loading && <ArrowUp />}
+                  </button>
                 </div>
               </div>
             </div>
