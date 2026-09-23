@@ -88,7 +88,7 @@ describe("grounded Ask presentation", () => {
 
   it("uses readable local corpus synthesis by default without a Gemini request", () => {
     const claim: RetrievedClaim = {
-      kind: "claim", id: "claim:1", claimId: "1", text: "Vishvamitra is associated with Rigveda Mandala 3 and is portrayed as a guide to Rama.",
+      kind: "claim", id: "claim:1", claimId: "1", text: "In the Rigvedic layer, Vishvamitra and his family are associated with Mandala 3 as mantra-seers; in the Ramayana, Vishvamitra also functions as an ascetic teacher and guide to Rama.",
       claimKind: "textual_tradition", certainty: "high", approvalOrigin: "human_manual", evidenceType: "direct",
       parameterName: "Role", fieldLabel: "Identity", sourceTitle: "Approved profile", sourceAuthor: null,
       sourceInstitution: null, sourceUrl: null, sourceType: "scholarly_article", pageOrSection: "Overview",
@@ -105,8 +105,11 @@ describe("grounded Ask presentation", () => {
     ], { broadSynthesis: true, subjectiveSuperlative: false });
     expect(aiSynthesisEnabled(undefined)).toBe(false);
     expect(aiSynthesisEnabled("gemini")).toBe(true);
-    expect(output).toContain("concise profile");
-    expect(output.indexOf("Vishvamitra is associated")).toBeLessThan(output.indexOf("A long primary-text passage"));
+    expect(output).toContain("### In brief");
+    expect(output).toContain("remembered in two main ways");
+    expect(output).toContain("an ascetic teacher");
+    expect(output).not.toContain("also functions as");
+    expect(output.indexOf("remembered in two main ways")).toBeLessThan(output.indexOf("A long primary-text passage"));
     expect(output).not.toContain("temporarily unavailable");
   });
 });

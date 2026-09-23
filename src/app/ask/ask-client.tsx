@@ -311,13 +311,13 @@ export default function AskClient({ personalities, loadError }: AskClientProps) 
         {result && (
           <article className="mx-auto mt-12 max-w-3xl border-t border-stone-300 pt-9" aria-labelledby="answer-heading">
             {turns.length > 1 && <details className="mb-7 text-sm text-stone-500"><summary className="cursor-pointer font-medium hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700">Earlier in this conversation ({turns.length - 1})</summary><ol className="mt-3 space-y-2 border-l border-stone-300 pl-4">{turns.slice(0, -1).map((turn, index) => <li key={`${turn.question}-${index}`}>{turn.question}</li>)}</ol></details>}
-            <div className="flex flex-wrap items-center gap-2"><span className="source-label bg-slate-900! text-white!">{result.personality}</span>{result.status === "local_synthesis" && <span className="source-label">Local corpus synthesis</span>}{result.status === "extractive_fallback" && <span className="source-label">Verified evidence view</span>}</div>
+            <div className="flex flex-wrap items-center gap-2"><span className="source-label bg-slate-900! text-white!">{result.personality}</span>{result.status === "local_synthesis" && <span className="source-label">From verified sources</span>}{result.status === "extractive_fallback" && <span className="source-label">Verified evidence view</span>}</div>
             <p className="eyebrow mt-7">Question</p>
             <h2 id="answer-heading" className="mt-2 font-serif text-2xl font-semibold leading-9 text-slate-950 sm:text-3xl">{result.question}</h2>
             <p className="eyebrow mt-8">Answer</p>
             {result.status === "extractive_fallback" && <p className="mt-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-950">{SYNTHESIS_FALLBACK_NOTICE}</p>}
             <AnswerContent answer={result.answer} revealCitation={(id) => setCitationRequest({ id, nonce: Date.now() })} />
-            {result.conflicts && result.conflicts.length > 0 && <aside className="mt-7 border-l-2 border-amber-400 pl-4 text-sm leading-6 text-stone-600"><span className="font-semibold text-slate-900">Evidence note. </span>{result.conflicts.map((conflict) => conflict.message).join(" ")}</aside>}
+            {result.conflicts && result.conflicts.length > 0 && <aside className="mt-7 border-l-2 border-amber-400 pl-4 text-sm leading-6 text-stone-600"><span className="font-semibold text-slate-900">Reading note. </span>The sources come from more than one textual tradition, so their perspectives are kept distinct.</aside>}
             {result.citations && result.citations.length > 0 && <SourcePanel citations={result.citations} revealRequest={citationRequest} />}
 
             <section className="mt-10 border-t border-stone-200 pt-7" aria-labelledby="follow-up-heading">
