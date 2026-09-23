@@ -6,6 +6,7 @@ import {
   useMemo,
   useState,
 } from "react";
+import Link from "next/link";
 
 type Personality = {
   id: string;
@@ -465,6 +466,12 @@ export default function Home() {
             Build the verified knowledge base
             one sourced claim at a time.
           </p>
+
+          <nav className="mt-5 flex flex-wrap gap-2">
+            <Link href="/review" className="rounded-xl border border-zinc-300 bg-white px-4 py-2 text-sm">Review claims</Link>
+            <Link href="/corpus" className="rounded-xl border border-zinc-300 bg-white px-4 py-2 text-sm">Manage corpus</Link>
+            <Link href="/ask" className="rounded-xl border border-zinc-300 bg-white px-4 py-2 text-sm">Ask</Link>
+          </nav>
         </div>
 
         <section className="mb-8 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">

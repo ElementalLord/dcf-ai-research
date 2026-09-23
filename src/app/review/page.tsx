@@ -6,6 +6,7 @@ import {
   useMemo,
   useState,
 } from "react";
+import Link from "next/link";
 
 type Personality = {
   id: string;
@@ -338,12 +339,11 @@ export default function ReviewPage() {
             </p>
           </div>
 
-          <a
-            href="/"
-            className="rounded-xl border border-zinc-300 bg-white px-4 py-2 text-sm font-medium hover:bg-zinc-100"
-          >
-            Research Workspace
-          </a>
+          <nav className="flex flex-wrap gap-2">
+            <Link href="/" className="rounded-xl border border-zinc-300 bg-white px-4 py-2 text-sm font-medium hover:bg-zinc-100">Research</Link>
+            <Link href="/corpus" className="rounded-xl border border-zinc-300 bg-white px-4 py-2 text-sm font-medium hover:bg-zinc-100">Corpus</Link>
+            <Link href="/ask" className="rounded-xl border border-zinc-300 bg-white px-4 py-2 text-sm font-medium hover:bg-zinc-100">Ask</Link>
+          </nav>
         </div>
 
         <section className="mb-8 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
