@@ -215,7 +215,7 @@ export default function CorpusPage() {
       <div className="mx-auto max-w-7xl px-5 py-10">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div><p className="text-sm font-semibold uppercase tracking-wider text-zinc-500">Internal research administration</p><h1 className="mt-2 text-4xl font-bold">Source Corpus</h1><p className="mt-2 text-zinc-600">Ingest, tag, embed, search, and review evidence without exposing server credentials.</p></div>
-          <nav className="flex flex-wrap gap-2"><Link className="rounded-lg border bg-white px-3 py-2 text-sm" href="/">Research</Link><Link className="rounded-lg border bg-white px-3 py-2 text-sm" href="/review">Claims</Link><Link className="rounded-lg border bg-white px-3 py-2 text-sm" href="/ask">Ask</Link><Link className="rounded-lg border bg-white px-3 py-2 text-sm" href="/corpus/onboard">Onboard</Link><Link className="rounded-lg border bg-white px-3 py-2 text-sm" href="/corpus/sources">Internet permissions</Link></nav>
+          <nav className="flex flex-wrap gap-2"><Link className="rounded-lg border bg-white px-3 py-2 text-sm" href="/research">Research</Link><Link className="rounded-lg border bg-white px-3 py-2 text-sm" href="/review">Claims</Link><Link className="rounded-lg border bg-white px-3 py-2 text-sm" href="/ask">Ask</Link><Link className="rounded-lg border bg-white px-3 py-2 text-sm" href="/corpus/onboard">Onboard</Link><Link className="rounded-lg border bg-white px-3 py-2 text-sm" href="/corpus/sources">Internet permissions</Link></nav>
         </div>
 
         {message && <div className="mb-6 rounded-xl border border-zinc-300 bg-white p-4 text-sm">{message}</div>}

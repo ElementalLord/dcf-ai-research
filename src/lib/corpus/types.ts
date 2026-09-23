@@ -78,6 +78,7 @@ export type RetrievedClaim = {
   sourceAuthor: string | null;
   sourceInstitution: string | null;
   sourceUrl: string | null;
+  sourceType: string | null;
   pageOrSection: string | null;
   evidenceExcerpt: string | null;
   chunkId: string | null;
@@ -97,6 +98,7 @@ export type Citation = {
   author: string | null;
   institution: string | null;
   url: string | null;
+  sourceType: string | null;
   pageOrSection: string | null;
   textualLayer: string | null;
   retrievedAt?: string | null;

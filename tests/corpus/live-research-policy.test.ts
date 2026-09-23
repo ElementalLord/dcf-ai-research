@@ -54,6 +54,19 @@ describe("local-first and scale policies", () => {
     expect(decision.sufficient).toBe(true);
   });
 
+  it("treats disagreement wording as relationship intent after subjects are resolved", () => {
+    const decision = assessEvidenceSufficiency("Why did Vishvamitra and Vasistha disagree?", [
+      passage(1, "Vishvamitra bargains with Sage Vashishta for Shabala, and Vashishta refuses.", "EPIC"),
+    ], {
+      personalityAliases: ["Vishvamitra", "Vishwamitra", "Visvamitra"],
+      termAliases: [
+        { canonicalTerm: "vasistha", alias: "vasistha" },
+        { canonicalTerm: "vasistha", alias: "vashishta" },
+      ],
+    });
+    expect(decision.sufficient).toBe(true);
+  });
+
   it("recognizes direct Rama, textual-legacy, and Rigveda evidence without over-demanding wording", () => {
     expect(assessEvidenceSufficiency("What role did Vishvamitra play in Rama's story?", [
       passage(1, "Vishvamitra serves as Rama's ascetic teacher and guide.", "EPIC"),

@@ -37,6 +37,7 @@ export function buildBoundedContext(
       author: item.sourceAuthor,
       institution: item.sourceInstitution,
       url: item.sourceUrl,
+      sourceType: item.kind === "passage" ? item.sourceType : item.sourceType,
       pageOrSection: item.pageOrSection,
       textualLayer: item.textualLayer,
       retrievedAt: item.kind === "passage" ? item.retrievedAt : null,

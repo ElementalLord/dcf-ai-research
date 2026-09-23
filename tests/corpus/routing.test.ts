@@ -21,5 +21,7 @@ describe("parameter routing", () => {
       expect.arrayContaining(["textual_contribution", "role", "historical_context"]),
     );
     expect(routeParameterCodes("What evidence exists for the rivers in Rigveda 3.33?", parameters)).toContain("philosophy");
+    expect(routeParameterCodes("What happened between him and Vasistha?", parameters)).toContain("social_role");
+    expect(routeParameterCodes("What texts are connected to him?", parameters)).toContain("textual_contribution");
   });
 });

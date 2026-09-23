@@ -1,8 +1,9 @@
 import { normalizeForMatch } from "@/lib/corpus/text";
 import type { RetrievedEvidence } from "@/lib/corpus/types";
 import { canonicalizeTerms, type TermAliasRecord } from "@/lib/corpus/personality-config";
+import { isBroadSynthesisQuestion } from "@/lib/corpus/routing";
 
-const IGNORED = new Set(["the", "and", "his", "her", "what", "when", "where", "which", "who", "how", "does", "did", "is", "are", "was", "were", "about", "from", "with", "into", "role", "play", "played", "major", "story", "explain", "relationship", "relation", "significance", "significant", "happens"]);
+const IGNORED = new Set(["the", "and", "his", "her", "what", "when", "where", "which", "who", "why", "how", "does", "did", "is", "are", "was", "were", "about", "from", "with", "into", "between", "role", "play", "played", "major", "story", "explain", "relationship", "relation", "significance", "significant", "happen", "happens", "happened", "disagree", "disagreed", "disagreement"]);
 
 function normalizeAliases(value: string, termAliases: TermAliasRecord[]): string {
   return canonicalizeTerms(value, termAliases)
@@ -59,10 +60,11 @@ export function assessEvidenceSufficiency(
   const direct = evidence.filter((item) => item.kind === "claim" || (item.lexicalScore || 0) > 0).length;
   const sources = new Set(evidence.map((item) => item.kind === "passage" ? item.sourceId : item.sourceTitle).filter(Boolean));
   const layers = new Set(evidence.map((item) => item.textualLayer).filter(Boolean));
-  const comparative = /compare|differ|difference|across|contested|disagree|conflict/i.test(question);
+  const comparative = /compare|differ|difference|across|contested|conflict/i.test(question)
+    || /\b(?:sources|accounts|traditions|texts)\b.{0,50}\bdisagree/i.test(question);
   const developmental = /development|trace|transform|evolv/i.test(question);
   const complex = comparative || developmental;
-  const broadProfile = /\b(who is|known for|tell me about|overview|biograph|profile|introduce)\b/i.test(question);
+  const broadProfile = isBroadSynthesisQuestion(question);
   const mode = complex ? "RESEARCH" : "EXPANDED";
   if (evidence.length === 0 || direct === 0) return { sufficient: false, mode, coverage, reason: "No directly relevant approved local evidence." };
   if (broadProfile) {

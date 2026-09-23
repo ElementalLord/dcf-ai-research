@@ -2,13 +2,36 @@ import type { ParameterField } from "./types";
 import { normalizeForMatch } from "./text";
 import { canonicalizeTerms, type RoutingParameter, type TermAliasRecord } from "./personality-config";
 
+const BROAD_SYNTHESIS_PATTERNS = [
+  /\bwho is\b/i,
+  /\bknown for\b/i,
+  /\btell me about\b/i,
+  /\b(?:overview|biograph\w*|profile|introduce)\b/i,
+  /\bwhy (?:is|was|are|were) .{0,60}\bimportant\b/i,
+  /\bwhat (?:did|does|has) .{0,60}\b(?:accomplish|accomplished|contribute|contributed)\b/i,
+  /\b(?:biggest|greatest|main|primary|most important|most influential|most significant)\s+(?:contribution|achievement|accomplishment|role|legacy)\b/i,
+];
+
+const SUBJECTIVE_SUPERLATIVE_PATTERN = /\b(?:biggest|greatest|main|best known|most important|most influential|most significant|primary)\b/i;
+
+export function isBroadSynthesisQuestion(question: string): boolean {
+  return BROAD_SYNTHESIS_PATTERNS.some((pattern) => pattern.test(question));
+}
+
+export function isSubjectiveSuperlativeQuestion(question: string): boolean {
+  return SUBJECTIVE_SUPERLATIVE_PATTERN.test(question);
+}
+
 export function routeParameterCodes(
   question: string,
   availableParameters: RoutingParameter[],
   maxCodes = 4,
 ): string[] {
   const normalized = normalizeForMatch(question);
-  const tokens = new Set(normalized.split(" "));
+  const relationshipContext = /\b(?:what happened between|relationship between|between\s+\S+\s+and|rival|disagree)\b/i.test(question);
+  const routingText = relationshipContext ? `${normalized} relationship` : normalized;
+  const rawTokens = routingText.split(" ");
+  const tokens = new Set(rawTokens.flatMap((token) => token.length > 4 && token.endsWith("s") ? [token, token.slice(0, -1)] : [token]));
   const scored = availableParameters
     .map((parameter) => ({
       code: parameter.code,
@@ -16,8 +39,8 @@ export function routeParameterCodes(
         (sum, hint) => {
           const normalizedHint = normalizeForMatch(hint);
           const matches = normalizedHint.includes(" ")
-            ? normalized.includes(normalizedHint)
-            : tokens.has(normalizedHint);
+            ? routingText.includes(normalizedHint)
+            : tokens.has(normalizedHint) || (normalizedHint.length > 4 && normalizedHint.endsWith("s") && tokens.has(normalizedHint.slice(0, -1)));
           return sum + (matches ? 1 : 0);
         },
         0,

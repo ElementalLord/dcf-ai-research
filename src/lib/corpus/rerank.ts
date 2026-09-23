@@ -18,7 +18,7 @@ function deterministicOrder(
   evidence: RetrievedEvidence[],
   options: { personalityAliases: string[]; termAliases: TermAliasRecord[] },
 ): RetrievedEvidence[] {
-  const ignored = new Set(["the", "and", "what", "who", "how", "why", "his", "her", "with", "from", "about", "into", "role", "play", "played", "story", "explain", "relationship", "relation", "significance", "significant", "major"]);
+  const ignored = new Set(["the", "and", "what", "who", "how", "why", "his", "her", "with", "from", "about", "into", "role", "play", "played", "story", "explain", "relationship", "relation", "significance", "significant", "major", "biggest", "greatest", "main", "most", "important", "influential", "primary", "best", "known"]);
   for (const alias of options.personalityAliases) {
     for (const token of normalizeForMatch(alias).split(" ")) ignored.add(token);
   }

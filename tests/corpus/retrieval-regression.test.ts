@@ -26,6 +26,11 @@ describe("retrieval regression", () => {
     expect(results[0].claimId).toBe("claim-1");
   });
 
+  it("diversifies superlative contribution questions across framework dimensions", () => {
+    const results = rankApprovedClaims("What is Vishvamitra's biggest contribution?", approvedRows);
+    expect(results.map((item) => item.claimId)).toEqual(expect.arrayContaining(["claim-1", "claim-2"]));
+  });
+
   it("uses the selected framework's sort order for broad questions", () => {
     const rows = [
       { ...approvedRows[0], id: "late", parameter_fields: { id: "late-field", label: "Late", parameters: { id: "late-parameter", code: "category_specific_late", name: "Late", sort_order: 90 } } },

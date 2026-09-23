@@ -2,7 +2,7 @@ import { supabaseAdmin } from "@/lib/supabase-admin";
 import { CorpusError } from "./errors";
 import { embedTexts } from "./embeddings";
 import { dedupeEvidence, reciprocalRankFusion } from "./dedupe";
-import { lexicalSearchExpression, routeParameterCodes } from "./routing";
+import { isBroadSynthesisQuestion, lexicalSearchExpression, routeParameterCodes } from "./routing";
 import { logStage, stageTimer } from "./observability";
 import { normalizeForMatch } from "./text";
 import { rerankEvidence } from "./rerank";
@@ -37,7 +37,7 @@ function questionTerms(question: string, personalityAliases: string[] = [], term
 }
 
 function isBroadProfileQuestion(question: string, terms: Set<string>): boolean {
-  return terms.size === 0 || /\b(who is|known for|tell me about|overview|biograph|profile|introduce)\b/i.test(question);
+  return terms.size === 0 || isBroadSynthesisQuestion(question);
 }
 
 export function diversifyBroadEvidence(evidence: RetrievedEvidence[], limit = 15): RetrievedEvidence[] {
@@ -112,6 +112,7 @@ export function rankApprovedClaims(
           sourceAuthor: source?.author ? String(source.author) : null,
           sourceInstitution: source?.publisher_or_institution ? String(source.publisher_or_institution) : null,
           sourceUrl: source?.url ? String(source.url) : null,
+          sourceType: source?.source_type ? String(source.source_type) : null,
           pageOrSection: link?.page_or_section ? String(link.page_or_section) : null,
           evidenceExcerpt: link?.evidence_excerpt ? String(link.evidence_excerpt) : null,
           chunkId: chunk?.id ? String(chunk.id) : null,
@@ -201,7 +202,9 @@ export async function retrieveEvidence(
   if (parameterError) throw new CorpusError("RETRIEVAL_FAILED", "The research framework could not be loaded.", 500, { cause: parameterError });
   const parameters = (parameterData || []) as ParameterRow[];
   const broadQuestion = isBroadProfileQuestion(question, questionTerms(question, aliases, configuration.termAliases));
-  const localCodes = routeParameterCodes(question, parameters.map((parameter) => ({ code: parameter.code, routingHints: parameter.routing_hints })));
+  const localCodes = broadQuestion
+    ? []
+    : routeParameterCodes(question, parameters.map((parameter) => ({ code: parameter.code, routingHints: parameter.routing_hints })));
   const selectedCodes = [...new Set(localCodes)].slice(0, 4);
   const selectedParameters = selectedCodes.length > 0 ? parameters.filter((parameter) => selectedCodes.includes(parameter.code)) : [];
   const fields: ParameterField[] = selectedParameters.flatMap((parameter) =>

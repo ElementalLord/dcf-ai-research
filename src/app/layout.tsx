@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DCF Inspiring Personalities AI",
-  description: "Internal source corpus, research review, and grounded knowledge system.",
+  title: "DCF Research AI",
+  description: "Explore verified knowledge about inspiring personalities with grounded answers and inspectable sources.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

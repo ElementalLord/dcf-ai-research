@@ -344,7 +344,7 @@ export default function ReviewPage() {
           </div>
 
           <nav className="flex flex-wrap gap-2">
-            <Link href="/" className="rounded-xl border border-zinc-300 bg-white px-4 py-2 text-sm font-medium hover:bg-zinc-100">Research</Link>
+            <Link href="/research" className="rounded-xl border border-zinc-300 bg-white px-4 py-2 text-sm font-medium hover:bg-zinc-100">Research</Link>
             <Link href="/corpus" className="rounded-xl border border-zinc-300 bg-white px-4 py-2 text-sm font-medium hover:bg-zinc-100">Corpus</Link>
             <Link href="/ask" className="rounded-xl border border-zinc-300 bg-white px-4 py-2 text-sm font-medium hover:bg-zinc-100">Ask</Link>
           </nav>

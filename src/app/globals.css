@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f6f2;
+  --foreground: #172033;
 }
 
 @theme inline {
@@ -12,17 +12,68 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+button,
+summary,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.eyebrow {
+  color: #78716c;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+}
+
+.source-label {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  background: #f1f0ec;
+  padding: 0.2rem 0.55rem;
+  color: #57534e;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1rem;
+  text-transform: uppercase;
+}
+
+.answer-content {
+  margin-top: 1rem;
+  color: #334155;
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+.answer-content > * + * {
+  margin-top: 1rem;
+}
+
+.answer-content h3 {
+  padding-top: 0.35rem;
+  color: #0f172a;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.18rem;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.answer-content ul {
+  list-style: disc;
+  padding-left: 1.35rem;
+}
+
+.answer-content li + li {
+  margin-top: 0.5rem;
 }
 
 .input {
@@ -43,4 +94,13 @@ body {
 .input:disabled {
   background: #f4f4f5;
   color: #a1a1aa;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
