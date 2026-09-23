@@ -47,7 +47,7 @@ function replaceReferences(value: string, singularSubject: string | null, plural
     if (singularSubject) {
       const owner = possessive(singularSubject);
       resolved = resolved
-        .replace(/\b(?:this|the)\s+(?:selected\s+)?(?:personality|person|figure)\b/gi, singularSubject)
+        .replace(/\b(?:this|the)\s+(?:selected\s+)?(?:personality|person|figure|guy|man|woman|sage)\b/gi, singularSubject)
         .replace(/\b(?:his|hers)\b/gi, owner)
         .replace(/\bher\b(?=\s+(?:teacher|student|rival|life|work|role|text|texts|contribution|contributions|family|relationship|legacy|story|ideas?)\b)/gi, owner)
         .replace(/\b(?:he|him|she|her|himself|herself)\b/gi, singularSubject);

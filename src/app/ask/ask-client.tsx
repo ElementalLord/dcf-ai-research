@@ -20,7 +20,7 @@ type AskResult = {
   personality: string;
   question: string;
   resolvedQuestion?: string;
-  status?: "complete" | "abstained" | "extractive_fallback";
+  status?: "complete" | "abstained" | "extractive_fallback" | "local_synthesis";
   answer: string;
   retrievedParameters?: Array<{ code: string; name: string }>;
   citations?: AskCitation[];
@@ -311,7 +311,7 @@ export default function AskClient({ personalities, loadError }: AskClientProps) 
         {result && (
           <article className="mx-auto mt-12 max-w-3xl border-t border-stone-300 pt-9" aria-labelledby="answer-heading">
             {turns.length > 1 && <details className="mb-7 text-sm text-stone-500"><summary className="cursor-pointer font-medium hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700">Earlier in this conversation ({turns.length - 1})</summary><ol className="mt-3 space-y-2 border-l border-stone-300 pl-4">{turns.slice(0, -1).map((turn, index) => <li key={`${turn.question}-${index}`}>{turn.question}</li>)}</ol></details>}
-            <div className="flex flex-wrap items-center gap-2"><span className="source-label bg-slate-900! text-white!">{result.personality}</span>{result.status === "extractive_fallback" && <span className="source-label">Verified evidence view</span>}</div>
+            <div className="flex flex-wrap items-center gap-2"><span className="source-label bg-slate-900! text-white!">{result.personality}</span>{result.status === "local_synthesis" && <span className="source-label">Local corpus synthesis</span>}{result.status === "extractive_fallback" && <span className="source-label">Verified evidence view</span>}</div>
             <p className="eyebrow mt-7">Question</p>
             <h2 id="answer-heading" className="mt-2 font-serif text-2xl font-semibold leading-9 text-slate-950 sm:text-3xl">{result.question}</h2>
             <p className="eyebrow mt-8">Answer</p>

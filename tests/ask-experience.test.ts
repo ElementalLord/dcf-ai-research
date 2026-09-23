@@ -3,6 +3,8 @@ import { resolveQuestionContext } from "@/lib/ask/query-context";
 import { abstentionMessage, SYNTHESIS_FALLBACK_INTRO, SYNTHESIS_FALLBACK_NOTICE } from "@/lib/ask/messages";
 import { answerBlocks, groupCitations, inlineAnswerParts, sourceTypeLabel, type AskCitation } from "@/lib/ask/presentation";
 import { isBroadSynthesisQuestion, isSubjectiveSuperlativeQuestion, routeParameterCodes } from "@/lib/corpus/routing";
+import { aiSynthesisEnabled, synthesizeFromLocalEvidence } from "@/lib/corpus/local-synthesis";
+import type { RetrievedClaim, RetrievedPassage } from "@/lib/corpus/types";
 
 const citation: AskCitation = {
   id: "S1",
@@ -82,5 +84,29 @@ describe("grounded Ask presentation", () => {
   it("keeps quota fallback language user-facing and vendor-neutral", () => {
     expect(SYNTHESIS_FALLBACK_INTRO).toContain("verified evidence");
     expect(SYNTHESIS_FALLBACK_NOTICE).not.toContain("Gemini");
+  });
+
+  it("uses readable local corpus synthesis by default without a Gemini request", () => {
+    const claim: RetrievedClaim = {
+      kind: "claim", id: "claim:1", claimId: "1", text: "Vishvamitra is associated with Rigveda Mandala 3 and is portrayed as a guide to Rama.",
+      claimKind: "textual_tradition", certainty: "high", approvalOrigin: "human_manual", evidenceType: "direct",
+      parameterName: "Role", fieldLabel: "Identity", sourceTitle: "Approved profile", sourceAuthor: null,
+      sourceInstitution: null, sourceUrl: null, sourceType: "scholarly_article", pageOrSection: "Overview",
+      evidenceExcerpt: null, chunkId: null, textualLayer: "Cross-textual profile",
+    };
+    const passage: RetrievedPassage = {
+      kind: "passage", id: "passage:1", chunkId: "1", sourceId: "1", text: "A long primary-text passage.",
+      sectionTitle: null, pageOrSection: "1.1", textualLayer: "Ramayana", sourceTitle: "Primary text",
+      sourceAuthor: null, sourceInstitution: null, sourceUrl: null, sourceType: "primary_text", sourceStatus: "approved",
+    };
+    const output = synthesizeFromLocalEvidence("Vishvamitra", [passage, claim], [
+      { ...citation, id: "S1", chunkId: "1" },
+      { ...citation, id: "C1", kind: "approved_claim", claimId: "1" },
+    ], { broadSynthesis: true, subjectiveSuperlative: false });
+    expect(aiSynthesisEnabled(undefined)).toBe(false);
+    expect(aiSynthesisEnabled("gemini")).toBe(true);
+    expect(output).toContain("concise profile");
+    expect(output.indexOf("Vishvamitra is associated")).toBeLessThan(output.indexOf("A long primary-text passage"));
+    expect(output).not.toContain("temporarily unavailable");
   });
 });

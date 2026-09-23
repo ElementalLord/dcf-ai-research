@@ -2,42 +2,17 @@ import { buildBoundedContext } from "./context";
 import { generateText } from "./gemini";
 import { logStage, stageTimer } from "./observability";
 import { retrieveWithApprovedResearch } from "@/lib/live-research/research";
-import { truncateText } from "./text";
 import { citationsMatchEvidence, mergePersonalityEvidence } from "./comparison";
 import { loadPersonalityConfiguration } from "./personality-context";
 import { normalizedAliases } from "./personality-config";
 import { resolveQuestionContext, type ConversationQuestion } from "@/lib/ask/query-context";
-import { abstentionMessage, SYNTHESIS_FALLBACK_INTRO } from "@/lib/ask/messages";
+import { abstentionMessage } from "@/lib/ask/messages";
+import { aiSynthesisEnabled, synthesizeFromLocalEvidence } from "./local-synthesis";
 
 const ABSTENTION = "The approved knowledge base does not currently contain enough evidence to answer that fully.";
 
 function removeUnknownCitations(answer: string, validIds: Set<string>): string {
   return answer.replace(/\[([CS]\d+)\]/g, (full, id: string) => (validIds.has(id) ? full : ""));
-}
-
-function extractiveFallback(
-  personality: string,
-  selected: ReturnType<typeof buildBoundedContext>["selected"],
-  citationIds: string[],
-  options: { broadSynthesis?: boolean; subjectiveSuperlative?: boolean } = {},
-): string {
-  const lines = selected.slice(0, 8).map((item, index) => {
-    const framing = item.kind === "claim"
-      ? item.claimKind === "traditional_account" || item.claimKind === "textual_tradition"
-        ? "The approved tradition records"
-        : "The approved claim states"
-      : item.textualLayer
-        ? `In the ${item.textualLayer} source layer, the passage states`
-        : "The approved source passage states";
-    const source = item.sourceTitle ? ` in ${item.sourceTitle}` : "";
-    return `- ${framing}${source}: ${truncateText(item.text, 380)} [${citationIds[index]}]`;
-  });
-  const qualification = options.subjectiveSuperlative
-    ? `The approved evidence points to several kinds of significance rather than establishing one objectively “biggest” contribution. `
-    : options.broadSynthesis
-      ? `This broad question is best approached across several documented dimensions. `
-      : "";
-  return `${SYNTHESIS_FALLBACK_INTRO} about ${personality}. ${qualification}\n\n${lines.join("\n\n")}`;
 }
 
 export async function answerQuestion(
@@ -104,7 +79,18 @@ export async function answerQuestion(
     throw new Error("Citation integrity validation failed before answer generation.");
   }
 
-  const prompt = `You are the DCF Inspiring Personalities AI.
+  const stopGeneration = stageTimer("GENERATION");
+  let generated: { text: string; interactionId: string | null };
+  let usedLocalSynthesis = false;
+  if (!aiSynthesisEnabled()) {
+    usedLocalSynthesis = true;
+    debug.generationFallbackReason = "AI synthesis disabled; using approved local evidence synthesis.";
+    generated = {
+      text: synthesizeFromLocalEvidence(personality, bounded.selected, bounded.citations, queryContext),
+      interactionId: null,
+    };
+  } else {
+    const prompt = `You are the DCF Inspiring Personalities AI.
 Answer using ONLY the retrieved evidence below. Do not use pretrained knowledge as evidence.
 
 PERSONALITY OR INTENTIONAL COMPARISON SET: ${personality}
@@ -127,17 +113,17 @@ Rules:
 10. For subjective or superlative wording, do not present a ranking as objectively proven. State the criterion and use language such as "one of the most significant" unless the evidence explicitly establishes a ranking.
 11. For broad synthesis questions, weigh relevant evidence across roles, texts, ideas, historical or textual significance, and narrative traditions when those dimensions are present.
 12. Use short paragraphs and occasional descriptive headings or bullets when they improve readability.`;
-  const stopGeneration = stageTimer("GENERATION");
-  let generated: { text: string; interactionId: string | null };
-  try {
-    generated = await generateText(prompt, { timeoutMs: 45_000, errorCode: "GEMINI_FAILED" });
-    debug.generationFallbackReason = null;
-  } catch (error) {
-    debug.generationFallbackReason = error instanceof Error ? error.message : "Gemini generation unavailable.";
-    generated = {
-      text: extractiveFallback(personality, bounded.selected, bounded.citations.map((citation) => citation.id), queryContext),
-      interactionId: null,
-    };
+    try {
+      generated = await generateText(prompt, { timeoutMs: 45_000, errorCode: "GEMINI_FAILED" });
+      debug.generationFallbackReason = null;
+    } catch (error) {
+      usedLocalSynthesis = true;
+      debug.generationFallbackReason = error instanceof Error ? error.message : "Gemini generation unavailable.";
+      generated = {
+        text: synthesizeFromLocalEvidence(personality, bounded.selected, bounded.citations, queryContext),
+        interactionId: null,
+      };
+    }
   }
   debug.latenciesMs.generation = stopGeneration();
   logStage("FINAL_CONTEXT", { records: bounded.selected.length, characters: bounded.context.length });
@@ -156,7 +142,7 @@ Rules:
     question,
     resolvedQuestion: queryContext.resolvedQuestion,
     queryContext,
-    status: abstained ? "abstained" as const : debug.generationFallbackReason ? "extractive_fallback" as const : "complete" as const,
+    status: abstained ? "abstained" as const : usedLocalSynthesis ? "local_synthesis" as const : "complete" as const,
     answer,
     retrievedParameters: parameters,
     citations: bounded.citations,
