@@ -57,6 +57,7 @@ describe("Brave discovery", () => {
     await expect(new BraveSearchProvider("key", timeout as typeof fetch).search("test")).rejects.toMatchObject({ category: "TIMEOUT" });
     expect(timeout).toHaveBeenCalledTimes(1);
     expect(() => normalizeWebResults({}, 10)).toThrow(WebSearchError);
+    expect(normalizeWebResults({ type: "search", query: { original: "very narrow work" }, web: null }, 10)).toEqual([]);
   });
 
   it("opens a bounded cooldown after repeated rate limits", async () => {
@@ -116,12 +117,13 @@ describe("bounded expansion planning", () => {
     { name: "Textual contribution", code: "textual", sourceChunks: 5, uniqueEvidenceSources: 2, claimsWithExactPassages: 2, approvedClaims: 2, fields: [{ id: "field-1", label: "Rigveda Mandala 3" }] },
     { name: "Lineage", code: "lineage", sourceChunks: 0, uniqueEvidenceSources: 0, claimsWithExactPassages: 0, approvedClaims: 1, fields: [{ id: "field-2", label: "Kaushika lineage" }] },
   ];
-  it("prioritizes zero-evidence gaps and only uses supplied metadata", () => {
+  it("prioritizes zero-evidence gaps and uses supplied fields while diversifying source classes", () => {
     expect(rankCoverageGaps(gaps)[0].code).toBe("lineage");
     const queries = buildExpansionQueries({ name: "Vishvamitra", aliases: ["Vishwamitra"], gaps, sourceTitles: ["Rigveda 3.33"], relationships: ["Vasistha"], events: ["Bala Kanda"], domains: ["example.org"] }, 6);
     expect(queries).toHaveLength(6);
-    expect(queries[0].query).toBe("Vishvamitra Lineage primary text critical edition");
-    expect(queries.some((item) => item.query.includes("Kaushika lineage") && item.fieldIds.includes("field-2"))).toBe(true);
+    expect(new Set(queries.map((item) => item.strategy)).size).toBeGreaterThanOrEqual(4);
+    const complete = buildExpansionQueries({ name: "Vishvamitra", aliases: ["Vishwamitra"], gaps, sourceTitles: ["Rigveda 3.33"], relationships: ["Vasistha"], events: ["Bala Kanda"], domains: ["example.org"] }, 30);
+    expect(complete.some((item) => item.query.includes("Kaushika lineage") && item.fieldIds.includes("field-2"))).toBe(true);
     expect(queries.every((item) => !item.query.includes("Menaka"))).toBe(true);
     expect(buildExpansionQueries({ name: "Vishvamitra", aliases: [], gaps, sourceTitles: [], relationships: [], events: [], domains: [] }, 1)).toHaveLength(1);
   });

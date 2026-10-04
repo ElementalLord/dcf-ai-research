@@ -1,0 +1,100 @@
+import { normalizeForMatch } from "@/lib/corpus/text";
+
+export type SupportLevel = "EXACT" | "STRONG" | "PARTIAL" | "RELATED" | "UNRESOLVED";
+export type LinkAssessment = { level: SupportLevel; confidence: number; reason: string };
+type Claim = { text: string; locator?: string | null; excerpt?: string | null };
+type Passage = { text: string; locator?: string | null; section?: string | null; work?: string | null };
+
+export function normalizeTransliteration(value: string): string {
+  return normalizeForMatch(value).replace(/vishw/g, "visv").replace(/vishv/g, "visv")
+    .replace(/sh/g, "s").replace(/sth/g, "st").replace(/w/g, "v").replace(/h(?=s)/g, "");
+}
+
+export function normalizeTextReference(value: string, workHint = ""): string | null {
+  const plain = value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[Ⅲ]/g, "III");
+  const context = `${plain} ${workHint}`;
+  const explicitRigveda = /\b(?:r[.]?v[.]?|rigveda|rgveda|mandala)\b/i.test(plain);
+  const epic = explicitRigveda ? null : /ramayana|kanda|sarga|bala kanda/i.test(context) ? "ramayana"
+    : /mahabharata|parva/i.test(context) ? "mahabharata" : null;
+  if (epic) {
+    const numeric = plain.match(/\b([1-9]\d?)\s*[.]\s*(\d{1,3})(?:\s*[.]\s*(\d{1,3}))?/);
+    const book = numeric?.[1] || (/bala kanda/i.test(context) ? "1" : null);
+    const sarga = numeric?.[2] || plain.match(/sarga\s*(\d{1,3})/i)?.[1];
+    const verse = numeric?.[3] || plain.match(/verse\s*(\d{1,3})/i)?.[1];
+    if (book && sarga) return `${epic}:${Number(book)}.${Number(sarga)}${verse ? `.${Number(verse)}` : ""}`;
+    return null;
+  }
+  const roman = (part: string) => /^[ivxlcdm]+$/i.test(part) ? [...part.toUpperCase()].reduce((sum, letter, index, array) => {
+    const current = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 }[letter as "I"] || 0;
+    const next = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 }[array[index + 1] as "I"] || 0;
+    return sum + (current < next ? -current : current);
+  }, 0) : Number(part);
+  const rv = plain.match(/(?:\b(?:r[.]?v[.]?|rigveda|rgveda|mandala)\s*)?\b([ivxlcdm]+|\d{1,3})\s*[.\s]+(?:sukta\s*)?(\d{1,3})(?:\s*[.\s]+(\d{1,3}))?/i);
+  if (!rv) return null;
+  const book = roman(rv[1]);
+  if (book < 1 || book > 10) return null;
+  return `rv:${book}.${Number(rv[2])}${rv[3] ? `.${Number(rv[3])}` : ""}`;
+}
+
+const stop = new Set(["the", "and", "for", "with", "from", "that", "this", "were", "have", "his", "her", "their", "rigveda", "mandala", "hymn", "verse", "text", "according"]);
+function terms(value: string): Set<string> {
+  return new Set(normalizeTransliteration(value).split(" ").filter((part) => part.length >= 4 && !stop.has(part)));
+}
+function locatorMatches(left: string | null, right: string | null): boolean {
+  return Boolean(left && right && (left === right || right.startsWith(`${left}.`) || left.startsWith(`${right}.`)));
+}
+export function assessClaimPassage(claim: Claim, passage: Passage, aliases: string[] = []): LinkAssessment {
+  const claimRef = normalizeTextReference(claim.locator || claim.text, claim.text.match(/rigveda|ramayana|mahabharata/i)?.[0] || passage.work || "");
+  const passageRef = normalizeTextReference(passage.locator || passage.section || "", passage.work || "");
+  const located = locatorMatches(claimRef, passageRef);
+  const claimTerms = terms(claim.excerpt || claim.text);
+  const passageTerms = terms(passage.text);
+  const matches = [...claimTerms].filter((term) => passageTerms.has(term));
+  const ratio = matches.length / Math.max(1, claimTerms.size);
+  const nameMatch = aliases.some((alias) => {
+    const name = normalizeTransliteration(alias);
+    return name.length >= 5 && normalizeTransliteration(passage.text).includes(name);
+  });
+  const quoted = [...claim.text.matchAll(/['“”"]([^'“”"]{5,80})['“”"]/g)]
+    .map((match) => normalizeTransliteration(match[1]))
+    .filter((phrase) => phrase.length >= 5);
+  if (located && quoted.some((phrase) => normalizeTransliteration(passage.text).includes(phrase)))
+    return { level: "EXACT", confidence: 0.96, reason: "Exact verse locator and quoted passage wording" };
+  if (located && (ratio >= 0.45 && matches.length >= 2 || claim.excerpt && ratio >= 0.6))
+    return { level: "EXACT", confidence: 0.94, reason: "Matching textual locator and passage wording" };
+  if (located && matches.length >= 2 && (nameMatch || ratio >= 0.25))
+    return { level: "STRONG", confidence: 0.78, reason: "Matching textual locator with entity or partial wording" };
+  if (matches.length >= 3 && ratio >= 0.6 && nameMatch)
+    return { level: "STRONG", confidence: 0.76, reason: "Strong independent wording and entity overlap" };
+  if (matches.length >= 2 && ratio >= 0.35 && nameMatch)
+    return { level: "PARTIAL", confidence: 0.55, reason: "Partial wording and entity overlap" };
+  if (located || nameMatch && matches.length > 0)
+    return { level: "RELATED", confidence: 0.3, reason: located ? "Locator matches but support is insufficient" : "Entity overlap without support" };
+  return { level: "UNRESOLVED", confidence: 0, reason: claimRef && !located ? "Textual reference mismatch" : "No supported claim match" };
+}
+
+export function proposeDirectNameObservation(passage: Passage, canonicalName: string, aliases: string[], representedReferences: Set<string>): string | null {
+  const locator = normalizeTextReference(passage.locator || "", passage.work || "");
+  if (!locator || [...representedReferences].some((reference) => locator === reference || locator.startsWith(`${reference}.`))) return null;
+  const normalized = normalizeTransliteration(passage.text);
+  if (![canonicalName, ...aliases].some((alias) => {
+    const name = normalizeTransliteration(alias);
+    return name.length >= 5 && normalized.includes(name);
+  })) return null;
+  const work = locator.startsWith("rv:") ? "Rigveda" : locator.startsWith("ramayana:") ? "Ramayana" : "Mahabharata";
+  return `${work} ${locator.split(":")[1]} explicitly names ${canonicalName}.`;
+}
+
+export function supportsStructuredRecord(passage: string, description: string, subjectAliases: string[], objectName: string): boolean {
+  const normalized = normalizeTransliteration(passage);
+  const subject = subjectAliases.some((alias) => {
+    const name = normalizeTransliteration(alias);
+    return name.length >= 5 && normalized.includes(name);
+  });
+  const object = normalizeTransliteration(objectName);
+  if (!subject || object.length < 5 || !normalized.includes(object)) return false;
+  const descriptionTerms = terms(description);
+  const passageTerms = terms(passage);
+  const overlap = [...descriptionTerms].filter((term) => passageTerms.has(term)).length;
+  return overlap >= 3 && overlap / Math.max(1, descriptionTerms.size) >= 0.35;
+}

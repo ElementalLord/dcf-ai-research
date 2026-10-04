@@ -141,7 +141,7 @@ export async function loadPersonalityCoverage(personalityId: string) {
   const configuration = await loadPersonalityConfiguration(personalityId);
   const [parametersResult, claimsResult, chunkLinksResult, sourceLinksResult, eventsResult, relationshipsResult, cacheResult, accessResult] = await Promise.all([
     supabaseAdmin.from("parameters").select("id, code, name, parameter_fields(id, code, label)").eq("category_id", configuration.categoryId).order("sort_order"),
-    supabaseAdmin.from("claims").select("id, parameter_field_id, review_status, evidence_type, claim_sources(source_id), claim_chunks(chunk_id)").eq("personality_id", personalityId).limit(10_000),
+    supabaseAdmin.from("claims").select("id, parameter_field_id, review_status, evidence_type, claim_sources(source_id), claim_chunks(chunk_id,relationship,confidence,link_method,metadata)").eq("personality_id", personalityId).limit(10_000),
     supabaseAdmin.from("chunk_personalities").select("chunk_id, source_chunks!inner(id, source_id, embedding_status, textual_layer, chunk_parameter_fields(parameter_field_id))").eq("personality_id", personalityId).eq("source_chunks.is_active", true).limit(10_000),
     supabaseAdmin.from("source_personalities").select("source_id, sources(id, url, title, author, source_type, textual_layer, content_hash, metadata)").eq("personality_id", personalityId).limit(10_000),
     supabaseAdmin.from("event_personalities").select("event_id, events!inner(review_status)").eq("personality_id", personalityId).limit(10_000),
@@ -172,7 +172,8 @@ export async function loadPersonalityCoverage(personalityId: string) {
       parameterFieldId: claim.parameter_field_id,
       approved: claim.review_status === "approved",
       contested: claim.evidence_type === "contested",
-      hasChunkEvidence: (claim.claim_chunks?.length || 0) > 0,
+      hasChunkEvidence: (claim.claim_chunks || []).some((link) => link.relationship === "supports"
+        && (link.metadata?.supportLevel === "EXACT" || (!String(link.link_method || "").startsWith("adaptive_") && (link.confidence == null || link.confidence >= 0.72)))),
       sourceIds: (claim.claim_sources || []).map((link) => link.source_id),
     })),
     chunks: (chunkLinksResult.data || []).flatMap((link) => {

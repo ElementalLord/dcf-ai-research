@@ -2,21 +2,27 @@ import "server-only";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { fetchDiscoveryPreview } from "./live-fetch";
 import { canonicalResearchUrl, selectSourceAuthorization, type SourceAccessRule } from "./source-policy";
-import { duplicateWorkOf, inheritedInstitutionForUrl, relevantChildLinks, rejectedVerification, verifiedFamilyScope, verifyCandidate, type Verification } from "./verification";
+import { duplicateWorkOf, inheritedInstitutionForUrl, relevantChildLinks, scopedNavigationLinks, rejectedVerification, verifiedFamilyScope, verifyCandidate, projectDescriptionEvidence, projectDescriptionLinks, type Verification } from "./verification";
+
+type PreviewReader = (url: string) => ReturnType<typeof fetchDiscoveryPreview>;
 
 export async function verifyAndAdmitCandidate(input: {
-  runId: string; url: string; aliases: string[]; rules: SourceAccessRule[]; autoAdmit: boolean; parameterCode?: string | null;
+  runId: string; url: string; aliases: string[]; rules: SourceAccessRule[]; autoAdmit: boolean;
+  parameterCode?: string | null; fetchPreview: PreviewReader;
 }): Promise<{ verification: Verification; rules: SourceAccessRule[]; linkedCandidates: string[] }> {
   let verification: Verification;
   let linkedCandidates: string[] = [];
   try {
     const canonical = canonicalResearchUrl(input.url);
-    const preview = await fetchDiscoveryPreview(canonical);
+    const preview = await input.fetchPreview(canonical);
     linkedCandidates = relevantChildLinks(preview.html, preview.finalUrl, input.aliases);
     const final = new URL(canonicalResearchUrl(preview.finalUrl));
     const { data: families, error: familyError } = await supabaseAdmin.from("verified_source_families")
       .select("domain,path_prefix,institution").eq("domain", final.hostname);
     if (familyError) throw familyError;
+    const scope = (families || []).find((family) => final.pathname.startsWith(family.path_prefix));
+    if (scope) linkedCandidates = [...new Set([...linkedCandidates,
+      ...scopedNavigationLinks(preview.html, preview.finalUrl, scope, input.aliases, 8)])].slice(0, 8);
     verification = verifyCandidate({ candidateUrl: input.url, ...preview, personalityAliases: input.aliases,
       rules: input.rules, autoAdmit: input.autoAdmit,
       inheritedInstitution: inheritedInstitutionForUrl(preview.finalUrl, families || []) });
@@ -75,7 +81,7 @@ export async function verifyAndAdmitCandidate(input: {
   return { verification, rules: [...input.rules, admittedRule], linkedCandidates };
 }
 
-export async function promoteVerifiedFamily(verification: Verification): Promise<boolean> {
+export async function promoteVerifiedFamily(verification: Verification, fetchPreview: PreviewReader): Promise<boolean> {
   if (verification.verification_status !== "APPROVED_FOR_EVIDENCE" || !verification.source_family) return false;
   const { data, error } = await supabaseAdmin.from("research_candidates")
     .select("canonical_url,domain,institution,source_family,verification_status")
@@ -84,10 +90,24 @@ export async function promoteVerifiedFamily(verification: Verification): Promise
   if (error) throw error;
   const scope = verifiedFamilyScope((data || []) as Verification[]);
   if (!scope || !verification.institution) return false;
+  const projectUrl = `https://${scope.domain}${scope.path}`;
+  const preview = await fetchPreview(projectUrl).catch(() => null);
+  if (!preview || preview.status !== 200) return false;
+  let projectEvidenceUrl = projectUrl;
+  let documented = projectDescriptionEvidence(preview.html, verification.institution);
+  if (!documented) {
+    for (const aboutUrl of projectDescriptionLinks(preview.html, preview.finalUrl)) {
+      const about = await fetchPreview(aboutUrl).catch(() => null);
+      if (about?.status === 200 && projectDescriptionEvidence(about.html, verification.institution)) {
+        documented = true; projectEvidenceUrl = aboutUrl; break;
+      }
+    }
+  }
+  if (!documented) return false;
   const { error: saveError } = await supabaseAdmin.from("verified_source_families").upsert({
     domain: scope.domain, path_prefix: scope.path, institution: verification.institution,
     project_label: verification.source_family,
-    supporting_urls: (data || []).map((item) => item.canonical_url).slice(0, 20),
+    supporting_urls: [...(data || []).map((item) => item.canonical_url).slice(0, 19), projectEvidenceUrl],
   }, { onConflict: "domain,path_prefix" });
   if (saveError) throw saveError;
   return true;

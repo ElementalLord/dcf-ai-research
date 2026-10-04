@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { duplicateWorkOf, verifyCandidate, verifiedFamilyScope, inheritedInstitutionForUrl, relevantChildLinks } from "@/lib/live-research/verification";
+import { duplicateWorkOf, verifyCandidate, verifiedFamilyScope, inheritedInstitutionForUrl, relevantChildLinks, projectDescriptionEvidence, projectDescriptionLinks } from "@/lib/live-research/verification";
 import { evaluateDepth, type DepthParameter } from "@/lib/live-research/depth";
 import { adaptiveStopReason } from "@/lib/live-research/expansion-run-policy";
 import { fetchDiscoveryPreview } from "@/lib/live-research/live-fetch";
@@ -72,6 +72,13 @@ describe("adaptive verification", () => {
     expect(inheritedInstitutionForUrl("https://example.edu/project/other/four", family)).toBeNull();
     expect(inheritedInstitutionForUrl("https://example.edu.attacker.test/project/vedic/four", family)).toBeNull();
     expect(verifiedFamilyScope(rows.slice(0, 2))).toBeNull();
+    expect(verifiedFamilyScope([{ ...rows[0], institution: "Another University" }, ...rows.slice(1)])).toBeNull();
+    const nested = ["one", "two", "three"].map((name) => verify(article(), `https://example.edu/project/vedic/edition/${name}`));
+    expect(verifiedFamilyScope(nested)).toEqual({ domain: "example.edu", path: "/project/vedic/edition/" });
+    expect(projectDescriptionEvidence("<body>Example University Vedic text project with editorial method and translation policy.</body>", "Example University")).toBe(true);
+    expect(projectDescriptionEvidence("<body>Three Sanskrit pages with no project documentation.</body>", "Example University")).toBe(false);
+    expect(projectDescriptionLinks('<a href="/about-project/">About Project</a><a href="https://evil.test/about">About</a>', "https://example.edu/project/vedic/"))
+      .toEqual(["https://example.edu/about-project/"]);
   });
   it("finds only relevant same-project child links for separate verification", () => {
     const html = `<a href="/texts/rigveda/3/">Mandala 3 — hymns of Viśvāmitra</a>

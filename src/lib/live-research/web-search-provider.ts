@@ -16,8 +16,11 @@ export function normalizeSearchQuery(query: string): string {
 }
 
 export function normalizeWebResults(payload: unknown, maxResults: number): WebSearchResult[] {
-  if (!payload || typeof payload !== "object" || !("web" in payload)) throw new WebSearchError("INVALID_RESPONSE");
-  const web = (payload as { web?: { results?: unknown } }).web;
+  if (!payload || typeof payload !== "object") throw new WebSearchError("INVALID_RESPONSE");
+  const response = payload as { query?: unknown; type?: unknown; web?: { results?: unknown } | null };
+  // Brave documents web as nullable. A valid search can have no web results.
+  if (response.web == null && response.query && response.type) return [];
+  const web = response.web;
   if (!web || !Array.isArray(web.results)) throw new WebSearchError("INVALID_RESPONSE");
   const seen = new Set<string>();
   const output: WebSearchResult[] = [];

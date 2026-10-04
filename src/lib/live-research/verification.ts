@@ -47,21 +47,75 @@ export function relevantChildLinks(html: string, parentUrl: string, aliases: str
   return [...out];
 }
 
+export function scopedNavigationLinks(html: string, pageUrl: string, scope: { domain: string; path_prefix: string }, aliases: string[], max = 8): string[] {
+  const page = new URL(canonicalResearchUrl(pageUrl));
+  if (page.hostname !== scope.domain || !page.pathname.startsWith(scope.path_prefix)
+    || scope.path_prefix.split("/").filter(Boolean).length < 2) return [];
+  const $ = cheerio.load(html);
+  const out = new Set<string>();
+  const terms = aliases.map((alias) => alias.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase()).filter((alias) => alias.length >= 5);
+  $("a[href]").each((_, element) => {
+    if (out.size >= max) return false;
+    const label = $(element).text().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    if (!terms.some((term) => label.includes(term)) && !/mandala|sukta|hymn|kanda|sarga|chapter|verse|contents|index/i.test(label)) return;
+    try {
+      const url = new URL($(element).attr("href") || "", page);
+      if (url.protocol !== "https:" || url.hostname !== scope.domain || url.username || url.password
+        || !url.pathname.startsWith(scope.path_prefix)) return;
+      const canonical = canonicalResearchUrl(url.toString());
+      if (canonical !== page.toString()) out.add(canonical);
+    } catch { /* Invalid links are never candidates. */ }
+  });
+  return [...out];
+}
+
 export function duplicateWorkOf(candidate: Verification, admitted: Array<{ canonical_url: string; independent_work_key: string | null }>): string | null {
   if (!candidate.independent_work_key) return null;
   return admitted.find((item) => item.independent_work_key === candidate.independent_work_key
-    && canonicalResearchUrl(item.canonical_url) !== candidate.canonical_url)?.canonical_url || null;
+    && canonicalResearchUrl(item.canonical_url) !== candidate.canonical_url
+    && (new URL(item.canonical_url).hostname !== candidate.domain
+      || familyPath(new URL(item.canonical_url)) !== familyPath(new URL(candidate.canonical_url))))?.canonical_url || null;
 }
 
 export function verifiedFamilyScope(items: Verification[]): { domain: string; path: string } | null {
   const eligible = items.filter((item) => item.verification_status === "APPROVED_FOR_EVIDENCE" && item.institution && item.source_family);
   if (eligible.length < 3) return null;
   const [first] = eligible;
-  const path = familyPath(new URL(first.canonical_url));
-  if (!path) return null;
   const matching = eligible.filter((item) => item.domain === first.domain && item.source_family === first.source_family
-    && familyPath(new URL(item.canonical_url)) === path);
-  return matching.length >= 3 && new Set(matching.map((item) => item.canonical_url)).size >= 3 ? { domain: first.domain, path } : null;
+    && item.institution === first.institution);
+  if (matching.length < 3 || new Set(matching.map((item) => item.canonical_url)).size < 3) return null;
+  const parentSegments = matching.map((item) => new URL(item.canonical_url).pathname.split("/").filter(Boolean).slice(0, -1));
+  const common = parentSegments[0].filter((segment, index) => parentSegments.every((parts) => parts[index] === segment));
+  if (common.length < 2) return null;
+  return { domain: first.domain, path: `/${common.join("/")}/` };
+}
+
+export function projectDescriptionEvidence(html: string, institution: string): boolean {
+  const $ = cheerio.load(html);
+  const text = normalizeProjectText($("body").text());
+  const name = normalizeProjectText(institution);
+  return Boolean(name.length >= 6 && text.includes(name)
+    && /project|portal|digital edition|research initiative/.test(text)
+    && /editor|method|translation|manuscript|textual|edition|scholar/.test(text));
+}
+
+function normalizeProjectText(value: string): string {
+  return value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, " ").trim();
+}
+
+export function projectDescriptionLinks(html: string, pageUrl: string): string[] {
+  const page = new URL(canonicalResearchUrl(pageUrl));
+  const $ = cheerio.load(html);
+  const out: string[] = [];
+  $("a[href]").each((_, element) => {
+    if (out.length >= 2 || !/about|method|editorial|project/i.test($(element).text())) return;
+    try {
+      const url = new URL($(element).attr("href") || "", page);
+      if (url.protocol === "https:" && url.hostname === page.hostname && !url.username && !url.password)
+        out.push(canonicalResearchUrl(url.toString()));
+    } catch { /* Ignore invalid project links. */ }
+  });
+  return [...new Set(out)];
 }
 
 const empty = (candidateUrl: string, finalUrl: string, status: VerificationStatus, reason: string): Verification => {
