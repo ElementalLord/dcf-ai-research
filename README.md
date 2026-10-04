@@ -17,6 +17,7 @@ Open:
 - `http://localhost:3000/review` — human claim review
 - `http://localhost:3000/corpus` — internal corpus ingestion, tagging, embeddings, proposal review, and retrieval debug
 - `http://localhost:3000/corpus/onboard` — reusable personality/source onboarding and evidence-depth coverage
+- `http://localhost:3000/corpus/external` — Brave discovery preview and bounded corpus expansion
 - `http://localhost:3000/corpus/sources` — approved internet scopes, separate evidence authorization, and live-cache inspection
 - `http://localhost:3000/ask` — grounded question answering with inspectable citations
 
@@ -44,6 +45,14 @@ npm run build
 ```
 
 Supabase changes are versioned under `supabase/migrations/` and are additive.
+
+### Controlled web discovery
+
+Set `BRAVE_SEARCH_API_KEY` in `.env.local` to enable server-side Brave Web Search. The app and local retrieval work without it. Brave returns candidate URLs only; each URL must pass the source registry's search and fetch permissions. The existing safe fetcher verifies DNS and every redirect, extracts the original page, stores it in `live_research_cache`, and indexes original passages. Brave snippets never enter evidence or citations.
+
+Apply migrations before opening `/corpus/external`. Select a personality, set a hard request limit, and click **Preview Research Plan**. The preview reads the actual aliases, expert fields, corpus coverage, source titles, events, and relationships without spending a Brave request. Click **Run Limited Expansion** only after reviewing the queries. Each step searches at most once and fetches at most two approved pages. **Stop**, **Continue**, and **Resume** control a persisted run. Three consecutive steps without new chunks end the run. Search results have a separate 24-hour cache keyed by normalized query. The UI lists rejected candidate URLs for source-policy review; it never approves them automatically.
+
+Ask uses local retrieval and known approved pages first. It only invokes Brave when evidence remains insufficient and the registry has a broad approved search/fetch scope. An exact URL alone does not justify spending a web search. Provider failures leave local Ask and corpus retrieval working. Fetch and lexical indexing require no Gemini calls; embeddings and AI enrichment remain explicit corpus actions.
 
 ### Free-tier resilient Ask
 

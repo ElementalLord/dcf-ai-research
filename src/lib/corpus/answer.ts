@@ -57,6 +57,8 @@ async function answerQuestionInternal(
     latenciesMs: { ...retrievals[0].debug.latenciesMs },
     liveFetches: retrievals.reduce((sum, item) => sum + item.debug.liveFetches, 0),
     cacheHits: retrievals.reduce((sum, item) => sum + item.debug.cacheHits, 0),
+    webSearchCalls: retrievals.reduce((sum, item) => sum + (item.debug.webSearchCalls || 0), 0),
+    webSearchCacheHits: retrievals.reduce((sum, item) => sum + (item.debug.webSearchCacheHits || 0), 0),
     liveResearchTriggered: retrievals.some((item) => item.debug.liveResearchTriggered),
     selectedPersonalities: retrievals.map((retrieval) => ({ id: retrieval.personalityId, name: retrieval.personality })),
     perPersonality: retrievals.map((retrieval) => ({ personality: retrieval.personality, debug: retrieval.debug })),

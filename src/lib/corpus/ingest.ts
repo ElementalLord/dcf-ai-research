@@ -17,6 +17,10 @@ export async function ingestSections(input: IngestionInput): Promise<{
   await supabaseAdmin.from("sources").update({ ingestion_status: "processing", last_ingestion_error: null }).eq("id", input.sourceId);
 
   try {
+    const { data: existingChunks, error: existingError } = await supabaseAdmin
+      .from("source_chunks").select("content_hash").eq("source_id", input.sourceId).limit(10_000);
+    if (existingError) throw existingError;
+    const existingHashes = new Set((existingChunks || []).map((row) => row.content_hash));
     const rows = chunks.map((chunk) => ({
       source_id: input.sourceId,
       chunk_index: chunk.chunkIndex,
@@ -104,7 +108,7 @@ export async function ingestSections(input: IngestionInput): Promise<{
       .eq("id", input.sourceId);
     if (sourceError) throw sourceError;
 
-    return { sourceId: input.sourceId, chunksCreated: stored?.length || 0, chunksActive: activeIds.length, contentHash };
+    return { sourceId: input.sourceId, chunksCreated: chunks.filter((chunk) => !existingHashes.has(chunk.contentHash)).length, chunksActive: activeIds.length, contentHash };
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown ingestion failure.";
     await supabaseAdmin

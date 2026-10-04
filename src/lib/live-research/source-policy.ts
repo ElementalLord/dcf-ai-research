@@ -15,6 +15,7 @@ export type SourceAccessRule = {
   allow_live_fetch: boolean;
   allow_ingestion: boolean;
   evidence_use_status: "candidate" | "approved" | "rejected";
+  approval_origin?: "human_manual" | "mentor_review" | "system_test_bulk" | "imported_existing" | "ai_candidate";
   priority: number;
   default_textual_layer: string | null;
   default_source_type: string | null;

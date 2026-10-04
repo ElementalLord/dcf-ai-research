@@ -19,6 +19,7 @@ type CacheRow = {
   expires_at: string;
   hit_count: number;
   fetch_status: string;
+  content_hash: string | null;
 };
 
 export type LivePageResult = {
@@ -33,7 +34,7 @@ async function findCache(url: string): Promise<CacheRow | null> {
   const canonical = canonicalResearchUrl(url);
   const { data, error } = await supabaseAdmin
     .from("live_research_cache")
-    .select("id, access_id, source_id, canonical_url, etag, last_modified, expires_at, hit_count, fetch_status")
+    .select("id, access_id, source_id, canonical_url, etag, last_modified, expires_at, hit_count, fetch_status, content_hash")
     .eq("canonical_url", canonical)
     .maybeSingle();
   if (error) throw new CorpusError("DATABASE_FAILED", "The live research cache could not be read.", 500, { cause: error });
@@ -67,7 +68,7 @@ async function tagCachedSource(sourceId: string, personalityId: string, paramete
   }
 }
 
-async function resolveEvidenceSource(rule: SourceAccessRule, finalUrl: string, title: string): Promise<string> {
+async function resolveEvidenceSource(rule: SourceAccessRule, finalUrl: string, title: string, discoveryProvider?: string): Promise<string> {
   const canonical = canonicalResearchUrl(finalUrl);
   const variants = [canonical, canonical.endsWith("/") ? canonical.slice(0, -1) : `${canonical}/`];
   const { data: existingRows, error: findError } = await supabaseAdmin.from("sources").select("id, source_status").in("url", variants).limit(1);
@@ -75,7 +76,7 @@ async function resolveEvidenceSource(rule: SourceAccessRule, finalUrl: string, t
   const existing = existingRows?.[0];
   if (existing) {
     if (rule.evidence_use_status === "approved" && existing.source_status !== "approved") {
-      const { error } = await supabaseAdmin.from("sources").update({ source_status: "approved" }).eq("id", existing.id);
+      const { error } = await supabaseAdmin.from("sources").update({ source_status: "approved", approval_origin: rule.approval_origin || "imported_existing" }).eq("id", existing.id);
       if (error) throw error;
     }
     return existing.id;
@@ -89,9 +90,10 @@ async function resolveEvidenceSource(rule: SourceAccessRule, finalUrl: string, t
       url: canonical,
       citation: canonical,
       source_status: rule.evidence_use_status === "approved" ? "approved" : "candidate",
+      approval_origin: rule.approval_origin || "imported_existing",
       ingestion_status: "not_ingested",
       textual_layer: rule.default_textual_layer,
-      metadata: { origin: "live_cache", accessId: rule.id },
+      metadata: { origin: "live_cache", accessId: rule.id, approvalSource: "approved_source_access", discoveryProvider: discoveryProvider || null },
     })
     .select("id")
     .single();
@@ -108,6 +110,7 @@ export async function fetchAndCacheApprovedPage(args: {
   rules: SourceAccessRule[];
   personalityId: string;
   parameterFieldIds: string[];
+  discoveryProvider?: string;
   now?: Date;
 }): Promise<LivePageResult> {
   const now = args.now || new Date();
@@ -142,7 +145,12 @@ export async function fetchAndCacheApprovedPage(args: {
   const sections = await extractRemoteBytes(fetched.bytes, fetched.contentType, fetched.finalUrl);
   const extractedText = sections.map((section) => section.text).join("\n\n");
   const title = sections.find((section) => section.title)?.title || fetched.access.display_name;
-  const sourceId = await resolveEvidenceSource(fetched.access, fetched.finalUrl, title || fetched.access.display_name);
+  const contentHash = hashText(extractedText);
+  const { data: matching } = await supabaseAdmin.from("live_research_cache").select("source_id,canonical_url")
+    .eq("content_hash", contentHash).eq("fetch_status", "ready").not("source_id", "is", null).limit(1);
+  const duplicate = matching?.[0] && matching[0].canonical_url !== canonicalResearchUrl(fetched.finalUrl) ? matching[0] : null;
+  const unchanged = existing?.source_id && existing.content_hash === contentHash;
+  const sourceId = duplicate?.source_id || (unchanged ? existing.source_id : await resolveEvidenceSource(fetched.access, fetched.finalUrl, title || fetched.access.display_name, args.discoveryProvider));
   const canonicalUrl = canonicalResearchUrl(fetched.finalUrl);
   const { data: cache, error: cacheError } = await supabaseAdmin.from("live_research_cache").upsert({
     access_id: fetched.access.id,
@@ -153,7 +161,7 @@ export async function fetchAndCacheApprovedPage(args: {
     title,
     etag: fetched.etag,
     last_modified: fetched.lastModified,
-    content_hash: hashText(extractedText),
+    content_hash: contentHash,
     retrieved_at: now.toISOString(),
     expires_at: expiresAt,
     last_accessed_at: now.toISOString(),
@@ -163,9 +171,14 @@ export async function fetchAndCacheApprovedPage(args: {
     extracted_text: extractedText,
     fetch_status: "ready",
     fetch_error: null,
-    metadata: { accessDisplayName: fetched.access.display_name },
+    metadata: { accessDisplayName: fetched.access.display_name, discoveryProvider: args.discoveryProvider || null, duplicateOf: duplicate?.canonical_url || null },
   }, { onConflict: "canonical_url" }).select("id").single();
   if (cacheError) throw new CorpusError("DATABASE_FAILED", "The approved page could not be cached.", 500, { cause: cacheError });
+
+  if (duplicate || unchanged) {
+    await tagCachedSource(sourceId, args.personalityId, args.parameterFieldIds);
+    return { url: duplicate?.canonical_url || canonicalUrl, sourceId, cacheId: cache.id, cacheHit: true, chunks: 0 };
+  }
 
   const decorated: DocumentSection[] = sections.map((section) => ({
     ...section,
@@ -181,5 +194,5 @@ export async function fetchAndCacheApprovedPage(args: {
   });
   // Live research indexes passages lexically immediately. Optional embedding enrichment
   // is an explicit corpus action, so a fetch never consumes interactive AI quota.
-  return { url: canonicalUrl, sourceId, cacheId: cache.id, cacheHit: false, chunks: ingestion.chunksActive };
+  return { url: canonicalUrl, sourceId, cacheId: cache.id, cacheHit: false, chunks: ingestion.chunksCreated };
 }

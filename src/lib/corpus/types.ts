@@ -140,6 +140,18 @@ export type RetrievalDebug = {
   liveUrlsRejected: Array<{ url: string; reason: string }>;
   liveFetches: number;
   cacheHits: number;
+  webSearchProvider?: string;
+  webSearchConfigured?: boolean;
+  webSearchCalls?: number;
+  webSearchCacheHits?: number;
+  webSearchLatencyMs?: number;
+  candidateResults?: number;
+  policyAcceptedResults?: number;
+  policyRejectedResults?: number;
+  pagesFetched?: number;
+  pagesCacheHits?: number;
+  chunksAdded?: number;
+  webSearchErrorCategory?: string | null;
   liveResearchSkipReason: "LOCAL_EVIDENCE_SUFFICIENT" | "NO_APPROVED_LIVE_SOURCES" | "NO_APPROVED_URLS_DISCOVERED" | "LIVE_FETCH_FAILED" | null;
   lexicalError: string | null;
   semanticError: string | null;
