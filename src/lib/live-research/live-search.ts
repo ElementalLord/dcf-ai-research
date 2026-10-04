@@ -49,7 +49,8 @@ export async function discoverApprovedUrls(
   const mappedUrls = new Set((sources || []).map((source) => source.url ? canonicalResearchUrl(source.url) : null).filter(Boolean));
   for (const rule of approvedRules) {
     if (rule.scope_type === "EXACT_URL" && rule.exact_url && (!options.personalityId || mappedUrls.has(canonicalResearchUrl(rule.exact_url)))) {
-      candidates.set(canonicalResearchUrl(rule.exact_url), { label: rule.display_name, score: scoreUrl(rule.exact_url, rule.display_name, questionTerms) + 2 });
+      const relevance = scoreUrl(rule.exact_url, rule.display_name, questionTerms);
+      if (relevance > 0) candidates.set(canonicalResearchUrl(rule.exact_url), { label: rule.display_name, score: relevance + 2 });
     }
   }
   for (const item of [...(sources || []).map((row) => ({ label: row.title, url: row.url })), ...(cached || []).filter((row) => !options.personalityId || (row.source_id && mappedSourceIds.has(row.source_id))).map((row) => ({ label: row.title || "Cached source", url: row.canonical_url }))]) {
@@ -60,7 +61,8 @@ export async function discoverApprovedUrls(
       continue;
     }
     const canonical = canonicalResearchUrl(item.url);
-    candidates.set(canonical, { label: item.label, score: scoreUrl(canonical, item.label, questionTerms) + 1 });
+    const relevance = scoreUrl(canonical, item.label, questionTerms);
+    if (relevance > 0) candidates.set(canonical, { label: item.label, score: relevance + 1 });
   }
 
   const mappedRuleIds = new Set((sources || []).flatMap((source) => {

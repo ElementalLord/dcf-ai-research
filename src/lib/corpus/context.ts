@@ -18,10 +18,10 @@ export function buildBoundedContext(
 
   for (const item of evidence.slice(0, maxEvidence)) {
     const citationId = item.kind === "claim" ? `C${++claimIndex}` : `S${++sourceIndex}`;
-    const body = truncateText(item.text, 4_500);
+    const body = truncateText(item.text, item.kind === "passage" ? 2_400 : 1_100);
     const record = item.kind === "claim"
-      ? `[${citationId}] APPROVED CLAIM\nPersonality: ${item.personalityName || "not specified"}\nApproval origin: ${item.approvalOrigin}\nEvidence type: ${item.evidenceType}\nType: ${item.claimKind}\nCertainty: ${item.certainty}\nTextual layer: ${item.textualLayer || "not specified"}\nClaim: ${body}\nSource: ${item.sourceTitle || "not linked"}\nLocation: ${item.pageOrSection || "not specified"}`
-      : `[${citationId}] DIRECT PASSAGE FROM AN APPROVED SOURCE\nPersonality: ${item.personalityName || "not specified"}\nSource type: ${item.sourceType || "not specified"}\nTextual layer: ${item.textualLayer || "not specified"}\nSource: ${item.sourceTitle}\nLocation: ${item.pageOrSection || item.sectionTitle || "not specified"}\nPassage: ${body}`;
+      ? `[${citationId}] APPROVED CLAIM\nPersonality: ${item.personalityName || "unspecified"}\nTopic: ${item.parameterName || item.fieldLabel || "unclassified"}\nEvidence type: ${item.evidenceType}; approval: ${item.approvalOrigin}; certainty: ${item.certainty}\nSource: ${item.sourceTitle || "not linked"}; source type: ${item.sourceType || "unspecified"}\nTextual layer: ${item.textualLayer || "unspecified"}; location: ${item.pageOrSection || "unspecified"}\nClaim: ${body}`
+      : `[${citationId}] APPROVED SOURCE PASSAGE\nPersonality: ${item.personalityName || "unspecified"}\nTopic: ${item.parameterNames?.join(", ") || "source passage"}\nSource: ${item.sourceTitle}; source type: ${item.sourceType || "unspecified"}\nTextual layer: ${item.textualLayer || "unspecified"}; location: ${item.pageOrSection || item.sectionTitle || "unspecified"}\nOriginal URL: ${item.sourceUrl || "unavailable"}\nPassage: ${body}`;
 
     if (records.length > 0 && characters + record.length > maxCharacters) break;
     records.push(record);

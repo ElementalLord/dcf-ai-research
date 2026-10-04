@@ -10,6 +10,8 @@ import { loadPersonalityConfiguration } from "./personality-context";
 import { normalizedAliases } from "./personality-config";
 import { resolveQuestionContext, type ConversationQuestion } from "@/lib/ask/query-context";
 import { abstentionMessage } from "@/lib/ask/messages";
+import { buildSynthesisPrompt, SYNTHESIS_PROMPT_VERSION } from "./synthesis-prompt";
+import { isBroadScope } from "@/lib/ask/question-scope";
 
 const ABSTENTION = "The approved knowledge base does not currently contain enough evidence to answer that fully.";
 
@@ -53,6 +55,9 @@ async function answerQuestionInternal(
     synthesisLatencyMs: 0,
     estimatedEvidenceTokens: 0,
     ...retrievals[0].debug,
+    questionScope: queryContext.scope,
+    synthesisPromptVersion: SYNTHESIS_PROMPT_VERSION,
+    synthesisModel: health.configured ? provider.model : null,
     comparisonMode,
     latenciesMs: { ...retrievals[0].debug.latenciesMs },
     liveFetches: retrievals.reduce((sum, item) => sum + item.debug.liveFetches, 0),
@@ -63,7 +68,7 @@ async function answerQuestionInternal(
     selectedPersonalities: retrievals.map((retrieval) => ({ id: retrieval.personalityId, name: retrieval.personality })),
     perPersonality: retrievals.map((retrieval) => ({ personality: retrieval.personality, debug: retrieval.debug })),
   };
-  if (retrievals.some((retrieval) => !retrieval.debug.localEvidenceSufficient)) {
+  if (retrievals.some((retrieval) => !retrieval.debug.answerable)) {
     return {
       personality,
       question,
@@ -82,8 +87,16 @@ async function answerQuestionInternal(
   const evidence = comparisonMode
     ? mergePersonalityEvidence(retrievals.map((retrieval) => ({ personalityId: retrieval.personalityId, personalityName: retrieval.personality, evidence: retrieval.evidence })))
     : retrievals[0].evidence;
-  const bounded = buildBoundedContext(evidence);
+  const evidenceBudget = isBroadScope(queryContext.scope) || queryContext.scope === "COMPARISON" || queryContext.scope === "CONTESTED_OR_HISTORICAL"
+    ? 20 : queryContext.scope === "NARROW_FACT" ? 7 : 12;
+  const bounded = buildBoundedContext(evidence, evidenceBudget);
   debug.finalSelectedEvidenceCount = bounded.selected.length;
+  debug.parametersRepresented = [...new Set(bounded.selected.flatMap((item) => item.kind === "claim" ? [item.parameterCode].filter((code): code is string => Boolean(code)) : item.parameterCodes || []))];
+  debug.retrievedClaimCount = bounded.selected.filter((item) => item.kind === "claim").length;
+  debug.retrievedChunkCount = bounded.selected.filter((item) => item.kind === "passage").length;
+  debug.sourcesRepresented = [...new Set(bounded.selected.map((item) => item.sourceTitle).filter((title): title is string => Boolean(title)))];
+  debug.sourceTypesRepresented = [...new Set(bounded.selected.map((item) => item.sourceType).filter((sourceType): sourceType is string => Boolean(sourceType)))];
+  debug.evidenceTypesRepresented = [...new Set(bounded.selected.map((item) => item.kind === "claim" ? item.evidenceType : "source_passage"))];
   if (!bounded.context) {
     return {
       personality,
@@ -116,7 +129,7 @@ async function answerQuestionInternal(
   let generated: { text: string; interactionId: string | null };
   let usedLocalSynthesis = false;
   const extractive = new ExtractiveSynthesisProvider();
-  const fallback = () => extractive.generateGroundedAnswer({ prompt: "", evidence: bounded.selected, citations: bounded.citations, broad: queryContext.broadSynthesis });
+  const fallback = () => extractive.generateGroundedAnswer({ prompt: "", evidence: bounded.selected, citations: bounded.citations, broad: queryContext.broadSynthesis, scope: queryContext.scope });
   if (cached) {
     generated = { text: cached.answer, interactionId: null };
     debug.provider = cached.provider;
@@ -126,38 +139,17 @@ async function answerQuestionInternal(
     debug.generationFallbackReason = "AI synthesis unavailable; showing verified evidence.";
     generated = await fallback();
   } else {
-    const prompt = `You are the DCF Inspiring Personalities AI.
-Answer using ONLY the retrieved evidence below. Do not use pretrained knowledge as evidence.
-
-PERSONALITY OR INTENTIONAL COMPARISON SET: ${personality}
-QUESTION: ${question}
-RESOLVED QUESTION FOR REFERENCE: ${queryContext.resolvedQuestion}
-
-EVIDENCE:
-${bounded.context}
-
-Rules:
-1. Every important factual statement needs one or more exact evidence citations such as [C1] or [S1].
-2. Never invent a citation or a fact.
-3. APPROVED CLAIM and DIRECT PASSAGE FROM AN APPROVED SOURCE are different trust classes; preserve approval origin and evidence type.
-4. Label primary text, epic/traditional narrative, scholarly interpretation, modern spiritual interpretation, and uncertain or contested material accurately.
-5. Never present an epic or other traditional narrative passage as independently verified modern history.
-6. Do not silently resolve conflicts between traditions or textual layers.
-7. If the evidence only permits an inference, say that the passage suggests or portrays it.
-8. If the evidence does not answer the question, respond exactly: "${ABSTENTION}"
-9. Prefer a direct, concise answer before explanation.
-10. For subjective or superlative wording, do not present a ranking as objectively proven. State the criterion and use language such as "one of the most significant" unless the evidence explicitly establishes a ranking.
-11. For broad synthesis questions, weigh relevant evidence across roles, texts, ideas, historical or textual significance, and narrative traditions when those dimensions are present.
-12. Use short paragraphs and occasional descriptive headings or bullets when they improve readability.`;
+    const prompt = buildSynthesisPrompt({ personality, question, resolvedQuestion: queryContext.resolvedQuestion, scope: queryContext.scope, evidenceContext: bounded.context });
     try {
       incrementMetric("synthesisAttempted");
-      generated = await provider.generateGroundedAnswer({ prompt, evidence: bounded.selected, citations: bounded.citations, broad: queryContext.broadSynthesis });
+      generated = await provider.generateGroundedAnswer({ prompt, evidence: bounded.selected, citations: bounded.citations, broad: queryContext.broadSynthesis, scope: queryContext.scope });
       if (generated.text !== ABSTENTION && !validateAnswerCitations(generated.text, bounded.citations)) throw new Error("Invalid synthesis citations");
       incrementMetric("synthesisSucceeded");
       debug.provider = provider.name;
       debug.model = provider.model;
       debug.generationFallbackReason = null;
     } catch (error) {
+      console.warn("Synthesis fallback:", error instanceof Error ? error.message : String(error));
       usedLocalSynthesis = true;
       debug.synthesisErrorCategory = provider.classifyError(error);
       incrementMetric(`synthesis_${debug.synthesisErrorCategory}`);
@@ -212,6 +204,7 @@ export async function answerQuestion(question: string, personalityId: string | s
     const started = performance.now();
     const result = await answerQuestionInternal(question, personalityId, options);
     result.debug.generativeCalls = usage.generativeCalls;
+    result.debug.geminiCalls = usage.generativeCalls;
     result.debug.embeddingCalls = usage.embeddingCalls;
     result.debug.latenciesMs.total = Math.round(performance.now() - started);
     if (result.debug.liveResearchTriggered) incrementMetric("liveResearchTriggers");

@@ -57,21 +57,31 @@ Ask uses local retrieval and known approved pages first. It only invokes Brave w
 ### Free-tier resilient Ask
 
 Core ingestion, aliases, deterministic routing, lexical retrieval, approved live
-fetch/cache, citations and extractive answers work without AI. Existing
-`AI_SYNTHESIS_MODE=local` remains the default. Set `SYNTHESIS_PROVIDER=gemini`
-(or the compatible `AI_SYNTHESIS_MODE=gemini`) for optional grounded synthesis.
-`SYNTHESIS_MODEL` overrides `GEMINI_GENERATION_MODEL`; `SYNTHESIS_TIMEOUT_MS`
-defaults to 8000 and is bounded to 250–12000 ms. Secrets stay server-side.
+fetch/cache, citations and extractive answers work without AI. When
+`GEMINI_API_KEY` is configured, Ask uses Gemini synthesis by default. Set
+`SYNTHESIS_PROVIDER=local` (or `AI_SYNTHESIS_MODE=local`) for an extractive-only
+mode. `SYNTHESIS_MODEL` overrides `GEMINI_GENERATION_MODEL`; the default is
+`gemini-3.8-flash`. Synthesis allows up to 4,096 output tokens and a 40-second
+timeout (bounded to 250–45,000 ms). Secrets stay server-side.
 
 Set `SYNTHESIS_DISABLED=true` to simulate unavailable synthesis without removing
 keys; set `EMBEDDINGS_DISABLED=true` to test lexical-only retrieval. The normal
-Ask path makes at most one generative API attempt, with no SDK retries or
-Interactions fallback. Confirmed quota/rate/configuration/model errors open a
+Ask path normally makes one generative API attempt. A 503/transient failure may
+receive one bounded retry; no second model is used for evaluation or review.
+Confirmed quota/rate/configuration/model errors open a
 60-second process-local circuit; transient/timeout errors open it for 15 seconds.
 Every request still retrieves approved evidence before checking the 24-hour
 answer cache. Only validated generated answers are cached, so local excerpts
 cannot suppress a later recovered synthesis provider. Evidence content,
-provenance, citations, personality scope and policy determine the cache key.
+provenance, citations, personality scope, policy, synthesis model and
+`grounded_synthesis_v2` determine the cache key.
+
+Broad Ask questions gather parameter-linked approved claims and source passages,
+then select for parameter, source and textual-layer coverage. Focused questions
+use smaller context budgets. Scope-aware coverage checks identify missing topics
+before any Brave discovery. Brave requires a currently approved search and fetch
+scope broader than an exact URL; snippets remain discovery metadata. Run the
+real-app benchmark with `node scripts/ask-quality-benchmark.mjs <personality-uuid> <output.json>`.
 
 Apply additive migrations before AI ingestion. AI tagging and proposal extraction
 checkpoint input hashes, saved model output and completion per batch/chunk.

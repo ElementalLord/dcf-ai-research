@@ -1,7 +1,7 @@
 import { normalizeForMatch } from "@/lib/corpus/text";
 import type { RetrievedEvidence } from "@/lib/corpus/types";
 import { canonicalizeTerms, type TermAliasRecord } from "@/lib/corpus/personality-config";
-import { isBroadSynthesisQuestion } from "@/lib/corpus/routing";
+import { classifyQuestionScope, isBroadScope, type QuestionScope } from "@/lib/ask/question-scope";
 
 const IGNORED = new Set(["the", "and", "his", "her", "what", "when", "where", "which", "who", "why", "how", "does", "did", "is", "are", "was", "were", "about", "from", "with", "into", "between", "role", "play", "played", "major", "story", "explain", "relationship", "relation", "significance", "significant", "happen", "happens", "happened", "disagree", "disagreed", "disagreement"]);
 
@@ -19,7 +19,7 @@ function concepts(question: string, personalityAliases: string[], termAliases: T
     "evidence", "link", "links", "linked", "development", "develop", "developed",
     "evolve", "evolved", "evolution", "trace", "portrayed", "reconstruct", "reconstructing",
     "references", "reference", "parts", "regarding", "different", "difference",
-    "differ",
+    "differ", "become", "became", "biggest", "greatest", "main", "most", "important", "known", "contribution", "contributions", "associated", "associate",
   ]);
   const ignored = new Set(IGNORED);
   for (const alias of personalityAliases) {
@@ -30,19 +30,22 @@ function concepts(question: string, personalityAliases: string[], termAliases: T
 
 export type SufficiencyDecision = {
   sufficient: boolean;
+  answerable: boolean;
   mode: "FAST" | "EXPANDED" | "RESEARCH";
   coverage: number;
   reason: string;
+  missingDimensions: string[];
 };
 
 export function assessEvidenceSufficiency(
   question: string,
   evidence: RetrievedEvidence[],
-  options: { personalityAliases?: string[]; termAliases?: TermAliasRecord[] } = {},
+  options: { personalityAliases?: string[]; termAliases?: TermAliasRecord[]; allParameters?: Array<{ code: string; name: string }> } = {},
 ): SufficiencyDecision {
   const personalityAliases = options.personalityAliases || [];
   const termAliases = options.termAliases || [];
-  const broadProfile = isBroadSynthesisQuestion(question);
+  const scope: QuestionScope = classifyQuestionScope(question);
+  const broadProfile = isBroadScope(scope);
   if (!broadProfile && personalityAliases.length) {
     const references = question.match(/\b\d+(?:\.\d+)+\b/g) || [];
     evidence = evidence.filter((item) => {
@@ -54,7 +57,7 @@ export function assessEvidenceSufficiency(
     });
   }
   const requested = concepts(question.replace(/^Selected (?:personality|comparison set):[^.]*\.\s*/i, ""), personalityAliases, termAliases);
-  const evidenceTokens = new Set(normalizeAliases(evidence.slice(0, 12).map((item) => [
+  const evidenceTokens = new Set(normalizeAliases(evidence.map((item) => [
     item.text,
     item.sourceTitle,
     item.pageOrSection,
@@ -71,20 +74,28 @@ export function assessEvidenceSufficiency(
   const direct = evidence.filter((item) => item.kind === "claim" || (item.lexicalScore || 0) > 0).length;
   const sources = new Set(evidence.map((item) => item.kind === "passage" ? item.sourceId : item.sourceTitle).filter(Boolean));
   const layers = new Set(evidence.map((item) => item.textualLayer).filter(Boolean));
+  const represented = new Set(evidence.flatMap((item) => item.kind === "claim" ? [item.parameterCode].filter(Boolean) : item.parameterCodes || []));
   const comparative = /compare|differ|difference|across|contested|conflict/i.test(question)
     || /\b(?:sources|accounts|traditions|texts)\b.{0,50}\bdisagree/i.test(question);
   const developmental = /development|trace|transform|evolv/i.test(question);
   const complex = comparative || developmental;
   const mode = complex ? "RESEARCH" : "EXPANDED";
-  if (evidence.length === 0 || direct === 0) return { sufficient: false, mode, coverage, reason: "No directly relevant approved local evidence." };
+  if (evidence.length === 0 || direct === 0) return { sufficient: false, answerable: false, mode, coverage, reason: "No directly relevant approved local evidence.", missingDimensions: requested.length ? requested : ["direct evidence"] };
   if (broadProfile) {
-    return evidence.length >= 3
-      ? { sufficient: true, mode: "FAST", coverage: 1, reason: "A diverse approved local profile is available." }
-      : { sufficient: false, mode: "EXPANDED", coverage, reason: "The broad profile needs evidence from several approved records." };
+    const parameters = options.allParameters || [];
+    const core = parameters.filter((parameter) => /role|textual|social|tapas|historical|philosophy|lineage|parampara/i.test(`${parameter.code} ${parameter.name}`));
+    const missing = core.filter((parameter) => !represented.has(parameter.code)).map((parameter) => parameter.name);
+    const representedCore = core.length - missing.length;
+    const enough = evidence.length >= 8 && (core.length ? representedCore >= Math.min(4, core.length) : represented.size >= 2) && sources.size >= 2;
+    if (sources.size < 2) missing.push("independent approved source");
+    if (evidence.length < 8 && missing.length === 0) missing.push("additional primary passage");
+    return { sufficient: enough, answerable: evidence.length >= 2, mode: enough ? "FAST" : "EXPANDED", coverage: core.length ? representedCore / core.length : Math.min(1, represented.size / 4),
+      reason: enough ? "Approved evidence spans multiple parameters and sources." : "The broad answer needs more parameter or source coverage.", missingDimensions: missing };
   }
-  if (coverage < 2 / 3) return { sufficient: false, mode, coverage, reason: "Local evidence does not cover enough requested concepts." };
+  const missing = requested.filter((term) => !covered.includes(term));
+  if (coverage < 2 / 3) return { sufficient: false, answerable: false, mode, coverage, reason: "Local evidence does not cover enough requested concepts.", missingDimensions: missing };
   if (comparative && (sources.size < 2 || layers.size < 2)) {
-    return { sufficient: false, mode: "RESEARCH", coverage, reason: "The comparison needs broader source or textual-layer coverage." };
+    return { sufficient: false, answerable: true, mode: "RESEARCH", coverage, reason: "The comparison needs broader source or textual-layer coverage.", missingDimensions: [sources.size < 2 ? "independent source" : "distinct textual layer"] };
   }
-  return { sufficient: true, mode: "FAST", coverage, reason: "Approved local evidence directly covers the question." };
+  return { sufficient: true, answerable: true, mode: "FAST", coverage, reason: "Approved local evidence directly covers the question.", missingDimensions: [] };
 }

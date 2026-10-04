@@ -1,6 +1,7 @@
 import type { ParameterField } from "./types";
 import { normalizeForMatch } from "./text";
 import { canonicalizeTerms, type RoutingParameter, type TermAliasRecord } from "./personality-config";
+import { classifyQuestionScope, isBroadScope } from "@/lib/ask/question-scope";
 
 const BROAD_SYNTHESIS_PATTERNS = [
   /\bwho is\b/i,
@@ -15,7 +16,7 @@ const BROAD_SYNTHESIS_PATTERNS = [
 const SUBJECTIVE_SUPERLATIVE_PATTERN = /\b(?:biggest|greatest|main|best known|most important|most influential|most significant|primary)\b/i;
 
 export function isBroadSynthesisQuestion(question: string): boolean {
-  return BROAD_SYNTHESIS_PATTERNS.some((pattern) => pattern.test(question));
+  return isBroadScope(classifyQuestionScope(question)) || BROAD_SYNTHESIS_PATTERNS.some((pattern) => pattern.test(question));
 }
 
 export function isSubjectiveSuperlativeQuestion(question: string): boolean {

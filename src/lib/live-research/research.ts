@@ -7,6 +7,7 @@ import { discoverApprovedUrls } from "./live-search";
 import { loadActiveSourceRules } from "./source-registry";
 import { assessEvidenceSufficiency } from "./sufficiency";
 import { discoverWebCandidates, webSearchProvider } from "./web-search";
+import { gapSearchQueries } from "./gap-query";
 
 export async function retrieveWithApprovedResearch(
   question: string,
@@ -14,9 +15,13 @@ export async function retrieveWithApprovedResearch(
   options: { additionalPersonalityAliases?: string[]; configuration?: PersonalityConfiguration } = {},
 ) {
   const local = await retrieveEvidence(question, personalityId, options);
-  const decision = assessEvidenceSufficiency(question, local.evidence, { personalityAliases: local.personalityAliases, termAliases: local.termAliases });
+  const decision = assessEvidenceSufficiency(question, local.evidence, { personalityAliases: local.personalityAliases, termAliases: local.termAliases, allParameters: local.allParameters });
   local.debug.executionMode = decision.mode;
   local.debug.localEvidenceSufficient = decision.sufficient;
+  local.debug.answerable = decision.answerable;
+  local.debug.coverageStatus = decision.sufficient ? "sufficient" : decision.answerable ? "partial" : "unsupported";
+  local.debug.missingEvidenceDimensions = decision.missingDimensions;
+  local.debug.unresolvedEvidenceGap = !decision.sufficient;
   local.debug.localEvidenceCoverage = decision.coverage;
   local.debug.localEvidenceSufficiencyReason = decision.reason;
   if (decision.sufficient) {
@@ -66,20 +71,23 @@ export async function retrieveWithApprovedResearch(
   let refreshed = local.debug.liveFetches || local.debug.cacheHits
     ? await retrieveEvidence(question, personalityId, options) : local;
   refreshed.debug.executionMode = decision.mode;
-  let refreshedDecision = assessEvidenceSufficiency(question, refreshed.evidence, { personalityAliases: refreshed.personalityAliases, termAliases: refreshed.termAliases });
+  let refreshedDecision = assessEvidenceSufficiency(question, refreshed.evidence, { personalityAliases: refreshed.personalityAliases, termAliases: refreshed.termAliases, allParameters: refreshed.allParameters });
   // Web search runs only after local retrieval and the existing approved-page path.
   // Search snippets are never passed into the page cache, chunks, or answer context.
-  if (!refreshedDecision.sufficient && webSearchProvider().isConfigured() && rules.some((rule) => rule.allow_live_search && rule.allow_live_fetch && rule.evidence_use_status === "approved" && rule.scope_type !== "EXACT_URL")) {
-    const web = await discoverWebCandidates(question, rules, { maxResults: decision.mode === "RESEARCH" ? 10 : 8 });
-    local.debug.webSearchCalls = web.calls;
-    local.debug.webSearchCacheHits = web.cacheHits;
-    local.debug.webSearchLatencyMs = web.latencyMs;
-    local.debug.candidateResults = web.candidates;
-    local.debug.policyAcceptedResults = web.accepted.length;
-    local.debug.policyRejectedResults = web.rejected.length;
-    local.debug.webSearchErrorCategory = web.errorCategory;
-    local.debug.liveUrlsRejected.push(...web.rejected);
-    const freshUrls = web.accepted.filter((url) => !selectedUrls.includes(url)).slice(0, 2);
+  if (!refreshedDecision.sufficient && refreshedDecision.missingDimensions.length > 0 && webSearchProvider().isConfigured() && rules.some((rule) => rule.allow_live_search && rule.allow_live_fetch && rule.evidence_use_status === "approved" && rule.scope_type !== "EXACT_URL")) {
+    const queries = gapSearchQueries(local.personality, question, refreshedDecision.missingDimensions);
+    local.debug.braveTriggered = true;
+    local.debug.braveQueries = queries;
+    const discoveries = await Promise.all(queries.map((query) => discoverWebCandidates(query, rules, { maxResults: 8 })));
+    local.debug.webSearchCalls = discoveries.reduce((total, web) => total + web.calls, 0);
+    local.debug.webSearchCacheHits = discoveries.reduce((total, web) => total + web.cacheHits, 0);
+    local.debug.webSearchLatencyMs = Math.max(...discoveries.map((web) => web.latencyMs));
+    local.debug.candidateResults = discoveries.reduce((total, web) => total + web.candidates, 0);
+    local.debug.policyAcceptedResults = discoveries.reduce((total, web) => total + web.accepted.length, 0);
+    local.debug.policyRejectedResults = discoveries.reduce((total, web) => total + web.rejected.length, 0);
+    local.debug.webSearchErrorCategory = discoveries.find((web) => web.errorCategory)?.errorCategory || null;
+    local.debug.liveUrlsRejected.push(...discoveries.flatMap((web) => web.rejected));
+    const freshUrls = [...new Set(discoveries.flatMap((web) => web.accepted))].filter((url) => !selectedUrls.includes(url)).slice(0, 2);
     const fetched = await Promise.allSettled(freshUrls.map((url) => fetchAndCacheApprovedPage({ url, rules, personalityId, parameterFieldIds: [], discoveryProvider: "brave" })));
     fetched.forEach((result, index) => {
       if (result.status === "fulfilled") {
@@ -90,10 +98,14 @@ export async function retrieveWithApprovedResearch(
     });
     if (fetched.some((result) => result.status === "fulfilled")) {
       refreshed = await retrieveEvidence(question, personalityId, options);
-      refreshedDecision = assessEvidenceSufficiency(question, refreshed.evidence, { personalityAliases: refreshed.personalityAliases, termAliases: refreshed.termAliases });
+      refreshedDecision = assessEvidenceSufficiency(question, refreshed.evidence, { personalityAliases: refreshed.personalityAliases, termAliases: refreshed.termAliases, allParameters: refreshed.allParameters });
     }
   } else if (!webSearchProvider().isConfigured()) local.debug.webSearchErrorCategory = "NOT_CONFIGURED";
   refreshed.debug.localEvidenceSufficient = refreshedDecision.sufficient;
+  refreshed.debug.answerable = refreshedDecision.answerable;
+  refreshed.debug.coverageStatus = refreshedDecision.sufficient ? "sufficient" : refreshedDecision.answerable ? "partial" : "unsupported";
+  refreshed.debug.missingEvidenceDimensions = refreshedDecision.missingDimensions;
+  refreshed.debug.unresolvedEvidenceGap = !refreshedDecision.sufficient;
   refreshed.debug.localEvidenceCoverage = refreshedDecision.coverage;
   refreshed.debug.localEvidenceSufficiencyReason = refreshedDecision.reason;
   refreshed.debug.liveResearchTriggered = true;
@@ -104,6 +116,9 @@ export async function retrieveWithApprovedResearch(
   refreshed.debug.cacheHits = local.debug.cacheHits;
   refreshed.debug.approvedLiveSourceCount = approved.length;
   refreshed.debug.liveResearchSkipReason = null;
+  refreshed.debug.braveTriggered = local.debug.braveTriggered || false;
+  refreshed.debug.braveQueries = local.debug.braveQueries || [];
+  refreshed.debug.newSourcesFetched = local.debug.liveFetches;
   refreshed.debug.latenciesMs.liveSearch = local.debug.latenciesMs.liveSearch;
   refreshed.debug.latenciesMs.liveFetch = local.debug.latenciesMs.liveFetch;
   for (const field of ["webSearchCalls", "webSearchCacheHits", "webSearchLatencyMs", "candidateResults", "policyAcceptedResults", "policyRejectedResults", "pagesFetched", "pagesCacheHits", "chunksAdded", "webSearchErrorCategory"] as const) {

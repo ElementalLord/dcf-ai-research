@@ -2,8 +2,9 @@ import { generateText, GENERATION_MODEL } from "./gemini";
 import { aiSynthesisEnabled, renderExtractiveEvidence } from "./local-synthesis";
 import { classifyProviderError, generationCircuit } from "./provider-health";
 import type { Citation, RetrievedEvidence } from "./types";
+import type { QuestionScope } from "@/lib/ask/question-scope";
 
-export type SynthesisInput = { prompt: string; evidence: RetrievedEvidence[]; citations: Citation[]; broad: boolean };
+export type SynthesisInput = { prompt: string; evidence: RetrievedEvidence[]; citations: Citation[]; broad: boolean; scope?: QuestionScope };
 export interface SynthesisProvider {
   name: string;
   model: string | null;
@@ -25,7 +26,7 @@ export class ExtractiveSynthesisProvider implements SynthesisProvider {
   classifyError = classifyProviderError;
   isConfigured() { return true; }
   async generateGroundedAnswer(input: SynthesisInput) {
-    return { text: renderExtractiveEvidence(input.evidence, input.citations, input.broad), interactionId: null };
+    return { text: renderExtractiveEvidence(input.evidence, input.citations, input.broad, input.scope), interactionId: null };
   }
 }
 export function validateAnswerCitations(text: string, citations: Citation[]): boolean {

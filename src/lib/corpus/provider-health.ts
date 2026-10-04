@@ -11,12 +11,12 @@ export function classifyProviderError(error: unknown): ProviderErrorCategory {
     return String(value);
   }
   const text = detail(error).toLowerCase();
-  if (/quota|resource_exhausted/.test(text)) return "QUOTA_EXHAUSTED";
+  if (/quota|resource_exhausted|generation budget exhausted/.test(text)) return "QUOTA_EXHAUSTED";
   if (/429|rate.?limit/.test(text)) return "RATE_LIMIT";
   if (/timeout|timed out|abort/.test(text)) return "TIMEOUT";
   if (/401|403|api.?key|unauth|permission|not configured|invalid_argument/.test(text)) return "AUTH_CONFIGURATION";
+  if (/50[0234]|high demand|network|fetch failed/.test(text)) return "TRANSIENT";
   if (/404|model.*(?:unavailable|not found|unsupported)/.test(text)) return "MODEL_UNAVAILABLE";
-  if (/50[0234]|unavailable|network|fetch failed/.test(text)) return "TRANSIENT";
   return "INVALID_RESPONSE";
 }
 

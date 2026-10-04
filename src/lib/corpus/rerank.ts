@@ -73,6 +73,60 @@ export function selectDiverseLayers(evidence: RetrievedEvidence[], limit: number
   return selected;
 }
 
+/** Greedy coverage over approved records. A parameter is a bonus, never a quota. */
+export function selectBroadEvidence(evidence: RetrievedEvidence[], limit = 20, personalityAliases: string[] = []): RetrievedEvidence[] {
+  const pool = evidence.filter((item) => !/parameters to study|research framework/i.test(item.sourceTitle || "")
+    && !/current source set|current corpus|should be stored|does not justify|metadata rather than/i.test(item.text)
+    && (item.kind === "claim" || Boolean(item.parameterCodes?.length)
+      || personalityAliases.some((alias) => normalizeForMatch(`${item.text} ${item.sourceTitle}`).includes(normalizeForMatch(alias)))));
+  const selected: RetrievedEvidence[] = [];
+  const tokens = pool.map((item) => new Set(normalizeForMatch(item.text).split(" ").filter((word) => word.length > 2)));
+  const selectedTokens: Array<Set<string>> = [];
+  const jaccard = (left: Set<string>, right: Set<string>) => {
+    let shared = 0;
+    for (const word of left) if (right.has(word)) shared += 1;
+    return shared / Math.max(1, left.size + right.size - shared);
+  };
+  const seenParameters = new Set<string>();
+  const seenSources = new Map<string, number>();
+  const seenLayers = new Set<string>();
+  const seenTypes = new Set<string>();
+  while (selected.length < limit && pool.length) {
+    let winner = -1;
+    let best = Number.NEGATIVE_INFINITY;
+    for (let index = 0; index < pool.length; index += 1) {
+      const item = pool[index];
+      if (selectedTokens.some((prior) => jaccard(prior, tokens[index]) >= 0.73)) continue;
+      const source = item.kind === "passage" ? item.sourceId : item.sourceTitle || item.id;
+      const sourceCount = seenSources.get(source) || 0;
+      if (sourceCount >= 4) continue;
+      const parameters = item.kind === "claim" ? [item.parameterCode || item.parameterName || ""] : item.parameterCodes || [];
+      const newParameters = parameters.filter((parameter) => parameter && !seenParameters.has(parameter)).length;
+      const layer = item.textualLayer || "";
+      const sourceType = item.sourceType || "";
+      const quality = item.kind === "claim" ? (item.chunkId ? 4 : 1) : 2;
+      const namesSubject = personalityAliases.some((alias) => normalizeForMatch(`${item.text} ${item.sourceTitle || ""}`).includes(normalizeForMatch(alias)));
+      const score = newParameters * 12 + (sourceCount ? 0 : 5) + (layer && !seenLayers.has(layer) ? 4 : 0)
+        + (sourceType && !seenTypes.has(sourceType) ? 2 : 0) + quality - sourceCount * 5
+        + (item.kind === "passage" && !namesSubject && !/rigveda|vedas?/i.test(item.sourceTitle) ? -10 : 0)
+        + Math.min(3, (item.fusedScore || 0) * 70) - index * 0.003;
+      if (score > best) { best = score; winner = index; }
+    }
+    if (winner < 0) break;
+    const [item] = pool.splice(winner, 1);
+    selectedTokens.push(tokens.splice(winner, 1)[0]);
+    selected.push(item);
+    for (const parameter of item.kind === "claim" ? [item.parameterCode || item.parameterName || ""] : item.parameterCodes || []) {
+      if (parameter) seenParameters.add(parameter);
+    }
+    const source = item.kind === "passage" ? item.sourceId : item.sourceTitle || item.id;
+    seenSources.set(source, (seenSources.get(source) || 0) + 1);
+    if (item.textualLayer) seenLayers.add(item.textualLayer);
+    if (item.sourceType) seenTypes.add(item.sourceType);
+  }
+  return selected;
+}
+
 export function modelRerankEnabled(value = process.env.ENABLE_MODEL_RERANK): boolean {
   return value === "true";
 }

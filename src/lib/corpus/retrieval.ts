@@ -8,7 +8,8 @@ import { dedupeEvidence, reciprocalRankFusion } from "./dedupe";
 import { isBroadSynthesisQuestion, lexicalSearchExpression, routeParameterCodes } from "./routing";
 import { logStage, stageTimer } from "./observability";
 import { normalizeForMatch } from "./text";
-import { rerankEvidence } from "./rerank";
+import { rerankEvidence, selectBroadEvidence } from "./rerank";
+import { classifyQuestionScope } from "@/lib/ask/question-scope";
 import type { ParameterField, RetrievedClaim, RetrievedEvidence, RetrievedPassage, RetrievalDebug } from "./types";
 import { evidencePolicyMode, eligibleClaimOrigins } from "./approval-policy";
 import { loadPersonalityConfiguration } from "./personality-context";
@@ -41,6 +42,17 @@ function questionTerms(question: string, personalityAliases: string[] = [], term
 
 function isBroadProfileQuestion(question: string, terms: Set<string>): boolean {
   return terms.size === 0 || isBroadSynthesisQuestion(question);
+}
+
+function broadClaimQuality(text: string, sourceTitle: string, sourceType: string, hasPassage: boolean, personality: string): number {
+  let score = 0;
+  if (hasPassage) score += 8;
+  if (/primary|institution|scholar|academic|critical/i.test(sourceType)) score += 4;
+  if (personality && normalizeForMatch(text).includes(normalizeForMatch(personality))) score += 3;
+  if (text.length >= 80 && text.length <= 650) score += 2;
+  if (/parameters to study|research framework/i.test(sourceTitle)) score -= 35;
+  if (/current source set|current corpus|research framework|should be stored|does not justify|metadata rather than|not safely subsumed/i.test(text)) score -= 18;
+  return score;
 }
 
 export function shouldUseSemanticRetrieval(claimCount: number, lexicalCount: number): boolean {
@@ -101,7 +113,8 @@ export function rankApprovedClaims(
       }, 0);
       const parameterSortOrder = Number(parameter?.sort_order);
       const score = broad
-        ? Number.isFinite(parameterSortOrder) ? 1_000 - parameterSortOrder : 0
+        ? (Number.isFinite(parameterSortOrder) ? 1_000 - parameterSortOrder : 0)
+          + broadClaimQuality(String(row.claim_text || ""), String(source?.title || ""), String(source?.source_type || ""), Boolean(chunk?.id), options.personalityName || "") / 100
         : termScore;
       return {
         score,
@@ -119,6 +132,7 @@ export function rankApprovedClaims(
           personalityId: options.personalityId,
           personalityName: options.personalityName,
           parameterName: parameter?.name ? String(parameter.name) : null,
+          parameterCode: parameter?.code ? String(parameter.code) : null,
           fieldLabel: field?.label ? String(field.label) : null,
           sourceTitle: source?.title ? String(source.title) : null,
           sourceAuthor: source?.author ? String(source.author) : null,
@@ -141,11 +155,11 @@ export function rankApprovedClaims(
         selected.push(candidate.item);
         usedGroups.add(candidate.group);
       }
-      if (selected.length >= 12) return selected;
+      if (selected.length >= 16) return selected;
     }
     for (const candidate of ranked) {
       if (!selected.some((item) => item.claimId === candidate.item.claimId)) selected.push(candidate.item);
-      if (selected.length >= 12) break;
+      if (selected.length >= 32) break;
     }
     return selected;
   }
@@ -194,6 +208,7 @@ export async function retrieveEvidence(
   personalityAliases: string[];
   termAliases: TermAliasRecord[];
   parameters: Array<{ code: string; name: string }>;
+  allParameters: Array<{ code: string; name: string }>;
   parameterFieldIds: string[];
   evidence: RetrievedEvidence[];
   debug: RetrievalDebug;
@@ -245,6 +260,22 @@ export async function retrieveEvidence(
         max_results: 30,
       })
     : Promise.resolve({ data: [], error: null });
+  const broadLexicalPromise = broadQuestion
+    ? Promise.all(parameters.filter((parameter) => (parameter.parameter_fields || []).length > 0).slice(0, 16).map(async (parameter) => {
+        const generic = new Set(["role", "person", "figure", "research", "source", "text", "known", "when", "king", "sage", "rishi"]);
+        const hints = (parameter.routing_hints || []).map(normalizeForMatch)
+          .filter((hint) => hint.length >= 4 && !generic.has(hint) && !hint.includes(" ")).slice(0, 6);
+        const query = hints.length ? hints.join(" OR ") : aliases.slice(0, 2).join(" OR ");
+        const result = await supabaseAdmin.rpc("search_source_chunks_lexical", {
+          query_text: query,
+          personality_uuid: personalityId,
+          parameter_field_uuids: (parameter.parameter_fields || []).map((field) => field.id),
+          textual_layers: null,
+          max_results: 4,
+        });
+        return { parameter, result };
+      }))
+    : Promise.resolve([]);
   const claimsPromise = supabaseAdmin
     .from("claims")
     .select(`
@@ -277,8 +308,8 @@ export async function retrieveEvidence(
     const start = performance.now();
     try { return await query; } finally { latenciesMs[name] = Math.round(performance.now() - start); }
   };
-  const [lexicalResult, claimsResult, inventoryResult, liveSourceCountResult, eventsResult, relationshipsResult] = await Promise.all([
-    timed<{ data: unknown; error: { message: string } | null }>("lexical", lexicalPromise), timed("claims", claimsPromise), timed("inventory", inventoryPromise), timed("sourceRegistry", liveSourceCountPromise), timed("events", eventsPromise), timed("relationships", relationshipsPromise),
+  const [lexicalResult, broadLexicalResults, claimsResult, inventoryResult, liveSourceCountResult, eventsResult, relationshipsResult] = await Promise.all([
+    timed<{ data: unknown; error: { message: string } | null }>("lexical", lexicalPromise), timed("broadLexical", broadLexicalPromise), timed("claims", claimsPromise), timed("inventory", inventoryPromise), timed("sourceRegistry", liveSourceCountPromise), timed("events", eventsPromise), timed("relationships", relationshipsPromise),
   ]);
   stopLexical();
   const lexicalError = lexicalResult.error?.message || null;
@@ -293,7 +324,13 @@ export async function retrieveEvidence(
     try { return Boolean(selectSourceAuthorization(item.sourceUrl, approvedLiveRules, "fetch", true)); }
     catch { return false; }
   };
-  const lexical = ((lexicalError ? [] : lexicalResult.data || []) as Array<Record<string, unknown>>).map((row) => passageFromRpc(row, "lexical", personalityId, configuration.canonicalName)).filter(isFresh);
+  const lexical = [
+    ...((lexicalError ? [] : lexicalResult.data || []) as Array<Record<string, unknown>>).map((row) => passageFromRpc(row, "lexical", personalityId, configuration.canonicalName)),
+    ...broadLexicalResults.flatMap(({ parameter, result }) => result.error ? [] : ((result.data || []) as Array<Record<string, unknown>>).map((row) => ({
+      ...passageFromRpc(row, "lexical", personalityId, configuration.canonicalName),
+      parameterCodes: [parameter.code], parameterNames: [parameter.name],
+    }))),
+  ].filter(isFresh);
   const approvedClaimRows = (claimRetrievalError ? [] : claimsResult.data || []) as Array<Record<string, unknown>>;
   const claims = rankApprovedClaims(question, approvedClaimRows, { personalityAliases: aliases, termAliases: configuration.termAliases, personalityId, personalityName: configuration.canonicalName });
   const inventory = inventoryResult.data && typeof inventoryResult.data === "object"
@@ -366,8 +403,9 @@ export async function retrieveEvidence(
   latenciesMs.merge = stopMerge();
   logStage("MERGE", { unique: merged.length, ms: latenciesMs.merge });
   const stopRerank = stageTimer("RERANK");
-  const rerankedCandidates = await rerankEvidence(question, merged, broadQuestion ? 24 : 16, { personalityAliases: aliases, termAliases: configuration.termAliases });
-  const reranked = broadQuestion ? diversifyBroadEvidence(rerankedCandidates, 15) : rerankedCandidates;
+  const reranked = broadQuestion
+    ? selectBroadEvidence(merged, 20, aliases)
+    : await rerankEvidence(question, merged, 16, { personalityAliases: aliases, termAliases: configuration.termAliases });
   latenciesMs.rerank = stopRerank();
   logStage("RERANK", { selected: reranked.length, ms: latenciesMs.rerank });
 
@@ -377,9 +415,21 @@ export async function retrieveEvidence(
     personalityAliases: aliases,
     termAliases: configuration.termAliases,
     parameters: selectedParameters.map((parameter) => ({ code: parameter.code, name: parameter.name })),
+    allParameters: parameters.map((parameter) => ({ code: parameter.code, name: parameter.name })),
     parameterFieldIds: fields.map((field) => field.id),
     evidence: reranked,
     debug: {
+      questionScope: classifyQuestionScope(question),
+      parametersRepresented: [...new Set(reranked.flatMap((item) => item.kind === "claim" ? [item.parameterCode].filter((code): code is string => Boolean(code)) : item.parameterCodes || []))],
+      retrievedClaimCount: reranked.filter((item) => item.kind === "claim").length,
+      retrievedChunkCount: reranked.filter((item) => item.kind === "passage").length,
+      sourcesRepresented: [...new Set(reranked.map((item) => item.sourceTitle).filter(Boolean))] as string[],
+      sourceTypesRepresented: [...new Set(reranked.map((item) => item.sourceType).filter(Boolean))] as string[],
+      evidenceTypesRepresented: [...new Set(reranked.map((item) => item.kind === "claim" ? item.evidenceType : "source_passage"))],
+      braveTriggered: false,
+      braveQueries: [],
+      newSourcesFetched: 0,
+      geminiCalls: 0,
       executionMode: "FAST",
       routingStrategy: selectedCodes.length > 0 ? "deterministic" : "broad",
       selectedPersonality: configuration.canonicalName,

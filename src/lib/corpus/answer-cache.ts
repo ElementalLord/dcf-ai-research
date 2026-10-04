@@ -3,6 +3,8 @@ import { createHash } from "node:crypto";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import type { Citation, RetrievedEvidence } from "./types";
 import { validateAnswerCitations } from "./synthesis-provider";
+import { SYNTHESIS_PROMPT_VERSION } from "./synthesis-prompt";
+import { GENERATION_MODEL } from "./gemini";
 const hash = (value: unknown) => createHash("sha256").update(JSON.stringify(value)).digest("hex");
 export function normalizeAnswerQuestion(question: string) { return question.normalize("NFKC").toLowerCase().trim().replace(/[?!]+$/g, "").trim().replace(/\s+/g, " "); }
 export function answerCacheIdentity(scope: string[], question: string, policy: string, evidence: RetrievedEvidence[], citations: Citation[]) {
@@ -10,7 +12,8 @@ export function answerCacheIdentity(scope: string[], question: string, policy: s
   // provenance and citation metadata are part of the signature, not just evidence IDs.
   const evidenceSignature = hash({ evidence, citations });
   const normalizedQuestion = normalizeAnswerQuestion(question);
-  const key = hash({ version: 1, scope: [...scope].sort(), normalizedQuestion, policy, evidenceSignature });
+  const synthesisMode = process.env.SYNTHESIS_PROVIDER || process.env.AI_SYNTHESIS_MODE || (process.env.GEMINI_API_KEY ? "gemini" : "local");
+  const key = hash({ version: SYNTHESIS_PROMPT_VERSION, synthesisMode: synthesisMode === "gemini" ? undefined : synthesisMode, model: GENERATION_MODEL, scope: [...scope].sort(), normalizedQuestion, policy, evidenceSignature });
   return { key, evidenceSignature, normalizedQuestion };
 }
 export type CachedAnswer = { answer: string; provider: string; model: string | null };

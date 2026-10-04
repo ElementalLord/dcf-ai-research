@@ -26,6 +26,13 @@ export function reciprocalRankFusion(
       const key = item.kind === "passage" ? `passage:${item.chunkId}` : `claim:${item.claimId}`;
       const existing = scores.get(key) || { item, score: 0 };
       existing.score += 1 / (constant + index + 1);
+      if (existing.item.kind === "passage" && item.kind === "passage") {
+        existing.item = {
+          ...existing.item,
+          parameterCodes: [...new Set([...(existing.item.parameterCodes || []), ...(item.parameterCodes || [])])],
+          parameterNames: [...new Set([...(existing.item.parameterNames || []), ...(item.parameterNames || [])])],
+        };
+      }
       scores.set(key, existing);
     });
   }

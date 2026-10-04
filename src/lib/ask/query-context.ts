@@ -1,4 +1,5 @@
 import { isBroadSynthesisQuestion, isSubjectiveSuperlativeQuestion } from "@/lib/corpus/routing";
+import { classifyQuestionScope, type QuestionScope } from "./question-scope";
 
 export const MAX_CONVERSATION_QUESTIONS = 4;
 
@@ -13,6 +14,7 @@ export type ResolvedQuestionContext = {
   subjects: string[];
   broadSynthesis: boolean;
   subjectiveSuperlative: boolean;
+  scope: QuestionScope;
 };
 
 const QUESTION_WORDS = new Set([
@@ -103,5 +105,6 @@ export function resolveQuestionContext(
     subjects: unique([...selected, ...recentNames.slice(0, 1)]),
     broadSynthesis: isBroadSynthesisQuestion(resolvedQuestion),
     subjectiveSuperlative: isSubjectiveSuperlativeQuestion(resolvedQuestion),
+    scope: classifyQuestionScope(resolvedQuestion),
   };
 }

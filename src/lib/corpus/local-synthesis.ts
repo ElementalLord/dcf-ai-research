@@ -1,10 +1,11 @@
 import type { ResolvedQuestionContext } from "@/lib/ask/query-context";
+import type { QuestionScope } from "@/lib/ask/question-scope";
 import type { Citation, RetrievedEvidence } from "./types";
 import { normalizeWhitespace, truncateText } from "./text";
 
 type EvidenceWithCitation = { item: RetrievedEvidence; citation: Citation };
 
-export function aiSynthesisEnabled(value = process.env.SYNTHESIS_PROVIDER || process.env.AI_SYNTHESIS_MODE): boolean {
+export function aiSynthesisEnabled(value = process.env.SYNTHESIS_PROVIDER || process.env.AI_SYNTHESIS_MODE || (process.env.GEMINI_API_KEY ? "gemini" : "local")): boolean {
   return value === "gemini";
 }
 
@@ -147,22 +148,33 @@ export function synthesizeFromLocalEvidence(
 }
 
 /** Verbatim excerpts: no connective factual assertions or claim paraphrasing. */
-export function renderExtractiveEvidence(selected: RetrievedEvidence[], citations: Citation[], broad: boolean): string {
+export function renderExtractiveEvidence(selected: RetrievedEvidence[], citations: Citation[], broad: boolean, scope?: QuestionScope): string {
   const groups = new Map<string, string[]>();
   const seen = new Set<string>();
   const entries = selected.map((item, index) => ({ item, citation: citations[index] })).filter((entry) => entry.citation);
-  if (broad) entries.sort((a, b) => profileScore(b, b.item.personalityName || "") - profileScore(a, a.item.personalityName || ""));
+  if (broad) {
+    const priority = scope === "BROAD_SIGNIFICANCE"
+      ? ["textual_contribution", "role", "tapas_sadhana", "social_role", "philosophy", "historical_context", "parampara"]
+      : ["role", "textual_contribution", "tapas_sadhana", "social_role", "historical_context", "parampara", "philosophy"];
+    const rank = (entry: EvidenceWithCitation) => {
+      const codes = entry.item.kind === "claim" ? [entry.item.parameterCode] : entry.item.parameterCodes || [];
+      const position = Math.min(...codes.map((code) => code ? priority.indexOf(code) : -1).filter((index) => index >= 0), 99);
+      return position * 100 - profileScore(entry, entry.item.personalityName || "");
+    };
+    entries.sort((a, b) => rank(a) - rank(b));
+  }
   for (const { item, citation } of entries) {
     const normalized = normalizeWhitespace(item.text);
     if (!citation || seen.has(normalized) || isFrameworkRecord(item)) continue;
     seen.add(normalized);
     const group = broad ? (item.kind === "claim" ? item.parameterName || item.fieldLabel || "Role and context" : item.textualLayer || "Source passages") : "Evidence";
-    if (broad && (groups.get(group)?.length || 0) >= 1) continue;
+    if (broad && (groups.get(group)?.length || 0) >= (/role|textual/i.test(group) ? 2 : 1)) continue;
     if (broad && !groups.has(group) && groups.size >= 6) continue;
     const label = item.kind === "claim" ? `Approved claim · ${item.evidenceType}` : "Approved source passage";
     const source = [item.sourceTitle || "Approved claim", item.pageOrSection, item.textualLayer, item.sourceType].filter(Boolean).join(" · ");
     const excerpt = truncateText(normalized, 500);
     groups.set(group, [...(groups.get(group) || []), `- ${excerpt} [${citation.id}]\n\n${label} · ${source}`]);
+    if (broad && [...groups.values()].flat().length >= 8) break;
     if (!broad && [...groups.values()].flat().length >= 5) break;
   }
   return `### Relevant verified evidence\n\n${[...groups].map(([group, entries]) => `${broad ? `### ${group}\n\n` : ""}${entries.join("\n\n")}`).join("\n\n")}`;

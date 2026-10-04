@@ -51,6 +51,8 @@ export type RetrievedPassage = {
   sourceUrl: string | null;
   sourceType: string | null;
   sourceStatus: string;
+  parameterCodes?: string[];
+  parameterNames?: string[];
   personalityId?: string;
   personalityName?: string;
   origin?: "permanent" | "live_cache";
@@ -74,6 +76,7 @@ export type RetrievedClaim = {
   personalityId?: string;
   personalityName?: string;
   parameterName: string | null;
+  parameterCode?: string | null;
   fieldLabel: string | null;
   sourceTitle: string | null;
   sourceAuthor: string | null;
@@ -111,6 +114,23 @@ export type Citation = {
 };
 
 export type RetrievalDebug = {
+  questionScope?: string;
+  parametersRepresented?: string[];
+  retrievedClaimCount?: number;
+  retrievedChunkCount?: number;
+  sourcesRepresented?: string[];
+  sourceTypesRepresented?: string[];
+  evidenceTypesRepresented?: string[];
+  coverageStatus?: string;
+  answerable?: boolean;
+  missingEvidenceDimensions?: string[];
+  braveTriggered?: boolean;
+  braveQueries?: string[];
+  newSourcesFetched?: number;
+  geminiCalls?: number;
+  synthesisModel?: string | null;
+  synthesisPromptVersion?: string;
+  unresolvedEvidenceGap?: boolean;
   executionMode: "FAST" | "EXPANDED" | "RESEARCH";
   routingStrategy: "deterministic" | "broad" | "model";
   selectedPersonality: string;
