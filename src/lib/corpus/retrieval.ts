@@ -1,5 +1,8 @@
+import type { PersonalityConfiguration } from "@/lib/corpus/personality-config";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { CorpusError } from "./errors";
+import { selectSourceAuthorization, type SourceAccessRule } from "@/lib/live-research/source-policy";
+import { classifyProviderError } from "./provider-health";
 import { embedTexts } from "./embeddings";
 import { dedupeEvidence, reciprocalRankFusion } from "./dedupe";
 import { isBroadSynthesisQuestion, lexicalSearchExpression, routeParameterCodes } from "./routing";
@@ -72,15 +75,19 @@ export function rankApprovedClaims(
 ): RetrievedClaim[] {
   const terms = questionTerms(question, options.personalityAliases, options.termAliases);
   const broad = isBroadProfileQuestion(question, terms);
-  const stem = (term: string) => term === "taught" ? "teach" : term.replace(/(ing|ers?|ed)$/i, "");
+  const stem = (term: string) => term === "taught" ? "teach" : term === "took" ? "take" : term.replace(/(ing|ers?|ed)$/i, "").replace(/(?<=.{4})s$/, "");
   const ranked = rows
+    .filter((row) => {
+      const links = (row.claim_sources as Array<Record<string, unknown>> | null) || [];
+      return !links.length || links.some((link) => unwrap<Record<string, unknown>>(link.sources as Record<string, unknown> | null)?.source_status === "approved");
+    })
     .map((row) => {
       const field = unwrap(row.parameter_fields as Record<string, unknown> | Array<Record<string, unknown>> | null);
       const parameter = unwrap(field?.parameters as Record<string, unknown> | Array<Record<string, unknown>> | null);
       const links = (row.claim_sources as Array<Record<string, unknown>> | null) || [];
       const link = links.find((candidate) => {
         const source = unwrap(candidate.sources as Record<string, unknown> | Array<Record<string, unknown>> | null);
-        return source?.source_status !== "rejected";
+        return source?.source_status === "approved";
       }) || links[0];
       const source = unwrap(link?.sources as Record<string, unknown> | Array<Record<string, unknown>> | null);
       const chunkLink = ((row.claim_chunks as Array<Record<string, unknown>> | null) || [])[0];
@@ -108,6 +115,7 @@ export function rankApprovedClaims(
           certainty: String(row.certainty || "unknown"),
           approvalOrigin: String(row.approval_origin || "imported_existing"),
           evidenceType: String(row.evidence_type || "uncertain"),
+          provenanceSignature: JSON.stringify({ reviewStatus: row.review_status, sources: links.map((candidate) => candidate.sources), support: row.claim_chunks }),
           personalityId: options.personalityId,
           personalityName: options.personalityName,
           parameterName: parameter?.name ? String(parameter.name) : null,
@@ -179,7 +187,7 @@ function passageFromRpc(row: Record<string, unknown>, kind: "lexical" | "semanti
 export async function retrieveEvidence(
   question: string,
   personalityId: string,
-  options: { additionalPersonalityAliases?: string[] } = {},
+  options: { additionalPersonalityAliases?: string[]; configuration?: PersonalityConfiguration } = {},
 ): Promise<{
   personality: string;
   personalityId: string;
@@ -192,7 +200,7 @@ export async function retrieveEvidence(
 }> {
   const latenciesMs: Record<string, number> = {};
   const stopRoute = stageTimer("ROUTING");
-  const configuration = await loadPersonalityConfiguration(personalityId);
+  const configuration = options.configuration || await loadPersonalityConfiguration(personalityId);
   const aliases = [...new Set([
     ...normalizedAliases(configuration.canonicalName, configuration.aliases),
     ...(options.additionalPersonalityAliases || []).map(normalizeForMatch).filter(Boolean),
@@ -250,23 +258,41 @@ export async function retrieveEvidence(
     .eq("review_status", "approved")
     .in("approval_origin", eligibleClaimOrigins(policyMode))
     .limit(500);
+  const chunkSelection = "id,source_id,chunk_text,section_title,page_or_section,textual_layer,is_active,metadata,sources(id,title,author,publisher_or_institution,url,source_type,source_status)";
+  const eventsPromise = supabaseAdmin.from("events")
+    .select(`id,title,summary,event_personalities!inner(personality_id),event_chunks(source_chunks(${chunkSelection}))`)
+    .eq("review_status", "approved").eq("event_personalities.personality_id", personalityId).limit(40);
+  const relationshipsPromise = supabaseAdmin.from("relationships")
+    .select(`id,object_name,relationship_type,description,relationship_chunks(source_chunks(${chunkSelection}))`)
+    .eq("review_status", "approved").or(`subject_personality_id.eq.${personalityId},object_personality_id.eq.${personalityId}`).limit(40);
   const inventoryPromise = supabaseAdmin.rpc("get_retrieval_inventory", { personality_uuid: personalityId });
   const liveSourceCountPromise = supabaseAdmin
     .from("approved_source_access")
-    .select("id", { count: "exact", head: true })
+    .select("id,display_name,domain,scope_type,allowed_path_prefix,exact_url,include_subdomains,allow_live_search,allow_live_fetch,allow_ingestion,evidence_use_status,priority,default_textual_layer,default_source_type,cache_ttl_hours,is_active", { count: "exact" })
     .eq("is_active", true)
     .eq("allow_live_fetch", true)
     .eq("evidence_use_status", "approved");
 
-  const [lexicalResult, claimsResult, inventoryResult, liveSourceCountResult] = await Promise.all([
-    lexicalPromise, claimsPromise, inventoryPromise, liveSourceCountPromise,
+  const timed = async <T>(name: string, query: PromiseLike<T>): Promise<T> => {
+    const start = performance.now();
+    try { return await query; } finally { latenciesMs[name] = Math.round(performance.now() - start); }
+  };
+  const [lexicalResult, claimsResult, inventoryResult, liveSourceCountResult, eventsResult, relationshipsResult] = await Promise.all([
+    timed<{ data: unknown; error: { message: string } | null }>("lexical", lexicalPromise), timed("claims", claimsPromise), timed("inventory", inventoryPromise), timed("sourceRegistry", liveSourceCountPromise), timed("events", eventsPromise), timed("relationships", relationshipsPromise),
   ]);
-  latenciesMs.lexical = stopLexical();
+  stopLexical();
   const lexicalError = lexicalResult.error?.message || null;
   const claimRetrievalError = claimsResult.error?.message || null;
   if (inventoryResult.error) console.warn("Retrieval inventory unavailable:", inventoryResult.error.message);
   if (liveSourceCountResult.error) console.warn("Approved-source count unavailable:", liveSourceCountResult.error.message);
-  const isFresh = (item: RetrievedPassage) => item.origin !== "live_cache" || !item.cacheExpiresAt || new Date(item.cacheExpiresAt) > new Date();
+  const approvedLiveRules = (liveSourceCountResult.error ? [] : liveSourceCountResult.data || []) as SourceAccessRule[];
+  const isFresh = (item: RetrievedPassage) => {
+    if (item.origin !== "live_cache") return true;
+    if (item.cacheExpiresAt && new Date(item.cacheExpiresAt) <= new Date()) return false;
+    if (!item.sourceUrl) return false;
+    try { return Boolean(selectSourceAuthorization(item.sourceUrl, approvedLiveRules, "fetch", true)); }
+    catch { return false; }
+  };
   const lexical = ((lexicalError ? [] : lexicalResult.data || []) as Array<Record<string, unknown>>).map((row) => passageFromRpc(row, "lexical", personalityId, configuration.canonicalName)).filter(isFresh);
   const approvedClaimRows = (claimRetrievalError ? [] : claimsResult.data || []) as Array<Record<string, unknown>>;
   const claims = rankApprovedClaims(question, approvedClaimRows, { personalityAliases: aliases, termAliases: configuration.termAliases, personalityId, personalityName: configuration.canonicalName });
@@ -287,14 +313,9 @@ export async function retrieveEvidence(
   } else {
     queryEmbeddingRequested = true;
     const embeddingStarted = performance.now();
-    const embedding = await Promise.race([
-      embedTexts([question])
-        .then((vectors) => ({ vector: vectors[0] || null, reason: null as string | null }))
-        .catch((error: unknown) => ({ vector: null, reason: `query_embedding_failed: ${error instanceof Error ? error.message : "Embedding unavailable."}` })),
-      new Promise<{ vector: null; reason: string }>((resolve) => {
-        setTimeout(() => resolve({ vector: null, reason: "query_embedding_timeout" }), 4_000);
-      }),
-    ]);
+    const embedding = await embedTexts([question])
+      .then((vectors) => ({ vector: vectors[0] || null, reason: null as string | null }))
+      .catch((error: unknown) => ({ vector: null, reason: `query_embedding_failed: ${classifyProviderError(error)}` }));
     latenciesMs.semantic = Math.round(performance.now() - embeddingStarted);
     semanticFallbackReason = embedding.reason;
     if (embedding.vector) {
@@ -317,8 +338,31 @@ export async function retrieveEvidence(
   logStage("LEXICAL_SEARCH", { results: lexical.length, ms: latenciesMs.lexical });
   logStage("VECTOR_SEARCH", { results: semantic.length, ms: latenciesMs.semantic, fallback: Boolean(semanticFallbackReason) });
 
+  // Approved structured records contribute only their active approved source passages.
+  // Unreviewed event/relationship descriptions never become answer evidence.
+  const structuredPassages: RetrievedPassage[] = [];
+  for (const [result, linkName] of [[eventsResult, "event_chunks"], [relationshipsResult, "relationship_chunks"]] as const) {
+    if (result.error) continue;
+    for (const record of (result.data || []) as unknown as Array<Record<string, unknown>>) {
+      const links = record[linkName] as Array<Record<string, unknown>> || [];
+      for (const link of links) {
+        const chunk = unwrap<Record<string, unknown>>(link.source_chunks as Record<string, unknown> | null);
+        const source = unwrap<Record<string, unknown>>(chunk?.sources as Record<string, unknown> | null);
+        if (!chunk?.is_active || source?.source_status !== "approved") continue;
+        const text = String(chunk.chunk_text || "");
+        const terms = questionTerms(question, aliases, configuration.termAliases);
+        if (!broadQuestion && ![...terms].some((term) => normalizeForMatch(text).split(" ").includes(term))) continue;
+        const passage = passageFromRpc({
+          ...chunk, chunk_id: chunk.id, source_title: source.title, source_author: source.author,
+          source_institution: source.publisher_or_institution, source_url: source.url,
+          source_type: source.source_type, source_status: source.source_status, lexical_score: 1,
+        }, "lexical", personalityId, configuration.canonicalName);
+        if (isFresh(passage)) structuredPassages.push(passage);
+      }
+    }
+  }
   const stopMerge = stageTimer("MERGE");
-  const merged = dedupeEvidence(reciprocalRankFusion([claims, lexical, semantic]));
+  const merged = dedupeEvidence(reciprocalRankFusion([claims, lexical, semantic, structuredPassages]));
   latenciesMs.merge = stopMerge();
   logStage("MERGE", { unique: merged.length, ms: latenciesMs.merge });
   const stopRerank = stageTimer("RERANK");

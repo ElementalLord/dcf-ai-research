@@ -67,6 +67,14 @@ describe("grounded Ask presentation", () => {
     });
   });
 
+  it("renders grouped model citations as individually inspectable source tokens", () => {
+    expect(inlineAnswerParts("Grounded claim [C1, C4; S2].").filter((part) => part.type === "citation")).toEqual([
+      { type: "citation", value: "[C1]", citationId: "C1" },
+      { type: "citation", value: "[C4]", citationId: "C4" },
+      { type: "citation", value: "[S2]", citationId: "S2" },
+    ]);
+  });
+
   it("groups duplicate citations by source and labels supported source types", () => {
     const second = { ...citation, id: "S2", pageOrSection: "3.53" };
     expect(groupCitations([citation, second])).toHaveLength(1);

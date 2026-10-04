@@ -39,10 +39,14 @@ export type CitationGroup = {
 export function inlineAnswerParts(value: string): InlineAnswerPart[] {
   const parts: InlineAnswerPart[] = [];
   let offset = 0;
-  for (const match of value.matchAll(/\[([CS]\d+)\]/g)) {
+  for (const match of value.matchAll(/\[([CS]\d+(?:\s*[,;]\s*[CS]\d+)*)\]/g)) {
     const index = match.index ?? 0;
     if (index > offset) parts.push({ type: "text", value: value.slice(offset, index) });
-    parts.push({ type: "citation", value: match[0], citationId: match[1] });
+    const ids = match[1].match(/[CS]\d+/g) || [];
+    for (let index = 0; index < ids.length; index += 1) {
+      if (index > 0) parts.push({ type: "text", value: " " });
+      parts.push({ type: "citation", value: `[${ids[index]}]`, citationId: ids[index] });
+    }
     offset = index + match[0].length;
   }
   if (offset < value.length) parts.push({ type: "text", value: value.slice(offset) });

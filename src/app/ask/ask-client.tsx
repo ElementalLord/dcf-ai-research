@@ -311,7 +311,7 @@ export default function AskClient({ personalities, loadError }: AskClientProps) 
         {result && (
           <article className="mx-auto mt-12 max-w-3xl border-t border-stone-300 pt-9" aria-labelledby="answer-heading">
             {turns.length > 1 && <details className="mb-7 text-sm text-stone-500"><summary className="cursor-pointer font-medium hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700">Earlier in this conversation ({turns.length - 1})</summary><ol className="mt-3 space-y-2 border-l border-stone-300 pl-4">{turns.slice(0, -1).map((turn, index) => <li key={`${turn.question}-${index}`}>{turn.question}</li>)}</ol></details>}
-            <div className="flex flex-wrap items-center gap-2"><span className="source-label bg-slate-900! text-white!">{result.personality}</span>{result.status === "local_synthesis" && <span className="source-label">From verified sources</span>}{result.status === "extractive_fallback" && <span className="source-label">Verified evidence view</span>}</div>
+            <div className="flex flex-wrap items-center gap-2"><span className="source-label bg-slate-900! text-white!">{result.personality}</span>{result.status === "complete" && <span className="source-label">AI-generated synthesis</span>}{result.status === "extractive_fallback" && <span className="source-label">Verified evidence view</span>}</div>
             <p className="eyebrow mt-7">Question</p>
             <h2 id="answer-heading" className="mt-2 font-serif text-2xl font-semibold leading-9 text-slate-950 sm:text-3xl">{result.question}</h2>
             <p className="eyebrow mt-8">Answer</p>
@@ -325,6 +325,7 @@ export default function AskClient({ personalities, loadError }: AskClientProps) 
               <div className="mt-3 flex flex-col items-start gap-2">{followUpQuestions(result.personality).map((suggestion) => <button key={suggestion} type="button" onClick={() => chooseQuestion(suggestion)} className="rounded-lg px-2 py-1.5 text-left text-sm text-teal-800 transition hover:bg-teal-50 hover:text-teal-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700">{suggestion} <span aria-hidden="true">→</span></button>)}</div>
             </section>
 
+            {result.status === "extractive_fallback" && <p className="mt-4 text-sm text-stone-500">AI synthesis is unavailable. Showing relevant verified evidence.</p>}
             {result.debug && <details className="mt-10 border-t border-stone-200 pt-5"><summary className="cursor-pointer text-xs font-semibold uppercase tracking-[0.12em] text-stone-500 hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700">Developer details</summary><pre className="mt-3 max-h-80 overflow-auto rounded-lg bg-slate-950 p-4 text-xs leading-5 text-slate-200">{JSON.stringify(result.debug, null, 2)}</pre></details>}
           </article>
         )}

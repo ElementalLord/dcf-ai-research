@@ -1,3 +1,5 @@
+import { checkpointedAi } from "./ai-checkpoints";
+import { GENERATION_MODEL } from "./gemini";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { CorpusError } from "./errors";
 import { generateText, parseGeminiJson } from "./gemini";
@@ -53,7 +55,7 @@ ${chunks.map((chunk) => `CHUNK ${chunk.id}\n${truncateText(chunk.chunk_text, 120
     }));
 }
 
-export async function tagSourceChunks(sourceId: string, useAi = true): Promise<{
+export async function tagSourceChunks(sourceId: string, useAi = false): Promise<{
   personalityTags: number;
   parameterTags: number;
   aiClassified: number;
@@ -112,6 +114,14 @@ export async function tagSourceChunks(sourceId: string, useAi = true): Promise<{
     }
   }
 
+  if (personalityRows.length) {
+    const result = await supabaseAdmin.from("chunk_personalities").upsert(personalityRows, { onConflict: "chunk_id,personality_id" });
+    if (result.error) throw new Error("Personality tags could not be saved.");
+  }
+  if (fieldRows.length) {
+    const result = await supabaseAdmin.from("chunk_parameter_fields").upsert(fieldRows, { onConflict: "chunk_id,parameter_field_id" });
+    if (result.error) throw new Error("Parameter tags could not be saved.");
+  }
   let aiClassified = 0;
   if (useAi && needsAi.length > 0) {
     const groups = new Map<string, typeof needsAi>();
@@ -130,27 +140,27 @@ export async function tagSourceChunks(sourceId: string, useAi = true): Promise<{
         return parameter?.code;
       }).filter((code): code is string => Boolean(code)))];
       for (let index = 0; index < group.length; index += 8) {
-        const classified = await aiClassify(group.slice(index, index + 8), codes);
-        for (const item of classified) {
-          aiClassified += 1;
-          for (const field of fields) {
-            const parameter = Array.isArray(field.parameters) ? field.parameters[0] : field.parameters;
-            if (parameter && item.codes.includes(parameter.code)) {
-              fieldRows.push({ chunk_id: item.chunkId, parameter_field_id: field.id, confidence: item.confidence, tagging_method: "ai" });
+        const batch = group.slice(index, index + 8);
+        await checkpointedAi("parameter-tags", { batch, codes, model: GENERATION_MODEL }, () => aiClassify(batch, codes), async (classified) => {
+          const batchRows: Array<Record<string, unknown>> = [];
+          for (const item of classified) {
+            aiClassified += 1;
+            for (const field of fields) {
+              const parameter = Array.isArray(field.parameters) ? field.parameters[0] : field.parameters;
+              if (parameter && item.codes.includes(parameter.code)) {
+                batchRows.push({ chunk_id: item.chunkId, parameter_field_id: field.id, confidence: item.confidence, tagging_method: "ai" });
+              }
             }
           }
-        }
+          if (batchRows.length) {
+            const result = await supabaseAdmin.from("chunk_parameter_fields").upsert(batchRows, { onConflict: "chunk_id,parameter_field_id" });
+            if (result.error) throw new Error("AI tags could not be saved.");
+            fieldRows.push(...batchRows);
+          }
+        });
       }
     }
   }
 
-  if (personalityRows.length > 0) {
-    const { error } = await supabaseAdmin.from("chunk_personalities").upsert(personalityRows, { onConflict: "chunk_id,personality_id" });
-    if (error) throw new CorpusError("TAGGING_FAILED", "Personality tags could not be saved.", 500, { cause: error });
-  }
-  if (fieldRows.length > 0) {
-    const { error } = await supabaseAdmin.from("chunk_parameter_fields").upsert(fieldRows, { onConflict: "chunk_id,parameter_field_id" });
-    if (error) throw new CorpusError("TAGGING_FAILED", "Parameter tags could not be saved.", 500, { cause: error });
-  }
   return { personalityTags: personalityRows.length, parameterTags: fieldRows.length, aiClassified };
 }

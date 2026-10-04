@@ -42,7 +42,18 @@ export function assessEvidenceSufficiency(
 ): SufficiencyDecision {
   const personalityAliases = options.personalityAliases || [];
   const termAliases = options.termAliases || [];
-  const requested = concepts(question, personalityAliases, termAliases);
+  const broadProfile = isBroadSynthesisQuestion(question);
+  if (!broadProfile && personalityAliases.length) {
+    const references = question.match(/\b\d+(?:\.\d+)+\b/g) || [];
+    evidence = evidence.filter((item) => {
+      if (item.kind === "claim" || item.origin !== "live_cache") return true;
+      const text = ` ${normalizeForMatch(`${item.text} ${item.sourceTitle || ""} ${item.kind === "passage" ? item.sectionTitle || "" : ""}`)} `;
+      const named = personalityAliases.some((alias) => text.includes(` ${normalizeForMatch(alias)} `));
+      const exactReference = references.some((reference) => `${item.pageOrSection || ""} ${item.sourceTitle || ""}`.includes(reference));
+      return named || exactReference;
+    });
+  }
+  const requested = concepts(question.replace(/^Selected (?:personality|comparison set):[^.]*\.\s*/i, ""), personalityAliases, termAliases);
   const evidenceTokens = new Set(normalizeAliases(evidence.slice(0, 12).map((item) => [
     item.text,
     item.sourceTitle,
@@ -51,7 +62,7 @@ export function assessEvidenceSufficiency(
     item.kind === "claim" ? item.parameterName : null,
     item.kind === "claim" ? item.fieldLabel : null,
   ].filter(Boolean).join(" ")).join(" "), termAliases).split(" ").filter(Boolean));
-  const stem = (term: string) => term === "taught" ? "teach" : term.replace(/(ing|ers?|ed)$/i, "");
+  const stem = (term: string) => term === "taught" || term === "teaches" ? "teach" : term === "took" || term === "takes" ? "take" : term.replace(/(ing|ers?|ed)$/i, "");
   const covered = requested.filter((term) => {
     const termStem = stem(term);
     return [...evidenceTokens].some((token) => token === term || (termStem.length >= 4 && stem(token) === termStem));
@@ -64,7 +75,6 @@ export function assessEvidenceSufficiency(
     || /\b(?:sources|accounts|traditions|texts)\b.{0,50}\bdisagree/i.test(question);
   const developmental = /development|trace|transform|evolv/i.test(question);
   const complex = comparative || developmental;
-  const broadProfile = isBroadSynthesisQuestion(question);
   const mode = complex ? "RESEARCH" : "EXPANDED";
   if (evidence.length === 0 || direct === 0) return { sufficient: false, mode, coverage, reason: "No directly relevant approved local evidence." };
   if (broadProfile) {
@@ -72,7 +82,7 @@ export function assessEvidenceSufficiency(
       ? { sufficient: true, mode: "FAST", coverage: 1, reason: "A diverse approved local profile is available." }
       : { sufficient: false, mode: "EXPANDED", coverage, reason: "The broad profile needs evidence from several approved records." };
   }
-  if (coverage < 0.67) return { sufficient: false, mode, coverage, reason: "Local evidence does not cover enough requested concepts." };
+  if (coverage < 2 / 3) return { sufficient: false, mode, coverage, reason: "Local evidence does not cover enough requested concepts." };
   if (comparative && (sources.size < 2 || layers.size < 2)) {
     return { sufficient: false, mode: "RESEARCH", coverage, reason: "The comparison needs broader source or textual-layer coverage." };
   }

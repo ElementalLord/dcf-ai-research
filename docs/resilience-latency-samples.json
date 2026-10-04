@@ -1,0 +1,227 @@
+[
+  {
+    "port": 3003,
+    "question": "Who is Vishvamitra?",
+    "ms": 1628,
+    "status": "local_synthesis",
+    "generativeCalls": null,
+    "latencies": {
+      "routing": 444,
+      "lexical": 600,
+      "semantic": 0,
+      "merge": 56,
+      "rerank": 2,
+      "generation": 1
+    }
+  },
+  {
+    "port": 3003,
+    "question": "What role did Vishvamitra play in Rama's story?",
+    "ms": 5250,
+    "status": "abstained",
+    "generativeCalls": null,
+    "latencies": {
+      "routing": 400,
+      "lexical": 617,
+      "semantic": 0,
+      "merge": 9,
+      "rerank": 4,
+      "liveSearch": 170,
+      "liveFetch": 2636
+    }
+  },
+  {
+    "port": 3000,
+    "question": "Who is Vishvamitra?",
+    "ms": 997,
+    "status": "extractive_fallback",
+    "generativeCalls": 0,
+    "latencies": {
+      "routing": 125,
+      "lexical": 0,
+      "sourceRegistry": 187,
+      "relationships": 197,
+      "events": 200,
+      "inventory": 200,
+      "claims": 457,
+      "semantic": 0,
+      "merge": 1,
+      "rerank": 0,
+      "answerCache": 116,
+      "generation": 0,
+      "total": 992
+    }
+  },
+  {
+    "port": 3000,
+    "question": "What role did Vishvamitra play in Rama's story?",
+    "ms": 1136,
+    "status": "extractive_fallback",
+    "generativeCalls": 0,
+    "latencies": {
+      "routing": 125,
+      "events": 178,
+      "inventory": 178,
+      "sourceRegistry": 180,
+      "relationships": 393,
+      "claims": 518,
+      "lexical": 592,
+      "semantic": 0,
+      "merge": 8,
+      "rerank": 4,
+      "answerCache": 132,
+      "generation": 0,
+      "total": 1129
+    }
+  },
+  {
+    "port": 3003,
+    "question": "Who is Vishvamitra?",
+    "ms": 1332,
+    "status": "local_synthesis",
+    "generativeCalls": null,
+    "latencies": {
+      "routing": 610,
+      "lexical": 362,
+      "semantic": 0,
+      "merge": 70,
+      "rerank": 2,
+      "generation": 1
+    }
+  },
+  {
+    "port": 3003,
+    "question": "What role did Vishvamitra play in Rama's story?",
+    "ms": 3762,
+    "status": "abstained",
+    "generativeCalls": null,
+    "latencies": {
+      "routing": 405,
+      "lexical": 489,
+      "semantic": 0,
+      "merge": 12,
+      "rerank": 5,
+      "liveSearch": 167,
+      "liveFetch": 1381
+    }
+  },
+  {
+    "port": 3000,
+    "question": "Who is Vishvamitra?",
+    "ms": 1068,
+    "status": "extractive_fallback",
+    "generativeCalls": 0,
+    "latencies": {
+      "routing": 136,
+      "lexical": 0,
+      "relationships": 135,
+      "inventory": 138,
+      "sourceRegistry": 139,
+      "events": 142,
+      "claims": 472,
+      "semantic": 0,
+      "merge": 1,
+      "rerank": 0,
+      "answerCache": 150,
+      "generation": 1,
+      "total": 1062
+    }
+  },
+  {
+    "port": 3000,
+    "question": "What role did Vishvamitra play in Rama's story?",
+    "ms": 1076,
+    "status": "extractive_fallback",
+    "generativeCalls": 0,
+    "latencies": {
+      "routing": 133,
+      "relationships": 139,
+      "events": 150,
+      "sourceRegistry": 153,
+      "inventory": 158,
+      "lexical": 378,
+      "claims": 483,
+      "semantic": 0,
+      "merge": 9,
+      "rerank": 8,
+      "answerCache": 129,
+      "generation": 0,
+      "total": 1066
+    }
+  },
+  {
+    "port": 3003,
+    "question": "Who is Vishvamitra?",
+    "ms": 1283,
+    "status": "local_synthesis",
+    "generativeCalls": null,
+    "latencies": {
+      "routing": 426,
+      "lexical": 512,
+      "semantic": 0,
+      "merge": 67,
+      "rerank": 3,
+      "generation": 4
+    }
+  },
+  {
+    "port": 3003,
+    "question": "What role did Vishvamitra play in Rama's story?",
+    "ms": 3744,
+    "status": "abstained",
+    "generativeCalls": null,
+    "latencies": {
+      "routing": 384,
+      "lexical": 400,
+      "semantic": 0,
+      "merge": 9,
+      "rerank": 5,
+      "liveSearch": 189,
+      "liveFetch": 1460
+    }
+  },
+  {
+    "port": 3000,
+    "question": "Who is Vishvamitra?",
+    "ms": 869,
+    "status": "extractive_fallback",
+    "generativeCalls": 0,
+    "latencies": {
+      "routing": 158,
+      "lexical": 0,
+      "sourceRegistry": 138,
+      "events": 139,
+      "inventory": 142,
+      "relationships": 153,
+      "claims": 281,
+      "semantic": 0,
+      "merge": 1,
+      "rerank": 0,
+      "answerCache": 122,
+      "generation": 1,
+      "total": 863
+    }
+  },
+  {
+    "port": 3000,
+    "question": "What role did Vishvamitra play in Rama's story?",
+    "ms": 1048,
+    "status": "extractive_fallback",
+    "generativeCalls": 0,
+    "latencies": {
+      "routing": 126,
+      "events": 155,
+      "sourceRegistry": 158,
+      "inventory": 161,
+      "relationships": 179,
+      "lexical": 387,
+      "claims": 493,
+      "semantic": 0,
+      "merge": 8,
+      "rerank": 4,
+      "answerCache": 123,
+      "generation": 0,
+      "total": 1038
+    }
+  }
+]

@@ -44,3 +44,38 @@ npm run build
 ```
 
 Supabase changes are versioned under `supabase/migrations/` and are additive.
+
+### Free-tier resilient Ask
+
+Core ingestion, aliases, deterministic routing, lexical retrieval, approved live
+fetch/cache, citations and extractive answers work without AI. Existing
+`AI_SYNTHESIS_MODE=local` remains the default. Set `SYNTHESIS_PROVIDER=gemini`
+(or the compatible `AI_SYNTHESIS_MODE=gemini`) for optional grounded synthesis.
+`SYNTHESIS_MODEL` overrides `GEMINI_GENERATION_MODEL`; `SYNTHESIS_TIMEOUT_MS`
+defaults to 8000 and is bounded to 250–12000 ms. Secrets stay server-side.
+
+Set `SYNTHESIS_DISABLED=true` to simulate unavailable synthesis without removing
+keys; set `EMBEDDINGS_DISABLED=true` to test lexical-only retrieval. The normal
+Ask path makes at most one generative API attempt, with no SDK retries or
+Interactions fallback. Confirmed quota/rate/configuration/model errors open a
+60-second process-local circuit; transient/timeout errors open it for 15 seconds.
+Every request still retrieves approved evidence before checking the 24-hour
+answer cache. Only validated generated answers are cached, so local excerpts
+cannot suppress a later recovered synthesis provider. Evidence content,
+provenance, citations, personality scope and policy determine the cache key.
+
+Apply additive migrations before AI ingestion. AI tagging and proposal extraction
+checkpoint input hashes, saved model output and completion per batch/chunk.
+Embedding enrichment also checkpoints batches and skips stored vectors on resume.
+Jobs stop on provider failure and resume by re-running the same action/plan;
+completed model work is reused. Live-page fetches index text without embedding it;
+use the explicit corpus Embed action for optional enrichment. Do not run multiple
+admin jobs for the same source concurrently.
+
+Developer details show request call counts, provider/circuit state, error category,
+cache identity/hit, fallback type, evidence size, per-stage latency and aggregate
+process-local counters. Counters reset on process restart; no personal data or
+external analytics service is used. Independent claims, lexical search (including
+cached passages), approved event/relationship support, inventory and registry
+queries run concurrently. Semantic retrieval intentionally follows local results
+and only spends quota when local candidates are sparse.

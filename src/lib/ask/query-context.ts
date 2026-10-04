@@ -90,9 +90,9 @@ export function resolveQuestionContext(
     : selected.length === 1 && recentNames.length > 0
       ? [selected[0], recentNames[0]]
       : [];
-  const pluralSubject = pluralSubjects.length > 1 ? pluralSubjects.join(" and ") : null;
+  const pluralSubject = pluralSubjects.length > 1 ? pluralSubjects.join(" and ") : singularSubject;
   const rewritten = replaceReferences(question.trim(), singularSubject, pluralSubject);
-  const needsContextPrefix = rewritten === question.trim() && selected.length > 0;
+  const needsContextPrefix = rewritten === question.trim() && selected.length > 0 && !selected.some((name) => rewritten.toLowerCase().includes(name.toLowerCase()));
   const resolvedQuestion = needsContextPrefix
     ? `${selected.length === 1 ? "Selected personality" : "Selected comparison set"}: ${selected.join(" and ")}. ${rewritten}`
     : rewritten;

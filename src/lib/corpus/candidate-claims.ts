@@ -1,3 +1,5 @@
+import { checkpointedAi } from "./ai-checkpoints";
+import { GENERATION_MODEL } from "./gemini";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { CorpusError } from "./errors";
 import { generateText, parseGeminiJson } from "./gemini";
@@ -83,6 +85,17 @@ PASSAGE:
 ${truncateText(text, 12_000)}`;
 }
 
+async function loadExtractionChunks(sourceId: string) {
+  const chunks: Array<{ id: string; chunk_text: string; textual_layer: string | null }> = [];
+  for (let offset = 0; ; offset += 500) {
+    const result = await supabaseAdmin.from("source_chunks").select("id,chunk_text,textual_layer")
+      .eq("source_id", sourceId).eq("is_active", true).order("chunk_index").range(offset, offset + 499);
+    if (result.error) return { data: null, error: result.error };
+    chunks.push(...(result.data || []));
+    if ((result.data?.length || 0) < 500) return { data: chunks, error: null };
+  }
+}
+
 export async function extractCandidateProposals(input: {
   sourceId: string;
   personalityId: string;
@@ -94,13 +107,7 @@ export async function extractCandidateProposals(input: {
   const enabledProposalTypes = new Set(proposalTypes);
   const [{ data: personality, error: personalityError }, { data: chunks, error: chunksError }] = await Promise.all([
     supabaseAdmin.from("personalities").select("id, canonical_name, personality_categories(category_id, is_primary)").eq("id", input.personalityId).single(),
-    supabaseAdmin
-      .from("source_chunks")
-      .select("id, chunk_text, textual_layer")
-      .eq("source_id", input.sourceId)
-      .eq("is_active", true)
-      .order("chunk_index")
-      .limit(limit),
+    loadExtractionChunks(input.sourceId),
   ]);
   if (personalityError || chunksError) {
     throw new CorpusError("CLAIM_EXTRACTION_FAILED", "Candidate extraction inputs could not be loaded.", 500, { cause: personalityError || chunksError });
@@ -129,42 +136,47 @@ export async function extractCandidateProposals(input: {
   let eventsCreated = 0;
   let relationshipsCreated = 0;
 
+  let processedChunks = 0;
   for (const chunk of chunks || []) {
-    let payload: ExtractionPayload;
-    try {
-      const { text } = await generateText(
-        extractionPrompt(personality.canonical_name, chunk.textual_layer, [...fieldMap.keys()], chunk.id, chunk.chunk_text, proposalTypes),
-        { timeoutMs: 40_000, errorCode: "CLAIM_EXTRACTION_FAILED" },
-      );
-      payload = parseGeminiJson<ExtractionPayload>(text);
-    } catch (error) {
-      if (error instanceof CorpusError) throw error;
-      throw new CorpusError("CLAIM_EXTRACTION_FAILED", "Gemini returned invalid extraction data.", 502, { cause: error });
-    }
-
-    for (const proposal of (enabledProposalTypes.has("claims") ? payload.claims || [] : []).slice(0, 12)) {
-      const claimText = proposal.claimText?.trim();
-      const fieldId = proposal.parameterFieldCode ? fieldMap.get(proposal.parameterFieldCode) : undefined;
-      if (!claimText || !fieldId) continue;
-      const normalized = normalizedClaim(claimText);
-      if (!normalized || knownCandidateTexts.has(normalized)) {
-        duplicates += 1;
-        continue;
+    if (processedChunks >= limit) break;
+    await checkpointedAi<ExtractionPayload>("candidate-proposals", { chunkId: chunk.id, text: chunk.chunk_text, personalityId: input.personalityId, proposalTypes, model: GENERATION_MODEL }, async () => {
+      try {
+        const { text } = await generateText(
+          extractionPrompt(personality.canonical_name, chunk.textual_layer, [...fieldMap.keys()], chunk.id, chunk.chunk_text, proposalTypes),
+          { timeoutMs: 40_000, errorCode: "CLAIM_EXTRACTION_FAILED" },
+        );
+        return parseGeminiJson<ExtractionPayload>(text);
+      } catch (error) {
+        if (error instanceof CorpusError) throw error;
+        throw new CorpusError("CLAIM_EXTRACTION_FAILED", "Gemini returned invalid extraction data.", 502, { cause: error });
       }
-      const matchingClaim = knownClaims.find((claim) => claim.normalized === normalized || tokenJaccard(claim.text, claimText) >= 0.9);
-      const status = matchingClaim ? "duplicate" : "pending";
-      const { error } = await supabaseAdmin.from("candidate_claims").insert({
-        personality_id: input.personalityId,
-        parameter_field_id: fieldId,
-        source_chunk_id: chunk.id,
-        claim_text: claimText,
-        claim_kind: CLAIM_KINDS.has(proposal.claimKind || "") ? proposal.claimKind : "traditional_account",
-        certainty: CERTAINTIES.has(proposal.certainty || "") ? proposal.certainty : "unknown",
-        extraction_confidence: Math.max(0, Math.min(1, Number(proposal.confidence) || 0.5)),
-        extraction_note: proposal.note?.trim() || (matchingClaim ? "Near-duplicate of an existing curated claim." : null),
-        status,
-        duplicate_of_claim_id: matchingClaim?.id || null,
-      });
+
+    }, async (payload) => {
+      processedChunks += 1;
+      for (const proposal of (enabledProposalTypes.has("claims") ? payload.claims || [] : []).slice(0, 12)) {
+        const claimText = proposal.claimText?.trim();
+        const fieldId = proposal.parameterFieldCode ? fieldMap.get(proposal.parameterFieldCode) : undefined;
+        if (!claimText || !fieldId) continue;
+        const normalized = normalizedClaim(claimText);
+        if (!normalized || knownCandidateTexts.has(normalized)) {
+          duplicates += 1;
+          continue;
+        }
+        const matchingClaim = knownClaims.find((claim) => claim.normalized === normalized || tokenJaccard(claim.text, claimText) >= 0.9);
+        const status = matchingClaim ? "duplicate" : "pending";
+        const { error } = await supabaseAdmin.from("candidate_claims").insert({
+          personality_id: input.personalityId,
+          parameter_field_id: fieldId,
+          source_chunk_id: chunk.id,
+          claim_text: claimText,
+          claim_kind: CLAIM_KINDS.has(proposal.claimKind || "") ? proposal.claimKind : "traditional_account",
+          certainty: CERTAINTIES.has(proposal.certainty || "") ? proposal.certainty : "unknown",
+          extraction_confidence: Math.max(0, Math.min(1, Number(proposal.confidence) || 0.5)),
+          extraction_note: proposal.note?.trim() || (matchingClaim ? "Near-duplicate of an existing curated claim." : null),
+          status,
+          duplicate_of_claim_id: matchingClaim?.id || null,
+
+    });
       if (error) throw new CorpusError("CLAIM_EXTRACTION_FAILED", "A candidate claim could not be saved.", 500, { cause: error });
       knownCandidateTexts.add(normalized);
       if (matchingClaim) duplicates += 1;
@@ -227,6 +239,7 @@ export async function extractCandidateProposals(input: {
       knownRelationships.add(normalized);
       relationshipsCreated += 1;
     }
+    });
   }
 
   return {
@@ -234,7 +247,7 @@ export async function extractCandidateProposals(input: {
     duplicates,
     events: eventsCreated,
     relationships: relationshipsCreated,
-    processedChunks: chunks?.length || 0,
+    processedChunks,
   };
 }
 

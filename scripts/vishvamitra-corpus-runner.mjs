@@ -293,7 +293,7 @@ async function runBenchmark(personalityId) {
     const started = Date.now();
     try {
       const body = await api("/api/ask", { method: "POST", body: JSON.stringify({ personalityId, question }) });
-      const abstained = body.answer === ABSTENTION;
+      const abstained = body.status === "abstained" || body.answer === ABSTENTION;
       const passed = shouldAnswer ? !abstained && (body.citations?.length || 0) > 0 : abstained;
       const result = {
         category, question, shouldAnswer, passed, abstained,

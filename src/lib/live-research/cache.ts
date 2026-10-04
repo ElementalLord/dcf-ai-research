@@ -1,7 +1,6 @@
 import "server-only";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { ingestSections } from "@/lib/corpus/ingest";
-import { embedSourceChunks } from "@/lib/corpus/embeddings";
 import { extractRemoteBytes } from "@/lib/corpus/source-extract";
 import { CorpusError } from "@/lib/corpus/errors";
 import { hashText } from "@/lib/corpus/text";
@@ -180,7 +179,7 @@ export async function fetchAndCacheApprovedPage(args: {
     language: "English",
     sections: decorated,
   });
-  // Live evidence is immediately searchable lexically; embedding is best-effort and never blocks that fallback.
-  await embedSourceChunks(sourceId).catch(() => null);
+  // Live research indexes passages lexically immediately. Optional embedding enrichment
+  // is an explicit corpus action, so a fetch never consumes interactive AI quota.
   return { url: canonicalUrl, sourceId, cacheId: cache.id, cacheHit: false, chunks: ingestion.chunksActive };
 }

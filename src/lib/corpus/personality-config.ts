@@ -56,3 +56,17 @@ export function evidenceBelongsToPersonality(
 ): boolean {
   return evidencePersonalityId === requestedPersonalityId;
 }
+
+/** Rewrite known database aliases while preserving punctuation, references and quotes. */
+export function canonicalizeQuestion(value: string, aliases: TermAliasRecord[]): string {
+  const ascii = (text: string) => text.normalize("NFKD").replace(/[\u0300-\u036f]/g, "");
+  return value.split(/("[^"\n]*"|“[^”\n]*”)/g).map((segment, index) => {
+    if (index % 2) return segment;
+    let rewritten = ascii(segment);
+    for (const item of [...aliases].sort((a, b) => b.alias.length - a.alias.length)) {
+      const alias = ascii(item.alias).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      if (alias) rewritten = rewritten.replace(new RegExp(`(?<![\\p{L}\\p{N}])${alias}(?![\\p{L}\\p{N}])`, "giu"), item.canonicalTerm);
+    }
+    return rewritten;
+  }).join("");
+}

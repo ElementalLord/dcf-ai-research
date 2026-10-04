@@ -1,77 +1,29 @@
 import { GoogleGenAI } from "@google/genai";
 import { CorpusError, type CorpusErrorCode } from "./errors";
+import { boundedProviderCall, classifyProviderError, generationCircuit } from "./provider-health";
+import { recordAiCall } from "./usage";
 
-export const GENERATION_MODEL = process.env.GEMINI_GENERATION_MODEL || "gemini-3.6-flash";
-let generationUnavailableUntil = 0;
+export const GENERATION_MODEL = process.env.SYNTHESIS_MODEL || process.env.GEMINI_GENERATION_MODEL || "gemini-3.6-flash";
 
-function getClient(): GoogleGenAI {
-  if (!process.env.GEMINI_API_KEY) {
-    throw new CorpusError("GEMINI_FAILED", "GEMINI_API_KEY is not configured.", 500);
-  }
-  return new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-}
-
-export async function generateText(
-  prompt: string,
-  options: { timeoutMs?: number; errorCode?: CorpusErrorCode } = {},
-): Promise<{ text: string; interactionId: string | null }> {
-  const timeoutMs = options.timeoutMs || 45_000;
-  const errorCode = options.errorCode || "GEMINI_FAILED";
-  if (Date.now() < generationUnavailableUntil) {
-    throw new CorpusError(errorCode, "Gemini generation is temporarily unavailable.", 503);
-  }
-  const ai = getClient();
-  async function withTimeout<T>(promise: Promise<T>, duration: number): Promise<T> {
-    let timer: ReturnType<typeof setTimeout> | undefined;
-    try {
-      return await Promise.race([
-        promise,
-        new Promise<never>((_, reject) => {
-          timer = setTimeout(
-            () => reject(new CorpusError("REQUEST_TIMEOUT", "Gemini did not respond before the timeout.", 504)),
-            duration,
-          );
-        }),
-      ]);
-    } finally {
-      if (timer) clearTimeout(timer);
-    }
-  }
-
-  const isQuotaError = (error: unknown) => {
-    const detail = `${error instanceof Error ? error.message : String(error)} ${JSON.stringify(error)}`.toLowerCase();
-    return detail.includes("429") || detail.includes("resource_exhausted") || detail.includes("quota");
-  };
-  let generationError: unknown;
+export async function generateText(prompt: string, options: { timeoutMs?: number; errorCode?: CorpusErrorCode } = {}): Promise<{ text: string; interactionId: string | null }> {
+  const code = options.errorCode || "GEMINI_FAILED";
+  if (!process.env.GEMINI_API_KEY) throw new CorpusError(code, "Provider not configured.", 503);
+  if (generationCircuit.state().open) throw new CorpusError(code, "Provider cooldown active.", 503);
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  const configuredTimeout = Number(process.env.SYNTHESIS_TIMEOUT_MS || 8000);
+  const timeout = Math.max(250, Math.min(options.timeoutMs || configuredTimeout || 8000, 12000));
   try {
-    const response = await withTimeout(
-      ai.models.generateContent({ model: GENERATION_MODEL, contents: prompt }),
-      Math.min(timeoutMs, 8_000),
-    );
+    recordAiCall("generativeCalls");
+    const response = await boundedProviderCall((abortSignal) => ai.models.generateContent({
+      model: GENERATION_MODEL, contents: prompt, config: { abortSignal, httpOptions: { retryOptions: { attempts: 1 } } },
+    }), timeout);
     const text = response.text?.trim();
-    if (!text) throw new CorpusError(errorCode, "Gemini returned no text.", 502);
+    if (!text) throw new Error("Provider returned no text.");
+    generationCircuit.succeed();
     return { text, interactionId: null };
   } catch (error) {
-    generationError = error;
-    if (isQuotaError(error)) {
-      generationUnavailableUntil = Date.now() + 60_000;
-      throw new CorpusError(errorCode, "Gemini generation quota is temporarily unavailable.", 503, { cause: error });
-    }
-  }
-
-  try {
-    const response = await withTimeout(
-      ai.interactions.create({ model: GENERATION_MODEL, input: prompt }),
-      Math.min(Math.max(timeoutMs - 8_000, 5_000), 12_000),
-    );
-    const text = response.output_text?.trim();
-    if (!text) throw new CorpusError(errorCode, "Gemini returned no text.", 502);
-    return { text, interactionId: response.id || null };
-  } catch (error) {
-    generationUnavailableUntil = Date.now() + 60_000;
-    throw new CorpusError(errorCode, "Gemini generation is temporarily unavailable.", 503, {
-      cause: error || generationError,
-    });
+    generationCircuit.fail(classifyProviderError(error));
+    throw new CorpusError(code, "AI generation temporarily unavailable.", 503, { cause: error });
   }
 }
 

@@ -28,6 +28,12 @@ describe("local-first and scale policies", () => {
     expect(unsupported.mode).toBe("EXPANDED");
   });
 
+  it("does not confuse whole-book topical hits with evidence about the selected figure", () => {
+    expect(assessEvidenceSufficiency("What was Vishvamitra's height?", [{ ...passage(1, "The poet ascends to spiritual heights.", "Modern interpretation"), origin: "live_cache" }]).sufficient).toBe(false);
+    expect(assessEvidenceSufficiency("Did Vishvamitra invent algebra?", [{ ...passage(2, "Other traditions invent algebra.", "Modern interpretation"), origin: "live_cache" }]).sufficient).toBe(false);
+    expect(assessEvidenceSufficiency("Did Vishvamitra visit America?", [{ ...passage(3, "Modern readers visit America.", "Modern interpretation"), origin: "live_cache" }]).sufficient).toBe(false);
+  });
+
   it("does not mistake a Bala Kanda mention for evidence that Bala and Atibala were taught", () => {
     const decision = assessEvidenceSufficiency("Who taught Rama Bala and Atibala?", [
       passage(1, "Vishvamitra is a major character in the Bala Kanda of the Ramayana.", "EPIC"),
@@ -77,6 +83,14 @@ describe("local-first and scale policies", () => {
     expect(assessEvidenceSufficiency("What is the significance of Rigveda 3.33 in relation to Vishvamitra?", [
       passage(3, "Rigveda 3.33 contains the river dialogue associated with Vishvamitra.", "VEDIC"),
     ]).sufficient).toBe(true);
+  });
+
+  it("accepts exactly two-thirds concept coverage without rounding it below the threshold", () => {
+    const result = assessEvidenceSufficiency("Are all references to Vishvamitra about the same figure?", [
+      passage(1, "Vishvamitra is the same name across textual layers.", "Rigveda"),
+    ]);
+    expect(result.coverage).toBe(2 / 3);
+    expect(result.sufficient).toBe(true);
   });
 
   it("uses source and layer metadata for corpus-level and cross-layer questions", () => {

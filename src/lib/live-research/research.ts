@@ -1,3 +1,4 @@
+import type { PersonalityConfiguration } from "@/lib/corpus/personality-config";
 import "server-only";
 import { retrieveEvidence } from "@/lib/corpus/retrieval";
 import { logStage, stageTimer } from "@/lib/corpus/observability";
@@ -9,7 +10,7 @@ import { assessEvidenceSufficiency } from "./sufficiency";
 export async function retrieveWithApprovedResearch(
   question: string,
   personalityId: string,
-  options: { additionalPersonalityAliases?: string[] } = {},
+  options: { additionalPersonalityAliases?: string[]; configuration?: PersonalityConfiguration } = {},
 ) {
   const local = await retrieveEvidence(question, personalityId, options);
   const decision = assessEvidenceSufficiency(question, local.evidence, { personalityAliases: local.personalityAliases, termAliases: local.termAliases });

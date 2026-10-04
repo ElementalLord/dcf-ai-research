@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Who is Vishvamitra?",
+    "status": "complete",
+    "ms": 9233,
+    "citations": 12,
+    "generativeCalls": 1,
+    "embeddingCalls": 0,
+    "answerCacheHit": false,
+    "errorCategory": null
+  },
+  {
+    "question": "What role did Vishvamitra play in Rama's story?",
+    "status": "extractive_fallback",
+    "ms": 9163,
+    "citations": 15,
+    "generativeCalls": 1,
+    "embeddingCalls": 0,
+    "answerCacheHit": false,
+    "errorCategory": "TIMEOUT"
+  },
+  {
+    "question": "What was Vishvamitra's favorite food?",
+    "status": "abstained",
+    "ms": 2988,
+    "citations": 0,
+    "generativeCalls": 0,
+    "embeddingCalls": 0,
+    "answerCacheHit": false,
+    "errorCategory": "TIMEOUT"
+  },
+  {
+    "question": "who is vishvamitra",
+    "status": "complete",
+    "ms": 1143,
+    "citations": 12,
+    "generativeCalls": 0,
+    "embeddingCalls": 0,
+    "answerCacheHit": true,
+    "errorCategory": "TIMEOUT"
+  }
+]

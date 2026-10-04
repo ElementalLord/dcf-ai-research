@@ -69,6 +69,7 @@ export type RetrievedClaim = {
   claimKind: string;
   certainty: string;
   approvalOrigin: string;
+  provenanceSignature?: string;
   evidenceType: string;
   personalityId?: string;
   personalityName?: string;

@@ -4,7 +4,7 @@ import { normalizeWhitespace, truncateText } from "./text";
 
 type EvidenceWithCitation = { item: RetrievedEvidence; citation: Citation };
 
-export function aiSynthesisEnabled(value = process.env.AI_SYNTHESIS_MODE): boolean {
+export function aiSynthesisEnabled(value = process.env.SYNTHESIS_PROVIDER || process.env.AI_SYNTHESIS_MODE): boolean {
   return value === "gemini";
 }
 
@@ -144,4 +144,26 @@ export function synthesizeFromLocalEvidence(
   const [primary, ...rest] = unique.slice(0, 4);
   const supporting = rest.map((entry) => `- ${withCitation(entry, personality)}`).join("\n\n");
   return `### Short answer\n\n${withCitation(primary, personality)}${supporting ? `\n\n### Supporting context\n\n${supporting}` : ""}`;
+}
+
+/** Verbatim excerpts: no connective factual assertions or claim paraphrasing. */
+export function renderExtractiveEvidence(selected: RetrievedEvidence[], citations: Citation[], broad: boolean): string {
+  const groups = new Map<string, string[]>();
+  const seen = new Set<string>();
+  const entries = selected.map((item, index) => ({ item, citation: citations[index] })).filter((entry) => entry.citation);
+  if (broad) entries.sort((a, b) => profileScore(b, b.item.personalityName || "") - profileScore(a, a.item.personalityName || ""));
+  for (const { item, citation } of entries) {
+    const normalized = normalizeWhitespace(item.text);
+    if (!citation || seen.has(normalized) || isFrameworkRecord(item)) continue;
+    seen.add(normalized);
+    const group = broad ? (item.kind === "claim" ? item.parameterName || item.fieldLabel || "Role and context" : item.textualLayer || "Source passages") : "Evidence";
+    if (broad && (groups.get(group)?.length || 0) >= 1) continue;
+    if (broad && !groups.has(group) && groups.size >= 6) continue;
+    const label = item.kind === "claim" ? `Approved claim · ${item.evidenceType}` : "Approved source passage";
+    const source = [item.sourceTitle || "Approved claim", item.pageOrSection, item.textualLayer, item.sourceType].filter(Boolean).join(" · ");
+    const excerpt = truncateText(normalized, 500);
+    groups.set(group, [...(groups.get(group) || []), `- ${excerpt} [${citation.id}]\n\n${label} · ${source}`]);
+    if (!broad && [...groups.values()].flat().length >= 5) break;
+  }
+  return `### Relevant verified evidence\n\n${[...groups].map(([group, entries]) => `${broad ? `### ${group}\n\n` : ""}${entries.join("\n\n")}`).join("\n\n")}`;
 }

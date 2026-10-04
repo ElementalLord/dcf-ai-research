@@ -1,8 +1,8 @@
 import type { Citation, RetrievedEvidence } from "./types";
 import { truncateText } from "./text";
 
-export const DEFAULT_MAX_EVIDENCE = 16;
-export const DEFAULT_MAX_CONTEXT_CHARACTERS = 48_000;
+export const DEFAULT_MAX_EVIDENCE = 15;
+export const DEFAULT_MAX_CONTEXT_CHARACTERS = 32_000;
 
 export function buildBoundedContext(
   evidence: RetrievedEvidence[],

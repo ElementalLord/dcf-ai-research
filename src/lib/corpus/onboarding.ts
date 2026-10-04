@@ -1,5 +1,6 @@
 import "server-only";
 import { supabaseAdmin } from "@/lib/supabase-admin";
+import { generationCircuit, embeddingCircuit } from "./provider-health";
 import { CorpusError } from "./errors";
 import { extractUrl } from "./source-extract";
 import { ingestSections } from "./ingest";
@@ -62,14 +63,15 @@ export async function runPersonalityOnboarding(input: {
         results.push({ step: "ingest", sourceId: source.id, ok: false, detail: stepError instanceof Error ? stepError.message : String(stepError) });
       }
     }
-    if (plan.steps.includes("tag")) {
+    const aiPaused = () => generationCircuit.state().open || embeddingCircuit.state().open;
+    if (plan.steps.includes("tag") && !aiPaused()) {
       try {
         results.push({ step: "tag", sourceId: source.id, ok: true, detail: await tagSourceChunks(source.id, true) });
       } catch (stepError) {
         results.push({ step: "tag", sourceId: source.id, ok: false, detail: stepError instanceof Error ? stepError.message : String(stepError) });
       }
     }
-    if (plan.steps.includes("embed")) {
+    if (plan.steps.includes("embed") && !aiPaused()) {
       try {
         results.push({ step: "embed", sourceId: source.id, ok: true, detail: await embedSourceChunks(source.id) });
       } catch (stepError) {
@@ -82,7 +84,7 @@ export async function runPersonalityOnboarding(input: {
       ["propose_relationships", "relationships"],
     ] as const;
     const requestedProposals = proposalSteps.filter(([step]) => plan.steps.includes(step)).map(([, proposal]) => proposal) as ProposalType[];
-    if (requestedProposals.length > 0) {
+    if (requestedProposals.length > 0 && !aiPaused()) {
       try {
         const detail = await extractCandidateProposals({ sourceId: source.id, personalityId: input.personalityId, limit: 10, proposalTypes: requestedProposals });
         for (const [step] of proposalSteps.filter(([, proposal]) => requestedProposals.includes(proposal))) {
@@ -93,6 +95,9 @@ export async function runPersonalityOnboarding(input: {
           results.push({ step, sourceId: source.id, ok: false, detail: stepError instanceof Error ? stepError.message : String(stepError) });
         }
       }
+    }
+    if (aiPaused()) {
+      results.push({ step: "tag", sourceId: source.id, ok: false, detail: { aiPaused: true, reason: generationCircuit.state().category || embeddingCircuit.state().category, resume: "Re-run the same plan after provider cooldown; completed AI work is checkpointed." } });
     }
   }
 
