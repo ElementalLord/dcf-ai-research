@@ -4,6 +4,7 @@ import { BraveSearchProvider, WebSearchError, normalizeSearchQuery, type WebSear
 import { canonicalResearchUrl, selectSourceAuthorization, type SourceAccessRule } from "./source-policy";
 
 export type WebDiscovery = {
+  discovered: string[];
   accepted: string[];
   rejected: Array<{ url: string; reason: string }>;
   candidates: number;
@@ -43,21 +44,26 @@ export async function cachedWebSearch(query: string, provider: WebSearchProvider
 export async function discoverWebCandidates(query: string, rules: SourceAccessRule[], options: { provider?: WebSearchProvider; maxResults?: number } = {}): Promise<WebDiscovery> {
   const started = Date.now();
   const provider = options.provider || defaultProvider;
-  const empty: WebDiscovery = { accepted: [], rejected: [], candidates: 0, calls: 0, cacheHits: 0, latencyMs: 0, errorCategory: null };
+  const empty: WebDiscovery = { discovered: [], accepted: [], rejected: [], candidates: 0, calls: 0, cacheHits: 0, latencyMs: 0, errorCategory: null };
   try {
     const result = await cachedWebSearch(query, provider, options.maxResults || 10);
     const accepted = new Set<string>();
+    const discovered = new Set<string>();
     const rejected: WebDiscovery["rejected"] = [];
     for (const candidate of result.results) {
       try {
         const canonical = canonicalResearchUrl(candidate.url);
-        if (selectSourceAuthorization(canonical, rules, "search", true) && selectSourceAuthorization(canonical, rules, "fetch", true)) accepted.add(canonical);
-        else rejected.push({ url: canonical, reason: "SOURCE_NOT_APPROVED" });
+        if (new URL(canonical).protocol !== "https:") {
+          rejected.push({ url: canonical, reason: "HTTPS_REQUIRED" });
+          continue;
+        }
+        discovered.add(canonical);
+        if (selectSourceAuthorization(canonical, rules, "fetch", true)) accepted.add(canonical);
       } catch {
         rejected.push({ url: candidate.url, reason: "UNSAFE_URL" });
       }
     }
-    return { accepted: [...accepted], rejected, candidates: result.results.length, calls: result.calls, cacheHits: result.cacheHits, latencyMs: Date.now() - started, errorCategory: null };
+    return { discovered: [...discovered], accepted: [...accepted], rejected, candidates: result.results.length, calls: result.calls, cacheHits: result.cacheHits, latencyMs: Date.now() - started, errorCategory: null };
   } catch (error) {
     return { ...empty, calls: error instanceof WebSearchError && error.attempted ? 1 : 0, latencyMs: Date.now() - started, errorCategory: error instanceof WebSearchError ? error.category : "PROVIDER_ERROR" };
   }

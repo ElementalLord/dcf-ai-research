@@ -79,11 +79,12 @@ describe("Brave discovery", () => {
     expect(state.writes).toBe(1);
   });
 
-  it("rejects unauthorized candidates and never promotes snippets into evidence", async () => {
+  it("discovers unknown HTTPS candidates without promoting snippets into evidence", async () => {
     const provider = new MockWebSearchProvider([result("https://example.org/a"), result("https://attacker.test/a"), result("http://127.0.0.1/private")]);
     const found = await discoverWebCandidates("Vishvamitra", [rule], { provider });
     expect(found.accepted).toEqual(["https://example.org/a"]);
-    expect(found.rejected).toHaveLength(2);
+    expect(found.discovered).toEqual(["https://example.org/a", "https://attacker.test/a"]);
+    expect(found.rejected).toHaveLength(1);
     expect(JSON.stringify(found)).not.toContain("Untrusted answer");
     expect(() => assertRedirectApproved("https://attacker.test/redirect", [rule])).toThrow();
     expect(isPrivateIp("127.0.0.1")).toBe(true);
@@ -119,7 +120,7 @@ describe("bounded expansion planning", () => {
     expect(rankCoverageGaps(gaps)[0].code).toBe("lineage");
     const queries = buildExpansionQueries({ name: "Vishvamitra", aliases: ["Vishwamitra"], gaps, sourceTitles: ["Rigveda 3.33"], relationships: ["Vasistha"], events: ["Bala Kanda"], domains: ["example.org"] }, 6);
     expect(queries).toHaveLength(6);
-    expect(queries[0].query).toBe("Vishvamitra Lineage");
+    expect(queries[0].query).toBe("Vishvamitra Lineage primary text critical edition");
     expect(queries.some((item) => item.query.includes("Kaushika lineage") && item.fieldIds.includes("field-2"))).toBe(true);
     expect(queries.every((item) => !item.query.includes("Menaka"))).toBe(true);
     expect(buildExpansionQueries({ name: "Vishvamitra", aliases: [], gaps, sourceTitles: [], relationships: [], events: [], domains: [] }, 1)).toHaveLength(1);

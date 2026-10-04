@@ -8,8 +8,23 @@ import { loadActiveSourceRules } from "@/lib/live-research/source-registry";
 
 const MAX_PDF_BYTES = 20 * 1024 * 1024;
 
-export function sectionsFromHtml(html: string): DocumentSection[] {
+export function sectionsFromHtml(html: string, finalUrl?: string): DocumentSection[] {
   const $ = cheerio.load(html);
+  const verseRows = $("li").filter((_, element) => {
+    const ref = $(element).find("span").first().text().trim();
+    return /^\d{1,3}\.\d{1,3}$/.test(ref) && $(element).find("p[lang='sa']").length > 0;
+  });
+  if (verseRows.length >= 10) {
+    const chapter = finalUrl ? new URL(finalUrl).pathname.match(/\/(\d{1,3})\/?$/)?.[1] : null;
+    const title = $("title").first().text().trim() || null;
+    return verseRows.toArray().map((element) => {
+      const row = $(element);
+      const verse = row.find("span").first().text().trim();
+      const reference = chapter ? `${chapter}.${verse}` : verse;
+      return { title, pageOrSection: reference, text: normalizeWhitespace(row.find("p").map((_, p) => $(p).text()).get().join("\n")),
+        metadata: { verseReference: reference } };
+    }).filter((section) => section.text.length > 0);
+  }
   $("script,style,noscript,nav,footer,header,aside,form,svg,canvas,iframe").remove();
   const root = $("main,article,[role='main']").first().length
     ? $("main,article,[role='main']").first()
@@ -52,7 +67,7 @@ export async function extractRemoteBytes(
   const decoded = new TextDecoder().decode(bytes);
   const sections = contentType.includes("text/plain")
     ? [{ title: null, pageOrSection: null, text: decoded }]
-    : sectionsFromHtml(decoded);
+    : sectionsFromHtml(decoded, finalUrl);
   if (!sections.some((section) => section.text.trim())) {
     throw new CorpusError("NO_TEXT_EXTRACTED", "No useful text could be extracted from the source URL.", 422);
   }

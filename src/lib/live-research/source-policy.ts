@@ -41,6 +41,15 @@ function decodePolicyPath(pathname: string): string {
 }
 
 export function normalizeResearchUrl(rawUrl: string): URL {
+  const rawPath = rawUrl.match(/^https?:\/\/[^/?#]+([^?#]*)/i)?.[1] || "/";
+  let decodedPath = rawPath;
+  for (let pass = 0; pass < 2; pass++) {
+    try { decodedPath = decodeURIComponent(decodedPath); }
+    catch { throw new CorpusError("SOURCE_NOT_APPROVED", "The URL path contains invalid encoding.", 403); }
+  }
+  if (decodedPath.split("/").some((part) => part === "." || part === "..") || decodedPath.includes("\\")) {
+    throw new CorpusError("SOURCE_NOT_APPROVED", "The URL path contains traversal segments.", 403);
+  }
   let url: URL;
   try {
     url = new URL(rawUrl);

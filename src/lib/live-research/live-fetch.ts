@@ -4,6 +4,7 @@ import { assertSafePublicUrl } from "@/lib/corpus/security";
 import {
   assertRedirectApproved,
   assertUrlApprovedForResearch,
+  canonicalResearchUrl,
   type SourceCapability,
   type SourceAccessRule,
 } from "./source-policy";
@@ -118,4 +119,59 @@ export async function fetchApprovedResource(rawUrl: string, options: FetchOption
     };
   }
   throw new CorpusError("FETCH_FAILED", "The approved source could not be fetched.", 502);
+}
+
+/** A bounded, non-evidence read. Every redirect gets the same DNS/SSRF check as ingestion. */
+export async function fetchDiscoveryPreview(rawUrl: string, options: {
+  fetchImpl?: typeof fetch;
+  networkValidator?: (url: string) => Promise<URL>;
+} = {}): Promise<{ finalUrl: string; status: number; contentType: string; html: string }> {
+  const validate = options.networkValidator || assertSafePublicUrl;
+  let current = rawUrl;
+  for (let hop = 0; hop <= MAX_REDIRECTS; hop++) {
+    current = canonicalResearchUrl(current);
+    const normalized = new URL(current);
+    if (normalized.protocol !== "https:") throw new CorpusError("UNSAFE_URL", "Discovery verification requires HTTPS.", 403);
+    const safe = await validate(current);
+    if (safe.protocol !== "https:") throw new CorpusError("UNSAFE_URL", "Discovery verification requires HTTPS.", 403);
+    const response = await (options.fetchImpl || fetch)(safe, {
+      redirect: "manual", signal: AbortSignal.timeout(12_000),
+      headers: { Accept: "text/html,application/xhtml+xml;q=0.9", "User-Agent": "DCF-AI-Research/1.0 (+candidate-verification)" },
+    });
+    if (response.status >= 300 && response.status < 400) {
+      if (hop === MAX_REDIRECTS) throw new CorpusError("FETCH_FAILED", "Candidate redirected too many times.", 502);
+      const location = response.headers.get("location");
+      if (!location) throw new CorpusError("FETCH_FAILED", "Candidate redirect has no destination.", 502);
+      current = new URL(location, safe).toString();
+      continue;
+    }
+    if (!response.ok) return { finalUrl: safe.toString(), status: response.status, contentType: response.headers.get("content-type") || "", html: "" };
+    const contentType = (response.headers.get("content-type") || "").toLowerCase();
+    if (!/^(text\/html|application\/xhtml\+xml)(;|$)/.test(contentType)) {
+      return { finalUrl: safe.toString(), status: response.status, contentType, html: "" };
+    }
+    const limit = 256 * 1024;
+    const reader = response.body?.getReader();
+    if (!reader) return { finalUrl: safe.toString(), status: response.status, contentType, html: "" };
+    const chunks: Uint8Array[] = [];
+    let total = 0;
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      const remaining = limit - total;
+      if (value.byteLength > remaining) {
+        if (remaining > 0) chunks.push(value.subarray(0, remaining));
+        total = limit;
+        await reader.cancel();
+        break;
+      }
+      total += value.byteLength;
+      chunks.push(value);
+    }
+    const bytes = new Uint8Array(total);
+    let offset = 0;
+    for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
+    return { finalUrl: safe.toString(), status: response.status, contentType, html: new TextDecoder().decode(bytes) };
+  }
+  throw new CorpusError("FETCH_FAILED", "Candidate verification failed.", 502);
 }

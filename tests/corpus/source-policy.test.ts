@@ -68,5 +68,7 @@ describe("approved source firewall", () => {
   it("rejects unsafe schemes and user-info tricks", () => {
     expect(() => assertUrlApprovedForResearch("file:///etc/passwd", [domainRule], "fetch")).toThrow();
     expect(() => assertUrlApprovedForResearch("https://approved-source.org@attacker.com/page", [domainRule], "fetch")).toThrow();
+    expect(() => canonicalResearchUrl("https://approved-source.org/a/%252e%252e/secret")).toThrow();
+    expect(() => canonicalResearchUrl("https://approved-source.org/a/../secret")).toThrow();
   });
 });

@@ -51,6 +51,20 @@ describe("general personality research pipeline", () => {
     expect(result.disclaimer).toContain("does not establish");
   });
 
+  it("counts mirrored pages as one independent work for corroboration", () => {
+    const result = computeCorpusCoverage({
+      parameters: [{ id: "p", code: "text", name: "Text", fields: [{ id: "f", code: "verse", label: "Verse" }] }],
+      claims: [{ id: "c", parameterFieldId: "f", approved: true, hasChunkEvidence: true, sourceIds: ["a", "b"] }],
+      chunks: ["a", "b"].map((sourceId) => ({ id: sourceId, sourceId, parameterFieldIds: ["f"], embedded: false, textualLayer: "Rigveda" })),
+      sourceWorks: ["a", "b"].map((id) => ({ id, independentKey: "rigveda|griffith|1896", evidenceKind: "primary" as const })),
+      sourceCount: 2, events: 0, relationships: 0, cachedPages: 0, approvedSourceScopes: 2,
+    });
+    expect(result.overall.sources).toBe(2);
+    expect(result.overall.independentWorks).toBe(1);
+    expect(result.overall.claimsWithIndependentCorroboration).toBe(0);
+    expect(result.parameters[0].independentEvidence).toBe(false);
+  });
+
   it("keeps retrieval isolated and only merges explicitly selected personalities", () => {
     const a = passage("a", "Rishi A", 1);
     const b = passage("b", "Rishi B", 1);

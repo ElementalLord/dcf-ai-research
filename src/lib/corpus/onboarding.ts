@@ -141,9 +141,9 @@ export async function loadPersonalityCoverage(personalityId: string) {
   const configuration = await loadPersonalityConfiguration(personalityId);
   const [parametersResult, claimsResult, chunkLinksResult, sourceLinksResult, eventsResult, relationshipsResult, cacheResult, accessResult] = await Promise.all([
     supabaseAdmin.from("parameters").select("id, code, name, parameter_fields(id, code, label)").eq("category_id", configuration.categoryId).order("sort_order"),
-    supabaseAdmin.from("claims").select("id, parameter_field_id, review_status, claim_sources(source_id), claim_chunks(chunk_id)").eq("personality_id", personalityId).limit(10_000),
-    supabaseAdmin.from("chunk_personalities").select("chunk_id, source_chunks!inner(id, source_id, embedding_status, textual_layer, chunk_parameter_fields(parameter_field_id))").eq("personality_id", personalityId).limit(10_000),
-    supabaseAdmin.from("source_personalities").select("source_id, sources(id, url)").eq("personality_id", personalityId).limit(10_000),
+    supabaseAdmin.from("claims").select("id, parameter_field_id, review_status, evidence_type, claim_sources(source_id), claim_chunks(chunk_id)").eq("personality_id", personalityId).limit(10_000),
+    supabaseAdmin.from("chunk_personalities").select("chunk_id, source_chunks!inner(id, source_id, embedding_status, textual_layer, chunk_parameter_fields(parameter_field_id))").eq("personality_id", personalityId).eq("source_chunks.is_active", true).limit(10_000),
+    supabaseAdmin.from("source_personalities").select("source_id, sources(id, url, title, author, source_type, textual_layer, content_hash, metadata)").eq("personality_id", personalityId).limit(10_000),
     supabaseAdmin.from("event_personalities").select("event_id, events!inner(review_status)").eq("personality_id", personalityId).limit(10_000),
     supabaseAdmin.from("relationships").select("id, review_status").or(`subject_personality_id.eq.${personalityId},object_personality_id.eq.${personalityId}`).limit(10_000),
     supabaseAdmin.from("live_research_cache").select("id, source_id, fetch_status").eq("fetch_status", "ready").limit(10_000),
@@ -171,6 +171,7 @@ export async function loadPersonalityCoverage(personalityId: string) {
       id: claim.id,
       parameterFieldId: claim.parameter_field_id,
       approved: claim.review_status === "approved",
+      contested: claim.evidence_type === "contested",
       hasChunkEvidence: (claim.claim_chunks?.length || 0) > 0,
       sourceIds: (claim.claim_sources || []).map((link) => link.source_id),
     })),
@@ -189,6 +190,17 @@ export async function loadPersonalityCoverage(personalityId: string) {
     relationships: (relationshipsResult.data || []).length,
     cachedPages: (cacheResult.data || []).filter((row) => row.source_id && sourceIds.has(row.source_id)).length,
     approvedSourceScopes: approvedScopeIds.size,
+    sourceWorks: (sourceLinksResult.data || []).flatMap((link) => {
+      const source = Array.isArray(link.sources) ? link.sources[0] : link.sources;
+      if (!source) return [];
+      const metadata = source.metadata && typeof source.metadata === "object" ? source.metadata as Record<string, unknown> : {};
+      const titleStem = (source.title || "").replace(/\b(?:sukta|hymn|verse|chapter|sarga|page)\s+[IVXLC\d]+.*$/i, "").trim();
+      const key = String(metadata.independentWorkKey || metadata.doi || metadata.editionKey ||
+        [titleStem || source.title, source.author, source.textual_layer].filter(Boolean).join("|") || source.content_hash || source.id).toLowerCase();
+      const kind = /primary|scripture|textual|veda|ramayana/i.test(`${source.source_type || ""} ${source.textual_layer || ""}`) ? "primary"
+        : /scholar|journal|academic|article/i.test(source.source_type || "") ? "scholarly" : "other";
+      return [{ id: source.id, independentKey: key, evidenceKind: kind as "primary" | "scholarly" | "other" }];
+    }),
   });
   return { personality: { id: personalityId, name: configuration.canonicalName, categoryName: configuration.categoryName }, coverage };
 }

@@ -20,6 +20,7 @@ type CacheRow = {
   hit_count: number;
   fetch_status: string;
   content_hash: string | null;
+  metadata: Record<string, unknown> | null;
 };
 
 export type LivePageResult = {
@@ -28,13 +29,14 @@ export type LivePageResult = {
   cacheId: string;
   cacheHit: boolean;
   chunks: number;
+  primaryPassages: number;
 };
 
 async function findCache(url: string): Promise<CacheRow | null> {
   const canonical = canonicalResearchUrl(url);
   const { data, error } = await supabaseAdmin
     .from("live_research_cache")
-    .select("id, access_id, source_id, canonical_url, etag, last_modified, expires_at, hit_count, fetch_status, content_hash")
+    .select("id, access_id, source_id, canonical_url, etag, last_modified, expires_at, hit_count, fetch_status, content_hash, metadata")
     .eq("canonical_url", canonical)
     .maybeSingle();
   if (error) throw new CorpusError("DATABASE_FAILED", "The live research cache could not be read.", 500, { cause: error });
@@ -116,19 +118,20 @@ export async function fetchAndCacheApprovedPage(args: {
   const now = args.now || new Date();
   const existing = await findCache(args.url);
   const activeRule = existing ? args.rules.find((rule) => rule.id === existing.access_id && rule.is_active && rule.evidence_use_status === "approved") : null;
-  if (existing && activeRule && isFreshCacheRecord(existing, now) && existing.source_id) {
+  const needsReindex = Boolean(existing && existing.metadata?.extractorVersion !== 2);
+  if (existing && activeRule && isFreshCacheRecord(existing, now) && existing.source_id && !needsReindex) {
     await Promise.all([
       supabaseAdmin.from("live_research_cache").update({ hit_count: existing.hit_count + 1, last_accessed_at: now.toISOString() }).eq("id", existing.id),
       tagCachedSource(existing.source_id, args.personalityId, args.parameterFieldIds),
     ]);
-    return { url: existing.canonical_url, sourceId: existing.source_id, cacheId: existing.id, cacheHit: true, chunks: 0 };
+    return { url: existing.canonical_url, sourceId: existing.source_id, cacheId: existing.id, cacheHit: true, chunks: 0, primaryPassages: 0 };
   }
 
   const fetched = await fetchApprovedResource(args.url, {
     rules: args.rules,
     requireEvidenceApproval: true,
-    etag: existing?.etag,
-    lastModified: existing?.last_modified,
+    etag: needsReindex ? null : existing?.etag,
+    lastModified: needsReindex ? null : existing?.last_modified,
   });
   const expiresAt = new Date(now.getTime() + fetched.access.cache_ttl_hours * 3_600_000).toISOString();
   if (fetched.status === 304 && existing?.source_id) {
@@ -138,7 +141,7 @@ export async function fetchAndCacheApprovedPage(args: {
     }).eq("id", existing.id);
     if (error) throw error;
     await tagCachedSource(existing.source_id, args.personalityId, args.parameterFieldIds);
-    return { url: existing.canonical_url, sourceId: existing.source_id, cacheId: existing.id, cacheHit: true, chunks: 0 };
+    return { url: existing.canonical_url, sourceId: existing.source_id, cacheId: existing.id, cacheHit: true, chunks: 0, primaryPassages: 0 };
   }
   if (!fetched.bytes) throw new CorpusError("NO_TEXT_EXTRACTED", "The approved source returned no content.", 422);
 
@@ -171,13 +174,13 @@ export async function fetchAndCacheApprovedPage(args: {
     extracted_text: extractedText,
     fetch_status: "ready",
     fetch_error: null,
-    metadata: { accessDisplayName: fetched.access.display_name, discoveryProvider: args.discoveryProvider || null, duplicateOf: duplicate?.canonical_url || null },
+    metadata: { accessDisplayName: fetched.access.display_name, discoveryProvider: args.discoveryProvider || null, duplicateOf: duplicate?.canonical_url || null, extractorVersion: 2 },
   }, { onConflict: "canonical_url" }).select("id").single();
   if (cacheError) throw new CorpusError("DATABASE_FAILED", "The approved page could not be cached.", 500, { cause: cacheError });
 
-  if (duplicate || unchanged) {
+  if (duplicate || (unchanged && !needsReindex)) {
     await tagCachedSource(sourceId, args.personalityId, args.parameterFieldIds);
-    return { url: duplicate?.canonical_url || canonicalUrl, sourceId, cacheId: cache.id, cacheHit: true, chunks: 0 };
+    return { url: duplicate?.canonical_url || canonicalUrl, sourceId, cacheId: cache.id, cacheHit: true, chunks: 0, primaryPassages: 0 };
   }
 
   const decorated: DocumentSection[] = sections.map((section) => ({
@@ -194,5 +197,6 @@ export async function fetchAndCacheApprovedPage(args: {
   });
   // Live research indexes passages lexically immediately. Optional embedding enrichment
   // is an explicit corpus action, so a fetch never consumes interactive AI quota.
-  return { url: canonicalUrl, sourceId, cacheId: cache.id, cacheHit: false, chunks: ingestion.chunksCreated };
+  return { url: canonicalUrl, sourceId, cacheId: cache.id, cacheHit: false, chunks: ingestion.chunksCreated,
+    primaryPassages: Math.min(ingestion.chunksCreated, sections.filter((section) => /^\d+\.\d+\.\d+$/.test(section.pageOrSection || "")).length) };
 }
