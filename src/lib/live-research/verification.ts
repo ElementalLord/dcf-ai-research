@@ -77,6 +77,18 @@ export function duplicateWorkOf(candidate: Verification, admitted: Array<{ canon
       || familyPath(new URL(item.canonical_url)) !== familyPath(new URL(candidate.canonical_url))))?.canonical_url || null;
 }
 
+export function scholarlyWorkKey(input: { doi?: string | null; isbn?: string | null; title?: string | null; author?: string | null; year?: string | null; publisher?: string | null; journal?: string | null }): string | null {
+  const doi = input.doi?.replace(/^https?:\/\/(?:dx\.)?doi\.org\//i, "").trim().toLowerCase();
+  if (doi) return doi;
+  const isbn = input.isbn?.replace(/[^0-9x]/gi, "").toLowerCase();
+  if (isbn && isbn.length >= 10) return `isbn:${isbn}`;
+  const clean = (value?: string | null) => (value || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  const title = clean(input.title);
+  const author = clean(input.author);
+  if (title.length < 16 || !author) return null;
+  return `work:${title}|${author}|${clean(input.year)}|${clean(input.publisher || input.journal)}`;
+}
+
 export function verifiedFamilyScope(items: Verification[]): { domain: string; path: string } | null {
   const eligible = items.filter((item) => item.verification_status === "APPROVED_FOR_EVIDENCE" && item.institution && item.source_family);
   if (eligible.length < 3) return null;
@@ -200,9 +212,11 @@ export function verifyCandidate(input: {
       : status === "VERIFIED_WORK" ? "Credible original verified; automatic admission disabled"
         : status === "BIBLIOGRAPHIC_ONLY" ? "Credible bibliographic record; full text or license insufficient"
         : failures.join("; ") || "Insufficient provenance";
-  const identity = (doi || [work_title || title, edition, editor || author || translator, publication_year, publisher || institution].filter(Boolean).join("|")).toLowerCase();
+  const identity = scholarlyWorkKey({ doi, isbn, title: title || work_title, author: editor || author || translator,
+    year: publication_year, publisher: publisher || institution, journal }) || null;
   return { ...row, title, author, editor, translator, institution, publisher, journal, publication_year,
-    doi, isbn, edition, work_title, source_family: institution || publicDomainWork ? `${url.hostname}${familyPath(url) || url.pathname}` : null,
+    doi, isbn, edition, work_title, source_family: institution || publisher || journal || publicDomainWork
+      ? `${url.hostname}${familyPath(url) || url.pathname}` : null,
     source_type: primary || publicDomainWork ? "primary_text" : scholarlyRecord ? "scholarly_article" : "institutional_source",
     textual_layer: primary || publicDomainWork ? (work_title || edition) : null,
     full_text_status: fullText ? "open" : "bibliographic", independent_work_key: identity || null,

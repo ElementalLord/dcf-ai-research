@@ -2,7 +2,7 @@ import type { Citation, RetrievedEvidence } from "./types";
 import { truncateText } from "./text";
 
 export const DEFAULT_MAX_EVIDENCE = 15;
-export const DEFAULT_MAX_CONTEXT_CHARACTERS = 32_000;
+export const DEFAULT_MAX_CONTEXT_CHARACTERS = 16_000;
 
 export function buildBoundedContext(
   evidence: RetrievedEvidence[],
@@ -15,13 +15,19 @@ export function buildBoundedContext(
   let characters = 0;
   let claimIndex = 0;
   let sourceIndex = 0;
+  const seen = new Set<string>();
 
-  for (const item of evidence.slice(0, maxEvidence)) {
+  for (const item of evidence) {
+    if (selected.length >= maxEvidence) break;
+    const topic = item.kind === "claim" ? item.parameterCode || item.parameterName || "" : item.parameterNames?.join("|") || "";
+    const key = `${item.personalityId || ""}:${item.kind}:${topic}:${item.text.normalize("NFKD").toLowerCase().replace(/\s+/g, " ").trim()}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
     const citationId = item.kind === "claim" ? `C${++claimIndex}` : `S${++sourceIndex}`;
-    const body = truncateText(item.text, item.kind === "passage" ? 2_400 : 1_100);
+    const body = truncateText(item.text, item.kind === "passage" ? 1_100 : 650);
     const record = item.kind === "claim"
-      ? `[${citationId}] APPROVED CLAIM\nPersonality: ${item.personalityName || "unspecified"}\nTopic: ${item.parameterName || item.fieldLabel || "unclassified"}\nEvidence type: ${item.evidenceType}; approval: ${item.approvalOrigin}; certainty: ${item.certainty}\nSource: ${item.sourceTitle || "not linked"}; source type: ${item.sourceType || "unspecified"}\nTextual layer: ${item.textualLayer || "unspecified"}; location: ${item.pageOrSection || "unspecified"}\nClaim: ${body}`
-      : `[${citationId}] APPROVED SOURCE PASSAGE\nPersonality: ${item.personalityName || "unspecified"}\nTopic: ${item.parameterNames?.join(", ") || "source passage"}\nSource: ${item.sourceTitle}; source type: ${item.sourceType || "unspecified"}\nTextual layer: ${item.textualLayer || "unspecified"}; location: ${item.pageOrSection || item.sectionTitle || "unspecified"}\nOriginal URL: ${item.sourceUrl || "unavailable"}\nPassage: ${body}`;
+      ? `[${citationId}] CLAIM · ${item.parameterName || item.fieldLabel || "unclassified"} · ${item.evidenceType}\n${item.personalityName ? `Personality: ${item.personalityName}\n` : ""}Source: ${item.sourceTitle || "not linked"}; ${item.textualLayer || "layer unspecified"}; ${item.pageOrSection || "location unspecified"}\n${body}`
+      : `[${citationId}] PASSAGE · ${item.parameterNames?.join(", ") || "source passage"}\n${item.personalityName ? `Personality: ${item.personalityName}\n` : ""}Source: ${item.sourceTitle}; ${item.textualLayer || "layer unspecified"}; ${item.pageOrSection || item.sectionTitle || "location unspecified"}\n${body}`;
 
     if (records.length > 0 && characters + record.length > maxCharacters) break;
     records.push(record);

@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { buildExpansionQueries, strategyPenalty, strategiesExhausted, targetForGap, type Gap } from "@/lib/live-research/expansion-plan";
 import { assessClaimPassage, normalizeTextReference, normalizeTransliteration, proposeDirectNameObservation, supportsStructuredRecord } from "@/lib/live-research/provenance-link";
-import { scopedNavigationLinks, duplicateWorkOf, type Verification } from "@/lib/live-research/verification";
+import { scopedNavigationLinks, duplicateWorkOf, scholarlyWorkKey, type Verification } from "@/lib/live-research/verification";
+import { groupSearchResultsByWork } from "@/lib/live-research/web-search-provider";
 import { rankCandidateUrls } from "@/lib/live-research/candidate-ranking";
 import { EXPLORATION_BUDGET, mayExploreChild } from "@/lib/live-research/exploration-policy";
 
@@ -27,6 +28,17 @@ describe("source-class research planning", () => {
   it("ranks likely institutional results for verification without granting trust", () => {
     expect(rankCandidateUrls(["https://blogspot.com/vedic", "https://example.edu/project/text"], "primary_edition")[0])
       .toBe("https://example.edu/project/text");
+  });
+  it("groups metadata URLs for one scholarly work while retaining accessible alternatives", () => {
+    const results = [
+      { title: "II. Viśvāmitra, Vasiṣṭha, Hariścandra, and Śunaḥśepa - Cambridge Core", url: "https://publisher.test/article", sourceProvider: "brave" },
+      { title: "II. Visvamitra, Vasistha, Hariscandra, and Sunahsepa", url: "https://repository.test/article", sourceProvider: "brave" },
+      { title: "Another Vedic study", url: "https://publisher.test/other", sourceProvider: "brave" },
+    ];
+    expect(groupSearchResultsByWork(results)[0]).toEqual([results[0].url, results[1].url]);
+    expect(groupSearchResultsByWork(results)).toHaveLength(2);
+    expect(scholarlyWorkKey({ doi: "https://doi.org/10.1017/S0035869X00049911" }))
+      .toBe(scholarlyWorkKey({ doi: "10.1017/s0035869x00049911" }));
   });
 });
 
@@ -57,6 +69,7 @@ describe("bounded project exploration", () => {
 describe("conservative passage provenance", () => {
   it("normalizes Vedic references and transliteration variants", () => {
     expect(normalizeTextReference("RV 3.33")).toBe("rv:3.33");
+    expect(normalizeTextReference("Rigveda 3.33")).toBe("rv:3.33");
     expect(normalizeTextReference("Ṛgveda III.33")).toBe("rv:3.33");
     expect(normalizeTextReference("Mandala 3 Sukta 33")).toBe("rv:3.33");
     expect(normalizeTextReference("Bala Kanda Sarga 22", "Ramayana")).toBe("ramayana:1.22");
@@ -70,6 +83,16 @@ describe("conservative passage provenance", () => {
     expect(assessClaimPassage(claim, { text: "Agni receives the sacrifice.", locator: "3.33.1" }, ["Vishvamitra"]).level).not.toBe("EXACT");
     expect(assessClaimPassage(claim, { text: "Visvamitra speaks to the rivers Vipasha and Shutudri.", locator: "3.34.1" }, ["Vishvamitra"]).level).not.toBe("EXACT");
     expect(assessClaimPassage(claim, { text: "Visvamitra speaks to the rivers Vipasha and Shutudri.", locator: "3.33.1", work: "Valmiki Ramayana" }, ["Vishvamitra"]).level).not.toBe("EXACT");
+    expect(assessClaimPassage({ ...claim, text: `Rigveda 3.33: ${claim.text}`, locator: "Introduction" }, { text: "Visvamitra speaks to the rivers Vipasha and Shutudri.", locator: "3.33.1", work: "Rigveda" }, ["Vishvamitra"]).level).toBe("EXACT");
+  });
+  it("does not treat a primary verse as proof of commentary metadata", () => {
+    expect(assessClaimPassage({ text: "Aurobindo's interpretation of RV 3.1 concerns seven rivers as commentary metadata", locator: "RV 3.1" },
+      { text: "Seven rivers receive the prayer.", locator: "3.1.6", work: "Rigveda" }).level).toBe("RELATED");
+  });
+  it("connects a located river-crossing claim to its archaic translation without calling it exact", () => {
+    const claim = { text: "Rigveda 3.33 depicts a river crossing: the speaker asks the rivers to lower themselves for wagons", locator: "RV 3.33" };
+    const passage = { text: "With car and wagon. Bow lowly down; be easy to be traversed stay, Rivers, with your floods below our axles.", locator: "3.33.9", work: "Rigveda" };
+    expect(assessClaimPassage(claim, passage).level).toBe("STRONG");
   });
   it("creates only review-pending direct observations for unrepresented exact passages", () => {
     const passage = { text: "The Visvamitras have sung forth this prayer to Indra.", locator: "3.53.13", work: "Rigveda" };

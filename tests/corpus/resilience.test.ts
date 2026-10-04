@@ -101,7 +101,7 @@ describe("resilient synthesis", () => {
     const second = { ...claim, id: "claim:2", claimId: "2", text: "The text associates the family with hymns.", parameterName: "Textual contribution" };
     const all = [claim, claim, second];
     const context = buildBoundedContext(all);
-    const output = renderExtractiveEvidence(all, context.citations, true);
+    const output = renderExtractiveEvidence(context.selected, context.citations, true);
     expect(output).toContain("### Relevant verified evidence");
     expect(output).toContain("### Relationships"); expect(output).toContain("### Textual contribution");
     expect(output.split(claim.text)).toHaveLength(2);

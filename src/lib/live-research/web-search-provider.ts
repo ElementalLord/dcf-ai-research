@@ -15,6 +15,17 @@ export function normalizeSearchQuery(query: string): string {
   return query.normalize("NFKC").trim().replace(/\s+/g, " ").toLocaleLowerCase("en");
 }
 
+export function groupSearchResultsByWork(results: WebSearchResult[]): string[][] {
+  const groups = new Map<string, string[]>();
+  for (const result of results) {
+    const title = result.title.replace(/\s+[|–—-]\s+(?:Cambridge Core|Google Books|JSTOR|WorldCat|Internet Archive).*$/i, "")
+      .normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+    const key = title.length >= 25 && title.split(" ").length >= 4 ? `title:${title}` : `url:${result.url}`;
+    groups.set(key, [...(groups.get(key) || []), result.url]);
+  }
+  return [...groups.values()];
+}
+
 export function normalizeWebResults(payload: unknown, maxResults: number): WebSearchResult[] {
   if (!payload || typeof payload !== "object") throw new WebSearchError("INVALID_RESPONSE");
   const response = payload as { query?: unknown; type?: unknown; web?: { results?: unknown } | null };

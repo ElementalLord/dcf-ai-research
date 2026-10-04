@@ -88,7 +88,7 @@ async function answerQuestionInternal(
     ? mergePersonalityEvidence(retrievals.map((retrieval) => ({ personalityId: retrieval.personalityId, personalityName: retrieval.personality, evidence: retrieval.evidence })))
     : retrievals[0].evidence;
   const evidenceBudget = isBroadScope(queryContext.scope) || queryContext.scope === "COMPARISON" || queryContext.scope === "CONTESTED_OR_HISTORICAL"
-    ? 20 : queryContext.scope === "NARROW_FACT" ? 7 : 12;
+    ? 15 : queryContext.scope === "NARROW_FACT" ? 7 : 10;
   const bounded = buildBoundedContext(evidence, evidenceBudget);
   debug.finalSelectedEvidenceCount = bounded.selected.length;
   debug.parametersRepresented = [...new Set(bounded.selected.flatMap((item) => item.kind === "claim" ? [item.parameterCode].filter((code): code is string => Boolean(code)) : item.parameterCodes || []))];

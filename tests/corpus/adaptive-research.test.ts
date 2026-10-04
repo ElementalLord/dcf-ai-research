@@ -38,6 +38,13 @@ describe("adaptive verification", () => {
     expect(verify(article(), undefined, { autoAdmit: false }).verification_status).toBe("VERIFIED_WORK");
     expect(verify(article(), undefined, { autoAdmit: false }).approval_origin).toBeNull();
   });
+  it("can turn a bibliographic record into evidence through a licensed institutional copy of the same DOI", () => {
+    const record = verify(article(false), "https://publisher.example/journals/vedic/article");
+    const copy = verify(article(), "https://example.edu/repository/vedic/article");
+    expect(record.verification_status).toBe("BIBLIOGRAPHIC_ONLY");
+    expect(copy.verification_status).toBe("APPROVED_FOR_EVIDENCE");
+    expect(copy.independent_work_key).toBe(record.independent_work_key);
+  });
   it("rejects anonymous and low-quality platforms", () => {
     expect(verify("<html><body>Vishvamitra biography</body></html>").verification_status).toBe("REJECTED_UNVERIFIABLE");
     expect(verify(article(), "https://quora.com/project/vedic/article").verification_status).toBe("REJECTED_LOW_QUALITY");
@@ -104,7 +111,8 @@ describe("research depth and stop policy", () => {
   it("stops for sufficiency, saturation, budget, and manual action", () => {
     const base = { sufficient: false, saturatedBatches: 0, searchCalls: 3, maxSearchRequests: 20, hasNextQuery: true };
     expect(adaptiveStopReason({ ...base, sufficient: true })).toBe("sufficient");
-    expect(adaptiveStopReason({ ...base, saturatedBatches: 3 })).toBe("saturated");
+    expect(adaptiveStopReason({ ...base, saturatedBatches: 3 })).toBe("global_research_saturated");
+    expect(adaptiveStopReason({ ...base, hasNextQuery: false })).toBe("search_strategy_saturated");
     expect(adaptiveStopReason({ ...base, searchCalls: 20 })).toBe("budget");
     expect(adaptiveStopReason({ ...base, manualStop: true })).toBe("manual_stop");
   });

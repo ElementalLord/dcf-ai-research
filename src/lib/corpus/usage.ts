@@ -8,10 +8,10 @@ export function withRequestUsage<T>(operation: (usage: RequestUsage) => Promise<
   const usage = { generativeCalls: 0, embeddingCalls: 0 };
   return storage.run(usage, () => operation(usage));
 }
-export function recordAiCall(kind: keyof RequestUsage, options: { transientRetry?: boolean } = {}) {
+export function recordAiCall(kind: keyof RequestUsage) {
   const usage = storage.getStore();
   if (usage) {
-    if (kind === "generativeCalls" && usage.generativeCalls >= (options.transientRetry ? 2 : 1)) throw new Error("Interactive generation budget exhausted.");
+    if (kind === "generativeCalls" && usage.generativeCalls >= 1) throw new Error("Interactive generation budget exhausted.");
     usage[kind] += 1;
   }
 }

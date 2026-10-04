@@ -22,4 +22,11 @@ describe("bounded answer context", () => {
       expect(citation.chunkId).toBe(result.selected[index].kind === "passage" ? result.selected[index].chunkId : undefined);
     });
   });
+  it("removes repeated passages and keeps a broad packet compact", () => {
+    const items = [passage(1), { ...passage(2), text: passage(1).text }, ...Array.from({ length: 20 }, (_, index) => passage(index + 3))];
+    const result = buildBoundedContext(items, 15);
+    expect(result.selected.length).toBeGreaterThan(10);
+    expect(result.context.length).toBeLessThan(16_000);
+    expect(result.selected.some((item) => item.id === "passage:2")).toBe(false);
+  });
 });

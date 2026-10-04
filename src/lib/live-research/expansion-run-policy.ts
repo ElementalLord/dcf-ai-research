@@ -21,10 +21,11 @@ export function canResumeExpansion(input: { status: string; nextQueryIndex: numb
 export function adaptiveStopReason(input: {
   sufficient: boolean; saturatedBatches: number; searchCalls: number; maxSearchRequests: number;
   hasNextQuery: boolean; manualStop?: boolean;
-}): "sufficient" | "saturated" | "budget" | "manual_stop" | null {
+}): "sufficient" | "global_research_saturated" | "search_strategy_saturated" | "budget" | "manual_stop" | null {
   if (input.manualStop) return "manual_stop";
   if (input.sufficient) return "sufficient";
   if (input.searchCalls >= input.maxSearchRequests) return "budget";
-  if (input.saturatedBatches >= 3 || !input.hasNextQuery) return "saturated";
+  if (input.saturatedBatches >= 3) return "global_research_saturated";
+  if (!input.hasNextQuery) return "search_strategy_saturated";
   return null;
 }

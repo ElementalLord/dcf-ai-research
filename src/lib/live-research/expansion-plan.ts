@@ -40,7 +40,7 @@ export function strategiesExhausted(performance: StrategyPerformance): boolean {
     .every((strategy) => strategyPenalty(strategy, performance) >= 4);
 }
 
-export function buildExpansionQueries(input: { name: string; aliases: string[]; gaps: Gap[]; sourceTitles: string[]; relationships: string[]; events: string[]; domains: string[]; candidateWorks?: Array<{ title: string; author?: string | null; year?: string | null }>; performance?: StrategyPerformance }, max = 25): PlannedQuery[] {
+export function buildExpansionQueries(input: { name: string; aliases: string[]; gaps: Gap[]; sourceTitles: string[]; relationships: string[]; events: string[]; domains: string[]; candidateWorks?: Array<{ title: string; author?: string | null; year?: string | null; doi?: string | null }>; performance?: StrategyPerformance }, max = 25): PlannedQuery[] {
   const out: PlannedQuery[] = [];
   const seen = new Set<string>();
   const ranked = rankCoverageGaps(input.gaps);
@@ -62,6 +62,7 @@ export function buildExpansionQueries(input: { name: string; aliases: string[]; 
     if (title.length < 12) continue;
     add(`"${title}" "${work.author || name}" full text`, ranked[0] || null, "work", "peer_reviewed_scholarship");
     add(`"${title}" university repository ${work.year || ""}`, ranked[0] || null, "repository", "institutional_repository");
+    if (work.doi) add(`"${work.doi}" open access repository`, ranked[0] || null, "repository", "institutional_repository");
   }
   if (input.sourceTitles.some((title) => /rigveda|vedic/i.test(title))) {
     const gap = ranked.find((item) => targetForGap(item).type === "peer_reviewed_scholarship") || ranked[0] || null;

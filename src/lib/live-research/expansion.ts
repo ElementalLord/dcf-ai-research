@@ -34,7 +34,7 @@ type Run = {
   query_reports: Array<Record<string, unknown>>; strategy_performance: StrategyPerformance; integration_report: IntegrationReport;
 };
 
-export async function previewExpansion(personalityId: string, maxSearchRequests = 30, candidateDomains: string[] = [], performance: StrategyPerformance = {}, candidateWorks: Array<{ title: string; author?: string | null; year?: string | null }> = []) {
+export async function previewExpansion(personalityId: string, maxSearchRequests = 30, candidateDomains: string[] = [], performance: StrategyPerformance = {}, candidateWorks: Array<{ title: string; author?: string | null; year?: string | null; doi?: string | null; workKey?: string | null }> = []) {
   const max = Math.max(1, Math.min(50, maxSearchRequests));
   const configuration = await loadPersonalityConfiguration(personalityId);
   const [coverageResult, rules, fieldsResult, sourceResult, relationshipResult, eventResult, bibliographicResult, historyResult] = await Promise.all([
@@ -43,7 +43,7 @@ export async function previewExpansion(personalityId: string, maxSearchRequests 
     supabaseAdmin.from("source_personalities").select("sources(title)").eq("personality_id", personalityId).limit(500),
     supabaseAdmin.from("relationships").select("object_name,relationship_type").eq("subject_personality_id", personalityId).limit(30),
     supabaseAdmin.from("event_personalities").select("events(title)").eq("personality_id", personalityId).limit(30),
-    supabaseAdmin.from("research_candidates").select("title,author,publication_year").eq("verification_status", "BIBLIOGRAPHIC_ONLY")
+    supabaseAdmin.from("research_candidates").select("title,author,publication_year,doi,isbn,journal,publisher,independent_work_key").eq("verification_status", "BIBLIOGRAPHIC_ONLY")
       .order("created_at", { ascending: false }).limit(50),
     supabaseAdmin.from("external_research_runs").select("query_reports,strategy_performance").eq("personality_id", personalityId)
       .order("created_at", { ascending: false }).limit(50),
@@ -66,7 +66,8 @@ export async function previewExpansion(personalityId: string, maxSearchRequests 
   const aliases = [configuration.canonicalName, ...configuration.aliases.filter((item) => !item.isAmbiguous).map((item) => item.alias)];
   const recentWorks = (bibliographicResult.data || []).filter((item) => item.title
     && aliases.some((alias) => normalizeForMatch(item.title).includes(normalizeForMatch(alias))))
-    .map((item) => ({ title: item.title as string, author: item.author, year: item.publication_year }));
+    .map((item) => ({ title: item.title as string, author: item.author, year: item.publication_year,
+      doi: item.doi, workKey: item.independent_work_key }));
   const priorQueries = new Set((historyResult.data || []).flatMap((run) => (run.query_reports || [])
     .map((item: { query?: string }) => normalizeSearchQuery(item.query || ""))));
   const priorPerformance: StrategyPerformance = {};
@@ -81,7 +82,9 @@ export async function previewExpansion(personalityId: string, maxSearchRequests 
   const queries = buildExpansionQueries({ name: configuration.canonicalName, aliases: aliases.slice(1), gaps,
     sourceTitles: titles, relationships, events, domains,
     performance: Object.keys(performance).length ? performance : priorPerformance,
-    candidateWorks: [...candidateWorks, ...recentWorks].filter((item, index, all) => all.findIndex((other) => other.title === item.title) === index) },
+    candidateWorks: [...candidateWorks, ...recentWorks].filter((item, index, all) => all.findIndex((other) =>
+      ("workKey" in item && "workKey" in other && item.workKey && item.workKey === other.workKey)
+      || normalizeForMatch(other.title) === normalizeForMatch(item.title)) === index) },
   Math.max(40, Math.min(100, max * 4))).filter((item) => !priorQueries.has(normalizeSearchQuery(item.query)));
   const depth = evaluateDepth(coverageResult.coverage.parameters);
   const benchmark = await benchmarkCorpusRetrieval(personalityId, configuration.canonicalName,
@@ -214,6 +217,8 @@ export async function stepExpansion(runId: string) {
     if (seen.has(url)) { duplicates++; return false; }
     return true;
   }), query.targetSourceType || "institutional_repository");
+  const alternateByUrl = new Map<string, string[]>();
+  for (const group of discovery.workGroups) for (const url of group) alternateByUrl.set(url, group.filter((other) => other !== url));
   const configuration = await loadPersonalityConfiguration(run.personality_id);
   let coverageBefore: Awaited<ReturnType<typeof loadPersonalityCoverage>>["coverage"] | null = null;
   let familyCountBefore: number | null = null;
@@ -254,7 +259,15 @@ export async function stepExpansion(runId: string) {
         seen.add(child); queue.push({ url: child, depth: linkDepth + 1 }); linkedCount++;
       }
       candidateResults.push({ url: verification.canonical_url, status: verification.verification_status, reason: verification.verification_reason });
-      if (verification.verification_status === "BIBLIOGRAPHIC_ONLY") { bibliographic++; continue; }
+      if (verification.verification_status === "BIBLIOGRAPHIC_ONLY") {
+        bibliographic++;
+        for (const alternate of alternateByUrl.get(url) || []) {
+          if (queue.length >= EXPLORATION_BUDGET.maxPagesPerQuery || seen.has(alternate)) continue;
+          seen.add(alternate); queue.push({ url: alternate, depth: 0 });
+          break;
+        }
+        continue;
+      }
       if (verification.verification_status !== "APPROVED_FOR_EVIDENCE") { rejected++; continue; }
       if (!coverageBefore) {
         coverageBefore = (await loadPersonalityCoverage(run.personality_id)).coverage;
@@ -360,9 +373,10 @@ export async function stepExpansion(runId: string) {
       .filter((domain) => /\.(edu|gov|ac\.[a-z]{2})$|journal|press|archive|repository|university/i.test(domain))
       .slice(-10);
     const { data: bibliographicRows } = await supabaseAdmin.from("research_candidates")
-      .select("title,author,publication_year").eq("run_id", runId).eq("verification_status", "BIBLIOGRAPHIC_ONLY").limit(5);
+      .select("title,author,publication_year,doi,independent_work_key").eq("run_id", runId).eq("verification_status", "BIBLIOGRAPHIC_ONLY").limit(5);
     const candidateWorks = (bibliographicRows || []).filter((item) => Boolean(item.title))
-      .map((item) => ({ title: item.title as string, author: item.author, year: item.publication_year }));
+      .map((item) => ({ title: item.title as string, author: item.author, year: item.publication_year,
+        doi: item.doi, workKey: item.independent_work_key }));
     const nextPlan = await previewExpansion(run.personality_id, current.max_search_requests, [...new Set(candidateDomains)].slice(0, 2), performance, candidateWorks);
     depth = nextPlan.depth;
     independentWorks = nextPlan.coverage.independentWorks;
@@ -416,6 +430,7 @@ export async function stepExpansion(runId: string) {
     strategy_performance: performance, integration_report: integrationReport,
     query_reports: [...(current.query_reports || []), { query: query.query, strategy: query.strategy,
       targetSourceType: query.targetSourceType, parameterCode: query.parameterCode,
+      distinctResultWorks: discovery.workGroups.length,
       expectedKnowledgeGain: query.expectedKnowledgeGain, paidCalls: discovery.calls,
       cacheHits: discovery.cacheHits, candidates: discovery.candidates, pagesExplored, credible: verified,
       works: workKeys.size, newWorks: newWorkKeys.size, newFamilies, newIndependentSources: newSources,

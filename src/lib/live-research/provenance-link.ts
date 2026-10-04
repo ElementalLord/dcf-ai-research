@@ -40,11 +40,26 @@ const stop = new Set(["the", "and", "for", "with", "from", "that", "this", "were
 function terms(value: string): Set<string> {
   return new Set(normalizeTransliteration(value).split(" ").filter((part) => part.length >= 4 && !stop.has(part)));
 }
+const conceptAliases: Record<string, string> = {
+  rivers: "river", streams: "river", stream: "river",
+  crossed: "cross", crossing: "cross", across: "cross", traverse: "cross", traversed: "cross",
+  car: "wagon", wain: "wagon", wagons: "wagon",
+  ask: "request", asks: "request", asking: "request", crave: "request", bidding: "request",
+  answer: "answer", answers: "answer", listen: "answer", yield: "answer",
+  lower: "lower", low: "lower", bow: "lower", bend: "lower",
+  bharatas: "bharata", vipash: "vipas", vipasha: "vipas", shutudri: "sutudri",
+  kushika: "kusika", savitr: "savitar", stimulate: "impel", impels: "impel", guide: "impel",
+};
+function concepts(value: string): Set<string> {
+  return new Set(normalizeForMatch(value).split(" ").map((term) => conceptAliases[term] || term)
+    .filter((term) => term.length >= 4 && !stop.has(term)));
+}
 function locatorMatches(left: string | null, right: string | null): boolean {
   return Boolean(left && right && (left === right || right.startsWith(`${left}.`) || left.startsWith(`${right}.`)));
 }
 export function assessClaimPassage(claim: Claim, passage: Passage, aliases: string[] = []): LinkAssessment {
-  const claimRef = normalizeTextReference(claim.locator || claim.text, claim.text.match(/rigveda|ramayana|mahabharata/i)?.[0] || passage.work || "");
+  const hint = claim.text.match(/rigveda|ramayana|mahabharata/i)?.[0] || passage.work || "";
+  const claimRef = normalizeTextReference(claim.locator || "", hint) || normalizeTextReference(claim.text, hint);
   const passageRef = normalizeTextReference(passage.locator || passage.section || "", passage.work || "");
   const located = locatorMatches(claimRef, passageRef);
   const claimTerms = terms(claim.excerpt || claim.text);
@@ -58,12 +73,22 @@ export function assessClaimPassage(claim: Claim, passage: Passage, aliases: stri
   const quoted = [...claim.text.matchAll(/['“”"]([^'“”"]{5,80})['“”"]/g)]
     .map((match) => normalizeTransliteration(match[1]))
     .filter((phrase) => phrase.length >= 5);
+  if (/\b(?:interpretation|commentary|metadata|portal records|scholarly analysis)\b/i.test(claim.text)
+    && /\b(?:rigveda|rv|veda|ramayana|mahabharata)\b/i.test(passage.work || ""))
+    return { level: "RELATED", confidence: 0.3, reason: "Primary passage cannot establish commentary or catalog metadata" };
   if (located && quoted.some((phrase) => normalizeTransliteration(passage.text).includes(phrase)))
     return { level: "EXACT", confidence: 0.96, reason: "Exact verse locator and quoted passage wording" };
   if (located && (ratio >= 0.45 && matches.length >= 2 || claim.excerpt && ratio >= 0.6))
     return { level: "EXACT", confidence: 0.94, reason: "Matching textual locator and passage wording" };
   if (located && matches.length >= 2 && (nameMatch || ratio >= 0.25))
     return { level: "STRONG", confidence: 0.78, reason: "Matching textual locator with entity or partial wording" };
+  if (located) {
+    const passageConcepts = concepts(passage.text);
+    const shared = [...concepts(claim.text)].filter((term) => passageConcepts.has(term));
+    const anchor = shared.some((term) => ["bharata", "vipas", "sutudri", "kusika", "savitar"].includes(term));
+    if (shared.length >= 3 || shared.length >= 2 && anchor)
+      return { level: "STRONG", confidence: 0.75, reason: "Matching textual locator and distinctive translated concepts" };
+  }
   if (matches.length >= 3 && ratio >= 0.6 && nameMatch)
     return { level: "STRONG", confidence: 0.76, reason: "Strong independent wording and entity overlap" };
   if (matches.length >= 2 && ratio >= 0.35 && nameMatch)

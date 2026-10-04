@@ -4,29 +4,20 @@ import { boundedProviderCall, classifyProviderError, generationCircuit } from ".
 import { recordAiCall } from "./usage";
 
 export const GENERATION_MODEL = process.env.SYNTHESIS_MODEL || process.env.GEMINI_GENERATION_MODEL || "gemini-3.8-flash";
-export const SYNTHESIS_MAX_OUTPUT_TOKENS = 4096;
+export const SYNTHESIS_MAX_OUTPUT_TOKENS = 2048;
 
 export async function generateText(prompt: string, options: { timeoutMs?: number; errorCode?: CorpusErrorCode } = {}): Promise<{ text: string; interactionId: string | null }> {
   const code = options.errorCode || "GEMINI_FAILED";
   if (!process.env.GEMINI_API_KEY) throw new CorpusError(code, "Provider not configured.", 503);
   if (generationCircuit.state().open) throw new CorpusError(code, "Provider cooldown active.", 503);
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-  const configuredTimeout = Number(process.env.SYNTHESIS_TIMEOUT_MS || 40000);
-  const timeout = Math.max(250, Math.min(options.timeoutMs || configuredTimeout || 40000, 45000));
+  const configuredTimeout = Number(process.env.SYNTHESIS_TIMEOUT_MS || 25000);
+  const timeout = Math.max(250, Math.min(options.timeoutMs || configuredTimeout || 25000, 30000));
   try {
-    let response;
-    for (let attempt = 0; attempt < 2; attempt += 1) {
-      try {
-        recordAiCall("generativeCalls", { transientRetry: attempt === 1 });
-        response = await boundedProviderCall((abortSignal) => ai.models.generateContent({
-          model: GENERATION_MODEL, contents: prompt, config: { abortSignal, maxOutputTokens: SYNTHESIS_MAX_OUTPUT_TOKENS, httpOptions: { retryOptions: { attempts: 1 } } },
-        }), timeout);
-        break;
-      } catch (error) {
-        if (attempt > 0 || classifyProviderError(error) !== "TRANSIENT") throw error;
-        await new Promise((resolve) => setTimeout(resolve, 750));
-      }
-    }
+    recordAiCall("generativeCalls");
+    const response = await boundedProviderCall((abortSignal) => ai.models.generateContent({
+      model: GENERATION_MODEL, contents: prompt, config: { abortSignal, maxOutputTokens: SYNTHESIS_MAX_OUTPUT_TOKENS, httpOptions: { retryOptions: { attempts: 1 } } },
+    }), timeout);
     const text = response?.text?.trim();
     if (!text) throw new Error("Provider returned no text.");
     generationCircuit.succeed();
