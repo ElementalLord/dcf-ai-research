@@ -1,8 +1,8 @@
 import "server-only";
 import { supabaseAdmin } from "@/lib/supabase-admin";
-import { fetchDiscoveryPreview } from "./live-fetch";
+import { fetchArchiveItemRecord, fetchDiscoveryPreview } from "./live-fetch";
 import { canonicalResearchUrl, selectSourceAuthorization, type SourceAccessRule } from "./source-policy";
-import { duplicateWorkOf, inheritedInstitutionForUrl, relevantChildLinks, scopedNavigationLinks, rejectedVerification, verifiedFamilyScope, verifyCandidate, projectDescriptionEvidence, projectDescriptionLinks, type Verification } from "./verification";
+import { archiveItemIdentifier, duplicateWorkOf, inheritedInstitutionForUrl, relevantChildLinks, scopedNavigationLinks, rejectedVerification, verifiedFamilyScope, verifyCandidate, projectDescriptionEvidence, projectDescriptionLinks, type Verification } from "./verification";
 
 type PreviewReader = (url: string) => ReturnType<typeof fetchDiscoveryPreview>;
 
@@ -23,8 +23,10 @@ export async function verifyAndAdmitCandidate(input: {
     const scope = (families || []).find((family) => final.pathname.startsWith(family.path_prefix));
     if (scope) linkedCandidates = [...new Set([...linkedCandidates,
       ...scopedNavigationLinks(preview.html, preview.finalUrl, scope, input.aliases, 8)])].slice(0, 8);
+    const archiveId = archiveItemIdentifier(canonicalResearchUrl(preview.finalUrl));
+    const archiveItem = archiveId ? await fetchArchiveItemRecord(archiveId, input.aliases).catch(() => null) : null;
     verification = verifyCandidate({ candidateUrl: input.url, ...preview, personalityAliases: input.aliases,
-      rules: input.rules, autoAdmit: input.autoAdmit,
+      rules: input.rules, autoAdmit: input.autoAdmit, archiveItem,
       inheritedInstitution: inheritedInstitutionForUrl(preview.finalUrl, families || []) });
   } catch (error) {
     const reason = error instanceof Error ? error.message : "Candidate verification failed";

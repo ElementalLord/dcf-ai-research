@@ -2,8 +2,23 @@ import { normalizeForMatch } from "@/lib/corpus/text";
 
 export type SupportLevel = "EXACT" | "STRONG" | "PARTIAL" | "RELATED" | "UNRESOLVED";
 export type LinkAssessment = { level: SupportLevel; confidence: number; reason: string };
-type Claim = { text: string; locator?: string | null; excerpt?: string | null };
-type Passage = { text: string; locator?: string | null; section?: string | null; work?: string | null };
+type Claim = { text: string; locator?: string | null; excerpt?: string | null; sourceId?: string | null; work?: string | null };
+type Passage = { text: string; locator?: string | null; section?: string | null; work?: string | null; sourceId?: string | null };
+
+/** The one rule for a claim→passage link counting as exact provenance in coverage and depth. */
+export function isExactSupportLink(link: { relationship?: string | null; link_method?: string | null; confidence?: number | null; metadata?: { supportLevel?: string } | null }): boolean {
+  return link.relationship === "supports" && (link.metadata?.supportLevel === "EXACT"
+    || (!String(link.link_method || "").startsWith("adaptive_") && (link.confidence == null || link.confidence >= 0.72)));
+}
+
+/** Printed page numbers ("p. 52", "pp. 52–54"); a bare PDF index such as "Page 2" is not a printed page. */
+export function printedPages(value: string): number[] {
+  const match = value.match(/\bpp?\.\s*(\d{1,4})(?:\s*[–-]\s*(\d{1,4}))?/i);
+  if (!match) return [];
+  const start = Number(match[1]);
+  const end = match[2] ? Number(match[2]) : start;
+  return end >= start && end - start <= 20 ? Array.from({ length: end - start + 1 }, (_, index) => start + index) : [];
+}
 
 export function normalizeTransliteration(value: string): string {
   return normalizeForMatch(value).replace(/vishw/g, "visv").replace(/vishv/g, "visv")
@@ -29,7 +44,7 @@ export function normalizeTextReference(value: string, workHint = ""): string | n
     const next = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 }[array[index + 1] as "I"] || 0;
     return sum + (current < next ? -current : current);
   }, 0) : Number(part);
-  const rv = plain.match(/(?:\b(?:r[.]?v[.]?|rigveda|rgveda|mandala)\s*)?\b([ivxlcdm]+|\d{1,3})\s*[.\s]+(?:sukta\s*)?(\d{1,3})(?:\s*[.\s]+(\d{1,3}))?/i);
+  const rv = plain.match(/(?:\b(?:r[.]?v[.]?|rigveda|rgveda|mandala)\s*)?\b([ivxlcdm]+|\d{1,3})\s*(?:,\s*sukta\s*|[.\s]+(?:sukta\s*)?)(\d{1,3})(?:\s*[.\s]+(\d{1,3}))?/i);
   if (!rv) return null;
   const book = roman(rv[1]);
   if (book < 1 || book > 10) return null;
@@ -58,11 +73,20 @@ function locatorMatches(left: string | null, right: string | null): boolean {
   return Boolean(left && right && (left === right || right.startsWith(`${left}.`) || left.startsWith(`${right}.`)));
 }
 export function assessClaimPassage(claim: Claim, passage: Passage, aliases: string[] = []): LinkAssessment {
-  const hint = claim.text.match(/rigveda|ramayana|mahabharata/i)?.[0] || passage.work || "";
+  // A bare "1.65.1" belongs to the cited source's work, never to whichever passage is being compared.
+  const hint = claim.text.match(/rigveda|ramayana|mahabharata/i)?.[0] || claim.work || passage.work || "";
   const claimRef = normalizeTextReference(claim.locator || "", hint) || normalizeTextReference(claim.text, hint);
-  const passageRef = normalizeTextReference(passage.locator || passage.section || "", passage.work || "");
-  const located = locatorMatches(claimRef, passageRef);
-  const claimTerms = terms(claim.excerpt || claim.text);
+  // A single-sukta or single-sarga source page carries its locator in the title when chunk labels are generic.
+  const passageRef = normalizeTextReference(passage.locator || passage.section || "", passage.work || "")
+    || normalizeTextReference(passage.work || "");
+  // Page locators are only comparable inside the same cited source.
+  const passagePages = printedPages(passage.locator || "");
+  const samePage = Boolean(claim.sourceId && claim.sourceId === passage.sourceId)
+    && printedPages(claim.locator || "").some((page) => passagePages.includes(page));
+  const located = locatorMatches(claimRef, passageRef) || samePage;
+  // Personality names say who a passage is about, not what it supports.
+  const names = new Set(aliases.flatMap((alias) => [...terms(alias)]));
+  const claimTerms = new Set([...terms(claim.excerpt || claim.text)].filter((term) => !names.has(term)));
   const passageTerms = terms(passage.text);
   const matches = [...claimTerms].filter((term) => passageTerms.has(term));
   const ratio = matches.length / Math.max(1, claimTerms.size);
@@ -76,11 +100,15 @@ export function assessClaimPassage(claim: Claim, passage: Passage, aliases: stri
   if (/\b(?:interpretation|commentary|metadata|portal records|scholarly analysis)\b/i.test(claim.text)
     && /\b(?:rigveda|rv|veda|ramayana|mahabharata)\b/i.test(passage.work || ""))
     return { level: "RELATED", confidence: 0.3, reason: "Primary passage cannot establish commentary or catalog metadata" };
-  if (located && quoted.some((phrase) => normalizeTransliteration(passage.text).includes(phrase)))
-    return { level: "EXACT", confidence: 0.96, reason: "Exact verse locator and quoted passage wording" };
-  if (located && (ratio >= 0.45 && matches.length >= 2 || claim.excerpt && ratio >= 0.6))
-    return { level: "EXACT", confidence: 0.94, reason: "Matching textual locator and passage wording" };
-  if (located && matches.length >= 2 && (nameMatch || ratio >= 0.25))
+  // EXACT needs a passage locator at least as specific as the citation; a whole-sarga page cannot
+  // exactly support a verse-level claim, and interpretive or normative claims are never exact from a passage.
+  const granular = samePage || Boolean(claimRef && passageRef && (passageRef === claimRef || passageRef.startsWith(`${claimRef}.`)));
+  const interpretive = /\b(?:should|must|securely|better understood|not independent|reduced to|rather than|cannot be|value statement)\b/i.test(claim.text);
+  if (granular && !interpretive && quoted.some((phrase) => normalizeTransliteration(passage.text).includes(phrase)))
+    return { level: "EXACT", confidence: 0.96, reason: "Exact locator and quoted passage wording" };
+  if (granular && !interpretive && matches.length >= 3 && ratio >= 0.5)
+    return { level: "EXACT", confidence: 0.94, reason: "Matching exact locator and direct passage wording" };
+  if (located && matches.length >= 2 && ratio >= 0.3)
     return { level: "STRONG", confidence: 0.78, reason: "Matching textual locator with entity or partial wording" };
   if (located) {
     const passageConcepts = concepts(passage.text);

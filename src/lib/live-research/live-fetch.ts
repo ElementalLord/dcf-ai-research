@@ -8,6 +8,7 @@ import {
   type SourceCapability,
   type SourceAccessRule,
 } from "./source-policy";
+import type { ArchiveItemRecord } from "./verification";
 
 const MAX_LIVE_BYTES = 12 * 1024 * 1024;
 const MAX_REDIRECTS = 5;
@@ -174,4 +175,40 @@ export async function fetchDiscoveryPreview(rawUrl: string, options: {
     return { finalUrl: safe.toString(), status: response.status, contentType, html: new TextDecoder().decode(bytes) };
   }
   throw new CorpusError("FETCH_FAILED", "Candidate verification failed.", 502);
+}
+
+async function readArchiveJson(url: string, fetchImpl: typeof fetch): Promise<Record<string, unknown> | null> {
+  const safe = await assertSafePublicUrl(url);
+  const response = await fetchImpl(safe, { redirect: "error", signal: AbortSignal.timeout(12_000),
+    headers: { Accept: "application/json", "User-Agent": "DCF-AI-Research/1.0 (+candidate-verification)" } });
+  if (!response.ok) return null;
+  const body = await response.text();
+  if (body.length > 512 * 1024) throw new CorpusError("CONTENT_TOO_LARGE", "Archive item record is too large.", 413);
+  return JSON.parse(body) as Record<string, unknown>;
+}
+
+/** Reads an archive.org item's own metadata and counts personality mentions with search-inside. Non-evidence. */
+export async function fetchArchiveItemRecord(identifier: string, aliases: string[], fetchImpl: typeof fetch = fetch): Promise<ArchiveItemRecord | null> {
+  if (!/^[A-Za-z0-9._-]{1,120}$/.test(identifier)) return null;
+  const record = await readArchiveJson(`https://archive.org/metadata/${identifier}`, fetchImpl);
+  const metadata = record?.metadata as Record<string, unknown> | undefined;
+  if (!record || !metadata) return null;
+  const first = (value: unknown) => (Array.isArray(value) ? value[0] : value) == null ? null : String(Array.isArray(value) ? value[0] : value).trim() || null;
+  let nameMatches = 0;
+  const server = String(record.server || "");
+  const dir = String(record.dir || "");
+  // The search-inside host comes from the item record, so it is pinned to archive.org storage nodes.
+  if (/^ia\d+\.us\.archive\.org$/.test(server) && /^\/\d+\/items\/[A-Za-z0-9._-]+$/.test(dir)) {
+    const terms = [...new Set(aliases.map((alias) => alias.normalize("NFKD").replace(/[̀-ͯ]/g, ""))
+      .filter((alias) => /^[A-Za-z]{5,}$/.test(alias)))].slice(0, 3);
+    for (const term of terms) {
+      const inside = await readArchiveJson(`https://${server}/fulltext/inside.php?item_id=${identifier}&doc=${identifier}&path=${dir}&q=${encodeURIComponent(term)}`, fetchImpl).catch(() => null);
+      nameMatches += Array.isArray(inside?.matches) ? inside.matches.length : 0;
+      if (nameMatches) break;
+    }
+  }
+  return { identifier, title: first(metadata.title), creator: first(metadata.creator), date: first(metadata.date),
+    publisher: first(metadata.publisher), contributor: first(metadata.contributor), scanningCenter: first(metadata.scanningcenter),
+    copyrightStatus: first(metadata["possible-copyright-status"]), licenseUrl: first(metadata.licenseurl),
+    rights: first(metadata.rights), nameMatches };
 }

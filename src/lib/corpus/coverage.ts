@@ -10,6 +10,10 @@ export type CoverageClaimInput = {
   parameterFieldId: string | null;
   approved: boolean;
   hasChunkEvidence: boolean;
+  /** Exact support, or a STRONG passage link whose wording or locator is not precise enough for EXACT. */
+  hasStrongSupport?: boolean;
+  /** Core claims carry the parameter; minor (lower-certainty) claims may lag on exact provenance. */
+  core?: boolean;
   sourceIds: string[];
   contested?: boolean;
 };
@@ -69,6 +73,9 @@ export function computeCorpusCoverage(input: {
       approvedClaims: parameterClaims.length,
       contestedClaims: parameterClaims.filter((claim) => claim.contested).length,
       claimsWithExactPassages: parameterClaims.filter((claim) => claim.hasChunkEvidence).length,
+      claimsWithStrongSupport: parameterClaims.filter((claim) => claim.hasChunkEvidence || claim.hasStrongSupport).length,
+      coreClaims: parameterClaims.filter((claim) => claim.core).length,
+      coreClaimsWithExactPassages: parameterClaims.filter((claim) => claim.core && claim.hasChunkEvidence).length,
       claimsWithIndependentCorroboration: parameterClaims.filter(corroborated).length,
       exactPassageCoveragePercent: percentage(parameterClaims.filter((claim) => claim.hasChunkEvidence).length, parameterClaims.length),
       uniqueEvidenceSources: evidenceSources.size,

@@ -90,13 +90,34 @@ export async function extractUrl(rawUrl: string): Promise<{
   return { sections, contentType: response.contentType, finalUrl: response.finalUrl };
 }
 
+/**
+ * Printed page numbers from running heads/footers. Labels are only trusted when one constant
+ * offset from the PDF index explains at least 60% of the pages; otherwise the PDF index is kept.
+ */
+export function printedPageLabels(pages: Array<{ num: number; text: string }>): Map<number, string> {
+  const offsets = new Map<number, number>();
+  for (const page of pages) {
+    const edges = [page.text.trim().match(/^(\d{1,4})\b/)?.[1], page.text.trim().match(/\b(\d{1,4})$/)?.[1]];
+    for (const value of new Set(edges.filter(Boolean))) {
+      const offset = Number(value) - page.num;
+      offsets.set(offset, (offsets.get(offset) || 0) + 1);
+    }
+  }
+  const [offset, count] = [...offsets].sort((a, b) => b[1] - a[1])[0] || [0, 0];
+  const labels = new Map<number, string>();
+  if (pages.length < 3 || count < Math.max(3, pages.length * 0.6)) return labels;
+  for (const page of pages) if (page.num + offset > 0) labels.set(page.num, `p. ${page.num + offset}${offset ? ` (PDF page ${page.num})` : ""}`);
+  return labels;
+}
+
 export async function extractPdf(data: Uint8Array): Promise<DocumentSection[]> {
   if (data.byteLength > MAX_PDF_BYTES) throw new CorpusError("PDF_PARSE_FAILED", "The PDF exceeds the 20 MB limit.", 413);
   const parser = new PDFParse({ data });
   try {
     const result = await parser.getText();
+    const printed = printedPageLabels(result.pages);
     const sections = result.pages
-      .map((page) => ({ title: `Page ${page.num}`, pageOrSection: `Page ${page.num}`, text: page.text }))
+      .map((page) => ({ title: `Page ${page.num}`, pageOrSection: printed.get(page.num) || `Page ${page.num}`, text: page.text }))
       .filter((page) => page.text.trim());
     if (sections.length === 0) throw new CorpusError("NO_TEXT_EXTRACTED", "The PDF did not contain extractable text.", 422);
     return sections;

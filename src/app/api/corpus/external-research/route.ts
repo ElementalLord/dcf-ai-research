@@ -4,7 +4,7 @@ import { assertCorpusAdmin, assertRequestSize, corpusErrorResponse } from "@/lib
 import { createExpansionRun, getExpansionRun, previewExpansion, setExpansionStatus, stepExpansion } from "@/lib/live-research/expansion";
 import { CorpusError } from "@/lib/corpus/errors";
 import { supabaseAdmin } from "@/lib/supabase-admin";
-import { linkIngestedEvidence } from "@/lib/live-research/link-ingested";
+import { backfillExactLocators, linkIngestedEvidence } from "@/lib/live-research/link-ingested";
 import { loadPersonalityConfiguration } from "@/lib/corpus/personality-context";
 
 const uuid = z.string().uuid();
@@ -12,6 +12,7 @@ const requestSchema = z.discriminatedUnion("action", [
   z.object({ action: z.literal("start"), personalityId: uuid, maxSearchRequests: z.number().int().min(1).max(50).default(30), mode: z.enum(["guided", "auto"]).default("guided"), focusQuery: z.string().max(160).optional() }),
   z.object({ action: z.enum(["step", "stop", "resume"]), runId: uuid }),
   z.object({ action: z.literal("relink"), personalityId: uuid, sourceId: uuid }),
+  z.object({ action: z.literal("backfill"), personalityId: uuid, dryRun: z.boolean().default(true) }),
 ]);
 
 export async function GET(request: NextRequest) {
@@ -76,6 +77,11 @@ export async function POST(request: NextRequest) {
       const configuration = await loadPersonalityConfiguration(input.personalityId);
       const aliases = [configuration.canonicalName, ...configuration.aliases.filter((item) => !item.isAmbiguous).map((item) => item.alias)];
       return NextResponse.json({ report: await linkIngestedEvidence(input.sourceId, input.personalityId, aliases) });
+    }
+    if (input.action === "backfill") {
+      const configuration = await loadPersonalityConfiguration(input.personalityId);
+      const aliases = [configuration.canonicalName, ...configuration.aliases.filter((item) => !item.isAmbiguous).map((item) => item.alias)];
+      return NextResponse.json({ report: await backfillExactLocators(input.personalityId, aliases, { dryRun: input.dryRun }) });
     }
     const run = input.action === "start" ? await createExpansionRun(input.personalityId, input.maxSearchRequests, input.mode, input.focusQuery)
       : input.action === "step" ? await stepExpansion(input.runId)

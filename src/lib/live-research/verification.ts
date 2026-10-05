@@ -145,9 +145,27 @@ export function rejectedVerification(url: string, status: VerificationStatus, re
   return empty(url, url, status, reason);
 }
 
+/** Item record from archive.org's metadata API plus a bounded search-inside count for the personality. */
+export type ArchiveItemRecord = {
+  identifier: string; title: string | null; creator: string | null; date: string | null; publisher: string | null;
+  contributor: string | null; scanningCenter: string | null; copyrightStatus: string | null;
+  licenseUrl: string | null; rights: string | null; nameMatches: number;
+};
+
+export function archiveItemIdentifier(rawUrl: string): string | null {
+  const url = new URL(rawUrl);
+  if (url.hostname !== "archive.org") return null;
+  return url.pathname.match(/^\/details\/([A-Za-z0-9._-]+)\/?$/)?.[1] || null;
+}
+
+// Hosting on archive.org is never a rights signal; only the item's own rights metadata is.
+const rightsClearStatement = /\bpublic domain\b|\bno known copyright\b|\bnot in copyright\b|rightsstatements\.org\/vocab\/(?:NoC-US|NKC)|creativecommons\.org\/publicdomain/i;
+const openLicense = /creativecommons\.org\/licenses|\bcc[- ]by\b|\bcc0\b|\bopen access\b/i;
+
 export function verifyCandidate(input: {
   candidateUrl: string; finalUrl: string; status: number; contentType: string; html: string;
   personalityAliases: string[]; rules: SourceAccessRule[]; autoAdmit: boolean; inheritedInstitution?: string | null;
+  archiveItem?: ArchiveItemRecord | null;
 }): Verification {
   const row = empty(input.candidateUrl, input.finalUrl, "REJECTED_UNVERIFIABLE", "Insufficient provenance");
   const url = new URL(row.canonical_url);
@@ -157,25 +175,43 @@ export function verifyCandidate(input: {
   const $ = cheerio.load(input.html);
   const meta = (...names: string[]) => names.map((name) => $(`meta[name="${name}"],meta[property="${name}"]`).first().attr("content")?.trim()).find(Boolean) || null;
   const text = $("body").text().replace(/\s+/g, " ").trim();
-  const title = meta("citation_title", "dc.title") || $("title").first().text().trim() || meta("og:title") || null;
-  const author = meta("citation_author", "dc.creator", "author");
+  const archiveId = archiveItemIdentifier(row.canonical_url);
+  const item = archiveId && input.archiveItem?.identifier === archiveId ? input.archiveItem : null;
+  const title = item?.title || meta("citation_title", "dc.title") || $("title").first().text().trim() || meta("og:title") || null;
+  const author = item ? item.creator : meta("citation_author", "dc.creator", "author");
   const editor = meta("citation_editor", "dc.contributor.editor");
   const publicDomainAttribution = text.slice(0, 2500).match(/Translated by\s+([^,(]{5,90})\s*\((1[6789]\d{2})[^)]*public domain/i);
   const translator = meta("citation_translator") || publicDomainAttribution?.[1]?.trim() || null;
-  const institution = meta("citation_institution", "dc.publisher.institution", "institution") || input.inheritedInstitution || null;
-  const publisher = meta("citation_publisher", "dc.publisher", "publisher");
+  const institution = item ? item.contributor
+    : meta("citation_institution", "dc.publisher.institution", "institution") || input.inheritedInstitution || null;
+  const publisher = item ? item.publisher : meta("citation_publisher", "dc.publisher", "publisher");
   const journal = meta("citation_journal_title", "citation_conference_title");
-  const publication_year = meta("citation_date", "citation_publication_date", "dc.date")?.match(/\b(?:1[5-9]|20)\d{2}\b/)?.[0] || publicDomainAttribution?.[2] || null;
+  const publication_year = (item ? item.date : meta("citation_date", "citation_publication_date", "dc.date"))?.match(/\b(?:1[5-9]|20)\d{2}\b/)?.[0] || publicDomainAttribution?.[2] || null;
   const doi = meta("citation_doi", "dc.identifier.doi") || null;
   const isbn = meta("citation_isbn") || null;
   const edition = meta("citation_edition", "dc.relation.ispartof") || null;
-  const work_title = meta("citation_book_title", "citation_journal_title") ||
+  const work_title = item?.title || meta("citation_book_title", "citation_journal_title") ||
     (title?.split(/\s+[—–|-]\s+/).slice(-2, -1)[0]?.trim() || null);
-  const license = $("link[rel='license']").attr("href") || meta("dc.rights", "citation_license", "license") || "";
-  const openAccess = /creativecommons\.org|public domain|open access|cc[- ]by\b|cc0/i.test(license)
-    || /\b(public domain|open access|creative commons)\b/i.test($("a[rel='license']").text())
-    || Boolean(publicDomainAttribution);
-  const relevant = input.personalityAliases.some((alias) => alias.length >= 5 && (title || "").toLowerCase().includes(alias.toLowerCase()))
+  const license = item ? item.licenseUrl || ""
+    : $("link[rel='license']").attr("href") || meta("citation_license", "license") || "";
+  const rightsStatement = item ? [item.rights, item.copyrightStatus === "NOT_IN_COPYRIGHT" ? "Not in copyright" : null].filter(Boolean).join("; ")
+    : meta("dc.rights", "dcterms.rights", "dc.rights.uri") || "";
+  // A: explicit acceptable open license.
+  const explicitLicense = openLicense.test(license) || openLicense.test(rightsStatement)
+    || /\b(open access|creative commons)\b/i.test($("a[rel='license']").text());
+  // B: explicit public-domain or rights-clear metadata.
+  const rightsClear = rightsClearStatement.test(`${license} ${rightsStatement}`)
+    || /\bpublic domain\b/i.test($("a[rel='license']").text()) || Boolean(publicDomainAttribution);
+  // C: the original publisher itself declares the full text freely readable.
+  const publisherOpen = !item && (/^(?:yes|true|1)$/i.test(meta("citation_fulltext_world_readable") || "")
+    || /\b(?:open|free|public)\b/i.test(meta("dcterms.accessRights", "dc.accessRights", "citation_access") || ""));
+  // D: a scan whose item record names the work and its creator, date, scanning library, and rights.
+  const scanProvenance = Boolean(item && item.title && item.creator && publication_year && (item.contributor || item.scanningCenter));
+  const access = explicitLicense ? "explicit open license" : item ? (scanProvenance && rightsClear ? "rights-clear public-domain scan" : null)
+    : rightsClear ? "explicit public-domain or rights-clear metadata" : publisherOpen ? "free full text declared by the original publisher" : null;
+  const openAccess = Boolean(access);
+  const relevant = item ? item.nameMatches > 0
+    : input.personalityAliases.some((alias) => alias.length >= 5 && (title || "").toLowerCase().includes(alias.toLowerCase()))
     || input.personalityAliases.some((alias) => alias.length >= 5 && text.toLowerCase().includes(alias.toLowerCase()));
   const lowQuality = /(?:^|\.)(?:quora|reddit|facebook|pinterest|wikipedia)\.(?:com|org)$/.test(url.hostname)
     || /\b(blogspot|wordpress\.com|medium\.com)\b/.test(url.hostname)
@@ -190,28 +226,36 @@ export function verifyCandidate(input: {
   if (doi) signals.push(`DOI: ${doi}`);
   if (journal) signals.push(`Journal: ${journal}`);
   if (edition) signals.push(`Edition: ${edition}`);
-  if (openAccess) signals.push("Explicit open access or reusable license"); else failures.push("No explicit full-text access license");
-  if (!relevant) failures.push("Personality not present in original page");
+  if (access) signals.push(`Lawful access: ${access}`);
+  else failures.push(item ? "Archive item lacks verifiable rights or scan provenance" : "No verifiable open-access or rights-clear status");
+  if (item?.copyrightStatus) signals.push(`Archive item rights metadata: ${item.copyrightStatus}`);
+  if (!relevant) failures.push(item ? "Personality not confirmed in the scanned text" : "Personality not present in original page");
   if (lowQuality) failures.push("Low-quality platform or content signal");
   const institutionHost = Boolean(institution && /\.(edu|ac\.[a-z]{2}|gov|gov\.[a-z]{2})$/.test(url.hostname));
-  const scholarlyRecord = Boolean(doi && author && journal && publication_year && publisher);
+  // A registered DOI with named author, journal, and year identifies the work even when the publisher tag is absent.
+  const scholarlyRecord = Boolean(doi && author && journal && publication_year);
   const primary = Boolean(edition && editor && work_title && institutionHost);
   const publicDomainWork = Boolean(publicDomainAttribution && work_title && publication_year
     && /[\u0900-\u097f]/.test(text) && (text.match(/\b\d{1,3}\.\d{1,3}(?:\.\d{1,3})?\b/g) || []).length >= 10);
   if (publicDomainWork) signals.push(`Public-domain primary work with original script and verse references: ${work_title}`);
-  const credible = !lowQuality && relevant && (publicDomainWork || ((institutionHost || scholarlyRecord)
+  const identifiedScan = Boolean(item && item.title && item.creator && publication_year && (publisher || institution));
+  if (identifiedScan) signals.push(`Identified scanned work: ${item!.title} (${item!.creator}, ${publication_year})`);
+  const credible = !lowQuality && relevant && (publicDomainWork || identifiedScan || ((institutionHost || scholarlyRecord)
     && (author || editor) && (doi || edition || (journal && publication_year))));
-  const fullText = text.length >= 1200 && openAccess;
+  // A scan's details page is a viewer, not the text; it is eligible but never auto-ingested from that page.
+  const fullText = !item && text.length >= 1200 && openAccess;
   const prior = selectSourceAuthorization(row.canonical_url, input.rules, "fetch", true);
   const status: VerificationStatus = lowQuality ? "REJECTED_LOW_QUALITY"
     : !relevant ? "REJECTED_UNVERIFIABLE"
       : !credible ? "REJECTED_UNVERIFIABLE"
-        : fullText ? (input.autoAdmit ? "APPROVED_FOR_EVIDENCE" : "VERIFIED_WORK") : "BIBLIOGRAPHIC_ONLY";
+        : item && openAccess ? "VERIFIED_WORK"
+          : fullText ? (input.autoAdmit ? "APPROVED_FOR_EVIDENCE" : "VERIFIED_WORK") : "BIBLIOGRAPHIC_ONLY";
   const reason = prior && status === "APPROVED_FOR_EVIDENCE" ? "Previously approved source; original metadata rechecked"
-    : status === "APPROVED_FOR_EVIDENCE" ? "Independent provenance and open original text verified"
-      : status === "VERIFIED_WORK" ? "Credible original verified; automatic admission disabled"
-        : status === "BIBLIOGRAPHIC_ONLY" ? "Credible bibliographic record; full text or license insufficient"
-        : failures.join("; ") || "Insufficient provenance";
+    : status === "APPROVED_FOR_EVIDENCE" ? `Independent provenance verified; ${access}`
+      : status === "VERIFIED_WORK" && item ? "Rights-clear scan verified; eligible for evidence after full-text ingestion"
+        : status === "VERIFIED_WORK" ? "Credible original verified; automatic admission disabled"
+          : status === "BIBLIOGRAPHIC_ONLY" ? `Credible bibliographic record; ${access ? "full text not present on this page" : "access rights not verifiable"}`
+            : failures.join("; ") || "Insufficient provenance";
   const identity = scholarlyWorkKey({ doi, isbn, title: title || work_title, author: editor || author || translator,
     year: publication_year, publisher: publisher || institution, journal }) || null;
   return { ...row, title, author, editor, translator, institution, publisher, journal, publication_year,
@@ -220,7 +264,7 @@ export function verifyCandidate(input: {
     source_type: primary || publicDomainWork ? "primary_text" : scholarlyRecord ? "scholarly_article" : "institutional_source",
     textual_layer: primary || publicDomainWork ? (work_title || edition) : null,
     full_text_status: fullText ? "open" : "bibliographic", independent_work_key: identity || null,
-    access_notes: license || (publicDomainAttribution ? publicDomainAttribution[0] : null),
+    access_notes: [license, rightsStatement, publicDomainAttribution?.[0]].filter(Boolean).join("; ") || null,
     credibility_signals: signals, credibility_failures: failures, verification_status: status,
     verification_reason: reason, approval_origin: status === "APPROVED_FOR_EVIDENCE" ? "verified_auto" : null };
 }
