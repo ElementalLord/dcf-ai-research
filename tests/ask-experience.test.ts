@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { resolveQuestionContext } from "@/lib/ask/query-context";
-import { abstentionMessage, SYNTHESIS_FALLBACK_INTRO, SYNTHESIS_FALLBACK_NOTICE } from "@/lib/ask/messages";
+import { abstentionMessage } from "@/lib/ask/messages";
 import { answerBlocks, groupCitations, inlineAnswerParts, sourceTypeLabel, type AskCitation } from "@/lib/ask/presentation";
 import { isBroadSynthesisQuestion, isSubjectiveSuperlativeQuestion, routeParameterCodes } from "@/lib/corpus/routing";
 import { aiSynthesisEnabled, synthesizeFromLocalEvidence } from "@/lib/corpus/local-synthesis";
@@ -87,11 +87,6 @@ describe("grounded Ask presentation", () => {
     const blocks = answerBlocks(message);
     expect(blocks).toHaveLength(2);
     expect(message).toContain("do not provide reliable evidence");
-  });
-
-  it("keeps quota fallback language user-facing and vendor-neutral", () => {
-    expect(SYNTHESIS_FALLBACK_INTRO).toContain("verified evidence");
-    expect(SYNTHESIS_FALLBACK_NOTICE).not.toContain("Gemini");
   });
 
   it("uses readable local corpus synthesis by default without a Gemini request", () => {

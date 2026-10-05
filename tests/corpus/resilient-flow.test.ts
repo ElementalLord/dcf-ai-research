@@ -172,6 +172,25 @@ describe("Ask orchestration", () => {
     expect(result.debug.synthesisErrorCategory).toBe("CITATION_VALIDATION");
     expect(state.generate).toHaveBeenCalledTimes(1);
   });
+  it("uses grounded fallback when the model abstains despite answerable evidence", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
+    state.generate.mockResolvedValue({ text: "The approved knowledge base does not currently contain enough evidence to answer that fully." });
+    const result = await answerQuestion("Why is Vishvamitra important?", "p");
+    expect(result.status).toBe("extractive_fallback");
+    expect(result.answer).toContain("Vishvamitra");
+    expect(result.answer).not.toMatch(/AI response unavailable|AI synthesis is unavailable|Gemini/i);
+    expect(result.citations.length).toBeGreaterThan(0);
+    expect(state.generate).toHaveBeenCalledTimes(1);
+  });
+  it("returns a cited fallback after both bounded synthesis attempts fail", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
+    state.generate.mockRejectedValue(new Error("503 provider overloaded"));
+    const result = await answerQuestion("Who is Vishvamitra?", "p");
+    expect(result.status).toBe("extractive_fallback");
+    expect(result.debug.generativeCalls).toBe(2);
+    expect(result.answer).toMatch(/\[C\d+\]/);
+    expect(result.answer).not.toMatch(/AI response unavailable|AI synthesis is unavailable|Gemini/i);
+  });
   it("does not try the alternate model for a malformed provider request", async () => {
     vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
     state.generate.mockRejectedValue(Object.assign(new Error('{"error":{"code":400,"status":"INVALID_ARGUMENT"}}'), { status: 400 }));

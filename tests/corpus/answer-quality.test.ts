@@ -100,7 +100,7 @@ describe("scope-aware grounded answers", () => {
       institution: null, url: null, sourceType: item.sourceType, pageOrSection: null, textualLayer: item.textualLayer, excerpt: item.text }));
     const output = renderExtractiveEvidence(items, citations, true, "BROAD_SIGNIFICANCE");
     expect(output.indexOf("named Vedic hymn")).toBeLessThan(output.indexOf("presented as a seer"));
-    expect(output.indexOf("presented as a seer")).toBeLessThan(output.indexOf("modern reflections"));
+    expect(output).not.toContain("modern reflections");
   });
 
   it("makes a concise claim-led fallback and does not dump a long passage", () => {

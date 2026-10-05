@@ -133,6 +133,17 @@ async function answerQuestionInternal(
   let usedLocalSynthesis = false;
   const extractive = new ExtractiveSynthesisProvider();
   const fallback = () => extractive.generateGroundedAnswer({ prompt: "", evidence: bounded.selected, citations: bounded.citations, broad: queryContext.broadSynthesis, scope: queryContext.scope, question: queryContext.resolvedQuestion, responseStyle: options.responseStyle });
+  const safeFallback = async () => {
+    try {
+      const result = await fallback();
+      if (result.text !== ABSTENTION && !validateAnswerCitations(result.text, bounded.citations))
+        throw new Error("Fallback produced invalid or missing citations");
+      return result;
+    } catch (error) {
+      console.error("synthesis_fallback_failed", JSON.stringify({ reason: error instanceof Error ? error.message : String(error), evidenceRecords: bounded.selected.length }));
+      return { text: ABSTENTION, interactionId: null };
+    }
+  };
   if (cached) {
     generated = { text: cached.answer, interactionId: null };
     debug.provider = cached.provider;
@@ -143,7 +154,7 @@ async function answerQuestionInternal(
     console.warn("synthesis_fallback", JSON.stringify({ reason: health.configured ? "provider_circuit_open" : "provider_not_configured",
       category: health.circuit.category, primaryModel: provider.model, evidenceRecords: bounded.selected.length }));
     debug.generationFallbackReason = "AI synthesis unavailable; showing verified evidence.";
-    generated = await fallback();
+    generated = await safeFallback();
   } else {
     const prompt = buildSynthesisPrompt({ personality, question, resolvedQuestion: queryContext.resolvedQuestion, scope: queryContext.scope, evidenceContext: bounded.context, responseStyle: options.responseStyle });
     const diagnostics = { evidenceRecords: bounded.selected.length, evidenceCharacters: bounded.context.length,
@@ -151,6 +162,11 @@ async function answerQuestionInternal(
     try {
       incrementMetric("synthesisAttempted");
       generated = await provider.generateGroundedAnswer({ prompt, evidence: bounded.selected, citations: bounded.citations, broad: queryContext.broadSynthesis, scope: queryContext.scope, diagnostics });
+      if (generated.text === ABSTENTION) {
+        console.warn("synthesis_validation", JSON.stringify({ model: generated.model || provider.model, accepted: false,
+          reason: "model_abstained_with_answerable_evidence", suppliedCitationCount: bounded.citations.length }));
+        throw new Error("Synthesis abstained despite answerable approved evidence");
+      }
       if (generated.text !== ABSTENTION && !validateAnswerCitations(generated.text, bounded.citations)) {
         console.warn("synthesis_validation", JSON.stringify({ model: generated.model || provider.model, accepted: false,
           reason: "invalid_or_missing_citation", suppliedCitationCount: bounded.citations.length }));
@@ -172,7 +188,7 @@ async function answerQuestionInternal(
         evidenceCharacters: bounded.context.length, promptCharacters: prompt.length }));
       incrementMetric(`synthesis_${debug.synthesisErrorCategory}`);
       debug.generationFallbackReason = "AI synthesis temporarily unavailable; showing verified evidence.";
-      generated = await fallback();
+      generated = await safeFallback();
     }
   }
   debug.latenciesMs.generation = stopGeneration();

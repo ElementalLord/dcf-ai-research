@@ -14,7 +14,7 @@ function workOf(item: EpistemicItem): string | null {
 }
 
 /** Already framed: the claim itself says who narrates, argues, or doubts it. */
-const FRAMED = /\b(?:narrat\w*|portray\w*|depict\w*|recount\w*|tells?|according to|argues?|interprets?|reads?|suggests?|may|might|uncertain|contested|debated|in the [^,.]{0,50}(?:narrative|account|version|tradition|text|hymn|epic|story)|the (?:text|hymn|epic|narrative|tradition|passage) (?:says|states|names|records))\b/i;
+const FRAMED = /\b(?:narrat\w*|portray\w*|depict\w*|describ\w*|present\w*|recount\w*|tells?|according to|argues?|interprets?|reads?|suggests?|may|might|uncertain|contested|debated|in the [^,.]{0,50}(?:narrative|account|version|tradition|text|hymn|epic|story)|the (?:text|hymn|epic|narrative|tradition|passage) (?:says|states|names|records))\b/i;
 
 function lowerLead(text: string): string {
   return /^(?:The|A|An|This|These|In|At|After|Before|When|During)\b/.test(text) ? text[0].toLowerCase() + text.slice(1) : text;
@@ -24,7 +24,7 @@ function lowerLead(text: string): string {
 export function framedStatement(item: EpistemicItem): string {
   const text = item.text.trim();
   const type = item.epistemicType as EpistemicType | null | undefined;
-  if (!type || FRAMED.test(text)) return type === "HISTORICAL_FACT" && item.contractStatus !== "SUPPORTED" ? `${text} ${UNESTABLISHED}` : text;
+  if (!type || FRAMED.test(text) || /^in (?:the )?[^,]{1,80},/i.test(text)) return type === "HISTORICAL_FACT" && item.contractStatus !== "SUPPORTED" ? `${text} ${UNESTABLISHED}` : text;
   const work = workOf(item);
   switch (type) {
     case "TRADITIONAL_NARRATIVE": return `${work ? `In the ${work} narrative` : "In the traditional narrative"}, ${lowerLead(text)}`;
