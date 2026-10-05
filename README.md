@@ -57,22 +57,26 @@ Ask uses local retrieval and known approved pages first. It only invokes Brave w
 Core ingestion, aliases, deterministic routing, lexical retrieval, approved live
 fetch/cache, citations and extractive answers work without AI. When
 `GEMINI_API_KEY` is configured, Ask uses Gemini synthesis by default. Set
-`SYNTHESIS_PROVIDER=local` (or `AI_SYNTHESIS_MODE=local`) for an extractive-only
+`SYNTHESIS_PROVIDER=local` (or `AI_SYNTHESIS_MODE=local`) for deterministic-only
 mode. `SYNTHESIS_MODEL` overrides `GEMINI_GENERATION_MODEL`; the default is
-`gemini-3.8-flash`. Synthesis allows up to 4,096 output tokens and a 40-second
-timeout (bounded to 250–45,000 ms). Secrets stay server-side.
+`gemini-3.7-flash`. On a transient provider failure only, Ask makes one bounded
+attempt with `SYNTHESIS_ALTERNATE_MODEL` (default `gemini-3.5-flash-lite`).
+Synthesis allows up to 2,048 output tokens and a 40-second timeout (bounded to
+250–45,000 ms). Secrets and provider diagnostics stay server-side.
 
 Set `SYNTHESIS_DISABLED=true` to simulate unavailable synthesis without removing
 keys; set `EMBEDDINGS_DISABLED=true` to test lexical-only retrieval. The normal
-Ask path normally makes one generative API attempt. A 503/transient failure may
-receive one bounded retry; no second model is used for evaluation or review.
+Ask path normally makes one generative API attempt. A 503/network failure or
+timeout can use the alternate model once; quota, rate, authentication, invalid
+request, unsupported-model and citation-validation failures do not trigger it.
 Confirmed quota/rate/configuration/model errors open a
 60-second process-local circuit; transient/timeout errors open it for 15 seconds.
 Every request still retrieves approved evidence before checking the 24-hour
 answer cache. Only validated generated answers are cached, so local excerpts
 cannot suppress a later recovered synthesis provider. Evidence content,
 provenance, citations, personality scope, policy, synthesis model and
-`grounded_synthesis_v2` determine the cache key.
+the current synthesis prompt version determine the cache key. Set
+`ANSWER_CACHE_DISABLED=true` only for a fresh-generation development audit.
 
 Broad Ask questions gather parameter-linked approved claims and source passages,
 then select for parameter, source and textual-layer coverage. Focused questions

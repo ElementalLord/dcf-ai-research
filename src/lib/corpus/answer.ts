@@ -129,7 +129,7 @@ async function answerQuestionInternal(
   debug.answerCacheHit = Boolean(cached);
   if (cached) incrementMetric("answerCacheHits");
   const stopGeneration = stageTimer("GENERATION");
-  let generated: { text: string; interactionId: string | null };
+  let generated: { text: string; interactionId: string | null; model?: string };
   let usedLocalSynthesis = false;
   const extractive = new ExtractiveSynthesisProvider();
   const fallback = () => extractive.generateGroundedAnswer({ prompt: "", evidence: bounded.selected, citations: bounded.citations, broad: queryContext.broadSynthesis, scope: queryContext.scope, question: queryContext.resolvedQuestion, responseStyle: options.responseStyle });
@@ -140,23 +140,36 @@ async function answerQuestionInternal(
     debug.model = cached.model;
   } else if (!health.healthy) {
     usedLocalSynthesis = true;
+    console.warn("synthesis_fallback", JSON.stringify({ reason: health.configured ? "provider_circuit_open" : "provider_not_configured",
+      category: health.circuit.category, primaryModel: provider.model, evidenceRecords: bounded.selected.length }));
     debug.generationFallbackReason = "AI synthesis unavailable; showing verified evidence.";
     generated = await fallback();
   } else {
     const prompt = buildSynthesisPrompt({ personality, question, resolvedQuestion: queryContext.resolvedQuestion, scope: queryContext.scope, evidenceContext: bounded.context, responseStyle: options.responseStyle });
+    const diagnostics = { evidenceRecords: bounded.selected.length, evidenceCharacters: bounded.context.length,
+      promptCharacters: prompt.length, estimatedPromptTokens: Math.ceil(prompt.length / 4) };
     try {
       incrementMetric("synthesisAttempted");
-      generated = await provider.generateGroundedAnswer({ prompt, evidence: bounded.selected, citations: bounded.citations, broad: queryContext.broadSynthesis, scope: queryContext.scope });
-      if (generated.text !== ABSTENTION && !validateAnswerCitations(generated.text, bounded.citations)) throw new Error("Invalid synthesis citations");
+      generated = await provider.generateGroundedAnswer({ prompt, evidence: bounded.selected, citations: bounded.citations, broad: queryContext.broadSynthesis, scope: queryContext.scope, diagnostics });
+      if (generated.text !== ABSTENTION && !validateAnswerCitations(generated.text, bounded.citations)) {
+        console.warn("synthesis_validation", JSON.stringify({ model: generated.model || provider.model, accepted: false,
+          reason: "invalid_or_missing_citation", suppliedCitationCount: bounded.citations.length }));
+        throw new Error("Invalid synthesis citations");
+      }
+      console.info("synthesis_validation", JSON.stringify({ model: generated.model || provider.model, accepted: true,
+        abstained: generated.text === ABSTENTION, suppliedCitationCount: bounded.citations.length }));
       incrementMetric("synthesisSucceeded");
       debug.provider = provider.name;
       debug.synthesisMode = "Gemini";
-      debug.model = provider.model;
+      debug.model = generated.model || provider.model;
+      debug.synthesisErrorCategory = null;
       debug.generationFallbackReason = null;
     } catch (error) {
-      console.warn("Synthesis fallback:", error instanceof Error ? error.message : String(error));
       usedLocalSynthesis = true;
       debug.synthesisErrorCategory = provider.classifyError(error);
+      console.warn("synthesis_fallback", JSON.stringify({ reason: debug.synthesisErrorCategory,
+        primaryModel: provider.model, evidenceRecords: bounded.selected.length,
+        evidenceCharacters: bounded.context.length, promptCharacters: prompt.length }));
       incrementMetric(`synthesis_${debug.synthesisErrorCategory}`);
       debug.generationFallbackReason = "AI synthesis temporarily unavailable; showing verified evidence.";
       generated = await fallback();

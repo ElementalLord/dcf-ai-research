@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { answerQuestion } from "@/lib/corpus/answer";
 import { retrieveEvidence } from "@/lib/corpus/retrieval";
 import { checkpointedAi } from "@/lib/corpus/ai-checkpoints";
-import { generationCircuit } from "@/lib/corpus/provider-health";
+import { alternateGenerationCircuit, generationCircuit } from "@/lib/corpus/provider-health";
 import { recordAiCall, withRequestUsage } from "@/lib/corpus/usage";
 
 const state = vi.hoisted(() => ({
@@ -12,7 +12,7 @@ const state = vi.hoisted(() => ({
 }));
 vi.mock("@/lib/corpus/personality-context", () => ({ loadPersonalityConfiguration: vi.fn(async () => ({ personalityId: "p", canonicalName: "Vishvamitra", categoryId: "category", categorySlug: "rishi", categoryName: "Rishis", aliases: [{ alias: "Vishwamitra" }], termAliases: [] })) }));
 vi.mock("@/lib/corpus/embeddings", () => ({ embedTexts: state.embed }));
-vi.mock("@google/genai", () => ({ GoogleGenAI: class { models = { generateContent: state.generate }; } }));
+vi.mock("@google/genai", () => ({ ThinkingLevel: { LOW: "LOW" }, GoogleGenAI: class { models = { generateContent: state.generate }; } }));
 vi.mock("@/lib/live-research/source-registry", () => ({ loadActiveSourceRules: vi.fn(async () => [{ id: "rule", is_active: true, allow_live_fetch: true, evidence_use_status: "approved", display_name: "Public primary text" }]) }));
 vi.mock("@/lib/live-research/live-search", () => ({ discoverApprovedUrls: state.discover }));
 vi.mock("@/lib/live-research/cache", () => ({ fetchAndCacheApprovedPage: state.fetch }));
@@ -61,9 +61,10 @@ beforeEach(() => {
   state.discover.mockResolvedValue({ accepted: [], rejected: [], approvedSourcesConsidered: [] });
   state.embed.mockRejectedValue(new Error("429 embedding quota exhausted"));
   generationCircuit.succeed();
+  alternateGenerationCircuit.succeed();
   vi.stubEnv("SYNTHESIS_PROVIDER", "extractive");
 });
-afterEach(() => { vi.unstubAllEnvs(); vi.clearAllMocks(); generationCircuit.succeed(); });
+afterEach(() => { vi.unstubAllEnvs(); vi.clearAllMocks(); generationCircuit.succeed(); alternateGenerationCircuit.succeed(); });
 
 describe("Ask orchestration", () => {
   it("answers a broad question and Rama follow-up without generative calls", async () => {
@@ -145,6 +146,38 @@ describe("Ask orchestration", () => {
     const second = await answerQuestion("Who is Vishvamitra?", "p");
     expect(second.status).toBe("extractive_fallback"); expect(second.debug.generativeCalls).toBe(0);
     expect(second.debug.providerCircuitOpen).toBe(true);
+    expect(state.generate).toHaveBeenCalledTimes(1);
+  });
+  it("uses one alternate synthesis call after a transient primary 503", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
+    state.generate.mockRejectedValueOnce(new Error("503 high demand")).mockResolvedValueOnce({ text: "The approved text portrays a guide [C1]." });
+    const result = await answerQuestion("Who is Vishvamitra?", "p");
+    expect(result.status).toBe("complete");
+    expect(result.debug.generativeCalls).toBe(2);
+    expect(result.debug.model).toBe("gemini-3.5-flash-lite");
+    expect(state.generate.mock.calls.map(([request]) => request.model)).toEqual(["gemini-3.7-flash", "gemini-3.5-flash-lite"]);
+    expect(result.debug.extractiveFallbackUsed).toBe(false);
+    state.generate.mockClear();
+    state.generate.mockResolvedValue({ text: "The approved text portrays a guide [C1]." });
+    const next = await answerQuestion("Tell me about Vishvamitra.", "p");
+    expect(next.status).toBe("complete");
+    expect(next.debug.generativeCalls).toBe(1);
+    expect(state.generate.mock.calls.map(([request]) => request.model)).toEqual(["gemini-3.5-flash-lite"]);
+  });
+  it("does not retry an invalid citation on the alternate model", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
+    state.generate.mockResolvedValue({ text: "An invented reference [C99]." });
+    const result = await answerQuestion("Who is Vishvamitra?", "p");
+    expect(result.status).toBe("extractive_fallback");
+    expect(result.debug.synthesisErrorCategory).toBe("CITATION_VALIDATION");
+    expect(state.generate).toHaveBeenCalledTimes(1);
+  });
+  it("does not try the alternate model for a malformed provider request", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
+    state.generate.mockRejectedValue(Object.assign(new Error('{"error":{"code":400,"status":"INVALID_ARGUMENT"}}'), { status: 400 }));
+    const result = await answerQuestion("Who is Vishvamitra?", "p");
+    expect(result.status).toBe("extractive_fallback");
+    expect(result.debug.synthesisErrorCategory).toBe("INVALID_REQUEST");
     expect(state.generate).toHaveBeenCalledTimes(1);
   });
   it("falls back rather than rendering fabricated citation IDs", async () => {

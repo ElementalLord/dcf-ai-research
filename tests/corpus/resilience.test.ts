@@ -14,7 +14,7 @@ import { recordAiCall, withRequestUsage } from "@/lib/corpus/usage";
 import type { RetrievedClaim } from "@/lib/corpus/types";
 
 const sdk = vi.hoisted(() => ({ generate: vi.fn(), interactions: vi.fn() }));
-vi.mock("@google/genai", () => ({ GoogleGenAI: class { models = { generateContent: sdk.generate }; interactions = { create: sdk.interactions }; } }));
+vi.mock("@google/genai", () => ({ ThinkingLevel: { LOW: "LOW" }, GoogleGenAI: class { models = { generateContent: sdk.generate }; interactions = { create: sdk.interactions }; } }));
 const claim: RetrievedClaim = {
   kind: "claim", id: "claim:1", claimId: "1", text: "The text portrays Vishvamitra as Rama's teacher.",
   claimKind: "traditional_account", certainty: "medium", approvalOrigin: "human_manual", evidenceType: "direct",
@@ -32,6 +32,10 @@ describe("resilient synthesis", () => {
     [new Error("404 model not found"), "MODEL_UNAVAILABLE"], [new Error("503 unavailable"), "TRANSIENT"],
     [new Error("wrapper", { cause: new Error("RESOURCE_EXHAUSTED") }), "QUOTA_EXHAUSTED"],
   ])("classifies %s", (error, expected) => expect(classifyProviderError(error)).toBe(expected));
+  it("treats a 503 model UNAVAILABLE response as transient provider overload", () => {
+    const error = Object.assign(new Error('{"error":{"code":503,"message":"This model is experiencing high demand","status":"UNAVAILABLE"}}'), { name: "ApiError", status: 503 });
+    expect(classifyProviderError(error)).toBe("TRANSIENT");
+  });
   it("opens a bounded circuit and allows a later attempt", () => {
     let now = 0;
     const circuit = new ProviderCircuit(() => now);

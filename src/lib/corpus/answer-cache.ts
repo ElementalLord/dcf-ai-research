@@ -18,6 +18,7 @@ export function answerCacheIdentity(scope: string[], question: string, policy: s
 }
 export type CachedAnswer = { answer: string; provider: string; model: string | null };
 export async function readAnswerCache(key: string, citations: Citation[]): Promise<CachedAnswer | null> {
+  if (process.env.ANSWER_CACHE_DISABLED === "true") return null;
   try {
     const { data, error } = await supabaseAdmin.from("answer_cache").select("answer_text,provider,model,hit_count").eq("id", key).gt("expires_at", new Date().toISOString()).maybeSingle();
     if (error || !data || !validateAnswerCitations(data.answer_text, citations)) return null;
@@ -26,6 +27,7 @@ export async function readAnswerCache(key: string, citations: Citation[]): Promi
   } catch { return null; } // Missing migration/cache outage never breaks Ask.
 }
 export async function writeAnswerCache(identity: ReturnType<typeof answerCacheIdentity>, scope: string[], policy: string, answer: CachedAnswer) {
+  if (process.env.ANSWER_CACHE_DISABLED === "true") return;
   try {
     await supabaseAdmin.from("answer_cache").upsert({
       id: identity.key, personality_scope: scope, normalized_question: identity.normalizedQuestion,
