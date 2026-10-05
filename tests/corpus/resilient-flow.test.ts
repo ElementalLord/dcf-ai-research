@@ -69,7 +69,8 @@ describe("Ask orchestration", () => {
   it("answers a broad question and Rama follow-up without generative calls", async () => {
     const broad = await answerQuestion("Who is Vishwamitra?", "p");
     expect(broad.status).toBe("extractive_fallback");
-    expect(broad.answer).toContain("Relevant verified evidence");
+    expect(broad.answer).toContain("Vishvamitra as Rama's guide");
+    expect(broad.answer).not.toContain("Relevant verified evidence");
     expect(broad.debug.generativeCalls).toBe(0);
     expect(broad.resolvedQuestion).toBe("Who is Vishvamitra?");
     const rama = await answerQuestion("What role did he play in Rama's story?", "p");

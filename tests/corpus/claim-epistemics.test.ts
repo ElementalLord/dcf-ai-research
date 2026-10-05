@@ -161,7 +161,8 @@ describe("answers use epistemic language", () => {
 
   it("18. the synthesis packet carries a compact epistemic tag per claim", () => {
     const { context } = buildBoundedContext([claim("TRADITIONAL_NARRATIVE", "The founder crossed the river at night.")]);
-    expect(context).toContain("traditional narrative · evidence standard met");
+    expect(context).toContain("Epistemic: TRADITIONAL_NARRATIVE");
+    expect(context).toContain("support: SUPPORTED");
     expect(packetTag(claim("HISTORICAL_FACT", "x", { contractStatus: "INSUFFICIENT_FOR_HISTORICAL_CLAIM" }))).toBe("historical fact · narrative only, not historical proof");
   });
 });

@@ -53,6 +53,7 @@ async function answerQuestionInternal(
     epistemicSafeguardNotes: [] as string[],
     fallbackUsed: false,
     provider: "none",
+    synthesisMode: "none",
     model: null as string | null,
     synthesisLatencyMs: 0,
     estimatedEvidenceTokens: 0,
@@ -131,10 +132,11 @@ async function answerQuestionInternal(
   let generated: { text: string; interactionId: string | null };
   let usedLocalSynthesis = false;
   const extractive = new ExtractiveSynthesisProvider();
-  const fallback = () => extractive.generateGroundedAnswer({ prompt: "", evidence: bounded.selected, citations: bounded.citations, broad: queryContext.broadSynthesis, scope: queryContext.scope });
+  const fallback = () => extractive.generateGroundedAnswer({ prompt: "", evidence: bounded.selected, citations: bounded.citations, broad: queryContext.broadSynthesis, scope: queryContext.scope, question: queryContext.resolvedQuestion, responseStyle: options.responseStyle });
   if (cached) {
     generated = { text: cached.answer, interactionId: null };
     debug.provider = cached.provider;
+    debug.synthesisMode = `cached ${cached.provider}`;
     debug.model = cached.model;
   } else if (!health.healthy) {
     usedLocalSynthesis = true;
@@ -148,6 +150,7 @@ async function answerQuestionInternal(
       if (generated.text !== ABSTENTION && !validateAnswerCitations(generated.text, bounded.citations)) throw new Error("Invalid synthesis citations");
       incrementMetric("synthesisSucceeded");
       debug.provider = provider.name;
+      debug.synthesisMode = "Gemini";
       debug.model = provider.model;
       debug.generationFallbackReason = null;
     } catch (error) {
@@ -167,6 +170,7 @@ async function answerQuestionInternal(
   debug.providerHealthy = provider.health().healthy;
   if (usedLocalSynthesis) {
     debug.provider = extractive.name;
+    debug.synthesisMode = "Deterministic fallback";
     debug.model = null;
     debug.extractiveFallbackUsed = true;
     debug.fallbackUsed = true;

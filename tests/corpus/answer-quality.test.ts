@@ -63,7 +63,11 @@ describe("scope-aware grounded answers", () => {
     expect(SYNTHESIS_PROMPT_VERSION).toMatch(/^grounded_synthesis_/);
     expect(prompt).toContain("silently review");
     expect(prompt).toContain("using only the supplied IDs");
+    expect(prompt).toContain("Evidence grounding constrains WHAT you may claim, not HOW you must phrase it.");
+    expect(prompt).toContain("do not write one paragraph or bullet per source");
     expect(prompt).toContain("[C1] Claim");
+    const research = buildSynthesisPrompt({ personality: "Rishi A", question: "Who is Rishi A?", resolvedQuestion: "Who is Rishi A?", scope: "BROAD_PROFILE", evidenceContext: "[C1] Claim", responseStyle: "research" });
+    expect(research).toContain("More depth means more reasoning, not more excerpts");
   });
 
   it("shows central supported dimensions first when Gemini is unavailable", () => {
@@ -77,5 +81,19 @@ describe("scope-aware grounded answers", () => {
     const output = renderExtractiveEvidence(items, citations, true, "BROAD_SIGNIFICANCE");
     expect(output.indexOf("named Vedic hymn")).toBeLessThan(output.indexOf("presented as a seer"));
     expect(output.indexOf("presented as a seer")).toBeLessThan(output.indexOf("modern reflections"));
+  });
+
+  it("makes a concise claim-led fallback and does not dump a long passage", () => {
+    const primary = claim("role", "role", "The Ramayana portrays Rishi A as a teacher of the princes.", "Ramayana");
+    const passage: RetrievedPassage = { kind: "passage", id: "passage:p", chunkId: "p", sourceId: "s", text: "The princes arrive. ".repeat(100), sectionTitle: "Episode", pageOrSection: "1.1", textualLayer: "Ramayana", sourceTitle: "Ramayana", sourceAuthor: null, sourceInstitution: null, sourceUrl: null, sourceType: "primary_text", sourceStatus: "approved" };
+    const citations: Citation[] = [
+      { id: "C1", kind: "approved_claim", claimId: "role", title: "Ramayana", author: null, institution: null, url: null, sourceType: "primary_text", pageOrSection: null, textualLayer: "Ramayana", excerpt: primary.text },
+      { id: "S1", kind: "approved_source_passage", chunkId: "p", title: "Ramayana", author: null, institution: null, url: null, sourceType: "primary_text", pageOrSection: "1.1", textualLayer: "Ramayana", excerpt: passage.text },
+    ];
+    const output = renderExtractiveEvidence([primary, passage], citations, false, "RELATIONSHIP", "What role did Rishi A play?", "simple");
+    expect(output).toContain("teacher of the princes");
+    expect(output).toContain("[C1]");
+    expect(output).not.toContain("The princes arrive");
+    expect(output.length).toBeLessThan(350);
   });
 });

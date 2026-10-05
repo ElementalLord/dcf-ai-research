@@ -97,15 +97,15 @@ describe("resilient synthesis", () => {
     const evidence = [claim, { ...claim, id: "claim:2", claimId: "2" }, { ...claim, id: "claim:3", claimId: "3", textualLayer: "Modern interpretation", sourceTitle: "Modern source" }];
     expect(selectDiverseLayers(evidence, 2).map((item) => item.textualLayer)).toEqual(["Epic narrative", "Modern interpretation"]);
   });
-  it("groups broad evidence and collapses duplicate excerpts without paraphrasing", () => {
+  it("summarizes broad evidence and collapses duplicate propositions", () => {
     const second = { ...claim, id: "claim:2", claimId: "2", text: "The text associates the family with hymns.", parameterName: "Textual contribution" };
     const all = [claim, claim, second];
     const context = buildBoundedContext(all);
     const output = renderExtractiveEvidence(context.selected, context.citations, true);
-    expect(output).toContain("### Relevant verified evidence");
-    expect(output).toContain("### Relationships"); expect(output).toContain("### Textual contribution");
+    expect(output).not.toContain("### Relevant verified evidence");
+    expect(output).toContain("The text associates the family with hymns.");
     expect(output.split(claim.text)).toHaveLength(2);
-    expect(output).toContain("Epic narrative");
+    expect(output).toContain("[C1]");
   });
 });
 

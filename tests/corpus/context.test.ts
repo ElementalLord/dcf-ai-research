@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { buildBoundedContext } from "@/lib/corpus/context";
-import type { RetrievedPassage } from "@/lib/corpus/types";
+import type { RetrievedClaim, RetrievedPassage } from "@/lib/corpus/types";
 
 function passage(index: number): RetrievedPassage {
   return {
@@ -28,5 +28,15 @@ describe("bounded answer context", () => {
     expect(result.selected.length).toBeGreaterThan(10);
     expect(result.context.length).toBeLessThan(16_000);
     expect(result.selected.some((item) => item.id === "passage:2")).toBe(false);
+  });
+  it("sends a compact proposition with provenance and epistemic metadata once", () => {
+    const claim: RetrievedClaim = { kind: "claim", id: "claim:1", claimId: "1", text: "The Ramayana portrays the sage as a teacher.", claimKind: "traditional_account", certainty: "medium", approvalOrigin: "human_manual", evidenceType: "primary_text", epistemicType: "TRADITIONAL_NARRATIVE", contractStatus: "SUPPORTED", parameterName: "Role", parameterCode: "role", fieldLabel: "Teacher", sourceTitle: "Ramayana", sourceAuthor: null, sourceInstitution: null, sourceUrl: null, sourceType: "primary_text", pageOrSection: "1.22", evidenceExcerpt: "A supporting passage about teaching.", chunkId: "chunk", textualLayer: "Epic narrative" };
+    const result = buildBoundedContext([claim, { ...claim, id: "claim:2", claimId: "2", parameterCode: "relationships" }]);
+    expect(result.selected).toHaveLength(1);
+    expect(result.context).toContain("Proposition: The Ramayana portrays the sage as a teacher.");
+    expect(result.context).toContain("locator: 1.22; layer: Epic narrative");
+    expect(result.context).toContain("Epistemic: TRADITIONAL_NARRATIVE");
+    expect(result.context).toContain("support: SUPPORTED; certainty: medium; contested: not marked");
+    expect(result.context).toContain("Supporting passage: A supporting passage about teaching.");
   });
 });

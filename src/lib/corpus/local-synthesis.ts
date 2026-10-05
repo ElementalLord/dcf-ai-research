@@ -2,7 +2,7 @@ import type { ResolvedQuestionContext } from "@/lib/ask/query-context";
 import type { QuestionScope } from "@/lib/ask/question-scope";
 import type { Citation, RetrievedEvidence } from "./types";
 import { normalizeWhitespace, truncateText } from "./text";
-import { evidenceDescription, framedStatement } from "@/lib/claim-epistemics/language";
+import { framedStatement } from "@/lib/claim-epistemics/language";
 
 type EvidenceWithCitation = { item: RetrievedEvidence; citation: Citation };
 
@@ -153,37 +153,119 @@ export function synthesizeFromLocalEvidence(
   return `### Short answer\n\n${withCitation(primary, personality)}${supporting ? `\n\n### Supporting context\n\n${supporting}` : ""}`;
 }
 
-/** Verbatim excerpts: no connective factual assertions or claim paraphrasing. */
-export function renderExtractiveEvidence(selected: RetrievedEvidence[], citations: Citation[], broad: boolean, scope?: QuestionScope): string {
-  const groups = new Map<string, string[]>();
+function layerGroup(item: RetrievedEvidence): string {
+  const layer = `${item.textualLayer || ""} ${item.sourceTitle || ""}`;
+  const type = item.kind === "claim" ? item.epistemicType || "" : "";
+  if (item.kind === "claim" && /\b(?:rigved\w*|vedic)\b[\s\S]{0,220}\b(?:ramayana|epic)\b/i.test(item.text)) return "cross-layer synthesis";
+  if (type === "CONTESTED" || type === "HISTORICAL_INFERENCE" || /historical|contested/i.test(layer)) return "historical limits and disputed points";
+  if (/SCHOLARLY|SYNTHETIC|MODERN|NORMATIVE/.test(type) || /scholar|interpretation|modern/i.test(layer)) return "interpretation and later reception";
+  if (/rigveda|vedic|hymn/i.test(layer)) return "early textual picture";
+  if (/ramayana|epic|narrative/i.test(layer) || type === "TRADITIONAL_NARRATIVE") return "later narrative";
+  return "other supported context";
+}
+
+function relevantWords(value: string): Set<string> {
+  return new Set(value.toLowerCase().match(/[\p{L}\p{N}]{4,}/gu)?.filter((word) => !/^(what|when|where|which|about|with|from|this|that)$/.test(word)) || []);
+}
+
+function proposition(item: RetrievedEvidence): string {
+  const raw = item.kind === "claim" ? simplifyClaim(item.text, item.personalityName || "the subject") : normalizeWhitespace(item.text).split(/(?<=[.!?])\s+/)[0];
+  return truncateText(raw.replace(/^[•\-\s]+/, "").replace(/\s*\[[CS]\d+\]/g, ""), item.kind === "claim" ? 245 : 145).replace(/[;,:\s]+$/, "");
+}
+
+/** A bounded, claim-led research summary for provider outages. Passage-only answers stay short. */
+export function renderExtractiveEvidence(selected: RetrievedEvidence[], citations: Citation[], broad: boolean, scope?: QuestionScope, question = "", responseStyle: "simple" | "balanced" | "detailed" | "research" = "balanced"): string {
+  const questionWords = relevantWords(question);
+  const historicalQuestion = /histor|confidence|certain|actually say/i.test(question);
+  const scholarlyQuestion = /scholar|interpret/i.test(question);
+  const relationshipQuestion = scope === "RELATIONSHIP";
+  const textualComparison = /rigved|vedic/i.test(question) && /ramayana|epic/i.test(question);
   const seen = new Set<string>();
-  const entries = selected.map((item, index) => ({ item, citation: citations[index] })).filter((entry) => entry.citation);
-  if (broad) {
-    const priority = scope === "BROAD_SIGNIFICANCE"
-      ? ["textual_contribution", "role", "tapas_sadhana", "social_role", "philosophy", "historical_context", "parampara"]
-      : ["role", "textual_contribution", "tapas_sadhana", "social_role", "historical_context", "parampara", "philosophy"];
-    const rank = (entry: EvidenceWithCitation) => {
-      const codes = entry.item.kind === "claim" ? [entry.item.parameterCode] : entry.item.parameterCodes || [];
-      const position = Math.min(...codes.map((code) => code ? priority.indexOf(code) : -1).filter((index) => index >= 0), 99);
-      return position * 100 - profileScore(entry, entry.item.personalityName || "");
-    };
-    entries.sort((a, b) => rank(a) - rank(b));
+  const entries = selected.map((item, index) => ({ item, citation: citations[index] }))
+    .filter((entry): entry is EvidenceWithCitation => Boolean(entry.citation) && !isFrameworkRecord(entry.item) && !isMethodNote(entry.item))
+    .filter(({ item }) => !/current corpus|knowledge base|should be stored|should remain separately tagged|should itself be represented|can be used to teach|a modern learner|current source set/i.test(item.text))
+    .filter(({ item }) => {
+      const key = [...relevantWords(item.text)].join(" ") || normalizeWhitespace(item.text).toLowerCase();
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  const claims = entries.filter(({ item }) => item.kind === "claim");
+  const pool = claims.length ? claims : entries.filter(({ item }) => item.kind === "passage");
+  const historicalPool = historicalQuestion ? pool.filter(({ item }) => item.kind === "claim" && (
+    item.epistemicType === "TEXTUAL_ASSERTION" || item.epistemicType === "HISTORICAL_FACT" || item.epistemicType === "HISTORICAL_INFERENCE"
+    || /historical biography|historical individual|historically|historical evidence|date|textual layers/i.test(item.text)
+  ) && item.epistemicType !== "NORMATIVE_RELEVANCE") : pool;
+  const interpretationPool = scholarlyQuestion ? pool.filter(({ item }) => item.kind === "claim" && (
+    item.epistemicType === "SCHOLARLY_INTERPRETATION" || item.epistemicType === "SYNTHETIC_INTERPRETATION"
+    || /contrast|basis of authority|interprets?|reading|scholarly|transformation motif/i.test(item.text)
+  ) && /transform|king|royal|ascetic|brahmarshi|kshatriya|brahma/i.test(item.text)) : pool;
+  const eligible = historicalQuestion ? historicalPool : scholarlyQuestion && interpretationPool.length ? interpretationPool : pool;
+  const score = (entry: EvidenceWithCitation) => {
+    const item = entry.item;
+    const words = relevantWords(`${item.text} ${item.kind === "claim" ? `${item.parameterName} ${item.fieldLabel}` : item.parameterNames?.join(" ") || ""}`);
+    const overlap = [...questionWords].filter((word) => words.has(word)).length;
+    const group = layerGroup(item);
+    const historical = historicalQuestion || /contested|disput/i.test(question);
+    const significance = scope === "BROAD_SIGNIFICANCE";
+    const code = item.kind === "claim" ? item.parameterCode || "" : item.parameterCodes?.join(" ") || "";
+    const broadPriority = broad ? (significance
+      ? /textual_contribution/.test(code) ? 22 : /role/.test(code) ? 16 : 0
+      : /role/.test(code) ? 22 : /textual_contribution/.test(code) ? 16 : 0) : 0;
+    const interpretive = scholarlyQuestion ? (/transformation|brahmarshi|kshatriya|ascetic|kingly/i.test(item.text) ? 15 : 0) + (/contrast|basis of authority|interprets?/.test(item.text) ? 20 : 0) : 0;
+    const relationship = relationshipQuestion ? (/conflict|rival/i.test(item.text) ? 12 : 0) + (/recognition|acceptance|brahmarshi/i.test(item.text) ? 18 : 0) : 0;
+    return overlap * 12 + interpretive + relationship + (historical && group === "historical limits and disputed points" ? 24 : 0)
+      + broadPriority
+      + (item.kind === "claim" ? 8 + Math.floor(profileScore(entry, item.personalityName || "") / 3) : 0)
+      + (item.kind === "claim" && item.contractStatus === "SUPPORTED" ? 2 : 0)
+      - Math.max(0, (item.text.match(/,/g)?.length || 0) - 3) * 4;
+  };
+  const ranked = [...eligible].sort((a, b) => score(b) - score(a));
+  const limit = responseStyle === "simple" ? 2 : responseStyle === "research" ? 5 : responseStyle === "detailed" ? 4 : broad ? 3 : 2;
+  const anchor = broad ? ranked.find(({ item }) => layerGroup(item) === "cross-layer synthesis") : undefined;
+  const early = textualComparison ? ranked.find(({ item }) => layerGroup(item) === "early textual picture") : undefined;
+  const later = textualComparison ? ranked.find((entry) => /ramayana|bala kanda/i.test(entry.item.text) && entry !== early) : undefined;
+  const chosen: EvidenceWithCitation[] = textualComparison && early && later ? [early, later] : anchor ? [anchor] : [];
+  const groupCounts = new Map<string, number>();
+  for (const entry of chosen) groupCounts.set(layerGroup(entry.item), 1);
+  for (const entry of ranked) {
+    if (chosen.includes(entry)) continue;
+    const group = layerGroup(entry.item);
+    if (chosen.length >= limit) break;
+    if (groupCounts.get(group) && ranked.some((candidate) => !groupCounts.has(layerGroup(candidate.item))) && broad) continue;
+    chosen.push(entry);
+    groupCounts.set(group, (groupCounts.get(group) || 0) + 1);
   }
-  for (const { item, citation } of entries) {
-    const normalized = normalizeWhitespace(item.text);
-    if (!citation || seen.has(normalized) || isFrameworkRecord(item) || isMethodNote(item)) continue;
-    seen.add(normalized);
-    const group = broad ? (item.kind === "claim" ? item.parameterName || item.fieldLabel || "Role and context" : item.textualLayer || "Source passages") : "Evidence";
-    if (broad && (groups.get(group)?.length || 0) >= (/role|textual/i.test(group) ? 2 : 1)) continue;
-    if (broad && !groups.has(group) && groups.size >= 6) continue;
-    // Reader-facing epistemic framing: what kind of evidence this is, in plain language.
-    // An untyped claim says so plainly; the legacy "uncertain" label would read as "contested" to a reader.
-    const label = item.kind === "claim" ? evidenceDescription(item) || "Approved claim; its evidence type is still under review" : "Approved source passage";
-    const source = [item.sourceTitle || "Approved claim", item.pageOrSection, item.textualLayer, item.sourceType].filter(Boolean).join(" · ");
-    const excerpt = truncateText(item.kind === "claim" ? framedStatement({ ...item, text: normalized }) : normalized, 560);
-    groups.set(group, [...(groups.get(group) || []), `- ${excerpt} [${citation.id}]\n\n${label} · ${source}`]);
-    if (broad && [...groups.values()].flat().length >= 8) break;
-    if (!broad && [...groups.values()].flat().length >= 5) break;
+  if (!chosen.length) return "The approved knowledge base does not currently contain enough evidence to answer that fully.";
+  if (historicalQuestion && !chosen.some(({ item }) => item.kind === "claim" && (item.epistemicType === "TEXTUAL_ASSERTION" || item.epistemicType === "HISTORICAL_FACT" || /historical biography|historical individual|historically/i.test(item.text))))
+    return "The approved knowledge base does not currently contain enough evidence to answer that fully.";
+  const sentence = ({ item, citation }: EvidenceWithCitation) => {
+    const statement = proposition(item);
+    const framed = item.kind === "claim" ? framedStatement({ ...item, text: statement }) : `The ${item.sourceTitle || "approved passage"} describes ${statement[0]?.toLowerCase() || ""}${statement.slice(1)}`;
+    return `${framed.replace(/[.!?\s]+$/, "")}. [${citation.id}]`;
+  };
+  const [lead, ...rest] = chosen;
+  const paragraphs: string[] = [];
+  if (textualComparison && early && later) {
+    const name = lead.item.personalityName || "this figure";
+    paragraphs.push(`The earlier Vedic evidence associates material with ${name}, while the Ramayana develops an extended sage narrative. These are different textual layers, not a verified continuous biography. [${early.citation.id}] [${later.citation.id}]`);
   }
-  return `### Relevant verified evidence\n\n${[...groups].map(([group, entries]) => `${broad ? `### ${group}\n\n` : ""}${entries.join("\n\n")}`).join("\n\n")}`;
+  if (historicalQuestion) {
+    const name = lead.item.personalityName || "The subject";
+    paragraphs.push(`The evidence supports statements about texts associated with ${name}, but it does not establish the later narrated life as a verified historical biography. ${chosen.slice(0, 2).map(({ citation }) => `[${citation.id}]`).join(" ")}`);
+  }
+  const leadSentence = sentence(lead);
+  paragraphs.push(scope === "BROAD_SIGNIFICANCE"
+    ? leadSentence.replace("is remembered in two main ways:", "is important in two connected traditions:")
+    : leadSentence);
+  const byLayer = new Map<string, EvidenceWithCitation[]>();
+  for (const entry of rest) byLayer.set(layerGroup(entry.item), [...(byLayer.get(layerGroup(entry.item)) || []), entry]);
+  for (const [group, groupEntries] of byLayer) {
+    const prefix = group === "historical limits and disputed points" ? "Historical limits and disputed points: "
+      : group === "interpretation and later reception" ? "Interpretation and later reception: "
+      : group === "early textual picture" ? "Early textual picture: "
+      : group === "later narrative" ? "Later narrative: " : "Related context: ";
+    paragraphs.push(`${prefix}${groupEntries.map(sentence).join(" ")}`);
+  }
+  return paragraphs.join("\n\n");
 }
