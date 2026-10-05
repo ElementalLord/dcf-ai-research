@@ -25,10 +25,28 @@ const STOP = new Set(("the and for with from that this were have has had his her
   + "rather just like long here once part parts later early first final another same itself himself herself themselves away toward towards "
   + "text texts passage narrative narrates describes depicts presents portrays records explicitly according tradition traditional "
   + "account episode episodes story claim evidence source verse verses chapter sarga kanda parva adhyaya mandala sukta hymn hymns book "
-  + "section bala includes including include shows show showing gives given give takes taken take").split(" "));
+  + "section bala includes including include shows show showing").split(" "));
 
 /** Strips English plural and tense endings so "wagon"/"wagons" and "cross"/"crossed" meet; no synonyms. */
-export function inflection(word: string): string {
+/** Archaic English verb forms common in older translations ("hath", "cometh", "knoweth"). */
+const ARCHAIC: Record<string, string> = { hath: "has", doth: "does", hast: "have", dost: "do", art: "are", wast: "was", saith: "says", spake: "spoke" };
+const ETH_EXCEPTIONS = new Set(["beneath", "teeth", "breath", "death", "health", "wealth", "stealth", "seventh", "eleventh", "twentieth"]);
+
+/** Irregular English past forms (deterministic morphology, not synonymy): "gave" is "give". */
+const IRREGULAR: Record<string, string> = Object.fromEntries(("gave:give given:give ate:eat eaten:eat took:take taken:take spoke:speak spoken:speak told:tell "
+  + "went:go gone:go came:come saw:see seen:see became:become began:begin begun:begin held:hold knew:know known:know made:make sent:send "
+  + "brought:bring taught:teach fought:fight thought:think left:leave met:meet slew:slay slain:slay won:win rose:rise risen:rise fell:fall "
+  + "fallen:fall bore:bear borne:bear drove:drive driven:drive wrote:write written:write sang:sing sung:sing gone:go stood:stand sought:seek "
+  + "struck:strike stricken:strike swore:swear sworn:swear forgave:forgive forgiven:forgive forsook:forsake chose:choose chosen:choose "
+  + "broke:break broken:break drew:draw drawn:draw grew:grow grown:grow threw:throw thrown:throw led:lead bound:bind sat:sit lay:lie lain:lie "
+  + "shone:shine shot:shoot spent:spend built:build dwelt:dwell kept:keep slept:sleep wept:weep felt:feel heard:hear paid:pay said:say").split(" ")
+  .map((pair) => pair.split(":") as [string, string]));
+
+export function inflection(rawWord: string): string {
+  let word = IRREGULAR[rawWord] || ARCHAIC[rawWord] || rawWord;
+  // "-eth" third person ("cometh", "speaketh") reduces to the stem before the ordinary endings apply.
+  if (word.length >= 5 && word.endsWith("eth") && !ETH_EXCEPTIONS.has(word))
+    word = word.length - 3 >= 4 ? word.slice(0, -3) : word.slice(0, -2);
   if (word.length <= 4) return word;
   if (word.endsWith("ies") && word.length > 5) return `${word.slice(0, -3)}y`;
   if (/(?:ss|us|is)$/.test(word)) return word;
@@ -68,8 +86,17 @@ export function matchedWords(claim: Map<string, Set<string>>, passage: Set<strin
 }
 
 /** Stems of words capitalized mid-sentence in the claim: names of people, places, and named concepts. */
+/**
+ * Role and title words name what someone is, not who: "King Dasharatha" is a king (a substantive match
+ * against "the king") and Dasharatha (a name). Capitalization in a title does not make a role a name.
+ */
+export const ROLE_WORDS = new Set(("king queen prince princess emperor empress sage seer rishi saint teacher disciple student master guru "
+  + "lord lady god goddess priest priestess minister president professor doctor scholar author poet poetess bishop pope "
+  + "chief general captain judge sultan caliph monk nun abbot father mother brother sister son daughter wife husband").split(" "));
+
 export function nameStems(claimText: string): Set<string> {
-  const names = [...claimText.matchAll(/(?<![.!?:;]\s|^)(?<=\s|[("'“‘])([A-Z][a-zA-Z\u00C0-\u024F'’-]+)/g)].map((match) => match[1]);
+  const names = [...claimText.matchAll(/(?<![.!?:;]\s|^)(?<=\s|[("'“‘])([A-Z][a-zA-Z\u00C0-\u024F'’-]+)/g)].map((match) => match[1])
+    .filter((name) => !ROLE_WORDS.has(name.toLowerCase().replace(/['’]s$/, "")));
   return new Set(names.flatMap((name) => [...termForms(name).keys()]));
 }
 
