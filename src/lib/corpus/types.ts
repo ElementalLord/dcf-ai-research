@@ -192,4 +192,6 @@ export type IngestionInput = {
   textualLayer?: string | null;
   language?: string | null;
   sections: DocumentSection[];
+  /** Add passages beside the source's existing chunks (page-range ingestion) instead of replacing them. */
+  append?: boolean;
 };

@@ -5,6 +5,9 @@ export type LinkAssessment = { level: SupportLevel; confidence: number; reason: 
 type Claim = { text: string; locator?: string | null; excerpt?: string | null; sourceId?: string | null; work?: string | null };
 type Passage = { text: string; locator?: string | null; section?: string | null; work?: string | null; sourceId?: string | null };
 
+/** Normative or interpretive claims are never EXACT from a passage, however close the wording. */
+export const INTERPRETIVE_CLAIM = /\b(?:should|must|securely|better understood|not independent|reduced to|rather than|cannot be|value statement)\b/i;
+
 /** The one rule for a claim→passage link counting as exact provenance in coverage and depth. */
 export function isExactSupportLink(link: { relationship?: string | null; link_method?: string | null; confidence?: number | null; metadata?: { supportLevel?: string } | null }): boolean {
   return link.relationship === "supports" && (link.metadata?.supportLevel === "EXACT"
@@ -103,7 +106,7 @@ export function assessClaimPassage(claim: Claim, passage: Passage, aliases: stri
   // EXACT needs a passage locator at least as specific as the citation; a whole-sarga page cannot
   // exactly support a verse-level claim, and interpretive or normative claims are never exact from a passage.
   const granular = samePage || Boolean(claimRef && passageRef && (passageRef === claimRef || passageRef.startsWith(`${claimRef}.`)));
-  const interpretive = /\b(?:should|must|securely|better understood|not independent|reduced to|rather than|cannot be|value statement)\b/i.test(claim.text);
+  const interpretive = INTERPRETIVE_CLAIM.test(claim.text);
   if (granular && !interpretive && quoted.some((phrase) => normalizeTransliteration(passage.text).includes(phrase)))
     return { level: "EXACT", confidence: 0.96, reason: "Exact locator and quoted passage wording" };
   if (granular && !interpretive && matches.length >= 3 && ratio >= 0.5)

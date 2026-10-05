@@ -43,7 +43,7 @@ export async function ingestSections(input: IngestionInput): Promise<{
       .select("id, content_hash");
     if (error) throw error;
     const activeIds = (stored || []).map((row) => row.id);
-    if (activeIds.length > 0) {
+    if (activeIds.length > 0 && !input.append) {
       const { error: deactivateError } = await supabaseAdmin
         .from("source_chunks")
         .update({ is_active: false })
@@ -100,7 +100,8 @@ export async function ingestSections(input: IngestionInput): Promise<{
       .update({
         ingestion_status: "ready",
         ingested_at: new Date().toISOString(),
-        content_hash: contentHash,
+        // A page-range ingest does not describe the whole document, so it keeps the prior document hash.
+        ...(input.append ? {} : { content_hash: contentHash }),
         content_language: input.language || null,
         textual_layer: input.textualLayer || null,
         last_ingestion_error: null,
