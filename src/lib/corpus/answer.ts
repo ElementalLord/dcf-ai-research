@@ -1,4 +1,5 @@
 import { buildBoundedContext } from "./context";
+import { epistemicSafeguard } from "@/lib/claim-epistemics/language";
 import { GeminiSynthesisProvider, ExtractiveSynthesisProvider, validateAnswerCitations } from "./synthesis-provider";
 import { answerCacheIdentity, readAnswerCache, writeAnswerCache } from "./answer-cache";
 import { incrementMetric, withRequestUsage, usageMetrics } from "./usage";
@@ -49,6 +50,7 @@ async function answerQuestionInternal(
     answerCacheHit: false,
     answerCacheKey: null as string | null,
     extractiveFallbackUsed: false,
+    epistemicSafeguardNotes: [] as string[],
     fallbackUsed: false,
     provider: "none",
     model: null as string | null,
@@ -170,7 +172,11 @@ async function answerQuestionInternal(
     debug.fallbackUsed = true;
     incrementMetric("extractiveFallbacks");
   }
-  const cleanedAnswer = generated.text.trim();
+  // Deterministic guard: a generated answer may not assert historical certainty from narrative evidence or settle a contested point.
+  const guarded = generated.text.trim() === ABSTENTION || usedLocalSynthesis ? { answer: generated.text, notes: [] as string[] }
+    : epistemicSafeguard(generated.text, bounded.selected.map((item) => item.kind === "claim" ? item : { text: item.text, textualLayer: item.textualLayer }));
+  debug.epistemicSafeguardNotes = guarded.notes;
+  const cleanedAnswer = guarded.answer.trim();
   if (!cached && !usedLocalSynthesis && cleanedAnswer !== ABSTENTION) {
     await writeAnswerCache(identity, personalityIds, debug.evidencePolicyMode || "test", { answer: cleanedAnswer, provider: debug.provider, model: debug.model });
   }

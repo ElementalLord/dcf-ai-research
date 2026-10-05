@@ -2,6 +2,7 @@ import type { ResolvedQuestionContext } from "@/lib/ask/query-context";
 import type { QuestionScope } from "@/lib/ask/question-scope";
 import type { Citation, RetrievedEvidence } from "./types";
 import { normalizeWhitespace, truncateText } from "./text";
+import { evidenceDescription, framedStatement } from "@/lib/claim-epistemics/language";
 
 type EvidenceWithCitation = { item: RetrievedEvidence; citation: Citation };
 
@@ -106,8 +107,13 @@ function simplifyPassage(item: Extract<RetrievedEvidence, { kind: "passage" }>):
 
 function simplified(entry: EvidenceWithCitation, personality: string): string {
   return entry.item.kind === "claim"
-    ? simplifyClaim(entry.item.text, personality)
+    ? framedStatement({ ...entry.item, text: simplifyClaim(entry.item.text, personality) })
     : simplifyPassage(entry.item);
+}
+
+/** Research-method notes are about how evidence is handled, not about the subject; they never lead an answer. */
+function isMethodNote(item: RetrievedEvidence): boolean {
+  return item.kind === "claim" && item.epistemicType === "METHODOLOGICAL";
 }
 
 function withCitation(entry: EvidenceWithCitation, personality: string): string {
@@ -123,7 +129,7 @@ export function synthesizeFromLocalEvidence(
   const allPaired = selected
     .map((item, index) => ({ item, citation: citations[index] }))
     .filter((entry): entry is EvidenceWithCitation => Boolean(entry.citation));
-  const withoutFramework = allPaired.filter((entry) => !isFrameworkRecord(entry.item));
+  const withoutFramework = allPaired.filter((entry) => !isFrameworkRecord(entry.item) && !isMethodNote(entry.item));
   const paired = withoutFramework.length > 0 ? withoutFramework : allPaired;
   const unique = paired.filter((entry, index, all) =>
     all.findIndex((candidate) => normalizeWhitespace(candidate.item.text) === normalizeWhitespace(entry.item.text)) === index,
@@ -165,14 +171,16 @@ export function renderExtractiveEvidence(selected: RetrievedEvidence[], citation
   }
   for (const { item, citation } of entries) {
     const normalized = normalizeWhitespace(item.text);
-    if (!citation || seen.has(normalized) || isFrameworkRecord(item)) continue;
+    if (!citation || seen.has(normalized) || isFrameworkRecord(item) || isMethodNote(item)) continue;
     seen.add(normalized);
     const group = broad ? (item.kind === "claim" ? item.parameterName || item.fieldLabel || "Role and context" : item.textualLayer || "Source passages") : "Evidence";
     if (broad && (groups.get(group)?.length || 0) >= (/role|textual/i.test(group) ? 2 : 1)) continue;
     if (broad && !groups.has(group) && groups.size >= 6) continue;
-    const label = item.kind === "claim" ? `Approved claim · ${item.evidenceType}` : "Approved source passage";
+    // Reader-facing epistemic framing: what kind of evidence this is, in plain language.
+    // An untyped claim says so plainly; the legacy "uncertain" label would read as "contested" to a reader.
+    const label = item.kind === "claim" ? evidenceDescription(item) || "Approved claim; its evidence type is still under review" : "Approved source passage";
     const source = [item.sourceTitle || "Approved claim", item.pageOrSection, item.textualLayer, item.sourceType].filter(Boolean).join(" · ");
-    const excerpt = truncateText(normalized, 500);
+    const excerpt = truncateText(item.kind === "claim" ? framedStatement({ ...item, text: normalized }) : normalized, 560);
     groups.set(group, [...(groups.get(group) || []), `- ${excerpt} [${citation.id}]\n\n${label} · ${source}`]);
     if (broad && [...groups.values()].flat().length >= 8) break;
     if (!broad && [...groups.values()].flat().length >= 5) break;

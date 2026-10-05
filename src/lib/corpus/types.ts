@@ -73,6 +73,9 @@ export type RetrievedClaim = {
   approvalOrigin: string;
   provenanceSignature?: string;
   evidenceType: string;
+  /** What the claim asserts and whether its evidence meets that type's contract (claim_epistemics). */
+  epistemicType?: string | null;
+  contractStatus?: string | null;
   personalityId?: string;
   personalityName?: string;
   parameterName: string | null;
@@ -111,6 +114,8 @@ export type Citation = {
   personalityName?: string;
   approvalOrigin?: string;
   evidenceType?: string;
+  epistemicType?: string | null;
+  contractStatus?: string | null;
 };
 
 export type RetrievalDebug = {

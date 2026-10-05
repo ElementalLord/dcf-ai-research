@@ -104,6 +104,8 @@ export function rankApprovedClaims(
       const source = unwrap(link?.sources as Record<string, unknown> | Array<Record<string, unknown>> | null);
       const chunkLink = ((row.claim_chunks as Array<Record<string, unknown>> | null) || [])[0];
       const chunk = unwrap(chunkLink?.source_chunks as Record<string, unknown> | Array<Record<string, unknown>> | null);
+      // Persisted epistemics (computed in corpus processing, never per request).
+      const epistemics = unwrap(row.claim_epistemics as Record<string, unknown> | Array<Record<string, unknown>> | null);
       const searchable = normalizeForMatch(`${String(row.claim_text || "")} ${String(field?.label || "")} ${String(parameter?.name || "")}`);
       const tokens = new Set(searchable.split(" ").filter(Boolean));
       const termScore = [...terms].reduce((sum, term) => {
@@ -128,6 +130,8 @@ export function rankApprovedClaims(
           certainty: String(row.certainty || "unknown"),
           approvalOrigin: String(row.approval_origin || "imported_existing"),
           evidenceType: String(row.evidence_type || "uncertain"),
+          epistemicType: epistemics?.epistemic_type ? String(epistemics.epistemic_type) : null,
+          contractStatus: epistemics?.contract_status ? String(epistemics.contract_status) : null,
           provenanceSignature: JSON.stringify({ reviewStatus: row.review_status, sources: links.map((candidate) => candidate.sources), support: row.claim_chunks }),
           personalityId: options.personalityId,
           personalityName: options.personalityName,
@@ -283,7 +287,8 @@ export async function retrieveEvidence(
       parameter_fields(id, code, label, parameters(id, code, name, sort_order)),
       claim_sources(relationship, evidence_excerpt, page_or_section,
         sources(id, title, author, publisher_or_institution, source_type, url, citation, source_status)),
-      claim_chunks(relationship, source_chunks(id, textual_layer))
+      claim_chunks(relationship, source_chunks(id, textual_layer)),
+      claim_epistemics(epistemic_type, contract_status)
     `, { count: "exact" })
     .eq("personality_id", personalityId)
     .eq("review_status", "approved")

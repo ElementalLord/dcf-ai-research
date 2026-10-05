@@ -1,3 +1,5 @@
+import { contractStats, type ClaimEpistemicState } from "@/lib/claim-epistemics/evaluation";
+
 export type CoverageParameterInput = {
   id: string;
   code: string;
@@ -16,6 +18,8 @@ export type CoverageClaimInput = {
   core?: boolean;
   sourceIds: string[];
   contested?: boolean;
+  /** Persisted epistemic type and evidence-contract outcome; absent until a reassessment has run. */
+  epistemic?: ClaimEpistemicState | null;
 };
 
 export type CoverageChunkInput = {
@@ -45,6 +49,7 @@ export function computeCorpusCoverage(input: {
   const works = new Map((input.sourceWorks || []).map((source) => [source.id, source]));
   const corroborated = (claim: CoverageClaimInput) => new Set(claim.sourceIds.map((id) => works.get(id)?.independentKey || id)).size >= 2;
   const approvedClaims = input.claims.filter((claim) => claim.approved);
+  const hasEpistemics = approvedClaims.some((claim) => claim.epistemic);
   const claimsWithChunks = approvedClaims.filter((claim) => claim.hasChunkEvidence);
   const embeddedChunks = input.chunks.filter((chunk) => chunk.embedded);
   const layers = new Set(input.chunks.map((chunk) => chunk.textualLayer).filter(Boolean));
@@ -86,6 +91,8 @@ export function computeCorpusCoverage(input: {
       sourceChunks: parameterChunks.length,
       embeddedChunks: parameterChunks.filter((chunk) => chunk.embedded).length,
       independentEvidence: independentWorks.size >= 2,
+      // Type-aware contract statistics, only when this personality's claims have been evaluated.
+      contract: hasEpistemics ? contractStats(parameterClaims.map((claim) => ({ core: Boolean(claim.core), epistemic: claim.epistemic }))) : undefined,
     };
   });
 

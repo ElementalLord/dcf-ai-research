@@ -1,4 +1,6 @@
 import "server-only";
+import { inMetricScope, type ClaimEpistemicState, type MetricScope } from "@/lib/claim-epistemics/evaluation";
+import { independentWorkKey, type ContractStatus, type EpistemicType } from "@/lib/claim-epistemics/types";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { generationCircuit, embeddingCircuit } from "./provider-health";
 import { CorpusError } from "./errors";
@@ -138,11 +140,20 @@ export async function runPersonalityOnboarding(input: {
   return { personality: { id: input.personalityId, name: configuration.canonicalName }, plan, results };
 }
 
-export async function loadPersonalityCoverage(personalityId: string) {
+type EpistemicRow = { epistemic_type: string | null; contract_status: string; contract_satisfied: boolean | null; type_review_status: string };
+function epistemicState(value: EpistemicRow | EpistemicRow[] | null | undefined): ClaimEpistemicState | null {
+  const row = Array.isArray(value) ? value[0] : value;
+  if (!row) return null;
+  return { type: (row.epistemic_type as EpistemicType | null) || null, status: row.contract_status as ContractStatus, satisfied: row.contract_satisfied,
+    needsTypeReview: row.type_review_status === "needs_type_review" || row.type_review_status === "kept_unclassified" };
+}
+
+export async function loadPersonalityCoverage(personalityId: string, options: { scope?: MetricScope } = {}) {
+  const scope = options.scope || "strict";
   const configuration = await loadPersonalityConfiguration(personalityId);
   const [parametersResult, claimsResult, chunkLinksResult, sourceLinksResult, eventsResult, relationshipsResult, cacheResult, accessResult] = await Promise.all([
     supabaseAdmin.from("parameters").select("id, code, name, parameter_fields(id, code, label)").eq("category_id", configuration.categoryId).order("sort_order"),
-    supabaseAdmin.from("claims").select("id, parameter_field_id, review_status, evidence_type, certainty, claim_sources(source_id), claim_chunks(chunk_id,relationship,confidence,link_method,metadata)").eq("personality_id", personalityId).limit(10_000),
+    supabaseAdmin.from("claims").select("id, parameter_field_id, review_status, evidence_type, certainty, approval_origin, approval_metadata, claim_sources(source_id), claim_chunks(chunk_id,relationship,confidence,link_method,metadata), claim_epistemics(epistemic_type,contract_status,contract_satisfied,type_review_status)").eq("personality_id", personalityId).limit(10_000),
     supabaseAdmin.from("chunk_personalities").select("chunk_id, source_chunks!inner(id, source_id, embedding_status, textual_layer, chunk_parameter_fields(parameter_field_id))").eq("personality_id", personalityId).eq("source_chunks.is_active", true).limit(10_000),
     supabaseAdmin.from("source_personalities").select("source_id, sources(id, url, title, author, source_type, textual_layer, content_hash, metadata)").eq("personality_id", personalityId).limit(10_000),
     supabaseAdmin.from("event_personalities").select("event_id, events!inner(review_status)").eq("personality_id", personalityId).limit(10_000),
@@ -168,10 +179,11 @@ export async function loadPersonalityCoverage(personalityId: string) {
       name: parameter.name,
       fields: parameter.parameter_fields || [],
     })),
-    claims: (claimsResult.data || []).map((claim) => ({
+    claims: (claimsResult.data || []).filter((claim) => inMetricScope(claim, scope)).map((claim) => ({
       id: claim.id,
       parameterFieldId: claim.parameter_field_id,
       approved: claim.review_status === "approved",
+      epistemic: epistemicState(claim.claim_epistemics),
       contested: claim.evidence_type === "contested",
       hasChunkEvidence: (claim.claim_chunks || []).some(isExactSupportLink),
       hasStrongSupport: (claim.claim_chunks || []).some((link) => link.metadata?.supportLevel === "STRONG"),
@@ -196,14 +208,11 @@ export async function loadPersonalityCoverage(personalityId: string) {
     sourceWorks: (sourceLinksResult.data || []).flatMap((link) => {
       const source = Array.isArray(link.sources) ? link.sources[0] : link.sources;
       if (!source) return [];
-      const metadata = source.metadata && typeof source.metadata === "object" ? source.metadata as Record<string, unknown> : {};
-      const titleStem = (source.title || "").replace(/\b(?:sukta|hymn|verse|chapter|sarga|page)\s+[IVXLC\d]+.*$/i, "").trim();
-      const key = String(metadata.independentWorkKey || metadata.doi || metadata.editionKey ||
-        [titleStem || source.title, source.author, source.textual_layer].filter(Boolean).join("|") || source.content_hash || source.id).toLowerCase();
+      const key = independentWorkKey(source);
       const kind = /primary|scripture|textual|veda|ramayana/i.test(`${source.source_type || ""} ${source.textual_layer || ""}`) ? "primary"
         : /scholar|journal|academic|article/i.test(source.source_type || "") ? "scholarly" : "other";
       return [{ id: source.id, independentKey: key, evidenceKind: kind as "primary" | "scholarly" | "other" }];
     }),
   });
-  return { personality: { id: personalityId, name: configuration.canonicalName, categoryName: configuration.categoryName }, coverage };
+  return { personality: { id: personalityId, name: configuration.canonicalName, categoryName: configuration.categoryName }, coverage, scope };
 }

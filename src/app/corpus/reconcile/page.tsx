@@ -54,7 +54,7 @@ export default function ReconcilePage() {
   });
 
   return <main className="mx-auto max-w-7xl px-4 py-8">
-    <nav className="mb-6 flex gap-4 text-sm"><Link href="/corpus" className="underline">Corpus</Link><Link href="/corpus/evidence" className="underline">Evidence Completion</Link><Link href="/review" className="underline">Claims</Link></nav>
+    <nav className="mb-6 flex gap-4 text-sm"><Link href="/corpus" className="underline">Corpus</Link><Link href="/corpus/evidence" className="underline">Evidence Completion</Link><Link href="/corpus/epistemics" className="underline">Epistemics</Link><Link href="/review" className="underline">Claims</Link></nav>
     <p className="text-sm font-semibold uppercase tracking-wider text-zinc-500">Corpus administration</p>
     <h1 className="mt-2 text-4xl font-bold">Evidence Reconciliation</h1>
     <p className="mt-2 max-w-3xl text-zinc-600">Approved claims with a located passage but no EXACT support. Each item says why EXACT failed and proposes an evidence-aligned atomic claim or a confirmation. Approving creates a new lineage-linked claim; the original approved claim is never edited.</p>

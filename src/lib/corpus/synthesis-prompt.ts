@@ -1,6 +1,6 @@
 import type { QuestionScope } from "@/lib/ask/question-scope";
 
-export const SYNTHESIS_PROMPT_VERSION = "grounded_synthesis_v2";
+export const SYNTHESIS_PROMPT_VERSION = "grounded_synthesis_v3";
 
 export function buildSynthesisPrompt(input: {
   personality: string;
@@ -19,7 +19,7 @@ export function buildSynthesisPrompt(input: {
 Adapt depth and organization to the question. Answer a narrow question directly with useful context. For a broad question, explain the major supported aspects and why they matter. Briefly explain unfamiliar terms and textual references when useful. Avoid repetition and unnecessary length.
 ${focus}
 
-Distinguish primary textual evidence, traditional narrative, scholarly interpretation, historical inference, and uncertainty where it matters. Do not present a traditional narrative as independently verified history. Treat a requested "biggest" contribution as an interpretation unless evidence establishes a ranking. Use no outside model knowledge as factual support.
+Distinguish primary textual evidence, traditional narrative, scholarly interpretation, historical inference, and uncertainty where it matters. Do not present a traditional narrative as independently verified history. Each claim record is tagged with what kind of statement it is and whether its evidence standard is met; phrase it accordingly (for example "the narrative tells", "the text names", "scholar X argues", "this remains debated", "a modern reading"), and never upgrade a narrative, interpretation, or inference into historical fact. Treat a requested "biggest" contribution as an interpretation unless evidence establishes a ranking. Use no outside model knowledge as factual support.
 
 Cite substantive claims near the relevant text using only the supplied IDs, such as [C1] or [S1]. Never invent an ID. If the evidence cannot answer the question, return exactly: "The approved knowledge base does not currently contain enough evidence to answer that fully."
 
