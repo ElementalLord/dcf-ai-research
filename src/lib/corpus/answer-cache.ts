@@ -7,13 +7,13 @@ import { SYNTHESIS_PROMPT_VERSION } from "./synthesis-prompt";
 import { GENERATION_MODEL } from "./gemini";
 const hash = (value: unknown) => createHash("sha256").update(JSON.stringify(value)).digest("hex");
 export function normalizeAnswerQuestion(question: string) { return question.normalize("NFKC").toLowerCase().trim().replace(/[?!]+$/g, "").trim().replace(/\s+/g, " "); }
-export function answerCacheIdentity(scope: string[], question: string, policy: string, evidence: RetrievedEvidence[], citations: Citation[]) {
+export function answerCacheIdentity(scope: string[], question: string, policy: string, evidence: RetrievedEvidence[], citations: Citation[], responseStyle = "balanced") {
   // Re-retrieve under the current approval policy before EVERY lookup. Ordered content,
   // provenance and citation metadata are part of the signature, not just evidence IDs.
   const evidenceSignature = hash({ evidence, citations });
   const normalizedQuestion = normalizeAnswerQuestion(question);
   const synthesisMode = process.env.SYNTHESIS_PROVIDER || process.env.AI_SYNTHESIS_MODE || (process.env.GEMINI_API_KEY ? "gemini" : "local");
-  const key = hash({ version: SYNTHESIS_PROMPT_VERSION, synthesisMode: synthesisMode === "gemini" ? undefined : synthesisMode, model: GENERATION_MODEL, scope: [...scope].sort(), normalizedQuestion, policy, evidenceSignature });
+  const key = hash({ version: SYNTHESIS_PROMPT_VERSION, synthesisMode: synthesisMode === "gemini" ? undefined : synthesisMode, model: GENERATION_MODEL, scope: [...scope].sort(), normalizedQuestion, policy, evidenceSignature, responseStyle });
   return { key, evidenceSignature, normalizedQuestion };
 }
 export type CachedAnswer = { answer: string; provider: string; model: string | null };

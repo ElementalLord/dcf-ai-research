@@ -18,7 +18,9 @@ export type CorpusErrorCode =
   | "RERANK_FAILED"
   | "GEMINI_FAILED"
   | "REQUEST_TIMEOUT"
-  | "DATABASE_FAILED";
+  | "DATABASE_FAILED"
+  | "REVIEW_REQUIRED"
+  | "PROVENANCE_PROTECTED";
 
 export class CorpusError extends Error {
   constructor(

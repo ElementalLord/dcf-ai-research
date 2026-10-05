@@ -19,7 +19,7 @@ const ABSTENTION = "The approved knowledge base does not currently contain enoug
 async function answerQuestionInternal(
   question: string,
   personalityId: string | string[],
-  options: { history?: ConversationQuestion[] } = {},
+  options: { history?: ConversationQuestion[]; responseStyle?: "simple" | "balanced" | "detailed" | "research" } = {},
 ) {
   const personalityIds = [...new Set(Array.isArray(personalityId) ? personalityId : [personalityId])];
   const configurations = await Promise.all(personalityIds.map(loadPersonalityConfiguration));
@@ -119,7 +119,7 @@ async function answerQuestionInternal(
     throw new Error("Citation integrity validation failed before answer generation.");
   }
 
-  const identity = answerCacheIdentity(personalityIds, queryContext.resolvedQuestion, debug.evidencePolicyMode || "test", bounded.selected, bounded.citations);
+  const identity = answerCacheIdentity(personalityIds, queryContext.resolvedQuestion, debug.evidencePolicyMode || "test", bounded.selected, bounded.citations, options.responseStyle);
   debug.answerCacheKey = identity.key;
   debug.estimatedEvidenceTokens = Math.ceil(bounded.context.length / 4);
   const stopCache = stageTimer("ANSWER_CACHE");
@@ -141,7 +141,7 @@ async function answerQuestionInternal(
     debug.generationFallbackReason = "AI synthesis unavailable; showing verified evidence.";
     generated = await fallback();
   } else {
-    const prompt = buildSynthesisPrompt({ personality, question, resolvedQuestion: queryContext.resolvedQuestion, scope: queryContext.scope, evidenceContext: bounded.context });
+    const prompt = buildSynthesisPrompt({ personality, question, resolvedQuestion: queryContext.resolvedQuestion, scope: queryContext.scope, evidenceContext: bounded.context, responseStyle: options.responseStyle });
     try {
       incrementMetric("synthesisAttempted");
       generated = await provider.generateGroundedAnswer({ prompt, evidence: bounded.selected, citations: bounded.citations, broad: queryContext.broadSynthesis, scope: queryContext.scope });
@@ -204,7 +204,7 @@ async function answerQuestionInternal(
   };
 }
 
-export async function answerQuestion(question: string, personalityId: string | string[], options: { history?: ConversationQuestion[] } = {}) {
+export async function answerQuestion(question: string, personalityId: string | string[], options: { history?: ConversationQuestion[]; responseStyle?: "simple" | "balanced" | "detailed" | "research" } = {}) {
   incrementMetric("totalAskRequests");
   return withRequestUsage(async (usage) => {
     const started = performance.now();

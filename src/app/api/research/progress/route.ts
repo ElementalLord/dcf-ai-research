@@ -1,8 +1,10 @@
+import { assertCorpusAdmin } from "@/lib/corpus/api";
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { loadPersonalityCoverage } from "@/lib/corpus/onboarding";
 
 export async function GET(request: NextRequest) {
+  const denied = assertCorpusAdmin(request); if (denied) return denied;
   try {
     const personalityId =
       request.nextUrl.searchParams.get("personalityId");

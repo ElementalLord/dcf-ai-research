@@ -1,3 +1,4 @@
+import { assertCorpusAdmin } from "@/lib/corpus/api";
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { z } from "zod";
@@ -11,6 +12,7 @@ const schema = z.object({
 });
 
 export async function POST(request: NextRequest) {
+  const denied = assertCorpusAdmin(request); if (denied) return denied;
   try {
     const parsed = schema.safeParse(await request.json());
     if (!parsed.success) {

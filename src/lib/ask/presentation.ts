@@ -69,7 +69,7 @@ export function answerBlocks(answer: string): AnswerBlock[] {
 
   for (const rawLine of lines) {
     const line = rawLine.trim();
-    if (!line) {
+    if (!line || /^-{3,}$/.test(line)) {
       flushParagraph();
       flushList();
       continue;

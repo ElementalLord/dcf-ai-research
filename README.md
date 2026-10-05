@@ -13,15 +13,13 @@ npm run dev
 
 Open:
 
-- `http://localhost:3000/` — research claim entry and progress
-- `http://localhost:3000/review` — human claim review
-- `http://localhost:3000/corpus` — internal corpus ingestion, tagging, embeddings, proposal review, and retrieval debug
-- `http://localhost:3000/corpus/onboard` — reusable personality/source onboarding and evidence-depth coverage
-- `http://localhost:3000/corpus/external` — Brave discovery preview and bounded corpus expansion
-- `http://localhost:3000/corpus/sources` — approved internet scopes, separate evidence authorization, and live-cache inspection
-- `http://localhost:3000/ask` — grounded question answering with inspectable citations
+- `http://localhost:3000/` — Introduction and research method
+- `http://localhost:3000/ai` — questions, answer depth, citations, and source details
+- `http://localhost:3000/resources` — restricted person-centered source and claim management
 
-In production, set `CORPUS_ADMIN_TOKEN` and send it as a Bearer token to corpus administration APIs. Without it, corpus administration is disabled in production. Supabase service-role and Gemini credentials remain server-only.
+Set `CORPUS_ADMIN_TOKEN` in `.env.local` to enable Resources. Administrators sign in with that token; the browser receives a signed, HTTP-only 12-hour session cookie. The same token remains valid as a Bearer token for existing programmatic corpus APIs. All Resources, legacy research/review, and corpus data routes check authorization server-side in development and production. Without the token, administration stays unavailable. Supabase service-role and Gemini credentials remain server-only.
+
+The earlier `/research`, `/review`, and `/corpus` workspaces remain available from Resources after sign-in. `/ask` now redirects to `/ai`. Resources uses the existing Supabase tables and review endpoints: approved records must return to review before their content is edited, candidate sources and draft claims can be removed only when provenance permits, and approval decisions keep their original audit/review behavior.
 
 ## Retrieval architecture
 

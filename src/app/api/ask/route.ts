@@ -8,6 +8,7 @@ const askSchema = z.object({
   personalityId: z.string().uuid().optional(),
   personalityIds: z.array(z.string().uuid()).min(1).max(3).optional(),
   question: z.string().trim().min(2).max(4_000),
+  responseStyle: z.enum(["simple", "balanced", "detailed", "research"]).default("balanced"),
   history: z.array(z.object({
     question: z.string().trim().min(2).max(1_000),
     resolvedQuestion: z.string().trim().min(2).max(2_000).optional(),
@@ -22,7 +23,7 @@ export async function POST(request: NextRequest) {
       throw new CorpusError("INVALID_INPUT", "A valid personality and question are required.", 400);
     }
     const ids = parsed.data.personalityIds?.length ? parsed.data.personalityIds : [parsed.data.personalityId!];
-    const result = await answerQuestion(parsed.data.question, ids.length === 1 ? ids[0] : ids, { history: parsed.data.history });
+    const result = await answerQuestion(parsed.data.question, ids.length === 1 ? ids[0] : ids, { history: parsed.data.history, responseStyle: parsed.data.responseStyle });
     return NextResponse.json(result);
   } catch (error) {
     return corpusErrorResponse(error);

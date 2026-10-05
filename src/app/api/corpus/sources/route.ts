@@ -14,6 +14,7 @@ const updateSchema = z.object({
 });
 
 const createSchema = z.object({
+  personalityId: z.string().uuid().optional(),
   title: z.string().trim().min(2).max(500),
   author: z.string().trim().max(300).nullable().optional(),
   sourceType: z.string().trim().min(2).max(80).default("other"),
@@ -103,7 +104,10 @@ export async function POST(request: NextRequest) {
         .limit(1);
       if (lookupError) throw new CorpusError("DATABASE_FAILED", "Source duplication could not be checked.", 500, { cause: lookupError });
       const existing = existingRows?.[0];
-      if (existing) return NextResponse.json({ source: existing, reused: true });
+      if (existing) {
+        if (parsed.data.personalityId) await supabaseAdmin.from("source_personalities").upsert({ source_id: existing.id, personality_id: parsed.data.personalityId }, { onConflict: "source_id,personality_id", ignoreDuplicates: true });
+        return NextResponse.json({ source: existing, reused: true });
+      }
     }
     const { data, error } = await supabaseAdmin
       .from("sources")
@@ -120,6 +124,10 @@ export async function POST(request: NextRequest) {
       .select("id, title")
       .single();
     if (error) throw new CorpusError("DATABASE_FAILED", "The source record could not be created.", 500, { cause: error });
+    if (parsed.data.personalityId) {
+      const linked = await supabaseAdmin.from("source_personalities").upsert({ source_id: data.id, personality_id: parsed.data.personalityId }, { onConflict: "source_id,personality_id", ignoreDuplicates: true });
+      if (linked.error) throw new CorpusError("DATABASE_FAILED", "The source was created but could not be linked to the person.", 500, { cause: linked.error });
+    }
     return NextResponse.json({ source: data, reused: false }, { status: 201 });
   } catch (error) {
     return corpusErrorResponse(error);
