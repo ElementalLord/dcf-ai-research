@@ -114,10 +114,10 @@ describe("grounded Ask presentation", () => {
     expect(aiSynthesisEnabled(undefined)).toBe(false);
     expect(aiSynthesisEnabled("gemini")).toBe(true);
     expect(output).toContain("### In brief");
-    expect(output).toContain("remembered in two main ways");
+    expect(output).toContain("Vishvamitra is an ascetic teacher and guide to Rama");
     expect(output).toContain("an ascetic teacher");
     expect(output).not.toContain("also functions as");
-    expect(output.indexOf("remembered in two main ways")).toBeLessThan(output.indexOf("A long primary-text passage"));
+    expect(output.indexOf("Vishvamitra is an ascetic teacher")).toBeLessThan(output.indexOf("A long primary-text passage"));
     expect(output).not.toContain("temporarily unavailable");
   });
 });

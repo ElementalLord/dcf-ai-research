@@ -3,6 +3,7 @@ import type { QuestionScope } from "@/lib/ask/question-scope";
 import type { Citation, RetrievedEvidence } from "./types";
 import { normalizeWhitespace, truncateText } from "./text";
 import { framedStatement } from "@/lib/claim-epistemics/language";
+import { profileEvidenceSalience } from "./rerank";
 
 type EvidenceWithCitation = { item: RetrievedEvidence; citation: Citation };
 
@@ -57,7 +58,7 @@ function simplifyClaim(value: string, personality: string): string {
     const secondTradition = crossMatch[4];
     const secondRole = crossMatch[5].replace(/^an?\s+/i, "");
     const secondArticle = /^[aeiou]/i.test(secondRole) ? "an" : "a";
-    return `${personality} is remembered in two main ways: in the ${firstTradition}, as ${firstRole} linked to ${association}; and in the ${secondTradition}, as ${secondArticle} ${secondRole}.`;
+    return `${personality} is ${secondArticle} ${secondRole} in the ${secondTradition}. In the ${firstTradition}, ${personality} and his family are associated with ${association} as ${firstRole}.`;
   }
 
   const developmentPattern = new RegExp(`^In the (.+?) tradition, ${name} passes through (.+?) and is ultimately recognized as (.+?)[.]`, "i");
@@ -216,12 +217,13 @@ export function renderExtractiveEvidence(selected: RetrievedEvidence[], citation
     const relationship = relationshipQuestion ? (/conflict|rival/i.test(item.text) ? 12 : 0) + (/recognition|acceptance|brahmarshi/i.test(item.text) ? 18 : 0) : 0;
     return overlap * 12 + interpretive + relationship + (historical && group === "historical limits and disputed points" ? 24 : 0)
       + broadPriority
+      + (scope === "BROAD_PROFILE" ? profileEvidenceSalience(item.text, code) : 0)
       + (item.kind === "claim" ? 8 + Math.floor(profileScore(entry, item.personalityName || "") / 3) : 0)
       + (item.kind === "claim" && item.contractStatus === "SUPPORTED" ? 2 : 0)
       - Math.max(0, (item.text.match(/,/g)?.length || 0) - 3) * 4;
   };
   const ranked = [...eligible].sort((a, b) => score(b) - score(a));
-  const limit = responseStyle === "simple" ? 2 : responseStyle === "research" ? 5 : responseStyle === "detailed" ? 4 : broad ? 3 : 2;
+  const limit = responseStyle === "simple" ? 2 : responseStyle === "research" ? 5 : responseStyle === "detailed" || scope === "BROAD_PROFILE" ? 4 : broad ? 3 : 2;
   const anchor = broad ? ranked.find(({ item }) => layerGroup(item) === "cross-layer synthesis") : undefined;
   const early = textualComparison ? ranked.find(({ item }) => layerGroup(item) === "early textual picture") : undefined;
   const later = textualComparison ? ranked.find((entry) => /ramayana|bala kanda/i.test(entry.item.text) && entry !== early) : undefined;
@@ -232,7 +234,7 @@ export function renderExtractiveEvidence(selected: RetrievedEvidence[], citation
     if (chosen.includes(entry)) continue;
     const group = layerGroup(entry.item);
     if (chosen.length >= limit) break;
-    if (groupCounts.get(group) && ranked.some((candidate) => !groupCounts.has(layerGroup(candidate.item))) && broad) continue;
+    if (groupCounts.get(group) && ranked.some((candidate) => !groupCounts.has(layerGroup(candidate.item))) && broad && scope !== "BROAD_PROFILE") continue;
     chosen.push(entry);
     groupCounts.set(group, (groupCounts.get(group) || 0) + 1);
   }
@@ -255,9 +257,8 @@ export function renderExtractiveEvidence(selected: RetrievedEvidence[], citation
     paragraphs.push(`The evidence supports statements about texts associated with ${name}, but it does not establish the later narrated life as a verified historical biography. ${chosen.slice(0, 2).map(({ citation }) => `[${citation.id}]`).join(" ")}`);
   }
   const leadSentence = sentence(lead);
-  paragraphs.push(scope === "BROAD_SIGNIFICANCE"
-    ? leadSentence.replace("is remembered in two main ways:", "is important in two connected traditions:")
-    : leadSentence);
+  paragraphs.push(leadSentence);
+  if (scope === "BROAD_PROFILE") return [...paragraphs, ...rest.map(sentence)].join("\n\n");
   const byLayer = new Map<string, EvidenceWithCitation[]>();
   for (const entry of rest) byLayer.set(layerGroup(entry.item), [...(byLayer.get(layerGroup(entry.item)) || []), entry]);
   for (const [group, groupEntries] of byLayer) {

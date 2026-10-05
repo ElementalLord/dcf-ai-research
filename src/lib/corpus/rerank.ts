@@ -9,6 +9,14 @@ function evidenceKey(item: RetrievedEvidence): string {
   return item.kind === "claim" ? `claim:${item.claimId}` : `passage:${item.chunkId}`;
 }
 
+/** For ordinary person profiles, prefer consequential roles and deeds over record-keeping detail. */
+export function profileEvidenceSalience(text: string, parameterCode = ""): number {
+  const actions = text.match(/\b(?:teach\w*|guid\w*|lead\w*|mentor\w*|protect\w*|sacrific\w*|weapon\w*|govern\w*|rul\w*|king\w*|queen\w*|ascet\w*|transform\w*|became|become|attain\w*|recogniz\w*|rival\w*|conflict\w*|marri\w*|found\w*|compos\w*|journey\w*)\b/gi) || [];
+  const role = /^(role|social_role)$/.test(parameterCode) ? 7 : /^(tapas_sadhana|textual_contribution)$/.test(parameterCode) ? 4 : 0;
+  const editorial = /metadata|grammatical plural|\bplural\b|should be (?:stored|tagged|classified)|current corpus|current source set|research framework|source criticism|pronoun aham|commented extensively|do not (?:identify|establish)|does not (?:identify|establish)/i.test(text) ? 18 : 0;
+  return role + Math.min(3, actions.length) * 5 - editorial;
+}
+
 function canonical(value: string, termAliases: TermAliasRecord[]): string {
   return canonicalizeTerms(value, termAliases)
     .replace(/\b(?:legacy|contributions?)\b/g, "contribution");
@@ -76,7 +84,8 @@ export function selectDiverseLayers(evidence: RetrievedEvidence[], limit: number
 /** Greedy coverage over approved records. A parameter is a bonus, never a quota. */
 export function selectBroadEvidence(evidence: RetrievedEvidence[], limit = 20, personalityAliases: string[] = []): RetrievedEvidence[] {
   const pool = evidence.filter((item) => !/parameters to study|research framework/i.test(item.sourceTitle || "")
-    && !/current source set|current corpus|should be stored|does not justify|metadata rather than/i.test(item.text)
+    && !/current source set|current corpus|database should|should be (?:stored|tagged|classified)|the system should|does not justify|metadata rather than|epithet number of|occurrences citations/i.test(item.text)
+    && (item.kind === "claim" || (/primary/i.test(item.sourceType || "") && profileEvidenceSalience(item.text) >= 5))
     && (item.kind === "claim" || Boolean(item.parameterCodes?.length)
       || personalityAliases.some((alias) => normalizeForMatch(`${item.text} ${item.sourceTitle}`).includes(normalizeForMatch(alias)))));
   const selected: RetrievedEvidence[] = [];
@@ -105,8 +114,9 @@ export function selectBroadEvidence(evidence: RetrievedEvidence[], limit = 20, p
       const layer = item.textualLayer || "";
       const sourceType = item.sourceType || "";
       const quality = item.kind === "claim" ? (item.chunkId ? 4 : 1) : 2;
+      const salience = profileEvidenceSalience(item.text, item.kind === "claim" ? item.parameterCode || "" : "");
       const namesSubject = personalityAliases.some((alias) => normalizeForMatch(`${item.text} ${item.sourceTitle || ""}`).includes(normalizeForMatch(alias)));
-      const score = newParameters * 12 + (sourceCount ? 0 : 5) + (layer && !seenLayers.has(layer) ? 4 : 0)
+      const score = newParameters * 12 + salience + (sourceCount ? 0 : 5) + (layer && !seenLayers.has(layer) ? 4 : 0)
         + (sourceType && !seenTypes.has(sourceType) ? 2 : 0) + quality - sourceCount * 5
         + (item.kind === "passage" && !namesSubject && !/rigveda|vedas?/i.test(item.sourceTitle) ? -10 : 0)
         + Math.min(3, (item.fusedScore || 0) * 70) - index * 0.003;

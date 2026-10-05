@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { classifyQuestionScope } from "@/lib/ask/question-scope";
-import { selectBroadEvidence } from "@/lib/corpus/rerank";
+import { profileEvidenceSalience, selectBroadEvidence } from "@/lib/corpus/rerank";
 import { assessEvidenceSufficiency } from "@/lib/live-research/sufficiency";
 import { gapSearchQueries } from "@/lib/live-research/gap-query";
 import { buildSynthesisPrompt, SYNTHESIS_PROMPT_VERSION } from "@/lib/corpus/synthesis-prompt";
@@ -15,6 +15,7 @@ function claim(id: string, parameterCode: string, text: string, sourceTitle = `S
 describe("scope-aware grounded answers", () => {
   it("routes the exact benchmark intents without a model call", () => {
     expect(classifyQuestionScope("Who is Vishvamitra?")).toBe("BROAD_PROFILE");
+    expect(classifyQuestionScope("What did Vishvamitra do?")).toBe("BROAD_PROFILE");
     expect(classifyQuestionScope("Tell me about Vishvamitra.")).toBe("BROAD_PROFILE");
     expect(classifyQuestionScope("What are Vishvamitra's biggest contributions?")).toBe("BROAD_SIGNIFICANCE");
     expect(classifyQuestionScope("What is the biggest contribution of him?")).toBe("BROAD_SIGNIFICANCE");
@@ -39,6 +40,20 @@ describe("scope-aware grounded answers", () => {
     expect(new Set(selected.map((item) => item.kind === "claim" ? item.parameterCode : ""))).toEqual(new Set(["role", "textual_contribution", "tapas_sadhana"]));
   });
 
+  it("ranks supported deeds above grammatical metadata in a person profile", () => {
+    expect(profileEvidenceSalience("The sage teaches a prince and guides him to a sacrifice.", "role"))
+      .toBeGreaterThan(profileEvidenceSalience("The plural form of the name appears in seer metadata.", "textual_contribution"));
+    const selected = selectBroadEvidence([
+      claim("plural", "textual_contribution", "The plural form of the name appears in seer metadata."),
+      claim("teacher", "role", "The sage teaches a prince and guides him to a sacrifice."),
+    ], 2);
+    expect(selected[0].kind === "claim" && selected[0].claimId).toBe("teacher");
+    const scholarlyAside: RetrievedPassage = { kind: "passage", id: "passage:aside", chunkId: "aside", sourceId: "study", text: "A king becomes an ascetic in the epic's textual development.", sectionTitle: null,
+      pageOrSection: null, textualLayer: "scholarship", sourceTitle: "Academic study of Rishi A", sourceAuthor: null, sourceInstitution: null, sourceUrl: null, sourceType: "scholarship", sourceStatus: "approved", parameterCodes: ["role"] };
+    expect(selectBroadEvidence([claim("teacher", "role", "Rishi A teaches a prince."), scholarlyAside], 2, ["Rishi A"]).map((item) => item.id))
+      .not.toContain("passage:aside");
+  });
+
   it("requires breadth for a profile but accepts directly supported focused questions", () => {
     const thin = [claim("one", "role", "Rishi A teaches a prince."), claim("two", "role", "Rishi A guides that prince.")];
     const profile = assessEvidenceSufficiency("Who is Rishi A?", thin, { personalityAliases: ["Rishi A"], allParameters: [{ code: "role", name: "Role" }, { code: "textual_contribution", name: "Textual contribution" }] });
@@ -60,14 +75,19 @@ describe("scope-aware grounded answers", () => {
     expect(gapSearchQueries("Rishi A", "What does Rigveda 3.33 say?", ["textual contribution", "lineage"]))
       .toEqual(["Rishi A textual contribution Rigveda 3.33", "Rishi A lineage Rigveda 3.33"]);
     const prompt = buildSynthesisPrompt({ personality: "Rishi A", question: "Who is Rishi A?", resolvedQuestion: "Who is Rishi A?", scope: "BROAD_PROFILE", evidenceContext: "[C1] Claim" });
-    expect(SYNTHESIS_PROMPT_VERSION).toMatch(/^grounded_synthesis_/);
+    expect(SYNTHESIS_PROMPT_VERSION).toMatch(/^person_centered_synthesis_/);
     expect(prompt).toContain("silently review");
     expect(prompt).toContain("using only the supplied IDs");
     expect(prompt).toContain("Evidence grounding constrains WHAT you may claim, not HOW you must phrase it.");
     expect(prompt).toContain("do not write one paragraph or bullet per source");
+    expect(prompt).toContain("Open with who the person is");
+    expect(prompt).toContain("Use epistemic metadata to control certainty, wording, and citations—not to dictate the structure");
+    expect(prompt).not.toContain("major supported textual and narrative dimensions");
     expect(prompt).toContain("[C1] Claim");
     const research = buildSynthesisPrompt({ personality: "Rishi A", question: "Who is Rishi A?", resolvedQuestion: "Who is Rishi A?", scope: "BROAD_PROFILE", evidenceContext: "[C1] Claim", responseStyle: "research" });
     expect(research).toContain("More depth means more reasoning, not more excerpts");
+    const historical = buildSynthesisPrompt({ personality: "Rishi A", question: "What is historically known about Rishi A?", resolvedQuestion: "What is historically known about Rishi A?", scope: "CONTESTED_OR_HISTORICAL", evidenceContext: "[C1] Claim" });
+    expect(historical).toContain("Organize by sources, periods, interpretations, or uncertainty");
   });
 
   it("shows central supported dimensions first when Gemini is unavailable", () => {
@@ -95,5 +115,19 @@ describe("scope-aware grounded answers", () => {
     expect(output).toContain("[C1]");
     expect(output).not.toContain("The princes arrive");
     expect(output.length).toBeLessThan(350);
+  });
+
+  it("keeps a broad profile person-centered during a provider outage", () => {
+    const items = [
+      claim("identity", "role", "Rishi A is a sage and guide to a prince."),
+      claim("action", "social_role", "Rishi A teaches the prince and protects a sacrifice."),
+      claim("development", "tapas_sadhana", "Rishi A becomes an ascetic after ruling as king."),
+    ];
+    const citations = items.map((item, index): Citation => ({ id: `C${index + 1}`, kind: "approved_claim", claimId: item.claimId, title: item.sourceTitle || "Claim", author: null,
+      institution: null, url: null, sourceType: item.sourceType, pageOrSection: null, textualLayer: item.textualLayer, excerpt: item.text }));
+    const output = renderExtractiveEvidence(items, citations, true, "BROAD_PROFILE", "Who is Rishi A?");
+    expect(output).toContain("teaches the prince");
+    expect(output).toContain("becomes an ascetic");
+    expect(output).not.toMatch(/Early textual picture:|Later narrative:/);
   });
 });

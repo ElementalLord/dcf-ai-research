@@ -8,7 +8,7 @@ import { dedupeEvidence, reciprocalRankFusion } from "./dedupe";
 import { isBroadSynthesisQuestion, lexicalSearchExpression, routeParameterCodes } from "./routing";
 import { logStage, stageTimer } from "./observability";
 import { normalizeForMatch } from "./text";
-import { rerankEvidence, selectBroadEvidence } from "./rerank";
+import { profileEvidenceSalience, rerankEvidence, selectBroadEvidence } from "./rerank";
 import { classifyQuestionScope } from "@/lib/ask/question-scope";
 import type { ParameterField, RetrievedClaim, RetrievedEvidence, RetrievedPassage, RetrievalDebug } from "./types";
 import { evidencePolicyMode, eligibleClaimOrigins } from "./approval-policy";
@@ -115,8 +115,9 @@ export function rankApprovedClaims(
       }, 0);
       const parameterSortOrder = Number(parameter?.sort_order);
       const score = broad
-        ? (Number.isFinite(parameterSortOrder) ? 1_000 - parameterSortOrder : 0)
-          + broadClaimQuality(String(row.claim_text || ""), String(source?.title || ""), String(source?.source_type || ""), Boolean(chunk?.id), options.personalityName || "") / 100
+        ? broadClaimQuality(String(row.claim_text || ""), String(source?.title || ""), String(source?.source_type || ""), Boolean(chunk?.id), options.personalityName || "")
+          + profileEvidenceSalience(String(row.claim_text || ""), String(parameter?.code || ""))
+          - (Number.isFinite(parameterSortOrder) ? parameterSortOrder / 10 : 0)
         : termScore;
       return {
         score,

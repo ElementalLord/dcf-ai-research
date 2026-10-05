@@ -32,12 +32,12 @@ describe("retrieval regression", () => {
     expect(results.map((item) => item.claimId)).toEqual(expect.arrayContaining(["claim-1", "claim-2"]));
   });
 
-  it("uses the selected framework's sort order for broad questions", () => {
+  it("prefers concrete biographical claims over framework order for broad questions", () => {
     const rows = [
       { ...approvedRows[0], id: "late", parameter_fields: { id: "late-field", label: "Late", parameters: { id: "late-parameter", code: "category_specific_late", name: "Late", sort_order: 90 } } },
       { ...approvedRows[1], id: "first", parameter_fields: { id: "first-field", label: "First", parameters: { id: "first-parameter", code: "category_specific_first", name: "First", sort_order: 1 } } },
     ];
-    expect(rankApprovedClaims("Who is this person?", rows)[0].claimId).toBe("first");
+    expect(rankApprovedClaims("Who is this person?", rows)[0].claimId).toBe("late");
   });
 
   it("routes common questions deterministically without selecting every parameter", () => {
