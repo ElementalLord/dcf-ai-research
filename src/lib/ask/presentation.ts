@@ -1,6 +1,6 @@
 export type AskCitation = {
   id: string;
-  kind: "approved_claim" | "approved_source_passage";
+  kind: "approved_claim" | "approved_source_passage" | "live_web_source";
   title: string;
   author: string | null;
   institution: string | null;
@@ -96,7 +96,7 @@ export function answerBlocks(answer: string): AnswerBlock[] {
 export function groupCitations(citations: AskCitation[]): CitationGroup[] {
   const groups = new Map<string, CitationGroup>();
   for (const citation of citations) {
-    const key = citation.url || `${citation.title}|${citation.author || ""}|${citation.institution || ""}`;
+    const key = `${citation.kind === "live_web_source" ? "live" : "library"}|${citation.url || `${citation.title}|${citation.author || ""}|${citation.institution || ""}`}`;
     const existing = groups.get(key);
     if (existing) {
       existing.citations.push(citation);
@@ -119,6 +119,7 @@ export function groupCitations(citations: AskCitation[]): CitationGroup[] {
 export function sourceTypeLabel(citation: AskCitation): string {
   const explicitType = (citation.sourceType || "").toLocaleLowerCase();
   const metadata = `${citation.evidenceType || ""} ${citation.textualLayer || ""}`.toLocaleLowerCase();
+  if (citation.kind === "live_web_source") return "Live research";
   if (/institution|archive|museum|university|government/.test(explicitType)) return "Institutional Source";
   if (/scholar|academic|journal|monograph|critical/.test(explicitType)) return "Scholarly Source";
   if (/primary/.test(explicitType)) return "Primary Text";

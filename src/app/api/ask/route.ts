@@ -24,7 +24,8 @@ export async function POST(request: NextRequest) {
     }
     const ids = parsed.data.personalityIds?.length ? parsed.data.personalityIds : [parsed.data.personalityId!];
     const result = await answerQuestion(parsed.data.question, ids.length === 1 ? ids[0] : ids, { history: parsed.data.history, responseStyle: parsed.data.responseStyle });
-    return NextResponse.json(result);
+    const { debug: _serverDiagnostics, ...publicResult } = result;
+    return NextResponse.json(publicResult);
   } catch (error) {
     return corpusErrorResponse(error);
   }

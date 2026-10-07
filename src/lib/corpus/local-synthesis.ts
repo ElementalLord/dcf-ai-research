@@ -440,9 +440,9 @@ export function renderExtractiveEvidence(selected: RetrievedEvidence[], citation
     chosen.push(entry);
     groupCounts.set(group, (groupCounts.get(group) || 0) + 1);
   }
-  if (!chosen.length) return "The approved knowledge base does not currently contain enough evidence to answer that fully.";
+  if (!chosen.length) return "The available sources do not contain enough evidence to answer that fully.";
   if (historicalQuestion && !chosen.some(({ item }) => item.kind === "claim" && (item.epistemicType === "TEXTUAL_ASSERTION" || item.epistemicType === "HISTORICAL_FACT" || /historical biography|historical individual|historically/i.test(item.text))))
-    return "The approved knowledge base does not currently contain enough evidence to answer that fully.";
+    return "The available sources do not contain enough evidence to answer that fully.";
   const sentence = ({ item, citation }: EvidenceWithCitation) => {
     const statement = proposition(item);
     const framed = item.kind === "claim" ? framedStatement({ ...item, text: statement }) : `The ${item.sourceTitle || "approved passage"} describes ${statement[0]?.toLowerCase() || ""}${statement.slice(1)}`;

@@ -55,7 +55,7 @@ export type RetrievedPassage = {
   parameterNames?: string[];
   personalityId?: string;
   personalityName?: string;
-  origin?: "permanent" | "live_cache";
+  origin?: "permanent" | "live_cache" | "google_grounding" | "brave_live";
   retrievedAt?: string | null;
   cacheExpiresAt?: string | null;
   lexicalScore?: number;
@@ -97,7 +97,7 @@ export type RetrievedEvidence = RetrievedPassage | RetrievedClaim;
 
 export type Citation = {
   id: string;
-  kind: "approved_claim" | "approved_source_passage";
+  kind: "approved_claim" | "approved_source_passage" | "live_web_source";
   claimId?: string;
   chunkId?: string;
   sourceId?: string;
@@ -165,6 +165,12 @@ export type RetrievalDebug = {
   liveUrlsRejected: Array<{ url: string; reason: string }>;
   liveFetches: number;
   cacheHits: number;
+  googleSearchRequests?: number;
+  googleSearchQueries?: number;
+  googleSearchLatencyMs?: number;
+  googleSearchErrorCategory?: string | null;
+  liveSourcesUsed?: number;
+  localSourcesUsed?: number;
   webSearchProvider?: string;
   webSearchConfigured?: boolean;
   webSearchCalls?: number;

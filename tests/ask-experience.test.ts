@@ -59,6 +59,12 @@ describe("grounded Ask query context", () => {
 });
 
 describe("grounded Ask presentation", () => {
+  it("keeps a live citation separate from a library citation at the same URL", () => {
+    const live: AskCitation = { ...citation, id: "S2", kind: "live_web_source" };
+    const groups = groupCitations([citation, live]);
+    expect(groups).toHaveLength(2);
+    expect(groups.map((group) => group.citations[0].kind)).toEqual(["approved_source_passage", "live_web_source"]);
+  });
   it("turns inline citations into inspectable citation tokens", () => {
     expect(inlineAnswerParts("Mandala 3 is associated with the figure [S1].")).toContainEqual({
       type: "citation",

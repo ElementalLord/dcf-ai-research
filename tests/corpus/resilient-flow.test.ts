@@ -8,14 +8,18 @@ import { recordAiCall, withRequestUsage } from "@/lib/corpus/usage";
 const state = vi.hoisted(() => ({
   caches: new Map<string, Record<string, unknown>>(), checkpoints: new Map<string, Record<string, unknown>>(),
   claims: [] as Record<string, unknown>[], chunks: [] as Record<string, unknown>[],
-  sequence: [] as string[], rulesActive: true, started: [] as string[], finished: [] as string[], vectorRpc: vi.fn(), fetch: vi.fn(), discover: vi.fn(), generate: vi.fn(), embed: vi.fn(),
+  sequence: [] as string[], google: vi.fn(), originalFetch: vi.fn(), extract: vi.fn(), webDiscover: vi.fn(), webConfigured: false, rulesActive: true, started: [] as string[], finished: [] as string[], vectorRpc: vi.fn(), fetch: vi.fn(), discover: vi.fn(), generate: vi.fn(), embed: vi.fn(),
 }));
 vi.mock("@/lib/corpus/personality-context", () => ({ loadPersonalityConfiguration: vi.fn(async () => ({ personalityId: "p", canonicalName: "Vishvamitra", categoryId: "category", categorySlug: "rishi", categoryName: "Rishis", aliases: [{ alias: "Vishwamitra" }], termAliases: [] })) }));
 vi.mock("@/lib/corpus/embeddings", () => ({ embedTexts: state.embed }));
 vi.mock("@google/genai", () => ({ ThinkingLevel: { LOW: "LOW" }, GoogleGenAI: class { models = { generateContent: state.generate }; } }));
-vi.mock("@/lib/live-research/source-registry", () => ({ loadActiveSourceRules: vi.fn(async () => [{ id: "rule", is_active: true, allow_live_fetch: true, evidence_use_status: "approved", display_name: "Public primary text" }]) }));
+vi.mock("@/lib/live-research/source-registry", () => ({ loadActiveSourceRules: vi.fn(async () => [{ id: "rule", is_active: true, allow_live_fetch: true, allow_live_search: true, scope_type: "DOMAIN", evidence_use_status: "approved", display_name: "Public primary text" }]) }));
 vi.mock("@/lib/live-research/live-search", () => ({ discoverApprovedUrls: state.discover }));
 vi.mock("@/lib/live-research/cache", () => ({ fetchAndCacheApprovedPage: state.fetch }));
+vi.mock("@/lib/live-research/google-grounding", () => ({ searchWithGoogleGrounding: state.google }));
+vi.mock("@/lib/live-research/web-search", () => ({ webSearchProvider: () => ({ isConfigured: () => state.webConfigured }), discoverWebCandidates: state.webDiscover }));
+vi.mock("@/lib/live-research/live-fetch", () => ({ fetchApprovedResource: state.originalFetch }));
+vi.mock("@/lib/corpus/source-extract", () => ({ extractRemoteBytes: state.extract }));
 vi.mock("@/lib/supabase-admin", () => ({ supabaseAdmin: {
   from: (table: string) => builder(table), rpc: (name: string) => builder(name),
 } }));
@@ -56,7 +60,11 @@ function passage(text: string) {
 }
 beforeEach(() => {
   state.caches.clear(); state.checkpoints.clear(); state.started.length = 0; state.finished.length = 0; state.sequence.length = 0; state.rulesActive = true;
-  state.chunks = [];
+  state.chunks = []; state.webConfigured = false;
+  state.google.mockResolvedValue({ evidence: [], requests: 0, queries: 0, latencyMs: 0, errorCategory: "NOT_CONFIGURED" });
+  state.originalFetch.mockResolvedValue({ bytes: new Uint8Array([1]), contentType: "text/html", finalUrl: "https://example.test/approved", access: { display_name: "Public primary text", default_textual_layer: "Epic narrative", default_source_type: "primary_text" } });
+  state.extract.mockResolvedValue([{ title: "Valmiki Ramayana", pageOrSection: "Bala Kanda", text: "The narrative says Vishvamitra taught Rama Bala and Atibala." }]);
+  state.webDiscover.mockResolvedValue({ accepted: [], rejected: [], candidates: 0, calls: 0, cacheHits: 0, latencyMs: 0, errorCategory: null });
   state.claims = [claim("one", "The text portrays Vishvamitra as Rama's guide."), claim("two", "The narrative describes his tapas.", "Tapas"), claim("three", "The family is associated with Rigveda hymns.", "Textual contribution")];
   state.discover.mockResolvedValue({ accepted: [], rejected: [], approvedSourcesConsidered: [] });
   state.embed.mockRejectedValue(new Error("429 embedding quota exhausted"));
@@ -67,6 +75,49 @@ beforeEach(() => {
 afterEach(() => { vi.unstubAllEnvs(); vi.clearAllMocks(); generationCircuit.succeed(); alternateGenerationCircuit.succeed(); });
 
 describe("Ask orchestration", () => {
+  it("merges credible Google grounding with DCF evidence without invoking Brave", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
+    state.generate.mockResolvedValue({ text: "The library describes Vishvamitra as Rama’s guide [C1]. A live reference also describes this role [S1]." });
+    state.google.mockResolvedValue({ evidence: [{ kind: "passage", id: "google:1", chunkId: "google:1", sourceId: "google:1", text: "The Ramayana presents Vishvamitra as Rama's guide and teacher.", sectionTitle: null, pageOrSection: null, textualLayer: "Epic narrative", sourceTitle: "Vishvamitra | Britannica", sourceAuthor: null, sourceInstitution: "britannica.com", sourceUrl: "https://www.britannica.com/biography/Vishvamitra", sourceType: "live web research", sourceStatus: "discovered", origin: "google_grounding" }], requests: 1, queries: 1, latencyMs: 30, errorCategory: null });
+    const result = await answerQuestion("Who is Vishvamitra?", "p");
+    expect(result.status).not.toBe("abstained");
+    expect(result.debug.googleSearchRequests).toBe(1);
+    expect(result.debug.webSearchCalls).toBe(0);
+    expect(state.webDiscover).not.toHaveBeenCalled();
+    expect(result.evidence.some((item) => item.kind === "passage" && item.origin === "google_grounding")).toBe(true);
+    expect(result.citations.some((item) => item.kind === "live_web_source")).toBe(true);
+  });
+  it("answers from the corpus when Google fails and local evidence is sufficient", async () => {
+    state.google.mockResolvedValue({ evidence: [], requests: 1, queries: 0, latencyMs: 4, errorCategory: "TIMEOUT" });
+    state.webConfigured = true;
+    const result = await answerQuestion("Does the narrative describe Vishvamitra’s tapas?", "p");
+    expect(result.status).not.toBe("abstained");
+    expect(result.debug.googleSearchErrorCategory).toBe("TIMEOUT");
+    expect(result.debug.webSearchCalls).toBe(0);
+    expect(state.webDiscover).not.toHaveBeenCalled();
+  });
+  it("abstains honestly when both live paths fail and local evidence is insufficient", async () => {
+    state.claims = [];
+    state.google.mockResolvedValue({ evidence: [], requests: 1, queries: 0, latencyMs: 4, errorCategory: "TIMEOUT" });
+    state.webConfigured = true;
+    state.webDiscover.mockResolvedValue({ accepted: [], rejected: [], candidates: 0, calls: 1, cacheHits: 0, latencyMs: 4, errorCategory: "TIMEOUT" });
+    const result = await answerQuestion("What was Vishvamitra's favorite food?", "p");
+    expect(result.status).toBe("abstained");
+    expect(result.debug.braveTriggered).toBe(true);
+    expect(result.debug.webSearchCalls).toBeGreaterThan(0);
+  });
+  it("uses Brave discovery and fetched original content when Google has no credible support", async () => {
+    state.claims = []; state.chunks = [];
+    state.google.mockResolvedValue({ evidence: [], requests: 1, queries: 0, latencyMs: 20, errorCategory: "TIMEOUT" });
+    state.webConfigured = true;
+    state.webDiscover.mockResolvedValue({ accepted: ["https://example.test/approved"], rejected: [], candidates: 1, calls: 1, cacheHits: 0, latencyMs: 3, errorCategory: null });
+    const result = await answerQuestion("What did Vishvamitra teach Rama?", "p");
+    expect(result.debug.braveTriggered).toBe(true);
+    expect(result.debug.webSearchCalls).toBeGreaterThan(0);
+    expect(state.originalFetch).toHaveBeenCalledWith("https://example.test/approved", expect.objectContaining({ requireEvidenceApproval: true }));
+    expect(result.evidence.some((item) => item.kind === "passage" && item.origin === "brave_live")).toBe(true);
+    expect(result.citations.some((item) => item.kind === "live_web_source")).toBe(true);
+  });
   it("answers a broad question and Rama follow-up without generative calls", async () => {
     const broad = await answerQuestion("Who is Vishwamitra?", "p");
     expect(broad.status).toBe("extractive_fallback");
@@ -101,16 +152,17 @@ describe("Ask orchestration", () => {
     expect(result.debug.semanticFallbackReason).toContain("query_embedding_failed");
     expect(result.answer).toContain("teaches Rama");
   });
-  it("does approved live fetch/cache and re-retrieval with no synthesis", async () => {
+  it("fetches approved original pages as request-scoped evidence without synthesis", async () => {
     state.claims = []; state.chunks = [];
     state.discover.mockResolvedValue({ accepted: ["https://example.test/approved"], rejected: [{ url: "https://unapproved.test/", reason: "SOURCE_NOT_APPROVED" }], approvedSourcesConsidered: ["Primary text"] });
-    state.fetch.mockImplementation(async () => { state.chunks = [passage("Vishvamitra teaches Rama Bala and Atibala.")]; return { cacheHit: false }; });
     const result = await answerQuestion("Who taught Rama Bala and Atibala?", "p");
     expect(result.status).toBe("extractive_fallback");
     expect(result.debug.liveResearchTriggered).toBe(true);
     expect(result.debug.liveFetches).toBe(1);
     expect(result.debug.liveUrlsRejected).toHaveLength(1);
-    expect(result.citations[0].chunkId).toBe("chunk");
+    expect(result.citations[0].chunkId).toContain("live:https://example.test/approved");
+    expect(result.citations[0].kind).toBe("live_web_source");
+    expect(state.fetch).not.toHaveBeenCalled();
     expect(result.debug.generativeCalls).toBe(0);
   });
   it("writes synthesized answers and reuses normalized repeat with zero generation", async () => {
@@ -174,7 +226,7 @@ describe("Ask orchestration", () => {
   });
   it("uses grounded fallback when the model abstains despite answerable evidence", async () => {
     vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
-    state.generate.mockResolvedValue({ text: "The approved knowledge base does not currently contain enough evidence to answer that fully." });
+    state.generate.mockResolvedValue({ text: "The available sources do not contain enough evidence to answer that fully." });
     const result = await answerQuestion("Why is Vishvamitra important?", "p");
     expect(result.status).toBe("extractive_fallback");
     expect(result.answer).toContain("Vishvamitra");

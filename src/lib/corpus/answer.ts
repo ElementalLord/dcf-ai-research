@@ -6,6 +6,9 @@ import { incrementMetric, withRequestUsage, usageMetrics } from "./usage";
 import { canonicalizeQuestion } from "./personality-config";
 import { logStage, stageTimer } from "./observability";
 import { retrieveWithApprovedResearch } from "@/lib/live-research/research";
+import { retrieveEvidence } from "./retrieval";
+import { searchWithGoogleGrounding } from "@/lib/live-research/google-grounding";
+import { assessEvidenceSufficiency } from "@/lib/live-research/sufficiency";
 import { citationsMatchEvidence, mergePersonalityEvidence } from "./comparison";
 import { loadPersonalityConfiguration } from "./personality-context";
 import { normalizedAliases } from "./personality-config";
@@ -14,7 +17,7 @@ import { abstentionMessage } from "@/lib/ask/messages";
 import { buildSynthesisPrompt, SYNTHESIS_PROMPT_VERSION } from "./synthesis-prompt";
 import { isBroadScope } from "@/lib/ask/question-scope";
 
-const ABSTENTION = "The approved knowledge base does not currently contain enough evidence to answer that fully.";
+const ABSTENTION = "The available sources do not contain enough evidence to answer that fully.";
 
 async function answerQuestionInternal(
   question: string,
@@ -34,7 +37,35 @@ async function answerQuestionInternal(
   const comparisonAliases = personalityIds.length > 1
     ? configurations.flatMap((configuration) => normalizedAliases(configuration.canonicalName, configuration.aliases))
     : [];
-  const retrievals = await Promise.all(personalityIds.map((id, index) => retrieveWithApprovedResearch(queryContext.resolvedQuestion, id, { additionalPersonalityAliases: comparisonAliases, configuration: configurations[index] })));
+  // Local retrieval and one focused Google-grounded research call start together.
+  // Brave's original-source workflow is invoked only if grounding cannot cover the gap.
+  const retrievals = await Promise.all(personalityIds.map(async (id, index) => {
+    const retrievalOptions = { additionalPersonalityAliases: comparisonAliases, configuration: configurations[index] };
+    const [local, google] = await Promise.all([
+      retrieveEvidence(queryContext.resolvedQuestion, id, retrievalOptions),
+      searchWithGoogleGrounding(queryContext.resolvedQuestion, id, configurations[index].canonicalName, options.responseStyle === "research" ? "research" : "normal"),
+    ]);
+    const localDecision = assessEvidenceSufficiency(queryContext.resolvedQuestion, local.evidence, { personalityAliases: local.personalityAliases, termAliases: local.termAliases, allParameters: local.allParameters });
+    const credibleSources = new Set(google.evidence.map((item) => item.sourceUrl)).size;
+    const googleUseful = credibleSources >= (isBroadScope(queryContext.scope) && !localDecision.answerable ? 2 : 1);
+    const base = googleUseful || localDecision.sufficient ? local : await retrieveWithApprovedResearch(queryContext.resolvedQuestion, id, { ...retrievalOptions, initialRetrieval: local });
+    base.debug.googleSearchRequests = google.requests;
+    base.debug.googleSearchQueries = google.queries;
+    base.debug.googleSearchLatencyMs = google.latencyMs;
+    base.debug.googleSearchErrorCategory = google.errorCategory;
+    base.debug.localEvidenceSufficient = localDecision.sufficient;
+    if (googleUseful) {
+      base.evidence = [...base.evidence, ...google.evidence];
+      base.debug.answerable = true;
+      base.debug.liveResearchTriggered = true;
+      base.debug.liveSourcesUsed = google.evidence.length;
+    } else {
+      base.debug.answerable = Boolean(base.debug.answerable || localDecision.answerable || localDecision.sufficient);
+      base.debug.liveSourcesUsed = 0;
+    }
+    base.debug.localSourcesUsed = base.evidence.filter((item) => item.kind === "claim" || (item.origin !== "google_grounding" && item.origin !== "brave_live")).length;
+    return base;
+  }));
   const comparisonMode = retrievals.length > 1;
   const personality = retrievals.map((retrieval) => retrieval.personality).join(" and ");
   const parameters = [...new Map(retrievals.flatMap((retrieval) => retrieval.parameters).map((parameter) => [parameter.code, parameter])).values()];
@@ -68,6 +99,11 @@ async function answerQuestionInternal(
     webSearchCalls: retrievals.reduce((sum, item) => sum + (item.debug.webSearchCalls || 0), 0),
     webSearchCacheHits: retrievals.reduce((sum, item) => sum + (item.debug.webSearchCacheHits || 0), 0),
     liveResearchTriggered: retrievals.some((item) => item.debug.liveResearchTriggered),
+    googleSearchRequests: retrievals.reduce((sum, item) => sum + (item.debug.googleSearchRequests || 0), 0),
+    googleSearchQueries: retrievals.reduce((sum, item) => sum + (item.debug.googleSearchQueries || 0), 0),
+    googleSearchLatencyMs: Math.max(...retrievals.map((item) => item.debug.googleSearchLatencyMs || 0)),
+    liveSourcesUsed: retrievals.reduce((sum, item) => sum + (item.debug.liveSourcesUsed || 0), 0),
+    localSourcesUsed: retrievals.reduce((sum, item) => sum + (item.debug.localSourcesUsed || 0), 0),
     selectedPersonalities: retrievals.map((retrieval) => ({ id: retrieval.personalityId, name: retrieval.personality })),
     perPersonality: retrievals.map((retrieval) => ({ personality: retrieval.personality, debug: retrieval.debug })),
   };
@@ -92,7 +128,9 @@ async function answerQuestionInternal(
     : retrievals[0].evidence;
   const evidenceBudget = isBroadScope(queryContext.scope) || queryContext.scope === "COMPARISON" || queryContext.scope === "CONTESTED_OR_HISTORICAL"
     ? 15 : queryContext.scope === "NARROW_FACT" ? 7 : 10;
-  const bounded = buildBoundedContext(evidence, evidenceBudget);
+  const localEvidence = evidence.filter((item) => item.kind === "claim" || (item.origin !== "google_grounding" && item.origin !== "brave_live"));
+  const webEvidence = evidence.filter((item) => item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live"));
+  const bounded = buildBoundedContext([...localEvidence.slice(0, Math.max(3, evidenceBudget - Math.min(webEvidence.length, 5))), ...webEvidence.slice(0, 5), ...localEvidence.slice(Math.max(3, evidenceBudget - Math.min(webEvidence.length, 5)))], evidenceBudget);
   debug.finalSelectedEvidenceCount = bounded.selected.length;
   debug.parametersRepresented = [...new Set(bounded.selected.flatMap((item) => item.kind === "claim" ? [item.parameterCode].filter((code): code is string => Boolean(code)) : item.parameterCodes || []))];
   debug.retrievedClaimCount = bounded.selected.filter((item) => item.kind === "claim").length;
@@ -220,6 +258,10 @@ async function answerQuestionInternal(
     ? [{ type: "TEXTUAL_LAYER_VARIANT", message: "Evidence from multiple textual layers was retrieved; the answer should preserve their distinctions.", layers }]
     : [];
 
+  const citedIds = new Set([...answer.matchAll(/\b[CS]\d+\b/g)].map((match) => match[0]));
+  const citedEvidence = bounded.selected.map((item, index) => ({ citation: bounded.citations[index], item })).filter((entry) => citedIds.has(entry.citation.id));
+  debug.liveSourcesUsed = citedEvidence.filter((entry) => entry.citation.kind === "live_web_source").length;
+  debug.localSourcesUsed = citedEvidence.length - debug.liveSourcesUsed;
   return {
     personality,
     question,
@@ -229,8 +271,8 @@ async function answerQuestionInternal(
     status: abstained ? "abstained" as const : usedLocalSynthesis ? "extractive_fallback" as const : "complete" as const,
     answer,
     retrievedParameters: parameters,
-    citations: bounded.citations,
-    evidence: bounded.selected.map((item, index) => ({ citationId: bounded.citations[index]?.id, ...item })),
+    citations: citedEvidence.map((entry) => entry.citation),
+    evidence: citedEvidence.map((entry) => ({ citationId: entry.citation.id, ...entry.item })),
     conflicts,
     debug,
     interactionId: generated.interactionId,
@@ -246,6 +288,7 @@ export async function answerQuestion(question: string, personalityId: string | s
     result.debug.geminiCalls = usage.generativeCalls;
     result.debug.embeddingCalls = usage.embeddingCalls;
     result.debug.latenciesMs.total = Math.round(performance.now() - started);
+    console.info("ask_research_usage", JSON.stringify({ model: result.debug.model, googleSearchRequests: result.debug.googleSearchRequests || 0, googleSearchQueries: result.debug.googleSearchQueries || 0, braveCalls: result.debug.webSearchCalls || 0, liveSourcesUsed: result.debug.liveSourcesUsed || 0, localSourcesUsed: result.debug.localSourcesUsed || 0, latencyMs: result.debug.latenciesMs.total }));
     if (result.debug.liveResearchTriggered) incrementMetric("liveResearchTriggers");
     if (result.debug.semanticFallbackReason && result.debug.semanticFallbackReason !== "semantic_skipped_sufficient_lexical_claim_candidates") incrementMetric("semanticFallbacks");
     return { ...result, debug: { ...result.debug, usageMetrics: usageMetrics() } };

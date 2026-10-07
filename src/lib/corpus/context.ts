@@ -32,7 +32,7 @@ export function buildBoundedContext(
     const citationId = item.kind === "claim" ? `C${++claimIndex}` : `S${++sourceIndex}`;
     const body = truncateText(item.text, item.kind === "passage" ? 380 : 450);
     const location = item.pageOrSection || (item.kind === "passage" ? item.sectionTitle : null) || "location unspecified";
-    const metadata = `${item.personalityName ? `Personality: ${item.personalityName}\n` : ""}Work: ${item.sourceTitle || "not linked"}; locator: ${location}; layer: ${item.textualLayer || "unspecified"}; source type: ${item.sourceType || "unspecified"}`;
+    const metadata = `${item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live") ? `Live web research; not DCF approved. ${item.origin === "google_grounding" ? "This passage is a search-grounded summary, not an original-source quotation." : "This passage was fetched from the original source after Brave discovery."}\n` : ""}${item.personalityName ? `Personality: ${item.personalityName}\n` : ""}Work: ${item.sourceTitle || "not linked"}; locator: ${location}; layer: ${item.textualLayer || "unspecified"}; source type: ${item.sourceType || "unspecified"}`;
     const record = item.kind === "claim"
       ? `[${citationId}] Claim / topic: ${item.parameterName || item.fieldLabel || topic || "unclassified"}\nProposition: ${body}\n${metadata}\nEpistemic: ${item.epistemicType || "unclassified"}; evidence: ${item.evidenceType}; support: ${item.contractStatus || "not classified"}; certainty: ${item.certainty || "unspecified"}; contested: ${item.epistemicType === "CONTESTED" || item.contractStatus === "CONTESTED_REPRESENTED" ? "yes" : "not marked"}${item.evidenceExcerpt ? `\nSupporting passage: ${truncateText(item.evidenceExcerpt, 170)}` : ""}`
       : `[${citationId}] Supporting passage / topic: ${item.parameterNames?.join(", ") || "source passage"}\n${metadata}\nPassage: ${body}`;
@@ -43,7 +43,7 @@ export function buildBoundedContext(
     selected.push(item);
     citations.push({
       id: citationId,
-      kind: item.kind === "claim" ? "approved_claim" : "approved_source_passage",
+      kind: item.kind === "claim" ? "approved_claim" : (item.origin === "google_grounding" || item.origin === "brave_live") ? "live_web_source" : "approved_source_passage",
       claimId: item.kind === "claim" ? item.claimId : undefined,
       chunkId: item.kind === "passage" ? item.chunkId : item.chunkId || undefined,
       sourceId: item.kind === "passage" ? item.sourceId : undefined,
