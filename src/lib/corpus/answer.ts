@@ -45,10 +45,13 @@ async function answerQuestionInternal(
       retrieveEvidence(queryContext.resolvedQuestion, id, retrievalOptions),
       searchWithGoogleGrounding(queryContext.resolvedQuestion, id, configurations[index].canonicalName, options.responseStyle === "research" ? "research" : "normal"),
     ]);
+    const localEvidenceCount = local.evidence.length;
     const localDecision = assessEvidenceSufficiency(queryContext.resolvedQuestion, local.evidence, { personalityAliases: local.personalityAliases, termAliases: local.termAliases, allParameters: local.allParameters });
     const credibleSources = new Set(google.evidence.map((item) => item.sourceUrl)).size;
     const googleUseful = credibleSources >= (isBroadScope(queryContext.scope) && !localDecision.answerable ? 2 : 1);
     const base = googleUseful || localDecision.sufficient ? local : await retrieveWithApprovedResearch(queryContext.resolvedQuestion, id, { ...retrievalOptions, initialRetrieval: local });
+    base.debug.localEvidenceBeforeSearch = localEvidenceCount;
+    base.debug.googleGroundedSourcesReturned = new Set(google.evidence.map((item) => item.sourceUrl)).size;
     base.debug.googleSearchRequests = google.requests;
     base.debug.googleSearchQueries = google.queries;
     base.debug.googleSearchLatencyMs = google.latencyMs;
@@ -99,6 +102,8 @@ async function answerQuestionInternal(
     webSearchCalls: retrievals.reduce((sum, item) => sum + (item.debug.webSearchCalls || 0), 0),
     webSearchCacheHits: retrievals.reduce((sum, item) => sum + (item.debug.webSearchCacheHits || 0), 0),
     liveResearchTriggered: retrievals.some((item) => item.debug.liveResearchTriggered),
+    localEvidenceBeforeSearch: retrievals.reduce((sum, item) => sum + (item.debug.localEvidenceBeforeSearch || 0), 0),
+    googleGroundedSourcesReturned: retrievals.reduce((sum, item) => sum + (item.debug.googleGroundedSourcesReturned || 0), 0),
     googleSearchRequests: retrievals.reduce((sum, item) => sum + (item.debug.googleSearchRequests || 0), 0),
     googleSearchQueries: retrievals.reduce((sum, item) => sum + (item.debug.googleSearchQueries || 0), 0),
     googleSearchLatencyMs: Math.max(...retrievals.map((item) => item.debug.googleSearchLatencyMs || 0)),
@@ -288,7 +293,7 @@ export async function answerQuestion(question: string, personalityId: string | s
     result.debug.geminiCalls = usage.generativeCalls;
     result.debug.embeddingCalls = usage.embeddingCalls;
     result.debug.latenciesMs.total = Math.round(performance.now() - started);
-    console.info("ask_research_usage", JSON.stringify({ model: result.debug.model, googleSearchRequests: result.debug.googleSearchRequests || 0, googleSearchQueries: result.debug.googleSearchQueries || 0, braveCalls: result.debug.webSearchCalls || 0, liveSourcesUsed: result.debug.liveSourcesUsed || 0, localSourcesUsed: result.debug.localSourcesUsed || 0, latencyMs: result.debug.latenciesMs.total }));
+    console.info("ask_research_usage", JSON.stringify({ model: result.debug.model, googleSearchRequests: result.debug.googleSearchRequests || 0, googleSearchQueries: result.debug.googleSearchQueries || 0, googleErrorCategory: result.debug.googleSearchErrorCategory || null, localEvidenceBeforeSearch: result.debug.localEvidenceBeforeSearch || 0, googleGroundedSourcesReturned: result.debug.googleGroundedSourcesReturned || 0, braveTriggered: result.debug.braveTriggered || false, braveCalls: result.debug.webSearchCalls || 0, braveCacheHits: result.debug.webSearchCacheHits || 0, braveQueries: result.debug.braveQueries || [], liveUrlsAccepted: result.debug.liveUrlsAccepted || [], liveSourcesUsed: result.debug.liveSourcesUsed || 0, localSourcesUsed: result.debug.localSourcesUsed || 0, latencyMs: result.debug.latenciesMs.total }));
     if (result.debug.liveResearchTriggered) incrementMetric("liveResearchTriggers");
     if (result.debug.semanticFallbackReason && result.debug.semanticFallbackReason !== "semantic_skipped_sufficient_lexical_claim_candidates") incrementMetric("semanticFallbacks");
     return { ...result, debug: { ...result.debug, usageMetrics: usageMetrics() } };

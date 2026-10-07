@@ -165,6 +165,8 @@ export type RetrievalDebug = {
   liveUrlsRejected: Array<{ url: string; reason: string }>;
   liveFetches: number;
   cacheHits: number;
+  localEvidenceBeforeSearch?: number;
+  googleGroundedSourcesReturned?: number;
   googleSearchRequests?: number;
   googleSearchQueries?: number;
   googleSearchLatencyMs?: number;

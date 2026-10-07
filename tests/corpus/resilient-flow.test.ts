@@ -13,7 +13,7 @@ const state = vi.hoisted(() => ({
 vi.mock("@/lib/corpus/personality-context", () => ({ loadPersonalityConfiguration: vi.fn(async () => ({ personalityId: "p", canonicalName: "Vishvamitra", categoryId: "category", categorySlug: "rishi", categoryName: "Rishis", aliases: [{ alias: "Vishwamitra" }], termAliases: [] })) }));
 vi.mock("@/lib/corpus/embeddings", () => ({ embedTexts: state.embed }));
 vi.mock("@google/genai", () => ({ ThinkingLevel: { LOW: "LOW" }, GoogleGenAI: class { models = { generateContent: state.generate }; } }));
-vi.mock("@/lib/live-research/source-registry", () => ({ loadActiveSourceRules: vi.fn(async () => [{ id: "rule", is_active: true, allow_live_fetch: true, allow_live_search: true, scope_type: "DOMAIN", evidence_use_status: "approved", display_name: "Public primary text" }]) }));
+vi.mock("@/lib/live-research/source-registry", () => ({ loadActiveSourceRules: vi.fn(async () => [{ id: "rule", is_active: true, allow_live_fetch: true, allow_live_search: true, scope_type: "DOMAIN", domain: "example.test", priority: 1, evidence_use_status: "approved", display_name: "Public primary text" }]) }));
 vi.mock("@/lib/live-research/live-search", () => ({ discoverApprovedUrls: state.discover }));
 vi.mock("@/lib/live-research/cache", () => ({ fetchAndCacheApprovedPage: state.fetch }));
 vi.mock("@/lib/live-research/google-grounding", () => ({ searchWithGoogleGrounding: state.google }));
@@ -105,6 +105,17 @@ describe("Ask orchestration", () => {
     expect(result.status).toBe("abstained");
     expect(result.debug.braveTriggered).toBe(true);
     expect(result.debug.webSearchCalls).toBeGreaterThan(0);
+  });
+  it("uses a registry domain query when broad Brave results have no eligible source", async () => {
+    state.claims = [];
+    state.google.mockResolvedValue({ evidence: [], requests: 1, queries: 0, latencyMs: 2, errorCategory: "RATE_LIMIT" });
+    state.webConfigured = true;
+    state.webDiscover.mockImplementation(async (query: string) => ({ accepted: query.startsWith("site:example.test") ? ["https://example.test/approved"] : [], rejected: [], candidates: 1, calls: 1, cacheHits: 0, latencyMs: 2, errorCategory: null }));
+    const result = await answerQuestion("What did Vishvamitra teach Rama?", "p");
+    expect(state.webDiscover.mock.calls.some(([query]) => String(query).startsWith("site:example.test"))).toBe(true);
+    expect(state.originalFetch).toHaveBeenCalled();
+    expect(state.fetch).not.toHaveBeenCalled();
+    expect(result.citations.some((citation) => citation.kind === "live_web_source")).toBe(true);
   });
   it("uses Brave discovery and fetched original content when Google has no credible support", async () => {
     state.claims = []; state.chunks = [];
