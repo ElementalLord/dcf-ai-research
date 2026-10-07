@@ -16,6 +16,8 @@ const jsonSchema = z.object({
   url: z.string().url().max(2_000).optional(),
   textualLayer: z.string().trim().max(120).nullable().optional(),
   language: z.string().trim().max(40).nullable().optional(),
+  append: z.boolean().optional(),
+  pageOrSection: z.string().trim().max(300).nullable().optional(),
 });
 
 export async function POST(request: NextRequest) {
@@ -29,6 +31,7 @@ export async function POST(request: NextRequest) {
     let parameterFieldIds: string[] = [];
     let textualLayer: string | null = null;
     let language: string | null = null;
+    let append = false;
     let sections;
 
     if (contentType.includes("multipart/form-data")) {
@@ -50,11 +53,17 @@ export async function POST(request: NextRequest) {
       assertRequestSize(request, 5_200_000);
       const parsed = jsonSchema.safeParse(await request.json());
       if (!parsed.success) throw new CorpusError("INVALID_INPUT", "The ingestion request is invalid.", 400);
-      ({ sourceId, personalityIds, parameterFieldIds = [], textualLayer = null, language = null } = parsed.data);
+      ({ sourceId, personalityIds, parameterFieldIds = [], textualLayer = null, language = null, append = false } = parsed.data);
       failureSourceId = sourceId;
+      if (append) {
+        if (parsed.data.mode !== "text") throw new CorpusError("INVALID_INPUT", "Only pasted text can be appended to a source.", 400);
+        const source = await supabaseAdmin.from("sources").select("source_status").eq("id", sourceId).single();
+        if (source.error) throw source.error;
+        if (source.data.source_status === "approved") throw new CorpusError("REVIEW_REQUIRED", "Return an approved source to candidate review before adding text.", 409);
+      }
       if (parsed.data.mode === "text") {
         if (!parsed.data.text?.trim()) throw new CorpusError("NO_TEXT_EXTRACTED", "Pasted source text is required.", 400);
-        sections = [{ title: null, pageOrSection: null, text: parsed.data.text }];
+        sections = [{ title: null, pageOrSection: parsed.data.pageOrSection || null, text: parsed.data.text }];
       } else {
         const { data: source, error } = await supabaseAdmin.from("sources").select("url, metadata").eq("id", sourceId).single();
         if (error) throw new CorpusError("DATABASE_FAILED", "The source could not be loaded.", 500, { cause: error });
@@ -72,7 +81,7 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    const result = await ingestSections({ sourceId, personalityIds, parameterFieldIds, textualLayer, language, sections });
+    const result = await ingestSections({ sourceId, personalityIds, parameterFieldIds, textualLayer, language, sections, append });
     const tags = await tagSourceChunks(sourceId, false);
     return NextResponse.json({ success: true, ...result, tags });
   } catch (error) {

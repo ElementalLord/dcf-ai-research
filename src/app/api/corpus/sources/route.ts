@@ -69,11 +69,11 @@ export async function PATCH(request: NextRequest) {
     if (!parsed.success) throw new CorpusError("INVALID_INPUT", "A valid source review decision is required.", 400);
     const { error } = await supabaseAdmin.from("sources").update({
       source_status: parsed.data.status,
+      approval_origin: parsed.data.approvalOrigin,
+      approval_note: parsed.data.approvalNote || `${parsed.data.status === "approved" ? "Approved" : parsed.data.status === "rejected" ? "Rejected" : "Returned to candidate review"} by ${parsed.data.approvedByLabel}.`,
+      approved_by_label: parsed.data.approvedByLabel,
       ...(parsed.data.status === "approved" ? {
-        approval_origin: parsed.data.approvalOrigin,
-        approval_note: parsed.data.approvalNote || "Approved in the corpus source review interface.",
         approved_at: new Date().toISOString(),
-        approved_by_label: parsed.data.approvedByLabel,
       } : {}),
     }).eq("id", parsed.data.sourceId);
     if (error) throw new CorpusError("DATABASE_FAILED", "The source status could not be updated.", 500, { cause: error });

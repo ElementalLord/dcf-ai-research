@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
     const sourceIds = new Set((links.data || []).map((row) => row.source_id));
     for (const claim of claims) for (const evidence of claim.claim_sources || []) if (evidence.source_id) sourceIds.add(evidence.source_id);
     const ids = [...sourceIds];
-    const sources = ids.length ? await supabaseAdmin.from("sources").select("id,title,author,publisher_or_institution,source_type,url,citation,textual_layer,source_status,approval_origin,approval_note,approved_by_label,ingestion_status,rights_or_access_note,publication_year").in("id", ids).order("title").limit(1000) : { data: [], error: null };
+    const sources = ids.length ? await supabaseAdmin.from("sources").select("id,title,author,publisher_or_institution,source_type,url,citation,textual_layer,source_status,approval_origin,approval_note,approved_by_label,ingestion_status,rights_or_access_note,publication_year,updated_at").in("id", ids).order("title").limit(1000) : { data: [], error: null };
     if (sources.error) throw sources.error;
     return NextResponse.json({ claims: claims.map(claim => ({ ...claim, epistemics: epistemicByClaim.get(claim.id) || null })), sources: sources.data || [] });
   } catch (error) { return corpusErrorResponse(error); }
@@ -45,7 +45,7 @@ export async function PATCH(request: NextRequest) {
       const existing = await supabaseAdmin.from("sources").select("source_status").eq("id", resourceId).single();
       if (existing.error) throw existing.error;
       if (existing.data.source_status === "approved") throw new CorpusError("REVIEW_REQUIRED", "Approved sources must be returned to candidate review before editing.", 409);
-      const { data, error } = await supabaseAdmin.from("sources").update({ ...fields, url: fields.url || null }).eq("id", resourceId).select("id").single();
+      const { data, error } = await supabaseAdmin.from("sources").update({ ...fields, url: fields.url || null, updated_at: new Date().toISOString() }).eq("id", resourceId).select("id").single();
       if (error) throw error;
       return NextResponse.json({ updated: data.id });
     }
