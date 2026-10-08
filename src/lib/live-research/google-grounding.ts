@@ -1,6 +1,6 @@
 import "server-only";
 import { GoogleGenAI } from "@google/genai";
-import { boundedProviderCall, classifyProviderError } from "@/lib/corpus/provider-health";
+import { boundedProviderCall, classifyProviderError, googleGroundingCircuit } from "@/lib/corpus/provider-health";
 import { GENERATION_MODEL } from "@/lib/corpus/gemini";
 import type { RetrievedPassage } from "@/lib/corpus/types";
 
@@ -66,6 +66,8 @@ export async function searchWithGoogleGrounding(question: string, personalityId:
   if (cached && cached.expires > Date.now()) return { ...cached.result, requests: 0, queries: 0, latencyMs: 0 };
   const empty = (errorCategory: string | null, requests = 0, queries = 0): GroundingResult => ({ evidence: [], requests, queries, latencyMs: Math.round(performance.now() - started), errorCategory });
   if (!process.env.GEMINI_API_KEY) return empty("NOT_CONFIGURED");
+  const circuit = googleGroundingCircuit.state();
+  if (circuit.open) return empty(`${circuit.category || "PROVIDER"}_COOLDOWN`);
   try {
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const response = await boundedProviderCall((abortSignal) => ai.models.generateContent({
@@ -78,12 +80,15 @@ export async function searchWithGoogleGrounding(question: string, personalityId:
     const evidence = groundedPassages(response, personalityId, personalityName);
     const queries = metadata?.webSearchQueries?.length || 0;
     const result = { evidence, requests: 1, queries, latencyMs: Math.round(performance.now() - started), errorCategory: evidence.length ? null : "NO_CREDIBLE_GROUNDED_EVIDENCE" };
+    googleGroundingCircuit.succeed();
     if (evidence.length) {
       if (groundingCache.size >= 100) groundingCache.delete(groundingCache.keys().next().value!);
       groundingCache.set(cacheKey, { expires: Date.now() + 10 * 60_000, result });
     }
     return result;
   } catch (error) {
-    return empty(classifyProviderError(error), 1);
+    const category = classifyProviderError(error);
+    if (category === "QUOTA_EXHAUSTED" || category === "RATE_LIMIT") googleGroundingCircuit.fail(category, category === "QUOTA_EXHAUSTED" ? 5 * 60_000 : 60_000);
+    return empty(category, 1);
   }
 }

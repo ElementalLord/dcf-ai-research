@@ -84,12 +84,12 @@ export default function ReconcilePage() {
             : <p className="mt-1 leading-7">{item.proposed_text}</p>}
           <p className="text-xs text-zinc-500">{item.assessment.proposalBasis}{item.assessment.proposalSupport ? ` · matched ${item.assessment.proposalSupport.lexical.join(", ")}${item.assessment.proposalSupport.equivalent.length ? ` · equivalent ${item.assessment.proposalSupport.equivalent.join(", ")}` : ""}` : ""}</p></>}
         <h2 className="mt-3 text-xs font-semibold uppercase text-zinc-500">Source · locator</h2>
-        <p className="text-sm">{source?.title} · cited {item.locator_raw || "—"} · passage {item.source_chunks?.page_or_section || "—"} · {item.assessment.identity} · locator {item.assessment.locatorFit}</p>
+        <p className="text-sm">{source?.title} · cited {item.locator_raw || "Not specified"} · passage {item.source_chunks?.page_or_section || "Not specified"} · {item.assessment.identity} · locator {item.assessment.locatorFit}</p>
         <details className="mt-2"><summary className="cursor-pointer text-sm font-medium">Supporting passage</summary><p className="mt-2 whitespace-pre-wrap text-sm leading-6 text-zinc-700">{item.source_chunks?.chunk_text}</p></details>
         {item.status === "proposed" ? <div className="mt-4 flex flex-wrap gap-2">{ACTIONS.filter(([action]) => action !== "approve_atomic" || item.proposal_kind === "atomic_claim")
           .filter(([action]) => action !== "confirm_exact" || item.proposal_kind === "confirm_exact")
           .map(([action, label]) => <button key={action} disabled={Boolean(busy)} onClick={() => decide(item, action)} className={`rounded px-3 py-2 text-xs ${action === "approve_atomic" || action === "confirm_exact" ? "bg-zinc-900 text-white" : "border"}`}>{label}</button>)}</div>
-          : <p className="mt-3 text-xs text-zinc-500">{item.status} by {item.reviewer}{item.review_note ? ` — ${item.review_note}` : ""}</p>}
+          : <p className="mt-3 text-xs text-zinc-500">{item.status} by {item.reviewer}{item.review_note ? `: ${item.review_note}` : ""}</p>}
       </article>;
     })}{items.length === 0 && <p className="text-sm text-zinc-500">No items for this status.</p>}</div>
   </main>;

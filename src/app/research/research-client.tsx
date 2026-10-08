@@ -970,7 +970,7 @@ export default function ResearchWorkspace() {
                             source.title
                           }
                           {source.author
-                            ? ` — ${source.author}`
+                            ? `, ${source.author}`
                             : ""}
                         </option>
                       )

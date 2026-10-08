@@ -1,6 +1,6 @@
 import { GoogleGenAI, ThinkingLevel } from "@google/genai";
 import { CorpusError, type CorpusErrorCode } from "./errors";
-import { boundedProviderCall, classifyProviderError, generationCircuit, providerErrorDetails, type ProviderCircuit } from "./provider-health";
+import { boundedProviderCall, generationCircuit, providerErrorDetails, type ProviderCircuit } from "./provider-health";
 import { recordAiCall } from "./usage";
 
 export const GENERATION_MODEL = process.env.SYNTHESIS_MODEL || process.env.GEMINI_GENERATION_MODEL || "gemini-3.7-flash";
@@ -43,7 +43,7 @@ export async function generateText(prompt: string, options: GenerationOptions = 
     if (common) console.warn("synthesis_provider_attempt", JSON.stringify({ ...common, success: false,
       durationMs: Math.round(performance.now() - started), ...details }));
     else console.warn("Gemini generation failed:", error instanceof Error ? error.message : String(error));
-    circuit.fail(classifyProviderError(error));
+    circuit.fail(details.category, diagnostic && details.category === "TIMEOUT" ? 2 * 60_000 : undefined);
     throw new CorpusError(code, "AI generation temporarily unavailable.", 503, { cause: error });
   }
 }

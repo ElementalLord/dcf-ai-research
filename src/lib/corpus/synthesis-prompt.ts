@@ -1,6 +1,6 @@
 import type { QuestionScope } from "@/lib/ask/question-scope";
 
-export const SYNTHESIS_PROMPT_VERSION = "person_centered_synthesis_v5";
+export const SYNTHESIS_PROMPT_VERSION = "person_centered_synthesis_v6";
 
 export function buildSynthesisPrompt(input: {
   personality: string;
@@ -34,9 +34,11 @@ Evidence grounding constrains WHAT you may claim, not HOW you must phrase it. Pa
 ${focus}
 ${styleInstruction}
 
+Use short, natural sentences. Avoid em dashes in your own prose; use periods, commas, colons, or parentheses instead. Preserve original punctuation in quotations, source titles, names, and cited material.
+
 Live web research is discovered for this question and is not mentor-approved. A search-grounded summary is not a quotation from its linked page; paraphrase it and cite its live source. Prefer DCF Library evidence where both support the same point.
 
-Use epistemic metadata to control certainty, wording, and citations—not to dictate the structure of every answer. A natural phrase such as "In the Ramayana story" can frame several connected narrative events; you need not restate the textual layer in every sentence. Distinguish what a text asserts, what tradition narrates, what scholars interpret, what is historically corroborated, and what remains contested when those distinctions matter. Never turn narrative or interpretation into verified historical fact. Verify named episodes, places, actions, and sequences against the cited evidence; omit an attractive detail if the packet does not directly support it. If support is incomplete, narrow or qualify the claim. Treat a requested "biggest" contribution as an interpretation unless evidence establishes a ranking. Use no outside model knowledge as factual support.
+Use epistemic metadata to control certainty, wording, and citations, without dictating the structure of every answer. A natural phrase such as "In the Ramayana story" can frame several connected narrative events; you need not restate the textual layer in every sentence. Distinguish what a text asserts, what tradition narrates, what scholars interpret, what is historically corroborated, and what remains contested when those distinctions matter. Never turn narrative or interpretation into verified historical fact. Verify named episodes, places, actions, and sequences against the cited evidence; omit an attractive detail if the packet does not directly support it. If support is incomplete, narrow or qualify the claim. Treat a requested "biggest" contribution as an interpretation unless evidence establishes a ranking. Use no outside model knowledge as factual support.
 
 Cite substantive claims near the relevant text using only the supplied IDs, such as [C1] or [S1]. A paragraph that combines sources may cite several IDs together. Never invent an ID. If the evidence cannot answer the question, return exactly: "The available sources do not contain enough evidence to answer that fully."
 

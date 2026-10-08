@@ -22,13 +22,13 @@ export class GeminiSynthesisProvider implements SynthesisProvider {
   async generateGroundedAnswer(input: SynthesisInput) {
     const primaryState = generationCircuit.state();
     const alternate = (callLimit: number) => generateText(input.prompt, { model: ALTERNATE_SYNTHESIS_MODEL,
-      circuit: alternateGenerationCircuit, callLimit, synthesisDiagnostics: input.diagnostics });
+      circuit: alternateGenerationCircuit, callLimit, timeoutMs: process.env.SYNTHESIS_TIMEOUT_MS ? undefined : 20_000, synthesisDiagnostics: input.diagnostics });
     if (primaryState.open) {
       if (this.transient(primaryState.category) && this.alternateAvailable() && !alternateGenerationCircuit.state().open) return alternate(1);
       throw new Error(`Synthesis provider cooldown: ${primaryState.category || "unknown"}`);
     }
     try {
-      return await generateText(input.prompt, { model: this.model, synthesisDiagnostics: input.diagnostics });
+      return await generateText(input.prompt, { model: this.model, timeoutMs: process.env.SYNTHESIS_TIMEOUT_MS ? undefined : 12_000, synthesisDiagnostics: input.diagnostics });
     } catch (error) {
       if (!this.transient(classifyProviderError(error)) || !this.alternateAvailable() || alternateGenerationCircuit.state().open) throw error;
       console.info("synthesis_alternate_selected", JSON.stringify({ primaryModel: this.model, alternateModel: ALTERNATE_SYNTHESIS_MODEL,

@@ -81,7 +81,8 @@ describe("scope-aware grounded answers", () => {
     expect(prompt).toContain("Evidence grounding constrains WHAT you may claim, not HOW you must phrase it.");
     expect(prompt).toContain("do not write one paragraph or bullet per source");
     expect(prompt).toContain("Open with who the person is");
-    expect(prompt).toContain("Use epistemic metadata to control certainty, wording, and citations—not to dictate the structure");
+    expect(prompt).toContain("Use epistemic metadata to control certainty, wording, and citations, without dictating the structure");
+    expect(prompt).toContain("Avoid em dashes in your own prose");
     expect(prompt).not.toContain("major supported textual and narrative dimensions");
     expect(prompt).toContain("[C1] Claim");
     const research = buildSynthesisPrompt({ personality: "Rishi A", question: "Who is Rishi A?", resolvedQuestion: "Who is Rishi A?", scope: "BROAD_PROFILE", evidenceContext: "[C1] Claim", responseStyle: "research" });

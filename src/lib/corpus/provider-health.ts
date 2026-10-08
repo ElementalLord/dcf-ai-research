@@ -35,8 +35,8 @@ export function classifyProviderError(error: unknown): ProviderErrorCategory {
   if (httpStatus === 401 || httpStatus === 403) return "AUTH_CONFIGURATION";
   if (httpStatus === 400) return /token limit|context window|too many tokens|prompt too long/.test(text) ? "CONTEXT_LIMIT" : "INVALID_REQUEST";
   if (/daily quota|quota.exceeded|quota exhausted|generation budget exhausted/.test(text)) return "QUOTA_EXHAUSTED";
-  if (/rate.?limit|too_many_requests/.test(text)) return "RATE_LIMIT";
   if (/resource_exhausted/.test(text)) return "QUOTA_EXHAUSTED";
+  if (/rate.?limit|too_many_requests/.test(text)) return "RATE_LIMIT";
   if (/429/.test(text)) return "RATE_LIMIT";
   if (/timeout|timed out|abort/.test(text)) return "TIMEOUT";
   if (/401|403|api.?key|unauth|permission|not configured/.test(text)) return "AUTH_CONFIGURATION";
@@ -55,15 +55,16 @@ export class ProviderCircuit {
   private category: ProviderErrorCategory | null = null;
   constructor(private now = () => Date.now()) {}
   state() { return { open: this.now() < this.until, category: this.category, retryAt: this.until || null }; }
-  fail(category: ProviderErrorCategory) {
+  fail(category: ProviderErrorCategory, cooldownMs?: number) {
     this.category = category;
-    this.until = this.now() + (/QUOTA|RATE_LIMIT|AUTH|MODEL/.test(category) ? 60_000 : 15_000);
+    this.until = this.now() + (cooldownMs ?? (/QUOTA|RATE_LIMIT|AUTH|MODEL/.test(category) ? 60_000 : 15_000));
   }
   succeed() { this.until = 0; this.category = null; }
 }
 export const generationCircuit = new ProviderCircuit();
 export const alternateGenerationCircuit = new ProviderCircuit();
 export const embeddingCircuit = new ProviderCircuit();
+export const googleGroundingCircuit = new ProviderCircuit();
 
 export async function boundedProviderCall<T>(operation: (signal: AbortSignal) => Promise<T>, timeoutMs: number): Promise<T> {
   const controller = new AbortController();

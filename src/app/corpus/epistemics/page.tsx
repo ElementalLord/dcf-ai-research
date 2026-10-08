@@ -79,7 +79,7 @@ export default function EpistemicsPage() {
           <p className="leading-7">{item.text}</p>
           <p className="mt-1 text-xs text-zinc-500">current {item.currentType || "unclassified"} · proposed {item.proposedType} ({item.confidence}) · legacy {item.legacyEvidenceType} · {item.certainty}{item.compound ? " · compound" : ""}</p>
           <p className="mt-1 text-xs text-zinc-500">Why: {item.signals.map((signal) => `${signal.type} +${signal.weight} (${signal.why})`).join("; ")}</p>
-          <p className="mt-1 text-xs text-zinc-500">Evidence: {(item.contractDetail.evidence || []).join(", ") || "no passages"} · {item.contractStatus} — {(item.contractDetail.reasons || []).join(" ")}</p>
+          <p className="mt-1 text-xs text-zinc-500">Evidence: {(item.contractDetail.evidence || []).join(", ") || "no passages"} · {item.contractStatus}: {(item.contractDetail.reasons || []).join(" ")}</p>
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <button disabled={Boolean(busy)} onClick={() => review(item, "confirm_type")} className="rounded bg-zinc-900 px-3 py-2 text-xs text-white">Confirm {item.proposedType}</button>
             <select className="rounded border px-2 py-1 text-xs" value={changes[item.claimId] || item.proposedType} onChange={(event) => setChanges((old) => ({ ...old, [item.claimId]: event.target.value }))}>{TYPES.map((type) => <option key={type}>{type}</option>)}</select>

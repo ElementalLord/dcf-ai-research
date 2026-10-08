@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { ProviderCircuit, classifyProviderError, boundedProviderCall, generationCircuit } from "@/lib/corpus/provider-health";
+import { ProviderCircuit, classifyProviderError, boundedProviderCall, generationCircuit, alternateGenerationCircuit } from "@/lib/corpus/provider-health";
 import { canonicalizeQuestion } from "@/lib/corpus/personality-config";
 import { normalizeAnswerQuestion, answerCacheIdentity } from "@/lib/corpus/answer-cache";
 import { ExtractiveSynthesisProvider, GeminiSynthesisProvider, validateAnswerCitations } from "@/lib/corpus/synthesis-provider";
@@ -23,11 +23,12 @@ const claim: RetrievedClaim = {
   pageOrSection: "1.1", evidenceExcerpt: null, chunkId: null, textualLayer: "Epic narrative",
 };
 const bounded = buildBoundedContext([claim]);
-afterEach(() => { vi.unstubAllEnvs(); vi.useRealTimers(); generationCircuit.succeed(); vi.clearAllMocks(); });
+afterEach(() => { vi.unstubAllEnvs(); vi.useRealTimers(); generationCircuit.succeed(); alternateGenerationCircuit.succeed(); vi.clearAllMocks(); });
 
 describe("resilient synthesis", () => {
   it.each([
     [new Error("429 quota exceeded"), "QUOTA_EXHAUSTED"], [new Error("429 rate limit"), "RATE_LIMIT"],
+    [new Error("429 RESOURCE_EXHAUSTED rate limit"), "QUOTA_EXHAUSTED"],
     [new Error("timeout"), "TIMEOUT"], [new Error("401 invalid API key"), "AUTH_CONFIGURATION"],
     [new Error("404 model not found"), "MODEL_UNAVAILABLE"], [new Error("503 unavailable"), "TRANSIENT"],
     [new Error("wrapper", { cause: new Error("RESOURCE_EXHAUSTED") }), "QUOTA_EXHAUSTED"],
@@ -69,6 +70,18 @@ describe("resilient synthesis", () => {
     await vi.advanceTimersByTimeAsync(100);
     await assertion;
     expect(signal?.aborted).toBe(true);
+  });
+  it("moves synthesis to the alternate after the shorter interactive deadline", async () => {
+    vi.useFakeTimers();
+    vi.stubEnv("GEMINI_API_KEY", "fake-test-key");
+    vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
+    sdk.generate.mockImplementationOnce(() => new Promise(() => {}));
+    sdk.generate.mockResolvedValueOnce({ text: "Supported [C1]" });
+    const provider = new GeminiSynthesisProvider();
+    const result = provider.generateGroundedAnswer({ prompt: "prompt", evidence: [claim], citations: bounded.citations, broad: false, diagnostics: { evidenceRecords: 1, evidenceCharacters: 100, promptCharacters: 100, estimatedPromptTokens: 25 } });
+    await vi.advanceTimersByTimeAsync(12_000);
+    await expect(result).resolves.toMatchObject({ text: "Supported [C1]" });
+    expect(sdk.generate).toHaveBeenCalledTimes(2);
   });
   it("enforces the interactive generation budget and counts embeddings separately", async () => {
     await withRequestUsage(async (usage) => {
