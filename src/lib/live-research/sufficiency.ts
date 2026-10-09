@@ -93,7 +93,8 @@ export function assessEvidenceSufficiency(
       reason: enough ? "Approved evidence spans multiple parameters and sources." : "The broad answer needs more parameter or source coverage.", missingDimensions: missing };
   }
   const missing = requested.filter((term) => !covered.includes(term));
-  if (coverage < 2 / 3) return { sufficient: false, answerable: false, mode, coverage, reason: "Local evidence does not cover enough requested concepts.", missingDimensions: missing };
+  if (coverage < 2 / 3) return { sufficient: false, answerable: direct >= 2 && sources.size >= 1, mode, coverage,
+    reason: "Local passages may answer part of the question, but concept coverage is incomplete.", missingDimensions: missing };
   if (comparative && (sources.size < 2 || layers.size < 2)) {
     return { sufficient: false, answerable: true, mode: "RESEARCH", coverage, reason: "The comparison needs broader source or textual-layer coverage.", missingDimensions: [sources.size < 2 ? "independent source" : "distinct textual layer"] };
   }

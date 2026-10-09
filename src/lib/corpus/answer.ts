@@ -48,10 +48,12 @@ async function answerQuestionInternal(
     const localEvidenceCount = local.evidence.length;
     const localDecision = assessEvidenceSufficiency(queryContext.resolvedQuestion, local.evidence, { personalityAliases: local.personalityAliases, termAliases: local.termAliases, allParameters: local.allParameters });
     const googleGaps = localDecision.sufficient ? [] : localDecision.missingDimensions.filter((gap) => !/^direct evidence$/i.test(gap));
-    const google = await searchWithGoogleGrounding(queryContext.resolvedQuestion, id, configurations[index].canonicalName, options.responseStyle === "research" ? "research" : "normal", searchPolicy, googleGaps, local.personalityAliases);
+    const google = localDecision.sufficient
+      ? { evidence: [], requests: 0, queries: 0, latencyMs: 0, errorCategory: null }
+      : await searchWithGoogleGrounding(queryContext.resolvedQuestion, id, configurations[index].canonicalName, options.responseStyle === "research" ? "research" : "normal", searchPolicy, googleGaps, local.personalityAliases);
     const credibleSources = new Set(google.evidence.map((item) => item.sourceUrl)).size;
     const googleUseful = credibleSources >= 1;
-    const base = googleUseful ? local : await retrieveWithApprovedResearch(queryContext.resolvedQuestion, id, { ...retrievalOptions, initialRetrieval: local, searchPolicy, forceLiveFallback: true });
+    const base = googleUseful ? local : await retrieveWithApprovedResearch(queryContext.resolvedQuestion, id, { ...retrievalOptions, initialRetrieval: local, searchPolicy });
     base.debug.localEvidenceBeforeSearch = localEvidenceCount;
     base.debug.googleGroundedSourcesReturned = new Set(google.evidence.map((item) => item.sourceUrl)).size;
     base.debug.googleSearchRequests = google.requests;

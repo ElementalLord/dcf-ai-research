@@ -7,6 +7,7 @@ import { inspectSearchSource, isGoogleGroundingRedirect, readGroundedExcerpt } f
 import { recordDiscoveredSource, searchPolicyDecision, type SearchPolicy } from "./search-policy";
 import { loadActiveSourceRules } from "./source-registry";
 import { answerIntent } from "@/lib/ask/evidence-priority";
+import { supabaseAdmin } from "@/lib/supabase-admin";
 
 export type GroundingResult = {
   evidence: RetrievedPassage[];
@@ -53,7 +54,7 @@ export function groundedPassages(response: { candidates?: Array<{ groundingMetad
       passages.set(key, {
         kind: "passage", id: `google:${index}:${passages.size}`, chunkId: `google:${index}:${passages.size}`,
         sourceId: `google:${index}`, text: statement.slice(0, 500), sectionTitle: null, pageOrSection: null,
-        textualLayer: "Search-grounded summary; verify tradition or historical status in the source",
+        textualLayer: "Search-grounded summary; verify the claim's evidentiary status in the source",
         sourceTitle: web.title, sourceAuthor: null, sourceInstitution: verified.institution,
         sourceUrl: verified.url, sourceType: "live web research", sourceStatus: "discovered",
         personalityId, personalityName, origin: "google_grounding", retrievedAt: new Date().toISOString(),
@@ -83,10 +84,16 @@ export async function searchWithGoogleGrounding(question: string, personalityId:
   const circuit = googleGroundingCircuit.state();
   if (circuit.open) return empty(`${circuit.category || "PROVIDER"}_COOLDOWN`);
   try {
+    const mapped = await supabaseAdmin.from("source_personalities").select("sources(url)").eq("personality_id", personalityId).limit(100);
+    const associatedDomains = new Set((mapped.data || []).flatMap((row) => {
+      const source = Array.isArray(row.sources) ? row.sources[0] : row.sources;
+      try { return source?.url ? [new URL(source.url).hostname] : []; } catch { return []; }
+    }));
     const preferred = policy.mode === "approved_domains_only" ? policy.rules.filter((rule) => rule.status === "allowed").map((rule) => rule.domain) : await loadActiveSourceRules().then((rules) => {
       const eligible = rules.filter((rule) => rule.allow_live_search && rule.evidence_use_status === "approved" && searchPolicyDecision(`https://${rule.domain}/`, policy).allowed);
       const layers = new Set<string>();
-      const diverse = eligible.filter((rule) => {
+      const ranked = [...eligible].sort((left, right) => Number(associatedDomains.has(right.domain)) - Number(associatedDomains.has(left.domain)) || left.priority - right.priority);
+      const diverse = ranked.filter((rule) => {
         const layer = rule.default_textual_layer || rule.default_source_type || rule.domain;
         if (layers.has(layer)) return false;
         layers.add(layer);
@@ -95,15 +102,15 @@ export async function searchWithGoogleGrounding(question: string, personalityId:
       return diverse.slice(0, 4).map((rule) => rule.domain);
     }).catch(() => [] as string[]);
     const intent = answerIntent(question);
-    const focus = intent === "identity" ? "Cover identity, principal roles, and the most important early and later textual associations. Avoid minor episodes."
-      : intent === "importance" ? "Find major contributions and lasting significance through concrete roles or works, not minor rituals."
-        : intent === "teaching" ? "Focus specifically on teachings and what was transmitted."
+    const focus = intent === "identity" ? "Cover identity, field or role, and the person's most important documented work. Avoid minor details."
+      : intent === "importance" ? "Find major contributions and lasting significance through concrete work and evidence."
+        : intent === "teaching" ? "Focus on documented teaching, mentorship, or lessons grounded in the person's actions."
           : intent === "relationship" ? "Focus on the actual interactions and conflict or change between the people."
             : "Answer the specific question directly.";
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const response = await boundedProviderCall((abortSignal) => ai.models.generateContent({
       model: GROUNDING_MODEL || GENERATION_MODEL,
-      contents: `Use Google Search now to answer: ${question} (about ${personalityName}). ${focus}${preferred.length ? ` Search ${preferred.slice(0, 3).join(", ")} first for original relevant pages.` : " Search credible primary, university, scholarly, institutional, and reference sources."} ${gaps.length ? `Fill these gaps: ${gaps.slice(0, 2).join("; ")}.` : ""} Give ${depth === "research" ? "a few" : "two"} concise findings supported by searched pages. Distinguish textual tradition from historical evidence. Exclude Wikipedia, blogs, forums, and unsourced summaries.${policy.mode === "approved_domains_only" ? ` Use only these allowed domains: ${preferred.join(", ")}.` : " You may discover other credible sources if the preferred sites lack direct support."}`,
+      contents: `Use Google Search now to answer: ${question} (about ${personalityName}). ${focus}${preferred.length ? ` Search ${preferred.slice(0, 3).join(", ")} first for original relevant pages.` : " Search credible primary, university, scholarly, institutional, and reference sources."} ${gaps.length ? `Fill these gaps: ${gaps.slice(0, 2).join("; ")}.` : ""} Give ${depth === "research" ? "a few" : "two"} concise findings supported by searched pages. Distinguish documented fact, scientific result, interpretation, and traditional account as relevant. Exclude Wikipedia, blogs, forums, and unsourced summaries.${policy.mode === "approved_domains_only" ? ` Use only these allowed domains: ${preferred.join(", ")}.` : " You may discover other credible sources if the preferred sites lack direct support."}`,
       config: { tools: [{ googleSearch: {} }], abortSignal, maxOutputTokens: 1800,
         httpOptions: { retryOptions: { attempts: 1 } } },
     }), depth === "research" ? 18000 : 13000);

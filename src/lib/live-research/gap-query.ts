@@ -5,7 +5,7 @@ export function gapSearchQueries(personality: string, question: string, missing:
   if (!target.length) {
     const value = question.toLowerCase();
     if (/why|important|accomplish|contribut/.test(value)) target.push("major roles works contributions", "primary source role");
-    else target.push(/teach|taught|instruct/.test(value) ? "teachings transmission" : /relationship|between|conflict|clash/.test(value) ? "relationship conflict" : /^who\b/.test(value.trim()) ? "sage identity roles major accounts" : "primary source account");
+    else target.push(/teach|taught|instruct/.test(value) ? "teaching and mentorship" : /relationship|between|conflict|clash/.test(value) ? "relationship and collaboration" : /^who\b/.test(value.trim()) ? "identity field major work" : "documented source account");
   }
   const ignored = new Set(["what", "who", "why", "when", "where", "which", "does", "did", "was", "were", "are", "is", "say", "about", "the", "and", "his", "her", "for", "with", "significance", "important"]);
   for (const word of clean(personality).toLowerCase().split(" ")) ignored.add(word);

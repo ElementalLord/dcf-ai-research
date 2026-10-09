@@ -85,7 +85,6 @@ export function selectDiverseLayers(evidence: RetrievedEvidence[], limit: number
 export function selectBroadEvidence(evidence: RetrievedEvidence[], limit = 20, personalityAliases: string[] = []): RetrievedEvidence[] {
   const pool = evidence.filter((item) => !/parameters to study|research framework/i.test(item.sourceTitle || "")
     && !/current source set|current corpus|database should|should be (?:stored|tagged|classified)|the system should|does not justify|metadata rather than|epithet number of|occurrences citations/i.test(item.text)
-    && (item.kind === "claim" || (/primary/i.test(item.sourceType || "") && profileEvidenceSalience(item.text) >= 5))
     && (item.kind === "claim" || Boolean(item.parameterCodes?.length)
       || personalityAliases.some((alias) => normalizeForMatch(`${item.text} ${item.sourceTitle}`).includes(normalizeForMatch(alias)))));
   const selected: RetrievedEvidence[] = [];
@@ -118,7 +117,7 @@ export function selectBroadEvidence(evidence: RetrievedEvidence[], limit = 20, p
       const namesSubject = personalityAliases.some((alias) => normalizeForMatch(`${item.text} ${item.sourceTitle || ""}`).includes(normalizeForMatch(alias)));
       const score = newParameters * 12 + salience + (sourceCount ? 0 : 5) + (layer && !seenLayers.has(layer) ? 4 : 0)
         + (sourceType && !seenTypes.has(sourceType) ? 2 : 0) + quality - sourceCount * 5
-        + (item.kind === "passage" && !namesSubject && !/rigveda|vedas?/i.test(item.sourceTitle) ? -10 : 0)
+        + (item.kind === "passage" && !namesSubject ? -10 : 0)
         + Math.min(3, (item.fusedScore || 0) * 70) - index * 0.003;
       if (score > best) { best = score; winner = index; }
     }

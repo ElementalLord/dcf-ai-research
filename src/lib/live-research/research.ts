@@ -16,6 +16,7 @@ import { recordDiscoveredSource, searchPolicyDecision, type SearchPolicy } from 
 import type { SourceAccessRule } from "./source-policy";
 import { selectSourceAuthorization } from "./source-policy";
 import { answerIntent } from "@/lib/ask/evidence-priority";
+import { supabaseAdmin } from "@/lib/supabase-admin";
 
 async function fetchQuestionPassages(
   url: string, question: string, rules: Awaited<ReturnType<typeof loadActiveSourceRules>>,
@@ -56,8 +57,8 @@ async function fetchQuestionPassages(
     && !/^(what|when|where|which|about|known|important|role|play|major|stories|historically|tradition)$/.test(term));
   if (!focus.length) {
     const intent = answerIntent(question);
-    if (intent === "identity") focus.push("sage", "seer", "priest", "teacher", "rishi");
-    else if (intent === "importance") focus.push("hymn", "priest", "teacher", "role", "text", "contribution");
+    if (intent === "identity") focus.push("identity", "field", "role", "work");
+    else if (intent === "importance") focus.push("contribution", "impact", "work");
   }
   const candidates: Array<{ section: typeof sections[number]; index: number; text: string; score: number }> = [];
   sections.forEach((section, index) => {
@@ -127,6 +128,11 @@ export async function retrieveWithApprovedResearch(
 
   const allRules = await loadActiveSourceRules();
   const rules = options.searchPolicy ? allRules.filter((rule) => searchPolicyDecision(rule.exact_url || `https://${rule.domain}${rule.allowed_path_prefix || "/"}`, options.searchPolicy!).allowed) : allRules;
+  const mappings = await supabaseAdmin.from("source_personalities").select("sources(url)").eq("personality_id", personalityId).limit(100);
+  const associatedDomains = new Set((mappings.data || []).flatMap((row) => {
+    const source = Array.isArray(row.sources) ? row.sources[0] : row.sources;
+    try { return source?.url ? [new URL(source.url).hostname] : []; } catch { return []; }
+  }));
   const approved = rules.filter((rule) => rule.allow_live_fetch && rule.evidence_use_status === "approved");
   local.debug.approvedLiveSourceCount = approved.length;
   local.debug.approvedSourcesConsidered = approved.map((rule) => rule.display_name);
@@ -173,11 +179,11 @@ export async function retrieveWithApprovedResearch(
         && !/^(what|why|who|where|when|how|the|and|for|does|did|was|were|are|about|known|important)$/.test(word)).slice(0, 4);
       if (!focus.length) {
         const intent = answerIntent(question);
-        focus.push(...(intent === "identity" ? ["sage", "priest", "teacher", "role"] : intent === "importance" ? ["role", "teacher", "significance"] : ["source", "account"]));
+        focus.push(...(intent === "identity" ? ["identity", "field", "work"] : intent === "importance" ? ["contribution", "impact"] : ["source", "account"]));
       }
       const scopedQueries = rules
         .filter((rule) => rule.is_active && rule.scope_type === "DOMAIN" && rule.domain && rule.allow_live_search && rule.allow_live_fetch && rule.evidence_use_status === "approved")
-        .sort((a, b) => a.priority - b.priority)
+        .sort((a, b) => Number(associatedDomains.has(b.domain)) - Number(associatedDomains.has(a.domain)) || a.priority - b.priority)
         .slice(0, 3)
         .map((rule) => {
           const format = rule.domain.endsWith("valmikiramayan.net") ? "prose" : rule.domain.endsWith("valmiki.iitk.ac.in") ? "summary" : "";

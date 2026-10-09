@@ -265,8 +265,9 @@ export async function retrieveEvidence(
         max_results: 30,
       })
     : Promise.resolve({ data: [], error: null });
-  const broadLexicalPromise = broadQuestion
-    ? Promise.all(parameters.filter((parameter) => (parameter.parameter_fields || []).length > 0).slice(0, 16).map(async (parameter) => {
+  const routedLexicalParameters = broadQuestion ? parameters.filter((parameter) => (parameter.parameter_fields || []).length > 0).slice(0, 16) : selectedParameters;
+  const broadLexicalPromise = routedLexicalParameters.length
+    ? Promise.all(routedLexicalParameters.map(async (parameter) => {
         const generic = new Set(["role", "person", "figure", "research", "source", "text", "known", "when", "king", "sage", "rishi"]);
         const hints = (parameter.routing_hints || []).map(normalizeForMatch)
           .filter((hint) => hint.length >= 4 && !generic.has(hint) && !hint.includes(" ")).slice(0, 6);

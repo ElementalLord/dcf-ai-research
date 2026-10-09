@@ -5,6 +5,7 @@ import { assessEvidenceSufficiency } from "@/lib/live-research/sufficiency";
 import { gapSearchQueries } from "@/lib/live-research/gap-query";
 import { buildSynthesisPrompt, SYNTHESIS_PROMPT_VERSION } from "@/lib/corpus/synthesis-prompt";
 import { renderExtractiveEvidence } from "@/lib/corpus/local-synthesis";
+import { answerIntent, prioritizeEvidence } from "@/lib/ask/evidence-priority";
 import type { Citation, RetrievedClaim, RetrievedPassage } from "@/lib/corpus/types";
 
 function claim(id: string, parameterCode: string, text: string, sourceTitle = `Source ${id}`): RetrievedClaim {
@@ -51,7 +52,28 @@ describe("scope-aware grounded answers", () => {
     const scholarlyAside: RetrievedPassage = { kind: "passage", id: "passage:aside", chunkId: "aside", sourceId: "study", text: "A king becomes an ascetic in the epic's textual development.", sectionTitle: null,
       pageOrSection: null, textualLayer: "scholarship", sourceTitle: "Academic study of Rishi A", sourceAuthor: null, sourceInstitution: null, sourceUrl: null, sourceType: "scholarship", sourceStatus: "approved", parameterCodes: ["role"] };
     expect(selectBroadEvidence([claim("teacher", "role", "Rishi A teaches a prince."), scholarlyAside], 2, ["Rishi A"]).map((item) => item.id))
-      .not.toContain("passage:aside");
+      .toContain("passage:aside");
+  });
+
+  it("uses tagged institutional science passages for a broad profile", () => {
+    const passage: RetrievedPassage = { kind: "passage", id: "passage:science", chunkId: "science", sourceId: "institute",
+      text: "Raman founded a research institute and continued his physics experiments there.", sectionTitle: "Institutional history",
+      pageOrSection: "Overview", textualLayer: "Institutional history", sourceTitle: "Raman Research Institute", sourceAuthor: null,
+      sourceInstitution: "Raman Research Institute", sourceUrl: null, sourceType: "institutional", sourceStatus: "approved",
+      parameterCodes: ["institutions"] };
+    expect(selectBroadEvidence([passage], 2, ["C. V. Raman"])).toEqual([passage]);
+  });
+
+  it("prioritizes experimental method and grounded student lessons", () => {
+    const method: RetrievedPassage = { kind: "passage", id: "passage:method", chunkId: "method", sourceId: "lecture",
+      text: "A mercury lamp illuminated the liquid, and new lines appeared in its scattered spectrum.", sectionTitle: "Experiment",
+      pageOrSection: "p. 272", textualLayer: "Primary scientific account", sourceTitle: "Nobel lecture", sourceAuthor: null,
+      sourceInstitution: "Nobel Prize", sourceUrl: null, sourceType: "primary_text", sourceStatus: "approved",
+      parameterNames: ["Research methods and innovation"] };
+    const award: RetrievedPassage = { ...method, id: "passage:award", chunkId: "award", sourceId: "award", text: "The discovery received an award.", parameterNames: ["Recognition and impact"] };
+    expect(answerIntent("How did Raman make his discovery?")).toBe("method");
+    expect(answerIntent("What can students learn from Raman?")).toBe("learning");
+    expect(prioritizeEvidence("How did Raman make his discovery?", [award, method], 2)[0].id).toBe(method.id);
   });
 
   it("requires breadth for a profile but accepts directly supported focused questions", () => {
