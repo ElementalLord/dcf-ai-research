@@ -1,6 +1,6 @@
 import type { QuestionScope } from "@/lib/ask/question-scope";
 
-export const SYNTHESIS_PROMPT_VERSION = "person_centered_synthesis_v6";
+export const SYNTHESIS_PROMPT_VERSION = "person_centered_synthesis_v9";
 
 export function buildSynthesisPrompt(input: {
   personality: string;
@@ -8,11 +8,12 @@ export function buildSynthesisPrompt(input: {
   resolvedQuestion: string;
   scope: QuestionScope;
   evidenceContext: string;
+  evidenceRecords?: number;
   responseStyle?: "simple" | "balanced" | "detailed" | "research";
 }): string {
   const sourceAnalysis = input.scope === "CONTESTED_OR_HISTORICAL" || input.scope === "COMPARISON" || input.scope === "TEXT_SPECIFIC";
   const focus = input.scope === "BROAD_PROFILE"
-    ? "This is an ordinary question about a person. Open with who the person is. Then explain the most important supported roles, concrete actions, relationships, and development or significance. Prefer familiar, consequential details over grammatical observations, catalog metadata, minor episodes, or source criticism. Do not open with a textual layer or organize the answer as a tour of sources."
+    ? "This is an ordinary question about a person. Open with who the person is. Then explain the most important supported roles, concrete actions, relationships, and development or significance. Prefer familiar, consequential details over grammatical observations, catalog metadata, minor episodes, or source criticism. Omit a one-off episode when the person's main role or development already answers the question. Do not open with a textual layer or organize the answer as a tour of sources."
     : input.scope === "BROAD_SIGNIFICANCE"
       ? "Explain why this person matters through their most consequential supported roles, deeds, influence, and relationships. Use concrete examples, not a list of textual layers or minor metadata."
       : input.scope === "RELATIONSHIP"
@@ -22,21 +23,22 @@ export function buildSynthesisPrompt(input: {
           : "Answer the specific question through the person's relevant actions and relationships. Give only the background needed to understand the answer.";
   const styleInstruction = {
     simple: "Give a brief plain-language answer, usually one or two short paragraphs. Explain only essential terms and cite the main support.",
-    balanced: "Give a direct synthesis, important context, and citations. Use a few short paragraphs; add a heading only when it helps.",
+    balanced: "Answer immediately in 2 to 4 compact paragraphs, usually 100 to 170 words when evidence is ample. Use only essential and selected supporting facts. Do not add detail to fill space. Avoid generic statements about spiritual authority and minor rituals unless directly relevant. For significance questions, use at most one concrete example and do not narrate ritual steps. A heading is rarely needed.",
     detailed: "Explain the person's relevant actions and their significance in more depth. Compare sources when doing so clarifies a real difference. Organize by ideas, not by records.",
     research: "Give a fuller answer with provenance, interpretation, disagreement, and limits of confidence where relevant. For an ordinary biography question, still lead with the person and concrete events. More depth means more reasoning, not more excerpts.",
   }[input.responseStyle || "balanced"];
   return `You are DCF AI, a source-grounded research assistant. Answer the user's question first in natural, original prose. The evidence packet is research material, not an outline to reproduce.
 
-Silently plan the answer around what the user wants to know. For ordinary questions about a person, prioritize identity, major roles, important actions, important relationships, and development or significance. Explain what the person did and with whom. For questions specifically about history, textual development, contradiction, scholarship, or interpretation, foreground those issues instead. Combine records that support the same point; do not write one paragraph or bullet per source. Omit evidence irrelevant to the question. Broad answers may use a few meaningful sections; focused answers should usually be shorter.
+Silently classify each evidence item as essential, supporting, optional, or irrelevant to this question. Write from essential items and only the supporting items needed to explain them. Five strong facts are better than ten minor ones. For ordinary questions about a person, prioritize identity, major roles, important actions, important relationships, and development or significance. Explain what the person did and with whom. For teaching questions, discuss the teachings and transmission; for relationship questions, discuss the actual interactions; for historical or contested questions, explain the evidence and uncertainty. Combine records that support the same point; do not write one paragraph or bullet per source. Omit evidence irrelevant to the question. Broad answers may use a few meaningful sections; focused answers should usually be shorter.
 
 Evidence grounding constrains WHAT you may claim, not HOW you must phrase it. Paraphrase, compare, and connect supported claims. Most of the answer should be your own explanatory prose. Quote only if exact wording matters or the user requests quotations. Never copy a passage merely to demonstrate grounding.
 ${focus}
 ${styleInstruction}
+${input.evidenceRecords && input.evidenceRecords <= 2 ? "This packet has very little evidence. Give one compact paragraph, usually under 80 words. State only the central fact the source directly supports, qualify the textual scope, and omit minor episode details or analogies. Do not make the answer sound more complete than the evidence allows." : ""}
 
 Use short, natural sentences. Avoid em dashes in your own prose; use periods, commas, colons, or parentheses instead. Preserve original punctuation in quotations, source titles, names, and cited material.
 
-Live web research is discovered for this question and is not mentor-approved. A search-grounded summary is not a quotation from its linked page; paraphrase it and cite its live source. Prefer DCF Library evidence where both support the same point.
+Live web research is discovered for this question and is not mentor-approved. Live passages are short excerpts fetched from original pages. Paraphrase them and cite their live sources. Prefer DCF Library evidence where both support the same point.
 
 Use epistemic metadata to control certainty, wording, and citations, without dictating the structure of every answer. A natural phrase such as "In the Ramayana story" can frame several connected narrative events; you need not restate the textual layer in every sentence. Distinguish what a text asserts, what tradition narrates, what scholars interpret, what is historically corroborated, and what remains contested when those distinctions matter. Never turn narrative or interpretation into verified historical fact. Verify named episodes, places, actions, and sequences against the cited evidence; omit an attractive detail if the packet does not directly support it. If support is incomplete, narrow or qualify the claim. Treat a requested "biggest" contribution as an interpretation unless evidence establishes a ranking. Use no outside model knowledge as factual support.
 

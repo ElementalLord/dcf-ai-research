@@ -4,6 +4,7 @@ import { googleGroundingCircuit } from "@/lib/corpus/provider-health";
 
 const state = vi.hoisted(() => ({ generate: vi.fn() }));
 vi.mock("@google/genai", () => ({ GoogleGenAI: class { models = { generateContent: state.generate }; } }));
+vi.mock("@/lib/live-research/source-registry", () => ({ loadActiveSourceRules: vi.fn(async () => []) }));
 afterEach(() => { googleGroundingCircuit.succeed(); vi.unstubAllEnvs(); state.generate.mockReset(); });
 
 describe("Google grounding admission", () => {
@@ -40,5 +41,18 @@ describe("Google grounding admission", () => {
     const retried = await searchWithGoogleGrounding("different question", "person", "Vishvamitra");
     expect(retried.requests).toBe(1);
     expect(state.generate).toHaveBeenCalledTimes(2);
+  });
+  it("drops blocked Google support and enforces allowlist admission", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "test-key");
+    state.generate.mockResolvedValue({ candidates: [{ groundingMetadata: {
+      groundingChunks: [{ web: { uri: "https://www.britannica.com/biography/Vishvamitra", title: "Vishvamitra | Britannica" } }],
+      groundingSupports: [{ segment: { text: "The Ramayana presents Vishvamitra as a teacher of Rama." }, groundingChunkIndices: [0] }],
+      webSearchQueries: ["Vishvamitra Rama teacher"],
+    } }] });
+    const blocked = await searchWithGoogleGrounding("Who taught Rama?", "person", "Vishvamitra", "normal", { mode: "credible_web", rules: [{ id: "1", domain: "britannica.com", display_name: "Britannica", status: "blocked", category: "reference", notes: "" }] });
+    expect(blocked.evidence).toHaveLength(0);
+    const restricted = await searchWithGoogleGrounding("Who taught Rama?", "person", "Vishvamitra", "normal", { mode: "approved_domains_only", rules: [] });
+    expect(restricted.evidence).toHaveLength(0);
+    expect(state.generate).toHaveBeenCalledTimes(1);
   });
 });

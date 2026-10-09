@@ -11,12 +11,39 @@ import { fetchApprovedResource } from "./live-fetch";
 import { extractRemoteBytes } from "@/lib/corpus/source-extract";
 import type { RetrievedPassage } from "@/lib/corpus/types";
 import { normalizeForMatch } from "@/lib/corpus/text";
+import { inspectSearchSource } from "./search-credibility";
+import { recordDiscoveredSource, searchPolicyDecision, type SearchPolicy } from "./search-policy";
+import type { SourceAccessRule } from "./source-policy";
+import { selectSourceAuthorization } from "./source-policy";
+import { answerIntent } from "@/lib/ask/evidence-priority";
 
 async function fetchQuestionPassages(
   url: string, question: string, rules: Awaited<ReturnType<typeof loadActiveSourceRules>>,
-  personalityId: string, personalityName: string, personalityAliases: string[] = [],
+  personalityId: string, personalityName: string, personalityAliases: string[] = [], searchPolicy?: SearchPolicy,
 ): Promise<RetrievedPassage[]> {
-  const original = await fetchApprovedResource(url, { rules, requireEvidenceApproval: true });
+  let fetchRules = rules;
+  let targetUrl = url;
+  if (searchPolicy) {
+    if (!searchPolicyDecision(url, searchPolicy).allowed) return [];
+    const existing = selectSourceAuthorization(url, rules, "fetch", true);
+    if (!existing) {
+      const source = await inspectSearchSource(url, searchPolicy);
+      if (!source) return [];
+      const ephemeral: SourceAccessRule = {
+        id: `request:${source.domain}`, display_name: source.title, domain: source.domain,
+        scope_type: "EXACT_URL", allowed_path_prefix: null, exact_url: source.url,
+        include_subdomains: false, allow_live_search: true, allow_live_fetch: true,
+        allow_ingestion: false, evidence_use_status: "approved", priority: -1,
+        default_textual_layer: null, default_source_type: source.category,
+        cache_ttl_hours: 0, is_active: true,
+      };
+      fetchRules = [ephemeral, ...rules];
+      targetUrl = source.url;
+    }
+  }
+  const original = await fetchApprovedResource(targetUrl, { rules: fetchRules, requireEvidenceApproval: true,
+    urlAllowed: searchPolicy ? (candidate) => searchPolicyDecision(candidate, searchPolicy).allowed : undefined });
+  if (searchPolicy && !searchPolicyDecision(original.finalUrl, searchPolicy).allowed) return [];
   if (!original.bytes) return [];
   const sections = await extractRemoteBytes(original.bytes, original.contentType, original.finalUrl);
   const aliases = [...new Set([personalityName, ...personalityAliases].map(normalizeForMatch).filter((value) => value.length >= 5))];
@@ -27,6 +54,11 @@ async function fetchQuestionPassages(
   const subjectWords = new Set(aliases.flatMap((alias) => alias.split(" ")));
   const focus = normalizeForMatch(question).split(" ").filter((term) => term.length >= 4 && !subjectWords.has(term)
     && !/^(what|when|where|which|about|known|important|role|play|major|stories|historically|tradition)$/.test(term));
+  if (!focus.length) {
+    const intent = answerIntent(question);
+    if (intent === "identity") focus.push("sage", "seer", "priest", "teacher", "rishi");
+    else if (intent === "importance") focus.push("hymn", "priest", "teacher", "role", "text", "contribution");
+  }
   const candidates: Array<{ section: typeof sections[number]; index: number; text: string; score: number }> = [];
   sections.forEach((section, index) => {
     const normalized = normalizeForMatch(section.text);
@@ -43,12 +75,13 @@ async function fetchQuestionPassages(
         if (englishWords < 2 || !window.split(/[.!?]/).some((sentence) => sentence.trim().split(/\s+/).length >= 7)) continue;
         const normalizedWindow = normalizeForMatch(window);
         const focusScore = focus.reduce((sum, term) => sum + Number(normalizedWindow.includes(term)), 0);
+        if (focus.length && focusScore === 0) continue;
         candidates.push({ section, index, text: window, score: focusScore * 3 + Math.min(3, englishWords) });
       }
     }
   });
   const seen = new Set<number>();
-  return candidates.sort((a, b) => b.score - a.score).filter((item) => {
+  const passages = candidates.sort((a, b) => b.score - a.score).filter((item) => {
     if (seen.has(item.index)) return false;
     seen.add(item.index);
     return true;
@@ -62,12 +95,15 @@ async function fetchQuestionPassages(
     personalityId, personalityName, origin: "brave_live" as const,
     retrievedAt: new Date().toISOString(), lexicalScore: 1,
   }));
+  if (passages.length && searchPolicy && !searchPolicy.rules.some((rule) => rule.domain === new URL(original.finalUrl).hostname))
+    await recordDiscoveredSource(original.finalUrl, original.access.display_name, original.access.default_source_type || "institutional");
+  return passages;
 }
 
 export async function retrieveWithApprovedResearch(
   question: string,
   personalityId: string,
-  options: { additionalPersonalityAliases?: string[]; configuration?: PersonalityConfiguration; initialRetrieval?: Awaited<ReturnType<typeof retrieveEvidence>> } = {},
+  options: { additionalPersonalityAliases?: string[]; configuration?: PersonalityConfiguration; initialRetrieval?: Awaited<ReturnType<typeof retrieveEvidence>>; searchPolicy?: SearchPolicy; forceLiveFallback?: boolean } = {},
 ) {
   const local = options.initialRetrieval || await retrieveEvidence(question, personalityId, options);
   const decision = assessEvidenceSufficiency(question, local.evidence, { personalityAliases: local.personalityAliases, termAliases: local.termAliases, allParameters: local.allParameters });
@@ -79,17 +115,22 @@ export async function retrieveWithApprovedResearch(
   local.debug.unresolvedEvidenceGap = !decision.sufficient;
   local.debug.localEvidenceCoverage = decision.coverage;
   local.debug.localEvidenceSufficiencyReason = decision.reason;
-  if (decision.sufficient) {
+  if (options.searchPolicy?.mode === "approved_domains_only" && !options.searchPolicy.rules.some((rule) => rule.status === "allowed")) {
+    local.debug.liveResearchSkipReason = "NO_ALLOWED_DOMAINS";
+    return local;
+  }
+  if (decision.sufficient && !options.forceLiveFallback) {
     local.debug.liveResearchSkipReason = "LOCAL_EVIDENCE_SUFFICIENT";
     logStage("LIVE_RESEARCH", { triggered: false, reason: "local_sufficient" });
     return local;
   }
 
-  const rules = await loadActiveSourceRules();
+  const allRules = await loadActiveSourceRules();
+  const rules = options.searchPolicy ? allRules.filter((rule) => searchPolicyDecision(rule.exact_url || `https://${rule.domain}${rule.allowed_path_prefix || "/"}`, options.searchPolicy!).allowed) : allRules;
   const approved = rules.filter((rule) => rule.allow_live_fetch && rule.evidence_use_status === "approved");
   local.debug.approvedLiveSourceCount = approved.length;
   local.debug.approvedSourcesConsidered = approved.map((rule) => rule.display_name);
-  if (approved.length === 0) {
+  if (approved.length === 0 && !options.searchPolicy) {
     local.debug.liveResearchSkipReason = "NO_APPROVED_LIVE_SOURCES";
     logStage("LIVE_RESEARCH", { triggered: false, reason: "no_approved_sources" });
     return local;
@@ -98,6 +139,7 @@ export async function retrieveWithApprovedResearch(
   local.debug.liveResearchTriggered = true;
   const stopSearch = stageTimer("APPROVED_SEARCH");
   const discovery = await discoverApprovedUrls(question, rules, decision.mode === "RESEARCH" ? 8 : 4, { personalityId, personalityAliases: local.personalityAliases, termAliases: local.termAliases });
+  if (options.searchPolicy) discovery.accepted = discovery.accepted.filter((url) => searchPolicyDecision(url, options.searchPolicy!).allowed);
   local.debug.latenciesMs.liveSearch = stopSearch();
   local.debug.approvedSourcesConsidered = discovery.approvedSourcesConsidered;
   local.debug.liveUrlsRejected = discovery.rejected;
@@ -105,7 +147,7 @@ export async function retrieveWithApprovedResearch(
   const selectedUrls = discovery.accepted.slice(0, limit);
   local.debug.liveUrlsAccepted = selectedUrls;
   const stopFetch = stageTimer("LIVE_FETCH");
-  const settled = await Promise.allSettled(selectedUrls.map((url) => fetchQuestionPassages(url, question, rules, personalityId, local.personality, local.personalityAliases)));
+  const settled = await Promise.allSettled(selectedUrls.map((url) => fetchQuestionPassages(url, question, rules, personalityId, local.personality, local.personalityAliases, options.searchPolicy)));
   settled.forEach((result, index) => {
     if (result.status === "fulfilled" && result.value.length) {
       local.evidence.push(...result.value);
@@ -119,26 +161,30 @@ export async function retrieveWithApprovedResearch(
   refreshed.debug.executionMode = decision.mode;
   let refreshedDecision = assessEvidenceSufficiency(question, refreshed.evidence, { personalityAliases: refreshed.personalityAliases, termAliases: refreshed.termAliases, allParameters: refreshed.allParameters });
   // Brave snippets are discovery only. Original pages supply request-scoped evidence.
-  if (!refreshedDecision.sufficient && refreshedDecision.missingDimensions.length > 0 && webSearchProvider().isConfigured() && rules.some((rule) => rule.allow_live_search && rule.allow_live_fetch && rule.evidence_use_status === "approved" && rule.scope_type !== "EXACT_URL")) {
-    const queries = gapSearchQueries(local.personality, question, refreshedDecision.missingDimensions);
+  if ((!refreshedDecision.sufficient || options.forceLiveFallback) && webSearchProvider().isConfigured() && (options.searchPolicy || rules.some((rule) => rule.allow_live_search && rule.allow_live_fetch && rule.evidence_use_status === "approved" && rule.scope_type !== "EXACT_URL"))) {
+    const queries = gapSearchQueries(local.personality, question, options.forceLiveFallback ? [] : refreshedDecision.missingDimensions);
     local.debug.braveTriggered = true;
     local.debug.braveQueries = queries;
-    const discoveries = await Promise.all(queries.map((query) => discoverWebCandidates(query, rules, { maxResults: 8 })));
+    const discoveries = await Promise.all(queries.map((query) => discoverWebCandidates(query, rules, { maxResults: 8, searchPolicy: options.searchPolicy })));
     const initialDomains = new Set(discoveries.flatMap((result) => result.accepted).map((url) => new URL(url).hostname.replace(/^www\./, "")));
-    if (initialDomains.size < 2) {
+    if (initialDomains.size < 2 || options.forceLiveFallback) {
       const subjectWords = new Set(normalizeForMatch(local.personality).split(" "));
       const focus = normalizeForMatch(question).split(" ").filter((word) => word.length > 2 && !subjectWords.has(word)
         && !/^(what|why|who|where|when|how|the|and|for|does|did|was|were|are|about|known|important)$/.test(word)).slice(0, 4);
+      if (!focus.length) {
+        const intent = answerIntent(question);
+        focus.push(...(intent === "identity" ? ["sage", "priest", "teacher", "role"] : intent === "importance" ? ["role", "teacher", "significance"] : ["source", "account"]));
+      }
       const scopedQueries = rules
         .filter((rule) => rule.is_active && rule.scope_type === "DOMAIN" && rule.domain && rule.allow_live_search && rule.allow_live_fetch && rule.evidence_use_status === "approved")
         .sort((a, b) => a.priority - b.priority)
-        .slice(0, 2)
+        .slice(0, 3)
         .map((rule) => {
           const format = rule.domain.endsWith("valmikiramayan.net") ? "prose" : rule.domain.endsWith("valmiki.iitk.ac.in") ? "summary" : "";
           return `site:${rule.domain} ${local.personality} ${focus.join(" ")} ${format}`.trim();
         });
       local.debug.braveQueries.push(...scopedQueries);
-      discoveries.unshift(...await Promise.all(scopedQueries.map((query) => discoverWebCandidates(query, rules, { maxResults: 12 }))));
+      discoveries.unshift(...await Promise.all(scopedQueries.map((query) => discoverWebCandidates(query, rules, { maxResults: 12, searchPolicy: options.searchPolicy }))));
     }
     local.debug.webSearchCalls = discoveries.reduce((total, web) => total + web.calls, 0);
     local.debug.webSearchCacheHits = discoveries.reduce((total, web) => total + web.cacheHits, 0);
@@ -158,8 +204,8 @@ export async function retrieveWithApprovedResearch(
       const domain = new URL(url).hostname.replace(/^www\./, "");
       if (!firstByDomain.has(domain)) firstByDomain.set(domain, url);
     }
-    const freshUrls = [...firstByDomain.values(), ...candidates.filter((url) => ![...firstByDomain.values()].includes(url))].slice(0, 4);
-    const fetched = await Promise.allSettled(freshUrls.map((url) => fetchQuestionPassages(url, question, rules, personalityId, refreshed.personality, refreshed.personalityAliases)));
+    const freshUrls = [...firstByDomain.values(), ...candidates.filter((url) => ![...firstByDomain.values()].includes(url))].slice(0, decision.mode === "RESEARCH" ? 6 : 5);
+    const fetched = await Promise.allSettled(freshUrls.map((url) => fetchQuestionPassages(url, question, rules, personalityId, refreshed.personality, refreshed.personalityAliases, options.searchPolicy)));
     fetched.forEach((result, index) => {
       if (result.status === "fulfilled" && result.value.length) {
         refreshed.evidence.push(...result.value);

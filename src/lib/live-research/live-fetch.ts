@@ -34,6 +34,7 @@ type FetchOptions = {
   fetchImpl?: typeof fetch;
   networkValidator?: (url: string) => Promise<URL>;
   capability?: SourceCapability;
+  urlAllowed?: (url: string) => boolean;
 };
 
 async function readBounded(response: Response): Promise<Uint8Array> {
@@ -71,6 +72,7 @@ export async function fetchApprovedResource(rawUrl: string, options: FetchOption
   let access = assertUrlApprovedForResearch(current, options.rules, capability, options.requireEvidenceApproval ?? true);
 
   for (let redirect = 0; redirect <= MAX_REDIRECTS; redirect += 1) {
+    if (options.urlAllowed && !options.urlAllowed(current)) throw new CorpusError("SOURCE_NOT_APPROVED", "Search policy blocks this URL.", 403);
     const safeUrl = await validateNetwork(current);
     const headers = new Headers({
       Accept: options.acceptXml

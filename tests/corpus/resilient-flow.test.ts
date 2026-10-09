@@ -19,6 +19,7 @@ vi.mock("@/lib/live-research/cache", () => ({ fetchAndCacheApprovedPage: state.f
 vi.mock("@/lib/live-research/google-grounding", () => ({ searchWithGoogleGrounding: state.google }));
 vi.mock("@/lib/live-research/web-search", () => ({ webSearchProvider: () => ({ isConfigured: () => state.webConfigured }), discoverWebCandidates: state.webDiscover }));
 vi.mock("@/lib/live-research/live-fetch", () => ({ fetchApprovedResource: state.originalFetch }));
+vi.mock("@/lib/live-research/search-credibility", () => ({ inspectSearchSource: vi.fn(async (url: string) => ({ url, domain: new URL(url).hostname, category: "institutional", title: "Public primary text" })) }));
 vi.mock("@/lib/corpus/source-extract", () => ({ extractRemoteBytes: state.extract }));
 vi.mock("@/lib/supabase-admin", () => ({ supabaseAdmin: {
   from: (table: string) => builder(table), rpc: (name: string) => builder(name),
@@ -27,9 +28,9 @@ function builder(table: string) {
   let id = "";
   let values: Record<string, unknown> | undefined;
   const query = {
-    select: () => query, eq: (column: string, value: string) => { if (column === "id") id = value; return query; },
+    select: () => query, eq: (column: string, value: string | boolean) => { if (column === "id") id = String(value); return query; },
     in: () => query, limit: () => query, order: () => query, or: () => query, gt: () => query,
-    maybeSingle: () => query, upsert: (value: Record<string, unknown>) => { values = value; return query; },
+    maybeSingle: () => query, single: () => query, upsert: (value: Record<string, unknown>) => { values = value; return query; },
     then: (resolve: (value: { data: unknown; error: null; count?: number }) => unknown) => {
       state.started.push(table); state.sequence.push(`start:${table}`);
       return new Promise((done) => setTimeout(() => {
@@ -37,6 +38,8 @@ function builder(table: string) {
         if (table === "parameters") data = [{ id: "role", code: "role", name: "Role", routing_hints: ["role"], parameter_fields: [] }];
         if (table === "claims") data = state.claims;
         if (table === "approved_source_access") data = !state.rulesActive ? [] : [{ id: "rule", is_active: true, domain: "example.test", scope_type: "DOMAIN", include_subdomains: false, allow_live_fetch: true, evidence_use_status: "approved" }];
+        if (table === "search_policy") data = { mode: "credible_web" };
+        if (table === "search_source_rules") data = [];
         if (table === "search_source_chunks_lexical") data = state.chunks;
         if (table === "get_retrieval_inventory") data = { approvedEmbeddingCountForPersonality: 1 };
         if (table === "answer_cache" || table === "ai_work_checkpoints") {
@@ -94,7 +97,7 @@ describe("Ask orchestration", () => {
     expect(result.status).not.toBe("abstained");
     expect(result.debug.googleSearchErrorCategory).toBe("TIMEOUT");
     expect(result.debug.webSearchCalls).toBe(0);
-    expect(state.webDiscover).not.toHaveBeenCalled();
+    expect(state.webDiscover).toHaveBeenCalled(); // Brave backs up a failed Google step even when local evidence is answerable.
   });
   it("abstains honestly when both live paths fail and local evidence is insufficient", async () => {
     state.claims = [];

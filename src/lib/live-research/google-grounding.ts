@@ -3,6 +3,10 @@ import { GoogleGenAI } from "@google/genai";
 import { boundedProviderCall, classifyProviderError, googleGroundingCircuit } from "@/lib/corpus/provider-health";
 import { GENERATION_MODEL } from "@/lib/corpus/gemini";
 import type { RetrievedPassage } from "@/lib/corpus/types";
+import { inspectSearchSource, isGoogleGroundingRedirect, readGroundedExcerpt } from "./search-credibility";
+import { recordDiscoveredSource, searchPolicyDecision, type SearchPolicy } from "./search-policy";
+import { loadActiveSourceRules } from "./source-registry";
+import { answerIntent } from "@/lib/ask/evidence-priority";
 
 export type GroundingResult = {
   evidence: RetrievedPassage[];
@@ -17,6 +21,7 @@ export type GroundingResult = {
 const credibleHost = /(?:^|\.)(?:edu|gov|ac\.uk|ac\.in|edu\.au|org\.uk|britannica\.com|encyclopedia\.com|jstor\.org|cambridge\.org|oup\.com|oxfordacademic\.com|springer\.com|nature\.com|sacred-texts\.com|archive\.org|gutenberg\.org|wisdomlib\.org|vedicheritage\.gov\.in)$/i;
 const groundingCache = new Map<string, { expires: number; result: GroundingResult }>();
 const poorSource = /(?:^|\.)(?:quora\.com|pinterest\.[a-z.]+|reddit\.com|blogspot\.[a-z.]+|medium\.com)$/i;
+const GROUNDING_MODEL = process.env.GEMINI_GROUNDING_MODEL || "gemini-3.5-flash-lite";
 
 export function credibleGroundingUrl(raw: string): { url: string; institution: string } | null {
   try {
@@ -30,7 +35,7 @@ export function groundedPassages(response: { candidates?: Array<{ groundingMetad
   groundingChunks?: Array<{ web?: { uri?: string; title?: string } }>;
   groundingSupports?: Array<{ segment?: { text?: string }; groundingChunkIndices?: number[] }>;
   webSearchQueries?: string[];
-} }> }, personalityId: string, personalityName: string): RetrievedPassage[] {
+} }> }, personalityId: string, personalityName: string, allowUnknown = false): RetrievedPassage[] {
   const metadata = response.candidates?.[0]?.groundingMetadata;
   if (!metadata) return [];
   const chunks = metadata.groundingChunks || [];
@@ -41,7 +46,7 @@ export function groundedPassages(response: { candidates?: Array<{ groundingMetad
     for (const index of support.groundingChunkIndices || []) {
       const web = chunks[index]?.web;
       if (!web?.uri || !web.title) continue;
-      const verified = credibleGroundingUrl(web.uri);
+      const verified = allowUnknown ? basicGroundingUrl(web.uri) : credibleGroundingUrl(web.uri);
       if (!verified) continue;
       const key = `${verified.url}|${statement}`;
       if (passages.has(key)) continue;
@@ -53,31 +58,72 @@ export function groundedPassages(response: { candidates?: Array<{ groundingMetad
         sourceUrl: verified.url, sourceType: "live web research", sourceStatus: "discovered",
         personalityId, personalityName, origin: "google_grounding", retrievedAt: new Date().toISOString(),
       });
-      if (passages.size >= 8) return [...passages.values()];
+      if (passages.size >= 20) return [...passages.values()];
     }
   }
   return [...passages.values()];
 }
 
-export async function searchWithGoogleGrounding(question: string, personalityId: string, personalityName: string, depth: "normal" | "research" = "normal"): Promise<GroundingResult> {
+function basicGroundingUrl(raw: string): { url: string; institution: string } | null {
+  try {
+    const url = new URL(raw);
+    if (url.protocol !== "https:" || url.username || url.password || poorSource.test(url.hostname)) return null;
+    return { url: url.toString(), institution: url.hostname.replace(/^www\./, "") };
+  } catch { return null; }
+}
+
+export async function searchWithGoogleGrounding(question: string, personalityId: string, personalityName: string, depth: "normal" | "research" = "normal", policy: SearchPolicy = { mode: "credible_web", rules: [] }, gaps: string[] = [], personalityAliases: string[] = []): Promise<GroundingResult> {
   const started = performance.now();
-  const cacheKey = `${personalityId}|${depth}|${question.normalize("NFKC").trim().toLowerCase()}`;
+  const cacheKey = `${GROUNDING_MODEL}|${personalityId}|${depth}|${question.normalize("NFKC").trim().toLowerCase()}|${gaps.join("|")}|${policy.mode}|${policy.rules.map((rule) => `${rule.domain}:${rule.status}`).join("|")}`;
   const cached = groundingCache.get(cacheKey);
   if (cached && cached.expires > Date.now()) return { ...cached.result, requests: 0, queries: 0, latencyMs: 0 };
   const empty = (errorCategory: string | null, requests = 0, queries = 0): GroundingResult => ({ evidence: [], requests, queries, latencyMs: Math.round(performance.now() - started), errorCategory });
   if (!process.env.GEMINI_API_KEY) return empty("NOT_CONFIGURED");
+  if (policy.mode === "approved_domains_only" && !policy.rules.some((rule) => rule.status === "allowed")) return empty("NO_ALLOWED_DOMAINS");
   const circuit = googleGroundingCircuit.state();
   if (circuit.open) return empty(`${circuit.category || "PROVIDER"}_COOLDOWN`);
   try {
+    const preferred = policy.mode === "approved_domains_only" ? policy.rules.filter((rule) => rule.status === "allowed").map((rule) => rule.domain) : await loadActiveSourceRules().then((rules) => {
+      const eligible = rules.filter((rule) => rule.allow_live_search && rule.evidence_use_status === "approved" && searchPolicyDecision(`https://${rule.domain}/`, policy).allowed);
+      const layers = new Set<string>();
+      const diverse = eligible.filter((rule) => {
+        const layer = rule.default_textual_layer || rule.default_source_type || rule.domain;
+        if (layers.has(layer)) return false;
+        layers.add(layer);
+        return true;
+      });
+      return diverse.slice(0, 4).map((rule) => rule.domain);
+    }).catch(() => [] as string[]);
+    const intent = answerIntent(question);
+    const focus = intent === "identity" ? "Cover identity, principal roles, and the most important early and later textual associations. Avoid minor episodes."
+      : intent === "importance" ? "Find major contributions and lasting significance through concrete roles or works, not minor rituals."
+        : intent === "teaching" ? "Focus specifically on teachings and what was transmitted."
+          : intent === "relationship" ? "Focus on the actual interactions and conflict or change between the people."
+            : "Answer the specific question directly.";
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const response = await boundedProviderCall((abortSignal) => ai.models.generateContent({
-      model: GENERATION_MODEL,
-      contents: `Research this question about ${personalityName}: ${question}\nFind ${depth === "research" ? "a few" : "one or two"} credible primary, academic, institutional, or reference sources. Give concise factual findings and distinguish textual tradition from historical evidence. Do not use blogs, forums, or unsourced summaries.`,
-      config: { tools: [{ googleSearch: {} }], abortSignal, maxOutputTokens: 1000,
+      model: GROUNDING_MODEL || GENERATION_MODEL,
+      contents: `Use Google Search now to answer: ${question} (about ${personalityName}). ${focus}${preferred.length ? ` Search ${preferred.slice(0, 3).join(", ")} first for original relevant pages.` : " Search credible primary, university, scholarly, institutional, and reference sources."} ${gaps.length ? `Fill these gaps: ${gaps.slice(0, 2).join("; ")}.` : ""} Give ${depth === "research" ? "a few" : "two"} concise findings supported by searched pages. Distinguish textual tradition from historical evidence. Exclude Wikipedia, blogs, forums, and unsourced summaries.${policy.mode === "approved_domains_only" ? ` Use only these allowed domains: ${preferred.join(", ")}.` : " You may discover other credible sources if the preferred sites lack direct support."}`,
+      config: { tools: [{ googleSearch: {} }], abortSignal, maxOutputTokens: 1800,
         httpOptions: { retryOptions: { attempts: 1 } } },
-    }), depth === "research" ? 16000 : 11000);
+    }), depth === "research" ? 18000 : 13000);
     const metadata = response.candidates?.[0]?.groundingMetadata;
-    const evidence = groundedPassages(response, personalityId, personalityName);
+    const candidates = groundedPassages(response, personalityId, personalityName, true).slice(0, 12);
+    const inspected = new Map<string, ReturnType<typeof inspectSearchSource>>();
+    const admitted = await Promise.all(candidates.map(async (item) => {
+      const url = item.sourceUrl;
+      if (!url || (!isGoogleGroundingRedirect(url) && !searchPolicyDecision(url, policy).allowed)) return null;
+      if (!inspected.has(url)) inspected.set(url, inspectSearchSource(url, policy, item.sourceTitle || "", preferred));
+      const source = await inspected.get(url)!;
+      if (!source) return null;
+      const original = await readGroundedExcerpt(source, item.text, [personalityName, ...personalityAliases], policy);
+      if (!original) return null;
+      item = { ...item, text: original.text, sourceUrl: original.url, sourceInstitution: source.domain, sourceTitle: original.title,
+        textualLayer: "Original page retrieved after Google Search; interpret textual status from source" };
+      if (!policy.rules.some((rule) => rule.domain === source.domain)) await recordDiscoveredSource(source.url, item.sourceTitle || source.title, source.category);
+      return item;
+    }));
+    const evidence = admitted.filter((item): item is RetrievedPassage => Boolean(item)).slice(0, 8);
     const queries = metadata?.webSearchQueries?.length || 0;
     const result = { evidence, requests: 1, queries, latencyMs: Math.round(performance.now() - started), errorCategory: evidence.length ? null : "NO_CREDIBLE_GROUNDED_EVIDENCE" };
     googleGroundingCircuit.succeed();

@@ -2,6 +2,7 @@ import "server-only";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { BraveSearchProvider, WebSearchError, groupSearchResultsByWork, normalizeSearchQuery, type WebSearchProvider, type WebSearchResult } from "./web-search-provider";
 import { canonicalResearchUrl, selectSourceAuthorization, type SourceAccessRule } from "./source-policy";
+import { searchPolicyDecision, type SearchPolicy } from "./search-policy";
 
 export type WebDiscovery = {
   discovered: string[];
@@ -42,7 +43,7 @@ export async function cachedWebSearch(query: string, provider: WebSearchProvider
   return { results, calls: 1, cacheHits: 0 };
 }
 
-export async function discoverWebCandidates(query: string, rules: SourceAccessRule[], options: { provider?: WebSearchProvider; maxResults?: number } = {}): Promise<WebDiscovery> {
+export async function discoverWebCandidates(query: string, rules: SourceAccessRule[], options: { provider?: WebSearchProvider; maxResults?: number; searchPolicy?: SearchPolicy } = {}): Promise<WebDiscovery> {
   const started = Date.now();
   const provider = options.provider || defaultProvider;
   const empty: WebDiscovery = { discovered: [], workGroups: [], accepted: [], rejected: [], candidates: 0, calls: 0, cacheHits: 0, latencyMs: 0, errorCategory: null };
@@ -59,7 +60,11 @@ export async function discoverWebCandidates(query: string, rules: SourceAccessRu
           continue;
         }
         discovered.add(canonical);
-        if (selectSourceAuthorization(canonical, rules, "fetch", true)) accepted.add(canonical);
+        if (options.searchPolicy) {
+          const decision = searchPolicyDecision(canonical, options.searchPolicy);
+          if (decision.allowed) accepted.add(canonical);
+          else rejected.push({ url: canonical, reason: decision.reason });
+        } else if (selectSourceAuthorization(canonical, rules, "fetch", true)) accepted.add(canonical);
       } catch {
         rejected.push({ url: candidate.url, reason: "UNSAFE_URL" });
       }

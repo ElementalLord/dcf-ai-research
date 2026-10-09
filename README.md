@@ -46,11 +46,13 @@ Supabase changes are versioned under `supabase/migrations/` and are additive.
 
 ### Controlled web discovery
 
-Set `BRAVE_SEARCH_API_KEY` in `.env.local` to enable server-side Brave Web Search. The app and local retrieval work without it. Brave returns candidate URLs only; each URL must pass the source registry's search and fetch permissions. The existing safe fetcher verifies DNS and every redirect, extracts the original page, stores it in `live_research_cache`, and indexes original passages. Brave snippets never enter evidence or citations.
+Set `BRAVE_SEARCH_API_KEY` in `.env.local` to enable server-side Brave Web Search. The app and local retrieval work without it. In managed corpus expansion, Brave candidate URLs must pass the approved source registry before ingestion; the safe fetcher verifies DNS and every redirect, extracts the original page, and indexes original passages. Brave snippets never enter evidence or citations.
+
+Normal Ask uses a separate Search Sources policy in restricted Resources. Its default **Credible Web** mode discovers new domains, then checks source provenance and fetches original content before it becomes request-scoped evidence. **Approved Domains Only** admits only administrator-allowed domains; **Custom** permits credible discovery with explicit allow, block, and temporary-disable rules. Every Google grounding result and Brave candidate is checked server-side, including redirect destinations. Search approval is separate from permanent Library source and claim approval. Strong new domains appear as discovered candidates in Resources without being auto-approved.
 
 Apply migrations before opening `/corpus/external`. Select a personality, set a hard request limit, and click **Preview Research Plan**. The preview reads the actual aliases, expert fields, corpus coverage, source titles, events, and relationships without spending a Brave request. Click **Run Limited Expansion** only after reviewing the queries. Each step searches at most once and fetches at most two approved pages. **Stop**, **Continue**, and **Resume** control a persisted run. Three consecutive steps without new chunks end the run. Search results have a separate 24-hour cache keyed by normalized query. The UI lists rejected candidate URLs for source-policy review; it never approves them automatically.
 
-Ask uses local retrieval and known approved pages first. It only invokes Brave when evidence remains insufficient and the registry has a broad approved search/fetch scope. An exact URL alone does not justify spending a web search. Provider failures leave local Ask and corpus retrieval working. Fetch and lexical indexing require no Gemini calls; embeddings and AI enrichment remain explicit corpus actions.
+Ask retrieves local evidence, makes one question-focused Gemini Google Search grounding call, then uses Brave and fetched original pages when grounding cannot fill the gap. `GEMINI_GROUNDING_MODEL` defaults to `gemini-3.5-flash-lite`; synthesis remains independently configured. Local evidence still works when providers fail. Balanced answers select a small set of essential and supporting evidence and usually fit in 2–4 compact paragraphs. Google summaries and Brave snippets never become evidence on their own.
 
 ### Free-tier resilient Ask
 
@@ -79,10 +81,9 @@ the current synthesis prompt version determine the cache key. Set
 `ANSWER_CACHE_DISABLED=true` only for a fresh-generation development audit.
 
 Broad Ask questions gather parameter-linked approved claims and source passages,
-then select for parameter, source and textual-layer coverage. Focused questions
-use smaller context budgets. Scope-aware coverage checks identify missing topics
-before any Brave discovery. Brave requires a currently approved search and fetch
-scope broader than an exact URL; snippets remain discovery metadata. Run the
+then rank evidence for the actual question and select only the strongest records.
+Focused questions use smaller context budgets. Scope-aware coverage checks identify
+missing topics before live research; snippets remain discovery metadata. Run the
 real-app benchmark with `node scripts/ask-quality-benchmark.mjs <personality-uuid> <output.json>`.
 
 Apply additive migrations before AI ingestion. AI tagging and proposal extraction

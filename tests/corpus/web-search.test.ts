@@ -91,6 +91,14 @@ describe("Brave discovery", () => {
     expect(isPrivateIp("127.0.0.1")).toBe(true);
     expect(isPrivateIp("169.254.169.254")).toBe(true);
   });
+  it("applies the same domain policy to Brave candidates before original fetch", async () => {
+    const provider = new MockWebSearchProvider([result("https://example.org/a"), result("https://new-source.edu/work"), result("https://blocked.example.org/work")]);
+    const credible = await discoverWebCandidates("Vishvamitra", [rule], { provider, searchPolicy: { mode: "credible_web", rules: [{ id: "b", domain: "blocked.example.org", display_name: "Blocked", status: "blocked", category: "other", notes: "" }] } });
+    expect(credible.accepted).toEqual(["https://example.org/a", "https://new-source.edu/work"]);
+    expect(credible.rejected.some((item) => item.reason === "BLOCKED")).toBe(true);
+    const allowlist = await discoverWebCandidates("Vishvamitra", [rule], { provider, searchPolicy: { mode: "approved_domains_only", rules: [{ id: "a", domain: "example.org", display_name: "Allowed", status: "allowed", category: "other", notes: "" }, { id: "b", domain: "blocked.example.org", display_name: "Blocked", status: "blocked", category: "other", notes: "" }] } });
+    expect(allowlist.accepted).toEqual(["https://example.org/a"]);
+  });
 
   it("fetches original approved content after discovery and preserves the original URL", async () => {
     const provider = new MockWebSearchProvider([result("https://example.org/original", "false snippet")]);

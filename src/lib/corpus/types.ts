@@ -185,7 +185,7 @@ export type RetrievalDebug = {
   pagesCacheHits?: number;
   chunksAdded?: number;
   webSearchErrorCategory?: string | null;
-  liveResearchSkipReason: "LOCAL_EVIDENCE_SUFFICIENT" | "NO_APPROVED_LIVE_SOURCES" | "NO_APPROVED_URLS_DISCOVERED" | "LIVE_FETCH_FAILED" | null;
+  liveResearchSkipReason: "LOCAL_EVIDENCE_SUFFICIENT" | "NO_APPROVED_LIVE_SOURCES" | "NO_APPROVED_URLS_DISCOVERED" | "NO_ALLOWED_DOMAINS" | "LIVE_FETCH_FAILED" | null;
   lexicalError: string | null;
   semanticError: string | null;
   claimRetrievalError: string | null;
