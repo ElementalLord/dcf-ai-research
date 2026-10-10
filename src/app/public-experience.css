@@ -53,8 +53,13 @@ body:has(.ai-page) .site-header { position: relative; z-index: 2; }
     radial-gradient(1px 1px at 76% 81%, #d2ddff 99%, transparent),
     radial-gradient(1px 1px at 91% 42%, #f1ddc2 99%, transparent);
   background-size: 480px 410px;
+  animation: mystic-stars-drift 36s ease-in-out infinite alternate;
 }
 .mystic-glint { position: absolute; border-radius: 50%; background: #e9e7ff; box-shadow: 0 0 7px 2px #d7d6f285; opacity: .18; animation: mystic-glint-twinkle 9s ease-in-out infinite; }
+.mystic-mote { position: absolute; width: 2px; height: 2px; border-radius: 50%; background: #eeeaff; box-shadow: 0 0 5px 1px #d0c8ff9c; opacity: 0; }
+.mystic-mote-one { top: 27%; left: 79%; animation: mystic-mote-one 16s -4s ease-in-out infinite; }
+.mystic-mote-two { top: 77%; left: 19%; animation: mystic-mote-two 21s -12s ease-in-out infinite; }
+.mystic-mote-three { top: 69%; left: 88%; animation: mystic-mote-three 19s -9s ease-in-out infinite; }
 
 .ai-page .page-kicker { color: #a4accd; }
 .ai-page .section-label { color: #b9b6d5; }
@@ -188,6 +193,10 @@ body:has(.ai-page) .site-header { position: relative; z-index: 2; }
 .ai-select-content [data-slot="select-scroll-down-button"] { background: #17213b; }
 
 @keyframes mystic-glint-twinkle { 0%, 100% { opacity: .13; transform: translate3d(0, 0, 0) scale(.8); } 24% { opacity: .25; } 38% { opacity: .85; transform: translate3d(1px, -3px, 0) scale(1.35); } 49% { opacity: .19; transform: translate3d(2px, -5px, 0) scale(.85); } 71% { opacity: .2; } 78% { opacity: .52; transform: translate3d(2px, -6px, 0) scale(1.1); } 88% { opacity: .17; } }
+@keyframes mystic-stars-drift { to { background-position: 28px -18px; } }
+@keyframes mystic-mote-one { 0%, 100% { opacity: 0; transform: translate3d(0, 0, 0); } 19% { opacity: .32; transform: translate3d(-11px, -7px, 0); } 49% { opacity: .5; transform: translate3d(-32px, -25px, 0); } 76% { opacity: .2; transform: translate3d(-43px, -17px, 0); } 99% { transform: translate3d(-63px, -41px, 0); } }
+@keyframes mystic-mote-two { 0%, 100% { opacity: 0; transform: translate3d(0, 0, 0); } 17% { opacity: .27; transform: translate3d(9px, -9px, 0); } 52% { opacity: .47; transform: translate3d(29px, -36px, 0); } 78% { opacity: .17; transform: translate3d(22px, -48px, 0); } 99% { transform: translate3d(38px, -62px, 0); } }
+@keyframes mystic-mote-three { 0%, 100% { opacity: 0; transform: translate3d(0, 0, 0); } 22% { opacity: .28; transform: translate3d(-6px, -12px, 0); } 45% { opacity: .43; transform: translate3d(-23px, -29px, 0); } 73% { opacity: .15; transform: translate3d(-18px, -52px, 0); } 99% { transform: translate3d(-42px, -68px, 0); } }
 
 @media (max-width: 700px) {
   .ai-page .ai-layout { padding-top: 44px; }
@@ -203,7 +212,8 @@ body:has(.ai-page) .site-header { position: relative; z-index: 2; }
   .ai-page .ask-footer > button { min-width: 98px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .mystic-glint { animation: none; opacity: .38; }
+  .mystic-stars,.mystic-glint,.mystic-mote { animation: none; }
+  .mystic-glint { opacity: .38; }
 }
 
 /* Ask DCF as one continuous conversation. */

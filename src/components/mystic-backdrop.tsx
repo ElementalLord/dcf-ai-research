@@ -52,6 +52,13 @@ export function MysticBackdrop({ contained = false }: { contained?: boolean } = 
     <div className={`mystic-backdrop${contained ? " mystic-backdrop-contained" : ""}`} aria-hidden="true">
       {!contained && <div className="mystic-stars" />}
       <Glints contained={contained} />
+      {contained && (
+        <>
+          <span className="mystic-mote mystic-mote-one" />
+          <span className="mystic-mote mystic-mote-two" />
+          <span className="mystic-mote mystic-mote-three" />
+        </>
+      )}
     </div>
   );
 }
