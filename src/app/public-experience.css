@@ -319,21 +319,25 @@ body:has(.ai-page) .site-header { position: relative; z-index: 2; }
 .ai-page .chat-shell { position: relative; isolation: isolate; flex: 1; min-height: 0; display: flex; flex-direction: column; margin-top: 13px; color: #f3f3fb; background: linear-gradient(150deg, rgba(29, 35, 69, .3), rgba(8, 16, 42, .26)); border: 1px solid rgba(218, 224, 255, .27); border-radius: 25px; box-shadow: 0 24px 70px #02081d4a, inset 0 1px #ffffff38, inset 0 -1px #ffffff14; backdrop-filter: blur(24px) saturate(130%); }
 .ai-page .chat-shell > .mystic-backdrop-contained { position: absolute; z-index: 0; inset: 0; opacity: 1; }
 .ai-page .chat-shell > .mystic-backdrop-contained::after { background: radial-gradient(ellipse at 47% 47%, transparent 25%, rgba(4, 8, 27, .14) 100%); }
-.chat-aurora { position: absolute; left: -22%; width: 145%; height: 40%; border-radius: 50%; filter: blur(54px); mix-blend-mode: screen; pointer-events: none; }
-.chat-aurora-one { top: 12%; opacity: .25; background: linear-gradient(90deg, transparent 3%, #307085 27%, #71538c 51%, #4c6790 77%, transparent 97%); transform: rotate(-14deg); animation: chat-aurora-flow 32s ease-in-out infinite alternate; }
-.chat-aurora-two { bottom: -13%; opacity: .18; background: linear-gradient(90deg, transparent 4%, #685493 26%, #287489 52%, #695b9e 74%, transparent 97%); transform: rotate(13deg); animation: chat-aurora-ebb 41s ease-in-out infinite alternate; }
-.chat-meteor { position: absolute; width: 125px; height: 1px; opacity: 0; border-radius: 100%; background: linear-gradient(90deg, transparent, #a4c4f1b3 72%, #f5e8ff); box-shadow: 0 0 10px #b1a4df70; pointer-events: none; }
-.chat-meteor::after { position: absolute; right: -1px; top: -1px; width: 3px; height: 3px; border-radius: 50%; content: ""; background: #f5e8ff; box-shadow: 0 0 8px #ddc5ff; }
-.chat-meteor-one { top: 19%; left: -18%; animation: chat-meteor-flight 19s 2s linear infinite; }
-.chat-meteor-two { top: 52%; left: 42%; animation: chat-meteor-flight 27s 11s linear infinite; }
-.chat-glint { position: absolute; width: 2px; height: 2px; border-radius: 50%; background: #d8e3ff; box-shadow: 0 0 8px #b6c8ff; opacity: .16; animation: chat-glint-breathe 13s ease-in-out infinite; }
-.chat-glint-one { top: 28%; left: 23%; animation-delay: -2s; }
-.chat-glint-two { top: 61%; left: 72%; animation-duration: 17s; animation-delay: -9s; }
-.chat-glint-three { top: 38%; left: 87%; animation-duration: 23s; animation-delay: -14s; }
-@keyframes chat-aurora-flow { to { transform: translate3d(8%, -13%, 0) rotate(-7deg) scaleY(1.22); opacity: .35; } }
-@keyframes chat-aurora-ebb { to { transform: translate3d(-7%, -16%, 0) rotate(5deg) scaleY(.75); opacity: .28; } }
-@keyframes chat-meteor-flight { 0%, 68% { opacity: 0; transform: translate3d(0, 0, 0) rotate(21deg) scaleX(.65); } 69% { opacity: .62; } 73%, 100% { opacity: 0; transform: translate3d(390px, 145px, 0) rotate(21deg) scaleX(1); } }
-@keyframes chat-glint-breathe { 0%, 38%, 100% { opacity: .13; } 45% { opacity: .68; } 53% { opacity: .15; } }
+.chat-constellation { position: absolute; width: min(45%, 460px); height: auto; overflow: visible; filter: drop-shadow(0 0 5px #a9b7ff54); pointer-events: none; }
+.chat-constellation-one { top: 9%; right: -3%; transform: rotate(-7deg); }
+.chat-constellation-two { bottom: 5%; left: -5%; width: min(37%, 390px); transform: rotate(11deg); }
+.chat-constellation-guide { stroke: #aeb9f2; stroke-width: .8; stroke-linecap: round; stroke-linejoin: round; opacity: .13; }
+.chat-constellation-line { stroke: #aeb9f2; stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; animation: chat-constellation-draw 13s ease-in-out infinite; }
+.chat-constellation-line-two { stroke: #c6aef1; animation-delay: 1.1s; }
+.chat-constellation-line-three { stroke: #91bce8; animation-delay: 2.1s; }
+.chat-constellation-two .chat-constellation-line { animation-duration: 17s; animation-delay: -5s; }
+.chat-constellation-two .chat-constellation-line-two { animation-delay: -3.7s; }
+.chat-constellation-two .chat-constellation-line-three { animation-delay: -2.6s; }
+.chat-constellation-star { fill: #f4eaff; opacity: .22; transform-box: fill-box; transform-origin: center; animation: chat-star-breathe 5.5s ease-in-out infinite; }
+.chat-constellation-two .chat-constellation-star { animation-duration: 6.8s; }
+.chat-meteor { position: absolute; width: 104px; height: 1px; opacity: 0; border-radius: 100%; background: linear-gradient(90deg, transparent, #b1cafa 76%, #fff4ff); box-shadow: 0 0 9px #cfbaffb8; pointer-events: none; }
+.chat-meteor::after { position: absolute; right: -1px; top: -1px; width: 3px; height: 3px; border-radius: 50%; content: ""; background: #fff4ff; box-shadow: 0 0 9px #ddc5ff; }
+.chat-meteor-one { top: 16%; left: 18%; animation: chat-meteor-flight 8s .4s linear infinite; }
+.chat-meteor-two { top: 63%; left: 54%; animation: chat-meteor-flight 11s -4.5s linear infinite; }
+@keyframes chat-constellation-draw { 0%, 5% { stroke-dashoffset: 1; opacity: 0; } 12% { opacity: .24; } 43%, 72% { stroke-dashoffset: 0; opacity: .39; } 84%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes chat-star-breathe { 0%, 100% { opacity: .14; transform: scale(.65); } 43% { opacity: .82; transform: scale(1.45); } 62% { opacity: .36; transform: scale(.9); } }
+@keyframes chat-meteor-flight { 0%, 7% { opacity: 0; transform: translate3d(0, 0, 0) rotate(18deg) scaleX(.45); } 12% { opacity: .77; } 25%, 100% { opacity: 0; transform: translate3d(270px, 88px, 0) rotate(18deg) scaleX(1); } }
 .ai-page .chat-shell > :not(.mystic-backdrop-contained) { position: relative; z-index: 1; }
 .ai-page .chat-toolbar { padding: 10px 20px; background: rgba(200, 207, 245, .045); border-bottom-color: rgba(222, 229, 255, .17); backdrop-filter: blur(18px); }
 .ai-page .chat-shell > .chat-resize-handle { position: absolute; z-index: 3; display: grid; place-items: center; opacity: .58; touch-action: none; transition: opacity .2s, background-color .2s; }
@@ -377,9 +381,12 @@ body:has(.ai-page) .site-header { position: relative; z-index: 2; }
   .ai-page .chat-thread { max-height: none; padding-inline: 15px; }
   .ai-page .chat-shell > .chat-resize-width { display: none; }
   .ai-page .chat-resize-height { right: 18px; left: auto; transform: none; }
-  .chat-aurora { opacity: .13; }
+  .chat-constellation-one { width: 70%; right: -20%; }
+  .chat-constellation-two { width: 62%; left: -20%; }
   .ai-page .chat-message-assistant { max-width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .chat-aurora,.chat-meteor,.chat-glint { animation: none; }
+  .chat-constellation-line { animation: none; stroke-dashoffset: 0; opacity: .24; }
+  .chat-constellation-star { animation: none; opacity: .45; }
+  .chat-meteor { animation: none; }
 }

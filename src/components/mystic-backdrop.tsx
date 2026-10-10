@@ -1,13 +1,26 @@
 export function MysticBackdrop({ contained = false }: { contained?: boolean } = {}) {
   if (contained) return (
     <div className="mystic-backdrop mystic-backdrop-contained" aria-hidden="true">
-      <div className="chat-aurora chat-aurora-one" />
-      <div className="chat-aurora chat-aurora-two" />
+      <svg className="chat-constellation chat-constellation-one" viewBox="0 0 460 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path className="chat-constellation-guide" d="M35 205 119 142 207 163 269 65 354 107 424 38 M207 163 285 230 379 209 424 38 M119 142 93 57 269 65" />
+        <path className="chat-constellation-line chat-constellation-line-one" pathLength="1" d="M35 205 119 142 207 163 269 65 354 107 424 38" />
+        <path className="chat-constellation-line chat-constellation-line-two" pathLength="1" d="M207 163 285 230 379 209 424 38" />
+        <path className="chat-constellation-line chat-constellation-line-three" pathLength="1" d="M119 142 93 57 269 65" />
+        {[ [35, 205], [119, 142], [207, 163], [269, 65], [354, 107], [424, 38], [285, 230], [379, 209], [93, 57] ].map(([cx, cy], index) => (
+          <circle key={index} className="chat-constellation-star" cx={cx} cy={cy} r={index === 3 ? 3.3 : 2.2} style={{ animationDelay: `${index * .42}s` }} />
+        ))}
+      </svg>
+      <svg className="chat-constellation chat-constellation-two" viewBox="0 0 390 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path className="chat-constellation-guide" d="M29 171 90 94 174 116 215 45 320 69 363 166 M174 116 226 202 363 166 M90 94 37 43 215 45" />
+        <path className="chat-constellation-line chat-constellation-line-one" pathLength="1" d="M29 171 90 94 174 116 215 45 320 69 363 166" />
+        <path className="chat-constellation-line chat-constellation-line-two" pathLength="1" d="M174 116 226 202 363 166" />
+        <path className="chat-constellation-line chat-constellation-line-three" pathLength="1" d="M90 94 37 43 215 45" />
+        {[ [29, 171], [90, 94], [174, 116], [215, 45], [320, 69], [363, 166], [226, 202], [37, 43] ].map(([cx, cy], index) => (
+          <circle key={index} className="chat-constellation-star" cx={cx} cy={cy} r={index === 2 ? 3.3 : 2.2} style={{ animationDelay: `${index * .48 - 3}s` }} />
+        ))}
+      </svg>
       <span className="chat-meteor chat-meteor-one" />
       <span className="chat-meteor chat-meteor-two" />
-      <span className="chat-glint chat-glint-one" />
-      <span className="chat-glint chat-glint-two" />
-      <span className="chat-glint chat-glint-three" />
     </div>
   );
 
