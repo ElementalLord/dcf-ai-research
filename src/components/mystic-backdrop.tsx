@@ -1,6 +1,6 @@
-export function MysticBackdrop() {
+export function MysticBackdrop({ contained = false }: { contained?: boolean } = {}) {
   return (
-    <div className="mystic-backdrop" aria-hidden="true">
+    <div className={`mystic-backdrop${contained ? " mystic-backdrop-contained" : ""}`} aria-hidden="true">
       <div className="mystic-glow mystic-glow-one" />
       <div className="mystic-glow mystic-glow-two" />
       <div className="mystic-stars" />

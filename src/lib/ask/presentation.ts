@@ -36,6 +36,15 @@ export type CitationGroup = {
   textualLayer: string | null;
 };
 
+export function isIncompleteQuestion(question: string): boolean {
+  return /^(?:why|how|what|where|when)\s+(?:is|was|did|does|do|are|were)\s+(?:he|she|they|it|him|her)\??$/i.test(question.trim());
+}
+
+export function isUnusableStoredAnswer(answer: string, status?: string): boolean {
+  if (status !== "extractive_fallback" && !/skip to main content/i.test(answer)) return false;
+  return /skip to main content|cookie preferences|privacy policy|related context:[^\n]*(?:doi:|lock describes)|\bdoi:\s*10\.\d{3,}/i.test(answer);
+}
+
 export function inlineAnswerParts(value: string): InlineAnswerPart[] {
   const parts: InlineAnswerPart[] = [];
   let offset = 0;

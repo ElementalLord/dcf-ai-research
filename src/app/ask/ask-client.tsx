@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { MysticBackdrop } from "@/components/mystic-backdrop";
-import { answerBlocks, type AskCitation, type InlineAnswerPart } from "@/lib/ask/presentation";
+import { answerBlocks, isIncompleteQuestion, isUnusableStoredAnswer, type AskCitation, type InlineAnswerPart } from "@/lib/ask/presentation";
 import { fetchJsonWithTimeout } from "@/lib/client/fetch-json";
 import { readableEvidence } from "@/lib/corpus/readable-evidence";
 
@@ -92,13 +92,15 @@ export default function AskClient({ personalities, loadError }: { personalities:
     return () => window.clearInterval(interval);
   }, [loading]);
   useEffect(() => {
-    if (turns.length || pendingQuestion) chatThread.current?.scrollTo({ top: chatThread.current.scrollHeight, behavior: "smooth" });
+    const thread = chatThread.current;
+    const latest = thread?.querySelector<HTMLElement>(".chat-exchange:last-of-type");
+    if (thread && latest) thread.scrollTo({ top: latest.getBoundingClientRect().top - thread.getBoundingClientRect().top + thread.scrollTop - 18, behavior: "smooth" });
   }, [personId, turns.length, pendingQuestion]);
 
   async function ask(event: React.FormEvent) {
     event.preventDefault();
     if (!personId || !question.trim() || submitting.current) return;
-    if (/^(?:why|how|what|where|when)\s+(?:is|was|did|does|do|are|were)\s+(?:he|she|they|it|him|her)\??$/i.test(question.trim())) {
+    if (isIncompleteQuestion(question)) {
       setError("Finish your question so I know what you want to ask.");
       input.current?.focus();
       return;
@@ -112,7 +114,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
     try {
       const { response, payload } = await fetchJsonWithTimeout<Result>("/api/ask", {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ personalityId: personId, question: question.trim(), responseStyle: style, history: turns.slice(-4).map(turn => ({ question: turn.question.slice(0, 1000), resolvedQuestion: turn.resolvedQuestion?.slice(0, 2000), answer: turn.status === "extractive_fallback" ? undefined : turn.answer.replace(/\[[CS]\d+\]/g, "").slice(0, 800), citedConcepts: (turn.citations || []).slice(0, 4).map(citation => citation.title.slice(0, 120)).filter(title => title.trim().length >= 2) })) }),
+        body: JSON.stringify({ personalityId: personId, question: question.trim(), responseStyle: style, history: turns.filter(turn => !isUnusableStoredAnswer(turn.answer, turn.status)).slice(-4).map(turn => ({ question: turn.question.slice(0, 1000), resolvedQuestion: turn.resolvedQuestion?.slice(0, 2000), answer: turn.status === "extractive_fallback" ? undefined : turn.answer.replace(/\[[CS]\d+\]/g, "").slice(0, 800), citedConcepts: (turn.citations || []).slice(0, 4).map(citation => citation.title.slice(0, 120)).filter(title => title.trim().length >= 2) })) }),
       }, 120000);
       if (!response.ok) throw new Error("ask_failed");
       setConversations(current => ({ ...current, [personId]: [...(current[personId] || []), payload].slice(-12) }));
@@ -132,6 +134,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
     <div className="ai-layout"><div className="ai-main chat-main">
       <div className="ai-title"><p className="section-label">Ask DCF</p><h1>History, in conversation.</h1><p>Ask what you&apos;re curious about. Follow the story, then tap a citation whenever you want to see the evidence.</p></div>
       <div className="chat-shell">
+        <MysticBackdrop contained />
         <div className="chat-toolbar"><label className="person-control">Talking about
           <Select value={personId} onValueChange={value => { setPersonId(value || ""); setQuestion(""); setSourceId(null); setError(""); }} disabled={loading}>
             <SelectTrigger aria-label="Choose person"><SelectValue>{personId ? person : "Choose a person"}</SelectValue></SelectTrigger>
@@ -142,7 +145,9 @@ export default function AskClient({ personalities, loadError }: { personalities:
           {!turns.length && !pendingQuestion && <div className="chat-welcome"><span className="chat-avatar" aria-hidden="true"><Sparkles size={19}/></span><div><p className="chat-name">DCF</p><p>Hi! What would you like to know about {person}? Start anywhere.</p></div></div>}
           {turns.map((turn, turnIndex) => <div className="chat-exchange" key={`${personId}:${turnIndex}`}>
             <div className="chat-message chat-message-user"><span className="chat-name">You</span><p>{turn.question}</p></div>
-            <article className="chat-message chat-message-assistant"><span className="chat-avatar" aria-hidden="true"><Sparkles size={17}/></span><div className="chat-message-content"><span className="chat-name">DCF</span><Answer answer={turn.answer} show={id => setSourceId(`${turnIndex}:${id}`)} citations={turn.citations || []}/></div></article>
+            <article className="chat-message chat-message-assistant"><span className="chat-avatar" aria-hidden="true"><Sparkles size={17}/></span><div className="chat-message-content"><span className="chat-name">DCF</span>{isUnusableStoredAnswer(turn.answer, turn.status)
+              ? <div className="chat-repair"><p>{isIncompleteQuestion(turn.question) ? "That question stopped partway through. Finish it below and I can give you a useful answer." : "That earlier reply pulled in page text instead of answering. Ask it again for a fresh response."}</p><button type="button" onClick={() => { setQuestion(isIncompleteQuestion(turn.question) ? `${turn.question.trim()} ` : turn.question); input.current?.focus(); }}>{isIncompleteQuestion(turn.question) ? "Finish question" : "Ask again"}<ArrowRight size={14} aria-hidden="true" /></button></div>
+              : <Answer answer={turn.answer} show={id => setSourceId(`${turnIndex}:${id}`)} citations={turn.citations || []}/>}</div></article>
           </div>)}
           {pendingQuestion && <div className="chat-exchange chat-exchange-pending"><div className="chat-message chat-message-user"><span className="chat-name">You</span><p>{pendingQuestion}</p></div><div className="chat-message chat-message-assistant chat-thinking" role="status" aria-live="polite"><span className="chat-avatar" aria-hidden="true"><Sparkles size={17}/></span><div className="chat-message-content"><span className="chat-name">DCF is thinking</span><div className="chat-thinking-line"><span className="chat-thinking-dots" aria-hidden="true"><i/><i/><i/></span><span>{elapsed < 4 ? "Reading your question" : elapsed < 14 ? "Looking through the evidence" : "Putting the answer together"}</span></div><div className="chat-thinking-track" aria-hidden="true"><span className={elapsed < 4 ? "is-current" : "is-done"}/><span className={elapsed >= 4 && elapsed < 14 ? "is-current" : elapsed >= 14 ? "is-done" : ""}/><span className={elapsed >= 14 ? "is-current" : ""}/></div><small>{elapsed >= 25 ? "This is taking a little longer than usual." : "Sources will appear right beside the facts they support."}</small></div></div></div>}
         </div>

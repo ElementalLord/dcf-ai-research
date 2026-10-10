@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { resolveQuestionContext } from "@/lib/ask/query-context";
 import { gapSearchQueries } from "@/lib/live-research/gap-query";
 import { abstentionMessage } from "@/lib/ask/messages";
-import { answerBlocks, groupCitations, inlineAnswerParts, sourceTypeLabel, type AskCitation } from "@/lib/ask/presentation";
+import { answerBlocks, groupCitations, inlineAnswerParts, isIncompleteQuestion, isUnusableStoredAnswer, sourceTypeLabel, type AskCitation } from "@/lib/ask/presentation";
 import { isBroadSynthesisQuestion, isSubjectiveSuperlativeQuestion, routeParameterCodes } from "@/lib/corpus/routing";
 import { aiSynthesisEnabled, synthesizeFromLocalEvidence } from "@/lib/corpus/local-synthesis";
 import type { RetrievedClaim, RetrievedPassage } from "@/lib/corpus/types";
@@ -92,6 +92,16 @@ describe("grounded Ask query context", () => {
 });
 
 describe("grounded Ask presentation", () => {
+  it("catches a question that stops before its subject is clear", () => {
+    expect(isIncompleteQuestion("why is he")).toBe(true);
+    expect(isIncompleteQuestion("Why is he important?")).toBe(false);
+  });
+
+  it("replaces an old stored page scrape without hiding a valid fallback", () => {
+    expect(isUnusableStoredAnswer("Dr. Kalam describes skip to main content Dr. Kalam Education", "extractive_fallback")).toBe(true);
+    expect(isUnusableStoredAnswer("A concise answer from the retrieved passage.", "extractive_fallback")).toBe(false);
+  });
+
   it("keeps a live citation separate from a library citation at the same URL", () => {
     const live: AskCitation = { ...citation, id: "S2", kind: "live_web_source" };
     const groups = groupCitations([citation, live]);
