@@ -25,7 +25,7 @@ export function sectionsFromHtml(html: string, finalUrl?: string): DocumentSecti
         metadata: { verseReference: reference } };
     }).filter((section) => section.text.length > 0);
   }
-  $("script,style,noscript,nav,footer,header,aside,form,svg,canvas,iframe").remove();
+  $("script,style,noscript,nav,footer,header,aside,form,svg,canvas,iframe,pre,code").remove();
   const root = $("main,article,[role='main']").first().length
     ? $("main,article,[role='main']").first()
     : $("body");
@@ -37,14 +37,14 @@ export function sectionsFromHtml(html: string, finalUrl?: string): DocumentSecti
     if (text) sections.push({ title, pageOrSection: title, text });
     parts = [];
   };
-  root.find("h1,h2,h3,h4,h5,h6,p,blockquote,pre,li,dt,dd").each((_, element) => {
+  root.find("h1,h2,h3,h4,h5,h6,p,blockquote,li,dt,dd").each((_, element) => {
     const tag = element.tagName.toLowerCase();
     const text = normalizeWhitespace($(element).text());
     if (!text) return;
     if (/^h[1-6]$/.test(tag)) {
       flush();
       title = text;
-    } else if (text.length >= 20 || tag === "pre" || tag === "blockquote") {
+    } else if (text.length >= 20 || tag === "blockquote") {
       parts.push(text);
     }
   });

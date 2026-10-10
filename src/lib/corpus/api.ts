@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { CorpusError, safeError } from "./errors";
-import { ADMIN_COOKIE, validAdminSession } from "@/lib/admin-session";
+import { ADMIN_COOKIE, validAdminSession, validAdminToken } from "@/lib/admin-session";
 
 export const MAX_JSON_BYTES = 64 * 1024;
 
@@ -11,8 +11,8 @@ export function assertRequestSize(request: NextRequest, maxBytes = MAX_JSON_BYTE
 
 export function assertCorpusAdmin(request: NextRequest): NextResponse | null {
   if (validAdminSession(request.cookies.get(ADMIN_COOKIE)?.value)) return null;
-  const configuredToken = process.env.CORPUS_ADMIN_TOKEN;
-  if (configuredToken && request.headers.get("authorization") === `Bearer ${configuredToken}`) return null;
+  const authorization = request.headers.get("authorization") || "";
+  if (authorization.startsWith("Bearer ") && validAdminToken(authorization.slice(7))) return null;
   return NextResponse.json({ error: { code: "UNAUTHORIZED", message: "Administrator authorization is required." } }, { status: 401 });
 }
 

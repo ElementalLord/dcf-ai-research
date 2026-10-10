@@ -12,6 +12,8 @@ const askSchema = z.object({
   history: z.array(z.object({
     question: z.string().trim().min(2).max(1_000),
     resolvedQuestion: z.string().trim().min(2).max(2_000).optional(),
+    answer: z.string().trim().max(800).optional(),
+    citedConcepts: z.array(z.string().trim().min(2).max(120)).max(4).optional(),
   })).max(4).optional(),
 }).refine((value) => Boolean(value.personalityId || value.personalityIds?.length), "At least one personality is required.");
 

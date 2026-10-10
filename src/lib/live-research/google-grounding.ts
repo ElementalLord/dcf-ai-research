@@ -3,7 +3,7 @@ import { GoogleGenAI } from "@google/genai";
 import { boundedProviderCall, classifyProviderError, googleGroundingCircuit } from "@/lib/corpus/provider-health";
 import { GENERATION_MODEL } from "@/lib/corpus/gemini";
 import type { RetrievedPassage } from "@/lib/corpus/types";
-import { inspectSearchSource, isGoogleGroundingRedirect, readGroundedExcerpt } from "./search-credibility";
+import { inspectSearchSource, isGoogleGroundingRedirect, readGroundedExcerpt, sourcePriority } from "./search-credibility";
 import { recordDiscoveredSource, searchPolicyDecision, type SearchPolicy } from "./search-policy";
 import { loadActiveSourceRules } from "./source-registry";
 import { answerIntent } from "@/lib/ask/evidence-priority";
@@ -115,7 +115,7 @@ export async function searchWithGoogleGrounding(question: string, personalityId:
         httpOptions: { retryOptions: { attempts: 1 } } },
     }), depth === "research" ? 18000 : 13000);
     const metadata = response.candidates?.[0]?.groundingMetadata;
-    const candidates = groundedPassages(response, personalityId, personalityName, true).slice(0, 12);
+    const candidates = groundedPassages(response, personalityId, personalityName, true);
     const inspected = new Map<string, ReturnType<typeof inspectSearchSource>>();
     const admitted = await Promise.all(candidates.map(async (item) => {
       const url = item.sourceUrl;
@@ -125,12 +125,14 @@ export async function searchWithGoogleGrounding(question: string, personalityId:
       if (!source) return null;
       const original = await readGroundedExcerpt(source, item.text, [personalityName, ...personalityAliases], policy);
       if (!original) return null;
-      item = { ...item, text: original.text, sourceUrl: original.url, sourceInstitution: source.domain, sourceTitle: original.title,
+      item = { ...item, text: original.text, sourceUrl: original.url, sourceInstitution: source.domain, sourceTitle: original.title, sourceType: source.category, lexicalScore: 1,
         textualLayer: "Original page retrieved after Google Search; interpret textual status from source" };
       if (!policy.rules.some((rule) => rule.domain === source.domain)) await recordDiscoveredSource(source.url, item.sourceTitle || source.title, source.category);
       return item;
     }));
-    const evidence = admitted.filter((item): item is RetrievedPassage => Boolean(item)).slice(0, 8);
+    const evidence = admitted.filter((item): item is RetrievedPassage => Boolean(item))
+      .sort((a, b) => sourcePriority(b.sourceUrl || "", `${b.sourceTitle || ""} ${b.text}`, question, b.sourceType || "") - sourcePriority(a.sourceUrl || "", `${a.sourceTitle || ""} ${a.text}`, question, a.sourceType || ""))
+      .slice(0, 8);
     const queries = metadata?.webSearchQueries?.length || 0;
     const result = { evidence, requests: 1, queries, latencyMs: Math.round(performance.now() - started), errorCategory: evidence.length ? null : "NO_CREDIBLE_GROUNDED_EVIDENCE" };
     googleGroundingCircuit.succeed();

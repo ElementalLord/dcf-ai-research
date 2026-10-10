@@ -11,6 +11,7 @@ import { fetchApprovedResource } from "./live-fetch";
 import { extractRemoteBytes } from "@/lib/corpus/source-extract";
 import type { RetrievedPassage } from "@/lib/corpus/types";
 import { normalizeForMatch } from "@/lib/corpus/text";
+import { readableEvidence } from "@/lib/corpus/readable-evidence";
 import { inspectSearchSource } from "./search-credibility";
 import { recordDiscoveredSource, searchPolicyDecision, type SearchPolicy } from "./search-policy";
 import type { SourceAccessRule } from "./source-policy";
@@ -71,7 +72,8 @@ async function fetchQuestionPassages(
         offset = at + alias.length;
         const sentenceStart = section.text.lastIndexOf(".", at);
         const start = sentenceStart >= at - 350 ? sentenceStart + 1 : Math.max(0, at - 150);
-        const window = section.text.slice(start, Math.min(section.text.length, at + 650)).trim();
+        const window = readableEvidence(section.text.slice(start, Math.min(section.text.length, at + 650)));
+        if (!window) continue;
         const englishWords = (window.match(/\b(?:the|and|of|in|was|is|to|as|with|his|her)\b/gi) || []).length;
         if (englishWords < 2 || !window.split(/[.!?]/).some((sentence) => sentence.trim().split(/\s+/).length >= 7)) continue;
         const normalizedWindow = normalizeForMatch(window);

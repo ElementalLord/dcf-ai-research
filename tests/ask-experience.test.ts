@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { resolveQuestionContext } from "@/lib/ask/query-context";
+import { gapSearchQueries } from "@/lib/live-research/gap-query";
 import { abstentionMessage } from "@/lib/ask/messages";
 import { answerBlocks, groupCitations, inlineAnswerParts, sourceTypeLabel, type AskCitation } from "@/lib/ask/presentation";
 import { isBroadSynthesisQuestion, isSubjectiveSuperlativeQuestion, routeParameterCodes } from "@/lib/corpus/routing";
@@ -34,6 +35,25 @@ describe("grounded Ask query context", () => {
       { question: "What was his relationship with Vasistha?", resolvedQuestion: "What was Vishvamitra's relationship with Vasistha?" },
     ]);
     expect(resolved.resolvedQuestion).toBe("Why did Vishvamitra and Vasistha disagree?");
+  });
+
+  it("carries a cited discovery into a Raman follow-up", () => {
+    const history = [{ question: "Who was C. V. Raman?", answer: "In 1928, Raman demonstrated the Raman Effect, changing how scientists studied molecules.", citedConcepts: ["Raman Effect"] }];
+    expect(resolveQuestionContext("Why was that discovery important?", ["C. V. Raman"], history).resolvedQuestion).toContain("Raman Effect");
+    expect(resolveQuestionContext("Was anyone doing something similar at the time?", ["C. V. Raman"], history).resolvedQuestion).toContain("C. V. Raman");
+  });
+
+  it("keeps the Vishvamitra and Vasistha conflict in a follow-up", () => {
+    const history = [{ question: "What happened with Vasistha?", answer: "The traditional accounts describe a conflict between Vishvamitra and Vasistha.", citedConcepts: ["Vishvamitra and Vasistha conflict"] }];
+    expect(resolveQuestionContext("Why was that conflict important?", ["Vishvamitra"], history).resolvedQuestion).toContain("Vishvamitra and Vasistha conflict");
+  });
+
+  it("uses a cited topic as a search lead when a plural follow-up omits both names", () => {
+    const history = [{ question: "What happened between Vishvamitra and Vasistha?", answer: "The Ramayana describes Vishvamitra visiting Vasistha.", citedConcepts: ["Valmiki Ramayana - Vishvamitra, Vasistha and Shabala - Bala Kanda"] }];
+    const resolved = resolveQuestionContext("Why did they become enemies?", ["Vasistha"], history);
+    expect(resolved.resolvedQuestion).toContain("Vasistha and Vishvamitra");
+    expect(resolved.resolvedQuestion).toContain("Shabala");
+    expect(gapSearchQueries("Vasistha", resolved.resolvedQuestion, ["enemies"])[0]).toContain("Shabala");
   });
 
   it.each([

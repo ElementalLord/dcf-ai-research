@@ -1,6 +1,6 @@
 import type { QuestionScope } from "@/lib/ask/question-scope";
 
-export const SYNTHESIS_PROMPT_VERSION = "person_centered_synthesis_v11";
+export const SYNTHESIS_PROMPT_VERSION = "historical_conversation_v13";
 
 export function buildSynthesisPrompt(input: {
   personality: string;
@@ -10,14 +10,15 @@ export function buildSynthesisPrompt(input: {
   evidenceContext: string;
   evidenceRecords?: number;
   responseStyle?: "simple" | "balanced" | "detailed" | "research";
+  conversation?: string;
 }): string {
   const sourceAnalysis = input.scope === "CONTESTED_OR_HISTORICAL" || input.scope === "COMPARISON" || input.scope === "TEXT_SPECIFIC";
   const focus = input.scope === "BROAD_PROFILE"
-    ? "This is an ordinary question about a person. Open with who the person is. Then explain the most important supported work, roles, actions, relationships, and significance. Prefer consequential details over catalog metadata, minor episodes, or source criticism. Do not organize the answer as a tour of sources."
+    ? "This is an ordinary question about a person. Open with who the person is. Then explain the most important supported work, roles, actions, relationships, and significance. For the defining event, give its supported date or period and one sentence on why it mattered at the time. If most evidence is narrative, explain the figure's function and give at most one representative episode. Avoid recounting a sequence of minor incidents. Do not organize the answer as a tour of sources."
     : input.scope === "BROAD_SIGNIFICANCE"
-      ? "Explain why this person matters through their most consequential supported roles, deeds, influence, and relationships. Use concrete examples, not a list of textual layers or minor metadata."
+      ? "Explain why this person matters through their most consequential supported roles, deeds, influence, and relationships. Place the defining action in its supported time period and explain what changed because of it. Use concrete examples, not a list of textual layers or minor metadata."
       : input.scope === "RELATIONSHIP"
-        ? "Explain the relationship directly: who the people are to each other, what happened between them, and how it developed. Include source qualification where needed without turning the answer into source analysis."
+        ? "Explain the relationship directly: who the people are to each other, what happened between them, and how it developed. If the question asks why a conflict began, focus on its cause and one consequence. Omit other episodes unless they are necessary to explain that cause. Include source qualification where needed without turning the answer into source analysis."
         : sourceAnalysis
           ? "The question asks about evidence or textual development. Organize by sources, periods, interpretations, or uncertainty when that directly helps answer it."
           : "Answer the specific question through the person's relevant actions and relationships. Give only the background needed to understand the answer.";
@@ -38,6 +39,10 @@ ${input.evidenceRecords && input.evidenceRecords <= 2 ? "This packet has very li
 
 Use short, natural sentences. Avoid em dashes in your own prose; use periods, commas, colons, or parentheses instead. Preserve original punctuation in quotations, source titles, names, and cited material.
 
+For major events, include a year or approximate period when the current evidence supports it. Explain the situation at the time and why the event was unusual, influential, or consequential then. Do not invent precise ancient dates. When it genuinely clarifies an unfamiliar role or institution, use one restrained functional comparison; avoid celebrity analogies and claims of equivalence.
+
+Recent conversation is only for interpreting references and choosing focus. It is not evidence. The current evidence packet controls every factual claim and citation. If the user changes topic, follow the new question.
+
 Live web research is discovered for this question and is not mentor-approved. Live passages are short excerpts fetched from original pages. Paraphrase them and cite their live sources. Prefer DCF Library evidence where both support the same point.
 
 Use epistemic metadata to control certainty, wording, and citations, without dictating the structure of every answer. Distinguish documented historical facts and scientific results from attributed beliefs, scholarly interpretations, later reception, and contested accounts. When a source is a traditional narrative, frame its events as narrative rather than verified history. Verify named people, places, actions, and sequences against the cited evidence; omit an attractive detail if the packet does not directly support it. If support is incomplete, narrow or qualify the claim. Treat a requested "biggest" contribution as an interpretation unless evidence establishes a ranking. Use no outside model knowledge as factual support.
@@ -50,6 +55,7 @@ Personality or comparison set: ${input.personality}
 Question: ${input.question}
 Resolved question: ${input.resolvedQuestion}
 Scope: ${input.scope}
+${input.conversation ? `Recent conversation (unverified context):\n${input.conversation}\n` : ""}
 
 Evidence:
 ${input.evidenceContext}`;

@@ -17,9 +17,12 @@ const createSchema = z.object({
   personalityId: z.string().uuid().optional(),
   title: z.string().trim().min(2).max(500),
   author: z.string().trim().max(300).nullable().optional(),
+  publisherOrInstitution: z.string().trim().max(300).nullable().optional(),
   sourceType: z.string().trim().min(2).max(80).default("other"),
   url: z.string().url().max(2_000).nullable().optional(),
   citation: z.string().trim().max(2_000).nullable().optional(),
+  textualLayer: z.string().trim().max(100).nullable().optional(),
+  rightsOrAccessNote: z.string().trim().max(2_000).nullable().optional(),
 });
 
 export async function GET(request: NextRequest) {
@@ -114,9 +117,12 @@ export async function POST(request: NextRequest) {
       .insert({
         title: parsed.data.title,
         author: parsed.data.author || null,
+        publisher_or_institution: parsed.data.publisherOrInstitution || null,
         source_type: parsed.data.sourceType,
         url: normalizedUrl,
         citation: parsed.data.citation || null,
+        textual_layer: parsed.data.textualLayer || null,
+        rights_or_access_note: parsed.data.rightsOrAccessNote || null,
         source_status: "candidate",
         approval_origin: "human_manual",
         ingestion_status: "not_ingested",

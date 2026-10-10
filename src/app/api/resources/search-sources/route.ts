@@ -5,7 +5,7 @@ import { CorpusError } from "@/lib/corpus/errors";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { loadSearchPolicy, normalizeSearchDomain } from "@/lib/live-research/search-policy";
 
-const ruleSchema = z.object({ domain: z.string().max(253), display_name: z.string().trim().min(1).max(200), status: z.enum(["allowed", "blocked", "disabled"]), category: z.string().trim().min(1).max(80), notes: z.string().trim().max(2000) });
+const ruleSchema = z.object({ domain: z.string().max(2000), display_name: z.string().trim().min(1).max(200), status: z.enum(["allowed", "blocked", "disabled"]), category: z.string().trim().min(1).max(80), notes: z.string().trim().max(2000) });
 const modeSchema = z.object({ mode: z.enum(["credible_web", "approved_domains_only", "custom"]) });
 
 export async function GET(request: NextRequest) {
@@ -45,7 +45,7 @@ export async function PATCH(request: NextRequest) {
       if (error) throw error;
       return NextResponse.json({ mode: parsed.data.mode });
     }
-    const ignored = z.object({ ignoreDomain: z.string().max(253) }).safeParse(body);
+    const ignored = z.object({ ignoreDomain: z.string().max(2000) }).safeParse(body);
     if (ignored.success) {
       const domain = normalizeSearchDomain(ignored.data.ignoreDomain);
       const { error } = await supabaseAdmin.from("discovered_search_sources").update({ state: "ignored" }).eq("domain", domain);
@@ -60,7 +60,7 @@ export async function DELETE(request: NextRequest) {
   const denied = assertCorpusAdmin(request); if (denied) return denied;
   try {
     assertRequestSize(request);
-    const parsed = z.object({ domain: z.string().max(253) }).safeParse(await request.json());
+    const parsed = z.object({ domain: z.string().max(2000) }).safeParse(await request.json());
     if (!parsed.success) throw new CorpusError("INVALID_INPUT", "Invalid domain.", 400);
     const domain = normalizeSearchDomain(parsed.data.domain);
     const { error } = await supabaseAdmin.from("search_source_rules").delete().eq("domain", domain);

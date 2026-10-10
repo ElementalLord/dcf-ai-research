@@ -8,10 +8,16 @@ export type SearchRule = { id: string; domain: string; display_name: string; sta
 export type SearchPolicy = { mode: SearchMode; rules: SearchRule[] };
 
 export function normalizeSearchDomain(value: string): string {
-  const candidate = value.trim().toLowerCase().replace(/^https?:\/\//, "").replace(/\/.*$/, "").replace(/\.$/, "");
+  let candidate: string;
+  try {
+    const input = value.trim();
+    const url = new URL(/^https?:\/\//i.test(input) ? input : `https://${input}`);
+    if (!/^https?:$/.test(url.protocol) || url.username || url.password || url.port) throw new Error("Invalid website URL");
+    candidate = url.hostname.toLowerCase().replace(/\.$/, "");
+  } catch { throw new CorpusError("INVALID_INPUT", "Enter a valid public domain or website URL.", 400); }
   if (candidate.length > 253 || !/^[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?$/.test(candidate)
     || !candidate.includes(".") || candidate.split(".").some((label) => !label || label.length > 63 || label.startsWith("-") || label.endsWith("-")))
-    throw new CorpusError("INVALID_INPUT", "Enter a valid public domain.", 400);
+    throw new CorpusError("INVALID_INPUT", "Enter a valid public domain or website URL.", 400);
   return candidate;
 }
 

@@ -5,7 +5,7 @@ import { assertCorpusAdmin, assertRequestSize, corpusErrorResponse } from "@/lib
 import { CorpusError } from "@/lib/corpus/errors";
 
 const id = z.string().uuid();
-const sourceFields = z.object({ title: z.string().trim().min(2).max(500), author: z.string().trim().max(300).nullable(), publisher_or_institution: z.string().trim().max(300).nullable(), source_type: z.string().trim().min(2).max(80), url: z.union([z.string().url().max(2000), z.literal("")]).nullable(), citation: z.string().trim().max(2000).nullable(), textual_layer: z.string().trim().max(100).nullable() });
+const sourceFields = z.object({ title: z.string().trim().min(2).max(500), author: z.string().trim().max(300).nullable(), publisher_or_institution: z.string().trim().max(300).nullable(), source_type: z.string().trim().min(2).max(80), url: z.union([z.string().url().max(2000), z.literal("")]).nullable(), citation: z.string().trim().max(2000).nullable(), textual_layer: z.string().trim().max(100).nullable(), rights_or_access_note: z.string().trim().max(2000).nullable() });
 const claimFields = z.object({ claim_text: z.string().trim().min(2).max(4000), certainty: z.enum(["unknown", "high", "medium", "low"]), researcher_notes: z.string().trim().max(4000).nullable() });
 const mutation = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("source"), id, fields: sourceFields }),
@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
     const personalityId = id.parse(request.nextUrl.searchParams.get("personalityId"));
     const [links, claimResult] = await Promise.all([
       supabaseAdmin.from("source_personalities").select("source_id").eq("personality_id", personalityId).limit(1000),
-      supabaseAdmin.from("claims").select("id,claim_text,claim_kind,certainty,review_status,approval_origin,approval_note,approved_by_label,evidence_type,researcher_notes,parameter_fields(label),claim_sources(id,relationship,evidence_excerpt,page_or_section,notes,source_id,sources(id,title,author,url,source_status,citation)),claim_chunks(relationship,link_method,source_chunks(id,chunk_text,page_or_section,textual_layer,sources(id,title,url))),claim_reviews(reviewer_name,decision,notes,reviewed_at)").eq("personality_id", personalityId).order("created_at", { ascending: false }).limit(500),
+      supabaseAdmin.from("claims").select("id,claim_text,claim_kind,certainty,review_status,approval_origin,approval_metadata,approval_note,approved_by_label,evidence_type,researcher_notes,parameter_fields(label),claim_sources(id,relationship,evidence_excerpt,page_or_section,notes,source_id,sources(id,title,author,url,source_status,citation)),claim_chunks(relationship,link_method,source_chunks(id,chunk_text,page_or_section,textual_layer,sources(id,title,url))),claim_reviews(reviewer_name,decision,notes,reviewed_at)").eq("personality_id", personalityId).order("created_at", { ascending: false }).limit(500),
     ]);
     if (links.error || claimResult.error) throw links.error || claimResult.error;
     const claims = claimResult.data || [];
@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
     const sourceIds = new Set((links.data || []).map((row) => row.source_id));
     for (const claim of claims) for (const evidence of claim.claim_sources || []) if (evidence.source_id) sourceIds.add(evidence.source_id);
     const ids = [...sourceIds];
-    const sources = ids.length ? await supabaseAdmin.from("sources").select("id,title,author,publisher_or_institution,source_type,url,citation,textual_layer,source_status,approval_origin,approval_note,approved_by_label,ingestion_status,rights_or_access_note,publication_year,updated_at").in("id", ids).order("title").limit(1000) : { data: [], error: null };
+    const sources = ids.length ? await supabaseAdmin.from("sources").select("id,title,author,publisher_or_institution,source_type,url,citation,textual_layer,source_status,approval_origin,approval_note,approved_by_label,ingestion_status,rights_or_access_note,publication_year,updated_at,metadata").in("id", ids).order("title").limit(1000) : { data: [], error: null };
     if (sources.error) throw sources.error;
     return NextResponse.json({ claims: claims.map(claim => ({ ...claim, epistemics: epistemicByClaim.get(claim.id) || null })), sources: sources.data || [] });
   } catch (error) { return corpusErrorResponse(error); }

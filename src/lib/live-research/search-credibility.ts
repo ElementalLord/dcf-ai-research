@@ -5,9 +5,23 @@ import { canonicalResearchUrl } from "./source-policy";
 import { searchPolicyDecision, type SearchPolicy } from "./search-policy";
 import { assertSafePublicUrl } from "@/lib/corpus/security";
 import { normalizeForMatch } from "@/lib/corpus/text";
+import { readableEvidence } from "@/lib/corpus/readable-evidence";
 
-const lowQualityHost = /(?:^|\.)(?:quora\.com|reddit\.com|pinterest\.[a-z.]+|blogspot\.[a-z.]+|medium\.com|wikipedia\.org|facebook\.com)$/i;
-const institutionalHost = /(?:^|\.)(?:edu|gov|ac\.[a-z]{2}|edu\.[a-z]{2}|gov\.[a-z]{2}|jstor\.org|cambridge\.org|oup\.com|oxfordacademic\.com|springer\.com|nature\.com|britannica\.com|archive\.org|gutenberg\.org|vedicheritage\.gov\.in)$/i;
+const lowQualityHost = /(?:^|\.)(?:quora\.com|reddit\.com|pinterest\.[a-z.]+|blogspot\.[a-z.]+|medium\.com|wikipedia\.org|facebook\.com|instagram\.com|tiktok\.com|brainyquote\.com|goodreads\.com)$/i;
+const institutionalHost = /(?:^|\.)(?:edu|gov|ac\.[a-z]{2}|edu\.[a-z]{2}|gov\.[a-z]{2}|jstor\.org|cambridge\.org|oup\.com|oxfordacademic\.com|springer\.com|nature\.com|muse\.jhu\.edu|wiley\.com|tandfonline\.com|sagepub\.com|nobelprize\.org|ignca\.gov\.in|vedicheritage\.gov\.in|gretil\.sub\.uni-goettingen\.de|archive\.org|britannica\.com)$/i;
+
+export function sourcePriority(rawUrl: string, title: string, question: string, category = ""): number {
+  let host: string;
+  try { host = new URL(rawUrl).hostname; } catch { return -100; }
+  if (lowQualityHost.test(host)) return -100;
+  const terms = normalizeForMatch(question).split(" ").filter((term) => term.length >= 4 && !supportStop.has(term));
+  const normalizedTitle = normalizeForMatch(title);
+  const relevance = terms.length ? terms.filter((term) => normalizedTitle.includes(term)).length / terms.length : 0;
+  const tier = category === "trusted" || /(?:^|\.)(?:edu|gov|ac\.[a-z]{2}|edu\.[a-z]{2}|gov\.[a-z]{2})$/i.test(host) ? 3
+    : institutionalHost.test(host) || /scholarly|academic|primary|institutional/i.test(category) ? 2
+      : /britannica\.com$/i.test(host) ? 1 : 0;
+  return relevance * 8 + tier * 2;
+}
 
 export type CredibleSource = { url: string; domain: string; category: string; title: string };
 
@@ -21,6 +35,7 @@ export async function readGroundedExcerpt(source: CredibleSource, statement: str
   const $ = cheerio.load(preview.html);
   $("script,style,nav,footer,header").remove();
   const body = $("body").text().replace(/\s+/g, " ").trim();
+  if (/\b(?:written by ai|ai.generated|content farm)\b/i.test(body.slice(0, 3000))) return null;
   const title = normalizeForMatch($("title").text());
   const names = [...new Set(aliases.map(normalizeForMatch).filter((name) => name.length >= 4))];
   const terms = [...new Set(normalizeForMatch(statement).split(" ").filter((term) => term.length >= 5 && !supportStop.has(term) && !names.some((name) => name.includes(term))))];
@@ -41,7 +56,9 @@ export async function readGroundedExcerpt(source: CredibleSource, statement: str
   const academic = /cambridge|oxford|springer|jstor|nature/i.test(source.domain);
   if (academic && !names.some((name) => title.includes(name)) && best.overlap < 4) return null;
   if (best.overlap < Math.min(1, terms.length)) return null;
-  return { text: best.context.slice(0, 600), title: $("title").text().replace(/\s+/g, " ").trim().slice(0, 200) || source.title, url: preview.finalUrl };
+  const excerpt = readableEvidence(best.context.slice(0, 600));
+  if (!excerpt) return null;
+  return { text: excerpt, title: $("title").text().replace(/\s+/g, " ").trim().slice(0, 200) || source.title, url: preview.finalUrl };
 }
 
 export async function verifyGroundedStatement(source: CredibleSource, statement: string, aliases: string[], policy: SearchPolicy): Promise<boolean> {

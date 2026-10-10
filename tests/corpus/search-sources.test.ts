@@ -23,8 +23,10 @@ describe("Search Sources server policy", () => {
   });
   it("normalizes valid domains and rejects malformed input", () => {
     expect(normalizeSearchDomain("HTTPS://Cambridge.Org/path")).toBe("cambridge.org");
+    expect(normalizeSearchDomain("example.org/article?section=2")).toBe("example.org");
     expect(() => normalizeSearchDomain("localhost")).toThrow();
     expect(() => normalizeSearchDomain("bad..domain.org")).toThrow();
+    expect(() => normalizeSearchDomain("https://user:password@example.org/page")).toThrow();
   });
   it("checks every redirect before fetching a blocked destination", async () => {
     const fetcher = vi.fn().mockResolvedValueOnce(new Response(null, { status: 302, headers: { location: "https://blocked.example.org/private" } }));

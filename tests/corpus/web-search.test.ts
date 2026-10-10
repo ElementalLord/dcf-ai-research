@@ -17,6 +17,7 @@ vi.mock("@/lib/supabase-admin", () => ({ supabaseAdmin: {
 } }));
 
 import { cachedWebSearch, discoverWebCandidates } from "@/lib/live-research/web-search";
+import { sourcePriority } from "@/lib/live-research/search-credibility";
 
 const rule: SourceAccessRule = { id: "approved", display_name: "Approved", domain: "example.org", scope_type: "DOMAIN", allowed_path_prefix: null, exact_url: null, include_subdomains: false, allow_live_search: true, allow_live_fetch: true, allow_ingestion: true, evidence_use_status: "approved", priority: 1, default_textual_layer: "Primary", default_source_type: "institutional", cache_ttl_hours: 24, is_active: true };
 const result = (url: string, snippet = "Untrusted answer") => ({ title: "Page", url, snippet, sourceProvider: "mock" });
@@ -94,10 +95,15 @@ describe("Brave discovery", () => {
   it("applies the same domain policy to Brave candidates before original fetch", async () => {
     const provider = new MockWebSearchProvider([result("https://example.org/a"), result("https://new-source.edu/work"), result("https://blocked.example.org/work")]);
     const credible = await discoverWebCandidates("Vishvamitra", [rule], { provider, searchPolicy: { mode: "credible_web", rules: [{ id: "b", domain: "blocked.example.org", display_name: "Blocked", status: "blocked", category: "other", notes: "" }] } });
-    expect(credible.accepted).toEqual(["https://example.org/a", "https://new-source.edu/work"]);
+    expect(credible.accepted).toEqual(["https://new-source.edu/work", "https://example.org/a"]);
     expect(credible.rejected.some((item) => item.reason === "BLOCKED")).toBe(true);
     const allowlist = await discoverWebCandidates("Vishvamitra", [rule], { provider, searchPolicy: { mode: "approved_domains_only", rules: [{ id: "a", domain: "example.org", display_name: "Allowed", status: "allowed", category: "other", notes: "" }, { id: "b", domain: "blocked.example.org", display_name: "Blocked", status: "blocked", category: "other", notes: "" }] } });
     expect(allowlist.accepted).toEqual(["https://example.org/a"]);
+  });
+
+  it("ranks direct support above an unrelated prestigious page", () => {
+    expect(sourcePriority("https://museum.example.org/raman-effect", "Raman Effect discovery and molecular structure", "Raman Effect discovery"))
+      .toBeGreaterThan(sourcePriority("https://university.edu/staff", "Faculty directory", "Raman Effect discovery"));
   });
 
   it("fetches original approved content after discovery and preserves the original URL", async () => {

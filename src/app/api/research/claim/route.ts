@@ -1,6 +1,7 @@
 import { assertCorpusAdmin } from "@/lib/corpus/api";
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase-admin";
+import { normalizeSourceUrl } from "@/lib/corpus/source-dedupe";
 
 export async function POST(request: NextRequest) {
   const denied = assertCorpusAdmin(request); if (denied) return denied;
@@ -51,25 +52,32 @@ export async function POST(request: NextRequest) {
     let sourceId = existingSourceId || null;
 
     if (!sourceId && sourceTitle?.trim()) {
-      const { data: newSource, error: sourceError } = await supabaseAdmin
-        .from("sources")
-        .insert({
-          title: sourceTitle.trim(),
-          author: sourceAuthor?.trim() || null,
-          publisher_or_institution: sourcePublisher?.trim() || null,
-          publication_year: sourceYear ? Number(sourceYear) : null,
-          source_type: sourceType || "other",
-          url: sourceUrl?.trim() || null,
-          citation: sourceCitation?.trim() || null,
-          source_status: "candidate",
-          approval_origin: "human_manual",
-        })
-        .select("id")
-        .single();
+      const normalizedUrl = sourceUrl?.trim() ? normalizeSourceUrl(sourceUrl.trim()) : null;
+      if (normalizedUrl) {
+        const existing = await supabaseAdmin.from("sources").select("id").eq("url", normalizedUrl).neq("source_status", "rejected").limit(1);
+        if (existing.error) throw existing.error;
+        sourceId = existing.data?.[0]?.id || null;
+      }
+      if (!sourceId) {
+        const { data: newSource, error: sourceError } = await supabaseAdmin
+          .from("sources")
+          .insert({
+            title: sourceTitle.trim(),
+            author: sourceAuthor?.trim() || null,
+            publisher_or_institution: sourcePublisher?.trim() || null,
+            publication_year: sourceYear ? Number(sourceYear) : null,
+            source_type: sourceType || "other",
+            url: normalizedUrl,
+            citation: sourceCitation?.trim() || null,
+            source_status: "candidate",
+            approval_origin: "human_manual",
+          })
+          .select("id")
+          .single();
 
-      if (sourceError) throw sourceError;
-
-      sourceId = newSource.id;
+        if (sourceError) throw sourceError;
+        sourceId = newSource.id;
+      }
     }
 
     if (!sourceId) {

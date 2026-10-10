@@ -51,8 +51,10 @@ async function answerQuestionInternal(
     const google = localDecision.sufficient
       ? { evidence: [], requests: 0, queries: 0, latencyMs: 0, errorCategory: null }
       : await searchWithGoogleGrounding(queryContext.resolvedQuestion, id, configurations[index].canonicalName, options.responseStyle === "research" ? "research" : "normal", searchPolicy, googleGaps, local.personalityAliases);
-    const credibleSources = new Set(google.evidence.map((item) => item.sourceUrl)).size;
-    const googleUseful = credibleSources >= 1;
+    if (google.evidence.length) local.evidence.push(...google.evidence);
+    const groundedDecision = assessEvidenceSufficiency(queryContext.resolvedQuestion, local.evidence, { personalityAliases: local.personalityAliases, termAliases: local.termAliases, allParameters: local.allParameters });
+    const independentGroundedSources = new Set(google.evidence.map((item) => item.sourceUrl)).size;
+    const googleUseful = google.evidence.length > 0 && groundedDecision.sufficient && (localDecision.sufficient || independentGroundedSources >= 2);
     const base = googleUseful ? local : await retrieveWithApprovedResearch(queryContext.resolvedQuestion, id, { ...retrievalOptions, initialRetrieval: local, searchPolicy });
     base.debug.localEvidenceBeforeSearch = localEvidenceCount;
     base.debug.googleGroundedSourcesReturned = new Set(google.evidence.map((item) => item.sourceUrl)).size;
@@ -62,7 +64,6 @@ async function answerQuestionInternal(
     base.debug.googleSearchErrorCategory = google.errorCategory;
     base.debug.localEvidenceSufficient = localDecision.sufficient;
     if (googleUseful) {
-      base.evidence = [...base.evidence, ...google.evidence];
       base.debug.answerable = true;
       base.debug.liveResearchTriggered = true;
       base.debug.liveSourcesUsed = google.evidence.length;
@@ -174,7 +175,8 @@ async function answerQuestionInternal(
     throw new Error("Citation integrity validation failed before answer generation.");
   }
 
-  const identity = answerCacheIdentity(personalityIds, queryContext.resolvedQuestion, debug.evidencePolicyMode || "test", bounded.selected, bounded.citations, options.responseStyle);
+  const conversation = (options.history || []).slice(-2).map((turn) => `User: ${turn.question.slice(0, 200)}\nDCF: ${(turn.answer || "").replace(/\[[CS]\d+\]/g, "").slice(0, 500)}`).join("\n");
+  const identity = answerCacheIdentity(personalityIds, `${queryContext.resolvedQuestion}\n${conversation}`, debug.evidencePolicyMode || "test", bounded.selected, bounded.citations, options.responseStyle);
   debug.answerCacheKey = identity.key;
   debug.estimatedEvidenceTokens = Math.ceil(bounded.context.length / 4);
   const stopCache = stageTimer("ANSWER_CACHE");
@@ -210,7 +212,7 @@ async function answerQuestionInternal(
     debug.generationFallbackReason = "AI synthesis unavailable; showing verified evidence.";
     generated = await safeFallback();
   } else {
-    const prompt = buildSynthesisPrompt({ personality, question, resolvedQuestion: queryContext.resolvedQuestion, scope: queryContext.scope, evidenceContext: bounded.context, evidenceRecords: bounded.selected.length, responseStyle: options.responseStyle });
+    const prompt = buildSynthesisPrompt({ personality, question, resolvedQuestion: queryContext.resolvedQuestion, scope: queryContext.scope, evidenceContext: bounded.context, evidenceRecords: bounded.selected.length, responseStyle: options.responseStyle, conversation });
     const diagnostics = { evidenceRecords: bounded.selected.length, evidenceCharacters: bounded.context.length,
       promptCharacters: prompt.length, estimatedPromptTokens: Math.ceil(prompt.length / 4) };
     try {

@@ -3,6 +3,7 @@ import { supabaseAdmin } from "@/lib/supabase-admin";
 import { BraveSearchProvider, WebSearchError, groupSearchResultsByWork, normalizeSearchQuery, type WebSearchProvider, type WebSearchResult } from "./web-search-provider";
 import { canonicalResearchUrl, selectSourceAuthorization, type SourceAccessRule } from "./source-policy";
 import { searchPolicyDecision, type SearchPolicy } from "./search-policy";
+import { sourcePriority } from "./search-credibility";
 
 export type WebDiscovery = {
   discovered: string[];
@@ -59,6 +60,10 @@ export async function discoverWebCandidates(query: string, rules: SourceAccessRu
           rejected.push({ url: canonical, reason: "HTTPS_REQUIRED" });
           continue;
         }
+        if (sourcePriority(canonical, candidate.title, query) < 0) {
+          rejected.push({ url: canonical, reason: "LOW_QUALITY_SOURCE" });
+          continue;
+        }
         discovered.add(canonical);
         if (options.searchPolicy) {
           const decision = searchPolicyDecision(canonical, options.searchPolicy);
@@ -72,7 +77,12 @@ export async function discoverWebCandidates(query: string, rules: SourceAccessRu
     const workGroups = groupSearchResultsByWork(result.results).map((group) => group.flatMap((url) => {
       try { const canonical = canonicalResearchUrl(url); return discovered.has(canonical) ? [canonical] : []; } catch { return []; }
     })).filter((group) => group.length);
-    return { discovered: [...discovered], workGroups, accepted: [...accepted], rejected, candidates: result.results.length, calls: result.calls, cacheHits: result.cacheHits, latencyMs: Date.now() - started, errorCategory: null };
+    const ranked = [...accepted].sort((left, right) => {
+      const a = result.results.find((item) => { try { return canonicalResearchUrl(item.url) === left; } catch { return false; } });
+      const b = result.results.find((item) => { try { return canonicalResearchUrl(item.url) === right; } catch { return false; } });
+      return sourcePriority(right, `${b?.title || ""} ${b?.snippet || ""}`, query) - sourcePriority(left, `${a?.title || ""} ${a?.snippet || ""}`, query);
+    });
+    return { discovered: [...discovered], workGroups, accepted: ranked, rejected, candidates: result.results.length, calls: result.calls, cacheHits: result.cacheHits, latencyMs: Date.now() - started, errorCategory: null };
   } catch (error) {
     return { ...empty, calls: error instanceof WebSearchError && error.attempted ? 1 : 0, latencyMs: Date.now() - started, errorCategory: error instanceof WebSearchError ? error.category : "PROVIDER_ERROR" };
   }
