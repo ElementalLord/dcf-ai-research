@@ -42,6 +42,7 @@ const intentTerms: Record<AnswerIntent, RegExp> = {
 
 export function prioritizeEvidence(question: string, evidence: RetrievedEvidence[], limit: number): RetrievedEvidence[] {
   const intent = answerIntent(question);
+  const similarWork = /\b(?:similar|comparable|contemporar|anyone else|someone else)\b/i.test(question);
   const genericIntentWords = intent === "method" ? new Set(["make", "discovery", "discover"]) : intent === "learning" ? new Set(["students", "student", "learn", "lesson"]) : new Set<string>();
   const terms = [...new Set(question.toLowerCase().match(/[\p{L}\p{N}]{3,}/gu) || [])].filter((word) => !stop.has(word) && !genericIntentWords.has(word));
   const ranked = evidence.map((item, index) => {
@@ -51,12 +52,13 @@ export function prioritizeEvidence(question: string, evidence: RetrievedEvidence
     const central = intentTerms[intent].test(text) ? 4 : 0;
     const historicalContext = (intent === "identity" || intent === "importance") && /\b(?:1[5-9]\d{2}|20\d{2}|\d{1,2}(?:st|nd|rd|th)? century|reign of)\b/i.test(text) ? 2 : 0;
     const consequence = (intent === "identity" || intent === "importance") && /\b(?:enabled|changed|led to|provided|became the basis|influenced|transformed|spectroscop|molecular structure)\b/i.test(text) ? 2 : 0;
+    const comparisonFit = similarWork && /\b(?:similar|comparable|parallel|contemporar|independent(?:ly)?|another|other (?:scientists?|physicists?|researchers?|groups?|experiments?)|also (?:studied|worked|discovered|observed))\b/i.test(text) ? 14 : 0;
     const frameworkFit = intent === "method" && /method|experiment|innov/i.test(metadata) ? 6
       : intent === "learning" && /method|experiment|persist|qualit|educat|mentor/i.test(metadata) ? 6 : 0;
     const noisePenalty = /research framework|should be stored|source set|portal metadata|metrical|grammatical|not enough evidence/i.test(text) ? 7 : 0;
     const episodePenalty = (intent === "identity" || intent === "importance") && /\b(?:episode|cycle|summons?|invit(?:es?|ed)|gather(?:s|ed)?|undertaking|rejected)\b/i.test(text) ? 5 : 0;
     const authority = item.kind === "claim" ? 2 : item.origin === "google_grounding" || item.origin === "brave_live" ? 1 : 0;
-    return { item, index, score: direct + central + historicalContext + consequence + frameworkFit + authority - noisePenalty - episodePenalty };
+    return { item, index, score: direct + central + historicalContext + consequence + comparisonFit + frameworkFit + authority - noisePenalty - episodePenalty };
   }).sort((a, b) => b.score - a.score || a.index - b.index);
   const selected: RetrievedEvidence[] = [];
   const perSource = new Map<string, number>();

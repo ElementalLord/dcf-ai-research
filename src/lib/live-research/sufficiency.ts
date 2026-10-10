@@ -77,10 +77,14 @@ export function assessEvidenceSufficiency(
   const represented = new Set(evidence.flatMap((item) => item.kind === "claim" ? [item.parameterCode].filter(Boolean) : item.parameterCodes || []));
   const comparative = /compare|differ|difference|across|contested|conflict/i.test(question)
     || /\b(?:sources|accounts|traditions|texts)\b.{0,50}\bdisagree/i.test(question);
+  const similarWork = /\b(?:similar|comparable|contemporar|anyone else|someone else)\b/i.test(question);
+  const comparableEvidence = evidence.some((item) => /\b(?:similar|comparable|parallel|contemporar|independent(?:ly)?|another|other (?:scientists?|physicists?|researchers?|groups?|experiments?)|also (?:studied|worked|discovered|observed))\b/i.test(item.text));
   const developmental = /development|trace|transform|evolv/i.test(question);
-  const complex = comparative || developmental;
+  const complex = comparative || similarWork || developmental;
   const mode = complex ? "RESEARCH" : "EXPANDED";
   if (evidence.length === 0 || direct === 0) return { sufficient: false, answerable: false, mode, coverage, reason: "No directly relevant approved local evidence.", missingDimensions: requested.length ? requested : ["direct evidence"] };
+  if (similarWork && !comparableEvidence) return { sufficient: false, answerable: false, mode: "RESEARCH", coverage,
+    reason: "The available evidence describes the main subject but does not identify comparable work by anyone else.", missingDimensions: ["contemporary comparable work"] };
   if (broadProfile) {
     const parameters = options.allParameters || [];
     const core = parameters.filter((parameter) => /role|textual|social|tapas|historical|philosophy|lineage|parampara/i.test(`${parameter.code} ${parameter.name}`));
@@ -95,6 +99,8 @@ export function assessEvidenceSufficiency(
   const missing = requested.filter((term) => !covered.includes(term));
   if (coverage < 2 / 3) return { sufficient: false, answerable: direct >= 2 && sources.size >= 1, mode, coverage,
     reason: "Local passages may answer part of the question, but concept coverage is incomplete.", missingDimensions: missing };
+  if (similarWork && sources.size < 2) return { sufficient: false, answerable: true, mode: "RESEARCH", coverage,
+    reason: "Comparable work needs an independent source for a grounded comparison.", missingDimensions: ["independent source on comparable work"] };
   if (comparative && (sources.size < 2 || layers.size < 2)) {
     return { sufficient: false, answerable: true, mode: "RESEARCH", coverage, reason: "The comparison needs broader source or textual-layer coverage.", missingDimensions: [sources.size < 2 ? "independent source" : "distinct textual layer"] };
   }

@@ -24,6 +24,7 @@ describe("scope-aware grounded answers", () => {
     expect(classifyQuestionScope("What was Vishvamitra's role in Rama's story?")).toBe("EXPLANATION");
     expect(classifyQuestionScope("What is the significance of Rigveda 3.33 for Vishvamitra?")).toBe("TEXT_SPECIFIC");
     expect(classifyQuestionScope("Compare Vishvamitra and Vasistha.")).toBe("COMPARISON");
+    expect(classifyQuestionScope("Was anyone doing something similar at the time?")).toBe("COMPARISON");
   });
 
   it("selects coverage and rejects unlinked, off-topic passages", () => {
@@ -97,7 +98,8 @@ describe("scope-aware grounded answers", () => {
     expect(gapSearchQueries("Rishi A", "What does Rigveda 3.33 say?", ["textual contribution", "lineage"]))
       .toEqual(["Rishi A textual contribution Rigveda 3.33", "Rishi A lineage Rigveda 3.33"]);
     const prompt = buildSynthesisPrompt({ personality: "Rishi A", question: "Who is Rishi A?", resolvedQuestion: "Who is Rishi A?", scope: "BROAD_PROFILE", evidenceContext: "[C1] Claim" });
-    expect(SYNTHESIS_PROMPT_VERSION).toBe("historical_conversation_v14");
+    expect(SYNTHESIS_PROMPT_VERSION).toBe("historical_conversation_v15");
+    expect(prompt).toContain("Avoid stacks of repeated citations");
     expect(prompt).toContain("silently review");
     expect(prompt).toContain("using only the supplied IDs");
     expect(prompt).toContain("Evidence grounding constrains WHAT you may claim, not HOW you must phrase it.");
@@ -159,5 +161,27 @@ describe("scope-aware grounded answers", () => {
     expect(output).toContain("teaches the prince");
     expect(output).toContain("becomes an ascetic");
     expect(output).not.toMatch(/Early textual picture:|Later narrative:/);
+  });
+
+  it("does not turn webpage navigation into a fallback answer for a follow-up", () => {
+    const passage: RetrievedPassage = { kind: "passage", id: "live:bad", chunkId: "bad", sourceId: "bad", text: "Skip to main content Dr. Raman Education Graduate in Science, 1954 Contributions Read more about the institute and its programmes.", sectionTitle: null, pageOrSection: null, textualLayer: null, sourceTitle: "Institute profile", sourceAuthor: null, sourceInstitution: "institute.example", sourceUrl: "https://institute.example/raman", sourceType: "institutional", sourceStatus: "discovered", personalityName: "C. V. Raman" };
+    const citation: Citation = { id: "S1", kind: "live_web_source", title: passage.sourceTitle, author: null, institution: passage.sourceInstitution, url: passage.sourceUrl, sourceType: passage.sourceType, pageOrSection: null, textualLayer: null, excerpt: passage.text };
+    expect(renderExtractiveEvidence([passage], [citation], false, "EXPLANATION", "Why was the Raman Effect important? About C. V. Raman.")).toBe("The available sources do not contain enough evidence to answer that fully.");
+
+    const useful = { ...passage, text: "Raman's discovery of the Raman Effect provided a new way to study molecular structure. Researchers could use changed wavelengths to identify substances." };
+    const answer = renderExtractiveEvidence([useful], [{ ...citation, excerpt: useful.text }], false, "EXPLANATION", "Why was the Raman Effect important? About C. V. Raman.");
+    expect(answer).toContain("provided a new way to study molecular structure");
+    expect(answer).toContain("[S1]");
+    expect(answer).not.toContain("describes skip to main content");
+    const unrelated = { ...passage, text: "The Academy of Sciences resolved to award the Nobel Prize in Physics for 1930 to Sir Chandrasekhara Venkata Raman for his work on light scattering." };
+    expect(renderExtractiveEvidence([unrelated], [{ ...citation, excerpt: unrelated.text }], false, "COMPARISON", "Was anyone doing work similar to the Raman Effect at the time?")).toBe("The available sources do not contain enough evidence to answer that fully.");
+  });
+
+  it("requires evidence about another line of work before answering a similarity follow-up", () => {
+    const ramanOnly = [claim("effect", "textual_contribution", "Raman demonstrated the Raman Effect and received the Nobel Prize in Physics.")];
+    const decision = assessEvidenceSufficiency("Was anyone doing work similar to the Raman Effect at the time?", ramanOnly, { personalityAliases: ["Raman"] });
+    expect(decision.sufficient).toBe(false);
+    expect(decision.answerable).toBe(false);
+    expect(decision.missingDimensions).toContain("contemporary comparable work");
   });
 });

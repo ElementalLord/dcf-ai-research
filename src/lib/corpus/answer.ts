@@ -175,7 +175,11 @@ async function answerQuestionInternal(
     throw new Error("Citation integrity validation failed before answer generation.");
   }
 
-  const conversation = (options.history || []).slice(-2).map((turn) => `User: ${turn.question.slice(0, 200)}\nDCF: ${(turn.answer || "").replace(/\[[CS]\d+\]/g, "").slice(0, 500)}`).join("\n");
+  const conversation = (options.history || []).slice(-2).map((turn) => [
+    `User: ${turn.question.slice(0, 200)}`,
+    turn.resolvedQuestion ? `Resolved topic: ${turn.resolvedQuestion.slice(0, 240)}` : "",
+    turn.answer ? `DCF: ${turn.answer.replace(/\[[CS]\d+\]/g, "").slice(0, 500)}` : "",
+  ].filter(Boolean).join("\n")).join("\n");
   const identity = answerCacheIdentity(personalityIds, `${queryContext.resolvedQuestion}\n${conversation}`, debug.evidencePolicyMode || "test", bounded.selected, bounded.citations, options.responseStyle);
   debug.answerCacheKey = identity.key;
   debug.estimatedEvidenceTokens = Math.ceil(bounded.context.length / 4);

@@ -1,6 +1,6 @@
 import type { QuestionScope } from "@/lib/ask/question-scope";
 
-export const SYNTHESIS_PROMPT_VERSION = "historical_conversation_v14";
+export const SYNTHESIS_PROMPT_VERSION = "historical_conversation_v15";
 
 export function buildSynthesisPrompt(input: {
   personality: string;
@@ -50,7 +50,7 @@ Live web research is discovered for this question and is not mentor-approved. Li
 
 Use epistemic metadata to control certainty, wording, and citations, without dictating the structure of every answer. Distinguish documented historical facts and scientific results from attributed beliefs, scholarly interpretations, later reception, and contested accounts. When a source is a traditional narrative, frame its events as narrative rather than verified history. Verify named people, places, actions, and sequences against the cited evidence; omit an attractive detail if the packet does not directly support it. If support is incomplete, narrow or qualify the claim. Treat a requested "biggest" contribution as an interpretation unless evidence establishes a ranking. Use no outside model knowledge as factual support.
 
-Cite substantive claims near the relevant text using only the supplied IDs, such as [C1] or [S1]. A paragraph that combines sources may cite several IDs together. Never invent an ID. If the evidence cannot answer the question, return exactly: "The available sources do not contain enough evidence to answer that fully."
+Cite substantive claims near the relevant text using only the supplied IDs, such as [C1] or [S1]. Prefer one strong citation for a supported sentence; add a second only when it contributes distinct support. Avoid stacks of repeated citations that interrupt reading. Never invent an ID. If the evidence cannot answer the question, return exactly: "The available sources do not contain enough evidence to answer that fully."
 
 Before returning, silently review the answer for completeness, clarity, explanation, grounding, appropriate depth, and repetition. Improve a shallow or confusing draft using the evidence; tighten an unnecessarily long one. Return only the polished final answer, without the review.
 

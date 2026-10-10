@@ -74,7 +74,7 @@ export function resolveQuestionContext(
   const selected = unique(selectedPersonalities);
   const recentHistory = history.slice(-MAX_CONVERSATION_QUESTIONS);
   const previous = recentHistory.at(-1);
-  const previousAnswer = previous?.answer?.replace(/\[[CS]\d+\]/g, "").replace(/\s+/g, " ").slice(0, 500) || "";
+  const previousAnswer = previous?.answer?.replace(/\[[CS]\d+\]/g, "").replace(/\s+/g, " ").slice(0, 800) || "";
   const namedConcept = [...previousAnswer.matchAll(/\b(?:[A-Z][\p{L}.]*\s+){1,3}(?:[Ee]ffect|[Dd]iscovery|[Ee]xperiment|[Cc]onflict|[Ss]peech|[Tt]heory)\b/gu)][0]?.[0]
     || previous?.citedConcepts?.find((concept) => /effect|discovery|experiment|conflict|battle|speech|theory/i.test(concept));
   const recentNames = unique(
@@ -82,7 +82,12 @@ export function resolveQuestionContext(
       .slice()
       .reverse()
       .flatMap((turn) => namesMentioned(turn.resolvedQuestion || turn.question))
-      .filter((name) => !selected.some((personality) => personality.toLocaleLowerCase() === name.toLocaleLowerCase())),
+      .filter((name) => !/^(?:Selected|Personality|Comparison|Context|Earlier|Raman Effect)$/i.test(name))
+      .filter((name) => !selected.some((personality) => {
+        const normalizedName = name.toLocaleLowerCase();
+        const selectedWords: string[] = personality.toLocaleLowerCase().match(/\p{L}+/gu) || [];
+        return personality.toLocaleLowerCase() === normalizedName || selectedWords.includes(normalizedName);
+      })),
   );
   const citedLead = previous?.citedConcepts?.find((title) =>
     selected.some((name) => title.toLowerCase().includes(name.toLowerCase()))
@@ -104,18 +109,23 @@ export function resolveQuestionContext(
       : [];
   const pluralSubject = pluralSubjects.length > 1 ? pluralSubjects.join(" and ") : singularSubject;
   const rewritten = replaceReferences(question.trim(), singularSubject, pluralSubject);
-  const needsContextPrefix = rewritten === question.trim() && selected.length > 0 && !selected.some((name) => rewritten.toLowerCase().includes(name.toLowerCase()));
-  let resolvedQuestion = needsContextPrefix
-    ? `${selected.length === 1 ? "Selected personality" : "Selected comparison set"}: ${selected.join(" and ")}. ${rewritten}`
-    : rewritten;
-  const referential = /\b(?:that|this|those|it|they|them|their|he|she|the discovery|the conflict|the event|the work|at the time|something similar)\b/i.test(question);
-  if (previous && referential && (previous.answer || previous.citedConcepts?.length)) {
-    const topic = namedConcept || previous.resolvedQuestion || previous.question;
-    const clarified = namedConcept ? resolvedQuestion.replace(/\b(?:that|this|the)\s+(?:discovery|effect|conflict|event|work)\b/gi, namedConcept) : resolvedQuestion;
-    if (clarified !== resolvedQuestion) resolvedQuestion = clarified;
-    else if (rewritten === question.trim()) resolvedQuestion += ` In context of ${topic.slice(0, 180)}.`;
-    else if (citedLead && /\b(?:they|them|their|enemies|rivals)\b/i.test(question)) resolvedQuestion += ` Earlier cited topic: ${citedLead.slice(0, 120)}.`;
+  let resolvedQuestion = rewritten;
+  const referential = /\b(?:that|this|those|it|they|them|their|he|she|similar|same|next|earlier|later|at the time)\b/i.test(question);
+  if (previous && referential) {
+    if (namedConcept) {
+      resolvedQuestion = resolvedQuestion
+        .replace(/\b(?:that|this|the)\s+(?:discovery|effect|conflict|event|work)\b/gi, namedConcept)
+        .replace(/\b(?:something|anything)\s+similar\b/gi, `work similar to ${namedConcept}`)
+        .replace(/\b(?:that|this|it)\b(?=\s+(?:important|significant|matter|a big deal)\b)/gi, namedConcept);
+      if (!resolvedQuestion.toLocaleLowerCase().includes(namedConcept.toLocaleLowerCase()) && /\b(?:similar|same|at the time|next)\b/i.test(question))
+        resolvedQuestion += ` Related topic: ${namedConcept}.`;
+    } else if (rewritten === question.trim() && /\b(?:that|this|it|similar|same|next|at the time)\b/i.test(question)) {
+      resolvedQuestion += ` Follow-up to: ${(previous.resolvedQuestion || previous.question).slice(0, 160)}.`;
+    }
+    if (citedLead && /\b(?:they|them|their|enemies|rivals)\b/i.test(question)) resolvedQuestion += ` Earlier cited topic: ${citedLead.slice(0, 120)}.`;
   }
+  if (selected.length && !selected.some((name) => resolvedQuestion.toLocaleLowerCase().includes(name.toLocaleLowerCase())))
+    resolvedQuestion += ` About ${selected.join(" and ")}.`;
 
   return {
     originalQuestion: question.trim(),

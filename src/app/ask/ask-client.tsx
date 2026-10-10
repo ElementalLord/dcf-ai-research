@@ -36,7 +36,7 @@ function citationLabel(value: string | null | undefined, fallback: string) {
 function Inline({ parts, show, available }: { parts: InlineAnswerPart[]; show: (id: string) => void; available: Set<string> }) {
   return parts.map((part, index) => part.type === "citation"
     ? available.has(part.citationId)
-      ? <button className="citation-ref" type="button" key={index} onClick={() => show(part.citationId)} aria-label={`Inspect citation ${part.citationId}`}>{part.value}</button>
+      ? <button className="citation-ref" type="button" key={index} onClick={() => show(part.citationId)} aria-label={`Open source ${part.citationId}`} title={`Open source ${part.citationId}`}>{part.citationId}</button>
       : <span key={index}>{part.value}</span>
     : <span key={index}>{part.value.replaceAll("*", "")}</span>);
 }
@@ -98,6 +98,11 @@ export default function AskClient({ personalities, loadError }: { personalities:
   async function ask(event: React.FormEvent) {
     event.preventDefault();
     if (!personId || !question.trim() || submitting.current) return;
+    if (/^(?:why|how|what|where|when)\s+(?:is|was|did|does|do|are|were)\s+(?:he|she|they|it|him|her)\??$/i.test(question.trim())) {
+      setError("Finish your question so I know what you want to ask.");
+      input.current?.focus();
+      return;
+    }
     submitting.current = true;
     setPendingQuestion(question.trim());
     setLoading(true);
@@ -107,7 +112,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
     try {
       const { response, payload } = await fetchJsonWithTimeout<Result>("/api/ask", {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ personalityId: personId, question: question.trim(), responseStyle: style, history: turns.slice(-4).map(turn => ({ question: turn.question.slice(0, 1000), resolvedQuestion: turn.resolvedQuestion?.slice(0, 2000), answer: turn.answer.replace(/\[[CS]\d+\]/g, "").slice(0, 800), citedConcepts: (turn.citations || []).slice(0, 4).map(citation => citation.title.slice(0, 120)).filter(title => title.trim().length >= 2) })) }),
+        body: JSON.stringify({ personalityId: personId, question: question.trim(), responseStyle: style, history: turns.slice(-4).map(turn => ({ question: turn.question.slice(0, 1000), resolvedQuestion: turn.resolvedQuestion?.slice(0, 2000), answer: turn.status === "extractive_fallback" ? undefined : turn.answer.replace(/\[[CS]\d+\]/g, "").slice(0, 800), citedConcepts: (turn.citations || []).slice(0, 4).map(citation => citation.title.slice(0, 120)).filter(title => title.trim().length >= 2) })) }),
       }, 120000);
       if (!response.ok) throw new Error("ask_failed");
       setConversations(current => ({ ...current, [personId]: [...(current[personId] || []), payload].slice(-12) }));

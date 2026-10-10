@@ -40,7 +40,20 @@ describe("grounded Ask query context", () => {
   it("carries a cited discovery into a Raman follow-up", () => {
     const history = [{ question: "Who was C. V. Raman?", answer: "In 1928, Raman demonstrated the Raman Effect, changing how scientists studied molecules.", citedConcepts: ["Raman Effect"] }];
     expect(resolveQuestionContext("Why was that discovery important?", ["C. V. Raman"], history).resolvedQuestion).toContain("Raman Effect");
-    expect(resolveQuestionContext("Was anyone doing something similar at the time?", ["C. V. Raman"], history).resolvedQuestion).toContain("C. V. Raman");
+    const comparison = resolveQuestionContext("Was anyone doing something similar at the time?", ["C. V. Raman"], history);
+    expect(comparison.resolvedQuestion).toContain("work similar to Raman Effect");
+    expect(comparison.resolvedQuestion).toContain("C. V. Raman");
+    expect(comparison.subjects).toEqual(["C. V. Raman"]);
+    expect(comparison.resolvedQuestion).not.toContain("Selected personality:");
+    expect(gapSearchQueries("C. V. Raman", comparison.resolvedQuestion, ["contemporary comparable work"])[0]).toContain("comparable");
+  });
+
+  it("uses the previous question when a weak prior answer is omitted", () => {
+    const resolved = resolveQuestionContext("Why was that important?", ["C. V. Raman"], [
+      { question: "What was the Raman Effect?", resolvedQuestion: "What was the Raman Effect?" },
+    ]);
+    expect(resolved.resolvedQuestion).toContain("What was the Raman Effect?");
+    expect(resolved.resolvedQuestion).toContain("C. V. Raman");
   });
 
   it("keeps the Vishvamitra and Vasistha conflict in a follow-up", () => {

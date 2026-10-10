@@ -4,6 +4,7 @@ import type { Citation, RetrievedEvidence } from "./types";
 import { normalizeWhitespace, truncateText } from "./text";
 import { framedStatement } from "@/lib/claim-epistemics/language";
 import { profileEvidenceSalience } from "./rerank";
+import { readableEvidence } from "./readable-evidence";
 
 type EvidenceWithCitation = { item: RetrievedEvidence; citation: Citation };
 
@@ -167,6 +168,24 @@ function layerGroup(item: RetrievedEvidence): string {
 
 function relevantWords(value: string): Set<string> {
   return new Set(value.toLowerCase().match(/[\p{L}\p{N}]{4,}/gu)?.filter((word) => !/^(what|when|where|which|about|with|from|this|that)$/.test(word)) || []);
+}
+
+function usableFallbackPassage(item: Extract<RetrievedEvidence, { kind: "passage" }>, question: string): string | null {
+  const text = readableEvidence(item.text);
+  if (!text || /skip to main content|cookie preferences|privacy policy|all rights reserved|subscribe now|sign in to continue/i.test(text.slice(0, 220))) return null;
+  const focus = [...relevantWords(question.replace(item.personalityName || "", ""))]
+    .filter((word) => !/^(important|significant|similar|there|time|personality|selected|context|topic|related)$/.test(word));
+  const asksWhy = /\b(?:why|important|significant|impact|big deal)\b/i.test(question);
+  const asksComparison = /\b(?:similar|comparable|contemporar|anyone else|someone else)\b/i.test(question);
+  const sentences = text.split(/(?<=[.!?])\s+(?=[A-Z])/).map((sentence) => sentence.trim())
+    .filter((sentence) => sentence.length >= 40 && sentence.length <= 420 && sentence.split(/\s+/).length >= 8)
+    .filter((sentence) => !/navigation|table of contents|download pdf|read more|click here|doi:|http[s]?:\/\//i.test(sentence));
+  const ranked = sentences.map((sentence) => ({ sentence, overlap: focus.filter((word) => relevantWords(sentence).has(word)).length }))
+    .filter(({ sentence, overlap }) => (!focus.length || overlap > 0)
+      && (!asksWhy || /because|led to|enabled|allowed|opened|first|new|changed|impact|significan|important|influenc|resulted|provided/i.test(sentence))
+      && (!asksComparison || /\b(?:similar|comparable|parallel|contemporar|independent(?:ly)?|another|other (?:scientists?|physicists?|researchers?|groups?|experiments?)|also (?:studied|worked|discovered|observed))\b/i.test(sentence)))
+    .sort((a, b) => b.overlap - a.overlap);
+  return ranked[0]?.sentence || null;
 }
 
 function proposition(item: RetrievedEvidence): string {
@@ -382,8 +401,9 @@ export function renderExtractiveEvidence(selected: RetrievedEvidence[], citation
   const relationshipQuestion = scope === "RELATIONSHIP";
   const textualComparison = /rigved|vedic/i.test(question) && /ramayana|epic/i.test(question);
   const seen = new Set<string>();
-  const entries = selected.map((item, index) => ({ item, citation: citations[index] }))
+  const entries = selected.map((item, index) => ({ item: item.kind === "passage" ? { ...item, text: usableFallbackPassage(item, question) || "" } : item, citation: citations[index] }))
     .filter((entry): entry is EvidenceWithCitation => Boolean(entry.citation) && !isFrameworkRecord(entry.item) && !isMethodNote(entry.item))
+    .filter(({ item }) => item.text.length > 0)
     .filter(({ item }) => !/current corpus|knowledge base|should be stored|should remain separately tagged|should itself be represented|can be used to teach|a modern learner|current source set/i.test(item.text))
     .filter(({ item }) => {
       const key = [...relevantWords(item.text)].join(" ") || normalizeWhitespace(item.text).toLowerCase();
@@ -445,7 +465,7 @@ export function renderExtractiveEvidence(selected: RetrievedEvidence[], citation
     return "The available sources do not contain enough evidence to answer that fully.";
   const sentence = ({ item, citation }: EvidenceWithCitation) => {
     const statement = proposition(item);
-    const framed = item.kind === "claim" ? framedStatement({ ...item, text: statement }) : `The ${item.sourceTitle || "approved passage"} describes ${statement[0]?.toLowerCase() || ""}${statement.slice(1)}`;
+    const framed = item.kind === "claim" ? framedStatement({ ...item, text: statement }) : statement;
     return `${framed.replace(/[.!?\s]+$/, "")}. [${citation.id}]`;
   };
   const [lead, ...rest] = chosen;
@@ -463,12 +483,8 @@ export function renderExtractiveEvidence(selected: RetrievedEvidence[], citation
   if (scope === "BROAD_PROFILE") return [...paragraphs, ...rest.map(sentence)].join("\n\n");
   const byLayer = new Map<string, EvidenceWithCitation[]>();
   for (const entry of rest) byLayer.set(layerGroup(entry.item), [...(byLayer.get(layerGroup(entry.item)) || []), entry]);
-  for (const [group, groupEntries] of byLayer) {
-    const prefix = group === "historical limits and disputed points" ? "Historical limits and disputed points: "
-      : group === "interpretation and later reception" ? "Interpretation and later reception: "
-      : group === "early textual picture" ? "Early textual picture: "
-      : group === "later narrative" ? "Later narrative: " : "Related context: ";
-    paragraphs.push(`${prefix}${groupEntries.map(sentence).join(" ")}`);
+  for (const groupEntries of byLayer.values()) {
+    paragraphs.push(groupEntries.map(sentence).join(" "));
   }
   return paragraphs.join("\n\n");
 }

@@ -11,7 +11,7 @@ export type QuestionScope =
 /** Routing is deterministic and independent of model availability. */
 export function classifyQuestionScope(question: string): QuestionScope {
   const text = question.trim();
-  if (/\b(?:compare|comparison|differ|difference|contrast)\b/i.test(text)) return "COMPARISON";
+  if (/\b(?:compare|comparison|differ|difference|contrast|similar|comparable|contemporaries|anyone else|someone else)\b/i.test(text)) return "COMPARISON";
   if (/\b(?:historical|historicity|contested|uncertain|conflicting accounts|date of|when did .* live)\b/i.test(text)) return "CONTESTED_OR_HISTORICAL";
   if (/\b(?:what happened between|relationship between|relationship with|relation to|rivalry with|disagreement with)\b/i.test(text)) return "RELATIONSHIP";
   if (/\b(?:who is|who was|tell me about|overview of|biograph\w*|profile of|introduce)\b/i.test(text)) return "BROAD_PROFILE";
