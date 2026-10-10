@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { ArrowRight, ArrowUpRight, RotateCcw, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -59,6 +59,9 @@ export default function AskClient({ personalities, loadError }: { personalities:
   const [error, setError] = useState(loadError ? "People could not be loaded. Refresh the page to try again." : "");
   const [sourceId, setSourceId] = useState<string | null>(null);
   const [restored, setRestored] = useState(false);
+  const [chatWidth, setChatWidth] = useState(980);
+  const [chatWidthRestored, setChatWidthRestored] = useState(false);
+  const [viewportWidth, setViewportWidth] = useState(1400);
   const submitting = useRef(false);
   const input = useRef<HTMLTextAreaElement>(null);
   const chatThread = useRef<HTMLDivElement>(null);
@@ -66,6 +69,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
   const selectedExcerpt = readableEvidence(selectedCitation?.excerpt);
   const person = personalities.find(item => item.id === personId)?.canonical_name || "a person";
   const styleLabel = styles.find(item => item.value === style)?.label || "Balanced";
+  const chatWidthMax = Math.min(1400, Math.max(700, viewportWidth - 24));
 
   useEffect(() => {
     let saved: string | null = null;
@@ -85,6 +89,27 @@ export default function AskClient({ personalities, loadError }: { personalities:
     try { window.sessionStorage.setItem("dcf-conversations-v1", JSON.stringify(conversations)); }
     catch { /* Conversation remains in this page session. */ }
   }, [conversations, restored]);
+  useEffect(() => {
+    let saved: string | null = null;
+    try { saved = window.localStorage.getItem("dcf-chat-width-v1"); }
+    catch { /* The width control still works without storage. */ }
+    const updateViewport = () => setViewportWidth(window.innerWidth);
+    updateViewport();
+    window.addEventListener("resize", updateViewport);
+    queueMicrotask(() => {
+      if (saved) {
+        const width = Number(saved);
+        if (Number.isFinite(width)) setChatWidth(Math.min(1400, Math.max(700, width)));
+      }
+      setChatWidthRestored(true);
+    });
+    return () => window.removeEventListener("resize", updateViewport);
+  }, []);
+  useEffect(() => {
+    if (!chatWidthRestored) return;
+    try { window.localStorage.setItem("dcf-chat-width-v1", String(chatWidth)); }
+    catch { /* Keep the current width for this page. */ }
+  }, [chatWidth, chatWidthRestored]);
 
   useEffect(() => {
     if (!loading) return;
@@ -128,7 +153,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
     }
   }
 
-  return <main className="ai-page page-shell">
+  return <main className="ai-page page-shell" style={{ "--chat-width": `${chatWidth}px` } as CSSProperties}>
     <MysticBackdrop />
     <div className="page-kicker">AI</div>
     <div className="ai-layout"><div className="ai-main chat-main">
@@ -140,7 +165,12 @@ export default function AskClient({ personalities, loadError }: { personalities:
             <SelectTrigger aria-label="Choose person"><SelectValue>{personId ? person : "Choose a person"}</SelectValue></SelectTrigger>
             <SelectContent className="ai-select-content">{personalities.map(item => <SelectItem key={item.id} value={item.id}>{item.canonical_name}</SelectItem>)}</SelectContent>
           </Select>
-        </label>{turns.length > 0 && <button className="chat-new" type="button" onClick={() => { setConversations(current => ({ ...current, [personId]: [] })); setSourceId(null); setError(""); input.current?.focus(); }} disabled={loading}><RotateCcw size={14} aria-hidden="true" /> New chat</button>}</div>
+        </label><div className="chat-toolbar-actions">
+          <label className="chat-size-control">Chat width
+            <input type="range" min="700" max={chatWidthMax} step="20" value={Math.min(chatWidth, chatWidthMax)} onChange={event => setChatWidth(Number(event.target.value))} aria-label="Chat width" aria-valuetext={`${Math.min(chatWidth, chatWidthMax)} pixels`} />
+          </label>
+          {turns.length > 0 && <button className="chat-new" type="button" onClick={() => { setConversations(current => ({ ...current, [personId]: [] })); setSourceId(null); setError(""); input.current?.focus(); }} disabled={loading}><RotateCcw size={14} aria-hidden="true" /> New chat</button>}
+        </div></div>
         <div ref={chatThread} className="chat-thread" aria-label={`Conversation about ${person}`}>
           {!turns.length && !pendingQuestion && <div className="chat-welcome"><span className="chat-avatar" aria-hidden="true"><Sparkles size={19}/></span><div><p className="chat-name">DCF</p><p>Hi! What would you like to know about {person}? Start anywhere.</p></div></div>}
           {turns.map((turn, turnIndex) => <div className="chat-exchange" key={`${personId}:${turnIndex}`}>

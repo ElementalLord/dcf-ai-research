@@ -309,7 +309,7 @@ body:has(.ai-page) .site-header { position: relative; z-index: 2; }
 }
 
 /* A tall reading space cut from the same scene as the page. */
-.ai-page.page-shell { width: min(calc(100% - 24px), 980px); max-width: 980px; height: calc(100dvh - 60px); min-height: 570px; padding-inline: 0; display: flex; flex-direction: column; }
+.ai-page.page-shell { width: min(calc(100% - 24px), var(--chat-width, 980px)); max-width: none; height: calc(100dvh - 60px); min-height: 570px; padding-inline: 0; display: flex; flex-direction: column; }
 .ai-page > .page-kicker { display: none; }
 .ai-page .ai-layout { flex: 1; min-height: 0; display: flex; padding: 12px 0 14px; }
 .ai-page .chat-main { width: 100%; max-width: none; min-height: 0; display: flex; flex-direction: column; }
@@ -318,13 +318,37 @@ body:has(.ai-page) .site-header { position: relative; z-index: 2; }
 .ai-page .chat-main .ai-title > p:last-child { max-width: none; font-size: 14px; line-height: 1.35; }
 .ai-page .chat-shell { position: relative; isolation: isolate; flex: 1; min-height: 0; display: flex; flex-direction: column; margin-top: 13px; color: #f3f3fb; background: linear-gradient(150deg, rgba(29, 35, 69, .3), rgba(8, 16, 42, .26)); border: 1px solid rgba(218, 224, 255, .27); border-radius: 25px; box-shadow: 0 24px 70px #02081d4a, inset 0 1px #ffffff38, inset 0 -1px #ffffff14; backdrop-filter: blur(24px) saturate(130%); }
 .ai-page .chat-shell > .mystic-backdrop-contained { position: absolute; z-index: 0; inset: 0; opacity: 1; }
-.ai-page .chat-shell > .mystic-backdrop-contained::after { background: radial-gradient(ellipse at 48% 42%, transparent 24%, rgba(4, 8, 27, .18) 100%); }
-.ai-page .chat-shell > .mystic-backdrop-contained .mystic-glow-one { top: -12%; right: -25%; width: 78%; height: 90%; opacity: .55; }
-.ai-page .chat-shell > .mystic-backdrop-contained .mystic-glow-two { bottom: -42%; left: -36%; width: 86%; height: 95%; opacity: .55; }
-.ai-page .chat-shell > .mystic-backdrop-contained .mystic-stars { opacity: .38; }
-.ai-page .chat-shell > .mystic-backdrop-contained .mystic-chart { top: 8%; right: -15%; width: min(64%, 590px); opacity: .24; }
+.ai-page .chat-shell > .mystic-backdrop-contained::after { background: radial-gradient(ellipse at 47% 47%, transparent 25%, rgba(4, 8, 27, .14) 100%); }
+.chat-aurora { position: absolute; width: 85%; height: 70%; border-radius: 50%; filter: blur(38px); opacity: .45; }
+.chat-aurora-one { top: -31%; right: -30%; background: radial-gradient(ellipse, #7167b45c, #4f66b529 46%, transparent 70%); animation: chat-aurora-drift 31s ease-in-out infinite alternate; }
+.chat-aurora-two { bottom: -41%; left: -28%; background: radial-gradient(ellipse, #396f9454, #7960a62b 48%, transparent 70%); animation: chat-aurora-swell 37s ease-in-out infinite alternate; }
+.chat-constellation { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .46; }
+.chat-current { stroke: #9ab8e6; stroke-width: 1.2; stroke-dasharray: 4 17; opacity: .52; }
+.chat-current-one { animation: chat-current-flow 24s linear infinite; }
+.chat-current-two { stroke: #b6a5e2; opacity: .38; animation: chat-current-flow 33s linear infinite reverse; }
+.chat-thread-line { stroke: #c1b8e2; stroke-width: .8; opacity: .4; }
+.chat-star { fill: #dfd4ff; filter: drop-shadow(0 0 6px #d8bdff); transform-box: fill-box; transform-origin: center; }
+.chat-star-one { animation: chat-star-glimmer 7s ease-in-out infinite alternate; }
+.chat-star-two { animation: chat-star-glimmer 11s ease-in-out infinite alternate-reverse; }
+.chat-star-three { animation: chat-star-glimmer 9s ease-in-out infinite alternate; }
+.chat-star-four { animation: chat-star-glimmer 13s ease-in-out infinite alternate-reverse; }
+.chat-sigil { stroke: #dcc5ef; stroke-width: 1.1; opacity: .48; animation: chat-sigil-reveal 16s ease-in-out infinite alternate; }
+.chat-wisp { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: #d4d6ff; box-shadow: 0 0 12px 3px #a398df91; opacity: .45; }
+.chat-wisp-one { top: 68%; left: 20%; animation: chat-wisp-drift 29s ease-in-out infinite alternate; }
+.chat-wisp-two { top: 24%; left: 57%; animation: chat-wisp-drift 41s ease-in-out infinite alternate-reverse; }
+.chat-wisp-three { top: 51%; left: 87%; animation: chat-wisp-drift 35s ease-in-out infinite alternate; }
+@keyframes chat-aurora-drift { to { transform: translate3d(-14%, 18%, 0) scale(1.22); opacity: .64; } }
+@keyframes chat-aurora-swell { to { transform: translate3d(14%, -13%, 0) scale(.86); opacity: .62; } }
+@keyframes chat-current-flow { to { stroke-dashoffset: -252; } }
+@keyframes chat-star-glimmer { to { opacity: .2; transform: scale(.7); } }
+@keyframes chat-sigil-reveal { to { opacity: .2; transform: translate3d(0, -11px, 0); } }
+@keyframes chat-wisp-drift { to { transform: translate3d(67px, -58px, 0); opacity: .1; } }
 .ai-page .chat-shell > :not(.mystic-backdrop-contained) { position: relative; z-index: 1; }
 .ai-page .chat-toolbar { padding: 10px 20px; background: rgba(200, 207, 245, .045); border-bottom-color: rgba(222, 229, 255, .17); backdrop-filter: blur(18px); }
+.ai-page .chat-toolbar-actions { display: flex; align-items: end; gap: 14px; }
+.ai-page .chat-size-control { display: grid; gap: 10px; min-width: 150px; padding-bottom: 8px; color: #bbc7e0; font-size: 12px; font-weight: 600; letter-spacing: .025em; }
+.ai-page .chat-size-control input { width: 150px; height: 4px; margin: 0; accent-color: #c6b9e9; cursor: pointer; }
+.ai-page .chat-size-control input:focus-visible { outline: 2px solid #d6c7ff; outline-offset: 8px; }
 .ai-page .chat-toolbar .person-control [data-slot="select-trigger"],.ai-page .chat-composer .depth-control [data-slot="select-trigger"] { color: #f1f2fb; background: rgba(214, 221, 255, .09); border: 1px solid rgba(222, 228, 255, .22); border-radius: 10px; }
 .ai-page .chat-thread { flex: 1; min-height: 0; max-height: none; padding: 24px clamp(16px, 3.5vw, 36px) 30px; background: radial-gradient(ellipse at 50% 30%, rgba(81, 74, 146, .07), transparent 65%); }
 .ai-page .chat-exchange { width: min(100%, 800px); margin-inline: auto; gap: 13px; }
@@ -342,8 +366,9 @@ body:has(.ai-page) .site-header { position: relative; z-index: 2; }
 .ai-page .chat-composer .question-input { min-height: 50px; max-height: 120px; margin-top: 0; padding: 7px 0; }
 .ai-page .chat-composer .ask-footer { margin-top: 6px; }
 .ai-page .chat-composer .ask-keyboard-note { margin-top: 3px; }
-.ai-page .chat-message-content .citation-ref { display: inline; margin: 0 1px; padding: 1px 2px; color: #a9c7fa; background: transparent; border: 0; border-radius: 0; font: 700 10px/1 var(--font-geist-sans), sans-serif; vertical-align: super; text-decoration: underline dotted #a9c7fa8c; text-underline-offset: 2px; }
+.ai-page .chat-message-content .citation-ref { display: inline; margin: 0 1px; padding: 2px 1px; color: #a9c7fa; background: transparent; border: 0; border-radius: 0; font: 700 8px/1 var(--font-geist-sans), sans-serif; vertical-align: super; text-decoration: underline dotted #a9c7fa8c; text-underline-offset: 2px; }
 .ai-page .chat-message-content .citation-ref:hover { color: #fff; background: transparent; text-decoration-color: #fff; }
+.ai-page .chat-message-content .citation-ref:focus-visible { outline: 1px solid #d6c7ff; outline-offset: 2px; }
 .ai-page .chat-repair { margin-top: 10px; color: #e7eafa; font-size: 15px; line-height: 1.55; }
 .ai-page .chat-repair button { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 5px 0; color: #d6c7ff; font-size: 13px; font-weight: 650; border-bottom: 1px solid #d6c7ff70; }
 .ai-page .chat-repair button:hover { color: #fff; border-color: #fff; }
@@ -355,6 +380,10 @@ body:has(.ai-page) .site-header { position: relative; z-index: 2; }
   .ai-page .chat-main .ai-title > p:last-child { font-size: 12px; }
   .ai-page .chat-shell { margin-top: 11px; border-radius: 18px; }
   .ai-page .chat-thread { max-height: none; padding-inline: 15px; }
-  .ai-page .chat-shell > .mystic-backdrop-contained .mystic-chart { width: 75%; right: -25%; opacity: .2; }
+  .ai-page .chat-size-control { display: none; }
+  .chat-constellation { opacity: .31; }
   .ai-page .chat-message-assistant { max-width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat-aurora,.chat-current,.chat-star,.chat-sigil,.chat-wisp { animation: none; }
 }
