@@ -360,9 +360,10 @@ body:has(.ai-page) .site-header { position: relative; z-index: 2; }
 .ai-page .chat-composer .question-input { min-height: 50px; max-height: 120px; margin-top: 0; padding: 7px 0; }
 .ai-page .chat-composer .ask-footer { margin-top: 6px; }
 .ai-page .chat-composer .ask-keyboard-note { margin-top: 3px; }
-.ai-page .chat-message-content .citation-ref { display: inline; margin: 0 1px; padding: 2px 1px; color: #a9c7fa; background: transparent; border: 0; border-radius: 0; font: 700 8px/1 var(--font-geist-sans), sans-serif; vertical-align: super; text-decoration: underline dotted #a9c7fa8c; text-underline-offset: 2px; }
-.ai-page .chat-message-content .citation-ref:hover { color: #fff; background: transparent; text-decoration-color: #fff; }
+.ai-page .chat-message-content .citation-ref { display: inline-block; margin: 0 1px; padding: 2px 1px; color: #98b3dc; background: transparent; border: 0; border-radius: 0; font: 600 7px/1 var(--font-geist-sans), sans-serif; vertical-align: super; text-decoration: none; }
+.ai-page .chat-message-content button.citation-ref:hover { color: #fff; background: transparent; text-decoration: underline dotted; text-underline-offset: 2px; }
 .ai-page .chat-message-content .citation-ref:focus-visible { outline: 1px solid #d6c7ff; outline-offset: 2px; }
+.ai-page .chat-message-content .citation-unavailable-ref { opacity: .55; }
 .ai-page .chat-repair { margin-top: 10px; color: #e7eafa; font-size: 15px; line-height: 1.55; }
 .ai-page .chat-repair button { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 5px 0; color: #d6c7ff; font-size: 13px; font-weight: 650; border-bottom: 1px solid #d6c7ff70; }
 .ai-page .chat-repair button:hover { color: #fff; border-color: #fff; }

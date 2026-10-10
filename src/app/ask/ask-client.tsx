@@ -39,18 +39,18 @@ function citationLabel(value: string | null | undefined, fallback: string) {
   return citationLabels[value] || value.replaceAll("_", " ").replace(/^./, letter => letter.toUpperCase());
 }
 
-function Inline({ parts, show, available }: { parts: InlineAnswerPart[]; show: (id: string) => void; available: Set<string> }) {
+function Inline({ parts, show, numbers }: { parts: InlineAnswerPart[]; show: (id: string) => void; numbers: Map<string, number> }) {
   return parts.map((part, index) => part.type === "citation"
-    ? available.has(part.citationId)
-      ? <button className="citation-ref" type="button" key={index} onClick={() => show(part.citationId)} aria-label={`Open source ${part.citationId}`} title={`Open source ${part.citationId}`}>{part.citationId}</button>
-      : <span key={index}>{part.value}</span>
+    ? numbers.has(part.citationId)
+      ? <button className="citation-ref" type="button" key={index} onClick={() => show(part.citationId)} aria-label={`Open source ${numbers.get(part.citationId)}`} title={`Open source ${numbers.get(part.citationId)}`}>{numbers.get(part.citationId)}</button>
+      : <span className="citation-ref citation-unavailable-ref" key={index} title="Source detail unavailable">{part.citationId.replace(/^[A-Za-z]+/, "")}</span>
     : <span key={index}>{part.value.replaceAll("*", "")}</span>);
 }
 
 function Answer({ answer, show, citations }: { answer: string; show: (id: string) => void; citations: AskCitation[] }) {
-  const available = new Set(citations.map(citation => citation.id));
+  const numbers = new Map(citations.map((citation, index) => [citation.id, index + 1]));
   return <div className="research-answer">{answerBlocks(answer).flatMap(block => block.type === "list" ? block.items : [block.parts]).map((parts, index) =>
-    <p key={index}><Inline parts={parts} show={show} available={available}/></p>)}</div>;
+    <p key={index}><Inline parts={parts} show={show} numbers={numbers}/></p>)}</div>;
 }
 
 export default function AskClient({ personalities, loadError }: { personalities: Personality[]; loadError: string }) {
@@ -76,6 +76,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
   const chatPage = useRef<HTMLElement>(null);
   const resizeSession = useRef<ResizeSession | null>(null);
   const selectedCitation = sourceId ? turns[Number(sourceId.split(":")[0])]?.citations?.find(citation => citation.id === sourceId.split(":")[1]) : undefined;
+  const selectedCitationNumber = sourceId ? (turns[Number(sourceId.split(":")[0])]?.citations?.findIndex(citation => citation.id === sourceId.split(":")[1]) ?? -1) : -1;
   const selectedExcerpt = readableEvidence(selectedCitation?.excerpt);
   const person = personalities.find(item => item.id === personId)?.canonical_name || "a person";
   const styleLabel = styles.find(item => item.value === style)?.label || "Balanced";
@@ -254,6 +255,6 @@ export default function AskClient({ personalities, loadError }: { personalities:
       <div className="chat-resize-handle chat-resize-height" role="separator" aria-orientation="horizontal" aria-label="Resize chat height" aria-valuemin={CHAT_MIN_HEIGHT} aria-valuemax={CHAT_MAX_HEIGHT} aria-valuenow={displayedHeight} aria-valuetext={`${displayedHeight} pixels`} tabIndex={0} title="Drag to resize chat height" onPointerDown={event => beginResize("height", event)} onPointerMove={moveResize} onPointerUp={endResize} onPointerCancel={endResize} onKeyDown={event => resizeWithKeyboard("height", event)}><span /></div>
       </div>
     </div></div>
-    <Sheet open={!!sourceId && !!selectedCitation} onOpenChange={open => { if (!open) setSourceId(null); }}><SheetContent className="source-sheet"><SheetHeader><SheetTitle>Citation {selectedCitation?.id || ""}</SheetTitle><SheetDescription>{selectedCitation?.title || "Source detail"}</SheetDescription></SheetHeader><div className="source-sheet-body">{selectedCitation && <><p className="section-label">{selectedCitation.kind === "live_web_source" ? "Live research" : "DCF Library"}</p><p className="source-meta">{[selectedCitation.author, selectedCitation.institution, citationLabel(selectedCitation.sourceType, "")].filter(Boolean).join(" · ") || "Source record"}</p><div className="citation-location"><span>Where to find it</span><strong>{selectedCitation.pageOrSection || "Specific location not recorded"}</strong></div><p className="section-label">Evidence from this location</p>{selectedExcerpt ? <blockquote>{selectedExcerpt}</blockquote> : <p className="citation-unavailable">A readable passage is unavailable for this citation. Check the original source before relying on it.</p>}<div className="citation-details"><span>{citationLabel(selectedCitation.sourceType || selectedCitation.kind, "Source record")}</span><span>{citationLabel(selectedCitation.evidenceType || selectedCitation.textualLayer, "Source material")}</span></div>{selectedCitation.url && <a href={selectedCitation.url} target="_blank" rel="noreferrer" className="editorial-link">Open original source <ArrowUpRight size={16} aria-hidden="true" /></a>}</>}</div></SheetContent></Sheet>
+    <Sheet open={!!sourceId && !!selectedCitation} onOpenChange={open => { if (!open) setSourceId(null); }}><SheetContent className="source-sheet"><SheetHeader><SheetTitle>Source {selectedCitationNumber >= 0 ? selectedCitationNumber + 1 : ""}</SheetTitle><SheetDescription>{selectedCitation?.title || "Source detail"}</SheetDescription></SheetHeader><div className="source-sheet-body">{selectedCitation && <><p className="section-label">{selectedCitation.kind === "live_web_source" ? "Live research" : "DCF Library"}</p><p className="source-meta">{[selectedCitation.author, selectedCitation.institution, citationLabel(selectedCitation.sourceType, "")].filter(Boolean).join(" · ") || "Source record"}</p><div className="citation-location"><span>Where to find it</span><strong>{selectedCitation.pageOrSection || "Specific location not recorded"}</strong></div><p className="section-label">Evidence from this location</p>{selectedExcerpt ? <blockquote>{selectedExcerpt}</blockquote> : <p className="citation-unavailable">A readable passage is unavailable for this citation. Check the original source before relying on it.</p>}<div className="citation-details"><span>{citationLabel(selectedCitation.sourceType || selectedCitation.kind, "Source record")}</span><span>{citationLabel(selectedCitation.evidenceType || selectedCitation.textualLayer, "Source material")}</span></div>{selectedCitation.url && <a href={selectedCitation.url} target="_blank" rel="noreferrer" className="editorial-link">Open original source <ArrowUpRight size={16} aria-hidden="true" /></a>}</>}</div></SheetContent></Sheet>
   </main>;
 }
