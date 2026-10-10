@@ -97,7 +97,7 @@ describe("scope-aware grounded answers", () => {
     expect(gapSearchQueries("Rishi A", "What does Rigveda 3.33 say?", ["textual contribution", "lineage"]))
       .toEqual(["Rishi A textual contribution Rigveda 3.33", "Rishi A lineage Rigveda 3.33"]);
     const prompt = buildSynthesisPrompt({ personality: "Rishi A", question: "Who is Rishi A?", resolvedQuestion: "Who is Rishi A?", scope: "BROAD_PROFILE", evidenceContext: "[C1] Claim" });
-    expect(SYNTHESIS_PROMPT_VERSION).toMatch(/^person_centered_synthesis_/);
+    expect(SYNTHESIS_PROMPT_VERSION).toBe("historical_conversation_v14");
     expect(prompt).toContain("silently review");
     expect(prompt).toContain("using only the supplied IDs");
     expect(prompt).toContain("Evidence grounding constrains WHAT you may claim, not HOW you must phrase it.");
@@ -107,6 +107,13 @@ describe("scope-aware grounded answers", () => {
     expect(prompt).toContain("Avoid em dashes in your own prose");
     expect(prompt).not.toContain("major supported textual and narrative dimensions");
     expect(prompt).toContain("[C1] Claim");
+    expect(prompt).toContain("This is the first answer in the chat");
+    expect(prompt).toContain("modern leader's role or leadership challenge");
+    expect(prompt).toContain("no headings, bullet lists, numbered sections");
+    const followUp = buildSynthesisPrompt({ personality: "Rishi A", question: "Why?", resolvedQuestion: "Why did Rishi A do that?", scope: "EXPLANATION", evidenceContext: "[C1] Claim", openingTurn: false });
+    expect(followUp).toContain("This is a follow-up in an ongoing chat");
+    expect(followUp).toContain("Do not repeat the opening historical scene");
+    expect(followUp).not.toContain("This is the first answer in the chat");
     const research = buildSynthesisPrompt({ personality: "Rishi A", question: "Who is Rishi A?", resolvedQuestion: "Who is Rishi A?", scope: "BROAD_PROFILE", evidenceContext: "[C1] Claim", responseStyle: "research" });
     expect(research).toContain("More depth means more reasoning, not more excerpts");
     const historical = buildSynthesisPrompt({ personality: "Rishi A", question: "What is historically known about Rishi A?", resolvedQuestion: "What is historically known about Rishi A?", scope: "CONTESTED_OR_HISTORICAL", evidenceContext: "[C1] Claim" });
