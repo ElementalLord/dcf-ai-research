@@ -3,22 +3,11 @@ export function MysticBackdrop({ contained = false }: { contained?: boolean } = 
     <div className="mystic-backdrop mystic-backdrop-contained" aria-hidden="true">
       <div className="chat-aurora chat-aurora-one" />
       <div className="chat-aurora chat-aurora-two" />
-      <svg className="chat-constellation" viewBox="0 0 960 720" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path className="chat-current chat-current-one" d="M-50 572C124 482 192 617 358 525S572 308 721 361 908 455 1010 294" />
-        <path className="chat-current chat-current-two" d="M-40 156C117 250 181 91 324 159S493 350 655 249 866 84 1012 167" />
-        <path className="chat-thread-line" d="m91 532 81-49 106 31 80-72m246-159 88-55 86 36 100-74" />
-        <circle className="chat-star chat-star-one" cx="91" cy="532" r="3" />
-        <circle className="chat-star chat-star-two" cx="278" cy="514" r="3" />
-        <circle className="chat-star chat-star-three" cx="604" cy="283" r="3" />
-        <circle className="chat-star chat-star-four" cx="878" cy="190" r="3" />
-        <g className="chat-sigil">
-          <path d="M760 345c-46 13-79 55-79 105 0 61 49 110 110 110 49 0 91-33 105-79-16 15-38 24-62 24-50 0-91-41-91-91 0-26 11-50 29-67l-12-2Z" />
-          <path d="M790 337v42m-21-21h42m49 195v30m-15-15h30" />
-        </g>
-      </svg>
-      <span className="chat-wisp chat-wisp-one" />
-      <span className="chat-wisp chat-wisp-two" />
-      <span className="chat-wisp chat-wisp-three" />
+      <span className="chat-meteor chat-meteor-one" />
+      <span className="chat-meteor chat-meteor-two" />
+      <span className="chat-glint chat-glint-one" />
+      <span className="chat-glint chat-glint-two" />
+      <span className="chat-glint chat-glint-three" />
     </div>
   );
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent, type PointerEvent } from "react";
 import { ArrowRight, ArrowUpRight, RotateCcw, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -14,6 +14,12 @@ import { readableEvidence } from "@/lib/corpus/readable-evidence";
 export type Personality = { id: string; canonical_name: string };
 type Result = { question: string; resolvedQuestion?: string; personality: string; answer: string; citations?: AskCitation[]; status?: string };
 type Style = "simple" | "balanced" | "detailed" | "research";
+type ResizeAxis = "width" | "height";
+type ResizeSession = { axis: ResizeAxis; pointerId: number; startX: number; startY: number; width: number; height: number };
+const CHAT_MIN_WIDTH = 700;
+const CHAT_MIN_HEIGHT = 540;
+const CHAT_MAX_HEIGHT = 1500;
+const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 const styles: Array<{ value: Style; label: string; description: string }> = [
   { value: "simple", label: "Simple", description: "Brief and plain" },
   { value: "balanced", label: "Balanced", description: "Answer with context" },
@@ -60,16 +66,22 @@ export default function AskClient({ personalities, loadError }: { personalities:
   const [sourceId, setSourceId] = useState<string | null>(null);
   const [restored, setRestored] = useState(false);
   const [chatWidth, setChatWidth] = useState(980);
-  const [chatWidthRestored, setChatWidthRestored] = useState(false);
+  const [chatHeight, setChatHeight] = useState<number | null>(null);
+  const [chatSizeRestored, setChatSizeRestored] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(1400);
+  const [viewportHeight, setViewportHeight] = useState(800);
   const submitting = useRef(false);
   const input = useRef<HTMLTextAreaElement>(null);
   const chatThread = useRef<HTMLDivElement>(null);
+  const chatPage = useRef<HTMLElement>(null);
+  const resizeSession = useRef<ResizeSession | null>(null);
   const selectedCitation = sourceId ? turns[Number(sourceId.split(":")[0])]?.citations?.find(citation => citation.id === sourceId.split(":")[1]) : undefined;
   const selectedExcerpt = readableEvidence(selectedCitation?.excerpt);
   const person = personalities.find(item => item.id === personId)?.canonical_name || "a person";
   const styleLabel = styles.find(item => item.value === style)?.label || "Balanced";
-  const chatWidthMax = Math.min(1400, Math.max(700, viewportWidth - 24));
+  const chatWidthMax = Math.max(CHAT_MIN_WIDTH, viewportWidth - 24);
+  const displayedWidth = Math.min(chatWidth, chatWidthMax);
+  const displayedHeight = chatHeight ?? Math.max(CHAT_MIN_HEIGHT, viewportHeight - 60);
 
   useEffect(() => {
     let saved: string | null = null;
@@ -90,26 +102,38 @@ export default function AskClient({ personalities, loadError }: { personalities:
     catch { /* Conversation remains in this page session. */ }
   }, [conversations, restored]);
   useEffect(() => {
-    let saved: string | null = null;
-    try { saved = window.localStorage.getItem("dcf-chat-width-v1"); }
-    catch { /* The width control still works without storage. */ }
-    const updateViewport = () => setViewportWidth(window.innerWidth);
+    let savedWidth: string | null = null;
+    let savedHeight: string | null = null;
+    try {
+      savedWidth = window.localStorage.getItem("dcf-chat-width-v1");
+      savedHeight = window.localStorage.getItem("dcf-chat-height-v1");
+    } catch { /* Resize handles still work without storage. */ }
+    const updateViewport = () => {
+      setViewportWidth(window.innerWidth);
+      setViewportHeight(window.innerHeight);
+    };
     updateViewport();
     window.addEventListener("resize", updateViewport);
     queueMicrotask(() => {
-      if (saved) {
-        const width = Number(saved);
-        if (Number.isFinite(width)) setChatWidth(Math.min(1400, Math.max(700, width)));
+      if (savedWidth) {
+        const width = Number(savedWidth);
+        if (Number.isFinite(width)) setChatWidth(clamp(width, CHAT_MIN_WIDTH, 2000));
       }
-      setChatWidthRestored(true);
+      if (savedHeight) {
+        const height = Number(savedHeight);
+        if (Number.isFinite(height)) setChatHeight(clamp(height, CHAT_MIN_HEIGHT, CHAT_MAX_HEIGHT));
+      }
+      setChatSizeRestored(true);
     });
     return () => window.removeEventListener("resize", updateViewport);
   }, []);
   useEffect(() => {
-    if (!chatWidthRestored) return;
-    try { window.localStorage.setItem("dcf-chat-width-v1", String(chatWidth)); }
-    catch { /* Keep the current width for this page. */ }
-  }, [chatWidth, chatWidthRestored]);
+    if (!chatSizeRestored) return;
+    try {
+      window.localStorage.setItem("dcf-chat-width-v1", String(chatWidth));
+      if (chatHeight !== null) window.localStorage.setItem("dcf-chat-height-v1", String(chatHeight));
+    } catch { /* Keep the current size for this page. */ }
+  }, [chatWidth, chatHeight, chatSizeRestored]);
 
   useEffect(() => {
     if (!loading) return;
@@ -121,6 +145,41 @@ export default function AskClient({ personalities, loadError }: { personalities:
     const latest = thread?.querySelector<HTMLElement>(".chat-exchange:last-of-type");
     if (thread && latest) thread.scrollTo({ top: latest.getBoundingClientRect().top - thread.getBoundingClientRect().top + thread.scrollTop - 18, behavior: "smooth" });
   }, [personId, turns.length, pendingQuestion]);
+
+  function beginResize(axis: ResizeAxis, event: PointerEvent<HTMLDivElement>) {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    const bounds = chatPage.current?.getBoundingClientRect();
+    if (!bounds) return;
+    resizeSession.current = { axis, pointerId: event.pointerId, startX: event.clientX, startY: event.clientY, width: bounds.width, height: bounds.height };
+    event.currentTarget.setPointerCapture(event.pointerId);
+    event.preventDefault();
+  }
+
+  function moveResize(event: PointerEvent<HTMLDivElement>) {
+    const drag = resizeSession.current;
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    if (drag.axis === "width") setChatWidth(Math.round(clamp(drag.width + (event.clientX - drag.startX) * 2, CHAT_MIN_WIDTH, Math.max(CHAT_MIN_WIDTH, window.innerWidth - 24))));
+    else setChatHeight(Math.round(clamp(drag.height + event.clientY - drag.startY, CHAT_MIN_HEIGHT, CHAT_MAX_HEIGHT)));
+  }
+
+  function endResize(event: PointerEvent<HTMLDivElement>) {
+    if (resizeSession.current?.pointerId !== event.pointerId) return;
+    resizeSession.current = null;
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
+  }
+
+  function resizeWithKeyboard(axis: ResizeAxis, event: KeyboardEvent<HTMLDivElement>) {
+    const decrease = axis === "width" ? event.key === "ArrowLeft" : event.key === "ArrowUp";
+    const increase = axis === "width" ? event.key === "ArrowRight" : event.key === "ArrowDown";
+    if (!decrease && !increase && event.key !== "Home" && event.key !== "End") return;
+    event.preventDefault();
+    const min = axis === "width" ? CHAT_MIN_WIDTH : CHAT_MIN_HEIGHT;
+    const max = axis === "width" ? chatWidthMax : CHAT_MAX_HEIGHT;
+    const current = axis === "width" ? displayedWidth : displayedHeight;
+    const next = event.key === "Home" ? min : event.key === "End" ? max : clamp(current + (increase ? 40 : -40), min, max);
+    if (axis === "width") setChatWidth(next);
+    else setChatHeight(next);
+  }
 
   async function ask(event: React.FormEvent) {
     event.preventDefault();
@@ -153,7 +212,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
     }
   }
 
-  return <main className="ai-page page-shell" style={{ "--chat-width": `${chatWidth}px` } as CSSProperties}>
+  return <main ref={chatPage} className="ai-page page-shell" style={{ "--chat-width": `${chatWidth}px`, ...(chatHeight === null ? {} : { "--chat-height": `${chatHeight}px` }) } as CSSProperties}>
     <MysticBackdrop />
     <div className="page-kicker">AI</div>
     <div className="ai-layout"><div className="ai-main chat-main">
@@ -165,12 +224,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
             <SelectTrigger aria-label="Choose person"><SelectValue>{personId ? person : "Choose a person"}</SelectValue></SelectTrigger>
             <SelectContent className="ai-select-content">{personalities.map(item => <SelectItem key={item.id} value={item.id}>{item.canonical_name}</SelectItem>)}</SelectContent>
           </Select>
-        </label><div className="chat-toolbar-actions">
-          <label className="chat-size-control">Chat width
-            <input type="range" min="700" max={chatWidthMax} step="20" value={Math.min(chatWidth, chatWidthMax)} onChange={event => setChatWidth(Number(event.target.value))} aria-label="Chat width" aria-valuetext={`${Math.min(chatWidth, chatWidthMax)} pixels`} />
-          </label>
-          {turns.length > 0 && <button className="chat-new" type="button" onClick={() => { setConversations(current => ({ ...current, [personId]: [] })); setSourceId(null); setError(""); input.current?.focus(); }} disabled={loading}><RotateCcw size={14} aria-hidden="true" /> New chat</button>}
-        </div></div>
+        </label>{turns.length > 0 && <button className="chat-new" type="button" onClick={() => { setConversations(current => ({ ...current, [personId]: [] })); setSourceId(null); setError(""); input.current?.focus(); }} disabled={loading}><RotateCcw size={14} aria-hidden="true" /> New chat</button>}</div>
         <div ref={chatThread} className="chat-thread" aria-label={`Conversation about ${person}`}>
           {!turns.length && !pendingQuestion && <div className="chat-welcome"><span className="chat-avatar" aria-hidden="true"><Sparkles size={19}/></span><div><p className="chat-name">DCF</p><p>Hi! What would you like to know about {person}? Start anywhere.</p></div></div>}
           {turns.map((turn, turnIndex) => <div className="chat-exchange" key={`${personId}:${turnIndex}`}>
@@ -196,6 +250,8 @@ export default function AskClient({ personalities, loadError }: { personalities:
         </label><Button type="submit" disabled={loading || !personId || !question.trim()}>{loading ? "Thinking…" : "Send"}<ArrowRight size={16} aria-hidden="true" /></Button></div>
         <p className="ask-keyboard-note">Press Enter to ask. Use Shift+Enter for a new line.</p>
       </form>
+      <div className="chat-resize-handle chat-resize-width" role="separator" aria-orientation="vertical" aria-label="Resize chat width" aria-valuemin={CHAT_MIN_WIDTH} aria-valuemax={chatWidthMax} aria-valuenow={displayedWidth} aria-valuetext={`${displayedWidth} pixels`} tabIndex={0} title="Drag to resize chat width" onPointerDown={event => beginResize("width", event)} onPointerMove={moveResize} onPointerUp={endResize} onPointerCancel={endResize} onKeyDown={event => resizeWithKeyboard("width", event)}><span /></div>
+      <div className="chat-resize-handle chat-resize-height" role="separator" aria-orientation="horizontal" aria-label="Resize chat height" aria-valuemin={CHAT_MIN_HEIGHT} aria-valuemax={CHAT_MAX_HEIGHT} aria-valuenow={displayedHeight} aria-valuetext={`${displayedHeight} pixels`} tabIndex={0} title="Drag to resize chat height" onPointerDown={event => beginResize("height", event)} onPointerMove={moveResize} onPointerUp={endResize} onPointerCancel={endResize} onKeyDown={event => resizeWithKeyboard("height", event)}><span /></div>
       </div>
     </div></div>
     <Sheet open={!!sourceId && !!selectedCitation} onOpenChange={open => { if (!open) setSourceId(null); }}><SheetContent className="source-sheet"><SheetHeader><SheetTitle>Citation {selectedCitation?.id || ""}</SheetTitle><SheetDescription>{selectedCitation?.title || "Source detail"}</SheetDescription></SheetHeader><div className="source-sheet-body">{selectedCitation && <><p className="section-label">{selectedCitation.kind === "live_web_source" ? "Live research" : "DCF Library"}</p><p className="source-meta">{[selectedCitation.author, selectedCitation.institution, citationLabel(selectedCitation.sourceType, "")].filter(Boolean).join(" · ") || "Source record"}</p><div className="citation-location"><span>Where to find it</span><strong>{selectedCitation.pageOrSection || "Specific location not recorded"}</strong></div><p className="section-label">Evidence from this location</p>{selectedExcerpt ? <blockquote>{selectedExcerpt}</blockquote> : <p className="citation-unavailable">A readable passage is unavailable for this citation. Check the original source before relying on it.</p>}<div className="citation-details"><span>{citationLabel(selectedCitation.sourceType || selectedCitation.kind, "Source record")}</span><span>{citationLabel(selectedCitation.evidenceType || selectedCitation.textualLayer, "Source material")}</span></div>{selectedCitation.url && <a href={selectedCitation.url} target="_blank" rel="noreferrer" className="editorial-link">Open original source <ArrowUpRight size={16} aria-hidden="true" /></a>}</>}</div></SheetContent></Sheet>
