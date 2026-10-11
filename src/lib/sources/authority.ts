@@ -71,7 +71,7 @@ const RESEARCH_HOST = /(?:^|\.)(?:res\.in|cnrs\.fr|mpg\.de|cern\.ch)$/i;
 const AUTHORITATIVE_HOSTS: Array<[RegExp, string]> = [
   [/(?:^|\.)(?:jstor\.org|muse\.jhu\.edu|sciencedirect\.com|pubmed\.ncbi\.nlm\.nih\.gov|projecteuclid\.org|ams\.org)$/i, "Academic journal platform"],
   [/(?:^|\.)(?:cambridge\.org|oup\.com|oxfordacademic\.com|press\.uchicago\.edu|journals\.uchicago\.edu|hup\.harvard\.edu|press\.princeton\.edu|yalebooks\.yale\.edu|mitpress\.mit\.edu|sunypress\.edu|ucpress\.edu|cup\.columbia\.edu)$/i, "University press"],
-  [/(?:^|\.)(?:springer\.com|nature\.com|wiley\.com|tandfonline\.com|sagepub\.com|brill\.com|degruyter\.com|royalsocietypublishing\.org|aps\.org|iop\.org|pnas\.org|science\.org|elsevier\.com)$/i, "Peer-reviewed publisher"],
+  [/(?:^|\.)(?:springer\.com|nature\.com|wiley\.com|tandfonline\.com|sagepub\.com|brill\.com|degruyter\.com|royalsocietypublishing\.org|aps\.org|aip\.org|iop\.org|pnas\.org|science\.org|elsevier\.com|mdpi\.com|ieee\.org)$/i, "Peer-reviewed publisher"],
   [/(?:^|\.)(?:nobelprize\.org|royalsociety\.org|insa\.nic\.in|ias\.ac\.in|bori\.ac\.in|asiaticsociety\.org\.in|lms\.ac\.uk|si\.edu)$/i, "Recognized research institute or academy"],
   [/(?:^|\.)(?:loc\.gov|bl\.uk|nationalarchives\.gov\.uk|nationalarchives\.nic\.in|abhilekh-patal\.in|indianculture\.gov\.in|ndl\.gov\.in|europeana\.eu|bnf\.fr)$/i, "National library or official archive"],
   [/(?:^|\.)(?:gretil\.sub\.uni-goettingen\.de|sanskrit\.inria\.fr|vedicheritage\.gov\.in|ignca\.gov\.in|perseus\.tufts\.edu)$/i, "Institutional primary-text repository"],
@@ -81,7 +81,8 @@ const CREDIBLE_HOSTS: Array<[RegExp, string]> = [
   [/(?:^|\.)(?:britannica\.com|encyclopedia\.com|oxfordreference\.com|iep\.utm\.edu|worldhistory\.org)$/i, "Established reference work"],
   [/(?:^|\.)(?:archive\.org|hathitrust\.org|gutenberg\.org|wikisource\.org)$/i, "Digital library of published works"],
   [/(?:^|\.)(?:belurmath\.org|sriaurobindoashram\.org|advaitaashrama\.org|visvabharati\.ac\.in|tagoreweb\.in)$/i, "Institution that preserves this figure's works"],
-  [/(?:^|\.)(?:britishmuseum\.org|metmuseum\.org|vam\.ac\.uk|nationalmuseumindia\.gov\.in|csmvs\.in)$/i, "Museum"],
+  [/(?:^|\.)(?:britishmuseum\.org|metmuseum\.org|vam\.ac\.uk|nationalmuseumindia\.gov\.in|csmvs\.in|smithsonianmag\.com|sciencehistory\.org)$/i, "Museum or museum publication"],
+  [/(?:^|\.)(?:ethw\.org)$/i, "Professional society history archive"],
 ];
 
 const AUTHORITATIVE_NAME = /\b(?:universit(?:y|ies)|college|government|ministry|department of|president of india|press information bureau|national (?:archives?|library)|academy of sciences|royal society|research (?:institute|organisation|organization|cent(?:re|er))|institute of (?:science|technology)|iit\b|indian institute|gazetteers?|nobelprize|ignca)\b/i;

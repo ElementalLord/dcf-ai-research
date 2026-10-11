@@ -3,7 +3,7 @@ import { GoogleGenAI } from "@google/genai";
 import { boundedProviderCall, classifyProviderError, googleGroundingCircuit } from "@/lib/corpus/provider-health";
 import { GENERATION_MODEL } from "@/lib/corpus/gemini";
 import type { RetrievedPassage } from "@/lib/corpus/types";
-import { inspectSearchSource, isGoogleGroundingRedirect, readGroundedExcerpt, sourcePriority } from "./search-credibility";
+import { inspectSearchSource, isGoogleGroundingRedirect, readGroundedExcerpt, sourceAccess, sourcePriority } from "./search-credibility";
 import { recordDiscoveredSource, searchPolicyDecision, type SearchPolicy } from "./search-policy";
 import { loadActiveSourceRules } from "./source-registry";
 import { answerIntent } from "@/lib/ask/evidence-priority";
@@ -117,24 +117,38 @@ export async function searchWithGoogleGrounding(question: string, personalityId:
     const metadata = response.candidates?.[0]?.groundingMetadata;
     const candidates = groundedPassages(response, personalityId, personalityName, true);
     const inspected = new Map<string, ReturnType<typeof inspectSearchSource>>();
+    const outcome = { candidates: candidates.length, notCredible: 0, blocked: new Set<string>(), unreadable: 0, unsupported: 0 };
     const admitted = await Promise.all(candidates.map(async (item) => {
       const url = item.sourceUrl;
       if (!url || (!isGoogleGroundingRedirect(url) && !searchPolicyDecision(url, policy).allowed)) return null;
       if (!inspected.has(url)) inspected.set(url, inspectSearchSource(url, policy, item.sourceTitle || "", preferred));
       const source = await inspected.get(url)!;
-      if (!source) return null;
+      if (!source) { outcome.notCredible += 1; return null; }
       const original = await readGroundedExcerpt(source, item.text, [personalityName, ...personalityAliases], policy);
-      if (!original) return null;
-      item = { ...item, text: original.text, sourceUrl: original.url, sourceInstitution: source.domain, sourceTitle: original.title, sourceType: source.category, lexicalScore: 1,
+      if (!original) {
+        const access = await sourceAccess(source.url);
+        if (access === "blocked") {
+          // The site refused the request. Keep it as a lead for a person to follow up; its search summary is not evidence.
+          if (!outcome.blocked.has(source.domain) && !searchPolicyDecision(source.url, policy).rule) await recordDiscoveredSource(source.url, item.sourceTitle || source.title, source.category);
+          outcome.blocked.add(source.domain);
+        } else if (access === "unreadable") outcome.unreadable += 1;
+        else outcome.unsupported += 1;
+        return null;
+      }
+      item = { ...item, text: original.text, pageOrSection: original.locator, sourceUrl: original.url, sourceInstitution: source.domain, sourceTitle: original.title, sourceType: source.category, lexicalScore: 1,
         textualLayer: "Original page retrieved after Google Search; interpret textual status from source" };
       // Sites already governed by an admin rule or the approved-source registry need no second review.
       if (source.category !== "approved source family" && !searchPolicyDecision(source.url, policy).rule) await recordDiscoveredSource(source.url, item.sourceTitle || source.title, source.category);
       return item;
     }));
-    const evidence = admitted.filter((item): item is RetrievedPassage => Boolean(item))
+    // Several findings can resolve to the same passage on the same page; keep it once.
+    const unique = new Map<string, RetrievedPassage>();
+    for (const item of admitted) if (item && !unique.has(`${item.sourceUrl}|${item.text}`)) unique.set(`${item.sourceUrl}|${item.text}`, item);
+    const evidence = [...unique.values()]
       .sort((a, b) => sourcePriority(b.sourceUrl || "", `${b.sourceTitle || ""} ${b.text}`, question, b.sourceType || "") - sourcePriority(a.sourceUrl || "", `${a.sourceTitle || ""} ${a.text}`, question, a.sourceType || ""))
       .slice(0, 8);
     const queries = metadata?.webSearchQueries?.length || 0;
+    console.info("grounding_admission", JSON.stringify({ ...outcome, blocked: [...outcome.blocked], admitted: evidence.map((item) => `${item.sourceUrl}${item.pageOrSection ? ` (${item.pageOrSection})` : ""}`) }));
     const result = { evidence, requests: 1, queries, latencyMs: Math.round(performance.now() - started), errorCategory: evidence.length ? null : "NO_CREDIBLE_GROUNDED_EVIDENCE" };
     googleGroundingCircuit.succeed();
     if (evidence.length) {

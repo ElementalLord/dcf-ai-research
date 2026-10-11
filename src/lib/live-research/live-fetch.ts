@@ -12,6 +12,7 @@ import type { ArchiveItemRecord } from "./verification";
 
 const MAX_LIVE_BYTES = 12 * 1024 * 1024;
 const MAX_REDIRECTS = 5;
+const MAX_PREVIEW_PDF_BYTES = 8 * 1024 * 1024;
 const ALLOWED_TYPES = ["text/html", "text/plain", "application/xhtml+xml", "application/pdf", "application/xml", "text/xml"];
 
 export type ApprovedFetchResult = {
@@ -37,9 +38,9 @@ type FetchOptions = {
   urlAllowed?: (url: string) => boolean;
 };
 
-async function readBounded(response: Response): Promise<Uint8Array> {
+async function readBounded(response: Response, limit = MAX_LIVE_BYTES): Promise<Uint8Array> {
   const declared = Number(response.headers.get("content-length") || 0);
-  if (declared > MAX_LIVE_BYTES) throw new CorpusError("CONTENT_TOO_LARGE", "The approved source exceeds the 12 MB live-fetch limit.", 413);
+  if (declared > limit) throw new CorpusError("CONTENT_TOO_LARGE", "The approved source exceeds the 12 MB live-fetch limit.", 413);
   if (!response.body) return new Uint8Array();
   const reader = response.body.getReader();
   const chunks: Uint8Array[] = [];
@@ -48,7 +49,7 @@ async function readBounded(response: Response): Promise<Uint8Array> {
     const { done, value } = await reader.read();
     if (done) break;
     total += value.byteLength;
-    if (total > MAX_LIVE_BYTES) {
+    if (total > limit) {
       await reader.cancel();
       throw new CorpusError("CONTENT_TOO_LARGE", "The approved source exceeded the 12 MB live-fetch limit.", 413);
     }
@@ -128,7 +129,7 @@ export async function fetchApprovedResource(rawUrl: string, options: FetchOption
 export async function fetchDiscoveryPreview(rawUrl: string, options: {
   fetchImpl?: typeof fetch;
   networkValidator?: (url: string) => Promise<URL>;
-} = {}): Promise<{ finalUrl: string; status: number; contentType: string; html: string }> {
+} = {}): Promise<{ finalUrl: string; status: number; contentType: string; html: string; pdf?: Uint8Array; tooLarge?: boolean }> {
   const validate = options.networkValidator || assertSafePublicUrl;
   let current = rawUrl;
   for (let hop = 0; hop <= MAX_REDIRECTS; hop++) {
@@ -139,7 +140,7 @@ export async function fetchDiscoveryPreview(rawUrl: string, options: {
     if (safe.protocol !== "https:") throw new CorpusError("UNSAFE_URL", "Discovery verification requires HTTPS.", 403);
     const response = await (options.fetchImpl || fetch)(safe, {
       redirect: "manual", signal: AbortSignal.timeout(12_000),
-      headers: { Accept: "text/html,application/xhtml+xml;q=0.9", "User-Agent": "DCF-AI-Research/1.0 (+candidate-verification)" },
+      headers: { Accept: "text/html,application/xhtml+xml;q=0.9,application/pdf;q=0.8", "User-Agent": "DCF-AI-Research/1.0 (+candidate-verification)" },
     });
     if (response.status >= 300 && response.status < 400) {
       if (hop === MAX_REDIRECTS) throw new CorpusError("FETCH_FAILED", "Candidate redirected too many times.", 502);
@@ -150,6 +151,14 @@ export async function fetchDiscoveryPreview(rawUrl: string, options: {
     }
     if (!response.ok) return { finalUrl: safe.toString(), status: response.status, contentType: response.headers.get("content-type") || "", html: "" };
     const contentType = (response.headers.get("content-type") || "").toLowerCase();
+    if (/^application\/pdf(;|$)/.test(contentType)) {
+      // A declared or actual size over the limit is never downloaded in full, and the bytes must really be a PDF.
+      const declared = Number(response.headers.get("content-length") || 0);
+      const pdf = declared > MAX_PREVIEW_PDF_BYTES ? null : await readBounded(response, MAX_PREVIEW_PDF_BYTES).catch(() => null);
+      if (!pdf) { await response.body?.cancel().catch(() => undefined); return { finalUrl: safe.toString(), status: response.status, contentType, html: "", tooLarge: true }; }
+      const isPdf = pdf.byteLength > 4 && pdf[0] === 0x25 && pdf[1] === 0x50 && pdf[2] === 0x44 && pdf[3] === 0x46;
+      return { finalUrl: safe.toString(), status: response.status, contentType, html: "", pdf: isPdf ? pdf : undefined };
+    }
     if (!/^(text\/html|application\/xhtml\+xml)(;|$)/.test(contentType)) {
       return { finalUrl: safe.toString(), status: response.status, contentType, html: "" };
     }

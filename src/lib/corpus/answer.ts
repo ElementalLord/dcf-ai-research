@@ -25,7 +25,7 @@ import { classifySourceAuthority } from "@/lib/sources/authority";
 import type { RetrievedEvidence } from "./types";
 
 const ABSTENTION = "The available sources do not contain enough evidence to answer that fully.";
-const NO_EVIDENCE_REPLY = /sources (?:currently available )?do not (?:provide|contain) (?:reliable|enough) evidence/i;
+const NO_EVIDENCE_REPLY = /sources (?:currently available )?do not (?:provide|contain) (?:reliable|enough) evidence|don't have enough evidence/i;
 
 async function answerQuestionInternal(
   question: string,
@@ -151,7 +151,7 @@ async function answerQuestionInternal(
       lens: lens ? { id: lens.id, label: lens.label } : null,
       structuredContext: { active_personality_ids: personalityIds, recent_named_entities: queryContext.subjects, recent_topic: queryContext.resolvedQuestion.slice(0, 200), recent_parameters: parameters.map((parameter) => parameter.code) },
       status: "abstained" as const,
-      answer: abstentionMessage(personality),
+      answer: abstentionMessage(personality, question),
       retrievedParameters: parameters,
       citations: [],
       evidence: [],
@@ -183,7 +183,7 @@ async function answerQuestionInternal(
       lens: lens ? { id: lens.id, label: lens.label } : null,
       structuredContext: { active_personality_ids: personalityIds, recent_named_entities: queryContext.subjects, recent_topic: queryContext.resolvedQuestion.slice(0, 200), recent_parameters: parameters.map((parameter) => parameter.code) },
       status: "abstained" as const,
-      answer: abstentionMessage(personality),
+      answer: abstentionMessage(personality, question),
       retrievedParameters: parameters,
       citations: [],
       evidence: [],
@@ -270,8 +270,9 @@ async function answerQuestionInternal(
         evidenceCharacters: bounded.context.length, promptCharacters: prompt.length }));
       incrementMetric(`synthesis_${debug.synthesisErrorCategory}`);
       debug.generationFallbackReason = "AI synthesis temporarily unavailable; showing verified evidence.";
-      // When a requested angle or historical setting is not in the evidence, loose excerpts would pose as an answer. Say so instead.
-      const unsupportedFraming = Boolean(lens || contextIntent) && error instanceof Error && /abstained/.test(error.message);
+      // The model read the evidence and found it does not answer a specific question. Loose excerpts would pose as an answer, so say so instead.
+      // Excerpts remain the fallback for a general profile, where passages about the person do answer, and whenever the model itself fails.
+      const unsupportedFraming = error instanceof Error && /abstained/.test(error.message) && (Boolean(lens || contextIntent) || !isBroadScope(queryContext.scope));
       if (unsupportedFraming) usedLocalSynthesis = false;
       generated = unsupportedFraming ? { text: ABSTENTION, interactionId: null } : await safeFallback();
     }
@@ -300,7 +301,7 @@ async function answerQuestionInternal(
     await writeAnswerCache(identity, personalityIds, debug.evidencePolicyMode || "test", { answer: cleanedAnswer, provider: debug.provider, model: debug.model });
   }
   const abstained = cleanedAnswer === ABSTENTION;
-  const answer = abstained ? abstentionMessage(personality) : cleanedAnswer;
+  const answer = abstained ? abstentionMessage(personality, question) : cleanedAnswer;
   const layers = [...new Set(bounded.selected.map((item) => item.textualLayer).filter(Boolean))];
   const conflicts = layers.length > 1
     ? [{ type: "TEXTUAL_LAYER_VARIANT", message: "Evidence from multiple textual layers was retrieved; the answer should preserve their distinctions.", layers }]

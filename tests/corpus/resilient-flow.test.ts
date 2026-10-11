@@ -262,6 +262,14 @@ describe("Ask orchestration", () => {
     expect(result.citations.length).toBeGreaterThan(0);
     expect(state.generate).toHaveBeenCalledTimes(1);
   });
+  it("says a connection is not established instead of dumping loose excerpts", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
+    state.generate.mockResolvedValue({ text: "The available sources do not contain enough evidence to answer that fully." });
+    const result = await answerQuestion("How did Vasistha influence Vishvamitra's teaching of Rama?", "p");
+    if (result.status !== "abstained") throw new Error(`expected an abstention, got ${result.status}`);
+    expect(result.answer).toMatch(/don't have enough evidence to establish that connection/);
+    expect(result.citations).toEqual([]);
+  });
   it("returns a cited fallback after both bounded synthesis attempts fail", async () => {
     vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
     state.generate.mockRejectedValue(new Error("503 provider overloaded"));

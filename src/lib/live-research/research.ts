@@ -44,7 +44,12 @@ async function fetchQuestionPassages(
     }
   }
   const original = await fetchApprovedResource(targetUrl, { rules: fetchRules, requireEvidenceApproval: true,
-    urlAllowed: searchPolicy ? (candidate) => searchPolicyDecision(candidate, searchPolicy).allowed : undefined });
+    urlAllowed: searchPolicy ? (candidate) => searchPolicyDecision(candidate, searchPolicy).allowed : undefined }).catch(async (error: unknown) => {
+    // A site that refuses the request is kept as a lead for review. Its search snippet is not evidence.
+    if (searchPolicy && fetchRules !== rules && error instanceof Error && /HTTP (?:401|402|403|429|451)\b/.test(error.message))
+      await recordDiscoveredSource(targetUrl, fetchRules[0].display_name, fetchRules[0].default_source_type || "institutional");
+    throw error;
+  });
   if (searchPolicy && !searchPolicyDecision(original.finalUrl, searchPolicy).allowed) return [];
   if (!original.bytes) return [];
   const sections = await extractRemoteBytes(original.bytes, original.contentType, original.finalUrl);
