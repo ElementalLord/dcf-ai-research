@@ -293,14 +293,16 @@ export default function AskClient({ personalities, loadError }: { personalities:
     <Sheet open={!!sourceId && !!selectedCitation} onOpenChange={open => { if (!open) setSourceId(null); }}><SheetContent className="source-sheet"><SheetHeader><SheetTitle>Source {selectedCitationNumber >= 0 ? selectedCitationNumber + 1 : ""}</SheetTitle><SheetDescription>{selectedCitation?.title || "Source detail"}</SheetDescription></SheetHeader><div className="source-sheet-body">{selectedCitation && selectedAuthority && <>
       <dl className="source-facts">
         <div><dt>Publisher</dt><dd>{[selectedCitation.institution, selectedCitation.author].filter(Boolean).join(" · ") || "Not recorded"}</dd></div>
-        <div><dt>Source type</dt><dd>{sourceTypeName(selectedCitation.sourceType, selectedLive)}{selectedAuthority.primary ? " · Primary source" : ""}</dd></div>
-        <div><dt>Authority</dt><dd><strong className={`authority-badge authority-${selectedAuthority.level}`}>{AUTHORITY_LABELS[selectedAuthority.level]}</strong><span>{selectedAuthority.basis ? `${selectedAuthority.basis}. ` : ""}{AUTHORITY_HELP[selectedAuthority.level]}</span></dd></div>
+        <div><dt>Kind of evidence</dt><dd>{selectedAuthority.primary ? <><strong>Primary source</strong><span>{PRIMARY_SOURCE_HELP}</span></> : sourceTypeName(selectedCitation.sourceType, selectedLive)}</dd></div>
+        <div><dt>Who published it</dt><dd><strong className={`authority-badge authority-${selectedAuthority.level}`}>{AUTHORITY_LABELS[selectedAuthority.level]}</strong><span>{selectedAuthority.primary && selectedAuthority.level === "general_web"
+          ? "The original text is the evidence. This copy of it is hosted on a website that is not a recognized institution, so compare it with an institutional edition when exact wording matters."
+          : `${selectedAuthority.basis ? `${selectedAuthority.basis.replace(/\.$/, "")}. ` : ""}${AUTHORITY_HELP[selectedAuthority.level]}`}</span></dd></div>
         <div><dt>Found in</dt><dd><strong>{selectedLive ? "Live research" : "DCF Library"}</strong><span>{selectedLive ? "Found on the web for this question. DCF has not reviewed it yet." : selectedCitation.approvalOrigin === "human_manual" || selectedCitation.approvalOrigin === "mentor_review" ? "Stored in the DCF Library and reviewed by a person." : "Stored in the DCF Library."}</span></dd></div>
         <div><dt>Where to find it</dt><dd>{selectedCitation.pageOrSection || "Specific location not recorded"}</dd></div>
       </dl>
       <h3 className="section-label source-section-heading">Evidence from this source</h3>
       {selectedExcerpt ? <blockquote>{selectedExcerpt}</blockquote> : <p className="citation-unavailable">A readable passage is unavailable for this citation. Check the original source before relying on it.</p>}
-      <p className="source-note">{selectedCitation.evidenceType ? <><strong>Kind of statement:</strong> {citationLabel(selectedCitation.evidenceType, "Source material")}. </> : null}{AUTHORITY_CAVEAT}{selectedAuthority.primary ? ` ${PRIMARY_SOURCE_HELP}` : ""}</p>
+      <p className="source-note">{selectedCitation.evidenceType ? <><strong>Kind of statement:</strong> {citationLabel(selectedCitation.evidenceType, "Source material")}. </> : null}{AUTHORITY_CAVEAT}</p>
       {selectedCitation.url && <a href={selectedCitation.url} target="_blank" rel="noreferrer" className="editorial-link">Open original source<span className="sr-only"> (opens in a new tab)</span> <ArrowUpRight size={16} aria-hidden="true" /></a>}
     </>}</div></SheetContent></Sheet>
   </main>;

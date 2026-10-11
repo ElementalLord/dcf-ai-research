@@ -769,3 +769,4 @@ body:has(.resources-page) { background: linear-gradient(180deg, #08142e 0%, #112
 .resources-page .resource-record-meta,.resources-page .resource-record-kind,.resources-page .resource-record-status,.resources-page .resource-area-tab .resource-tab-label small,.website-rule-name small,.website-evidence-control,.website-paused,.claim-source-picker .field-help,.website-scope-choices small,.resource-website-nav button span { font-size: 12px; }
 .search-rule small,.discovered-source small { white-space: normal; }
 .sheet-fields select:focus-visible,.search-sources-tools select:focus-visible,.search-policy-line select:focus-visible { outline: 2px solid #557366; outline-offset: 2px; }
+.search-source-dialog .sheet-fields .field-help { display: block; margin-top: 6px; color: #b9cbe8; font-size: 12px; font-weight: 400; text-transform: none; }

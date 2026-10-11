@@ -52,11 +52,11 @@ export const AUTHORITY_LABELS: Record<SourceAuthority, string> = {
 export const AUTHORITY_HELP: Record<SourceAuthority, string> = {
   authoritative: "Published by a government body, university, peer-reviewed publisher, official archive, or recognized research institute.",
   credible_secondary: "An established reference, cultural institution, or scholarly work that explains or summarizes the record.",
-  general_web: "From outside DCF's preferred institutions. It passed DCF's credibility checks, so read it with a little more care.",
+  general_web: "It comes from outside DCF's preferred institutions, so read it with a little more care.",
 };
 
 export const PRIMARY_SOURCE_HELP = "Original material such as a text, speech, letter, or document. It shows what was said or written, and can still reflect its author's point of view.";
-export const AUTHORITY_CAVEAT = "Authority describes who published a source. It does not by itself settle how certain each statement is.";
+export const AUTHORITY_CAVEAT = "The label above describes who published this source. It does not by itself settle how certain each statement is.";
 
 const RANK: Record<SourceAuthority, number> = { authoritative: 3, credible_secondary: 2, general_web: 1 };
 export function authorityRank(level: SourceAuthority | null | undefined): number {
@@ -124,7 +124,7 @@ export function classifySourceAuthority(input: AuthorityInput, rules: AuthorityR
   if (/scholar|academic|journal|peer/.test(type)) return { level: "credible_secondary", primary, basis: input.live ? "Scholarly publication details found on the page" : "Scholarly work reviewed for the DCF Library" };
   if (!input.live && input.institution && CREDIBLE_NAME.test(input.institution)) return { level: "credible_secondary", primary, basis: `Published by ${input.institution}` };
   if (!input.live && /institution/.test(type)) return { level: "credible_secondary", primary, basis: "Institutional publication reviewed for the DCF Library" };
-  return { level: "general_web", primary, basis: input.live ? "Passed DCF's credibility checks" : "Reviewed for the DCF Library; publisher is not a recognized institution" };
+  return { level: "general_web", primary, basis: input.live ? "Passed DCF's credibility checks" : "Reviewed for the DCF Library, but the publisher is not a recognized institution" };
 }
 
 const SOURCE_TYPE_LABELS: Record<string, string> = {

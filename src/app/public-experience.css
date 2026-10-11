@@ -368,7 +368,7 @@ body:has(.ai-page) .site-header { position: relative; z-index: 2; }
 .source-sheet-body .source-note strong { color: #f1f5ff; }
 
 /* Readability: citation markers and small labels stay legible and easy to activate. */
-.ai-page .chat-message-content .citation-ref { min-width: 18px; margin: 0 1px; padding: 2px 4px; color: #b9cef0; font: 600 11px/1 var(--font-geist-sans), sans-serif; text-align: center; transform: none; border-radius: 4px; }
+.ai-page .chat-message-content .citation-ref { position: relative; top: -.45em; min-width: 16px; margin: 0 1px; padding: 1px 3px; color: #b9cef0; font-size: 11px; font-weight: 600; line-height: 1; text-align: center; vertical-align: baseline; transform: none; border-radius: 4px; }
 .ai-page .chat-message-content button.citation-ref:hover { background: #ffffff1f; text-decoration: none; }
 .ai-page .chat-message-content .citation-ref:focus-visible { outline: 2px solid #d6c7ff; outline-offset: 1px; }
 .ai-page .chat-name,.ai-page .chat-composer .ask-keyboard-note { font-size: 12px; }
