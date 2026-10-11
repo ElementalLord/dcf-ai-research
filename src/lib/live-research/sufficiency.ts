@@ -2,8 +2,10 @@ import { normalizeForMatch } from "@/lib/corpus/text";
 import type { RetrievedEvidence } from "@/lib/corpus/types";
 import { canonicalizeTerms, type TermAliasRecord } from "@/lib/corpus/personality-config";
 import { classifyQuestionScope, isBroadScope, type QuestionScope } from "@/lib/ask/question-scope";
+import { detectLens, LENS_FRAMING_TERMS } from "@/lib/ask/lenses";
+import { CONTEXT_EVIDENCE, CONTEXT_FRAMING_TERMS, CONTEXT_GAP, detectContextIntent, PERIOD_EVIDENCE } from "@/lib/ask/historical-context";
 
-const IGNORED = new Set(["the", "and", "his", "her", "what", "when", "where", "which", "who", "why", "how", "does", "did", "is", "are", "was", "were", "about", "from", "with", "into", "between", "role", "play", "played", "major", "story", "explain", "relationship", "relation", "significance", "significant", "happen", "happens", "happened", "disagree", "disagreed", "disagreement"]);
+const IGNORED = new Set(["the", "and", "for", "its", "that", "this", "then", "his", "her", "what", "when", "where", "which", "who", "why", "how", "does", "did", "is", "are", "was", "were", "about", "from", "with", "into", "between", "role", "play", "played", "major", "story", "explain", "relationship", "relation", "significance", "significant", "happen", "happens", "happened", "disagree", "disagreed", "disagreement"]);
 
 function normalizeAliases(value: string, termAliases: TermAliasRecord[]): string {
   return canonicalizeTerms(value, termAliases)
@@ -56,7 +58,12 @@ export function assessEvidenceSufficiency(
       return named || exactReference;
     });
   }
-  const requested = concepts(question.replace(/^Selected (?:personality|comparison set):[^.]*\.\s*/i, ""), personalityAliases, termAliases);
+  const lens = detectLens(question);
+  const contextIntent = detectContextIntent(question);
+  // Framing words ("angle", "at the time") name how to answer, not a fact the evidence must contain.
+  const framing = new Set([...(lens ? LENS_FRAMING_TERMS : []), ...(contextIntent ? CONTEXT_FRAMING_TERMS : [])]);
+  const requested = concepts(question.replace(/^Selected (?:personality|comparison set):[^.]*\.\s*/i, ""), personalityAliases, termAliases)
+    .filter((term) => !framing.has(term) && !(lens && lens.ask.test(term)));
   const evidenceTokens = new Set(normalizeAliases(evidence.map((item) => [
     item.text,
     item.sourceTitle,
@@ -70,14 +77,14 @@ export function assessEvidenceSufficiency(
     const termStem = stem(term);
     return [...evidenceTokens].some((token) => token === term || (termStem.length >= 4 && stem(token) === termStem));
   });
-  const coverage = requested.length ? covered.length / requested.length : 0;
+  const coverage = requested.length ? covered.length / requested.length : lens || contextIntent ? 1 : 0;
   const direct = evidence.filter((item) => item.kind === "claim" || (item.lexicalScore || 0) > 0).length;
   const sources = new Set(evidence.map((item) => item.kind === "passage" ? item.sourceId : item.sourceTitle).filter(Boolean));
   const layers = new Set(evidence.map((item) => item.textualLayer).filter(Boolean));
   const represented = new Set(evidence.flatMap((item) => item.kind === "claim" ? [item.parameterCode].filter(Boolean) : item.parameterCodes || []));
   const comparative = /compare|differ|difference|across|contested|conflict/i.test(question)
     || /\b(?:sources|accounts|traditions|texts)\b.{0,50}\bdisagree/i.test(question);
-  const similarWork = /\b(?:similar|comparable|contemporar|anyone else|someone else)\b/i.test(question);
+  const similarWork = /\b(?:similar|comparable|contemporar|anyone else|someone else|who else)\b/i.test(question);
   const comparableEvidence = evidence.some((item) => /\b(?:similar|comparable|parallel|contemporar|independent(?:ly)?|another|other (?:scientists?|physicists?|researchers?|groups?|experiments?)|also (?:studied|worked|discovered|observed))\b/i.test(item.text));
   const developmental = /development|trace|transform|evolv/i.test(question);
   const complex = comparative || similarWork || developmental;
@@ -85,6 +92,11 @@ export function assessEvidenceSufficiency(
   if (evidence.length === 0 || direct === 0) return { sufficient: false, answerable: false, mode, coverage, reason: "No directly relevant approved local evidence.", missingDimensions: requested.length ? requested : ["direct evidence"] };
   if (similarWork && !comparableEvidence) return { sufficient: false, answerable: false, mode: "RESEARCH", coverage,
     reason: "The available evidence describes the main subject but does not identify comparable work by anyone else.", missingDimensions: ["contemporary comparable work"] };
+  // A requested angle needs evidence that actually speaks to it, not just evidence about the person.
+  if (lens && !evidence.some((item) => lens.evidence.test(item.text))) return { sufficient: false, answerable: direct > 0, mode: "EXPANDED", coverage,
+    reason: `Local evidence says little about the ${lens.label.toLowerCase()} angle.`, missingDimensions: [`${lens.label.toLowerCase()} perspective: ${lens.focus}`] };
+  if (contextIntent && contextIntent !== "contemporaries" && !evidence.some((item) => (contextIntent === "period" ? PERIOD_EVIDENCE : CONTEXT_EVIDENCE).test(item.text))) return { sufficient: false, answerable: direct > 0, mode: "EXPANDED", coverage,
+    reason: "Local evidence does not place this in its period.", missingDimensions: [CONTEXT_GAP[contextIntent]] };
   if (broadProfile) {
     const parameters = options.allParameters || [];
     const core = parameters.filter((parameter) => /role|textual|social|tapas|historical|philosophy|lineage|parampara/i.test(`${parameter.code} ${parameter.name}`));

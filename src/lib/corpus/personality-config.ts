@@ -65,7 +65,11 @@ export function canonicalizeQuestion(value: string, aliases: TermAliasRecord[]):
     let rewritten = ascii(segment);
     for (const item of [...aliases].sort((a, b) => b.alias.length - a.alias.length)) {
       const alias = ascii(item.alias).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      if (alias) rewritten = rewritten.replace(new RegExp(`(?<![\\p{L}\\p{N}])${alias}(?![\\p{L}\\p{N}])`, "giu"), item.canonicalTerm);
+      if (!alias) continue;
+      rewritten = rewritten.replace(new RegExp(`(?<![\\p{L}\\p{N}])${alias}(?![\\p{L}\\p{N}])`, "giu"), item.canonicalTerm);
+      // An alias that is part of the full name ("Vivekananda" in "Swami Vivekananda") must not double the name.
+      const doubled = item.canonicalTerm.replace(new RegExp(alias, "iu"), item.canonicalTerm);
+      if (doubled !== item.canonicalTerm) rewritten = rewritten.split(doubled).join(item.canonicalTerm);
     }
     return rewritten;
   }).join("");

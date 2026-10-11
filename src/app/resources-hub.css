@@ -764,3 +764,8 @@ body:has(.resources-page) { background: linear-gradient(180deg, #08142e 0%, #112
   .resource-help-group dl > div { display: block; }
   .resource-help-group dd { margin-top: 3px; }
 }
+
+/* Readability: secondary text in lists stays at 12px or larger. */
+.resources-page .resource-record-meta,.resources-page .resource-record-kind,.resources-page .resource-record-status,.resources-page .resource-area-tab .resource-tab-label small,.website-rule-name small,.website-evidence-control,.website-paused,.claim-source-picker .field-help,.website-scope-choices small,.resource-website-nav button span { font-size: 12px; }
+.search-rule small,.discovered-source small { white-space: normal; }
+.sheet-fields select:focus-visible,.search-sources-tools select:focus-visible,.search-policy-line select:focus-visible { outline: 2px solid #557366; outline-offset: 2px; }

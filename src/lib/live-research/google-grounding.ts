@@ -73,9 +73,9 @@ function basicGroundingUrl(raw: string): { url: string; institution: string } | 
   } catch { return null; }
 }
 
-export async function searchWithGoogleGrounding(question: string, personalityId: string, personalityName: string, depth: "normal" | "research" = "normal", policy: SearchPolicy = { mode: "credible_web", rules: [] }, gaps: string[] = [], personalityAliases: string[] = []): Promise<GroundingResult> {
+export async function searchWithGoogleGrounding(question: string, personalityId: string, personalityName: string, depth: "normal" | "research" = "normal", policy: SearchPolicy = { mode: "credible_web", rules: [] }, gaps: string[] = [], personalityAliases: string[] = [], emphasis = ""): Promise<GroundingResult> {
   const started = performance.now();
-  const cacheKey = `${GROUNDING_MODEL}|${personalityId}|${depth}|${question.normalize("NFKC").trim().toLowerCase()}|${gaps.join("|")}|${policy.mode}|${policy.rules.map((rule) => `${rule.domain}:${rule.status}`).join("|")}`;
+  const cacheKey = `${GROUNDING_MODEL}|${personalityId}|${depth}|${question.normalize("NFKC").trim().toLowerCase()}|${gaps.join("|")}|${emphasis}|${policy.mode}|${policy.rules.map((rule) => `${rule.domain}:${rule.status}`).join("|")}`;
   const cached = groundingCache.get(cacheKey);
   if (cached && cached.expires > Date.now()) return { ...cached.result, requests: 0, queries: 0, latencyMs: 0 };
   const empty = (errorCategory: string | null, requests = 0, queries = 0): GroundingResult => ({ evidence: [], requests, queries, latencyMs: Math.round(performance.now() - started), errorCategory });
@@ -110,7 +110,7 @@ export async function searchWithGoogleGrounding(question: string, personalityId:
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const response = await boundedProviderCall((abortSignal) => ai.models.generateContent({
       model: GROUNDING_MODEL || GENERATION_MODEL,
-      contents: `Use Google Search now to answer: ${question} (about ${personalityName}). ${focus}${preferred.length ? ` Search ${preferred.slice(0, 3).join(", ")} first for original relevant pages.` : " Search credible primary, university, scholarly, institutional, and reference sources."} ${gaps.length ? `Fill these gaps: ${gaps.slice(0, 2).join("; ")}.` : ""} Give ${depth === "research" ? "a few" : "two"} concise findings supported by searched pages. Distinguish documented fact, scientific result, interpretation, and traditional account as relevant. Exclude Wikipedia, blogs, forums, and unsourced summaries.${policy.mode === "approved_domains_only" ? ` Use only these allowed domains: ${preferred.join(", ")}.` : " You may discover other credible sources if the preferred sites lack direct support."}`,
+      contents: `Use Google Search now to answer: ${question} (about ${personalityName}). ${focus}${emphasis ? ` ${emphasis}` : ""}${preferred.length ? ` Search ${preferred.slice(0, 3).join(", ")} first for original relevant pages.` : " Search credible primary, university, scholarly, institutional, and reference sources."} ${gaps.length ? `Fill these gaps: ${gaps.slice(0, 2).join("; ")}.` : ""} Give ${depth === "research" ? "a few" : "two"} concise findings supported by searched pages. Distinguish documented fact, scientific result, interpretation, and traditional account as relevant. Exclude Wikipedia, blogs, forums, and unsourced summaries.${policy.mode === "approved_domains_only" ? ` Use only these allowed domains: ${preferred.join(", ")}.` : " You may discover other credible sources if the preferred sites lack direct support."}`,
       config: { tools: [{ googleSearch: {} }], abortSignal, maxOutputTokens: 1800,
         httpOptions: { retryOptions: { attempts: 1 } } },
     }), depth === "research" ? 18000 : 13000);
@@ -127,7 +127,8 @@ export async function searchWithGoogleGrounding(question: string, personalityId:
       if (!original) return null;
       item = { ...item, text: original.text, sourceUrl: original.url, sourceInstitution: source.domain, sourceTitle: original.title, sourceType: source.category, lexicalScore: 1,
         textualLayer: "Original page retrieved after Google Search; interpret textual status from source" };
-      if (!policy.rules.some((rule) => rule.domain === source.domain)) await recordDiscoveredSource(source.url, item.sourceTitle || source.title, source.category);
+      // Sites already governed by an admin rule or the approved-source registry need no second review.
+      if (source.category !== "approved source family" && !searchPolicyDecision(source.url, policy).rule) await recordDiscoveredSource(source.url, item.sourceTitle || source.title, source.category);
       return item;
     }));
     const evidence = admitted.filter((item): item is RetrievedPassage => Boolean(item))

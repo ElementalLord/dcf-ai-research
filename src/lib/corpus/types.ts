@@ -8,6 +8,9 @@ export type JsonValue =
 
 export type JsonObject = { [key: string]: JsonValue };
 
+/** Publisher standing, set once per request. Separate from claim certainty; see lib/sources/authority. */
+export type EvidenceAuthority = { level: "authoritative" | "credible_secondary" | "general_web"; primary: boolean; basis: string };
+
 export type DocumentSection = {
   title?: string | null;
   pageOrSection?: string | null;
@@ -61,6 +64,7 @@ export type RetrievedPassage = {
   lexicalScore?: number;
   semanticScore?: number;
   fusedScore?: number;
+  authority?: EvidenceAuthority;
 };
 
 export type RetrievedClaim = {
@@ -91,6 +95,7 @@ export type RetrievedClaim = {
   chunkId: string | null;
   textualLayer: string | null;
   fusedScore?: number;
+  authority?: EvidenceAuthority;
 };
 
 export type RetrievedEvidence = RetrievedPassage | RetrievedClaim;
@@ -116,9 +121,15 @@ export type Citation = {
   evidenceType?: string;
   epistemicType?: string | null;
   contractStatus?: string | null;
+  /** Who published the source. Never merged with epistemicType or certainty. */
+  authority?: EvidenceAuthority["level"];
+  authorityBasis?: string;
+  primarySource?: boolean;
 };
 
 export type RetrievalDebug = {
+  lens?: string | null;
+  contextIntent?: string | null;
   questionScope?: string;
   parametersRepresented?: string[];
   retrievedClaimCount?: number;

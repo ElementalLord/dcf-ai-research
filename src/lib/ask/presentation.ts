@@ -1,3 +1,5 @@
+import { classifySourceAuthority, type SourceAuthority } from "@/lib/sources/authority";
+
 export type AskCitation = {
   id: string;
   kind: "approved_claim" | "approved_source_passage" | "live_web_source";
@@ -14,7 +16,16 @@ export type AskCitation = {
   personalityName?: string;
   approvalOrigin?: string;
   evidenceType?: string;
+  authority?: SourceAuthority;
+  authorityBasis?: string;
+  primarySource?: boolean;
 };
+
+/** Publisher standing for a citation. Answers saved before standing was recorded are classified on the spot. */
+export function citationAuthority(citation: AskCitation): { level: SourceAuthority; basis: string; primary: boolean } {
+  if (citation.authority) return { level: citation.authority, basis: citation.authorityBasis || "", primary: Boolean(citation.primarySource) };
+  return classifySourceAuthority({ url: citation.url, sourceType: citation.sourceType, institution: citation.institution, live: citation.kind === "live_web_source" });
+}
 
 export type InlineAnswerPart =
   | { type: "text"; value: string }

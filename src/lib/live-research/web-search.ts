@@ -1,3 +1,4 @@
+import { pruneExpiredCache } from "@/lib/corpus/cache-prune";
 import "server-only";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { BraveSearchProvider, WebSearchError, groupSearchResultsByWork, normalizeSearchQuery, type WebSearchProvider, type WebSearchResult } from "./web-search-provider";
@@ -41,6 +42,7 @@ export async function cachedWebSearch(query: string, provider: WebSearchProvider
     expires_at: new Date(Date.now() + 24 * 60 * 60_000).toISOString(), hit_count: 0,
   }, { onConflict: "provider,normalized_query" });
   if (saveError) throw new Error("WEB_SEARCH_CACHE_UNAVAILABLE");
+  await pruneExpiredCache("web_search_cache");
   return { results, calls: 1, cacheHits: 0 };
 }
 

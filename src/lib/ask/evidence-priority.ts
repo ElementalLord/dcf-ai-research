@@ -1,4 +1,7 @@
 import type { RetrievedEvidence } from "@/lib/corpus/types";
+import { authorityRank } from "@/lib/sources/authority";
+import { detectLens } from "./lenses";
+import { CONTEXT_EVIDENCE, detectContextIntent } from "./historical-context";
 
 const stop = new Set(["what", "who", "why", "when", "where", "which", "does", "did", "was", "were", "are", "is", "the", "and", "for", "with", "about", "their", "his", "her", "major", "important", "previous", "topic", "selected", "personality"]);
 export type AnswerIntent = "identity" | "importance" | "actions" | "method" | "learning" | "relationship" | "transformation" | "teaching" | "historical" | "contested" | "specific";
@@ -40,9 +43,13 @@ const intentTerms: Record<AnswerIntent, RegExp> = {
   specific: /./,
 };
 
+const DATED = /\b(?:1[0-9]\d{2}|20\d{2}|\d{1,2}(?:st|nd|rd|th)[- ]century)\b/i;
+
 export function prioritizeEvidence(question: string, evidence: RetrievedEvidence[], limit: number): RetrievedEvidence[] {
   const intent = answerIntent(question);
-  const similarWork = /\b(?:similar|comparable|contemporar|anyone else|someone else)\b/i.test(question);
+  const similarWork = /\b(?:similar|comparable|contemporar|anyone else|someone else|who else)\b/i.test(question);
+  const lens = detectLens(question);
+  const contextIntent = detectContextIntent(question);
   const genericIntentWords = intent === "method" ? new Set(["make", "discovery", "discover"]) : intent === "learning" ? new Set(["students", "student", "learn", "lesson"]) : new Set<string>();
   const terms = [...new Set(question.toLowerCase().match(/[\p{L}\p{N}]{3,}/gu) || [])].filter((word) => !stop.has(word) && !genericIntentWords.has(word));
   const ranked = evidence.map((item, index) => {
@@ -58,7 +65,12 @@ export function prioritizeEvidence(question: string, evidence: RetrievedEvidence
     const noisePenalty = /research framework|should be stored|source set|portal metadata|metrical|grammatical|not enough evidence/i.test(text) ? 7 : 0;
     const episodePenalty = (intent === "identity" || intent === "importance") && /\b(?:episode|cycle|summons?|invit(?:es?|ed)|gather(?:s|ed)?|undertaking|rejected)\b/i.test(text) ? 5 : 0;
     const authority = item.kind === "claim" ? 2 : item.origin === "google_grounding" || item.origin === "brave_live" ? 1 : 0;
-    return { item, index, score: direct + central + historicalContext + consequence + comparisonFit + frameworkFit + authority - noisePenalty - episodePenalty };
+    // A requested angle or historical placement outweighs generic relevance, so the answer is built from that evidence.
+    const lensFit = lens && (lens.evidence.test(text) || lens.evidence.test(metadata)) ? 6 : 0;
+    const contextFit = contextIntent && CONTEXT_EVIDENCE.test(text) ? 5 : 0;
+    // Publisher standing breaks ties between otherwise comparable evidence; it never outranks relevance.
+    const standing = authorityRank(item.authority?.level) * 0.5;
+    return { item, index, score: direct + central + historicalContext + consequence + comparisonFit + frameworkFit + authority + lensFit + contextFit + standing - noisePenalty - episodePenalty };
   }).sort((a, b) => b.score - a.score || a.index - b.index);
   const selected: RetrievedEvidence[] = [];
   const perSource = new Map<string, number>();
@@ -74,5 +86,10 @@ export function prioritizeEvidence(question: string, evidence: RetrievedEvidence
   }
   const bestLive = ranked.find(({ item, score }) => item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live") && score > 0);
   if (bestLive && !selected.includes(bestLive.item) && selected.length) selected[selected.length - 1] = bestLive.item;
+  // A profile or significance answer should be able to say when; keep one dated record if the packet has room.
+  if ((intent === "identity" || intent === "importance") && selected.length >= 5 && !selected.some((item) => DATED.test(item.text))) {
+    const dated = ranked.find(({ item, score }) => score > 0 && DATED.test(item.text) && !selected.includes(item));
+    if (dated) selected[selected.length - (bestLive && selected.at(-1) === bestLive.item ? 2 : 1)] = dated.item;
+  }
   return selected;
 }

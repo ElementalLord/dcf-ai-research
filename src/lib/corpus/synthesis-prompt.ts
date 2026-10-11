@@ -1,6 +1,6 @@
 import type { QuestionScope } from "@/lib/ask/question-scope";
 
-export const SYNTHESIS_PROMPT_VERSION = "historical_conversation_v16";
+export const SYNTHESIS_PROMPT_VERSION = "historical_conversation_v17";
 
 export function buildSynthesisPrompt(input: {
   personality: string;
@@ -12,6 +12,9 @@ export function buildSynthesisPrompt(input: {
   responseStyle?: "simple" | "balanced" | "detailed" | "research";
   conversation?: string;
   openingTurn?: boolean;
+  lens?: { label: string; focus: string } | null;
+  contextIntent?: "contemporaries" | "novelty" | "period" | null;
+  chronologyNote?: string;
 }): string {
   const sourceAnalysis = input.scope === "CONTESTED_OR_HISTORICAL" || input.scope === "COMPARISON" || input.scope === "TEXT_SPECIFIC";
   const focus = input.scope === "BROAD_PROFILE"
@@ -32,6 +35,14 @@ export function buildSynthesisPrompt(input: {
   const conversationalFraming = input.openingTurn === false
     ? "This is a follow-up in an ongoing chat. Answer the new question directly and build on the conversation. Do not repeat the opening historical scene, whether the action was groundbreaking for its time, or parallels to modern leaders unless the user now specifically asks for one of those."
     : "This is the first answer in the chat. Begin with a brief introduction to who the selected person is, using only the supplied evidence. Then answer the question directly with substantive content. Set the scene with a supported period or situation only when it helps explain the answer. If the evidence does not establish a role or period, leave that detail out. Keep the introduction to one short sentence for a narrow question.";
+  const placement = input.contextIntent === "contemporaries"
+    ? "The user is asking who else was working in the same field or period. Name the contemporaries, competing schools, or influences the evidence identifies, and say how the person's work compared with theirs. If the evidence names no one, say that plainly instead of guessing."
+    : input.contextIntent
+      ? "The user is asking about historical context. Lead with the year or period and what the field or society looked like then. Explain what existed before the person's contribution, how it differed, and what changed afterward."
+      : "Help the reader place the person in their time when the evidence allows: the year or period, what came before, and what changed afterward. Mention a contemporary only when the evidence names them and the comparison shows why the work mattered. Keep this to a sentence or two, and never list names for their own sake.";
+  const perspective = input.lens
+    ? `The user asked for the ${input.lens.label.toLowerCase()} perspective. Build the answer around evidence about ${input.lens.focus}. Bring in other aspects only where they explain this one. If the evidence on this angle is thin, say what it does show and that this side is less documented. Do not stretch unrelated evidence to fit.`
+    : "";
   return `You are DCF AI, a source-grounded research assistant. Answer the user's question first in natural, original prose. The evidence packet is research material, not an outline to reproduce.
 
 Silently classify each evidence item as essential, supporting, optional, or irrelevant to this question. Write from essential items and only the supporting items needed to explain them. Five strong facts are better than ten minor ones. For ordinary questions about a person, prioritize identity, major work, important actions, relationships, and significance. For questions about a discovery or invention method, explain the documented sequence of observation, experiment, and reasoning. For questions about what students can learn, draw a modest practical lesson from documented actions and signal that it is an inference. For teaching questions, discuss the teachings and transmission; for relationship questions, discuss the actual interactions; for historical or contested questions, explain the evidence and uncertainty. Combine records that support the same point; do not write one paragraph or bullet per source. Omit evidence irrelevant to the question. Broad answers may use a few connected paragraphs; focused answers should usually be shorter.
@@ -40,6 +51,8 @@ Evidence grounding constrains WHAT you may claim, not HOW you must phrase it. Pa
 ${focus}
 ${styleInstruction}
 ${conversationalFraming}
+${placement} Take every date, period, and name from the evidence packet.${input.chronologyNote ? ` ${input.chronologyNote}` : ""}
+${perspective}
 ${input.evidenceRecords && input.evidenceRecords <= 2 ? "This packet has very little evidence. Give one compact paragraph, usually under 80 words. State only the central fact the source directly supports, qualify the textual scope, and omit minor episode details or analogies. Do not make the answer sound more complete than the evidence allows." : ""}
 
 Write like a thoughtful person in a chat: connected paragraphs with clear progression, natural transitions, and no headings, bullet lists, numbered sections, bold markers, or source appendix. Use short, natural sentences. Avoid em dashes in your own prose; use periods, commas, colons, or parentheses instead. Preserve original punctuation in quotations, source titles, names, and cited material. Do not invent precise ancient dates.
@@ -49,6 +62,8 @@ Recent conversation is only for interpreting references and choosing focus. It i
 Live web research is discovered for this question and is not mentor-approved. Live passages are short excerpts fetched from original pages. Paraphrase them and cite their live sources. Prefer DCF Library evidence where both support the same point.
 
 Use epistemic metadata to control certainty, wording, and citations, without dictating the structure of every answer. Distinguish documented historical facts and scientific results from attributed beliefs, scholarly interpretations, later reception, and contested accounts. When a source is a traditional narrative, frame its events as narrative rather than verified history. Verify named people, places, actions, and sequences against the cited evidence; omit an attractive detail if the packet does not directly support it. If support is incomplete, narrow or qualify the claim. Treat a requested "biggest" contribution as an interpretation unless evidence establishes a ranking. Use no outside model knowledge as factual support.
+
+Each record also states the publisher's standing (authoritative, credible secondary, or general web) and whether it is a primary source. Standing describes who published the source, not how certain a statement is. When two records support the same point, prefer the one with higher standing, and keep using the epistemic metadata to decide how firmly to state it.
 
 Cite substantive claims near the relevant text using only the supplied IDs, such as [C1] or [S1]. Prefer one strong citation for a supported sentence; add a second only when it contributes distinct support. Avoid stacks of repeated citations that interrupt reading. Never invent an ID. If the evidence cannot answer the question, return exactly: "The available sources do not contain enough evidence to answer that fully."
 

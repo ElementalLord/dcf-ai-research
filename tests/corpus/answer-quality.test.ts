@@ -99,7 +99,7 @@ describe("scope-aware grounded answers", () => {
     expect(gapSearchQueries("Rishi A", "What does Rigveda 3.33 say?", ["textual contribution", "lineage"]))
       .toEqual(["Rishi A textual contribution Rigveda 3.33", "Rishi A lineage Rigveda 3.33"]);
     const prompt = buildSynthesisPrompt({ personality: "Rishi A", question: "Who is Rishi A?", resolvedQuestion: "Who is Rishi A?", scope: "BROAD_PROFILE", evidenceContext: "[C1] Claim" });
-    expect(SYNTHESIS_PROMPT_VERSION).toBe("historical_conversation_v16");
+    expect(SYNTHESIS_PROMPT_VERSION).toBe("historical_conversation_v17");
     expect(prompt).toContain("Avoid stacks of repeated citations");
     expect(prompt).toContain("silently review");
     expect(prompt).toContain("using only the supplied IDs");

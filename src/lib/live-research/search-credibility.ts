@@ -6,6 +6,7 @@ import { searchPolicyDecision, type SearchPolicy } from "./search-policy";
 import { assertSafePublicUrl } from "@/lib/corpus/security";
 import { normalizeForMatch } from "@/lib/corpus/text";
 import { readableEvidence } from "@/lib/corpus/readable-evidence";
+import { classifySourceAuthority } from "@/lib/sources/authority";
 
 const lowQualityHost = /(?:^|\.)(?:quora\.com|reddit\.com|pinterest\.[a-z.]+|blogspot\.[a-z.]+|medium\.com|wikipedia\.org|facebook\.com|instagram\.com|tiktok\.com|brainyquote\.com|goodreads\.com)$/i;
 const institutionalHost = /(?:^|\.)(?:edu|gov|ac\.[a-z]{2}|edu\.[a-z]{2}|gov\.[a-z]{2}|jstor\.org|cambridge\.org|oup\.com|oxfordacademic\.com|springer\.com|nature\.com|muse\.jhu\.edu|wiley\.com|tandfonline\.com|sagepub\.com|nobelprize\.org|ignca\.gov\.in|vedicheritage\.gov\.in|gretil\.sub\.uni-goettingen\.de|archive\.org|britannica\.com)$/i;
@@ -17,20 +18,37 @@ export function sourcePriority(rawUrl: string, title: string, question: string, 
   const terms = normalizeForMatch(question).split(" ").filter((term) => term.length >= 4 && !supportStop.has(term));
   const normalizedTitle = normalizeForMatch(title);
   const relevance = terms.length ? terms.filter((term) => normalizedTitle.includes(term)).length / terms.length : 0;
-  const tier = category === "trusted" || /(?:^|\.)(?:edu|gov|ac\.[a-z]{2}|edu\.[a-z]{2}|gov\.[a-z]{2})$/i.test(host) ? 3
-    : institutionalHost.test(host) || /scholarly|academic|primary|institutional/i.test(category) ? 2
-      : /britannica\.com$/i.test(host) ? 1 : 0;
+  // Search widely, then rank by who published the page: authoritative first, general web last.
+  const level = category === "trusted" ? "authoritative" : classifySourceAuthority({ url: rawUrl, sourceType: category, live: true }).level;
+  const tier = level === "authoritative" ? 3 : level === "credible_secondary" || institutionalHost.test(host) || /scholarly|academic|primary|institutional/i.test(category) ? 2 : 0;
   return relevance * 8 + tier * 2;
 }
 
 export type CredibleSource = { url: string; domain: string; category: string; title: string };
+
+type Preview = Awaited<ReturnType<typeof fetchDiscoveryPreview>>;
+const previewCache = new Map<string, { expires: number; preview: Promise<Preview | null> }>();
+/** Several grounded statements usually cite the same page; fetch each page once and share it briefly. */
+function cachedPreview(url: string): Promise<Preview | null> {
+  const now = Date.now();
+  const hit = previewCache.get(url);
+  if (hit && hit.expires > now) return hit.preview;
+  if (previewCache.size >= 40) previewCache.delete(previewCache.keys().next().value!);
+  // A failed fetch is not remembered, so a transient error does not hide the page for later questions.
+  const preview = fetchDiscoveryPreview(url).catch(() => null).then((result) => {
+    if (!result || result.status !== 200) previewCache.delete(url);
+    return result;
+  });
+  previewCache.set(url, { expires: now + 5 * 60_000, preview });
+  return preview;
+}
 
 const supportStop = new Set(["the", "and", "for", "with", "from", "that", "this", "his", "her", "their", "which", "into", "also", "about", "according", "tradition", "narrative", "source", "sources", "text", "texts"]);
 
 /** Google selects a page and topic. Only a matching excerpt fetched from the
  * original page becomes evidence; the model's search summary stays discovery. */
 export async function readGroundedExcerpt(source: CredibleSource, statement: string, aliases: string[], policy: SearchPolicy): Promise<{ text: string; title: string; url: string } | null> {
-  const preview = await fetchDiscoveryPreview(source.url).catch(() => null);
+  const preview = await cachedPreview(source.url);
   if (!preview?.html || preview.status !== 200 || !searchPolicyDecision(preview.finalUrl, policy).allowed) return null;
   const $ = cheerio.load(preview.html);
   $("script,style,nav,footer,header").remove();
@@ -94,7 +112,7 @@ export async function inspectSearchSource(rawUrl: string, policy: SearchPolicy, 
   }
   // Unknown domains are inspected at their original page. The preview uses the
   // same bounded HTTPS, redirect, and public-network checks as discovery.
-  const preview = await fetchDiscoveryPreview(url).catch(() => null);
+  const preview = await cachedPreview(url);
   if (!preview || preview.status !== 200 || !searchPolicyDecision(preview.finalUrl, policy).allowed) return null;
   const finalHost = new URL(preview.finalUrl).hostname;
   if (lowQualityHost.test(finalHost)) return null;

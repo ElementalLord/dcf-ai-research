@@ -53,6 +53,8 @@ export async function loadSearchPolicy(): Promise<SearchPolicy> {
 export async function recordDiscoveredSource(rawUrl: string, title: string, category: string) {
   try {
     const url = new URL(canonicalResearchUrl(rawUrl));
-    await supabaseAdmin.from("discovered_search_sources").upsert({ domain: url.hostname, example_url: url.toString(), display_name: title.slice(0, 200), category }, { onConflict: "domain", ignoreDuplicates: true });
+    // One row per site: "www.example.org" and "example.org" are the same publisher.
+    const domain = url.hostname.replace(/^www\./, "");
+    await supabaseAdmin.from("discovered_search_sources").upsert({ domain, example_url: url.toString(), display_name: title.slice(0, 200), category }, { onConflict: "domain", ignoreDuplicates: true });
   } catch { /* Discovery tracking cannot block an answer. */ }
 }

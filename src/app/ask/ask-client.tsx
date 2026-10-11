@@ -7,12 +7,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { MysticBackdrop } from "@/components/mystic-backdrop";
-import { answerBlocks, isIncompleteQuestion, isUnusableStoredAnswer, type AskCitation, type InlineAnswerPart } from "@/lib/ask/presentation";
+import { answerBlocks, citationAuthority, isIncompleteQuestion, isUnusableStoredAnswer, type AskCitation, type InlineAnswerPart } from "@/lib/ask/presentation";
+import { AUTHORITY_CAVEAT, AUTHORITY_HELP, AUTHORITY_LABELS, PRIMARY_SOURCE_HELP, sourceTypeName } from "@/lib/sources/authority";
 import { fetchJsonWithTimeout } from "@/lib/client/fetch-json";
 import { readableEvidence } from "@/lib/corpus/readable-evidence";
 
-export type Personality = { id: string; canonical_name: string };
-type Result = { question: string; resolvedQuestion?: string; personality: string; answer: string; citations?: AskCitation[]; status?: string };
+export type Personality = { id: string; canonical_name: string; lenses?: Array<{ id: string; label: string }> };
+type Result = { question: string; resolvedQuestion?: string; personality: string; answer: string; citations?: AskCitation[]; status?: string; lens?: { id: string; label: string } | null };
 type Style = "simple" | "balanced" | "detailed" | "research";
 type ResizeAxis = "width" | "height";
 type ResizeSession = { axis: ResizeAxis; pointerId: number; startX: number; startY: number; width: number; height: number };
@@ -92,7 +93,16 @@ export default function AskClient({ personalities, loadError }: { personalities:
   const selectedCitation = sourceId ? turns[Number(sourceId.split(":")[0])]?.citations?.find(citation => citation.id === sourceId.split(":")[1]) : undefined;
   const selectedCitationNumber = sourceId ? (turns[Number(sourceId.split(":")[0])]?.citations?.findIndex(citation => citation.id === sourceId.split(":")[1]) ?? -1) : -1;
   const selectedExcerpt = readableEvidence(selectedCitation?.excerpt);
-  const person = personalities.find(item => item.id === personId)?.canonical_name || "a person";
+  const selectedLive = selectedCitation?.kind === "live_web_source";
+  const selectedAuthority = selectedCitation ? citationAuthority(selectedCitation) : null;
+  const personRecord = personalities.find(item => item.id === personId);
+  const person = personRecord?.canonical_name || "a person";
+  const lenses = personRecord?.lenses || [];
+  // Follow-ups rely on the conversation for the name, so they read the way a person would ask them.
+  const explore = turns.length
+    ? [{ label: "In its time", ask: "How was that significant for its time?" }, { label: "Who else?", ask: "Who else was doing similar work at the time?" },
+      ...lenses.map(lens => ({ label: `${lens.label} angle`, ask: `What about the ${lens.label.toLowerCase()} angle?` }))]
+    : lenses.map(lens => ({ label: `${lens.label} angle`, ask: `Explain ${person} from the ${lens.label.toLowerCase()} angle.` }));
   const styleLabel = styles.find(item => item.value === style)?.label || "Balanced";
   const chatWidthMax = Math.max(CHAT_MIN_WIDTH, viewportWidth - 24);
   const displayedWidth = Math.min(chatWidth, chatWidthMax);
@@ -223,7 +233,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
     try {
       const { response, payload } = await fetchJsonWithTimeout<Result>("/api/ask", {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ personalityId: personId, question: question.trim(), responseStyle: style, history: turns.filter(turn => !isUnusableStoredAnswer(turn.answer, turn.status)).slice(-4).map(turn => ({ question: turn.question.slice(0, 1000), resolvedQuestion: turn.resolvedQuestion?.slice(0, 2000), answer: turn.status === "extractive_fallback" ? undefined : turn.answer.replace(/\[[CS]\d+\]/g, "").slice(0, 800), citedConcepts: (turn.citations || []).slice(0, 4).map(citation => citation.title.slice(0, 120)).filter(title => title.trim().length >= 2) })) }),
+        body: JSON.stringify({ personalityId: personId, question: question.trim(), responseStyle: style, history: turns.filter(turn => !isUnusableStoredAnswer(turn.answer, turn.status)).slice(-4).map(turn => ({ question: turn.question.slice(0, 1000), resolvedQuestion: turn.resolvedQuestion?.slice(0, 2000), answer: turn.status === "extractive_fallback" || turn.status === "abstained" ? undefined : turn.answer.replace(/\[[CS]\d+\]/g, "").slice(0, 800), citedConcepts: (turn.citations || []).slice(0, 4).map(citation => citation.title.slice(0, 120)).filter(title => title.trim().length >= 2) })) }),
       }, 120000);
       if (!response.ok || !payload.answer?.trim()) throw new Error("ask_failed");
       setConversations(current => ({ ...current, [personId]: [...(current[personId] || []), payload].slice(-12) }));
@@ -250,11 +260,11 @@ export default function AskClient({ personalities, loadError }: { personalities:
             <SelectContent className="ai-select-content">{personalities.map(item => <SelectItem key={item.id} value={item.id}>{item.canonical_name}</SelectItem>)}</SelectContent>
           </Select>
         </label>{turns.length > 0 && <button className="chat-new" type="button" onClick={() => { setConversations(current => ({ ...current, [personId]: [] })); setSourceId(null); setError(""); input.current?.focus(); }} disabled={loading}><RotateCcw size={14} aria-hidden="true" /> New chat</button>}</div>
-        <div ref={chatThread} className="chat-thread" aria-label={`Conversation about ${person}`}>
+        <div ref={chatThread} className="chat-thread" role="log" aria-live="polite" tabIndex={0} aria-label={`Conversation about ${person}`}>
           {!turns.length && !pendingQuestion && <div className="chat-welcome"><span className="chat-avatar" aria-hidden="true"><Sparkles size={19}/></span><div><p className="chat-name">DCF</p><p>Hi! What would you like to know about {person}? Start anywhere.</p></div></div>}
           {turns.map((turn, turnIndex) => <div className="chat-exchange" key={`${personId}:${turnIndex}`}>
             <div className="chat-message chat-message-user"><span className="chat-name">You</span><p>{turn.question}</p></div>
-            <article className="chat-message chat-message-assistant"><span className="chat-avatar" aria-hidden="true"><Sparkles size={17}/></span><div className="chat-message-content"><span className="chat-name">DCF</span>{isUnusableStoredAnswer(turn.answer, turn.status)
+            <article className="chat-message chat-message-assistant"><span className="chat-avatar" aria-hidden="true"><Sparkles size={17}/></span><div className="chat-message-content"><span className="chat-name">DCF{turn.lens && <span className="chat-lens-tag">{turn.lens.label} angle</span>}</span>{isUnusableStoredAnswer(turn.answer, turn.status)
               ? <div className="chat-repair"><p>{isIncompleteQuestion(turn.question) ? "That question stopped partway through. Finish it below and I can give you a useful answer." : !turn.answer.trim() ? "That earlier reply was empty. Ask it again for a complete answer." : "That earlier reply pulled in page text instead of answering. Ask it again for a fresh response."}</p><button type="button" onClick={() => { setQuestion(isIncompleteQuestion(turn.question) ? `${turn.question.trim()} ` : turn.question); input.current?.focus(); }}>{isIncompleteQuestion(turn.question) ? "Finish question" : "Ask again"}<ArrowRight size={14} aria-hidden="true" /></button></div>
               : <Answer answer={turn.answer} show={id => setSourceId(`${turnIndex}:${id}`)} citations={turn.citations || []}/>}</div></article>
           </div>)}
@@ -262,6 +272,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
         </div>
         {error && <p role="alert" className="form-error chat-error">{error}</p>}
         {!turns.length && !loading && <div ref={suggestionsRef} className="chat-suggestions"><span>Try asking</span>{visibleSuggestions.map(value => <button type="button" key={value} onClick={() => { setQuestion(value); input.current?.focus(); }}>{value}<ArrowUpRight size={14} aria-hidden="true" /></button>)}</div>}
+        {!loading && explore.length > 0 && <div className="chat-explore" role="group" aria-label={turns.length ? "Explore further" : "Choose an angle"}><span>{turns.length ? "Explore further" : "Or choose an angle"}</span>{explore.map(item => <button type="button" key={item.label} title={item.ask} onClick={() => { setQuestion(item.ask); input.current?.focus(); }}>{item.label}</button>)}</div>}
       <form onSubmit={ask} className="ask-form chat-composer">
         <label className="question-label" htmlFor="question">Your question</label>
         <Textarea ref={input} id="question" value={question} onChange={event => setQuestion(event.target.value)} onKeyDown={event => {
@@ -279,6 +290,18 @@ export default function AskClient({ personalities, loadError }: { personalities:
       <div className="chat-resize-handle chat-resize-height" role="separator" aria-orientation="horizontal" aria-label="Resize chat height" aria-valuemin={CHAT_MIN_HEIGHT} aria-valuemax={CHAT_MAX_HEIGHT} aria-valuenow={displayedHeight} aria-valuetext={`${displayedHeight} pixels`} tabIndex={0} title="Drag to resize chat height" onPointerDown={event => beginResize("height", event)} onPointerMove={moveResize} onPointerUp={endResize} onPointerCancel={endResize} onKeyDown={event => resizeWithKeyboard("height", event)}><span /></div>
       </div>
     </div></div>
-    <Sheet open={!!sourceId && !!selectedCitation} onOpenChange={open => { if (!open) setSourceId(null); }}><SheetContent className="source-sheet"><SheetHeader><SheetTitle>Source {selectedCitationNumber >= 0 ? selectedCitationNumber + 1 : ""}</SheetTitle><SheetDescription>{selectedCitation?.title || "Source detail"}</SheetDescription></SheetHeader><div className="source-sheet-body">{selectedCitation && <><p className="section-label">{selectedCitation.kind === "live_web_source" ? "Live research" : "DCF Library"}</p><p className="source-meta">{[selectedCitation.author, selectedCitation.institution, citationLabel(selectedCitation.sourceType, "")].filter(Boolean).join(" · ") || "Source record"}</p><div className="citation-location"><span>Where to find it</span><strong>{selectedCitation.pageOrSection || "Specific location not recorded"}</strong></div><p className="section-label">Evidence from this location</p>{selectedExcerpt ? <blockquote>{selectedExcerpt}</blockquote> : <p className="citation-unavailable">A readable passage is unavailable for this citation. Check the original source before relying on it.</p>}<div className="citation-details"><span>{citationLabel(selectedCitation.sourceType || selectedCitation.kind, "Source record")}</span><span>{citationLabel(selectedCitation.evidenceType || selectedCitation.textualLayer, "Source material")}</span></div>{selectedCitation.url && <a href={selectedCitation.url} target="_blank" rel="noreferrer" className="editorial-link">Open original source <ArrowUpRight size={16} aria-hidden="true" /></a>}</>}</div></SheetContent></Sheet>
+    <Sheet open={!!sourceId && !!selectedCitation} onOpenChange={open => { if (!open) setSourceId(null); }}><SheetContent className="source-sheet"><SheetHeader><SheetTitle>Source {selectedCitationNumber >= 0 ? selectedCitationNumber + 1 : ""}</SheetTitle><SheetDescription>{selectedCitation?.title || "Source detail"}</SheetDescription></SheetHeader><div className="source-sheet-body">{selectedCitation && selectedAuthority && <>
+      <dl className="source-facts">
+        <div><dt>Publisher</dt><dd>{[selectedCitation.institution, selectedCitation.author].filter(Boolean).join(" · ") || "Not recorded"}</dd></div>
+        <div><dt>Source type</dt><dd>{sourceTypeName(selectedCitation.sourceType, selectedLive)}{selectedAuthority.primary ? " · Primary source" : ""}</dd></div>
+        <div><dt>Authority</dt><dd><strong className={`authority-badge authority-${selectedAuthority.level}`}>{AUTHORITY_LABELS[selectedAuthority.level]}</strong><span>{selectedAuthority.basis ? `${selectedAuthority.basis}. ` : ""}{AUTHORITY_HELP[selectedAuthority.level]}</span></dd></div>
+        <div><dt>Found in</dt><dd><strong>{selectedLive ? "Live research" : "DCF Library"}</strong><span>{selectedLive ? "Found on the web for this question. DCF has not reviewed it yet." : selectedCitation.approvalOrigin === "human_manual" || selectedCitation.approvalOrigin === "mentor_review" ? "Stored in the DCF Library and reviewed by a person." : "Stored in the DCF Library."}</span></dd></div>
+        <div><dt>Where to find it</dt><dd>{selectedCitation.pageOrSection || "Specific location not recorded"}</dd></div>
+      </dl>
+      <h3 className="section-label source-section-heading">Evidence from this source</h3>
+      {selectedExcerpt ? <blockquote>{selectedExcerpt}</blockquote> : <p className="citation-unavailable">A readable passage is unavailable for this citation. Check the original source before relying on it.</p>}
+      <p className="source-note">{selectedCitation.evidenceType ? <><strong>Kind of statement:</strong> {citationLabel(selectedCitation.evidenceType, "Source material")}. </> : null}{AUTHORITY_CAVEAT}{selectedAuthority.primary ? ` ${PRIMARY_SOURCE_HELP}` : ""}</p>
+      {selectedCitation.url && <a href={selectedCitation.url} target="_blank" rel="noreferrer" className="editorial-link">Open original source<span className="sr-only"> (opens in a new tab)</span> <ArrowUpRight size={16} aria-hidden="true" /></a>}
+    </>}</div></SheetContent></Sheet>
   </main>;
 }

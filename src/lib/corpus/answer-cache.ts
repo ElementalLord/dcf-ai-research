@@ -5,6 +5,7 @@ import type { Citation, RetrievedEvidence } from "./types";
 import { validateAnswerCitations } from "./synthesis-provider";
 import { SYNTHESIS_PROMPT_VERSION } from "./synthesis-prompt";
 import { GENERATION_MODEL } from "./gemini";
+import { pruneExpiredCache } from "./cache-prune";
 const hash = (value: unknown) => createHash("sha256").update(JSON.stringify(value)).digest("hex");
 export function normalizeAnswerQuestion(question: string) { return question.normalize("NFKC").toLowerCase().trim().replace(/[?!]+$/g, "").trim().replace(/\s+/g, " "); }
 export function answerCacheIdentity(scope: string[], question: string, policy: string, evidence: RetrievedEvidence[], citations: Citation[], responseStyle = "balanced") {
@@ -35,5 +36,6 @@ export async function writeAnswerCache(identity: ReturnType<typeof answerCacheId
       provider: answer.provider, model: answer.model,
       expires_at: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
     });
+    await pruneExpiredCache("answer_cache");
   } catch { /* Cache is optional. */ }
 }
