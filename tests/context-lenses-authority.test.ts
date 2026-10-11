@@ -29,6 +29,9 @@ describe("lenses", () => {
     expect(detectLens("What is the environmental relevance of this person's work?")?.id).toBe("environmental");
     expect(detectLens("What about the political angle?")?.id).toBe("political");
     expect(detectLens("Explain his institutional impact.")?.id).toBe("institutional");
+    expect(detectLens("What was her gender significance?")?.id).toBe("cultural");
+    expect(detectLens("How did her historical reputation develop?")?.id).toBe("cultural");
+    expect(detectLens("What was her legacy?")?.id).toBe("cultural");
   });
 
   it("answers generally when no single angle is requested", () => {
@@ -60,6 +63,12 @@ describe("lenses", () => {
     expect(off.missingDimensions[0]).toMatch(/institutional perspective/);
     const on = assessEvidenceSufficiency("Explain C. V. Raman's institutional impact.", [claim(2, "Raman founded the Raman Research Institute in Bangalore.")], aliases);
     expect(on.sufficient).toBe(true);
+  });
+
+  it("treats unusual-for-the-time wording as a request for context", () => {
+    const result = assessEvidenceSufficiency("Why was her role unusual for her time?", [claim(1, "In 1858, women worked in the artillery batteries during the British siege.")]);
+    expect(result.answerable).toBe(true);
+    expect(result.sufficient).toBe(true);
   });
 
   it("puts the requested angle in the synthesis prompt and leaves it out otherwise", () => {

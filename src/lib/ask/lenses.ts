@@ -46,9 +46,9 @@ export const LENSES: Lens[] = [
   { id: "economic", label: "Economic", ask: /\beconom(?:ic|ical|ically|y)\b/i,
     evidence: /econom|trade|revenue|tax|commerce|industr|agricultur|wealth|fund|financ|market/i,
     focus: "trade, revenue, livelihoods, funding, and economic consequences", retrievalTerms: ["economy", "trade", "revenue"] },
-  { id: "cultural", label: "Cultural", ask: /\bcultur(?:al|ally|e)\b/i,
-    evidence: /cultur|\bart|music|language|literature|tradition|heritage|festival|identity|temple|poet/i,
-    focus: "language, arts, tradition, identity, and cultural memory", retrievalTerms: ["culture", "tradition", "language", "heritage"] },
+  { id: "cultural", label: "Cultural", ask: /\bcultur(?:al|ally|e)\b|\bgender\b|\bhistorical (?:reputation|memory)\b|\blegacy\b/i,
+    evidence: /cultur|\bart|music|language|literature|tradition|heritage|festival|identity|temple|poet|gender|women|womanhood|memory|reputation|commemorat|portray/i,
+    focus: "language, arts, tradition, gender, identity, and later cultural memory", retrievalTerms: ["culture", "tradition", "language", "heritage", "gender", "memory"] },
   { id: "philosophical", label: "Philosophical", ask: /\bphilosoph(?:ical|ically|y)\b/i,
     evidence: /philosoph|vedanta|metaphys|ethic|dharma|doctrine|idea|thought|concept|reason|truth/i,
     focus: "ideas, arguments, and the schools of thought they belong to", retrievalTerms: ["philosophy", "ideas", "thought"] },
@@ -69,7 +69,7 @@ export function lensById(id: string | null | undefined): Lens | null {
 }
 
 /** Words that mark a question as asking for an angle rather than merely using an adjective. */
-const FRAMING = /\b(?:angle|lens|perspective|standpoint|viewpoint|point of view|side|impact|influen\w+|contribution|contributions|significance|relevance|role|legacy|importance|achievements?|reforms?|innovati\w+|dimension|aspect)\b/i;
+const FRAMING = /\b(?:angle|lens|perspective|standpoint|viewpoint|point of view|side|impact|influen\w+|contribution|contributions|significance|relevance|role|legacy|reputation|memory|importance|achievements?|reforms?|innovati\w+|dimension|aspect)\b/i;
 const ADVERB = /\b(?:scientifically|educationally|institutionally|socially|politically|militarily|administratively|economically|culturally|philosophically|spiritually|environmentally)\b/i;
 
 /** The single angle a question asks for, or null when it asks generally. */

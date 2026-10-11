@@ -1,0 +1,226 @@
+{
+  "personalityId": "26758dfe-ffe6-4c2c-b6c5-682353713af3",
+  "note": "Five distinct requested questions; affected questions were rechecked after passage context and shared vocabulary corrections. First two answers were checked before the final three contextual claims were added. Sources remain AI-curated and claims remain drafts, not human-approved.",
+  "results": [
+    {
+      "question": "Who was Rani Lakshmibai?",
+      "httpStatus": 200,
+      "status": "complete",
+      "answer": "Rani Lakshmibai was the ruler of the north Indian state of Jhansi who became a prominent leader in resistance against the British East India Company. Following the death of her husband, Raja Gangadhar Rao, she petitioned the Company to recognize her adopted son as heir to the throne [S1, S5]. Instead, the British annexed Jhansi in 1854 under their annexation doctrine, curtailing the sovereignty and revenue rights traditionally held by local rulers [S2, S7].\n\nDuring the uprising of 1857, she briefly managed Jhansi's district administration, collecting revenue and organizing local forces in dialogue with colonial authorities [S3]. Historical analysis indicates she did not instigate the initial rebellion [S4]. However, she ultimately led an active armed defense when British troops under commanders such as Hugh Rose besieged the fortress of Jhansi in 1858 [S6, S8]. \n\nEven her colonial opponents acknowledged her formidable leadership. Contemporary British military dispatches noted her generosity toward her troops, the resilience of the defenders under heavy fire, and an unshakeable fortitude that made her an exceptionally influential adversary [S8, S9].",
+      "wordCount": 173,
+      "citations": [
+        {
+          "id": "S1",
+          "title": "When People Revolt: 1857 and After",
+          "url": "https://ncert.nic.in/textbook/pdf/hess205.pdf"
+        },
+        {
+          "id": "S2",
+          "title": "From Trade to Territory",
+          "url": "https://ncert.nic.in/textbook/pdf/hess202.pdf"
+        },
+        {
+          "id": "S3",
+          "title": "The Sepoy Mutiny and the Revolt of 1857: The Rani of Jhansi",
+          "url": "https://ignca.gov.in/Asi_data/6048.pdf"
+        },
+        {
+          "id": "S4",
+          "title": "The Sepoy Mutiny and the Revolt of 1857: The Rani of Jhansi",
+          "url": "https://ignca.gov.in/Asi_data/6048.pdf"
+        },
+        {
+          "id": "S5",
+          "title": "History of Jhansi",
+          "url": "https://jhansi.nic.in/history/"
+        },
+        {
+          "id": "S6",
+          "title": "Hugh Rose's dispatch on the fortress and fortified city of Jhansi, 30 April 1858",
+          "url": "https://www.thegazette.co.uk/London/issue/22163"
+        },
+        {
+          "id": "S7",
+          "title": "When People Revolt: 1857 and After",
+          "url": "https://ncert.nic.in/textbook/pdf/hess205.pdf"
+        },
+        {
+          "id": "S8",
+          "title": "Hugh Rose's dispatch on the fortress and fortified city of Jhansi, 30 April 1858",
+          "url": "https://www.thegazette.co.uk/London/issue/22163"
+        },
+        {
+          "id": "S9",
+          "title": "Hugh Rose's dispatch on the capture of Calpee (Kalpi), 22 June 1858",
+          "url": "https://www.thegazette.co.uk/London/issue/22251/page/1595/data.pdf"
+        }
+      ],
+      "citationIdsValid": true,
+      "latencyMs": 4102
+    },
+    {
+      "question": "Why was she important?",
+      "httpStatus": 200,
+      "status": "complete",
+      "answer": "Rani Lakshmibai of Jhansi was an Indian ruler who became a prominent leader of resistance against British colonial expansion during the 1850s. Her importance emerged from her defense of her state's sovereignty following the death of her husband, Raja Gangadhar Rao [S1, S5]. The East India Company annexed Jhansi in 1854 through policy that refused to recognize her adopted son as heir, stripping the kingdom of its territory and independence [S1, S3].\n\nHer leadership became critical during the uprising of 1857 and 1858. Although modern historical analysis concludes she did not instigate the initial mutiny, colonial correspondence records that she stepped in to manage the district, oversee revenue, and maintain public order [S2, S6]. \n\nLakshmibai's enduring significance rests on her resolute military defiance when British forces besieged Jhansi under commanders such as Hugh Rose [S7]. Even her adversaries acknowledged her profound influence, describing her fortitude under pressure and generous treatment of her troops as qualities that made her an exceptionally formidable opponent [S9]. Through these actions, she transformed into a central symbol of armed resistance against British rule.",
+      "wordCount": 178,
+      "citations": [
+        {
+          "id": "S1",
+          "title": "When People Revolt: 1857 and After",
+          "url": "https://ncert.nic.in/textbook/pdf/hess205.pdf"
+        },
+        {
+          "id": "S2",
+          "title": "The Sepoy Mutiny and the Revolt of 1857: The Rani of Jhansi",
+          "url": "https://ignca.gov.in/Asi_data/6048.pdf"
+        },
+        {
+          "id": "S3",
+          "title": "From Trade to Territory",
+          "url": "https://ncert.nic.in/textbook/pdf/hess202.pdf"
+        },
+        {
+          "id": "S5",
+          "title": "History of Jhansi",
+          "url": "https://jhansi.nic.in/history/"
+        },
+        {
+          "id": "S6",
+          "title": "The Sepoy Mutiny and the Revolt of 1857: The Rani of Jhansi",
+          "url": "https://ignca.gov.in/Asi_data/6048.pdf"
+        },
+        {
+          "id": "S7",
+          "title": "Hugh Rose's dispatch on the fortress and fortified city of Jhansi, 30 April 1858",
+          "url": "https://www.thegazette.co.uk/London/issue/22163"
+        },
+        {
+          "id": "S9",
+          "title": "Hugh Rose's dispatch on the capture of Calpee (Kalpi), 22 June 1858",
+          "url": "https://www.thegazette.co.uk/London/issue/22251/page/1595/data.pdf"
+        }
+      ],
+      "citationIdsValid": true,
+      "latencyMs": 4208
+    },
+    {
+      "question": "What happened at Jhansi in 1857?",
+      "httpStatus": 200,
+      "status": "complete",
+      "answer": "Rani Lakshmibai was the ruler of Jhansi who became a prominent leader during the uprising of 1857 [S1, S2]. Before the conflict escalated, she had tried to protect her family's position by negotiating with the British East India Company, asking them to recognise her adopted son as the rightful heir to the kingdom following her husband's death [S1, S3].\n\nIn June 1857, violent unrest erupted in Jhansi as local forces turned against British rule. Contemporary colonial correspondence records that these troops killed European civil and military officers, clerks, and their families, an act of violence the Rani herself condemned in a letter shortly after the event [S4]. \n\nLater that summer, Jhansi faced external regional conflict as well. On August 10, the neighbouring state of Tehree (Orcha) invaded Jhansi, occupied territory, and laid siege to Jhansi fort [S5]. Rani Lakshmibai actively defended her realm, successfully expelling the invading Tehree forces [S5].",
+      "wordCount": 150,
+      "citations": [
+        {
+          "id": "S1",
+          "title": "When People Revolt: 1857 and After",
+          "url": "https://ncert.nic.in/textbook/pdf/hess205.pdf"
+        },
+        {
+          "id": "S2",
+          "title": "The Making of an Indian Nationalist Archive: Lakshmibai, Jhansi, and 1857",
+          "url": "https://www.cambridge.org/core/journals/journal-of-asian-studies/article/abs/making-of-an-indian-nationalist-archive-lakshmibai-jhansi-and-1857/74E72394E5186C2C2AE99C7021235A5D"
+        },
+        {
+          "id": "S3",
+          "title": "When People Revolt: 1857 and After",
+          "url": "https://ncert.nic.in/textbook/pdf/hess205.pdf"
+        },
+        {
+          "id": "S4",
+          "title": "The Sepoy Mutiny and the Revolt of 1857: The Rani of Jhansi",
+          "url": "https://ignca.gov.in/Asi_data/6048.pdf"
+        },
+        {
+          "id": "S5",
+          "title": "The Sepoy Mutiny and the Revolt of 1857: The Rani of Jhansi",
+          "url": "https://ignca.gov.in/Asi_data/6048.pdf"
+        }
+      ],
+      "citationIdsValid": true,
+      "latencyMs": 3464
+    },
+    {
+      "question": "Why was her role unusual for her time?",
+      "httpStatus": 200,
+      "status": "complete",
+      "answer": "Rani Lakshmibai was the Queen of Jhansi who became a prominent rebel leader against British rule during the uprising of 1857 [S4]. \n\nIn the period leading up to 1857, British colonial authorities increasingly intervened in local dynastic successions across India [S4, S5]. The East India Company had earlier accepted Gangadhar Rao as Raja of Jhansi after administrative crises left the kingdom in critical financial condition [S5]. However, when Gangadhar Rao died without a natural heir, the Company altered this relationship by refusing to recognize either his adopted prince or Rani Lakshmibai as regent, annexing the kingdom instead [S4]. \n\nHer role became deeply unusual because she directly challenged this colonial dispossession by assuming both political and military command [S4]. Rather than submitting to the annexation, she took control of the government, reorganized her forces, and actively led an army against the British [S4]. In a 19th-century context where armed military leadership by a dispossessed royal woman was uncommon, her open rebellion confounded colonial observers and later inspired Indian nationalist traditions, establishing her as an enduring icon of heroic resistance [S2, S3, S6].",
+      "wordCount": 181,
+      "citations": [
+        {
+          "id": "S2",
+          "title": "The Making of an Indian Nationalist Archive: Lakshmibai, Jhansi, and 1857",
+          "url": "https://www.cambridge.org/core/journals/journal-of-asian-studies/article/abs/making-of-an-indian-nationalist-archive-lakshmibai-jhansi-and-1857/74E72394E5186C2C2AE99C7021235A5D"
+        },
+        {
+          "id": "S3",
+          "title": "India's Aryan Queen: Colonial Ambivalence and Race in the Mutiny",
+          "url": "https://www.cambridge.org/core/books/abs/rani-of-jhansi/indias-aryan-queen-colonial-ambivalence-and-race-in-the-mutiny/BF99F8118BBBC5A579168CC8F7312BA8"
+        },
+        {
+          "id": "S4",
+          "title": "The Rani of Jhansi: Introduction",
+          "url": "https://www.cambridge.org/core/books/abs/rani-of-jhansi/introduction/30451DFC0ED016927CAFBE4F14088AEB"
+        },
+        {
+          "id": "S5",
+          "title": "History of Jhansi",
+          "url": "https://jhansi.nic.in/history/"
+        },
+        {
+          "id": "S6",
+          "title": "Foreword to Women Against the Raj: The Rani of Jhansi Regiment",
+          "url": "https://www.cambridge.org/core/books/abs/women-against-the-raj/foreword/C16B790570D74BA800D068874B0112D1"
+        }
+      ],
+      "citationIdsValid": true,
+      "latencyMs": 5263
+    },
+    {
+      "question": "How did her historical reputation develop?",
+      "httpStatus": 200,
+      "status": "complete",
+      "answer": "Rani Lakshmibai of Jhansi was a nineteenth-century leader and prominent rebel figure during the struggle against the British East India Company [S1, S6]. Following the annexation of Jhansi after the death of Raja Gangadhar Rao, she initially engaged in legal efforts against colonial rule and was later thrust into open regional conflict [S6, S7]. Her contemporary actions were marked by complex wartime circumstances, including documented correspondence where she condemned the violent killing of European officers, clerks, and their families by Jhansi forces, as well as military engagements to expel invading neighboring troops from Jhansi fort [S4, S5]. \n\nOver time, her cultural reputation underwent a deliberate transformation through varied literary traditions and national memory [S1]. Historiographical analyses show that a range of genres, extending from late nineteenth-century Marathi accounts to mid-twentieth-century Hindi literature, gradually configured her into an enduring icon of heroic Indian womanhood [S1]. These evolving cultural narratives shifted her legacy from regional conflict into a broader nationalist symbol of gendered courage and defiance [S1].\n\nThis memory was later actively invoked to inspire new forms of female political and military participation [S2]. During the mid-twentieth century, Subhas Chandra Bose drew directly upon the cultural resonance of the Rani of Jhansi to raise an all-women combat unit within the Indian National Army [S2, S3]. Formed in Southeast Asia and consisting largely of local housewives and plantation workers, the Rani of Jhansi Regiment demonstrated how her celebrated bravery was harnessed into twentieth-century anti-colonial identity and collective remembrance [S2, S3].",
+      "wordCount": 247,
+      "citations": [
+        {
+          "id": "S1",
+          "title": "The Making of an Indian Nationalist Archive: Lakshmibai, Jhansi, and 1857",
+          "url": "https://www.cambridge.org/core/journals/journal-of-asian-studies/article/abs/making-of-an-indian-nationalist-archive-lakshmibai-jhansi-and-1857/74E72394E5186C2C2AE99C7021235A5D"
+        },
+        {
+          "id": "S2",
+          "title": "Foreword to Women Against the Raj: The Rani of Jhansi Regiment",
+          "url": "https://www.cambridge.org/core/books/abs/women-against-the-raj/foreword/C16B790570D74BA800D068874B0112D1"
+        },
+        {
+          "id": "S3",
+          "title": "Foreword to Women Against the Raj: The Rani of Jhansi Regiment",
+          "url": "https://www.cambridge.org/core/books/abs/women-against-the-raj/foreword/C16B790570D74BA800D068874B0112D1"
+        },
+        {
+          "id": "S4",
+          "title": "The Sepoy Mutiny and the Revolt of 1857: The Rani of Jhansi",
+          "url": "https://ignca.gov.in/Asi_data/6048.pdf"
+        },
+        {
+          "id": "S5",
+          "title": "The Sepoy Mutiny and the Revolt of 1857: The Rani of Jhansi",
+          "url": "https://ignca.gov.in/Asi_data/6048.pdf"
+        },
+        {
+          "id": "S6",
+          "title": "Palace of Rani Lakshmi Bai",
+          "url": "https://jhansi.nic.in/others/"
+        },
+        {
+          "id": "S7",
+          "title": "History of Jhansi",
+          "url": "https://jhansi.nic.in/history/"
+        }
+      ],
+      "citationIdsValid": true,
+      "latencyMs": 4617
+    }
+  ]
+}

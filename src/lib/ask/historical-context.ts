@@ -32,7 +32,7 @@ export const CONTEXT_GAP: Record<ContextIntent, string> = {
 };
 
 /** Framing words for time carry no subject matter of their own. */
-export const CONTEXT_FRAMING_TERMS = ["time", "period", "era", "happening", "else", "doing", "groundbreaking", "innovative"];
+export const CONTEXT_FRAMING_TERMS = ["time", "period", "era", "happening", "else", "doing", "groundbreaking", "innovative", "unusual"];
 
 /** Ancient and traditional figures have no agreed dates; say so instead of inventing them. */
 export function chronologyGuidance(categorySlugs: Array<string | null | undefined>): string {
