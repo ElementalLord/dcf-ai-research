@@ -14,6 +14,7 @@ import { loadPersonalityConfiguration } from "./personality-context";
 import { normalizedAliases } from "./personality-config";
 import { resolveQuestionContext, type ConversationQuestion } from "@/lib/ask/query-context";
 import { abstentionMessage } from "@/lib/ask/messages";
+import { ensureOpeningIntro } from "@/lib/ask/opening-intro";
 import { buildSynthesisPrompt, SYNTHESIS_PROMPT_VERSION } from "./synthesis-prompt";
 import { isBroadScope } from "@/lib/ask/question-scope";
 import { answerIntent, hasDirectLiveIdentity, prioritizeEvidence } from "@/lib/ask/evidence-priority";
@@ -53,8 +54,7 @@ async function answerQuestionInternal(
       : await searchWithGoogleGrounding(queryContext.resolvedQuestion, id, configurations[index].canonicalName, options.responseStyle === "research" ? "research" : "normal", searchPolicy, googleGaps, local.personalityAliases);
     if (google.evidence.length) local.evidence.push(...google.evidence);
     const groundedDecision = assessEvidenceSufficiency(queryContext.resolvedQuestion, local.evidence, { personalityAliases: local.personalityAliases, termAliases: local.termAliases, allParameters: local.allParameters });
-    const independentGroundedSources = new Set(google.evidence.map((item) => item.sourceUrl)).size;
-    const googleUseful = google.evidence.length > 0 && groundedDecision.sufficient && (localDecision.sufficient || independentGroundedSources >= 2);
+    const googleUseful = google.evidence.length > 0 && groundedDecision.sufficient;
     const base = googleUseful ? local : await retrieveWithApprovedResearch(queryContext.resolvedQuestion, id, { ...retrievalOptions, initialRetrieval: local, searchPolicy });
     base.debug.localEvidenceBeforeSearch = localEvidenceCount;
     base.debug.googleGroundedSourcesReturned = new Set(google.evidence.map((item) => item.sourceUrl)).size;
@@ -69,7 +69,7 @@ async function answerQuestionInternal(
       base.debug.liveSourcesUsed = google.evidence.length;
     } else {
       base.debug.answerable = Boolean(base.debug.answerable || localDecision.answerable || localDecision.sufficient);
-      base.debug.liveSourcesUsed = 0;
+      base.debug.liveSourcesUsed = google.evidence.length;
     }
     if (!base.debug.answerable && hasDirectLiveIdentity(queryContext.resolvedQuestion, base.evidence)) {
       base.debug.answerable = true;
@@ -269,7 +269,8 @@ async function answerQuestionInternal(
   const guarded = generated.text.trim() === ABSTENTION || usedLocalSynthesis ? { answer: generated.text, notes: [] as string[] }
     : epistemicSafeguard(generated.text, bounded.selected.map((item) => item.kind === "claim" ? item : { text: item.text, textualLayer: item.textualLayer }));
   debug.epistemicSafeguardNotes = guarded.notes;
-  const cleanedAnswer = guarded.answer.trim();
+  const cleanedAnswer = !guarded.answer.trim() || guarded.answer.trim() === ABSTENTION ? ABSTENTION
+    : ensureOpeningIntro(guarded.answer.trim(), personality, bounded.selected, bounded.citations, !options.history?.length);
   if (!cached && !usedLocalSynthesis && cleanedAnswer !== ABSTENTION) {
     await writeAnswerCache(identity, personalityIds, debug.evidencePolicyMode || "test", { answer: cleanedAnswer, provider: debug.provider, model: debug.model });
   }

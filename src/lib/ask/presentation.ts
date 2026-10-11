@@ -41,6 +41,7 @@ export function isIncompleteQuestion(question: string): boolean {
 }
 
 export function isUnusableStoredAnswer(answer: string, status?: string): boolean {
+  if (!answer.trim()) return true;
   if (status !== "extractive_fallback" && !/skip to main content/i.test(answer)) return false;
   return /skip to main content|cookie preferences|privacy policy|related context:[^\n]*(?:doi:|lock describes)|\bdoi:\s*10\.\d{3,}/i.test(answer);
 }

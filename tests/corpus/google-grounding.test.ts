@@ -5,6 +5,7 @@ import { googleGroundingCircuit } from "@/lib/corpus/provider-health";
 const state = vi.hoisted(() => ({ generate: vi.fn() }));
 vi.mock("@google/genai", () => ({ GoogleGenAI: class { models = { generateContent: state.generate }; } }));
 vi.mock("@/lib/live-research/source-registry", () => ({ loadActiveSourceRules: vi.fn(async () => []) }));
+vi.mock("@/lib/supabase-admin", () => ({ supabaseAdmin: { from: () => ({ select: () => ({ eq: () => ({ limit: async () => ({ data: [], error: null }) }) }) }) } }));
 afterEach(() => { googleGroundingCircuit.succeed(); vi.unstubAllEnvs(); state.generate.mockReset(); });
 
 describe("Google grounding admission", () => {

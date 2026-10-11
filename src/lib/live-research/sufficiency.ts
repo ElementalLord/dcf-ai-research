@@ -93,11 +93,14 @@ export function assessEvidenceSufficiency(
     const enough = evidence.length >= 8 && (core.length ? representedCore >= Math.min(4, core.length) : represented.size >= 2) && sources.size >= 2;
     if (sources.size < 2) missing.push("independent approved source");
     if (evidence.length < 8 && missing.length === 0) missing.push("additional primary passage");
-    return { sufficient: enough, answerable: evidence.length >= 2, mode: enough ? "FAST" : "EXPANDED", coverage: core.length ? representedCore / core.length : Math.min(1, represented.size / 4),
+    return { sufficient: enough, answerable: direct > 0, mode: enough ? "FAST" : "EXPANDED", coverage: core.length ? representedCore / core.length : Math.min(1, represented.size / 4),
       reason: enough ? "Approved evidence spans multiple parameters and sources." : "The broad answer needs more parameter or source coverage.", missingDimensions: missing };
   }
   const missing = requested.filter((term) => !covered.includes(term));
-  if (coverage < 2 / 3) return { sufficient: false, answerable: direct >= 2 && sources.size >= 1, mode, coverage,
+  const missingDecisiveQualifier = missing.some((term) => /^(?:favorite|best|first|only|earliest|latest|greatest|biggest|most|least)$/.test(term));
+  if (missingDecisiveQualifier) return { sufficient: false, answerable: false, mode, coverage,
+    reason: "The available evidence does not establish the requested ranking or preference.", missingDimensions: missing };
+  if (coverage < 2 / 3) return { sufficient: false, answerable: direct > 0 && coverage >= 0.5, mode, coverage,
     reason: "Local passages may answer part of the question, but concept coverage is incomplete.", missingDimensions: missing };
   if (similarWork && sources.size < 2) return { sufficient: false, answerable: true, mode: "RESEARCH", coverage,
     reason: "Comparable work needs an independent source for a grounded comparison.", missingDimensions: ["independent source on comparable work"] };

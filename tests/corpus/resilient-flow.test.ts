@@ -8,6 +8,7 @@ import { recordAiCall, withRequestUsage } from "@/lib/corpus/usage";
 const state = vi.hoisted(() => ({
   caches: new Map<string, Record<string, unknown>>(), checkpoints: new Map<string, Record<string, unknown>>(),
   claims: [] as Record<string, unknown>[], chunks: [] as Record<string, unknown>[],
+  lexicalResultsRemaining: null as number | null,
   sequence: [] as string[], google: vi.fn(), originalFetch: vi.fn(), extract: vi.fn(), webDiscover: vi.fn(), webConfigured: false, rulesActive: true, started: [] as string[], finished: [] as string[], vectorRpc: vi.fn(), fetch: vi.fn(), discover: vi.fn(), generate: vi.fn(), embed: vi.fn(),
 }));
 vi.mock("@/lib/corpus/personality-context", () => ({ loadPersonalityConfiguration: vi.fn(async () => ({ personalityId: "p", canonicalName: "Vishvamitra", categoryId: "category", categorySlug: "rishi", categoryName: "Rishis", aliases: [{ alias: "Vishwamitra" }], termAliases: [] })) }));
@@ -40,7 +41,7 @@ function builder(table: string) {
         if (table === "approved_source_access") data = !state.rulesActive ? [] : [{ id: "rule", is_active: true, domain: "example.test", scope_type: "DOMAIN", include_subdomains: false, allow_live_fetch: true, evidence_use_status: "approved" }];
         if (table === "search_policy") data = { mode: "credible_web" };
         if (table === "search_source_rules") data = [];
-        if (table === "search_source_chunks_lexical") data = state.chunks;
+        if (table === "search_source_chunks_lexical") data = state.lexicalResultsRemaining === null || state.lexicalResultsRemaining-- > 0 ? state.chunks : [];
         if (table === "get_retrieval_inventory") data = { approvedEmbeddingCountForPersonality: 1 };
         if (table === "answer_cache" || table === "ai_work_checkpoints") {
           const store = table === "answer_cache" ? state.caches : state.checkpoints;
@@ -63,7 +64,7 @@ function passage(text: string) {
 }
 beforeEach(() => {
   state.caches.clear(); state.checkpoints.clear(); state.started.length = 0; state.finished.length = 0; state.sequence.length = 0; state.rulesActive = true;
-  state.chunks = []; state.webConfigured = false;
+  state.chunks = []; state.lexicalResultsRemaining = null; state.webConfigured = false;
   state.google.mockResolvedValue({ evidence: [], requests: 0, queries: 0, latencyMs: 0, errorCategory: "NOT_CONFIGURED" });
   state.originalFetch.mockResolvedValue({ bytes: new Uint8Array([1]), contentType: "text/html", finalUrl: "https://example.test/approved", access: { display_name: "Public primary text", default_textual_layer: "Epic narrative", default_source_type: "primary_text" } });
   state.extract.mockResolvedValue([{ title: "Valmiki Ramayana", pageOrSection: "Bala Kanda", text: "The narrative says Vishvamitra taught Rama Bala and Atibala." }]);
@@ -90,14 +91,26 @@ describe("Ask orchestration", () => {
     expect(result.evidence.some((item) => item.kind === "passage" && item.origin === "google_grounding")).toBe(true);
     expect(result.citations.some((item) => item.kind === "live_web_source")).toBe(true);
   });
-  it("answers from the corpus when Google fails and local evidence is sufficient", async () => {
+  it("answers a focused question from one verified search source", async () => {
+    state.claims = []; state.chunks = [];
+    state.google.mockResolvedValue({ evidence: [{ kind: "passage", id: "google:solo", chunkId: "google:solo", sourceId: "google:solo", text: "Vishvamitra taught Rama the Bala and Atibala mantras.", sectionTitle: null, pageOrSection: null, textualLayer: "Epic narrative", sourceTitle: "Ramayana teaching", sourceAuthor: null, sourceInstitution: "example.test", sourceUrl: "https://example.test/teaching", sourceType: "primary_text", sourceStatus: "discovered", origin: "google_grounding", lexicalScore: 1 }], requests: 1, queries: 1, latencyMs: 3, errorCategory: null });
+    const result = await answerQuestion("What did Vishvamitra teach Rama?", "p");
+    expect(result.status).not.toBe("abstained");
+    expect(result.debug.googleGroundedSourcesReturned).toBe(1);
+    expect(result.debug.liveSourcesUsed).toBeGreaterThan(0);
+    expect(state.webDiscover).not.toHaveBeenCalled();
+    expect(result.citations.some((item) => item.kind === "live_web_source")).toBe(true);
+  });
+  it("answers from the corpus without live search when local evidence is sufficient", async () => {
     state.google.mockResolvedValue({ evidence: [], requests: 1, queries: 0, latencyMs: 4, errorCategory: "TIMEOUT" });
     state.webConfigured = true;
     const result = await answerQuestion("Does the narrative describe Vishvamitra’s tapas?", "p");
     expect(result.status).not.toBe("abstained");
-    expect(result.debug.googleSearchErrorCategory).toBe("TIMEOUT");
+    expect(result.debug.googleSearchErrorCategory).toBeNull();
+    expect(result.debug.googleSearchRequests).toBe(0);
     expect(result.debug.webSearchCalls).toBe(0);
-    expect(state.webDiscover).toHaveBeenCalled(); // Brave backs up a failed Google step even when local evidence is answerable.
+    expect(state.google).not.toHaveBeenCalled();
+    expect(state.webDiscover).not.toHaveBeenCalled();
   });
   it("abstains honestly when both live paths fail and local evidence is insufficient", async () => {
     state.claims = [];
@@ -158,8 +171,9 @@ describe("Ask orchestration", () => {
     expect(state.sequence.slice(firstStart, firstFinish)).toEqual(expect.arrayContaining(["start:claims", "start:get_retrieval_inventory", "start:approved_source_access", "start:events", "start:relationships"]));
   });
   it("continues lexical retrieval after query embedding failure", async () => {
-    state.claims = []; state.chunks = [passage("Vishvamitra teaches Rama.")];
-    const result = await answerQuestion("What role did Vishvamitra play in Rama's story?", "p");
+    state.claims = []; state.chunks = [passage("Vishvamitra teaches Rama the Bala and Atibala mantras.")];
+    state.lexicalResultsRemaining = 1;
+    const result = await answerQuestion("What did Vishvamitra teach Rama?", "p");
     expect(state.embed).toHaveBeenCalled();
     expect(state.vectorRpc).not.toHaveBeenCalled();
     expect(result.status).toBe("extractive_fallback");

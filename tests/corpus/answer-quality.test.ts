@@ -4,6 +4,7 @@ import { profileEvidenceSalience, selectBroadEvidence } from "@/lib/corpus/reran
 import { assessEvidenceSufficiency } from "@/lib/live-research/sufficiency";
 import { gapSearchQueries } from "@/lib/live-research/gap-query";
 import { buildSynthesisPrompt, SYNTHESIS_PROMPT_VERSION } from "@/lib/corpus/synthesis-prompt";
+import { ensureOpeningIntro } from "@/lib/ask/opening-intro";
 import { renderExtractiveEvidence } from "@/lib/corpus/local-synthesis";
 import { answerIntent, prioritizeEvidence } from "@/lib/ask/evidence-priority";
 import type { Citation, RetrievedClaim, RetrievedPassage } from "@/lib/corpus/types";
@@ -98,7 +99,7 @@ describe("scope-aware grounded answers", () => {
     expect(gapSearchQueries("Rishi A", "What does Rigveda 3.33 say?", ["textual contribution", "lineage"]))
       .toEqual(["Rishi A textual contribution Rigveda 3.33", "Rishi A lineage Rigveda 3.33"]);
     const prompt = buildSynthesisPrompt({ personality: "Rishi A", question: "Who is Rishi A?", resolvedQuestion: "Who is Rishi A?", scope: "BROAD_PROFILE", evidenceContext: "[C1] Claim" });
-    expect(SYNTHESIS_PROMPT_VERSION).toBe("historical_conversation_v15");
+    expect(SYNTHESIS_PROMPT_VERSION).toBe("historical_conversation_v16");
     expect(prompt).toContain("Avoid stacks of repeated citations");
     expect(prompt).toContain("silently review");
     expect(prompt).toContain("using only the supplied IDs");
@@ -110,7 +111,7 @@ describe("scope-aware grounded answers", () => {
     expect(prompt).not.toContain("major supported textual and narrative dimensions");
     expect(prompt).toContain("[C1] Claim");
     expect(prompt).toContain("This is the first answer in the chat");
-    expect(prompt).toContain("modern leader's role or leadership challenge");
+    expect(prompt).toContain("Begin with a brief introduction to who the selected person is");
     expect(prompt).toContain("no headings, bullet lists, numbered sections");
     const followUp = buildSynthesisPrompt({ personality: "Rishi A", question: "Why?", resolvedQuestion: "Why did Rishi A do that?", scope: "EXPLANATION", evidenceContext: "[C1] Claim", openingTurn: false });
     expect(followUp).toContain("This is a follow-up in an ongoing chat");
@@ -120,6 +121,16 @@ describe("scope-aware grounded answers", () => {
     expect(research).toContain("More depth means more reasoning, not more excerpts");
     const historical = buildSynthesisPrompt({ personality: "Rishi A", question: "What is historically known about Rishi A?", resolvedQuestion: "What is historically known about Rishi A?", scope: "CONTESTED_OR_HISTORICAL", evidenceContext: "[C1] Claim" });
     expect(historical).toContain("Organize by sources, periods, interpretations, or uncertainty");
+  });
+
+  it("adds a short cited identity to an opening answer that starts with a detail", () => {
+    const identity = claim("identity", "role", "The Ramayana portrays Rishi A as a sage.", "Ramayana");
+    const citation: Citation = { id: "C1", kind: "approved_claim", claimId: identity.claimId, title: "Ramayana", author: null, institution: null, url: null,
+      sourceType: "primary_text", pageOrSection: null, textualLayer: "Ramayana", excerpt: identity.text };
+    const detail = "He teaches the princes in this account. [C1]";
+    expect(ensureOpeningIntro(detail, "Rishi A", [identity], [citation], true))
+      .toBe("The Ramayana portrays Rishi A as a sage. [C1]\n\nHe teaches the princes in this account. [C1]");
+    expect(ensureOpeningIntro(detail, "Rishi A", [identity], [citation], false)).toBe(detail);
   });
 
   it("shows central supported dimensions first when Gemini is unavailable", () => {

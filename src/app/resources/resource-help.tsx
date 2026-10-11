@@ -15,22 +15,18 @@ const guides: Record<Area, { name: string; groups: Group[] }> = {
         { label: "Person", explanation: "Choose whose source library appears in the list.", kind: "field" },
         { label: "Add source", explanation: "Create a candidate source. A title is required; publication details can be added later.", kind: "action" },
         { label: "More details", explanation: "In Add source, reveal author, publisher, citation, textual layer, and rights fields." },
-        { label: "Create candidate", explanation: "Save the new source for review.", kind: "action" },
-        { label: "Find a source", explanation: "Search titles, authors, publishers, types, and citations.", kind: "field" },
-        { label: "Current", explanation: "Show sources that are candidates or approved.", kind: "selected" },
-        { label: "Rejected", explanation: "Show sources that were rejected, including their review notes." },
-        { label: "Filters", explanation: "Open status, source type, and sort controls." },
-        { label: "Status", explanation: "In Filters, show all current sources, candidates, or approved sources.", kind: "field" },
-        { label: "Source type", explanation: "In Filters, narrow the list to one source type.", kind: "field" },
-        { label: "Sort by", explanation: "In Filters, order by title, linked claim count, or recent update.", kind: "field" },
-        { label: "Clear filters", explanation: "Reset the search, status, type, and sort choices." },
+        { label: "Create candidate", explanation: "Review a confirmation, then save the new source for review.", kind: "action" },
+        { label: "Find a source", explanation: "Search titles, authors, publishers, types, citations, and URLs.", kind: "field" },
+        { label: "Status", explanation: "Show current sources or select candidate, approved, or rejected records.", kind: "field" },
+        { label: "Source type", explanation: "Narrow the list to one source type.", kind: "field" },
+        { label: "Sort by", explanation: "Order by title, linked claim count, or recent update.", kind: "field" },
+        { label: "Clear", explanation: "Reset the search and filters." },
       ] },
       { title: "Work with a source", controls: [
-        { label: "Open / source title", explanation: "Open the source record, linked claims, and passages.", kind: "action" },
+        { label: "Source row", explanation: "Open the source record, linked claims, and passages.", kind: "action" },
         { label: "Back to sources", explanation: "Close the source drawer and return to the list." },
-        { label: "↗", explanation: "Open the original source page in a new tab." },
         { label: "Edit source", explanation: "Change its title, URL, type, and publication details." },
-        { label: "Save source", explanation: "Save the changes made while editing a source.", kind: "action" },
+        { label: "Save source", explanation: "Review a confirmation, then save changes to the source.", kind: "action" },
         { label: "Cancel edit", explanation: "Leave editing without saving those changes." },
         { label: "Approve", explanation: "Approve a candidate source for research use.", kind: "selected" },
         { label: "Reject", explanation: "Move the source to Rejected after recording a reviewer.", kind: "danger" },
@@ -40,12 +36,12 @@ const guides: Record<Area, { name: string; groups: Group[] }> = {
         { label: "Review and access notes", explanation: "Expand the review note and rights or access note." },
         { label: "Linked claims", explanation: "Expand the claims connected to this source; select one to open it." },
         { label: "Passages", explanation: "Expand the text passages saved for this source." },
-        { label: "Add passage", explanation: "Add source text and its page or section in the Passages section." },
+        { label: "Add passage", explanation: "Enter source text and its location, then confirm before saving it." },
         { label: "Confirm decision", explanation: "Save an approval, rejection, or return to review with a reviewer name." },
       ] },
       { title: "List controls", controls: [
-        { label: "Previous", explanation: "Go to the preceding page when more than 25 sources are listed." },
-        { label: "Next", explanation: "Go to the following page when more than 25 sources are listed." },
+        { label: "Previous", explanation: "Go to the preceding page when more than 24 sources are listed." },
+        { label: "Next", explanation: "Go to the following page when more than 24 sources are listed." },
       ] },
     ],
   },
@@ -59,21 +55,18 @@ const guides: Record<Area, { name: string; groups: Group[] }> = {
         { label: "Find existing", explanation: "In Add claim, link a source already in this person's library." },
         { label: "Enter new source", explanation: "In Add claim, create a source while saving the claim." },
         { label: "Classification and certainty", explanation: "Expand optional claim kind, certainty, and research notes." },
-        { label: "Create draft", explanation: "Save the claim and its supporting excerpt for review.", kind: "action" },
+        { label: "Create draft", explanation: "Confirm, then save the claim and supporting excerpt for review.", kind: "action" },
         { label: "Cancel", explanation: "Close Add claim without saving the draft." },
         { label: "Find a claim", explanation: "Search claim text, research fields, and linked source titles.", kind: "field" },
-        { label: "Current", explanation: "Show drafts, claims needing review, and approved claims.", kind: "selected" },
-        { label: "Rejected", explanation: "Show rejected claims and their review history." },
-        { label: "Filters", explanation: "Narrow the current list by review status." },
-        { label: "Status", explanation: "In Filters, show drafts, claims needing review, or approved claims.", kind: "field" },
-        { label: "Clear filters", explanation: "Reset the search and status choice." },
+        { label: "Status", explanation: "Show current claims or select draft, needs review, approved, or rejected records.", kind: "field" },
+        { label: "Clear", explanation: "Reset the claim search and status filter." },
       ] },
       { title: "Review a claim", controls: [
-        { label: "Open / claim text", explanation: "Read the claim, supporting evidence, and review history.", kind: "action" },
+        { label: "Claim row", explanation: "Read the claim, supporting evidence, and review history.", kind: "action" },
         { label: "Back to claims", explanation: "Close the claim drawer and return to the list." },
         { label: "View source record", explanation: "Open the source linked to a supporting excerpt." },
         { label: "Edit claim", explanation: "Change a reviewable claim's text, certainty, or notes." },
-        { label: "Save claim", explanation: "Save the edits made to a claim.", kind: "action" },
+        { label: "Save claim", explanation: "Review a confirmation, then save edits to the claim.", kind: "action" },
         { label: "Cancel edit", explanation: "Leave claim editing without saving those changes." },
         { label: "Claim classification", explanation: "Expand field, certainty, kind, evidence type, and knowledge type." },
         { label: "Review history", explanation: "Expand earlier decisions, reviewers, dates, and notes." },
@@ -82,8 +75,8 @@ const guides: Record<Area, { name: string; groups: Group[] }> = {
         { label: "Return to review", explanation: "Move an approved or rejected claim back to review." },
         { label: "Remove draft", explanation: "Remove a draft claim." },
         { label: "Confirm decision", explanation: "Save a review decision with the reviewer name and optional note." },
-        { label: "Previous", explanation: "Go to the preceding page when more than 25 claims are listed." },
-        { label: "Next", explanation: "Go to the following page when more than 25 claims are listed." },
+        { label: "Previous", explanation: "Go to the preceding page when more than 24 claims are listed." },
+        { label: "Next", explanation: "Go to the following page when more than 24 claims are listed." },
       ] },
     ],
   },
@@ -91,39 +84,39 @@ const guides: Record<Area, { name: string; groups: Group[] }> = {
     name: "Web search",
     groups: [
       { title: "Live search", controls: [
-        { label: "Live search", explanation: "Open domain discovery rules and recently found websites.", kind: "selected" },
-        { label: "Search mode", explanation: "Choose broad credible search or restrict discovery to allowed domains.", kind: "field" },
-        { label: "Add domain", explanation: "Create an allowed, blocked, or paused domain rule.", kind: "action" },
-        { label: "Domain rules", explanation: "Show the saved rules that control website discovery." },
-        { label: "Recently found", explanation: "Show new domains found during live research." },
-        { label: "Find a website", explanation: "Search saved domain rules by name, domain, category, or notes.", kind: "field" },
+        { label: "Website discovery", explanation: "Manage where live research searches. Add domain is the action on this heading row." },
+        { label: "Search mode", explanation: "Choose Credible Web, Approved Sources Only, or Credible Web with rules. Confirm before the new mode is saved.", kind: "field" },
+        { label: "Add domain", explanation: "Open a form to allow, trust, block, or pause a domain.", kind: "action" },
+        { label: "Domain rules", explanation: "Show saved domain rules. The number beside the tab is the rule count." },
+        { label: "Recently found", explanation: "Show websites discovered during research. The number beside the tab is the discovery count." },
+        { label: "Find a website", explanation: "Filter the list currently selected above by name or domain.", kind: "field" },
+        { label: "Status", explanation: "On Domain rules only, filter by all, allowed, blocked, or paused.", kind: "field" },
         { label: "Edit", explanation: "Change a domain's name, status, category, or notes; the dialog also has Remove rule." },
-        { label: "Save rule", explanation: "Save a new or edited domain rule.", kind: "action" },
+        { label: "Save rule", explanation: "Review a confirmation, then save a new or edited domain rule.", kind: "action" },
         { label: "Cancel", explanation: "Close the domain rule form without saving." },
-        { label: "Remove rule", explanation: "Delete the open domain rule." },
-        { label: "Allow", explanation: "Prepare an allowed rule for a recently found domain.", kind: "selected" },
-        { label: "Block", explanation: "Prepare a blocked rule for a recently found domain.", kind: "danger" },
-        { label: "Ignore", explanation: "Dismiss a recently found domain from the discovery list." },
+        { label: "Remove rule", explanation: "Confirm before deleting the open domain rule." },
+        { label: "Ignore", explanation: "Confirm before removing a discovery from Recently found." },
+        { label: "Review", explanation: "Open a recently found website. Save a rule to allow, trust, or block it, or choose Ignore to remove it from this list." },
         { label: "Show more rules", explanation: "Reveal the next set of saved domain rules." },
         { label: "Show more discoveries", explanation: "Reveal more recently found domains." },
       ] },
       { title: "Page access", controls: [
-        { label: "Page access", explanation: "Open page, section, and whole website permissions." },
+        { label: "Page access permissions", explanation: "Expand this section below Website discovery to manage page, section, and whole website permissions." },
         { label: "Add website", explanation: "Create a permission rule and choose how broadly it applies.", kind: "action" },
         { label: "Current", explanation: "Show page rules that are available for review or use.", kind: "selected" },
         { label: "Rejected", explanation: "Show page rules marked Rejected." },
         { label: "Find a page or site", explanation: "Search page addresses, names, and domains.", kind: "field" },
-        { label: "Site row", explanation: "Expand a domain to see the rules for its pages and sections." },
-        { label: "Search", explanation: "Toggle whether live search can discover this page or site." },
-        { label: "Read", explanation: "Toggle whether live research can fetch its page text." },
-        { label: "Import", explanation: "Toggle whether its text can be imported into the library." },
-        { label: "Evidence", explanation: "Set a page rule to Review, Approved, or Rejected." },
+        { label: "Site row", explanation: "Expand a domain to see its page and section rules. Select a rule name or Edit to open its form." },
+        { label: "Search", explanation: "Confirm whether live search can discover this page or site." },
+        { label: "Read", explanation: "Confirm whether live research can fetch its page text." },
+        { label: "Import", explanation: "Confirm whether its text can be imported into the library." },
+        { label: "Evidence", explanation: "Choose Review, Approved, or Rejected for use as research evidence, then confirm." },
         { label: "Edit", explanation: "Change scope, permissions, evidence use, active state, or notes." },
         { label: "This page", explanation: "Apply a new access rule only to the entered URL." },
         { label: "This section", explanation: "Apply a new rule to the entered path and pages below it." },
         { label: "Whole website", explanation: "Apply a new rule across the site's domain." },
         { label: "Active", explanation: "Pause or resume a page access rule." },
-        { label: "Save access", explanation: "Save the page permission choices.", kind: "action" },
+        { label: "Save access", explanation: "Review a confirmation, then save the page permission choices.", kind: "action" },
         { label: "Cancel", explanation: "Close the page access form without saving." },
         { label: "Show more sites", explanation: "Reveal more domains in the page access list." },
       ] },
@@ -133,6 +126,8 @@ const guides: Record<Area, { name: string; groups: Group[] }> = {
 
 export default function ResourceHelp({ area }: { area: Area }) {
   const guide = guides[area];
+  const sectionId = (title: string) => `resource-guide-${area}-${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+  const sections = ["Move between areas", ...guide.groups.map(group => group.title), "Account"];
   return <Dialog>
     <DialogTrigger className="resource-help-trigger" data-area={area} aria-label={`How to use ${guide.name}`}>
       <BookOpenText size={18} aria-hidden="true" />
@@ -141,9 +136,14 @@ export default function ResourceHelp({ area }: { area: Area }) {
     <DialogContent className="resource-help-dialog" aria-label={`How to use ${guide.name}`}>
       <DialogHeader className="resource-help-dialog-header">
         <span className="resource-help-dialog-icon"><BookOpenText size={22} aria-hidden="true" /></span>
-        <div><span className="resource-help-eyebrow">BUTTON GUIDE</span><DialogTitle>How to use {guide.name}</DialogTitle><DialogDescription>Find what each button does and when to use it.</DialogDescription></div>
+        <div><span className="resource-help-eyebrow">RESOURCES GUIDE</span><DialogTitle>How to use {guide.name}</DialogTitle><DialogDescription>Follow the controls shown on this page. Changes ask for confirmation before they are saved to the research database.</DialogDescription></div>
       </DialogHeader>
-      <div className="resource-help-content" key={area}>{guide.groups.map(group => <section key={group.title} className="resource-help-group"><h3>{group.title}</h3><dl>{group.controls.map(control => <div key={control.label}><dt><span className={`resource-help-control resource-help-control-${control.kind || "plain"}`}>{control.label}</span></dt><dd>{control.explanation}</dd></div>)}</dl></section>)}<section className="resource-help-group"><h3>Account</h3><dl><div><dt><span className="resource-help-control">Sign out</span></dt><dd>End the Resources session on this browser.</dd></div></dl></section></div>
+      <div className="resource-help-content" key={area}>
+        <nav className="resource-help-nav" aria-label={`${guide.name} guide sections`}>{sections.map(title => <button key={title} type="button" onClick={() => document.getElementById(sectionId(title))?.scrollIntoView({ block: "start" })}>{title}</button>)}</nav>
+        <section id={sectionId("Move between areas")} className="resource-help-group"><h3>Move between areas</h3><dl><div><dt><span className="resource-help-control">Sources</span></dt><dd>Browse and manage source records.</dd></div><div><dt><span className="resource-help-control">Claims</span></dt><dd>Review claims and their evidence.</dd></div><div><dt><span className="resource-help-control">Web search</span></dt><dd>Manage discovery rules and page access.</dd></div></dl></section>
+        {guide.groups.map(group => <section id={sectionId(group.title)} key={group.title} className="resource-help-group"><h3>{group.title}</h3><dl>{group.controls.map(control => <div key={control.label}><dt><span className={`resource-help-control resource-help-control-${control.kind || "plain"}`}>{control.label}</span></dt><dd>{control.explanation}</dd></div>)}</dl></section>)}
+        <section id={sectionId("Account")} className="resource-help-group"><h3>Account</h3><dl><div><dt><span className="resource-help-control">Sign out</span></dt><dd>End the Resources session on this browser.</dd></div></dl></section>
+      </div>
     </DialogContent>
   </Dialog>;
 }

@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Textarea } from "@/components/ui/textarea";
+import ConfirmResourceChange, { type PendingResourceChange } from "./confirm-resource-change";
 
 type Scope = "EXACT_URL" | "PATH_PREFIX" | "DOMAIN";
 type EvidenceStatus = "candidate" | "approved" | "rejected";
@@ -63,6 +64,7 @@ export default function WebsiteAccess() {
   const [draft, setDraft] = useState<Draft | null>(null);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
+  const [pending, setPending] = useState<PendingResourceChange | null>(null);
   const load = useCallback(async () => { const payload = await request("GET"); setRules(payload.rules || []); }, []);
   useEffect(() => {
     void request("GET")
@@ -102,26 +104,31 @@ export default function WebsiteAccess() {
     setExpanded(current => current.has(domain) ? new Set() : new Set([domain]));
   }
   async function quickUpdate(rule: Rule, patch: Record<string, boolean | EvidenceStatus>, label: string) {
-    if (busy || pendingId) return;
+    if (busy || pendingId) return false;
     setPendingId(rule.id); setError(""); setNotice("");
     try {
       const result = await request("PATCH", { id: rule.id, ...patch });
-      if (result.rule) setRules(current => current.map(item => item.id === rule.id ? result.rule! : item));
-      else await load();
+      try { await load(); }
+      catch {
+        if (result.rule) setRules(current => current.map(item => item.id === rule.id ? result.rule! : item));
+        setError("Permission saved, but the list could not refresh. Refresh to load current rules.");
+      }
       if (patch.evidenceUseStatus) setRecordView(patch.evidenceUseStatus === "rejected" ? "rejected" : "current");
       setNotice(`${label} updated for ${rule.display_name}.`);
+      return true;
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "Permission could not be saved. Try again.");
+      return false;
     } finally { setPendingId(null); }
   }
   async function save() {
-    if (!draft || busy) return;
+    if (!draft || busy) return false;
     setError(""); setNotice("");
     let parsed: URL;
     try {
       parsed = new URL(/^https?:\/\//i.test(draft.address.trim()) ? draft.address.trim() : `https://${draft.address.trim()}`);
       if (!/^https?:$/.test(parsed.protocol) || !parsed.hostname || parsed.username || parsed.password) throw new Error();
-    } catch { setError("Enter a valid website or page URL."); return; }
+    } catch { setError("Enter a valid website or page URL."); return false; }
     setBusy(true);
     try {
       await request(draft.id ? "PATCH" : "POST", {
@@ -145,8 +152,14 @@ export default function WebsiteAccess() {
       setNotice(draft.id ? "Website access updated." : "Website access added.");
       try { await load(); }
       catch { setError("Access was saved, but the list could not refresh. Retry to load current rules."); }
-    } catch (cause) { setError(cause instanceof Error ? cause.message : "Website access could not be saved."); }
+      return true;
+    } catch (cause) { setError(cause instanceof Error ? cause.message : "Website access could not be saved."); return false; }
     finally { setBusy(false); }
+  }
+  function queueChange(change: PendingResourceChange) { setError(""); setPending(change); }
+  async function confirmChange() {
+    if (!pending || busy || pendingId) return;
+    if (await pending.run()) setPending(null);
   }
 
   return <section className="website-access-panel" aria-labelledby="website-access-title">
@@ -162,8 +175,8 @@ export default function WebsiteAccess() {
         <div className="website-group-entries" id={`website-group-${domain}`} role="group" aria-label={`Permissions for ${domain}`} hidden={!open}>{items.map(rule => <div className="website-compact-rule" key={rule.id}>
           <button type="button" className="website-rule-name" onClick={() => edit(rule)} title={addressFor(rule)}><strong>{rule.display_name}</strong><small>{scopeLabel(rule.scope_type)} · {locationLabel(rule)}</small></button>
           <div className="website-quick-actions" aria-label={`Permissions for ${rule.display_name}`}>
-            {permissionFields.map(field => <Button key={field.key} type="button" variant="outline" size="sm" className={`website-permission-chip ${rule[field.key] && rule.is_active ? "website-permission-on" : ""}`} aria-pressed={rule[field.key] && rule.is_active} aria-label={`${field.label} ${rule.display_name}`} disabled={busy || !!pendingId || !rule.is_active} onClick={() => void quickUpdate(rule, { [field.api]: !rule[field.key] }, field.label)}>{rule[field.key] && rule.is_active && <Check size={12} aria-hidden="true"/>}{field.label}</Button>)}
-            <label className="website-evidence-control"><span>Evidence</span><select value={rule.evidence_use_status} disabled={busy || !!pendingId || !rule.is_active} aria-label={`Evidence use for ${rule.display_name}`} onChange={event => void quickUpdate(rule, { evidenceUseStatus: event.target.value as EvidenceStatus }, "Evidence use")}><option value="candidate">Review</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></label>
+            {permissionFields.map(field => <Button key={field.key} type="button" variant="outline" size="sm" className={`website-permission-chip ${rule[field.key] && rule.is_active ? "website-permission-on" : ""}`} aria-pressed={rule[field.key] && rule.is_active} aria-label={`${field.label} ${rule.display_name}`} disabled={busy || !!pendingId || !rule.is_active} onClick={() => queueChange({ title: `Change ${field.label} permission?`, description: `${field.label} will be ${rule[field.key] ? "turned off" : "turned on"} for ${rule.display_name}.`, confirmLabel: `Update ${field.label}`, run: () => quickUpdate(rule, { [field.api]: !rule[field.key] }, field.label) })}>{rule[field.key] && rule.is_active && <Check size={12} aria-hidden="true"/>}{field.label}</Button>)}
+            <label className="website-evidence-control"><span>Evidence</span><select value={rule.evidence_use_status} disabled={busy || !!pendingId || !rule.is_active} aria-label={`Evidence use for ${rule.display_name}`} onChange={event => { const nextStatus = event.target.value as EvidenceStatus; queueChange({ title: "Change evidence use?", description: `${rule.display_name} will be marked ${nextStatus === "candidate" ? "Needs review" : nextStatus}.`, confirmLabel: "Update evidence use", run: () => quickUpdate(rule, { evidenceUseStatus: nextStatus }, "Evidence use") }); }}><option value="candidate">Review</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></label>
             {pendingId === rule.id && <LoaderCircle size={16} className="animate-spin" aria-label="Saving permission"/>}
             <Button type="button" variant="ghost" size="sm" className="website-edit-rule" onClick={() => edit(rule)} disabled={busy || !!pendingId} aria-label={`Edit ${rule.display_name}`}><Pencil size={15}/><span>Edit</span></Button>
           </div>
@@ -171,6 +184,7 @@ export default function WebsiteAccess() {
         </div>)}</div>
       </div>;
     })}</div>{groups.length > shownSites && <Button className="website-show-more" variant="outline" onClick={() => setShownSites(count => count + 8)}>Show more sites ({groups.length - shownSites} left)</Button>}</> : <p className="resource-empty">{query ? "No pages match that search." : recordView === "rejected" ? "No rejected website rules." : "No page rules yet. Add a website to begin."}</p>}
-    <Dialog open={!!draft} onOpenChange={open => { if (!open && !busy) { setDraft(null); setError(""); } }}><DialogContent className="website-access-dialog"><DialogHeader><DialogTitle>{draft?.id ? "Edit page access" : "Add website access"}</DialogTitle><DialogDescription>Type any website or page address, then choose how broadly access applies.</DialogDescription></DialogHeader>{draft && <div className="website-access-form"><div className="website-form-grid"><label>Website or page URL<Input value={draft.address} onChange={event => setDraft({ ...draft, address: event.target.value })} placeholder="https://example.org/article" disabled={busy}/></label><label>Name<Input value={draft.displayName} onChange={event => setDraft({ ...draft, displayName: event.target.value })} placeholder="Name shown in the list" disabled={busy}/></label></div><div className="website-form-grid"><fieldset className="website-scope-choices"><legend>Applies to</legend>{([{"value":"EXACT_URL","label":"This page","help":"Only the address entered above"},{"value":"PATH_PREFIX","label":"This section","help":"The entered path and pages below it"},{"value":"DOMAIN","label":"Whole website","help":"Any page on this site"}] as const).map(option => <label key={option.value} className={draft.scopeType === option.value ? "is-selected" : ""}><input type="radio" name="website-scope" value={option.value} checked={draft.scopeType === option.value} onChange={() => setDraft({ ...draft, scopeType: option.value })} disabled={busy}/><span><strong>{option.label}</strong><small>{option.help}</small></span></label>)}</fieldset><label>Evidence use<Select value={draft.evidenceUseStatus} onValueChange={value => setDraft({ ...draft, evidenceUseStatus: value as EvidenceStatus })} disabled={busy}><SelectTrigger><SelectValue>{draft.evidenceUseStatus === "approved" ? "Approved" : draft.evidenceUseStatus === "rejected" ? "Rejected" : "Needs review"}</SelectValue></SelectTrigger><SelectContent><SelectItem value="candidate">Needs review</SelectItem><SelectItem value="approved">Approved</SelectItem><SelectItem value="rejected">Rejected</SelectItem></SelectContent></Select></label></div><div className="website-permission-options"><p>Allow</p><label><input type="checkbox" checked={draft.allowLiveSearch} onChange={event => setDraft({ ...draft, allowLiveSearch: event.target.checked })} disabled={busy}/> Search</label><label><input type="checkbox" checked={draft.allowLiveFetch} onChange={event => setDraft({ ...draft, allowLiveFetch: event.target.checked })} disabled={busy}/> Read</label><label><input type="checkbox" checked={draft.allowIngestion} onChange={event => setDraft({ ...draft, allowIngestion: event.target.checked })} disabled={busy}/> Import</label></div><label className="website-active-option"><input type="checkbox" checked={draft.isActive} onChange={event => setDraft({ ...draft, isActive: event.target.checked })} disabled={busy}/> Active</label><details className="website-extra-fields"><summary>Notes{draft.notes ? " (saved)" : ""}</summary><label>Notes (optional)<Textarea value={draft.notes} onChange={event => setDraft({ ...draft, notes: event.target.value })} disabled={busy}/></label></details></div>}{error && <p className="form-error" role="alert">{error}</p>}<div className="website-access-actions"><Button type="button" variant="outline" disabled={busy} onClick={() => setDraft(null)}>Cancel</Button><Button type="button" disabled={busy || !draft?.address.trim()} onClick={() => void save()}>{busy && <LoaderCircle className="animate-spin" size={15}/>} {busy ? "Saving…" : "Save access"}</Button></div></DialogContent></Dialog>
+    <Dialog open={!!draft} onOpenChange={open => { if (!open && !busy && !pending) { setDraft(null); setError(""); } }}><DialogContent className="website-access-dialog"><DialogHeader><DialogTitle>{draft?.id ? "Edit page access" : "Add website access"}</DialogTitle><DialogDescription>Type any website or page address, then choose how broadly access applies.</DialogDescription></DialogHeader>{draft && <div className="website-access-form"><div className="website-form-grid"><label>Website or page URL<Input value={draft.address} onChange={event => setDraft({ ...draft, address: event.target.value })} placeholder="https://example.org/article" disabled={busy}/></label><label>Name<Input value={draft.displayName} onChange={event => setDraft({ ...draft, displayName: event.target.value })} placeholder="Name shown in the list" disabled={busy}/></label></div><div className="website-form-grid"><fieldset className="website-scope-choices"><legend>Applies to</legend>{([{"value":"EXACT_URL","label":"This page","help":"Only the address entered above"},{"value":"PATH_PREFIX","label":"This section","help":"The entered path and pages below it"},{"value":"DOMAIN","label":"Whole website","help":"Any page on this site"}] as const).map(option => <label key={option.value} className={draft.scopeType === option.value ? "is-selected" : ""}><input type="radio" name="website-scope" value={option.value} checked={draft.scopeType === option.value} onChange={() => setDraft({ ...draft, scopeType: option.value })} disabled={busy}/><span><strong>{option.label}</strong><small>{option.help}</small></span></label>)}</fieldset><label>Evidence use<Select value={draft.evidenceUseStatus} onValueChange={value => setDraft({ ...draft, evidenceUseStatus: value as EvidenceStatus })} disabled={busy}><SelectTrigger><SelectValue>{draft.evidenceUseStatus === "approved" ? "Approved" : draft.evidenceUseStatus === "rejected" ? "Rejected" : "Needs review"}</SelectValue></SelectTrigger><SelectContent><SelectItem value="candidate">Needs review</SelectItem><SelectItem value="approved">Approved</SelectItem><SelectItem value="rejected">Rejected</SelectItem></SelectContent></Select></label></div><div className="website-permission-options"><p>Allow</p><label><input type="checkbox" checked={draft.allowLiveSearch} onChange={event => setDraft({ ...draft, allowLiveSearch: event.target.checked })} disabled={busy}/> Search</label><label><input type="checkbox" checked={draft.allowLiveFetch} onChange={event => setDraft({ ...draft, allowLiveFetch: event.target.checked })} disabled={busy}/> Read</label><label><input type="checkbox" checked={draft.allowIngestion} onChange={event => setDraft({ ...draft, allowIngestion: event.target.checked })} disabled={busy}/> Import</label></div><label className="website-active-option"><input type="checkbox" checked={draft.isActive} onChange={event => setDraft({ ...draft, isActive: event.target.checked })} disabled={busy}/> Active</label><details className="website-extra-fields"><summary>Notes{draft.notes ? " (saved)" : ""}</summary><label>Notes (optional)<Textarea value={draft.notes} onChange={event => setDraft({ ...draft, notes: event.target.value })} disabled={busy}/></label></details></div>}{error && <p className="form-error" role="alert">{error}</p>}<div className="website-access-actions"><Button type="button" variant="outline" disabled={busy} onClick={() => setDraft(null)}>Cancel</Button><Button type="button" disabled={busy || !draft?.address.trim()} onClick={() => queueChange({ title: draft?.id ? "Save page access changes?" : "Add this website access rule?", description: `${draft?.displayName || draft?.address || "This website"} will use the selected scope, evidence setting, and permissions.`, confirmLabel: draft?.id ? "Save changes" : "Add access", run: save })}>{busy && <LoaderCircle className="animate-spin" size={15}/>} {busy ? "Saving…" : "Save access"}</Button></div></DialogContent></Dialog>
+    <ConfirmResourceChange pending={pending} busy={busy || !!pendingId} error={error} onCancel={() => { setPending(null); setError(""); }} onConfirm={() => void confirmChange()}/>
   </section>;
 }

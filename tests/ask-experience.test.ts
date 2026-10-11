@@ -21,6 +21,9 @@ const citation: AskCitation = {
 };
 
 describe("grounded Ask query context", () => {
+  it("treats an empty saved reply as retryable", () => {
+    expect(isUnusableStoredAnswer("   ", "complete")).toBe(true);
+  });
   it("resolves a single-personality pronoun without changing quoted text", () => {
     const resolved = resolveQuestionContext('What is the biggest contribution of him, according to "his own words"?', ["Vishvamitra"]);
     expect(resolved.resolvedQuestion).toContain("Vishvamitra");

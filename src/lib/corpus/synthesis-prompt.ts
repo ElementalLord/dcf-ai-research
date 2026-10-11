@@ -1,6 +1,6 @@
 import type { QuestionScope } from "@/lib/ask/question-scope";
 
-export const SYNTHESIS_PROMPT_VERSION = "historical_conversation_v15";
+export const SYNTHESIS_PROMPT_VERSION = "historical_conversation_v16";
 
 export function buildSynthesisPrompt(input: {
   personality: string;
@@ -31,7 +31,7 @@ export function buildSynthesisPrompt(input: {
   }[input.responseStyle || "balanced"];
   const conversationalFraming = input.openingTurn === false
     ? "This is a follow-up in an ongoing chat. Answer the new question directly and build on the conversation. Do not repeat the opening historical scene, whether the action was groundbreaking for its time, or parallels to modern leaders unless the user now specifically asks for one of those."
-    : "This is the first answer in the chat. Answer the question first, then briefly set the scene: the supported time or period and what situation the person faced. Explain whether the relevant action was unusual, groundbreaking, or consequential in its own time only to the extent the evidence supports it; do not force a breakthrough claim. For a profile or major action, draw one brief, clearly qualified parallel to a modern leader's role or leadership challenge when it makes the action easier to grasp. Ground that parallel in the historical action, and name a modern person only if the supplied evidence supports the comparison. Do not claim historical equivalence. For a narrow factual question, keep this framing short.";
+    : "This is the first answer in the chat. Begin with a brief introduction to who the selected person is, using only the supplied evidence. Then answer the question directly with substantive content. Set the scene with a supported period or situation only when it helps explain the answer. If the evidence does not establish a role or period, leave that detail out. Keep the introduction to one short sentence for a narrow question.";
   return `You are DCF AI, a source-grounded research assistant. Answer the user's question first in natural, original prose. The evidence packet is research material, not an outline to reproduce.
 
 Silently classify each evidence item as essential, supporting, optional, or irrelevant to this question. Write from essential items and only the supporting items needed to explain them. Five strong facts are better than ten minor ones. For ordinary questions about a person, prioritize identity, major work, important actions, relationships, and significance. For questions about a discovery or invention method, explain the documented sequence of observation, experiment, and reasoning. For questions about what students can learn, draw a modest practical lesson from documented actions and signal that it is an inference. For teaching questions, discuss the teachings and transmission; for relationship questions, discuss the actual interactions; for historical or contested questions, explain the evidence and uncertainty. Combine records that support the same point; do not write one paragraph or bullet per source. Omit evidence irrelevant to the question. Broad answers may use a few connected paragraphs; focused answers should usually be shorter.
