@@ -1,0 +1,222 @@
+[
+  {
+    "question": "Who was Savitribai Phule?",
+    "httpStatus": 200,
+    "status": "complete",
+    "answer": "Savitribai Phule was a nineteenth-century Indian social reformer, educator, and leader who dedicated her life to the education and welfare of marginalized communities. The daughter of Khandoji Nevshe Patil from Naigaon, she married Jotirao Phule in 1840 [S6]. Following their marriage, Jotirao educated her at home and trained her to teach, preparing her for pioneering educational work at a time when schooling for women and lower-caste communities faced intense social opposition [S1, S3].\n\nAlongside teaching, Savitribai engaged in extensive social welfare efforts. In response to the plight of vulnerable infants and ostracized mothers, she and Jotirao opened a home for infants and, having no biological children of their own, adopted a boy named Yashavantrao, the child of a Brahman widow [S5, S7]. In her correspondence from the 1850s, she reflected on the severe social backlash they faced, noting that family members condemned them and cast them out for serving untouchable communities such as the Mahars and Mangs [S8].\n\nSavitribai also participated in humanitarian and organizational leadership throughout her later years. During severe famines, she coordinated relief measures alongside Satyashodhak volunteers, distributing food and emergency supplies to starving populations [S9]. She remained a central institutional figure in her own right, serving in 1893 as chairperson of the Satyashodhak Samaj, an organization committed to social truth-seeking and the uplift of ordinary people [S4].",
+    "wordCount": 221,
+    "citations": [
+      {
+        "id": "S1",
+        "title": "Savitribai Phule First Memorial Lecture: Dnyanajyoti Savitribai Phule",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf"
+      },
+      {
+        "id": "S3",
+        "title": "People and Ideas: Savitribai Phule",
+        "url": "https://publications.azimpremjiuniversity.edu.in/429/1/Savitribai%20Phule_English.pdf"
+      },
+      {
+        "id": "S4",
+        "title": "Associates of Mahatma Phule: Savitribai Phule",
+        "url": "https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/accociate.htm"
+      },
+      {
+        "id": "S5",
+        "title": "Ritual status and political conflict in later nineteenth-century Maharashtra",
+        "url": "https://www.cambridge.org/core/books/abs/caste-conflict-and-ideology/ritual-status-and-political-conflict-in-later-nineteenthcentury-maharashtra/5B894F9D29677C97AEC50840D3A31CA2"
+      },
+      {
+        "id": "S6",
+        "title": "Life and Work of Mahatma Jotirao Phule",
+        "url": "https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/Life_%20%26%20_Work.htm"
+      },
+      {
+        "id": "S7",
+        "title": "Ritual status and political conflict in later nineteenth-century Maharashtra",
+        "url": "https://www.cambridge.org/core/books/abs/caste-conflict-and-ideology/ritual-status-and-political-conflict-in-later-nineteenthcentury-maharashtra/5B894F9D29677C97AEC50840D3A31CA2"
+      },
+      {
+        "id": "S8",
+        "title": "Savitribai Phule’s letters to Jyotiba: October 1856, August 1868, April 1877",
+        "url": "https://scroll.in/article/801848/to-jyotiba-from-savitribai-phule-these-arent-love-letters-but-tell-you-what-love-is-all-about"
+      },
+      {
+        "id": "S9",
+        "title": "Savitribai Phule’s letters to Jyotiba: October 1856, August 1868, April 1877",
+        "url": "https://scroll.in/article/801848/to-jyotiba-from-savitribai-phule-these-arent-love-letters-but-tell-you-what-love-is-all-about"
+      }
+    ],
+    "citationIdsValid": true,
+    "latencyMs": 5224
+  },
+  {
+    "question": "Why was her work groundbreaking for her time?",
+    "httpStatus": 200,
+    "status": "complete",
+    "answer": "Savitribai Phule was a pioneering nineteenth-century Indian social reformer, educator, and writer [S1, S2, S4]. In the mid-nineteenth-century society of Maharashtra, entrenched orthodoxy severely restricted women's roles to the domestic sphere and barred both women and underprivileged communities from formal education [S1, S7]. \n\nHer work was groundbreaking because she challenged these rigid norms by entering the public sphere to teach [S1]. Prepared by her husband Jotirao Phule to educate girls, she stepped outside the household to serve as a teacher and headmistress, an unprecedented move that historians identify as a beginning of public life for modern Indian women [S1, S7]. She persisted in educating girls and marginalized groups despite facing bitter, aggressive hostility and ridicule from orthodox contemporaries [S4, S7].\n\nHer transformative actions extended into broader institutional leadership and reform. By 1893, she presided as Chairperson of the Satyashodhak Samaj, leading an organization dedicated to seeking truth and advancing the welfare of the masses [S3]. Her life challenged societal restrictions not only through schooling and leadership, but also through direct personal choices, including adopting Yashavantrao, the son of a Brahman widow [S6]. Through these sustained efforts, she helped introduce ideas of social equality into an era dominated by conservative opposition [S4, S7].",
+    "wordCount": 202,
+    "citations": [
+      {
+        "id": "S1",
+        "title": "Savitribai Phule First Memorial Lecture: Dnyanajyoti Savitribai Phule",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf"
+      },
+      {
+        "id": "S2",
+        "title": "Savitribai Phule First Memorial Lecture: Dnyanajyoti Savitribai Phule",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf"
+      },
+      {
+        "id": "S3",
+        "title": "Associates of Mahatma Phule: Savitribai Phule",
+        "url": "https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/accociate.htm"
+      },
+      {
+        "id": "S4",
+        "title": "People and Ideas: Savitribai Phule",
+        "url": "https://publications.azimpremjiuniversity.edu.in/429/1/Savitribai%20Phule_English.pdf"
+      },
+      {
+        "id": "S6",
+        "title": "Ritual status and political conflict in later nineteenth-century Maharashtra",
+        "url": "https://www.cambridge.org/core/books/abs/caste-conflict-and-ideology/ritual-status-and-political-conflict-in-later-nineteenthcentury-maharashtra/5B894F9D29677C97AEC50840D3A31CA2"
+      },
+      {
+        "id": "S7",
+        "title": "Life and Work of Mahatma Jotirao Phule",
+        "url": "https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/Life_%20%26%20_Work.htm"
+      }
+    ],
+    "citationIdsValid": true,
+    "latencyMs": 6584
+  },
+  {
+    "question": "What did she do for girls’ education?",
+    "httpStatus": 200,
+    "status": "complete",
+    "answer": "Savitribai Phule was a pioneering nineteenth-century Indian social reformer and educator who played a foundational role in opening formal schooling to girls [S1, S2]. Prepared by her husband, Jotirao Phule, to teach in order to foster equality through education, she stepped into public life at a time when educating women was deeply contested [S1, S5].\n\nHer direct work began in 1848, when Jotirao opened a school for girls at Bhidewada in Pune [S4]. Savitribai taught at this institution and served as its headmistress, making her what historical records recognize as likely the first Indian woman teacher and headmistress [S1, S4]. That same year, she also engaged in teaching girls from marginalized Shudra and Ati-Shudra communities, including Mahar and Mang girls [S6]. \n\nHer educational efforts met severe resistance. Conservative members of society fiercely opposed her work with young girls and underprivileged students, forcing the couple out of their home in 1849 [S6, S7]. Despite this bitter hostility, she persisted in running classrooms and teaching, helping establish institutional education for girls where none had previously existed [S5, S7].",
+    "wordCount": 176,
+    "citations": [
+      {
+        "id": "S1",
+        "title": "Savitribai Phule First Memorial Lecture: Dnyanajyoti Savitribai Phule",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf"
+      },
+      {
+        "id": "S2",
+        "title": "People and Ideas: Savitribai Phule",
+        "url": "https://publications.azimpremjiuniversity.edu.in/429/1/Savitribai%20Phule_English.pdf"
+      },
+      {
+        "id": "S4",
+        "title": "People and Ideas: Savitribai Phule",
+        "url": "https://publications.azimpremjiuniversity.edu.in/429/1/Savitribai%20Phule_English.pdf"
+      },
+      {
+        "id": "S5",
+        "title": "Life and Work of Mahatma Jotirao Phule",
+        "url": "https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/Life_%20%26%20_Work.htm"
+      },
+      {
+        "id": "S6",
+        "title": "Life Sketch of Mahatma Jotirao Phule",
+        "url": "https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/life_sketch.htm"
+      },
+      {
+        "id": "S7",
+        "title": "Life and Work of Mahatma Jotirao Phule",
+        "url": "https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/Life_%20%26%20_Work.htm"
+      }
+    ],
+    "citationIdsValid": true,
+    "latencyMs": 4776
+  },
+  {
+    "question": "How did she challenge caste and gender inequality?",
+    "httpStatus": 200,
+    "status": "complete",
+    "answer": "Savitribai Phule was a pioneering nineteenth-century Indian social reformer and educator who directly confronted the entrenched structures of caste and gender hierarchy [S1, S6]. After being educated and trained as a teacher at home by her husband, Jotirao Phule, she stepped into the public sphere to teach girls and students from underprivileged communities [S5, S6]. In doing so, she broke traditional social prohibitions, enduring bitter opposition and ridicule from orthodox contemporaries who rejected schooling for women and marginalized castes [S1, S5].\n\nHer resistance extended into family and community practices. Savitribai and Jotirao sheltered vulnerable children through a home for infants, and without biological children of their own, they adopted Yashavantrao, the child of a Brahman widow [S2, S3]. In doing so, they flouted orthodox taboos surrounding widowhood and caste lines. \n\nThrough reform initiatives such as Satyashodhak marriages, she also helped reshape traditional customs to center gender equality. These ceremonies removed conventional priestly formulas in favor of direct vows, in which the bridegroom pledged to grant equal rights and education to his wife [S4]. Across her teaching and personal actions, Savitribai challenged societal restrictions, modeling egalitarian values within the household and across the wider public realm [S4, S5].",
+    "wordCount": 197,
+    "citations": [
+      {
+        "id": "S1",
+        "title": "People and Ideas: Savitribai Phule",
+        "url": "https://publications.azimpremjiuniversity.edu.in/429/1/Savitribai%20Phule_English.pdf"
+      },
+      {
+        "id": "S2",
+        "title": "Ritual status and political conflict in later nineteenth-century Maharashtra",
+        "url": "https://www.cambridge.org/core/books/abs/caste-conflict-and-ideology/ritual-status-and-political-conflict-in-later-nineteenthcentury-maharashtra/5B894F9D29677C97AEC50840D3A31CA2"
+      },
+      {
+        "id": "S3",
+        "title": "Ritual status and political conflict in later nineteenth-century Maharashtra",
+        "url": "https://www.cambridge.org/core/books/abs/caste-conflict-and-ideology/ritual-status-and-political-conflict-in-later-nineteenthcentury-maharashtra/5B894F9D29677C97AEC50840D3A31CA2"
+      },
+      {
+        "id": "S4",
+        "title": "Savitribai Phule First Memorial Lecture: Dnyanajyoti Savitribai Phule",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf"
+      },
+      {
+        "id": "S5",
+        "title": "Life and Work of Mahatma Jotirao Phule",
+        "url": "https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/Life_%20%26%20_Work.htm"
+      },
+      {
+        "id": "S6",
+        "title": "Savitribai Phule First Memorial Lecture: Dnyanajyoti Savitribai Phule",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf"
+      }
+    ],
+    "citationIdsValid": true,
+    "latencyMs": 4843
+  },
+  {
+    "question": "What was her long-term impact?",
+    "httpStatus": 200,
+    "status": "complete",
+    "answer": "Savitribai Phule was a nineteenth-century social reformer and educator who challenged orthodox traditions around caste and gender [S2, S3]. In the late 1840s, alongside her husband Jotirao Phule, she began teaching girls and individuals from marginalized communities such as the Mahars and Mangs, enduring severe social hostility and displacement for promoting education among those historically excluded from it [S1, S3, S7].\n\nHer cultural legacy centers on reshaping societal norms around womanhood, marriage, and institutional leadership. Through the Satyashodhak Samaj, an organization committed to social truth-seeking and welfare where she served as chairperson in 1893, she helped promote alternative cultural ceremonies [S4, S5]. These included Satyashodhak marriages, where traditional mantras were replaced by mutual pledges that required the bridegroom to vow support for the bride's education and equal rights [S5].\n\nIn modern cultural memory, Phule is commemorated as a foundational figure who confronted entrenched hierarchies in thought and daily practice [S2]. Later educational institutions and initiatives remember her work through dedicated memorial lecture series and graphic histories that highlight her courage, framing her educational leadership as a turning point for gender equality and mass literacy [S2, S6].",
+    "wordCount": 186,
+    "citations": [
+      {
+        "id": "S1",
+        "title": "Life Sketch of Mahatma Jotirao Phule",
+        "url": "https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/life_sketch.htm"
+      },
+      {
+        "id": "S2",
+        "title": "People and Ideas: Savitribai Phule",
+        "url": "https://publications.azimpremjiuniversity.edu.in/429/1/Savitribai%20Phule_English.pdf"
+      },
+      {
+        "id": "S3",
+        "title": "Life and Work of Mahatma Jotirao Phule",
+        "url": "https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/Life_%20%26%20_Work.htm"
+      },
+      {
+        "id": "S4",
+        "title": "Associates of Mahatma Phule: Savitribai Phule",
+        "url": "https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/accociate.htm"
+      },
+      {
+        "id": "S5",
+        "title": "Savitribai Phule First Memorial Lecture: Dnyanajyoti Savitribai Phule",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf"
+      },
+      {
+        "id": "S6",
+        "title": "Savitribai Phule First Memorial Lecture: Dnyanajyoti Savitribai Phule",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf"
+      },
+      {
+        "id": "S7",
+        "title": "Savitribai Phule’s letters to Jyotiba: October 1856, August 1868, April 1877",
+        "url": "https://scroll.in/article/801848/to-jyotiba-from-savitribai-phule-these-arent-love-letters-but-tell-you-what-love-is-all-about"
+      }
+    ],
+    "citationIdsValid": true,
+    "latencyMs": 4123
+  }
+]

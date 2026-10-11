@@ -81,6 +81,7 @@ export function detectLens(question: string): Lens | null {
 }
 
 const CATEGORY_LENSES: Record<string, LensId[]> = {
+  educator_social_reformer: ["educational", "social", "cultural", "political", "institutional", "literary"],
   scientist: ["scientific", "educational", "institutional", "national"],
   political_leader: ["political", "military", "administrative", "social", "cultural"],
   ruler: ["political", "military", "administrative", "social", "cultural"],

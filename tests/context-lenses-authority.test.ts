@@ -45,6 +45,7 @@ describe("lenses", () => {
     expect(relevantLenses(["political_leader"]).map((lens) => lens.id)).toContain("administrative");
     expect(relevantLenses(["political_leader"]).map((lens) => lens.id)).not.toContain("scientific");
     expect(relevantLenses(["scientist", "political_leader"]).length).toBeLessThanOrEqual(6);
+    expect(relevantLenses(["educator_social_reformer"]).map(lens => lens.id)).toEqual(["educational", "social", "cultural", "political", "institutional", "literary"]);
   });
 
   it("ranks evidence that speaks to the requested angle first", () => {
