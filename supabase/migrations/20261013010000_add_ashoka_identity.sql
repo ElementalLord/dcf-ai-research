@@ -16,7 +16,7 @@ select p.id, a.alias, a.alias_type, a.confidence from public.personalities p cro
   ('Asoka', 'alternate_name', 0.99::double precision),
   ('Ashoka Maurya', 'alternate_name', 0.99::double precision),
   ('Emperor Ashoka', 'alternate_name', 0.98::double precision),
-  ('Devanampiya Piyadasi', 'royal_title', 0.90::double precision)
+  ('Devanampiya Piyadasi', 'epithet', 0.90::double precision)
 ) a(alias, alias_type, confidence)
 where p.canonical_name = 'Ashoka'
 on conflict do nothing;

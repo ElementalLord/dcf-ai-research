@@ -20,4 +20,4 @@ cross join (values
   ('Baba Nanak', 'alternate_name', 0.98::double precision)
 ) as x(alias, alias_type, confidence)
 where p.canonical_name = 'Guru Nanak'
-on conflict (personality_id, alias) do nothing;
+on conflict do nothing;

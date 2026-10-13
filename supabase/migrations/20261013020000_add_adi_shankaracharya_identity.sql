@@ -15,4 +15,4 @@ select p.id, x.alias, x.alias_type, x.confidence from public.personalities p cro
   ('Shri Shankaracharya', 'alternate_name', 0.95::double precision), ('Sri Shankaracharya', 'alternate_name', 0.95::double precision),
   ('Shankara Bhagavatpada', 'epithet', 0.92::double precision)
 ) as x(alias, alias_type, confidence) where p.canonical_name = 'Adi Shankaracharya'
-on conflict (personality_id, alias) do nothing;
+on conflict do nothing;
