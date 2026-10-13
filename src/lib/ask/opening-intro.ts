@@ -2,7 +2,7 @@ import { framedStatement } from "@/lib/claim-epistemics/language";
 import { normalizeForMatch } from "@/lib/corpus/text";
 import type { Citation, RetrievedEvidence } from "@/lib/corpus/types";
 
-const ROLE = /\b(?:sage|seer|rishi|scientist|physicist|chemist|historian|researcher|king|queen|ruler|teacher|poet|author|philosopher|leader|mathematician|scholar|monk|ascetic)\b/i;
+const ROLE = /\b(?:sage|seer|rishi|scientist|physicist|chemist|historian|researcher|king|queen|ruler|teacher|poet|author|philosopher|leader|mathematician|scholar|monk|ascetic|musician|performer|singer|vocalist|artist)\b/i;
 
 /** Add a brief, cited introduction when an opening answer jumps straight into a detail. */
 export function ensureOpeningIntro(answer: string, personality: string, evidence: RetrievedEvidence[], citations: Citation[], openingTurn: boolean): string {

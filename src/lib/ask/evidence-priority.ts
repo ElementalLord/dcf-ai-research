@@ -26,12 +26,12 @@ export function answerIntent(question: string): AnswerIntent {
 export function hasDirectLiveIdentity(question: string, evidence: RetrievedEvidence[]): boolean {
   if (answerIntent(question) !== "identity") return false;
   return evidence.some((item) => item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live")
-    && Boolean(item.sourceUrl) && /\b(?:sage|seer|rishi|priest|teacher|preceptor|king|queen|poet|philosopher|scientist|physicist|chemist|inventor|researcher|engineer)\b/i.test(item.text));
+    && Boolean(item.sourceUrl) && /\b(?:sage|seer|rishi|priest|teacher|preceptor|king|queen|poet|philosopher|scientist|physicist|chemist|inventor|researcher|engineer|musician|performer|singer|vocalist)\b/i.test(item.text));
 }
 
 const intentTerms: Record<AnswerIntent, RegExp> = {
-  identity: /sage|seer|rishi|king|teacher|scientist|physicist|researcher|discover|field|guide|role|known|became|born|family|disciple|lineage|rigveda|ramayana/i,
-  importance: /contribut|influenc|discover|research|scientific|spectroscop|teach|guide|hymn|work|text|mantra|accomplish|legacy|significan/i,
+  identity: /sage|seer|rishi|king|teacher|scientist|physicist|researcher|musician|performer|singer|vocalist|music|concert|discover|field|guide|role|known|became|born|family|disciple|lineage|rigveda|ramayana/i,
+  importance: /contribut|influenc|discover|research|scientific|spectroscop|teach|guide|hymn|work|text|mantra|accomplish|legacy|significan|audience|concert|music/i,
   actions: /taught|guided|gave|led|protected|defeated|composed|performed|attained|became|fought|discovered|experimented|founded|developed/i,
   method: /experiment|method|instrument|lamp|telescope|sunlight|spectrum|spectra|filter|observ|measure|scattering|research/i,
   learning: /curios|observ|experiment|research|persist|challenge|stud|educat|science|mentor|disciplin|work/i,
@@ -59,7 +59,7 @@ export function prioritizeEvidence(question: string, evidence: RetrievedEvidence
     const central = intentTerms[intent].test(text) ? 4 : 0;
     const historicalContext = (intent === "identity" || intent === "importance") && /\b(?:1[5-9]\d{2}|20\d{2}|\d{1,2}(?:st|nd|rd|th)? century|reign of)\b/i.test(text) ? 2 : 0;
     const consequence = (intent === "identity" || intent === "importance") && /\b(?:enabled|changed|led to|provided|became the basis|influenced|transformed|spectroscop|molecular structure)\b/i.test(text) ? 2 : 0;
-    const comparisonFit = similarWork && /\b(?:similar|comparable|parallel|contemporar|independent(?:ly)?|another|other (?:scientists?|physicists?|researchers?|groups?|experiments?)|also (?:studied|worked|discovered|observed))\b/i.test(text) ? 14 : 0;
+    const comparisonFit = similarWork && /\b(?:similar|comparable|parallel|contemporar|independent(?:ly)?|another|other (?:scientists?|physicists?|researchers?|groups?|experiments?|musicians?|singers?|performers?)|also (?:studied|worked|discovered|observed|performed|sang))\b/i.test(text) ? 14 : 0;
     const frameworkFit = intent === "method" && /method|experiment|innov/i.test(metadata) ? 6
       : intent === "learning" && /method|experiment|persist|qualit|educat|mentor/i.test(metadata) ? 6 : 0;
     const noisePenalty = /research framework|should be stored|source set|portal metadata|metrical|grammatical|not enough evidence/i.test(text) ? 7 : 0;

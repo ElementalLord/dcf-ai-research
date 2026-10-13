@@ -29,7 +29,9 @@ describe("lenses", () => {
     expect(detectLens("What is the environmental relevance of this person's work?")?.id).toBe("environmental");
     expect(detectLens("What about the political angle?")?.id).toBe("political");
     expect(detectLens("Explain his institutional impact.")?.id).toBe("institutional");
-    expect(detectLens("What was her gender significance?")?.id).toBe("cultural");
+    expect(detectLens("What was her gender significance?")?.id).toBe("gender");
+    expect(detectLens("Why was her career significant for women in classical music?")?.id).toBe("gender");
+    expect(detectLens("What was her international influence?")?.id).toBe("international");
     expect(detectLens("How did her historical reputation develop?")?.id).toBe("cultural");
     expect(detectLens("What was her legacy?")?.id).toBe("cultural");
   });
@@ -44,7 +46,8 @@ describe("lenses", () => {
     expect(relevantLenses(["scientist"]).map((lens) => lens.id)).toEqual(["scientific", "educational", "institutional", "national"]);
     expect(relevantLenses(["political_leader"]).map((lens) => lens.id)).toContain("administrative");
     expect(relevantLenses(["political_leader"]).map((lens) => lens.id)).not.toContain("scientific");
-    expect(relevantLenses(["scientist", "political_leader"]).length).toBeLessThanOrEqual(6);
+    expect(relevantLenses(["scientist", "political_leader"]).length).toBeLessThanOrEqual(7);
+    expect(relevantLenses(["musician_performer"]).map((lens) => lens.id)).toEqual(["artistic", "cultural", "social", "gender", "institutional", "spiritual", "international"]);
     expect(relevantLenses(["educator_social_reformer"]).map(lens => lens.id)).toEqual(["educational", "social", "cultural", "political", "institutional", "literary"]);
   });
 

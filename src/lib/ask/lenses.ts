@@ -2,7 +2,7 @@
  * A lens is one angle on a person's work. Lenses steer retrieval, evidence
  * selection, live search, and synthesis; they are not display-only tags.
  */
-export type LensId = "scientific" | "educational" | "institutional" | "national" | "social" | "political" | "military"
+export type LensId = "scientific" | "artistic" | "gender" | "international" | "educational" | "institutional" | "national" | "social" | "political" | "military"
   | "administrative" | "economic" | "cultural" | "philosophical" | "spiritual" | "literary" | "environmental";
 
 export type Lens = {
@@ -19,6 +19,15 @@ export type Lens = {
 };
 
 export const LENSES: Lens[] = [
+  { id: "artistic", label: "Artistic / Musical", ask: /\bartistic(?:ally)?\b|\bmusical(?:ly)?\b|\bas a (?:musician|performer|singer)\b/i,
+    evidence: /music|song|sing|sang|singer|perform|concert|raga|kriti|melod|rhythm|voice|diction|record/i,
+    focus: "musical practice, repertoire, performance style, recordings, and critical interpretation", retrievalTerms: ["music", "performance", "raga", "recordings"] },
+  { id: "gender", label: "Gender", ask: /\bgender\b|\bwomen(?:'s)?\b|\bfemale\b|\bwoman\b/i,
+    evidence: /women|woman|female|gender|first woman|vidushi|devadasi|opportunit|barrier/i,
+    focus: "women's opportunities, institutional access, and gendered expectations in the field", retrievalTerms: ["women", "gender", "opportunities"] },
+  { id: "international", label: "International influence", ask: /\binternational(?:ly)?\b|\bglobal(?:ly)?\b|\boverseas\b|\babroad\b/i,
+    evidence: /international|abroad|overseas|united nations|edinburgh|europe|london|bbc|cairo|world/i,
+    focus: "performances abroad, reception across cultures, and international visibility", retrievalTerms: ["international", "abroad", "United Nations"] },
   { id: "scientific", label: "Scientific", ask: /\bscientific(?:ally)?\b|\bscience\b|\bas a scientist\b/i,
     evidence: /discover|experiment|theor|research|physic|mathemat|spectr|scatter|formula|proof|laborator|observ|measure|scien/i,
     focus: "discoveries, methods, experiments, and their effect on the field", retrievalTerms: ["discovery", "experiment", "research", "science"] },
@@ -46,7 +55,7 @@ export const LENSES: Lens[] = [
   { id: "economic", label: "Economic", ask: /\beconom(?:ic|ical|ically|y)\b/i,
     evidence: /econom|trade|revenue|tax|commerce|industr|agricultur|wealth|fund|financ|market/i,
     focus: "trade, revenue, livelihoods, funding, and economic consequences", retrievalTerms: ["economy", "trade", "revenue"] },
-  { id: "cultural", label: "Cultural", ask: /\bcultur(?:al|ally|e)\b|\bgender\b|\bhistorical (?:reputation|memory)\b|\blegacy\b/i,
+  { id: "cultural", label: "Cultural", ask: /\bcultur(?:al|ally|e)\b|\bhistorical (?:reputation|memory)\b|\blegacy\b/i,
     evidence: /cultur|\bart|music|language|literature|tradition|heritage|festival|identity|temple|poet|gender|women|womanhood|memory|reputation|commemorat|portray/i,
     focus: "language, arts, tradition, gender, identity, and later cultural memory", retrievalTerms: ["culture", "tradition", "language", "heritage", "gender", "memory"] },
   { id: "philosophical", label: "Philosophical", ask: /\bphilosoph(?:ical|ically|y)\b/i,
@@ -69,7 +78,7 @@ export function lensById(id: string | null | undefined): Lens | null {
 }
 
 /** Words that mark a question as asking for an angle rather than merely using an adjective. */
-const FRAMING = /\b(?:angle|lens|perspective|standpoint|viewpoint|point of view|side|impact|influen\w+|contribution|contributions|significance|relevance|role|legacy|reputation|memory|importance|achievements?|reforms?|innovati\w+|dimension|aspect)\b/i;
+const FRAMING = /\b(?:angle|lens|perspective|standpoint|viewpoint|point of view|side|impact|influen\w+|contribution|contributions|significan\w*|relevance|role|legacy|reputation|memory|importance|achievements?|reforms?|innovati\w+|dimension|aspect)\b/i;
 const ADVERB = /\b(?:scientifically|educationally|institutionally|socially|politically|militarily|administratively|economically|culturally|philosophically|spiritually|environmentally)\b/i;
 
 /** The single angle a question asks for, or null when it asks generally. */
@@ -81,6 +90,7 @@ export function detectLens(question: string): Lens | null {
 }
 
 const CATEGORY_LENSES: Record<string, LensId[]> = {
+  musician_performer: ["artistic", "cultural", "social", "gender", "institutional", "spiritual", "international"],
   educator_social_reformer: ["educational", "social", "cultural", "political", "institutional", "literary"],
   scientist: ["scientific", "educational", "institutional", "national"],
   political_leader: ["political", "military", "administrative", "social", "cultural"],
@@ -91,7 +101,7 @@ const CATEGORY_LENSES: Record<string, LensId[]> = {
 const DEFAULT_LENSES: LensId[] = ["social", "cultural", "educational"];
 
 /** Angles worth offering for a person, from their research categories. Never the whole list. */
-export function relevantLenses(categorySlugs: Array<string | null | undefined>, limit = 6): Lens[] {
+export function relevantLenses(categorySlugs: Array<string | null | undefined>, limit = 7): Lens[] {
   const ids = categorySlugs.flatMap((slug) => (slug && CATEGORY_LENSES[slug]) || []);
   return [...new Set(ids.length ? ids : DEFAULT_LENSES)].slice(0, limit).map((id) => BY_ID.get(id)!);
 }
