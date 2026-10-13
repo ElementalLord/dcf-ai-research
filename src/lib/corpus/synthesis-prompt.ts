@@ -1,6 +1,6 @@
 import type { QuestionScope } from "@/lib/ask/question-scope";
 
-export const SYNTHESIS_PROMPT_VERSION = "historical_conversation_v17";
+export const SYNTHESIS_PROMPT_VERSION = "historical_conversation_v18";
 
 export function buildSynthesisPrompt(input: {
   personality: string;
@@ -51,7 +51,7 @@ Evidence grounding constrains WHAT you may claim, not HOW you must phrase it. Pa
 ${focus}
 ${styleInstruction}
 ${conversationalFraming}
-${placement} Take every date, period, and name from the evidence packet.${input.chronologyNote ? ` ${input.chronologyNote}` : ""}
+${placement} Take every date, period, and name from the evidence packet. Keep initials and shortened names as written unless the packet gives their full forms.${input.chronologyNote ? ` ${input.chronologyNote}` : ""}
 ${perspective}
 ${input.evidenceRecords && input.evidenceRecords <= 2 ? "This packet has very little evidence. Give one compact paragraph, usually under 80 words. State only the central fact the source directly supports, qualify the textual scope, and omit minor episode details or analogies. Do not make the answer sound more complete than the evidence allows." : ""}
 

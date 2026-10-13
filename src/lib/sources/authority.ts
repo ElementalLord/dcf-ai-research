@@ -82,6 +82,7 @@ const CREDIBLE_HOSTS: Array<[RegExp, string]> = [
   [/(?:^|\.)(?:archive\.org|hathitrust\.org|gutenberg\.org|wikisource\.org)$/i, "Digital library of published works"],
   [/(?:^|\.)(?:belurmath\.org|sriaurobindoashram\.org|advaitaashrama\.org|visvabharati\.ac\.in|tagoreweb\.in)$/i, "Institution that preserves this figure's works"],
   [/(?:^|\.)(?:britishmuseum\.org|metmuseum\.org|vam\.ac\.uk|nationalmuseumindia\.gov\.in|csmvs\.in|smithsonianmag\.com|sciencehistory\.org)$/i, "Museum or museum publication"],
+  [/(?:^|\.)(?:musicacademymadras\.in)$/i, "Cultural academy archive"],
   [/(?:^|\.)(?:ethw\.org)$/i, "Professional society history archive"],
 ];
 

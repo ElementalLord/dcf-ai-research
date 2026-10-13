@@ -34,11 +34,11 @@ const matchesSearch = (query: string, fields: Array<string | null | undefined>) 
 };
 const sourceChoice = (source: Source) => source.url ? `${source.title} · ${source.url}` : source.title;
 const sourceReviewLabel = (source: Source) => source.source_status === "approved" && (source.metadata?.testing_only || source.approval_origin === "system_test_bulk") ? "Approved for testing" : source.source_status === "approved" && source.approval_origin === "ai_candidate" ? "AI checked" : human(source.source_status);
-const claimReviewLabel = (claim: Claim) => claim.review_status === "approved" && (claim.approval_metadata?.testing_only || claim.approval_origin === "system_test_bulk") ? "Approved for testing" : human(claim.review_status);
+const claimReviewLabel = (claim: Claim) => claim.review_status === "approved" && (claim.approval_metadata?.testing_only || claim.approval_origin === "system_test_bulk") ? "Approved for testing" : claim.review_status === "approved" && claim.approval_origin === "imported_existing" ? "Imported approval" : human(claim.review_status);
 const sourceAuthority = (source: Pick<Source, "url" | "source_type" | "publisher_or_institution">) => classifySourceAuthority({ url: source.url, sourceType: source.source_type, institution: source.publisher_or_institution });
 const day = (value: string | null | undefined) => value ? new Date(value).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" }) : "Not recorded";
 // Who or what stands behind an approval, in words a reviewer can act on.
-const approvalBasis = (origin: string | null, label: string | null) => label && !label.startsWith("system_") ? `Reviewed by ${label}`
+const approvalBasis = (origin: string | null, label: string | null) => (origin === "human_manual" || origin === "mentor_review") && label && !label.startsWith("system_") ? `Reviewed by ${label}`
   : ({ human_manual: "Reviewed by a person", mentor_review: "Mentor review", system_test_bulk: "Bulk approval for testing; not individually reviewed", imported_existing: "Imported with the original corpus", ai_candidate: "AI checked; not yet reviewed by a person" }[origin || ""] || "Not recorded");
 function normalizedSourceUrl(value: string): string | null {
   if (!value.trim()) return null;
@@ -244,7 +244,9 @@ export default function ResourcesClient({ authorized, personalities, loadError }
             <Button className="resource-add-button" onClick={tab === "sources" ? startCreate : () => void startClaim()} disabled={!personId || loading}><Plus size={16}/> Add {tab === "sources" ? "source" : "claim"}</Button>
             {(query || status !== "all" || sourceType !== "all" || sourceSort !== "title") && <Button type="button" variant="ghost" size="sm" onClick={() => { setStatus("all"); setSourceType("all"); setSourceSort("title"); setQuery(""); setPage(1); }}>Clear</Button>}
           </div>
-          <div className="resource-list-summary" aria-live="polite"><strong>{activeList.length}</strong> {resultLabel} for {selectedName}</div>
+          <div className="resource-list-summary" aria-live="polite"><strong>{activeList.length}</strong> {resultLabel} for {selectedName}<span className="resource-summary-hint">{tab === "sources"
+            ? `${sources.filter(item => item.source_status === "approved").length} sources admitted for AI evidence. Source status does not approve linked claims.`
+            : `${claims.filter(item => item.review_status === "approved" && (item.approval_origin === "human_manual" || item.approval_origin === "mentor_review")).length} claims reviewed by a person; ${claims.filter(item => item.review_status === "approved" && item.approval_origin !== "human_manual" && item.approval_origin !== "mentor_review").length} admitted for testing or import; ${claims.filter(item => item.review_status !== "approved").length} awaiting review. Unapproved claims are not used in AI answers.`}</span></div>
         </>}
         <TabsContent value="sources">
           {loading ? <LoadingRows kind="sources"/> : filteredSources.length ? <div className="resource-record-list" aria-label="Sources">

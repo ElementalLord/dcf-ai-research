@@ -1,5 +1,5 @@
 /** Questions that ask how one person or thing bears on another. */
-const CONNECTION = /\b(?:influenc\w+|inspir\w+|connect\w+|relat\w+|link\w*|shap\w+|affect\w+|led to|lead to|caus\w+|respon\w+ to|react\w+ to)\b/i;
+const CONNECTION = /\b(?:influenc\w+|inspir\w+|connect\w+|relationship|related to|relates to|link\w*|shap\w+|affect\w+|led to|lead to|caus\w+|respon\w+ to|react\w+ to)\b/i;
 
 export function abstentionMessage(personality: string, question = ""): string {
   // A missing link is said plainly; nearby names and loosely related passages are never offered as if they answered it.

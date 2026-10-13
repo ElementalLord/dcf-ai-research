@@ -85,7 +85,7 @@ export function assessEvidenceSufficiency(
   const comparative = /compare|differ|difference|across|contested|conflict/i.test(question)
     || /\b(?:sources|accounts|traditions|texts)\b.{0,50}\bdisagree/i.test(question);
   const similarWork = /\b(?:similar|comparable|contemporar|anyone else|someone else|who else)\b/i.test(question);
-  const comparableEvidence = evidence.some((item) => /\b(?:similar|comparable|parallel|contemporar|independent(?:ly)?|another|other (?:scientists?|physicists?|researchers?|groups?|experiments?)|also (?:studied|worked|discovered|observed))\b/i.test(item.text));
+  const comparableEvidence = evidence.some((item) => /\b(?:similar|comparable|parallel|contemporar|independent(?:ly)?|another|were active|was active|other (?:scientists?|physicists?|researchers?|groups?|experiments?)|also (?:studied|worked|discovered|observed))\b/i.test(item.text));
   const developmental = /development|trace|transform|evolv/i.test(question);
   const complex = comparative || similarWork || developmental;
   const mode = complex ? "RESEARCH" : "EXPANDED";

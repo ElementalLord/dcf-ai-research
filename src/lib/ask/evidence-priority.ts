@@ -59,7 +59,7 @@ export function prioritizeEvidence(question: string, evidence: RetrievedEvidence
     const central = intentTerms[intent].test(text) ? 4 : 0;
     const historicalContext = (intent === "identity" || intent === "importance") && /\b(?:1[5-9]\d{2}|20\d{2}|\d{1,2}(?:st|nd|rd|th)? century|reign of)\b/i.test(text) ? 2 : 0;
     const consequence = (intent === "identity" || intent === "importance") && /\b(?:enabled|changed|led to|provided|became the basis|influenced|transformed|spectroscop|molecular structure)\b/i.test(text) ? 2 : 0;
-    const comparisonFit = similarWork && /\b(?:similar|comparable|parallel|contemporar|independent(?:ly)?|another|other (?:scientists?|physicists?|researchers?|groups?|experiments?|musicians?|singers?|performers?)|also (?:studied|worked|discovered|observed|performed|sang))\b/i.test(text) ? 14 : 0;
+    const comparisonFit = similarWork && /\b(?:similar|comparable|parallel|contemporar|independent(?:ly)?|another|were active|was active|other (?:scientists?|physicists?|researchers?|groups?|experiments?|musicians?|singers?|performers?)|also (?:studied|worked|discovered|observed|performed|sang))\b/i.test(text) ? 14 : 0;
     const frameworkFit = intent === "method" && /method|experiment|innov/i.test(metadata) ? 6
       : intent === "learning" && /method|experiment|persist|qualit|educat|mentor/i.test(metadata) ? 6 : 0;
     const noisePenalty = /research framework|should be stored|source set|portal metadata|metrical|grammatical|not enough evidence/i.test(text) ? 7 : 0;
@@ -68,9 +68,10 @@ export function prioritizeEvidence(question: string, evidence: RetrievedEvidence
     // A requested angle or historical placement outweighs generic relevance, so the answer is built from that evidence.
     const lensFit = lens && (lens.evidence.test(text) || lens.evidence.test(metadata)) ? 6 : 0;
     const contextFit = contextIntent && CONTEXT_EVIDENCE.test(text) ? 5 : 0;
+    const namedPeersFit = contextIntent === "contemporaries" && /\b(?:were active|was active)\b/i.test(text) ? 20 : 0;
     // Publisher standing breaks ties between otherwise comparable evidence; it never outranks relevance.
     const standing = authorityRank(item.authority?.level) * 0.5;
-    return { item, index, score: direct + central + historicalContext + consequence + comparisonFit + frameworkFit + authority + lensFit + contextFit + standing - noisePenalty - episodePenalty };
+    return { item, index, score: direct + central + historicalContext + consequence + comparisonFit + frameworkFit + authority + lensFit + contextFit + namedPeersFit + standing - noisePenalty - episodePenalty };
   }).sort((a, b) => b.score - a.score || a.index - b.index);
   const selected: RetrievedEvidence[] = [];
   const perSource = new Map<string, number>();

@@ -1,7 +1,7 @@
 /** What kind of historical placement a question asks for, if any. */
 export type ContextIntent = "contemporaries" | "novelty" | "period";
 
-const CONTEMPORARIES = /\b(?:who else|anyone else|someone else|contemporar\w+|peers?|same (?:field|period|era|time)|similar work|related (?:physics|work|research|field)|competing|rival (?:schools?|theor\w+|approach\w*)|who influenced|influenced whom)\b/i;
+const CONTEMPORARIES = /\b(?:who else|anyone else|someone else|contemporar\w+|peers?|same (?:field|period|era|time)|similar work|related (?:physics|work|research|field|problems?|questions?|experiments?)|competing|rival (?:schools?|theor\w+|approach\w*)|who influenced|influenced whom)\b/i;
 const NOVELTY = /\b(?:groundbreaking|ahead of (?:his|her|their|its|the) (?:time|peers)|unusual|innovative|novel|for (?:the|its|that|his|her|their) (?:time|period|era|day)|at (?:the|that) time|existed before|came before|what changed)\b/i;
 const PERIOD = /\b(?:what was happening|what was going on|historical (?:context|period|background|setting)|in (?:his|her|their) (?:time|day|era)|during (?:his|her|their) (?:time|life|lifetime|era)|what (?:year|period|era|century))\b/i;
 
@@ -32,7 +32,7 @@ export const CONTEXT_GAP: Record<ContextIntent, string> = {
 };
 
 /** Framing words for time carry no subject matter of their own. */
-export const CONTEXT_FRAMING_TERMS = ["time", "period", "era", "happening", "else", "doing", "groundbreaking", "innovative", "unusual"];
+export const CONTEXT_FRAMING_TERMS = ["time", "period", "era", "happening", "else", "doing", "groundbreaking", "innovative", "unusual", "contemporary", "contemporaries", "peer", "peers", "related", "problem", "problems", "similar", "working"];
 
 /** Ancient and traditional figures have no agreed dates; say so instead of inventing them. */
 export function chronologyGuidance(categorySlugs: Array<string | null | undefined>): string {

@@ -71,16 +71,18 @@ function excerpt(text, anchor) {
   if (at < 0) return null;
   // Keep complete sentences around the anchor: a fragment can lose its subject,
   // attribution or chronology and is poor evidence for conversational retrieval.
-  const previous = text.lastIndexOf(". ", at);
-  let start = previous >= 0 ? previous + 2 : 0;
-  const earlier = text.lastIndexOf(". ", Math.max(0, start - 3));
-  if (earlier >= 0 && at - earlier < 500) start = earlier + 2;
-  let end = text.indexOf(". ", at + anchor.length);
-  if (end < 0) end = text.length;
-  else {
-    end += 1;
-    const following = text.indexOf(". ", end + 1);
-    if (following >= 0 && following - start < 1100) end = following + 1;
+  // Initials such as "M. S." are not sentence boundaries.
+  const boundaries = [...text.matchAll(/\. /g)].map(match => match.index).filter(index => !/^[A-Z]$/.test(text.slice(Math.max(0, index - 1), index)));
+  const before = boundaries.filter(index => index < at);
+  const previous = before.at(-1);
+  let start = previous !== undefined ? previous + 2 : 0;
+  const earlier = before.at(-2);
+  if (earlier !== undefined && at - earlier < 500) start = earlier + 2;
+  const after = boundaries.filter(index => index >= at + anchor.length);
+  let end = after.length ? after[0] + 1 : text.length;
+  if (after.length) {
+    const following = after[1];
+    if (following !== undefined && following - start < 1100) end = following + 1;
   }
   if (end - start > 1600) throw new Error(`Context unexpectedly long for ${anchor}; choose an explicit excerpt`);
   return text.slice(start, end).trim();

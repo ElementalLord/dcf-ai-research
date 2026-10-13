@@ -8,6 +8,7 @@ import { resolveQuestionContext } from "@/lib/ask/query-context";
 import { buildSynthesisPrompt } from "@/lib/corpus/synthesis-prompt";
 import { buildBoundedContext } from "@/lib/corpus/context";
 import { citationAuthority } from "@/lib/ask/presentation";
+import { abstentionMessage } from "@/lib/ask/messages";
 import { canonicalizeQuestion } from "@/lib/corpus/personality-config";
 import type { RetrievedClaim, RetrievedPassage } from "@/lib/corpus/types";
 
@@ -91,9 +92,16 @@ describe("historical context", () => {
   it("recognizes questions about period, novelty, and contemporaries", () => {
     expect(detectContextIntent("Why was his discovery important at the time?")).toBe("novelty");
     expect(detectContextIntent("Who else was working in related physics?")).toBe("contemporaries");
+    expect(detectContextIntent("Who else was working on related problems then?")).toBe("contemporaries");
     expect(detectContextIntent("What was happening in India at that time?")).toBe("period");
     expect(detectContextIntent("What was innovative about his administration for the period?")).toBe("novelty");
     expect(detectContextIntent("Who was C. V. Raman?")).toBeNull();
+  });
+
+  it("recognizes a dated list of peers and keeps comparison requests distinct from relationship claims", () => {
+    const peers = [claim(1, "Through the 1950s, Pattammal and Vasanthakumari were active alongside Subbulakshmi in Carnatic music."), claim(2, "The Music Academy listed Subbulakshmi and Pattammal among its awardees.")];
+    expect(assessEvidenceSufficiency("Who were Subbulakshmi's contemporaries in Carnatic music?", peers, { personalityAliases: ["subbulakshmi"] }).answerable).toBe(true);
+    expect(abstentionMessage("C. V. Raman", "Who else was working on related problems then?")).not.toMatch(/establish that connection/);
   });
 
   it("keeps follow-ups attached to the person without repeating the name", () => {
@@ -137,6 +145,7 @@ describe("source authority", () => {
     expect(classifySourceAuthority({ url: "https://vedicheritage.gov.in/samhitas/", live: true }).level).toBe("authoritative");
     expect(classifySourceAuthority({ url: "https://www.cambridge.org/core/books/x", live: true }).level).toBe("authoritative");
     expect(classifySourceAuthority({ url: "https://www.britannica.com/biography/Shivaji", live: true }).level).toBe("credible_secondary");
+    expect(classifySourceAuthority({ url: "https://musicacademymadras.in/catalogue/files/souv/1968.pdf", sourceType: "primary_text" })).toMatchObject({ level: "credible_secondary", primary: true });
     expect(classifySourceAuthority({ url: "https://example-history.com/shivaji", sourceType: "institutional", live: true }).level).toBe("general_web");
   });
 

@@ -14,6 +14,7 @@ import type { ParameterField, RetrievedClaim, RetrievedEvidence, RetrievedPassag
 import { evidencePolicyMode, eligibleClaimOrigins } from "./approval-policy";
 import { loadPersonalityConfiguration } from "./personality-context";
 import { canonicalizeTerms, normalizedAliases, type TermAliasRecord } from "./personality-config";
+import { detectContextIntent } from "@/lib/ask/historical-context";
 
 type ParameterRow = {
   id: string;
@@ -265,6 +266,17 @@ export async function retrieveEvidence(
         max_results: 30,
       })
     : Promise.resolve({ data: [], error: null });
+  // Names of peers rarely occur beside the word "contemporary". Search the
+  // person's own corpus for comparison language as a second, bounded path.
+  const contemporaryPromise = detectContextIntent(question) === "contemporaries"
+    ? supabaseAdmin.rpc("search_source_chunks_lexical", {
+        query_text: "active OR similar",
+        personality_uuid: personalityId,
+        parameter_field_uuids: null,
+        textual_layers: null,
+        max_results: 12,
+      })
+    : Promise.resolve({ data: [], error: null });
   const routedLexicalParameters = broadQuestion ? parameters.filter((parameter) => (parameter.parameter_fields || []).length > 0).slice(0, 16) : selectedParameters;
   const broadLexicalPromise = routedLexicalParameters.length
     ? Promise.all(routedLexicalParameters.map(async (parameter) => {
@@ -315,8 +327,8 @@ export async function retrieveEvidence(
     const start = performance.now();
     try { return await query; } finally { latenciesMs[name] = Math.round(performance.now() - start); }
   };
-  const [lexicalResult, broadLexicalResults, claimsResult, inventoryResult, liveSourceCountResult, eventsResult, relationshipsResult] = await Promise.all([
-    timed<{ data: unknown; error: { message: string } | null }>("lexical", lexicalPromise), timed("broadLexical", broadLexicalPromise), timed("claims", claimsPromise), timed("inventory", inventoryPromise), timed("sourceRegistry", liveSourceCountPromise), timed("events", eventsPromise), timed("relationships", relationshipsPromise),
+  const [lexicalResult, contemporaryResult, broadLexicalResults, claimsResult, inventoryResult, liveSourceCountResult, eventsResult, relationshipsResult] = await Promise.all([
+    timed<{ data: unknown; error: { message: string } | null }>("lexical", lexicalPromise), timed<{ data: unknown; error: { message: string } | null }>("contemporaries", contemporaryPromise), timed("broadLexical", broadLexicalPromise), timed("claims", claimsPromise), timed("inventory", inventoryPromise), timed("sourceRegistry", liveSourceCountPromise), timed("events", eventsPromise), timed("relationships", relationshipsPromise),
   ]);
   stopLexical();
   const lexicalError = lexicalResult.error?.message || null;
@@ -333,6 +345,7 @@ export async function retrieveEvidence(
   };
   const lexical = [
     ...((lexicalError ? [] : lexicalResult.data || []) as Array<Record<string, unknown>>).map((row) => passageFromRpc(row, "lexical", personalityId, configuration.canonicalName)),
+    ...((contemporaryResult.error ? [] : contemporaryResult.data || []) as Array<Record<string, unknown>>).map((row) => passageFromRpc(row, "lexical", personalityId, configuration.canonicalName)),
     ...broadLexicalResults.flatMap(({ parameter, result }) => result.error ? [] : ((result.data || []) as Array<Record<string, unknown>>).map((row) => ({
       ...passageFromRpc(row, "lexical", personalityId, configuration.canonicalName),
       parameterCodes: [parameter.code], parameterNames: [parameter.name],

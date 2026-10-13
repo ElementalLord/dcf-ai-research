@@ -52,18 +52,26 @@ function citationLabel(value: string | null | undefined, fallback: string) {
   return citationLabels[value] || value.replaceAll("_", " ").replace(/^./, letter => letter.toUpperCase());
 }
 
-function Inline({ parts, show, numbers }: { parts: InlineAnswerPart[]; show: (id: string) => void; numbers: Map<string, number> }) {
+function citationReview(citation: AskCitation): string {
+  if (citation.kind === "live_web_source") return "live page, not reviewed by DCF";
+  if (citation.kind === "approved_source_passage") return "library passage, interpretation not reviewed";
+  return citation.approvalOrigin === "human_manual" || citation.approvalOrigin === "mentor_review"
+    ? "human-reviewed claim" : "claim admitted for testing or import";
+}
+
+function Inline({ parts, show, numbers, citations }: { parts: InlineAnswerPart[]; show: (id: string) => void; numbers: Map<string, number>; citations: Map<string, AskCitation> }) {
   return parts.map((part, index) => part.type === "citation"
     ? numbers.has(part.citationId)
-      ? <button className="citation-ref" type="button" key={index} onClick={() => show(part.citationId)} aria-label={`Open source ${numbers.get(part.citationId)}`} title={`Open source ${numbers.get(part.citationId)}`}>{numbers.get(part.citationId)}</button>
+      ? <button className="citation-ref" type="button" key={index} onClick={() => show(part.citationId)} aria-label={`Open source ${numbers.get(part.citationId)}: ${citations.get(part.citationId)?.title || "source"}; ${citations.get(part.citationId) ? citationReview(citations.get(part.citationId)!) : "review status unknown"}`} title={`${citations.get(part.citationId)?.title || "Source"} · ${citations.get(part.citationId) ? citationReview(citations.get(part.citationId)!) : "review status unknown"}`}>{numbers.get(part.citationId)}</button>
       : <span className="citation-ref citation-unavailable-ref" key={index} title="Source detail unavailable">{part.citationId.replace(/^[A-Za-z]+/, "")}</span>
     : <span key={index}>{part.value.replaceAll("*", "")}</span>);
 }
 
 function Answer({ answer, show, citations }: { answer: string; show: (id: string) => void; citations: AskCitation[] }) {
   const numbers = new Map(citations.map((citation, index) => [citation.id, index + 1]));
+  const byId = new Map(citations.map((citation) => [citation.id, citation]));
   return <div className="research-answer">{answerBlocks(answer).flatMap(block => block.type === "list" ? block.items : [block.parts]).map((parts, index) =>
-    <p key={index}><Inline parts={parts} show={show} numbers={numbers}/></p>)}</div>;
+    <p key={index}><Inline parts={parts} show={show} numbers={numbers} citations={byId}/></p>)}</div>;
 }
 
 export default function AskClient({ personalities, loadError }: { personalities: Personality[]; loadError: string }) {
@@ -297,7 +305,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
         <div><dt>Who published it</dt><dd><strong className={`authority-badge authority-${selectedAuthority.level}`}>{AUTHORITY_LABELS[selectedAuthority.level]}</strong><span>{selectedAuthority.primary && selectedAuthority.level === "general_web"
           ? "The original text is the evidence. This copy of it is hosted on a website that is not a recognized institution, so compare it with an institutional edition when exact wording matters."
           : `${selectedAuthority.basis ? `${selectedAuthority.basis.replace(/\.$/, "")}. ` : ""}${AUTHORITY_HELP[selectedAuthority.level]}`}</span></dd></div>
-        <div><dt>Found in</dt><dd><strong>{selectedLive ? "Live research" : "DCF Library"}</strong><span>{selectedLive ? "Found on the web for this question. DCF has not reviewed it yet." : selectedCitation.approvalOrigin === "human_manual" || selectedCitation.approvalOrigin === "mentor_review" ? "Stored in the DCF Library and reviewed by a person." : "Stored in the DCF Library."}</span></dd></div>
+        <div><dt>Found in</dt><dd><strong>{selectedLive ? "Live research" : "DCF Library"}</strong><span>{selectedLive ? "Fetched for this question; DCF has not reviewed this page." : selectedCitation.kind === "approved_claim" ? selectedCitation.approvalOrigin === "human_manual" || selectedCitation.approvalOrigin === "mentor_review" ? "This claim was reviewed by a person." : "This claim was admitted for testing or import; it has not been reviewed by a person." : "This source passage is admitted for AI evidence. Its presence does not mean any interpretation of it was reviewed by a person."}</span></dd></div>
         <div><dt>Where to find it</dt><dd>{selectedCitation.pageOrSection || "Specific location not recorded"}</dd></div>
       </dl>
       <h3 className="section-label source-section-heading">Evidence from this source</h3>
