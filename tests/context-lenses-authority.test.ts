@@ -56,6 +56,7 @@ describe("lenses", () => {
     expect(relevantLenses(["scientist", "political_leader"]).length).toBeLessThanOrEqual(7);
     expect(relevantLenses(["musician_performer"]).map((lens) => lens.id)).toEqual(["artistic", "cultural", "social", "gender", "institutional", "spiritual", "international"]);
     expect(relevantLenses(["educator_social_reformer"]).map(lens => lens.id)).toEqual(["educational", "social", "cultural", "political", "institutional", "literary"]);
+    expect(relevantLenses(["spiritual_teacher"]).map(lens => lens.id)).toEqual(["spiritual", "philosophical", "educational", "social", "cultural", "historical", "institutional"]);
     expect(relevantLenses(["rishi"]).map(lens => lens.id)).toEqual(["philosophical", "spiritual", "textual", "educational", "social", "historical"]);
     expect(relevantLenses(["social_entrepreneur"]).map(lens => lens.id)).toEqual(["economic", "social", "agricultural", "institutional", "technological", "leadership", "rural_development"]);
   });

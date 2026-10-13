@@ -115,7 +115,7 @@ const CATEGORY_LENSES: Record<string, LensId[]> = {
   scientist: ["scientific", "educational", "institutional", "national"],
   political_leader: ["political", "military", "administrative", "social", "cultural"],
   ruler: ["political", "military", "administrative", "social", "cultural"],
-  spiritual_teacher: ["spiritual", "educational", "social", "cultural", "institutional"],
+  spiritual_teacher: ["spiritual", "philosophical", "educational", "social", "cultural", "historical", "institutional"],
   rishi: ["philosophical", "spiritual", "textual", "educational", "social", "historical"],
 };
 const DEFAULT_LENSES: LensId[] = ["social", "cultural", "educational"];
