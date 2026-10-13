@@ -34,6 +34,10 @@ describe("lenses", () => {
     expect(detectLens("What was her international influence?")?.id).toBe("international");
     expect(detectLens("How did her historical reputation develop?")?.id).toBe("cultural");
     expect(detectLens("What was her legacy?")?.id).toBe("cultural");
+    expect(detectLens("What was his agricultural impact?")?.id).toBe("agricultural");
+    expect(detectLens("What was his technological contribution?")?.id).toBe("technological");
+    expect(detectLens("Explain his leadership style.")?.id).toBe("leadership");
+    expect(detectLens("What was his rural development impact?")?.id).toBe("rural_development");
   });
 
   it("answers generally when no single angle is requested", () => {
@@ -49,6 +53,7 @@ describe("lenses", () => {
     expect(relevantLenses(["scientist", "political_leader"]).length).toBeLessThanOrEqual(7);
     expect(relevantLenses(["musician_performer"]).map((lens) => lens.id)).toEqual(["artistic", "cultural", "social", "gender", "institutional", "spiritual", "international"]);
     expect(relevantLenses(["educator_social_reformer"]).map(lens => lens.id)).toEqual(["educational", "social", "cultural", "political", "institutional", "literary"]);
+    expect(relevantLenses(["social_entrepreneur"]).map(lens => lens.id)).toEqual(["economic", "social", "agricultural", "institutional", "technological", "leadership", "rural_development"]);
   });
 
   it("ranks evidence that speaks to the requested angle first", () => {

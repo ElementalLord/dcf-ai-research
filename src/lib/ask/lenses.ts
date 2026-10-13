@@ -3,7 +3,8 @@
  * selection, live search, and synthesis; they are not display-only tags.
  */
 export type LensId = "scientific" | "artistic" | "gender" | "international" | "educational" | "institutional" | "national" | "social" | "political" | "military"
-  | "administrative" | "economic" | "cultural" | "philosophical" | "spiritual" | "literary" | "environmental";
+  | "administrative" | "economic" | "cultural" | "philosophical" | "spiritual" | "literary" | "environmental"
+  | "agricultural" | "technological" | "leadership" | "rural_development";
 
 export type Lens = {
   id: LensId;
@@ -19,6 +20,18 @@ export type Lens = {
 };
 
 export const LENSES: Lens[] = [
+  { id: "agricultural", label: "Agricultural", ask: /\bagricultur(?:al|e)\b|\bdairy farming\b|\bfarmers?\b/i,
+    evidence: /agricultur|dair|milk|farmer|livestock|cattle|buffalo|veterinar|feed|herd|animal husbandry/i,
+    focus: "farm production, animal care, dairy organization, and producer livelihoods", retrievalTerms: ["farmers", "dairy", "milk production", "livestock"] },
+  { id: "technological", label: "Technological", ask: /\btechnolog(?:y|ical|ically)\b|\bengineer(?:ing)?\b|\bprocess(?:ing)?\b/i,
+    evidence: /technolog|engineer|process|powder|plant|refrig|chill|test|equipment|breed|veterinar/i,
+    focus: "processing, engineering, quality control, and technical services", retrievalTerms: ["technology", "processing", "engineering", "equipment"] },
+  { id: "leadership", label: "Leadership", ask: /\bleadership\b|\bmanagement style\b|\bas a leader\b/i,
+    evidence: /leader|chair|manag|organis|organiz|strategy|decision|vision|director|recruit/i,
+    focus: "management decisions, collaboration, and leadership practices", retrievalTerms: ["leadership", "management", "chairman"] },
+  { id: "rural_development", label: "Rural development", ask: /\brural development\b|\brural livelihood\w*\b|\bvillage development\b/i,
+    evidence: /rural|village|farmer|livelihood|income|landless|poverty|cooperativ/i,
+    focus: "village institutions, rural incomes, and the distribution of benefits", retrievalTerms: ["rural", "village", "farmers", "livelihood"] },
   { id: "artistic", label: "Artistic / Musical", ask: /\bartistic(?:ally)?\b|\bmusical(?:ly)?\b|\bas a (?:musician|performer|singer)\b/i,
     evidence: /music|song|sing|sang|singer|perform|concert|raga|kriti|melod|rhythm|voice|diction|record/i,
     focus: "musical practice, repertoire, performance style, recordings, and critical interpretation", retrievalTerms: ["music", "performance", "raga", "recordings"] },
@@ -78,8 +91,8 @@ export function lensById(id: string | null | undefined): Lens | null {
 }
 
 /** Words that mark a question as asking for an angle rather than merely using an adjective. */
-const FRAMING = /\b(?:angle|lens|perspective|standpoint|viewpoint|point of view|side|impact|influen\w+|contribution|contributions|significan\w*|relevance|role|legacy|reputation|memory|importance|achievements?|reforms?|innovati\w+|dimension|aspect)\b/i;
-const ADVERB = /\b(?:scientifically|educationally|institutionally|socially|politically|militarily|administratively|economically|culturally|philosophically|spiritually|environmentally)\b/i;
+const FRAMING = /\b(?:angle|lens|perspective|standpoint|viewpoint|point of view|side|impact|influen\w+|contribution|contributions|significan\w*|relevance|role|legacy|reputation|memory|importance|achievements?|reforms?|innovati\w+|dimension|aspect|style)\b/i;
+const ADVERB = /\b(?:scientifically|educationally|institutionally|socially|politically|militarily|administratively|economically|culturally|philosophically|spiritually|environmentally|agriculturally|technologically)\b/i;
 
 /** The single angle a question asks for, or null when it asks generally. */
 export function detectLens(question: string): Lens | null {
@@ -90,6 +103,7 @@ export function detectLens(question: string): Lens | null {
 }
 
 const CATEGORY_LENSES: Record<string, LensId[]> = {
+  social_entrepreneur: ["economic", "social", "agricultural", "institutional", "technological", "leadership", "rural_development"],
   musician_performer: ["artistic", "cultural", "social", "gender", "institutional", "spiritual", "international"],
   educator_social_reformer: ["educational", "social", "cultural", "political", "institutional", "literary"],
   scientist: ["scientific", "educational", "institutional", "national"],
