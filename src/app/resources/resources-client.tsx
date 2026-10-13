@@ -5,7 +5,8 @@ import { ArrowLeft, ArrowUpRight, Check, ChevronRight, FileText, Globe2, Library
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { groupByCategory } from "@/lib/personality-groups";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
@@ -17,7 +18,7 @@ import ResourceHelp from "./resource-help";
 import ConfirmResourceChange, { type PendingResourceChange } from "./confirm-resource-change";
 import { AUTHORITY_CAVEAT, AUTHORITY_LABELS, classifySourceAuthority } from "@/lib/sources/authority";
 
-type Person = { id: string; canonical_name: string };
+type Person = { id: string; canonical_name: string; category?: string | null };
 type Evidence = { id: string; relationship: string; evidence_excerpt: string | null; page_or_section: string | null; sources: { id: string; title: string; author: string | null; url: string | null } | null };
 type ChunkLink = { relationship: string; source_chunks: { id: string; chunk_text: string; page_or_section: string | null; textual_layer: string | null; sources: { id: string; title: string; url: string | null } | null } | null };
 type Claim = { id: string; claim_text: string; claim_kind: string; certainty: string; review_status: string; approval_origin: string | null; approval_metadata: { testing_only?: boolean } | null; approved_by_label: string | null; approved_at?: string | null; created_at?: string | null; updated_at?: string | null; evidence_type: string | null; researcher_notes: string | null; parameter_fields: { label: string } | null; claim_sources: Evidence[]; claim_chunks: ChunkLink[]; epistemics: { epistemic_type: string | null; proposed_type: string; contract_status: string; contract_basis: string | null } | null; claim_reviews: Array<{ reviewer_name: string; decision: string; notes: string | null; reviewed_at: string }> };
@@ -236,7 +237,7 @@ export default function ResourcesClient({ authorized, personalities, loadError }
       <div className="resource-workspace"><section className="resource-main" aria-label="Resource workspace">
         {(tab === "sources" || tab === "claims") && <>
           <div className={`resource-list-toolbar ${tab === "sources" ? "resource-list-toolbar-sources" : ""}`}>
-            <label className="resource-person-picker">Person<Select value={personId} onValueChange={value => choosePerson(value || "")} disabled={busy || loading}><SelectTrigger aria-label="Choose person"><SelectValue>{selectedName}</SelectValue></SelectTrigger><SelectContent>{personalities.map(person => <SelectItem key={person.id} value={person.id}>{person.canonical_name}</SelectItem>)}</SelectContent></Select></label>
+            <label className="resource-person-picker">Person<Select value={personId} onValueChange={value => choosePerson(value || "")} disabled={busy || loading}><SelectTrigger aria-label="Choose person"><SelectValue>{selectedName}</SelectValue></SelectTrigger><SelectContent>{groupByCategory(personalities).map(group => <SelectGroup key={group.label}><SelectLabel>{group.label}</SelectLabel>{group.people.map(person => <SelectItem key={person.id} value={person.id}>{person.canonical_name}</SelectItem>)}</SelectGroup>)}</SelectContent></Select></label>
             <label className="search-field"><Search size={18} aria-hidden="true"/><Input value={query} onChange={event => { setQuery(event.target.value); setPage(1); }} placeholder={tab === "sources" ? "Find a source…" : "Find a claim…"} aria-label={`Search ${tab}`}/></label>
             <label className="status-field">Status<Select value={status} onValueChange={value => { setStatus(value || "all"); setPage(1); }}><SelectTrigger><SelectValue>{status === "all" ? "All statuses" : human(status)}</SelectValue></SelectTrigger><SelectContent>{availableStatuses.map(value => <SelectItem key={value} value={value}>{value === "all" ? "All statuses" : human(value)}</SelectItem>)}</SelectContent></Select></label>
             {tab === "sources" && <label className="status-field">Source type<Select value={sourceType} onValueChange={value => { setSourceType(value || "all"); setPage(1); }}><SelectTrigger><SelectValue>{sourceType === "all" ? "All types" : human(sourceType)}</SelectValue></SelectTrigger><SelectContent><SelectItem value="all">All types</SelectItem>{sourceTypes.map(value => <SelectItem key={value} value={value}>{human(value)}</SelectItem>)}</SelectContent></Select></label>}

@@ -39,6 +39,8 @@ describe("lenses", () => {
     expect(detectLens("What was his technological contribution?")?.id).toBe("technological");
     expect(detectLens("Explain his leadership style.")?.id).toBe("leadership");
     expect(detectLens("What was his rural development impact?")?.id).toBe("rural_development");
+    expect(detectLens("What is his textual significance?")?.id).toBe("textual");
+    expect(detectLens("What is his historical significance?")?.id).toBe("historical");
   });
 
   it("answers generally when no single angle is requested", () => {
@@ -54,6 +56,7 @@ describe("lenses", () => {
     expect(relevantLenses(["scientist", "political_leader"]).length).toBeLessThanOrEqual(7);
     expect(relevantLenses(["musician_performer"]).map((lens) => lens.id)).toEqual(["artistic", "cultural", "social", "gender", "institutional", "spiritual", "international"]);
     expect(relevantLenses(["educator_social_reformer"]).map(lens => lens.id)).toEqual(["educational", "social", "cultural", "political", "institutional", "literary"]);
+    expect(relevantLenses(["rishi"]).map(lens => lens.id)).toEqual(["philosophical", "spiritual", "textual", "educational", "social", "historical"]);
     expect(relevantLenses(["social_entrepreneur"]).map(lens => lens.id)).toEqual(["economic", "social", "agricultural", "institutional", "technological", "leadership", "rural_development"]);
   });
 

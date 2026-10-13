@@ -4,7 +4,7 @@
  */
 export type LensId = "scientific" | "artistic" | "gender" | "international" | "educational" | "institutional" | "national" | "social" | "political" | "military"
   | "administrative" | "economic" | "cultural" | "philosophical" | "spiritual" | "literary" | "environmental"
-  | "agricultural" | "technological" | "leadership" | "rural_development";
+  | "agricultural" | "technological" | "leadership" | "rural_development" | "textual" | "historical";
 
 export type Lens = {
   id: LensId;
@@ -77,9 +77,15 @@ export const LENSES: Lens[] = [
   { id: "spiritual", label: "Spiritual", ask: /\bspiritual(?:ly|ity)?\b|\breligio(?:us|n)\b/i,
     evidence: /spiritual|religio|yoga|vedanta|monk|ascetic|tapas|sadhana|devotion|meditat|\bgod|divine|ritual|mantra/i,
     focus: "teachings, practice, lineage, and religious significance", retrievalTerms: ["spiritual", "teachings", "practice", "religion"] },
-  { id: "literary", label: "Literary", ask: /\blitera(?:ry|ture)\b|\bpoet(?:ic|ry)\b|\btextual\b/i,
+  { id: "literary", label: "Literary", ask: /\blitera(?:ry|ture)\b|\bpoet(?:ic|ry)\b/i,
     evidence: /poem|poet|novel|literar|writing|wrote|composed|hymn|verse|song|prose|translat|text/i,
     focus: "texts composed or attributed, their form, and their literary influence", retrievalTerms: ["hymns", "texts", "composed", "literature"] },
+  { id: "textual", label: "Textual", ask: /\btextual(?:ly)?\b|\bin the texts\b|\btext[- ]critical\b/i,
+    evidence: /text|recension|redact|upani|brahmana|veda|hymn|verse|passage|composed|composition|attribut|manuscript|commentar|translat|layer/i,
+    focus: "which texts attest the figure, their layers and recensions, and what is attributed rather than attested", retrievalTerms: ["texts", "recension", "attributed", "composition"] },
+  { id: "historical", label: "Historical", ask: /\bhistorical(?:ly)?\b(?! (?:reputation|memory))|\bhistoricity\b|\bas a historical figure\b/i,
+    evidence: /centur|b\.?c\.?e|\bdated?\b|period|chronolog|histor|earl(?:y|ier|iest)|later|redact|contemporar|before the buddha|vedic|inferr?|probab|scholars?/i,
+    focus: "period, dating, historicity, and what scholars can and cannot establish about the person", retrievalTerms: ["period", "dated", "historical", "scholars"] },
   { id: "environmental", label: "Environmental", ask: /\benvironment(?:al|ally)?\b|\becolog(?:y|ical)\b/i,
     evidence: /environment|ecolog|nature|forest|river|water|climate|conservation|sustainab|agricultur|natural/i,
     focus: "relationship to nature, land, water, and environmental thinking", retrievalTerms: ["environment", "nature", "forest", "water"] },
@@ -92,7 +98,7 @@ export function lensById(id: string | null | undefined): Lens | null {
 
 /** Words that mark a question as asking for an angle rather than merely using an adjective. */
 const FRAMING = /\b(?:angle|lens|perspective|standpoint|viewpoint|point of view|side|impact|influen\w+|contribution|contributions|significan\w*|relevance|role|legacy|reputation|memory|importance|achievements?|reforms?|innovati\w+|dimension|aspect|style)\b/i;
-const ADVERB = /\b(?:scientifically|educationally|institutionally|socially|politically|militarily|administratively|economically|culturally|philosophically|spiritually|environmentally|agriculturally|technologically)\b/i;
+const ADVERB = /\b(?:scientifically|educationally|institutionally|socially|politically|militarily|administratively|economically|culturally|philosophically|spiritually|environmentally|agriculturally|technologically|textually|historically)\b/i;
 
 /** The single angle a question asks for, or null when it asks generally. */
 export function detectLens(question: string): Lens | null {
@@ -110,7 +116,7 @@ const CATEGORY_LENSES: Record<string, LensId[]> = {
   political_leader: ["political", "military", "administrative", "social", "cultural"],
   ruler: ["political", "military", "administrative", "social", "cultural"],
   spiritual_teacher: ["spiritual", "educational", "social", "cultural", "institutional"],
-  rishi: ["spiritual", "philosophical", "literary", "social"],
+  rishi: ["philosophical", "spiritual", "textual", "educational", "social", "historical"],
 };
 const DEFAULT_LENSES: LensId[] = ["social", "cultural", "educational"];
 

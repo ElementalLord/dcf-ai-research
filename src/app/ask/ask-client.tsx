@@ -4,7 +4,8 @@ import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent, ty
 import { ArrowRight, ArrowUpRight, RotateCcw, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { groupByCategory } from "@/lib/personality-groups";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { MysticBackdrop } from "@/components/mystic-backdrop";
 import { answerBlocks, citationAuthority, isIncompleteQuestion, isUnusableStoredAnswer, type AskCitation, type InlineAnswerPart } from "@/lib/ask/presentation";
@@ -12,7 +13,7 @@ import { AUTHORITY_CAVEAT, AUTHORITY_HELP, AUTHORITY_LABELS, PRIMARY_SOURCE_HELP
 import { fetchJsonWithTimeout } from "@/lib/client/fetch-json";
 import { readableEvidence } from "@/lib/corpus/readable-evidence";
 
-export type Personality = { id: string; canonical_name: string; lenses?: Array<{ id: string; label: string }> };
+export type Personality = { id: string; canonical_name: string; category?: string | null; lenses?: Array<{ id: string; label: string }> };
 type Result = { question: string; resolvedQuestion?: string; personality: string; answer: string; citations?: AskCitation[]; status?: string; lens?: { id: string; label: string } | null };
 type Style = "simple" | "balanced" | "detailed" | "research";
 type ResizeAxis = "width" | "height";
@@ -265,7 +266,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
         <div className="chat-toolbar"><label className="person-control">Talking about
           <Select value={personId} onValueChange={value => { setPersonId(value || ""); setSuggestionStart(0); setQuestion(""); setSourceId(null); setError(""); }} disabled={loading}>
             <SelectTrigger aria-label="Choose person"><SelectValue>{personId ? person : "Choose a person"}</SelectValue></SelectTrigger>
-            <SelectContent className="ai-select-content">{personalities.map(item => <SelectItem key={item.id} value={item.id}>{item.canonical_name}</SelectItem>)}</SelectContent>
+            <SelectContent className="ai-select-content">{groupByCategory(personalities).map(group => <SelectGroup key={group.label}><SelectLabel>{group.label}</SelectLabel>{group.people.map(item => <SelectItem key={item.id} value={item.id}>{item.canonical_name}</SelectItem>)}</SelectGroup>)}</SelectContent>
           </Select>
         </label>{turns.length > 0 && <button className="chat-new" type="button" onClick={() => { setConversations(current => ({ ...current, [personId]: [] })); setSourceId(null); setError(""); input.current?.focus(); }} disabled={loading}><RotateCcw size={14} aria-hidden="true" /> New chat</button>}</div>
         <div ref={chatThread} className="chat-thread" role="log" aria-live="polite" tabIndex={0} aria-label={`Conversation about ${person}`}>
