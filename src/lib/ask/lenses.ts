@@ -4,7 +4,7 @@
  */
 export type LensId = "scientific" | "artistic" | "gender" | "international" | "educational" | "institutional" | "national" | "social" | "political" | "military"
   | "administrative" | "economic" | "cultural" | "philosophical" | "spiritual" | "literary" | "environmental"
-  | "agricultural" | "technological" | "leadership" | "rural_development" | "textual" | "historical";
+  | "agricultural" | "technological" | "leadership" | "rural_development" | "textual" | "historical" | "architectural" | "maritime";
 
 export type Lens = {
   id: LensId;
@@ -62,6 +62,12 @@ export const LENSES: Lens[] = [
   { id: "military", label: "Military", ask: /\bmilitar(?:y|ily)\b|\bwarfare\b|\bnaval\b/i,
     evidence: /military|army|navy|naval|fort|battle|campaign|guerrilla|cavalry|war(?:fare)?\b|siege|commander/i,
     focus: "campaigns, strategy, forts, forces, and military organization", retrievalTerms: ["military", "army", "forts", "campaign"] },
+  { id: "maritime", label: "Maritime", ask: /\bmaritim(?:e|ely)\b|\bnav(?:y|al)\b|\bsea\b|\boverseas\b/i,
+    evidence: /maritim|navy|naval|sea|island|port|harbour|shipping|ship|ocean|coast/i,
+    focus: "seaborne campaigning, ports, trade routes, fleets, and the limits of the evidence for maritime power", retrievalTerms: ["maritime", "naval", "ports", "sea"] },
+  { id: "architectural", label: "Architectural", ask: /\barchitect(?:ure|ural|urally)\b|\bmonument(?:al)?\b|\btemple design\b/i,
+    evidence: /architect|monument|temple|vimana|tower|sanctum|sculpt|mural|building|construct/i,
+    focus: "buildings, urban and sacred space, construction, artistic programs, and their political or social meaning", retrievalTerms: ["architecture", "temple", "construction", "monument"] },
   { id: "administrative", label: "Administrative", ask: /\badministrat(?:ive|ively|ion|or)\b|\bgovernance\b/i,
     evidence: /administrat|govern|council|minister|pradhan|revenue|tax|land|justice|law|official|bureaucra|policy/i,
     focus: "how government was organized: councils, revenue, law, and officials", retrievalTerms: ["administration", "governance", "revenue", "council"] },
@@ -113,8 +119,8 @@ const CATEGORY_LENSES: Record<string, LensId[]> = {
   musician_performer: ["artistic", "cultural", "social", "gender", "institutional", "spiritual", "international"],
   educator_social_reformer: ["educational", "social", "cultural", "political", "institutional", "literary"],
   scientist: ["scientific", "educational", "institutional", "national"],
-  political_leader: ["political", "military", "administrative", "social", "cultural"],
-  ruler: ["political", "military", "administrative", "social", "cultural"],
+  political_leader: ["political", "military", "administrative", "economic", "cultural", "architectural", "maritime"],
+  ruler: ["political", "military", "administrative", "economic", "cultural", "architectural", "maritime"],
   spiritual_teacher: ["spiritual", "philosophical", "educational", "social", "cultural", "historical", "institutional"],
   rishi: ["philosophical", "spiritual", "textual", "educational", "social", "historical"],
 };
