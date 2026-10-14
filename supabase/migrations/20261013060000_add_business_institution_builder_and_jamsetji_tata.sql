@@ -1,7 +1,7 @@
 -- A reusable framework for people whose work joins enterprise, social provision,
 -- infrastructure, and durable institutions. It is not specific to one personality.
 insert into public.categories (slug, name, description)
-select 'business_institution_builder', 'Business, Social & Institution Builders',
+select 'business_institution_builder', 'Business & Industrial Leaders',
   'Evidence-led research on enterprise, industry, social provision, institutions, infrastructure, and long-term development.'
 where not exists (select 1 from public.categories where slug = 'business_institution_builder');
 
@@ -30,7 +30,7 @@ where c.slug = 'business_institution_builder'
   and not exists (select 1 from public.parameter_fields f where f.parameter_id = p.id and f.code = p.code);
 
 insert into public.personalities (canonical_name, alternate_names)
-select 'Jamsetji Tata', array['Jamsetji Nusserwanji Tata', 'Jamshedji Tata', 'J. N. Tata', 'J. N. Tata']::text[]
+select 'Jamsetji Tata', array['Jamsetji Nusserwanji Tata', 'Jamshedji Tata', 'J. N. Tata', 'Jamsetji N. Tata']::text[]
 where not exists (select 1 from public.personalities where lower(canonical_name) = 'jamsetji tata');
 
 insert into public.personality_categories (personality_id, category_id, is_primary)
@@ -46,7 +46,7 @@ from public.personalities p cross join (values
   ('Jamsetji Nusserwanji Tata', 'alternate_name', 1.0::double precision),
   ('Jamshedji Tata', 'alternate_name', 0.99::double precision),
   ('J. N. Tata', 'alternate_name', 0.95::double precision),
-  ('J. N. Tata', 'alternate_name', 0.95::double precision)
+  ('Jamsetji N. Tata', 'alternate_name', 0.95::double precision)
 ) a(alias, alias_type, confidence)
 where p.canonical_name = 'Jamsetji Tata'
 on conflict do nothing;

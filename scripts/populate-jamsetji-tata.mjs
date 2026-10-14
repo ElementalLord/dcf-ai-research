@@ -5,7 +5,7 @@ import { sources, claims } from '../data/jamsetji-tata-corpus.mjs';
 
 const name = 'Jamsetji Tata';
 const slug = 'business_institution_builder';
-const aliases = [name, 'Jamsetji Nusserwanji Tata', 'Jamshedji Tata', 'J. N. Tata', 'J. N. Tata'];
+const aliases = [name, 'Jamsetji Nusserwanji Tata', 'Jamshedji Tata', 'J. N. Tata', 'Jamsetji N. Tata'];
 const apply = process.argv.includes('--apply');
 const status = process.argv.includes('--status');
 const norm = (text) => text.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
