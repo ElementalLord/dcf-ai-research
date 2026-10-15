@@ -1,6 +1,22 @@
 # DCF Inspiring Personalities AI
 
-An internal research and grounded-answer system built with Next.js, Supabase, and Gemini. The curated claim workflow remains intact and is complemented by a searchable source corpus.
+An evidence-grounded public collection and internal research system built with Next.js, Supabase, and Gemini. The Phase 1 demo presents 25 approved personality profiles while preserving the curated claim and source workflow.
+
+## Phase 1 public demo
+
+- `/` — clear entry point to the collection
+- `/explore` — browse five approved presentation categories; search and filter all 25 personalities
+- `/explore/[slug]` — structured profile, relevant lenses, cited sources, and related personalities
+- `/ai` — optional deeper exploration through the existing Ask prototype
+- `/resources` — restricted research and editorial workspace
+
+The public collection reads `data/exports/dcf-phase1-personalities.json`. The approved five-by-five presentation mapping is maintained separately in `data/phase1-presentation.json` so the detailed research taxonomy is not overwritten. Regenerate the export from the live database with:
+
+```bash
+node --env-file=.env.local scripts/export-phase1-personalities.mjs
+```
+
+The public Explore and profile routes are statically generated and do not need browser-side database credentials. Server APIs, Ask, and Resources continue to use the environment variables documented in `.env.example`; `SUPABASE_SERVICE_ROLE_KEY`, Gemini/Brave keys, and admin secrets must remain server-only.
 
 ## Local development
 
@@ -13,7 +29,8 @@ npm run dev
 
 Open:
 
-- `http://localhost:3000/` — Introduction and research method
+- `http://localhost:3000/` — Phase 1 public entry point
+- `http://localhost:3000/explore` — personality discovery and profiles
 - `http://localhost:3000/ai` — questions, answer depth, citations, and source details
 - `http://localhost:3000/resources` — restricted person-centered source and claim management
 
@@ -40,9 +57,14 @@ npm run typecheck
 npm run lint
 npm run test:run
 npm run build
+node scripts/verify-phase1-demo.mjs http://localhost:3000
 ```
 
 Supabase changes are versioned under `supabase/migrations/` and are additive.
+
+## Deployment
+
+The repository has no checked-in hosting-project metadata or deployment workflow. Use the project’s existing hosting account, configure the environment variables from `.env.example`, run `npm run build`, and deploy the resulting Next.js application through that account’s normal workflow. Do not expose server-only variables with a `NEXT_PUBLIC_` prefix.
 
 ### Controlled web discovery
 

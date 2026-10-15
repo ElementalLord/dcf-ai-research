@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "approved_per_track2_handoff",
+  "approvedFor": "Phase 1 public demo",
+  "description": "The five approved public presentation groups. Detailed research categories and framework memberships remain unchanged.",
+  "categories": [
+    {
+      "id": "sages-philosophical-traditions",
+      "name": "Sages & Philosophical Traditions",
+      "description": "Seers and philosophers whose teachings, texts, and traditions shaped enduring ideas about knowledge, discipline, and spiritual life.",
+      "personalityIds": [
+        "2853f4ed-98b1-4ef8-9f30-30f85d42edad",
+        "4633d3bf-8e04-4675-999c-208f368179a5",
+        "b7e2eac1-b06e-4296-90cf-86f58a7e6fd5",
+        "6ef206bf-1446-4e3d-94a6-e583f7736e62",
+        "32e53e02-71cd-4232-9d33-247d37f039a7"
+      ]
+    },
+    {
+      "id": "spiritual-social-reformers",
+      "name": "Spiritual Teachers & Social Reformers",
+      "description": "Teachers and reformers who connected spiritual, educational, and social work with service to communities.",
+      "personalityIds": [
+        "845db7cc-f605-4122-b66a-a362c43e96e1",
+        "9ef04ec3-7bf1-4210-a951-1d6da7b2fc99",
+        "2f0c9c40-1867-428c-9392-569bad7f60a2",
+        "7dd19728-dbbf-4288-a3ec-ddb57806b863",
+        "9a66a004-b1ce-429d-946e-715ae059f730"
+      ]
+    },
+    {
+      "id": "scientists-institution-builders",
+      "name": "Scientists & Institution Builders",
+      "description": "Scientists, mathematicians, technologists, and organizational leaders whose work joined discovery with durable institutions.",
+      "personalityIds": [
+        "6b9a4d86-8330-4256-a749-4daf0f596128",
+        "1f893928-3c09-424a-b513-c62893e57cb8",
+        "2bbcf221-3664-4fe7-a1c7-49b6ed6b5d99",
+        "96abdf31-9bb6-4fa9-8e02-1508cdcba4c9",
+        "8fd75b96-9049-40e2-858c-b830456032ed"
+      ]
+    },
+    {
+      "id": "rulers-freedom-fighters",
+      "name": "Rulers & Freedom Fighters",
+      "description": "Political leaders and anti-colonial figures studied through statecraft, public action, conflict, and historical memory.",
+      "personalityIds": [
+        "f12656ee-8f17-40da-9dd6-6163e9eb20d5",
+        "7d85b2ab-8c8f-4095-bd02-37dab732d2de",
+        "26758dfe-ffe6-4c2c-b6c5-682353713af3",
+        "9984b9e1-fb87-490a-919e-59b7f8241563",
+        "8ece70a0-5e61-488f-ab95-2e0810e65e92"
+      ]
+    },
+    {
+      "id": "cultural-national-builders",
+      "name": "Cultural Figures & Nation Builders",
+      "description": "Artists, writers, patrons, and builders whose cultural or institutional work influenced public life across generations.",
+      "personalityIds": [
+        "1cad1ad4-d440-427d-bc6d-35767a2af208",
+        "2abfe46e-6b67-4fba-a6c1-e5864f69bf35",
+        "98e98962-0076-4b41-b23f-2aa0e4c82b93",
+        "a04d8610-3c67-484b-988f-2ec426ff0a43",
+        "a2cfad28-3f09-47e1-932c-149740c3e5cd"
+      ]
+    }
+  ]
+}
