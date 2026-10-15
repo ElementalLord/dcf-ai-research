@@ -1,0 +1,27 @@
+{
+  "fromSuite": "rishi-quality-v1",
+  "toSuite": "rishi-quality-v2",
+  "replacements": [
+    {
+      "id": "9a66a004-b1ce-429d-946e-715ae059f730:02",
+      "personality": "Verghese Kurien",
+      "reason": "PERSONALITY_MISMATCH",
+      "oldQuestion": "What were Verghese Kurien's most important major works and artistic contributions?",
+      "newQuestion": "What were Verghese Kurien's most important contributions to India's dairy cooperatives, institution-building, and Operation Flood?"
+    },
+    {
+      "id": "9a66a004-b1ce-429d-946e-715ae059f730:03",
+      "personality": "Verghese Kurien",
+      "reason": "PERSONALITY_MISMATCH",
+      "oldQuestion": "Which major works and artistic contributions are securely associated with Verghese Kurien, and which attributions need qualification?",
+      "newQuestion": "Which institutions, technologies, and cooperative reforms are securely associated with Verghese Kurien, and which claims about their impact need qualification?"
+    },
+    {
+      "id": "9a66a004-b1ce-429d-946e-715ae059f730:08",
+      "personality": "Verghese Kurien",
+      "reason": "PERSONALITY_MISMATCH",
+      "oldQuestion": "Compare two plausible interpretations of Verghese Kurien's artistic legacy and reception. Which evidence supports each reading?",
+      "newQuestion": "Compare two plausible interpretations of Verghese Kurien's institutional legacy and Operation Flood's impact. Which evidence supports each reading?"
+    }
+  ]
+}
