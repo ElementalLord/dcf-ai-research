@@ -2,6 +2,10 @@
 
 An evidence-grounded public collection and internal research system built with Next.js, Supabase, and Gemini. The Phase 1 demo presents 25 approved personality profiles while preserving the curated claim and source workflow.
 
+## Phase 1 handoff
+
+Start with [`docs/phase1/handoff/README.md`](docs/phase1/handoff/README.md) for the final non-technical project overview, repository map, operating instructions, limitations, deployment checklist, and Phase 2 recommendations. The final acceptance status is recorded in [`docs/phase1/FINAL-ACCEPTANCE-CHECKLIST.md`](docs/phase1/FINAL-ACCEPTANCE-CHECKLIST.md).
+
 ## Phase 1 public demo
 
 - `/` — clear entry point to the collection
