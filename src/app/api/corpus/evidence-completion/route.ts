@@ -6,7 +6,7 @@ import { supabaseAdmin } from "@/lib/supabase-admin";
 import { previewEvidenceQueue, runEvidenceCompletion } from "@/lib/evidence-completion/engine";
 
 // Corpus administration only: this path may download large verified documents. Ask never calls it.
-export const maxDuration = 800;
+export const maxDuration = 300;
 
 const uuid = z.string().uuid();
 const requestSchema = z.object({
