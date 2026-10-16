@@ -31,8 +31,9 @@ Track 3 is this documentation package. It explains the system, operating procedu
 2. [Architecture overview](architecture-overview.md) for how the knowledge and application layers fit together.
 3. [How to run the project](how-to-run.md) for local setup and validation.
 4. [How to add personality #26](how-to-add-a-personality.md) before changing the corpus.
-5. [Known limitations](known-limitations.md) before making acceptance or publication decisions.
-6. [Final acceptance checklist](../FINAL-ACCEPTANCE-CHECKLIST.md) for the authoritative closeout status.
+5. [Human review and governance](human-review-and-governance.md) before making publication decisions.
+6. [Known limitations](known-limitations.md) before interpreting gaps or prototype features.
+7. [Final acceptance checklist](../FINAL-ACCEPTANCE-CHECKLIST.md) for the authoritative closeout status.
 
 ## Important locations
 
@@ -42,6 +43,7 @@ Track 3 is this documentation package. It explains the system, operating procedu
 | Five-group public mapping | [`data/phase1-presentation.json`](../../../data/phase1-presentation.json) |
 | Dataset schema | [Dataset schema](../dataset-schema.md) |
 | Full content workflow | [Content pipeline SOP](../content-pipeline-sop.md) |
+| Publication and review governance | [Human review and governance](human-review-and-governance.md) |
 | Repeatable exporter | [`scripts/export-phase1-personalities.mjs`](../../../scripts/export-phase1-personalities.mjs) |
 | Mentor review package | [Mentor review index](../mentor-review/README.md) |
 | Track 1 acceptance | [Track 1 checklist](../track1-acceptance-checklist.md) |
@@ -59,4 +61,4 @@ Track 3 is this documentation package. It explains the system, operating procedu
 - Export: 25 personalities in five approved Phase 1 presentation categories.
 - Current demo implementation commit: `baa1458`.
 
-Do not infer publication approval from an AI-generated claim, a source being reachable, or a successful build. The review and governance rules in the [content pipeline SOP](../content-pipeline-sop.md) remain authoritative.
+Do not infer publication approval from an AI-generated claim, a source being reachable, or a successful build. Read [Human review and governance](human-review-and-governance.md); the procedural rules in the [content pipeline SOP](../content-pipeline-sop.md) remain authoritative.

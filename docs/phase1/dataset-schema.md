@@ -83,7 +83,8 @@ Profile readiness and claim approval are different:
 
 - `ready_for_mentor_review` means the exporter found a sourced introduction, at least one life/context statement, at least one contribution statement, at least eight distinct selected statements, and at least three supporting sources. An optional or inapplicable dimension may still be empty, but the gap is listed rather than filled by inference.
 - `blocked_pending_evidence_or_revision` means at least one core section lacks an eligible sourced statement.
-- `mentorApproval: not_recorded` means exactly that. Neither an approved database claim nor this generated file is Mentor sign-off.
+- `mentorApproval: approved_per_track2_handoff` records the supplied Phase 1 approval state without inventing a Mentor identity, signature, or date. A future export may use `not_recorded` when no external approval decision has been supplied.
+- `profileDraftStatus` is the exporter's deterministic evidence/readiness result, not the final curatorial decision. It may remain `ready_for_mentor_review` while the separate `mentorApproval` field records the final handoff approval.
 - `selectedApprovedClaims` counts approved claims in the concise draft.
 - `selectedAwaitingReviewClaims` counts draft or needs-review claims shown transparently for the Mentor to assess.
 - `unresolvedConcerns` lists missing structure, pending review volume, and omitted sensitive material.
