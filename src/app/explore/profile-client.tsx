@@ -5,9 +5,7 @@ import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring } from 
 import { ArrowLeft, ArrowRight, BookOpen, ChevronDown, ExternalLink, Sparkles } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MysticBackdrop } from "@/components/mystic-backdrop";
 import type { Phase1Personality, Phase1Source, Phase1Statement, RelatedPerson } from "@/lib/phase1/types";
-import { ExploreConstellation } from "./explore-constellation";
 
 type SectionKey = "lifeAndContext" | "qualitiesValues" | "contributions" | "leadershipRelationalCharacteristics" | "challenges" | "contestedAspects" | "contemporaryRelevance";
 
@@ -124,8 +122,6 @@ export function ProfileClient({ person, related }: { person: Phase1Personality; 
 
   return (
     <main className="profile-page page-shell">
-      <MysticBackdrop />
-      <ExploreConstellation />
       <motion.div className="profile-reading-progress" style={{ scaleX: reduceMotion ? scrollYProgress : readingProgress }} />
       <motion.div initial={reduceMotion ? false : { opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }}>
         <Link href="/explore" className="back-link"><ArrowLeft size={16} aria-hidden="true" /> Explore all personalities</Link>

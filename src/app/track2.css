@@ -526,6 +526,10 @@ body:has(.explore-error) {
     linear-gradient(170deg, #060a18 0%, #0a1025 55%, #101b3b 100%);
   background-attachment: fixed;
 }
+body:has(.profile-page) {
+  background: linear-gradient(145deg, #070b17 0%, #0b1226 58%, #101a35 100%);
+  background-attachment: fixed;
+}
 body:has(.profile-page) .site-header,
 body:has(.explore-error) .site-header {
   position: relative;
@@ -545,7 +549,7 @@ body:has(.explore-error) .site-nav a:hover { color: #fff; border-color: #93b8f4;
 
 .profile-page {
   isolation: isolate;
-  width: min(100% - 48px, 1184px);
+  width: min(100% - 64px, 1400px);
   padding-bottom: 100px;
   color: #eaf0fc;
 }
@@ -569,7 +573,8 @@ body:has(.explore-error) .site-nav a:hover { color: #fff; border-color: #93b8f4;
 }
 .profile-page .back-link:hover { color: #fff; text-decoration: none; }
 .profile-page .profile-hero {
-  gap: clamp(48px, 8vw, 112px);
+  grid-template-columns: minmax(0, .9fr) minmax(460px, 1.1fr);
+  gap: clamp(64px, 8vw, 128px);
   padding: clamp(48px, 7vw, 78px) 0 62px;
   border-color: rgba(255, 255, 255, .16);
 }
@@ -583,6 +588,8 @@ body:has(.explore-error) .site-nav a:hover { color: #fff; border-color: #93b8f4;
 .profile-page .profile-introduction .statement-citations { margin-top: 4px; }
 
 .profile-page .lens-selector {
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 54px;
   margin-top: 0;
   padding: 36px 0;
   background: transparent;
@@ -628,10 +635,13 @@ body:has(.explore-error) .site-nav a:hover { color: #fff; border-color: #93b8f4;
 .profile-page .lens-focus > svg { position: absolute; top: 29px; right: 30px; color: #b9c8ff; filter: drop-shadow(0 0 10px rgba(174, 187, 255, .6)); }
 .profile-page .lens-focus h2 { color: #f7f4f0; }
 
-.profile-page .profile-layout { grid-template-columns: minmax(0, 820px) 260px; gap: 72px; padding-top: 18px; }
+.profile-page .profile-layout { grid-template-columns: minmax(0, 1fr) 238px; gap: 64px; padding-top: 10px; }
 .profile-page .profile-section {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  column-gap: 54px;
   margin-bottom: 0;
-  padding: 52px 0 34px;
+  padding: 46px 0 38px;
   background: transparent;
   border: 0;
   border-bottom: 1px solid rgba(255, 255, 255, .16);
@@ -639,13 +649,17 @@ body:has(.explore-error) .site-nav a:hover { color: #fff; border-color: #93b8f4;
   box-shadow: none;
   scroll-margin-top: 28px;
 }
-.profile-page .profile-section > header { grid-template-columns: 190px 1fr; }
+.profile-page .profile-section > header { display: block; margin-bottom: 0; }
 .profile-page .profile-section > header p { color: #8fa7cd; }
+.profile-page .profile-section > header h2 { margin-top: 12px; }
 .profile-page .profile-section h2,
 .profile-page .profile-sources h2,
 .profile-page .related-people h2 { color: #f7f4f0; }
 .profile-page .profile-statement { border-color: rgba(255, 255, 255, .13); }
 .profile-page .profile-statement p { color: #c5d0e3; }
+.profile-page .profile-section > div { grid-template-columns: 1fr; gap: 0; }
+.profile-page .profile-section .profile-statement:first-child { padding-top: 0; border-top: 0; }
+.profile-page .profile-section .profile-statement p { max-width: 76ch; font-size: 16px; line-height: 1.78; }
 .profile-page .statement-citations a {
   color: #bfd3ff;
   background: transparent;
@@ -658,7 +672,7 @@ body:has(.explore-error) .site-nav a:hover { color: #fff; border-color: #93b8f4;
 .profile-page .profile-aside {
   top: 24px;
   gap: 24px;
-  padding: 34px 0 0 26px;
+  padding: 36px 0 0 28px;
   background: transparent;
   border: 0;
   border-left: 1px solid rgba(255, 255, 255, .16);
@@ -673,10 +687,10 @@ body:has(.explore-error) .site-nav a:hover { color: #fff; border-color: #93b8f4;
 .profile-page .profile-ask-link {
   min-height: 46px;
   color: #fff;
-  background: linear-gradient(135deg, #3868b3, #504e9a);
+  background: #315d9c;
   border: 1px solid rgba(177, 198, 239, .4);
   border-radius: 2px;
-  box-shadow: 0 10px 26px rgba(2, 8, 30, .28);
+  box-shadow: none;
 }
 
 .profile-page .profile-sources { padding-top: 70px; }
@@ -747,6 +761,8 @@ body:has(.explore-error) .site-nav a:hover { color: #fff; border-color: #93b8f4;
 
 @media (max-width: 900px) {
   .profile-page .profile-layout { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .profile-page .profile-hero { grid-template-columns: 1fr; }
+  .profile-page .profile-section { grid-template-columns: 210px minmax(0, 1fr); column-gap: 38px; }
   .profile-page .profile-aside { position: static; grid-template-columns: 1fr 1fr; padding: 32px 0 0; border-left: 0; border-top: 1px solid rgba(255, 255, 255, .16); }
 }
 
@@ -757,7 +773,7 @@ body:has(.explore-error) .site-nav a:hover { color: #fff; border-color: #93b8f4;
   .profile-page .lens-options { margin-inline: -16px; padding-inline: 16px; }
   .profile-page .lens-focus { padding: 8px 0 8px 20px; }
   .profile-page .profile-section { padding: 42px 0 28px; }
-  .profile-page .profile-section > header { grid-template-columns: 1fr; }
+  .profile-page .profile-section { grid-template-columns: 1fr; row-gap: 24px; }
   .profile-page .profile-aside { grid-template-columns: 1fr; }
   .profile-page .profile-aside .profile-ask-link { width: 100%; }
   .profile-page .related-people > div { grid-template-columns: 1fr; gap: 0; }
