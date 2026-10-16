@@ -1,19 +1,19 @@
 /*
  * Public experience: editorial, quiet, and information-first.
  * This file is intentionally loaded last so the same visual rules govern
- * Home, Explore, profiles, Ask, and Resources.
+ * Home and Explore.
  */
 
-:is(body:has(.home-page), body:has(.explore-page), body:has(.profile-page), body:has(.resources-page)) {
+:is(body:has(.home-page), body:has(.explore-page), body:has(.profile-page)) {
   background: linear-gradient(145deg, #070b17 0%, #0b1226 58%, #101a35 100%);
   background-attachment: fixed;
 }
 
-:is(.home-page, .explore-page, .profile-page, .resources-page) {
+:is(.home-page, .explore-page, .profile-page) {
   width: min(100% - 64px, 1400px);
 }
 
-:is(body:has(.home-page), body:has(.explore-page), body:has(.profile-page), body:has(.resources-page)) .site-header {
+:is(body:has(.home-page), body:has(.explore-page), body:has(.profile-page)) .site-header {
   background: #080d1ce8;
   backdrop-filter: none;
 }
@@ -77,64 +77,12 @@
 .explore-page .personality-lenses span + span::before { content: "·"; margin-right: 7px; }
 .explore-page .explore-empty button { border-radius: 2px; }
 
-/* Resources */
-.resources-page { width: min(100% - 64px, 1400px); }
-.resources-page .resource-tabs .resource-area-tabs { gap: 0; border-top: 1px solid rgba(160, 184, 226, .28); }
-.resources-page .resource-tabs .resource-area-tab {
-  min-height: 62px;
-  background: transparent;
-  border: 0;
-  border-right: 1px solid rgba(160, 184, 226, .18);
-  border-bottom: 1px solid rgba(160, 184, 226, .24);
-  border-radius: 0;
-}
-.resources-page .resource-tabs .resource-area-tab:first-child { border-left: 1px solid rgba(160, 184, 226, .18); }
-.resources-page .resource-tabs .resource-area-tab[data-active] { background: rgba(48, 74, 124, .24); box-shadow: inset 0 -2px #8ab8fa; }
-.resources-page .search-sources-panel,.resources-page .website-access-panel {
-  padding-inline: 0;
-  background: transparent;
-  border: 0;
-  border-top: 1px solid rgba(160, 184, 226, .26);
-  border-bottom: 1px solid rgba(160, 184, 226, .26);
-  border-radius: 0;
-  box-shadow: none;
-}
-.resources-page input:not([type="checkbox"]),
-.resources-page textarea,
-.resources-page .resource-person-picker [data-slot="select-trigger"],
-.resources-page .status-field [data-slot="select-trigger"],
-.resources-page .search-sources-panel select,
-.resources-page [data-slot="button"] { border-radius: 0; }
-.resource-record-views,.website-record-views,.claim-source-modes {
-  padding: 0;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid rgba(160, 184, 226, .25);
-  border-radius: 0;
-}
-.resource-record-views button,.website-record-views button,.claim-source-modes button { border-radius: 0; }
-.website-group { background: transparent; border-width: 0 0 1px; border-radius: 0; }
-.resources-page .website-permission-chip,.website-evidence-control select { border-radius: 0; }
-.resources-page .login-form { padding-inline: 0; background: transparent; border-width: 1px 0 0; border-radius: 0; }
-.resources-page .resources-intro {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 420px;
-  gap: clamp(60px, 10vw, 150px);
-  align-items: end;
-  max-width: none;
-  padding: 90px 0 120px;
-}
-.resources-page .resources-access-copy { max-width: 700px; }
-.resources-page .resources-intro .login-form { width: 100%; max-width: none; margin: 0; }
-
 @media (max-width: 700px) {
-  :is(.home-page, .explore-page, .profile-page, .resources-page) { width: min(100% - 32px, 1400px); }
+  :is(.home-page, .explore-page, .profile-page) { width: min(100% - 32px, 1400px); }
   .home-paths { grid-template-columns: 1fr; }
   .home-path-card { min-height: 200px; border-left: 1px solid rgba(160, 184, 226, .2); }
   .explore-page { width: min(100% - 32px, 1400px); }
   .explore-page .explore-browser { padding-inline: 0; border-radius: 0; }
-  .resources-page { width: min(100% - 32px, 1400px); }
-  .resources-page .resources-intro { grid-template-columns: 1fr; gap: 48px; padding: 58px 0 80px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
