@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent, type PointerEvent } from "react";
-import { ArrowRight, ArrowUpRight, RotateCcw, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, RotateCcw, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { groupByCategory } from "@/lib/personality-groups";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { MysticBackdrop } from "@/components/mystic-backdrop";
@@ -28,6 +29,16 @@ const styles: Array<{ value: Style; label: string; description: string }> = [
   { value: "detailed", label: "Detailed", description: "More explanation" },
   { value: "research", label: "Research", description: "Fuller evidence review" },
 ];
+const shortCategoryNames: Record<string, string> = {
+  "Educators and Social Reformers": "Educators & Reformers",
+  "Monarchs and Political Leaders": "Rulers & Leaders",
+  "Musicians, Performers and Cultural Figures": "Arts & Culture",
+  "Rishis and Sages": "Rishis & Sages",
+  "Saints and Spiritual Teachers": "Saints & Teachers",
+  "Scientists and Innovators": "Scientists",
+  "Social Entrepreneurs, Institution Builders and Agricultural Leaders": "Builders & Agriculture",
+  "Warriors & Freedom Fighters": "Freedom Fighters",
+};
 const suggestionTemplates = [
   (person: string) => `Who is ${person}?`,
   (person: string) => `What is ${person} known for?`,
@@ -77,6 +88,8 @@ function Answer({ answer, show, citations }: { answer: string; show: (id: string
 
 export default function AskClient({ personalities, loadError }: { personalities: Personality[]; loadError: string }) {
   const [personId, setPersonId] = useState(personalities[0]?.id || "");
+  const [personPickerOpen, setPersonPickerOpen] = useState(false);
+  const [personCategory, setPersonCategory] = useState("");
   const [style, setStyle] = useState<Style>("balanced");
   const [question, setQuestion] = useState("");
   const [conversations, setConversations] = useState<Record<string, Result[]>>({});
@@ -106,6 +119,9 @@ export default function AskClient({ personalities, loadError }: { personalities:
   const selectedAuthority = selectedCitation ? citationAuthority(selectedCitation) : null;
   const personRecord = personalities.find(item => item.id === personId);
   const person = personRecord?.canonical_name || "a person";
+  const peopleGroups = groupByCategory(personalities);
+  const activePeopleGroup = peopleGroups.find(group => group.label === personCategory)
+    || peopleGroups.find(group => group.people.some(item => item.id === personId)) || peopleGroups[0];
   const lenses = personRecord?.lenses || [];
   // Follow-ups rely on the conversation for the name, so they read the way a person would ask them.
   const explore = turns.length
@@ -263,12 +279,14 @@ export default function AskClient({ personalities, loadError }: { personalities:
       <div className="ai-title"><p className="section-label">Ask DCF</p><h1>History, in conversation.</h1><p>Ask what you&apos;re curious about. Follow the story, then tap a citation whenever you want to see the evidence.</p></div>
       <div className="chat-shell">
         <MysticBackdrop contained />
-        <div className="chat-toolbar"><label className="person-control">Talking about
-          <Select value={personId} onValueChange={value => { setPersonId(value || ""); setSuggestionStart(0); setQuestion(""); setSourceId(null); setError(""); }} disabled={loading}>
-            <SelectTrigger aria-label="Choose person"><SelectValue>{personId ? person : "Choose a person"}</SelectValue></SelectTrigger>
-            <SelectContent className="ai-select-content">{groupByCategory(personalities).map(group => <SelectGroup key={group.label}><SelectLabel>{group.label}</SelectLabel>{group.people.map(item => <SelectItem key={item.id} value={item.id}>{item.canonical_name}</SelectItem>)}</SelectGroup>)}</SelectContent>
+        <div className="chat-toolbar"><div className="chat-toolbar-controls"><div className="person-control"><span>Talking about</span>
+          <button type="button" className="person-picker-trigger" aria-label={`Choose person. Current: ${person}`} aria-haspopup="dialog" aria-expanded={personPickerOpen} onClick={() => { setPersonCategory(personRecord?.category || peopleGroups[0]?.label || ""); setPersonPickerOpen(true); }} disabled={loading || !personalities.length}><span>{personId ? person : "Choose a person"}</span><ChevronDown size={16} aria-hidden="true" /></button>
+        </div><label className="depth-control">Answer depth
+          <Select value={style} onValueChange={value => setStyle(value as Style)} disabled={loading}>
+            <SelectTrigger aria-label="Answer depth"><SelectValue>{styleLabel}</SelectValue></SelectTrigger>
+            <SelectContent className="ai-select-content">{styles.map(item => <SelectItem key={item.value} value={item.value}>{item.label}: {item.description}</SelectItem>)}</SelectContent>
           </Select>
-        </label>{turns.length > 0 && <button className="chat-new" type="button" onClick={() => { setConversations(current => ({ ...current, [personId]: [] })); setSourceId(null); setError(""); input.current?.focus(); }} disabled={loading}><RotateCcw size={14} aria-hidden="true" /> New chat</button>}</div>
+        </label></div>{turns.length > 0 && <button className="chat-new" type="button" onClick={() => { setConversations(current => ({ ...current, [personId]: [] })); setSourceId(null); setError(""); input.current?.focus(); }} disabled={loading} aria-label="New chat"><RotateCcw size={14} aria-hidden="true" /><span>New chat</span></button>}</div>
         <div ref={chatThread} className="chat-thread" role="log" aria-live="polite" tabIndex={0} aria-label={`Conversation about ${person}`}>
           {!turns.length && !pendingQuestion && <div className="chat-welcome"><span className="chat-avatar" aria-hidden="true"><Sparkles size={19}/></span><div><p className="chat-name">DCF</p><p>Hi! What would you like to know about {person}? Start anywhere.</p></div></div>}
           {turns.map((turn, turnIndex) => <div className="chat-exchange" key={`${personId}:${turnIndex}`}>
@@ -287,18 +305,23 @@ export default function AskClient({ personalities, loadError }: { personalities:
         <Textarea ref={input} id="question" value={question} onChange={event => setQuestion(event.target.value)} onKeyDown={event => {
           if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); event.currentTarget.form?.requestSubmit(); }
         }} placeholder={turns.length ? "Ask a follow-up…" : `Ask about ${person}…`} className="question-input" disabled={loading} />
-        <div className="ask-footer"><label className="depth-control">Answer depth
-          <Select value={style} onValueChange={value => setStyle(value as Style)} disabled={loading}>
-            <SelectTrigger aria-label="Answer depth"><SelectValue>{styleLabel}</SelectValue></SelectTrigger>
-            <SelectContent className="ai-select-content">{styles.map(item => <SelectItem key={item.value} value={item.value}>{item.label}: {item.description}</SelectItem>)}</SelectContent>
-          </Select>
-        </label><Button type="submit" disabled={loading || !personId || !question.trim()}>{loading ? "Thinking…" : "Send"}<ArrowRight size={16} aria-hidden="true" /></Button></div>
-        <p className="ask-keyboard-note">Press Enter to ask. Use Shift+Enter for a new line.</p>
+        <div className="ask-footer"><p className="ask-keyboard-note">Enter to ask <span aria-hidden="true">·</span> Shift+Enter for a new line</p><Button type="submit" disabled={loading || !personId || !question.trim()}>{loading ? "Thinking…" : "Send"}<ArrowRight size={16} aria-hidden="true" /></Button></div>
       </form>
       <div className="chat-resize-handle chat-resize-width" role="separator" aria-orientation="vertical" aria-label="Resize chat width" aria-valuemin={CHAT_MIN_WIDTH} aria-valuemax={chatWidthMax} aria-valuenow={displayedWidth} aria-valuetext={`${displayedWidth} pixels`} tabIndex={0} title="Drag to resize chat width" onPointerDown={event => beginResize("width", event)} onPointerMove={moveResize} onPointerUp={endResize} onPointerCancel={endResize} onKeyDown={event => resizeWithKeyboard("width", event)}><span /></div>
       <div className="chat-resize-handle chat-resize-height" role="separator" aria-orientation="horizontal" aria-label="Resize chat height" aria-valuemin={CHAT_MIN_HEIGHT} aria-valuemax={CHAT_MAX_HEIGHT} aria-valuenow={displayedHeight} aria-valuetext={`${displayedHeight} pixels`} tabIndex={0} title="Drag to resize chat height" onPointerDown={event => beginResize("height", event)} onPointerMove={moveResize} onPointerUp={endResize} onPointerCancel={endResize} onKeyDown={event => resizeWithKeyboard("height", event)}><span /></div>
       </div>
     </div></div>
+    <Dialog open={personPickerOpen} onOpenChange={setPersonPickerOpen}>
+      <DialogContent className="person-picker-dialog">
+        <DialogHeader className="person-picker-heading"><DialogTitle>Choose a person</DialogTitle><DialogDescription>Choose a category, then a person.</DialogDescription></DialogHeader>
+        <div className="person-category-grid" role="group" aria-label="Person categories">
+          {peopleGroups.map(group => <button type="button" key={group.label} className="person-category-button" aria-label={group.label} aria-pressed={group.label === activePeopleGroup?.label} onClick={() => setPersonCategory(group.label)}><span>{shortCategoryNames[group.label] || group.label}</span><small>{group.people.length}</small></button>)}
+        </div>
+        {activePeopleGroup && <div className="person-choice-section"><h3>{activePeopleGroup.label}</h3><div className="person-choice-grid">
+          {activePeopleGroup.people.map(item => <button type="button" key={item.id} className="person-choice-button" aria-pressed={item.id === personId} onClick={() => { setPersonId(item.id); setPersonPickerOpen(false); setSuggestionStart(0); setQuestion(""); setSourceId(null); setError(""); }}><span>{item.canonical_name}</span>{item.id === personId && <Check size={17} aria-hidden="true" />}</button>)}
+        </div></div>}
+      </DialogContent>
+    </Dialog>
     <Sheet open={!!sourceId && !!selectedCitation} onOpenChange={open => { if (!open) setSourceId(null); }}><SheetContent className="source-sheet"><SheetHeader><SheetTitle>Source {selectedCitationNumber >= 0 ? selectedCitationNumber + 1 : ""}</SheetTitle><SheetDescription>{selectedCitation?.title || "Source detail"}</SheetDescription></SheetHeader><div className="source-sheet-body">{selectedCitation && selectedAuthority && <>
       <dl className="source-facts">
         <div><dt>Publisher</dt><dd>{[selectedCitation.institution, selectedCitation.author].filter(Boolean).join(" · ") || "Not recorded"}</dd></div>

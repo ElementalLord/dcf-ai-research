@@ -88,6 +88,23 @@ type Claim = {
     link_method: string | null;
     source_chunks: { id: string; page_or_section: string | null; textual_layer: string | null; chunk_text: string; sources: { id: string; title: string; url: string | null } | Array<{ id: string; title: string; url: string | null }> | null } | Array<{ id: string; page_or_section: string | null; textual_layer: string | null; chunk_text: string; sources: { id: string; title: string; url: string | null } | Array<{ id: string; title: string; url: string | null }> | null }> | null;
   }>;
+  claim_epistemics: Array<{
+    epistemic_type: string | null;
+    proposed_type: string;
+    contract_status: string;
+    contract_satisfied: boolean | null;
+    contract_basis: string | null;
+    contract_detail: { reasons?: string[] } | null;
+    type_review_status: string;
+  }>;
+  evidenceAssessment: {
+    status: string;
+    label: string;
+    confidence: number;
+    reasons: string[];
+    independentCorroborationNeeded: boolean;
+    humanReviewRequired: true;
+  };
 };
 
 export default function ReviewPage() {
@@ -591,6 +608,13 @@ function ClaimCard({
         </p>
       </div>
 
+      <div className="mb-5 rounded-xl border border-blue-200 bg-blue-50 p-4 text-sm text-blue-950">
+        <p className="font-semibold">{claim.evidenceAssessment.label}</p>
+        <p className="mt-1">Automated evidence confidence: {Math.round(claim.evidenceAssessment.confidence * 100)}%. Human review remains required.</p>
+        {claim.evidenceAssessment.reasons.map((reason) => <p className="mt-1" key={reason}>{reason}</p>)}
+        <p className="mt-1">Independent corroboration: {claim.evidenceAssessment.independentCorroborationNeeded ? "needed" : "present in the linked source set"}.</p>
+      </div>
+
       <div className="mb-5 grid gap-3 sm:grid-cols-2">
 
         <SmallInfo
@@ -608,6 +632,8 @@ function ClaimCard({
         />
         <SmallInfo label="Evidence type" value={pretty(claim.evidence_type)} />
         <SmallInfo label="Approval origin" value={pretty(claim.approval_origin)} />
+        <SmallInfo label="Knowledge type" value={pretty(claim.claim_epistemics?.[0]?.epistemic_type || claim.claim_epistemics?.[0]?.proposed_type || "unclassified")} />
+        <SmallInfo label="Evidence contract" value={pretty(claim.claim_epistemics?.[0]?.contract_status || "not evaluated")} />
       </div>
 
       {claim.approval_origin === "system_test_bulk" && <div className="mb-5 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950"><strong>Internal testing approval.</strong> This is usable in test policy mode and is not equivalent to mentor sign-off.</div>}

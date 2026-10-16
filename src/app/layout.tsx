@@ -26,7 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${sourceSans.variable} ${newsreader.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col"><SiteNav />{children}</body>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning><SiteNav />{children}</body>
     </html>
   );
 }

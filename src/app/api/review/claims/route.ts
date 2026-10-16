@@ -1,6 +1,7 @@
 import { assertCorpusAdmin } from "@/lib/corpus/api";
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase-admin";
+import { proposeEvidenceAssessment } from "@/lib/quality/review-assessment";
 
 export async function GET(request: NextRequest) {
   const denied = assertCorpusAdmin(request); if (denied) return denied;
@@ -79,6 +80,16 @@ export async function GET(request: NextRequest) {
           )
         ),
 
+        claim_epistemics (
+          epistemic_type,
+          proposed_type,
+          contract_status,
+          contract_satisfied,
+          contract_basis,
+          contract_detail,
+          type_review_status
+        ),
+
         claim_reviews (
           id,
           reviewer_name,
@@ -111,7 +122,7 @@ export async function GET(request: NextRequest) {
       return (aParam?.sort_order || 999) - (bParam?.sort_order || 999);
     });
 
-    return NextResponse.json({ claims });
+    return NextResponse.json({ claims: claims.map((claim: any) => ({ ...claim, evidenceAssessment: proposeEvidenceAssessment(claim) })) });
   } catch (error: any) {
     console.error("Review claims error:", error);
 

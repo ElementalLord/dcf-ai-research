@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Check, ChevronRight, FileText, Globe2, LibraryBig, LoaderCircle, LogOut, Plus, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,8 +21,9 @@ import { AUTHORITY_CAVEAT, AUTHORITY_LABELS, classifySourceAuthority } from "@/l
 
 type Person = { id: string; canonical_name: string; category?: string | null };
 type Evidence = { id: string; relationship: string; evidence_excerpt: string | null; page_or_section: string | null; sources: { id: string; title: string; author: string | null; url: string | null } | null };
-type ChunkLink = { relationship: string; source_chunks: { id: string; chunk_text: string; page_or_section: string | null; textual_layer: string | null; sources: { id: string; title: string; url: string | null } | null } | null };
-type Claim = { id: string; claim_text: string; claim_kind: string; certainty: string; review_status: string; approval_origin: string | null; approval_metadata: { testing_only?: boolean } | null; approved_by_label: string | null; approved_at?: string | null; created_at?: string | null; updated_at?: string | null; evidence_type: string | null; researcher_notes: string | null; parameter_fields: { label: string } | null; claim_sources: Evidence[]; claim_chunks: ChunkLink[]; epistemics: { epistemic_type: string | null; proposed_type: string; contract_status: string; contract_basis: string | null } | null; claim_reviews: Array<{ reviewer_name: string; decision: string; notes: string | null; reviewed_at: string }> };
+type ChunkLink = { relationship: string; confidence: number | null; link_method: string | null; metadata: Record<string, unknown> | null; source_chunks: { id: string; chunk_text: string; page_or_section: string | null; textual_layer: string | null; sources: { id: string; title: string; url: string | null } | null } | null };
+type EvidenceAssessment = { status: string; label: string; confidence: number; reasons: string[]; independentCorroborationNeeded: boolean; humanReviewRequired: true };
+type Claim = { id: string; claim_text: string; claim_kind: string; certainty: string; review_status: string; approval_origin: string | null; approval_metadata: { testing_only?: boolean } | null; approved_by_label: string | null; approved_at?: string | null; created_at?: string | null; updated_at?: string | null; evidence_type: string | null; researcher_notes: string | null; parameter_fields: { label: string } | null; claim_sources: Evidence[]; claim_chunks: ChunkLink[]; epistemics: { epistemic_type: string | null; proposed_type: string; contract_status: string; contract_basis: string | null } | null; evidenceAssessment: EvidenceAssessment; claim_reviews: Array<{ reviewer_name: string; decision: string; notes: string | null; reviewed_at: string }> };
 type Source = { id: string; title: string; author: string | null; publisher_or_institution: string | null; source_type: string; url: string | null; citation: string | null; textual_layer: string | null; source_status: string; approval_origin: string | null; approval_note: string | null; approved_by_label: string | null; approved_at?: string | null; created_at?: string | null; ingestion_status: string; rights_or_access_note: string | null; publication_year: number | null; updated_at: string | null; metadata: { testing_only?: boolean; resourceAudit?: { access?: string; parallelUrl?: string; parallelLabel?: string; parallelLinkLabel?: string; evidenceNote?: string; checkedAt?: string; checkedExcerpts?: number; matchedExcerpts?: number } } | null };
 type Detail = { kind: "source"; item: Source } | { kind: "claim"; item: Claim };
 type ReviewAction = "approved" | "candidate" | "needs_review" | "rejected";
@@ -222,7 +224,7 @@ export default function ResourcesClient({ authorized, personalities, loadError }
   return <main className="resources-page page-shell">
     <div className="resource-heading">
       <h1>Resources</h1>
-      <div className="resource-heading-actions"><ResourceHelp area={tab as "sources" | "claims" | "websites"}/><Button type="button" variant="outline" className="resource-signout" disabled={busy} onClick={signOut}><LogOut size={16} aria-hidden="true"/> Sign out</Button></div>
+      <div className="resource-heading-actions"><Link className="readiness-back" href="/resources/readiness">Readiness</Link><ResourceHelp area={tab as "sources" | "claims" | "websites"}/><Button type="button" variant="outline" className="resource-signout" disabled={busy} onClick={signOut}><LogOut size={16} aria-hidden="true"/> Sign out</Button></div>
     </div>
     {(activity || loading) && <div className="resource-activity" role="status" aria-live="polite"><LoaderCircle size={16} className="animate-spin"/>{activity || `Loading resources for ${selectedName}…`}</div>}
     {notice && <div className="resource-notice" role="status"><Check size={16}/>{notice}<button type="button" onClick={() => setNotice("")} aria-label="Dismiss message"><X size={15}/></button></div>}
