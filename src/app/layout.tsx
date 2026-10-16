@@ -3,6 +3,7 @@ import { Newsreader, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import "./public-experience.css";
 import "./resources-hub.css";
+import "./public-flat.css";
 import { SiteNav } from "@/components/site-nav";
 
 const sourceSans = Source_Sans_3({

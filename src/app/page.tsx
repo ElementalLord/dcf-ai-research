@@ -4,6 +4,7 @@ import { ArrowRight, BookOpenText, MessageCircleMore, Search } from "lucide-reac
 import { MysticBackdrop } from "@/components/mystic-backdrop";
 import { ExploreConstellation } from "./explore/explore-constellation";
 import "./track2.css";
+import "./public-flat.css";
 
 export const metadata: Metadata = {
   title: "DCF Inspiring Personalities",

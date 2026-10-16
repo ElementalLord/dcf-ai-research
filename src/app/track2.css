@@ -604,6 +604,7 @@ body:has(.explore-error) .site-nav a:hover { color: #fff; border-color: #93b8f4;
 .profile-page .lens-options button {
   position: relative;
   isolation: isolate;
+  flex: none;
   min-height: 42px;
   padding: 8px 4px 7px;
   color: #b9c9e5;
@@ -786,4 +787,66 @@ body:has(.explore-error) .site-nav a:hover { color: #fff; border-color: #93b8f4;
 
 @media (prefers-reduced-motion: reduce) {
   .profile-page .source-open-label svg { transition: none; }
+}
+
+/* Flat public treatment: imported route CSS must carry the final override. */
+:is(.home-page, .explore-page) { width: min(100% - 64px, 1400px); }
+:is(.home-page, .explore-page) > :is(.mystic-backdrop, .explore-constellation) { display: none; }
+
+.home-paths { gap: 0; border-top: 1px solid rgba(160, 184, 226, .3); }
+.home-path-card {
+  min-height: 224px;
+  background: transparent;
+  border: 0;
+  border-right: 1px solid rgba(160, 184, 226, .2);
+  border-bottom: 1px solid rgba(160, 184, 226, .2);
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.home-path-card:first-child { border-left: 1px solid rgba(160, 184, 226, .2); }
+.home-path-card:hover { background: rgba(49, 73, 122, .2); transform: none; }
+.home-path-icon { color: #bcd1f5; background: transparent; border: 0; border-radius: 0; }
+.home-primary,.home-secondary { border-radius: 2px; box-shadow: none; }
+
+.explore-page .explore-browser {
+  margin-top: 0;
+  padding: 34px 0 20px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(160, 184, 226, .26);
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.explore-page .explore-search input,
+.explore-page .explore-role-filter select {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(156, 181, 226, .5);
+  border-radius: 0;
+  box-shadow: none;
+}
+.explore-page .category-filter { gap: 0; padding: 8px 0 20px; border-top: 1px solid rgba(160, 184, 226, .24); }
+.explore-page .category-filter button {
+  min-height: 51px;
+  background: transparent;
+  border: 0;
+  border-right: 1px solid rgba(160, 184, 226, .18);
+  border-bottom: 1px solid rgba(160, 184, 226, .22);
+  border-radius: 0;
+}
+.explore-page .category-filter button:first-child { border-left: 1px solid rgba(160, 184, 226, .18); }
+.explore-page .category-filter button:hover { background: rgba(49, 73, 122, .2); transform: none; }
+.explore-page .category-filter button[aria-pressed="true"] { background: rgba(61, 94, 151, .3); border-color: rgba(160, 190, 240, .48); }
+.explore-page .category-active-glow { display: none; }
+.explore-page .personality-lenses span { padding: 0; background: transparent; border: 0; border-radius: 0; }
+.explore-page .personality-lenses span + span::before { content: "·"; margin-right: 7px; }
+.explore-page .explore-empty button { border-radius: 2px; }
+
+@media (max-width: 700px) {
+  :is(.home-page, .explore-page) { width: min(100% - 32px, 1400px); }
+  .home-paths { grid-template-columns: 1fr; }
+  .home-path-card { min-height: 200px; border-left: 1px solid rgba(160, 184, 226, .2); }
+  .explore-page .explore-browser { padding-inline: 0; border-radius: 0; }
 }
