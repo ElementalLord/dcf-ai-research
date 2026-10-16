@@ -8,6 +8,7 @@ import { recordDiscoveredSource, searchPolicyDecision, type SearchPolicy } from 
 import { loadActiveSourceRules } from "./source-registry";
 import { answerIntent } from "@/lib/ask/evidence-priority";
 import { supabaseAdmin } from "@/lib/supabase-admin";
+import { planResearchQueries } from "./research-quality";
 
 export type GroundingResult = {
   evidence: RetrievedPassage[];
@@ -102,6 +103,7 @@ export async function searchWithGoogleGrounding(question: string, personalityId:
       return diverse.slice(0, 4).map((rule) => rule.domain);
     }).catch(() => [] as string[]);
     const intent = answerIntent(question);
+    const queryPlan = planResearchQueries(personalityName, question, gaps, depth === "research" ? 2 : 1);
     const focus = intent === "identity" ? "Cover identity, field or role, and the person's most important documented work. Avoid minor details."
       : intent === "importance" ? "Find major contributions and lasting significance through concrete work and evidence."
         : intent === "teaching" ? "Focus on documented teaching, mentorship, or lessons grounded in the person's actions."
@@ -110,7 +112,7 @@ export async function searchWithGoogleGrounding(question: string, personalityId:
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const response = await boundedProviderCall((abortSignal) => ai.models.generateContent({
       model: GROUNDING_MODEL || GENERATION_MODEL,
-      contents: `Use Google Search now to answer: ${question} (about ${personalityName}). ${focus}${emphasis ? ` ${emphasis}` : ""}${preferred.length ? ` Search ${preferred.slice(0, 3).join(", ")} first for original relevant pages.` : " Search credible primary, university, scholarly, institutional, and reference sources."} ${gaps.length ? `Fill these gaps: ${gaps.slice(0, 2).join("; ")}.` : ""} Give ${depth === "research" ? "a few" : "two"} concise findings supported by searched pages. Distinguish documented fact, scientific result, interpretation, and traditional account as relevant. Exclude Wikipedia, blogs, forums, and unsourced summaries.${policy.mode === "approved_domains_only" ? ` Use only these allowed domains: ${preferred.join(", ")}.` : " You may discover other credible sources if the preferred sites lack direct support."}`,
+      contents: `Use Google Search now to answer: ${question} (about ${personalityName}). ${focus}${emphasis ? ` ${emphasis}` : ""} Follow this bounded, gap-directed search plan: ${queryPlan.map((item) => `[${item.intent}] ${item.query}`).join("; ")}.${preferred.length ? ` Search ${preferred.slice(0, 3).join(", ")} first when they are relevant to the claim.` : " Search credible primary, university, scholarly, institutional, and reference sources."} ${gaps.length ? `Fill these gaps: ${gaps.slice(0, 2).join("; ")}.` : ""} Give ${depth === "research" ? "a few" : "two"} concise findings supported by searched pages. Treat result snippets only as discovery leads. Distinguish documented fact, scientific result, scholarly interpretation, institutional self-description, and traditional account. For first/priority claims establish chronology and avoid celebratory simplification. Exclude Wikipedia, blogs, forums, and unsourced summaries.${policy.mode === "approved_domains_only" ? ` Use only these allowed domains: ${preferred.join(", ")}.` : " You may discover other credible sources if the preferred sites lack direct support."}`,
       config: { tools: [{ googleSearch: {} }], abortSignal, maxOutputTokens: 1800,
         httpOptions: { retryOptions: { attempts: 1 } } },
     }), depth === "research" ? 18000 : 13000);
@@ -129,21 +131,29 @@ export async function searchWithGoogleGrounding(question: string, personalityId:
         const access = await sourceAccess(source.url);
         if (access === "blocked") {
           // The site refused the request. Keep it as a lead for a person to follow up; its search summary is not evidence.
-          if (!outcome.blocked.has(source.domain) && !searchPolicyDecision(source.url, policy).rule) await recordDiscoveredSource(source.url, item.sourceTitle || source.title, source.category);
+          if (!outcome.blocked.has(source.domain) && !searchPolicyDecision(source.url, policy).rule) await recordDiscoveredSource(source.url, item.sourceTitle || source.title, source.category,
+            { accessibility: "bibliographic_only", admissionStatus: "discovered", usableEvidence: false, matchReason: "Strong search lead, but the publisher refused automated access; no page content was used." });
           outcome.blocked.add(source.domain);
         } else if (access === "unreadable") outcome.unreadable += 1;
         else outcome.unsupported += 1;
         return null;
       }
       item = { ...item, text: original.text, pageOrSection: original.locator, sourceUrl: original.url, sourceInstitution: source.domain, sourceTitle: original.title, sourceType: source.category, lexicalScore: 1,
-        textualLayer: "Original page retrieved after Google Search; interpret textual status from source" };
+        textualLayer: original.identity.evidenceType === "traditional_text" ? "Traditional text; establishes what the text narrates, not historical occurrence" : "Original page retrieved after Google Search; interpret textual status from source",
+        evidenceType: original.identity.evidenceType, supportLevel: original.supportLevel, supportReason: original.supportReason,
+        workKey: original.identity.workKey, accessibility: "READABLE",
+        provenance: { title: original.identity.title, author: original.identity.author, publisher: original.identity.publisher,
+          publicationDate: original.identity.publicationDate, journal: original.identity.journal, doi: original.identity.doi,
+          isbn: original.identity.isbn, complete: original.identity.provenanceComplete } };
       // Sites already governed by an admin rule or the approved-source registry need no second review.
-      if (source.category !== "approved source family" && !searchPolicyDecision(source.url, policy).rule) await recordDiscoveredSource(source.url, item.sourceTitle || source.title, source.category);
+      if (source.category !== "approved source family" && !searchPolicyDecision(source.url, policy).rule) await recordDiscoveredSource(source.url, item.sourceTitle || source.title, source.category,
+        { evidenceType: original.identity.evidenceType, accessibility: "readable", admissionStatus: "admitted", usableEvidence: true,
+          matchReason: original.supportReason, workKey: original.identity.workKey });
       return item;
     }));
     // Several findings can resolve to the same passage on the same page; keep it once.
     const unique = new Map<string, RetrievedPassage>();
-    for (const item of admitted) if (item && !unique.has(`${item.sourceUrl}|${item.text}`)) unique.set(`${item.sourceUrl}|${item.text}`, item);
+    for (const item of admitted) if (item && !unique.has(`${item.workKey || item.sourceUrl}|${item.text}`)) unique.set(`${item.workKey || item.sourceUrl}|${item.text}`, item);
     const evidence = [...unique.values()]
       .sort((a, b) => sourcePriority(b.sourceUrl || "", `${b.sourceTitle || ""} ${b.text}`, question, b.sourceType || "") - sourcePriority(a.sourceUrl || "", `${a.sourceTitle || ""} ${a.text}`, question, a.sourceType || ""))
       .slice(0, 8);

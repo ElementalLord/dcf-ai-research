@@ -35,7 +35,11 @@ export function buildBoundedContext(
     const location = item.pageOrSection || (item.kind === "passage" ? item.sectionTitle : null) || "location unspecified";
     const live = item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live");
     const authority = item.authority || classifySourceAuthority({ url: item.sourceUrl, sourceType: item.sourceType, institution: item.sourceInstitution, live });
-    const metadata = `${item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live") ? `Live web research; not DCF approved. This passage was fetched from the original source after ${item.origin === "google_grounding" ? "Google grounding" : "Brave discovery"}.\n` : ""}${item.personalityName ? `Personality: ${item.personalityName}\n` : ""}Work: ${item.sourceTitle || "not linked"}; locator: ${location}; layer: ${item.textualLayer || "unspecified"}; source type: ${item.sourceType || "unspecified"}; publisher standing: ${AUTHORITY_LABELS[authority.level]}${authority.primary ? ", primary source" : ""}`;
+    const passageAudit = item.kind === "passage"
+      ? `; evidence type: ${item.evidenceType || "unclassified"}; passage support: ${item.supportLevel || "not classified"}; accessibility: ${item.accessibility || "readable"}; work family: ${item.workKey || "not identified"}` : "";
+    const traditionalCaveat = item.kind === "passage" && item.evidenceType === "traditional_text"
+      ? "\nEpistemic limit: this passage supports what the tradition states or narrates; it does not by itself establish historical occurrence." : "";
+    const metadata = `${item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live") ? `Live web research; not DCF approved. This passage was fetched from the original source after ${item.origin === "google_grounding" ? "Google grounding" : "Brave discovery"}.\n` : ""}${item.personalityName ? `Personality: ${item.personalityName}\n` : ""}Work: ${item.sourceTitle || "not linked"}; locator: ${location}; layer: ${item.textualLayer || "unspecified"}; source type: ${item.sourceType || "unspecified"}; publisher standing: ${AUTHORITY_LABELS[authority.level]}${authority.primary ? ", primary source" : ""}${passageAudit}${traditionalCaveat}`;
     const record = item.kind === "claim"
       ? `[${citationId}] Claim / topic: ${item.parameterName || item.fieldLabel || topic || "unclassified"}\nProposition: ${body}\n${metadata}\nEpistemic: ${item.epistemicType || "unclassified"}; evidence: ${item.evidenceType}; support: ${item.contractStatus || "not classified"}; certainty: ${item.certainty || "unspecified"}; contested: ${item.epistemicType === "CONTESTED" || item.contractStatus === "CONTESTED_REPRESENTED" ? "yes" : "not marked"}${item.evidenceExcerpt ? `\nSupporting passage: ${truncateText(item.evidenceExcerpt, 170)}` : ""}`
       : `[${citationId}] Supporting passage / topic: ${item.parameterNames?.join(", ") || "source passage"}\n${metadata}\nPassage: ${body}`;
@@ -68,6 +72,11 @@ export function buildBoundedContext(
       authority: authority.level,
       authorityBasis: authority.basis,
       primarySource: authority.primary,
+      evidenceTypeClass: item.kind === "passage" ? item.evidenceType : undefined,
+      supportLevel: item.kind === "passage" ? item.supportLevel : undefined,
+      workKey: item.kind === "passage" ? item.workKey : undefined,
+      accessibility: item.kind === "passage" ? item.accessibility : undefined,
+      provenance: item.kind === "passage" ? item.provenance : undefined,
     });
   }
 

@@ -18,6 +18,7 @@ import type { SourceAccessRule } from "./source-policy";
 import { selectSourceAuthorization } from "./source-policy";
 import { answerIntent } from "@/lib/ask/evidence-priority";
 import { supabaseAdmin } from "@/lib/supabase-admin";
+import { assessPassageSupport, authenticateSource, independentWorkCount } from "./research-quality";
 
 async function fetchQuestionPassages(
   url: string, question: string, rules: Awaited<ReturnType<typeof loadActiveSourceRules>>,
@@ -66,7 +67,7 @@ async function fetchQuestionPassages(
     if (intent === "identity") focus.push("identity", "field", "role", "work");
     else if (intent === "importance") focus.push("contribution", "impact", "work");
   }
-  const candidates: Array<{ section: typeof sections[number]; index: number; text: string; score: number }> = [];
+  const candidates: Array<{ section: typeof sections[number]; index: number; text: string; score: number; support: ReturnType<typeof assessPassageSupport> }> = [];
   sections.forEach((section, index) => {
     const normalized = normalizeForMatch(section.text);
     for (const alias of aliases) {
@@ -84,7 +85,10 @@ async function fetchQuestionPassages(
         const normalizedWindow = normalizeForMatch(window);
         const focusScore = focus.reduce((sum, term) => sum + Number(normalizedWindow.includes(term)), 0);
         if (focus.length && focusScore === 0) continue;
-        candidates.push({ section, index, text: window, score: focusScore * 3 + Math.min(3, englishWords) });
+        const support = assessPassageSupport(window, question, personalityName, personalityAliases);
+        if (support.level === "RELATED") continue;
+        candidates.push({ section, index, text: window, support,
+          score: ({ EXACT: 12, STRONG: 8, PARTIAL: 3, RELATED: 0 }[support.level]) + focusScore * 3 + Math.min(3, englishWords) });
       }
     }
   });
@@ -93,7 +97,11 @@ async function fetchQuestionPassages(
     if (seen.has(item.index)) return false;
     seen.add(item.index);
     return true;
-  }).slice(0, 2).map(({ section, index, text }) => ({
+  }).slice(0, 2).map(({ section, index, text, support }) => {
+    const identity = authenticateSource({ url: original.finalUrl, title: section.title || original.access.display_name,
+      publisher: new URL(original.finalUrl).hostname.replace(/^www\./, ""), sourceType: original.access.default_source_type,
+      textualLayer: original.access.default_textual_layer });
+    return ({
     kind: "passage" as const, id: `live:${original.finalUrl}:${index}`, chunkId: `live:${original.finalUrl}:${index}`,
     sourceId: `live:${original.finalUrl}`, text, sectionTitle: section.title || null,
     pageOrSection: section.pageOrSection || null, textualLayer: original.access.default_textual_layer || null,
@@ -101,8 +109,11 @@ async function fetchQuestionPassages(
     sourceInstitution: new URL(original.finalUrl).hostname.replace(/^www\./, ""), sourceUrl: original.finalUrl,
     sourceType: original.access.default_source_type || "live web research", sourceStatus: "discovered",
     personalityId, personalityName, origin: "brave_live" as const,
-    retrievedAt: new Date().toISOString(), lexicalScore: 1,
-  }));
+    retrievedAt: new Date().toISOString(), lexicalScore: 1, evidenceType: identity.evidenceType,
+    supportLevel: support.level, supportReason: support.reason, workKey: identity.workKey, accessibility: "READABLE" as const,
+    provenance: { title: identity.title, author: identity.author, publisher: identity.publisher, publicationDate: identity.publicationDate,
+      journal: identity.journal, doi: identity.doi, isbn: identity.isbn, complete: identity.provenanceComplete },
+  }); });
   if (passages.length && searchPolicy && !searchPolicy.rules.some((rule) => rule.domain === new URL(original.finalUrl).hostname))
     await recordDiscoveredSource(original.finalUrl, original.access.display_name, original.access.default_source_type || "institutional");
   return passages;
@@ -180,7 +191,7 @@ export async function retrieveWithApprovedResearch(
     local.debug.braveQueries = queries;
     const discoveries = await Promise.all(queries.map((query) => discoverWebCandidates(query, rules, { maxResults: 8, searchPolicy: options.searchPolicy })));
     const initialDomains = new Set(discoveries.flatMap((result) => result.accepted).map((url) => new URL(url).hostname.replace(/^www\./, "")));
-    if (initialDomains.size < 2 || options.forceLiveFallback) {
+    if (initialDomains.size === 0 || (initialDomains.size < 2 && decision.mode === "RESEARCH")) {
       const subjectWords = new Set(normalizeForMatch(local.personality).split(" "));
       const focus = normalizeForMatch(question).split(" ").filter((word) => word.length > 2 && !subjectWords.has(word)
         && !/^(what|why|who|where|when|how|the|and|for|does|did|was|were|are|about|known|important)$/.test(word)).slice(0, 4);
@@ -239,6 +250,20 @@ export async function retrieveWithApprovedResearch(
   refreshed.debug.localEvidenceCoverage = refreshedDecision.coverage;
   refreshed.debug.localEvidenceSufficiencyReason = refreshedDecision.reason;
   refreshed.debug.liveResearchTriggered = true;
+  // URLs are delivery locations, not independent evidence. Preserve only the strongest
+  // passage per work before synthesis; contested/comparative sufficiency uses work families.
+  const seenWorks = new Map<string, RetrievedPassage>();
+  refreshed.evidence = refreshed.evidence.filter((item) => {
+    if (item.kind !== "passage" || !item.workKey) return true;
+    if (!seenWorks.has(item.workKey)) { seenWorks.set(item.workKey, item); return true; }
+    return false;
+  });
+  if (/\b(?:contested|disputed|priority|first|compare|versus|vs\.?)\b/i.test(question) && independentWorkCount(refreshed.evidence.filter((item): item is RetrievedPassage => item.kind === "passage")) < 2) {
+    refreshed.debug.answerable = false;
+    refreshed.debug.unresolvedEvidenceGap = true;
+    refreshed.debug.missingEvidenceDimensions = [...new Set([...(refreshed.debug.missingEvidenceDimensions || []), "independent source family"] )];
+    refreshed.debug.localEvidenceSufficiencyReason = "The claim is contested or comparative, but fewer than two independent works provide passage-level support.";
+  }
   refreshed.debug.approvedSourcesConsidered = local.debug.approvedSourcesConsidered;
   refreshed.debug.liveUrlsAccepted = local.debug.liveUrlsAccepted;
   refreshed.debug.liveUrlsRejected = local.debug.liveUrlsRejected;

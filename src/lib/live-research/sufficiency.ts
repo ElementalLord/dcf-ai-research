@@ -4,6 +4,7 @@ import { canonicalizeTerms, type TermAliasRecord } from "@/lib/corpus/personalit
 import { classifyQuestionScope, isBroadScope, type QuestionScope } from "@/lib/ask/question-scope";
 import { detectLens, LENS_FRAMING_TERMS } from "@/lib/ask/lenses";
 import { CONTEXT_EVIDENCE, CONTEXT_FRAMING_TERMS, CONTEXT_GAP, detectContextIntent, PERIOD_EVIDENCE } from "@/lib/ask/historical-context";
+import { independentWorkCount } from "./research-quality";
 
 const IGNORED = new Set(["the", "and", "for", "its", "that", "this", "then", "his", "her", "what", "when", "where", "which", "who", "why", "how", "does", "did", "is", "are", "was", "were", "about", "from", "with", "into", "between", "role", "play", "played", "major", "story", "explain", "relationship", "relation", "significance", "significant", "happen", "happens", "happened", "disagree", "disagreed", "disagreement"]);
 
@@ -78,7 +79,8 @@ export function assessEvidenceSufficiency(
     return [...evidenceTokens].some((token) => token === term || (termStem.length >= 4 && stem(token) === termStem));
   });
   const coverage = requested.length ? covered.length / requested.length : lens || contextIntent ? 1 : 0;
-  const direct = evidence.filter((item) => item.kind === "claim" || (item.lexicalScore || 0) > 0).length;
+  const directEvidence = evidence.filter((item) => item.kind === "claim" || ((item.lexicalScore || 0) > 0 && item.supportLevel !== "RELATED"));
+  const direct = directEvidence.length;
   const sources = new Set(evidence.map((item) => item.kind === "passage" ? item.sourceId : item.sourceTitle).filter(Boolean));
   const layers = new Set(evidence.map((item) => item.textualLayer).filter(Boolean));
   const represented = new Set(evidence.flatMap((item) => item.kind === "claim" ? [item.parameterCode].filter(Boolean) : item.parameterCodes || []));
@@ -88,6 +90,7 @@ export function assessEvidenceSufficiency(
   const comparableEvidence = evidence.some((item) => /\b(?:similar|comparable|parallel|contemporar|independent(?:ly)?|another|were active|was active|other (?:scientists?|physicists?|researchers?|groups?|experiments?)|also (?:studied|worked|discovered|observed))\b/i.test(item.text));
   const developmental = /development|trace|transform|evolv/i.test(question);
   const complex = comparative || similarWork || developmental;
+  const independentWorks = independentWorkCount(evidence.filter((item): item is Extract<RetrievedEvidence, { kind: "passage" }> => item.kind === "passage"));
   const mode = complex ? "RESEARCH" : "EXPANDED";
   if (evidence.length === 0 || direct === 0) return { sufficient: false, answerable: false, mode, coverage, reason: "No directly relevant approved local evidence.", missingDimensions: requested.length ? requested : ["direct evidence"] };
   if (similarWork && !comparableEvidence) return { sufficient: false, answerable: false, mode: "RESEARCH", coverage,
@@ -114,10 +117,10 @@ export function assessEvidenceSufficiency(
     reason: "The available evidence does not establish the requested ranking or preference.", missingDimensions: missing };
   if (coverage < 2 / 3) return { sufficient: false, answerable: direct > 0 && coverage >= 0.5, mode, coverage,
     reason: "Local passages may answer part of the question, but concept coverage is incomplete.", missingDimensions: missing };
-  if (similarWork && sources.size < 2) return { sufficient: false, answerable: true, mode: "RESEARCH", coverage,
+  if (similarWork && independentWorks < 2) return { sufficient: false, answerable: true, mode: "RESEARCH", coverage,
     reason: "Comparable work needs an independent source for a grounded comparison.", missingDimensions: ["independent source on comparable work"] };
-  if (comparative && (sources.size < 2 || layers.size < 2)) {
-    return { sufficient: false, answerable: true, mode: "RESEARCH", coverage, reason: "The comparison needs broader source or textual-layer coverage.", missingDimensions: [sources.size < 2 ? "independent source" : "distinct textual layer"] };
+  if (comparative && (independentWorks < 2 || layers.size < 2)) {
+    return { sufficient: false, answerable: true, mode: "RESEARCH", coverage, reason: "The comparison needs independent works or broader textual-layer coverage.", missingDimensions: [independentWorks < 2 ? "independent source family" : "distinct textual layer"] };
   }
   return { sufficient: true, answerable: true, mode: "FAST", coverage, reason: "Approved local evidence directly covers the question.", missingDimensions: [] };
 }

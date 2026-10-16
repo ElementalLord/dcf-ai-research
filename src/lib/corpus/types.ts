@@ -65,6 +65,16 @@ export type RetrievedPassage = {
   semanticScore?: number;
   fusedScore?: number;
   authority?: EvidenceAuthority;
+  /** Evidence semantics stay separate from publisher authority. */
+  evidenceType?: "primary_document" | "traditional_text" | "scholarly_interpretation" | "institutional_record" | "edited_secondary" | "general_web";
+  supportLevel?: "EXACT" | "STRONG" | "PARTIAL" | "RELATED";
+  supportReason?: string;
+  workKey?: string;
+  accessibility?: "READABLE" | "BIBLIOGRAPHIC_ONLY" | "UNREADABLE";
+  provenance?: {
+    title?: string | null; author?: string | null; publisher?: string | null; publicationDate?: string | null;
+    journal?: string | null; doi?: string | null; isbn?: string | null; complete?: boolean;
+  };
 };
 
 export type RetrievedClaim = {
@@ -125,6 +135,11 @@ export type Citation = {
   authority?: EvidenceAuthority["level"];
   authorityBasis?: string;
   primarySource?: boolean;
+  evidenceTypeClass?: RetrievedPassage["evidenceType"];
+  supportLevel?: RetrievedPassage["supportLevel"];
+  workKey?: string;
+  accessibility?: RetrievedPassage["accessibility"];
+  provenance?: RetrievedPassage["provenance"];
 };
 
 export type RetrievalDebug = {

@@ -62,7 +62,7 @@ export async function discoverWebCandidates(query: string, rules: SourceAccessRu
           rejected.push({ url: canonical, reason: "HTTPS_REQUIRED" });
           continue;
         }
-        if (sourcePriority(canonical, candidate.title, query) < 0) {
+        if (sourcePriority(canonical, `${candidate.title} ${candidate.snippet || ""}`, query) < 0) {
           rejected.push({ url: canonical, reason: "LOW_QUALITY_SOURCE" });
           continue;
         }

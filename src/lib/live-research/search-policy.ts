@@ -50,11 +50,27 @@ export async function loadSearchPolicy(): Promise<SearchPolicy> {
   return { mode: setting.data.mode as SearchMode, rules: (rules.data || []) as SearchRule[] };
 }
 
-export async function recordDiscoveredSource(rawUrl: string, title: string, category: string) {
+export type DiscoveryAssessment = {
+  authorityLevel?: "authoritative" | "credible_secondary" | "general_web";
+  authorityReason?: string;
+  evidenceType?: string;
+  accessibility?: "readable" | "bibliographic_only" | "unreadable";
+  admissionStatus?: "discovered" | "admitted" | "rejected";
+  matchReason?: string;
+  usableEvidence?: boolean;
+  workKey?: string | null;
+};
+
+export async function recordDiscoveredSource(rawUrl: string, title: string, category: string, assessment: DiscoveryAssessment = {}) {
   try {
     const url = new URL(canonicalResearchUrl(rawUrl));
     // One row per site: "www.example.org" and "example.org" are the same publisher.
     const domain = url.hostname.replace(/^www\./, "");
-    await supabaseAdmin.from("discovered_search_sources").upsert({ domain, example_url: url.toString(), display_name: title.slice(0, 200), category }, { onConflict: "domain", ignoreDuplicates: true });
+    await supabaseAdmin.from("discovered_search_sources").upsert({ domain, example_url: url.toString(), display_name: title.slice(0, 200), category,
+      authority_level: assessment.authorityLevel || null, authority_reason: assessment.authorityReason || null,
+      evidence_type: assessment.evidenceType || null, accessibility: assessment.accessibility || "unreadable",
+      admission_status: assessment.admissionStatus || "discovered", match_reason: assessment.matchReason || null,
+      usable_evidence: assessment.usableEvidence || false, work_key: assessment.workKey || null,
+      last_seen_at: new Date().toISOString() }, { onConflict: "domain" });
   } catch { /* Discovery tracking cannot block an answer. */ }
 }

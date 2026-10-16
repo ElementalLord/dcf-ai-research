@@ -101,7 +101,7 @@ describe("Ask orchestration", () => {
     expect(state.webDiscover).not.toHaveBeenCalled();
     expect(result.citations.some((item) => item.kind === "live_web_source")).toBe(true);
   });
-  it("answers from the corpus without live search when local evidence is sufficient", async () => {
+  it("does not spend on Google or Brave when local evidence is sufficient", async () => {
     state.google.mockResolvedValue({ evidence: [], requests: 1, queries: 0, latencyMs: 4, errorCategory: "TIMEOUT" });
     state.webConfigured = true;
     const result = await answerQuestion("Does the narrative describe Vishvamitra’s tapas?", "p");

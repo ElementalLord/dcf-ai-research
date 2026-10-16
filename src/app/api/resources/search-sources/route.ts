@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
   try {
     const [policy, discovered] = await Promise.all([
       loadSearchPolicy(),
-      supabaseAdmin.from("discovered_search_sources").select("domain,example_url,display_name,category,state,first_seen_at").eq("state", "new").order("first_seen_at", { ascending: false }).limit(100),
+      supabaseAdmin.from("discovered_search_sources").select("domain,example_url,display_name,category,state,first_seen_at,authority_level,authority_reason,evidence_type,accessibility,admission_status,match_reason,usable_evidence,work_key").eq("state", "new").order("first_seen_at", { ascending: false }).limit(100),
     ]);
     if (discovered.error) throw discovered.error;
     return NextResponse.json({ ...policy, discovered: discovered.data || [] });

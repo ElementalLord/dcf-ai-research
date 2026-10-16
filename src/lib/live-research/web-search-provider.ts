@@ -1,3 +1,5 @@
+import { sourceWorkKey } from "./research-quality";
+
 export type SearchOptions = { maxResults?: number; domain?: string };
 export type WebSearchResult = { title: string; url: string; snippet?: string; sourceProvider: string };
 export interface WebSearchProvider {
@@ -18,9 +20,8 @@ export function normalizeSearchQuery(query: string): string {
 export function groupSearchResultsByWork(results: WebSearchResult[]): string[][] {
   const groups = new Map<string, string[]>();
   for (const result of results) {
-    const title = result.title.replace(/\s+[|–—-]\s+(?:Cambridge Core|Google Books|JSTOR|WorldCat|Internet Archive).*$/i, "")
-      .normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
-    const key = title.length >= 25 && title.split(" ").length >= 4 ? `title:${title}` : `url:${result.url}`;
+    const doi = `${result.url} ${result.snippet || ""}`.match(/\b10\.\d{4,9}\/[\w.()/:;-]+/i)?.[0]?.replace(/[.,;)]$/, "");
+    const key = sourceWorkKey({ url: result.url, title: result.title, doi });
     groups.set(key, [...(groups.get(key) || []), result.url]);
   }
   return [...groups.values()];

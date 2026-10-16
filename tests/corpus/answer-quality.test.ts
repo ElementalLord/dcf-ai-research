@@ -96,10 +96,12 @@ describe("scope-aware grounded answers", () => {
   });
 
   it("targets gaps and includes a single internal review in the synthesis prompt", () => {
-    expect(gapSearchQueries("Rishi A", "What does Rigveda 3.33 say?", ["textual contribution", "lineage"]))
-      .toEqual(["Rishi A textual contribution Rigveda 3.33", "Rishi A lineage Rigveda 3.33"]);
+    const queries = gapSearchQueries("Rishi A", "What does Rigveda 3.33 say?", ["textual contribution", "lineage"]);
+    expect(queries).toHaveLength(2);
+    expect(queries.every((query) => query.includes("Rishi A") && /textual|lineage|Rigveda/.test(query))).toBe(true);
+    expect(queries.some((query) => /original text|scholarly assessment/.test(query))).toBe(true);
     const prompt = buildSynthesisPrompt({ personality: "Rishi A", question: "Who is Rishi A?", resolvedQuestion: "Who is Rishi A?", scope: "BROAD_PROFILE", evidenceContext: "[C1] Claim" });
-    expect(SYNTHESIS_PROMPT_VERSION).toBe("historical_conversation_v17");
+    expect(SYNTHESIS_PROMPT_VERSION).toBe("historical_conversation_v18");
     expect(prompt).toContain("Avoid stacks of repeated citations");
     expect(prompt).toContain("silently review");
     expect(prompt).toContain("using only the supplied IDs");

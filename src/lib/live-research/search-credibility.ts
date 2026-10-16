@@ -8,6 +8,7 @@ import { normalizeForMatch } from "@/lib/corpus/text";
 import { readableEvidence } from "@/lib/corpus/readable-evidence";
 import { classifySourceAuthority } from "@/lib/sources/authority";
 import { extractPdf } from "@/lib/corpus/source-extract";
+import { assessPassageSupport, authenticateSource, evidenceTypeFor, type PassageSupport, type SourceIdentity } from "./research-quality";
 
 const lowQualityHost = /(?:^|\.)(?:quora\.com|reddit\.com|pinterest\.[a-z.]+|blogspot\.[a-z.]+|medium\.com|wikipedia\.org|facebook\.com|instagram\.com|tiktok\.com|brainyquote\.com|goodreads\.com)$/i;
 const institutionalHost = /(?:^|\.)(?:edu|gov|ac\.[a-z]{2}|edu\.[a-z]{2}|gov\.[a-z]{2}|jstor\.org|cambridge\.org|oup\.com|oxfordacademic\.com|springer\.com|nature\.com|muse\.jhu\.edu|wiley\.com|tandfonline\.com|sagepub\.com|nobelprize\.org|ignca\.gov\.in|vedicheritage\.gov\.in|gretil\.sub\.uni-goettingen\.de|archive\.org|britannica\.com)$/i;
@@ -19,22 +20,25 @@ export function sourcePriority(rawUrl: string, title: string, question: string, 
   const terms = normalizeForMatch(question).split(" ").filter((term) => term.length >= 4 && !supportStop.has(term));
   const normalizedTitle = normalizeForMatch(title);
   const relevance = terms.length ? terms.filter((term) => normalizedTitle.includes(term)).length / terms.length : 0;
-  // Search widely, then rank by who published the page: authoritative first, general web last.
+  // Eligibility and relevance precede publisher standing. A prestigious but irrelevant page
+  // cannot outrank a directly relevant page from a merely credible publisher.
   const level = category === "trusted" ? "authoritative" : classifySourceAuthority({ url: rawUrl, sourceType: category, live: true }).level;
   const tier = level === "authoritative" ? 3 : level === "credible_secondary" || institutionalHost.test(host) || /scholarly|academic|primary|institutional/i.test(category) ? 2 : 0;
-  return relevance * 8 + tier * 2;
+  if (terms.length >= 2 && relevance === 0) return tier ? -1 : -10;
+  return relevance * 20 + tier * 2;
 }
 
 export type CredibleSource = { url: string; domain: string; category: string; title: string };
 
 type Preview = Awaited<ReturnType<typeof fetchDiscoveryPreview>>;
 /** The readable text of one fetched source, by page for a PDF. Null means the request itself failed. */
-type SourceText = { status: number; finalUrl: string; html: string; title: string; sections: Array<{ text: string; locator: string | null }> };
+type SourceText = { status: number; finalUrl: string; html: string; title: string; identity: SourceIdentity; sections: Array<{ text: string; locator: string | null }> };
 const MAX_SOURCE_CHARACTERS = 600_000;
 const sourceTextCache = new Map<string, { expires: number; loaded: Promise<SourceText | null> }>();
 
 async function readSourceText(preview: Preview): Promise<SourceText> {
-  const base = { status: preview.status, finalUrl: preview.finalUrl, html: preview.html, title: "", sections: [] as SourceText["sections"] };
+  const emptyIdentity = authenticateSource({ url: preview.finalUrl });
+  const base = { status: preview.status, finalUrl: preview.finalUrl, html: preview.html, title: "", identity: emptyIdentity, sections: [] as SourceText["sections"] };
   if (preview.status !== 200) return base;
   if (preview.pdf) {
     // Text layer only (no OCR). A scanned PDF yields no text and so can never become evidence.
@@ -46,14 +50,19 @@ async function readSourceText(preview: Preview): Promise<SourceText> {
       budget -= text.length;
       if (text) base.sections.push({ text, locator: page.pageOrSection || null });
     }
-    return base;
+    return { ...base, identity: authenticateSource({ url: preview.finalUrl, title: preview.finalUrl.split("/").at(-1), sourceType: "scholarly document" }) };
   }
   if (!preview.html) return base;
   const $ = cheerio.load(preview.html);
   const title = $("title").text().replace(/\s+/g, " ").trim().slice(0, 200);
+  const meta = (key: string) => $(`meta[name="${key}"],meta[property="${key}"]`).first().attr("content")?.trim() || null;
+  const identity = authenticateSource({ url: preview.finalUrl, title: meta("citation_title") || meta("dc.title") || title,
+    author: meta("citation_author") || meta("dc.creator"), publisher: meta("citation_publisher") || meta("dc.publisher") || meta("og:site_name"),
+    publicationDate: meta("citation_publication_date") || meta("citation_date") || meta("dc.date"), journal: meta("citation_journal_title"),
+    doi: meta("citation_doi"), isbn: meta("citation_isbn"), sourceType: meta("citation_journal_title") ? "scholarly journal" : null });
   $("script,style,nav,footer,header").remove();
   const text = $("body").text().replace(/\s+/g, " ").trim();
-  return { ...base, title, sections: text ? [{ text, locator: null }] : [] };
+  return { ...base, title, identity, sections: text ? [{ text, locator: null }] : [] };
 }
 
 /** Several grounded statements usually cite the same page; fetch and parse each source once and share it briefly. */
@@ -81,7 +90,7 @@ const supportStop = new Set(["the", "and", "for", "with", "from", "that", "this"
 
 /** Google selects a page and topic. Only a matching excerpt fetched from the
  * original page becomes evidence; the model's search summary stays discovery. */
-export async function readGroundedExcerpt(source: CredibleSource, statement: string, aliases: string[], policy: SearchPolicy): Promise<{ text: string; title: string; url: string; locator: string | null } | null> {
+export async function readGroundedExcerpt(source: CredibleSource, statement: string, aliases: string[], policy: SearchPolicy): Promise<{ text: string; title: string; url: string; locator: string | null; supportLevel: PassageSupport; supportReason: string; identity: SourceIdentity } | null> {
   const loaded = await cachedSourceText(source.url);
   if (!loaded || loaded.status !== 200 || !loaded.sections.length || !searchPolicyDecision(loaded.finalUrl, policy).allowed) return null;
   if (/\b(?:written by ai|ai.generated|content farm)\b/i.test(loaded.sections[0].text.slice(0, 3000))) return null;
@@ -98,17 +107,22 @@ export async function readGroundedExcerpt(source: CredibleSource, statement: str
       : sentences.slice(Math.max(0, index - 1), index + 2).map((entry) => entry.sentence).join(" ");
     const normalizedContext = normalizeForMatch(context);
     const overlap = terms.filter((term) => normalizedContext.includes(term) || (term.length > 6 && normalizedContext.includes(term.slice(0, -2)))).length;
-    return { context, overlap, locator };
-  }).filter((item): item is { context: string; overlap: number; locator: string | null } => Boolean(item)).sort((a, b) => b.overlap - a.overlap);
+    const support = assessPassageSupport(context, statement, aliases[0] || "", aliases.slice(1));
+    return { context, overlap, locator, support };
+  }).filter((item): item is { context: string; overlap: number; locator: string | null; support: ReturnType<typeof assessPassageSupport> } => Boolean(item))
+    .sort((a, b) => ({ EXACT: 4, STRONG: 3, PARTIAL: 2, RELATED: 1 }[b.support.level] - { EXACT: 4, STRONG: 3, PARTIAL: 2, RELATED: 1 }[a.support.level]) || b.overlap - a.overlap);
   if (!matches.length) return null;
   const best = matches[0];
   const academic = /cambridge|oxford|springer|jstor|nature/i.test(source.domain);
   if (academic && !names.some((name) => title.includes(name)) && best.overlap < 4) return null;
   // Naming the person is relevance; sharing the statement's own terms is support. Both are required.
-  if (best.overlap < Math.min(2, terms.length)) return null;
+  if (best.overlap < Math.min(2, terms.length) || !["EXACT", "STRONG"].includes(best.support.level)) return null;
   const excerpt = readableEvidence(best.context.slice(0, 600));
   if (!excerpt) return null;
-  return { text: excerpt, title: loaded.title || source.title, url: loaded.finalUrl, locator: best.locator };
+  const identity = loaded.identity.title ? loaded.identity : authenticateSource({ url: loaded.finalUrl, title: loaded.title || source.title, category: source.category });
+  return { text: excerpt, title: loaded.title || source.title, url: loaded.finalUrl, locator: best.locator,
+    supportLevel: best.support.level, supportReason: best.support.reason,
+    identity: { ...identity, evidenceType: identity.evidenceType === "general_web" ? evidenceTypeFor({ category: source.category }) : identity.evidenceType } };
 }
 
 export async function verifyGroundedStatement(source: CredibleSource, statement: string, aliases: string[], policy: SearchPolicy): Promise<boolean> {
