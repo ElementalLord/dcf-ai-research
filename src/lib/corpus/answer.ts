@@ -20,7 +20,7 @@ import { isBroadScope } from "@/lib/ask/question-scope";
 import { answerIntent, hasBroadAnswerEvidence, hasDirectLiveIdentity, prioritizeEvidence } from "@/lib/ask/evidence-priority";
 import { loadSearchPolicy } from "@/lib/live-research/search-policy";
 import { detectLens } from "@/lib/ask/lenses";
-import { chronologyGuidance, CONTEXT_SEARCH_FOCUS, detectContextIntent } from "@/lib/ask/historical-context";
+import { chronologyGuidance, CONTEXT_GAP, CONTEXT_SEARCH_FOCUS, detectContextIntent } from "@/lib/ask/historical-context";
 import { classifySourceAuthority } from "@/lib/sources/authority";
 import type { RetrievedEvidence } from "./types";
 
@@ -49,6 +49,7 @@ async function answerQuestionInternal(
   // A named angle or a request for historical placement steers retrieval, the one live search, and synthesis.
   const lens = detectLens(queryContext.resolvedQuestion);
   const contextIntent = detectContextIntent(queryContext.resolvedQuestion);
+  const requiresLiveExpansion = Boolean(lens || contextIntent);
   const retrievalQuestion = lens ? `${queryContext.resolvedQuestion} ${lens.retrievalTerms.join(" ")}` : queryContext.resolvedQuestion;
   const searchEmphasis = [lens ? `Emphasize the ${lens.label.toLowerCase()} dimension: ${lens.focus}.` : "", contextIntent ? CONTEXT_SEARCH_FOCUS[contextIntent] : ""].filter(Boolean).join(" ");
   const categorySlugs = configurations.map((configuration) => configuration.categorySlug);
@@ -63,17 +64,22 @@ async function answerQuestionInternal(
     const [local, searchPolicy] = await Promise.all([retrieveEvidence(retrievalQuestion, id, retrievalOptions), searchPolicyPromise]);
     const localEvidenceCount = local.evidence.length;
     const localDecision = assessEvidenceSufficiency(queryContext.resolvedQuestion, local.evidence, { personalityAliases: local.personalityAliases, termAliases: local.termAliases, allParameters: local.allParameters });
-    const googleGaps = localDecision.sufficient ? [] : localDecision.missingDimensions.filter((gap) => !/^direct evidence$/i.test(gap));
-    const google = localDecision.sufficient
+    const googleGaps = [
+      ...(localDecision.sufficient ? [] : localDecision.missingDimensions.filter((gap) => !/^direct evidence$/i.test(gap))),
+      ...(lens ? [`${lens.label.toLowerCase()} dimension: ${lens.focus}`] : []),
+      ...(contextIntent ? [CONTEXT_GAP[contextIntent]] : []),
+    ];
+    const google = localDecision.sufficient && !requiresLiveExpansion
       ? { evidence: [], requests: 0, queries: 0, latencyMs: 0, errorCategory: null }
       : await searchWithGoogleGrounding(queryContext.resolvedQuestion, id, configurations[index].canonicalName,
         options.responseStyle === "research" ? "research" : "normal", searchPolicy, googleGaps, local.personalityAliases, searchEmphasis);
     if (google.evidence.length) local.evidence.push(...google.evidence);
     const groundedDecision = assessEvidenceSufficiency(queryContext.resolvedQuestion, local.evidence, { personalityAliases: local.personalityAliases, termAliases: local.termAliases, allParameters: local.allParameters });
     const googleUseful = google.evidence.length > 0 && groundedDecision.sufficient;
-    const base = googleUseful || localDecision.sufficient ? local : await retrieveWithApprovedResearch(queryContext.resolvedQuestion, id, {
-      ...retrievalOptions, initialRetrieval: local, searchPolicy,
-    });
+    const shouldTryBrave = !googleUseful && (!localDecision.sufficient || requiresLiveExpansion);
+    const base = shouldTryBrave ? await retrieveWithApprovedResearch(queryContext.resolvedQuestion, id, {
+      ...retrievalOptions, initialRetrieval: local, searchPolicy, forceLiveFallback: requiresLiveExpansion,
+    }) : local;
     base.debug.localEvidenceBeforeSearch = localEvidenceCount;
     base.debug.googleGroundedSourcesReturned = new Set(google.evidence.map((item) => item.sourceUrl)).size;
     base.debug.googleSearchRequests = google.requests;
@@ -84,11 +90,10 @@ async function answerQuestionInternal(
     if (googleUseful) {
       base.debug.answerable = true;
       base.debug.liveResearchTriggered = true;
-      base.debug.liveSourcesUsed = google.evidence.length;
     } else {
       base.debug.answerable = Boolean(base.debug.answerable || localDecision.answerable || localDecision.sufficient);
-      base.debug.liveSourcesUsed = google.evidence.length;
     }
+    base.debug.liveSourcesUsed = base.evidence.filter((item) => item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live")).length;
     if (!base.debug.answerable && hasDirectLiveIdentity(queryContext.resolvedQuestion, base.evidence)) {
       base.debug.answerable = true;
       base.debug.coverageStatus = "partial";

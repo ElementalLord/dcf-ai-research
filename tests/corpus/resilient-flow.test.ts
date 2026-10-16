@@ -112,6 +112,31 @@ describe("Ask orchestration", () => {
     expect(state.google).not.toHaveBeenCalled();
     expect(state.webDiscover).not.toHaveBeenCalled();
   });
+  it("always performs live expansion for an explicit angle even when local evidence is sufficient", async () => {
+    state.claims = [claim("education", "Vishvamitra taught and mentored Rama as his guide.", "Education")];
+    state.google.mockResolvedValue({ evidence: [{ kind: "passage", id: "google:education", chunkId: "google:education", sourceId: "google:education", text: "Vishvamitra's educational role includes teaching and mentoring Rama.", sectionTitle: null, pageOrSection: null, textualLayer: "Epic narrative", sourceTitle: "Vishvamitra and Rama", sourceAuthor: null, sourceInstitution: "example.test", sourceUrl: "https://example.test/education", sourceType: "primary_text", sourceStatus: "discovered", origin: "google_grounding", lexicalScore: 1 }], requests: 1, queries: 1, latencyMs: 3, errorCategory: null });
+    const result = await answerQuestion("Explain Vishvamitra from the educational angle.", "p");
+    expect(result.status).not.toBe("abstained");
+    expect(state.google).toHaveBeenCalledWith(expect.stringContaining("educational angle"), "p", "Vishvamitra", "normal", expect.anything(), expect.arrayContaining([expect.stringContaining("educational dimension")]), expect.anything(), expect.stringContaining("educational dimension"));
+    expect(result.debug.googleSearchRequests).toBe(1);
+    expect(result.debug.liveResearchTriggered).toBe(true);
+    expect(result.debug.googleGroundedSourcesReturned).toBe(1);
+    expect(state.webDiscover).not.toHaveBeenCalled();
+  });
+  it("falls back to Brave live search for an explicit angle when Google returns no evidence", async () => {
+    state.claims = [claim("education", "Vishvamitra taught and mentored Rama as his guide.", "Education")];
+    state.google.mockResolvedValue({ evidence: [], requests: 1, queries: 1, latencyMs: 4, errorCategory: "NO_VERIFIED_EVIDENCE" });
+    state.webConfigured = true;
+    state.webDiscover.mockResolvedValue({ accepted: ["https://example.test/approved"], rejected: [], candidates: 1, calls: 1, cacheHits: 0, latencyMs: 2, errorCategory: null });
+    state.extract.mockResolvedValue([{ title: "Vishvamitra's educational role", pageOrSection: "Teaching Rama", text: "Vishvamitra's educational role was to teach and mentor Rama. The account describes how the teacher guided his student through training." }]);
+    const result = await answerQuestion("Explain Vishvamitra from the educational angle.", "p");
+    expect(result.status).not.toBe("abstained");
+    expect(state.google).toHaveBeenCalled();
+    expect(state.webDiscover).toHaveBeenCalled();
+    expect(state.originalFetch).toHaveBeenCalled();
+    expect(result.debug.braveTriggered).toBe(true);
+    expect(result.debug.liveUrlsAccepted).toContain("https://example.test/approved");
+  });
   it("abstains honestly when both live paths fail and local evidence is insufficient", async () => {
     state.claims = [];
     state.google.mockResolvedValue({ evidence: [], requests: 1, queries: 0, latencyMs: 4, errorCategory: "TIMEOUT" });
