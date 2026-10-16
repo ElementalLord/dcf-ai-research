@@ -2,6 +2,7 @@ import type { RetrievedEvidence } from "@/lib/corpus/types";
 import { authorityRank } from "@/lib/sources/authority";
 import { detectLens } from "./lenses";
 import { CONTEXT_EVIDENCE, detectContextIntent } from "./historical-context";
+import { classifyQuestionScope, isBroadScope } from "./question-scope";
 
 const stop = new Set(["what", "who", "why", "when", "where", "which", "does", "did", "was", "were", "are", "is", "the", "and", "for", "with", "about", "their", "his", "her", "major", "important", "previous", "topic", "selected", "personality"]);
 export type AnswerIntent = "identity" | "importance" | "actions" | "method" | "learning" | "relationship" | "transformation" | "teaching" | "historical" | "contested" | "specific";
@@ -27,6 +28,18 @@ export function hasDirectLiveIdentity(question: string, evidence: RetrievedEvide
   if (answerIntent(question) !== "identity") return false;
   return evidence.some((item) => item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live")
     && Boolean(item.sourceUrl) && /\b(?:sage|seer|rishi|priest|teacher|preceptor|king|queen|poet|philosopher|scientist|physicist|chemist|inventor|researcher|engineer|musician|performer|singer|vocalist)\b/i.test(item.text));
+}
+
+/** Broad profile/significance questions can be answered as a qualified synthesis when
+ * several approved records exist, even if no single record covers every requested
+ * dimension or proves a subjective word such as "most". This never applies to a
+ * narrow unsupported fact. */
+export function hasBroadAnswerEvidence(question: string, evidence: RetrievedEvidence[]): boolean {
+  if (!isBroadScope(classifyQuestionScope(question))) return false;
+  const usable = evidence.filter((item) => item.text.trim().length >= 25
+    && (item.kind === "claim" || (item.sourceStatus !== "rejected" && item.supportLevel !== "RELATED")));
+  const sources = new Set(usable.map((item) => item.sourceUrl || item.sourceTitle || (item.kind === "passage" ? item.sourceId : item.claimId)).filter(Boolean));
+  return usable.length >= 2 && sources.size >= 1;
 }
 
 const intentTerms: Record<AnswerIntent, RegExp> = {

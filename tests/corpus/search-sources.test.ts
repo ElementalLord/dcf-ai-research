@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { normalizeSearchDomain, searchPolicyDecision, type SearchPolicy } from "@/lib/live-research/search-policy";
-import { answerIntent, hasDirectLiveIdentity, prioritizeEvidence } from "@/lib/ask/evidence-priority";
+import { answerIntent, hasBroadAnswerEvidence, hasDirectLiveIdentity, prioritizeEvidence } from "@/lib/ask/evidence-priority";
 import { fetchApprovedResource } from "@/lib/live-research/live-fetch";
 import type { RetrievedPassage } from "@/lib/corpus/types";
 
@@ -50,6 +50,15 @@ describe("focused evidence selection", () => {
   it("permits a qualified identity answer from a verified live passage", () => {
     expect(hasDirectLiveIdentity("Who is Vasistha?", [passage("live", "Vasistha is the royal priest of King Dasharatha in the Ramayana.", "google_grounding")])).toBe(true);
     expect(hasDirectLiveIdentity("Why is Vasistha important?", [passage("live", "Vasistha is the royal priest of King Dasharatha in the Ramayana.", "google_grounding")])).toBe(false);
+  });
+  it("permits qualified broad synthesis from several grounded records but still rejects unsupported narrow facts", () => {
+    const evidence = [
+      passage("role", "Vishvamitra is presented as a Vedic seer associated with hymns."),
+      passage("teacher", "The epic presents Vishvamitra as Rama's teacher and guide."),
+    ];
+    expect(hasBroadAnswerEvidence("What were Vishvamitra's most important works, teachings, and attributed traditions?", evidence)).toBe(true);
+    expect(hasBroadAnswerEvidence("What were Rani Lakshmibai of Jhansi's most important political actions, institutions, and historical contributions?", evidence)).toBe(true);
+    expect(hasBroadAnswerEvidence("What was Vishvamitra's favorite food?", evidence)).toBe(false);
   });
   it("prefers central roles over a one-off episode in a short biography", () => {
     const evidence = [

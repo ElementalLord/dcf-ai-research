@@ -17,7 +17,7 @@ import { abstentionMessage } from "@/lib/ask/messages";
 import { ensureOpeningIntro } from "@/lib/ask/opening-intro";
 import { buildSynthesisPrompt, SYNTHESIS_PROMPT_VERSION } from "./synthesis-prompt";
 import { isBroadScope } from "@/lib/ask/question-scope";
-import { answerIntent, hasDirectLiveIdentity, prioritizeEvidence } from "@/lib/ask/evidence-priority";
+import { answerIntent, hasBroadAnswerEvidence, hasDirectLiveIdentity, prioritizeEvidence } from "@/lib/ask/evidence-priority";
 import { loadSearchPolicy } from "@/lib/live-research/search-policy";
 import { detectLens } from "@/lib/ask/lenses";
 import { chronologyGuidance, CONTEXT_SEARCH_FOCUS, detectContextIntent } from "@/lib/ask/historical-context";
@@ -92,6 +92,12 @@ async function answerQuestionInternal(
     if (!base.debug.answerable && hasDirectLiveIdentity(queryContext.resolvedQuestion, base.evidence)) {
       base.debug.answerable = true;
       base.debug.coverageStatus = "partial";
+    }
+    if (!base.debug.answerable && hasBroadAnswerEvidence(queryContext.resolvedQuestion, base.evidence)) {
+      base.debug.answerable = true;
+      base.debug.coverageStatus = "partial";
+      base.debug.unresolvedEvidenceGap = true;
+      base.debug.localEvidenceSufficiencyReason = "Multiple grounded records support a qualified broad answer, but not every requested dimension or ranking.";
     }
     base.debug.localSourcesUsed = base.evidence.filter((item) => item.kind === "claim" || (item.origin !== "google_grounding" && item.origin !== "brave_live")).length;
     withAuthority(base.evidence, searchPolicy.rules);
