@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { groupByCategory } from "@/lib/personality-groups";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { MysticBackdrop } from "@/components/mystic-backdrop";
 import { answerBlocks, citationAuthority, isIncompleteQuestion, isUnusableStoredAnswer, type AskCitation, type InlineAnswerPart } from "@/lib/ask/presentation";
 import { AUTHORITY_CAVEAT, AUTHORITY_HELP, AUTHORITY_LABELS, PRIMARY_SOURCE_HELP, sourceTypeName } from "@/lib/sources/authority";
 import { fetchJsonWithTimeout } from "@/lib/client/fetch-json";
@@ -272,10 +273,12 @@ export default function AskClient({ personalities, loadError }: { personalities:
   }
 
   return <main ref={chatPage} className="ai-page page-shell" style={{ "--chat-width": `${chatWidth}px`, ...(chatHeight === null ? {} : { "--chat-height": `${chatHeight}px` }) } as CSSProperties}>
+    <MysticBackdrop />
     <div className="page-kicker">AI</div>
     <div className="ai-layout"><div className="ai-main chat-main">
       <div className="ai-title"><p className="section-label">Ask DCF</p><h1>History, in conversation.</h1><p>Ask what you&apos;re curious about. Follow the story, then tap a citation whenever you want to see the evidence.</p></div>
       <div className="chat-shell">
+        <MysticBackdrop contained />
         <div className="chat-toolbar"><div className="chat-toolbar-controls"><div className="person-control"><span>Talking about</span>
           <button type="button" className="person-picker-trigger" aria-label={`Choose person. Current: ${person}`} aria-haspopup="dialog" aria-expanded={personPickerOpen} onClick={() => { setPersonCategory(personRecord?.category || peopleGroups[0]?.label || ""); setPersonPickerOpen(true); }} disabled={loading || !personalities.length}><span>{personId ? person : "Choose a person"}</span><ChevronDown size={16} aria-hidden="true" /></button>
         </div><label className="depth-control">Answer depth

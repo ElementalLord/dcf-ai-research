@@ -1,5 +1,4 @@
 import * as cheerio from "cheerio";
-import { PDFParse } from "pdf-parse";
 import type { DocumentSection } from "./types";
 import { CorpusError } from "./errors";
 import { normalizeWhitespace } from "./text";
@@ -112,6 +111,10 @@ export function printedPageLabels(pages: Array<{ num: number; text: string }>): 
 
 export async function extractPdf(data: Uint8Array): Promise<DocumentSection[]> {
   if (data.byteLength > MAX_PDF_BYTES) throw new CorpusError("PDF_PARSE_FAILED", "The PDF exceeds the 20 MB limit.", 413);
+  // pdf-parse initializes PDF.js browser geometry globals when its module is
+  // evaluated. Keep it out of ordinary Ask/retrieval module initialization so
+  // Vercel functions that never parse a PDF do not require DOMMatrix.
+  const { PDFParse } = await import("pdf-parse");
   const parser = new PDFParse({ data });
   try {
     const result = await parser.getText();
