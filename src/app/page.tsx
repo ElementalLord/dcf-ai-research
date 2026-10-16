@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BookOpenText, MessageCircleMore, Search } from "lucide-react";
+import { MysticBackdrop } from "@/components/mystic-backdrop";
+import { ExploreConstellation } from "./explore/explore-constellation";
 import "./track2.css";
 
 export const metadata: Metadata = {
@@ -11,28 +13,65 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <main className="home-page page-shell">
-      <section className="home-hero">
-        <div>
-          <p className="section-label">DCF Inspiring Personalities · Phase 1</p>
-          <h1>Meet the people.<br /><em>Follow the evidence.</em></h1>
+      <MysticBackdrop />
+      <ExploreConstellation />
+
+      <div className="page-kicker">DCF / INSPIRING PERSONALITIES</div>
+
+      <section className="home-hero" aria-labelledby="home-title">
+        <div className="home-hero-heading">
+          <p className="section-label">Twenty-five lives. One living archive.</p>
+          <h1 id="home-title">History is more than a story. <em>It&apos;s a conversation.</em></h1>
         </div>
         <div className="home-hero-copy">
-          <p>Discover 25 evidence-grounded profiles across philosophy, social change, science, public leadership, culture, and institution building.</p>
+          <p>Explore the people who shaped ideas, institutions, and culture—through profiles grounded in evidence and questions that take you deeper.</p>
           <div className="home-actions">
             <Link href="/explore" className="home-primary">Explore the collection <ArrowRight size={17} aria-hidden="true" /></Link>
-            <Link href="/ai" className="home-secondary">Ask a deeper question</Link>
+            <Link href="/ai" className="home-secondary">Ask DCF</Link>
           </div>
+          <dl className="home-stats" aria-label="Collection at a glance">
+            <div><dt>25</dt><dd>evidence-grounded profiles</dd></div>
+            <div><dt>5</dt><dd>fields of inquiry</dd></div>
+            <div><dt>1</dt><dd>connected research experience</dd></div>
+          </dl>
         </div>
       </section>
+
       <section className="home-overview">
-        <div><p className="section-label">How to use the collection</p><h2>Start with a person, then choose how you want to understand them.</h2></div>
-        <div className="home-steps">
-          <article><span>01</span><div><h3>Browse or search</h3><p>Explore five public categories or find any personality by name.</p></div></article>
-          <article><span>02</span><div><h3>Read the profile</h3><p>Move through context, qualities, contributions, challenges, and continuing relevance.</p></div></article>
-          <article><span>03</span><div><h3>Change the lens</h3><p>Bring scientific, cultural, spiritual, political, or other relevant evidence into focus.</p></div></article>
-          <article><span>04</span><div><h3>Inspect and continue</h3><p>Open sources or follow a clear connection to another personality.</p></div></article>
+        <header>
+          <p className="section-label">Choose your way in</p>
+          <h2>Follow a curiosity.<br />Find the evidence.</h2>
+          <p>Every path is designed to move naturally from discovery to understanding, without losing sight of the source.</p>
+        </header>
+        <div className="home-paths">
+          <Link href="/explore" className="home-path-card">
+            <span className="home-path-icon"><Search size={19} aria-hidden="true" /></span>
+            <span className="home-path-number">01</span>
+            <strong>Discover a person</strong>
+            <span>Browse the collection by field, role, or name, then follow connections across lives.</span>
+            <ArrowRight size={18} aria-hidden="true" />
+          </Link>
+          <Link href="/explore" className="home-path-card">
+            <span className="home-path-icon"><BookOpenText size={19} aria-hidden="true" /></span>
+            <span className="home-path-number">02</span>
+            <strong>Read with context</strong>
+            <span>Move through contributions, challenges, continuing relevance, and the sources behind each claim.</span>
+            <ArrowRight size={18} aria-hidden="true" />
+          </Link>
+          <Link href="/ai" className="home-path-card">
+            <span className="home-path-icon"><MessageCircleMore size={19} aria-hidden="true" /></span>
+            <span className="home-path-number">03</span>
+            <strong>Ask what comes next</strong>
+            <span>Turn curiosity into a grounded conversation and inspect the citations as you go.</span>
+            <ArrowRight size={18} aria-hidden="true" />
+          </Link>
         </div>
       </section>
+
+      <footer className="home-footer">
+        <span>DCF Inspiring Personalities · Phase 1</span>
+        <Link href="/resources">See the research foundation <ArrowRight size={15} aria-hidden="true" /></Link>
+      </footer>
     </main>
   );
 }
