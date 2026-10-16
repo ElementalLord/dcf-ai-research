@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ExploreClient } from "./explore-client";
+import { ExploreConstellation } from "./explore-constellation";
 import { getDiscoveryPeople, getPhase1Dataset } from "@/lib/phase1/dataset";
 import { MysticBackdrop } from "@/components/mystic-backdrop";
 
@@ -14,6 +15,7 @@ export default function ExplorePage() {
   return (
     <main className="explore-page page-shell">
       <MysticBackdrop />
+      <ExploreConstellation />
       <div className="page-kicker">01 / EXPLORE</div>
       <header className="explore-hero">
         <div>
