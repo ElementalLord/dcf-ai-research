@@ -52,12 +52,12 @@ select p.id, a.alias, a.alias_type, a.confidence
 from public.personalities p join (values
   ('Rabindranath Tagore','Rabindranath Tagore','canonical',1.0::double precision),
   ('Rabindranath Tagore','Rabindranath Thakur','alternate_name',0.99::double precision),
-  ('Rabindranath Tagore','Gurudev Tagore','honorific',0.90::double precision),
+  ('Rabindranath Tagore','Gurudev Tagore','epithet',0.90::double precision),
   ('Satyajit Ray','Satyajit Ray','canonical',1.0::double precision),
   ('Satyajit Ray','Manik Ray','alternate_name',0.85::double precision),
   ('J. R. D. Tata','J. R. D. Tata','canonical',1.0::double precision),
   ('J. R. D. Tata','JRD Tata','alternate_name',0.99::double precision),
   ('J. R. D. Tata','Jehangir Ratanji Dadabhoy Tata','alternate_name',1.0::double precision),
-  ('J. R. D. Tata','J. R. D.','short_name',0.85::double precision)
+  ('J. R. D. Tata','J. R. D.','alternate_name',0.85::double precision)
 ) a(person_name,alias,alias_type,confidence) on a.person_name = p.canonical_name
 on conflict do nothing;
