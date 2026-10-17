@@ -235,6 +235,7 @@ export default function ResourcesClient({ authorized, personalities, loadError }
         <TabsTrigger value="sources" className="resource-area-tab resource-area-tab-sources"><LibraryBig size={18} aria-hidden="true"/><span className="resource-tab-label"><strong>Sources</strong></span><span className="resource-tab-count">{loading ? "…" : sources.filter(item => item.source_status !== "rejected").length}</span></TabsTrigger>
         <TabsTrigger value="claims" className="resource-area-tab resource-area-tab-claims"><FileText size={18} aria-hidden="true"/><span className="resource-tab-label"><strong>Claims</strong></span><span className="resource-tab-count">{loading ? "…" : claims.filter(item => item.review_status !== "rejected").length}</span></TabsTrigger>
         <TabsTrigger value="websites" className="resource-area-tab resource-area-tab-websites"><Globe2 size={18} aria-hidden="true"/><span className="resource-tab-label"><strong>Web search</strong></span></TabsTrigger>
+        <Link className="resource-area-tab resource-feedback-link" href="/resources/feedback">Feedback</Link>
       </TabsList>
       <div className="resource-workspace"><section className="resource-main" aria-label="Resource workspace">
         {(tab === "sources" || tab === "claims") && <>

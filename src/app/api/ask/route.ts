@@ -3,6 +3,7 @@ import { z } from "zod";
 import { answerQuestion } from "@/lib/corpus/answer";
 import { assertRequestSize, corpusErrorResponse } from "@/lib/corpus/api";
 import { CorpusError } from "@/lib/corpus/errors";
+import { newResponseId, signFeedbackContext } from "@/lib/feedback-token";
 
 const askSchema = z.object({
   personalityId: z.string().uuid().optional(),
@@ -28,7 +29,16 @@ export async function POST(request: NextRequest) {
     const result = await answerQuestion(parsed.data.question, ids.length === 1 ? ids[0] : ids, { history: parsed.data.history, responseStyle: parsed.data.responseStyle });
     const { debug: _serverDiagnostics, ...publicResult } = result;
     void _serverDiagnostics;
-    return NextResponse.json(publicResult);
+    const feedbackToken = signFeedbackContext({
+      responseId: newResponseId(), question: result.question, answer: result.answer,
+      personalityId: ids.length === 1 ? ids[0] : null, personalityName: result.personality,
+      citations: result.citations.map(citation => ({ id: citation.id, kind: citation.kind, title: citation.title,
+        url: citation.url, claimId: citation.claimId, chunkId: citation.chunkId, pageOrSection: citation.pageOrSection })),
+      usedLiveSearch: result.citations.some(citation => citation.kind === "live_web_source"),
+      answerMode: result.status, provider: result.debug.provider || null, model: result.debug.model || null,
+      requestId: result.interactionId || null,
+    });
+    return NextResponse.json({ ...publicResult, feedbackToken });
   } catch (error) {
     return corpusErrorResponse(error);
   }

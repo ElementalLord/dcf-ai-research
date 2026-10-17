@@ -458,3 +458,25 @@ body:has(.ai-page) .site-header { position: relative; z-index: 2; }
   .person-choice-grid { gap: 7px; }
   .person-choice-button { min-height: 46px; padding: 8px 10px; font-size: 12px; }
 }
+
+.ai-page .response-feedback { margin: 18px 0 3px; padding: 14px 0 0; border-top: 1px solid rgba(204,218,255,.2); color: #b9c9e6; font-size: 12px; }
+.ai-page .response-feedback fieldset { min-width: 0; border: 0; padding: 0; }
+.ai-page .response-feedback legend { margin-bottom: 7px; color: #d5e2fb; font-weight: 600; }
+.ai-page .response-feedback-stars { display: flex; gap: 5px; }
+.ai-page .response-feedback-stars label { position: relative; cursor: pointer; font-size: 23px; line-height: 1; color: #7d8ba7; }
+.ai-page .response-feedback-stars input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.ai-page .response-feedback-stars input:checked + span,.ai-page .response-feedback-stars label:has(~ label input:checked) span { color: #e7c47d; }
+.ai-page .response-feedback-stars label:has(input:focus-visible) { outline: 2px solid #a6c8ff; outline-offset: 3px; border-radius: 3px; }
+.ai-page .response-feedback-choice { margin: 9px 0; color: #e7d6a8; }
+.ai-page .response-feedback-comment { display: grid; gap: 7px; max-width: 540px; line-height: 1.4; }
+.ai-page .response-feedback-comment textarea { width: 100%; min-height: 74px; padding: 9px 11px; resize: vertical; border: 1px solid #92a8ce60; border-radius: 7px; color: #edf4ff; background: #111e39; font: inherit; font-size: 13px; }
+.ai-page .response-feedback-tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 11px 0; }
+.ai-page .response-feedback-tags label { cursor: pointer; }
+.ai-page .response-feedback-tags input { position: absolute; opacity: 0; }
+.ai-page .response-feedback-tags span { display: inline-block; padding: 5px 8px; border: 1px solid #8ba4d04d; border-radius: 20px; color: #c5d4f0; }
+.ai-page .response-feedback-tags input:checked + span { border-color: #b4cbef; background: #3d5688; color: white; }
+.ai-page .response-feedback-tags input:focus-visible + span { outline: 2px solid #a6c8ff; outline-offset: 2px; }
+.ai-page .response-feedback-submit { padding: 7px 11px; border: 1px solid #a3bdec73; border-radius: 6px; color: #e4eeff; background: #293f6a; font-size: 12px; cursor: pointer; }
+.ai-page .response-feedback-submit:disabled { opacity: .6; cursor: wait; }
+.ai-page .response-feedback-error { margin-top: 8px; color: #ffd1c6; }
+.ai-page .response-feedback-success { margin: 15px 0 3px; color: #bce8c9; font-size: 12px; }
