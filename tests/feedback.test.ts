@@ -36,6 +36,12 @@ describe("response feedback", () => {
     expect(insert).toHaveBeenCalledWith(expect.objectContaining({ comment: "Useful context", feedback_tags: ["Weak sources", "Other"] }));
   });
 
+  it("accepts a saved pre-feature answer and marks its snapshot provenance", async () => {
+    const response = await submit({ legacyContext: context, rating: 1, comment: "Missing detail", tags: ["Missing information"] });
+    expect(response.status).toBe(201);
+    expect(insert).toHaveBeenCalledWith(expect.objectContaining({ answer_snapshot: context.answer, answer_mode: "legacy_client_snapshot", provider: null, model: null, rating: 1 }));
+  });
+
   it.each([0, 6, 2.5, "5"]) ("rejects invalid rating %s", async rating => {
     expect(feedbackSubmissionSchema.safeParse({ token: "x".repeat(30), rating }).success).toBe(false);
     expect((await submit({ token: signFeedbackContext(context), rating })).status).toBe(400);

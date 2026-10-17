@@ -29,3 +29,7 @@ export const feedbackContextSchema = z.object({
 
 export type FeedbackContext = z.infer<typeof feedbackContextSchema>;
 export type FeedbackTag = typeof feedbackTags[number];
+
+export const legacyFeedbackSubmissionSchema = feedbackSubmissionSchema.omit({ token: true }).extend({
+  legacyContext: feedbackContextSchema,
+}).strict();

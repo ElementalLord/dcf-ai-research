@@ -14,9 +14,18 @@ import { AUTHORITY_CAVEAT, AUTHORITY_HELP, AUTHORITY_LABELS, PRIMARY_SOURCE_HELP
 import { fetchJsonWithTimeout } from "@/lib/client/fetch-json";
 import { readableEvidence } from "@/lib/corpus/readable-evidence";
 import ResponseFeedback from "./response-feedback";
+import type { FeedbackContext } from "@/lib/feedback";
 
 export type Personality = { id: string; canonical_name: string; category?: string | null; lenses?: Array<{ id: string; label: string }> };
-type Result = { question: string; resolvedQuestion?: string; personality: string; answer: string; citations?: AskCitation[]; status?: string; lens?: { id: string; label: string } | null; feedbackToken?: string };
+type Result = { question: string; resolvedQuestion?: string; personality: string; answer: string; citations?: AskCitation[]; status?: string; lens?: { id: string; label: string } | null; feedbackToken?: string; feedbackId?: string };
+function legacyFeedbackContext(turn: Result, personalityId: string): FeedbackContext {
+  return { responseId: turn.feedbackId!, question: turn.question, answer: turn.answer,
+    personalityId, personalityName: turn.personality,
+    citations: (turn.citations || []).slice(0, 30).map(citation => ({ id: citation.id, kind: citation.kind, title: citation.title,
+      url: citation.url, claimId: citation.claimId, chunkId: citation.chunkId, pageOrSection: citation.pageOrSection })),
+    usedLiveSearch: (turn.citations || []).some(citation => citation.kind === "live_web_source"),
+    answerMode: "legacy_client_snapshot", provider: null, model: null, requestId: null };
+}
 type Style = "simple" | "balanced" | "detailed" | "research";
 type ResizeAxis = "width" | "height";
 type ResizeSession = { axis: ResizeAxis; pointerId: number; startX: number; startY: number; width: number; height: number };
@@ -142,7 +151,11 @@ export default function AskClient({ personalities, loadError }: { personalities:
     } catch { /* A private browser session can deny storage. */ }
     queueMicrotask(() => {
       if (saved) {
-        try { setConversations(JSON.parse(saved) as Record<string, Result[]>); }
+        try {
+          const restored = JSON.parse(saved) as Record<string, Result[]>;
+          setConversations(Object.fromEntries(Object.entries(restored).map(([id, items]) =>
+            [id, items.map(item => ({ ...item, feedbackId: item.feedbackId || crypto.randomUUID() }))])));
+        }
         catch { /* Invalid saved history is ignored. */ }
       }
       setRestored(true);
@@ -262,7 +275,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
         body: JSON.stringify({ personalityId: personId, question: question.trim(), responseStyle: style, history: turns.filter(turn => !isUnusableStoredAnswer(turn.answer, turn.status)).slice(-4).map(turn => ({ question: turn.question.slice(0, 1000), resolvedQuestion: turn.resolvedQuestion?.slice(0, 2000), answer: turn.status === "extractive_fallback" || turn.status === "abstained" ? undefined : turn.answer.replace(/\[[CS]\d+\]/g, "").slice(0, 800), citedConcepts: (turn.citations || []).slice(0, 4).map(citation => citation.title.slice(0, 120)).filter(title => title.trim().length >= 2) })) }),
       }, 120000);
       if (!response.ok || !payload.answer?.trim()) throw new Error("ask_failed");
-      setConversations(current => ({ ...current, [personId]: [...(current[personId] || []), payload].slice(-12) }));
+      setConversations(current => ({ ...current, [personId]: [...(current[personId] || []), { ...payload, feedbackId: crypto.randomUUID() }].slice(-12) }));
       setQuestion("");
     } catch {
       setError("The answer could not be completed. Your question is still here; try again.");
@@ -294,7 +307,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
             <div className="chat-message chat-message-user"><span className="chat-name">You</span><p>{turn.question}</p></div>
             <article className="chat-message chat-message-assistant"><span className="chat-avatar" aria-hidden="true"><Sparkles size={17}/></span><div className="chat-message-content"><span className="chat-name">DCF{turn.lens && <span className="chat-lens-tag">{turn.lens.label} angle</span>}</span>{isUnusableStoredAnswer(turn.answer, turn.status)
               ? <div className="chat-repair"><p>{isIncompleteQuestion(turn.question) ? "That question stopped partway through. Finish it below and I can give you a useful answer." : !turn.answer.trim() ? "That earlier reply was empty. Ask it again for a complete answer." : "That earlier reply pulled in page text instead of answering. Ask it again for a fresh response."}</p><button type="button" onClick={() => { setQuestion(isIncompleteQuestion(turn.question) ? `${turn.question.trim()} ` : turn.question); input.current?.focus(); }}>{isIncompleteQuestion(turn.question) ? "Finish question" : "Ask again"}<ArrowRight size={14} aria-hidden="true" /></button></div>
-              : <><Answer answer={turn.answer} show={id => setSourceId(`${turnIndex}:${id}`)} citations={turn.citations || []}/>{turn.feedbackToken && <ResponseFeedback key={turn.feedbackToken} token={turn.feedbackToken}/>}</>}</div></article>
+              : <><Answer answer={turn.answer} show={id => setSourceId(`${turnIndex}:${id}`)} citations={turn.citations || []}/>{turn.feedbackToken ? <ResponseFeedback key={turn.feedbackToken} token={turn.feedbackToken}/> : turn.feedbackId && <ResponseFeedback key={turn.feedbackId} legacyContext={legacyFeedbackContext(turn, personId)}/>}</>}</div></article>
           </div>)}
           {pendingQuestion && <div className="chat-exchange chat-exchange-pending"><div className="chat-message chat-message-user"><span className="chat-name">You</span><p>{pendingQuestion}</p></div><div className="chat-message chat-message-assistant chat-thinking" role="status" aria-live="polite"><span className="chat-avatar" aria-hidden="true"><Sparkles size={17}/></span><div className="chat-message-content"><span className="chat-name">DCF is thinking</span><div className="chat-thinking-line"><span className="chat-thinking-dots" aria-hidden="true"><i/><i/><i/></span><span>{elapsed < 4 ? "Reading your question" : elapsed < 14 ? "Looking through the evidence" : "Putting the answer together"}</span></div><div className="chat-thinking-track" aria-hidden="true"><span className={elapsed < 4 ? "is-current" : "is-done"}/><span className={elapsed >= 4 && elapsed < 14 ? "is-current" : elapsed >= 14 ? "is-done" : ""}/><span className={elapsed >= 14 ? "is-current" : ""}/></div><small>{elapsed >= 25 ? "This is taking a little longer than usual." : "Sources will appear right beside the facts they support."}</small></div></div></div>}
         </div>
