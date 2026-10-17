@@ -1,4 +1,5 @@
 import type { Phase1DiscoveryPerson, Phase1Personality, Phase1PresentationCategory, Phase1Statement } from "@/lib/phase1/types";
+import { profileAngles, type ProfileAngle } from "./profile-angles";
 
 export const EXPLORE_CATEGORIES: Phase1PresentationCategory[] = [
   { id: "sages", name: "Sages and philosophical traditions", description: "" },
@@ -31,7 +32,7 @@ export const PROFILE_SECTIONS = [
   { key: "contestedAspects", title: "Disputed or uncertain" },
 ] as const;
 
-export type PublicProfilePerson = Pick<Phase1Personality, "slug" | "name" | "type" | "era" | "region" | "sources" | (typeof PROFILE_SECTIONS)[number]["key"]>;
+export type PublicProfilePerson = Pick<Phase1Personality, "slug" | "name" | "type" | "era" | "region" | "sources" | (typeof PROFILE_SECTIONS)[number]["key"]> & { angles: ProfileAngle[] };
 
 export function publicProfilePerson(person: Phase1Personality): PublicProfilePerson {
   const sources = person.sources.filter((source) => source.sourceStatus === "approved");
@@ -45,6 +46,7 @@ export function publicProfilePerson(person: Phase1Personality): PublicProfilePer
     type: person.type,
     era: person.era,
     region: person.region,
+    angles: profileAngles(person.slug),
     sources,
     shortIntroduction: publicClaims(person.shortIntroduction),
     lifeAndContext: publicClaims(person.lifeAndContext),
@@ -61,19 +63,21 @@ export function approvedStatements(person: Pick<Phase1Personality, "sources" | (
   return person[key].filter((claim) => claim.reviewStatus === "approved" && claim.citations.some((citation) => person.sources.some((source) => source.id === citation.sourceId && source.sourceStatus === "approved")) && (key === "contestedAspects" || claim.evidenceType !== "uncertain"));
 }
 
-export type ExplorePerson = Phase1DiscoveryPerson & { summary: string | null; sourceCount: number; dateLabel: string | null; sortYear: number | null };
+export type ExplorePerson = Phase1DiscoveryPerson & { summary: string | null; sourceCount: number; dateLabel: string | null; sortYear: number | null; angles: ProfileAngle[] };
 
 export function toExplorePerson(discovery: Phase1DiscoveryPerson, person: Phase1Personality): ExplorePerson {
   const summary = approvedStatements(person, "shortIntroduction")[0]?.text ?? null;
+  const angles = profileAngles(person.slug);
   // The export has no structured date field. Era is used only when the export supplies one.
   return {
     ...discovery,
     presentationCategory: exploreCategory(person.slug),
     introduction: summary ?? "",
     summary,
+    angles,
     sourceCount: person.sources.filter((source) => source.sourceStatus === "approved").length,
     dateLabel: person.era,
     sortYear: null,
-    searchText: [discovery.name, ...discovery.alternateNames, person.type, exploreCategory(person.slug).name, summary, person.era].filter(Boolean).join(" ").toLowerCase(),
+    searchText: [discovery.name, ...discovery.alternateNames, person.type, exploreCategory(person.slug).name, summary, person.era, ...angles.map((angle) => angle.title)].filter(Boolean).join(" ").toLowerCase(),
   };
 }

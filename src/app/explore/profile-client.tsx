@@ -47,6 +47,7 @@ export function ProfileClient({ person, related }: { person: PublicProfilePerson
   const category = exploreCategory(person.slug);
   const firstName = person.name.startsWith("A. P. J.") ? "Kalam" : person.name.split(" ")[0];
   const visibleSources = showAllSources ? sources : sources.slice(0, 8);
+  const lensLabel = (lens: string) => lens.replaceAll("_", " ");
 
   return <main className="explore-shell explore-profile">
     <nav className="explore-crumb" aria-label="Breadcrumb"><Link href="/explore">Explore</Link><span aria-hidden="true">/</span><Link href={`/explore?category=${category.id}`}>{category.name}</Link></nav>
@@ -65,11 +66,17 @@ export function ProfileClient({ person, related }: { person: PublicProfilePerson
     <div className="explore-profile-layout">
       <nav className="explore-toc" aria-label="On this page">
         <h2>On this page</h2>
+        <a href="#angles" aria-current={current === "angles" ? "location" : undefined} onClick={() => setCurrent("angles")}>Explore by angle<span>{person.angles.length}</span></a>
         {sections.map((section) => <a key={section.key} href={`#${section.key}`} aria-current={current === section.key ? "location" : undefined} onClick={() => setCurrent(section.key)}>{section.title}<span>{section.claims.length}</span></a>)}
         <a href="#sources" aria-current={current === "sources" ? "location" : undefined} onClick={() => setCurrent("sources")}>Sources<span>{sources.length}</span></a>
         {related.length > 0 && <a href="#related" aria-current={current === "related" ? "location" : undefined} onClick={() => setCurrent("related")}>Related people</a>}
       </nav>
       <div className="explore-profile-main">
+        <section id="angles" className="explore-angles">
+          <h2>Explore by angle</h2>
+          <p>Questions for reading the source collection. These are starting points, not approved claims.</p>
+          <div className="explore-angle-grid">{person.angles.map((angle) => <article key={angle.title} className="explore-angle"><span>{lensLabel(angle.lens)}</span><h3>{angle.title}</h3><p>{angle.question}</p></article>)}</div>
+        </section>
         <div className="explore-profile-tools"><span>{claims} approved {claims === 1 ? "claim" : "claims"}</span>{claims > 0 && <button type="button" onClick={() => setAllOpen(!allOpen)}>{allOpen ? "Hide all evidence" : "Show all evidence"}</button>}</div>
         {sections.length ? sections.map((section) => <section id={section.key} key={section.key} className={`explore-topic ${section.key === "contestedAspects" ? "explore-disputed" : ""}`}><h2>{section.title}</h2>{section.claims.map((claim) => <Claim key={`${claim.claimId}-${allOpen}`} statement={claim} sources={sources} allOpen={allOpen} />)}</section>) : <section className="explore-review-note"><h2>Claims in review</h2><p>The sources below are available to read. Biographical claims will appear here after review.</p></section>}
         <section id="sources" className="explore-source-section">

@@ -1,0 +1,1324 @@
+{
+  "sources": [
+    {
+      "id": "S01",
+      "title": "Rigveda, Shakala Samhita, Mandala 7",
+      "publisher": "Vedic Heritage Portal / IGNCA / Ministry of Culture",
+      "type": "primary/institutional",
+      "url": "https://vedicheritage.gov.in/hi/samhitas/rigveda/shakala-samhita-2/mandal-07/"
+    },
+    {
+      "id": "S02",
+      "title": "Rigveda Book 7, Metrically Restored Text",
+      "publisher": "University of Texas Linguistics Research Center",
+      "type": "primary/academic digital edition",
+      "url": "https://lrc.la.utexas.edu/books/rigveda/RV07"
+    },
+    {
+      "id": "S03",
+      "title": "Valmiki Ramayana, Bala Kanda 12",
+      "publisher": "valmikiramayan.net",
+      "type": "primary text translation",
+      "url": "https://www.valmikiramayan.net/baala/sarga12/bala_12_prose.htm"
+    },
+    {
+      "id": "S04",
+      "title": "Valmiki Ramayana, Bala Kanda 21",
+      "publisher": "valmikiramayan.net",
+      "type": "primary text translation",
+      "url": "https://www.valmikiramayan.net/utf8/baala/sarga21/balasans21.htm"
+    },
+    {
+      "id": "S05",
+      "title": "Valmiki Ramayana, Bala Kanda 22",
+      "publisher": "valmikiramayan.net",
+      "type": "primary text translation",
+      "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm"
+    },
+    {
+      "id": "S06",
+      "title": "Valmiki Ramayana, Bala Kanda 52",
+      "publisher": "valmikiramayan.net",
+      "type": "primary text translation",
+      "url": "https://valmikiramayan.net/utf8/baala/sarga52/balasans52.htm"
+    },
+    {
+      "id": "S07",
+      "title": "Valmiki Ramayana, Bala Kanda 53",
+      "publisher": "valmikiramayan.net",
+      "type": "primary text translation",
+      "url": "https://valmikiramayan.net/utf8/baala/sarga53/balasans53.htm.orig"
+    },
+    {
+      "id": "S08",
+      "title": "Valmiki Ramayana, Bala Kanda 54",
+      "publisher": "Sanskrit Documents",
+      "type": "primary text translation",
+      "url": "https://www.sanskritdocuments.org/sites/valmikiramayan/baala/sarga54/balaroman54.htm"
+    },
+    {
+      "id": "S09",
+      "title": "Valmiki Ramayana, Bala Kanda 55",
+      "publisher": "Sanskrit Documents",
+      "type": "primary text translation",
+      "url": "https://sanskritdocuments.org/sites/valmikiramayan/baala/sarga55/bala_55_prose.htm"
+    },
+    {
+      "id": "S10",
+      "title": "Valmiki Ramayana, Bala Kanda 56",
+      "publisher": "Sanskrit Documents",
+      "type": "primary text translation",
+      "url": "https://sanskritdocuments.org/sites/valmikiramayan/baala/sarga56/balaitrans56.htm"
+    },
+    {
+      "id": "S11",
+      "title": "Valmiki Ramayana, Bala Kanda 65",
+      "publisher": "valmikiramayan.net",
+      "type": "primary text translation",
+      "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig"
+    },
+    {
+      "id": "S12",
+      "title": "Valmiki Ramayana, Ayodhya Kanda 67",
+      "publisher": "Sanskrit Documents",
+      "type": "primary text translation",
+      "url": "https://sanskritdocuments.org/sites/valmikiramayan/ayodhya/sarga67/ayodhya_67_prose.htm"
+    },
+    {
+      "id": "S13",
+      "title": "Valmiki Ramayana, Ayodhya Kanda 68",
+      "publisher": "valmikiramayan.net",
+      "type": "primary text translation",
+      "url": "https://www.valmikiramayan.net/ayodhya/sarga68/ayodhyaroman68.htm"
+    },
+    {
+      "id": "S14",
+      "title": "Valmiki Ramayana, Ayodhya Kanda 77",
+      "publisher": "valmikiramayan.net",
+      "type": "primary text translation",
+      "url": "https://www.valmikiramayan.net/ayodhya/sarga77/ayodhyaitrans77.htm"
+    },
+    {
+      "id": "S15",
+      "title": "Valmiki Ramayana, Ayodhya Kanda 104",
+      "publisher": "Sanskrit Documents",
+      "type": "primary text translation",
+      "url": "https://sanskritdocuments.org/sites/valmikiramayan/ayodhya/sarga104/ayodhyaitrans104.htm"
+    },
+    {
+      "id": "S16",
+      "title": "Valmiki Ramayana, Ayodhya Kanda 110",
+      "publisher": "Sanskrit Documents",
+      "type": "primary text translation",
+      "url": "https://sanskritdocuments.org/sites/valmikiramayan/ayodhya/sarga110/ayodhyaitrans110.htm"
+    },
+    {
+      "id": "S17",
+      "title": "Valmiki Ramayana, Ayodhya Kanda 111",
+      "publisher": "Sanskrit Documents",
+      "type": "primary text translation",
+      "url": "https://sanskritdocuments.org/sites/valmikiramayan/ayodhya/sarga111/ayodhyaroman111.htm"
+    },
+    {
+      "id": "S18",
+      "title": "Valmiki Ramayana, Ayodhya Kanda 115",
+      "publisher": "Sanskrit Documents",
+      "type": "primary text translation",
+      "url": "https://sanskritdocuments.org/sites/valmikiramayan/ayodhya/sarga115/ayodhyaitrans115.htm"
+    },
+    {
+      "id": "S19",
+      "title": "Bharatas, Purus, Kurus, and the Vedas: A Politico-textual History",
+      "publisher": "Oxford University Press",
+      "type": "scholarly secondary",
+      "url": "https://academic.oup.com/book/57605/chapter-abstract/522447201"
+    },
+    {
+      "id": "S20",
+      "title": "Visvamitra and Vasistha",
+      "publisher": "Journal of the Royal Asiatic Society / Cambridge University Press",
+      "type": "scholarly secondary; historical",
+      "url": "https://www.cambridge.org/core/journals/journal-of-the-royal-asiatic-society/article/abs/xxix-visvamitra-and-vasistha/1D7B9CBB475B80CACA2FC6E4B6448E16"
+    },
+    {
+      "id": "S21",
+      "title": "Poet, Priest, and Prince: Glimpses of Visvamitra in Vedic Literature",
+      "publisher": "Oxford University Press",
+      "type": "scholarly secondary",
+      "url": "https://academic.oup.com/book/26700/chapter-abstract/195501059"
+    },
+    {
+      "id": "S22",
+      "title": "The Nature of Idealism in the Moksopayashastra/Yogavasistha",
+      "publisher": "Oxford University Press",
+      "type": "scholarly secondary",
+      "url": "https://academic.oup.com/edited-volume/27982/chapter-abstract/211672193"
+    },
+    {
+      "id": "S23",
+      "title": "Vasistha's Yoga",
+      "publisher": "State University of New York Press",
+      "type": "scholarly publisher description",
+      "url": "https://sunypress.edu/Books/V/Vasi-ha-s-Yoga"
+    },
+    {
+      "id": "S24",
+      "title": "Dharmasutras",
+      "publisher": "University of Texas at Austin",
+      "type": "academic text resource",
+      "url": "https://sites.utexas.edu/sanskrit/resources/dharmasastra/dharmasutras/"
+    },
+    {
+      "id": "S25",
+      "title": "From Bauddha Desa to Sakta Pitha: Re/Locating the Hindu Goddess Tara",
+      "publisher": "Oxford University Press, Journal of Hindu Studies",
+      "type": "scholarly secondary",
+      "url": "https://academic.oup.com/jhs/article/17/2/175/7635536"
+    }
+  ],
+  "claims": [
+    {
+      "id": "VAS-001",
+      "claim": "The Vedic Heritage Portal identifies Vasistha Maitravaruni as the seer associated with Rigveda 7.1.",
+      "primary_parameter": "Textual Contribution",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.1 metadata"
+    },
+    {
+      "id": "VAS-002",
+      "claim": "Rigveda 7.8 includes a first-person appeal made in the name of the Vasisthas to Agni.",
+      "primary_parameter": "Textual Contribution",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S02",
+      "locator": "RV 7.8.7"
+    },
+    {
+      "id": "VAS-003",
+      "claim": "The Vedic Heritage Portal attributes Rigveda 7.15, a hymn to Agni, to Vasistha Maitravaruni.",
+      "primary_parameter": "Textual Contribution",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.15 metadata"
+    },
+    {
+      "id": "VAS-004",
+      "claim": "The Vedic Heritage Portal attributes Rigveda 7.16, another Agni hymn, to Vasistha Maitravaruni.",
+      "primary_parameter": "Textual Contribution",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.16 metadata"
+    },
+    {
+      "id": "VAS-005",
+      "claim": "The Vedic Heritage Portal attributes Rigveda 7.17 to Vasistha Maitravaruni.",
+      "primary_parameter": "Textual Contribution",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.17 metadata"
+    },
+    {
+      "id": "VAS-006",
+      "claim": "Rigveda 7.18 is associated with Vasistha Maitravaruni and concerns the conflict commonly called the Battle of the Ten Kings.",
+      "primary_parameter": "Historical / Textual Context",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.18 metadata and verses"
+    },
+    {
+      "id": "VAS-007",
+      "claim": "In Rigveda 7.18.4, Vasistha presents prayers to Indra and asks for Indra's favor.",
+      "primary_parameter": "Textual Contribution",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S02",
+      "locator": "RV 7.18.4"
+    },
+    {
+      "id": "VAS-008",
+      "claim": "Rigveda 7.18 portrays Indra as aiding King Sudas during the battle remembered in the hymn.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.18.5-19"
+    },
+    {
+      "id": "VAS-009",
+      "claim": "Rigveda 7.18.5 says Indra made the swollen waters passable for Sudas.",
+      "primary_parameter": "Historical / Textual Context",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.18.5"
+    },
+    {
+      "id": "VAS-010",
+      "claim": "Rigveda 7.18 names several opposing groups, including the Pakthas, Bhalanas, Alinas, Visanins, and Sivas.",
+      "primary_parameter": "Historical / Textual Context",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.18.7"
+    },
+    {
+      "id": "VAS-011",
+      "claim": "Rigveda 7.33 connects the Vasisthas with Sudas's victory in the Dasarajna conflict.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.33.3-6"
+    },
+    {
+      "id": "VAS-012",
+      "claim": "Rigveda 7.33.5 says Indra heard Vasistha's praise and made room for the Trtsus.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.33.5"
+    },
+    {
+      "id": "VAS-013",
+      "claim": "Rigveda 7.33.6 presents Vasistha as a leading ritual figure among the Trtsus.",
+      "primary_parameter": "Role / Vocation",
+      "epistemic_type": "textual_assertion",
+      "certainty": "medium",
+      "source": "S02",
+      "locator": "RV 7.33.6"
+    },
+    {
+      "id": "VAS-014",
+      "claim": "Rigveda 7.33 gives Vasistha a mythic birth account connected with Mitra, Varuna, and Urvashi.",
+      "primary_parameter": "Parampara / Lineage",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.33.10-13"
+    },
+    {
+      "id": "VAS-015",
+      "claim": "Rigveda 7.33 links Vasistha and Agastya within the same mythic birth complex.",
+      "primary_parameter": "Parampara / Lineage",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S02",
+      "locator": "RV 7.33.10-13"
+    },
+    {
+      "id": "VAS-016",
+      "claim": "Rigveda 7.33.11 calls Vasistha Maitravaruna and links his birth to Urvashi.",
+      "primary_parameter": "Parampara / Lineage",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S02",
+      "locator": "RV 7.33.11"
+    },
+    {
+      "id": "VAS-017",
+      "claim": "The Vedic Heritage Portal attributes Rigveda 7.34, a hymn to the All-Gods, to Vasistha Maitravaruni.",
+      "primary_parameter": "Textual Contribution",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.34 metadata"
+    },
+    {
+      "id": "VAS-018",
+      "claim": "The Vedic Heritage Portal attributes Rigveda 7.47, a hymn to the Waters, to Vasistha Maitravaruni.",
+      "primary_parameter": "Textual Contribution",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.47 metadata"
+    },
+    {
+      "id": "VAS-019",
+      "claim": "Rigveda 7.53 is attributed to Vasistha Maitravaruni and includes a prayer for benefits to Sudas.",
+      "primary_parameter": "Textual Contribution",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.53 metadata and 7.53.3"
+    },
+    {
+      "id": "VAS-020",
+      "claim": "Rigveda 7.70 ends by asking the Asvins to come to Vasistha and accept the hymns offered to them.",
+      "primary_parameter": "Textual Contribution",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.70.6-7"
+    },
+    {
+      "id": "VAS-021",
+      "claim": "Rigveda 7.86 presents Vasistha as a speaker seeking Varuna's favor and asking about offense, guilt, and reconciliation.",
+      "primary_parameter": "Philosophy",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.86.2-8"
+    },
+    {
+      "id": "VAS-022",
+      "claim": "Rigveda 7.88 says Varuna placed Vasistha in a boat and made him a rishi through divine power.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.88.4"
+    },
+    {
+      "id": "VAS-023",
+      "claim": "Rigveda 7.88 has Vasistha recall an earlier friendship with Varuna.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.88.5-6"
+    },
+    {
+      "id": "VAS-024",
+      "claim": "Rigveda 7.89 is a prayer attributed to Vasistha that asks Varuna for mercy and release from transgression.",
+      "primary_parameter": "Philosophy",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.89.1-5"
+    },
+    {
+      "id": "VAS-025",
+      "claim": "The Vedic Heritage Portal attributes Rigveda 7.100, a hymn to Vishnu, to Vasistha Maitravaruni.",
+      "primary_parameter": "Textual Contribution",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.100 metadata"
+    },
+    {
+      "id": "VAS-026",
+      "claim": "The Vedic Heritage Portal attributes Rigveda 7.104 to Vasistha Maitravaruni.",
+      "primary_parameter": "Textual Contribution",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.104 metadata"
+    },
+    {
+      "id": "VAS-027",
+      "claim": "Rigveda 7.104 invokes Indra and Soma against hostile or malevolent beings within the Vasistha-associated Book 7 corpus.",
+      "primary_parameter": "Textual Contribution",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.104.1-4"
+    },
+    {
+      "id": "VAS-028",
+      "claim": "Modern scholar Kanad Sinha treats Vasistha as one of the priest-poets whose Rigvedic material is central to reconstructing the Dasarajna conflict.",
+      "primary_parameter": "Historical / Textual Context",
+      "epistemic_type": "scholarly_attribution",
+      "certainty": "high",
+      "source": "S19",
+      "locator": "chapter abstract"
+    },
+    {
+      "id": "VAS-029",
+      "claim": "Kanad Sinha argues that conflict between Visvamitra and Vasistha over Sudas's patronage culminated in the military showdown remembered as the Battle of Ten Kings.",
+      "primary_parameter": "Contested / Uncertain",
+      "epistemic_type": "scholarly_attribution",
+      "certainty": "high",
+      "source": "S19",
+      "locator": "chapter abstract"
+    },
+    {
+      "id": "VAS-030",
+      "claim": "Kanad Sinha identifies Sudas as the Bharata ruler who emerged victorious from the Dasarajna conflict.",
+      "primary_parameter": "Historical / Textual Context",
+      "epistemic_type": "scholarly_attribution",
+      "certainty": "high",
+      "source": "S19",
+      "locator": "chapter abstract"
+    },
+    {
+      "id": "VAS-031",
+      "claim": "Adheesh Sathaye treats rivalry with Vasistha and competition around Sudas as part of the earliest Vedic background to later Visvamitra traditions.",
+      "primary_parameter": "Historical / Textual Context",
+      "epistemic_type": "scholarly_attribution",
+      "certainty": "high",
+      "source": "S21",
+      "locator": "chapter abstract"
+    },
+    {
+      "id": "VAS-032",
+      "claim": "In the Bala Kanda, Vasistha is identified as Dasharatha's family priest and is among the Vedic ritual specialists summoned for the king's sacrifice.",
+      "primary_parameter": "Role / Vocation",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S03",
+      "locator": "Bala 1.12"
+    },
+    {
+      "id": "VAS-033",
+      "claim": "When Dasharatha hesitates to send Rama with Visvamitra, Vasistha intervenes and counsels the king to keep his promise.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S04",
+      "locator": "Bala 1.21.5-8"
+    },
+    {
+      "id": "VAS-034",
+      "claim": "Vasistha tells Dasharatha that Rama will be safe under Visvamitra's protection.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S04",
+      "locator": "Bala 1.21.9"
+    },
+    {
+      "id": "VAS-035",
+      "claim": "Vasistha praises Visvamitra as an embodiment of dharma, outstanding in courage, intellect, and tapas.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S04",
+      "locator": "Bala 1.21.10"
+    },
+    {
+      "id": "VAS-036",
+      "claim": "Vasistha tells Dasharatha that Visvamitra possesses extensive knowledge of divine weapons.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S04",
+      "locator": "Bala 1.21.11-18"
+    },
+    {
+      "id": "VAS-037",
+      "claim": "Vasistha says Visvamitra is capable not only of knowing existing weapons but also of producing new ones.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S04",
+      "locator": "Bala 1.21.18"
+    },
+    {
+      "id": "VAS-038",
+      "claim": "Dasharatha consents to Rama's departure with Visvamitra after hearing Vasistha's counsel.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S04",
+      "locator": "Bala 1.21.22"
+    },
+    {
+      "id": "VAS-039",
+      "claim": "Before Rama departs with Visvamitra, Vasistha performs auspicious Vedic blessings for him.",
+      "primary_parameter": "Role / Vocation",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S05",
+      "locator": "Bala 1.22.2-3"
+    },
+    {
+      "id": "VAS-040",
+      "claim": "When King Visvamitra visits Vasistha's hermitage, Vasistha welcomes him, seats him, and offers fruits and roots.",
+      "primary_parameter": "Inner Qualities",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S06",
+      "locator": "Bala 1.52.1-3"
+    },
+    {
+      "id": "VAS-041",
+      "claim": "Vasistha asks Visvamitra whether he is ruling his subjects according to dharma.",
+      "primary_parameter": "Philosophy",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S06",
+      "locator": "Bala 1.52.6-8"
+    },
+    {
+      "id": "VAS-042",
+      "claim": "Vasistha and Visvamitra initially exchange friendly pleasantries for an extended time at the hermitage.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S06",
+      "locator": "Bala 1.52.11"
+    },
+    {
+      "id": "VAS-043",
+      "claim": "Vasistha insists on providing hospitality not only to Visvamitra but also to his large royal retinue.",
+      "primary_parameter": "Inner Qualities",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S06",
+      "locator": "Bala 1.52.12-19"
+    },
+    {
+      "id": "VAS-044",
+      "claim": "Vasistha summons Shabala to provide the food required for Visvamitra's royal party.",
+      "primary_parameter": "Role / Vocation",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S06",
+      "locator": "Bala 1.52.20 onward"
+    },
+    {
+      "id": "VAS-045",
+      "claim": "Vasistha refuses Visvamitra's offers to purchase Shabala even for enormous quantities of cattle, silver, and wealth.",
+      "primary_parameter": "Inner Qualities",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S07",
+      "locator": "Bala 1.53.10-13"
+    },
+    {
+      "id": "VAS-046",
+      "claim": "Vasistha describes Shabala as inseparable from him.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S07",
+      "locator": "Bala 1.53.12-13"
+    },
+    {
+      "id": "VAS-047",
+      "claim": "When Visvamitra's men try to seize Shabala, she breaks away and returns to Vasistha.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S08",
+      "locator": "Bala 1.54.5-7"
+    },
+    {
+      "id": "VAS-048",
+      "claim": "Shabala asks Vasistha whether he has abandoned her when Visvamitra's attendants attempt to take her away.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S08",
+      "locator": "Bala 1.54.7-8"
+    },
+    {
+      "id": "VAS-049",
+      "claim": "Vasistha permits Shabala to use her power to resist Visvamitra's force.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S08",
+      "locator": "Bala 1.54, chapter action"
+    },
+    {
+      "id": "VAS-050",
+      "claim": "During the conflict, Vasistha commands Shabala to generate additional forces when the first forces are overwhelmed.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S09",
+      "locator": "Bala 1.55.1"
+    },
+    {
+      "id": "VAS-051",
+      "claim": "Visvamitra's attack devastates Vasistha's hermitage and causes disciples, animals, and birds to flee.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S09",
+      "locator": "Bala 1.55.22-24"
+    },
+    {
+      "id": "VAS-052",
+      "claim": "Vasistha repeatedly tells the fleeing inhabitants of his hermitage not to fear.",
+      "primary_parameter": "Inner Qualities",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S09",
+      "locator": "Bala 1.55.25"
+    },
+    {
+      "id": "VAS-053",
+      "claim": "Vasistha confronts Visvamitra with the brahma-danda after the destruction of his hermitage.",
+      "primary_parameter": "Tapas / Sadhana",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S09",
+      "locator": "Bala 1.55.25 onward"
+    },
+    {
+      "id": "VAS-054",
+      "claim": "The Ramayana narrative portrays Vasistha's brahma-danda as neutralizing Visvamitra's fiery missile.",
+      "primary_parameter": "Tapas / Sadhana",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S10",
+      "locator": "Bala 1.56.1-2 and following"
+    },
+    {
+      "id": "VAS-055",
+      "claim": "The Bala Kanda depicts Vasistha as neutralizing a succession of divine weapons launched by Visvamitra.",
+      "primary_parameter": "Tapas / Sadhana",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S10",
+      "locator": "Bala 1.56"
+    },
+    {
+      "id": "VAS-056",
+      "claim": "The Bala Kanda culminates the weapon contest by depicting Vasistha as neutralizing the Brahma weapon itself.",
+      "primary_parameter": "Tapas / Sadhana",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S10",
+      "locator": "Bala 1.56 later verses"
+    },
+    {
+      "id": "VAS-057",
+      "claim": "After the weapon contest, Visvamitra concludes within the narrative that kshatriya force is inferior to brahmanic spiritual power and turns again to ascetic striving.",
+      "primary_parameter": "Historical / Textual Context",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "medium",
+      "source": "S10",
+      "locator": "Bala 1.56 conclusion"
+    },
+    {
+      "id": "VAS-058",
+      "claim": "At the end of Visvamitra's ascetic transformation, Visvamitra asks that Vasistha personally recognize him as a brahmarshi.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S11",
+      "locator": "Bala 1.65.23-24"
+    },
+    {
+      "id": "VAS-059",
+      "claim": "Vasistha explicitly recognizes Visvamitra as a brahmarshi.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S11",
+      "locator": "Bala 1.65.25-26"
+    },
+    {
+      "id": "VAS-060",
+      "claim": "The Bala Kanda says Vasistha makes friendship with Visvamitra after recognizing his brahmarshi status.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S11",
+      "locator": "Bala 1.65.25"
+    },
+    {
+      "id": "VAS-061",
+      "claim": "After Vasistha's recognition, the narrative says Visvamitra reveres Vasistha.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S11",
+      "locator": "Bala 1.65.27"
+    },
+    {
+      "id": "VAS-062",
+      "claim": "After Dasharatha's death, the assembled brahmanas and ministers turn to Vasistha as the principal royal priest during the succession crisis.",
+      "primary_parameter": "Role / Vocation",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S12",
+      "locator": "Ayodhya 2.67"
+    },
+    {
+      "id": "VAS-063",
+      "claim": "Vasistha directs that Bharata and Shatrughna be summoned quickly from their maternal relatives after Dasharatha's death.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S13",
+      "locator": "Ayodhya 2.68.1-3"
+    },
+    {
+      "id": "VAS-064",
+      "claim": "The Ayodhya Kanda presents Vasistha as one of the central figures managing royal continuity after Dasharatha's death.",
+      "primary_parameter": "Role / Vocation",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S12",
+      "locator": "Ayodhya 2.67-68"
+    },
+    {
+      "id": "VAS-065",
+      "claim": "During Dasharatha's funeral observances, Vasistha and Sumantra raise and console the grieving Bharata and Shatrughna.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S14",
+      "locator": "Ayodhya 2.77 introduction"
+    },
+    {
+      "id": "VAS-066",
+      "claim": "Vasistha urges Bharata and Shatrughna to complete the remaining rites for Dasharatha.",
+      "primary_parameter": "Role / Vocation",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S14",
+      "locator": "Ayodhya 2.77 introduction"
+    },
+    {
+      "id": "VAS-067",
+      "claim": "Vasistha leads Dasharatha's wives and the royal party to Rama's hermitage at Chitrakuta.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S15",
+      "locator": "Ayodhya 2.104.1"
+    },
+    {
+      "id": "VAS-068",
+      "claim": "At Chitrakuta, Rama treats Vasistha as his preceptor and honors him accordingly.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S15",
+      "locator": "Ayodhya 2.104, chapter action"
+    },
+    {
+      "id": "VAS-069",
+      "claim": "Vasistha gives Rama a cosmogonic account while attempting to persuade him to return to Ayodhya.",
+      "primary_parameter": "Philosophy",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S16",
+      "locator": "Ayodhya 2.110.1-3 onward"
+    },
+    {
+      "id": "VAS-070",
+      "claim": "Vasistha recites the genealogy of Rama's royal line in Ayodhya Kanda 110.",
+      "primary_parameter": "Parampara / Lineage",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S16",
+      "locator": "Ayodhya 2.110"
+    },
+    {
+      "id": "VAS-071",
+      "claim": "Vasistha invokes the succession custom that the eldest son rules in the Ikshvaku line.",
+      "primary_parameter": "Philosophy",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S16",
+      "locator": "Ayodhya 2.110"
+    },
+    {
+      "id": "VAS-072",
+      "claim": "Vasistha urges Rama to accept kingship and return to Ayodhya on the basis of dynastic and moral duty.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S16",
+      "locator": "Ayodhya 2.110 conclusion"
+    },
+    {
+      "id": "VAS-073",
+      "claim": "Vasistha teaches Rama that a person's three gurus are the teacher, father, and mother.",
+      "primary_parameter": "Philosophy",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S17",
+      "locator": "Ayodhya 2.111.2"
+    },
+    {
+      "id": "VAS-074",
+      "claim": "Vasistha says the father gives life while the teacher gives wisdom, which is why the teacher is called guru.",
+      "primary_parameter": "Philosophy",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S17",
+      "locator": "Ayodhya 2.111.3"
+    },
+    {
+      "id": "VAS-075",
+      "claim": "Vasistha identifies himself as the spiritual preceptor of both Dasharatha and Rama.",
+      "primary_parameter": "Role / Vocation",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S17",
+      "locator": "Ayodhya 2.111.4"
+    },
+    {
+      "id": "VAS-076",
+      "claim": "Vasistha tells Rama that following his counsel would remain within the path of the virtuous.",
+      "primary_parameter": "Philosophy",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S17",
+      "locator": "Ayodhya 2.111.4"
+    },
+    {
+      "id": "VAS-077",
+      "claim": "Vasistha tells Rama that fulfilling duties toward subjects, guilds, and brahmanas is part of righteous conduct.",
+      "primary_parameter": "Philosophy",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S17",
+      "locator": "Ayodhya 2.111.5"
+    },
+    {
+      "id": "VAS-078",
+      "claim": "Vasistha urges Rama to honor the wishes of his aged mother as part of righteous conduct.",
+      "primary_parameter": "Philosophy",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S17",
+      "locator": "Ayodhya 2.111.6"
+    },
+    {
+      "id": "VAS-079",
+      "claim": "Vasistha urges Rama to respond to Bharata's appeal to return.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S17",
+      "locator": "Ayodhya 2.111.7"
+    },
+    {
+      "id": "VAS-080",
+      "claim": "After the Chitrakuta negotiations, Vasistha and the other elders agree to Bharata's decision to reside at Nandigrama during Rama's absence.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S18",
+      "locator": "Ayodhya 2.115 introduction"
+    },
+    {
+      "id": "VAS-081",
+      "claim": "Vasistha accompanies the royal and civic entourage associated with Bharata's move to Nandigrama.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S18",
+      "locator": "Ayodhya 2.115"
+    },
+    {
+      "id": "VAS-082",
+      "claim": "Across the Ayodhya Kanda episodes, Vasistha is repeatedly depicted as royal priest, dynastic counselor, ritual authority, and teacher to the Ikshvaku household.",
+      "primary_parameter": "Role / Vocation",
+      "epistemic_type": "synthesis_across_sources",
+      "certainty": "high",
+      "source": "S17",
+      "locator": "Ayodhya 2.67-68, 2.77, 2.104, 2.110-111"
+    },
+    {
+      "id": "VAS-083",
+      "claim": "Pargiter observes that stories of Vasistha and Visvamitra's contest are widespread across Sanskrit literature.",
+      "primary_parameter": "Historical / Textual Context",
+      "epistemic_type": "scholarly_attribution",
+      "certainty": "high",
+      "source": "S20",
+      "locator": "article extract"
+    },
+    {
+      "id": "VAS-084",
+      "claim": "Pargiter warns that Sanskrit tradition contains multiple figures called Vasistha and that later stories sometimes conflate them.",
+      "primary_parameter": "Contested / Uncertain",
+      "epistemic_type": "scholarly_attribution",
+      "certainty": "high",
+      "source": "S20",
+      "locator": "p. 901 note 2"
+    },
+    {
+      "id": "VAS-085",
+      "claim": "Pargiter distinguishes several prominent Vasisthas associated with different royal generations in traditional genealogies.",
+      "primary_parameter": "Contested / Uncertain",
+      "epistemic_type": "scholarly_attribution",
+      "certainty": "medium",
+      "source": "S20",
+      "locator": "p. 901 note 2"
+    },
+    {
+      "id": "VAS-086",
+      "claim": "Pargiter's early twentieth-century work attempts to read parts of Vasistha-Visvamitra tradition as recoverable historical tradition; this is a scholarly reconstruction, not direct historical proof.",
+      "primary_parameter": "Contested / Uncertain",
+      "epistemic_type": "scholarly_attribution",
+      "certainty": "high",
+      "source": "S20",
+      "locator": "article extract"
+    },
+    {
+      "id": "VAS-087",
+      "claim": "The Vedic Vasistha material and the epic Vasistha narratives belong to different textual layers and should not automatically be treated as a single continuous biography.",
+      "primary_parameter": "Contested / Uncertain",
+      "epistemic_type": "synthesis_across_sources",
+      "certainty": "high",
+      "source": "S19",
+      "locator": "compare Vedic evidence with epic narratives"
+    },
+    {
+      "id": "VAS-088",
+      "claim": "The Rigvedic evidence can support claims about a Vasistha priest-poet tradition and its relationship with Sudas, but it does not by itself establish the later Ramayana episodes as historical events.",
+      "primary_parameter": "Contested / Uncertain",
+      "epistemic_type": "methodological",
+      "certainty": "high",
+      "source": "S19",
+      "locator": "source-critical distinction"
+    },
+    {
+      "id": "VAS-089",
+      "claim": "The Ramayana stories of Shabala, the brahma-danda, and Vasistha's recognition of Visvamitra should be stored as traditional narrative claims rather than historical-fact claims.",
+      "primary_parameter": "Contested / Uncertain",
+      "epistemic_type": "methodological",
+      "certainty": "high",
+      "source": "S20",
+      "locator": "source-type classification"
+    },
+    {
+      "id": "VAS-090",
+      "claim": "Sathaye's study treats Vasistha and Visvamitra's rivalry as part of the social and priestly background through which later brahminhood narratives were constructed.",
+      "primary_parameter": "Historical / Textual Context",
+      "epistemic_type": "scholarly_attribution",
+      "certainty": "high",
+      "source": "S21",
+      "locator": "chapter abstract"
+    },
+    {
+      "id": "VAS-091",
+      "claim": "The Mokshopaya/Yogavasistha is a later philosophical text framed as Vasistha instructing Rama.",
+      "primary_parameter": "Contemporary Relevance",
+      "epistemic_type": "modern_reception",
+      "certainty": "high",
+      "source": "S22",
+      "locator": "Oxford Handbook chapter abstract"
+    },
+    {
+      "id": "VAS-092",
+      "claim": "Modern scholarship describes the Yogavasistha as a philosophical didactic Ramayana rather than simply another recension of the Valmiki Ramayana.",
+      "primary_parameter": "Historical / Textual Context",
+      "epistemic_type": "scholarly_attribution",
+      "certainty": "high",
+      "source": "S22",
+      "locator": "Oxford Handbook chapter abstract"
+    },
+    {
+      "id": "VAS-093",
+      "claim": "The Yogavasistha presents an idealist philosophy in which the experienced world is fundamentally mind-dependent.",
+      "primary_parameter": "Philosophy",
+      "epistemic_type": "scholarly_attribution",
+      "certainty": "high",
+      "source": "S22",
+      "locator": "Oxford Handbook chapter abstract"
+    },
+    {
+      "id": "VAS-094",
+      "claim": "The Yogavasistha uses stories and nested narratives to communicate philosophical teachings on liberation and reality.",
+      "primary_parameter": "Philosophy",
+      "epistemic_type": "scholarly_attribution",
+      "certainty": "high",
+      "source": "S22",
+      "locator": "Oxford Handbook chapter abstract"
+    },
+    {
+      "id": "VAS-095",
+      "claim": "SUNY Press describes Vasistha's Yoga as instructions from sage Vasistha to Rama aimed at overcoming psychological conditioning and attaining liberation.",
+      "primary_parameter": "Contemporary Relevance",
+      "epistemic_type": "modern_reception",
+      "certainty": "high",
+      "source": "S23",
+      "locator": "publisher description"
+    },
+    {
+      "id": "VAS-096",
+      "claim": "Modern English-language reception of the Yogavasistha continues to foreground Vasistha as Rama's philosophical teacher.",
+      "primary_parameter": "Contemporary Relevance",
+      "epistemic_type": "modern_reception",
+      "certainty": "high",
+      "source": "S23",
+      "locator": "publisher description"
+    },
+    {
+      "id": "VAS-097",
+      "claim": "A Dharmasutra is transmitted under the name Vasistha and is included in modern academic editions of the early Dharmasutra corpus.",
+      "primary_parameter": "Textual Contribution",
+      "epistemic_type": "modern_reception",
+      "certainty": "high",
+      "source": "S24",
+      "locator": "UT Austin Dharmasutras resource"
+    },
+    {
+      "id": "VAS-098",
+      "claim": "The attribution of the Vasistha Dharmasutra to the sage should be treated as traditional textual attribution, not proof that the Rigvedic or Ramayana figure personally authored the surviving text.",
+      "primary_parameter": "Contested / Uncertain",
+      "epistemic_type": "methodological",
+      "certainty": "high",
+      "source": "S24",
+      "locator": "attribution versus historical authorship"
+    },
+    {
+      "id": "VAS-099",
+      "claim": "Later Sakta traditions in eastern India place Vasistha in narratives about the goddess Tara and Mahacina.",
+      "primary_parameter": "Contemporary Relevance",
+      "epistemic_type": "scholarly_attribution",
+      "certainty": "high",
+      "source": "S25",
+      "locator": "Journal of Hindu Studies article"
+    },
+    {
+      "id": "VAS-100",
+      "claim": "In the later Tara narrative studied by Joel Bordeaux, Vasistha's unsuccessful austerities lead him to seek a different method of Tara worship.",
+      "primary_parameter": "Tapas / Sadhana",
+      "epistemic_type": "scholarly_attribution",
+      "certainty": "high",
+      "source": "S25",
+      "locator": "section 'Only Vasistha could go to Cina'"
+    },
+    {
+      "id": "VAS-101",
+      "claim": "The later Tara narrative has Vasistha travel to Mahacina after being told that the Buddha knows the effective method of Tara worship.",
+      "primary_parameter": "Contemporary Relevance",
+      "epistemic_type": "scholarly_attribution",
+      "certainty": "high",
+      "source": "S25",
+      "locator": "section 'Only Vasistha could go to Cina'"
+    },
+    {
+      "id": "VAS-102",
+      "claim": "Bordeaux argues that a recognizable Vasistha-in-Mahacina narrative likely emerges in East Indian Sakta texts after the fifteenth century rather than in ancient Vedic literature.",
+      "primary_parameter": "Contested / Uncertain",
+      "epistemic_type": "scholarly_attribution",
+      "certainty": "high",
+      "source": "S25",
+      "locator": "textual dating discussion"
+    },
+    {
+      "id": "VAS-103",
+      "claim": "Bordeaux describes Vasistha in this later Sakta material as a paradigmatic Brahmanical sage placed in tension with heterodox Tara practice.",
+      "primary_parameter": "Historical / Textual Context",
+      "epistemic_type": "scholarly_attribution",
+      "certainty": "high",
+      "source": "S25",
+      "locator": "scholarly analysis"
+    },
+    {
+      "id": "VAS-104",
+      "claim": "Rigveda Book 7 repeatedly uses the plural Vasisthas, indicating a Vasistha family or priestly group in addition to the singular seer figure.",
+      "primary_parameter": "Parampara / Lineage",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S02",
+      "locator": "RV 7.8.7; 7.33.1-9"
+    },
+    {
+      "id": "VAS-105",
+      "claim": "Rigveda 7.33 praises the Vasisthas collectively in connection with inherited sacred speech.",
+      "primary_parameter": "Parampara / Lineage",
+      "epistemic_type": "textual_assertion",
+      "certainty": "medium",
+      "source": "S01",
+      "locator": "RV 7.33.1-9"
+    },
+    {
+      "id": "VAS-106",
+      "claim": "The Rigvedic Vasistha tradition is closely connected with Varuna devotion through the cluster of hymns in 7.86-7.89.",
+      "primary_parameter": "Philosophy",
+      "epistemic_type": "synthesis_across_sources",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.86-7.89"
+    },
+    {
+      "id": "VAS-107",
+      "claim": "The Varuna hymns associated with Vasistha emphasize guilt, moral transgression, mercy, and restoration of divine-human relationship.",
+      "primary_parameter": "Philosophy",
+      "epistemic_type": "synthesis_across_sources",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.86-7.89"
+    },
+    {
+      "id": "VAS-108",
+      "claim": "Rigveda 7.88 presents Vasistha's relationship with Varuna in unusually personal language, including memory of former companionship.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "textual_assertion",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "RV 7.88.4-6"
+    },
+    {
+      "id": "VAS-109",
+      "claim": "The Vedic corpus associates the Vasistha tradition with hymns addressed to Agni, Indra, Varuna, the Asvins, Vishnu, the Waters, and the All-Gods.",
+      "primary_parameter": "Textual Contribution",
+      "epistemic_type": "synthesis_across_sources",
+      "certainty": "high",
+      "source": "S01",
+      "locator": "Rigveda Mandala 7 metadata"
+    },
+    {
+      "id": "VAS-110",
+      "claim": "The Ramayana portrays Vasistha as both an ascetic sage with a hermitage and a court-connected royal priest.",
+      "primary_parameter": "Role / Vocation",
+      "epistemic_type": "synthesis_across_sources",
+      "certainty": "high",
+      "source": "S06",
+      "locator": "Bala 1.52; Ayodhya 2.67 and 2.111"
+    },
+    {
+      "id": "VAS-111",
+      "claim": "Vasistha's counsel to Dasharatha in Bala Kanda 21 prioritizes keeping a pledged word as a matter of dharma.",
+      "primary_parameter": "Philosophy",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S04",
+      "locator": "Bala 1.21.6-8"
+    },
+    {
+      "id": "VAS-112",
+      "claim": "Vasistha's counsel to Rama in Ayodhya Kanda 111 frames duty through obligations to teacher, parents, subjects, and family.",
+      "primary_parameter": "Philosophy",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S17",
+      "locator": "Ayodhya 2.111.2-7"
+    },
+    {
+      "id": "VAS-113",
+      "claim": "The Ramayana repeatedly depicts Vasistha as a mediator during moments when royal decisions are deadlocked or unstable.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "synthesis_across_sources",
+      "certainty": "high",
+      "source": "S04",
+      "locator": "Bala 1.21; Ayodhya 2.67-68; 2.110-111"
+    },
+    {
+      "id": "VAS-114",
+      "claim": "Vasistha's recognition of Visvamitra as brahmarshi functions as the narrative resolution of their earlier rivalry in the Bala Kanda.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "synthesis_across_sources",
+      "certainty": "high",
+      "source": "S11",
+      "locator": "Bala 1.52-56 and 1.65"
+    },
+    {
+      "id": "VAS-115",
+      "claim": "The Shabala episode portrays Vasistha as refusing to surrender a sacred resource even under intense royal pressure.",
+      "primary_parameter": "Inner Qualities",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S07",
+      "locator": "Bala 1.53.10-13"
+    },
+    {
+      "id": "VAS-116",
+      "claim": "The destruction of Vasistha's hermitage is represented as an attack on his disciples, animals, birds, and cultivated ascetic space as well as on Vasistha himself.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S09",
+      "locator": "Bala 1.55.22-24"
+    },
+    {
+      "id": "VAS-117",
+      "claim": "Vasistha's repeated reassurance to the fleeing hermitage community presents him as a protective leader in the Ramayana narrative.",
+      "primary_parameter": "Inner Qualities",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S09",
+      "locator": "Bala 1.55.25"
+    },
+    {
+      "id": "VAS-118",
+      "claim": "The Ramayana's brahma-danda episode contrasts Vasistha's brahmanic ascetic power with Visvamitra's martial and divine weapons.",
+      "primary_parameter": "Historical / Textual Context",
+      "epistemic_type": "scholarly_interpretation",
+      "certainty": "medium",
+      "source": "S10",
+      "locator": "Bala 1.56"
+    },
+    {
+      "id": "VAS-119",
+      "claim": "Vasistha's role in Rama's departure with Visvamitra includes ritual blessing, political counsel, and confidence in Visvamitra as teacher and protector.",
+      "primary_parameter": "Relational / Social Role",
+      "epistemic_type": "synthesis_across_sources",
+      "certainty": "high",
+      "source": "S04",
+      "locator": "Bala 1.21-22"
+    },
+    {
+      "id": "VAS-120",
+      "claim": "The Ayodhya Kanda presents Vasistha as a guardian of dynastic memory by having him recite the royal genealogy when arguing for Rama's succession.",
+      "primary_parameter": "Parampara / Lineage",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S16",
+      "locator": "Ayodhya 2.110"
+    },
+    {
+      "id": "VAS-121",
+      "claim": "The Ayodhya Kanda presents Vasistha as a teacher whose authority extends across generations, from Dasharatha to Rama.",
+      "primary_parameter": "Parampara / Lineage",
+      "epistemic_type": "traditional_narrative",
+      "certainty": "high",
+      "source": "S17",
+      "locator": "Ayodhya 2.111.4"
+    },
+    {
+      "id": "VAS-122",
+      "claim": "The Ramayana's post-Dasharatha succession episodes portray Vasistha's authority as both ritual and political, rather than narrowly sacrificial.",
+      "primary_parameter": "Role / Vocation",
+      "epistemic_type": "synthesis_across_sources",
+      "certainty": "high",
+      "source": "S12",
+      "locator": "Ayodhya 2.67-68, 2.77, 2.110-111"
+    },
+    {
+      "id": "VAS-123",
+      "claim": "The later Yogavasistha reception amplifies Vasistha's teacher identity from epic counselor into a sustained philosophical instructor of Rama.",
+      "primary_parameter": "Contemporary Relevance",
+      "epistemic_type": "synthesis_across_sources",
+      "certainty": "high",
+      "source": "S22",
+      "locator": "compare Oxford Yogavasistha summary with Ramayana 2.111"
+    },
+    {
+      "id": "VAS-124",
+      "claim": "The presence of Vasistha's name in the Rigveda, Ramayana, Dharmasutra tradition, Yogavasistha, and later Sakta narratives demonstrates a long and highly layered reception history.",
+      "primary_parameter": "Contemporary Relevance",
+      "epistemic_type": "synthesis_across_sources",
+      "certainty": "high",
+      "source": "S24",
+      "locator": "cross-source synthesis"
+    },
+    {
+      "id": "VAS-125",
+      "claim": "Because multiple textual traditions reuse the name Vasistha, identity continuity across Vedic, epic, Dharmasutra, Yogavasistha, and tantric materials should remain a review question rather than an automatic assumption.",
+      "primary_parameter": "Contested / Uncertain",
+      "epistemic_type": "methodological",
+      "certainty": "high",
+      "source": "S20",
+      "locator": "cross-source identity caution"
+    },
+    {
+      "id": "VAS-126",
+      "claim": "For historical questions, the strongest early evidence concerns a Vasistha priest-poet tradition associated with Sudas and Rigveda Book 7; the detailed Ramayana biography belongs to a later epic narrative layer.",
+      "primary_parameter": "Historical / Textual Context",
+      "epistemic_type": "historical_inference",
+      "certainty": "high",
+      "source": "S19",
+      "locator": "source-critical synthesis"
+    },
+    {
+      "id": "VAS-127",
+      "claim": "For ordinary biography answers, DCF can responsibly distinguish the later tradition of Vasistha as Ikshvaku royal priest and Rama's preceptor from the older Vedic Vasistha seer-poet tradition.",
+      "primary_parameter": "Historical / Textual Context",
+      "epistemic_type": "synthesis_across_sources",
+      "certainty": "high",
+      "source": "S17",
+      "locator": "cross-layer synthesis"
+    }
+  ]
+}
