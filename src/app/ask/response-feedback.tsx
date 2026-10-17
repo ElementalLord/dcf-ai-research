@@ -42,11 +42,11 @@ export default function ResponseFeedback({ token, legacyContext }: { token?: str
 
   return <form className="response-feedback" onSubmit={submit}>
     <fieldset disabled={busy}><legend>How would you rate this response?</legend>
-      <div className="response-feedback-stars" role="radiogroup" aria-label="Response rating">{labels.map((label, index) => <label key={label} title={`${index + 1} — ${label}`}><input type="radio" name="rating" value={index + 1} checked={rating === index + 1} onChange={() => setRating(index + 1)} aria-label={`${index + 1} star${index ? "s" : ""} — ${label}`}/><span aria-hidden="true">★</span></label>)}</div>
+      <div className="response-feedback-actions"><div className="response-feedback-stars" role="radiogroup" aria-label="Response rating">{labels.map((label, index) => <label key={label} title={`${index + 1} — ${label}`}><input type="radio" name="rating" value={index + 1} checked={rating === index + 1} onChange={() => setRating(index + 1)} aria-label={`${index + 1} star${index ? "s" : ""} — ${label}`}/><span aria-hidden="true">★</span></label>)}</div>
+        <button className="response-feedback-submit" type="submit" disabled={busy || !rating}>{busy ? "Submitting…" : "Submit feedback"}</button></div>
       {rating > 0 && <div className="response-feedback-details"><p className="response-feedback-choice">{rating} / 5 · {labels[rating - 1]}</p><label className="response-feedback-comment">Tell us what was helpful or what could be improved.<textarea value={comment} onChange={event => setComment(event.target.value)} maxLength={2000} rows={3} placeholder="Optional feedback"/></label>
         <div className="response-feedback-tags" role="group" aria-label="Quick feedback tags">{feedbackTags.map(tag => <label key={tag}><input type="checkbox" checked={tags.includes(tag)} onChange={() => setTags(current => current.includes(tag) ? current.filter(item => item !== tag) : [...current, tag])}/><span>{tag}</span></label>)}</div>
       </div>}
-      <button className="response-feedback-submit" type="submit" disabled={busy || !rating}>{busy ? "Submitting…" : "Submit feedback"}</button>
     </fieldset>
     {error && <p className="response-feedback-error" role="alert">{error}</p>}
   </form>;
