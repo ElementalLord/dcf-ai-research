@@ -1,33 +1,26 @@
 import type { Metadata } from "next";
 import { ExploreClient } from "./explore-client";
-import { ExploreConstellation } from "./explore-constellation";
-import { getDiscoveryPeople, getPhase1Dataset } from "@/lib/phase1/dataset";
-import { MysticBackdrop } from "@/components/mystic-backdrop";
+import { EXPLORE_CATEGORIES, toExplorePerson } from "./explore-data";
+import { getDiscoveryPeople, getPhase1People } from "@/lib/phase1/dataset";
 
 export const metadata: Metadata = {
-  title: "Explore the Phase 1 Collection | DCF",
-  description: "Browse, search, and filter 25 sourced profiles across five approved Phase 1 categories.",
+  title: "Explore the collection | DCF",
+  description: "Search the collection of sourced historical profiles.",
 };
 
-export default function ExplorePage() {
-  const dataset = getPhase1Dataset();
-  const categories = dataset.phase1Presentation.categories.map((category) => ({ id: category.id, name: category.name, description: category.description }));
+export default async function ExplorePage({ searchParams }: { searchParams: Promise<{ category?: string | string[] }> }) {
+  const requestedCategory = (await searchParams).category;
+  const initialCategory = typeof requestedCategory === "string" && EXPLORE_CATEGORIES.some((category) => category.id === requestedCategory) ? requestedCategory : "all";
+  const people = getPhase1People();
+  const discovery = getDiscoveryPeople();
+  const byId = new Map(people.map((person) => [person.id, person]));
   return (
-    <main className="explore-page page-shell">
-      <MysticBackdrop />
-      <ExploreConstellation />
-      <div className="page-kicker">01 / EXPLORE</div>
-      <header className="explore-hero">
-        <div>
-          <p className="section-label">Explore DCF · Phase 1</p>
-          <h1>Explore lives,<br /><em>ideas, and contributions.</em></h1>
-        </div>
-        <div>
-          <p>Browse 25 Mentor-approved profiles, organized into five public categories. Search by name or explore the collection through the roles and lenses that best fit each person.</p>
-          <dl><div><dt>25</dt><dd>personalities</dd></div><div><dt>5</dt><dd>categories</dd></div></dl>
-        </div>
+    <main className="explore-shell explore-page">
+      <header className="explore-intro">
+        <h1>Explore the collection</h1>
+        <p>{people.length} people, with the sources behind approved claims. Search by name, role, or idea, or browse the collection.</p>
       </header>
-      <ExploreClient people={getDiscoveryPeople()} categories={categories} />
+      <ExploreClient people={discovery.map((person) => toExplorePerson(person, byId.get(person.id)!))} categories={EXPLORE_CATEGORIES} initialCategory={initialCategory} />
     </main>
   );
 }

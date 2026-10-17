@@ -17,7 +17,7 @@ const guides: Record<Area, { name: string; groups: Group[] }> = {
         { label: "More details", explanation: "In Add source, reveal author, publisher, citation, textual layer, and rights fields." },
         { label: "Create candidate", explanation: "Review a confirmation, then save the new source for review.", kind: "action" },
         { label: "Find a source", explanation: "Search titles, authors, publishers, types, citations, and URLs.", kind: "field" },
-        { label: "Status", explanation: "Show current sources or select candidate, approved, or rejected records.", kind: "field" },
+        { label: "Status", explanation: "Show current sources or select not admitted, admitted, or rejected archive records.", kind: "field" },
         { label: "Source type", explanation: "Narrow the list to one source type.", kind: "field" },
         { label: "Sort by", explanation: "Order by title, linked claim count, or recent update.", kind: "field" },
         { label: "Clear", explanation: "Reset the search and filters." },
@@ -133,12 +133,12 @@ export default function ResourceHelp({ area }: { area: Area }) {
   return <Dialog>
     <DialogTrigger className="resource-help-trigger" data-area={area} aria-label={`How to use ${guide.name}`}>
       <BookOpenText size={18} aria-hidden="true" />
-      <span>How to use <strong>{guide.name}</strong></span>
+      <span>How to use</span>
     </DialogTrigger>
     <DialogContent className="resource-help-dialog" aria-label={`How to use ${guide.name}`}>
       <DialogHeader className="resource-help-dialog-header">
         <span className="resource-help-dialog-icon"><BookOpenText size={22} aria-hidden="true" /></span>
-        <div><span className="resource-help-eyebrow">RESOURCES GUIDE</span><DialogTitle>How to use {guide.name}</DialogTitle><DialogDescription>Follow the controls shown on this page. Changes ask for confirmation before they are saved to the research database.</DialogDescription></div>
+        <div><span className="resource-help-eyebrow">Resources guide</span><DialogTitle>How to use {guide.name}</DialogTitle><DialogDescription>Follow the controls shown on this page. Changes ask for confirmation before they are saved to the research database.</DialogDescription></div>
       </DialogHeader>
       <div className="resource-help-content" key={area}>
         <nav className="resource-help-nav" aria-label={`${guide.name} guide sections`}>{sections.map(title => <button key={title} type="button" onClick={() => document.getElementById(sectionId(title))?.scrollIntoView({ block: "start" })}>{title}</button>)}</nav>

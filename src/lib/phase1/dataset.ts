@@ -52,7 +52,7 @@ export function getPhase1People(): Phase1Personality[] {
     contestedAspects: person.contestedAspects,
     contemporaryRelevance: person.contemporaryRelevance,
     lenses: person.lenses,
-    sources: person.sources.filter((source) => person.citations.includes(source.id)),
+    sources: person.sources,
     citations: person.citations,
     reviewStatus: person.reviewStatus,
   }));
