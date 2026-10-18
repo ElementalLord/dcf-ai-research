@@ -85,6 +85,7 @@ export type RetrievedClaim = {
   claimKind: string;
   certainty: string;
   approvalOrigin: string;
+  reviewStatus?: string;
   provenanceSignature?: string;
   evidenceType: string;
   /** What the claim asserts and whether its evidence meets that type's contract (claim_epistemics). */
@@ -143,6 +144,8 @@ export type Citation = {
 };
 
 export type RetrievalDebug = {
+  questionResolutionState?: string;
+  questionNeedId?: string;
   lens?: string | null;
   contextIntent?: string | null;
   questionScope?: string;

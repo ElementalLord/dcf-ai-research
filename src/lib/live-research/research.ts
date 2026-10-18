@@ -122,7 +122,7 @@ async function fetchQuestionPassages(
 export async function retrieveWithApprovedResearch(
   question: string,
   personalityId: string,
-  options: { additionalPersonalityAliases?: string[]; configuration?: PersonalityConfiguration; initialRetrieval?: Awaited<ReturnType<typeof retrieveEvidence>>; searchPolicy?: SearchPolicy; forceLiveFallback?: boolean } = {},
+  options: { additionalPersonalityAliases?: string[]; configuration?: PersonalityConfiguration; initialRetrieval?: Awaited<ReturnType<typeof retrieveEvidence>>; searchPolicy?: SearchPolicy; forceLiveFallback?: boolean; evidenceGaps?: string[] } = {},
 ) {
   const local = options.initialRetrieval || await retrieveEvidence(question, personalityId, options);
   const decision = assessEvidenceSufficiency(question, local.evidence, { personalityAliases: local.personalityAliases, termAliases: local.termAliases, allParameters: local.allParameters });
@@ -186,7 +186,7 @@ export async function retrieveWithApprovedResearch(
   let refreshedDecision = assessEvidenceSufficiency(question, refreshed.evidence, { personalityAliases: refreshed.personalityAliases, termAliases: refreshed.termAliases, allParameters: refreshed.allParameters });
   // Brave snippets are discovery only. Original pages supply request-scoped evidence.
   if ((!refreshedDecision.sufficient || options.forceLiveFallback) && webSearchProvider().isConfigured() && (options.searchPolicy || rules.some((rule) => rule.allow_live_search && rule.allow_live_fetch && rule.evidence_use_status === "approved" && rule.scope_type !== "EXACT_URL"))) {
-    const queries = gapSearchQueries(local.personality, question, options.forceLiveFallback ? [] : refreshedDecision.missingDimensions);
+    const queries = gapSearchQueries(local.personality, question, options.evidenceGaps || refreshedDecision.missingDimensions);
     local.debug.braveTriggered = true;
     local.debug.braveQueries = queries;
     const discoveries = await Promise.all(queries.map((query) => discoverWebCandidates(query, rules, { maxResults: 8, searchPolicy: options.searchPolicy })));

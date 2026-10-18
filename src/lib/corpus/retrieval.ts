@@ -131,6 +131,7 @@ export function rankApprovedClaims(
           claimKind: String(row.claim_kind || "unknown"),
           certainty: String(row.certainty || "unknown"),
           approvalOrigin: String(row.approval_origin || "imported_existing"),
+          reviewStatus: String(row.review_status || ""),
           evidenceType: String(row.evidence_type || "uncertain"),
           epistemicType: epistemics?.epistemic_type ? String(epistemics.epistemic_type) : null,
           contractStatus: epistemics?.contract_status ? String(epistemics.contract_status) : null,
