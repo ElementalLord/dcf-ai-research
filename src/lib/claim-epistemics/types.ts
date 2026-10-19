@@ -13,6 +13,9 @@ export const EPISTEMIC_TYPES = [
   "TEXTUAL_ASSERTION",        // what a text says, names, attributes, or contains
   "TRADITIONAL_NARRATIVE",    // what a narrative tradition narrates (not that it happened)
   "HISTORICAL_FACT",          // what actually happened or existed
+  "CONTEMPORARY_OBSERVATION", // a time-bound current measure or statistic
+  "SCIENTIFIC_PRIORITY",      // who was first, invented, or discovered before others
+  "CAUSAL_SIGNIFICANCE",      // an attributed cause, impact, or historical significance
   "HISTORICAL_INFERENCE",     // what the evidence suggests about history, explicitly inferential
   "SCHOLARLY_ATTRIBUTION",    // that a named scholar or work argues/states something
   "SCHOLARLY_INTERPRETATION", // an interpretation drawn from scholarship, stated as interpretation
@@ -68,6 +71,9 @@ export const TYPE_LABELS: Record<EpistemicType, string> = {
   TEXTUAL_ASSERTION: "textual assertion",
   TRADITIONAL_NARRATIVE: "traditional narrative",
   HISTORICAL_FACT: "historical claim",
+  CONTEMPORARY_OBSERVATION: "contemporary observation",
+  SCIENTIFIC_PRIORITY: "scientific priority claim",
+  CAUSAL_SIGNIFICANCE: "causal or significance claim",
   HISTORICAL_INFERENCE: "historical inference",
   SCHOLARLY_ATTRIBUTION: "scholarly attribution",
   SCHOLARLY_INTERPRETATION: "scholarly interpretation",

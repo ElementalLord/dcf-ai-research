@@ -25,6 +25,7 @@ import { classifySourceAuthority } from "@/lib/sources/authority";
 import { fillsEvidenceGaps, resolveQuestion } from "@/lib/ask/question-resolution";
 import { executeDemandResearch } from "@/lib/live-research/on-demand-engine";
 import { productionResearchDependencies } from "@/lib/live-research/on-demand-adapter";
+import { productionAdmissionStore, productionVerificationProvider, verifyDemandKnowledge } from "@/lib/live-research/knowledge-verification";
 import type { RetrievedEvidence } from "./types";
 
 const ABSTENTION = "The available sources do not contain enough evidence to answer that fully.";
@@ -87,6 +88,19 @@ async function answerQuestionInternal(
         ? await executeDemandResearch({ ...resolution.researchRequest, maxExternalSearches: allocated }, queryContext.resolvedQuestion, local.evidence,
           local.personalityAliases, productionResearchDependencies()) : null;
       if (research) {
+        if (research.findings?.length && (process.env.DEMAND_AUTO_ADMISSION_ENABLED === "true" || process.env.DEMAND_VERIFICATION_SHADOW_ENABLED === "true") && resolution.researchRequest) {
+          try {
+            const verification = await verifyDemandKnowledge(resolution.researchRequest, research, {
+              provider: productionVerificationProvider(), store: productionAdmissionStore(),
+              enabled: process.env.DEMAND_AUTO_ADMISSION_ENABLED === "true",
+            });
+            local.debug.demandVerificationOutcomes = verification.decisions.map((decision) => decision.outcome);
+            local.debug.demandVerificationModelCalls = verification.usage.extractionCalls + verification.usage.verificationCalls;
+            local.debug.demandAdmittedClaims = verification.decisions.filter((decision) => decision.outcome === "admitted").length;
+          } catch {
+            local.debug.demandVerificationOutcomes = ["quarantined"];
+          }
+        }
         local.evidence.push(...research.passages);
         local.debug.demandResearchStatus = research.status;
         local.debug.demandResearchRequestId = research.requestId;

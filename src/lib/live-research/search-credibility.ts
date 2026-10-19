@@ -61,9 +61,27 @@ async function readSourceText(preview: Preview): Promise<SourceText> {
     publicationDate: meta("citation_publication_date") || meta("citation_date") || meta("dc.date"), journal: meta("citation_journal_title"),
     doi: meta("citation_doi"), isbn: meta("citation_isbn"), sourceType: meta("citation_journal_title") ? "scholarly journal" : null });
   $("script,style,nav,footer,header").remove();
-  const text = $("body").text().replace(/\s+/g, " ").trim();
+  const root = $("main,article,[role='main']").first().length ? $("main,article,[role='main']").first() : $("body");
+  const sections: SourceText["sections"] = [];
+  let heading = title || preview.finalUrl;
+  let parts: string[] = [];
+  const flush = () => {
+    const value = parts.join(" ").replace(/\s+/g, " ").trim().slice(0, MAX_SOURCE_CHARACTERS);
+    if (value) sections.push({ text: value, locator: heading });
+    parts = [];
+  };
+  root.find("h1,h2,h3,h4,h5,h6,p,blockquote,li").each((_, element) => {
+    const value = $(element).text().replace(/\s+/g, " ").trim();
+    if (/^h[1-6]$/.test(element.tagName)) { flush(); heading = value || heading; }
+    else if (value.length >= 20) parts.push(value);
+  });
+  flush();
+  if (!sections.length) {
+    const text = root.text().replace(/\s+/g, " ").trim().slice(0, MAX_SOURCE_CHARACTERS);
+    if (text) sections.push({ text, locator: heading });
+  }
   const rightsDeclaration = meta("dc.rights") || meta("dcterms.rights") || meta("citation_license") || $("link[rel='license']").attr("href") || null;
-  return { ...base, title, identity, rightsDeclaration, sections: text ? [{ text, locator: null }] : [] };
+  return { ...base, title, identity, rightsDeclaration, sections };
 }
 
 /** Several grounded statements usually cite the same page; fetch and parse each source once and share it briefly. */

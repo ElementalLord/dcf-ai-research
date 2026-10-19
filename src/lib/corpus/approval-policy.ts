@@ -4,6 +4,7 @@ export const APPROVAL_ORIGINS = [
   "system_test_bulk",
   "imported_existing",
   "ai_candidate",
+  "automated_evidence_verification",
 ] as const;
 
 export type ApprovalOrigin = (typeof APPROVAL_ORIGINS)[number];
@@ -15,8 +16,8 @@ export function evidencePolicyMode(value = process.env.EVIDENCE_POLICY_MODE): Ev
 
 export function eligibleClaimOrigins(mode: EvidencePolicyMode): ApprovalOrigin[] {
   return mode === "strict"
-    ? ["human_manual", "mentor_review"]
-    : ["human_manual", "mentor_review", "system_test_bulk", "imported_existing"];
+    ? ["human_manual", "mentor_review", "automated_evidence_verification"]
+    : ["human_manual", "mentor_review", "system_test_bulk", "imported_existing", "automated_evidence_verification"];
 }
 
 export function isClaimEligible(
@@ -36,6 +37,7 @@ export function approvalOriginLabel(origin: string | null | undefined): string {
     system_test_bulk: "System test bulk",
     imported_existing: "Imported existing",
     ai_candidate: "AI candidate",
+    automated_evidence_verification: "Automatically evidence-verified",
   };
   return labels[origin || ""] || "Unknown origin";
 }

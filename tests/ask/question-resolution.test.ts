@@ -24,6 +24,17 @@ const input = (question: string, evidence: ResolutionInput["evidence"], extra: P
 });
 
 describe("local-first question resolution", () => {
+  it("reuses committed machine-verified knowledge locally and excludes it after suspension", () => {
+    const question = "When was Anika Sen awarded the Aurora Medal?";
+    const admitted = claim("Anika Sen was awarded the Aurora Medal in 1928.", {
+      approvalOrigin: "automated_evidence_verification", chunkId: "verified-passage", sourceTitle: "Aurora Medal register",
+    });
+    const reused = resolveQuestion(input(question, [admitted]));
+    expect(reused).toMatchObject({ route: "answer", researchRequest: null, researchJustified: false });
+    const suspended = resolveQuestion(input(question, [{ ...admitted, reviewStatus: "needs_review" }]));
+    expect(suspended.verifiedClaims).toHaveLength(0);
+    expect(suspended.researchRequest).not.toBeNull();
+  });
   it("routes a supported dated fact locally with no research request", () => {
     const result = resolveQuestion(input("When did Anika Sen discover the prism effect?", [passage("Anika Sen discovered the prism effect in 1928.")]));
     expect(result).toMatchObject({ route: "answer", state: "local_sufficient", researchJustified: false, researchRequest: null });

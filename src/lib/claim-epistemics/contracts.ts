@@ -34,6 +34,20 @@ export const CONTRACTS: Record<EpistemicType, Contract> = {
     insufficientWhenOnly: { from: ["PRIMARY_TEXT", "MODERN_COMMENTARY", "DCF_FRAMEWORK", "OTHER"], status: "INSUFFICIENT_FOR_HISTORICAL_CLAIM",
       label: "only narrative or commentary evidence; a text narrating an event does not establish that it happened" },
   },
+  CONTEMPORARY_OBSERVATION: {
+    description: "A dated observation with its year, units, population and originating official release.",
+    satisfiedBy: [{ basis: "fact", minLevel: "EXACT", from: ["REFERENCE"], label: "exact originating statistical release" }],
+  },
+  SCIENTIFIC_PRIORITY: {
+    description: "Original scientific work plus independent scholarly chronology; priority is never established by an institutional claim alone.",
+    satisfiedBy: [{ basis: "fact", minLevel: "STRONG", from: ["SCHOLARLY", "PRIMARY_TEXT"], minIndependentWorks: 2,
+      label: "original work and independent historical scholarship" }],
+  },
+  CAUSAL_SIGNIFICANCE: {
+    description: "A qualified causal or impact interpretation supported by independent scholarship.",
+    satisfiedBy: [{ basis: "interpretation", minLevel: "STRONG", from: ["SCHOLARLY"], minIndependentWorks: 2,
+      label: "two independent scholarly analyses" }],
+  },
   HISTORICAL_INFERENCE: {
     description: "Grounded in scholarship, or in at least two independent works; remains an inference.",
     satisfiedBy: [
