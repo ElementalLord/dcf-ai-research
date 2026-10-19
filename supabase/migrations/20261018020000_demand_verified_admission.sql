@@ -112,7 +112,13 @@ begin
       insert into public.sources(title,url,author,publisher_or_institution,source_type,citation,source_status,
         ingestion_status,rights_or_access_note,approval_origin,approved_at,approved_by_label,approval_note,metadata)
       values(v_source->>'title',v_source->>'url',nullif(v_source->>'author',''),v_source->>'publisher',
-        v_source->>'evidence_type',v_source->>'title' || ' (' || v_source->>'url' || ')','approved','ready',
+        case v_source->>'evidence_type'
+          when 'institutional_record' then 'institutional'
+          when 'primary_document' then 'archival'
+          when 'traditional_text' then 'primary_text'
+          when 'scholarly_interpretation' then 'scholarly_article'
+          else 'other'
+        end,(v_source->>'title') || ' (' || (v_source->>'url') || ')','approved','ready',
         v_source->>'rights','automated_evidence_verification',now(),'automated_evidence_verification',
         'Source identity and permitted excerpt checked for demand claim',
         jsonb_build_object('independentWorkKey',v_source->>'work_key','publicationDate',v_source->>'publication_date'))

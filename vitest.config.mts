@@ -5,7 +5,7 @@ export default defineConfig({
   test: {
     environment: "node",
     include: ["tests/**/*.test.ts"],
-    env: {
+    env: process.env.DCF_LOCAL_DB_VALIDATION === "true" ? {} : {
       NEXT_PUBLIC_SUPABASE_URL: "http://localhost",
       SUPABASE_SERVICE_ROLE_KEY: "test-service-role-key",
     },

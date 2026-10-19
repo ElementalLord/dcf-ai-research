@@ -6,7 +6,7 @@ import { detectLens, LENS_FRAMING_TERMS } from "@/lib/ask/lenses";
 import { CONTEXT_EVIDENCE, CONTEXT_FRAMING_TERMS, CONTEXT_GAP, detectContextIntent, PERIOD_EVIDENCE } from "@/lib/ask/historical-context";
 import { independentWorkCount } from "./research-quality";
 
-const IGNORED = new Set(["the", "and", "for", "its", "that", "this", "then", "his", "her", "what", "when", "where", "which", "who", "why", "how", "does", "did", "is", "are", "was", "were", "about", "from", "with", "into", "between", "role", "play", "played", "major", "story", "explain", "relationship", "relation", "significance", "significant", "happen", "happens", "happened", "disagree", "disagreed", "disagreement"]);
+const IGNORED = new Set(["the", "and", "for", "its", "that", "this", "then", "his", "her", "what", "when", "where", "which", "who", "why", "how", "does", "did", "is", "are", "was", "were", "about", "from", "with", "into", "between", "year", "date", "role", "play", "played", "major", "story", "explain", "relationship", "relation", "significance", "significant", "happen", "happens", "happened", "disagree", "disagreed", "disagreement"]);
 
 function normalizeAliases(value: string, termAliases: TermAliasRecord[]): string {
   return canonicalizeTerms(value, termAliases)
@@ -73,7 +73,7 @@ export function assessEvidenceSufficiency(
     item.kind === "claim" ? item.parameterName : null,
     item.kind === "claim" ? item.fieldLabel : null,
   ].filter(Boolean).join(" ")).join(" "), termAliases).split(" ").filter(Boolean));
-  const stem = (term: string) => term === "taught" || term === "teaches" ? "teach" : term === "took" || term === "takes" ? "take" : term.replace(/(ing|ers?|ed)$/i, "");
+  const stem = (term: string) => term === "taught" || term === "teaches" ? "teach" : term === "took" || term === "takes" ? "take" : term.replace(/(ing|ers|ed)$/i, "");
   const covered = requested.filter((term) => {
     const termStem = stem(term);
     return [...evidenceTokens].some((token) => token === term || (termStem.length >= 4 && stem(token) === termStem));

@@ -40,6 +40,11 @@ describe("local-first question resolution", () => {
     expect(result).toMatchObject({ route: "answer", state: "local_sufficient", researchJustified: false, researchRequest: null });
   });
 
+  it("reuses a verified date for a what-year paraphrase without demanding period context", () => {
+    const result = resolveQuestion(input("What year did Anika Sen discover the prism effect?", [passage("Anika Sen discovered the prism effect in 1928.")]));
+    expect(result).toMatchObject({ state: "local_sufficient", researchRequest: null });
+  });
+
   it("describes only the missing significance when a contribution is supported", () => {
     const result = resolveQuestion(input("What did Anika Sen discover and why was the prism effect important?", [claim("Anika Sen discovered the prism effect in 1928.")]));
     expect(result.route).toBe("research");

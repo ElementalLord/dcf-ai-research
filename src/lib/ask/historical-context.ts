@@ -3,7 +3,7 @@ export type ContextIntent = "contemporaries" | "novelty" | "period";
 
 const CONTEMPORARIES = /\b(?:who else|anyone else|someone else|contemporar\w+|peers?|same (?:field|period|era|time)|similar work|related (?:physics|work|research|field|problems?|questions?|experiments?)|competing|rival (?:schools?|theor\w+|approach\w*)|who influenced|influenced whom)\b/i;
 const NOVELTY = /\b(?:groundbreaking|ahead of (?:his|her|their|its|the) (?:time|peers)|unusual|innovative|novel|for (?:the|its|that|his|her|their) (?:time|period|era|day)|at (?:the|that) time|existed before|came before|what changed)\b/i;
-const PERIOD = /\b(?:what was happening|what was going on|historical (?:context|period|background|setting)|in (?:his|her|their) (?:time|day|era)|during (?:his|her|their) (?:time|life|lifetime|era)|what (?:year|period|era|century))\b/i;
+const PERIOD = /\b(?:what was happening|what was going on|historical (?:context|period|background|setting)|in (?:his|her|their) (?:time|day|era)|during (?:his|her|their) (?:time|life|lifetime|era)|what (?:period|era|century))\b/i;
 
 export function detectContextIntent(question: string): ContextIntent | null {
   if (CONTEMPORARIES.test(question)) return "contemporaries";
