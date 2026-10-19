@@ -87,7 +87,7 @@ describe("resilient synthesis", () => {
     await withRequestUsage(async (usage) => {
       recordAiCall("generativeCalls"); recordAiCall("embeddingCalls");
       expect(() => recordAiCall("generativeCalls")).toThrow("budget");
-      expect(usage).toEqual({ generativeCalls: 1, embeddingCalls: 1 });
+      expect(usage).toMatchObject({ generativeCalls: 1, embeddingCalls: 1 });
     });
   });
   it("offers a replaceable local provider without a key", async () => {

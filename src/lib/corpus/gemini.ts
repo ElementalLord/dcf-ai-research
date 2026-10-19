@@ -1,7 +1,7 @@
 import { GoogleGenAI, ThinkingLevel } from "@google/genai";
 import { CorpusError, type CorpusErrorCode } from "./errors";
 import { boundedProviderCall, generationCircuit, providerErrorDetails, type ProviderCircuit } from "./provider-health";
-import { recordAiCall } from "./usage";
+import { authorizeResearchModelCall, finishResearchModelCall, recordAiCall, recordModelTokens, recordUnmeteredModelCall } from "./usage";
 
 export const GENERATION_MODEL = process.env.SYNTHESIS_MODEL || process.env.GEMINI_GENERATION_MODEL || "gemini-3.7-flash";
 export const ALTERNATE_SYNTHESIS_MODEL = process.env.SYNTHESIS_ALTERNATE_MODEL || "gemini-3.5-flash-lite";
@@ -24,13 +24,20 @@ export async function generateText(prompt: string, options: GenerationOptions = 
   const common = diagnostic ? { model, evidenceRecords: diagnostic.evidenceRecords, evidenceCharacters: diagnostic.evidenceCharacters,
     promptCharacters: diagnostic.promptCharacters, estimatedPromptTokens: diagnostic.estimatedPromptTokens,
     maxOutputTokens: SYNTHESIS_MAX_OUTPUT_TOKENS, timeoutMs: timeout } : null;
+  let attempted = false;
+  let metered = false;
+  const heldMicro = authorizeResearchModelCall(prompt.length, SYNTHESIS_MAX_OUTPUT_TOKENS);
   try {
     recordAiCall("generativeCalls", options.callLimit || 1);
+    attempted = true;
     const response = await boundedProviderCall((abortSignal) => ai.models.generateContent({
       model, contents: prompt, config: { abortSignal, maxOutputTokens: SYNTHESIS_MAX_OUTPUT_TOKENS,
         ...(diagnostic && /^gemini-3\./.test(model) ? { thinkingConfig: { thinkingLevel: ThinkingLevel.LOW } } : {}),
         httpOptions: { retryOptions: { attempts: 1 } } },
     }), timeout);
+    recordModelTokens(response.usageMetadata?.promptTokenCount, response.usageMetadata?.candidatesTokenCount);
+    finishResearchModelCall(heldMicro, response.usageMetadata?.promptTokenCount, response.usageMetadata?.candidatesTokenCount, true);
+    metered = true;
     const text = response?.text?.trim();
     if (!text) throw new Error("Provider returned no text.");
     circuit.succeed();
@@ -39,6 +46,8 @@ export async function generateText(prompt: string, options: GenerationOptions = 
       thoughtTokens: response.usageMetadata?.thoughtsTokenCount || null, finishReason: response.candidates?.[0]?.finishReason || null }));
     return { text, interactionId: null, model };
   } catch (error) {
+    if (attempted && !metered) recordUnmeteredModelCall();
+    if (!metered) finishResearchModelCall(heldMicro, null, null, attempted);
     const details = providerErrorDetails(error);
     if (common) console.warn("synthesis_provider_attempt", JSON.stringify({ ...common, success: false,
       durationMs: Math.round(performance.now() - started), ...details }));

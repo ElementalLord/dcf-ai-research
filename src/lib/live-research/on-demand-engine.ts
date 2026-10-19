@@ -2,6 +2,7 @@ import { createHash, randomUUID } from "node:crypto";
 import type { EvidenceGap, EvidenceGapRequest } from "@/lib/ask/question-resolution";
 import { fillsEvidenceGaps } from "@/lib/ask/question-resolution";
 import { normalizeForMatch } from "@/lib/corpus/text";
+import { recordResearchBudgetReservation, recordResearchSearchCall } from "@/lib/corpus/usage";
 import type { RetrievedEvidence, RetrievedPassage } from "@/lib/corpus/types";
 import { planResearchQueries, sourceWorkKey, type SourceIdentity } from "./research-quality";
 import type { CredibleSource } from "./search-credibility";
@@ -32,6 +33,8 @@ export type OnDemandResearchResult = {
   unresolvedGaps: EvidenceGap[];
   sufficientForVerification: boolean;
   citeableNow: boolean;
+  budgetReservationId?: string;
+  budgetStatus?: string;
   usage: { searchCalls: number; sourceFetches: number; modelCalls: 0; provider: string; errorCategory: string | null };
 };
 
@@ -48,6 +51,8 @@ export type ResearchDependencies = {
   robotsAllowed(url: string): Promise<boolean>;
   read(source: CredibleSource, statement: string, aliases: string[]): Promise<FetchedExcerpt | null>;
   existingSourceId(url: string): Promise<string | null>;
+  reserveBudget?(requestId: string): Promise<{ status: string; reservationId?: string; reservedMicro?: number;
+    searchEstimateMicro?: number; inputMicroPer1k?: number; outputMicroPer1k?: number; fallbackMicro?: number }>;
   now?: () => Date;
 };
 
@@ -99,12 +104,33 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
   catch { return blank(request, requestId, workId, "failed", provider, "COORDINATION_UNAVAILABLE"); }
   if (lease !== "acquired") return blank(request, requestId, workId, lease === "active" ? "in_progress" : "cooldown", provider);
 
+  let reservationId: string | undefined;
+  if (deps.reserveBudget) {
+    let budget: Awaited<ReturnType<NonNullable<ResearchDependencies["reserveBudget"]>>>;
+    try { budget = await deps.reserveBudget(requestId); }
+    catch { budget = { status: "unavailable" }; }
+    if (budget.status !== "reserved" || !budget.reservationId ||
+      ![budget.reservedMicro, budget.searchEstimateMicro, budget.inputMicroPer1k, budget.outputMicroPer1k, budget.fallbackMicro]
+        .every(value => typeof value === "number" && Number.isFinite(value) && value >= 0) ||
+      budget.reservedMicro! < budget.searchEstimateMicro!) {
+      const stopped = blank(request, requestId, workId, "budget_exhausted", provider, `BUDGET_${budget.status.toUpperCase()}`);
+      stopped.budgetStatus = budget.status;
+      try { await deps.finishNeed(workId, requestId, "insufficient", 0, { errorCategory: stopped.usage.errorCategory }, 120); }
+      catch { stopped.usage.errorCategory = "COORDINATION_FINISH_FAILED"; }
+      return stopped;
+    }
+    reservationId = budget.reservationId;
+    recordResearchBudgetReservation(budget.reservationId, budget);
+  }
+
   const result = blank(request, requestId, workId, "insufficient", provider);
+  if (reservationId) result.budgetReservationId = reservationId;
   result.attempted = true;
   try {
     const query = narrowQuery(request, question);
     // One direct provider call. Search output is request-local and is never persisted.
     result.usage.searchCalls = 1;
+    recordResearchSearchCall();
     const searchResults = await deps.provider.search(query, { maxResults: 8 });
     const works = new Set<string>();
     for (const hit of searchResults.slice(0, 8)) {
@@ -179,7 +205,7 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
   // Fail closed on coordination errors: a finding may still support this response, but it was not stored.
   try { await deps.finishNeed(workId, requestId, result.status === "complete" ? "complete" : result.status === "failed" ? "failed" : "insufficient",
     result.usage.searchCalls, { candidates: result.candidates.length, findings: result.findings.length, errorCategory: result.usage.errorCategory },
-    result.status === "complete" ? 0 : result.status === "insufficient" ? 600 : 120); }
+    result.status === "complete" ? 21600 : result.status === "insufficient" ? 600 : 120); }
   catch { result.usage.errorCategory = "COORDINATION_FINISH_FAILED"; }
   return result;
 }

@@ -144,6 +144,8 @@ export type Citation = {
 };
 
 export type RetrievalDebug = {
+  demandEstimatedCostMicros?: number;
+  demandBudgetStatus?: string;
   demandVerificationOutcomes?: string[];
   demandVerificationModelCalls?: number;
   demandAdmittedClaims?: number;

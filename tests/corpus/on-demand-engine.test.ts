@@ -134,4 +134,25 @@ describe("bounded on-demand research", () => {
     expect([first.status, second.status].sort()).toEqual(["complete", "in_progress"]);
     expect(calls).toHaveLength(1);
   });
+
+  it("stops before the paid search when a cross-instance budget reservation is denied", async () => {
+    const { deps, calls } = fixture();
+    let finished: { outcome: string; cooldown: number } | null = null;
+    deps.reserveBudget = async () => ({ status: "daily_limit" });
+    deps.finishNeed = async (_need, _owner, outcome, _searches, _details, cooldown) => {
+      finished = { outcome, cooldown };
+    };
+    const result = await executeDemandResearch(request, "date?", [], ["Anika Sen"], deps);
+    expect(result).toMatchObject({ status: "budget_exhausted", budgetStatus: "daily_limit", attempted: false });
+    expect(calls).toHaveLength(0);
+    expect(finished).toEqual({ outcome: "insufficient", cooldown: 120 });
+  });
+
+  it("stops before search if reservation pricing is malformed", async () => {
+    const { deps, calls } = fixture();
+    deps.reserveBudget = async () => ({ status: "reserved", reservationId: "reservation" });
+    const result = await executeDemandResearch(request, "date?", [], ["Anika Sen"], deps);
+    expect(result.status).toBe("budget_exhausted");
+    expect(calls).toHaveLength(0);
+  });
 });

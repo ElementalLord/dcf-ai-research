@@ -5,6 +5,7 @@ import { BraveSearchProvider } from "./web-search-provider";
 import { inspectSearchSource, readGroundedExcerpt } from "./search-credibility";
 import { loadSearchPolicy } from "./search-policy";
 import type { ResearchDependencies } from "./on-demand-engine";
+import { reserveResearchBudget } from "./research-budget";
 
 export function robotsDecision(text: string, path: string): boolean {
   const groups: Array<{ agents: string[]; rules: Array<{ path: string; allow: boolean }> }> = [];
@@ -70,6 +71,10 @@ export function productionResearchDependencies(): ResearchDependencies {
   };
   return {
     provider: new BraveSearchProvider(),
+    async reserveBudget(requestId) {
+      const planned = process.env.DEMAND_AUTO_ADMISSION_ENABLED === "true" || process.env.DEMAND_VERIFICATION_SHADOW_ENABLED === "true" ? 8 : 3;
+      return reserveResearchBudget(requestId, planned);
+    },
     async claimNeed(needId, personalityId, owner) {
       const { data, error } = await supabaseAdmin.rpc("claim_demand_research_need", { p_need_id: needId, p_personality_id: personalityId, p_owner: owner });
       if (error || !["acquired", "active", "cooldown"].includes(String(data))) throw new Error("COORDINATION_UNAVAILABLE");

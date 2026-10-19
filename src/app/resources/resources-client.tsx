@@ -242,7 +242,7 @@ export default function ResourcesClient({ authorized, personalities, loadError }
   return <main className="resources-page page-shell">
     <div className="resource-heading">
       <h1>Resources</h1>
-      <div className="resource-heading-actions"><Link className="readiness-back" href="/resources/readiness">Readiness</Link><ResourceHelp area={tab as "sources" | "claims" | "websites"}/><details className="resource-account"><summary aria-label="Account menu"><UserRound size={18} aria-hidden="true"/></summary><div><Button type="button" variant="ghost" className="resource-signout" disabled={busy} onClick={signOut}><LogOut size={16} aria-hidden="true"/> Sign out</Button></div></details></div>
+      <div className="resource-heading-actions"><Link className="readiness-back" href="/resources/knowledge">Knowledge engine</Link><Link className="readiness-back" href="/resources/readiness">Readiness</Link><ResourceHelp area={tab as "sources" | "claims" | "websites"}/><details className="resource-account"><summary aria-label="Account menu"><UserRound size={18} aria-hidden="true"/></summary><div><Button type="button" variant="ghost" className="resource-signout" disabled={busy} onClick={signOut}><LogOut size={16} aria-hidden="true"/> Sign out</Button></div></details></div>
     </div>
     {(activity || loading) && <div className="resource-activity" role="status" aria-live="polite"><LoaderCircle size={16} className="animate-spin"/>{activity || `Loading resources for ${selectedName}…`}</div>}
     {notice && <div className="resource-notice" role="status"><Check size={16}/>{notice}<button type="button" onClick={() => setNotice("")} aria-label="Dismiss message"><X size={15}/></button></div>}

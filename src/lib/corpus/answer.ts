@@ -26,6 +26,8 @@ import { fillsEvidenceGaps, resolveQuestion } from "@/lib/ask/question-resolutio
 import { executeDemandResearch } from "@/lib/live-research/on-demand-engine";
 import { productionResearchDependencies } from "@/lib/live-research/on-demand-adapter";
 import { productionAdmissionStore, productionVerificationProvider, verifyDemandKnowledge } from "@/lib/live-research/knowledge-verification";
+import { settleResearchBudget } from "@/lib/live-research/research-budget";
+import { recordDemandQuestionActivity } from "@/lib/live-research/research-telemetry";
 import type { RetrievedEvidence } from "./types";
 
 const ABSTENTION = "The available sources do not contain enough evidence to answer that fully.";
@@ -81,6 +83,8 @@ async function answerQuestionInternal(
     local.debug.localEvidenceSufficiencyReason = resolution.reason;
     local.debug.answerable = resolution.route === "answer" || resolution.route === "partial_answer";
     local.debug.coverageStatus = resolution.sufficient ? "sufficient" : resolution.route === "partial_answer" ? "partial" : "unsupported";
+    logStage("QUESTION_RESOLUTION", { state: resolution.state, gapCount: resolution.gaps.length,
+      localEvidence: local.evidence.length, researchJustified: resolution.researchJustified });
     if (process.env.DEMAND_RESEARCH_ENABLED === "true") {
       const allocated = resolution.researchRequest ? Math.min(resolution.researchRequest.maxExternalSearches, demandBudget.remaining) : 0;
       demandBudget.remaining -= allocated;
@@ -88,6 +92,23 @@ async function answerQuestionInternal(
         ? await executeDemandResearch({ ...resolution.researchRequest, maxExternalSearches: allocated }, queryContext.resolvedQuestion, local.evidence,
           local.personalityAliases, productionResearchDependencies()) : null;
       if (research) {
+        logStage("DEMAND_RESEARCH", { status: research.status, searches: research.usage.searchCalls,
+          fetched: research.usage.sourceFetches, findings: research.findings?.length || 0,
+          unresolvedGaps: research.unresolvedGaps.length, budget: research.budgetStatus || null });
+        let reusedAfterWait = false;
+        if (research.status === "in_progress" || research.status === "cooldown") {
+          // Another serverless request owns the lease. Give a short completed admission a chance to become local evidence.
+          for (let attempt = 0; attempt < 3; attempt++) {
+            await new Promise((resolve) => setTimeout(resolve, 750));
+            const refreshed = await retrieveEvidence(retrievalQuestion, id, retrievalOptions).catch(() => null);
+            if (!refreshed) break;
+            const updated = resolveQuestion({ question: queryContext.resolvedQuestion, personalityId: id,
+              personalityName: configurations[index].canonicalName, personalityAliases: refreshed.personalityAliases,
+              termAliases: refreshed.termAliases, allParameters: refreshed.allParameters, evidence: refreshed.evidence,
+              policyMode: refreshed.debug.evidencePolicyMode || "test", researchAvailable: false });
+            if (updated.sufficient) { local.evidence = [...updated.verifiedClaims, ...updated.verifiedPassages]; reusedAfterWait = true; break; }
+          }
+        }
         if (research.findings?.length && (process.env.DEMAND_AUTO_ADMISSION_ENABLED === "true" || process.env.DEMAND_VERIFICATION_SHADOW_ENABLED === "true") && resolution.researchRequest) {
           try {
             const verification = await verifyDemandKnowledge(resolution.researchRequest, research, {
@@ -97,22 +118,27 @@ async function answerQuestionInternal(
             local.debug.demandVerificationOutcomes = verification.decisions.map((decision) => decision.outcome);
             local.debug.demandVerificationModelCalls = verification.usage.extractionCalls + verification.usage.verificationCalls;
             local.debug.demandAdmittedClaims = verification.decisions.filter((decision) => decision.outcome === "admitted").length;
+            logStage("DEMAND_VERIFICATION", { admitted: local.debug.demandAdmittedClaims,
+              quarantined: verification.decisions.filter((decision) => decision.outcome === "quarantined").length,
+              rejected: verification.decisions.filter((decision) => decision.outcome === "rejected").length,
+              modelCalls: local.debug.demandVerificationModelCalls });
           } catch {
             local.debug.demandVerificationOutcomes = ["quarantined"];
           }
         }
         local.evidence.push(...research.passages);
         local.debug.demandResearchStatus = research.status;
+        local.debug.demandBudgetStatus = research.budgetStatus;
         local.debug.demandResearchRequestId = research.requestId;
         local.debug.liveResearchTriggered = research.attempted;
         local.debug.webSearchCalls = research.usage.searchCalls;
         local.debug.liveFetches = research.usage.sourceFetches;
         local.debug.liveSourcesUsed = research.passages.length;
-        local.debug.missingEvidenceDimensions = research.unresolvedGaps.map((gap) => gap.requirement);
-        local.debug.unresolvedEvidenceGap = research.unresolvedGaps.length > 0;
-        local.debug.answerable = resolution.state === "partial_local" || research.citeableNow;
-        local.debug.coverageStatus = research.status === "complete" ? "sufficient" : local.debug.answerable ? "partial" : "unsupported";
-        local.debug.localEvidenceSufficiencyReason = research.status === "complete" ? "The original source supplies the missing evidence for this response; it remains unadmitted." :
+        local.debug.missingEvidenceDimensions = reusedAfterWait ? [] : research.unresolvedGaps.map((gap) => gap.requirement);
+        local.debug.unresolvedEvidenceGap = !reusedAfterWait && research.unresolvedGaps.length > 0;
+        local.debug.answerable = reusedAfterWait || resolution.state === "partial_local" || research.citeableNow;
+        local.debug.coverageStatus = reusedAfterWait || research.status === "complete" ? "sufficient" : local.debug.answerable ? "partial" : "unsupported";
+        local.debug.localEvidenceSufficiencyReason = reusedAfterWait ? "Another question completed verification; the admitted claim is now available locally." : research.status === "complete" ? "The original source supplies the missing evidence for this response; it remains unadmitted." :
           "The bounded research request did not establish every missing requirement.";
       }
       local.debug.localEvidenceBeforeSearch = localEvidenceCount;
@@ -191,6 +217,13 @@ async function answerQuestionInternal(
     evidenceUsedCount: 0,
     answerIntent: "specific" as string,
     ...retrievals[0].debug,
+    questionResolutionState: retrievals.every((item) => item.debug.questionResolutionState === "local_sufficient")
+      ? "local_sufficient" : retrievals.find((item) => item.debug.questionResolutionState !== "local_sufficient")?.debug.questionResolutionState,
+    questionNeedId: retrievals.find((item) => item.debug.demandResearchStatus)?.debug.questionNeedId || retrievals[0].debug.questionNeedId,
+    demandResearchStatus: retrievals.find((item) => item.debug.demandResearchStatus)?.debug.demandResearchStatus,
+    demandBudgetStatus: retrievals.find((item) => item.debug.demandBudgetStatus)?.debug.demandBudgetStatus,
+    demandVerificationOutcomes: retrievals.flatMap((item) => item.debug.demandVerificationOutcomes || []),
+    demandVerificationModelCalls: retrievals.reduce((sum, item) => sum + (item.debug.demandVerificationModelCalls || 0), 0),
     questionScope: queryContext.scope,
     lens: lens?.id || null,
     contextIntent,
@@ -214,6 +247,7 @@ async function answerQuestionInternal(
     perPersonality: retrievals.map((retrieval) => ({ personality: retrieval.personality, debug: retrieval.debug })),
   };
   if (retrievals.some((retrieval) => !retrieval.debug.answerable)) {
+    const limitReached = retrievals.some((retrieval) => retrieval.debug.demandResearchStatus === "budget_exhausted");
     return {
       personality,
       question,
@@ -222,7 +256,7 @@ async function answerQuestionInternal(
       lens: lens ? { id: lens.id, label: lens.label } : null,
       structuredContext: { active_personality_ids: personalityIds, recent_named_entities: queryContext.subjects, recent_topic: queryContext.resolvedQuestion.slice(0, 200), recent_parameters: parameters.map((parameter) => parameter.code) },
       status: "abstained" as const,
-      answer: abstentionMessage(personality, question),
+      answer: limitReached ? "The available verified sources do not answer this fully. Additional research is temporarily unavailable because its research limit was reached." : abstentionMessage(personality, question),
       retrievedParameters: parameters,
       citations: [],
       evidence: [],
@@ -405,11 +439,26 @@ export async function answerQuestion(question: string, personalityId: string | s
   incrementMetric("totalAskRequests");
   return withRequestUsage(async (usage) => {
     const started = performance.now();
-    const result = await answerQuestionInternal(question, personalityId, options);
+    let result: Awaited<ReturnType<typeof answerQuestionInternal>>;
+    try { result = await answerQuestionInternal(question, personalityId, options); }
+    catch (error) {
+      if (usage.researchReservationId) await settleResearchBudget(usage).catch(() => null);
+      throw error;
+    }
+    if (usage.researchReservationId) {
+      const cost = await settleResearchBudget(usage).catch(() => null);
+      if (cost !== null) result.debug.demandEstimatedCostMicros = cost;
+      logStage("DEMAND_BUDGET", { settled: cost !== null, estimatedMicroUsd: cost,
+        searches: usage.researchSearchCalls, modelCalls: usage.generativeCalls - (usage.researchModelStart?.calls || 0) });
+    }
     result.debug.generativeCalls = usage.generativeCalls;
     result.debug.geminiCalls = usage.generativeCalls;
     result.debug.embeddingCalls = usage.embeddingCalls;
     result.debug.latenciesMs.total = Math.round(performance.now() - started);
+    if (process.env.DEMAND_TELEMETRY_ENABLED === "true") await recordDemandQuestionActivity({
+      personalityIds: Array.isArray(personalityId) ? personalityId : [personalityId], debug: result.debug,
+      latencyMs: result.debug.latenciesMs.total,
+    });
     console.info("ask_research_usage", JSON.stringify({ model: result.debug.model, googleSearchRequests: result.debug.googleSearchRequests || 0, googleSearchQueries: result.debug.googleSearchQueries || 0, googleErrorCategory: result.debug.googleSearchErrorCategory || null, localEvidenceBeforeSearch: result.debug.localEvidenceBeforeSearch || 0, googleGroundedSourcesReturned: result.debug.googleGroundedSourcesReturned || 0, braveTriggered: result.debug.braveTriggered || false, braveCalls: result.debug.webSearchCalls || 0, braveCacheHits: result.debug.webSearchCacheHits || 0, braveQueries: result.debug.braveQueries || [], lens: result.debug.lens || null, contextIntent: result.debug.contextIntent || null, citedProvenance: result.citations.map((citation) => ({ id: citation.id, origin: citation.kind === "live_web_source" ? "live" : "library", claimId: citation.claimId, chunkId: citation.chunkId, approvalOrigin: citation.approvalOrigin, authority: citation.authority })), liveUrlsAccepted: result.debug.liveUrlsAccepted || [], liveUrlsRejected: (result.debug.liveUrlsRejected || []).slice(0, 6), liveSourcesUsed: result.debug.liveSourcesUsed || 0, localSourcesUsed: result.debug.localSourcesUsed || 0, evidenceRetrieved: result.debug.evidenceRetrievedCount || 0, evidenceSelected: result.debug.finalSelectedEvidenceCount || 0, evidenceUsed: result.debug.evidenceUsedCount || 0, latencyMs: result.debug.latenciesMs.total }));
     if (result.debug.liveResearchTriggered) incrementMetric("liveResearchTriggers");
     if (result.debug.semanticFallbackReason && result.debug.semanticFallbackReason !== "semantic_skipped_sufficient_lexical_claim_candidates") incrementMetric("semanticFallbacks");
