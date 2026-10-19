@@ -7,6 +7,7 @@ import { isClaimEligible, type EvidencePolicyMode } from "@/lib/corpus/approval-
 import { canonicalizeTerms, type TermAliasRecord } from "@/lib/corpus/personality-config";
 import { normalizeForMatch } from "@/lib/corpus/text";
 import type { RetrievedClaim, RetrievedEvidence, RetrievedPassage } from "@/lib/corpus/types";
+import { sourceWorkKey } from "@/lib/live-research/research-quality";
 
 export type GapType = "factual_detail" | "chronology" | "primary_source_attribution" | "scholarly_interpretation" |
   "historical_context" | "comparison" | "contested_claim" | "contemporary_observation" |
@@ -114,7 +115,8 @@ function supportsNeed(key: string, evidence: RetrievedEvidence[], now: Date): bo
   if (key === "date") return texts.some((text) => /\b(?:1[0-9]{3}|20[0-9]{2})\b/.test(text));
   if (key === "significance") return texts.some((text) => /\b(?:led to|enabled|influenc\w*|impact\w*|important|significan\w*|changed|foundation|advanced|because|resulted|inspired|consequence)\b/i.test(text));
   if (key === "contribution") return texts.some((text) => /\b(?:discover\w*|contribut\w*|invent\w*|develop\w*|establish\w*|found\w*|achiev\w*|work)\b/i.test(text));
-  if (key === "comparison" || key === "contested") return new Set(evidence.map((item) => item.kind === "passage" ? item.workKey || item.sourceId : item.sourceTitle).filter(Boolean)).size >= 2;
+  if (key === "comparison" || key === "contested") return new Set(evidence.map((item) => item.kind === "passage" && item.workKey
+    ? item.workKey : sourceWorkKey({ url: item.sourceUrl || "", title: item.sourceTitle, author: item.sourceAuthor }))).size >= 2;
   if (key === "current") return evidence.some((item) => item.kind === "passage" && item.retrievedAt && now.getTime() - new Date(item.retrievedAt).getTime() < 365 * 24 * 60 * 60 * 1000);
   return false;
 }

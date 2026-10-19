@@ -81,6 +81,15 @@ describe("Brave discovery", () => {
     expect(state.writes).toBe(1);
   });
 
+  it("does not persist Brave results without explicit storage rights", async () => {
+    const search = vi.fn(async () => [result("https://example.org/a")]);
+    const provider = { name: "brave", isConfigured: () => true, search };
+    const found = await cachedWebSearch("A narrow research need", provider);
+    expect(found).toMatchObject({ calls: 1, cacheHits: 0 });
+    expect(search).toHaveBeenCalledTimes(1);
+    expect(state.writes).toBe(0);
+  });
+
   it("discovers unknown HTTPS candidates without promoting snippets into evidence", async () => {
     const provider = new MockWebSearchProvider([result("https://example.org/a"), result("https://attacker.test/a"), result("http://127.0.0.1/private")]);
     const found = await discoverWebCandidates("Vishvamitra", [rule], { provider });

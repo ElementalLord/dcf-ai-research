@@ -9,7 +9,7 @@ const state = vi.hoisted(() => ({
   caches: new Map<string, Record<string, unknown>>(), checkpoints: new Map<string, Record<string, unknown>>(),
   claims: [] as Record<string, unknown>[], chunks: [] as Record<string, unknown>[],
   lexicalResultsRemaining: null as number | null,
-  sequence: [] as string[], google: vi.fn(), originalFetch: vi.fn(), extract: vi.fn(), webDiscover: vi.fn(), webConfigured: false, rulesActive: true, started: [] as string[], finished: [] as string[], vectorRpc: vi.fn(), fetch: vi.fn(), discover: vi.fn(), generate: vi.fn(), embed: vi.fn(),
+  sequence: [] as string[], google: vi.fn(), demand: vi.fn(), originalFetch: vi.fn(), extract: vi.fn(), webDiscover: vi.fn(), webConfigured: false, rulesActive: true, started: [] as string[], finished: [] as string[], vectorRpc: vi.fn(), fetch: vi.fn(), discover: vi.fn(), generate: vi.fn(), embed: vi.fn(),
 }));
 vi.mock("@/lib/corpus/personality-context", () => ({ loadPersonalityConfiguration: vi.fn(async () => ({ personalityId: "p", canonicalName: "Vishvamitra", categoryId: "category", categorySlug: "rishi", categoryName: "Rishis", aliases: [{ alias: "Vishwamitra" }], termAliases: [] })) }));
 vi.mock("@/lib/corpus/embeddings", () => ({ embedTexts: state.embed }));
@@ -18,6 +18,8 @@ vi.mock("@/lib/live-research/source-registry", () => ({ loadActiveSourceRules: v
 vi.mock("@/lib/live-research/live-search", () => ({ discoverApprovedUrls: state.discover }));
 vi.mock("@/lib/live-research/cache", () => ({ fetchAndCacheApprovedPage: state.fetch }));
 vi.mock("@/lib/live-research/google-grounding", () => ({ searchWithGoogleGrounding: state.google }));
+vi.mock("@/lib/live-research/on-demand-engine", () => ({ executeDemandResearch: state.demand }));
+vi.mock("@/lib/live-research/on-demand-adapter", () => ({ productionResearchDependencies: () => ({}) }));
 vi.mock("@/lib/live-research/web-search", () => ({ webSearchProvider: () => ({ isConfigured: () => state.webConfigured }), discoverWebCandidates: state.webDiscover }));
 vi.mock("@/lib/live-research/live-fetch", () => ({ fetchApprovedResource: state.originalFetch }));
 vi.mock("@/lib/live-research/search-credibility", () => ({ inspectSearchSource: vi.fn(async (url: string) => ({ url, domain: new URL(url).hostname, category: "institutional", title: "Public primary text" })) }));
@@ -79,6 +81,21 @@ beforeEach(() => {
 afterEach(() => { vi.unstubAllEnvs(); vi.clearAllMocks(); generationCircuit.succeed(); alternateGenerationCircuit.succeed(); });
 
 describe("Ask orchestration", () => {
+  it("uses demand research without dispatching either legacy search path", async () => {
+    vi.stubEnv("DEMAND_RESEARCH_ENABLED", "true");
+    state.claims = []; state.chunks = [];
+    state.demand.mockResolvedValue({ requestId: "research-one", status: "complete", attempted: true, citeableNow: true,
+      unresolvedGaps: [], usage: { searchCalls: 1, sourceFetches: 1 }, passages: [{ kind: "passage", id: "demand:one", chunkId: "demand:one", sourceId: "demand:one",
+        text: "Vishvamitra taught Rama the Bala and Atibala mantras.", sectionTitle: null, pageOrSection: "Bala Kanda",
+        textualLayer: "traditional_text", sourceTitle: "Original Ramayana", sourceAuthor: null, sourceInstitution: "Archive",
+        sourceUrl: "https://example.test/original", sourceType: "traditional_text", sourceStatus: "discovered",
+        personalityId: "p", personalityName: "Vishvamitra", origin: "brave_live", lexicalScore: 1 }] });
+    const result = await answerQuestion("What did Vishvamitra teach Rama?", "p");
+    expect(state.demand).toHaveBeenCalledTimes(1);
+    expect(state.google).not.toHaveBeenCalled();
+    expect(state.webDiscover).not.toHaveBeenCalled();
+    expect(result.citations.some((item) => item.kind === "live_web_source")).toBe(true);
+  });
   it("merges credible Google grounding with DCF evidence without invoking Brave", async () => {
     vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
     state.generate.mockResolvedValue({ text: "The library describes Vishvamitra as Rama’s guide [C1]. A live reference also describes this role [S1]." });
@@ -112,18 +129,18 @@ describe("Ask orchestration", () => {
     expect(state.google).not.toHaveBeenCalled();
     expect(state.webDiscover).not.toHaveBeenCalled();
   });
-  it("always performs live expansion for an explicit angle even when local evidence is sufficient", async () => {
+  it("answers an explicit angle locally when approved evidence covers it", async () => {
     state.claims = [claim("education", "Vishvamitra taught and mentored Rama as his guide.", "Education")];
     state.google.mockResolvedValue({ evidence: [{ kind: "passage", id: "google:education", chunkId: "google:education", sourceId: "google:education", text: "Vishvamitra's educational role includes teaching and mentoring Rama.", sectionTitle: null, pageOrSection: null, textualLayer: "Epic narrative", sourceTitle: "Vishvamitra and Rama", sourceAuthor: null, sourceInstitution: "example.test", sourceUrl: "https://example.test/education", sourceType: "primary_text", sourceStatus: "discovered", origin: "google_grounding", lexicalScore: 1 }], requests: 1, queries: 1, latencyMs: 3, errorCategory: null });
     const result = await answerQuestion("Explain Vishvamitra from the educational angle.", "p");
     expect(result.status).not.toBe("abstained");
-    expect(state.google).toHaveBeenCalledWith(expect.stringContaining("educational angle"), "p", "Vishvamitra", "normal", expect.anything(), expect.arrayContaining([expect.stringContaining("educational dimension")]), expect.anything(), expect.stringContaining("educational dimension"));
-    expect(result.debug.googleSearchRequests).toBe(1);
-    expect(result.debug.liveResearchTriggered).toBe(true);
-    expect(result.debug.googleGroundedSourcesReturned).toBe(1);
+    expect(state.google).not.toHaveBeenCalled();
+    expect(result.debug.googleSearchRequests).toBe(0);
+    expect(result.debug.liveResearchTriggered).toBe(false);
+    expect(result.debug.googleGroundedSourcesReturned).toBe(0);
     expect(state.webDiscover).not.toHaveBeenCalled();
   });
-  it("falls back to Brave live search for an explicit angle when Google returns no evidence", async () => {
+  it("does not dispatch a second search for an already covered angle", async () => {
     state.claims = [claim("education", "Vishvamitra taught and mentored Rama as his guide.", "Education")];
     state.google.mockResolvedValue({ evidence: [], requests: 1, queries: 1, latencyMs: 4, errorCategory: "NO_VERIFIED_EVIDENCE" });
     state.webConfigured = true;
@@ -131,11 +148,10 @@ describe("Ask orchestration", () => {
     state.extract.mockResolvedValue([{ title: "Vishvamitra's educational role", pageOrSection: "Teaching Rama", text: "Vishvamitra's educational role was to teach and mentor Rama. The account describes how the teacher guided his student through training." }]);
     const result = await answerQuestion("Explain Vishvamitra from the educational angle.", "p");
     expect(result.status).not.toBe("abstained");
-    expect(state.google).toHaveBeenCalled();
-    expect(state.webDiscover).toHaveBeenCalled();
-    expect(state.originalFetch).toHaveBeenCalled();
-    expect(result.debug.braveTriggered).toBe(true);
-    expect(result.debug.liveUrlsAccepted).toContain("https://example.test/approved");
+    expect(state.google).not.toHaveBeenCalled();
+    expect(state.webDiscover).not.toHaveBeenCalled();
+    expect(state.originalFetch).not.toHaveBeenCalled();
+    expect(result.debug.braveTriggered).toBe(false);
   });
   it("abstains honestly when both live paths fail and local evidence is insufficient", async () => {
     state.claims = [];
@@ -196,7 +212,7 @@ describe("Ask orchestration", () => {
     expect(state.sequence.slice(firstStart, firstFinish)).toEqual(expect.arrayContaining(["start:claims", "start:get_retrieval_inventory", "start:approved_source_access", "start:events", "start:relationships"]));
   });
   it("continues lexical retrieval after query embedding failure", async () => {
-    state.claims = []; state.chunks = [passage("Vishvamitra teaches Rama the Bala and Atibala mantras.")];
+    state.claims = []; state.chunks = [{ ...passage("Vishvamitra teaches Rama the Bala and Atibala mantras."), metadata: { origin: "permanent" } }];
     state.lexicalResultsRemaining = 1;
     const result = await answerQuestion("What did Vishvamitra teach Rama?", "p");
     expect(state.embed).toHaveBeenCalled();

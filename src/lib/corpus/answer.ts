@@ -23,6 +23,8 @@ import { detectLens } from "@/lib/ask/lenses";
 import { chronologyGuidance, CONTEXT_SEARCH_FOCUS, detectContextIntent } from "@/lib/ask/historical-context";
 import { classifySourceAuthority } from "@/lib/sources/authority";
 import { fillsEvidenceGaps, resolveQuestion } from "@/lib/ask/question-resolution";
+import { executeDemandResearch } from "@/lib/live-research/on-demand-engine";
+import { productionResearchDependencies } from "@/lib/live-research/on-demand-adapter";
 import type { RetrievedEvidence } from "./types";
 
 const ABSTENTION = "The available sources do not contain enough evidence to answer that fully.";
@@ -59,6 +61,7 @@ async function answerQuestionInternal(
   };
   // Retrieve local evidence first so the single Google step can target its gaps.
   // Brave's original-source workflow runs only if grounding cannot cover them.
+  const demandBudget = { remaining: 1 };
   const retrievals = await Promise.all(personalityIds.map(async (id, index) => {
     const retrievalOptions = { additionalPersonalityAliases: comparisonAliases, configuration: configurations[index] };
     const [local, searchPolicy] = await Promise.all([retrieveEvidence(retrievalQuestion, id, retrievalOptions), searchPolicyPromise]);
@@ -77,6 +80,32 @@ async function answerQuestionInternal(
     local.debug.localEvidenceSufficiencyReason = resolution.reason;
     local.debug.answerable = resolution.route === "answer" || resolution.route === "partial_answer";
     local.debug.coverageStatus = resolution.sufficient ? "sufficient" : resolution.route === "partial_answer" ? "partial" : "unsupported";
+    if (process.env.DEMAND_RESEARCH_ENABLED === "true") {
+      const allocated = resolution.researchRequest ? Math.min(resolution.researchRequest.maxExternalSearches, demandBudget.remaining) : 0;
+      demandBudget.remaining -= allocated;
+      const research = resolution.researchRequest
+        ? await executeDemandResearch({ ...resolution.researchRequest, maxExternalSearches: allocated }, queryContext.resolvedQuestion, local.evidence,
+          local.personalityAliases, productionResearchDependencies()) : null;
+      if (research) {
+        local.evidence.push(...research.passages);
+        local.debug.demandResearchStatus = research.status;
+        local.debug.demandResearchRequestId = research.requestId;
+        local.debug.liveResearchTriggered = research.attempted;
+        local.debug.webSearchCalls = research.usage.searchCalls;
+        local.debug.liveFetches = research.usage.sourceFetches;
+        local.debug.liveSourcesUsed = research.passages.length;
+        local.debug.missingEvidenceDimensions = research.unresolvedGaps.map((gap) => gap.requirement);
+        local.debug.unresolvedEvidenceGap = research.unresolvedGaps.length > 0;
+        local.debug.answerable = resolution.state === "partial_local" || research.citeableNow;
+        local.debug.coverageStatus = research.status === "complete" ? "sufficient" : local.debug.answerable ? "partial" : "unsupported";
+        local.debug.localEvidenceSufficiencyReason = research.status === "complete" ? "The original source supplies the missing evidence for this response; it remains unadmitted." :
+          "The bounded research request did not establish every missing requirement.";
+      }
+      local.debug.localEvidenceBeforeSearch = localEvidenceCount;
+      local.debug.localSourcesUsed = local.evidence.filter((item) => item.kind === "claim" || item.origin !== "brave_live").length;
+      withAuthority(local.evidence, searchPolicy.rules);
+      return local;
+    }
     const googleGaps = resolution.gaps.map((gap) => gap.requirement);
     const google = !resolution.researchJustified
       ? { evidence: [], requests: 0, queries: 0, latencyMs: 0, errorCategory: null }

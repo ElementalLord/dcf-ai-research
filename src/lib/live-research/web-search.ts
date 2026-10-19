@@ -24,6 +24,12 @@ export function webSearchProvider(): WebSearchProvider { return defaultProvider;
 export async function cachedWebSearch(query: string, provider: WebSearchProvider = defaultProvider, maxResults = 10) {
   const normalized = normalizeSearchQuery(query);
   if (!normalized) return { results: [] as WebSearchResult[], calls: 0, cacheHits: 0 };
+  // Standard Brave API rights permit only transient operational use. Never persist its
+  // result titles, URLs, or snippets unless the account explicitly has storage rights.
+  if (provider.name === "brave" && process.env.BRAVE_SEARCH_STORAGE_RIGHTS !== "true") {
+    if (!provider.isConfigured()) throw new WebSearchError("NOT_CONFIGURED");
+    return { results: await provider.search(normalized, { maxResults }), calls: 1, cacheHits: 0 };
+  }
   // A cache miss must remain usable when Brave is unconfigured; cache reads are still useful.
   const { data, error } = await supabaseAdmin.from("web_search_cache")
     .select("results,expires_at,hit_count")

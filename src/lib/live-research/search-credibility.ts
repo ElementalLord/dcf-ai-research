@@ -32,13 +32,13 @@ export type CredibleSource = { url: string; domain: string; category: string; ti
 
 type Preview = Awaited<ReturnType<typeof fetchDiscoveryPreview>>;
 /** The readable text of one fetched source, by page for a PDF. Null means the request itself failed. */
-type SourceText = { status: number; finalUrl: string; html: string; title: string; identity: SourceIdentity; sections: Array<{ text: string; locator: string | null }> };
+type SourceText = { status: number; finalUrl: string; html: string; title: string; identity: SourceIdentity; rightsDeclaration: string | null; sections: Array<{ text: string; locator: string | null }> };
 const MAX_SOURCE_CHARACTERS = 600_000;
 const sourceTextCache = new Map<string, { expires: number; loaded: Promise<SourceText | null> }>();
 
 async function readSourceText(preview: Preview): Promise<SourceText> {
   const emptyIdentity = authenticateSource({ url: preview.finalUrl });
-  const base = { status: preview.status, finalUrl: preview.finalUrl, html: preview.html, title: "", identity: emptyIdentity, sections: [] as SourceText["sections"] };
+  const base = { status: preview.status, finalUrl: preview.finalUrl, html: preview.html, title: "", identity: emptyIdentity, rightsDeclaration: null as string | null, sections: [] as SourceText["sections"] };
   if (preview.status !== 200) return base;
   if (preview.pdf) {
     // Text layer only (no OCR). A scanned PDF yields no text and so can never become evidence.
@@ -62,7 +62,8 @@ async function readSourceText(preview: Preview): Promise<SourceText> {
     doi: meta("citation_doi"), isbn: meta("citation_isbn"), sourceType: meta("citation_journal_title") ? "scholarly journal" : null });
   $("script,style,nav,footer,header").remove();
   const text = $("body").text().replace(/\s+/g, " ").trim();
-  return { ...base, title, identity, sections: text ? [{ text, locator: null }] : [] };
+  const rightsDeclaration = meta("dc.rights") || meta("dcterms.rights") || meta("citation_license") || $("link[rel='license']").attr("href") || null;
+  return { ...base, title, identity, rightsDeclaration, sections: text ? [{ text, locator: null }] : [] };
 }
 
 /** Several grounded statements usually cite the same page; fetch and parse each source once and share it briefly. */
@@ -90,7 +91,7 @@ const supportStop = new Set(["the", "and", "for", "with", "from", "that", "this"
 
 /** Google selects a page and topic. Only a matching excerpt fetched from the
  * original page becomes evidence; the model's search summary stays discovery. */
-export async function readGroundedExcerpt(source: CredibleSource, statement: string, aliases: string[], policy: SearchPolicy): Promise<{ text: string; title: string; url: string; locator: string | null; supportLevel: PassageSupport; supportReason: string; identity: SourceIdentity } | null> {
+export async function readGroundedExcerpt(source: CredibleSource, statement: string, aliases: string[], policy: SearchPolicy): Promise<{ text: string; title: string; url: string; locator: string | null; supportLevel: PassageSupport; supportReason: string; identity: SourceIdentity; rightsDeclaration: string | null } | null> {
   const loaded = await cachedSourceText(source.url);
   if (!loaded || loaded.status !== 200 || !loaded.sections.length || !searchPolicyDecision(loaded.finalUrl, policy).allowed) return null;
   if (/\b(?:written by ai|ai.generated|content farm)\b/i.test(loaded.sections[0].text.slice(0, 3000))) return null;
@@ -121,6 +122,7 @@ export async function readGroundedExcerpt(source: CredibleSource, statement: str
   if (!excerpt) return null;
   const identity = loaded.identity.title ? loaded.identity : authenticateSource({ url: loaded.finalUrl, title: loaded.title || source.title, category: source.category });
   return { text: excerpt, title: loaded.title || source.title, url: loaded.finalUrl, locator: best.locator,
+    rightsDeclaration: loaded.rightsDeclaration,
     supportLevel: best.support.level, supportReason: best.support.reason,
     identity: { ...identity, evidenceType: identity.evidenceType === "general_web" ? evidenceTypeFor({ category: source.category }) : identity.evidenceType } };
 }
