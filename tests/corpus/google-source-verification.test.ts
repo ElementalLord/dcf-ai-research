@@ -41,6 +41,21 @@ describe("live source admission", () => {
     expect(await readGroundedExcerpt(source("https://www.si.edu/unrelated"), "Landsberg and Mandelstam observed combinational scattering in quartz crystals", ["C. V. Raman", "Raman"], policy)).toBeNull();
   });
 
+  it("finds a dated scholarly assertion after the subject is identified earlier in the same paragraph", async () => {
+    const url = "https://plato.stanford.edu/entries/shankara/";
+    state.preview.mockResolvedValueOnce({ status: 200, finalUrl: url, html: `<html><title>Śaṅkara (Stanford Encyclopedia of Philosophy)</title><main><h2>1. Life and Works</h2><p>There are several different dates ascribed to Śaṅkara. Early scholars placed him from 788–820 CE. Nakamura (1983: 48–88) argues for an earlier date of 700–750 CE, and discusses the various dating theories at length.</p></main></html>` });
+    const result = await readGroundedExcerpt(source(url), "What dates does Nakamura propose for Shankara? Shankara dating Nakamura 700 750", ["Shankara", "Sankara"], policy);
+    expect(result).toMatchObject({ locator: "1. Life and Works", supportLevel: expect.stringMatching(/EXACT|STRONG/) });
+    expect(result?.text).toContain("Nakamura");
+    expect(result?.text).toContain("700–750 CE");
+  });
+
+  it("does not borrow a subject from a preceding paragraph for an unrelated date", async () => {
+    const url = "https://plato.stanford.edu/entries/unrelated-date/";
+    state.preview.mockResolvedValueOnce({ status: 200, finalUrl: url, html: `<html><title>Śaṅkara (Stanford Encyclopedia of Philosophy)</title><main><p>Śaṅkara wrote commentaries on several texts.</p><p>Nakamura (1983) dates another philosopher's work to 700–750 CE.</p></main></html>` });
+    expect(await readGroundedExcerpt(source(url), "What dates does Nakamura propose for Shankara? Shankara dating Nakamura 700 750", ["Shankara", "Sankara"], policy)).toBeNull();
+  });
+
   it("reads evidence from a text PDF and keeps the page number", async () => {
     state.preview.mockResolvedValueOnce({ status: 200, finalUrl: "https://repository.ias.ac.in/raman.pdf", contentType: "application/pdf", html: "", pdf: new Uint8Array([0x25, 0x50, 0x44, 0x46]) });
     state.pdf.mockResolvedValueOnce([

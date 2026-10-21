@@ -62,7 +62,7 @@ export function buildBoundedContext(
       pageOrSection: item.pageOrSection,
       textualLayer: item.textualLayer,
       retrievedAt: item.kind === "passage" ? item.retrievedAt : null,
-      excerpt: body,
+      excerpt: item.kind === "claim" ? truncateText(item.evidenceExcerpt || "", 380) : body,
       personalityId: item.personalityId,
       personalityName: item.personalityName,
       approvalOrigin: item.kind === "claim" ? item.approvalOrigin : undefined,

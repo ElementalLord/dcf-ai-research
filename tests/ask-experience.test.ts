@@ -127,6 +127,15 @@ describe("grounded Ask presentation", () => {
     ]);
   });
 
+  it("keeps adjacent citations compact and after sentence punctuation", () => {
+    expect(inlineAnswerParts("She taught in Naigaon [C5] [S7]. Next point.")).toEqual([
+      { type: "text", value: "She taught in Naigaon." },
+      { type: "citation", value: "[C5]", citationId: "C5" },
+      { type: "citation", value: "[S7]", citationId: "S7" },
+      { type: "text", value: " Next point." },
+    ]);
+  });
+
   it("groups duplicate citations by source and labels supported source types", () => {
     const second = { ...citation, id: "S2", pageOrSection: "3.53" };
     expect(groupCitations([citation, second])).toHaveLength(1);

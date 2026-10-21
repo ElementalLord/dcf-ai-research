@@ -59,7 +59,7 @@ function builder(table: string) {
   return query;
 }
 function claim(id: string, text: string, parameter = "Role") {
-  return { id, claim_text: text, claim_kind: "traditional_account", certainty: "medium", review_status: "approved", approval_origin: "human_manual", evidence_type: "traditional_narrative", parameter_fields: { id, label: "Role", parameters: { id, name: parameter, sort_order: 1 } }, claim_sources: [{ sources: { id: "source", title: "Public primary text", source_status: "approved", source_type: "primary_text" } }], claim_chunks: [] };
+  return { id, claim_text: text, claim_kind: "traditional_account", certainty: "medium", review_status: "approved", approval_origin: "human_manual", evidence_type: "traditional_narrative", parameter_fields: { id, label: "Role", parameters: { id, name: parameter, sort_order: 1 } }, claim_sources: [{ evidence_excerpt: `The original text reports: ${text}`, sources: { id: "source", title: "Public primary text", source_status: "approved", source_type: "primary_text" } }], claim_chunks: [] };
 }
 function passage(text: string) {
   return { chunk_id: "chunk", source_id: "source", chunk_text: text, source_title: "Approved Ramayana", source_url: "https://example.test/approved", source_status: "approved", lexical_score: 1, textual_layer: "Epic narrative", source_type: "primary_text", metadata: { origin: "live_cache" } };
@@ -77,10 +77,40 @@ beforeEach(() => {
   generationCircuit.succeed();
   alternateGenerationCircuit.succeed();
   vi.stubEnv("SYNTHESIS_PROVIDER", "extractive");
+  vi.stubEnv("EVIDENCE_POLICY_MODE", "test");
 });
 afterEach(() => { vi.unstubAllEnvs(); vi.clearAllMocks(); generationCircuit.succeed(); alternateGenerationCircuit.succeed(); });
 
 describe("Ask orchestration", () => {
+  it("uses the grounded fallback for strict traffic while demand research is disabled", async () => {
+    vi.stubEnv("EVIDENCE_POLICY_MODE", "strict");
+    state.claims = []; state.chunks = [];
+    const result = await answerQuestion("What did Vishvamitra teach Rama?", "p");
+    expect(result.status).toBe("abstained");
+    expect(state.google).toHaveBeenCalledTimes(1);
+    expect(state.demand).not.toHaveBeenCalled();
+  });
+  it("answers a broad significance question in strict mode from grounded live passages", async () => {
+    vi.stubEnv("EVIDENCE_POLICY_MODE", "strict");
+    state.claims = []; state.chunks = [];
+    state.google.mockResolvedValue({ evidence: [
+      { kind: "passage", id: "google:one", chunkId: "google:one", sourceId: "google:one",
+        text: "Vishvamitra taught Rama the Bala and Atibala mantras, giving him knowledge used in the epic narrative.",
+        sectionTitle: null, pageOrSection: "Bala Kanda", textualLayer: "Epic narrative", sourceTitle: "Ramayana teaching",
+        sourceAuthor: null, sourceInstitution: "example.test", sourceUrl: "https://example.test/teaching",
+        sourceType: "primary_text", sourceStatus: "discovered", origin: "google_grounding", lexicalScore: 1 },
+      { kind: "passage", id: "google:two", chunkId: "google:two", sourceId: "google:two",
+        text: "Vishvamitra guided Rama through the protection of the sacrifice, an important episode in the Ramayana.",
+        sectionTitle: null, pageOrSection: "Bala Kanda", textualLayer: "Epic narrative", sourceTitle: "Ramayana teaching",
+        sourceAuthor: null, sourceInstitution: "example.test", sourceUrl: "https://example.test/teaching",
+        sourceType: "primary_text", sourceStatus: "discovered", origin: "google_grounding", lexicalScore: 1 },
+    ], requests: 1, queries: 1, latencyMs: 3, errorCategory: null });
+    const result = await answerQuestion("What did Vishvamitra do that mattered?", "p");
+    expect(result.status).not.toBe("abstained");
+    expect(result.citations.some((citation) => citation.kind === "live_web_source")).toBe(true);
+    expect(state.google).toHaveBeenCalledTimes(1);
+    expect(state.demand).not.toHaveBeenCalled();
+  });
   it("uses demand research without dispatching either legacy search path", async () => {
     vi.stubEnv("DEMAND_RESEARCH_ENABLED", "true");
     state.claims = []; state.chunks = [];

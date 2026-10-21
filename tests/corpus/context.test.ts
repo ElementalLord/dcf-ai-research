@@ -38,5 +38,6 @@ describe("bounded answer context", () => {
     expect(result.context).toContain("Epistemic: TRADITIONAL_NARRATIVE");
     expect(result.context).toContain("support: SUPPORTED; certainty: medium; contested: not marked");
     expect(result.context).toContain("Supporting passage: A supporting passage about teaching.");
+    expect(result.citations[0].excerpt).toBe("A supporting passage about teaching.");
   });
 });

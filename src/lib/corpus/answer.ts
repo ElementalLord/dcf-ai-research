@@ -146,6 +146,9 @@ async function answerQuestionInternal(
       withAuthority(local.evidence, searchPolicy.rules);
       return local;
     }
+    // When bounded demand research is disabled, keep the existing grounded
+    // search path available. Strict mode still filters local claims above;
+    // live passages retain their separate, visible citation provenance.
     const googleGaps = resolution.gaps.map((gap) => gap.requirement);
     const google = !resolution.researchJustified
       ? { evidence: [], requests: 0, queries: 0, latencyMs: 0, errorCategory: null }
@@ -168,6 +171,7 @@ async function answerQuestionInternal(
     base.debug.localEvidenceSufficient = resolution.sufficient;
     if (googleUseful) {
       base.debug.answerable = true;
+      base.debug.coverageStatus = "sufficient";
       base.debug.liveResearchTriggered = true;
     } else {
       base.debug.answerable = Boolean(base.debug.answerable || resolution.route === "answer" || resolution.route === "partial_answer");
@@ -246,7 +250,9 @@ async function answerQuestionInternal(
     selectedPersonalities: retrievals.map((retrieval) => ({ id: retrieval.personalityId, name: retrieval.personality })),
     perPersonality: retrievals.map((retrieval) => ({ personality: retrieval.personality, debug: retrieval.debug })),
   };
-  if (retrievals.some((retrieval) => !retrieval.debug.answerable)) {
+  const strictNarrowGap = debug.evidencePolicyMode === "strict" && !isBroadScope(queryContext.scope)
+    && retrievals.some((retrieval) => retrieval.debug.coverageStatus === "partial" || retrieval.debug.coverageStatus === "unsupported");
+  if (strictNarrowGap || retrievals.some((retrieval) => !retrieval.debug.answerable)) {
     const limitReached = retrievals.some((retrieval) => retrieval.debug.demandResearchStatus === "budget_exhausted");
     return {
       personality,

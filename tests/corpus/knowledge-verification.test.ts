@@ -19,7 +19,7 @@ function research(findings = [finding()]): OnDemandResearchResult {
     passages: [], unresolvedGaps: [], sufficientForVerification: true, citeableNow: true,
     usage: { searchCalls: 1, sourceFetches: findings.length, modelCalls: 0, provider: "fixture", errorCategory: null } };
 }
-function setup(options: { findings?: ResearchFinding[]; claim?: string; existing?: string[]; enabled?: boolean; assess?: Record<string, unknown>; failAssess?: boolean; failWrite?: boolean } = {}) {
+function setup(options: { findings?: ResearchFinding[]; claim?: string; existing?: string[]; existingOrigin?: string; enabled?: boolean; assess?: Record<string, unknown>; failAssess?: boolean; failWrite?: boolean } = {}) {
   const findings = options.findings || [finding()];
   const claim = options.claim || proposition;
   const provider = {
@@ -32,10 +32,10 @@ function setup(options: { findings?: ResearchFinding[]; claim?: string; existing
         qualifiersPreserved: true, officialIssuer: true, independentDocuments: true, reason: "Directly stated", ...options.assess };
     }),
   };
-  const rows: Array<{ id: string; claim_text: string }> = (options.existing || []).map((claim_text, index) => ({ id: `old-${index}`, claim_text }));
+  const rows: Array<{ id: string; claim_text: string; approval_origin: string }> = (options.existing || []).map((claim_text, index) => ({ id: `old-${index}`, claim_text, approval_origin: options.existingOrigin || "corpus_evidence_review" }));
   const store = { existing: vi.fn(async () => rows), admit: vi.fn(async (input: Record<string, unknown>) => {
     if (options.failWrite) throw new Error("db failed");
-    rows.push({ id: "new-claim", claim_text: String(input.claim_text) });
+    rows.push({ id: "new-claim", claim_text: String(input.claim_text), approval_origin: "automated_evidence_verification" });
     return { claimId: "new-claim", created: true };
   }), record: vi.fn(async () => {}) };
   return { findings, provider, store, enabled: options.enabled ?? true };
@@ -100,6 +100,23 @@ describe("demand knowledge verification", () => {
     const result = await verifyDemandKnowledge(request, research(deps.findings), deps);
     expect(result.decisions[0].outcome).toBe("duplicate");
     expect(deps.provider.assess).not.toHaveBeenCalled();
+  });
+
+  it("does not reuse an imported claim excluded by strict retrieval", async () => {
+    const deps = setup({ existing: [proposition], existingOrigin: "imported_existing" });
+    const result = await verifyDemandKnowledge(request, research(deps.findings), deps);
+    expect(result.decisions[0].outcome).toBe("admitted");
+    expect(deps.provider.assess).toHaveBeenCalledOnce();
+    expect(deps.store.admit).toHaveBeenCalledOnce();
+  });
+
+  it("stores the supporting sentence when it occurs after character 240", async () => {
+    const passage = `${"Archive context. ".repeat(18)}${proposition}`;
+    const deps = setup({ findings: [finding({ passage: { ...finding().passage, text: passage } })] });
+    const result = await verifyDemandKnowledge(request, research(deps.findings), deps);
+    expect(result.decisions[0].outcome).toBe("admitted");
+    const input = deps.store.admit.mock.calls[0][0] as { sources: Array<{ excerpt: string }> };
+    expect(input.sources[0].excerpt).toContain(proposition);
   });
 
   it("quarantines a competing date in the approved corpus", async () => {

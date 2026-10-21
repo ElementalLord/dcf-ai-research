@@ -58,20 +58,25 @@ export function isUnusableStoredAnswer(answer: string, status?: string): boolean
 }
 
 export function inlineAnswerParts(value: string): InlineAnswerPart[] {
+  // Keep sentence punctuation with the prose and place its source markers after it.
+  const normalized = value.replace(/\s*((?:\[[CS]\d+(?:\s*[,;]\s*[CS]\d+)*\]\s*)+)([.!?])/g,
+    (_match, references: string, punctuation: string) => `${punctuation}${references.trim()}`);
   const parts: InlineAnswerPart[] = [];
   let offset = 0;
-  for (const match of value.matchAll(/\[([CS]\d+(?:\s*[,;]\s*[CS]\d+)*)\]/g)) {
+  for (const match of normalized.matchAll(/\[([CS]\d+(?:\s*[,;]\s*[CS]\d+)*)\]/g)) {
     const index = match.index ?? 0;
-    if (index > offset) parts.push({ type: "text", value: value.slice(offset, index) });
+    if (index > offset) {
+      const text = normalized.slice(offset, index).replace(/\s+$/, "");
+      if (text) parts.push({ type: "text", value: text });
+    }
     const ids = match[1].match(/[CS]\d+/g) || [];
     for (let index = 0; index < ids.length; index += 1) {
-      if (index > 0) parts.push({ type: "text", value: " " });
       parts.push({ type: "citation", value: `[${ids[index]}]`, citationId: ids[index] });
     }
     offset = index + match[0].length;
   }
-  if (offset < value.length) parts.push({ type: "text", value: value.slice(offset) });
-  return parts.length > 0 ? parts : [{ type: "text", value }];
+  if (offset < normalized.length) parts.push({ type: "text", value: normalized.slice(offset) });
+  return parts.length > 0 ? parts : [{ type: "text", value: normalized }];
 }
 
 export function answerBlocks(answer: string): AnswerBlock[] {

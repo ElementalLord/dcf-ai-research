@@ -73,7 +73,12 @@ async function readSourceText(preview: Preview): Promise<SourceText> {
   root.find("h1,h2,h3,h4,h5,h6,p,blockquote,li").each((_, element) => {
     const value = $(element).text().replace(/\s+/g, " ").trim();
     if (/^h[1-6]$/.test(element.tagName)) { flush(); heading = value || heading; }
-    else if (value.length >= 20) parts.push(value);
+    else if (value.length >= 20) {
+      // Keep paragraph boundaries: a name in one paragraph must not authenticate
+      // an unrelated date or event in the next paragraph.
+      parts.push(value);
+      flush();
+    }
   });
   flush();
   if (!sections.length) {
@@ -116,18 +121,19 @@ export async function readGroundedExcerpt(source: CredibleSource, statement: str
   const title = normalizeForMatch(loaded.title);
   const names = [...new Set(aliases.map(normalizeForMatch).filter((name) => name.length >= 4))];
   const terms = [...new Set(normalizeForMatch(statement).split(" ").filter((term) => term.length >= 5 && !supportStop.has(term) && !names.some((name) => name.includes(term))))];
-  const sentences = loaded.sections.flatMap((section) => section.text.split(/(?<=[.!?])\s+/).filter((sentence) => sentence.length >= 25).map((sentence) => ({ sentence, locator: section.locator })));
-  const matches = sentences.map(({ sentence, locator }, index) => {
-    const normalized = normalizeForMatch(sentence);
-    const name = names.find((entry) => normalized.includes(entry));
-    if (!name) return null;
-    const context = sentence.length > 900
-      ? sentence.slice(Math.max(0, normalized.indexOf(name) - 200), normalized.indexOf(name) + 500)
-      : sentences.slice(Math.max(0, index - 1), index + 2).map((entry) => entry.sentence).join(" ");
-    const normalizedContext = normalizeForMatch(context);
-    const overlap = terms.filter((term) => normalizedContext.includes(term) || (term.length > 6 && normalizedContext.includes(term.slice(0, -2)))).length;
-    const support = assessPassageSupport(context, statement, aliases[0] || "", aliases.slice(1));
-    return { context, overlap, locator, support };
+  const matches = loaded.sections.flatMap((section) => {
+    const sentences = section.text.split(/(?<=[.!?])\s+/).filter((sentence) => sentence.length >= 25);
+    return sentences.map((_, index) => {
+      // A scholarly paragraph often identifies its subject first, then states a
+      // scholar's dated view two sentences later. Keep the support sentence and
+      // its subject together, but never borrow identity from another paragraph.
+      const context = sentences.slice(Math.max(0, index - 2), Math.min(sentences.length, index + 2)).join(" ").slice(0, 900);
+      const normalizedContext = normalizeForMatch(context);
+      if (!names.some((entry) => normalizedContext.includes(entry))) return null;
+      const overlap = terms.filter((term) => normalizedContext.includes(term) || (term.length > 6 && normalizedContext.includes(term.slice(0, -2)))).length;
+      const support = assessPassageSupport(context, statement, aliases[0] || "", aliases.slice(1));
+      return { context, overlap, locator: section.locator, support };
+    });
   }).filter((item): item is { context: string; overlap: number; locator: string | null; support: ReturnType<typeof assessPassageSupport> } => Boolean(item))
     .sort((a, b) => ({ EXACT: 4, STRONG: 3, PARTIAL: 2, RELATED: 1 }[b.support.level] - { EXACT: 4, STRONG: 3, PARTIAL: 2, RELATED: 1 }[a.support.level]) || b.overlap - a.overlap);
   if (!matches.length) return null;

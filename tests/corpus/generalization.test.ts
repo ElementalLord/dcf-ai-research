@@ -33,10 +33,14 @@ describe("general personality research pipeline", () => {
   it("separates test and strict approval policy", () => {
     expect(evidencePolicyMode("test")).toBe("test");
     expect(evidencePolicyMode("strict")).toBe("strict");
+    expect(evidencePolicyMode(undefined)).toBe("strict");
+    expect(evidencePolicyMode("invalid")).toBe("strict");
     expect(eligibleClaimOrigins("test")).toContain("system_test_bulk");
     expect(eligibleClaimOrigins("strict")).not.toContain("system_test_bulk");
     expect(isClaimEligible("approved", "mentor_review", "strict")).toBe(true);
     expect(isClaimEligible("approved", "system_test_bulk", "strict")).toBe(false);
+    expect(isClaimEligible("approved", "corpus_evidence_review", "strict")).toBe(true);
+    expect(isClaimEligible("needs_review", "corpus_evidence_review", "strict")).toBe(false);
   });
 
   it("measures evidence depth without calling it completeness", () => {

@@ -6,6 +6,7 @@ import { evaluateContract } from "@/lib/claim-epistemics/contracts";
 import { CLASSIFIER_VERSION, CONTRACT_VERSION, type EpistemicType, type SourceClass } from "@/lib/claim-epistemics/types";
 import { generateText, parseGeminiJson } from "@/lib/corpus/gemini";
 import { normalizedClaim, tokenJaccard } from "@/lib/corpus/dedupe";
+import { isClaimEligible } from "@/lib/corpus/approval-policy";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import type { OnDemandResearchResult, ResearchFinding } from "./on-demand-engine";
 
@@ -27,7 +28,8 @@ type Provider = { extract(input: { personality: string; findings: ResearchFindin
     materialContradiction: boolean; exactEntities: boolean; exactDatesAndUnits: boolean; qualifiersPreserved: boolean;
     officialIssuer: boolean; independentDocuments: boolean; reason: string;
   }> };
-type Store = { existing(personalityId: string): Promise<Array<{ id: string; claim_text: string }>>;
+type ExistingClaim = { id: string; claim_text: string; approval_origin?: string | null };
+type Store = { existing(personalityId: string): Promise<ExistingClaim[]>;
   admit(input: Record<string, unknown>): Promise<{ claimId: string; created: boolean }>;
   record(input: Record<string, unknown>): Promise<void> };
 
@@ -86,7 +88,7 @@ export function productionVerificationProvider(): Provider {
 export function productionAdmissionStore(): Store {
   return {
     async existing(personalityId) {
-      const { data, error } = await supabaseAdmin.from("claims").select("id,claim_text").eq("personality_id", personalityId).eq("review_status", "approved").limit(500);
+      const { data, error } = await supabaseAdmin.from("claims").select("id,claim_text,approval_origin").eq("personality_id", personalityId).eq("review_status", "approved").limit(500);
       if (error) throw error;
       return data || [];
     },
@@ -113,7 +115,7 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
   let extracted: AtomicCandidate[];
   try { result.usage.extractionCalls++; extracted = await deps.provider.extract({ personality: request.personalityName, findings }); }
   catch { return { ...result, decisions: [{ proposition: "[extraction unavailable]", outcome: "quarantined", support: "UNRESOLVED", reasons: ["Extraction provider failed"], epistemicType: "HISTORICAL_FACT", workKeys: [] }] }; }
-  let existing: Array<{ id: string; claim_text: string }>;
+  let existing: ExistingClaim[];
   try { result.usage.databaseCalls++; existing = await deps.store.existing(request.personalityId); }
   catch { return { ...result, decisions: [{ proposition: "[corpus unavailable]", outcome: "quarantined", support: "UNRESOLVED", reasons: ["Existing claims could not be checked"], epistemicType: "HISTORICAL_FACT", workKeys: [] }] }; }
   const seen = new Set<string>();
@@ -128,7 +130,8 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
     const decision: VerificationDecision = { proposition: candidate.proposition, outcome: "quarantined", support: "UNRESOLVED", reasons: [], epistemicType: candidate.type, workKeys };
     result.decisions.push(decision);
     try {
-    const duplicate = existing.find((item) => normalizedClaim(item.claim_text) === identity || tokenJaccard(item.claim_text, candidate.proposition) >= 0.9);
+    const duplicate = existing.find((item) => isClaimEligible("approved", item.approval_origin, "strict")
+      && (normalizedClaim(item.claim_text) === identity || tokenJaccard(item.claim_text, candidate.proposition) >= 0.9));
     if (duplicate) { decision.outcome = "duplicate"; decision.claimId = duplicate.id; decision.reasons.push("Equivalent approved claim already exists"); continue; }
     const competingValue = existing.find((item) => tokenJaccard(item.claim_text.replace(/\d+(?:[.,]\d+)*/g, ""), candidate.proposition.replace(/\d+(?:[.,]\d+)*/g, "")) >= 0.8
       && numbers(item.claim_text).join("|") !== numbers(candidate.proposition).join("|"));
@@ -148,7 +151,8 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
       decision.reasons.push("Consequential, qualified or interpretive assertion requires exception review"); continue;
     }
     let assessment: Awaited<ReturnType<Provider["assess"]>>;
-    try { result.usage.verificationCalls++; assessment = await deps.provider.assess({ candidate, personality: request.personalityName, findings: cited.map(({ finding }) => finding), existing: existing.map((item) => item.claim_text) }); }
+    try { result.usage.verificationCalls++; assessment = await deps.provider.assess({ candidate, personality: request.personalityName, findings: cited.map(({ finding }) => finding),
+      existing: existing.filter((item) => isClaimEligible("approved", item.approval_origin, "strict")).map((item) => item.claim_text) }); }
     catch { decision.reasons.push("Verification provider failed"); continue; }
     if (!["SUPPORTED", "PARTIALLY_SUPPORTED", "CONTRADICTED", "INSUFFICIENT_EVIDENCE", "INVALID_SOURCE", "UNRESOLVED"].includes(assessment?.support)) { decision.reasons.push("Invalid verification response"); continue; }
     decision.support = assessment.support;
@@ -178,7 +182,7 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
         sources: cited.map(({ finding }) => ({ url: finding.source.url, title: finding.source.title, author: finding.source.author,
           publisher: finding.source.publisher, publication_date: finding.source.publicationDate, evidence_type: finding.source.evidenceType,
           work_key: finding.source.workKey, rights: finding.rightsDeclaration, locator: finding.passage.locator,
-          excerpt: finding.passage.text.slice(0, 240) })) });
+          excerpt: finding.passage.text.slice(0, 600) })) });
       decision.outcome = saved.created ? "admitted" : "duplicate";
       decision.claimId = saved.claimId;
       decision.reasons.push(saved.created ? "Passed all admission gates and committed atomically" : "Concurrent admission already committed");

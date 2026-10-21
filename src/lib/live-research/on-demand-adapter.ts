@@ -63,7 +63,10 @@ async function robotsAllowed(rawUrl: string): Promise<boolean> {
 }
 
 export function productionResearchDependencies(): ResearchDependencies {
-  const policy = loadSearchPolicy();
+  // Start policy loading only when a source is inspected. An early provider or
+  // coordination failure must not leave a rejected, unobserved promise behind.
+  let policy: ReturnType<typeof loadSearchPolicy> | undefined;
+  const getPolicy = () => policy ??= loadSearchPolicy();
   const robots = new Map<string, Promise<boolean>>();
   const checkRobots = (url: string) => {
     if (!robots.has(url)) robots.set(url, robotsAllowed(url));
@@ -85,9 +88,9 @@ export function productionResearchDependencies(): ResearchDependencies {
         p_status: status, p_search_calls: calls, p_outcome: outcome, p_cooldown_seconds: cooldownSeconds });
       if (error || data !== true) throw new Error("COORDINATION_FINISH_FAILED");
     },
-    async inspect(url, title) { return await checkRobots(url) ? inspectSearchSource(url, await policy, title) : null; },
+    async inspect(url, title) { return await checkRobots(url) ? inspectSearchSource(url, await getPolicy(), title) : null; },
     robotsAllowed: checkRobots,
-    async read(source, statement, aliases) { return readGroundedExcerpt(source, statement, aliases, await policy); },
+    async read(source, statement, aliases) { return readGroundedExcerpt(source, statement, aliases, await getPolicy()); },
     async existingSourceId(url) {
       const { data, error } = await supabaseAdmin.from("sources").select("id").eq("url", url).eq("source_status", "approved").limit(1).maybeSingle();
       if (error) throw error;

@@ -84,7 +84,7 @@ export function diversifyBroadEvidence(evidence: RetrievedEvidence[], limit = 15
 export function rankApprovedClaims(
   question: string,
   rows: Array<Record<string, unknown>>,
-  options: { personalityAliases?: string[]; termAliases?: TermAliasRecord[]; personalityId?: string; personalityName?: string } = {},
+  options: { personalityAliases?: string[]; termAliases?: TermAliasRecord[]; personalityId?: string; personalityName?: string; requirePassage?: boolean } = {},
 ): RetrievedClaim[] {
   const terms = questionTerms(question, options.personalityAliases, options.termAliases);
   const broad = isBroadProfileQuestion(question, terms);
@@ -92,7 +92,10 @@ export function rankApprovedClaims(
   const ranked = rows
     .filter((row) => {
       const links = (row.claim_sources as Array<Record<string, unknown>> | null) || [];
-      return !links.length || links.some((link) => unwrap<Record<string, unknown>>(link.sources as Record<string, unknown> | null)?.source_status === "approved");
+      return options.requirePassage
+        ? links.some((link) => unwrap<Record<string, unknown>>(link.sources as Record<string, unknown> | null)?.source_status === "approved"
+          && String(link.evidence_excerpt || "").trim().length >= 20)
+        : !links.length || links.some((link) => unwrap<Record<string, unknown>>(link.sources as Record<string, unknown> | null)?.source_status === "approved");
     })
     .map((row) => {
       const field = unwrap(row.parameter_fields as Record<string, unknown> | Array<Record<string, unknown>> | null);
@@ -100,7 +103,7 @@ export function rankApprovedClaims(
       const links = (row.claim_sources as Array<Record<string, unknown>> | null) || [];
       const link = links.find((candidate) => {
         const source = unwrap(candidate.sources as Record<string, unknown> | Array<Record<string, unknown>> | null);
-        return source?.source_status === "approved";
+        return source?.source_status === "approved" && (!options.requirePassage || String(candidate.evidence_excerpt || "").trim().length >= 20);
       }) || links[0];
       const source = unwrap(link?.sources as Record<string, unknown> | Array<Record<string, unknown>> | null);
       const chunkLink = ((row.claim_chunks as Array<Record<string, unknown>> | null) || [])[0];
@@ -353,7 +356,7 @@ export async function retrieveEvidence(
     }))),
   ].filter(isFresh);
   const approvedClaimRows = (claimRetrievalError ? [] : claimsResult.data || []) as Array<Record<string, unknown>>;
-  const claims = rankApprovedClaims(question, approvedClaimRows, { personalityAliases: aliases, termAliases: configuration.termAliases, personalityId, personalityName: configuration.canonicalName });
+  const claims = rankApprovedClaims(question, approvedClaimRows, { personalityAliases: aliases, termAliases: configuration.termAliases, personalityId, personalityName: configuration.canonicalName, requirePassage: policyMode === "strict" });
   const inventory = inventoryResult.data && typeof inventoryResult.data === "object"
     ? inventoryResult.data as Record<string, unknown>
     : {};

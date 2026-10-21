@@ -1,6 +1,6 @@
 import { createHash, createHmac, randomUUID } from "node:crypto";
 import { createClient } from "@supabase/supabase-js";
-import { describe, expect, it } from "vitest";
+import { afterAll, describe, expect, it } from "vitest";
 import { answerQuestion } from "@/lib/corpus/answer";
 import { retrieveEvidence } from "@/lib/corpus/retrieval";
 import { withRequestUsage } from "@/lib/corpus/usage";
@@ -44,6 +44,16 @@ const admission = (text = claimText, url = sourceUrl, publisher = "Example Archi
 });
 
 suite("real local Supabase demand transactions", () => {
+  afterAll(async () => {
+    const claims = await supabaseAdmin.from("claims").select("claim_sources(source_id)").eq("personality_id", personId);
+    if (claims.error) throw claims.error;
+    const sourceIds = [...new Set((claims.data || []).flatMap((claim) => claim.claim_sources.map((link) => link.source_id)))];
+    required(await supabaseAdmin.from("demand_research_needs").delete().eq("personality_id", personId));
+    required(await supabaseAdmin.from("external_research_runs").delete().eq("personality_id", personId));
+    required(await supabaseAdmin.from("personalities").delete().eq("id", personId));
+    required(await supabaseAdmin.from("categories").delete().eq("id", categoryId));
+    if (sourceIds.length) required(await supabaseAdmin.from("sources").delete().in("id", sourceIds));
+  });
   it("admits a mocked original-source finding and reuses the committed claim in Ask", async () => {
     required(await supabaseAdmin.from("categories").insert({ id: categoryId, slug: `local-test-${categoryId}`, name: "Local test" }));
     required(await supabaseAdmin.from("personalities").insert({ id: personId, canonical_name: personName, research_status: "approved" }));
@@ -172,6 +182,11 @@ suite("real local Supabase demand transactions", () => {
     expect(required(await supabaseAdmin.from("claims").select("id").eq("personality_id", personId).eq("claim_text", concurrent.claim_text))).toHaveLength(1);
     const admittedId = (required(await supabaseAdmin.from("claims").select("id").eq("personality_id", personId).eq("claim_text", claimText).single()) as { id: string }).id;
     required(await supabaseAdmin.from("claims").update({ review_status: "needs_review" }).eq("id", admittedId));
+    const admittedRecord = required(await supabaseAdmin.from("demand_verification_decisions").select("claim_hash")
+      .eq("claim_id", admittedId).eq("outcome", "admitted").single()) as { claim_hash: string };
+    expect((await supabaseAdmin.rpc("admit_demand_verified_claim", { p_admission: {
+      ...admission(), claim_hash: admittedRecord.claim_hash,
+    } })).error).not.toBeNull();
     const linked = required(await supabaseAdmin.from("claim_chunks").select("chunk_id").eq("claim_id", admittedId).single()) as { chunk_id: string };
     expect((required(await supabaseAdmin.from("source_chunks").select("is_active").eq("id", linked.chunk_id).single()) as { is_active: boolean }).is_active).toBe(false);
     const after = await retrieveEvidence(question, personId);
@@ -204,7 +219,10 @@ suite("real local Supabase demand transactions", () => {
       const winner = a.status === "reserved" ? a : b;
       expect(winner.reservedMicro).toBe(policy.request_limit_micro);
       await settleZero(winner.reservationId!);
-      const rows = required(await supabaseAdmin.from("demand_budget_reservations").select("status,reserved_micro,actual_micro")) as
+      const todayUtc = new Date();
+      todayUtc.setUTCHours(0, 0, 0, 0);
+      const rows = required(await supabaseAdmin.from("demand_budget_reservations").select("status,reserved_micro,actual_micro")
+        .gte("created_at", todayUtc.toISOString())) as
         Array<{ status: string; reserved_micro: number; actual_micro: number | null }>;
       const spend = rows.reduce((sum, row) => sum + (row.status === "reserved" ? row.reserved_micro : row.actual_micro || 0), 0);
       required(await supabaseAdmin.from("demand_budget_policy").update({ daily_limit_micro: spend + policy.request_limit_micro,
@@ -213,7 +231,11 @@ suite("real local Supabase demand transactions", () => {
       expect(dailyWinner.status).toBe("reserved");
       expect((await reserveResearchBudget(randomUUID(), 1)).status).toBe("daily_limit");
       await settleZero(dailyWinner.reservationId!);
-      const monthlyRows = required(await supabaseAdmin.from("demand_budget_reservations").select("status,reserved_micro,actual_micro")) as
+      const monthUtc = new Date();
+      monthUtc.setUTCDate(1);
+      monthUtc.setUTCHours(0, 0, 0, 0);
+      const monthlyRows = required(await supabaseAdmin.from("demand_budget_reservations").select("status,reserved_micro,actual_micro")
+        .gte("created_at", monthUtc.toISOString())) as
         Array<{ status: string; reserved_micro: number; actual_micro: number | null }>;
       const monthSpend = monthlyRows.reduce((sum, row) => sum + (row.status === "reserved" ? row.reserved_micro : row.actual_micro || 0), 0);
       required(await supabaseAdmin.from("demand_budget_policy").update({ daily_limit_micro: Math.max(policy.daily_limit_micro, monthSpend + 2 * policy.request_limit_micro),
