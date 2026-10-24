@@ -59,10 +59,21 @@ export type ResearchDependencies = {
   now?: () => Date;
 };
 
-function narrowQuery(request: EvidenceGapRequest, question: string): string {
-  // Gap requirements are generic descriptions. Search for the event and entities
-  // in the actual question, with the planner's source-class hint.
+export function narrowQuery(request: EvidenceGapRequest, question: string): string {
+  // Gap requirements are generic descriptions. Preserve the named object in
+  // admission searches; a publisher's license is still checked on its page.
   const plan = planResearchQueries(request.personalityName, question, [], 1)[0];
+  if (process.env.DEMAND_AUTO_ADMISSION_ENABLED === "true" || process.env.DEMAND_VERIFICATION_SHADOW_ENABLED === "true") {
+    const namedTargets = [...question.matchAll(/\b\p{Lu}[\p{L}\p{N}]+(?:\s+\p{Lu}[\p{L}\p{N}]+)+/gu)]
+      .map(([value]) => value).filter((value) => normalizeForMatch(value) !== normalizeForMatch(request.personalityName));
+    const target = namedTargets.at(-1);
+    if (target) {
+      const action = question.replace(new RegExp(request.personalityName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"), "")
+        .replace(target, "").replace(/\b(?:in|what|which|when|year|did|was|were|the|a|an)\b/gi, " ")
+        .replace(/[^\p{L}\p{N} -]/gu, " ").replace(/\s+/g, " ").trim();
+      return `${request.personalityName} "${target}" ${action} open access`.trim().slice(0, 500);
+    }
+  }
   return (plan?.query || `${request.personalityName} ${question}`).slice(0, 500);
 }
 
@@ -139,7 +150,7 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
     // Search snippets are discovery hints only. Rank URLs and titles before the
     // bounded original-document reads, then verify against the fetched pages.
     const ranked = searchResults.slice(0, 20).map((hit, index) => ({ hit, index,
-      priority: sourcePriority(hit.url, `${hit.title} ${hit.snippet || ""}`, question) }))
+      priority: sourcePriority(hit.url, `${hit.title} ${hit.snippet || ""}`, question, "", hit.snippet || "") }))
       .sort((a, b) => b.priority - a.priority || a.index - b.index);
     for (const { hit } of ranked) {
       if (result.usage.sourceFetches >= 4) break;
@@ -190,11 +201,15 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
           publicationDate: excerpt.identity.publicationDate, journal: excerpt.identity.journal, doi: excerpt.identity.doi,
           isbn: excerpt.identity.isbn, complete: excerpt.identity.provenanceComplete },
       });
-      // Once the answer is supported, continue only if admission or its shadow
-      // evaluation is enabled and still needs a retainable source.
+      // A citeable answer can use one passage. Ordinary-fact admission needs
+      // two independent retained works, so keep using the existing read budget
+      // while admission (or its shadow evaluation) is enabled.
+      const retainableFindings = result.findings.filter((item) => item.verificationReady);
+      const independentRetainableWorks = new Set(retainableFindings.map((item) => item.source.workKey)).size >= 2
+        && new Set(retainableFindings.map((item) => item.source.publisherDomain)).size >= 2;
       if (!remainingGaps(request.gaps, [...existing, ...result.passages], result.passages).length
         && (process.env.DEMAND_AUTO_ADMISSION_ENABLED !== "true" && process.env.DEMAND_VERIFICATION_SHADOW_ENABLED !== "true"
-          || result.findings.some((item) => item.verificationReady))) break;
+          || independentRetainableWorks)) break;
     }
     result.unresolvedGaps = remainingGaps(request.gaps, [...existing, ...result.passages], result.passages);
     if (result.findings.some((finding) => finding.relation === "potential_contradiction")) {

@@ -8,12 +8,13 @@ import { normalizeForMatch } from "@/lib/corpus/text";
 import { readableEvidence } from "@/lib/corpus/readable-evidence";
 import { classifySourceAuthority } from "@/lib/sources/authority";
 import { extractPdf } from "@/lib/corpus/source-extract";
-import { assessPassageSupport, authenticateSource, evidenceTypeFor, type PassageSupport, type SourceIdentity } from "./research-quality";
+import { hasExplicitRetentionRights } from "./retention-rights";
+import { assessPassageSupport, authenticateSource, evidenceTypeFor, isBroadIdeaQuestion, type PassageSupport, type SourceIdentity } from "./research-quality";
 
 const lowQualityHost = /(?:^|\.)(?:quora\.com|reddit\.com|pinterest\.[a-z.]+|blogspot\.[a-z.]+|medium\.com|wikipedia\.org|facebook\.com|instagram\.com|tiktok\.com|brainyquote\.com|goodreads\.com)$/i;
 const institutionalHost = /(?:^|\.)(?:edu|gov|ac\.[a-z]{2}|edu\.[a-z]{2}|gov\.[a-z]{2}|jstor\.org|cambridge\.org|oup\.com|oxfordacademic\.com|springer\.com|nature\.com|muse\.jhu\.edu|wiley\.com|tandfonline\.com|sagepub\.com|nobelprize\.org|ignca\.gov\.in|vedicheritage\.gov\.in|gretil\.sub\.uni-goettingen\.de|archive\.org|britannica\.com)$/i;
 
-export function sourcePriority(rawUrl: string, title: string, question: string, category = ""): number {
+export function sourcePriority(rawUrl: string, title: string, question: string, category = "", snippet = ""): number {
   let host: string;
   try { host = new URL(rawUrl).hostname; } catch { return -100; }
   if (lowQualityHost.test(host)) return -100;
@@ -25,7 +26,12 @@ export function sourcePriority(rawUrl: string, title: string, question: string, 
   const level = category === "trusted" ? "authoritative" : classifySourceAuthority({ url: rawUrl, sourceType: category, live: true }).level;
   const tier = level === "authoritative" ? 3 : level === "credible_secondary" || institutionalHost.test(host) || /scholarly|academic|primary|institutional/i.test(category) ? 2 : 0;
   if (terms.length >= 2 && relevance === 0) return tier ? -1 : -10;
-  return relevance * 20 + tier * 2;
+  // A result snippet may hint at an article's license for ordering only. The
+  // original page must still declare rights before any passage is retained.
+  const licenseUrl = snippet.match(/https:\/\/creativecommons\.org\/(?:licenses|publicdomain)\/[^\s)]+/i)?.[0]?.replace(/[.,;]+$/, "");
+  const articleRightsHint = /\b(?:this article|this chapter|this work|article license|chapter license)\b.{0,160}creativecommons\.org\//i.test(snippet)
+    && hasExplicitRetentionRights(licenseUrl);
+  return relevance * 20 + tier * 2 + (articleRightsHint ? 4 : 0);
 }
 
 export type CredibleSource = { url: string; domain: string; category: string; title: string };
@@ -154,9 +160,10 @@ export async function readGroundedExcerpt(source: CredibleSource, statement: str
   if (!matches.length) return null;
   const best = matches[0];
   const academic = /cambridge|oxford|springer|jstor|nature/i.test(source.domain);
-  if (academic && !names.some((name) => title.includes(name)) && best.overlap < 4) return null;
+  const broadIdeaSupport = isBroadIdeaQuestion(statement) && best.support.level === "STRONG";
+  if (academic && !names.some((name) => title.includes(name)) && best.overlap < 4 && !broadIdeaSupport) return null;
   // Naming the person is relevance; sharing the statement's own terms is support. Both are required.
-  if (best.overlap < Math.min(2, terms.length) || !["EXACT", "STRONG"].includes(best.support.level)) return null;
+  if ((!broadIdeaSupport && best.overlap < Math.min(2, terms.length)) || !["EXACT", "STRONG"].includes(best.support.level)) return null;
   const excerpt = readableEvidence(best.context.slice(0, 600));
   if (!excerpt) return null;
   const identity = loaded.identity.title ? loaded.identity : authenticateSource({ url: loaded.finalUrl, title: loaded.title || source.title, category: source.category });

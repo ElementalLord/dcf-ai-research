@@ -108,4 +108,12 @@ describe("live source admission", () => {
     expect(await sourceAccess("https://www.britannica.com/science/Raman-effect")).toBe("blocked");
     expect(state.preview.mock.calls.filter(([url]) => String(url).includes("britannica")).length).toBe(1);
   });
+
+  it("respects a page rate limit without retrying or extracting evidence", async () => {
+    const url = "https://records.example.edu/rate-limited-prism";
+    state.preview.mockResolvedValueOnce({ status: 429, finalUrl: url, contentType: "text/html", html: "" });
+    expect(await readGroundedExcerpt(source(url), "When did Anika Sen discover the prism effect?", ["Anika Sen"], policy)).toBeNull();
+    expect(await sourceAccess(url)).toBe("blocked");
+    expect(state.preview.mock.calls.filter(([candidate]) => candidate === url)).toHaveLength(1);
+  });
 });

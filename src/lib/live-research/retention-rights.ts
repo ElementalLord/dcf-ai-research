@@ -1,5 +1,6 @@
 /** Matches only rights declarations accepted by the demand admission RPC. */
 export function hasExplicitRetentionRights(value: string | null | undefined): boolean {
-  if (!value || /\b(?:not|no|without)\s+(?:in\s+the\s+)?public domain\b/i.test(value)) return false;
-  return /\bpublic domain\b|\bcc0\b|creativecommons\.org\/(?:licenses|publicdomain)\//i.test(value);
+  if (!value || /\b(?:not|no|without)\b.{0,50}(?:\bpublic domain\b|\bcc0\b|creativecommons\.org)/i.test(value)) return false;
+  if (/\bpublic domain\b|\bcc0(?:\s+1\.0)?\b/i.test(value)) return true;
+  return /(?:^|\s)https:\/\/creativecommons\.org\/(?:licenses\/(?:by|by-sa|by-nc|by-nc-sa|by-nd|by-nc-nd)\/[1-4]\.0|publicdomain\/(?:zero|mark)\/1\.0)\/?(?:\s|$)/i.test(value);
 }

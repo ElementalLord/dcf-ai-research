@@ -1,0 +1,16 @@
+{
+  "question": "In what year did Jagadish Chandra Bose establish the Bose Institute?",
+  "previousQuery": "Jagadish Chandra Bose year establish institute archive museum university",
+  "observedRankedCandidates": [
+    { "url": "https://dst.gov.in/autonomousstinstitutions/bose-institute-kolkata", "selectionOrder": 1, "decision": "unverified", "access": "robots 302" },
+    { "url": "https://ethw.org/Jagadish_Chandra_Bose", "selectionOrder": 2, "decision": "irrelevant", "access": "HTTP 200", "datedFoundingPassage": true, "articleRights": false },
+    { "url": "https://apirs.plants.ifas.ufl.edu/site/assets/files/372231/372231.pdf", "selectionOrder": 3, "decision": "irrelevant", "access": "HTTP 200", "datedFoundingPassage": true, "articleRights": false },
+    { "url": "https://www.indiascienceandtechnology.gov.in/organisations/ministry-and-departments/department-science-technology-dst-govt-india/bose-institute-kolkata", "selectionOrder": 4, "decision": "irrelevant", "access": "HTTP 200", "datedFoundingPassage": true, "articleRights": false },
+    { "url": "http://www.jcbose.ac.in/museum", "selectionOrder": 5, "decision": "unverified", "access": "no approved HTTPS source" },
+    { "url": "https://frontline.thehindu.com/other/advertorial/article30225627.ece", "selectionOrder": 6, "decision": "unverified", "access": "HTTP 200", "datedFoundingPassage": true, "articleRights": false }
+  ],
+  "licensedCandidatesAbsentFromBraveTop20": [
+    { "url": "https://journals.sagepub.com/doi/full/10.1177/0073275320930908", "publisher": "SAGE", "credit": "Mahendra Shahare and Lissa L. Roberts, History of Science (2020)", "articleLicense": "https://creativecommons.org/licenses/by-nc/4.0/", "directAccessProbe": "HTTP 403", "factSummary": "Bose established the research institute in Calcutta in 1917.", "discoverySummary": "This article states Bose established the institute in 1917. This article is licensed under https://creativecommons.org/licenses/by-nc/4.0/." },
+    { "url": "https://www.openbookpublishers.com/books/10.11647/obp.0509/chapters/10.11647/obp.0509.01", "publisher": "Open Book Publishers", "credit": "Patrick Armstrong, Aldous Huxley’s Art of Microscopic Seeing (2026)", "articleLicense": "https://creativecommons.org/licenses/by-nc/4.0/", "directAccessProbe": "HTTP 429", "factSummary": "Jagadish Chandra Bose founded the Bose Institute in 1917.", "discoverySummary": "This chapter states Bose founded the institute in 1917. This chapter is licensed under https://creativecommons.org/licenses/by-nc/4.0/." }
+  ]
+}

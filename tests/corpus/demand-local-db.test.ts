@@ -233,7 +233,7 @@ suite("real local Supabase demand transactions", () => {
     const previous = [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
       process.env.DEMAND_VERIFICATION_SHADOW_ENABLED];
     process.env.DEMAND_RESEARCH_ENABLED = "true";
-    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "false";
+    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
     process.env.DEMAND_VERIFICATION_SHADOW_ENABLED = "false";
     try {
       const result = await answerQuestion(missingQuestion, personId);
@@ -251,6 +251,94 @@ suite("real local Supabase demand transactions", () => {
       expect(required(await supabaseAdmin.from("claims").select("id")
         .eq("personality_id", personId).eq("claim_text", missingClaim))).toHaveLength(0);
     } finally {
+      [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
+        process.env.DEMAND_VERIFICATION_SHADOW_ENABLED] = previous;
+      fixtureProviders.research = null;
+      fixtureProviders.verification = null;
+    }
+  }, 30_000);
+
+  it("abstains when a bounded fixture search returns no original evidence", async () => {
+    fixtureProviders.research = {
+      provider: { name: "fixture", isConfigured: () => true, async search() { return []; } },
+      async claimNeed(needId: string, personalityId: string, owner: string) {
+        return required(await supabaseAdmin.rpc("claim_demand_research_need", { p_need_id: needId, p_personality_id: personalityId, p_owner: owner }));
+      },
+      async finishNeed(needId: string, owner: string, status: string, calls: number, outcome: object, cooldown: number) {
+        required(await supabaseAdmin.rpc("finish_demand_research_need", { p_need_id: needId, p_owner: owner,
+          p_status: status, p_search_calls: calls, p_outcome: outcome, p_cooldown_seconds: cooldown }));
+      },
+      reserveBudget: (requestId: string) => reserveResearchBudget(requestId, 8),
+      async inspect() { throw new Error("No search result may be inspected"); },
+      async robotsAllowed() { throw new Error("No search result may be read"); },
+      async read() { throw new Error("No search result may be read"); },
+      async existingSourceId() { return null; },
+    };
+    const previous = [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
+      process.env.DEMAND_VERIFICATION_SHADOW_ENABLED];
+    process.env.DEMAND_RESEARCH_ENABLED = "true";
+    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
+    process.env.DEMAND_VERIFICATION_SHADOW_ENABLED = "false";
+    try {
+      const answer = await answerQuestion(`When was ${personName} awarded the Eclipse Medal?`, personId);
+      expect(answer.status).toBe("abstained");
+      expect(answer.citations).toHaveLength(0);
+      expect(answer.debug.demandAdmittedClaims || 0).toBe(0);
+    } finally {
+      [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
+        process.env.DEMAND_VERIFICATION_SHADOW_ENABLED] = previous;
+      fixtureProviders.research = null;
+    }
+  }, 30_000);
+
+  it("keeps a cited Ask answer when the admission transaction is paused", async () => {
+    const pausedQuestion = `When was ${personName} awarded the Zenith Medal?`;
+    const pausedClaim = `${personName} was awarded the Zenith Medal in 1942.`;
+    const pausedUrl = `https://archive.example.org/zenith-register/${personId}`;
+    const pausedExcerpt = `The award register records that ${personName} was awarded the Zenith Medal in 1942.`;
+    fixtureProviders.research = {
+      provider: { name: "fixture", isConfigured: () => true, async search() {
+        return [{ title: "Zenith Medal award register", url: pausedUrl, sourceProvider: "fixture" }];
+      } },
+      async claimNeed(needId: string, personalityId: string, owner: string) {
+        return required(await supabaseAdmin.rpc("claim_demand_research_need", { p_need_id: needId, p_personality_id: personalityId, p_owner: owner }));
+      },
+      async finishNeed(needId: string, owner: string, status: string, calls: number, outcome: object, cooldown: number) {
+        required(await supabaseAdmin.rpc("finish_demand_research_need", { p_need_id: needId, p_owner: owner,
+          p_status: status, p_search_calls: calls, p_outcome: outcome, p_cooldown_seconds: cooldown }));
+      },
+      reserveBudget: (requestId: string) => reserveResearchBudget(requestId, 8),
+      async inspect(url: string) { return { url, domain: new URL(url).hostname, category: "institutional", title: "Zenith Medal award register" }; },
+      async robotsAllowed() { return true; },
+      async read() { return { text: pausedExcerpt, title: "Zenith Medal award register", url: pausedUrl,
+        locator: "Award register, 1942", supportLevel: "EXACT", supportReason: "Direct award date",
+        identity: authenticateSource({ url: pausedUrl, title: "Zenith Medal award register", author: "Registrar",
+          publisher: "Example Archive", publicationDate: "1942", category: "institutional" }), rightsDeclaration: rights }; },
+      async existingSourceId() { return null; },
+    };
+    fixtureProviders.verification = {
+      async extract() { return [{ proposition: pausedClaim, type: "HISTORICAL_FACT", evidenceIndexes: [0], context: null,
+        period: "1942", qualification: null, category: "official_record_fact" }]; },
+      async assess() { return { support: "SUPPORTED", supportingIndexes: [0], equivalentExisting: false,
+        conflictsExisting: false, materialContradiction: false, exactEntities: true, exactDatesAndUnits: true,
+        qualifiersPreserved: true, officialIssuer: true, independentDocuments: true, reason: "Issuing register" }; },
+    };
+    const previous = [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
+      process.env.DEMAND_VERIFICATION_SHADOW_ENABLED];
+    process.env.DEMAND_RESEARCH_ENABLED = "true";
+    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
+    process.env.DEMAND_VERIFICATION_SHADOW_ENABLED = "false";
+    required(await supabaseAdmin.from("demand_budget_policy").update({ auto_admission_paused: true }).eq("id", true));
+    try {
+      const answer = await answerQuestion(pausedQuestion, personId);
+      expect(answer.status).toBe("research_answer");
+      expect(answer.answer).toContain("1942");
+      expect(answer.citations.some((citation) => citation.kind === "live_web_source" && citation.url === pausedUrl)).toBe(true);
+      expect(answer.debug.demandAdmittedClaims || 0).toBe(0);
+      expect(required(await supabaseAdmin.from("claims").select("id")
+        .eq("personality_id", personId).eq("claim_text", pausedClaim))).toHaveLength(0);
+    } finally {
+      required(await supabaseAdmin.from("demand_budget_policy").update({ auto_admission_paused: false }).eq("id", true));
       [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
         process.env.DEMAND_VERIFICATION_SHADOW_ENABLED] = previous;
       fixtureProviders.research = null;
@@ -306,6 +394,12 @@ suite("real local Supabase demand transactions", () => {
     restricted.sources[0].rights = "all rights reserved";
     expect((await supabaseAdmin.rpc("admit_demand_verified_claim", { p_admission: restricted })).error).not.toBeNull();
     expect(required(await supabaseAdmin.from("claims").select("id").eq("personality_id", personId).eq("claim_text", restricted.claim_text))).toHaveLength(0);
+    for (const invalidRights of ["not in the public domain", "not CC0 1.0", "https://creativecommons.org/licenses/unknown/4.0/"]) {
+      const invalid = admission(`${personName} was awarded the Aurora Medal in 1935.`, `https://archive.example.org/rights/${randomUUID()}`);
+      invalid.sources[0].rights = invalidRights;
+      expect((await supabaseAdmin.rpc("admit_demand_verified_claim", { p_admission: invalid })).error).not.toBeNull();
+      expect(required(await supabaseAdmin.from("claims").select("id").eq("personality_id", personId).eq("claim_text", invalid.claim_text))).toHaveLength(0);
+    }
     const paused = admission(`${personName} was awarded the Aurora Medal in 1934.`, `https://archive.example.org/paused/${randomUUID()}`);
     required(await supabaseAdmin.from("demand_budget_policy").update({ auto_admission_paused: true }).eq("id", true));
     try {

@@ -21,6 +21,9 @@ export type SourceIdentity = {
 };
 
 const STOP = new Set(["what", "which", "when", "where", "why", "how", "does", "did", "was", "were", "are", "the", "and", "for", "with", "from", "about", "into", "that", "this", "their", "work", "role", "known", "important", "significance"]);
+const IDEA_QUESTION = /\b(?:ideas|beliefs|principles|values|visions?)\b.{0,100}\b(?:associated with|known for|did|does|hold|have|advocate|promote)\b/i;
+const IDEA_EVIDENCE = /\b(?:idea|vision|belief|philosophy|principle|value|advocat|emphasiz|teach|promot|argu|aspir|thought|dream)\w*/i;
+export const isBroadIdeaQuestion = (question: string) => IDEA_QUESTION.test(question);
 const PRIORITY = /\b(?:first|earliest|priority|invented|discovered before|father of|pioneer(?:ed)?)\b/i;
 const CONTEXT = /\b(?:at the time|context|period|contemporar|before|after|impact|significance|compare|versus|vs\.?|differ)\b/i;
 const TEXTUAL = /\b(?:said|wrote|speech|letter|edicts?|inscriptions?|hymn|verse|chapter|mandala|kanda|teaching|primary source|original)\b/i;
@@ -38,6 +41,7 @@ function focusTerms(question: string, personality: string): string[] {
 /** A small, question-directed plan. It describes missing evidence classes instead of issuing a generic name search. */
 export function planResearchQueries(personality: string, question: string, gaps: string[] = [], max = 2): ResearchQuery[] {
   const focus = focusTerms(question, personality);
+  if (isBroadIdeaQuestion(question)) focus.push("vision", "philosophy", "teachings");
   const gap = gaps.map(clean).filter((item) => item && !/^(?:evidence|direct evidence|general evidence)$/i.test(item)).slice(0, 2);
   const topic = [...new Set([...gap.flatMap((item) => item.split(" ")), ...focus])].slice(0, 10).join(" ") || "documented work";
   const plans: Array<{ intent: QueryIntent; suffix: string; reason: string }> = [];
@@ -112,6 +116,8 @@ export function assessPassageSupport(text: string, questionOrStatement: string, 
     level: hits ? "PARTIAL" : "RELATED", overlap,
     reason: "The passage does not establish the named target, event relationship, or requested date.",
   };
+  if (isBroadIdeaQuestion(questionOrStatement) && IDEA_EVIDENCE.test(text) && text.trim().length >= 70)
+    return { level: "STRONG", overlap, reason: "The passage identifies the person and states a documented idea or belief." };
   if (hits >= 3 && overlap >= 0.7) return { level: "EXACT", overlap, reason: "The passage identifies the person and directly covers nearly all material terms." };
   if (hits >= 2 && overlap >= 0.4) return { level: "STRONG", overlap, reason: "The passage identifies the person and directly covers the central topic." };
   if (hits >= 1) return { level: "PARTIAL", overlap, reason: "The passage supports only part of the requested point." };

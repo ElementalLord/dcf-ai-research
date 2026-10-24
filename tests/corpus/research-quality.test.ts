@@ -21,6 +21,12 @@ describe("research query planning", () => {
     expect(planResearchQueries("Verghese Kurien", "When was Operation Flood launched?", [])[0].intent).toBe("institutional");
   });
 
+  it("searches documented visions for a broad ideas question", () => {
+    const plan = planResearchQueries("A. P. J. Abdul Kalam", "What ideas are associated with A. P. J. Abdul Kalam?");
+    expect(plan[0].query).toMatch(/vision/);
+    expect(plan[0].query).toMatch(/philosophy/);
+  });
+
   it.each([
     ["Vishvamitra", "What is securely supported by the Rigveda versus later Ramayana tradition?"],
     ["Adi Shankaracharya", "Which works are securely attributed to Shankara and which are disputed?"],
@@ -77,6 +83,14 @@ describe("entity and passage admission", () => {
   it("does not promote a title-only mention or a merely related passage", () => {
     expect(assessPassageSupport("Jagadish Chandra Bose appears in the conference index.", "What apparatus and wavelength did Bose use?", "Jagadish Chandra Bose", ["Bose"]).level).toBe("RELATED");
     expect(assessPassageSupport("Jagadish Chandra Bose used millimetre-wave apparatus at short wavelengths in his experiments.", "What apparatus and wavelength did Bose use?", "Jagadish Chandra Bose", ["Bose"]).level).toMatch(/EXACT|STRONG/);
+  });
+
+  it("accepts a substantive vision passage for an ideas question while rejecting a name-only mention", () => {
+    const question = "What ideas are associated with A. P. J. Abdul Kalam?";
+    expect(assessPassageSupport("A. P. J. Abdul Kalam is listed in the presidential archive index.", question,
+      "A. P. J. Abdul Kalam").level).toBe("RELATED");
+    expect(assessPassageSupport("A. P. J. Abdul Kalam described a vision of a developed India built through education, scientific work, and opportunities for young people.",
+      question, "A. P. J. Abdul Kalam").level).toBe("STRONG");
   });
 
   it("carries passage-level provenance into the rendered citation", () => {

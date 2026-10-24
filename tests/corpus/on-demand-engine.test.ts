@@ -1,8 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { executeDemandResearch, type FetchedExcerpt, type ResearchDependencies } from "@/lib/live-research/on-demand-engine";
+import { readFileSync } from "node:fs";
+import { executeDemandResearch, narrowQuery, type FetchedExcerpt, type ResearchDependencies } from "@/lib/live-research/on-demand-engine";
 import type { EvidenceGapRequest } from "@/lib/ask/question-resolution";
 import type { RetrievedEvidence } from "@/lib/corpus/types";
 import { authenticateSource } from "@/lib/live-research/research-quality";
+import { sourcePriority } from "@/lib/live-research/search-credibility";
 
 const id = "00000000-0000-4000-8000-000000000001";
 const request: EvidenceGapRequest = {
@@ -32,6 +34,38 @@ function fixture(results = [{ title: "History of the prism effect", url, sourceP
 }
 
 describe("bounded on-demand research", () => {
+  it("replays the Bose discovery failure and preserves the named institution in admission search", () => {
+    const replay = JSON.parse(readFileSync(new URL("../fixtures/bose-source-selection-2026-10-23.json", import.meta.url), "utf8")) as {
+      question: string; previousQuery: string; observedRankedCandidates: Array<{ url: string; selectionOrder: number }>;
+      licensedCandidatesAbsentFromBraveTop20: Array<{ url: string; discoverySummary: string }> };
+    expect(replay.previousQuery).not.toContain('"Bose Institute"');
+    expect(replay.observedRankedCandidates.filter((item) => [2, 3, 4, 6].includes(item.selectionOrder))).toHaveLength(4);
+    expect(replay.observedRankedCandidates.some((item) => replay.licensedCandidatesAbsentFromBraveTop20.some((source) => source.url === item.url))).toBe(false);
+    const prior = process.env.DEMAND_AUTO_ADMISSION_ENABLED;
+    try {
+      process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
+      const query = narrowQuery({ ...request, personalityName: "Jagadish Chandra Bose" }, replay.question);
+      expect(query).toContain('"Bose Institute"');
+      expect(query).toContain("open access");
+      expect(query).not.toContain("archive museum university");
+      process.env.DEMAND_AUTO_ADMISSION_ENABLED = "false";
+      expect(narrowQuery({ ...request, personalityName: "Jagadish Chandra Bose" }, replay.question)).toBe(replay.previousQuery);
+    } finally {
+      if (prior === undefined) delete process.env.DEMAND_AUTO_ADMISSION_ENABLED;
+      else process.env.DEMAND_AUTO_ADMISSION_ENABLED = prior;
+    }
+  });
+
+  it("uses article-specific license snippets only as a discovery ordering hint", () => {
+    const replay = JSON.parse(readFileSync(new URL("../fixtures/bose-source-selection-2026-10-23.json", import.meta.url), "utf8")) as {
+      question: string; licensedCandidatesAbsentFromBraveTop20: Array<{ url: string; discoverySummary: string }> };
+    const article = replay.licensedCandidatesAbsentFromBraveTop20[0];
+    const plain = sourcePriority(article.url, article.discoverySummary, replay.question);
+    const hinted = sourcePriority(article.url, article.discoverySummary, replay.question, "", article.discoverySummary);
+    expect(hinted).toBe(plain + 4);
+    expect(sourcePriority(article.url, article.discoverySummary, replay.question, "", "Photo licensed under https://creativecommons.org/licenses/by-nc/4.0/"))
+      .toBe(plain);
+  });
   it("does not search a need with no gaps", async () => {
     const { deps, calls } = fixture();
     const result = await executeDemandResearch({ ...request, gaps: [] }, "When was the prism effect discovered?", [], ["Anika Sen"], deps);
@@ -144,6 +178,31 @@ describe("bounded on-demand research", () => {
     expect(result.findings.map((finding) => finding.retention)).toEqual(["transient_only", "license_candidate"]);
     expect(result.findings[1].verificationReady).toBe(true);
     expect(result.sufficientForVerification).toBe(true);
+    } finally {
+      if (previous === undefined) delete process.env.DEMAND_AUTO_ADMISSION_ENABLED;
+      else process.env.DEMAND_AUTO_ADMISSION_ENABLED = previous;
+    }
+  });
+
+  it("keeps reading for an independent licensed work after one retainable passage", async () => {
+    const previous = process.env.DEMAND_AUTO_ADMISSION_ENABLED;
+    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
+    try {
+      const secondUrl = "https://records.example.edu/prism-date";
+      const thirdUrl = "https://press.example.org/prism-history";
+      const { deps } = fixture([
+        { title: "Anika Sen prism effect date at university", url, sourceProvider: "mock" },
+        { title: "Anika Sen prism chronology in records", url: secondUrl, sourceProvider: "mock" },
+        { title: "Anika Sen prism history in press", url: thirdUrl, sourceProvider: "mock" },
+      ]);
+      deps.inspect = async (candidate, title) => ({ url: candidate, domain: new URL(candidate).hostname, category: "scholarly", title });
+      deps.read = async (source) => excerpt({ url: source.url,
+        identity: authenticateSource({ url: source.url, title: `Independent work at ${source.domain}`,
+          author: "Historian", publisher: source.domain, publicationDate: "2001", category: "scholarly" }) });
+      const result = await executeDemandResearch(request, "When did Anika Sen discover the prism effect?", [], ["Anika Sen"], deps);
+      expect(result.usage.sourceFetches).toBe(2);
+      expect(result.findings).toHaveLength(2);
+      expect(new Set(result.findings.map((finding) => finding.source.publisherDomain)).size).toBe(2);
     } finally {
       if (previous === undefined) delete process.env.DEMAND_AUTO_ADMISSION_ENABLED;
       else process.env.DEMAND_AUTO_ADMISSION_ENABLED = previous;
