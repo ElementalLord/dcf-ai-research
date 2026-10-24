@@ -1,6 +1,6 @@
 import { createHash, createHmac, randomUUID } from "node:crypto";
 import { createClient } from "@supabase/supabase-js";
-import { afterAll, describe, expect, it } from "vitest";
+import { afterAll, describe, expect, it, vi } from "vitest";
 import { answerQuestion } from "@/lib/corpus/answer";
 import { retrieveEvidence } from "@/lib/corpus/retrieval";
 import { withRequestUsage } from "@/lib/corpus/usage";
@@ -10,6 +10,13 @@ import { authenticateSource } from "@/lib/live-research/research-quality";
 import { productionAdmissionStore, verifyDemandKnowledge } from "@/lib/live-research/knowledge-verification";
 import { reserveResearchBudget, settleResearchBudget } from "@/lib/live-research/research-budget";
 import { supabaseAdmin } from "@/lib/supabase-admin";
+
+const fixtureProviders = vi.hoisted(() => ({ research: null as unknown, verification: null as unknown }));
+vi.mock("@/lib/live-research/on-demand-adapter", () => ({ productionResearchDependencies: () => fixtureProviders.research }));
+vi.mock("@/lib/live-research/knowledge-verification", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@/lib/live-research/knowledge-verification")>();
+  return { ...actual, productionVerificationProvider: () => fixtureProviders.verification };
+});
 
 const enabled = process.env.DCF_LOCAL_DB_VALIDATION === "true";
 if (enabled && !/^http:\/\/(?:127\.0\.0\.1|localhost):\d+/.test(process.env.NEXT_PUBLIC_SUPABASE_URL || ""))
@@ -99,6 +106,10 @@ suite("real local Supabase demand transactions", () => {
       const verified = await verifyDemandKnowledge(resolution.researchRequest!, research,
         { provider, store: productionAdmissionStore(), enabled: true });
       expect(verified.decisions[0], JSON.stringify(verified.decisions[0])).toMatchObject({ outcome: "admitted" });
+      const repeated = await verifyDemandKnowledge(resolution.researchRequest!, research,
+        { provider, store: productionAdmissionStore(), enabled: true });
+      expect(repeated.decisions[0]).toMatchObject({ outcome: "duplicate", claimId: verified.decisions[0].claimId });
+      expect(repeated.usage.verificationCalls).toBe(0);
       expect(await settleResearchBudget(usage)).toBe(10_000);
     });
     expect(searches).toBe(1);
@@ -110,6 +121,17 @@ suite("real local Supabase demand transactions", () => {
     expect(claims[0].claim_sources).toHaveLength(1);
     expect(claims[0].claim_chunks).toHaveLength(1);
     expect(claims[0].claim_epistemics).toMatchObject({ contract_status: "SUPPORTED" });
+    // Resources uses these linked rows to label an admitted source and an
+    // answer-eligible claim. Exercise its read shape against the real database.
+    const resource = required(await supabaseAdmin.from("claims")
+      .select("id,review_status,approval_origin,claim_sources(evidence_excerpt,page_or_section,sources(id,title,url,source_status,approval_origin))")
+      .eq("personality_id", personId).eq("claim_text", claimText).single()) as {
+        review_status: string; approval_origin: string; claim_sources: Array<{ evidence_excerpt: string;
+          page_or_section: string; sources: { title: string; url: string; source_status: string; approval_origin: string } }> };
+    expect(resource.review_status).toBe("approved");
+    expect(resource.approval_origin).toBe("automated_evidence_verification");
+    expect(resource.claim_sources[0]).toMatchObject({ evidence_excerpt: excerpt, page_or_section: "Award register, 1928",
+      sources: { title: sourceTitle, url: sourceUrl, source_status: "approved" } });
     const second = await retrieveEvidence(secondQuestion, personId);
     const reused = resolveQuestion({ question: secondQuestion, personalityId: personId,
       personalityName: personName, personalityAliases: second.personalityAliases, termAliases: second.termAliases,
@@ -124,11 +146,123 @@ suite("real local Supabase demand transactions", () => {
     expect(searches).toBe(1);
   }, 30_000);
 
+  it("runs Ask through fixture search, extraction, verification, admission and a cited local answer", async () => {
+    const liveQuestion = `When was ${personName} awarded the Comet Medal?`;
+    const liveClaim = `${personName} was awarded the Comet Medal in 1938.`;
+    const liveUrl = `https://archive.example.org/comet-register/${personId}`;
+    const liveExcerpt = `The award register records that ${personName} was awarded the Comet Medal in 1938.`;
+    const liveSource = authenticateSource({ url: liveUrl, title: "Comet Medal award register", author: "Registrar",
+      publisher: "Example Archive", publicationDate: "1938", category: "institutional" });
+    let searches = 0;
+    fixtureProviders.research = {
+      provider: { name: "fixture", isConfigured: () => true, async search() {
+        searches++; return [{ title: "Comet Medal award register", url: liveUrl, sourceProvider: "fixture" }];
+      } },
+      async claimNeed(needId: string, personalityId: string, owner: string) {
+        return required(await supabaseAdmin.rpc("claim_demand_research_need", { p_need_id: needId, p_personality_id: personalityId, p_owner: owner }));
+      },
+      async finishNeed(needId: string, owner: string, status: string, calls: number, outcome: object, cooldown: number) {
+        required(await supabaseAdmin.rpc("finish_demand_research_need", { p_need_id: needId, p_owner: owner,
+          p_status: status, p_search_calls: calls, p_outcome: outcome, p_cooldown_seconds: cooldown }));
+      },
+      reserveBudget: (requestId: string) => reserveResearchBudget(requestId, 8),
+      async inspect(url: string) { return { url, domain: new URL(url).hostname, category: "institutional", title: "Comet Medal award register" }; },
+      async robotsAllowed() { return true; },
+      async read() { return { text: liveExcerpt, title: "Comet Medal award register", url: liveUrl, locator: "Award register, 1938",
+        supportLevel: "EXACT", supportReason: "Direct date and person", identity: liveSource, rightsDeclaration: rights }; },
+      async existingSourceId() { return null; },
+    };
+    fixtureProviders.verification = {
+      async extract() { return [{ proposition: liveClaim, type: "HISTORICAL_FACT", evidenceIndexes: [0], context: null,
+        period: "1938", qualification: null, category: "official_record_fact" }]; },
+      async assess() { return { support: "SUPPORTED", supportingIndexes: [0], equivalentExisting: false,
+        conflictsExisting: false, materialContradiction: false, exactEntities: true, exactDatesAndUnits: true,
+        qualifiersPreserved: true, officialIssuer: true, independentDocuments: true, reason: "Issuing register" }; },
+    };
+    const previous = [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
+      process.env.DEMAND_VERIFICATION_SHADOW_ENABLED];
+    process.env.DEMAND_RESEARCH_ENABLED = "true";
+    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
+    process.env.DEMAND_VERIFICATION_SHADOW_ENABLED = "false";
+    try {
+      const first = await answerQuestion(liveQuestion, personId);
+      expect(first.debug.demandAdmittedClaims).toBe(1);
+      expect(first.status).not.toBe("abstained");
+      expect(first.citations.some((citation) => citation.claimId && citation.url === liveUrl)).toBe(true);
+      const second = await answerQuestion(liveQuestion, personId);
+      expect(second.debug.webSearchCalls).toBe(0);
+      expect(second.citations.some((citation) => citation.claimId && citation.url === liveUrl)).toBe(true);
+      expect(searches).toBe(1);
+    } finally {
+      [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
+        process.env.DEMAND_VERIFICATION_SHADOW_ENABLED] = previous;
+      fixtureProviders.research = null;
+      fixtureProviders.verification = null;
+    }
+  }, 30_000);
+
+  it("answers from an unlicensed original passage without admitting or caching it", async () => {
+    const missingQuestion = `When was ${personName} awarded the Orion Medal?`;
+    const missingClaim = `${personName} was awarded the Orion Medal in 1941.`;
+    const missingUrl = `https://archive.example.org/orion-register/${personId}`;
+    const missingExcerpt = `The award register records that ${personName} was awarded the Orion Medal in 1941.`;
+    fixtureProviders.research = {
+      provider: { name: "fixture", isConfigured: () => true, async search() {
+        return [{ title: "Orion Medal award register", url: missingUrl, sourceProvider: "fixture" }];
+      } },
+      async claimNeed(needId: string, personalityId: string, owner: string) {
+        return required(await supabaseAdmin.rpc("claim_demand_research_need", { p_need_id: needId, p_personality_id: personalityId, p_owner: owner }));
+      },
+      async finishNeed(needId: string, owner: string, status: string, calls: number, outcome: object, cooldown: number) {
+        required(await supabaseAdmin.rpc("finish_demand_research_need", { p_need_id: needId, p_owner: owner,
+          p_status: status, p_search_calls: calls, p_outcome: outcome, p_cooldown_seconds: cooldown }));
+      },
+      reserveBudget: (requestId: string) => reserveResearchBudget(requestId, 8),
+      async inspect(url: string) { return { url, domain: new URL(url).hostname, category: "institutional", title: "Orion Medal award register" }; },
+      async robotsAllowed() { return true; },
+      async read() { return { text: missingExcerpt, title: "Orion Medal award register", url: missingUrl,
+        locator: "Award register, 1941", supportLevel: "EXACT", supportReason: "Direct award date",
+        identity: authenticateSource({ url: missingUrl, title: "Orion Medal award register",
+          publisher: "Example Archive", category: "institutional" }), rightsDeclaration: null }; },
+      async existingSourceId() { return null; },
+    };
+    fixtureProviders.verification = {
+      async extract() { throw new Error("Research-only answers must not enter permanent verification"); },
+      async assess() { throw new Error("Research-only answers must not enter permanent verification"); },
+    };
+    const previous = [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
+      process.env.DEMAND_VERIFICATION_SHADOW_ENABLED];
+    process.env.DEMAND_RESEARCH_ENABLED = "true";
+    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "false";
+    process.env.DEMAND_VERIFICATION_SHADOW_ENABLED = "false";
+    try {
+      const result = await answerQuestion(missingQuestion, personId);
+      expect(result.status).toBe("research_answer");
+      expect(result.citations).toHaveLength(1);
+      expect(result.citations[0]).toMatchObject({ kind: "live_web_source", url: missingUrl, excerpt: missingExcerpt });
+      expect(result.answer).toContain("1941");
+      expect(result.answer).toContain("[S1]");
+      expect(result.debug.demandAdmittedClaims || 0).toBe(0);
+      expect(result.debug.answerCacheHit).toBe(false);
+      expect(result.debug.demandVerificationModelCalls || 0).toBe(0);
+      const cached = required(await supabaseAdmin.from("answer_cache").select("id")
+        .eq("id", result.debug.answerCacheKey!).limit(1)) as unknown[];
+      expect(cached).toHaveLength(0);
+      expect(required(await supabaseAdmin.from("claims").select("id")
+        .eq("personality_id", personId).eq("claim_text", missingClaim))).toHaveLength(0);
+    } finally {
+      [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
+        process.env.DEMAND_VERIFICATION_SHADOW_ENABLED] = previous;
+      fixtureProviders.research = null;
+      fixtureProviders.verification = null;
+    }
+  }, 30_000);
+
   it("keeps unsupported, contradictory, rights-restricted and provider-failed findings out of verified claims", async () => {
-    const candidate = `${personName} was awarded the Comet Medal in 1941.`;
+    const candidate = `${personName} was awarded the Orion Medal in 1941.`;
     const finding = { source: { ...source, url: `https://archive.example.org/comet/${randomUUID()}`, sourceId: null,
       publisherDomain: "archive.example.org", retrievedAt: new Date().toISOString() },
-      passage: { text: `The register records that ${personName} was awarded the Comet Medal in 1941.`, locator: "Comet register, 1941",
+      passage: { text: `The register records that ${personName} was awarded the Orion Medal in 1941.`, locator: "Orion register, 1941",
         supportLevel: "EXACT" as const, supportReason: "Direct statement" },
       relation: "supports" as const, retention: "license_candidate" as const, rightsDeclaration: rights,
       citeableNow: true, verificationReady: true };
@@ -144,6 +278,12 @@ suite("real local Supabase demand transactions", () => {
         equivalentExisting: false, conflictsExisting: false, materialContradiction: false, exactEntities: true,
         exactDatesAndUnits: true, qualifiersPreserved: true, officialIssuer: true, independentDocuments: true, reason: "Contradicted" }; } } });
     expect(contradicted.decisions[0]?.outcome).toBe("rejected");
+    const weak = await verifyDemandKnowledge(request, research, { enabled: true, store: productionAdmissionStore(),
+      provider: { extract, async assess() { return { support: "PARTIALLY_SUPPORTED" as const, supportingIndexes: [0],
+        equivalentExisting: false, conflictsExisting: false, materialContradiction: false, exactEntities: true,
+        exactDatesAndUnits: true, qualifiersPreserved: true, officialIssuer: true, independentDocuments: true,
+        reason: "The passage does not establish the precise award claim" }; } } });
+    expect(weak.decisions[0]?.outcome).toBe("quarantined");
     const restricted = await verifyDemandKnowledge(request, { ...research, findings: [{ ...finding, retention: "transient_only", rightsDeclaration: null }] },
       { enabled: true, store: productionAdmissionStore(), provider: { extract, async assess() { throw new Error("must not assess restricted source"); } } });
     expect(restricted.decisions[0]?.outcome).toBe("quarantined");

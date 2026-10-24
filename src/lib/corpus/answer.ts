@@ -23,6 +23,7 @@ import { detectLens } from "@/lib/ask/lenses";
 import { chronologyGuidance, CONTEXT_SEARCH_FOCUS, detectContextIntent } from "@/lib/ask/historical-context";
 import { classifySourceAuthority } from "@/lib/sources/authority";
 import { fillsEvidenceGaps, resolveQuestion } from "@/lib/ask/question-resolution";
+import { citedAnswerAddressesTarget, namedTargetTerms, passageAddressesTarget } from "@/lib/ask/target-support";
 import { executeDemandResearch } from "@/lib/live-research/on-demand-engine";
 import { productionResearchDependencies } from "@/lib/live-research/on-demand-adapter";
 import { productionAdmissionStore, productionVerificationProvider, verifyDemandKnowledge } from "@/lib/live-research/knowledge-verification";
@@ -96,6 +97,7 @@ async function answerQuestionInternal(
           fetched: research.usage.sourceFetches, findings: research.findings?.length || 0,
           unresolvedGaps: research.unresolvedGaps.length, budget: research.budgetStatus || null });
         let reusedAfterWait = false;
+        let admittedThisRequest = false;
         if (research.status === "in_progress" || research.status === "cooldown") {
           // Another serverless request owns the lease. Give a short completed admission a chance to become local evidence.
           for (let attempt = 0; attempt < 3; attempt++) {
@@ -118,6 +120,19 @@ async function answerQuestionInternal(
             local.debug.demandVerificationOutcomes = verification.decisions.map((decision) => decision.outcome);
             local.debug.demandVerificationModelCalls = verification.usage.extractionCalls + verification.usage.verificationCalls;
             local.debug.demandAdmittedClaims = verification.decisions.filter((decision) => decision.outcome === "admitted").length;
+            if (verification.decisions.some((decision) => decision.outcome === "admitted" || decision.outcome === "duplicate")) {
+              const refreshed = await retrieveEvidence(retrievalQuestion, id, retrievalOptions).catch(() => null);
+              if (refreshed) {
+                const updated = resolveQuestion({ question: queryContext.resolvedQuestion, personalityId: id,
+                  personalityName: configurations[index].canonicalName, personalityAliases: refreshed.personalityAliases,
+                  termAliases: refreshed.termAliases, allParameters: refreshed.allParameters, evidence: refreshed.evidence,
+                  policyMode: refreshed.debug.evidencePolicyMode || "test", researchAvailable: false });
+                if (updated.sufficient) {
+                  local.evidence = [...updated.verifiedClaims, ...updated.verifiedPassages];
+                  admittedThisRequest = true;
+                }
+              }
+            }
             logStage("DEMAND_VERIFICATION", { admitted: local.debug.demandAdmittedClaims,
               quarantined: verification.decisions.filter((decision) => decision.outcome === "quarantined").length,
               rejected: verification.decisions.filter((decision) => decision.outcome === "rejected").length,
@@ -126,7 +141,7 @@ async function answerQuestionInternal(
             local.debug.demandVerificationOutcomes = ["quarantined"];
           }
         }
-        local.evidence.push(...research.passages);
+        if (!reusedAfterWait && !admittedThisRequest) local.evidence.push(...research.passages);
         local.debug.demandResearchStatus = research.status;
         local.debug.demandBudgetStatus = research.budgetStatus;
         local.debug.demandResearchRequestId = research.requestId;
@@ -134,12 +149,15 @@ async function answerQuestionInternal(
         local.debug.webSearchCalls = research.usage.searchCalls;
         local.debug.liveFetches = research.usage.sourceFetches;
         local.debug.liveSourcesUsed = research.passages.length;
-        local.debug.missingEvidenceDimensions = reusedAfterWait ? [] : research.unresolvedGaps.map((gap) => gap.requirement);
-        local.debug.unresolvedEvidenceGap = !reusedAfterWait && research.unresolvedGaps.length > 0;
-        local.debug.answerable = reusedAfterWait || resolution.state === "partial_local" || research.citeableNow;
-        local.debug.coverageStatus = reusedAfterWait || research.status === "complete" ? "sufficient" : local.debug.answerable ? "partial" : "unsupported";
-        local.debug.localEvidenceSufficiencyReason = reusedAfterWait ? "Another question completed verification; the admitted claim is now available locally." : research.status === "complete" ? "The original source supplies the missing evidence for this response; it remains unadmitted." :
+        local.debug.missingEvidenceDimensions = reusedAfterWait || admittedThisRequest ? [] : research.unresolvedGaps.map((gap) => gap.requirement);
+        local.debug.unresolvedEvidenceGap = !reusedAfterWait && !admittedThisRequest && research.unresolvedGaps.length > 0;
+        local.debug.answerable = reusedAfterWait || admittedThisRequest || research.citeableNow
+          || (isBroadScope(queryContext.scope) && resolution.state === "partial_local");
+        local.debug.coverageStatus = reusedAfterWait || admittedThisRequest || research.citeableNow ? "sufficient" : local.debug.answerable ? "partial" : "unsupported";
+        local.debug.localEvidenceSufficiencyReason = admittedThisRequest ? "The newly admitted claim is available as verified local evidence." : reusedAfterWait ? "Another question completed verification; the admitted claim is now available locally." : research.status === "complete" ? "The original source supplies the missing evidence for this response; it remains unadmitted." :
           "The bounded research request did not establish every missing requirement.";
+        // Request-scoped original-source evidence may answer a narrow question.
+        // The final cited-answer guard still checks the named target and date.
       }
       local.debug.localEvidenceBeforeSearch = localEvidenceCount;
       local.debug.localSourcesUsed = local.evidence.filter((item) => item.kind === "claim" || item.origin !== "brave_live").length;
@@ -273,8 +291,12 @@ async function answerQuestionInternal(
   const evidence = comparisonMode
     ? mergePersonalityEvidence(retrievals.map((retrieval) => ({ personalityId: retrieval.personalityId, personalityName: retrieval.personality, evidence: retrieval.evidence })))
     : retrievals[0].evidence;
+  const targetAliases = retrievals.flatMap((retrieval) => retrieval.personalityAliases);
+  const namedTarget = !isBroadScope(queryContext.scope) && namedTargetTerms(queryContext.resolvedQuestion, targetAliases).length > 0;
+  const answerEvidence = namedTarget ? evidence.filter((item) => passageAddressesTarget(queryContext.resolvedQuestion,
+    item.kind === "claim" ? item.evidenceExcerpt || "" : item.text, targetAliases)) : evidence;
   const evidenceBudget = options.responseStyle === "research" ? 14 : options.responseStyle === "detailed" ? 11 : options.responseStyle === "simple" ? 5 : isBroadScope(queryContext.scope) ? 9 : 7;
-  const selected = prioritizeEvidence(queryContext.resolvedQuestion, evidence, evidenceBudget);
+  const selected = prioritizeEvidence(queryContext.resolvedQuestion, answerEvidence, evidenceBudget);
   const bounded = buildBoundedContext(selected, evidenceBudget);
   debug.evidenceRetrievedCount = evidence.length;
   debug.answerIntent = answerIntent(queryContext.resolvedQuestion);
@@ -316,7 +338,9 @@ async function answerQuestionInternal(
   debug.answerCacheKey = identity.key;
   debug.estimatedEvidenceTokens = Math.ceil(bounded.context.length / 4);
   const stopCache = stageTimer("ANSWER_CACHE");
-  const cached = await readAnswerCache(identity.key, bounded.citations);
+  const hasLiveEvidence = bounded.citations.some((citation) => citation.kind === "live_web_source");
+  const liveDemandAnswer = hasLiveEvidence && process.env.DEMAND_RESEARCH_ENABLED === "true";
+  const cached = hasLiveEvidence ? null : await readAnswerCache(identity.key, bounded.citations);
   debug.latenciesMs.answerCache = stopCache();
   debug.answerCacheHit = Boolean(cached);
   if (cached) incrementMetric("answerCacheHits");
@@ -341,11 +365,13 @@ async function answerQuestionInternal(
     debug.provider = cached.provider;
     debug.synthesisMode = `cached ${cached.provider}`;
     debug.model = cached.model;
-  } else if (!health.healthy) {
+  } else if (liveDemandAnswer || !health.healthy) {
     usedLocalSynthesis = true;
-    console.warn("synthesis_fallback", JSON.stringify({ reason: health.configured ? "provider_circuit_open" : "provider_not_configured",
-      category: health.circuit.category, primaryModel: provider.model, evidenceRecords: bounded.selected.length }));
-    debug.generationFallbackReason = "AI synthesis unavailable; showing verified evidence.";
+    if (!liveDemandAnswer) {
+      console.warn("synthesis_fallback", JSON.stringify({ reason: health.configured ? "provider_circuit_open" : "provider_not_configured",
+        category: health.circuit.category, primaryModel: provider.model, evidenceRecords: bounded.selected.length }));
+      debug.generationFallbackReason = "AI synthesis unavailable; showing verified evidence.";
+    }
     generated = await safeFallback();
   } else {
     const prompt = buildSynthesisPrompt({ personality, question, resolvedQuestion: queryContext.resolvedQuestion, scope: queryContext.scope, evidenceContext: bounded.context, evidenceRecords: bounded.selected.length, responseStyle: options.responseStyle, conversation, openingTurn: !options.history?.length,
@@ -406,9 +432,17 @@ async function answerQuestionInternal(
   const guarded = generated.text.trim() === ABSTENTION || usedLocalSynthesis ? { answer: generated.text, notes: [] as string[] }
     : epistemicSafeguard(generated.text, bounded.selected.map((item) => item.kind === "claim" ? item : { text: item.text, textualLayer: item.textualLayer }));
   debug.epistemicSafeguardNotes = guarded.notes;
-  const cleanedAnswer = !guarded.answer.trim() || guarded.answer.trim() === ABSTENTION ? ABSTENTION
+  const candidateAnswer = !guarded.answer.trim() || guarded.answer.trim() === ABSTENTION ? ABSTENTION
     : ensureOpeningIntro(guarded.answer.trim(), personality, bounded.selected, bounded.citations, !options.history?.length);
-  if (!cached && !usedLocalSynthesis && cleanedAnswer !== ABSTENTION) {
+  const targetSupported = candidateAnswer === ABSTENTION || citedAnswerAddressesTarget(queryContext.resolvedQuestion,
+    candidateAnswer, bounded.selected, bounded.citations, targetAliases);
+  if (!targetSupported) {
+    debug.answerable = false;
+    debug.unresolvedEvidenceGap = true;
+    debug.localEvidenceSufficiencyReason = "The cited passages do not establish the named target of the question.";
+  }
+  const cleanedAnswer = targetSupported ? candidateAnswer : ABSTENTION;
+  if (!hasLiveEvidence && !cached && !usedLocalSynthesis && cleanedAnswer !== ABSTENTION) {
     await writeAnswerCache(identity, personalityIds, debug.evidencePolicyMode || "test", { answer: cleanedAnswer, provider: debug.provider, model: debug.model });
   }
   const abstained = cleanedAnswer === ABSTENTION;
@@ -430,7 +464,8 @@ async function answerQuestionInternal(
     queryContext,
     lens: lens ? { id: lens.id, label: lens.label } : null,
     structuredContext: { active_personality_ids: personalityIds, recent_named_entities: queryContext.subjects, recent_topic: queryContext.resolvedQuestion.slice(0, 200), recent_parameters: parameters.map((parameter) => parameter.code) },
-    status: abstained ? "abstained" as const : usedLocalSynthesis ? "extractive_fallback" as const : "complete" as const,
+    status: abstained ? "abstained" as const : citedEvidence.some((entry) => entry.citation.kind === "live_web_source")
+      ? "research_answer" as const : usedLocalSynthesis ? "extractive_fallback" as const : "complete" as const,
     answer,
     retrievedParameters: parameters,
     citations: citedEvidence.map((entry) => entry.citation),

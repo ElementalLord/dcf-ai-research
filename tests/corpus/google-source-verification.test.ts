@@ -50,6 +50,34 @@ describe("live source admission", () => {
     expect(result?.text).toContain("700–750 CE");
   });
 
+  it("extracts a licensed, dated award passage with its institutional provenance", async () => {
+    const url = "https://records.gov/awards/anika-sen";
+    state.preview.mockResolvedValueOnce({ status: 200, finalUrl: url,
+      html: `<html><head><title>Aurora Medal register</title><meta name="citation_title" content="Aurora Medal register" />
+        <meta name="citation_author" content="Registrar" /><meta name="citation_publisher" content="National Records Office" />
+        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" /></head>
+        <main><h2>1928 award register</h2><p>Anika Sen was awarded the Aurora Medal in 1928 by the National Records Office.</p></main></html>` });
+    const result = await readGroundedExcerpt(source(url), "When was Anika Sen awarded the Aurora Medal?", ["Anika Sen"], policy);
+    expect(result).toMatchObject({ supportLevel: expect.stringMatching(/EXACT|STRONG/), locator: "1928 award register",
+      rightsDeclaration: "https://creativecommons.org/licenses/by/4.0/",
+      identity: { title: "Aurora Medal register", publisher: "National Records Office", provenanceComplete: true } });
+    expect(result?.text).toContain("1928");
+  });
+
+  it("recognizes a Creative Commons link in an article-specific rights statement", async () => {
+    const url = "https://publisher.example/articles/raman";
+    state.preview.mockResolvedValueOnce({ status: 200, finalUrl: url,
+      html: `<html><head><title>Raman's award history</title><meta name="citation_title" content="Raman's award history" />
+        <meta name="citation_author" content="Historian" /><meta name="citation_publisher" content="University Press" /></head>
+        <body><div class="article-rights">This is an Open Access article, distributed under the terms of the Creative Commons Attribution licence
+        (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</div>
+        <main><p>C. V. Raman was awarded the Nobel Prize in Physics in 1930.</p></main></body></html>` });
+    const result = await readGroundedExcerpt(source(url), "In what year was C. V. Raman awarded the Nobel Prize in Physics?",
+      ["C. V. Raman", "Raman"], policy);
+    expect(result).toMatchObject({ rightsDeclaration: "https://creativecommons.org/licenses/by/4.0/",
+      supportLevel: expect.stringMatching(/EXACT|STRONG/) });
+  });
+
   it("does not borrow a subject from a preceding paragraph for an unrelated date", async () => {
     const url = "https://plato.stanford.edu/entries/unrelated-date/";
     state.preview.mockResolvedValueOnce({ status: 200, finalUrl: url, html: `<html><title>Śaṅkara (Stanford Encyclopedia of Philosophy)</title><main><p>Śaṅkara wrote commentaries on several texts.</p><p>Nakamura (1983) dates another philosopher's work to 700–750 CE.</p></main></html>` });

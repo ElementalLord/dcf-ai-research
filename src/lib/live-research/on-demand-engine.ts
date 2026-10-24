@@ -2,10 +2,13 @@ import { createHash, randomUUID } from "node:crypto";
 import type { EvidenceGap, EvidenceGapRequest } from "@/lib/ask/question-resolution";
 import { fillsEvidenceGaps } from "@/lib/ask/question-resolution";
 import { normalizeForMatch } from "@/lib/corpus/text";
+import { passageAddressesTarget } from "@/lib/ask/target-support";
 import { recordResearchBudgetReservation, recordResearchSearchCall } from "@/lib/corpus/usage";
 import type { RetrievedEvidence, RetrievedPassage } from "@/lib/corpus/types";
 import { planResearchQueries, sourceWorkKey, type SourceIdentity } from "./research-quality";
 import type { CredibleSource } from "./search-credibility";
+import { sourcePriority } from "./search-credibility";
+import { hasExplicitRetentionRights } from "./retention-rights";
 import { WebSearchError, type WebSearchResult } from "./web-search-provider";
 
 export type ResearchStatus = "complete" | "insufficient" | "failed" | "in_progress" | "cooldown" | "budget_exhausted";
@@ -57,25 +60,25 @@ export type ResearchDependencies = {
 };
 
 function narrowQuery(request: EvidenceGapRequest, question: string): string {
-  // Existing planner supplies source-class terminology; the gap topic controls the search focus.
-  const gap = request.gaps[0];
-  const focus = gap?.topic && gap.topic !== "subject" ? gap.topic : question;
-  const plan = planResearchQueries(request.personalityName, focus, request.gaps.map((item) => `${item.requirement} ${item.suitableSources[0] || ""}`), 1)[0];
-  return (plan?.query || `${request.personalityName} ${focus}`).slice(0, 500);
+  // Gap requirements are generic descriptions. Search for the event and entities
+  // in the actual question, with the planner's source-class hint.
+  const plan = planResearchQueries(request.personalityName, question, [], 1)[0];
+  return (plan?.query || `${request.personalityName} ${question}`).slice(0, 500);
 }
 
-function positiveRights(value: string | null | undefined): boolean {
-  return Boolean(value && /\bpublic domain\b|creativecommons\.org\/(?:licenses|publicdomain)\/|\bcc[- ](?:by|0)\b|\bopen access\b/i.test(value));
-}
-
-function possibleContradiction(text: string, existing: RetrievedEvidence[]): boolean {
+function possibleContradiction(text: string, existing: RetrievedEvidence[], question: string, aliases: string[]): boolean {
   const normalized = normalizeForMatch(text);
   const negated = /\b(?:not|never|no evidence|did not|was not)\b/i.test(text);
   const terms = new Set(normalized.split(" ").filter((term) => term.length >= 5));
   return existing.some((item) => {
+    if (!passageAddressesTarget(question, item.text, aliases)) return false;
     const other = normalizeForMatch(item.text);
     const overlap = other.split(" ").filter((term) => terms.has(term)).length;
-    return overlap >= 3 && negated !== /\b(?:not|never|no evidence|did not|was not)\b/i.test(item.text);
+    if (overlap < 3) return false;
+    if (negated !== /\b(?:not|never|no evidence|did not|was not)\b/i.test(item.text)) return true;
+    const years = new Set(text.match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g) || []);
+    const otherYears = new Set(item.text.match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g) || []);
+    return years.size > 0 && otherYears.size > 0 && ![...years].some((year) => otherYears.has(year));
   });
 }
 
@@ -131,9 +134,14 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
     // One direct provider call. Search output is request-local and is never persisted.
     result.usage.searchCalls = 1;
     recordResearchSearchCall();
-    const searchResults = await deps.provider.search(query, { maxResults: 8 });
+    const searchResults = await deps.provider.search(query, { maxResults: 20 });
     const works = new Set<string>();
-    for (const hit of searchResults.slice(0, 8)) {
+    // Search snippets are discovery hints only. Rank URLs and titles before the
+    // bounded original-document reads, then verify against the fetched pages.
+    const ranked = searchResults.slice(0, 20).map((hit, index) => ({ hit, index,
+      priority: sourcePriority(hit.url, `${hit.title} ${hit.snippet || ""}`, question) }))
+      .sort((a, b) => b.priority - a.priority || a.index - b.index);
+    for (const { hit } of ranked) {
       if (result.usage.sourceFetches >= 4) break;
       let source: CredibleSource | null;
       try { source = await deps.inspect(hit.url, hit.title); }
@@ -144,7 +152,7 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
       if (!await deps.robotsAllowed(source.url)) { result.candidates.push({ url: source.url, decision: "access_restricted", reason: "Robots or access policy disallows automated retrieval.", workKey: preliminary }); continue; }
       result.usage.sourceFetches += 1;
       let excerpt: FetchedExcerpt | null;
-      try { excerpt = await deps.read(source, `${question} ${request.gaps[0]?.topic || ""}`, aliases); }
+      try { excerpt = await deps.read(source, question, aliases); }
       catch { result.candidates.push({ url: source.url, decision: "unreadable", reason: "Original document retrieval or extraction failed.", workKey: preliminary }); continue; }
       if (!excerpt || !["EXACT", "STRONG"].includes(excerpt.supportLevel)) {
         result.candidates.push({ url: source.url, decision: "irrelevant", reason: "The original document has no directly supporting passage.", workKey: preliminary }); continue;
@@ -161,11 +169,11 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
         continue;
       }
       works.add(preliminary); works.add(workKey);
-      const retained = positiveRights(excerpt.rightsDeclaration);
+      const retained = hasExplicitRetentionRights(excerpt.rightsDeclaration);
       const finding: ResearchFinding = {
         source: { ...excerpt.identity, url: excerpt.url, sourceId, publisherDomain: new URL(excerpt.url).hostname, retrievedAt: (deps.now?.() || new Date()).toISOString() },
         passage: { text: excerpt.text.slice(0, 600), locator: excerpt.locator, supportLevel: excerpt.supportLevel as "EXACT" | "STRONG", supportReason: excerpt.supportReason },
-        relation: possibleContradiction(excerpt.text, existing) ? "potential_contradiction" : "supports",
+        relation: possibleContradiction(excerpt.text, [...existing, ...result.passages], question, aliases) ? "potential_contradiction" : "supports",
         retention: retained ? "license_candidate" : "transient_only", rightsDeclaration: excerpt.rightsDeclaration || null,
         citeableNow: true, verificationReady: retained && excerpt.identity.provenanceComplete,
       };
@@ -182,7 +190,11 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
           publicationDate: excerpt.identity.publicationDate, journal: excerpt.identity.journal, doi: excerpt.identity.doi,
           isbn: excerpt.identity.isbn, complete: excerpt.identity.provenanceComplete },
       });
-      if (!remainingGaps(request.gaps, [...existing, ...result.passages], result.passages).length) break;
+      // Once the answer is supported, continue only if admission or its shadow
+      // evaluation is enabled and still needs a retainable source.
+      if (!remainingGaps(request.gaps, [...existing, ...result.passages], result.passages).length
+        && (process.env.DEMAND_AUTO_ADMISSION_ENABLED !== "true" && process.env.DEMAND_VERIFICATION_SHADOW_ENABLED !== "true"
+          || result.findings.some((item) => item.verificationReady))) break;
     }
     result.unresolvedGaps = remainingGaps(request.gaps, [...existing, ...result.passages], result.passages);
     if (result.findings.some((finding) => finding.relation === "potential_contradiction")) {
@@ -192,7 +204,7 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
         suitableSources: ["independent primary record", "critical scholarship"],
         completion: "Independent evidence explains or resolves the disagreement.", contested: true });
     }
-    result.citeableNow = result.passages.length > 0;
+    result.citeableNow = result.unresolvedGaps.length === 0 && result.passages.length > 0;
     result.sufficientForVerification = result.unresolvedGaps.length === 0 && result.findings.some((finding) => finding.verificationReady)
       && !result.findings.some((finding) => finding.relation === "potential_contradiction");
     result.status = result.unresolvedGaps.length === 0 && result.passages.length ? "complete" : "insufficient";

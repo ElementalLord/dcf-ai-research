@@ -117,6 +117,16 @@ describe("demand knowledge verification", () => {
     expect(result.decisions[0].outcome).toBe("admitted");
     const input = deps.store.admit.mock.calls[0][0] as { sources: Array<{ excerpt: string }> };
     expect(input.sources[0].excerpt).toContain(proposition);
+    expect(input.sources[0].excerpt.length).toBeLessThanOrEqual(240);
+  });
+
+  it("refuses a title-like line even if an upstream model calls it supported", async () => {
+    const title = "Anika Sen Aurora Medal 1928";
+    const deps = setup({ findings: [finding({ passage: { text: title, locator: "Award register",
+      supportLevel: "EXACT", supportReason: "Incorrect upstream title rating" } })] });
+    const result = await verifyDemandKnowledge(request, research(deps.findings), deps);
+    expect(result.decisions[0].outcome).toBe("quarantined");
+    expect(deps.store.admit).not.toHaveBeenCalled();
   });
 
   it("quarantines a competing date in the approved corpus", async () => {

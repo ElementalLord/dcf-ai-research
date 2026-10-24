@@ -1,4 +1,5 @@
 import { normalizeForMatch } from "@/lib/corpus/text";
+import { passageAddressesTarget } from "@/lib/ask/target-support";
 
 export type QueryIntent = "primary" | "scholarly" | "institutional" | "context" | "controversy" | "exact_work";
 export type EvidenceType = "primary_document" | "traditional_text" | "scholarly_interpretation" | "institutional_record" | "edited_secondary" | "general_web";
@@ -107,6 +108,10 @@ export function assessPassageSupport(text: string, questionOrStatement: string, 
   const hits = terms.filter((term) => normalized.includes(term) || (term.length > 6 && normalized.includes(term.replace(/(?:ing|ed|es|s)$/i, "")))).length;
   const overlap = terms.length ? hits / terms.length : 0;
   if (!entity.matched) return { level: "RELATED", overlap, reason: entity.reason };
+  if (!passageAddressesTarget(questionOrStatement, text, [canonicalName, ...aliases])) return {
+    level: hits ? "PARTIAL" : "RELATED", overlap,
+    reason: "The passage does not establish the named target, event relationship, or requested date.",
+  };
   if (hits >= 3 && overlap >= 0.7) return { level: "EXACT", overlap, reason: "The passage identifies the person and directly covers nearly all material terms." };
   if (hits >= 2 && overlap >= 0.4) return { level: "STRONG", overlap, reason: "The passage identifies the person and directly covers the central topic." };
   if (hits >= 1) return { level: "PARTIAL", overlap, reason: "The passage supports only part of the requested point." };

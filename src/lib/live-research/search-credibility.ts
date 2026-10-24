@@ -85,7 +85,22 @@ async function readSourceText(preview: Preview): Promise<SourceText> {
     const text = root.text().replace(/\s+/g, " ").trim().slice(0, MAX_SOURCE_CHARACTERS);
     if (text) sections.push({ text, locator: heading });
   }
-  const rightsDeclaration = meta("dc.rights") || meta("dcterms.rights") || meta("citation_license") || $("link[rel='license']").attr("href") || null;
+  // Some publishers state the article's CC licence in its own rights panel
+  // rather than machine-readable metadata. Require article-specific wording
+  // beside the licence link; a generic site footer is not a grant for the work.
+  const articleLicense = $("a[href*='creativecommons.org/licenses/'],a[href*='creativecommons.org/publicdomain/']")
+    .map((_, element) => {
+      let context = $(element);
+      for (let depth = 0; depth < 6; depth++, context = context.parent()) {
+        const text = context.text().replace(/\s+/g, " ").trim();
+        if (text.length > 1500) break;
+        if (/\b(?:this article is licensed|this is an? open access article.{0,100}distributed)\b/i.test(text))
+          return $(element).attr("href") || null;
+      }
+      return null;
+    }).get().find(Boolean) || null;
+  const rightsDeclaration = meta("dc.rights") || meta("dcterms.rights") || meta("citation_license") || meta("license")
+    || $("link[rel~='license'],a[rel~='license']").first().attr("href") || articleLicense;
   return { ...base, title, identity, rightsDeclaration, sections };
 }
 

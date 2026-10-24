@@ -4,6 +4,7 @@ import { answerQuestion } from "@/lib/corpus/answer";
 import { assertRequestSize, corpusErrorResponse } from "@/lib/corpus/api";
 import { CorpusError } from "@/lib/corpus/errors";
 import { newResponseId, signFeedbackContext } from "@/lib/feedback-token";
+import { feedbackAnswerSnapshot } from "@/lib/feedback";
 
 const askSchema = z.object({
   personalityId: z.string().uuid().optional(),
@@ -30,7 +31,8 @@ export async function POST(request: NextRequest) {
     const { debug: _serverDiagnostics, ...publicResult } = result;
     void _serverDiagnostics;
     const feedbackToken = signFeedbackContext({
-      responseId: newResponseId(), question: result.question, answer: result.answer,
+      responseId: newResponseId(), question: result.question,
+      answer: feedbackAnswerSnapshot(result.status, result.answer),
       personalityId: ids.length === 1 ? ids[0] : null, personalityName: result.personality,
       citations: result.citations.map(citation => ({ id: citation.id, kind: citation.kind, title: citation.title,
         url: citation.url, claimId: citation.claimId, chunkId: citation.chunkId, pageOrSection: citation.pageOrSection })),

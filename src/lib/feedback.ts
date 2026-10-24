@@ -2,6 +2,11 @@ import { z } from "zod";
 
 export const feedbackTags = ["Inaccurate", "Weak sources", "Missing information", "Too vague", "Hard to understand", "Other"] as const;
 
+/** Feedback stores no extractive answer text from request-scoped live pages. */
+export function feedbackAnswerSnapshot(status: string | undefined, answer: string): string {
+  return status === "research_answer" ? "Live research answer; source text was not retained in feedback." : answer;
+}
+
 export const feedbackSubmissionSchema = z.object({
   token: z.string().min(20).max(100_000),
   rating: z.number().int().min(1).max(5),

@@ -9,6 +9,9 @@ import { normalizedClaim, tokenJaccard } from "@/lib/corpus/dedupe";
 import { isClaimEligible } from "@/lib/corpus/approval-policy";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import type { OnDemandResearchResult, ResearchFinding } from "./on-demand-engine";
+import { hasExplicitRetentionRights } from "./retention-rights";
+import { normalizeForMatch } from "@/lib/corpus/text";
+import { passageAddressesTarget, splitEvidenceSentences } from "@/lib/ask/target-support";
 
 export const ADMISSION_POLICY_VERSION = "demand-admission/1";
 export type VerificationOutcome = "admitted" | "quarantined" | "rejected" | "duplicate" | "shadow";
@@ -37,7 +40,18 @@ const hash = (value: string) => createHash("sha256").update(value).digest("hex")
 const risky = /\b(?:first|earliest|only|invented|discovered|caused|led to|proved|pioneer|father of|greatest|significant|influenced)\b/i;
 const uncertainty = /\b(?:may|might|possibly|perhaps|allegedly|reportedly|appears|suggests|estimated|approximately|about|circa|disputed)\b/i;
 const numbers = (value: string) => value.match(/\b\d+(?:[.,]\d+)*\b/g) || [];
-const explicitLicense = /\bpublic domain\b|\bcc0\b|creativecommons\.org\/(?:licenses|publicdomain)\//i;
+
+function supportingExcerpt(passage: string, proposition: string, personality: string): string | null {
+  const terms = new Set(normalizeForMatch(proposition).split(" ").filter((term) => term.length > 2));
+  const sentences = splitEvidenceSentences(passage).map((sentence) => sentence.trim()).filter(Boolean);
+  const ranked = sentences.map((sentence) => ({ sentence,
+    overlap: normalizeForMatch(sentence).split(" ").filter((term) => terms.has(term)).length }))
+    .sort((a, b) => b.overlap - a.overlap);
+  const excerpt = (ranked[0]?.sentence || passage).slice(0, 240).trim();
+  if (excerpt.length < 20 || !passageAddressesTarget(proposition, excerpt, [personality])
+    || numbers(proposition).some((value) => !excerpt.includes(value))) return null;
+  return excerpt;
+}
 
 function sourceClass(finding: ResearchFinding): SourceClass {
   switch (finding.source.evidenceType) {
@@ -53,7 +67,7 @@ function retainable(finding: ResearchFinding): boolean {
     const url = new URL(finding.source.url);
     return url.protocol === "https:" && finding.retention === "license_candidate" && finding.verificationReady
       && finding.source.provenanceComplete && Boolean(finding.source.title && finding.source.publisher && finding.source.workKey)
-      && Boolean(finding.passage.locator) && explicitLicense.test(finding.rightsDeclaration || "")
+      && Boolean(finding.passage.locator) && hasExplicitRetentionRights(finding.rightsDeclaration)
       && finding.passage.text.length <= 600;
   } catch { return false; }
 }
@@ -111,7 +125,14 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
   deps: { provider: Provider; store: Store; enabled: boolean }): Promise<VerificationResult> {
   const result: VerificationResult = { decisions: [], usage: { extractionCalls: 0, verificationCalls: 0, databaseCalls: 0 }, publicationEnabled: deps.enabled };
   if (!research.attempted || !research.findings.length || research.status === "failed") return result;
-  const findings = research.findings.slice(0, 4);
+  const findings = research.findings.filter(retainable).slice(0, 4);
+  if (!findings.length) return { ...result, decisions: [{ proposition: "[no retainable findings]", outcome: "quarantined",
+    support: "UNRESOLVED", reasons: ["No original passage has complete provenance and explicit retention rights"],
+    epistemicType: "HISTORICAL_FACT", workKeys: [] }] };
+  if (findings.length < 2 && !(sourceClass(findings[0]) === "REFERENCE" && findings[0].passage.supportLevel === "EXACT"))
+    return { ...result, decisions: [{ proposition: "[insufficient retainable findings]", outcome: "quarantined",
+      support: "UNRESOLVED", reasons: ["One non-issuing source cannot satisfy the historical-fact admission contract"],
+      epistemicType: "HISTORICAL_FACT", workKeys: [findings[0].source.workKey] }] };
   let extracted: AtomicCandidate[];
   try { result.usage.extractionCalls++; extracted = await deps.provider.extract({ personality: request.personalityName, findings }); }
   catch { return { ...result, decisions: [{ proposition: "[extraction unavailable]", outcome: "quarantined", support: "UNRESOLVED", reasons: ["Extraction provider failed"], epistemicType: "HISTORICAL_FACT", workKeys: [] }] }; }
@@ -172,6 +193,10 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
     if ((!contract.satisfied && !officialException) || candidate.type !== "HISTORICAL_FACT" || !["official_record_fact", "ordinary_fact"].includes(candidate.category)) {
       decision.reasons.push(contract.reasons.join("; ") || "Claim class is not eligible for autonomous admission"); continue;
     }
+    const excerpts = cited.map(({ finding }) => supportingExcerpt(finding.passage.text, candidate.proposition, request.personalityName));
+    if (excerpts.some((excerpt) => !excerpt)) {
+      decision.reasons.push("A bounded retained excerpt does not establish the exact proposition"); continue;
+    }
     if (!deps.enabled) { decision.outcome = "shadow"; decision.reasons.push("Admission flag disabled; verification evaluated without writing"); continue; }
     try {
       result.usage.databaseCalls++;
@@ -179,10 +204,10 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
         epistemic_type: candidate.type, classifier_version: CLASSIFIER_VERSION, contract_version: CONTRACT_VERSION,
         contract_status: "SUPPORTED", contract_basis: "fact", policy_version: ADMISSION_POLICY_VERSION,
         research_request_id: research.requestId, research_work_id: research.workId,
-        sources: cited.map(({ finding }) => ({ url: finding.source.url, title: finding.source.title, author: finding.source.author,
+        sources: cited.map(({ finding }, index) => ({ url: finding.source.url, title: finding.source.title, author: finding.source.author,
           publisher: finding.source.publisher, publication_date: finding.source.publicationDate, evidence_type: finding.source.evidenceType,
           work_key: finding.source.workKey, rights: finding.rightsDeclaration, locator: finding.passage.locator,
-          excerpt: finding.passage.text.slice(0, 600) })) });
+          excerpt: excerpts[index] })) });
       decision.outcome = saved.created ? "admitted" : "duplicate";
       decision.claimId = saved.claimId;
       decision.reasons.push(saved.created ? "Passed all admission gates and committed atomically" : "Concurrent admission already committed");

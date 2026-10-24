@@ -112,6 +112,15 @@ export function assessEvidenceSufficiency(
       reason: enough ? "Approved evidence spans multiple parameters and sources." : "The broad answer needs more parameter or source coverage.", missingDimensions: missing };
   }
   const missing = requested.filter((term) => !covered.includes(term));
+  // A narrow question can share generic words with a different named award,
+  // work or institution. Do not let the aggregate coverage score substitute it.
+  const aliasWords = new Set(personalityAliases.flatMap((alias) => normalizeForMatch(alias).split(" ")));
+  const namedTargetMissing = (question.match(/\b\p{Lu}[\p{L}\p{N}-]*/gu) || [])
+    .map((term) => normalizeForMatch(term))
+    .filter((term) => term.length > 2 && !IGNORED.has(term) && !aliasWords.has(term) && requested.includes(term))
+    .some((term) => missing.includes(term));
+  if (namedTargetMissing) return { sufficient: false, answerable: false, mode, coverage,
+    reason: "The approved evidence does not identify the named subject of the question.", missingDimensions: missing };
   const missingDecisiveQualifier = missing.some((term) => /^(?:favorite|best|first|only|earliest|latest|greatest|biggest|most|least)$/.test(term));
   if (missingDecisiveQualifier) return { sufficient: false, answerable: false, mode, coverage,
     reason: "The available evidence does not establish the requested ranking or preference.", missingDimensions: missing };

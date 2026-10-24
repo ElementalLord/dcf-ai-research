@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { NextRequest } from "next/server";
 import { feedbackSubmissionSchema } from "@/lib/feedback";
 import { signFeedbackContext } from "@/lib/feedback-token";
+import { feedbackAnswerSnapshot } from "@/lib/feedback";
 
 const { insert } = vi.hoisted(() => ({ insert: vi.fn() }));
 vi.mock("@/lib/supabase-admin", () => ({ supabaseAdmin: { from: () => ({ insert }) } }));
@@ -24,6 +25,15 @@ function submit(value: Record<string, unknown>) {
 beforeEach(() => { insert.mockReset().mockResolvedValue({ error: null }); });
 
 describe("response feedback", () => {
+  it("stores no live source sentence in a research-only feedback snapshot", async () => {
+    const liveSentence = "The archive records Example Person receiving the Aurora Medal in 1928.";
+    const answer = feedbackAnswerSnapshot("research_answer", `${liveSentence} [S1]`);
+    const response = await submit({ token: signFeedbackContext({ ...context, answer, answerMode: "research_answer",
+      usedLiveSearch: true, citations: [{ id: "S1", kind: "live_web_source", title: "Archive", url: "https://example.org/archive", pageOrSection: "Register" }] }), rating: 4 });
+    expect(response.status).toBe(201);
+    expect(answer).not.toContain(liveSentence);
+    expect(insert).toHaveBeenCalledWith(expect.objectContaining({ answer_snapshot: answer, answer_mode: "research_answer" }));
+  });
   it.each([1, 5])("stores a %i-star rating and the signed answer snapshot", async rating => {
     const response = await submit({ token: signFeedbackContext(context), rating, comment: "", tags: [] });
     expect(response.status).toBe(201);

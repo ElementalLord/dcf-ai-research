@@ -113,6 +113,8 @@ describe("Ask orchestration", () => {
   });
   it("uses demand research without dispatching either legacy search path", async () => {
     vi.stubEnv("DEMAND_RESEARCH_ENABLED", "true");
+    vi.stubEnv("GEMINI_API_KEY", "fixture-key");
+    vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
     state.claims = []; state.chunks = [];
     state.demand.mockResolvedValue({ requestId: "research-one", status: "complete", attempted: true, citeableNow: true,
       unresolvedGaps: [], usage: { searchCalls: 1, sourceFetches: 1 }, passages: [{ kind: "passage", id: "demand:one", chunkId: "demand:one", sourceId: "demand:one",
@@ -124,6 +126,7 @@ describe("Ask orchestration", () => {
     expect(state.demand).toHaveBeenCalledTimes(1);
     expect(state.google).not.toHaveBeenCalled();
     expect(state.webDiscover).not.toHaveBeenCalled();
+    expect(state.generate).not.toHaveBeenCalled();
     expect(result.citations.some((item) => item.kind === "live_web_source")).toBe(true);
   });
   it("merges credible Google grounding with DCF evidence without invoking Brave", async () => {
@@ -255,7 +258,7 @@ describe("Ask orchestration", () => {
     state.claims = []; state.chunks = [];
     state.discover.mockResolvedValue({ accepted: ["https://example.test/approved"], rejected: [{ url: "https://unapproved.test/", reason: "SOURCE_NOT_APPROVED" }], approvedSourcesConsidered: ["Primary text"] });
     const result = await answerQuestion("Who taught Rama Bala and Atibala?", "p");
-    expect(result.status).toBe("extractive_fallback");
+    expect(result.status).toBe("research_answer");
     expect(result.debug.liveResearchTriggered).toBe(true);
     expect(result.debug.liveFetches).toBe(1);
     expect(result.debug.liveUrlsRejected).toHaveLength(1);
