@@ -294,7 +294,7 @@ async function answerQuestionInternal(
   const targetAliases = retrievals.flatMap((retrieval) => retrieval.personalityAliases);
   const namedTarget = !isBroadScope(queryContext.scope) && namedTargetTerms(queryContext.resolvedQuestion, targetAliases).length > 0;
   const answerEvidence = namedTarget ? evidence.filter((item) => passageAddressesTarget(queryContext.resolvedQuestion,
-    item.kind === "claim" ? item.evidenceExcerpt || "" : item.text, targetAliases)) : evidence;
+    item.kind === "claim" ? item.storageMode === "metadata_only" ? item.text : item.evidenceExcerpt || "" : item.text, targetAliases)) : evidence;
   const evidenceBudget = options.responseStyle === "research" ? 14 : options.responseStyle === "detailed" ? 11 : options.responseStyle === "simple" ? 5 : isBroadScope(queryContext.scope) ? 9 : 7;
   const selected = prioritizeEvidence(queryContext.resolvedQuestion, answerEvidence, evidenceBudget);
   const bounded = buildBoundedContext(selected, evidenceBudget);

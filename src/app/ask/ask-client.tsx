@@ -78,6 +78,7 @@ function citationLabel(value: string | null | undefined, fallback: string) {
 function citationReview(citation: AskCitation): string {
   if (citation.kind === "live_web_source") return "live page, not reviewed by DCF";
   if (citation.kind === "approved_source_passage") return "library passage, interpretation not reviewed";
+  if (citation.storageMode === "metadata_only") return "verified factual claim; original source passage not stored";
   return citation.approvalOrigin === "human_manual" || citation.approvalOrigin === "mentor_review"
     ? "human-reviewed claim" : "claim admitted for testing or import";
 }
@@ -351,11 +352,11 @@ export default function AskClient({ personalities, loadError }: { personalities:
         <div><dt>Who published it</dt><dd><strong className={`authority-badge authority-${selectedAuthority.level}`}>{AUTHORITY_LABELS[selectedAuthority.level]}</strong><span>{selectedAuthority.primary && selectedAuthority.level === "general_web"
           ? "The original text is the evidence. This copy of it is hosted on a website that is not a recognized institution, so compare it with an institutional edition when exact wording matters."
           : `${selectedAuthority.basis ? `${selectedAuthority.basis.replace(/\.$/, "")}. ` : ""}${AUTHORITY_HELP[selectedAuthority.level]}`}</span></dd></div>
-        <div><dt>Found in</dt><dd><strong>{selectedLive ? "Live research" : "DCF Library"}</strong><span>{selectedLive ? "Fetched for this answer; this passage is not saved in Resources or reviewed by DCF." : selectedCitation.kind === "approved_claim" ? selectedCitation.approvalOrigin === "human_manual" || selectedCitation.approvalOrigin === "mentor_review" ? "This claim was reviewed by a person." : "This claim was admitted for testing or import; it has not been reviewed by a person." : "This source passage is admitted for AI evidence. Its presence does not mean any interpretation of it was reviewed by a person."}</span></dd></div>
+        <div><dt>Found in</dt><dd><strong>{selectedLive ? "Live research" : "DCF Library"}</strong><span>{selectedLive ? "Fetched for this answer; this passage is not saved in Resources or reviewed by DCF." : selectedCitation.storageMode === "metadata_only" ? "Verified factual claim. DCF stores the citation and locator, but no source passage." : selectedCitation.kind === "approved_claim" ? selectedCitation.approvalOrigin === "human_manual" || selectedCitation.approvalOrigin === "mentor_review" ? "This claim was reviewed by a person." : "This claim was admitted for testing or import; it has not been reviewed by a person." : "This source passage is admitted for AI evidence. Its presence does not mean any interpretation of it was reviewed by a person."}</span></dd></div>
         <div><dt>Where to find it</dt><dd>{selectedCitation.pageOrSection || "Specific location not recorded"}</dd></div>
       </dl>
       <h3 className="section-label source-section-heading">Evidence from this source</h3>
-      {selectedExcerpt ? <blockquote>{selectedExcerpt}</blockquote> : <p className="citation-unavailable">A readable passage is unavailable for this citation. Check the original source before relying on it.</p>}
+      {selectedExcerpt ? <blockquote>{selectedExcerpt}</blockquote> : <p className="citation-unavailable">{selectedCitation.storageMode === "metadata_only" ? "No source passage is stored for this metadata-only verified claim. Check the linked original work at the locator above." : "A readable passage is unavailable for this citation. Check the original source before relying on it."}</p>}
       <p className="source-note">{selectedCitation.evidenceType ? <><strong>Kind of statement:</strong> {citationLabel(selectedCitation.evidenceType, "Source material")}. </> : null}{AUTHORITY_CAVEAT}</p>
       {selectedCitation.url && <a href={selectedCitation.url} target="_blank" rel="noreferrer" className="editorial-link">Open original source<span className="sr-only"> (opens in a new tab)</span> <ArrowUpRight size={16} aria-hidden="true" /></a>}
     </>}</div></SheetContent></Sheet>

@@ -15,6 +15,7 @@ export type AskCitation = {
   chunkId?: string;
   personalityName?: string;
   approvalOrigin?: string;
+  storageMode?: "licensed_excerpt" | "metadata_only";
   evidenceType?: string;
   authority?: SourceAuthority;
   authorityBasis?: string;

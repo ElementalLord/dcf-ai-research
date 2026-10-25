@@ -85,6 +85,7 @@ export type RetrievedClaim = {
   claimKind: string;
   certainty: string;
   approvalOrigin: string;
+  storageMode?: "licensed_excerpt" | "metadata_only";
   reviewStatus?: string;
   provenanceSignature?: string;
   evidenceType: string;
@@ -129,6 +130,7 @@ export type Citation = {
   personalityId?: string;
   personalityName?: string;
   approvalOrigin?: string;
+  storageMode?: "licensed_excerpt" | "metadata_only";
   evidenceType?: string;
   epistemicType?: string | null;
   contractStatus?: string | null;

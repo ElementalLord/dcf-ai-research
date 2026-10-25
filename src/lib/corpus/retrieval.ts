@@ -92,6 +92,25 @@ export function rankApprovedClaims(
   const ranked = rows
     .filter((row) => {
       const links = (row.claim_sources as Array<Record<string, unknown>> | null) || [];
+      const metadata = row.approval_metadata as Record<string, unknown> | null;
+      if (metadata?.storage_mode === "metadata_only") {
+        const audit = (row.demand_verification_decisions as Array<Record<string, unknown>> | null) || [];
+        const validity = (row.metadata_claim_evidence as Array<Record<string, unknown>> | null) || [];
+        const supported = unwrap(row.claim_epistemics as Record<string, unknown> | Array<Record<string, unknown>> | null);
+        return row.approval_origin === "automated_evidence_verification"
+          && audit.some((decision) => decision.outcome === "admitted" && decision.support === "SUPPORTED")
+          && supported?.contract_status === "SUPPORTED"
+          && links.length > 0 && validity.length === links.length
+          && links.every((link) => {
+            const source = unwrap<Record<string, unknown>>(link.sources as Record<string, unknown> | null);
+            const record = validity.find((item) => item.source_id === source?.id);
+            const permission = unwrap<Record<string, unknown>>(record?.metadata_admission_permissions as Record<string, unknown> | null);
+            return source?.source_status === "approved" && source?.url === permission?.source_url
+              && permission?.is_active === true && !link.evidence_excerpt
+              && String(link.page_or_section || "") === String(record?.locator || "")
+              && record?.validity_status === "valid" && Date.parse(String(record?.valid_until || "")) > Date.now();
+          });
+      }
       return options.requirePassage
         ? links.some((link) => unwrap<Record<string, unknown>>(link.sources as Record<string, unknown> | null)?.source_status === "approved"
           && String(link.evidence_excerpt || "").trim().length >= 20)
@@ -134,11 +153,13 @@ export function rankApprovedClaims(
           claimKind: String(row.claim_kind || "unknown"),
           certainty: String(row.certainty || "unknown"),
           approvalOrigin: String(row.approval_origin || "imported_existing"),
+          storageMode: (row.approval_metadata as Record<string, unknown> | null)?.storage_mode === "metadata_only" ? "metadata_only" as const : "licensed_excerpt" as const,
           reviewStatus: String(row.review_status || ""),
           evidenceType: String(row.evidence_type || "uncertain"),
           epistemicType: epistemics?.epistemic_type ? String(epistemics.epistemic_type) : null,
           contractStatus: epistemics?.contract_status ? String(epistemics.contract_status) : null,
-          provenanceSignature: JSON.stringify({ reviewStatus: row.review_status, sources: links.map((candidate) => candidate.sources), support: row.claim_chunks }),
+          provenanceSignature: JSON.stringify({ reviewStatus: row.review_status, sources: links.map((candidate) => candidate.sources),
+            support: row.claim_chunks, metadataEvidence: row.metadata_claim_evidence, mode: (row.approval_metadata as Record<string, unknown> | null)?.storage_mode }),
           personalityId: options.personalityId,
           personalityName: options.personalityName,
           parameterName: parameter?.name ? String(parameter.name) : null,
@@ -301,12 +322,15 @@ export async function retrieveEvidence(
   const claimsPromise = supabaseAdmin
     .from("claims")
     .select(`
-      id, claim_text, claim_kind, certainty, review_status, approval_origin, evidence_type,
+      id, claim_text, claim_kind, certainty, review_status, approval_origin, approval_metadata, evidence_type,
       parameter_fields(id, code, label, parameters(id, code, name, sort_order)),
       claim_sources(relationship, evidence_excerpt, page_or_section,
         sources(id, title, author, publisher_or_institution, source_type, url, citation, source_status)),
       claim_chunks(relationship, source_chunks(id, textual_layer)),
-      claim_epistemics(epistemic_type, contract_status)
+      claim_epistemics(epistemic_type, contract_status),
+      demand_verification_decisions(outcome,support),
+      metadata_claim_evidence(source_id,locator,validity_status,valid_until,
+        metadata_admission_permissions(source_url,is_active))
     `, { count: "exact" })
     .eq("personality_id", personalityId)
     .eq("review_status", "approved")

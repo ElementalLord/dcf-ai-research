@@ -116,4 +116,12 @@ describe("live source admission", () => {
     expect(await sourceAccess(url)).toBe("blocked");
     expect(state.preview.mock.calls.filter(([candidate]) => candidate === url)).toHaveLength(1);
   });
+  it("does not retain unlicensed page text in the in-memory source cache", async () => {
+    const url = "https://records.example.edu/unlicensed-cache-fixture";
+    state.preview.mockResolvedValue({ status: 200, finalUrl: url, contentType: "text/html",
+      html: "<html><title>Register</title><main><p>The original register contains an unlicensed source passage.</p></main></html>" });
+    expect(await sourceAccess(url)).toBe("readable");
+    expect(await sourceAccess(url)).toBe("readable");
+    expect(state.preview.mock.calls.filter(([candidate]) => candidate === url)).toHaveLength(2);
+  });
 });

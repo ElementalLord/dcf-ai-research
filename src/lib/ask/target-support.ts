@@ -50,7 +50,8 @@ export function citedAnswerAddressesTarget(question: string, answer: string,
   const cited = citations.map((citation, index) => ({ citation, evidence: selected[index] }))
     .filter(({ citation }) => citedIds.has(citation.id));
   if (cited.length !== citedIds.size) return false;
-  const passages = cited.map(({ evidence }) => evidence.kind === "claim" ? evidence.evidenceExcerpt || "" : evidence.text);
+  const passages = cited.map(({ evidence }) => evidence.kind === "claim"
+    ? evidence.storageMode === "metadata_only" ? evidence.text : evidence.evidenceExcerpt || "" : evidence.text);
   if (!passages.every((passage) => passageAddressesTarget(question, passage, aliases))) return false;
   if (/\b(?:when|year|date)\b/i.test(question)) {
     const answerYears = [...new Set(answer.match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g) || [])];

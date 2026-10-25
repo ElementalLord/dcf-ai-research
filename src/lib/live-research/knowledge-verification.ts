@@ -34,6 +34,8 @@ type Provider = { extract(input: { personality: string; findings: ResearchFindin
 type ExistingClaim = { id: string; claim_text: string; approval_origin?: string | null };
 type Store = { existing(personalityId: string): Promise<ExistingClaim[]>;
   admit(input: Record<string, unknown>): Promise<{ claimId: string; created: boolean }>;
+  admitMetadata?(input: Record<string, unknown>): Promise<{ claimId: string; created: boolean }>;
+  metadataPermission?(url: string, publisher: string): Promise<boolean>;
   record(input: Record<string, unknown>): Promise<void> };
 
 const hash = (value: string) => createHash("sha256").update(value).digest("hex");
@@ -70,6 +72,17 @@ function retainable(finding: ResearchFinding): boolean {
       && Boolean(finding.passage.locator) && hasExplicitRetentionRights(finding.rightsDeclaration)
       && finding.passage.text.length <= 600;
   } catch { return false; }
+}
+
+function independentlyWorded(proposition: string, passage: string): boolean {
+  const words = (value: string) => normalizeForMatch(value).split(" ").filter(Boolean);
+  const claim = words(proposition);
+  const source = words(passage);
+  if (claim.join(" ") === source.join(" ")) return false;
+  for (let index = 0; index + 8 <= claim.length; index++) {
+    if (source.join(" ").includes(claim.slice(index, index + 8).join(" "))) return false;
+  }
+  return true;
 }
 
 function cleanCandidate(value: AtomicCandidate, count: number): AtomicCandidate | null {
@@ -113,6 +126,19 @@ export function productionAdmissionStore(): Store {
       if (!value.claim_id) throw new Error("Admission returned no claim ID");
       return { claimId: value.claim_id, created: value.created === true };
     },
+    async admitMetadata(input) {
+      const { data, error } = await supabaseAdmin.rpc("admit_metadata_verified_claim", { p_admission: input });
+      if (error || !data || typeof data !== "object") throw error || new Error("Metadata-only admission transaction failed");
+      const value = data as { claim_id?: string; created?: boolean };
+      if (!value.claim_id) throw new Error("Metadata-only admission returned no claim ID");
+      return { claimId: value.claim_id, created: value.created === true };
+    },
+    async metadataPermission(url, publisher) {
+      const { data, error } = await supabaseAdmin.from("metadata_admission_permissions")
+        .select("id").eq("source_url", url).eq("publisher", publisher).eq("is_active", true).maybeSingle();
+      if (error) return false;
+      return Boolean(data?.id);
+    },
     async record(input) {
       const { error } = await supabaseAdmin.rpc("record_demand_verification_decision", { p_decision: input });
       if (error) throw error;
@@ -125,9 +151,26 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
   deps: { provider: Provider; store: Store; enabled: boolean }): Promise<VerificationResult> {
   const result: VerificationResult = { decisions: [], usage: { extractionCalls: 0, verificationCalls: 0, databaseCalls: 0 }, publicationEnabled: deps.enabled };
   if (!research.attempted || !research.findings.length || research.status === "failed") return result;
-  const findings = research.findings.filter(retainable).slice(0, 4);
+  if (research.findings.some((finding) => finding.relation === "potential_contradiction"))
+    return { ...result, decisions: [{ proposition: "[conflicting original evidence]", outcome: "quarantined",
+      support: "UNRESOLVED", reasons: ["Original research found potentially contradictory evidence"],
+      epistemicType: "HISTORICAL_FACT", workKeys: [] }] };
+  const licensed = research.findings.filter(retainable).slice(0, 4);
+  const licensedReady = licensed.length >= 2 || (licensed.length === 1
+    && sourceClass(licensed[0]) === "REFERENCE" && licensed[0].passage.supportLevel === "EXACT");
+  const metadataOnly = !licensedReady && Boolean(deps.store.metadataPermission && deps.store.admitMetadata);
+  let findings = licensed;
+  if (metadataOnly) {
+    const permitted = await Promise.all(research.findings.slice(0, 4).map(async (finding) => {
+      if (!finding.source.provenanceComplete || !finding.passage.locator || !finding.source.publisher
+        || !finding.source.title || !finding.source.url.startsWith("https://")) return false;
+      result.usage.databaseCalls++;
+      return deps.store.metadataPermission!(finding.source.url, finding.source.publisher).catch(() => false);
+    }));
+    findings = research.findings.slice(0, 4).filter((_, index) => permitted[index]);
+  }
   if (!findings.length) return { ...result, decisions: [{ proposition: "[no retainable findings]", outcome: "quarantined",
-    support: "UNRESOLVED", reasons: ["No original passage has complete provenance and explicit retention rights"],
+    support: "UNRESOLVED", reasons: ["No original passage has explicit excerpt rights or reviewed metadata-use terms"],
     epistemicType: "HISTORICAL_FACT", workKeys: [] }] };
   if (findings.length < 2 && !(sourceClass(findings[0]) === "REFERENCE" && findings[0].passage.supportLevel === "EXACT"))
     return { ...result, decisions: [{ proposition: "[insufficient retainable findings]", outcome: "quarantined",
@@ -157,7 +200,9 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
     const competingValue = existing.find((item) => tokenJaccard(item.claim_text.replace(/\d+(?:[.,]\d+)*/g, ""), candidate.proposition.replace(/\d+(?:[.,]\d+)*/g, "")) >= 0.8
       && numbers(item.claim_text).join("|") !== numbers(candidate.proposition).join("|"));
     if (competingValue) { decision.reasons.push("Existing approved claim has a competing date or quantity"); continue; }
-    if (!cited.every(({ finding }) => retainable(finding))) { decision.reasons.push("Source identity, locator or explicit retention license is missing"); continue; }
+    if (!cited.every(({ finding }) => metadataOnly ? findings.includes(finding) : retainable(finding))) {
+      decision.reasons.push("Source identity, locator or admission permission is missing"); continue;
+    }
     if (/[“”"']/.test(candidate.proposition) || numbers(candidate.proposition).some((value) => !cited.some(({ finding }) => finding.passage.text.includes(value)))) {
       decision.reasons.push("Quotation or numeric/date detail cannot be deterministically matched to the passage"); continue;
     }
@@ -197,17 +242,23 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
     if (excerpts.some((excerpt) => !excerpt)) {
       decision.reasons.push("A bounded retained excerpt does not establish the exact proposition"); continue;
     }
+    if (metadataOnly && cited.some(({ finding }) => !independentlyWorded(candidate.proposition, finding.passage.text))) {
+      decision.reasons.push("Claim wording copies a source passage"); continue;
+    }
     if (!deps.enabled) { decision.outcome = "shadow"; decision.reasons.push("Admission flag disabled; verification evaluated without writing"); continue; }
     try {
       result.usage.databaseCalls++;
-      const saved = await deps.store.admit({ personality_id: request.personalityId, claim_text: candidate.proposition, claim_hash: hash(`${request.personalityId}:${identity}`),
+      const payload = { personality_id: request.personalityId, claim_text: candidate.proposition, claim_hash: hash(`${request.personalityId}:${identity}`),
         epistemic_type: candidate.type, classifier_version: CLASSIFIER_VERSION, contract_version: CONTRACT_VERSION,
         contract_status: "SUPPORTED", contract_basis: "fact", policy_version: ADMISSION_POLICY_VERSION,
         research_request_id: research.requestId, research_work_id: research.workId,
         sources: cited.map(({ finding }, index) => ({ url: finding.source.url, title: finding.source.title, author: finding.source.author,
           publisher: finding.source.publisher, publication_date: finding.source.publicationDate, evidence_type: finding.source.evidenceType,
-          work_key: finding.source.workKey, rights: finding.rightsDeclaration, locator: finding.passage.locator,
-          excerpt: excerpts[index] })) });
+          work_key: finding.source.workKey, locator: finding.passage.locator,
+          ...(metadataOnly ? { accessed_at: finding.source.retrievedAt } : { rights: finding.rightsDeclaration, excerpt: excerpts[index] }) })) };
+      const saved = metadataOnly ? await deps.store.admitMetadata!({ ...payload, storage_mode: "metadata_only",
+        category: candidate.category, independent_documents: assessment.independentDocuments,
+        official_issuer: assessment.officialIssuer }) : await deps.store.admit(payload);
       decision.outcome = saved.created ? "admitted" : "duplicate";
       decision.claimId = saved.claimId;
       decision.reasons.push(saved.created ? "Passed all admission gates and committed atomically" : "Concurrent admission already committed");
@@ -218,7 +269,8 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
           result.usage.databaseCalls++;
           await deps.store.record({ personality_id: request.personalityId, claim_hash: hash(`${request.personalityId}:${identity}`),
             outcome: decision.outcome, support: decision.support, epistemic_type: decision.epistemicType,
-            policy_version: ADMISSION_POLICY_VERSION, reason_codes: decision.reasons.map((reason) => reason.slice(0, 120)),
+            policy_version: ADMISSION_POLICY_VERSION, reason_codes: metadataOnly
+              ? ["metadata_only", decision.outcome, decision.support] : decision.reasons.map((reason) => reason.slice(0, 120)),
             source_work_keys: workKeys, research_request_id: research.requestId });
         } catch { /* Decision logging is best effort; it cannot upgrade knowledge. */ }
       }

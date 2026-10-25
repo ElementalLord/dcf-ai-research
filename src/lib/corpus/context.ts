@@ -41,7 +41,7 @@ export function buildBoundedContext(
       ? "\nEpistemic limit: this passage supports what the tradition states or narrates; it does not by itself establish historical occurrence." : "";
     const metadata = `${item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live") ? `Live web research; not DCF approved. This passage was fetched from the original source after ${item.origin === "google_grounding" ? "Google grounding" : "Brave discovery"}.\n` : ""}${item.personalityName ? `Personality: ${item.personalityName}\n` : ""}Work: ${item.sourceTitle || "not linked"}; locator: ${location}; layer: ${item.textualLayer || "unspecified"}; source type: ${item.sourceType || "unspecified"}; publisher standing: ${AUTHORITY_LABELS[authority.level]}${authority.primary ? ", primary source" : ""}${passageAudit}${traditionalCaveat}`;
     const record = item.kind === "claim"
-      ? `[${citationId}] Claim / topic: ${item.parameterName || item.fieldLabel || topic || "unclassified"}\nProposition: ${body}\n${metadata}\nEpistemic: ${item.epistemicType || "unclassified"}; evidence: ${item.evidenceType}; support: ${item.contractStatus || "not classified"}; certainty: ${item.certainty || "unspecified"}; contested: ${item.epistemicType === "CONTESTED" || item.contractStatus === "CONTESTED_REPRESENTED" ? "yes" : "not marked"}${item.evidenceExcerpt ? `\nSupporting passage: ${truncateText(item.evidenceExcerpt, 170)}` : ""}`
+      ? `[${citationId}] Claim / topic: ${item.parameterName || item.fieldLabel || topic || "unclassified"}\nProposition: ${body}\n${metadata}\nEpistemic: ${item.epistemicType || "unclassified"}; evidence: ${item.evidenceType}; support: ${item.contractStatus || "not classified"}; certainty: ${item.certainty || "unspecified"}; contested: ${item.epistemicType === "CONTESTED" || item.contractStatus === "CONTESTED_REPRESENTED" ? "yes" : "not marked"}${item.storageMode === "metadata_only" ? "\nOriginal source verified at admission; no source passage is stored." : item.evidenceExcerpt ? `\nSupporting passage: ${truncateText(item.evidenceExcerpt, 170)}` : ""}`
       : `[${citationId}] Supporting passage / topic: ${item.parameterNames?.join(", ") || "source passage"}\n${metadata}\nPassage: ${body}`;
 
     if (records.length > 0 && characters + record.length > maxCharacters) break;
@@ -66,6 +66,7 @@ export function buildBoundedContext(
       personalityId: item.personalityId,
       personalityName: item.personalityName,
       approvalOrigin: item.kind === "claim" ? item.approvalOrigin : undefined,
+      storageMode: item.kind === "claim" ? item.storageMode : undefined,
       evidenceType: item.kind === "claim" ? item.evidenceType : undefined,
       epistemicType: item.kind === "claim" ? item.epistemicType ?? null : undefined,
       contractStatus: item.kind === "claim" ? item.contractStatus ?? null : undefined,

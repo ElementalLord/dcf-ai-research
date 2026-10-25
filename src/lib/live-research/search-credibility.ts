@@ -117,7 +117,12 @@ function cachedSourceText(url: string): Promise<SourceText | null> {
   if (hit && hit.expires > now) return hit.loaded;
   if (sourceTextCache.size >= 30) sourceTextCache.delete(sourceTextCache.keys().next().value!);
   // A network failure is not remembered. A refusal (403 and similar) is, so a blocked site is asked only once.
-  const loaded = fetchDiscoveryPreview(url).then(readSourceText).catch(() => { sourceTextCache.delete(url); return null; });
+  const loaded = fetchDiscoveryPreview(url).then(readSourceText).then((value) => {
+    // Share an in-flight read, but never keep unlicensed original text in the cache.
+    if (value.status === 200 && value.sections.length && !hasExplicitRetentionRights(value.rightsDeclaration))
+      sourceTextCache.delete(url);
+    return value;
+  }).catch(() => { sourceTextCache.delete(url); return null; });
   sourceTextCache.set(url, { expires: now + 5 * 60_000, loaded });
   return loaded;
 }
