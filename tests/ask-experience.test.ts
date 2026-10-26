@@ -147,7 +147,7 @@ describe("grounded Ask presentation", () => {
     const message = abstentionMessage("Vishvamitra");
     const blocks = answerBlocks(message);
     expect(blocks).toHaveLength(2);
-    expect(message).toContain("do not provide reliable evidence");
+    expect(message).toContain("couldn't verify a reliable answer");
   });
 
   it("uses readable local corpus synthesis by default without a Gemini request", () => {

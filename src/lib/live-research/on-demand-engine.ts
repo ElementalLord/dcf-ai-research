@@ -16,6 +16,7 @@ export type ResearchStatus = "complete" | "insufficient" | "failed" | "in_progre
 export type CandidateDecision = "authenticated" | "irrelevant" | "duplicate_work" | "unverified" | "access_restricted" | "unsafe" | "unreadable";
 export type Retention = "transient_only" | "license_candidate";
 export type ResearchCandidate = { url: string; decision: CandidateDecision; reason: string; workKey: string | null };
+export type ResearchLead = { url: string; title: string };
 export type ResearchFinding = {
   source: SourceIdentity & { url: string; sourceId: string | null; publisherDomain: string; retrievedAt: string };
   passage: { text: string; locator: string | null; supportLevel: "EXACT" | "STRONG"; supportReason: string };
@@ -32,6 +33,7 @@ export type OnDemandResearchResult = {
   status: ResearchStatus;
   attempted: boolean;
   candidates: ResearchCandidate[];
+  leads?: ResearchLead[];
   findings: ResearchFinding[];
   passages: RetrievedPassage[];
   unresolvedGaps: EvidenceGap[];
@@ -102,7 +104,7 @@ function remainingGaps(gaps: EvidenceGap[], evidence: RetrievedEvidence[], newPa
 }
 
 function blank(request: EvidenceGapRequest, requestId: string, workId: string, status: ResearchStatus, provider: string, errorCategory: string | null = null): OnDemandResearchResult {
-  return { requestId, needId: request.needId, workId, status, attempted: false, candidates: [], findings: [], passages: [],
+  return { requestId, needId: request.needId, workId, status, attempted: false, candidates: [], leads: [], findings: [], passages: [],
     unresolvedGaps: request.gaps, sufficientForVerification: false, citeableNow: false,
     usage: { searchCalls: 0, sourceFetches: 0, modelCalls: 0, provider, errorCategory } };
 }
@@ -177,6 +179,8 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
       const preliminary = `url:${source.url}`;
       if (works.has(preliminary)) { result.candidates.push({ url: source.url, decision: "duplicate_work", reason: "Another URL for this work was already considered.", workKey: preliminary }); continue; }
       if (!await deps.robotsAllowed(source.url)) { result.candidates.push({ url: source.url, decision: "access_restricted", reason: "Robots or access policy disallows automated retrieval.", workKey: preliminary }); continue; }
+      // A lead is a safe page to inspect, not evidence or an admission candidate.
+      if (!result.leads?.some((lead) => lead.url === source.url)) result.leads?.push({ url: source.url, title: source.title.slice(0, 200) });
       result.usage.sourceFetches += 1;
       let excerpt: FetchedExcerpt | null;
       try { excerpt = await deps.read(source, question, aliases); }

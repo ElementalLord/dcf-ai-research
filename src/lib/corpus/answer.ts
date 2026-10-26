@@ -24,7 +24,8 @@ import { chronologyGuidance, CONTEXT_SEARCH_FOCUS, detectContextIntent } from "@
 import { classifySourceAuthority } from "@/lib/sources/authority";
 import { fillsEvidenceGaps, resolveQuestion } from "@/lib/ask/question-resolution";
 import { citedAnswerAddressesTarget, namedTargetTerms, passageAddressesTarget } from "@/lib/ask/target-support";
-import { executeDemandResearch } from "@/lib/live-research/on-demand-engine";
+import { executeDemandResearch, type ResearchLead } from "@/lib/live-research/on-demand-engine";
+import { planResearchQueries } from "@/lib/live-research/research-quality";
 import { productionResearchDependencies } from "@/lib/live-research/on-demand-adapter";
 import { productionAdmissionStore, productionVerificationProvider, verifyDemandKnowledge } from "@/lib/live-research/knowledge-verification";
 import { settleResearchBudget } from "@/lib/live-research/research-budget";
@@ -32,7 +33,7 @@ import { recordDemandQuestionActivity } from "@/lib/live-research/research-telem
 import type { RetrievedEvidence } from "./types";
 
 const ABSTENTION = "The available sources do not contain enough evidence to answer that fully.";
-const NO_EVIDENCE_REPLY = /sources (?:currently available )?do not (?:provide|contain) (?:reliable|enough) evidence|don't have enough evidence/i;
+const NO_EVIDENCE_REPLY = /sources (?:currently available )?do not (?:provide|contain) (?:reliable|enough) evidence|don't have enough evidence|couldn't verify (?:a reliable answer|that connection)/i;
 
 async function answerQuestionInternal(
   question: string,
@@ -49,6 +50,10 @@ async function answerQuestionInternal(
     configurations.map((configuration) => configuration.canonicalName),
     options.history,
   );
+  const researchLeads: ResearchLead[] = [];
+  const searchQuery = planResearchQueries(configurations[0].canonicalName, queryContext.resolvedQuestion, [], 1)[0]?.query
+    || `${configurations[0].canonicalName} ${queryContext.resolvedQuestion}`;
+  const resourceOptions = () => ({ researchLeads: researchLeads.slice(0, 5), webSearchUrl: `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}` });
   const comparisonAliases = personalityIds.length > 1
     ? configurations.flatMap((configuration) => normalizedAliases(configuration.canonicalName, configuration.aliases))
     : [];
@@ -93,6 +98,11 @@ async function answerQuestionInternal(
         ? await executeDemandResearch({ ...resolution.researchRequest, maxExternalSearches: allocated }, queryContext.resolvedQuestion, local.evidence,
           local.personalityAliases, productionResearchDependencies()) : null;
       if (research) {
+        for (const lead of research.leads || []) {
+          let safe = false;
+          try { const url = new URL(lead.url); safe = url.protocol === "https:" && !url.username && !url.password; } catch { /* Invalid search lead. */ }
+          if (safe && !researchLeads.some((item) => item.url === lead.url)) researchLeads.push({ url: lead.url, title: lead.title.slice(0, 200) });
+        }
         logStage("DEMAND_RESEARCH", { status: research.status, searches: research.usage.searchCalls,
           fetched: research.usage.sourceFetches, findings: research.findings?.length || 0,
           unresolvedGaps: research.unresolvedGaps.length, budget: research.budgetStatus || null });
@@ -285,6 +295,8 @@ async function answerQuestionInternal(
       citations: [],
       evidence: [],
       conflicts: [],
+      ...resourceOptions(),
+      interactionId: null,
       debug,
     };
   }
@@ -321,6 +333,8 @@ async function answerQuestionInternal(
       citations: [],
       evidence: [],
       conflicts: [],
+      ...resourceOptions(),
+      interactionId: null,
       debug,
     };
   }
@@ -471,6 +485,7 @@ async function answerQuestionInternal(
     citations: citedEvidence.map((entry) => entry.citation),
     evidence: citedEvidence.map((entry) => ({ citationId: entry.citation.id, ...entry.item })),
     conflicts,
+    ...resourceOptions(),
     debug,
     interactionId: generated.interactionId,
   };
