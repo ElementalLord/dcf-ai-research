@@ -5,7 +5,7 @@ import { classifyQuestionScope, isBroadScope } from "./question-scope";
 const framing = new Set(["what", "which", "when", "where", "why", "how", "who", "explain", "describe", "summarize", "tell", "was", "were", "did", "does", "the", "and", "for", "with", "from", "into", "about", "year", "date", "in", "on", "of", "to", "by"]);
 const eventWords = /\b(?:award(?:ed)?|receive(?:d)?|won|winner|laureate|discover(?:ed|y)?|report(?:ed)?|observ(?:e|ed)|identif(?:y|ied)|found(?:ed)?|establish(?:ed)?|join(?:ed)?|appoint(?:ed)?|elect(?:ed)?)\b/i;
 const eventRelations: Array<[RegExp, RegExp]> = [
-  [/\b(?:award|awarded|prize|medal|receive|received|won)\b/i, /\b(?:award(?:ed)?|receiv(?:e|ed)|won|winner|laureate)\b/i],
+  [/\b(?:award|awarded|prize|medal|receive|received|won)\b/i, /\b(?:award(?:ed)?|receiv(?:e|ed)|won|winner|laureate|honou?red)\b/i],
   [/\b(?:discover|discovery|invent|invention)\b/i, /\b(?:discover(?:ed|y)?|invent(?:ed|ion)?|report(?:ed)?|observ(?:e|ed)|identif(?:y|ied))\b/i],
   [/\b(?:join|joined|appoint|appointed|elect|elected)\b/i, /\b(?:join(?:ed)?|appoint(?:ed|ment)?|elect(?:ed|ion)?)\b/i],
   [/\b(?:found|founded|establish|established)\b/i, /\b(?:found(?:ed)?|establish(?:ed|ment)?)\b/i],

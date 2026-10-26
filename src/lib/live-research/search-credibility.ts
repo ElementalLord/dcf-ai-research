@@ -8,7 +8,7 @@ import { normalizeForMatch } from "@/lib/corpus/text";
 import { readableEvidence } from "@/lib/corpus/readable-evidence";
 import { classifySourceAuthority } from "@/lib/sources/authority";
 import { extractPdf } from "@/lib/corpus/source-extract";
-import { hasExplicitRetentionRights } from "./retention-rights";
+import { canonicalRetentionRights, hasExplicitRetentionRights } from "./retention-rights";
 import { assessPassageSupport, authenticateSource, evidenceTypeFor, isBroadIdeaQuestion, type PassageSupport, type SourceIdentity } from "./research-quality";
 
 const lowQualityHost = /(?:^|\.)(?:quora\.com|reddit\.com|pinterest\.[a-z.]+|blogspot\.[a-z.]+|medium\.com|wikipedia\.org|facebook\.com|instagram\.com|tiktok\.com|brainyquote\.com|goodreads\.com)$/i;
@@ -67,9 +67,11 @@ async function readSourceText(preview: Preview): Promise<SourceText> {
     publicationDate: meta("citation_publication_date") || meta("citation_date") || meta("dc.date"), journal: meta("citation_journal_title"),
     doi: meta("citation_doi"), isbn: meta("citation_isbn"), sourceType: meta("citation_journal_title") ? "scholarly journal" : null });
   $("script,style,nav,footer,header").remove();
-  const root = $("main,article,[role='main']").first().length ? $("main,article,[role='main']").first() : $("body");
+  const chooseLargest = (selector: string) => $(selector).toArray()
+    .sort((a, b) => $(b).text().length - $(a).text().length)[0];
+  const root = $(chooseLargest("main,[role='main']") || chooseLargest("article") || $("body").get(0));
   const sections: SourceText["sections"] = [];
-  let heading = title || preview.finalUrl;
+  let heading = identity.title || title || preview.finalUrl;
   let parts: string[] = [];
   const flush = () => {
     const value = parts.join(" ").replace(/\s+/g, " ").trim().slice(0, MAX_SOURCE_CHARACTERS);
@@ -78,7 +80,7 @@ async function readSourceText(preview: Preview): Promise<SourceText> {
   };
   root.find("h1,h2,h3,h4,h5,h6,p,blockquote,li").each((_, element) => {
     const value = $(element).text().replace(/\s+/g, " ").trim();
-    if (/^h[1-6]$/.test(element.tagName)) { flush(); heading = value || heading; }
+    if (/^h[1-6]$/.test(element.tagName)) { flush(); if (value && !/^information$/i.test(value)) heading = value; }
     else if (value.length >= 20) {
       // Keep paragraph boundaries: a name in one paragraph must not authenticate
       // an unrelated date or event in the next paragraph.
@@ -100,13 +102,13 @@ async function readSourceText(preview: Preview): Promise<SourceText> {
       for (let depth = 0; depth < 6; depth++, context = context.parent()) {
         const text = context.text().replace(/\s+/g, " ").trim();
         if (text.length > 1500) break;
-        if (/\b(?:this article is licensed|this is an? open access article.{0,100}distributed)\b/i.test(text))
+        if (/\b(?:this article is licensed|this is an? open[- ]access article.{0,100}distributed)\b/i.test(text))
           return $(element).attr("href") || null;
       }
       return null;
     }).get().find(Boolean) || null;
-  const rightsDeclaration = meta("dc.rights") || meta("dcterms.rights") || meta("citation_license") || meta("license")
-    || $("link[rel~='license'],a[rel~='license']").first().attr("href") || articleLicense;
+  const rightsDeclaration = canonicalRetentionRights(meta("dc.rights") || meta("dcterms.rights") || meta("citation_license") || meta("license")
+    || $("link[rel~='license']").first().attr("href") || articleLicense);
   return { ...base, title, identity, rightsDeclaration, sections };
 }
 
@@ -145,7 +147,12 @@ export async function readGroundedExcerpt(source: CredibleSource, statement: str
   if (!loaded || loaded.status !== 200 || !loaded.sections.length || !searchPolicyDecision(loaded.finalUrl, policy).allowed) return null;
   if (/\b(?:written by ai|ai.generated|content farm)\b/i.test(loaded.sections[0].text.slice(0, 3000))) return null;
   const title = normalizeForMatch(loaded.title);
-  const names = [...new Set(aliases.map(normalizeForMatch).filter((name) => name.length >= 4))];
+  const fullNames = [...new Set(aliases.map(normalizeForMatch).filter((name) => name.length >= 4))];
+  // A biography title can identify later paragraphs that use only the subject's
+  // surname. This does not add a globally ambiguous personality alias.
+  const surname = fullNames[0]?.split(" ").at(-1) || "";
+  const titleIdentifiesSubject = fullNames.some((name) => name.includes(" ") && title.includes(name));
+  const names = [...new Set([...fullNames, ...(titleIdentifiesSubject && surname.length >= 4 ? [surname] : [])])];
   const terms = [...new Set(normalizeForMatch(statement).split(" ").filter((term) => term.length >= 5 && !supportStop.has(term) && !names.some((name) => name.includes(term))))];
   const matches = loaded.sections.flatMap((section) => {
     const sentences = section.text.split(/(?<=[.!?])\s+/).filter((sentence) => sentence.length >= 25);
@@ -157,7 +164,7 @@ export async function readGroundedExcerpt(source: CredibleSource, statement: str
       const normalizedContext = normalizeForMatch(context);
       if (!names.some((entry) => normalizedContext.includes(entry))) return null;
       const overlap = terms.filter((term) => normalizedContext.includes(term) || (term.length > 6 && normalizedContext.includes(term.slice(0, -2)))).length;
-      const support = assessPassageSupport(context, statement, aliases[0] || "", aliases.slice(1));
+      const support = assessPassageSupport(context, statement, aliases[0] || "", names.slice(1));
       return { context, overlap, locator: section.locator, support };
     });
   }).filter((item): item is { context: string; overlap: number; locator: string | null; support: ReturnType<typeof assessPassageSupport> } => Boolean(item))
@@ -187,7 +194,7 @@ export function isGoogleGroundingRedirect(rawUrl: string): boolean {
   catch { return false; }
 }
 
-export async function inspectSearchSource(rawUrl: string, policy: SearchPolicy, title = "", trustedDomains: string[] = []):
+export async function inspectSearchSource(rawUrl: string, policy: SearchPolicy, title = "", trustedDomains: string[] = [], trustedExactUrl: string | null = null):
   Promise<CredibleSource | null> {
   if (isGoogleGroundingRedirect(rawUrl)) {
     try {
@@ -197,7 +204,7 @@ export async function inspectSearchSource(rawUrl: string, policy: SearchPolicy, 
       const original = canonicalResearchUrl(new URL(location, rawUrl).toString());
       if (isGoogleGroundingRedirect(original)) return null;
       await assertSafePublicUrl(original);
-      return inspectSearchSource(original, policy, title, trustedDomains);
+      return inspectSearchSource(original, policy, title, trustedDomains, trustedExactUrl);
     } catch { return null; }
   }
   const initial = searchPolicyDecision(rawUrl, policy);
@@ -206,10 +213,11 @@ export async function inspectSearchSource(rawUrl: string, policy: SearchPolicy, 
   const host = new URL(url).hostname;
   if (lowQualityHost.test(host)) return null;
   const registryTrusted = trustedDomains.some((domain) => host === domain || host.endsWith(`.${domain}`));
+  const exactUrlTrusted = trustedExactUrl !== null && url === canonicalResearchUrl(trustedExactUrl);
   // Who published it is decided from the publisher, not from what metadata the page happens to expose.
   const recognized = (candidate: string) => classifySourceAuthority({ url: `https://${candidate}/`, live: true }, policy.rules).level !== "general_web" || institutionalHost.test(candidate);
-  if (initial.rule?.status === "allowed" || registryTrusted || recognized(host)) {
-    return { url, domain: host, category: initial.rule?.category || (registryTrusted ? "approved source family" : "institutional"), title: title || host };
+  if (initial.rule?.status === "allowed" || registryTrusted || exactUrlTrusted || recognized(host)) {
+    return { url, domain: host, category: initial.rule?.category || (exactUrlTrusted ? "approved exact source" : registryTrusted ? "approved source family" : "institutional"), title: title || host };
   }
   // An unrecognized publisher has to identify itself on the page. Reading the page uses the
   // same bounded HTTPS, redirect, and public-network checks as every other discovery fetch.

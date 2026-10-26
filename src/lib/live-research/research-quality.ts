@@ -58,6 +58,9 @@ export function planResearchQueries(personality: string, question: string, gaps:
 
 export function evidenceTypeFor(input: { category?: string | null; sourceType?: string | null; textualLayer?: string | null }): EvidenceType {
   const value = `${input.category || ""} ${input.sourceType || ""} ${input.textualLayer || ""}`.toLowerCase();
+  // Exact-URL approval is a human decision on a named, independently reviewed
+  // publication. It is handled as a reference source, never as a domain-wide trust.
+  if (/approved exact source/.test(value)) return "edited_secondary";
   if (/traditional|scripture|vedic|epic|primary.text/.test(value)) return /traditional|scripture|vedic|epic/.test(value) ? "traditional_text" : "primary_document";
   if (/primary|archive|speech|letter|inscription|proceedings/.test(value)) return "primary_document";
   if (/peer|journal|scholar|academic|university.press/.test(value)) return "scholarly_interpretation";

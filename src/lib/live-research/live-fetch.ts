@@ -162,7 +162,9 @@ export async function fetchDiscoveryPreview(rawUrl: string, options: {
     if (!/^(text\/html|application\/xhtml\+xml)(;|$)/.test(contentType)) {
       return { finalUrl: safe.toString(), status: response.status, contentType, html: "" };
     }
-    const limit = 256 * 1024;
+    // Publisher pages often put the article after a large navigation and JSON
+    // preamble. Keep a firm cap, but include the actual original text.
+    const limit = 1536 * 1024;
     const reader = response.body?.getReader();
     if (!reader) return { finalUrl: safe.toString(), status: response.status, contentType, html: "" };
     const chunks: Uint8Array[] = [];

@@ -84,6 +84,25 @@ describe("bounded on-demand research", () => {
     expect(result).not.toHaveProperty("claims");
   });
 
+  it("reads independent URLs even when search results have the same title", async () => {
+    const secondUrl = "https://press.example.net/history/prism";
+    const { deps } = fixture([{ title: "Anika Sen prism effect", url, sourceProvider: "mock" },
+      { title: "Anika Sen prism effect", url: secondUrl, sourceProvider: "mock" }]);
+    deps.read = async (source) => excerpt({ url: source.url,
+      identity: authenticateSource({ url: source.url, title: "Anika Sen prism effect", author: "M. Rao",
+        publisher: source.url === url ? "University" : "Press", publicationDate: "2001",
+        doi: source.url === url ? "10.1234/prism" : "10.5678/prism" }) });
+    const prior = process.env.DEMAND_VERIFICATION_SHADOW_ENABLED;
+    try {
+      process.env.DEMAND_VERIFICATION_SHADOW_ENABLED = "true";
+      const result = await executeDemandResearch(request, "When did Anika Sen discover the prism effect?", [], ["Anika Sen"], deps);
+      expect(result.findings.map((finding) => finding.source.url)).toEqual([url, secondUrl]);
+    } finally {
+      if (prior === undefined) delete process.env.DEMAND_VERIFICATION_SHADOW_ENABLED;
+      else process.env.DEMAND_VERIFICATION_SHADOW_ENABLED = prior;
+    }
+  });
+
   it("prioritizes a relevant institutional result before spending the four source reads", async () => {
     const weak = Array.from({ length: 7 }, (_, index) => ({ title: `General profile ${index}`,
       url: `https://profiles.example.com/person/${index}`, sourceProvider: "mock" }));

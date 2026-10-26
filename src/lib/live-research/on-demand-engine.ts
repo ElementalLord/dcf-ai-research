@@ -5,7 +5,7 @@ import { normalizeForMatch } from "@/lib/corpus/text";
 import { passageAddressesTarget } from "@/lib/ask/target-support";
 import { recordResearchBudgetReservation, recordResearchSearchCall } from "@/lib/corpus/usage";
 import type { RetrievedEvidence, RetrievedPassage } from "@/lib/corpus/types";
-import { planResearchQueries, sourceWorkKey, type SourceIdentity } from "./research-quality";
+import { planResearchQueries, type SourceIdentity } from "./research-quality";
 import type { CredibleSource } from "./search-credibility";
 import { sourcePriority } from "./search-credibility";
 import { hasExplicitRetentionRights } from "./retention-rights";
@@ -65,7 +65,8 @@ export function narrowQuery(request: EvidenceGapRequest, question: string): stri
   const plan = planResearchQueries(request.personalityName, question, [], 1)[0];
   if (process.env.DEMAND_AUTO_ADMISSION_ENABLED === "true" || process.env.DEMAND_VERIFICATION_SHADOW_ENABLED === "true") {
     const namedTargets = [...question.matchAll(/\b\p{Lu}[\p{L}\p{N}]+(?:\s+\p{Lu}[\p{L}\p{N}]+)+/gu)]
-      .map(([value]) => value).filter((value) => normalizeForMatch(value) !== normalizeForMatch(request.personalityName));
+      .map(([value]) => value.replace(/^(?:Did|Does|Do|Was|Were|Is|Are|What|Which|When|Where|Why|How)\s+/u, ""))
+      .filter((value) => normalizeForMatch(value) !== normalizeForMatch(request.personalityName));
     const target = namedTargets.at(-1);
     if (target) {
       const action = question.replace(new RegExp(request.personalityName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"), "")
@@ -158,7 +159,9 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
       try { source = await deps.inspect(hit.url, hit.title); }
       catch { result.candidates.push({ url: hit.url, decision: "unsafe", reason: "Source inspection failed or URL was disallowed.", workKey: null }); continue; }
       if (!source) { result.candidates.push({ url: hit.url, decision: "unverified", reason: "Publisher identity or source policy could not be established.", workKey: null }); continue; }
-      const preliminary = sourceWorkKey({ url: source.url, title: source.title });
+      // Search titles can be identical across independent works. Deduplicate
+      // discovery URLs here; use the authenticated DOI/work key after reading.
+      const preliminary = `url:${source.url}`;
       if (works.has(preliminary)) { result.candidates.push({ url: source.url, decision: "duplicate_work", reason: "Another URL for this work was already considered.", workKey: preliminary }); continue; }
       if (!await deps.robotsAllowed(source.url)) { result.candidates.push({ url: source.url, decision: "access_restricted", reason: "Robots or access policy disallows automated retrieval.", workKey: preliminary }); continue; }
       result.usage.sourceFetches += 1;
@@ -181,12 +184,13 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
       }
       works.add(preliminary); works.add(workKey);
       const retained = hasExplicitRetentionRights(excerpt.rightsDeclaration);
+      const metadataApproved = source.category === "approved exact source";
       const finding: ResearchFinding = {
         source: { ...excerpt.identity, url: excerpt.url, sourceId, publisherDomain: new URL(excerpt.url).hostname, retrievedAt: (deps.now?.() || new Date()).toISOString() },
         passage: { text: excerpt.text.slice(0, 600), locator: excerpt.locator, supportLevel: excerpt.supportLevel as "EXACT" | "STRONG", supportReason: excerpt.supportReason },
         relation: possibleContradiction(excerpt.text, [...existing, ...result.passages], question, aliases) ? "potential_contradiction" : "supports",
         retention: retained ? "license_candidate" : "transient_only", rightsDeclaration: excerpt.rightsDeclaration || null,
-        citeableNow: true, verificationReady: retained && excerpt.identity.provenanceComplete,
+        citeableNow: true, verificationReady: (retained || metadataApproved) && excerpt.identity.provenanceComplete,
       };
       result.findings.push(finding);
       result.candidates.push({ url: excerpt.url, decision: "authenticated", reason: "Original document identified and a directly relevant passage extracted.", workKey });

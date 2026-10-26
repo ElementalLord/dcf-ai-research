@@ -129,10 +129,10 @@ describe("safe candidate preview", () => {
     expect(fetchImpl).toHaveBeenCalledTimes(1);
     expect(networkValidator).toHaveBeenCalledTimes(2);
   });
-  it("reads only the bounded metadata prefix of oversized pages", async () => {
-    const fetchImpl = vi.fn(async () => new Response("x".repeat(300_000), { headers: { "content-type": "text/html", "content-length": "300000" } }));
+  it("reads article text after a large publisher preamble while keeping a byte cap", async () => {
+    const fetchImpl = vi.fn(async () => new Response("x".repeat(2_000_000), { headers: { "content-type": "text/html", "content-length": "2000000" } }));
     const preview = await fetchDiscoveryPreview("https://example.edu/a", { fetchImpl: fetchImpl as typeof fetch, networkValidator: async (url) => new URL(url) });
-    expect(preview.html.length).toBe(256 * 1024);
+    expect(preview.html.length).toBe(1536 * 1024);
   });
 });
 

@@ -4,6 +4,7 @@ import { assertSafePublicUrl } from "@/lib/corpus/security";
 import { BraveSearchProvider } from "./web-search-provider";
 import { inspectSearchSource, readGroundedExcerpt } from "./search-credibility";
 import { loadSearchPolicy } from "./search-policy";
+import { canonicalResearchUrl } from "./source-policy";
 import type { ResearchDependencies } from "./on-demand-engine";
 import { reserveResearchBudget } from "./research-budget";
 
@@ -21,7 +22,7 @@ export function robotsDecision(text: string, path: string): boolean {
       group.agents.push(value.toLowerCase());
       continue;
     }
-    if ((key === "allow" || key === "disallow") && value.startsWith("/")) group.rules.push({ path: value.split("*")[0], allow: key === "allow" });
+    if ((key === "allow" || key === "disallow") && value.startsWith("/")) group.rules.push({ path: value, allow: key === "allow" });
   }
   groups.push(group);
   const specific = groups.filter((item) => item.agents.some((agent) => agent.length > 0 && agent !== "*" && "dcf-ai-research".startsWith(agent)));
@@ -29,7 +30,12 @@ export function robotsDecision(text: string, path: string): boolean {
   let best = -1;
   let allowed = true;
   for (const item of applicable) for (const rule of item.rules) {
-    if (path.startsWith(rule.path) && rule.path.length >= best) { best = rule.path.length; allowed = rule.allow; }
+    const anchored = rule.path.endsWith("$");
+    const pattern = anchored ? rule.path.slice(0, -1) : rule.path;
+    const expression = `^${pattern.split("*").map((piece) => piece.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join(".*")}${anchored ? "$" : ""}`;
+    if (!new RegExp(expression).test(path)) continue;
+    const length = pattern.replace(/\*/g, "").length;
+    if (length > best || length === best && rule.allow) { best = length; allowed = rule.allow; }
   }
   return allowed;
 }
@@ -88,7 +94,14 @@ export function productionResearchDependencies(): ResearchDependencies {
         p_status: status, p_search_calls: calls, p_outcome: outcome, p_cooldown_seconds: cooldownSeconds });
       if (error || data !== true) throw new Error("COORDINATION_FINISH_FAILED");
     },
-    async inspect(url, title) { return await checkRobots(url) ? inspectSearchSource(url, await getPolicy(), title) : null; },
+    async inspect(url, title) {
+      if (!await checkRobots(url)) return null;
+      const exactUrl = canonicalResearchUrl(url);
+      const { data, error } = await supabaseAdmin.from("metadata_admission_permissions")
+        .select("source_url,publisher").eq("source_url", exactUrl).eq("is_active", true).maybeSingle();
+      if (error) throw error;
+      return inspectSearchSource(url, await getPolicy(), title, [], data?.publisher ? data.source_url : null);
+    },
     robotsAllowed: checkRobots,
     async read(source, statement, aliases) { return readGroundedExcerpt(source, statement, aliases, await getPolicy()); },
     async existingSourceId(url) {
