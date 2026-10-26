@@ -15,6 +15,7 @@ import type { RetrievedClaim } from "@/lib/corpus/types";
 
 const sdk = vi.hoisted(() => ({ generate: vi.fn(), interactions: vi.fn() }));
 vi.mock("@google/genai", () => ({ ThinkingLevel: { LOW: "LOW" }, GoogleGenAI: class { models = { generateContent: sdk.generate }; interactions = { create: sdk.interactions }; } }));
+vi.mock("@/lib/api-rate-limit", () => ({ ApiLimitError: class extends Error {}, withProviderQuota: async (_provider: string, operation: () => Promise<unknown>) => operation() }));
 const claim: RetrievedClaim = {
   kind: "claim", id: "claim:1", claimId: "1", text: "The text portrays Vishvamitra as Rama's teacher.",
   claimKind: "traditional_account", certainty: "medium", approvalOrigin: "human_manual", evidenceType: "direct",

@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { NextRequest } from "next/server";
+vi.mock("@/lib/api-rate-limit", () => ({ publicRateLimit: vi.fn().mockResolvedValue(null) }));
 import { POST } from "@/app/api/admin/session/route";
 
 const previousHash = process.env.CORPUS_ADMIN_TOKEN_HASH;
@@ -39,5 +40,24 @@ describe("admin code sign-in", () => {
     expect(response.status).toBe(401);
     expect(await response.json()).toEqual({ error: "Invalid administrator access key." });
     expect(response.headers.get("set-cookie")).toBeNull();
+  });
+
+  it("rejects cross-origin login requests", async () => {
+    const response = await POST(new NextRequest("http://localhost/api/admin/session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Origin: "https://other.example" },
+      body: JSON.stringify({ token: "test-code" }),
+    }));
+    expect(response.status).toBe(403);
+    expect(response.headers.get("set-cookie")).toBeNull();
+  });
+
+  it("rejects oversized login requests", async () => {
+    const response = await POST(new NextRequest("http://localhost/api/admin/session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token: "x".repeat(1100) }),
+    }));
+    expect(response.status).toBe(413);
   });
 });

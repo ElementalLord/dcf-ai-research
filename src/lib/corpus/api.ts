@@ -10,6 +10,10 @@ export function assertRequestSize(request: NextRequest, maxBytes = MAX_JSON_BYTE
 }
 
 export function assertCorpusAdmin(request: NextRequest): NextResponse | null {
+  const origin = request.headers.get("origin");
+  if (origin && origin !== request.nextUrl.origin && !["GET", "HEAD", "OPTIONS"].includes(request.method)) {
+    return NextResponse.json({ error: { code: "FORBIDDEN", message: "Invalid origin." } }, { status: 403 });
+  }
   if (validAdminSession(request.cookies.get(ADMIN_COOKIE)?.value)) return null;
   const authorization = request.headers.get("authorization") || "";
   if (authorization.startsWith("Bearer ") && validAdminToken(authorization.slice(7))) return null;

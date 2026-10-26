@@ -9,6 +9,7 @@ import { loadActiveSourceRules } from "./source-registry";
 import { answerIntent } from "@/lib/ask/evidence-priority";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { planResearchQueries } from "./research-quality";
+import { ApiLimitError, withProviderQuota } from "@/lib/api-rate-limit";
 
 export type GroundingResult = {
   evidence: RetrievedPassage[];
@@ -110,12 +111,12 @@ export async function searchWithGoogleGrounding(question: string, personalityId:
           : intent === "relationship" ? "Focus on the actual interactions and conflict or change between the people."
             : "Answer the specific question directly.";
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-    const response = await boundedProviderCall((abortSignal) => ai.models.generateContent({
+    const response = await withProviderQuota("gemini", () => boundedProviderCall((abortSignal) => ai.models.generateContent({
       model: GROUNDING_MODEL || GENERATION_MODEL,
       contents: `Use Google Search now to answer: ${question} (about ${personalityName}). ${focus}${emphasis ? ` ${emphasis}` : ""} Follow this bounded, gap-directed search plan: ${queryPlan.map((item) => `[${item.intent}] ${item.query}`).join("; ")}.${preferred.length ? ` Search ${preferred.slice(0, 3).join(", ")} first when they are relevant to the claim.` : " Search credible primary, university, scholarly, institutional, and reference sources."} ${gaps.length ? `Fill these gaps: ${gaps.slice(0, 2).join("; ")}.` : ""} Give ${depth === "research" ? "a few" : "two"} concise findings supported by searched pages. Treat result snippets only as discovery leads. Distinguish documented fact, scientific result, scholarly interpretation, institutional self-description, and traditional account. For first/priority claims establish chronology and avoid celebratory simplification. Exclude Wikipedia, blogs, forums, and unsourced summaries.${policy.mode === "approved_domains_only" ? ` Use only these allowed domains: ${preferred.join(", ")}.` : " You may discover other credible sources if the preferred sites lack direct support."}`,
       config: { tools: [{ googleSearch: {} }], abortSignal, maxOutputTokens: 1800,
         httpOptions: { retryOptions: { attempts: 1 } } },
-    }), depth === "research" ? 18000 : 13000);
+    }), depth === "research" ? 18000 : 13000));
     const metadata = response.candidates?.[0]?.groundingMetadata;
     const candidates = groundedPassages(response, personalityId, personalityName, true);
     const inspected = new Map<string, ReturnType<typeof inspectSearchSource>>();
@@ -168,7 +169,7 @@ export async function searchWithGoogleGrounding(question: string, personalityId:
     return result;
   } catch (error) {
     const category = classifyProviderError(error);
-    if (category === "QUOTA_EXHAUSTED" || category === "RATE_LIMIT") googleGroundingCircuit.fail(category, category === "QUOTA_EXHAUSTED" ? 5 * 60_000 : 60_000);
-    return empty(category, 1);
+    if (!(error instanceof ApiLimitError) && (category === "QUOTA_EXHAUSTED" || category === "RATE_LIMIT")) googleGroundingCircuit.fail(category, category === "QUOTA_EXHAUSTED" ? 5 * 60_000 : 60_000);
+    return empty(category, error instanceof ApiLimitError ? 0 : 1);
   }
 }

@@ -6,6 +6,7 @@ import { feedbackAnswerSnapshot } from "@/lib/feedback";
 
 const { insert } = vi.hoisted(() => ({ insert: vi.fn() }));
 vi.mock("@/lib/supabase-admin", () => ({ supabaseAdmin: { from: () => ({ insert }) } }));
+vi.mock("@/lib/api-rate-limit", () => ({ publicRateLimit: vi.fn().mockResolvedValue(null) }));
 import { POST } from "@/app/api/feedback/route";
 
 const context = {

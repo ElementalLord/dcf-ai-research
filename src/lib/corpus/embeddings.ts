@@ -4,6 +4,7 @@ import { CorpusError } from "./errors";
 import { boundedProviderCall, classifyProviderError, embeddingCircuit } from "./provider-health";
 import { recordAiCall } from "./usage";
 import { checkpointedAi } from "./ai-checkpoints";
+import { ApiLimitError, withProviderQuota } from "@/lib/api-rate-limit";
 
 export const EMBEDDING_MODEL = process.env.GEMINI_EMBEDDING_MODEL || "gemini-embedding-2";
 export const EMBEDDING_DIMENSIONS = 768;
@@ -19,18 +20,20 @@ export async function embedTexts(texts: string[]): Promise<number[][]> {
   if (embeddingCircuit.state().open) throw new Error(`Embedding provider cooldown: ${embeddingCircuit.state().category}`);
   try {
     const ai = client();
-    recordAiCall("embeddingCalls");
-    const response = await boundedProviderCall((abortSignal) => ai.models.embedContent({
+    const response = await withProviderQuota("gemini", () => {
+      recordAiCall("embeddingCalls");
+      return boundedProviderCall((abortSignal) => ai.models.embedContent({
       model: EMBEDDING_MODEL,
       contents: texts.map((text) => ({ parts: [{ text }] })),
       config: { outputDimensionality: EMBEDDING_DIMENSIONS, abortSignal, httpOptions: { retryOptions: { attempts: 1 } } },
-    }), 3500);
+      }), 3500);
+    });
     const vectors = response.embeddings?.map((embedding) => embedding.values || []) || [];
     if (vectors.length !== texts.length || vectors.some((vector) => vector.length !== EMBEDDING_DIMENSIONS)) throw new Error("Unexpected embedding shape");
     embeddingCircuit.succeed();
     return vectors;
   } catch (error) {
-    embeddingCircuit.fail(classifyProviderError(error));
+    if (!(error instanceof ApiLimitError)) embeddingCircuit.fail(classifyProviderError(error));
     throw new CorpusError("EMBEDDING_FAILED", "Embeddings unavailable.", 502, { cause: error });
   }
 }

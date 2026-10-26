@@ -5,6 +5,8 @@ import { assertRequestSize, corpusErrorResponse } from "@/lib/corpus/api";
 import { CorpusError } from "@/lib/corpus/errors";
 import { newResponseId, signFeedbackContext } from "@/lib/feedback-token";
 import { feedbackAnswerSnapshot } from "@/lib/feedback";
+import { publicRateLimit } from "@/lib/api-rate-limit";
+import { readLimitedBody, RequestBodyTooLarge } from "@/lib/limited-request-body";
 
 const askSchema = z.object({
   personalityId: z.string().uuid().optional(),
@@ -20,9 +22,14 @@ const askSchema = z.object({
 }).refine((value) => Boolean(value.personalityId || value.personalityIds?.length), "At least one personality is required.");
 
 export async function POST(request: NextRequest) {
+  const limited = await publicRateLimit(request, "ask");
+  if (limited) return limited;
   try {
     assertRequestSize(request, 16 * 1024);
-    const parsed = askSchema.safeParse(await request.json());
+    const raw = await readLimitedBody(request, 16 * 1024);
+    let body: unknown;
+    try { body = JSON.parse(raw); } catch { body = null; }
+    const parsed = askSchema.safeParse(body);
     if (!parsed.success) {
       throw new CorpusError("INVALID_INPUT", "A valid personality and question are required.", 400);
     }
@@ -42,6 +49,7 @@ export async function POST(request: NextRequest) {
     });
     return NextResponse.json({ ...publicResult, feedbackToken });
   } catch (error) {
+    if (error instanceof RequestBodyTooLarge) return NextResponse.json({ error: { code: "CONTENT_TOO_LARGE", message: "The request body is too large." } }, { status: 413 });
     return corpusErrorResponse(error);
   }
 }

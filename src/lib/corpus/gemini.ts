@@ -2,6 +2,7 @@ import { GoogleGenAI, ThinkingLevel } from "@google/genai";
 import { CorpusError, type CorpusErrorCode } from "./errors";
 import { boundedProviderCall, generationCircuit, providerErrorDetails, type ProviderCircuit } from "./provider-health";
 import { authorizeResearchModelCall, finishResearchModelCall, recordAiCall, recordModelTokens, recordUnmeteredModelCall } from "./usage";
+import { ApiLimitError, withProviderQuota } from "@/lib/api-rate-limit";
 
 export const GENERATION_MODEL = process.env.SYNTHESIS_MODEL || process.env.GEMINI_GENERATION_MODEL || "gemini-3.7-flash";
 export const ALTERNATE_SYNTHESIS_MODEL = process.env.SYNTHESIS_ALTERNATE_MODEL || "gemini-3.5-flash-lite";
@@ -28,13 +29,15 @@ export async function generateText(prompt: string, options: GenerationOptions = 
   let metered = false;
   const heldMicro = authorizeResearchModelCall(prompt.length, SYNTHESIS_MAX_OUTPUT_TOKENS);
   try {
-    recordAiCall("generativeCalls", options.callLimit || 1);
-    attempted = true;
-    const response = await boundedProviderCall((abortSignal) => ai.models.generateContent({
+    const response = await withProviderQuota("gemini", () => {
+      recordAiCall("generativeCalls", options.callLimit || 1);
+      attempted = true;
+      return boundedProviderCall((abortSignal) => ai.models.generateContent({
       model, contents: prompt, config: { abortSignal, maxOutputTokens: SYNTHESIS_MAX_OUTPUT_TOKENS,
         ...(diagnostic && /^gemini-3\./.test(model) ? { thinkingConfig: { thinkingLevel: ThinkingLevel.LOW } } : {}),
         httpOptions: { retryOptions: { attempts: 1 } } },
-    }), timeout);
+      }), timeout);
+    });
     recordModelTokens(response.usageMetadata?.promptTokenCount, response.usageMetadata?.candidatesTokenCount);
     finishResearchModelCall(heldMicro, response.usageMetadata?.promptTokenCount, response.usageMetadata?.candidatesTokenCount, true);
     metered = true;
@@ -52,7 +55,7 @@ export async function generateText(prompt: string, options: GenerationOptions = 
     if (common) console.warn("synthesis_provider_attempt", JSON.stringify({ ...common, success: false,
       durationMs: Math.round(performance.now() - started), ...details }));
     else console.warn("Gemini generation failed:", error instanceof Error ? error.message : String(error));
-    circuit.fail(details.category, diagnostic && details.category === "TIMEOUT" ? 2 * 60_000 : undefined);
+    if (!(error instanceof ApiLimitError)) circuit.fail(details.category, diagnostic && details.category === "TIMEOUT" ? 2 * 60_000 : undefined);
     throw new CorpusError(code, "AI generation temporarily unavailable.", 503, { cause: error });
   }
 }

@@ -1,4 +1,5 @@
 import { sourceWorkKey } from "./research-quality";
+import { ApiLimitError, withProviderQuota } from "@/lib/api-rate-limit";
 
 export type SearchOptions = { maxResults?: number; domain?: string };
 export type WebSearchResult = { title: string; url: string; snippet?: string; sourceProvider: string };
@@ -70,7 +71,8 @@ export class BraveSearchProvider implements WebSearchProvider {
     url.searchParams.set("q", q);
     url.searchParams.set("count", String(maxResults));
     try {
-      const response = await this.fetchImpl(url, { headers: { Accept: "application/json", "X-Subscription-Token": this.key as string }, signal: AbortSignal.timeout(8_000), cache: "no-store" });
+      const request = () => this.fetchImpl(url, { headers: { Accept: "application/json", "X-Subscription-Token": this.key as string }, signal: AbortSignal.timeout(8_000), cache: "no-store" });
+      const response = this.fetchImpl === fetch ? await withProviderQuota("brave", request) : await request();
       if (response.status === 401 || response.status === 403) throw new WebSearchError("AUTH_ERROR");
       if (response.status === 429) {
         this.rateFailures += 1;
@@ -83,6 +85,7 @@ export class BraveSearchProvider implements WebSearchProvider {
       this.rateFailures = 0;
       return normalizeWebResults(payload, maxResults);
     } catch (error) {
+      if (error instanceof ApiLimitError) throw new WebSearchError("RATE_LIMIT", false);
       if (error instanceof WebSearchError) throw new WebSearchError(error.category, true);
       if (error instanceof Error && (error.name === "TimeoutError" || error.name === "AbortError")) throw new WebSearchError("TIMEOUT", true);
       throw new WebSearchError("PROVIDER_ERROR", true);

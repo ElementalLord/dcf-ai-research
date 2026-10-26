@@ -14,6 +14,7 @@ const state = vi.hoisted(() => ({
 vi.mock("@/lib/corpus/personality-context", () => ({ loadPersonalityConfiguration: vi.fn(async () => ({ personalityId: "p", canonicalName: "Vishvamitra", categoryId: "category", categorySlug: "rishi", categoryName: "Rishis", aliases: [{ alias: "Vishwamitra" }], termAliases: [] })) }));
 vi.mock("@/lib/corpus/embeddings", () => ({ embedTexts: state.embed }));
 vi.mock("@google/genai", () => ({ ThinkingLevel: { LOW: "LOW" }, GoogleGenAI: class { models = { generateContent: state.generate }; } }));
+vi.mock("@/lib/api-rate-limit", () => ({ ApiLimitError: class extends Error {}, withProviderQuota: async (_provider: string, operation: () => Promise<unknown>) => operation() }));
 vi.mock("@/lib/live-research/source-registry", () => ({ loadActiveSourceRules: vi.fn(async () => [{ id: "rule", is_active: true, allow_live_fetch: true, allow_live_search: true, scope_type: "DOMAIN", domain: "example.test", priority: 1, evidence_use_status: "approved", display_name: "Public primary text" }]) }));
 vi.mock("@/lib/live-research/live-search", () => ({ discoverApprovedUrls: state.discover }));
 vi.mock("@/lib/live-research/cache", () => ({ fetchAndCacheApprovedPage: state.fetch }));
