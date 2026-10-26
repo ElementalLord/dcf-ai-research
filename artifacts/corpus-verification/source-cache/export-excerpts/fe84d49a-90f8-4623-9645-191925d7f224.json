@@ -1,0 +1,34 @@
+{
+  "source_id": "fe84d49a-90f8-4623-9645-191925d7f224",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:26:52.894Z"
+    },
+    "citation": "Letters from Ramanujan to G. H. Hardy — Trinity Archive. Trinity College Library, Cambridge. https://archives.trin.cam.ac.uk/index.php/letters-from-ramanujan-to-g-h-hardy",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Trinity College Library, Cambridge",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Letters from Ramanujan to G. H. Hardy — Trinity Archive",
+    "url": "https://archives.trin.cam.ac.uk/index.php/letters-from-ramanujan-to-g-h-hardy"
+  },
+  "claim_ids": [
+    "90df3e58-222e-43b0-89ca-502653ad833c"
+  ],
+  "passages": [
+    {
+      "chunk_id": "a21bf063-ecc9-46c3-afcd-61e8da4fdfe8",
+      "locator": "Archival correspondence record",
+      "text_sha256": "74fb66b145be2837be06cb3fdcde51c9d86ff3f6fe55e7ab02f63088d706117b",
+      "excerpt_preview": "Skip to main content Archive Site Trinity College Cambridge Quick search Search File 2 - Letters from Srinivasa Ramanujan to G. H. Hardy Identity area Reference codeAdd. MS a/94/2 TitleLetters from Srinivasa Ramanujan to G. H. Hardy Date(s)",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,48 @@
+{
+  "source_id": "d2b985b5-3b52-4313-952e-7350e2713508",
+  "source": {
+    "author": "Noboru Karashima",
+    "authority_metadata": {
+      "source_kind": "Modern epigraphically based scholarship",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Noboru Karashima. South Indian Society: Ancient to Medieval. Oxford University Press. https://global.oup.com/academic/product/south-indian-society-9780195696663",
+    "original_work_identity": {},
+    "publication_year": 2009,
+    "publisher_or_institution": "Oxford University Press",
+    "rights_or_access_note": "Short documented research excerpts only; contemporary inscriptions, later chronicle tradition and modern scholarship are kept distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "South Indian Society: Ancient to Medieval",
+    "url": "https://global.oup.com/academic/product/south-indian-society-9780195696663"
+  },
+  "claim_ids": [
+    "02842e3f-7879-49fe-8b2f-dd8e9eb85d4f",
+    "4e8a5774-55b6-49f6-8f66-33c073fd158f",
+    "b223821a-800b-481e-be2e-3280198acd04",
+    "d6284b62-8fd4-418b-a34f-32480a7dc13a",
+    "e6879980-369d-42be-baf8-d02dedcd7792",
+    "efa4f2fc-203a-47f1-ae6a-8aba15f31ba9"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0a12b3ba-a16d-45cb-8e90-7d5e8479e488",
+      "locator": "Administrative terminology",
+      "text_sha256": "c856aa3884cdd102cda64fa96ae9405f05d40389dc0790e0461724552153cdbe",
+      "excerpt_preview": "Administrative terminology in inscriptions must be interpreted in its local and chronological context rather than treated as a modern bureaucratic chart.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "42941734-ede0-4f5a-8ba5-1b8604dc20b4",
+      "locator": "efforts to build a centralised state by Rajaraja I",
+      "text_sha256": "7a73dd4f92fb10bafed187e83ce6b0d4cf451d7a9b950b595e43e2308cf9a2d0",
+      "excerpt_preview": "arashima uses South Indian inscriptions to study the transition from ancient to medieval society, including landholding, local assemblies, taxation, trade and efforts to build a centralised state by Rajaraja I.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

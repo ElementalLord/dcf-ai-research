@@ -1,0 +1,34 @@
+{
+  "source_id": "55d27c5e-0370-4f6e-a84c-64a60bd6bca8",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Netaji Inquiry Committee Report, 11 September 1956. Nehru Archive. https://nehruarchive.in/documents/netaji-inquiry-committee-report-11-september-1956-9jqqkk",
+    "original_work_identity": {},
+    "publication_year": 1956,
+    "publisher_or_institution": "Nehru Archive",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Netaji Inquiry Committee Report, 11 September 1956",
+    "url": "https://nehruarchive.in/documents/netaji-inquiry-committee-report-11-september-1956-9jqqkk"
+  },
+  "claim_ids": [
+    "bef42097-25c7-45ea-9751-7868d98beae1"
+  ],
+  "passages": [
+    {
+      "chunk_id": "bdf38a38-578c-4d66-adfa-ff14b086f1a2",
+      "locator": "died in an air crash",
+      "text_sha256": "13411928648f7e02842a50c9558b11ba85ad228a8ebf36c7c0cf35b8d7fba230",
+      "excerpt_preview": "he Netaji Inquiry Committee concluded that Netaji Subhas Chandra Bose died in an air crash and that ashes at Renkoji temple in Tokyo were his ashes.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

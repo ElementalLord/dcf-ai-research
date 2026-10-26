@@ -1,0 +1,62 @@
+{
+  "source_id": "d54ef0de-e3f0-491d-9b3c-35195910473e",
+  "source": {
+    "author": "Mircea Raianu",
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Mircea Raianu. A mass of anomalies: Land, Law, and Sovereignty in an Indian Company Town. Comparative Studies in Society and History, Cambridge University Press. https://www.cambridge.org/core/journals/comparative-studies-in-society-and-history/article/mass-of-anomalies-land-law-and-sovereignty-in-an-indian-company-town/FF52D5DA176FD5122DED4778497A4E1D",
+    "original_work_identity": {},
+    "publication_year": 2018,
+    "publisher_or_institution": "Comparative Studies in Society and History, Cambridge University Press",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "A mass of anomalies: Land, Law, and Sovereignty in an Indian Company Town",
+    "url": "https://www.cambridge.org/core/journals/comparative-studies-in-society-and-history/article/mass-of-anomalies-land-law-and-sovereignty-in-an-indian-company-town/FF52D5DA176FD5122DED4778497A4E1D"
+  },
+  "claim_ids": [
+    "230eddd5-e828-4d2f-a271-ad5c8a03615b",
+    "2c8282b0-fcb8-4c6a-8b0d-30a6eeb107f3",
+    "3b584bbd-d897-475d-985f-a4385dfdad48",
+    "6fb9c49a-0217-4a0a-a1b8-b2a0cbd76525"
+  ],
+  "passages": [
+    {
+      "chunk_id": "4fe71326-05aa-4de3-a42b-7f6c02259daa",
+      "locator": "land acquisition and dispossession",
+      "text_sha256": "d4b482944756385d5c4f9b95340ea700b242dfdb7220b3ff4adbac9af129088f",
+      "excerpt_preview": "It traces land acquisition and dispossession of mainly adivasi cultivators by TISCO from about 1900 to 1930.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "841ee0bb-d53d-438b-81fd-36b7326f02ab",
+      "locator": "British firms competed quickly",
+      "text_sha256": "eb2a5f0b47567e790e7fe2e58b87b6b56bfc2b4dc6083ba10071ca7f5dfdd90f",
+      "excerpt_preview": "British firms competed quickly for valuable mineral resources, and the Tatas needed collaboration with princely rulers and local intermediaries.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "86b6aae2-931e-4e8e-8bc5-cdc5dd1e26ec",
+      "locator": "seek prospecting licenses",
+      "text_sha256": "6930b7327080a99147104fc0e7e1e0b15b340f69ad90ed4a53cbe62547c90e6c",
+      "excerpt_preview": "round 1900 Jamsetji Tata sent Dorabji Tata and Shapurji Saklatvala to seek prospecting licenses for iron ore, coal, copper and manganese.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b514ea10-ad59-4dfd-886b-b081b31b569d",
+      "locator": "first company town",
+      "text_sha256": "c53f3cff538b9a92349ea38ec8fa3aade88304775188670b2864f3d65f15f22c",
+      "excerpt_preview": "The article characterizes Jamshedpur as the site of an Indian firm’s first company town and of major mineral extraction.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

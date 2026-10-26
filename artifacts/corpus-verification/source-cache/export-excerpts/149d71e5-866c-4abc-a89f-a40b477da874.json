@@ -1,0 +1,73 @@
+{
+  "source_id": "149d71e5-866c-4abc-a89f-a40b477da874",
+  "source": {
+    "author": "Amartya Sen",
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Amartya Sen. Tagore and His India. NobelPrize.org. https://www.nobelprize.org/prizes/literature/1913/tagore/article/",
+    "original_work_identity": {},
+    "publication_year": 2001,
+    "publisher_or_institution": "NobelPrize.org",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Tagore and His India",
+    "url": "https://www.nobelprize.org/prizes/literature/1913/tagore/article/"
+  },
+  "claim_ids": [
+    "0e64be42-febd-4bf2-ad39-c57b75e2e31b",
+    "1a9a3d02-4f76-4451-8ea3-24d21753f7da",
+    "206aada4-cf57-46dc-8529-800f3ad6a555",
+    "4cb3014b-6473-4698-9239-29cc2514a9cf",
+    "68bfc119-caec-48e0-8130-0151e2a30b95",
+    "9b1754d9-128e-4735-b9c1-74d7a1666a5a",
+    "b127c501-9954-4e26-ae54-e452fb91f6a0"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0c19f42c-4df5-4638-bbce-e7c24e6837b5",
+      "locator": "freedom of mind, reason, cultural exchange",
+      "text_sha256": "469761d16a40759c6572d09a1ebb35c58d0629c683d82e5709f4f5aba5592f79",
+      "excerpt_preview": "His arguments joined freedom of mind, reason, cultural exchange and criticism of narrow identity.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "56a43f6c-3694-429b-a0fa-4d70efe66606",
+      "locator": "praised Gandhi’s political achievement",
+      "text_sha256": "326b36fadbe2e2021e09ffc2628aea03ccd92997beea73f66e5a8a535329ea16",
+      "excerpt_preview": "Tagore praised Gandhi’s political achievement while disagreeing with him on nationalism, education, science and some forms of protest.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9214da0c-0698-40f7-a588-ed8240083e90",
+      "locator": "spiritual image that did not represent the range",
+      "text_sha256": "8614ac313dd07f26429045c941e1d8bb5d35fc19be42141912dcd5f94d53bcc4",
+      "excerpt_preview": "Sen cautions that Tagore’s international reputation later narrowed around a spiritual image that did not represent the range of his work.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "be2eb0f1-1b1c-48e3-952a-3713fc663b16",
+      "locator": "reprinted repeatedly before the Nobel announcement",
+      "text_sha256": "9389a657588086b90450c3ac0e3277d5e11ab4dfb9526604c83b373a0f88a689",
+      "excerpt_preview": "The English Gitanjali appeared in London in 1913 and was reprinted repeatedly before the Nobel announcement.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c5f6f48f-4d2d-4092-b41a-013c4304bf17",
+      "locator": "towering figure in Bengali literature",
+      "text_sha256": "7a659cda54536677e8a76bd3cad764a25568ff3913e9fd326db9d2c2dcb555cf",
+      "excerpt_preview": "martya Sen describes Tagore as a towering figure in Bengali literature whose poetry, novels, short stories, essays and songs remain widely present in India and Bangladesh.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

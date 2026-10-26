@@ -1,0 +1,56 @@
+{
+  "source_id": "dfea9d16-e203-4fc9-aa62-53a649dbd7b4",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_kind": "Archaeological and architectural institutional synthesis",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Great Living Chola Temples. UNESCO World Heritage Centre. https://whc.unesco.org/en/list/250",
+    "original_work_identity": {},
+    "publication_year": 2026,
+    "publisher_or_institution": "UNESCO World Heritage Centre",
+    "rights_or_access_note": "Short documented research excerpts only; contemporary inscriptions, later chronicle tradition and modern scholarship are kept distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Great Living Chola Temples",
+    "url": "https://whc.unesco.org/en/list/250"
+  },
+  "claim_ids": [
+    "14b3d34a-a409-401c-8b26-e84dff140e6c",
+    "74d0f2b4-7a38-4be6-99aa-748adc17d569",
+    "97a5321e-4c5f-43e5-bc66-dd11e2b58d7a",
+    "af48b048-b6a9-4e9a-a59f-09ee0496a5e4",
+    "e4ee4929-f977-4c13-ae94-5cf2912a281f",
+    "fb1ea3bb-ab07-44df-8d1d-b586cb7ab895"
+  ],
+  "passages": [
+    {
+      "chunk_id": "7c7fdb01-1cf1-497f-bd52-e3a19811152f",
+      "locator": "1003–1004",
+      "text_sha256": "ce68561f793d3798b5e00fb44964df9e75a49c1e00e93968c64cfa793037ea01",
+      "excerpt_preview": "nown in the inscriptions as Dakshina Meru, construction of the Brihadisvara temple was inaugurated by Rajaraja I, possibly in 1003–1004, and consecrated in his 25th regnal year, 1009–1010.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a4ee4941-9775-4b43-8ff3-498794c82b46",
+      "locator": "protected by the Archaeological Survey of India",
+      "text_sha256": "e5798fc28b5a47f768fcd0797b56ad6ef2f6b0c02ddff2ac8b2f5bf1bcb8d9e3",
+      "excerpt_preview": "The property has been protected by the Archaeological Survey of India since 1922.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f2f08fa0-671b-4bb4-97f7-d66720809d71",
+      "locator": "59.82 metres",
+      "text_sha256": "72959d55ed70c4cf3aa98c15944faade3b7d0a4f1d3dca9c2d7d25c6ceb879a9",
+      "excerpt_preview": "The vimana rises 59.82 metres above the ground and has thirteen talas, an octagonal sikhara, a circumambulatory path and murals.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

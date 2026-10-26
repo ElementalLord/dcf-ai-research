@@ -1,0 +1,34 @@
+{
+  "source_id": "938a6317-4dc9-41b4-8c8f-51b35ed3d096",
+  "source": {
+    "author": "Patrick Olivelle (editor and translator)",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Patrick Olivelle (editor and translator). A Treatise on Dharma, by Yajnavalkya, edited and translated by Patrick Olivelle (publisher’s description). Murty Classical Library of India, Harvard University Press. https://www.murtylibrary.com/books/a-treatise-on-dharma",
+    "original_work_identity": {},
+    "publication_year": 2019,
+    "publisher_or_institution": "Murty Classical Library of India, Harvard University Press",
+    "rights_or_access_note": "Publisher’s summary of the edition.",
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "A Treatise on Dharma, by Yajnavalkya, edited and translated by Patrick Olivelle (publisher’s description)",
+    "url": "https://www.murtylibrary.com/books/a-treatise-on-dharma"
+  },
+  "claim_ids": [
+    "25da20ae-69e9-4be6-8958-322061b3844d"
+  ],
+  "passages": [
+    {
+      "chunk_id": "c176df38-2923-496b-94bc-5b762a1ab6be",
+      "locator": "Publisher’s description",
+      "text_sha256": "031b1ac2368d6cad25936f10f6b1eb1143775ec513faeed16f03870d099ff086",
+      "excerpt_preview": "A Treatise on Dharma, written in the fourth or fifth century, is the finest example of the genre of dharmaśāstra—texts on religious, civil, and criminal law and the duties of rulers—that informed Indian life for a thousand years. It illumin",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,90 @@
+{
+  "source_id": "a53e15f1-46fd-4d8b-86c0-2598b6763ea9",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "About Heritage. Indian Institute of Science. https://www.iisc.ac.in/about/general-information/about-heritage/",
+    "original_work_identity": {},
+    "publication_year": 2024,
+    "publisher_or_institution": "Indian Institute of Science",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "About Heritage",
+    "url": "https://www.iisc.ac.in/about/general-information/about-heritage/"
+  },
+  "claim_ids": [
+    "0033ae45-5f94-4f1a-9e42-b9b9045942c9",
+    "1448ba3a-154d-438f-9bfc-5024c86d23ad",
+    "3ff78ab5-a3b7-48f2-985e-e93a4d383d34",
+    "51b005dc-19f9-464f-be81-2210f7629880",
+    "6bf48bd5-b066-4757-9b12-5b8a59b360bc",
+    "6f20bd93-d6fa-4c2c-bd8a-3d90c46866f8",
+    "93ceeb16-b82e-4d63-ba2e-5c0881573e12",
+    "e9f3e688-1ea0-4a40-8ba9-048160f2d358"
+  ],
+  "passages": [
+    {
+      "chunk_id": "268fb79f-4295-4915-8959-47fd01ea4605",
+      "locator": "born on 3 March 1839",
+      "text_sha256": "41119b0c12cdf7435cb8306d1cb56e74f3b065f57d13f48ae987dc2f964cce60",
+      "excerpt_preview": "amsetji Nusserwanji Tata was born on 3 March 1839 in Navsari, Gujarat.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "61d3d138-45fd-4289-8e5a-3bde7ecbae04",
+      "locator": "donated over 370 acres",
+      "text_sha256": "b10ba72f78b7ca8055f42ad1e05195fd62fdce637ff8f6f74b008e39d5102f07",
+      "excerpt_preview": "The Mysore Durbar donated over 370 acres in Bengaluru.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8410decc-5f43-4b0a-9de6-c38f12369271",
+      "locator": "died in 1904 before the Institute",
+      "text_sha256": "59901e62a183cfd0b56b715faccdc612a176d1eccb59e691a419a38efc227e83",
+      "excerpt_preview": "Tata died in 1904 before the Institute came into existence.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "841496df-8dbb-428b-a2ee-b4e9b8997eb2",
+      "locator": "university of science in 1896",
+      "text_sha256": "e6d9d26d914bc85e34827f89a0d685ee4246de54118c244a7b3c90f16c66d7c0",
+      "excerpt_preview": "Tata conceived a university of science in 1896 that would work for the benefit of India, and in 1898 created an endowment for establishing such an institution.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8f2dd2af-3595-4fa8-8f88-25f9a405f25f",
+      "locator": "first students began study in 1911",
+      "text_sha256": "ca872eb74518abb7c5fd70c1eadaa24abc1c62dad395130d05f415351c3c6d76",
+      "excerpt_preview": "The first students began study in 1911 in General and Applied Chemistry and Electrical Technology.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c64bbbd4-81c9-427f-b653-8aa561685d86",
+      "locator": "joint efforts of Tata, the Government of India and the Maharaja of Mysore",
+      "text_sha256": "dae67ea2c90babb4a3010a48d4dea89cea01d1cc6c036b4a9f0e73ace6282714",
+      "excerpt_preview": "IISc was founded in 1909 through joint efforts of Tata, the Government of India and the Maharaja of Mysore.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e457a518-1760-4c6b-ad41-4eb32396324f",
+      "locator": "Burjorji Padshah",
+      "text_sha256": "179fafe18f4645974d7c4e364b21f17797240e2a716d60d4e255f3987fa66fc6",
+      "excerpt_preview": "He set up a provisional committee under educationist Burjorji Padshah to prepare a blueprint.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

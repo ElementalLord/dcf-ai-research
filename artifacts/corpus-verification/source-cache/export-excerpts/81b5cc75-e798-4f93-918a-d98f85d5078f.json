@@ -1,0 +1,72 @@
+{
+  "source_id": "81b5cc75-e798-4f93-918a-d98f85d5078f",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Satyajit Ray – Biography. Satyajit Ray Org. https://satyajitray.org/biography/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Satyajit Ray Org",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Satyajit Ray – Biography",
+    "url": "https://satyajitray.org/biography/"
+  },
+  "claim_ids": [
+    "0bb2e3f5-f3b8-42e3-9e49-fa796ff9005d",
+    "5a4875ed-0d6f-40ae-909a-152a9dedee18",
+    "bd38fcd8-96e4-4cae-a8f6-660b85c06371",
+    "c66801e0-0d6e-4d21-8aee-e052287cfba6",
+    "d7c8c5e1-0f53-480f-bdae-236e086846aa",
+    "dd0e6b15-97d2-4676-bf22-9735234c362b"
+  ],
+  "passages": [
+    {
+      "chunk_id": "2134f879-1da7-46f3-94b9-df47bd009968",
+      "locator": "Calcutta Film Society in 1947",
+      "text_sha256": "f7d1654e14e4b2a70e6dcd6a1847e946cdd338a5fa6885f87671aa16b748f5ac",
+      "excerpt_preview": "He helped found the Calcutta Film Society in 1947.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "820780d6-ae60-4dfb-8425-64b05c2646ef",
+      "locator": "Presidency College",
+      "text_sha256": "972f33238ad08152ee3a41993391ab7aac40fab2a920268eb12b1ae184b550de",
+      "excerpt_preview": "He studied at Presidency College and then art at Santiniketan.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9ba97317-10df-418f-9f8b-15bd7f987a9e",
+      "locator": "Aparajito and Apur Sansar",
+      "text_sha256": "d2089d44f6620fde08eea709da30040da9491f9db9e04db30b0e61a040297d3c",
+      "excerpt_preview": "His first film, Pather Panchali, appeared in 1955 and was followed by Aparajito and Apur Sansar, together known as the Apu Trilogy.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9f06f727-2521-45f0-a609-620cde8689a2",
+      "locator": "born in Calcutta on 2 May 1921",
+      "text_sha256": "943ea279353795379f37ade62d55039f83282b94f89023bee99e5e768bd000b1",
+      "excerpt_preview": "atyajit Ray was born in Calcutta on 2 May 1921 into a family associated with literature, art, music and printing.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e7e13b75-c3b0-4c79-9a25-2e7a3e4fd9d0",
+      "locator": "edited the children’s magazine Sandesh",
+      "text_sha256": "b41bc4a430a3233d2c0be49022fc59359dc91f8bb0fc7276c33a98f45ca0a1d3",
+      "excerpt_preview": "He also edited the children’s magazine Sandesh and wrote fiction and nonfiction.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

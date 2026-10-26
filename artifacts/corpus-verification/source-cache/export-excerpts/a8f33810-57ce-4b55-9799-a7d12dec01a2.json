@@ -1,0 +1,50 @@
+{
+  "source_id": "a8f33810-57ce-4b55-9799-a7d12dec01a2",
+  "source": {
+    "author": "Swami Vivekananda",
+    "authority_metadata": {},
+    "citation": "Swami Vivekananda. Practical Vedanta, Part I. Complete Works of Swami Vivekananda. https://ramakrishnavivekananda.info/vivekananda/volume_2/practical_vedanta_and_other_lectures/practical_vedanta_part_i.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Complete Works of Swami Vivekananda",
+    "rights_or_access_note": "Publicly accessible page; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Practical Vedanta, Part I",
+    "url": "https://ramakrishnavivekananda.info/vivekananda/volume_2/practical_vedanta_and_other_lectures/practical_vedanta_part_i.htm"
+  },
+  "claim_ids": [
+    "87a56e4c-b1ee-43d9-a642-d93912c2667e",
+    "9747b811-e062-4eeb-8880-f09e2b19b529",
+    "aff7fc71-53aa-456a-9810-4c442a32d74b"
+  ],
+  "passages": [
+    {
+      "chunk_id": "7c7da41e-3a7a-4ff5-a666-02a82422f66f",
+      "locator": "Practical Vedanta, Part I",
+      "text_sha256": "041d68fed8e5134b3707e6984562f3b35485f78f58d5f67b99fd5a0bcf098e5d",
+      "excerpt_preview": "ntensely practical. We must be able to carry it out in every part of our lives. And not only this, the fictitious differentiation between religion and the life of the world must vanish, for the Vedanta teaches oneness — one life throughout.",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "89cef307-0ce6-459f-adb9-71ed88608442",
+      "locator": "Practical Vedanta, Part I",
+      "text_sha256": "c29a774585d7d2b6b59ae541b3f2847aaf437e00389cccc5d7cf870ed05128c2",
+      "excerpt_preview": "eory is very good indeed, but how are we to carry it into practice? If it be absolutely impracticable, no theory is of any value whatever, except as intellectual gymnastics. The Vedanta, therefore, as a religion must be intensely practical.",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d70f9e62-7814-4769-817a-60a0cad9d0c6",
+      "locator": "Practical Vedanta, Part I",
+      "text_sha256": "18250ed6267dc7972da571f759e80c681630b2b0d8aa4736d9a5e8164c7104fe",
+      "excerpt_preview": "dually on the practical side as we proceed. But this series of lectures is intended to be a basis, and so we must first apply ourselves to theories and understand how they are worked out, proceeding from forest caves to busy streets and cit",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

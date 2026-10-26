@@ -1,0 +1,557 @@
+[
+  {
+    "claim_id": "917c9de6-090a-41fb-a395-d4d7e2334eae",
+    "worker_file": "artifacts/corpus-verification/worker-vishvamitra-decisions.json",
+    "reason": "Verified source has no established claim-source link in the original corpus",
+    "unlinked_source_ids": [
+      "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de"
+    ],
+    "proposed_decision": {
+      "claim_id": "917c9de6-090a-41fb-a395-d4d7e2334eae",
+      "personality": "Vishvamitra",
+      "original_claim_text": "Bala Kanda attributes extraordinary effects to Bala and Atibala—protection from fatigue, hunger, thirst, and attack while asleep—within the story-world; these should not be converted into biomedical claims.",
+      "decision": "REMOVE FROM ACTIVE CORPUS",
+      "final_proposed_wording": "Bala Kanda attributes extraordinary effects to Bala and Atibala—protection from fatigue, hunger, thirst, and attack while asleep—within the story-world; these should not be converted into biomedical claims.",
+      "epistemic_type": "TRADITIONAL_NARRATIVE",
+      "evidence_references": [
+        {
+          "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+          "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+          "locator": "Bala Kanda 1.22.12–13, 17",
+          "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+          "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+          "original_source_inspected": true,
+          "original_claim_source_linked": false
+        }
+      ],
+      "verification_rationale": "Verified substance repeats claim 79dc18aa, which retains the traditional attribution.",
+      "original_source_inspected": true,
+      "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+      "removal_reason": "Verified substance repeats claim 79dc18aa, which retains the traditional attribution."
+    }
+  },
+  {
+    "claim_id": "97f0b346-8b02-4297-8b71-5765954446f0",
+    "worker_file": "artifacts/corpus-verification/worker-vishvamitra-decisions.json",
+    "reason": "Verified source has no established claim-source link in the original corpus",
+    "unlinked_source_ids": [
+      "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de"
+    ],
+    "proposed_decision": {
+      "claim_id": "97f0b346-8b02-4297-8b71-5765954446f0",
+      "personality": "Vishvamitra",
+      "original_claim_text": "The exceptional bodily benefits attributed to Bala and Atibala belong to Vishvamitra's speech within the epic and should be represented as traditional claims, not experimentally verified effects.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "The exceptional bodily benefits attributed to Bala and Atibala belong to Vishvamitra's speech within the epic and should be represented as traditional claims, not experimentally verified effects.",
+      "epistemic_type": "TRADITIONAL_NARRATIVE",
+      "evidence_references": [
+        {
+          "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+          "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+          "locator": "Bala Kanda 1.22.12–17",
+          "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+          "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+          "original_source_inspected": true,
+          "original_claim_source_linked": false
+        }
+      ],
+      "verification_rationale": "The claimed bodily benefits appear in Vishvamitra’s epic speech, not independent experimental evidence.",
+      "original_source_inspected": true,
+      "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+      "removal_reason": null
+    }
+  },
+  {
+    "claim_id": "d966314a-3bbb-4e33-8806-d703f95acc35",
+    "worker_file": "artifacts/corpus-verification/worker-vishvamitra-decisions.json",
+    "reason": "Verified source has no established claim-source link in the original corpus",
+    "unlinked_source_ids": [
+      "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de"
+    ],
+    "proposed_decision": {
+      "claim_id": "d966314a-3bbb-4e33-8806-d703f95acc35",
+      "personality": "Vishvamitra",
+      "original_claim_text": "In the Bala Kanda, Vishvamitra is a major guide and teacher of Rama and Lakshmana; he brings them from Ayodhya and transmits Bala and Atibala.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "In the Bala Kanda, Vishvamitra is a major guide and teacher of Rama and Lakshmana; he brings them from Ayodhya and transmits Bala and Atibala.",
+      "epistemic_type": "TRADITIONAL_NARRATIVE",
+      "evidence_references": [
+        {
+          "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+          "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+          "locator": "Bala Kanda 1.22.2–3, 6–12, 20–23",
+          "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+          "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+          "original_source_inspected": true,
+          "original_claim_source_linked": false
+        }
+      ],
+      "verification_rationale": "The journey with both princes and the Bala–Atibala teaching are explicit.",
+      "original_source_inspected": true,
+      "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+      "removal_reason": null
+    }
+  },
+  {
+    "claim_id": "06015b7f-650f-4522-976d-43ef2fec7e7e",
+    "worker_file": "artifacts/corpus-verification/worker-vishvamitra-decisions.json",
+    "reason": "Verified source has no established claim-source link in the original corpus",
+    "unlinked_source_ids": [
+      "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad"
+    ],
+    "proposed_decision": {
+      "claim_id": "06015b7f-650f-4522-976d-43ef2fec7e7e",
+      "personality": "Vishvamitra",
+      "original_claim_text": "The final food-gift episode places tapas and generosity in direct tension: Vishvamitra has completed a long fasting vow but gives the entire meal to a disguised supplicant instead of ending his deprivation.",
+      "decision": "REVISE AND APPROVE",
+      "final_proposed_wording": "Bala Kanda 1.65 narrates that after a long vow Vishvamitra offered all his prepared food to Indra in Brahmin disguise, foregoing his own meal and continuing his silence.",
+      "epistemic_type": "TRADITIONAL_NARRATIVE",
+      "evidence_references": [
+        {
+          "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+          "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+          "locator": "Bala Kanda 1.65.4–7",
+          "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+          "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+          "original_source_inspected": true,
+          "original_claim_source_linked": false
+        }
+      ],
+      "verification_rationale": "Both deprivation and gift are explicit; “tension” was interpretive.",
+      "original_source_inspected": true,
+      "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+      "removal_reason": null
+    }
+  },
+  {
+    "claim_id": "1e2b8e30-0d45-470e-9fa1-4fd4c652cb47",
+    "worker_file": "artifacts/corpus-verification/worker-vishvamitra-decisions.json",
+    "reason": "Verified source has no established claim-source link in the original corpus",
+    "unlinked_source_ids": [
+      "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad"
+    ],
+    "proposed_decision": {
+      "claim_id": "1e2b8e30-0d45-470e-9fa1-4fd4c652cb47",
+      "personality": "Vishvamitra",
+      "original_claim_text": "The final food-gift episode should not be reduced to a miracle of fasting; the narrative foregrounds hospitality to a supplicant and maintenance of a vow before escalating to supernatural tapas imagery.",
+      "decision": "REVISE AND APPROVE",
+      "final_proposed_wording": "Bala Kanda 1.65 places Vishvamitra’s gift of his entire prepared meal to a disguised supplicant before its later imagery of breath restraint and smoke from his head.",
+      "epistemic_type": "TRADITIONAL_NARRATIVE",
+      "evidence_references": [
+        {
+          "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+          "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+          "locator": "Bala Kanda 1.65.4–9",
+          "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+          "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+          "original_source_inspected": true,
+          "original_claim_source_linked": false
+        }
+      ],
+      "verification_rationale": "Replaced editorial direction with the chapter’s actual sequence.",
+      "original_source_inspected": true,
+      "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+      "removal_reason": null
+    }
+  },
+  {
+    "claim_id": "23be0733-87bf-4483-b320-9850b727605b",
+    "worker_file": "artifacts/corpus-verification/worker-vishvamitra-decisions.json",
+    "reason": "Verified source has no established claim-source link in the original corpus",
+    "unlinked_source_ids": [
+      "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad"
+    ],
+    "proposed_decision": {
+      "claim_id": "23be0733-87bf-4483-b320-9850b727605b",
+      "personality": "Vishvamitra",
+      "original_claim_text": "The final food-gift episode shows that ritual silence remains unbroken even when Vishvamitra gives away his entire prepared meal to a supplicant.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "The final food-gift episode shows that ritual silence remains unbroken even when Vishvamitra gives away his entire prepared meal to a supplicant.",
+      "epistemic_type": "TRADITIONAL_NARRATIVE",
+      "evidence_references": [
+        {
+          "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+          "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+          "locator": "Bala Kanda 1.65.4–7",
+          "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+          "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+          "original_source_inspected": true,
+          "original_claim_source_linked": false
+        }
+      ],
+      "verification_rationale": "The chapter expressly says he gave the meal and maintained silence.",
+      "original_source_inspected": true,
+      "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+      "removal_reason": null
+    }
+  },
+  {
+    "claim_id": "2c34ef2c-b24d-405f-a625-408f57dc366e",
+    "worker_file": "artifacts/corpus-verification/worker-vishvamitra-decisions.json",
+    "reason": "Verified source has no established claim-source link in the original corpus",
+    "unlinked_source_ids": [
+      "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad"
+    ],
+    "proposed_decision": {
+      "claim_id": "2c34ef2c-b24d-405f-a625-408f57dc366e",
+      "personality": "Vishvamitra",
+      "original_claim_text": "Bala Kanda 1.65 relocates Vishvamitra from the northern Himalaya to its eastern region for another phase of austerity, so the epic maps successive ascetic stages onto changing geography.",
+      "decision": "REVISE AND APPROVE",
+      "final_proposed_wording": "Bala Kanda 1.65 says Vishvamitra left the Himalayan north and moved east for another stage of austerity.",
+      "epistemic_type": "TRADITIONAL_NARRATIVE",
+      "evidence_references": [
+        {
+          "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+          "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+          "locator": "Bala Kanda 1.65.1–2",
+          "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+          "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+          "original_source_inspected": true,
+          "original_claim_source_linked": false
+        }
+      ],
+      "verification_rationale": "The original’s “northern Himalaya to its eastern region” overstates a geographical precision the verse does not give.",
+      "original_source_inspected": true,
+      "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+      "removal_reason": null
+    }
+  },
+  {
+    "claim_id": "4d7839f8-7966-4f4c-b6f0-7c22a3771c2f",
+    "worker_file": "artifacts/corpus-verification/worker-vishvamitra-decisions.json",
+    "reason": "Verified source has no established claim-source link in the original corpus",
+    "unlinked_source_ids": [
+      "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad"
+    ],
+    "proposed_decision": {
+      "claim_id": "4d7839f8-7966-4f4c-b6f0-7c22a3771c2f",
+      "personality": "Vishvamitra",
+      "original_claim_text": "The smoke-and-world-burning imagery at the climax of Vishvamitra's tapas should be classified as epic supernatural narration, even though the narrative uses it to mark the extremity of his ascetic power.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "The smoke-and-world-burning imagery at the climax of Vishvamitra's tapas should be classified as epic supernatural narration, even though the narrative uses it to mark the extremity of his ascetic power.",
+      "epistemic_type": "TRADITIONAL_NARRATIVE",
+      "evidence_references": [
+        {
+          "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+          "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+          "locator": "Bala Kanda 1.65.8–16",
+          "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+          "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+          "original_source_inspected": true,
+          "original_claim_source_linked": false
+        }
+      ],
+      "verification_rationale": "Smoke and cosmic distress are narrated as supernatural epic imagery.",
+      "original_source_inspected": true,
+      "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+      "removal_reason": null
+    }
+  },
+  {
+    "claim_id": "54f22437-c791-4cbb-ba1b-d31af2814b53",
+    "worker_file": "artifacts/corpus-verification/worker-vishvamitra-decisions.json",
+    "reason": "Verified source has no established claim-source link in the original corpus",
+    "unlinked_source_ids": [
+      "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad"
+    ],
+    "proposed_decision": {
+      "claim_id": "54f22437-c791-4cbb-ba1b-d31af2814b53",
+      "personality": "Vishvamitra",
+      "original_claim_text": "The final Bala Kanda austerity stage includes suspended breathing for another thousand-year period in the narrative, an extreme ascetic motif that should be recorded as epic description rather than biological history.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "The final Bala Kanda austerity stage includes suspended breathing for another thousand-year period in the narrative, an extreme ascetic motif that should be recorded as epic description rather than biological history.",
+      "epistemic_type": "TRADITIONAL_NARRATIVE",
+      "evidence_references": [
+        {
+          "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+          "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+          "locator": "Bala Kanda 1.65.8–9",
+          "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+          "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+          "original_source_inspected": true,
+          "original_claim_source_linked": false
+        }
+      ],
+      "verification_rationale": "The text presents another thousand years without respiration; original already marks it as epic motif.",
+      "original_source_inspected": true,
+      "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+      "removal_reason": null
+    }
+  },
+  {
+    "claim_id": "960e78c9-9fb2-463b-99ab-6bb3988a0ddf",
+    "worker_file": "artifacts/corpus-verification/worker-vishvamitra-decisions.json",
+    "reason": "Verified source has no established claim-source link in the original corpus",
+    "unlinked_source_ids": [
+      "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad"
+    ],
+    "proposed_decision": {
+      "claim_id": "960e78c9-9fb2-463b-99ab-6bb3988a0ddf",
+      "personality": "Vishvamitra",
+      "original_claim_text": "The final tapas narrative describes smoke issuing from Vishvamitra's head and distress spreading through the worlds; this is an epic supernatural image of ascetic potency, not an empirical physiological observation.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "The final tapas narrative describes smoke issuing from Vishvamitra's head and distress spreading through the worlds; this is an epic supernatural image of ascetic potency, not an empirical physiological observation.",
+      "epistemic_type": "TRADITIONAL_NARRATIVE",
+      "evidence_references": [
+        {
+          "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+          "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+          "locator": "Bala Kanda 1.65.8–9",
+          "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+          "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+          "original_source_inspected": true,
+          "original_claim_source_linked": false
+        }
+      ],
+      "verification_rationale": "The described smoke and cosmic distress are in the text, and the claim rules out physiological reading.",
+      "original_source_inspected": true,
+      "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+      "removal_reason": null
+    }
+  },
+  {
+    "claim_id": "b358938a-3a13-4a7f-ac36-a1cd2a00bd59",
+    "worker_file": "artifacts/corpus-verification/worker-vishvamitra-decisions.json",
+    "reason": "Verified source has no established claim-source link in the original corpus",
+    "unlinked_source_ids": [
+      "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad"
+    ],
+    "proposed_decision": {
+      "claim_id": "b358938a-3a13-4a7f-ac36-a1cd2a00bd59",
+      "personality": "Vishvamitra",
+      "original_claim_text": "Bala Kanda 1.65 portrays generosity under deprivation when Vishvamitra gives away all of the cooked food he was finally about to eat after a long vow, while keeping his silence intact.",
+      "decision": "REMOVE FROM ACTIVE CORPUS",
+      "final_proposed_wording": "Bala Kanda 1.65 portrays generosity under deprivation when Vishvamitra gives away all of the cooked food he was finally about to eat after a long vow, while keeping his silence intact.",
+      "epistemic_type": "TRADITIONAL_NARRATIVE",
+      "evidence_references": [
+        {
+          "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+          "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+          "locator": "Bala Kanda 1.65.4–7",
+          "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+          "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+          "original_source_inspected": true,
+          "original_claim_source_linked": false
+        }
+      ],
+      "verification_rationale": "Substance repeats the more precise retained claim 06015b7f.",
+      "original_source_inspected": true,
+      "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+      "removal_reason": "Substance repeats the more precise retained claim 06015b7f."
+    }
+  },
+  {
+    "claim_id": "fd077ec7-e2c8-4b05-829f-521fb9f895ce",
+    "worker_file": "artifacts/corpus-verification/worker-vishvamitra-decisions.json",
+    "reason": "Verified source has no established claim-source link in the original corpus",
+    "unlinked_source_ids": [
+      "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad"
+    ],
+    "proposed_decision": {
+      "claim_id": "fd077ec7-e2c8-4b05-829f-521fb9f895ce",
+      "personality": "Vishvamitra",
+      "original_claim_text": "Near the end of the final austerity cycle, Vishvamitra gives away all the cooked food he was about to eat to Indra disguised as a Brahmin and begins another period of penance without breaking silence.",
+      "decision": "REMOVE FROM ACTIVE CORPUS",
+      "final_proposed_wording": "Near the end of the final austerity cycle, Vishvamitra gives away all the cooked food he was about to eat to Indra disguised as a Brahmin and begins another period of penance without breaking silence.",
+      "epistemic_type": "TRADITIONAL_NARRATIVE",
+      "evidence_references": [
+        {
+          "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+          "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+          "locator": "Bala Kanda 1.65.4–7",
+          "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+          "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+          "original_source_inspected": true,
+          "original_claim_source_linked": false
+        }
+      ],
+      "verification_rationale": "Substance repeats the more precise retained claim 06015b7f.",
+      "original_source_inspected": true,
+      "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+      "removal_reason": "Substance repeats the more precise retained claim 06015b7f."
+    }
+  },
+  {
+    "claim_id": "c0e8ed43-1bfd-4bb2-81b7-492f6500fb4e",
+    "worker_file": "artifacts/corpus-verification/worker-vishvamitra-decisions.json",
+    "reason": "Verified source has no established claim-source link in the original corpus",
+    "unlinked_source_ids": [
+      "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad"
+    ],
+    "proposed_decision": {
+      "claim_id": "c0e8ed43-1bfd-4bb2-81b7-492f6500fb4e",
+      "personality": "Vishvamitra",
+      "original_claim_text": "In the Valmiki Ramayana tradition, Vishvamitra passes through royal and ascetic statuses and is ultimately recognized as a Brahmarshi. This is a textual/traditional classification rather than a modern historical credential.",
+      "decision": "REVISE AND APPROVE",
+      "final_proposed_wording": "In the Bala Kanda tradition, Vishvamitra’s extended ascetic narrative culminates in Brahma’s and Vasistha’s recognition of him as a Brahmarshi. This is an epic status, not a historical credential.",
+      "epistemic_type": "TRADITIONAL_NARRATIVE",
+      "evidence_references": [
+        {
+          "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+          "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+          "locator": "Bala Kanda 1.65.19–28",
+          "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+          "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+          "original_source_inspected": true,
+          "original_claim_source_linked": false
+        }
+      ],
+      "verification_rationale": "The inspected chapter proves the culmination but does not alone establish the earlier royal status.",
+      "original_source_inspected": true,
+      "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+      "removal_reason": null
+    }
+  },
+  {
+    "claim_id": "2c8cdc9c-0229-4e9e-9623-31512b609a4c",
+    "worker_file": "artifacts/corpus-verification/worker-vishvamitra-decisions.json",
+    "reason": "Verified source has no established claim-source link in the original corpus",
+    "unlinked_source_ids": [
+      "8d1e7888-6577-4564-b935-96ed0ae1b902"
+    ],
+    "proposed_decision": {
+      "claim_id": "2c8cdc9c-0229-4e9e-9623-31512b609a4c",
+      "personality": "Vishvamitra",
+      "original_claim_text": "The curse placed on Rambha is itself followed by Vishvamitra's distress at having failed to contain anger, making emotional self-mastery a measurable threshold in the narrative progression.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "The curse placed on Rambha is itself followed by Vishvamitra's distress at having failed to contain anger, making emotional self-mastery a measurable threshold in the narrative progression.",
+      "epistemic_type": "TRADITIONAL_NARRATIVE",
+      "evidence_references": [
+        {
+          "source_id": "8d1e7888-6577-4564-b935-96ed0ae1b902",
+          "url": "https://www.valmikiramayan.net/utf8/baala/sarga64/balasans64.htm",
+          "locator": "Bala Kanda 1.64.11–17",
+          "source_authority": "Valmiki Ramayana, Bala Kanda 1.64, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+          "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+          "original_source_inspected": true,
+          "original_claim_source_linked": false
+        }
+      ],
+      "verification_rationale": "The curse is followed by regret and a decision to control anger.",
+      "original_source_inspected": true,
+      "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+      "removal_reason": null
+    }
+  },
+  {
+    "claim_id": "51c9b51f-76a0-44c1-910a-c07dfaa17c65",
+    "worker_file": "artifacts/corpus-verification/worker-vishvamitra-decisions.json",
+    "reason": "Verified source has no established claim-source link in the original corpus",
+    "unlinked_source_ids": [
+      "8d1e7888-6577-4564-b935-96ed0ae1b902"
+    ],
+    "proposed_decision": {
+      "claim_id": "51c9b51f-76a0-44c1-910a-c07dfaa17c65",
+      "personality": "Vishvamitra",
+      "original_claim_text": "In the Rambha episode Vishvamitra explicitly identifies conquering both desire and anger as his ascetic objective, showing that internal discipline is part of the intensity of tapas in the story.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "In the Rambha episode Vishvamitra explicitly identifies conquering both desire and anger as his ascetic objective, showing that internal discipline is part of the intensity of tapas in the story.",
+      "epistemic_type": "TRADITIONAL_NARRATIVE",
+      "evidence_references": [
+        {
+          "source_id": "8d1e7888-6577-4564-b935-96ed0ae1b902",
+          "url": "https://www.valmikiramayan.net/utf8/baala/sarga64/balasans64.htm",
+          "locator": "Bala Kanda 1.64.11–17",
+          "source_authority": "Valmiki Ramayana, Bala Kanda 1.64, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+          "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+          "original_source_inspected": true,
+          "original_claim_source_linked": false
+        }
+      ],
+      "verification_rationale": "Verse 12 says he seeks victory over desire and anger; verses 14–17 narrate the failure and renewed vow.",
+      "original_source_inspected": true,
+      "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+      "removal_reason": null
+    }
+  },
+  {
+    "claim_id": "2cb39f70-470f-4d22-918f-a9d7fb8651c0",
+    "worker_file": "artifacts/corpus-verification/worker-science-decisions.json",
+    "reason": "Verified source has no established claim-source link in the original corpus",
+    "unlinked_source_ids": [
+      null
+    ],
+    "proposed_decision": {
+      "claim_id": "2cb39f70-470f-4d22-918f-a9d7fb8651c0",
+      "personality": "Jagadish Chandra Bose",
+      "original_claim_text": "John Burdon-Sanderson’s earlier work on Venus flytrap predates Bose’s plant-electrophysiology program, so Bose should not be described as the sole originator of plant electrical-response research.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "John Burdon-Sanderson’s earlier work on Venus flytrap predates Bose’s plant-electrophysiology program, so Bose should not be described as the sole originator of plant electrical-response research.",
+      "epistemic_type": "SCHOLARLY_INTERPRETATION",
+      "evidence_references": [
+        {
+          "source_id": null,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6702694/",
+          "locator": "lines 80–84; references 3–4, lines 155–160",
+          "source_authority": "Prakash Narain Tandon, 2019 Indian Journal of Medical Research scholarly review, full text inspected 2026-10-19",
+          "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+          "original_source_inspected": true
+        }
+      ],
+      "verification_rationale": "Tandon explicitly recognizes Burdon-Sanderson’s earlier Dionaea research and cites his 1873 Royal Society report; Bose’s plant studies came later.",
+      "original_source_inspected": true,
+      "material_limitation": "Tandon elsewhere uses broad plant-neurobiology language; this decision makes only the chronology and priority distinction.",
+      "removal_reason": null
+    }
+  },
+  {
+    "claim_id": "37f8e70b-3501-4b5b-baec-2b9893d50b8c",
+    "worker_file": "artifacts/corpus-verification/worker-science-decisions.json",
+    "reason": "Verified source has no established claim-source link in the original corpus",
+    "unlinked_source_ids": [
+      null
+    ],
+    "proposed_decision": {
+      "claim_id": "37f8e70b-3501-4b5b-baec-2b9893d50b8c",
+      "personality": "Jagadish Chandra Bose",
+      "original_claim_text": "The claim that later work confirmed most of Bose’s observations is the judgment of a modern review and should not be generalized into endorsement of every original interpretation.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "The claim that later work confirmed most of Bose’s observations is the judgment of a modern review and should not be generalized into endorsement of every original interpretation.",
+      "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+      "evidence_references": [
+        {
+          "source_id": null,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6702694/",
+          "locator": "abstract lines 67–70; body lines 82–86",
+          "source_authority": "Prakash Narain Tandon, 2019 Indian Journal of Medical Research scholarly review, full text inspected 2026-10-19",
+          "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+          "original_source_inspected": true
+        }
+      ],
+      "verification_rationale": "Tandon says later work confirmed most observations; the claim correctly limits that to his judgment and does not endorse every Bose interpretation.",
+      "original_source_inspected": true,
+      "material_limitation": "The review’s sweeping conclusion about plant nervous systems is contested; this claim carefully attributes only the review’s assessment.",
+      "removal_reason": null
+    }
+  },
+  {
+    "claim_id": "d75e4c71-3df2-4cee-be37-eea309c0dd75",
+    "worker_file": "artifacts/corpus-verification/worker-science-decisions.json",
+    "reason": "Verified source has no established claim-source link in the original corpus",
+    "unlinked_source_ids": [
+      null
+    ],
+    "proposed_decision": {
+      "claim_id": "d75e4c71-3df2-4cee-be37-eea309c0dd75",
+      "personality": "Jagadish Chandra Bose",
+      "original_claim_text": "Bose’s high-sensitivity recording instruments mattered because they turned subtle plant changes into durable experimental traces.",
+      "decision": "REVISE AND APPROVE",
+      "final_proposed_wording": "Tandon reports that Bose devised recording instruments to make plant responses to stimuli experimentally visible.",
+      "epistemic_type": "SCHOLARLY_INTERPRETATION",
+      "evidence_references": [
+        {
+          "source_id": null,
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6702694/",
+          "locator": "lines 72–79",
+          "source_authority": "Prakash Narain Tandon, 2019 Indian Journal of Medical Research scholarly review, full text inspected 2026-10-19",
+          "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+          "original_source_inspected": true
+        }
+      ],
+      "verification_rationale": "The review directly supports recording plant responses; the original wording about durable traces adds an unsupported characterization.",
+      "original_source_inspected": true,
+      "material_limitation": "Specific instrument designs and recordings were not individually checked in Bose’s original books.",
+      "removal_reason": null
+    }
+  }
+]

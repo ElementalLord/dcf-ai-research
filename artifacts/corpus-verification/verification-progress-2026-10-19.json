@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-19",
+  "original_claims": 1585,
+  "previously_decided": 148,
+  "screened_this_execution": 1437,
+  "screening_status": "SCREEN_ONLY, never final admission",
+  "newly_source_verified": 171,
+  "new_decisions": {
+    "APPROVE": 130,
+    "REVISE AND APPROVE": 39,
+    "REMOVE FROM ACTIVE CORPUS": 2
+  },
+  "total_decisions": 319,
+  "total_decision_counts": {
+    "APPROVE": 239,
+    "REVISE AND APPROVE": 76,
+    "PENDING": 1266,
+    "REMOVE FROM ACTIVE CORPUS": 4
+  },
+  "remaining_unassessed": 1266,
+  "new_decisions_by_personality": {
+    "A. P. J. Abdul Kalam": {
+      "APPROVE": 16,
+      "REVISE AND APPROVE": 3
+    },
+    "C. V. Raman": {
+      "APPROVE": 8
+    },
+    "M. S. Subbulakshmi": {
+      "APPROVE": 7,
+      "REVISE AND APPROVE": 2
+    },
+    "Rabindranath Tagore": {
+      "APPROVE": 6,
+      "REVISE AND APPROVE": 4
+    },
+    "Ramakrishna Paramahamsa": {
+      "APPROVE": 7,
+      "REVISE AND APPROVE": 2
+    },
+    "Rani Lakshmibai of Jhansi": {
+      "APPROVE": 5,
+      "REVISE AND APPROVE": 4
+    },
+    "Satyajit Ray": {
+      "APPROVE": 7
+    },
+    "Srinivasa Ramanujan": {
+      "APPROVE": 24,
+      "REVISE AND APPROVE": 1
+    },
+    "Swami Vivekananda": {
+      "APPROVE": 4
+    },
+    "Verghese Kurien": {
+      "APPROVE": 4,
+      "REVISE AND APPROVE": 6
+    },
+    "Vishvamitra": {
+      "REVISE AND APPROVE": 16,
+      "APPROVE": 22,
+      "REMOVE FROM ACTIVE CORPUS": 2
+    },
+    "Yajnavalkya": {
+      "APPROVE": 20,
+      "REVISE AND APPROVE": 1
+    }
+  },
+  "sources_inspected_unique": 32,
+  "inspected_source_urls": [
+    "https://belurmath.org/sri-ramakrishna/",
+    "https://iisc.ac.in/wp-content/uploads/2018/03/CV_RAMAN_AND_PHYSICS_AT_IISc.pdf",
+    "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+    "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+    "https://mathshistory.st-andrews.ac.uk/RS/ramanujan_rs.pdf",
+    "https://ncert.nic.in/textbook/pdf/hess205.pdf",
+    "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC6702694/",
+    "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+    "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-nation-ramparts-red-fort-new-delhi",
+    "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-st-aloysius-college",
+    "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/questionnaire-foreign-journalist",
+    "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+    "https://satyajitray.org/making-of-pather-panchali/",
+    "https://tianmu.org/good-work-library/hindu/general-texts/ramakrishna-his-life-and-sayings-f-max-mller",
+    "https://vedicheritage.gov.in/hi/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-062/",
+    "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/mandal-03/",
+    "https://www.bfi.org.uk/sight-and-sound/interviews/satyajit-ray-moral-attitude",
+    "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+    "https://www.gutenberg.org/files/40766/40766-h/40766-h.htm",
+    "https://www.nddb.coop/about/genesis/flood",
+    "https://www.ramakrishnavivekananda.info/sriramakrishna_thegreatmaster/2_14_madhura_sadhana.htm",
+    "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_paper_on_hinduism.htm",
+    "https://www.rri.res.in/about/overview",
+    "https://www.ruf.rice.edu/~kalischi/textuality.html",
+    "https://www.valmikiramayan.net/utf8/baala/sarga21/bala_21_prose.htm",
+    "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+    "https://www.valmikiramayan.net/utf8/baala/sarga28/bala_28_prose.htm",
+    "https://www.valmikiramayan.net/utf8/baala/sarga63/bala_63_prose.htm",
+    "https://www.valmikiramayan.net/utf8/baala/sarga64/balasans64.htm",
+    "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+    "https://www.visvabharati.ac.in/home/history_land_page/"
+  ],
+  "cached_export_source_groups": 442,
+  "cache_status": "short exported excerpt previews only; live original passage locations and paraphrased assessments in worker manifests",
+  "independent_workers_used": 3,
+  "worker_review_groups": [
+    "Vishvamitra",
+    "science",
+    "modern and Yajnavalkya"
+  ],
+  "provenance_holds": 26,
+  "provenance_hold_file": "worker-provenance-holds.json",
+  "staging": {
+    "claims": 1585,
+    "decisions": 319,
+    "active_reviewed_claims": 315,
+    "pending_status_claims": 1265,
+    "rejected_status_claims": 5,
+    "active_unreviewed_claims": 0,
+    "active_source_chunks": 286,
+    "orphan_active_chunks": 0,
+    "cache_rows": 0,
+    "original_link_snapshots_preserved": true,
+    "new_approved_claims_source_filtered": 169,
+    "unverified_source_links_removed": 18,
+    "unverified_chunk_links_removed": 8
+  },
+  "validation": {
+    "historical_ask_profile_tests": "2 passed",
+    "strict_demand_admission_tests": "5 passed",
+    "synthetic_test_fixtures_removed": true
+  },
+  "research_expenditure_usd": 0,
+  "citation_problems": [
+    "26 proposed source-checked decisions held for missing claim-source links or unresolved source records",
+    "11 Raman lecture and 13 Shivaji gazetteer claims remain pending because full publisher originals could not be inspected",
+    "Some legacy reviewed decisions cite inspected external works without source IDs in the original export; legacy links remain for a later provenance audit",
+    "Original exported excerpts are screening hints, not verified passages"
+  ],
+  "continuation_command": "python3 scripts/corpus_batch_runner.py screen && python3 scripts/corpus_batch_runner.py rank --limit 25",
+  "source_access_holds": {
+    "Nobel_Raman_lecture": 11,
+    "Sangli_Gazetteer": 13
+  }
+}

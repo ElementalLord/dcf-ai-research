@@ -1,0 +1,34 @@
+{
+  "source_id": "87375cc9-e408-4c54-b255-73e0d39bfc0c",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:30.209Z"
+    },
+    "citation": "India–EU Science Icons and Students. President of India. https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/interaction-meet-eu-and-indian-science-icons-indian-students-india-eu",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "President of India",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "India–EU Science Icons and Students",
+    "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/interaction-meet-eu-and-indian-science-icons-indian-students-india-eu"
+  },
+  "claim_ids": [
+    "8f4053cf-06a5-4d47-9402-45dccde58d77"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1b62727a-e941-4ebe-a03e-49df27e9166e",
+      "locator": "Presidential speech",
+      "text_sha256": "29dab09788b35d93a8ee4660eed87a470b91ed4d586a1498eb9a1de6eb21a28b",
+      "excerpt_preview": "ater, Energy Independence, Good Habitation, Pollution free atmosphere and Health for all leading to a peaceful, happy and prosperous planet.Science is the foundation for societal transformationMost important ingredient for realizing such a ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

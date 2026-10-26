@@ -1,0 +1,32 @@
+{
+  "source_id": "c1ea70de-a045-4c3d-9bbd-a1e25060374e",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Dharmasutras. https://sites.utexas.edu/sanskrit/resources/dharmasastra/dharmasutras/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "University of Texas at Austin",
+    "rights_or_access_note": "Public HTML page; use subject to source review.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Dharmasutras",
+    "url": "https://sites.utexas.edu/sanskrit/resources/dharmasastra/dharmasutras/"
+  },
+  "claim_ids": [
+    "17aa5f4c-130a-400a-b1ed-0dc2740281b3"
+  ],
+  "passages": [
+    {
+      "chunk_id": "8b89f768-1bfe-4272-9efb-edf43d4fea09",
+      "locator": "Dharmasutras",
+      "text_sha256": "4e1179ee2c436533f1505a886182f4db568785ae3eff1f3ecf83f99393eb276d",
+      "excerpt_preview": "Based on various editions as noted. Additional readings and variants based on Patrick Olivelle, ed. and trans. Dharmasūtras: The Law Codes of Āpastamba, Gautama, Baudhāyana, and Vasiṣṭha. Delhi: Motilal Banarsidass, 2000. E-Texts (Roman tra",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,250 @@
+{
+  "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+  "source": {
+    "author": "Hari Narake; T. Sundararaman",
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "Hari Narake; T. Sundararaman. Savitribai Phule First Memorial Lecture: Dnyanajyoti Savitribai Phule. NCERT, first edition April 2009 (lecture December 2008). https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+    "original_work_identity": {},
+    "publication_year": 2009,
+    "publisher_or_institution": "NCERT, first edition April 2009 (lecture December 2008)",
+    "rights_or_access_note": "Public original; short research excerpts. Scholarly abstract/summary access does not imply full chapter access.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Savitribai Phule First Memorial Lecture: Dnyanajyoti Savitribai Phule",
+    "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf"
+  },
+  "claim_ids": [
+    "1ead73b8-b279-45b1-86dc-edc09feef38b",
+    "25c136e6-160b-4f03-ad54-859388b163ff",
+    "263c076a-5504-4784-a30c-3167859c3981",
+    "2f80f915-ba83-48f9-add8-29b559ff4ef3",
+    "506dddf0-81f1-406f-b089-5b25ebb460a3",
+    "56a15ec9-f3c4-47ec-8a62-6be756266d69",
+    "5d478bab-d1b1-4dc5-905a-fbc0aa021521",
+    "67488e84-8936-4b12-8626-03907d611ae2",
+    "6e42d0c1-5b81-4d73-a01d-ec209673256c",
+    "789ce60a-d2bc-4620-9b53-1ccc3659d85e",
+    "7ac96059-1720-4e25-98ce-2e8ec2971b4e",
+    "7bfdd484-7601-4e98-9604-7a64d81643b9",
+    "8391cad4-a1f8-4d36-8d82-a6f539c7ec14",
+    "868f69cb-5892-4a43-bdf7-a77627dd123f",
+    "86c4920b-5175-4c8d-898d-5517b8e3dc16",
+    "8787018f-bd39-4e41-ba16-55da7c58fc1e",
+    "944f6918-7e13-42cf-9843-2b07e604dce2",
+    "a22ed898-5f6e-405a-b1b9-8c230a893c86",
+    "a4cabecf-a0fc-4001-ab58-d44c11b9077d",
+    "b24333d3-f62f-4c66-b017-136298ac3ff9",
+    "b3a996c1-ea1a-48d3-8fc3-ee5a346d4541",
+    "ba565e39-49a9-4e56-bd5f-fd1b8ff761df",
+    "c88fb96f-4659-4de7-ba26-1bf867ccf4ad",
+    "d0445e5b-2692-486f-ba48-9206c4d11420",
+    "e71d639e-7dfa-4afa-9efc-cad089bec84c"
+  ],
+  "passages": [
+    {
+      "chunk_id": "27ca5374-cdce-47e3-b57a-c7527d7c2862",
+      "locator": "printed p. 25; distinguish cover chronology",
+      "text_sha256": "e9de23509c8952a3d2a9afc956b9158375d6e1035e2689e5bd8d0933df9b8c7e",
+      "excerpt_preview": "As soon as she came to know that the son of Pandurang Babaji Gaekwad in the Mahar settlement outside the village of Mundhwa was afflicted with plague, she went there and rushed back to the hospital with the sick child on her back. She herse",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "3719ed9c-7492-4712-9513-4e1c40213d49",
+      "locator": "printed p. 13",
+      "text_sha256": "d2882d566de81528a4cc193dca6149b65ae39cef94608fcc7f21863ce6ed8baf",
+      "excerpt_preview": "It has been -- 14 of 54 -- 13 noted that there were four, three and one teachers and forty eight, fifty one and thirty three girls respectively in these schools. Savitribai Phule was the Headmistress in the first of these schools along with",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "3f7521cc-234b-41d8-a271-7df5a48cd6cb",
+      "locator": "printed p. 26; disagreement with Scroll editorial introduction",
+      "text_sha256": "a9aebd743ef652dd591377dfddc7c8061331015d33b3d348251e879f6f882eeb",
+      "excerpt_preview": "Speeches of Matoshree Savitribai, 1892 5. Bavankashi Subodh Ratnakar, 1892 All this writing has been collected together in a one hundred and ninety-four paged volume - ëThe complete works of Savitribai Phuleí edited by Dr M. G.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "3f96a9b5-1553-49b9-b570-21dea0a20e96",
+      "locator": "printed p. 20",
+      "text_sha256": "cafb814d7ce39f4a22f367cf8e7e1413a38043f4aee7d8294bd93d6852bfb0b5",
+      "excerpt_preview": "The Satyashodhak Samaj (The Truth-Seekerís Society) was established on 24 September 1873, and Savitribai was an extremely dedicated and passionate activist of the Samaj. The Samaj undertook the programme of arranging marriages without a pri",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4483d56c-4d47-4131-9182-ba8112bb8129",
+      "locator": "printed p. 12; Bombay Guardian account",
+      "text_sha256": "730358e1c0261c491fed000320d6a49434407436286703f6fe8a7b296c65ba78",
+      "excerpt_preview": "The Bombay Guardian has given a detailed note about the same on 22 November 1851, ìwhen Sadashiv Ballal Govande started working in the Judgeís office at Ahmednagar in 1848, he had taken his friend Jotirao Phule there. One day, both of them ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "508482c3-b364-48c1-8f96-1a1b9e7c219b",
+      "locator": "printed p. 18",
+      "text_sha256": "a9711e269b0d5e7a2f855304b3404c361c4b1ea03563053d7f75810edf334395",
+      "excerpt_preview": "By 1884, 35 Brahman widows had come to them from different places. Savitribai would herself help in the delivery of their children and take care of them. In 1874, another exploited ëKashibaií came to them and they adopted her son.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "50b9bbf2-c8da-44f5-ab4e-f051f06c7f7e",
+      "locator": "printed p. 12; assistance application of February 1852",
+      "text_sha256": "144b6b997d927a183701c77b71d3e3713304fb7da0616d54401923b7c1b3ad14",
+      "excerpt_preview": "The other copy of the letter is accompanied by a recommendation letter by Major Kandy, the Principal of Poona College. According to this, the first three schools for girls were started on 3 July 1851, 17 November 1851 and 15 March 1852 at t",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "5344e5d4-36cb-4eb1-aae5-818f40055598",
+      "locator": "printed p. 9",
+      "text_sha256": "a8eeea9babb940d0d9cc4c547a4a48cdcce3d7c5d0d0677974ef645d09339973",
+      "excerpt_preview": "According to the Education Report for the period 1 May 1851 to 30 April 1852, ìJotirao educated his wife at home and trained her to become a teacher.î According to a news item that appeared in the Bombay Guardian on 22 November 1851, the re",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "5c68d0cf-3f41-425c-bff9-0e7812e406bf",
+      "locator": "PDF p. 2; adapted from M. G. Mali",
+      "text_sha256": "7db887261f34c845bc1b16ad23d503cd20fc712e5000392607afe233f69ded07",
+      "excerpt_preview": "Study hard, get educated, Treat knowledge as your God, Diligently take advantage of it, Concentrating with all your heart. Knowledge is wealth, Greater than all riches, Wise is considered he, Who acquires it. The Plight of the Shudras Haunt",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "652d5965-3f4c-4fce-8626-d243ae205a2b",
+      "locator": "printed p. 24",
+      "text_sha256": "cf2e1fb42132985a0cad82d2c40f3fb226086db0734eb94d4f22ce2cbca59569",
+      "excerpt_preview": "The government took up the task of controlling the epidemic under the leadership of an officer called Rand. Savitribai asked Yeshwant to take leave and come back and made him set up a hospital on the fields of the Sasane family. She would h",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6a4fd8d5-146f-42a2-aecc-8a530201a223",
+      "locator": "printed p. 15; quoted 1852 report",
+      "text_sha256": "3e192a11c6c62916c4cedfb7124af03003c9c36bfe869d1dfbcca6bf315432ce",
+      "excerpt_preview": "Jotirao and Savitribai focused on providing girls and boys with education that was vocational and trade- oriented in nature, to make their students self-reliant and capable of independent thought. In the 1852 report, they expressed the foll",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6bb5988e-6692-4b41-9e66-30e46231e941",
+      "locator": "PDF p. 6; adapted from collected works",
+      "text_sha256": "64715c61c23f494f1925b96ad0a1c26ebb4de924834745fe08645fb0bbd4a352",
+      "excerpt_preview": "The opportunity is here, For the Shudras and Ati Shudras, To learn English To dispel all woes. Throw away the authority Of the Brahmin and his teachings, Break the shackles of caste, By learning English. Adapted from: Mali, M.G.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7e5dceb5-f43b-485d-bbf6-506d125214b4",
+      "locator": "printed p. 21",
+      "text_sha256": "ff7fca20efcf061869fc361262120125bb93ea094658f54c9c80b8a56715dc47",
+      "excerpt_preview": "This was the first inter-caste marriage in modern India. The Satyashodhak marriage required the bridegroom to take an oath of giving education and equal rights to women. The ëmangalashtakeí (the Mantras chanted at the time of the wedding) w",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "80d57823-e316-41be-84f8-1230326ad999",
+      "locator": "printed p. 15",
+      "text_sha256": "3052b954003c2017b5398df2bf0176e10b4e857b1f4084aa3d2d18f2d42e4ed4",
+      "excerpt_preview": "The orthodox, however, expressed displeasure that a Shudra like Jotirao should be felicitated by giving him a ëmahavastraí (ceremonial shawl). Jotirao and Savitribai focused on providing girls and boys with education that was vocational and",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "830af72e-3fe3-46fd-9a82-7a278e8c37b3",
+      "locator": "printed p. 24",
+      "text_sha256": "0bc587cf5d3eb2d8ad885c5ce8613c2332ceeb788ffeb057fb56ae1942373a49",
+      "excerpt_preview": "This is how Savitribai erected a memorial in the area behind their house for preserving Jotiraoís memories unto eternity. Savitribai led the Satyashodhak movement after Jotiraoís demise, working till the very end. Yeshwant took up a job in ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "93fc7cf5-f192-4fef-a151-54a293b04f76",
+      "locator": "printed p. 16; reported educational principle",
+      "text_sha256": "cf0e4aefa5e9b5ec659ea85931dba4e05d30728aedb2599d3d537082547bca39",
+      "excerpt_preview": "The Maharashtra government has recently started a scheme of giving ëattendance allowanceí to stop the drop-out of tribal girls and boys from school. Jotirao and Savitribai always insisted that ìeducation -- 17 of 54 -- 16 should give one th",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9bd6d549-e6dd-43c9-8ca0-16d7292ee6aa",
+      "locator": "printed p. 15",
+      "text_sha256": "8c1d6e8b83fb8a28d6d58ca35ce4d78fcf15aa6fc577daac4be2ed6dcbdb3732",
+      "excerpt_preview": "They took up an awareness mission among the Dalit-Bahujans to introduce them to the ëadvantagesí and ëhappinessí to be accrued from education. They started literacy for parents and through this, built a holistic educational project. The way",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9dade9d6-7ee3-494e-a052-374553a72b89",
+      "locator": "printed p. 15",
+      "text_sha256": "a4e2759ae2bf82200b9f6c1580db5d5eb7c0e0d8ab538497ec8c95f8baefb2b7",
+      "excerpt_preview": "They found viable and practical solutions for this. They found that the reasons for the drop-out were, for most part, poverty and disinterest in education. They made provisions to give ësalaryí to the students and planned a syllabus which w",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a9d27e4e-0fc3-46e3-9b2f-17473bb04346",
+      "locator": "printed p. 26",
+      "text_sha256": "ef99365241b6e1010e598a0cff2260faa50cf9b61a5857060f3f259c2e10ebf2",
+      "excerpt_preview": "The literature is as follows: 1. Kavyaphule- Collection of poems, 1854 2. Jotiraoís Speeches, Edited by Savitribai Phule, 25 December 1856 3.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "aff7e56c-cc28-4c56-a1c3-54be0708fb27",
+      "locator": "printed p. 9",
+      "text_sha256": "46cbb744313d5d4743617b99f0d36a63ef524e5931f7f9de376f38c06e6bd291",
+      "excerpt_preview": "If these documents are to be given consideration, Savitribai Phule may well have been the first Indian woman teacher and headmistress. Her stepping across the threshold of the home to teach marks the beginning of the ëpublic lifeí of the mo",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b014ee98-90ab-4138-96a7-c9a40aaa18bb",
+      "locator": "printed p. 9; quoted Education Report",
+      "text_sha256": "0ee258266ea056ce6c9200a169d2c90e177ba39211cacc1d43e6e0ee3ab32cb5",
+      "excerpt_preview": "Governmental records show that Jotirao educated Savitribai at home after their marriage. According to the Education Report for the period 1 May 1851 to 30 April 1852, ìJotirao educated his wife at home and trained her to become a teacher.î ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b82532b3-5e12-47e9-9094-d60da7c10726",
+      "locator": "printed p. 17; later biographical tradition",
+      "text_sha256": "a8a7ab4372065ffcfb4aeb24f02a0a50ae2b74f257bafe709603bea4aff8caa3",
+      "excerpt_preview": "They sometimes pelted stones at her and threw cow dung -- 18 of 54 -- 17 or mud. Savitribai would have to carry two saris when she went to school, changing out of the soiled sari once she reached school, which would again be soiled on her w",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d9f1959d-aacf-45bf-81f6-ed7893c192f3",
+      "locator": "printed p. 9",
+      "text_sha256": "ba954653d2cedd313893f7dfb621fbcd847ad4eb3af35db72dd1f66810b4178f",
+      "excerpt_preview": "But it is sad to note that not even, a single critical biography has ever been written on Savitribai yet. Savitribai was born on 3rd January 1831 at Naigaon situated on the Pune-Satara Road, about 5 kms. from Shirval and about 50 kms.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e1560181-3d4f-4fba-8327-100e7375fafe",
+      "locator": "PDF p. 7; NCERT programme purpose",
+      "text_sha256": "ae3867faf5d90746caaa56efd86f36ba09f7aaec6f515b5830e25df3f947344b",
+      "excerpt_preview": "One of the objectives of the Council is to act as a clearing house and disseminator of ideas relating to school and teacher education. We have initiated the Memorial Lecture Series in order to fulfil this role and to commemorate the life an",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f3024da6-5bba-4b92-989c-45b4e722f500",
+      "locator": "printed pp. 20–21",
+      "text_sha256": "5fa9613f6f63fc880bb3c645ed594a500907d555d873acf0af3dbfcdbd619e44",
+      "excerpt_preview": "The Samaj undertook the programme of arranging marriages without a priest, without dowry and at minimum costs. The first such marriage was arranged on 25 December 1873. Later, this movement spread across the newly emerging nation.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

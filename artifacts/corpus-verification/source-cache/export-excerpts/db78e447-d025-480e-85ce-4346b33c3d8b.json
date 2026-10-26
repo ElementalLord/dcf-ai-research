@@ -1,0 +1,79 @@
+{
+  "source_id": "db78e447-d025-480e-85ce-4346b33c3d8b",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T05:23:01.388Z"
+    },
+    "citation": "Satara District Gazetteer: Muslim Rule and the Marathas. Maharashtra State Gazetteers. https://gazetteers.maharashtra.gov.in/cultural.maharashtra.gov.in/english/gazetteer/SATARA/his_muslim_rule.html",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Maharashtra State Gazetteers",
+    "rights_or_access_note": "The Maharashtra Gazetteers page currently presents an expired TLS certificate. Its original link is retained for provenance, but direct access cannot be guaranteed until the publisher repairs it.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Satara District Gazetteer: Muslim Rule and the Marathas",
+    "url": "https://gazetteers.maharashtra.gov.in/cultural.maharashtra.gov.in/english/gazetteer/SATARA/his_muslim_rule.html"
+  },
+  "claim_ids": [
+    "262d85d4-4a5f-4b0a-a795-e1b1d7500ce2",
+    "431a30bf-eaee-4974-9b1a-c5267e1c24b9",
+    "66c1526c-be42-4ca6-858f-2c185d32ea62",
+    "8550f61f-ada7-4ce7-83e8-3472f91feaf4",
+    "dd6f6335-ff02-46b0-b0f1-0ce1c4683ae9",
+    "fc441eb6-bd5a-4d3f-8542-74319ddf2405"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1518f08c-fb58-4086-a4a7-7c78337fceaa",
+      "locator": "Afzal Khan, an officer of high rank",
+      "text_sha256": "2d7312316bdaf0354bf8a0f816e4ab01c88663b66e4ae65523d67b5cad5ac132",
+      "excerpt_preview": "Afzal Khan, an officer of high rank, volunteered to command the expedition, and in his public leave-taking, in the vaunting manner particularly common to Deccan Muhammedans of those days, pompously declared that he should bring back the ins",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "46034ffd-de4a-4f1c-9484-f021dc6c21c2",
+      "locator": "infantry and cavalry",
+      "text_sha256": "c2272bb216bba711c4006502f0957c09118bb3696be156d5fa4dec85c1704c2c",
+      "excerpt_preview": "His cavalry had not yet spread the terror of the Maratha name; but the rules of formation and discipline for his troops, the interior economy of his infantry and cavalry, the regulations for his forts, his revenue and judicial arrangements,",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8d077540-0d5b-4aa3-85b4-9177f7d60d85",
+      "locator": "revenue and judicial arrangements",
+      "text_sha256": "e1a911973517a44414eb4b533fffc9239a5ed04da3bbd207d52e30533291b3fd",
+      "excerpt_preview": "ine for his troops, the interior economy of his infantry and cavalry, the regulations for his forts, his revenue and judicial arrangements, and the chief offices through which his government was administered were fully developed. Shivaji's ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9510b4cd-f682-4ba5-9883-7a2b779c3cbc",
+      "locator": "Jaysingh",
+      "text_sha256": "5c4aafc0c7c0ae9ff8bc679334b18255c41641fc1337490a15f41642f674461c",
+      "excerpt_preview": "taken or built by him in the old Nizam Shahi territory and obtained the right of levying the chauth and sardeshmukhi over the Bijapur dominions and to co-operate with the Moghals to subdue Bijapur, Shivaji with a body of 2,000 horse and 8,0",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9f283943-63ae-4097-8518-02253dbd973e",
+      "locator": "Battle of Pratapgad",
+      "text_sha256": "6162de0c638b77dc6d56642b2f59a5eba1faeb1d342b6401be486c712dc6e7ad",
+      "excerpt_preview": "Battle of Pratapgad.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "bd439d1d-6e7e-4732-a2a1-8ecb064f6f97",
+      "locator": "Mavlis",
+      "text_sha256": "a5d06025513e3f015263e4ecca7f8e71935584529823aeb978fd653c5abb9d70",
+      "excerpt_preview": "Shivaji followed up his conquest of javli by surprising Rohida which he scaled at night at the head of the Mavlis.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,64 @@
+{
+  "source_id": "8cd5175c-1fa9-4fc0-9d96-2edce7212fec",
+  "source": {
+    "author": "Narasingha Prosad Sil",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Narasingha Prosad Sil. The Nectar of the Master's Speech: An Anatomy of Sri Ramakrishna's Kathāmṛta. The South Asianist 8: 81–117 (University of Edinburgh, open access). https://www.southasianist.ed.ac.uk/southasianist/article/download/5556/8906",
+    "original_work_identity": {},
+    "publication_year": 2021,
+    "publisher_or_institution": "The South Asianist 8: 81–117 (University of Edinburgh, open access)",
+    "rights_or_access_note": "Open-access journal article; the author argues from a deliberately critical, partly psychological standpoint.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "The Nectar of the Master's Speech: An Anatomy of Sri Ramakrishna's Kathāmṛta",
+    "url": "https://www.southasianist.ed.ac.uk/southasianist/article/download/5556/8906"
+  },
+  "claim_ids": [
+    "0886e626-38d7-482f-bbbc-24db2fb27d60",
+    "2b9c30d3-6e88-45ac-8b3d-a73541083437",
+    "2cda0879-0608-4613-a4a4-f0463626670f",
+    "4fe46d59-f0d6-4c9e-9cd8-e7a04fc6dc72",
+    "6b4728f6-c61a-484a-8944-790714146f92",
+    "71062ea0-f9bd-4671-9b10-a7e4027d10c6",
+    "9da069fc-7576-4529-8efa-a04df22b6f5a"
+  ],
+  "passages": [
+    {
+      "chunk_id": "06fbbf65-b6f2-4820-8cc0-6f87eb6e54c5",
+      "locator": "Sil 2021, section VI",
+      "text_sha256": "3f34e6db01dfb85c3f99d386707ef6294b5e995bcc5f4f9c47499a053d69aeaa",
+      "excerpt_preview": "I even decorated it with a pearl, something that I can’t do now-a-days’ (KM, IV, 106 [GR, 491. Nikhilananda omits a complete sentence in his translation]. Diary of 3 July 1884).",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4b2411fc-b99b-4f99-9ee6-e33683f50c63",
+      "locator": "Sil 2021, introduction",
+      "text_sha256": "f18d239c5488451d9312ae9e5725c02786716e1504689799ad305f435bd0bf3b",
+      "excerpt_preview": "KJB Reference Bible). Academic history can never be hagiography, although the latter is valorised by the faithful either as ‘alternative facts’ in the manner of a loquacious counsellor to an erstwhile US President or as ‘contrived facticity",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "84695e0c-36de-4911-89b9-a14edd6b6e21",
+      "locator": "Sil 2021, section I",
+      "text_sha256": "bd2a0e0c02153e2d78d8474162556be2bef1d31a5d2e08299c1ffd54f1b33028",
+      "excerpt_preview": "All his spiritual problems, on the other hand, were the outcome of his inordinate desire to see Goddess Kālī as the real mother to a God-made child. Svāmī Saradananda’s much-publicised story of Gadadhar’s attempted suicide due to his coloss",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f426b8af-804d-49ed-849c-da4745bef698",
+      "locator": "Sil 2021, section I",
+      "text_sha256": "486bd14a571e02bdcc9ee1b7dbc0d283f5c4e93185a39e15781494522276501d",
+      "excerpt_preview": "The boy is said to have hand- copied four religious plays [pālā] as well as portions of the epic Rāmāyaṇa in Krittibas Ojha’s (1381–1461) Bengali translation during 1848–49 (Ramakrishnananda [birthname Shashibhusan Chakravarti 1863–1911], R",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

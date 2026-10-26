@@ -1,0 +1,32 @@
+{
+  "source_id": "e108132d-bfdf-4360-850c-5811c2c39e18",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "S. Ramanujan. The Mathematical Gazette, Cambridge University Press. https://www.cambridge.org/core/journals/mathematical-gazette/article/abs/s-ramanujan/F44F622E3F1019211D391AE26B0B692B",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "The Mathematical Gazette, Cambridge University Press",
+    "rights_or_access_note": "Publicly accessible research excerpt only.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "S. Ramanujan",
+    "url": "https://www.cambridge.org/core/journals/mathematical-gazette/article/abs/s-ramanujan/F44F622E3F1019211D391AE26B0B692B"
+  },
+  "claim_ids": [
+    "93890221-0691-46b1-afc9-665d454e3a61"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0b05fb0a-e0b8-46e9-8732-d35b7ecb30e8",
+      "locator": "S. Ramanujan",
+      "text_sha256": "12ff4cc29713b62af76d0edafb56e9bac1aca3b8fe41a8c1be37db4198c0b49e",
+      "excerpt_preview": "n, a married man of twenty-five, wrote his first letter to Professor Hardy enclosing statements of some of the results he had obtained in mathematics, he himself was employed as a clerk in the Accounts Department of the Port Trust Office of",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

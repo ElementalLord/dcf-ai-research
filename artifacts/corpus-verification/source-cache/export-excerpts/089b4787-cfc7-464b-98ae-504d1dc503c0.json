@@ -1,0 +1,62 @@
+{
+  "source_id": "089b4787-cfc7-464b-98ae-504d1dc503c0",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-13T14:33:39.279Z"
+    },
+    "citation": "Sikh Tradition (Historiography). Encyclopaedia of Sikhism / Punjabi University. https://eos.learnpunjabi.org/SIKH%20TRADITION%20%28HISTORIOGRAPHY%29.html",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Encyclopaedia of Sikhism / Punjabi University",
+    "rights_or_access_note": "Publicly accessible source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Sikh Tradition (Historiography)",
+    "url": "https://eos.learnpunjabi.org/SIKH%20TRADITION%20%28HISTORIOGRAPHY%29.html"
+  },
+  "claim_ids": [
+    "059839ca-824a-4ead-a484-449aeedef171",
+    "aad042e6-b2d0-4b9e-a31c-94082e85afed",
+    "c8e4f991-8829-4141-a25c-fbc5446e0ce7",
+    "d103a527-c271-4aec-b7ee-087b97762061",
+    "ffdd34bd-1759-4cf8-9ca0-8c672323a4e3"
+  ],
+  "passages": [
+    {
+      "chunk_id": "034aa93c-3d69-4c83-9b8a-a6ccacdf023b",
+      "locator": "early Sikh historical",
+      "text_sha256": "a147bf371ed559aca9bb2c2894f88194d18f5ad9c140fef10fd563938cb63a18",
+      "excerpt_preview": "It is biographical in nature.</p> <p class=\"C1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The early Sikh historical tradition which begins during the latter half of the sixteenth century is also in the form of biography. The Janam S&#",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "565a0ee3-bc41-4263-9b7c-f965774b2571",
+      "locator": "faithful record of the current Sikh religious tradition",
+      "text_sha256": "49b8c6894453a9fcb8bfe910472088d0a4eca6981c62a312a22c54309094ccbd",
+      "excerpt_preview": "Myths, legends and allegorical stories are interwoven in their narratives; their lack of historical perspective, however, is counterbalanced by their faithful record of the current Sikh religious tradition. These Janam S&#257kh&#299s, the m",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7a58ac32-fabe-44d8-98b5-44d533e9238f",
+      "locator": "not historiography in the true sense",
+      "text_sha256": "ace9685c2f1434e0c0feaeac38868dbc9a10fdcd942bb814dfe9e779a99559fc",
+      "excerpt_preview": "The Janam S&#257kh&#299s of Gur&#363 N&#257nak are not historiography in the true sense of the term because these accounts rely mostly on oral tradition, without distinguishing fact from fiction. Myths, legends and allegorical stories are i",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9dd121a8-7cb7-493b-ad24-e77d257e6a44",
+      "locator": "late sixteenth",
+      "text_sha256": "9791af36124096abc99fcf0465c66382f929d4ccad57f0f32500404ef9adbf3c",
+      "excerpt_preview": "The first two are commonly believed to belong to late sixteenth, the next two definitely to seventeenth century, while the last ones belong to early eighteenth century. Of these, the Miharb&#257n tradition leans heavily on discourse and exe",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

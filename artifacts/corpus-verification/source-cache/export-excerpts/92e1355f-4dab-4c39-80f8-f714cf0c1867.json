@@ -1,0 +1,54 @@
+{
+  "source_id": "92e1355f-4dab-4c39-80f8-f714cf0c1867",
+  "source": {
+    "author": "Bhagat Singh",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Bhagat Singh. Why I Am an Atheist. Marxists Internet Archive transcription of a prison essay. https://www.marxists.org/archive/bhagat-singh/1930/10/05.htm",
+    "original_work_identity": {},
+    "publication_year": 1930,
+    "publisher_or_institution": "Marxists Internet Archive transcription of a prison essay",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Why I Am an Atheist",
+    "url": "https://www.marxists.org/archive/bhagat-singh/1930/10/05.htm"
+  },
+  "claim_ids": [
+    "5027fff7-ae38-4403-8e9f-8ebf51df5aae",
+    "6e88222c-d9f4-42c8-9084-82782671a38f",
+    "b2f52820-fa1e-4614-a761-eeb5ac42dd1a",
+    "f2c2caf9-054a-4ee1-bf74-7ca7b9ea6091",
+    "fa502d22-3cc3-4168-8eab-1a2fef57e12c"
+  ],
+  "passages": [
+    {
+      "chunk_id": "4bc56261-879e-461f-b8a0-3730af39f4ac",
+      "locator": "not a complete account",
+      "text_sha256": "a97f418584afbdae57fc3a20a6b68efe31af63e796c9e9347d8b8ec8e6c049f3",
+      "excerpt_preview": "The essay is evidence of a late prison position on religion and reason; it is not a complete account of every earlier belief.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "92178f7f-13f7-4a4e-b1cd-e8212eff67df",
+      "locator": "rejects reliance on prayer",
+      "text_sha256": "7439be00a19ba567f3010d34fa6b131ac5f503f10efbf3a13b499237ee2e58f2",
+      "excerpt_preview": "He says he had examined the question through study and reflection, rejects reliance on prayer in the face of execution, and treats belief as a proposition to be tested rather than inherited.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "debd8c33-d539-425c-b984-3f51cf31c8a3",
+      "locator": "Written in prison in 1930",
+      "text_sha256": "0bd78ead455c19552d0ea92dc0e219ed904b72b7ae3645428d66f20fc0c788c0",
+      "excerpt_preview": "ritten in prison in 1930, the essay answers the charge that vanity caused Bhagat Singh’s atheism.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

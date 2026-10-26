@@ -1,0 +1,43 @@
+{
+  "source_id": "3eb3294d-4494-4810-abe5-8fa6def9fd9d",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-13T14:33:00.807Z"
+    },
+    "citation": "Gurū kā Laṅgar. Encyclopaedia of Sikhism / Punjabi University. https://eos.learnpunjabi.org/GURU%20KA%20LANGAR%20%28LIT.%2C%20LANGAR%20OR%20REFECTORY%20OF%20THE%20GURU%29.html",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Encyclopaedia of Sikhism / Punjabi University",
+    "rights_or_access_note": "Publicly accessible source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Gurū kā Laṅgar",
+    "url": "https://eos.learnpunjabi.org/GURU%20KA%20LANGAR%20%28LIT.%2C%20LANGAR%20OR%20REFECTORY%20OF%20THE%20GURU%29.html"
+  },
+  "claim_ids": [
+    "59c172ed-c087-40a5-b150-e358a5c7688a",
+    "d0f4f62e-34b9-48a6-a211-0e2fa54ca3ae"
+  ],
+  "passages": [
+    {
+      "chunk_id": "643d2304-2b4d-487f-913f-96881ac85212",
+      "locator": "without distinctions of caste or status",
+      "text_sha256": "c78f6aef2edfae8eef99cf1d6b8800cd3201bc46188ec1eaba850d0ddef3ca0c",
+      "excerpt_preview": "Sikhs sat in <i>pa&#7749gat</i> (lit., a row) without distinctions of caste or status, to share a common meal prepared in the <i>la&#7749gar</i>. Besides the kitchen where the food was cooked, <i>la&#7749gar</i> stood for the victuals as we",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9cc465cc-c8a6-4826-b130-c6d42256719e",
+      "locator": "central place",
+      "text_sha256": "00e563e4ace81956ae986b600e1fb8efd5fd5c8c2cfc5fe949d801d4ff989e28",
+      "excerpt_preview": "The former gave it the central place in the <i>dharams&#257l&#257</i> he established at Kart&#257rpur at the end of his preaching tours. He worked on his farm to provide for himself and for his family and to contribute his share to the comm",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

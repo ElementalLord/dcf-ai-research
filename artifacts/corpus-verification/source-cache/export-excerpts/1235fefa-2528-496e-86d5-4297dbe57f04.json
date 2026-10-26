@@ -1,0 +1,30 @@
+{
+  "source_id": "1235fefa-2528-496e-86d5-4297dbe57f04",
+  "source": {
+    "author": "Vyasa (traditional attribution); BORI Critical Edition",
+    "authority_metadata": {},
+    "citation": "Mahabharata BORI, Shalya Parva",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Bhandarkar Oriental Research Institute critical text / Vedapath presentation",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Mahabharata (BORI Critical Edition), Shalya Parva",
+    "url": "https://vedapath.app/en/mahabharata-bori/shalya-parva"
+  },
+  "claim_ids": [
+    "0cb31337-5d17-43e9-b011-62c513752d66",
+    "140b24bc-fac2-4bbc-852b-066b185f59df",
+    "30600946-196d-4bec-be1c-d0dfc181e296",
+    "4a592c1a-e288-4336-b47b-de9d0afe6031",
+    "4fbe3da5-9076-4e40-81ef-ac89ca097508",
+    "574cd62f-7a21-45f0-9161-cc18716efdd9",
+    "9188b1ed-cb2f-4b1e-961f-cb89eb0096b4",
+    "da9e0088-0233-424d-9e3a-cbd0ba03679b"
+  ],
+  "passages": [],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

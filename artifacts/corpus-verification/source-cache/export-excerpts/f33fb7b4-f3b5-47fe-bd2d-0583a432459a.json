@@ -1,0 +1,71 @@
+{
+  "source_id": "f33fb7b4-f3b5-47fe-bd2d-0583a432459a",
+  "source": {
+    "author": "Verghese Kurien",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Verghese Kurien. India’s Milk Revolution: Investing in Rural Producer Organizations. World Bank, Ending Poverty in South Asia. https://documents1.worldbank.org/curated/en/961161468101986656/pdf/382870SAR0Endi11OFFICIAL0USE0ONLY11.pdf",
+    "original_work_identity": {},
+    "publication_year": 2007,
+    "publisher_or_institution": "World Bank, Ending Poverty in South Asia",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "India’s Milk Revolution: Investing in Rural Producer Organizations",
+    "url": "https://documents1.worldbank.org/curated/en/961161468101986656/pdf/382870SAR0Endi11OFFICIAL0USE0ONLY11.pdf"
+  },
+  "claim_ids": [
+    "4b36a24a-2c31-4417-a546-05617b0a1fb0",
+    "50bd2555-023c-42e5-915c-e9c7a2c004aa",
+    "6cd99705-484c-4974-bdc6-85c70ff51371",
+    "abf5f2d4-6141-4b8a-8804-5d10b1c5e6e3",
+    "c8556c5a-97a6-4297-bd92-d4946c730683",
+    "fcf054ba-f891-41e9-8415-9f3f4252b93f"
+  ],
+  "passages": [
+    {
+      "chunk_id": "020e34ec-0b91-48bd-93f0-6e47c1b58cda",
+      "locator": "India’s Milk Revolution, p. 47",
+      "text_sha256": "f571853a676d02b1d24d3a845dc58ab2191b9fa97c6cc0105bf3791a0094d2a8",
+      "excerpt_preview": "This requires building into the organization the supporting skills, management systems, structures, and values required. -- 70 of 428 -- 47 India’s Milk Revolution The spearhead teams thus organize milk producers and assist in building inst",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "125e89cc-ab1f-4126-a16c-da08fb071479",
+      "locator": "India’s Milk Revolution, p. 47",
+      "text_sha256": "292157b6a6a94c7e03e5548c4f9abf915daca891ec863a9a986293cfc71eef70",
+      "excerpt_preview": "This approach has contributed to the successful scaling up of the programme. A Key Breakthrough: Using the SNF Surplus If there was one technological breakthrough that revolutionized India’s organized dairy industry, it was the making of sk",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "697981f7-226b-4439-a00c-911675835b41",
+      "locator": "India’s Milk Revolution, p. 47",
+      "text_sha256": "50551e3ec2b8854714fce7c9de7a1cfa4f043f16c27adf5113d0eb30f2ffdac1",
+      "excerpt_preview": "A Key Breakthrough: Using the SNF Surplus If there was one technological breakthrough that revolutionized India’s organized dairy industry, it was the making of skim milk powder out of buffalo milk. The man who made this possible, and who h",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9c5495cb-3c1a-4f63-bcbe-22ea854ae378",
+      "locator": "India’s Milk Revolution, p. 40",
+      "text_sha256": "19a5d5590328603b8bf93413d11da1935b32316133e769d02e657a5d22462632",
+      "excerpt_preview": "In pre-independence India, public and private agencies dominated the dairy industry, although government policy did not favour any one organizational form (Singh and Singh 1998). Early efforts to organize dairying along cooperative lines we",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d4ebd0bf-8761-47c5-ba1b-697f7b19514c",
+      "locator": "India’s Milk Revolution, pp. 37–38",
+      "text_sha256": "02992dda2e68fa96a30a4ab49ab75d13fc413bc5c6bbd98eb2c490f383cbb58b",
+      "excerpt_preview": "Three Phases of Implementation The Operation Flood programme was implemented in three phases between 1970 and 1996. Working through the state governments, the programme created the three-tier structure of Anand Pattern dairy cooperatives al",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

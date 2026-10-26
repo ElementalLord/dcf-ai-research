@@ -1,0 +1,41 @@
+{
+  "source_id": "60fe61e6-0125-4b8b-887a-ee6411251e53",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Bala Kanda 56. https://sanskritdocuments.org/sites/valmikiramayan/baala/sarga56/balaitrans56.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Sanskrit Documents",
+    "rights_or_access_note": "Public HTML page; use subject to source review.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Bala Kanda 56",
+    "url": "https://sanskritdocuments.org/sites/valmikiramayan/baala/sarga56/balaitrans56.htm"
+  },
+  "claim_ids": [
+    "acaa016e-224e-45bc-b5fa-86e6384cae84",
+    "feb916fd-8f3a-43e0-aba3-6170e0d8142e"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1cb2a812-088b-4d5e-b3c5-548f682e9c29",
+      "locator": "Valmiki Ramayana, Bala Kanda 56",
+      "text_sha256": "8c4389248ba81046907222c525037714258baa1d284cfa2580247c41d81628a7",
+      "excerpt_preview": "vasiShThe japataam shreShThe tad adbhutam iva abhavat | 12, 13a. raghu nandana = oh, Raghu's, descendent; etaani sarvaaNi astraaNi  = these, all, missiles; atha = then; tri shuulam astram ghoram ca  = Tri, pronged spear [Trident,] missile, ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d945c795-532e-4440-97a1-52997ee91cdf",
+      "locator": "Valmiki Ramayana, Bala Kanda 56",
+      "text_sha256": "d6f30819fa627668c25ee0c068cdb6844ced32ce8b28b9ff4a6a44a3529b461e",
+      "excerpt_preview": "Book I : Bala Kanda - The Youthful Majesties Chapter [Sarga] 56 Verses converted to UTF-8, Oct 09 Introduction Vashishta nullifies Vishvamitra's missiles just by his Brahma's baton. All missiles  are defused when Vashishta consumed tghem. V",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

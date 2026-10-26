@@ -1,0 +1,61 @@
+{
+  "source_id": "b58a4e57-2c75-40fe-bad2-d76ffd12378c",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-13T14:33:24.290Z"
+    },
+    "citation": "Hukam. Encyclopaedia of Sikhism / Punjabi University. https://www.learnpunjabi.org/eos/HUKAM.html",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Encyclopaedia of Sikhism / Punjabi University",
+    "rights_or_access_note": "Publicly accessible source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Hukam",
+    "url": "https://www.learnpunjabi.org/eos/HUKAM.html"
+  },
+  "claim_ids": [
+    "24940e07-51a8-42b4-bd60-e8084609dc08",
+    "2506a6db-e0b7-49d6-b556-4d6940b285a2",
+    "60be0bff-b9ff-4503-ad22-289221f23dfb",
+    "b1600c71-6db9-4cc9-a274-419fe359065e"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0bfc7d7a-b900-4a22-b9e1-202a759dd22f",
+      "locator": "not identical with it",
+      "text_sha256": "28f5a30b6d1d4b514d25100b5c6d6d3ef5d95b36523b864b5f068e5ec4e42496",
+      "excerpt_preview": "These are, however, not identical with it. While <i>amar</i> and <i>phurm&#257n</i> both mean command, they refer to a particular order, fiat or commandment rather than to a system like the divine Order signified by the Sikh concept of <i>h",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ab22a235-6c42-4ad2-b0b9-5b7a5cf5c563",
+      "locator": "All life",
+      "text_sha256": "dc02302d9e29d7a84d3fe17b8a30bf26b8405546cc35b7c830ed8b5e860e0f3f",
+      "excerpt_preview": "In the penultimate line of the stanza, Gur&#363 N&#257nak puts the fundamental question of how enlightenment is to be gained:</p> <blockquote class=\"C1\"><p class=\"C1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;How is Truth to be attain",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ab82abbb-7b6c-4275-a0ab-a0f17b590292",
+      "locator": "How is the veil of falsehood",
+      "text_sha256": "dc02302d9e29d7a84d3fe17b8a30bf26b8405546cc35b7c830ed8b5e860e0f3f",
+      "excerpt_preview": "In the penultimate line of the stanza, Gur&#363 N&#257nak puts the fundamental question of how enlightenment is to be gained:</p> <blockquote class=\"C1\"><p class=\"C1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;How is Truth to be attain",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "db9747f9-439d-42c2-818b-83e8a7731e2b",
+      "locator": "beginning",
+      "text_sha256": "0cc43438ed3957b998ecd8a74729c5896c8ac63850d0a2899b7b951b4cb6ee04",
+      "excerpt_preview": "Its importance in Sikh theology is indicated by its occurrence at the very beginning of the &#256di Granth (Gur&#363 Granth S&#257hib, the Sikh Scripture), in the first verse of the <i>Japu</i>. In the penultimate line of the stanza, Gur&#3",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

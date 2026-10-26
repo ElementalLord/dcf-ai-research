@@ -1,0 +1,40 @@
+{
+  "source_id": "5bef2a36-07ca-4a1f-91a1-1454275e2dfa",
+  "source": {
+    "author": "Vedic Heritage Portal",
+    "authority_metadata": {},
+    "citation": "Vedic Heritage Portal: Rigveda Mandala 3 (https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/mandal-03/)",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "IGNCA / Ministry of Culture, Government of India",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Vedic Heritage Portal: Rigveda Mandala 3",
+    "url": "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/mandal-03/"
+  },
+  "claim_ids": [
+    "18f84cff-9aeb-446f-9729-df6014d8b150",
+    "31a9db58-f790-4094-a1fc-5e0ce309c7ef",
+    "38e2c59e-b094-4b07-9824-69344c0048d0",
+    "512f981d-c77d-47a3-8b16-dbe964dbe48f",
+    "8e7bea8b-3659-4a65-9118-ceaf8e12da55",
+    "95e35dcf-d4fa-4896-bc02-88d10f7fcc83",
+    "bb2b1df2-0958-4a0d-bd5e-1109a0060fce",
+    "e07664b9-89ef-44a4-9290-23b3990aad1c",
+    "ff6282b8-a153-4b9d-b9dd-d944839042ff"
+  ],
+  "passages": [
+    {
+      "chunk_id": "eee5715c-a576-45d8-89da-c841232e4f80",
+      "locator": "Links",
+      "text_sha256": "6ee7ff9f6b95fa692716b4947524221fe2f55ffb81353bd8b825140638a41e15",
+      "excerpt_preview": "Hindi Translation by Pt. Sripada Damodara Satavalekar  English Translation by H.H. Wilson  Commentary of Sayanacharya",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

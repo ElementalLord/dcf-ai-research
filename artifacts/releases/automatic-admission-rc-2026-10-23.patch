@@ -1,0 +1,575 @@
+diff --git a/src/lib/live-research/on-demand-engine.ts b/src/lib/live-research/on-demand-engine.ts
+index 875368a..e5f4cfd 100644
+--- a/src/lib/live-research/on-demand-engine.ts
++++ b/src/lib/live-research/on-demand-engine.ts
+@@ -59,10 +59,21 @@ export type ResearchDependencies = {
+   now?: () => Date;
+ };
+ 
+-function narrowQuery(request: EvidenceGapRequest, question: string): string {
+-  // Gap requirements are generic descriptions. Search for the event and entities
+-  // in the actual question, with the planner's source-class hint.
++export function narrowQuery(request: EvidenceGapRequest, question: string): string {
++  // Gap requirements are generic descriptions. Preserve the named object in
++  // admission searches; a publisher's license is still checked on its page.
+   const plan = planResearchQueries(request.personalityName, question, [], 1)[0];
++  if (process.env.DEMAND_AUTO_ADMISSION_ENABLED === "true" || process.env.DEMAND_VERIFICATION_SHADOW_ENABLED === "true") {
++    const namedTargets = [...question.matchAll(/\b\p{Lu}[\p{L}\p{N}]+(?:\s+\p{Lu}[\p{L}\p{N}]+)+/gu)]
++      .map(([value]) => value).filter((value) => normalizeForMatch(value) !== normalizeForMatch(request.personalityName));
++    const target = namedTargets.at(-1);
++    if (target) {
++      const action = question.replace(new RegExp(request.personalityName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"), "")
++        .replace(target, "").replace(/\b(?:in|what|which|when|year|did|was|were|the|a|an)\b/gi, " ")
++        .replace(/[^\p{L}\p{N} -]/gu, " ").replace(/\s+/g, " ").trim();
++      return `${request.personalityName} "${target}" ${action} open access`.trim().slice(0, 500);
++    }
++  }
+   return (plan?.query || `${request.personalityName} ${question}`).slice(0, 500);
+ }
+ 
+@@ -139,7 +150,7 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
+     // Search snippets are discovery hints only. Rank URLs and titles before the
+     // bounded original-document reads, then verify against the fetched pages.
+     const ranked = searchResults.slice(0, 20).map((hit, index) => ({ hit, index,
+-      priority: sourcePriority(hit.url, `${hit.title} ${hit.snippet || ""}`, question) }))
++      priority: sourcePriority(hit.url, `${hit.title} ${hit.snippet || ""}`, question, "", hit.snippet || "") }))
+       .sort((a, b) => b.priority - a.priority || a.index - b.index);
+     for (const { hit } of ranked) {
+       if (result.usage.sourceFetches >= 4) break;
+@@ -190,11 +201,15 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
+           publicationDate: excerpt.identity.publicationDate, journal: excerpt.identity.journal, doi: excerpt.identity.doi,
+           isbn: excerpt.identity.isbn, complete: excerpt.identity.provenanceComplete },
+       });
+-      // Once the answer is supported, continue only if admission or its shadow
+-      // evaluation is enabled and still needs a retainable source.
++      // A citeable answer can use one passage. Ordinary-fact admission needs
++      // two independent retained works, so keep using the existing read budget
++      // while admission (or its shadow evaluation) is enabled.
++      const retainableFindings = result.findings.filter((item) => item.verificationReady);
++      const independentRetainableWorks = new Set(retainableFindings.map((item) => item.source.workKey)).size >= 2
++        && new Set(retainableFindings.map((item) => item.source.publisherDomain)).size >= 2;
+       if (!remainingGaps(request.gaps, [...existing, ...result.passages], result.passages).length
+         && (process.env.DEMAND_AUTO_ADMISSION_ENABLED !== "true" && process.env.DEMAND_VERIFICATION_SHADOW_ENABLED !== "true"
+-          || result.findings.some((item) => item.verificationReady))) break;
++          || independentRetainableWorks)) break;
+     }
+     result.unresolvedGaps = remainingGaps(request.gaps, [...existing, ...result.passages], result.passages);
+     if (result.findings.some((finding) => finding.relation === "potential_contradiction")) {
+diff --git a/src/lib/live-research/research-quality.ts b/src/lib/live-research/research-quality.ts
+index 7384b52..f56dcae 100644
+--- a/src/lib/live-research/research-quality.ts
++++ b/src/lib/live-research/research-quality.ts
+@@ -21,6 +21,9 @@ export type SourceIdentity = {
+ };
+ 
+ const STOP = new Set(["what", "which", "when", "where", "why", "how", "does", "did", "was", "were", "are", "the", "and", "for", "with", "from", "about", "into", "that", "this", "their", "work", "role", "known", "important", "significance"]);
++const IDEA_QUESTION = /\b(?:ideas|beliefs|principles|values|visions?)\b.{0,100}\b(?:associated with|known for|did|does|hold|have|advocate|promote)\b/i;
++const IDEA_EVIDENCE = /\b(?:idea|vision|belief|philosophy|principle|value|advocat|emphasiz|teach|promot|argu|aspir|thought|dream)\w*/i;
++export const isBroadIdeaQuestion = (question: string) => IDEA_QUESTION.test(question);
+ const PRIORITY = /\b(?:first|earliest|priority|invented|discovered before|father of|pioneer(?:ed)?)\b/i;
+ const CONTEXT = /\b(?:at the time|context|period|contemporar|before|after|impact|significance|compare|versus|vs\.?|differ)\b/i;
+ const TEXTUAL = /\b(?:said|wrote|speech|letter|edicts?|inscriptions?|hymn|verse|chapter|mandala|kanda|teaching|primary source|original)\b/i;
+@@ -38,6 +41,7 @@ function focusTerms(question: string, personality: string): string[] {
+ /** A small, question-directed plan. It describes missing evidence classes instead of issuing a generic name search. */
+ export function planResearchQueries(personality: string, question: string, gaps: string[] = [], max = 2): ResearchQuery[] {
+   const focus = focusTerms(question, personality);
++  if (isBroadIdeaQuestion(question)) focus.push("vision", "philosophy", "teachings");
+   const gap = gaps.map(clean).filter((item) => item && !/^(?:evidence|direct evidence|general evidence)$/i.test(item)).slice(0, 2);
+   const topic = [...new Set([...gap.flatMap((item) => item.split(" ")), ...focus])].slice(0, 10).join(" ") || "documented work";
+   const plans: Array<{ intent: QueryIntent; suffix: string; reason: string }> = [];
+@@ -112,6 +116,8 @@ export function assessPassageSupport(text: string, questionOrStatement: string,
+     level: hits ? "PARTIAL" : "RELATED", overlap,
+     reason: "The passage does not establish the named target, event relationship, or requested date.",
+   };
++  if (isBroadIdeaQuestion(questionOrStatement) && IDEA_EVIDENCE.test(text) && text.trim().length >= 70)
++    return { level: "STRONG", overlap, reason: "The passage identifies the person and states a documented idea or belief." };
+   if (hits >= 3 && overlap >= 0.7) return { level: "EXACT", overlap, reason: "The passage identifies the person and directly covers nearly all material terms." };
+   if (hits >= 2 && overlap >= 0.4) return { level: "STRONG", overlap, reason: "The passage identifies the person and directly covers the central topic." };
+   if (hits >= 1) return { level: "PARTIAL", overlap, reason: "The passage supports only part of the requested point." };
+diff --git a/src/lib/live-research/retention-rights.ts b/src/lib/live-research/retention-rights.ts
+index fd5bdf8..15428ff 100644
+--- a/src/lib/live-research/retention-rights.ts
++++ b/src/lib/live-research/retention-rights.ts
+@@ -1,5 +1,6 @@
+ /** Matches only rights declarations accepted by the demand admission RPC. */
+ export function hasExplicitRetentionRights(value: string | null | undefined): boolean {
+-  if (!value || /\b(?:not|no|without)\s+(?:in\s+the\s+)?public domain\b/i.test(value)) return false;
+-  return /\bpublic domain\b|\bcc0\b|creativecommons\.org\/(?:licenses|publicdomain)\//i.test(value);
++  if (!value || /\b(?:not|no|without)\b.{0,50}(?:\bpublic domain\b|\bcc0\b|creativecommons\.org)/i.test(value)) return false;
++  if (/\bpublic domain\b|\bcc0(?:\s+1\.0)?\b/i.test(value)) return true;
++  return /(?:^|\s)https:\/\/creativecommons\.org\/(?:licenses\/(?:by|by-sa|by-nc|by-nc-sa|by-nd|by-nc-nd)\/[1-4]\.0|publicdomain\/(?:zero|mark)\/1\.0)\/?(?:\s|$)/i.test(value);
+ }
+diff --git a/src/lib/live-research/search-credibility.ts b/src/lib/live-research/search-credibility.ts
+index e677fee..8195d86 100644
+--- a/src/lib/live-research/search-credibility.ts
++++ b/src/lib/live-research/search-credibility.ts
+@@ -8,12 +8,13 @@ import { normalizeForMatch } from "@/lib/corpus/text";
+ import { readableEvidence } from "@/lib/corpus/readable-evidence";
+ import { classifySourceAuthority } from "@/lib/sources/authority";
+ import { extractPdf } from "@/lib/corpus/source-extract";
+-import { assessPassageSupport, authenticateSource, evidenceTypeFor, type PassageSupport, type SourceIdentity } from "./research-quality";
++import { hasExplicitRetentionRights } from "./retention-rights";
++import { assessPassageSupport, authenticateSource, evidenceTypeFor, isBroadIdeaQuestion, type PassageSupport, type SourceIdentity } from "./research-quality";
+ 
+ const lowQualityHost = /(?:^|\.)(?:quora\.com|reddit\.com|pinterest\.[a-z.]+|blogspot\.[a-z.]+|medium\.com|wikipedia\.org|facebook\.com|instagram\.com|tiktok\.com|brainyquote\.com|goodreads\.com)$/i;
+ const institutionalHost = /(?:^|\.)(?:edu|gov|ac\.[a-z]{2}|edu\.[a-z]{2}|gov\.[a-z]{2}|jstor\.org|cambridge\.org|oup\.com|oxfordacademic\.com|springer\.com|nature\.com|muse\.jhu\.edu|wiley\.com|tandfonline\.com|sagepub\.com|nobelprize\.org|ignca\.gov\.in|vedicheritage\.gov\.in|gretil\.sub\.uni-goettingen\.de|archive\.org|britannica\.com)$/i;
+ 
+-export function sourcePriority(rawUrl: string, title: string, question: string, category = ""): number {
++export function sourcePriority(rawUrl: string, title: string, question: string, category = "", snippet = ""): number {
+   let host: string;
+   try { host = new URL(rawUrl).hostname; } catch { return -100; }
+   if (lowQualityHost.test(host)) return -100;
+@@ -25,7 +26,12 @@ export function sourcePriority(rawUrl: string, title: string, question: string,
+   const level = category === "trusted" ? "authoritative" : classifySourceAuthority({ url: rawUrl, sourceType: category, live: true }).level;
+   const tier = level === "authoritative" ? 3 : level === "credible_secondary" || institutionalHost.test(host) || /scholarly|academic|primary|institutional/i.test(category) ? 2 : 0;
+   if (terms.length >= 2 && relevance === 0) return tier ? -1 : -10;
+-  return relevance * 20 + tier * 2;
++  // A result snippet may hint at an article's license for ordering only. The
++  // original page must still declare rights before any passage is retained.
++  const licenseUrl = snippet.match(/https:\/\/creativecommons\.org\/(?:licenses|publicdomain)\/[^\s)]+/i)?.[0]?.replace(/[.,;]+$/, "");
++  const articleRightsHint = /\b(?:this article|this chapter|this work|article license|chapter license)\b.{0,160}creativecommons\.org\//i.test(snippet)
++    && hasExplicitRetentionRights(licenseUrl);
++  return relevance * 20 + tier * 2 + (articleRightsHint ? 4 : 0);
+ }
+ 
+ export type CredibleSource = { url: string; domain: string; category: string; title: string };
+@@ -154,9 +160,10 @@ export async function readGroundedExcerpt(source: CredibleSource, statement: str
+   if (!matches.length) return null;
+   const best = matches[0];
+   const academic = /cambridge|oxford|springer|jstor|nature/i.test(source.domain);
+-  if (academic && !names.some((name) => title.includes(name)) && best.overlap < 4) return null;
++  const broadIdeaSupport = isBroadIdeaQuestion(statement) && best.support.level === "STRONG";
++  if (academic && !names.some((name) => title.includes(name)) && best.overlap < 4 && !broadIdeaSupport) return null;
+   // Naming the person is relevance; sharing the statement's own terms is support. Both are required.
+-  if (best.overlap < Math.min(2, terms.length) || !["EXACT", "STRONG"].includes(best.support.level)) return null;
++  if ((!broadIdeaSupport && best.overlap < Math.min(2, terms.length)) || !["EXACT", "STRONG"].includes(best.support.level)) return null;
+   const excerpt = readableEvidence(best.context.slice(0, 600));
+   if (!excerpt) return null;
+   const identity = loaded.identity.title ? loaded.identity : authenticateSource({ url: loaded.finalUrl, title: loaded.title || source.title, category: source.category });
+diff --git a/supabase/migrations/20261023010000_harden_demand_retention_rights.sql b/supabase/migrations/20261023010000_harden_demand_retention_rights.sql
+new file mode 100644
+index 0000000..ea6e54f
+--- /dev/null
++++ b/supabase/migrations/20261023010000_harden_demand_retention_rights.sql
+@@ -0,0 +1,114 @@
++-- Keep the transactional admission gate aligned with the application's explicit rights check.
++create or replace function public.admit_demand_verified_claim(p_admission jsonb)
++returns jsonb language plpgsql security definer set search_path = public, pg_temp as $$
++declare
++  v_personality uuid := (p_admission->>'personality_id')::uuid;
++  v_text text := btrim(p_admission->>'claim_text');
++  v_hash text := p_admission->>'claim_hash';
++  v_source jsonb;
++  v_source_id uuid;
++  v_chunk_id uuid;
++  v_claim_id uuid;
++  v_existing text;
++  v_existing_title text;
++  v_existing_publisher text;
++  v_index integer := 0;
++  v_work_keys text[] := '{}';
++begin
++  if auth.role() <> 'service_role' then raise exception 'service role required'; end if;
++  if length(v_text) not between 18 and 350 or v_hash !~ '^[0-9a-f]{64}$'
++    or p_admission->>'epistemic_type' <> 'HISTORICAL_FACT'
++    or p_admission->>'contract_status' <> 'SUPPORTED'
++    or p_admission->>'policy_version' <> 'demand-admission/1'
++    or jsonb_typeof(p_admission->'sources') <> 'array'
++    or jsonb_array_length(p_admission->'sources') not between 1 and 4 then
++    raise exception 'Invalid verified admission payload';
++  end if;
++  perform pg_advisory_xact_lock(hashtextextended(v_personality::text || ':' || v_hash, 0));
++  if exists (select 1 from public.demand_verification_decisions
++    where personality_id=v_personality and claim_hash=v_hash and outcome='admitted') then
++    select d.claim_id into v_claim_id from public.demand_verification_decisions d
++    join public.claims c on c.id=d.claim_id
++    where d.personality_id=v_personality and d.claim_hash=v_hash and d.outcome='admitted'
++      and c.review_status='approved'
++      and c.approval_origin in ('human_manual','mentor_review','automated_evidence_verification','corpus_evidence_review') limit 1;
++    if v_claim_id is null then raise exception 'Prior admitted claim is suspended; review required'; end if;
++    return jsonb_build_object('claim_id',v_claim_id,'created',false);
++  end if;
++  select id into v_claim_id from public.claims where personality_id=v_personality
++    and btrim(regexp_replace(lower(claim_text),'[^a-z0-9]+',' ','g')) = btrim(regexp_replace(lower(v_text),'[^a-z0-9]+',' ','g'))
++    and review_status='approved'
++    and approval_origin in ('human_manual','mentor_review','automated_evidence_verification','corpus_evidence_review') limit 1;
++  if v_claim_id is not null then return jsonb_build_object('claim_id',v_claim_id,'created',false); end if;
++
++  -- Validate every source before any publication. Mere web availability or "open access" is insufficient.
++  for v_source in select value from jsonb_array_elements(p_admission->'sources') loop
++    if coalesce(v_source->>'url','') !~ '^https://[^ /]+' or length(v_source->>'url') > 2000
++      or length(btrim(coalesce(v_source->>'title',''))) < 5 or length(btrim(coalesce(v_source->>'publisher',''))) < 2
++      or length(btrim(coalesce(v_source->>'work_key',''))) < 5 or length(btrim(coalesce(v_source->>'locator',''))) < 1
++      or length(btrim(coalesce(v_source->>'excerpt',''))) < 20 or length(v_source->>'excerpt') > 600
++      or coalesce(v_source->>'rights','') ~* '\m(not|no|without)\M.{0,50}(\mpublic[[:space:]]+domain\M|\mcc0\M|creativecommons\.org)'
++      or (coalesce(v_source->>'rights','') !~* '(\mpublic[[:space:]]+domain\M|\mcc0([[:space:]]+1\.0)?\M)'
++        and coalesce(v_source->>'rights','') !~* '(^|[[:space:]])https://creativecommons\.org/(licenses/(by|by-sa|by-nc|by-nc-sa|by-nd|by-nc-nd)/[1-4]\.0|publicdomain/(zero|mark)/1\.0)/?([[:space:]]|$)') then
++      raise exception 'Incomplete source identity or retention rights';
++    end if;
++    v_work_keys := array_append(v_work_keys, v_source->>'work_key');
++  end loop;
++
++  insert into public.claims(personality_id,claim_text,claim_kind,certainty,review_status,approval_origin,
++    evidence_type,approved_at,approved_by_label,approval_note,approval_metadata)
++  values(v_personality,v_text,'established_fact','high','approved','automated_evidence_verification',
++    'historical_fact',now(),'automated_evidence_verification','Demand-driven evidence verification',
++    jsonb_build_object('policy_version',p_admission->>'policy_version','research_work_id',p_admission->>'research_work_id',
++      'machine_verified',true,'independent_work_keys',to_jsonb(v_work_keys))) returning id into v_claim_id;
++
++  for v_source in select value from jsonb_array_elements(p_admission->'sources') loop
++    select id, source_status, title, publisher_or_institution
++      into v_source_id, v_existing, v_existing_title, v_existing_publisher
++      from public.sources where url=v_source->>'url' limit 1;
++    if v_source_id is not null and v_existing <> 'approved' then raise exception 'Existing source is not approved'; end if;
++    if v_source_id is not null and (lower(v_existing_title) <> lower(v_source->>'title')
++      or lower(coalesce(v_existing_publisher,'')) <> lower(v_source->>'publisher')) then
++      raise exception 'Existing source identity differs from retrieved document';
++    end if;
++    if v_source_id is null then
++      insert into public.sources(title,url,author,publisher_or_institution,source_type,citation,source_status,
++        ingestion_status,rights_or_access_note,approval_origin,approved_at,approved_by_label,approval_note,metadata)
++      values(v_source->>'title',v_source->>'url',nullif(v_source->>'author',''),v_source->>'publisher',
++        case v_source->>'evidence_type'
++          when 'institutional_record' then 'institutional'
++          when 'primary_document' then 'archival'
++          when 'traditional_text' then 'primary_text'
++          when 'scholarly_interpretation' then 'scholarly_article'
++          else 'other'
++        end,(v_source->>'title') || ' (' || (v_source->>'url') || ')','approved','ready',
++        v_source->>'rights','automated_evidence_verification',now(),'automated_evidence_verification',
++        'Source identity and permitted excerpt checked for demand claim',
++        jsonb_build_object('independentWorkKey',v_source->>'work_key','publicationDate',v_source->>'publication_date'))
++      returning id into v_source_id;
++    end if;
++    insert into public.source_chunks(source_id,chunk_index,chunk_text,page_or_section,content_hash,token_estimate,metadata)
++    values(v_source_id,v_index,v_source->>'excerpt',v_source->>'locator',md5(v_source->>'excerpt'),
++      greatest(1,length(v_source->>'excerpt')/4),jsonb_build_object('origin','demand_verified','policy_version',p_admission->>'policy_version'))
++    on conflict (source_id,content_hash) do update set updated_at=now() returning id into v_chunk_id;
++    insert into public.claim_sources(claim_id,source_id,relationship,evidence_excerpt,page_or_section)
++    values(v_claim_id,v_source_id,'supports',v_source->>'excerpt',v_source->>'locator');
++    insert into public.claim_chunks(claim_id,chunk_id,relationship,link_method,metadata)
++    values(v_claim_id,v_chunk_id,'supports','demand_verified',jsonb_build_object('policy_version',p_admission->>'policy_version'));
++    insert into public.chunk_personalities(chunk_id,personality_id,relationship,relevance_score,tagging_method)
++    values(v_chunk_id,v_personality,'supports',1,'rule') on conflict (chunk_id,personality_id) do nothing;
++    insert into public.source_personalities(source_id,personality_id,relationship,confidence,mapping_method)
++    values(v_source_id,v_personality,'supports_claims',1,'claim_link') on conflict (source_id,personality_id) do nothing;
++    v_index := v_index+1;
++  end loop;
++  insert into public.claim_epistemics(claim_id,personality_id,epistemic_type,proposed_type,type_origin,type_confidence,
++    type_review_status,classifier_version,contract_status,contract_satisfied,contract_basis,contract_version,contract_detail)
++  values(v_claim_id,v_personality,'HISTORICAL_FACT','HISTORICAL_FACT','deterministic',0.7,'auto_assigned',
++    p_admission->>'classifier_version','SUPPORTED',true,'fact',p_admission->>'contract_version',
++    jsonb_build_object('policy_version',p_admission->>'policy_version','work_keys',to_jsonb(v_work_keys)));
++  insert into public.demand_verification_decisions(personality_id,claim_hash,claim_id,outcome,support,epistemic_type,
++    policy_version,reason_codes,source_work_keys,research_request_id)
++  values(v_personality,v_hash,v_claim_id,'admitted','SUPPORTED','HISTORICAL_FACT',p_admission->>'policy_version',
++    array['all_gates_passed'],v_work_keys,p_admission->>'research_request_id');
++  return jsonb_build_object('claim_id',v_claim_id,'created',true);
++end $$;
+diff --git a/tests/corpus/demand-local-db.test.ts b/tests/corpus/demand-local-db.test.ts
+index a01e05f..184f692 100644
+--- a/tests/corpus/demand-local-db.test.ts
++++ b/tests/corpus/demand-local-db.test.ts
+@@ -233,7 +233,7 @@ suite("real local Supabase demand transactions", () => {
+     const previous = [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
+       process.env.DEMAND_VERIFICATION_SHADOW_ENABLED];
+     process.env.DEMAND_RESEARCH_ENABLED = "true";
+-    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "false";
++    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
+     process.env.DEMAND_VERIFICATION_SHADOW_ENABLED = "false";
+     try {
+       const result = await answerQuestion(missingQuestion, personId);
+@@ -258,6 +258,94 @@ suite("real local Supabase demand transactions", () => {
+     }
+   }, 30_000);
+ 
++  it("abstains when a bounded fixture search returns no original evidence", async () => {
++    fixtureProviders.research = {
++      provider: { name: "fixture", isConfigured: () => true, async search() { return []; } },
++      async claimNeed(needId: string, personalityId: string, owner: string) {
++        return required(await supabaseAdmin.rpc("claim_demand_research_need", { p_need_id: needId, p_personality_id: personalityId, p_owner: owner }));
++      },
++      async finishNeed(needId: string, owner: string, status: string, calls: number, outcome: object, cooldown: number) {
++        required(await supabaseAdmin.rpc("finish_demand_research_need", { p_need_id: needId, p_owner: owner,
++          p_status: status, p_search_calls: calls, p_outcome: outcome, p_cooldown_seconds: cooldown }));
++      },
++      reserveBudget: (requestId: string) => reserveResearchBudget(requestId, 8),
++      async inspect() { throw new Error("No search result may be inspected"); },
++      async robotsAllowed() { throw new Error("No search result may be read"); },
++      async read() { throw new Error("No search result may be read"); },
++      async existingSourceId() { return null; },
++    };
++    const previous = [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
++      process.env.DEMAND_VERIFICATION_SHADOW_ENABLED];
++    process.env.DEMAND_RESEARCH_ENABLED = "true";
++    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
++    process.env.DEMAND_VERIFICATION_SHADOW_ENABLED = "false";
++    try {
++      const answer = await answerQuestion(`When was ${personName} awarded the Eclipse Medal?`, personId);
++      expect(answer.status).toBe("abstained");
++      expect(answer.citations).toHaveLength(0);
++      expect(answer.debug.demandAdmittedClaims || 0).toBe(0);
++    } finally {
++      [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
++        process.env.DEMAND_VERIFICATION_SHADOW_ENABLED] = previous;
++      fixtureProviders.research = null;
++    }
++  }, 30_000);
++
++  it("keeps a cited Ask answer when the admission transaction is paused", async () => {
++    const pausedQuestion = `When was ${personName} awarded the Zenith Medal?`;
++    const pausedClaim = `${personName} was awarded the Zenith Medal in 1942.`;
++    const pausedUrl = `https://archive.example.org/zenith-register/${personId}`;
++    const pausedExcerpt = `The award register records that ${personName} was awarded the Zenith Medal in 1942.`;
++    fixtureProviders.research = {
++      provider: { name: "fixture", isConfigured: () => true, async search() {
++        return [{ title: "Zenith Medal award register", url: pausedUrl, sourceProvider: "fixture" }];
++      } },
++      async claimNeed(needId: string, personalityId: string, owner: string) {
++        return required(await supabaseAdmin.rpc("claim_demand_research_need", { p_need_id: needId, p_personality_id: personalityId, p_owner: owner }));
++      },
++      async finishNeed(needId: string, owner: string, status: string, calls: number, outcome: object, cooldown: number) {
++        required(await supabaseAdmin.rpc("finish_demand_research_need", { p_need_id: needId, p_owner: owner,
++          p_status: status, p_search_calls: calls, p_outcome: outcome, p_cooldown_seconds: cooldown }));
++      },
++      reserveBudget: (requestId: string) => reserveResearchBudget(requestId, 8),
++      async inspect(url: string) { return { url, domain: new URL(url).hostname, category: "institutional", title: "Zenith Medal award register" }; },
++      async robotsAllowed() { return true; },
++      async read() { return { text: pausedExcerpt, title: "Zenith Medal award register", url: pausedUrl,
++        locator: "Award register, 1942", supportLevel: "EXACT", supportReason: "Direct award date",
++        identity: authenticateSource({ url: pausedUrl, title: "Zenith Medal award register", author: "Registrar",
++          publisher: "Example Archive", publicationDate: "1942", category: "institutional" }), rightsDeclaration: rights }; },
++      async existingSourceId() { return null; },
++    };
++    fixtureProviders.verification = {
++      async extract() { return [{ proposition: pausedClaim, type: "HISTORICAL_FACT", evidenceIndexes: [0], context: null,
++        period: "1942", qualification: null, category: "official_record_fact" }]; },
++      async assess() { return { support: "SUPPORTED", supportingIndexes: [0], equivalentExisting: false,
++        conflictsExisting: false, materialContradiction: false, exactEntities: true, exactDatesAndUnits: true,
++        qualifiersPreserved: true, officialIssuer: true, independentDocuments: true, reason: "Issuing register" }; },
++    };
++    const previous = [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
++      process.env.DEMAND_VERIFICATION_SHADOW_ENABLED];
++    process.env.DEMAND_RESEARCH_ENABLED = "true";
++    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
++    process.env.DEMAND_VERIFICATION_SHADOW_ENABLED = "false";
++    required(await supabaseAdmin.from("demand_budget_policy").update({ auto_admission_paused: true }).eq("id", true));
++    try {
++      const answer = await answerQuestion(pausedQuestion, personId);
++      expect(answer.status).toBe("research_answer");
++      expect(answer.answer).toContain("1942");
++      expect(answer.citations.some((citation) => citation.kind === "live_web_source" && citation.url === pausedUrl)).toBe(true);
++      expect(answer.debug.demandAdmittedClaims || 0).toBe(0);
++      expect(required(await supabaseAdmin.from("claims").select("id")
++        .eq("personality_id", personId).eq("claim_text", pausedClaim))).toHaveLength(0);
++    } finally {
++      required(await supabaseAdmin.from("demand_budget_policy").update({ auto_admission_paused: false }).eq("id", true));
++      [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
++        process.env.DEMAND_VERIFICATION_SHADOW_ENABLED] = previous;
++      fixtureProviders.research = null;
++      fixtureProviders.verification = null;
++    }
++  }, 30_000);
++
+   it("keeps unsupported, contradictory, rights-restricted and provider-failed findings out of verified claims", async () => {
+     const candidate = `${personName} was awarded the Orion Medal in 1941.`;
+     const finding = { source: { ...source, url: `https://archive.example.org/comet/${randomUUID()}`, sourceId: null,
+@@ -306,6 +394,12 @@ suite("real local Supabase demand transactions", () => {
+     restricted.sources[0].rights = "all rights reserved";
+     expect((await supabaseAdmin.rpc("admit_demand_verified_claim", { p_admission: restricted })).error).not.toBeNull();
+     expect(required(await supabaseAdmin.from("claims").select("id").eq("personality_id", personId).eq("claim_text", restricted.claim_text))).toHaveLength(0);
++    for (const invalidRights of ["not in the public domain", "not CC0 1.0", "https://creativecommons.org/licenses/unknown/4.0/"]) {
++      const invalid = admission(`${personName} was awarded the Aurora Medal in 1935.`, `https://archive.example.org/rights/${randomUUID()}`);
++      invalid.sources[0].rights = invalidRights;
++      expect((await supabaseAdmin.rpc("admit_demand_verified_claim", { p_admission: invalid })).error).not.toBeNull();
++      expect(required(await supabaseAdmin.from("claims").select("id").eq("personality_id", personId).eq("claim_text", invalid.claim_text))).toHaveLength(0);
++    }
+     const paused = admission(`${personName} was awarded the Aurora Medal in 1934.`, `https://archive.example.org/paused/${randomUUID()}`);
+     required(await supabaseAdmin.from("demand_budget_policy").update({ auto_admission_paused: true }).eq("id", true));
+     try {
+diff --git a/tests/corpus/google-source-verification.test.ts b/tests/corpus/google-source-verification.test.ts
+index f69c0ca..c79e49e 100644
+--- a/tests/corpus/google-source-verification.test.ts
++++ b/tests/corpus/google-source-verification.test.ts
+@@ -108,4 +108,12 @@ describe("live source admission", () => {
+     expect(await sourceAccess("https://www.britannica.com/science/Raman-effect")).toBe("blocked");
+     expect(state.preview.mock.calls.filter(([url]) => String(url).includes("britannica")).length).toBe(1);
+   });
++
++  it("respects a page rate limit without retrying or extracting evidence", async () => {
++    const url = "https://records.example.edu/rate-limited-prism";
++    state.preview.mockResolvedValueOnce({ status: 429, finalUrl: url, contentType: "text/html", html: "" });
++    expect(await readGroundedExcerpt(source(url), "When did Anika Sen discover the prism effect?", ["Anika Sen"], policy)).toBeNull();
++    expect(await sourceAccess(url)).toBe("blocked");
++    expect(state.preview.mock.calls.filter(([candidate]) => candidate === url)).toHaveLength(1);
++  });
+ });
+diff --git a/tests/corpus/knowledge-verification.test.ts b/tests/corpus/knowledge-verification.test.ts
+index 224e80b..cb19b90 100644
+--- a/tests/corpus/knowledge-verification.test.ts
++++ b/tests/corpus/knowledge-verification.test.ts
+@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from "vitest";
+ import { verifyDemandKnowledge } from "@/lib/live-research/knowledge-verification";
+ import type { OnDemandResearchResult, ResearchFinding } from "@/lib/live-research/on-demand-engine";
+ import type { EvidenceGapRequest } from "@/lib/ask/question-resolution";
++import { hasExplicitRetentionRights } from "@/lib/live-research/retention-rights";
+ 
+ const request = { needId: "need", personalityId: "00000000-0000-0000-0000-000000000001", personalityName: "Anika Sen",
+   normalizedIntent: "date", category: "SPECIFIC", gaps: [], existingEvidenceIds: [], maxExternalSearches: 1 } as unknown as EvidenceGapRequest;
+@@ -42,6 +43,15 @@ function setup(options: { findings?: ResearchFinding[]; claim?: string; existing
+ }
+ 
+ describe("demand knowledge verification", () => {
++  it("requires an explicit accepted retention declaration", () => {
++    expect(hasExplicitRetentionRights("https://creativecommons.org/licenses/by/4.0/")).toBe(true);
++    expect(hasExplicitRetentionRights("public domain")).toBe(true);
++    expect(hasExplicitRetentionRights("CC0 1.0")).toBe(true);
++    expect(hasExplicitRetentionRights("not in the public domain")).toBe(false);
++    expect(hasExplicitRetentionRights("not CC0 1.0")).toBe(false);
++    expect(hasExplicitRetentionRights("https://creativecommons.org/licenses/unknown/4.0/")).toBe(false);
++    expect(hasExplicitRetentionRights("open access")).toBe(false);
++  });
+   it("admits a directly documented routine official date and reuses the stored claim", async () => {
+     const deps = setup();
+     const first = await verifyDemandKnowledge(request, research(deps.findings), deps);
+diff --git a/tests/corpus/on-demand-engine.test.ts b/tests/corpus/on-demand-engine.test.ts
+index 43ce483..74d2d83 100644
+--- a/tests/corpus/on-demand-engine.test.ts
++++ b/tests/corpus/on-demand-engine.test.ts
+@@ -1,8 +1,10 @@
+ import { describe, expect, it } from "vitest";
+-import { executeDemandResearch, type FetchedExcerpt, type ResearchDependencies } from "@/lib/live-research/on-demand-engine";
++import { readFileSync } from "node:fs";
++import { executeDemandResearch, narrowQuery, type FetchedExcerpt, type ResearchDependencies } from "@/lib/live-research/on-demand-engine";
+ import type { EvidenceGapRequest } from "@/lib/ask/question-resolution";
+ import type { RetrievedEvidence } from "@/lib/corpus/types";
+ import { authenticateSource } from "@/lib/live-research/research-quality";
++import { sourcePriority } from "@/lib/live-research/search-credibility";
+ 
+ const id = "00000000-0000-4000-8000-000000000001";
+ const request: EvidenceGapRequest = {
+@@ -32,6 +34,38 @@ function fixture(results = [{ title: "History of the prism effect", url, sourceP
+ }
+ 
+ describe("bounded on-demand research", () => {
++  it("replays the Bose discovery failure and preserves the named institution in admission search", () => {
++    const replay = JSON.parse(readFileSync(new URL("../fixtures/bose-source-selection-2026-10-23.json", import.meta.url), "utf8")) as {
++      question: string; previousQuery: string; observedRankedCandidates: Array<{ url: string; selectionOrder: number }>;
++      licensedCandidatesAbsentFromBraveTop20: Array<{ url: string; discoverySummary: string }> };
++    expect(replay.previousQuery).not.toContain('"Bose Institute"');
++    expect(replay.observedRankedCandidates.filter((item) => [2, 3, 4, 6].includes(item.selectionOrder))).toHaveLength(4);
++    expect(replay.observedRankedCandidates.some((item) => replay.licensedCandidatesAbsentFromBraveTop20.some((source) => source.url === item.url))).toBe(false);
++    const prior = process.env.DEMAND_AUTO_ADMISSION_ENABLED;
++    try {
++      process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
++      const query = narrowQuery({ ...request, personalityName: "Jagadish Chandra Bose" }, replay.question);
++      expect(query).toContain('"Bose Institute"');
++      expect(query).toContain("open access");
++      expect(query).not.toContain("archive museum university");
++      process.env.DEMAND_AUTO_ADMISSION_ENABLED = "false";
++      expect(narrowQuery({ ...request, personalityName: "Jagadish Chandra Bose" }, replay.question)).toBe(replay.previousQuery);
++    } finally {
++      if (prior === undefined) delete process.env.DEMAND_AUTO_ADMISSION_ENABLED;
++      else process.env.DEMAND_AUTO_ADMISSION_ENABLED = prior;
++    }
++  });
++
++  it("uses article-specific license snippets only as a discovery ordering hint", () => {
++    const replay = JSON.parse(readFileSync(new URL("../fixtures/bose-source-selection-2026-10-23.json", import.meta.url), "utf8")) as {
++      question: string; licensedCandidatesAbsentFromBraveTop20: Array<{ url: string; discoverySummary: string }> };
++    const article = replay.licensedCandidatesAbsentFromBraveTop20[0];
++    const plain = sourcePriority(article.url, article.discoverySummary, replay.question);
++    const hinted = sourcePriority(article.url, article.discoverySummary, replay.question, "", article.discoverySummary);
++    expect(hinted).toBe(plain + 4);
++    expect(sourcePriority(article.url, article.discoverySummary, replay.question, "", "Photo licensed under https://creativecommons.org/licenses/by-nc/4.0/"))
++      .toBe(plain);
++  });
+   it("does not search a need with no gaps", async () => {
+     const { deps, calls } = fixture();
+     const result = await executeDemandResearch({ ...request, gaps: [] }, "When was the prism effect discovered?", [], ["Anika Sen"], deps);
+@@ -150,6 +184,31 @@ describe("bounded on-demand research", () => {
+     }
+   });
+ 
++  it("keeps reading for an independent licensed work after one retainable passage", async () => {
++    const previous = process.env.DEMAND_AUTO_ADMISSION_ENABLED;
++    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
++    try {
++      const secondUrl = "https://records.example.edu/prism-date";
++      const thirdUrl = "https://press.example.org/prism-history";
++      const { deps } = fixture([
++        { title: "Anika Sen prism effect date at university", url, sourceProvider: "mock" },
++        { title: "Anika Sen prism chronology in records", url: secondUrl, sourceProvider: "mock" },
++        { title: "Anika Sen prism history in press", url: thirdUrl, sourceProvider: "mock" },
++      ]);
++      deps.inspect = async (candidate, title) => ({ url: candidate, domain: new URL(candidate).hostname, category: "scholarly", title });
++      deps.read = async (source) => excerpt({ url: source.url,
++        identity: authenticateSource({ url: source.url, title: `Independent work at ${source.domain}`,
++          author: "Historian", publisher: source.domain, publicationDate: "2001", category: "scholarly" }) });
++      const result = await executeDemandResearch(request, "When did Anika Sen discover the prism effect?", [], ["Anika Sen"], deps);
++      expect(result.usage.sourceFetches).toBe(2);
++      expect(result.findings).toHaveLength(2);
++      expect(new Set(result.findings.map((finding) => finding.source.publisherDomain)).size).toBe(2);
++    } finally {
++      if (previous === undefined) delete process.env.DEMAND_AUTO_ADMISSION_ENABLED;
++      else process.env.DEMAND_AUTO_ADMISSION_ENABLED = previous;
++    }
++  });
++
+   it("withholds an answer when two retrieved original pages give conflicting dates", async () => {
+     const previous = process.env.DEMAND_AUTO_ADMISSION_ENABLED;
+     process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
+diff --git a/tests/corpus/research-quality.test.ts b/tests/corpus/research-quality.test.ts
+index c278ee2..814e770 100644
+--- a/tests/corpus/research-quality.test.ts
++++ b/tests/corpus/research-quality.test.ts
+@@ -21,6 +21,12 @@ describe("research query planning", () => {
+     expect(planResearchQueries("Verghese Kurien", "When was Operation Flood launched?", [])[0].intent).toBe("institutional");
+   });
+ 
++  it("searches documented visions for a broad ideas question", () => {
++    const plan = planResearchQueries("A. P. J. Abdul Kalam", "What ideas are associated with A. P. J. Abdul Kalam?");
++    expect(plan[0].query).toMatch(/vision/);
++    expect(plan[0].query).toMatch(/philosophy/);
++  });
++
+   it.each([
+     ["Vishvamitra", "What is securely supported by the Rigveda versus later Ramayana tradition?"],
+     ["Adi Shankaracharya", "Which works are securely attributed to Shankara and which are disputed?"],
+@@ -79,6 +85,14 @@ describe("entity and passage admission", () => {
+     expect(assessPassageSupport("Jagadish Chandra Bose used millimetre-wave apparatus at short wavelengths in his experiments.", "What apparatus and wavelength did Bose use?", "Jagadish Chandra Bose", ["Bose"]).level).toMatch(/EXACT|STRONG/);
+   });
+ 
++  it("accepts a substantive vision passage for an ideas question while rejecting a name-only mention", () => {
++    const question = "What ideas are associated with A. P. J. Abdul Kalam?";
++    expect(assessPassageSupport("A. P. J. Abdul Kalam is listed in the presidential archive index.", question,
++      "A. P. J. Abdul Kalam").level).toBe("RELATED");
++    expect(assessPassageSupport("A. P. J. Abdul Kalam described a vision of a developed India built through education, scientific work, and opportunities for young people.",
++      question, "A. P. J. Abdul Kalam").level).toBe("STRONG");
++  });
++
+   it("carries passage-level provenance into the rendered citation", () => {
+     const passage: RetrievedPassage = { kind: "passage", id: "p", chunkId: "p", sourceId: "s", text: "Ashoka's edict describes dhamma as restraint and proper conduct.",
+       sectionTitle: "Edict", pageOrSection: "Rock Edict XII", textualLayer: "Inscription", sourceTitle: "Corpus Inscriptionum Indicarum", sourceAuthor: "Editor",
+diff --git a/tests/fixtures/bose-source-selection-2026-10-23.json b/tests/fixtures/bose-source-selection-2026-10-23.json
+new file mode 100644
+index 0000000..555fcb5
+--- /dev/null
++++ b/tests/fixtures/bose-source-selection-2026-10-23.json
+@@ -0,0 +1,16 @@
++{
++  "question": "In what year did Jagadish Chandra Bose establish the Bose Institute?",
++  "previousQuery": "Jagadish Chandra Bose year establish institute archive museum university",
++  "observedRankedCandidates": [
++    { "url": "https://dst.gov.in/autonomousstinstitutions/bose-institute-kolkata", "selectionOrder": 1, "decision": "unverified", "access": "robots 302" },
++    { "url": "https://ethw.org/Jagadish_Chandra_Bose", "selectionOrder": 2, "decision": "irrelevant", "access": "HTTP 200", "datedFoundingPassage": true, "articleRights": false },
++    { "url": "https://apirs.plants.ifas.ufl.edu/site/assets/files/372231/372231.pdf", "selectionOrder": 3, "decision": "irrelevant", "access": "HTTP 200", "datedFoundingPassage": true, "articleRights": false },
++    { "url": "https://www.indiascienceandtechnology.gov.in/organisations/ministry-and-departments/department-science-technology-dst-govt-india/bose-institute-kolkata", "selectionOrder": 4, "decision": "irrelevant", "access": "HTTP 200", "datedFoundingPassage": true, "articleRights": false },
++    { "url": "http://www.jcbose.ac.in/museum", "selectionOrder": 5, "decision": "unverified", "access": "no approved HTTPS source" },
++    { "url": "https://frontline.thehindu.com/other/advertorial/article30225627.ece", "selectionOrder": 6, "decision": "unverified", "access": "HTTP 200", "datedFoundingPassage": true, "articleRights": false }
++  ],
++  "licensedCandidatesAbsentFromBraveTop20": [
++    { "url": "https://journals.sagepub.com/doi/full/10.1177/0073275320930908", "publisher": "SAGE", "credit": "Mahendra Shahare and Lissa L. Roberts, History of Science (2020)", "articleLicense": "https://creativecommons.org/licenses/by-nc/4.0/", "directAccessProbe": "HTTP 403", "factSummary": "Bose established the research institute in Calcutta in 1917.", "discoverySummary": "This article states Bose established the institute in 1917. This article is licensed under https://creativecommons.org/licenses/by-nc/4.0/." },
++    { "url": "https://www.openbookpublishers.com/books/10.11647/obp.0509/chapters/10.11647/obp.0509.01", "publisher": "Open Book Publishers", "credit": "Patrick Armstrong, Aldous Huxley’s Art of Microscopic Seeing (2026)", "articleLicense": "https://creativecommons.org/licenses/by-nc/4.0/", "directAccessProbe": "HTTP 429", "factSummary": "Jagadish Chandra Bose founded the Bose Institute in 1917.", "discoverySummary": "This chapter states Bose founded the institute in 1917. This chapter is licensed under https://creativecommons.org/licenses/by-nc/4.0/." }
++  ]
++}

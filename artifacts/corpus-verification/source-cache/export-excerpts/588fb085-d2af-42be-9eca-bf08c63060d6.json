@@ -1,0 +1,50 @@
+{
+  "source_id": "588fb085-d2af-42be-9eca-bf08c63060d6",
+  "source": {
+    "author": "Valmiki",
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Bala Kanda, Sarga 29 (https://www.valmikiramayan.net/utf8/baala/sarga29/balasans29.htm)",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Bala Kanda, Sarga 29",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga29/balasans29.htm"
+  },
+  "claim_ids": [
+    "2c9cc1ed-06a5-4dc8-8aa3-b68aee84b66f",
+    "ad96df5e-bf7a-45a4-99d5-77586f00ab03",
+    "f6e90959-0378-40bc-a8d3-31cb060f148a"
+  ],
+  "passages": [
+    {
+      "chunk_id": "3d948c33-642e-46bf-ba1d-74c67d7a7263",
+      "locator": "Introduction",
+      "text_sha256": "0845574110f5ddc0554583f81f2a236cad3316d00c492c30a8b5b57236f80c98",
+      "excerpt_preview": "\"That dwarf ascetic boy Vaamana begged and received a space that can   be covered in three strides, but strode all the three worlds in those   three steps for the purpose of saving worlds, as he is interested in   the welfare of all the wor",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "aa32ff19-8d5e-4696-ac02-020c336fa4e6",
+      "locator": "Introduction",
+      "text_sha256": "987aaaead23f88a2a7e87c1fbe9daa585afaeda26a4a6aaf3b442163950226a7",
+      "excerpt_preview": "\"This hermitage which at one time is presided by Vishnu, is an eradicator   of stress, either the stress and strain caused by the evil on earth,   or the stress of going through the cycle of birth and death, thus this   hermitage is an acco",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "faf89375-2fcd-47d3-b5f9-66a6fd896f4e",
+      "locator": "Introduction",
+      "text_sha256": "0a58781351973b5d45c4f46a8b55ff8de3b263fb79379f3d9444030bb83e9bd9",
+      "excerpt_preview": "यथार्हं चक्रिरे पूजां विश्वामित्राय धीमते |  तथैव राजपुत्राभ्यामकुर्वन्नतिथिक्रियाम् || १-२९-२७  27. dhiimate vishvaamitraaya = to sagacious Vishvamitra;  yathaarham puujaam cakrire = offered reverence as deservedly;  tathaa eva = like, tha",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

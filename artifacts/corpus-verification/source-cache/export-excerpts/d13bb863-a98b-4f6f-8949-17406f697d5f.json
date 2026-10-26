@@ -1,0 +1,43 @@
+{
+  "source_id": "d13bb863-a98b-4f6f-8949-17406f697d5f",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-09T03:48:57.953Z"
+    },
+    "citation": "Science Education Programmes — Indian Academy of Sciences. Indian Academy of Sciences. https://webjapps.ias.ac.in/SEP/index.jsp",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Indian Academy of Sciences",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Science Education Programmes — Indian Academy of Sciences",
+    "url": "https://webjapps.ias.ac.in/SEP/index.jsp"
+  },
+  "claim_ids": [
+    "d29841e2-b80e-476a-8259-43bdab31d230",
+    "da0429d5-6d31-49f6-b661-e7757fbbe5ce"
+  ],
+  "passages": [
+    {
+      "chunk_id": "613ee8e2-749e-413b-94c6-6189a18ecef0",
+      "locator": "Science Education Programmes, founding",
+      "text_sha256": "e35a832cd14cb5b81b3e23bdfff4a12b50de0639244a1f587ceabd5ae35a71ac",
+      "excerpt_preview": "Its objectives include promoting the progress and upholding the cause of science, both in pure and applied branches. The Academy recognizes the special relationship of scientific creative activity with the process of education and holds tha",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9216f047-4ec6-43cd-b167-6713aeef4d1b",
+      "locator": "Science Education Programmes, education",
+      "text_sha256": "e5daa817d8130b3de5f0cfbc0726a8aee7977efe937b4b7bbf6359f6d35b9e9e",
+      "excerpt_preview": "The Academy recognizes the special relationship of scientific creative activity with the process of education and holds that the course of discovery includes the identification and nurturing of scientific talent amongst the young. In 1994, ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "71a02349-8e43-4784-b671-a4c6cdbac61a",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.30, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 30 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga30/bala_30_prose.htm"
+  },
+  "claim_ids": [
+    "4183a4b4-d4f8-48d4-9419-71050d8368e6",
+    "c2aa3817-71a8-481d-afb1-34849456f05f",
+    "f37c5c15-eea4-454b-af48-14f09d63edb3"
+  ],
+  "passages": [
+    {
+      "chunk_id": "a7ec8ae6-04f3-4603-acf2-bb83387319d9",
+      "locator": "Book I : Bala Kanda - The Youthful \nMajestiesSarga 30 in Prose",
+      "text_sha256": "d1a378fa1a8871e5d0abf2793c790fdcc0390b71df54fc3293a9412e922dbd58",
+      "excerpt_preview": "While the Vedic ritual is proceeding well towards its conclusion according to hymnal  rendering and rules of conducting the ritual, a strident and frightening blare is generated in the sky.  As to how massive clouds appear in torrential clo",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c2264186-8ff6-4560-b37e-23f2668f17a4",
+      "locator": "Book I : Bala Kanda - The Youthful \nMajestiesSarga 30 in Prose",
+      "text_sha256": "1964f82497aaf10dc3c6b7e23aa85dc971520aacb42495801a991072b406eb41",
+      "excerpt_preview": "Rama and Lakshmana while safeguarding the ritual of Sage Vishvamitra for six days and  nights, on the last night demons named Maareecha and Subaahu come to hinder the ritual. Rama acts deftly  and hits out Maareecha to a long distance, but ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,61 @@
+{
+  "source_id": "af3acf57-6d85-4e97-b814-551ff8b0f3ef",
+  "source": {
+    "author": "Chris Moffat",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Chris Moffat. India’s Revolutionary Inheritance: Politics and the Promise of Bhagat Singh. Cambridge University Press. https://www.cambridge.org/core/books/indias-revolutionary-inheritance/introduction/4941F781AE3ECA0E821302FA47D34B4B",
+    "original_work_identity": {},
+    "publication_year": 2019,
+    "publisher_or_institution": "Cambridge University Press",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "India’s Revolutionary Inheritance: Politics and the Promise of Bhagat Singh",
+    "url": "https://www.cambridge.org/core/books/indias-revolutionary-inheritance/introduction/4941F781AE3ECA0E821302FA47D34B4B"
+  },
+  "claim_ids": [
+    "0425b72d-89a3-465b-850f-0972d4943600",
+    "22729927-6552-422c-8c35-1d7d5e2e1cfc",
+    "39bc2346-b9d8-401b-9c0f-7b3f184c9de8",
+    "3f83b07e-10f6-4bad-8097-c9a991aff0fc",
+    "4996a997-0c4d-41e0-af8e-48356fd6e571",
+    "4ad2e14d-bcea-43a5-8c91-8a2830f79df9",
+    "6c4290f4-81d9-4346-8af0-802ac00e22d9",
+    "8cffa203-9274-4d29-9135-2fdf125f8ccf",
+    "be1053fc-46c4-4e6b-bcf1-f5682442e010",
+    "c3021d3f-8edd-4504-980a-ab14aad7b23d",
+    "e53de5a4-fa0d-4a5e-973d-fe7db022a0c9",
+    "f81ed696-d7eb-4bf0-a0e2-cc90f10df46a"
+  ],
+  "passages": [
+    {
+      "chunk_id": "964c9d2e-518e-479b-95e2-8a86a6e23f4a",
+      "locator": "Lahore’s interwar political environment",
+      "text_sha256": "68dd777d78cfad8d1aa678a31da3e1e849abeee7e234047b0fbb3de70106fd92",
+      "excerpt_preview": "offat places Bhagat Singh in Lahore’s interwar political environment, including the Tilak School of Politics founded by Lala Lajpat Rai.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9c8c4f8d-a2e7-4475-ad24-decabeaf99bf",
+      "locator": "afterlife is not a fixed inheritance",
+      "text_sha256": "32f19a5c728294a4f0de2cccbe393c6705551ad13990eefa3962a2d96ee31e66",
+      "excerpt_preview": "It also argues that the executed revolutionary’s afterlife is not a fixed inheritance: sacrifice, youth, dissent and nationalism have been repeatedly reworked in public culture and political argument.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f71867a3-5b32-4507-90e3-4c1186577fd1",
+      "locator": "one childhood event mechanically caused",
+      "text_sha256": "6063ed801b798ee73562c68c61ff6df21e2f779b2e58ae642ecf6725152ee297",
+      "excerpt_preview": "Punjab’s experience of colonial repression, public mourning and militant nationalism formed a setting for young activists, but claims that one childhood event mechanically caused a settled ideology should be treated cautiously.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

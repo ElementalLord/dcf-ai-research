@@ -1,0 +1,32 @@
+{
+  "source_url": "https://www.gazetteers.maharashtra.gov.in/cultural.maharashtra.gov.in/english/gazetteer/SANGLI/his_maratha%20period.html",
+  "source_id": "502ae471-010c-49a9-bb03-e15ba5525bc9",
+  "status": "SOURCE_ACCESS_HOLD",
+  "claim_ids": [
+    "014b091d-95cf-40dd-9561-6dbb9ecebafc",
+    "2f0bfe8b-185d-4767-a02b-48257b44f0a6",
+    "40ce5704-3541-41e5-a410-76a95149ba2e",
+    "695dfff7-2972-494e-9d8c-920d0b94465f",
+    "7e9a11cb-8ef6-4603-b199-42fa209d5887",
+    "96f17945-8866-421d-b64c-fbb5bf2fe902",
+    "bc711676-c31a-4bb3-991e-a3b2683295a0",
+    "c50df3de-98f6-40d1-a5a5-7acadf5533c3",
+    "c83306bd-a4be-4a54-942a-d796c30bb4c5",
+    "d7952ecf-d359-4f91-8506-b76ffa2121ae",
+    "dddcc29d-2686-4471-b82d-585b5be2985c",
+    "e62f848e-abc8-41c5-8ab2-58148d1d4f39",
+    "f1b5bbd2-8a63-47c0-a278-2840d6af24b1"
+  ],
+  "count": 13,
+  "access_attempts": [
+    "https://www.gazetteers.maharashtra.gov.in/…/SANGLI/his_maratha%20period.html — HTTP 502 and timeout",
+    "https://gazetteers.maharashtra.gov.in/…/SANGLI/his_maratha%20period.html — timeout",
+    "publisher Sangli District PDF — HTTP 502",
+    "Google Books 1969 edition — snippet view only"
+  ],
+  "resume_requirement": "Inspect full publisher page or original 1969 print/PDF pages, then corroborate historical event and institutional-rule claims as needed. Do not finalize from indexed snippets or stored excerpts.",
+  "removed": 0,
+  "approved": 0,
+  "revised": 0,
+  "research_spend_usd": 0
+}

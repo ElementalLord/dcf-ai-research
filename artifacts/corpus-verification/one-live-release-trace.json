@@ -1,0 +1,637 @@
+{
+  "question": "In what year was C. V. Raman awarded the Nobel Prize in Physics?",
+  "target": "http://127.0.0.1:54321",
+  "startedAt": "2026-10-20T21:06:50.693Z",
+  "first": {
+    "status": "abstained",
+    "answer": "The approved sources currently available do not provide reliable evidence to answer this question about C. V. Raman.\n\nTry asking about a documented part of C. V. Raman's life or work.",
+    "citations": [],
+    "evidence": [],
+    "debug": {
+      "providerConfigured": false,
+      "providerHealthy": false,
+      "providerCircuitOpen": false,
+      "synthesisErrorCategory": null,
+      "generativeCalls": 0,
+      "embeddingCalls": 0,
+      "answerCacheHit": false,
+      "answerCacheKey": null,
+      "extractiveFallbackUsed": false,
+      "epistemicSafeguardNotes": [],
+      "fallbackUsed": false,
+      "provider": "none",
+      "synthesisMode": "none",
+      "model": null,
+      "synthesisLatencyMs": 0,
+      "estimatedEvidenceTokens": 0,
+      "evidenceRetrievedCount": 0,
+      "evidenceUsedCount": 0,
+      "answerIntent": "specific",
+      "questionScope": "NARROW_FACT",
+      "parametersRepresented": [
+        "institutions"
+      ],
+      "retrievedClaimCount": 2,
+      "retrievedChunkCount": 5,
+      "sourcesRepresented": [
+        "CV Raman and Physics at IISc",
+        "Raman Research Institute — Overview"
+      ],
+      "sourceTypesRepresented": [
+        "institutional"
+      ],
+      "evidenceTypesRepresented": [
+        "uncertain",
+        "source_passage"
+      ],
+      "braveTriggered": false,
+      "braveQueries": [],
+      "newSourcesFetched": 0,
+      "geminiCalls": 0,
+      "executionMode": "FAST",
+      "routingStrategy": "deterministic",
+      "selectedPersonality": "C. V. Raman",
+      "selectedPersonalityId": "6b9a4d86-8330-4256-a749-4daf0f596128",
+      "selectedPersonalities": [
+        {
+          "id": "6b9a4d86-8330-4256-a749-4daf0f596128",
+          "name": "C. V. Raman"
+        }
+      ],
+      "evidencePolicyMode": "strict",
+      "selectedParameters": [
+        {
+          "code": "impact",
+          "name": "Recognition and continuing impact"
+        }
+      ],
+      "lexicalResults": 5,
+      "semanticResults": 0,
+      "approvedClaimResults": 2,
+      "totalApprovedClaimsForPersonality": 8,
+      "approvedClaimsBeforeParameterFilter": 8,
+      "approvedClaimsAfterParameterFilter": 8,
+      "totalChunksForPersonality": 7,
+      "chunksBeforeParameterFilter": 7,
+      "chunksAfterParameterFilter": 7,
+      "embeddingCountForPersonality": 0,
+      "approvedLiveSourceCount": 138,
+      "cacheResults": 0,
+      "localEvidenceSufficient": false,
+      "liveResearchTriggered": true,
+      "approvedSourcesConsidered": [],
+      "liveUrlsAccepted": [],
+      "liveUrlsRejected": [],
+      "liveFetches": 1,
+      "cacheHits": 0,
+      "webSearchProvider": "brave",
+      "webSearchConfigured": true,
+      "webSearchCalls": 1,
+      "webSearchCacheHits": 0,
+      "webSearchLatencyMs": 0,
+      "candidateResults": 0,
+      "policyAcceptedResults": 0,
+      "policyRejectedResults": 0,
+      "pagesFetched": 0,
+      "pagesCacheHits": 0,
+      "chunksAdded": 0,
+      "webSearchErrorCategory": null,
+      "liveResearchSkipReason": null,
+      "lexicalError": null,
+      "semanticError": "No approved C. V. Raman chunks currently have embeddings.",
+      "claimRetrievalError": null,
+      "mergedCandidates": 7,
+      "rerankedEvidence": [
+        "claim:b304d59a-03af-4ac4-8d8a-ec42ade9b652",
+        "claim:1ce09b33-1e0f-4853-8440-ff35a63e31dd",
+        "passage:2223ccb4-3034-4271-a872-cbc909a2fa7b",
+        "passage:8d838c93-99d9-4e64-945a-6e8793a33344",
+        "passage:0ec303c9-0bb8-4414-9a28-eda558407343",
+        "passage:52cae122-085b-4015-bf54-6f8fff373eeb",
+        "passage:1e56bf1e-dd50-492b-8730-fcbeedfe6eb7"
+      ],
+      "finalSelectedEvidenceCount": 7,
+      "semanticFallbackReason": "no_embeddings_available",
+      "queryEmbeddingRequested": false,
+      "latenciesMs": {
+        "routing": 14,
+        "contemporaries": 0,
+        "relationships": 26,
+        "events": 30,
+        "lexical": 33,
+        "broadLexical": 33,
+        "claims": 33,
+        "inventory": 33,
+        "sourceRegistry": 34,
+        "semantic": 0,
+        "merge": 0,
+        "rerank": 0,
+        "total": 8655
+      },
+      "questionResolutionState": "partial_local",
+      "questionNeedId": "63df1def5dcd74447aa442991c3c3bb46692d53b7c3f9b17bcf086f18d911dfa",
+      "missingEvidenceDimensions": [
+        "Evidence for awarded in the question",
+        "Evidence for prize in the question"
+      ],
+      "localEvidenceSufficiencyReason": "The bounded research request did not establish every missing requirement.",
+      "answerable": true,
+      "coverageStatus": "partial",
+      "demandResearchStatus": "insufficient",
+      "demandResearchRequestId": "ea4e211f-3499-4233-937a-0a834e97be72",
+      "liveSourcesUsed": 0,
+      "unresolvedEvidenceGap": true,
+      "localEvidenceBeforeSearch": 7,
+      "localSourcesUsed": 7,
+      "demandVerificationOutcomes": [],
+      "demandVerificationModelCalls": 0,
+      "lens": null,
+      "contextIntent": null,
+      "synthesisPromptVersion": "historical_conversation_v18",
+      "synthesisModel": null,
+      "comparisonMode": false,
+      "googleGroundedSourcesReturned": 0,
+      "googleSearchRequests": 0,
+      "googleSearchQueries": 0,
+      "googleSearchLatencyMs": 0,
+      "perPersonality": [
+        {
+          "personality": "C. V. Raman",
+          "debug": {
+            "questionScope": "NARROW_FACT",
+            "parametersRepresented": [
+              "institutions"
+            ],
+            "retrievedClaimCount": 2,
+            "retrievedChunkCount": 5,
+            "sourcesRepresented": [
+              "CV Raman and Physics at IISc",
+              "Raman Research Institute — Overview"
+            ],
+            "sourceTypesRepresented": [
+              "institutional"
+            ],
+            "evidenceTypesRepresented": [
+              "uncertain",
+              "source_passage"
+            ],
+            "braveTriggered": false,
+            "braveQueries": [],
+            "newSourcesFetched": 0,
+            "geminiCalls": 0,
+            "executionMode": "FAST",
+            "routingStrategy": "deterministic",
+            "selectedPersonality": "C. V. Raman",
+            "selectedPersonalityId": "6b9a4d86-8330-4256-a749-4daf0f596128",
+            "selectedPersonalities": [
+              {
+                "id": "6b9a4d86-8330-4256-a749-4daf0f596128",
+                "name": "C. V. Raman"
+              }
+            ],
+            "evidencePolicyMode": "strict",
+            "selectedParameters": [
+              {
+                "code": "impact",
+                "name": "Recognition and continuing impact"
+              }
+            ],
+            "lexicalResults": 5,
+            "semanticResults": 0,
+            "approvedClaimResults": 2,
+            "totalApprovedClaimsForPersonality": 8,
+            "approvedClaimsBeforeParameterFilter": 8,
+            "approvedClaimsAfterParameterFilter": 8,
+            "totalChunksForPersonality": 7,
+            "chunksBeforeParameterFilter": 7,
+            "chunksAfterParameterFilter": 7,
+            "embeddingCountForPersonality": 0,
+            "approvedLiveSourceCount": 138,
+            "cacheResults": 0,
+            "localEvidenceSufficient": false,
+            "liveResearchTriggered": true,
+            "approvedSourcesConsidered": [],
+            "liveUrlsAccepted": [],
+            "liveUrlsRejected": [],
+            "liveFetches": 1,
+            "cacheHits": 0,
+            "webSearchProvider": "brave",
+            "webSearchConfigured": true,
+            "webSearchCalls": 1,
+            "webSearchCacheHits": 0,
+            "webSearchLatencyMs": 0,
+            "candidateResults": 0,
+            "policyAcceptedResults": 0,
+            "policyRejectedResults": 0,
+            "pagesFetched": 0,
+            "pagesCacheHits": 0,
+            "chunksAdded": 0,
+            "webSearchErrorCategory": null,
+            "liveResearchSkipReason": null,
+            "lexicalError": null,
+            "semanticError": "No approved C. V. Raman chunks currently have embeddings.",
+            "claimRetrievalError": null,
+            "mergedCandidates": 7,
+            "rerankedEvidence": [
+              "claim:b304d59a-03af-4ac4-8d8a-ec42ade9b652",
+              "claim:1ce09b33-1e0f-4853-8440-ff35a63e31dd",
+              "passage:2223ccb4-3034-4271-a872-cbc909a2fa7b",
+              "passage:8d838c93-99d9-4e64-945a-6e8793a33344",
+              "passage:0ec303c9-0bb8-4414-9a28-eda558407343",
+              "passage:52cae122-085b-4015-bf54-6f8fff373eeb",
+              "passage:1e56bf1e-dd50-492b-8730-fcbeedfe6eb7"
+            ],
+            "finalSelectedEvidenceCount": 7,
+            "semanticFallbackReason": "no_embeddings_available",
+            "queryEmbeddingRequested": false,
+            "latenciesMs": {
+              "routing": 14,
+              "contemporaries": 0,
+              "relationships": 26,
+              "events": 30,
+              "lexical": 33,
+              "broadLexical": 33,
+              "claims": 33,
+              "inventory": 33,
+              "sourceRegistry": 34,
+              "semantic": 0,
+              "merge": 0,
+              "rerank": 0
+            },
+            "questionResolutionState": "partial_local",
+            "questionNeedId": "63df1def5dcd74447aa442991c3c3bb46692d53b7c3f9b17bcf086f18d911dfa",
+            "missingEvidenceDimensions": [
+              "Evidence for awarded in the question",
+              "Evidence for prize in the question"
+            ],
+            "localEvidenceSufficiencyReason": "The bounded research request did not establish every missing requirement.",
+            "answerable": true,
+            "coverageStatus": "partial",
+            "demandResearchStatus": "insufficient",
+            "demandResearchRequestId": "ea4e211f-3499-4233-937a-0a834e97be72",
+            "liveSourcesUsed": 0,
+            "unresolvedEvidenceGap": true,
+            "localEvidenceBeforeSearch": 7,
+            "localSourcesUsed": 7
+          }
+        }
+      ],
+      "demandEstimatedCostMicros": 10000,
+      "usageMetrics": {
+        "totalAskRequests": 1,
+        "liveResearchTriggers": 1,
+        "semanticFallbacks": 1
+      }
+    }
+  },
+  "admittedClaims": {
+    "data": []
+  },
+  "reuse": {
+    "status": "abstained",
+    "answer": "The approved sources currently available do not provide reliable evidence to answer this question about C. V. Raman.\n\nTry asking about a documented part of C. V. Raman's life or work.",
+    "citations": [],
+    "evidence": [],
+    "debug": {
+      "providerConfigured": false,
+      "providerHealthy": false,
+      "providerCircuitOpen": false,
+      "synthesisErrorCategory": null,
+      "generativeCalls": 0,
+      "embeddingCalls": 0,
+      "answerCacheHit": false,
+      "answerCacheKey": null,
+      "extractiveFallbackUsed": false,
+      "epistemicSafeguardNotes": [],
+      "fallbackUsed": false,
+      "provider": "none",
+      "synthesisMode": "none",
+      "model": null,
+      "synthesisLatencyMs": 0,
+      "estimatedEvidenceTokens": 0,
+      "evidenceRetrievedCount": 0,
+      "evidenceUsedCount": 0,
+      "answerIntent": "specific",
+      "questionScope": "NARROW_FACT",
+      "parametersRepresented": [
+        "institutions"
+      ],
+      "retrievedClaimCount": 2,
+      "retrievedChunkCount": 5,
+      "sourcesRepresented": [
+        "CV Raman and Physics at IISc",
+        "Raman Research Institute — Overview"
+      ],
+      "sourceTypesRepresented": [
+        "institutional"
+      ],
+      "evidenceTypesRepresented": [
+        "uncertain",
+        "source_passage"
+      ],
+      "braveTriggered": false,
+      "braveQueries": [],
+      "newSourcesFetched": 0,
+      "geminiCalls": 0,
+      "executionMode": "FAST",
+      "routingStrategy": "deterministic",
+      "selectedPersonality": "C. V. Raman",
+      "selectedPersonalityId": "6b9a4d86-8330-4256-a749-4daf0f596128",
+      "selectedPersonalities": [
+        {
+          "id": "6b9a4d86-8330-4256-a749-4daf0f596128",
+          "name": "C. V. Raman"
+        }
+      ],
+      "evidencePolicyMode": "strict",
+      "selectedParameters": [
+        {
+          "code": "impact",
+          "name": "Recognition and continuing impact"
+        }
+      ],
+      "lexicalResults": 5,
+      "semanticResults": 0,
+      "approvedClaimResults": 2,
+      "totalApprovedClaimsForPersonality": 8,
+      "approvedClaimsBeforeParameterFilter": 8,
+      "approvedClaimsAfterParameterFilter": 8,
+      "totalChunksForPersonality": 7,
+      "chunksBeforeParameterFilter": 7,
+      "chunksAfterParameterFilter": 7,
+      "embeddingCountForPersonality": 0,
+      "approvedLiveSourceCount": 138,
+      "cacheResults": 0,
+      "localEvidenceSufficient": false,
+      "liveResearchTriggered": false,
+      "approvedSourcesConsidered": [],
+      "liveUrlsAccepted": [],
+      "liveUrlsRejected": [],
+      "liveFetches": 0,
+      "cacheHits": 0,
+      "webSearchProvider": "brave",
+      "webSearchConfigured": false,
+      "webSearchCalls": 0,
+      "webSearchCacheHits": 0,
+      "webSearchLatencyMs": 0,
+      "candidateResults": 0,
+      "policyAcceptedResults": 0,
+      "policyRejectedResults": 0,
+      "pagesFetched": 0,
+      "pagesCacheHits": 0,
+      "chunksAdded": 0,
+      "webSearchErrorCategory": null,
+      "liveResearchSkipReason": null,
+      "lexicalError": null,
+      "semanticError": "No approved C. V. Raman chunks currently have embeddings.",
+      "claimRetrievalError": null,
+      "mergedCandidates": 7,
+      "rerankedEvidence": [
+        "claim:b304d59a-03af-4ac4-8d8a-ec42ade9b652",
+        "claim:1ce09b33-1e0f-4853-8440-ff35a63e31dd",
+        "passage:2223ccb4-3034-4271-a872-cbc909a2fa7b",
+        "passage:8d838c93-99d9-4e64-945a-6e8793a33344",
+        "passage:0ec303c9-0bb8-4414-9a28-eda558407343",
+        "passage:52cae122-085b-4015-bf54-6f8fff373eeb",
+        "passage:1e56bf1e-dd50-492b-8730-fcbeedfe6eb7"
+      ],
+      "finalSelectedEvidenceCount": 7,
+      "semanticFallbackReason": "no_embeddings_available",
+      "queryEmbeddingRequested": false,
+      "latenciesMs": {
+        "routing": 7,
+        "contemporaries": 0,
+        "inventory": 10,
+        "relationships": 11,
+        "broadLexical": 11,
+        "claims": 12,
+        "events": 12,
+        "sourceRegistry": 13,
+        "lexical": 13,
+        "semantic": 0,
+        "merge": 0,
+        "rerank": 1,
+        "total": 39
+      },
+      "questionResolutionState": "partial_local",
+      "questionNeedId": "63df1def5dcd74447aa442991c3c3bb46692d53b7c3f9b17bcf086f18d911dfa",
+      "missingEvidenceDimensions": [
+        "Evidence for awarded in the question",
+        "Evidence for prize in the question"
+      ],
+      "localEvidenceSufficiencyReason": "The bounded research request did not establish every missing requirement.",
+      "answerable": true,
+      "coverageStatus": "partial",
+      "demandResearchStatus": "failed",
+      "demandResearchRequestId": "0ed301eb-d0cb-4631-aea8-a4598b1f8ab5",
+      "liveSourcesUsed": 0,
+      "unresolvedEvidenceGap": true,
+      "localEvidenceBeforeSearch": 7,
+      "localSourcesUsed": 7,
+      "demandVerificationOutcomes": [],
+      "demandVerificationModelCalls": 0,
+      "lens": null,
+      "contextIntent": null,
+      "synthesisPromptVersion": "historical_conversation_v18",
+      "synthesisModel": null,
+      "comparisonMode": false,
+      "googleGroundedSourcesReturned": 0,
+      "googleSearchRequests": 0,
+      "googleSearchQueries": 0,
+      "googleSearchLatencyMs": 0,
+      "perPersonality": [
+        {
+          "personality": "C. V. Raman",
+          "debug": {
+            "questionScope": "NARROW_FACT",
+            "parametersRepresented": [
+              "institutions"
+            ],
+            "retrievedClaimCount": 2,
+            "retrievedChunkCount": 5,
+            "sourcesRepresented": [
+              "CV Raman and Physics at IISc",
+              "Raman Research Institute — Overview"
+            ],
+            "sourceTypesRepresented": [
+              "institutional"
+            ],
+            "evidenceTypesRepresented": [
+              "uncertain",
+              "source_passage"
+            ],
+            "braveTriggered": false,
+            "braveQueries": [],
+            "newSourcesFetched": 0,
+            "geminiCalls": 0,
+            "executionMode": "FAST",
+            "routingStrategy": "deterministic",
+            "selectedPersonality": "C. V. Raman",
+            "selectedPersonalityId": "6b9a4d86-8330-4256-a749-4daf0f596128",
+            "selectedPersonalities": [
+              {
+                "id": "6b9a4d86-8330-4256-a749-4daf0f596128",
+                "name": "C. V. Raman"
+              }
+            ],
+            "evidencePolicyMode": "strict",
+            "selectedParameters": [
+              {
+                "code": "impact",
+                "name": "Recognition and continuing impact"
+              }
+            ],
+            "lexicalResults": 5,
+            "semanticResults": 0,
+            "approvedClaimResults": 2,
+            "totalApprovedClaimsForPersonality": 8,
+            "approvedClaimsBeforeParameterFilter": 8,
+            "approvedClaimsAfterParameterFilter": 8,
+            "totalChunksForPersonality": 7,
+            "chunksBeforeParameterFilter": 7,
+            "chunksAfterParameterFilter": 7,
+            "embeddingCountForPersonality": 0,
+            "approvedLiveSourceCount": 138,
+            "cacheResults": 0,
+            "localEvidenceSufficient": false,
+            "liveResearchTriggered": false,
+            "approvedSourcesConsidered": [],
+            "liveUrlsAccepted": [],
+            "liveUrlsRejected": [],
+            "liveFetches": 0,
+            "cacheHits": 0,
+            "webSearchProvider": "brave",
+            "webSearchConfigured": false,
+            "webSearchCalls": 0,
+            "webSearchCacheHits": 0,
+            "webSearchLatencyMs": 0,
+            "candidateResults": 0,
+            "policyAcceptedResults": 0,
+            "policyRejectedResults": 0,
+            "pagesFetched": 0,
+            "pagesCacheHits": 0,
+            "chunksAdded": 0,
+            "webSearchErrorCategory": null,
+            "liveResearchSkipReason": null,
+            "lexicalError": null,
+            "semanticError": "No approved C. V. Raman chunks currently have embeddings.",
+            "claimRetrievalError": null,
+            "mergedCandidates": 7,
+            "rerankedEvidence": [
+              "claim:b304d59a-03af-4ac4-8d8a-ec42ade9b652",
+              "claim:1ce09b33-1e0f-4853-8440-ff35a63e31dd",
+              "passage:2223ccb4-3034-4271-a872-cbc909a2fa7b",
+              "passage:8d838c93-99d9-4e64-945a-6e8793a33344",
+              "passage:0ec303c9-0bb8-4414-9a28-eda558407343",
+              "passage:52cae122-085b-4015-bf54-6f8fff373eeb",
+              "passage:1e56bf1e-dd50-492b-8730-fcbeedfe6eb7"
+            ],
+            "finalSelectedEvidenceCount": 7,
+            "semanticFallbackReason": "no_embeddings_available",
+            "queryEmbeddingRequested": false,
+            "latenciesMs": {
+              "routing": 7,
+              "contemporaries": 0,
+              "inventory": 10,
+              "relationships": 11,
+              "broadLexical": 11,
+              "claims": 12,
+              "events": 12,
+              "sourceRegistry": 13,
+              "lexical": 13,
+              "semantic": 0,
+              "merge": 0,
+              "rerank": 1
+            },
+            "questionResolutionState": "partial_local",
+            "questionNeedId": "63df1def5dcd74447aa442991c3c3bb46692d53b7c3f9b17bcf086f18d911dfa",
+            "missingEvidenceDimensions": [
+              "Evidence for awarded in the question",
+              "Evidence for prize in the question"
+            ],
+            "localEvidenceSufficiencyReason": "The bounded research request did not establish every missing requirement.",
+            "answerable": true,
+            "coverageStatus": "partial",
+            "demandResearchStatus": "failed",
+            "demandResearchRequestId": "0ed301eb-d0cb-4631-aea8-a4598b1f8ab5",
+            "liveSourcesUsed": 0,
+            "unresolvedEvidenceGap": true,
+            "localEvidenceBeforeSearch": 7,
+            "localSourcesUsed": 7
+          }
+        }
+      ],
+      "usageMetrics": {
+        "totalAskRequests": 2,
+        "liveResearchTriggers": 1,
+        "semanticFallbacks": 2
+      }
+    }
+  },
+  "completedAt": "2026-10-20T21:06:59.413Z",
+  "counts": {
+    "brave": 1,
+    "gemini": 0,
+    "originalPages": 3,
+    "robots": 7
+  },
+  "requests": [
+    {
+      "kind": "brave",
+      "url": "https://api.search.brave.com/res/v1/web/search"
+    },
+    {
+      "kind": "robots",
+      "url": "https://en.wikipedia.org/robots.txt"
+    },
+    {
+      "kind": "robots",
+      "url": "https://www.britannica.com/robots.txt"
+    },
+    {
+      "kind": "originalPages",
+      "url": "https://www.britannica.com/biography/C-V-Raman"
+    },
+    {
+      "kind": "robots",
+      "url": "https://testbook.com/robots.txt"
+    },
+    {
+      "kind": "robots",
+      "url": "https://www.researchgate.net/robots.txt"
+    },
+    {
+      "kind": "originalPages",
+      "url": "https://www.researchgate.net/publication/369742748_Sir_C_V_Raman_award_certificate"
+    },
+    {
+      "kind": "robots",
+      "url": "https://testbook.com/robots.txt"
+    },
+    {
+      "kind": "robots",
+      "url": "https://physicsworld.com/robots.txt"
+    },
+    {
+      "kind": "originalPages",
+      "url": "https://physicsworld.com/a/c-v-raman-the-physicist-with-a-himalayan-ego-who-went-to-stockholm-convinced-hed-win-a-nobel-prize/"
+    },
+    {
+      "kind": "robots",
+      "url": "https://www.jagranjosh.com/robots.txt"
+    }
+  ],
+  "isolatedPostcheck": {
+    "verificationTable": "demand_verification_decisions",
+    "verificationDecisions": 0,
+    "admittedClaims": 0,
+    "budget": {
+      "status": "settled",
+      "searchCalls": 1,
+      "modelCalls": 0,
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "actualMicroUsdEstimate": 10000
+    }
+  }
+}

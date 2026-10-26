@@ -1,0 +1,54 @@
+{
+  "source_id": "8f011202-d545-46b2-97f1-e64fd6afdac6",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Rabindra-Bhavana. Visva-Bharati. https://www.visvabharati.ac.in/home/rabindra-bhavana/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Visva-Bharati",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Rabindra-Bhavana",
+    "url": "https://www.visvabharati.ac.in/home/rabindra-bhavana/"
+  },
+  "claim_ids": [
+    "645d0b9e-479b-40ab-98c7-5a40b3757eaa",
+    "6e99a5ea-2418-486f-9afb-a0167d6b2936",
+    "c32848cb-fa6d-423b-83d0-eff9230b65c7",
+    "e79f3cb6-1597-4176-b615-1d505d4c9427"
+  ],
+  "passages": [
+    {
+      "chunk_id": "4ba93a9b-734a-471a-b5f2-998fa932ae09",
+      "locator": "relationships with contemporaries",
+      "text_sha256": "8ec8161a2f02ae94222f31e5982be3f727fca50f6561b73a1bacb56f98b0f6a7",
+      "excerpt_preview": "The archive supports research into relationships with contemporaries and the evolution of works.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7edef1ae-df61-4a15-b33c-0c3abd3fcc3f",
+      "locator": "continued institutional interpretation",
+      "text_sha256": "6c43cf1301ef37bdfb02123cfd22bb33fdf12232738396b87d5c8b59ba33ddd9",
+      "excerpt_preview": "It also preserves evidence for the continued institutional interpretation of his legacy.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ef9947cd-d2fb-4dfe-8420-5c604b048ce9",
+      "locator": "manuscripts, correspondence, paintings, doodles",
+      "text_sha256": "aee3fe5a2b8658aa90e3233a0dccc0fb8977067687041c6560db5d96d129c821",
+      "excerpt_preview": "Its collections include manuscripts, correspondence, paintings, doodles, books, voice recordings, photographs, objects and honours.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,61 @@
+{
+  "source_id": "b1670b9f-a5fa-4b1c-84d8-4ae3cd652c5f",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T05:41:54.399Z"
+    },
+    "citation": "Satellite Launch Vehicle-3. Indian Space Research Organisation. https://www.isro.gov.in/SLV.html",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Indian Space Research Organisation",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Satellite Launch Vehicle-3",
+    "url": "https://www.isro.gov.in/SLV.html"
+  },
+  "claim_ids": [
+    "0056e637-ab83-4d5e-906a-a4fd1a6add5a",
+    "0ad9f692-4372-4895-936d-6383d12a7a96",
+    "1c773840-34a3-435e-8e8d-f51227baa7a5",
+    "bbaeed4c-7325-42ef-b531-88ec1c970ac6"
+  ],
+  "passages": [
+    {
+      "chunk_id": "242879fb-5694-4ea4-b156-57d9e182a963",
+      "locator": "SLV-3, success",
+      "text_sha256": "798b90af76224cbc0f7c9f7f6c8651ac1ab0b47bc81e906cff526aa1b954f735",
+      "excerpt_preview": "SLV-3 was successfully launched on July 18, 1980 from Sriharikota Range (SHAR), when Rohini satellite, RS-1, was placed in orbit, thereby making India the sixth member of an exclusive club of space-faring nations .",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "556015d9-a56b-4758-b25c-e813635a0168",
+      "locator": "SLV-3, design",
+      "text_sha256": "5cd011813a78a6031724aadd3011b9521a0d0ee154b14193f7efa65292252b82",
+      "excerpt_preview": "LV Home / Activities / Missions accomplished Satellite Launch Vehicle-3 (SLV-3) was India's first experimental satellite launch vehicle, which was an all solid, four stage vehicle weighing 17 tonnes with a height of 22m and capable of placi",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7ad920fe-d6e8-4411-a9fc-1d0ffafb5c9e",
+      "locator": "SLV-3, first flight",
+      "text_sha256": "2d51931c7a0d5140bba6e173d254120eefe5f825b9b11e021e96464e38555b10",
+      "excerpt_preview": "The first experimental flight of SLV-3, in August 1979, was only partially successful. Apart from the July 1980 launch, there were two more launches held in May 1981 and April 1983, orbiting Rohini satellites carrying remote sensing sensors",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9e0db2ad-6b2a-4ad4-9cde-fbcecbf949b5",
+      "locator": "SLV-3, successors",
+      "text_sha256": "8012a4e65786813fb43a49e3a06ed3ceed62f6d3f29ef4db134f025428b6b543",
+      "excerpt_preview": "The successful culmination of the SLV-3 project showed the way to advanced launch vehicle projects such as the Augmented Satellite Launch Vehicle (ASLV), Polar Satellite Launch Vehicle (PSLV) and the Geosynchronous satellite Launch Vehicle ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

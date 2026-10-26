@@ -1,0 +1,61 @@
+{
+  "source_id": "c2f224f8-3d1f-4b3a-a61a-7362e9e68103",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-13T14:33:04.003Z"
+    },
+    "citation": "Main Principles. Shiromani Gurdwara Parbandhak Committee. https://sgpc.net/sikhism/main-principles-2/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Shiromani Gurdwara Parbandhak Committee",
+    "rights_or_access_note": "Publicly accessible source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Main Principles",
+    "url": "https://sgpc.net/sikhism/main-principles-2/"
+  },
+  "claim_ids": [
+    "1acc7e0b-b9d0-4943-91d9-98b0101d6ad0",
+    "518cfdbb-2766-4ca1-a000-e66303410310",
+    "8710fd79-d287-41ba-b9d1-6244b1648667",
+    "d057f83f-0541-471d-b370-7b0662a6bb14"
+  ],
+  "passages": [
+    {
+      "chunk_id": "262414d4-2ec8-4e71-b506-a825d7364d23",
+      "locator": "caste is of no consequence",
+      "text_sha256": "c7c6b231b149ea2f3d096e69221773a8892ccd648c57ad944618a8f615c99704",
+      "excerpt_preview": "Moreover, caste is of no consequence in the next world. In God’s Court, men shall be judged by their thoughts and deeds, and not by their family or pedigree.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7dad7438-c142-403c-8ac6-bf3471cb5715",
+      "locator": "No man is born great or low",
+      "text_sha256": "3b0fa180815225ebf812459fc218340dd649d1152f6724860fe2dee5ea039591",
+      "excerpt_preview": "No man is born great or low. Guru Amardas says, “All colours and forms are thine.” Guru Arjan Sahib gives the simile of the potter. The clay has been molded in different forms.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ee14e299-10af-4c0e-b795-f129629e3733",
+      "locator": "forgetting God is just like death",
+      "text_sha256": "1adb6c2d414843f9ecb1d60e0d6d6ebd6d804681ee3dc1d87268f816dcbfb219",
+      "excerpt_preview": "Bhagti: Those who know the importance of Bhagti feel like Guru Nanak Sahib that forgetting God is just like death and brooding upon His Name is life and joy. Without the nectar of God’s name, the pilgrim dies his misery. But Bhagti is possi",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f76f01d0-99cc-490d-a66e-73b4d416f84f",
+      "locator": "only the Holy Name is valuable",
+      "text_sha256": "418f5fe3eaf439cee05235ceabab36584e18d7c08110ae15cf7376141d846dbc",
+      "excerpt_preview": "Guru Nanak Sahib says :”If a man reads books throughout his whole life, till breath leaves his body, only the Holy Name is valuable, all else is vanity of the self.” Again, “the scholar is an idiot if he has greed, avarice and pride.” What ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

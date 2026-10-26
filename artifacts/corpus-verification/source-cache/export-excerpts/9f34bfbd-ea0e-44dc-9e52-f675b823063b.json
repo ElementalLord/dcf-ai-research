@@ -1,0 +1,43 @@
+{
+  "source_id": "9f34bfbd-ea0e-44dc-9e52-f675b823063b",
+  "source": {
+    "author": "S. R. Nathan",
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "S. R. Nathan. Foreword to Women Against the Raj: The Rani of Jhansi Regiment. ISEAS–Yusof Ishak Institute / Cambridge Core. https://www.cambridge.org/core/books/abs/women-against-the-raj/foreword/C16B790570D74BA800D068874B0112D1",
+    "original_work_identity": {},
+    "publication_year": 2008,
+    "publisher_or_institution": "ISEAS–Yusof Ishak Institute / Cambridge Core",
+    "rights_or_access_note": "Public original; short research excerpts. Scholarly abstract/summary access does not imply full chapter access.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Foreword to Women Against the Raj: The Rani of Jhansi Regiment",
+    "url": "https://www.cambridge.org/core/books/abs/women-against-the-raj/foreword/C16B790570D74BA800D068874B0112D1"
+  },
+  "claim_ids": [
+    "7afaa0d4-be4d-43ed-90ea-184f2e562d43",
+    "e1284ac9-65b2-4ff2-be61-f07c9851465b"
+  ],
+  "passages": [
+    {
+      "chunk_id": "3c997050-c429-48a7-8e0d-859912aed2d7",
+      "locator": "public foreword summary, pp. x–xi",
+      "text_sha256": "b2965497f3873dabd54568e1046b85737398cc3732939178ae5f50be7fee4dfb",
+      "excerpt_preview": "Likewise, the Indian National Army (INA) that he raised in Singapore has also been extensively researched by scholars worldwide. A part of the INA was the all-women “Rani of Jhansi Regiment” that was raised and led entirely by local Indian ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4b4f7870-1662-4fd6-a485-a45a3e21d192",
+      "locator": "public foreword summary",
+      "text_sha256": "56c7613beef8f53eeca101dcbe0beef0aec5e1e023822edd64bc5109b9c82131",
+      "excerpt_preview": "A part of the INA was the all-women “Rani of Jhansi Regiment” that was raised and led entirely by local Indian women in Southeast Asia. Many of the rank and file were from the rubber plantations and housewives. The historical “Rani of Jhans",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

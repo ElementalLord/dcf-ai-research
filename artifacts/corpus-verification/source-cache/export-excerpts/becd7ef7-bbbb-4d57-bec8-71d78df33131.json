@@ -1,0 +1,79 @@
+{
+  "source_id": "becd7ef7-bbbb-4d57-bec8-71d78df33131",
+  "source": {
+    "author": "Savitribai Phule; English translations introduced by Sunil Sardar",
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "Savitribai Phule; English translations introduced by Sunil Sardar. Savitribai Phule’s letters to Jyotiba: October 1856, August 1868, April 1877. Sabrang / Scroll, reproducing M. G. Mali’s collected Marathi works via A Forgotten Liberator. https://scroll.in/article/801848/to-jyotiba-from-savitribai-phule-these-arent-love-letters-but-tell-you-what-love-is-all-about",
+    "original_work_identity": {},
+    "publication_year": 2016,
+    "publisher_or_institution": "Sabrang / Scroll, reproducing M. G. Mali’s collected Marathi works via A Forgotten Liberator",
+    "rights_or_access_note": "Public original; short research excerpts. Scholarly abstract/summary access does not imply full chapter access.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Savitribai Phule’s letters to Jyotiba: October 1856, August 1868, April 1877",
+    "url": "https://scroll.in/article/801848/to-jyotiba-from-savitribai-phule-these-arent-love-letters-but-tell-you-what-love-is-all-about"
+  },
+  "claim_ids": [
+    "20c74010-67cb-4d20-90d4-331cc5ea8a83",
+    "22c82714-65c4-4950-8def-753d64902327",
+    "77214522-5a34-413a-bde8-8c271e944837",
+    "a6d8f988-6244-46e7-8987-81d3b280dd85",
+    "cb73ed9c-5359-4224-9d4e-d7143a080184",
+    "f7727c51-bc9b-4491-aef9-d160e5f4b663"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0a2edc2f-1b70-475a-a260-d37adb8977c1",
+      "locator": "20 April 1877 letter",
+      "text_sha256": "9c72b4e8ad79dbb1c7d7f820f81ca5fb396d8f1ae9cb9cec9bec7a2686996e87",
+      "excerpt_preview": "Some are eating poisonous fruits, and drinking their own urine to quench their thirst. They cry for food and drink, and then they die.Our Satyashodhak volunteers have formed committees to provide food and other life-saving material to the p",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6b9c237f-37fc-4ecb-97cc-4b5f727f5630",
+      "locator": "October 1856 letter",
+      "text_sha256": "5f9af272308c77a1b7ba91e6b9e5586934739a74a8d468cea820d2af52d91372",
+      "excerpt_preview": "You catch poisonous snakes on the day of the snake-festival and feed them milk. But you consider Mahars and Mangs, who are as human as you and I, untouchables. Can you give me any reason for this? When the Brahmans perform their religious d",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c2c48ccf-ba3f-4344-9a69-839a8a89e2b8",
+      "locator": "20 April 1877 letter; own testimony",
+      "text_sha256": "e90444eb2a42254d1a8e845ac544ffeadd93260f88fadce0635359bbe58a8639",
+      "excerpt_preview": "I asked the Collector why the good volunteers had been framed with false charges and arrested without any rhyme or reason. I asked him to release them immediately. The Collector was quite decent and unbiased.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "daba6b99-1876-4b4d-82c3-ea7e7f51553a",
+      "locator": "October 1856 letter",
+      "text_sha256": "06ce9bceb60862c945c627a9670a9c2e6b7a5164d04f0784fbf4cd3a74470dd9",
+      "excerpt_preview": "Please do not worry about me. I know my absence causes Fatima so much trouble but I am sure she will understand and won’t grumble.As we were talking one day, my brother said, “You and your husband have rightly been excommunicated because bo",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fe9bf64c-761d-4c8d-950d-363205e1f901",
+      "locator": "29 August 1868 letter",
+      "text_sha256": "8f929abdb9d4f63f4bbe4cd23ded11b6b0d6977c486d7e3fbe8a090ab5606417",
+      "excerpt_preview": "The enraged people caught them, and paraded them through the village, threatening to bump them off.I came to know about their murderous plan. I rushed to the spot and scared them away, pointing out the grave consequences of killing the love",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "feae4143-11b4-4f9a-ab2c-c255ca977f10",
+      "locator": "October 1856 letter; modern translation",
+      "text_sha256": "0967dbb53cfd15989934059806c4ed903079cad226a99213ea8710de807725d7",
+      "excerpt_preview": "I also teach them for the same reason. What is wrong with that? Yes, we both teach girls, women, Mangs and Mahars. The Brahmans are upset because they believe this will create problems for them.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

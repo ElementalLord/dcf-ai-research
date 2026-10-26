@@ -1,0 +1,34 @@
+{
+  "source_id": "d221bb74-4a92-4c71-9a09-edf4182dbfe5",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Sangita Kalanidhi awardees. Music Academy Madras. https://musicacademymadras.in/sangita-kalanidhi/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Music Academy Madras",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Sangita Kalanidhi awardees",
+    "url": "https://musicacademymadras.in/sangita-kalanidhi/"
+  },
+  "claim_ids": [
+    "2397a8d7-1ca3-44c6-b68b-2a455c670d40"
+  ],
+  "passages": [
+    {
+      "chunk_id": "462de941-1387-4de3-986c-813180eaac2c",
+      "locator": "Awardee list, 1968–1977",
+      "text_sha256": "0283f90fd925695ffa310417f5d7e5c4b8fcd58898127efc5a8c8e5bc3ed1240",
+      "excerpt_preview": "Sambamoorthy Sangita Kalanidhi 1971 Vidvan Papanasam Sivan Sangita Kalanidhi 1970 Vidushi D.K. Pattammal Sangita Kalanidhi 1969 Vidvan Madurai Srirangam Iyengar Sangita Kalanidhi 1968 Vidushi M.S. Subbulakshmi Sangita Kalanidhi 1967 Vidvan ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

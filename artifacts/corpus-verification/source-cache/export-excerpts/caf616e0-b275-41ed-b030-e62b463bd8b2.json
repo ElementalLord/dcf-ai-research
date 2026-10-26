@@ -1,0 +1,34 @@
+{
+  "source_id": "caf616e0-b275-41ed-b030-e62b463bd8b2",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:44.004Z"
+    },
+    "citation": "Rigveda 1.173: Agastya hymn. Vedic Heritage Portal, Government of India. https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-173/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Vedic Heritage Portal, Government of India",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Rigveda 1.173: Agastya hymn",
+    "url": "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-173/"
+  },
+  "claim_ids": [
+    "50212f4f-8f5d-4f47-b962-956914c89e83"
+  ],
+  "passages": [
+    {
+      "chunk_id": "5f51f35e-52ac-46c6-9f6b-37fec94d3566",
+      "locator": "Rigveda 1.173",
+      "text_sha256": "b0014dedd4fe2c588863763615b63f725b9c331d4638b3d555629768da4c11da",
+      "excerpt_preview": "77 178 179 180 181 182 183 184 185 186 187 188 189 190 191 Rigveda – Shakala Samhita – Mandala 01 Sukta 173 /video/RIGSS_01_173.mp4 A A+ १३ अगस्त्यो मैत्रावरुणिः । इन्द्रः। त्रिष्टुप्, ४ विराट् स्थाना, विषमपदा वा। गाय॒त् साम॑ नभ॒न्यं१ यथा॒ ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

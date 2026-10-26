@@ -1,0 +1,61 @@
+{
+  "source_id": "bfe4fc55-cb3b-4d50-848d-50baf547fd95",
+  "source": {
+    "author": "A. P. J. Abdul Kalam",
+    "authority_metadata": {
+      "verified_at": "2026-10-10T05:42:09.470Z"
+    },
+    "citation": "A. P. J. Abdul Kalam. Questionnaire from a Foreign Journalist. President of India. https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/questionnaire-foreign-journalist",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "President of India",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Questionnaire from a Foreign Journalist",
+    "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/questionnaire-foreign-journalist"
+  },
+  "claim_ids": [
+    "180328bf-d785-4a6e-9287-9b20d04411ff",
+    "1c531c7b-124d-4103-9f1c-87c8f9114fcd",
+    "86c3e492-11eb-4ce7-854a-435f7fa80d47",
+    "cd5f243a-2303-4e8b-89c8-f4f8db25bf04"
+  ],
+  "passages": [
+    {
+      "chunk_id": "661e75ae-92e9-447f-930d-8a4c79c536ef",
+      "locator": "SLV leadership recollection",
+      "text_sha256": "e0dcbbda4018785a96cb1a1506afa0ee86d1a1132540df818727ecb172b94431",
+      "excerpt_preview": "Satish Dhawan appointed me as a Project Director in 1973. Still I remember the scene, how he took the responsibility when the first SLV3 couldn't succeed, instead of putting the satellite into the orbit, it went into Bay of Bengal.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "77082752-1f1d-43f5-9340-388851a3b453",
+      "locator": "SLV leadership recollection",
+      "text_sha256": "a130fca65cf1e09bc6ef7e46f64f5b0c4e9cb4e913d1d7400a9c2d994e4e144f",
+      "excerpt_preview": "And also, I gratefully remember the second scene, when I and my team succeeded in launching the Second SLV3; he gave the whole credit to me and my team. Through this experience, I learnt how to defeat the problems and also the leadership qu",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "bc069424-3e89-4629-9c73-0d1832001532",
+      "locator": "Career recollection",
+      "text_sha256": "64e53008cf3cc0f149b3ce7778287f8acdc08e7adca52361ee525d737436fb74",
+      "excerpt_preview": "During my carrier in ISRO and DRDO, I worked on rocket engineering, target aircrafts, hover craft, rockets and missiles and also participated in fighter aircraft design and development. I worked with a visionary Prof.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "edef2896-c95d-4a43-bdb6-54796a175a64",
+      "locator": "Career recollection",
+      "text_sha256": "0cd1f8c6c45ee1d4c1440cde3a701c1a9798d54098876c58054b3b79aae6e992",
+      "excerpt_preview": "Even though, I couldn't get into Air force as a pilot, I started my carrier as a technical assistant. During my carrier in ISRO and DRDO, I worked on rocket engineering, target aircrafts, hover craft, rockets and missiles and also participa",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

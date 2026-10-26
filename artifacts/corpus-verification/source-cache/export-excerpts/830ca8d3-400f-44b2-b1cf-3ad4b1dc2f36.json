@@ -1,0 +1,92 @@
+{
+  "source_id": "830ca8d3-400f-44b2-b1cf-3ad4b1dc2f36",
+  "source": {
+    "author": "Darrel T. Emerson",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Darrel T. Emerson. The Work of Jagadis Chandra Bose: 100 Years of Millimeter-Wave Research. IEEE Transactions on Microwave Theory and Techniques. https://ieeexplore.ieee.org/document/643830/",
+    "original_work_identity": {},
+    "publication_year": 1997,
+    "publisher_or_institution": "IEEE Transactions on Microwave Theory and Techniques",
+    "rights_or_access_note": "Short documented research excerpts only. Primary claims, archival records, and later interpretations stay distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "The Work of Jagadis Chandra Bose: 100 Years of Millimeter-Wave Research",
+    "url": "https://ieeexplore.ieee.org/document/643830/"
+  },
+  "claim_ids": [
+    "00fad301-cda8-4fb6-9a97-f59ed244306f",
+    "0116cfce-22f4-4396-a245-d8d2e80e4694",
+    "01c2c38d-3b20-4090-a73c-47e1c22341df",
+    "58ca5867-5391-4f3e-8ef5-e57ad665d66a",
+    "76ba821b-1932-40e2-b1c4-3a97b7836cc2",
+    "b24be29d-a68b-4331-b3a6-c6163ebcfb07",
+    "b6a69769-44dc-49b5-9594-53d7dff3161a",
+    "ddf0827a-c1ae-41c8-bdf7-dfdd1f067ad5",
+    "e4a82073-16b1-4a70-a7f5-100b2970fea1",
+    "fab6b6fa-6abc-46f8-84a3-b32df3d18265",
+    "faed13ec-7428-4ffc-8d71-90a936e22ca0"
+  ],
+  "passages": [
+    {
+      "chunk_id": "20673849-0c13-45de-8e4e-87976a4a8009",
+      "locator": "commercial wireless telegraphy",
+      "text_sha256": "e0a81541f326f451ef0f15888a4a289c31d698f4242dc6f1cf1f3426f9252853",
+      "excerpt_preview": "This technical history distinguishes Bose’s short-wave experimental program from the development of commercial wireless telegraphy.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "24e27f8b-2216-4f5b-b85a-f55d8b27e974",
+      "locator": "2.5 centimetres to 5 millimetres",
+      "text_sha256": "4ba4a8670fbbe6be9909b8e9ce654ceffd8edc1e22bbec46463e02d336ed206d",
+      "excerpt_preview": "Bose experimented at wavelengths from about 2.5 centimetres to 5 millimetres.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "57e2745b-22ab-46ec-890d-41372761c1c2",
+      "locator": "1.3-millimetre multibeam receiver",
+      "text_sha256": "6e569f7986adfbd7ec9d82afcc26eae8527cb0af2b81bd7f3b4092aba546e428",
+      "excerpt_preview": "Some concepts from his 1897 work were later incorporated into a 1.3-millimetre multibeam receiver at the NRAO 12-m telescope.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8bc9a15c-598a-4f02-b153-525a321b79b9",
+      "locator": "Hertz demonstrated electromagnetic waves in 1888",
+      "text_sha256": "b6a4c8f8f561194461e26b61edef1fb6146cb42061268dc15d9b8f04a7189e75",
+      "excerpt_preview": "axwell’s equations predicted electromagnetic radiation and Hertz demonstrated electromagnetic waves in 1888.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ae945460-c28f-4a77-a30c-09cb0af87369",
+      "locator": "waveguides, horn antennas, dielectric lenses",
+      "text_sha256": "58e971dbb0773aad1bcafd479c071ad130cb98a9bccec0225fd0d5a4de40d1ba",
+      "excerpt_preview": "He used waveguides, horn antennas, dielectric lenses, polarizers and semiconductor detectors at frequencies as high as 60 GHz.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c0df8aa7-0d12-497c-88af-8cdfba072982",
+      "locator": "Royal Institution in 1897",
+      "text_sha256": "628e43df175a57da18f507ad57a6f634d34c8c7fd42a8fe3dfd9559eba803c9c",
+      "excerpt_preview": "Bose described to the Royal Institution in 1897 research carried out in Calcutta at millimeter wavelengths.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "cdea8401-60c4-46ed-a665-07a76ffbfbce",
+      "locator": "reflection, refraction, polarization",
+      "text_sha256": "313ef447525e78285d8da4c6887334e92701f7bf8485d7d36086657d925a5bea",
+      "excerpt_preview": "His apparatus investigated reflection, refraction, polarization and other optical-like properties of short radio waves.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

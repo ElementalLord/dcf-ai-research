@@ -1,0 +1,81 @@
+{
+  "source_id": "1b206c0e-960e-4c02-a9e3-fe3b927e82dd",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Acharya Jagadish Chandra Bose: Founder. Bose Institute. https://www.boseinst.ernet.in/web/acharya-jagadish-chandra-bose",
+    "original_work_identity": {},
+    "publication_year": 2026,
+    "publisher_or_institution": "Bose Institute",
+    "rights_or_access_note": "Short documented research excerpts only. Primary claims, archival records, and later interpretations stay distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Acharya Jagadish Chandra Bose: Founder",
+    "url": "https://www.boseinst.ernet.in/web/acharya-jagadish-chandra-bose"
+  },
+  "claim_ids": [
+    "09cc27a4-affb-4343-8190-d0fa24510a1e",
+    "0d476985-89fb-4041-bc0a-04dd3377e50d",
+    "2e1c3470-f579-48ea-a07a-d2344252449b",
+    "98119039-2f7a-4a5b-ba25-ebb7a604d729",
+    "9a1003c5-2a97-4a7e-b636-1aa496d0e79b",
+    "a374a230-d29c-4951-9f08-7491c5028fd4",
+    "aa23d0c4-0202-4e23-8416-03caeffd57e8",
+    "c159abdb-48f5-4e5c-801f-25d2d00fc0ab"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1382ed48-6d9c-4819-937b-38237f03b2cd",
+      "locator": "St Xavier’s College, Calcutta, and at Christ’s College, Cambridge",
+      "text_sha256": "482af27365dfb4ca154283fc2f0422401f1bbd90627a967df6675ea87986d69e",
+      "excerpt_preview": "He studied at St Xavier’s College, Calcutta, and at Christ’s College, Cambridge, and returned to India in 1885 to join Presidency College as officiating professor of physics.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "52328f12-f080-4518-97c9-b1e443c53d25",
+      "locator": "research across disciplines",
+      "text_sha256": "f7fd176d9698c51cbae511e6ba0ade729da812d88be8d0657b9547724b0f96d1",
+      "excerpt_preview": "The Institute was conceived as a place for research across disciplines and for sharing knowledge.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "5c060599-324e-4618-bcfb-553cd21d5c14",
+      "locator": "founded the Bose Research Institute",
+      "text_sha256": "8d3ba5d3df1634fd32c6f5fce105d4347a21923ef6bae1ba692a5373d0033842",
+      "excerpt_preview": "In 1917 he founded the Bose Research Institute, later Bose Institute, and served as its first director.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "66adadaa-6010-48cf-bfdb-f95ff95224c3",
+      "locator": "lower pay than European colleagues",
+      "text_sha256": "bcd0de7da8ef3a418251bba9a95210aff31db512150f7726769cb9c572ed756b",
+      "excerpt_preview": "Bose was initially appointed on lower pay than European colleagues, protested while continuing to teach, and received equal pay retrospectively after three years.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d06fa851-9b35-42d3-9872-d2c39f936c1a",
+      "locator": "born on 30 November 1858",
+      "text_sha256": "2af290f297903278f48ed50ebb41de8a534063f9c8fac5ad7c132d33eb871c46",
+      "excerpt_preview": "agadish Chandra Bose was born on 30 November 1858 at Mymensingh.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fb508ce7-e9c4-435c-aa95-18e20712a65a",
+      "locator": "developed a laboratory",
+      "text_sha256": "56c289f60768f619dfa17cb1a2ff79e8a7701f730a5d5fdea1c9d2cee979cae7",
+      "excerpt_preview": "At Presidency College he developed a laboratory and began research on electromagnetic waves in the 1890s.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,127 @@
+{
+  "source_id": "162fa362-1a24-42ce-92fe-64a13cc81160",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "1989 Laureate: Dr. Verghese Kurien. World Food Prize Foundation. https://www.worldfoodprize.org/blog/people/dr-verghese-kurien/",
+    "original_work_identity": {},
+    "publication_year": 1989,
+    "publisher_or_institution": "World Food Prize Foundation",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "1989 Laureate: Dr. Verghese Kurien",
+    "url": "https://www.worldfoodprize.org/blog/people/dr-verghese-kurien/"
+  },
+  "claim_ids": [
+    "01474b6e-2c2f-4a8f-b529-99002a07eede",
+    "05942d45-7c17-4a41-882f-364543e8aed6",
+    "3eca349c-3c0e-4a15-b17d-29366a09f33c",
+    "5542934d-b046-424a-993c-a7105b1eb87d",
+    "7206448f-4fc2-421f-8b88-27091022b873",
+    "7f406348-934e-43dc-9358-49d8d0782840",
+    "810f1e3c-feb0-442f-b298-105f04ec1b70",
+    "84a2f266-94d2-42d5-806c-6f0cfb661e5e",
+    "9ee5ecd9-0272-4016-b59a-3a810321d286",
+    "aead8773-3c07-44d4-b2be-70b2e7b440d6",
+    "c49dd80e-e4b1-4a56-a005-bf7df968648d",
+    "e9171056-70a4-45f2-b42f-9d6123d49706",
+    "edecc47a-240e-468a-948e-b550372acee9",
+    "fa8f0682-0bde-41da-a4e0-7d1ac942cd0d"
+  ],
+  "passages": [
+    {
+      "chunk_id": "053a44b1-8649-470b-8f0a-927a6b22bd08",
+      "locator": "Biography",
+      "text_sha256": "29c3db50310a204a754a0d52b8af2007f5fa35ca472f28365740ee5fd20260f8",
+      "excerpt_preview": "He subsequently was awarded a Master of Science and Mechanical Engineering degree with distinction from Michigan State University in 1948 while on a government scholarship. He also completed special studies in engineering at the Tata Iron a",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "0a894e26-f648-4d64-81a1-2f5d95b186ab",
+      "locator": "Biography; compare Amul history",
+      "text_sha256": "c2976781f7af6a9b7da8d561c63ff335056e8ecee41d603d437da200e98aeb1d",
+      "excerpt_preview": "Many Indian people did not have access to milk or the nutrients it provides on a regular basis. With his extensive background in mechanical engineering, Kurien began work for the Dairy Department of the Government of India as a dairy engine",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4a62bcd0-fa7a-48bf-a5bf-45331a6c15f3",
+      "locator": "Award response",
+      "text_sha256": "d25809ccd9f121a91bed60e291516049d5bcd3131e09c1697a5e7372caef53b3",
+      "excerpt_preview": "View Laureate Story Read Dr. Kurien’s Bio “I am greatly delighted and honored to hear that I have been selected for the award of the World Food Prize… It is more a recognition of the heroic efforts of six million farmers whose elected chair",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4a6d281f-23c6-49d7-9e69-631a08eb9110",
+      "locator": "Biography",
+      "text_sha256": "10e032249d5c3606824cb58737fea7080a8c599472e0950de0f6b3be41bba7c5",
+      "excerpt_preview": "Verghese Kurien The Work Biography+ Verghese Kurien was born on November 26, 1921, in Kerala, India. He received a Bachelor of Science degree from Madras University in 1940 and went on to receive a Bachelor of Mechanical Engineering from th",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "597e2dab-b236-428f-85f0-e7d051b0efdd",
+      "locator": "Awards list",
+      "text_sha256": "cb429e8029e81595ef8af2ef22a6d31348cb62bfed5a95dda19fcce107fac6f6",
+      "excerpt_preview": "Known as the “Father of the White Revolution” and also as the “Milkman of India,” for his prodigious accomplishments, Kurien was presented The World Food Prize in 1989. His additional honors and awards are numerous, but most notable are the",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6c39ebd7-64b3-4862-afb4-f1253d6be5b1",
+      "locator": "Biography",
+      "text_sha256": "171c6cc6c9b1b2f1eb869860fce6891f3d166efc8bd6e990ee92678da6ccf788",
+      "excerpt_preview": "Kurien’s Bio “I am greatly delighted and honored to hear that I have been selected for the award of the World Food Prize… It is more a recognition of the heroic efforts of six million farmers whose elected chairman I am to pull themselves u",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "749ce9b1-8cfd-4a78-bb9c-6e059b9c4f75",
+      "locator": "Biography",
+      "text_sha256": "d290b63017e3bf9c78e18cd86b703054e1ad129af9093a659df464689f572421",
+      "excerpt_preview": "He also served as chairman of the National Cooperative Dairy Federation of India Limited. Kurien was instrumental in establishing the Institute of Rural Management in 1979, which has trained thousands of specialists in the management and de",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a1904833-8b29-40d2-b3a4-d331764b51b7",
+      "locator": "Biography",
+      "text_sha256": "93967891c5c5800eb0de996a723b2647560b2cdf02c0a8a241dbf088f202e463",
+      "excerpt_preview": "With his extensive background in mechanical engineering, Kurien began work for the Dairy Department of the Government of India as a dairy engineer in Anand, Gujarat, at the Government Research Creamery in 1949. He used his experience to wor",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a21eb1ea-c451-44e4-b3af-ac09595a4f69",
+      "locator": "Biography",
+      "text_sha256": "3b2535b5fdf8b0c8337ccec714d3730dc953971a4d59280ad24f6605db93bfe3",
+      "excerpt_preview": "He received a Bachelor of Science degree from Madras University in 1940 and went on to receive a Bachelor of Mechanical Engineering from the same university in 1943. He subsequently was awarded a Master of Science and Mechanical Engineering",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b2faf07f-1369-4d40-8399-72432dcfe667",
+      "locator": "Biography",
+      "text_sha256": "a3a845effd03fe83320c3754b421534578e94b1a63895c4b1236e5fb3439bbc1",
+      "excerpt_preview": "This led to the birth of the largest food product business in India, known as Amul. Based on its successes, Prime Minister Shri Lal Bahadur Shastri created the National Dairy Development Board (NDDB) in 1965 to replicate the model nationall",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b87e8d22-323f-4eb8-881f-7c07f98d5b3a",
+      "locator": "Award biography",
+      "text_sha256": "a06d550efddb5c6b0a2e433ff2af65fb721ac456b13d3aab2503b6dbdaba09ec",
+      "excerpt_preview": "Kurien was instrumental in establishing the Institute of Rural Management in 1979, which has trained thousands of specialists in the management and development of rural cooperatives, non-governmental organizations, and civic groups. Known a",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

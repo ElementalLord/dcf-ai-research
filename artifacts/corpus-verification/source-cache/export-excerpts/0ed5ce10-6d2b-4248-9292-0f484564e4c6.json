@@ -1,0 +1,62 @@
+{
+  "source_id": "0ed5ce10-6d2b-4248-9292-0f484564e4c6",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Correspondence relating to Rabindranath Tagore’s wish to renounce Knighthood. British Library, India Office Records. https://searcharchives.bl.uk/catalog/041-000562205",
+    "original_work_identity": {},
+    "publication_year": 1919,
+    "publisher_or_institution": "British Library, India Office Records",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Correspondence relating to Rabindranath Tagore’s wish to renounce Knighthood",
+    "url": "https://searcharchives.bl.uk/catalog/041-000562205"
+  },
+  "claim_ids": [
+    "152918a5-c53b-4b14-a76b-d122736ec061",
+    "95978e75-22e5-45a7-b98e-478dbe4a57c6",
+    "d4a94823-3283-4e82-9a75-361be5585e0c",
+    "f495cb00-9398-4145-869b-129b7ad8e608"
+  ],
+  "passages": [
+    {
+      "chunk_id": "27c79c0a-98cc-4630-bd32-d6b496b68ef2",
+      "locator": "solidarity with countrymen",
+      "text_sha256": "767a6d829aa9b572b04ffeb73b9c80bd1b4608a188400b5bfb48f26fbca782fd",
+      "excerpt_preview": "The letter framed renunciation as solidarity with countrymen subjected to degrading treatment.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c3550db4-1f13-47fe-8606-e46b65041fb1",
+      "locator": "knighthood conferred on him in June 1915",
+      "text_sha256": "eff7157a9fc37bf26773c91a699ccef6a8a5b9e067d4e41f29635104c7595b4b",
+      "excerpt_preview": "he British Library India Office Records catalogue identifies file H150A/1919 as correspondence relating to Rabindranath Tagore’s wish to renounce the knighthood conferred on him in June 1915.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e6060ebd-7734-4be1-8775-0182f575e528",
+      "locator": "against reducing Tagore’s criticism",
+      "text_sha256": "4437278d68c9070b0d1c876ede40a7cce61fe90ba1dd4bce0c1fcfe5e5599d69",
+      "excerpt_preview": "This protest is evidence against reducing Tagore’s criticism of nationalism to political passivity.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f9949c5b-d166-41a0-9da9-613fc3c251d4",
+      "locator": "file dates from June to July 1919",
+      "text_sha256": "0ec284b1a8ac948efe4fe00a1fe68a2d9b373ac4c02fdb5d8ded793cda2033e5",
+      "excerpt_preview": "The file dates from June to July 1919.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

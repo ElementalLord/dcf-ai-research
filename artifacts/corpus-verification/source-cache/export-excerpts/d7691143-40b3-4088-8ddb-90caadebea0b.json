@@ -1,0 +1,53 @@
+{
+  "source_id": "d7691143-40b3-4088-8ddb-90caadebea0b",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-09T03:49:02.851Z"
+    },
+    "citation": "CV Raman and Physics at IISc. Indian Institute of Science. https://iisc.ac.in/wp-content/uploads/2018/03/CV_RAMAN_AND_PHYSICS_AT_IISc.pdf",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Indian Institute of Science",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "CV Raman and Physics at IISc",
+    "url": "https://iisc.ac.in/wp-content/uploads/2018/03/CV_RAMAN_AND_PHYSICS_AT_IISc.pdf"
+  },
+  "claim_ids": [
+    "1ce09b33-1e0f-4853-8440-ff35a63e31dd",
+    "6ec58b8d-6bc3-4390-b3a4-b9a3251f5f6f",
+    "a5bc4238-53c0-4193-9c98-ecef855ed2f0",
+    "b304d59a-03af-4ac4-8d8a-ec42ade9b652"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1e56bf1e-dd50-492b-8730-fcbeedfe6eb7",
+      "locator": "CV Raman and Physics at IISc, p. 1",
+      "text_sha256": "97576d499a7a29e65ac90064fe6ba38d8b7941b2857e264da2b4524396e678e2",
+      "excerpt_preview": "Sir Mirza Ismail (second from left), CV Raman and Max Born CV Raman and Physics at IISc In 1935, Raman invited Max Born to be at the Institute as a Reader in Theoretical Physics for a period of six months.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "2223ccb4-3034-4271-a872-cbc909a2fa7b",
+      "locator": "CV Raman and Physics at IISc, p. 1",
+      "text_sha256": "bf417a22de36de00c1c73e3fd736f16145a516cc6577fe8b82c1a6f525606c3d",
+      "excerpt_preview": "V Raman with Homi Bhabha and others CV Raman became IISc’s first Indian Director on 31 March 1933 and established the Department of Physics the same year. Homi Jehangir Bhabha was appointed Special Reader in Physics in 1939.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8d838c93-99d9-4e64-945a-6e8793a33344",
+      "locator": "CV Raman and Physics at IISc, p. 1",
+      "text_sha256": "324dc2fc30b85c6681a95322d41ae2aeee34faf38af20005ff75b13729ce3e49",
+      "excerpt_preview": "In this period, his students included Harish-Chandra, who later became a renowned mathematician. Bhabha also collaborated with SV Chandrasekhar Aiya, who was later Chair of the Department of Electrical Communication Engineering, and Vikram ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,116 @@
+{
+  "source_id": "1cafd23e-18e4-4d5e-8deb-1d33b4e567ed",
+  "source": {
+    "author": "Hugh Rose",
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "Hugh Rose. Hugh Rose's dispatch on the fortress and fortified city of Jhansi, 30 April 1858. The London Gazette, 17 July 1858, pp. 3358–3361. https://www.thegazette.co.uk/London/issue/22163",
+    "original_work_identity": {},
+    "publication_year": 1858,
+    "publisher_or_institution": "The London Gazette, 17 July 1858, pp. 3358–3361",
+    "rights_or_access_note": "Public original; short research excerpts. Scholarly abstract/summary access does not imply full chapter access.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Hugh Rose's dispatch on the fortress and fortified city of Jhansi, 30 April 1858",
+    "url": "https://www.thegazette.co.uk/London/issue/22163"
+  },
+  "claim_ids": [
+    "0327767b-97c3-4ea8-b7be-2b0664630189",
+    "131c7da7-b9e1-4188-89cd-f52527472f20",
+    "19deece8-8678-4241-b398-4a6cf2597ead",
+    "2c55e40b-9872-4bac-a3d1-5e4e35b98c7b",
+    "39a86a28-a1b4-40c5-b7a0-0a000d4f3979",
+    "700ff0b6-473b-45e9-9806-e8e818ac6043",
+    "70c0654a-9540-47d7-a477-e40a90cebb54",
+    "891da75a-070f-43c1-9400-3b5b3ddfc4fa",
+    "a0031a59-2a64-4317-bc62-08d0142301e9",
+    "e2a6e08a-7f55-4230-8e3b-b6c005c14cee",
+    "f2352555-3b05-449f-8f0f-ef978490373b"
+  ],
+  "passages": [
+    {
+      "chunk_id": "2d24e88a-9150-4981-81fb-ac711f1c4b64",
+      "locator": "p. 3359",
+      "text_sha256": "c90f9b05c546d983c687e231198ff30329acc55c5d59c4cb365e220d1041315a",
+      "excerpt_preview": "From some batteries they returned shot for shot. The women were seen working in the batteries and carrying am- munition. The Garden Battery was fought under the black flag.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4e43e2f8-d1b8-4706-a1eb-7a91cc4be5f4",
+      "locator": "p. 3358; dispatch of 30 April 1858",
+      "text_sha256": "4a641ada9095cbf5625e399bd5571d13b623befc3a94003d0e37cebf2ccf9c4f",
+      "excerpt_preview": "I arrived the following day, the 21st ultimo, with the remainder of my brigade before Jhansi. The pickets of the cavalry sent on the day before had sabered about 100 armed men, bun- deelas, endeavouring to enter Jhansi, having been summoned",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "72f32c17-3bc4-495a-9090-37732bf06dbb",
+      "locator": "p. 3359",
+      "text_sha256": "c596b052f9e7f8baeacdd2dec5a740cc4f8686d8aad9fecaa5b15f896d07f0a9",
+      "excerpt_preview": "The chief of the rebel artillery was a first-rate artilleryman; he had under him two companies of Golundauze. The manner in which the rebels served their guns, repaired their defences, and reopened fire from batteries and guns repeatedly sh",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "832498b8-42c8-4958-a9f6-5918827813eb",
+      "locator": "p. 3358",
+      "text_sha256": "def777224d652865c096b0c251c494adb9e11e6b3f9cd09e4af971e828b6d50e",
+      "excerpt_preview": "The great strength of the fort, natural as well as artificial, and its extent, entitles it to a place amongst fortresses. It stands on an elevated rock, rising out of a plain, and commands the city and surrounding country. It is built of ex",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "882e3eaa-82f2-4f04-b85e-a895b007cc1d",
+      "locator": "p. 3359; colonial accusation, not settled responsibility",
+      "text_sha256": "a20559d3708603f5f0d88ee072cafcd4110272b75ee249dd739064f98c187d00",
+      "excerpt_preview": "of the Fakeers. Everything indicated a general and determined resistance; this was not surprising, as the inha- bitants, from the Ranee downwards, were more or less, concerned in the murder and plunder of the English. There was hardly a hou",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "930dea13-d408-4b20-9d32-54677b26b881",
+      "locator": "p. 3358",
+      "text_sha256": "61ba46d48b20f72c9fa6bade61d29f5f611b139a0440fde5c6e7b03d91d3daa2",
+      "excerpt_preview": "I should have reached it some days sooner but for the delay occasioned by my waiting to see whether the 2nd Brigade would be required to assist in taking Chundeerie. I arrived the following day, the 21st ultimo, with the remainder of my bri",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ac29e04c-5c5c-4452-bca6-d8514205c955",
+      "locator": "p. 3361; report based on a captured retainer and pursuit",
+      "text_sha256": "61a3f664c36d7376b7265215f3ec1a4b021776b84726b11b2f0851c10616f79c",
+      "excerpt_preview": "The next day Brigadier Stuart and myself occu- pied the rest of the city by a combined movement, assisted by Major Gall, who spiritedly scaled the bastion at the Onou Gate, from his flying camp, and capturing the gun which was there, threw ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c9380a5c-c19d-452e-b6ae-6b5cb9cc8864",
+      "locator": "p. 3359",
+      "text_sha256": "1953e67e150475a42a9e1af8a8b632e0c0d6ca3f062788de5dd512dc9ff9c7b3",
+      "excerpt_preview": "Sir Robert Hamilton estimated the number of the garrison at 10,000 bundeelas and valartees, and 1,500 sepoys, of whom 400 were cavalry; and the number of guns in the city and fort at thirty or forty. The fire of the right attack, on the fir",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d7ba3dbd-bae0-44ee-b82b-fff0d1af965a",
+      "locator": "p. 3360",
+      "text_sha256": "4d9655e2149057e0faa8a0e8e3e1251e773d8c7d30bd23f8df611d156a8bc8f3",
+      "excerpt_preview": "Lieutenant Strutt, Bom- bay Artillery, made excellent practice, throwing the shells on the spots occupied by the guards of the city walls. I had made arrangements on the 30th for storming, but the general action on the 1st instant, with the",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "efb2017d-7180-4e86-af25-4f4de949bb88",
+      "locator": "p. 3359",
+      "text_sha256": "bcb86a5bdd4ab0188f3c44b2d134d0e7622698759843967f5003a3e107963b8d",
+      "excerpt_preview": "The breaching gun, so solid was the wall, and so hard the masonry, did not produce the' result contemplated on the first, or indeed on the second day, but on the 30th, the breach was practicable. The enemy retrenched the breach with a doubl",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

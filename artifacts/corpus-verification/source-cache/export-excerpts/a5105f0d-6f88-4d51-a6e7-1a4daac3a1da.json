@@ -1,0 +1,34 @@
+{
+  "source_id": "a5105f0d-6f88-4d51-a6e7-1a4daac3a1da",
+  "source": {
+    "author": "",
+    "authority_metadata": {},
+    "citation": "Aitareya Brahmana Devarata lineage passage",
+    "original_work_identity": {
+      "underlyingWork": "Aitareya Brahmana"
+    },
+    "publication_year": null,
+    "publisher_or_institution": "IGNCA Digital Library, Government of India",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Aitareya Brahmana of the Rigveda vol.2 — repository scan copy (in.gov.ignca.24136)",
+    "url": "https://archive.org/details/in.gov.ignca.24136"
+  },
+  "claim_ids": [
+    "fc119f65-b396-48eb-9969-47c9298c09ff"
+  ],
+  "passages": [
+    {
+      "chunk_id": "9c1bade2-fdf8-4702-b4d5-9125e7a3bdb1",
+      "locator": "p. 322 (scan page 177)",
+      "text_sha256": "a8c0d6d799c05bf73eec2bf1c9e7ea843807972143f848b08df86e9d3e98cdd1",
+      "excerpt_preview": "322  \" Yo sous of GtUhi, blessed with children, you nil will be successful when headed by Devarnla; he will (always) lead you on the path of truth.\"  “ This Devswkta, is your master (man); follow him, ye Koshkas! He will exercise the patern",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

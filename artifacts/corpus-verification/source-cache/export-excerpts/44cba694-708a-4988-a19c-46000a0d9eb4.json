@@ -1,0 +1,72 @@
+{
+  "source_id": "44cba694-708a-4988-a19c-46000a0d9eb4",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "J. R. D. Tata Exhibition. Tata Central Archives. https://www.tatacentralarchives.com/exhibitions/jrd-tata-exhibitio.html",
+    "original_work_identity": {},
+    "publication_year": 2002,
+    "publisher_or_institution": "Tata Central Archives",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "J. R. D. Tata Exhibition",
+    "url": "https://www.tatacentralarchives.com/exhibitions/jrd-tata-exhibitio.html"
+  },
+  "claim_ids": [
+    "2f56bc7b-e4e4-42f9-810b-815871a488af",
+    "34a64429-dd98-4be2-95c9-950e3f533f8a",
+    "a290b376-da0f-4d01-bcb7-f119fd7f471c",
+    "c783cbd4-a6c3-46e5-8cd9-cc714332246d",
+    "d8192cb7-b305-4b57-8d71-9d266fde551a",
+    "d934ed90-460f-44b2-9060-f88dab2ddaa5"
+  ],
+  "passages": [
+    {
+      "chunk_id": "7bf23e6e-61d4-4682-bfcd-6f74bf1c6c92",
+      "locator": "born in Paris on 29 July 1904",
+      "text_sha256": "d251adafd5143d1e5f57a0406b5360d620c632d51d7ccf7748b0d6e6ce33936f",
+      "excerpt_preview": "ehangir Ratanji Dadabhoy Tata was born in Paris on 29 July 1904.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9b636cf4-6020-4287-98cd-9085dfb7a2a4",
+      "locator": "criticism of aspects of India’s controlled economy",
+      "text_sha256": "f1e4e50efa9f51e9852b4b54de2b341a7541395ed85b93a4bdff9821e25b42ad",
+      "excerpt_preview": "The exhibition also records his criticism of aspects of India’s controlled economy and praises his standards of integrity in business.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b745bacd-3358-4193-9484-8d253e0eb546",
+      "locator": "became head of the Tata group at age thirty-four",
+      "text_sha256": "1f53c7b72dc0d3e05b3193f4c90207626f65158d91e471972eb57f99b6004340",
+      "excerpt_preview": "He spent more than seventy years of working life in India and became head of the Tata group at age thirty-four.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e2e812d5-2b0c-423d-b95f-eececa0d56f3",
+      "locator": "more than half a century",
+      "text_sha256": "0394b10ba05dc50a539afed006fcb78b05fef5b1eb6821c242005125c1d501dd",
+      "excerpt_preview": "He chaired Tata Sons from 1938 for more than half a century and supported the creation of new enterprises.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f58b8977-43de-49ce-a3a7-f2f6c5bc0f5d",
+      "locator": "family planning",
+      "text_sha256": "a7d27edbd0aaed37ab4c31e6421e3af17a12cb1e53131515c5f8a655f766ea8c",
+      "excerpt_preview": "Tata Central Archives credits him with pioneering civil aviation, supporting Homi Bhabha and the Tata Institute of Fundamental Research, and promoting family planning.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

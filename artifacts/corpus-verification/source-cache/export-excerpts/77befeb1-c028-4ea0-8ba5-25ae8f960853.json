@@ -1,0 +1,32 @@
+{
+  "source_id": "77befeb1-c028-4ea0-8ba5-25ae8f960853",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Rigveda, Book 1 (metrically restored text). https://lrc.la.utexas.edu/books/rigveda/RV01",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "University of Texas Linguistics Research Center",
+    "rights_or_access_note": "Publicly accessible source; brief excerpts stored for research citation.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Rigveda, Book 1 (metrically restored text)",
+    "url": "https://lrc.la.utexas.edu/books/rigveda/RV01"
+  },
+  "claim_ids": [
+    "542de7fe-505a-4099-8868-f8f9caa08b2e"
+  ],
+  "passages": [
+    {
+      "chunk_id": "04a4678e-75aa-489f-a163-71d8b5b62457",
+      "locator": "RV 1.179.4",
+      "text_sha256": "8335206ad53470aafbc0197820a478f9b2e1acfd2198be779852c514da2414af",
+      "excerpt_preview": "ir jagamyuḥ 1.179.03a ná mŕ̥ṣā śrāntáṃ yád ávanti devā́ 1.179.03b víśvā ít spŕ̥dho abhí aśnavāva 1.179.03c jáyāvéd átra śatánītham ājíṃ 1.179.03d yát samyáñcā mithunā́v abhy ájāva 1.179.04a nadásya mā rudhatáḥ kā́ma ā́gann 1.179.04b itá ā́j",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

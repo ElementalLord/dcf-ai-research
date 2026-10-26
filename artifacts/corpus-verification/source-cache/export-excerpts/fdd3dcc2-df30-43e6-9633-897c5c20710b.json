@@ -1,0 +1,34 @@
+{
+  "source_id": "fdd3dcc2-df30-43e6-9633-897c5c20710b",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:26:54.045Z"
+    },
+    "citation": "Ramanujan: Properties of p(n) and tau(n) — Trinity Archive. Trinity College Library, Cambridge. https://archives.trin.cam.ac.uk/index.php/s-ramanujan-properties-of-p-n-and-n",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Trinity College Library, Cambridge",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Ramanujan: Properties of p(n) and tau(n) — Trinity Archive",
+    "url": "https://archives.trin.cam.ac.uk/index.php/s-ramanujan-properties-of-p-n-and-n"
+  },
+  "claim_ids": [
+    "6d0e9fa4-35a0-4fe4-a68f-c74f63cff1a8"
+  ],
+  "passages": [
+    {
+      "chunk_id": "2174692b-320b-43d6-88ef-820762120a29",
+      "locator": "Archival manuscript record",
+      "text_sha256": "5be09b91c06ade170311dcc7bb97fe59278218ec335f64a2a02f330a3ac8af6c",
+      "excerpt_preview": "Skip to main content Archive Site Trinity College Cambridge Quick search Search File 13 - S. Ramanujan: ‘Properties of p(n) and τ(n)’ Identity area Reference codeAdd. MS a/94/13 TitleS. Ramanujan: ‘Properties of p(n) and τ(n)’ Date(s) Level",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

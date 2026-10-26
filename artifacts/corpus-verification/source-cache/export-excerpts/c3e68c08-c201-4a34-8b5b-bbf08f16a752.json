@@ -1,0 +1,79 @@
+{
+  "source_id": "c3e68c08-c201-4a34-8b5b-bbf08f16a752",
+  "source": {
+    "author": "Keshav Desiraju, interviewed by Shruti Rajagopalan",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Keshav Desiraju, interviewed by Shruti Rajagopalan. Keshav Desiraju on Indian Classical Music and the Legacy of M. S. Subbulakshmi. Mercatus Center, George Mason University. https://www.mercatus.org/ideasofindia/keshav-desiraju-indian-classical-music-and-legacy-m-s-subbulakshmi",
+    "original_work_identity": {},
+    "publication_year": 2021,
+    "publisher_or_institution": "Mercatus Center, George Mason University",
+    "rights_or_access_note": "Short original-page transcript excerpts checked on 2026-10-12; direct fetch intermittent.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Keshav Desiraju on Indian Classical Music and the Legacy of M. S. Subbulakshmi",
+    "url": "https://www.mercatus.org/ideasofindia/keshav-desiraju-indian-classical-music-and-legacy-m-s-subbulakshmi"
+  },
+  "claim_ids": [
+    "061ea5a9-9070-4f5e-b8b5-9965900e55ce",
+    "08de6588-c2ba-4345-bea8-3506a90f7b6a",
+    "5ec7e874-1267-488a-b802-350c49bfd597",
+    "721da0c9-c5ff-4e96-82e0-2b903cf22580",
+    "b5026218-639b-4a0c-9978-d615861d9504",
+    "e34f327b-ea02-4f27-b91c-8b869b1e2914"
+  ],
+  "passages": [
+    {
+      "chunk_id": "2b43401d-3b9e-46a8-86de-3475f945cf36",
+      "locator": "Desiraju interview, recollection of 1950s–60s",
+      "text_sha256": "45ce16d0de36193434a07803660a9bc57845d7b96f4b757ab1858ca0179f959c",
+      "excerpt_preview": "Desiraju interview, devotional reception: by the time of the end of her life, she is perhaps more easily remembered as a singer of devotional music. Desiraju interview, 1950s–60s recollection: through the ’50s, GNB, Madurai Mani, Semmangudi",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "66e0a47b-5825-44ae-bf3f-1b69eddf0d84",
+      "locator": "Desiraju interview, audience history",
+      "text_sha256": "5a35546086bd5436523ac5e1f24dc273cfc868e7959d2e385f44f8578c42c46a",
+      "excerpt_preview": "Desiraju interview, audience history: Even in the 1930s, ’40s, you see notices about women’s section; women’s tickets are priced differently, sit differently. It was exclusionary in that sense.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7df1fce0-b5bc-4124-bd0e-98eb9b231eed",
+      "locator": "Desiraju interview, Male Versus Female Carnatic Vocalists",
+      "text_sha256": "6c08b156b4e3a69940928c06093804fa439b38ea64b10657fa4b4a002aa01db8",
+      "excerpt_preview": "When Pattammal and M. S. began singing pallavis, I wonder who taught them, because they had nobody to go to. There were no examples of women doing this. Desiraju interview, Subbulakshmi’s Musical Influences: How did she influence other musi",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8a8c2a82-3117-46ad-b191-c1d8d1464d4a",
+      "locator": "Desiraju interview, Male Versus Female Carnatic Vocalists",
+      "text_sha256": "bafbfcd244da1a342c89a323b65527d2d9e920f298610c6d69b6e7844d11af9d",
+      "excerpt_preview": "Desiraju interview, Male Versus Female Carnatic Vocalists: I don’t think those forms were designed for the male voice. It is just that only men did it. When Pattammal and M. S. began singing pallavis, I wonder who taught them, because they ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a999b0eb-d697-4381-854b-be0cb74c9a07",
+      "locator": "Desiraju interview, Subbulakshmi’s Musical Influences",
+      "text_sha256": "69943bb3cea101b25bee8734a935b86be5481a3f99ccff9a0e38a628c91e7c15",
+      "excerpt_preview": "There were no examples of women doing this. Desiraju interview, Subbulakshmi’s Musical Influences: How did she influence other musicians? I think one very important way in which she did that was in the many, many, many songs, the only recog",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f4f50850-502d-480d-800a-ea8af631a65f",
+      "locator": "Desiraju interview, Male Versus Female Carnatic Vocalists",
+      "text_sha256": "61adf86b31f2ede17453b59b6b447f50d7e0c2f9cb07eeab9bfff6e49f1cee88",
+      "excerpt_preview": "You may do things to it, but you can’t ignore it. Desiraju interview, devotional reception: by the time of the end of her life, she is perhaps more easily remembered as a singer of devotional music.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

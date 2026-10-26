@@ -1,0 +1,44 @@
+{
+  "source_id": "f09e4927-4a77-4e1f-af68-6142c4c043dc",
+  "source": {
+    "author": "Subrata Dasgupta",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Subrata Dasgupta. Jagadis Chandra Bose and the Politics of Science. Maastricht University research portal. https://cris.maastrichtuniversity.nl/en/publications/jagadis-chandra-bose-and-the-politics-of-science",
+    "original_work_identity": {},
+    "publication_year": 2016,
+    "publisher_or_institution": "Maastricht University research portal",
+    "rights_or_access_note": "Short documented research excerpts only. Primary claims, archival records, and later interpretations stay distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Jagadis Chandra Bose and the Politics of Science",
+    "url": "https://cris.maastrichtuniversity.nl/en/publications/jagadis-chandra-bose-and-the-politics-of-science"
+  },
+  "claim_ids": [
+    "81717a8f-2696-4f4e-8e5c-881d4e1d2863",
+    "b75b6cea-201c-4e73-8d21-d9270dae3acf",
+    "da52a0a3-9fff-4d7e-ba9a-f8e73c33ce5e"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1029f702-5dad-432c-98e1-a5f3bab9b1b1",
+      "locator": "1901 Royal Society paper on electric response in inorganic substances",
+      "text_sha256": "3fecfa513bc391fe9ad340fa9d1c5eae32ce51e5581e6d126dd630e164792298",
+      "excerpt_preview": "asgupta’s article discusses Bose’s 1901 Royal Society paper on electric response in inorganic substances and his recording of response curves for muscle, plant and metal.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6e669764-a5be-4fb1-bb3e-f94ec7f94e11",
+      "locator": "colonial politics of science and professional disciplinary boundaries",
+      "text_sha256": "083932d134cefbe7ad9d09cae5076dbe95af49b53352819952ee79ae360509b9",
+      "excerpt_preview": "It treats Bose’s movement between physics and physiology as entangled with colonial politics of science and professional disciplinary boundaries.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

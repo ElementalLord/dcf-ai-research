@@ -1,0 +1,617 @@
+[
+  {
+    "claim_id": "d8f9f1b9-e3ca-4ca7-afa9-06fc0feb1af3",
+    "personality": "Adi Shankaracharya",
+    "decision": "REVISE AND APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://plato.stanford.edu/entries/shankara/"
+    ],
+    "original_source_ids": [
+      "91083ab0-e904-4bc3-bba3-a172d04d54c6",
+      "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+      "c833b2a2-932f-4715-8339-d3f1860dc99d"
+    ]
+  },
+  {
+    "claim_id": "1e12002c-eeee-4f7d-b26c-648f36aa5a16",
+    "personality": "Ashoka",
+    "decision": "REVISE AND APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362",
+      "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf"
+    ],
+    "original_source_ids": [
+      "0662151b-0d88-4b60-b631-cedc9303e5b6"
+    ]
+  },
+  {
+    "claim_id": "5609a45d-ff75-4996-bc9f-556be05c0dba",
+    "personality": "Rajaraja Chola I",
+    "decision": "REVISE AND APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://whc.unesco.org/en/list/250/"
+    ],
+    "original_source_ids": [
+      "ae8abe7a-5576-4e83-86f0-bfcd4ea240f6"
+    ]
+  },
+  {
+    "claim_id": "08cff6a7-0e1c-4a21-9b03-23087f2ea745",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "REVISE AND APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/summary_of.htm",
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/keshab.htm"
+    ],
+    "original_source_ids": [
+      "61914dc5-f03e-451c-81ef-145d18079b40"
+    ]
+  },
+  {
+    "claim_id": "0f36dc1e-79a2-465a-981b-77b75665f4d7",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "REVISE AND APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/volume_1/01_master_and_disciple.htm"
+    ],
+    "original_source_ids": [
+      "6bd19767-fd30-4b73-900b-11576daedd8e",
+      "ac02dde3-2c64-4cb9-bac4-1425c20d8add"
+    ]
+  },
+  {
+    "claim_id": "2d6d5273-b58d-4fc2-977c-df009060e4bd",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/keshab.htm"
+    ],
+    "original_source_ids": [
+      "61914dc5-f03e-451c-81ef-145d18079b40"
+    ]
+  },
+  {
+    "claim_id": "4a430925-c049-4438-a455-b4c2d2c2acaf",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/kali.htm"
+    ],
+    "original_source_ids": [
+      "61914dc5-f03e-451c-81ef-145d18079b40"
+    ]
+  },
+  {
+    "claim_id": "ecc7fc2c-617c-4f29-b365-462f1c4aa0cb",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/boyhood.htm"
+    ],
+    "original_source_ids": [
+      "61914dc5-f03e-451c-81ef-145d18079b40",
+      "d5a13923-a194-487e-8a9b-0d61f574d7e7"
+    ]
+  },
+  {
+    "claim_id": "463a43cf-ce07-4734-afd1-f82d2875592b",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/christianity.htm"
+    ],
+    "original_source_ids": [
+      "61914dc5-f03e-451c-81ef-145d18079b40"
+    ]
+  },
+  {
+    "claim_id": "6d6352c0-e4ed-4414-90a4-c290e54dfa4e",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "REVISE AND APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/totapuri.htm"
+    ],
+    "original_source_ids": [
+      "61914dc5-f03e-451c-81ef-145d18079b40",
+      "d5a13923-a194-487e-8a9b-0d61f574d7e7"
+    ]
+  },
+  {
+    "claim_id": "71062ea0-f9bd-4671-9b10-a7e4027d10c6",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/the_first_vision.htm"
+    ],
+    "original_source_ids": [
+      "61914dc5-f03e-451c-81ef-145d18079b40",
+      "8cd5175c-1fa9-4fc0-9d96-2edce7212fec"
+    ]
+  },
+  {
+    "claim_id": "9a849445-4c16-4ef2-bf13-c514db5f9a9c",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/totapuris_lesson.htm"
+    ],
+    "original_source_ids": [
+      "61914dc5-f03e-451c-81ef-145d18079b40"
+    ]
+  },
+  {
+    "claim_id": "d3d4217a-a201-414d-934a-6dab91650ba1",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "REVISE AND APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/the_brahmani.htm"
+    ],
+    "original_source_ids": [
+      "61914dc5-f03e-451c-81ef-145d18079b40"
+    ]
+  },
+  {
+    "claim_id": "f4e89c5c-b9bc-4327-abf5-44136177a80e",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/islam.htm"
+    ],
+    "original_source_ids": [
+      "61914dc5-f03e-451c-81ef-145d18079b40"
+    ]
+  },
+  {
+    "claim_id": "1d81056a-92c0-4452-8cb1-ada016b09a58",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/volume_2/52_after_the_passing_away.htm",
+      "https://belurmath.org/surendra-nath-mitra/",
+      "https://belurmath.org/ramakrishna-math-baranagar/"
+    ],
+    "original_source_ids": [
+      "6bd19767-fd30-4b73-900b-11576daedd8e"
+    ]
+  },
+  {
+    "claim_id": "41d4823f-d7c5-4757-bde5-316192902188",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/volume_2/34_bankim_chandra.htm"
+    ],
+    "original_source_ids": [
+      "6bd19767-fd30-4b73-900b-11576daedd8e"
+    ]
+  },
+  {
+    "claim_id": "c387e462-e053-47bb-8ea0-b641a90acb46",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/last_days.htm"
+    ],
+    "original_source_ids": [
+      "61914dc5-f03e-451c-81ef-145d18079b40"
+    ]
+  },
+  {
+    "claim_id": "53c4046e-5fef-439f-b594-5f84b61f63b0",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/masters_method.htm"
+    ],
+    "original_source_ids": [
+      "61914dc5-f03e-451c-81ef-145d18079b40"
+    ]
+  },
+  {
+    "claim_id": "7180fef3-c2ab-4874-9ebf-63b949cda6c2",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/narendra.htm"
+    ],
+    "original_source_ids": [
+      "61914dc5-f03e-451c-81ef-145d18079b40",
+      "685aedc9-c39f-4c63-a43b-2b7d4086b6ae"
+    ]
+  },
+  {
+    "claim_id": "a4fcf4d2-e3e1-4230-bb9d-2f4770cec4b3",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/volume_1/05_the_master_and_keshab.htm"
+    ],
+    "original_source_ids": [
+      "6bd19767-fd30-4b73-900b-11576daedd8e"
+    ]
+  },
+  {
+    "claim_id": "ad245e15-54a5-4b4c-9032-2a28bbb95cb5",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "REVISE AND APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/last_days.htm"
+    ],
+    "original_source_ids": [
+      "61914dc5-f03e-451c-81ef-145d18079b40",
+      "685aedc9-c39f-4c63-a43b-2b7d4086b6ae"
+    ]
+  },
+  {
+    "claim_id": "b0d5d60d-c2dc-43f8-9fe3-34a21ce75cff",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/narendra.htm"
+    ],
+    "original_source_ids": [
+      "61914dc5-f03e-451c-81ef-145d18079b40"
+    ]
+  },
+  {
+    "claim_id": "db679fec-a8ef-41cd-a1d9-a1138b0d2d01",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/the_brahmani.htm"
+    ],
+    "original_source_ids": [
+      "61914dc5-f03e-451c-81ef-145d18079b40"
+    ]
+  },
+  {
+    "claim_id": "e33d7beb-875d-489b-958d-ac717133982f",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "REVISE AND APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/marriage.htm"
+    ],
+    "original_source_ids": [
+      "61914dc5-f03e-451c-81ef-145d18079b40",
+      "d5a13923-a194-487e-8a9b-0d61f574d7e7"
+    ]
+  },
+  {
+    "claim_id": "e76a77c7-134b-4723-92c7-2af6224bd1b1",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/relation_with_wife.htm"
+    ],
+    "original_source_ids": [
+      "2aa55178-75fe-4a1c-92b5-3ec77c532dca",
+      "61914dc5-f03e-451c-81ef-145d18079b40"
+    ]
+  },
+  {
+    "claim_id": "0886e626-38d7-482f-bbbc-24db2fb27d60",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/volume_1/03_visit_to_vidyasagar.htm"
+    ],
+    "original_source_ids": [
+      "6bd19767-fd30-4b73-900b-11576daedd8e",
+      "8cd5175c-1fa9-4fc0-9d96-2edce7212fec"
+    ]
+  },
+  {
+    "claim_id": "52dc3737-5124-467a-a553-0257baa6638e",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "REVISE AND APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/volume_1/03_visit_to_vidyasagar.htm"
+    ],
+    "original_source_ids": [
+      "6bd19767-fd30-4b73-900b-11576daedd8e"
+    ]
+  },
+  {
+    "claim_id": "9dfc87bf-82fa-41a1-b230-15ed33c2e01b",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/volume_1/20_rules.htm"
+    ],
+    "original_source_ids": [
+      "6bd19767-fd30-4b73-900b-11576daedd8e"
+    ]
+  },
+  {
+    "claim_id": "a22646cc-d3b9-4e43-924a-dfda00d10d24",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/volume_1/03_visit_to_vidyasagar.htm"
+    ],
+    "original_source_ids": [
+      "6bd19767-fd30-4b73-900b-11576daedd8e"
+    ]
+  },
+  {
+    "claim_id": "bc2dadea-f37a-41e6-96db-4b6df8faea15",
+    "personality": "Ramakrishna Paramahamsa",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/volume_1/04_advice_to_householders.htm"
+    ],
+    "original_source_ids": [
+      "6bd19767-fd30-4b73-900b-11576daedd8e"
+    ]
+  },
+  {
+    "claim_id": "61e944ef-a848-4865-b28b-7ab1b56dc7eb",
+    "personality": "Satyajit Ray",
+    "decision": "REVISE AND APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.oscars.org/oscars/ceremonies/1992/memorable-moments"
+    ],
+    "original_source_ids": [
+      "119d6b37-13d5-4af9-8f21-ad2252084141"
+    ]
+  },
+  {
+    "claim_id": "0d6e0dc3-6b43-453e-b1f3-8b8abf08e8ab",
+    "personality": "Satyajit Ray",
+    "decision": "REVISE AND APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.oscars.org/oscars/ceremonies/1992/memorable-moments"
+    ],
+    "original_source_ids": [
+      "119d6b37-13d5-4af9-8f21-ad2252084141"
+    ]
+  },
+  {
+    "claim_id": "7206448f-4fc2-421f-8b88-27091022b873",
+    "personality": "Verghese Kurien",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://drkurien.com/october-17-1989/"
+    ],
+    "original_source_ids": [
+      "162fa362-1a24-42ce-92fe-64a13cc81160"
+    ]
+  },
+  {
+    "claim_id": "edecc47a-240e-468a-948e-b550372acee9",
+    "personality": "Verghese Kurien",
+    "decision": "REVISE AND APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://drkurien.com/october-17-1989/"
+    ],
+    "original_source_ids": [
+      "162fa362-1a24-42ce-92fe-64a13cc81160"
+    ]
+  },
+  {
+    "claim_id": "5542934d-b046-424a-993c-a7105b1eb87d",
+    "personality": "Verghese Kurien",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+    ],
+    "original_source_ids": [
+      "162fa362-1a24-42ce-92fe-64a13cc81160"
+    ]
+  },
+  {
+    "claim_id": "7f406348-934e-43dc-9358-49d8d0782840",
+    "personality": "Verghese Kurien",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+    ],
+    "original_source_ids": [
+      "162fa362-1a24-42ce-92fe-64a13cc81160"
+    ]
+  },
+  {
+    "claim_id": "810f1e3c-feb0-442f-b298-105f04ec1b70",
+    "personality": "Verghese Kurien",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+    ],
+    "original_source_ids": [
+      "162fa362-1a24-42ce-92fe-64a13cc81160"
+    ]
+  },
+  {
+    "claim_id": "84a2f266-94d2-42d5-806c-6f0cfb661e5e",
+    "personality": "Verghese Kurien",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+    ],
+    "original_source_ids": [
+      "162fa362-1a24-42ce-92fe-64a13cc81160"
+    ]
+  },
+  {
+    "claim_id": "9ee5ecd9-0272-4016-b59a-3a810321d286",
+    "personality": "Verghese Kurien",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+    ],
+    "original_source_ids": [
+      "162fa362-1a24-42ce-92fe-64a13cc81160"
+    ]
+  },
+  {
+    "claim_id": "fa8f0682-0bde-41da-a4e0-7d1ac942cd0d",
+    "personality": "Verghese Kurien",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+    ],
+    "original_source_ids": [
+      "162fa362-1a24-42ce-92fe-64a13cc81160"
+    ]
+  },
+  {
+    "claim_id": "01474b6e-2c2f-4a8f-b529-99002a07eede",
+    "personality": "Verghese Kurien",
+    "decision": "REVISE AND APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+    ],
+    "original_source_ids": [
+      "162fa362-1a24-42ce-92fe-64a13cc81160"
+    ]
+  },
+  {
+    "claim_id": "c49dd80e-e4b1-4a56-a005-bf7df968648d",
+    "personality": "Verghese Kurien",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.nddb.coop/about/chairman/vkurien"
+    ],
+    "original_source_ids": [
+      "162fa362-1a24-42ce-92fe-64a13cc81160"
+    ]
+  },
+  {
+    "claim_id": "e9171056-70a4-45f2-b42f-9d6123d49706",
+    "personality": "Verghese Kurien",
+    "decision": "REVISE AND APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://drkurien.com/october-17-1989/"
+    ],
+    "original_source_ids": [
+      "162fa362-1a24-42ce-92fe-64a13cc81160",
+      "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+      "3d12e474-d1b1-4b71-8e55-b354470ffbb7"
+    ]
+  },
+  {
+    "claim_id": "3eca349c-3c0e-4a15-b17d-29366a09f33c",
+    "personality": "Verghese Kurien",
+    "decision": "REVISE AND APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+    ],
+    "original_source_ids": [
+      "162fa362-1a24-42ce-92fe-64a13cc81160"
+    ]
+  },
+  {
+    "claim_id": "aead8773-3c07-44d4-b2be-70b2e7b440d6",
+    "personality": "Verghese Kurien",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+    ],
+    "original_source_ids": [
+      "162fa362-1a24-42ce-92fe-64a13cc81160"
+    ]
+  },
+  {
+    "claim_id": "05942d45-7c17-4a41-882f-364543e8aed6",
+    "personality": "Verghese Kurien",
+    "decision": "APPROVE",
+    "review_state": "APPROVED_DECISION_PUBLICATION_HOLD",
+    "reason": "No checked evidence reference resolves to an existing claim-source link by source ID or exact URL; strict public citation cannot be established from this record",
+    "checked_reference_urls": [
+      "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+    ],
+    "original_source_ids": [
+      "162fa362-1a24-42ce-92fe-64a13cc81160"
+    ]
+  }
+]

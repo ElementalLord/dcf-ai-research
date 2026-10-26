@@ -1,0 +1,43 @@
+{
+  "source_id": "db7b0f86-1988-42bd-9eef-b546d4787ad7",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.31, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 31 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga31/bala_31_prose.htm"
+  },
+  "claim_ids": [
+    "415b54ab-a1cc-4d5e-9f61-2eb7e51dae1f",
+    "542a9313-97ff-46e7-b883-4598967332f3"
+  ],
+  "passages": [
+    {
+      "chunk_id": "8fde6331-f36a-429f-ab3d-e3fa23ccabbb",
+      "locator": "Book I : Bala Kanda - The Youthful MajestiesSarga 31 in prose",
+      "text_sha256": "786885cebe915b9bd6c26eaac0279434613eef9585ff7bdac06006648dd06f6c",
+      "excerpt_preview": "\"Once Devaraata, the grandparent of the present king Janaka of Mithila, conducted a Vedic-ritual and  he indeed prayed only for this supreme bow with a best grip-handle as the fruit of that ritual from  all of the gods and oh, tigerly man R",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ce795047-e5d4-44d0-a4e1-2596082e264d",
+      "locator": "Book I : Bala Kanda - The Youthful MajestiesSarga 31 in prose",
+      "text_sha256": "c703843d64fcce15aaa698d2d73869d22f04e57083310ae76f13c3e634e3409e",
+      "excerpt_preview": "Sage Vishwamitra travels to Mithila kingdom to attend a ritual of King Janaka and  also to see the auspicious bow of Shiva that is being worshipped in the palace of  Janaka from ages. The other sages suggest to Rama, that he too may go over",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,34 @@
+{
+  "source_id": "98e82470-05a2-4dee-9e1a-5a8d6a7b69e4",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:17.738Z"
+    },
+    "citation": "Panhala Fort — Maharashtra Tourism. Department of Tourism, Government of Maharashtra. https://maharashtratourism.gov.in/fort/panhala/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Department of Tourism, Government of Maharashtra",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Panhala Fort — Maharashtra Tourism",
+    "url": "https://maharashtratourism.gov.in/fort/panhala/"
+  },
+  "claim_ids": [
+    "a21ad54b-ab2e-40a8-9034-68347f44e9f4"
+  ],
+  "passages": [
+    {
+      "chunk_id": "79838e7c-768a-4060-9891-e1f114bec228",
+      "locator": "Government heritage page",
+      "text_sha256": "ed38a45f48695959a5fae2622576f6cf26f78a7c341501287b7f8a4e196d3ebf",
+      "excerpt_preview": "ary architecture, ensuring its ability to withstand prolonged sieges.The fort’s most iconic era came under the Maratha Empire, particularly during the reign of Chhatrapati Shivaji Maharaj. It served as a vital military base and played a key",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

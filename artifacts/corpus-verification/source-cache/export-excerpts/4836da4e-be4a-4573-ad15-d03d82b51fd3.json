@@ -1,0 +1,70 @@
+{
+  "source_id": "4836da4e-be4a-4573-ad15-d03d82b51fd3",
+  "source": {
+    "author": "Rajinder Singh",
+    "authority_metadata": {
+      "verified_at": "2026-10-09T03:49:11.829Z"
+    },
+    "citation": "Rajinder Singh. 80 Years Ago: The Discovery of the Raman Effect at IACS. Indian Journal of Physics / IACS. https://www.iacs.res.in/ijp/ijp_august_08_abstract.pdf",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Indian Journal of Physics / IACS",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "80 Years Ago: The Discovery of the Raman Effect at IACS",
+    "url": "https://www.iacs.res.in/ijp/ijp_august_08_abstract.pdf"
+  },
+  "claim_ids": [
+    "3fe30c71-5d69-4cb6-9bd6-c7b7359a6b63",
+    "9e94a497-7862-4ce4-9984-336d6f87fd9d",
+    "dc4e8439-9fd0-4a5e-aba5-027944735e21",
+    "e54ce468-5db9-40c2-a728-3975942101bf",
+    "f09e0f1f-5a22-4e66-9d36-ee88f4a82b2d"
+  ],
+  "passages": [
+    {
+      "chunk_id": "13ede65b-f69d-4a68-bd9e-41b77dff6510",
+      "locator": "Singh 2008, abstract, p. 969",
+      "text_sha256": "97c775686c7ad5f1bbe96c8e0d70191872d45d371c9bfe5da10f210b072d7bd3",
+      "excerpt_preview": "Nearly at the same time the effect was also observed by the Russian physicists Grigorii Samuilovich Landsberg (1890-1957) and Leonid Isaakovich Mandelstam (1879-1944).",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "41fb3767-fd6c-49a6-a603-3d555239714c",
+      "locator": "Singh 2008, abstract, p. 969",
+      "text_sha256": "e3d6ab6b1e11c31a9864b42372127f26a564d6ea97995977fdb472e990f92330",
+      "excerpt_preview": "82 (8) 969-985 (2008) 80 years ago – the Discovery of the Raman Effect at the Indian Association for the Cultivation of Science, Kolkata, India* Rajinder Singh University of Oldenburg, Faculty V – Institute of Physics, Research Group : Phys",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6c3f8426-3699-41f2-ab29-968c11df02b9",
+      "locator": "Singh 2008, abstract, p. 969",
+      "text_sha256": "c94ae249b46f1c61d156aed4910566c227ede903ef89634c5ca885abad51bf5f",
+      "excerpt_preview": "Evidences are given for the fact that the use of Mercury vapour lamp by Raman was a well thought step, and not per chance as stated by one of Raman’s students. Keywords : C V Raman, K S Krishnan, G S Landsberg, L I Mandelstam, Raman effect,",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "961fa69e-f261-4a7a-b84c-ae941e198930",
+      "locator": "Singh 2008, abstract, p. 969",
+      "text_sha256": "db79dfa58c5e99a48c43fcc7d942f227ab8356f15828f8927e3c01fe3e84982e",
+      "excerpt_preview": "In 1930 the Physics Nobel Prize was awarded to C V Raman alone. Why Krishnan and the Russian physicists were ignored by the Nobel Committee? The question has been answered with the documents (nominations letters and the reports) that were o",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ce118cc8-73d1-4f13-aefc-65e1ed0a630c",
+      "locator": "Singh 2008, abstract, p. 969",
+      "text_sha256": "fa146649fd5b106c275a23081e5a6247eac99ffc3bd90a55beed45a9cd0fd57f",
+      "excerpt_preview": "Based on Krishnan’s diary, his role in the discovery has been analysed. Evidences are given for the fact that the use of Mercury vapour lamp by Raman was a well thought step, and not per chance as stated by one of Raman’s students.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

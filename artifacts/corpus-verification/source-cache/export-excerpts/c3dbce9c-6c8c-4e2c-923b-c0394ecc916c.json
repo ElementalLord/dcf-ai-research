@@ -1,0 +1,29 @@
+{
+  "source_id": "c3dbce9c-6c8c-4e2c-923b-c0394ecc916c",
+  "source": {
+    "author": "Vyasa (traditional attribution); BORI Critical Edition",
+    "authority_metadata": {},
+    "citation": "Mahabharata BORI, Udyoga Parva",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Bhandarkar Oriental Research Institute critical text / Vedapath presentation",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Mahabharata (BORI Critical Edition), Udyoga Parva",
+    "url": "https://vedapath.app/en/mahabharata-bori/udyoga-parva"
+  },
+  "claim_ids": [
+    "6925a824-75a7-4e44-8878-458c18f6f613",
+    "76129959-eef3-4292-89a0-0f85704e541f",
+    "ba30bb2f-2b4a-4079-835f-5feaafe7287d",
+    "cea8864e-8964-4ac9-a820-93b23b278fac",
+    "f2b5e152-f9c0-4ead-9d06-9b0410f10262",
+    "f353f24d-7ee7-4703-9c2c-c9db686d9d29",
+    "fc12cfac-65e9-4a36-a0d4-3f8fd2760184"
+  ],
+  "passages": [],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

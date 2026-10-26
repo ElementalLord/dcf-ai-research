@@ -1,0 +1,62 @@
+{
+  "source_id": "2c3f7e05-9c56-4166-a1c2-5d883cde4752",
+  "source": {
+    "author": "Rabindranath Tagore",
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Rabindranath Tagore. Gitanjali (Song Offerings). Project Gutenberg. https://www.gutenberg.org/ebooks/7164",
+    "original_work_identity": {},
+    "publication_year": 1912,
+    "publisher_or_institution": "Project Gutenberg",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Gitanjali (Song Offerings)",
+    "url": "https://www.gutenberg.org/ebooks/7164"
+  },
+  "claim_ids": [
+    "3f2f3311-3b83-432e-a9b0-9cbb698dd5c9",
+    "8a7e0306-7f88-4222-9726-fb651d5cd651",
+    "9ca682e9-89c5-42a7-9486-7df57514c0db",
+    "d0927edc-fe0d-470a-acbb-45f2b5eecf98"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1ed9e61e-956e-42df-b616-1c122d9b5ddb",
+      "locator": "W. B. Yeats wrote an introduction",
+      "text_sha256": "fe6cee20606aa07455a4ac37a6d4963980c9d4f279f110ee332c40141ef205f1",
+      "excerpt_preview": "W. B. Yeats wrote an introduction for the English edition.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "676b4ef3-cfb9-4008-901e-fa225b252209",
+      "locator": "devotion, mortality, work, nature, freedom",
+      "text_sha256": "8770e214ca3215a1e80e6c2944dfd2710fc2eeed00edc5869021eba4f1207d28",
+      "excerpt_preview": "Its short lyric prose poems repeatedly address devotion, mortality, work, nature, freedom and the relation between the finite person and an encompassing spiritual reality.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e31986d3-0601-4cb1-be4b-f668462e5355",
+      "locator": "English selection and rendering",
+      "text_sha256": "966d5ff2d533ba3fe5fe68963ed0c89550176121792c8b8ba5e3d77258143e30",
+      "excerpt_preview": "itanjali: Song Offerings is Tagore’s English selection and rendering of Bengali poems.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f2ed6b78-75e7-4d2e-b184-cefd3995adfd",
+      "locator": "more than one Bengali collection",
+      "text_sha256": "e5b57566b008d0f64b549eafd42a3e3895c2da5e2ff9348fb54c438ed5e876c7",
+      "excerpt_preview": "The English volume is not identical to the Bengali book titled Gitanjali; it draws poems from more than one Bengali collection.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

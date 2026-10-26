@@ -1,0 +1,46 @@
+{
+  "source_id": "7b637414-d012-4349-9ea0-bded3c081f08",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.59, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 59 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga59/bala_59_prose.htm"
+  },
+  "claim_ids": [
+    "3fdd1f6a-ece1-4b4b-a2e8-d810a849e204",
+    "882a50a9-1b63-40a1-8649-429e9243e63d",
+    "d98b5b2f-ad60-423e-813b-abdff6bfbd80",
+    "eef0824e-7368-4fb6-b60f-a5f417d01ef5",
+    "f5522a47-6799-4ad3-a46b-62774d6bde6e"
+  ],
+  "passages": [
+    {
+      "chunk_id": "5326a31a-1540-4cb8-bab3-96ed76b89a7a",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\n Sarga 59 in Prose",
+      "text_sha256": "353988d9242e2230e0a46453e6c89916abc664456a7a67bb263e84fba12a98ac",
+      "excerpt_preview": "\"The eminent sage Vishvamitra having heard those words of the sons of Vashishta  from all of his disciples, said this rancorously with bloodshot eyes.  \" 'He who reproves me, who am abiding in rigorous ascesis, and who am an  unreprovable o",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7fa20770-91d1-4b00-a9ae-b651c966d204",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\n Sarga 59 in Prose",
+      "text_sha256": "30c65c70007a59e83a1f5f9783080994233026f3ba98ae413992e89cc7e3f588",
+      "excerpt_preview": "Vishvamitra undertakes Trishanku's Vedic ritual and sends disciples   to invite all Vedic-scholars. Many sages have come except for   Vashishta and his sons. Further, the sons of Vashishta have   ridiculed this ritual of Vishvamitra and Tri",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,41 @@
+{
+  "source_id": "1d36bab3-d9af-46a2-9f71-c6741237e707",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Mahabharata, Vana Parva, section 97 (Ganguli translation). https://mahabharata-online.github.io/3/97.html",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Mahabharata Online",
+    "rights_or_access_note": "Publicly accessible source; brief excerpts stored for research citation.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Mahabharata, Vana Parva, section 97 (Ganguli translation)",
+    "url": "https://mahabharata-online.github.io/3/97.html"
+  },
+  "claim_ids": [
+    "31b12aed-2f2b-442f-924f-f902eee042c4",
+    "909d2d4f-f622-4bac-b349-ce7b5eb05b95"
+  ],
+  "passages": [
+    {
+      "chunk_id": "13539f6d-802f-4bfe-8a55-7da6978487f6",
+      "locator": "Vana Parva 3.97",
+      "text_sha256": "fac7aed331ee718566dbb8f0e35a06e9fa6f6f5f653887992f086b808a5fe24d",
+      "excerpt_preview": "Nor, O regenerate Rishi, it is sinfulto wear ornaments (on such an occasion).' Hearing these words of hiswife, Agastya replied, 'O blessed girl, O thou of slender waist, I havenot wealth like what thy father hath, O Lopamudra!' She answered",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "780da208-2c52-4946-ad25-fcaebc9cb296",
+      "locator": "Vana Parva 3.97",
+      "text_sha256": "58f39f515b63080eaeeb7dd8324559c00fac365d92a48c1fa23a581852990d37",
+      "excerpt_preview": "girl to be competent forthe duties of domesticity, he approached that lord of earth-the ruler ofVidharbhas-and addressing him, said, 'I solicit thee, O king, to bestowthy daughter Lopamudra on me.' Thus addressed by the Muni, the king ofthe",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

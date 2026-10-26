@@ -1,0 +1,44 @@
+{
+  "source_id": "64665428-9fba-4127-ba73-34cc1da5c03e",
+  "source": {
+    "author": "N. A. Nikam and Richard McKeon",
+    "authority_metadata": {
+      "source_kind": "Scholarly translation and interpretive introduction to inscriptions",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "N. A. Nikam and Richard McKeon. The Edicts of Asoka. University of Chicago Press. https://press.uchicago.edu/ucp/books/book/chicago/E/bo3627097.html",
+    "original_work_identity": {},
+    "publication_year": 1959,
+    "publisher_or_institution": "University of Chicago Press",
+    "rights_or_access_note": "Short documented research excerpts only; source layer is shown so translation, later tradition and modern scholarship are not conflated.",
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "The Edicts of Asoka",
+    "url": "https://press.uchicago.edu/ucp/books/book/chicago/E/bo3627097.html"
+  },
+  "claim_ids": [
+    "3875a8f2-faf4-4b6f-8135-4fb170680120",
+    "e4a4ff4b-cf50-4e44-a656-28ed6b7da780"
+  ],
+  "passages": [
+    {
+      "chunk_id": "21c34e61-6892-483c-9291-af84cbe6cbd3",
+      "locator": "chief contemporary evidence",
+      "text_sha256": "12561c2f49ae2f2632e761ea3a98a17a3b0e9c61cf2a7435099b6197b465308f",
+      "excerpt_preview": "he edicts are the chief contemporary evidence for Asoka’s own political and moral language.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "363cd571-5eb9-4a2f-84da-d9a6a3c7876b",
+      "locator": "relationship between Buddhist vocabulary and imperial ethics",
+      "text_sha256": "c3220480dc61f0afc99413038f8292bbb57f621bf2bee9d4e0dc13b04e63ab2d",
+      "excerpt_preview": "Translation choices for dhamma, the scope of policy and the relationship between Buddhist vocabulary and imperial ethics require interpretation; a translation cannot by itself settle every historical question.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

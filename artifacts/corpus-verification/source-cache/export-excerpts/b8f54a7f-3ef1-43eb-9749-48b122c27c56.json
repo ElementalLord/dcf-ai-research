@@ -1,0 +1,51 @@
+{
+  "source_id": "b8f54a7f-3ef1-43eb-9749-48b122c27c56",
+  "source": {
+    "author": "Valmiki",
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Bala Kanda, Sarga 53 (https://valmikiramayan.net/utf8/baala/sarga53/balasans53.htm.orig)",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Bala Kanda, Sarga 53",
+    "url": "https://valmikiramayan.net/utf8/baala/sarga53/balasans53.htm.orig"
+  },
+  "claim_ids": [
+    "76c99f89-0e8f-4f92-9895-34657b974ace",
+    "920a1a51-4cca-4999-aa8f-dd839176df06",
+    "acaa016e-224e-45bc-b5fa-86e6384cae84",
+    "ff0e9fdc-4fa6-4eaf-9636-9292b0ae20e8"
+  ],
+  "passages": [
+    {
+      "chunk_id": "04aded7c-6ead-4f41-8dbf-2f0a4f487785",
+      "locator": "Introduction",
+      "text_sha256": "c49b49ee6c22a488daab7c7ac3f67dca424a2b5c50e5654f3459ac429d06d7f8",
+      "excerpt_preview": "सर्वस्वम् एतत् सत्येन मम तुष्टि करी तथा || १-५३-१५कारणैः बहुभी राजन् न दास्ये शबलाम् तव |  15b, 16a. etat = this one - cow; satyena mama sarvasvam = in truth, to me, everything; [sadaa = always]; tuSTi karii = gratification, doer [ever-grat",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "67f7e107-5aec-45c1-8eec-a612190b9ea2",
+      "locator": "Introduction",
+      "text_sha256": "063b54cb1cfb0593a048108c3ae52a8278afde150de7a99a3ca0ed0261598263",
+      "excerpt_preview": "Vishvamitra tries to gain Kaamadhenu, but Sage Vashishta persistently refuses Vishvamitra's bargains  and barters. 'When an ordinary cow alone is held sacred and it is an un-marketable commodity, how then  can Shabala, a milker of any wish,",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d875c0e7-aa4d-4c0c-bdc7-baa0d08e5529",
+      "locator": "Introduction",
+      "text_sha256": "90c61468f0aa5ce7111a74c0c345758403c6e80a847e8c55eab4cb85939aef90",
+      "excerpt_preview": "\"When honoured along with his advisers, ministers and attendants by way of receiving a royal banquet,  king Vishvamitra then in high admiration spoke this to Vashishta. [1-53-7]  पूजितो अहम् त्वया ब्रह्मन् पूज अर्हेण सुसत्कृतः |श्रूयताम् अभ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

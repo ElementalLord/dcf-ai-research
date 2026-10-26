@@ -1,0 +1,35 @@
+{
+  "source_id": "2aa55178-75fe-4a1c-92b5-3ec77c532dca",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Sri Sarada Devi. Belur Math, Ramakrishna Math and Ramakrishna Mission. https://belurmath.org/sri-sarada-devi/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Belur Math, Ramakrishna Math and Ramakrishna Mission",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Sri Sarada Devi",
+    "url": "https://belurmath.org/sri-sarada-devi/"
+  },
+  "claim_ids": [
+    "038f67fd-150f-47ea-92c3-c2d8cce51178",
+    "e76a77c7-134b-4723-92c7-2af6224bd1b1"
+  ],
+  "passages": [
+    {
+      "chunk_id": "7176dba4-3079-48d1-8720-7d8049cf3652",
+      "locator": "Belur Math: Sri Sarada Devi",
+      "text_sha256": "4a24b05fcfb00ff3759944a4f20e82820928f5d3f6e8ada58c5bd4d10da5120e",
+      "excerpt_preview": "This marked a turning point in her life. She now began to accept spiritual seekers as her disciples, and became the open portal to immortality for hundreds of people. Her great universal mother-heart, endowed with boundless love and compass",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

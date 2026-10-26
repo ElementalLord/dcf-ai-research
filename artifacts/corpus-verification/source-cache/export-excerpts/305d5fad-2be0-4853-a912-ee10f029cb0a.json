@@ -1,0 +1,34 @@
+{
+  "source_id": "305d5fad-2be0-4853-a912-ee10f029cb0a",
+  "source": {
+    "author": "Kisari Mohan Ganguli (translator)",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Kisari Mohan Ganguli (translator). The Mahabharata, Book 12: Santi Parva, Section CCCXIX. Pratap Chandra Roy, Calcutta; transcription archived from sacred-texts.com. https://web.archive.org/web/2023id_/https://www.sacred-texts.com/hin/m12/m12c018.htm",
+    "original_work_identity": {},
+    "publication_year": 1891,
+    "publisher_or_institution": "Pratap Chandra Roy, Calcutta; transcription archived from sacred-texts.com",
+    "rights_or_access_note": "Public-domain translation (1883–1896); transcription read through the Internet Archive Wayback Machine.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "The Mahabharata, Book 12: Santi Parva, Section CCCXIX",
+    "url": "https://web.archive.org/web/2023id_/https://www.sacred-texts.com/hin/m12/m12c018.htm"
+  },
+  "claim_ids": [
+    "005927dc-02b8-4dc3-8c07-2c62a51afa79"
+  ],
+  "passages": [
+    {
+      "chunk_id": "f43cdd2a-da31-4184-a049-d9fb75475c53",
+      "locator": "Mahabharata 12, section 319 (Ganguli)",
+      "text_sha256": "e028f799868c250c77a7706eb061d52585f5fa49778a57671c56696c175052db",
+      "excerpt_preview": "Seeing me restored to ease, the Maker of light said unto me,--The whole Vedas, with even those parts that are regarded as its appendix, together with the Upanishads, will appear in thee by inward p. 48 light, O regenerate one! The entire Sa",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

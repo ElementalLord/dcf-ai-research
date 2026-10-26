@@ -1,0 +1,73 @@
+{
+  "source_id": "9b0e27ff-f724-407c-872f-f199da70334f",
+  "source": {
+    "author": "Satyajit Ray and Satyajit Ray Org editors",
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Satyajit Ray and Satyajit Ray Org editors. Making of Pather Panchali. Satyajit Ray Org. https://satyajitray.org/making-of-pather-panchali/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Satyajit Ray Org",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Making of Pather Panchali",
+    "url": "https://satyajitray.org/making-of-pather-panchali/"
+  },
+  "claim_ids": [
+    "07e3d3b8-9611-426a-99a9-126ee46a01b5",
+    "64e952cd-6726-4138-9d25-346e96abdc07",
+    "9749acf9-5f17-40cf-9a94-74774ff80412",
+    "a1ae238b-c845-4a60-b196-9db81603850c",
+    "a73ab751-999c-433e-a8f0-61888f0c723a",
+    "bccf145e-3d4b-4ab0-bbcc-3c2c3caece93",
+    "c1961d83-6e69-450a-a404-f1dc11cdb05d"
+  ],
+  "passages": [
+    {
+      "chunk_id": "102028f5-bf7a-4b83-b9e2-0c8b11e5c857",
+      "locator": "West Bengal government eventually supported",
+      "text_sha256": "c4ad893264d713c94a6472d90959e057605764ced40e4a32b105955a9dab98b6",
+      "excerpt_preview": "The West Bengal government eventually supported completion.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "16648cb2-622e-4eb1-b986-44f52de253de",
+      "locator": "Subrata Mitra served as cinematographer",
+      "text_sha256": "abbaf6ae75fd4e24f8fa2326fb892cc52617d2a7c5019e2ebd8cce62e7e73ad9",
+      "excerpt_preview": "Subrata Mitra served as cinematographer and Bansi Chandragupta as art director.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c12265e1-fb5a-420a-abd2-6d410c833a8c",
+      "locator": "struggled to find financial backing",
+      "text_sha256": "cb3c7b7e8f56d72781a3a5731ea5bfc52d9fae4f357c14e1f876e5fc12ee2990",
+      "excerpt_preview": "ay sought rights from the widow of novelist Bibhutibhushan Bandyopadhyay and struggled to find financial backing.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e72251ad-50f4-46b2-868d-f951b79ae832",
+      "locator": "Ravi Shankar composed music",
+      "text_sha256": "008be2f97288404d24661493346a45795ae11769b22890bf4a93a69ceabbba8b",
+      "excerpt_preview": "Ravi Shankar composed music for the film in an intensive recording session described by Ray in My Years with Apu.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ee3d338a-b31a-412b-8d34-93d14d5080a2",
+      "locator": "largely inexperienced team",
+      "text_sha256": "95dc0bc5d01ee9c00587df476c82e0ed94b7a50c5b997fcff55939404489a64e",
+      "excerpt_preview": "Production proceeded intermittently and relied on a largely inexperienced team.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

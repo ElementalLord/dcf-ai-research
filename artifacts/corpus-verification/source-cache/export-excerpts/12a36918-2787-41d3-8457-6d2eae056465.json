@@ -1,0 +1,61 @@
+{
+  "source_id": "12a36918-2787-41d3-8457-6d2eae056465",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-09T03:48:52.215Z"
+    },
+    "citation": "Raman Research Institute — Overview. Raman Research Institute. https://www.rri.res.in/about/overview",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Raman Research Institute",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Raman Research Institute — Overview",
+    "url": "https://www.rri.res.in/about/overview"
+  },
+  "claim_ids": [
+    "0f7737cd-0303-400f-817b-52ded2beddd4",
+    "86985b26-e282-476e-ad16-3ef4594e7eef",
+    "c513228c-6a62-4646-815a-ef6a96b0c8f2",
+    "fc2bd190-62fb-4dfc-8530-716df5df36e8"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0ec303c9-0bb8-4414-9a28-eda558407343",
+      "locator": "Overview, history",
+      "text_sha256": "1c75a1e5bb4be603950045c5264e1363ccb33acd9ad77f5d56066b41c3a0585a",
+      "excerpt_preview": "In the same year, the Indian Academy of Sciences was founded by Prof. Raman. Some years following the creation of the Raman Research Institute in 1948, Prof.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "52cae122-085b-4015-bf54-6f8fff373eeb",
+      "locator": "Overview, founding",
+      "text_sha256": "b7762f213b4e1c67ae2c63639f97d1302e266ce0c10bdbe888258e690acb5fc0",
+      "excerpt_preview": "verview The Raman Research Institute was founded in 1948 by the Indian physicist and Nobel Laureate, Sir C V Raman, to continue his studies and basic research after he retired from the Indian Institute of Science.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b958bc25-4279-4d62-a3a1-9a71214110e6",
+      "locator": "Overview, founding",
+      "text_sha256": "bdd36c3544872cee4c1db03c110483dd8dd00b7e4aa2d5cb2521eb1dec149121",
+      "excerpt_preview": "Sir C V Raman served as its director carrying on his personal research until his demise in 1970. It was funded personally by him and with donations from private sources.HistoryIn December 1934, the Government of Mysore gifted a plot of land",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "df07c696-7022-42bd-b88e-a6bfd1bd8489",
+      "locator": "Overview, funding",
+      "text_sha256": "0db2cf5b2d78e7b9808c631ae0a6f167dad1134ba2ca41d48589832d5e7788ad",
+      "excerpt_preview": "It was funded personally by him and with donations from private sources.HistoryIn December 1934, the Government of Mysore gifted a plot of land in Bangalore to Professor Raman for the creation of a research institute.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

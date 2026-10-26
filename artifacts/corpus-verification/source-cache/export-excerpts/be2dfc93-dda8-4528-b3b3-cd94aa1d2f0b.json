@@ -1,0 +1,32 @@
+{
+  "source_id": "be2dfc93-dda8-4528-b3b3-cd94aa1d2f0b",
+  "source": {
+    "author": "Stewart Gordon",
+    "authority_metadata": {},
+    "citation": "Stewart Gordon. Shivaji (1630–80) and the Maratha polity. Cambridge University Press, The Marathas 1600–1818. https://www.cambridge.org/core/books/abs/marathas-16001818/shivaji-163080-and-the-maratha-polity/77CF65447181F279BA73A6A5D6B1E048",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Cambridge University Press, The Marathas 1600–1818",
+    "rights_or_access_note": "Publicly accessible research excerpt only.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Shivaji (1630–80) and the Maratha polity",
+    "url": "https://www.cambridge.org/core/books/abs/marathas-16001818/shivaji-163080-and-the-maratha-polity/77CF65447181F279BA73A6A5D6B1E048"
+  },
+  "claim_ids": [
+    "676699ac-a375-4d19-8994-2535c570fe81"
+  ],
+  "passages": [
+    {
+      "chunk_id": "9c508606-6e2b-4bd0-bf13-04e9e4768625",
+      "locator": "Shivaji (1630–80) and the Maratha polity",
+      "text_sha256": "a6636d69567b698cc814627eefb624e59e9abdecd3f9f7a86bf4a79e0bbb30d2",
+      "excerpt_preview": "(1760–1803) Index THE NEW CAMBRIDGE HISTORY OF INDIA References Get access Share Cite Summary Let us begin, then, the narrative biography of Shivaji, founder of the Maratha polity. (Throughout, I have kept to incidents corroborated in at le",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

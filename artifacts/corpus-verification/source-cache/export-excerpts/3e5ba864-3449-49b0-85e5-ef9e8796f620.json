@@ -1,0 +1,51 @@
+{
+  "source_id": "3e5ba864-3449-49b0-85e5-ef9e8796f620",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.23, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 23 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga23/bala_23_prose.htm"
+  },
+  "claim_ids": [
+    "01b5d47e-4f1b-4b10-a117-512e1f1ee739",
+    "d827478b-a8a8-4a86-9329-01b59c7f57c1"
+  ],
+  "passages": [
+    {
+      "chunk_id": "71cf9f69-61e0-4126-bd04-f581eb9bc011",
+      "locator": "Book I : Bala Kanda - The Youthful \nMajestiesSarga 23 in Prose",
+      "text_sha256": "80c619910c6767d5f4a9d87d1177a073f5d4065430425ad57b0f1af43585b5d3",
+      "excerpt_preview": "There they have seen the merited hermitage of sages with contemplative souls, and who  are practising supreme ascesis for many thousand years. On seeing that merited hermitage Rama and Lakshmana  are highly pleased and said this word to tha",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b19d7040-f437-4dee-aadd-2e43a3657117",
+      "locator": "Book I : Bala Kanda - The Youthful \nMajestiesSarga 23 in Prose",
+      "text_sha256": "7728cd5acb141a2d11f14e43943f07c86c21f649c4c9d52504b2923fcce54f55",
+      "excerpt_preview": "Then onwards Love-god is renowned as Ananga, as he is without body, and where his body  is given up that is renowned as Anga province.  \"This merited hermitage thus belongs to Shiva and, oh, brave Rama, these sages abiding  in virtue are Sh",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fcab0c80-7050-4eb3-b709-d03638794b6d",
+      "locator": "Book I : Bala Kanda - The Youthful \nMajestiesSarga 23 in Prose",
+      "text_sha256": "48a1c9bf17a6ceca7c7906f861b08fba93c24de3716f99b00d30c478196a1839",
+      "excerpt_preview": "Rama and Lakshmana proceeding with Vishvamitra sojourn in a hermitage at a place where  River Ganga and River Sarayu are confluent. Once god Shiva with his third eye burnt down the physical  entity of Manmatha, the Love-god, at this place. ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

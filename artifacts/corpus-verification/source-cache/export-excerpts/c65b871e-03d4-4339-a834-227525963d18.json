@@ -1,0 +1,34 @@
+{
+  "source_id": "c65b871e-03d4-4339-a834-227525963d18",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:26:44.700Z"
+    },
+    "citation": "The Indian Musical Drums (1934). Indian Academy of Sciences repository. https://repository.ias.ac.in/50700/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Indian Academy of Sciences repository",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "The Indian Musical Drums (1934)",
+    "url": "https://repository.ias.ac.in/50700/"
+  },
+  "claim_ids": [
+    "ac0b50fc-ec18-45e5-a101-5bfa08122f70"
+  ],
+  "passages": [
+    {
+      "chunk_id": "9a1e785d-b2fb-41b4-9c64-49c8eb523951",
+      "locator": "1934 original paper record",
+      "text_sha256": "708acbf2f0c7cc1c250495e969d158c4a00ceb70d54fc46a400f943afdb66244",
+      "excerpt_preview": "Search Submission Guidelines Repository Policies IRStats About IASc History Fellowship Journals Help Contact Us Indian Academy of Sciences The Indian musical drums Dimensions Dimensions Dimensions Raman, C. V. (1934) The Indian musical drum",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

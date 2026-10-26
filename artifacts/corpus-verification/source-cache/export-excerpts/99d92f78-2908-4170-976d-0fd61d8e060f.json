@@ -1,0 +1,53 @@
+{
+  "source_id": "99d92f78-2908-4170-976d-0fd61d8e060f",
+  "source": {
+    "author": "Neeladri Bhattacharya",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Neeladri Bhattacharya. Bhagat Singh as Satyagrahi: The Limits to Non-violence in Late Colonial India. Modern Asian Studies, Cambridge University Press. https://www.cambridge.org/core/journals/modern-asian-studies/article/abs/bhagat-singh-as-satyagrahi-the-limits-to-nonviolence-in-late-colonial-india1/F79D7BD2974B9D6B676173AD9EFD4866",
+    "original_work_identity": {},
+    "publication_year": 2009,
+    "publisher_or_institution": "Modern Asian Studies, Cambridge University Press",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Bhagat Singh as Satyagrahi: The Limits to Non-violence in Late Colonial India",
+    "url": "https://www.cambridge.org/core/journals/modern-asian-studies/article/abs/bhagat-singh-as-satyagrahi-the-limits-to-nonviolence-in-late-colonial-india1/F79D7BD2974B9D6B676173AD9EFD4866"
+  },
+  "claim_ids": [
+    "2a5ad64c-6df9-40d7-b31b-d671f0faa7a9",
+    "6f2771fd-069d-4f2d-a99f-19a3887d9f34",
+    "ef1a7b2d-561a-40ce-afa4-aa5d4fa731fe",
+    "f3ea3b1e-326f-49cd-b73a-46a84f5bd8da"
+  ],
+  "passages": [
+    {
+      "chunk_id": "4078a745-0657-44a4-bb31-473cc65cde2d",
+      "locator": "hunger strike, voluntary arrest",
+      "text_sha256": "05da0df67606368bddd4776b8eaf76fa16dc011ef36bf83ec1cea2f4ef2c3c19",
+      "excerpt_preview": "The article examines the hunger strike, voluntary arrest and courtroom performance as practices that entered a late-colonial field shaped by satyagraha, suffering and public moral persuasion.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6ef699b9-15e1-4455-91fb-b7e361608bfa",
+      "locator": "does not erase the HSRA’s use of force",
+      "text_sha256": "288db79ed7ad43b396d21226609630ca665315144b86b817f3ac135ae3ea6bde",
+      "excerpt_preview": "This does not erase the HSRA’s use of force or Gandhi’s commitment to nonviolence; it explains why the opposition cannot be reduced to a single binary.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f2ce8197-561e-489f-90ff-8e0f7eed34f5",
+      "locator": "violent opposite of Gandhi",
+      "text_sha256": "1c55eed029fd1bd4f3e035a79d5ccb8f2f50dba6cd1e80563e6dc9913dcc0724",
+      "excerpt_preview": "hattacharya cautions against treating Bhagat Singh simply as the violent opposite of Gandhi.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,34 @@
+{
+  "source_id": "be0c2550-14a2-433e-ae99-a9dc029c3644",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:40.507Z"
+    },
+    "citation": "Rigveda 1.169: Agastya hymn. Vedic Heritage Portal, Government of India. https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-169/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Vedic Heritage Portal, Government of India",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Rigveda 1.169: Agastya hymn",
+    "url": "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-169/"
+  },
+  "claim_ids": [
+    "318934fe-64c2-4834-90c5-95b54e7204d6"
+  ],
+  "passages": [
+    {
+      "chunk_id": "be95fc5a-5189-4300-9ebf-e871e4879ce4",
+      "locator": "Rigveda 1.169",
+      "text_sha256": "17cb2e86d744aad14b4819f78e4d6d7fb6e6ce698ee58c980fe1798931b378f9",
+      "excerpt_preview": "177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 Rigveda – Shakala Samhita – Mandala 01 Sukta 169 /video/RIGSS_01_169.mp4 A A+ ८ अगस्त्यो मैत्रावरुणः। इन्द्रः। त्रिष्टुप्, २ चतुष्पदा विराट्। म॒हश्चि॒त् त्वमि॑न्द्र य॒त ए॒तान् म॒हश",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

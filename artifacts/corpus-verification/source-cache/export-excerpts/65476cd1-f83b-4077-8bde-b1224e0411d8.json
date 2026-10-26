@@ -1,0 +1,44 @@
+{
+  "source_id": "65476cd1-f83b-4077-8bde-b1224e0411d8",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "India’s aviation journey and Pilot Licence No. 1. Ministry of Civil Aviation, Government of India. https://www.civilaviation.gov.in/node/5992",
+    "original_work_identity": {},
+    "publication_year": 2025,
+    "publisher_or_institution": "Ministry of Civil Aviation, Government of India",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "India’s aviation journey and Pilot Licence No. 1",
+    "url": "https://www.civilaviation.gov.in/node/5992"
+  },
+  "claim_ids": [
+    "868e5a0f-404c-42d3-9e33-541c6d393591",
+    "b2d44808-3f86-4252-8b03-fb2ac1723959"
+  ],
+  "passages": [
+    {
+      "chunk_id": "519c2eba-5724-45b3-bcbf-dc17c692bd2e",
+      "locator": "first pilot licence in 1929",
+      "text_sha256": "ad2e4d8c6e5e870378c618c9089c2fc9c810e7a85e1913237c89175fb7be1dbc",
+      "excerpt_preview": "Tata received India’s first pilot licence in 1929, numbered Licence No.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c666c5fe-4813-4684-b614-94b48fe7c4bb",
+      "locator": "pilots, engineers, postal contracts",
+      "text_sha256": "a6682f9f75b935050e41595bbe262ba5731c9c8c51669fc5dcf6c128cd0c347e",
+      "excerpt_preview": "The record supports the description of Tata as an aviation pioneer, though civil aviation also depended on pilots, engineers, postal contracts, airports and public regulation.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

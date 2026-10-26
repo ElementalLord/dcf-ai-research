@@ -1,0 +1,68 @@
+{
+  "source_id": "e09fe440-cb23-4395-b7e3-bcc179d574a9",
+  "source": {
+    "author": "Swami Vivekananda",
+    "authority_metadata": {},
+    "citation": "Swami Vivekananda. Paper on Hinduism. Complete Works of Swami Vivekananda. https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_paper_on_hinduism.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Complete Works of Swami Vivekananda",
+    "rights_or_access_note": "Publicly accessible page; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Paper on Hinduism",
+    "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_paper_on_hinduism.htm"
+  },
+  "claim_ids": [
+    "044ff4fd-33c2-459e-90ff-c7a0c68da704",
+    "1326cb2a-0343-4d51-9002-f4504e3e6c9d",
+    "46db9183-cef3-4d3a-b18d-cb583d2fe485",
+    "4efc52f0-280e-41bf-b58e-daf3ad23bf31",
+    "ba271871-9cb1-4689-8bc9-3bee9c9dfd1c"
+  ],
+  "passages": [
+    {
+      "chunk_id": "2531d94f-8fe2-4a79-bbe5-a4faf3dc37fe",
+      "locator": "Paper on Hinduism",
+      "text_sha256": "cd56884675fc408a64b22761f637df3e83f7f6f8ded6774e5cc8a719ff9d4319",
+      "excerpt_preview": "ut God, is: \"I have seen the soul; I have seen God.\" And that is the only condition of perfection. The Hindu religion does not consist in struggles and attempts to believe a certain doctrine or dogma, but in realising — not in believing, bu",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "3470d8f5-5495-43bb-8011-e1ac9c127f2d",
+      "locator": "Paper on Hinduism",
+      "text_sha256": "b553cd4dbdf4443c381a1715523473728a01c21f50b8a2247016c303523eabfb",
+      "excerpt_preview": "ights of the Vedanta philosophy, of which the latest discoveries of science seem like echoes, to the low ideas of idolatry with its multifarious mythology, the agnosticism of the Buddhists, and the atheism of the Jains, each and all have a ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "408472a9-f621-4d51-9bf4-22f2e05cd7e0",
+      "locator": "Paper on Hinduism",
+      "text_sha256": "e794592bf7e51b8cbf6f0be31605fb8d221d4bb50f4f3c788005857241adacaf",
+      "excerpt_preview": "he Son. And he that hath seen the Son hath seen the Father also. This, brethren, is a short sketch of the religious ideas of the Hindus. The Hindu may have failed to carry out all his plans, but if there is ever to be a universal religion, ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "45fe0b0f-eb85-4a3e-af50-5b13a30e7954",
+      "locator": "Paper on Hinduism",
+      "text_sha256": "37302308bd094c1999592fdd4266dd3820f3bcb74934bb269df242c73e3edb93",
+      "excerpt_preview": "← Home / Complete-Works / Volume 1 / Addresses at The Parliament of Religions / → PAPER ON HINDUISM Read at the Parliament on 19th September, 1893 Three religions now stand in the world which have come down to us from time prehistoric — Hin",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e0ec3019-a32e-481d-b45c-490c04b35b57",
+      "locator": "Paper on Hinduism",
+      "text_sha256": "3d9d4493dc50fe20cb20d987a1ba6c4d0a1fcf4e6edd3e4d0a2f7b97fcccce66",
+      "excerpt_preview": "nature is to love Him, and therefore I love. I do not pray for anything; I do not ask for anything. Let Him place me wherever He likes. I must love Him for love's sake. I cannot trade in love.\" The Vedas teach that the soul is divine, only ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

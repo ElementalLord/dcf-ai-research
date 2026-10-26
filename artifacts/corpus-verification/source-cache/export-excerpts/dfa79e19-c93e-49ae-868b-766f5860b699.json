@@ -1,0 +1,41 @@
+{
+  "source_id": "dfa79e19-c93e-49ae-868b-766f5860b699",
+  "source": {
+    "author": "Valmiki Ramayana project",
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana: Textual Introduction (https://www.valmikiramayan.net/utf8/ramayana.shtml)",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Valmiki Ramayana: Textual Introduction",
+    "url": "https://www.valmikiramayan.net/utf8/ramayana.shtml"
+  },
+  "claim_ids": [
+    "deebd153-c2ff-4d14-80f2-5772e8f6f442",
+    "f5851c72-8c59-4e3b-90b9-a1c3834013e6"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1aca410a-48c6-4909-9735-01549a2c4ffc",
+      "locator": "Valmiki Ramayana",
+      "text_sha256": "a201d27caba3808f36ef304ee2dd9ae7e6d21501fbc0b3b2360ec25d81ca9da1",
+      "excerpt_preview": "Srimad Valmiki Ramayana is an epic poem of India which narrates the journey of Virtue  to annihilate vice. Sri  Rama is the Hero and aayana His journey.  We in India believe that Sri Rama lived in Treta Yug, millennia BC and we are presentl",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "529e0591-a7f3-4db8-b6a7-31d8a65edb72",
+      "locator": "Valmiki Ramayana",
+      "text_sha256": "13b1ecd57455f016e742568a7ab1520d61062249ace3c79ddbd02323c24d51cc",
+      "excerpt_preview": "the lyrical values of Ramayana, but as a great devotee-singer said \"Whoever calls you in whatever way, you are that  One\".  Ramayana contains 24,000 verses [sloka]  arranged into numerous cantos [sarga] which are contained in 6 books as  me",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

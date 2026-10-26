@@ -1,0 +1,34 @@
+{
+  "source_id": "e3145122-3dac-4234-9de7-9fab78e0bdfe",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:02.372Z"
+    },
+    "citation": "Hardy's London Mathematical Society Obituary of Ramanujan. London Mathematical Society via MacTutor. https://mathshistory.st-andrews.ac.uk/LMS/ramanujan_lms_obit.pdf",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "London Mathematical Society via MacTutor",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Hardy's London Mathematical Society Obituary of Ramanujan",
+    "url": "https://mathshistory.st-andrews.ac.uk/LMS/ramanujan_lms_obit.pdf"
+  },
+  "claim_ids": [
+    "19e46f3a-0728-4444-8c6a-87d6231e0161"
+  ],
+  "passages": [
+    {
+      "chunk_id": "03da5ce3-1374-4775-9142-18fc77a91807",
+      "locator": "Contemporary obituary",
+      "text_sha256": "1f77b720b4a449347e475ea4a4d4c3dfd73c8a6e5f4c6fe0de16be3f89436870",
+      "excerpt_preview": "nline Library for rules of use; OA articles are governed by the applicable Creative Commons License -- 2 of 10 -- xlii OBITUARY NOTICES II. Ramanujan wrote to me first on January ICth, 1913, and at fairly regular intervals until he sailed f",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

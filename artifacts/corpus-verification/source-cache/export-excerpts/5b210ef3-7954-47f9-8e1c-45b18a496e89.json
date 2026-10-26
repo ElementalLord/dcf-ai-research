@@ -1,0 +1,43 @@
+{
+  "source_id": "5b210ef3-7954-47f9-8e1c-45b18a496e89",
+  "source": {
+    "author": "Garrett Field",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Garrett Field. From Threatened by Modernity to Reinvented by Modernity: The History of the History of Indian Classical Music. Ethnomusicology Review, UCLA. https://ethnomusicologyreview.ucla.edu/journal/volume/15/piece/482",
+    "original_work_identity": {},
+    "publication_year": 2010,
+    "publisher_or_institution": "Ethnomusicology Review, UCLA",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "From Threatened by Modernity to Reinvented by Modernity: The History of the History of Indian Classical Music",
+    "url": "https://ethnomusicologyreview.ucla.edu/journal/volume/15/piece/482"
+  },
+  "claim_ids": [
+    "2171b157-b801-4869-8ad0-36807b2bd51e",
+    "c83e8c0e-d7cb-49c0-a89d-e1c4bcf36577"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1a5dd6e3-b65f-470d-8235-fa608db136c1",
+      "locator": "Reinvented by Modernity; Field on Weidman",
+      "text_sha256": "5d0fd4e507a381f3fc9c52ca2ecb31357eed403d3e60b0fd7037e6bb6ebe48bb",
+      "excerpt_preview": "Next, Weidman argued that the gramophone—presenting a way for women to be heard without being seen to escape the associations of their bodies (ibid:122), and the microphone—enabling singers to sing quietly while projecting a sense of intima",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a049e92a-6675-4552-8b51-1af21e0e9b8f",
+      "locator": "Reinvented by Modernity; Field on Weidman",
+      "text_sha256": "0a3c7598c1165892597c8e6ed4c812ca4648814e51e8ed0ca3aacd53ed86369a",
+      "excerpt_preview": "For Weidman, modernity itself was a result of the contact of cultures in colonial regimes and she viewed the Karnatak violin as the very embodiment of this colonial encounter. Next, Weidman argued that the gramophone—presenting a way for wo",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,52 @@
+{
+  "source_id": "33348d1b-f607-4e12-87cc-785a33300fb6",
+  "source": {
+    "author": "Rosalind O’Hanlon",
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "Rosalind O’Hanlon. Ritual status and political conflict in later nineteenth-century Maharashtra. Cambridge University Press, Caste, Conflict and Ideology, chapter 7. https://www.cambridge.org/core/books/abs/caste-conflict-and-ideology/ritual-status-and-political-conflict-in-later-nineteenthcentury-maharashtra/5B894F9D29677C97AEC50840D3A31CA2",
+    "original_work_identity": {},
+    "publication_year": 1985,
+    "publisher_or_institution": "Cambridge University Press, Caste, Conflict and Ideology, chapter 7",
+    "rights_or_access_note": "Public original; short research excerpts. Scholarly abstract/summary access does not imply full chapter access.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Ritual status and political conflict in later nineteenth-century Maharashtra",
+    "url": "https://www.cambridge.org/core/books/abs/caste-conflict-and-ideology/ritual-status-and-political-conflict-in-later-nineteenthcentury-maharashtra/5B894F9D29677C97AEC50840D3A31CA2"
+  },
+  "claim_ids": [
+    "4ec485d2-b99a-4f06-9202-cf9cc9b18d7e",
+    "80faee7b-f2c6-4927-8b9b-a21959c3ffb4",
+    "deb98894-c83b-4820-ba4c-51db269047cd"
+  ],
+  "passages": [
+    {
+      "chunk_id": "097f7f1c-a4ad-4eac-ad79-b486a142efc4",
+      "locator": "public chapter 7 summary",
+      "text_sha256": "6201f0f5462d55729d1b0be371be7073b70d0d87233ce706aeedd8d0beb6e4f5",
+      "excerpt_preview": "The survival rate amongst the children was very poor, however, and Phule's great-nephew Gajananrao reported that most of them died before the age of five. Phule and his wife Savitribai, without children of their own, adopted one of these, a",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "48277e58-9988-4a48-84a5-6c03249249fe",
+      "locator": "public chapter summary; attributed family report",
+      "text_sha256": "61696e63abaaaa9cef7447036ebb58968fd1678acb7462c49782104227d1334b",
+      "excerpt_preview": "Posters and handbills advertised the home, which quickly collected about thirty-five infants. The survival rate amongst the children was very poor, however, and Phule's great-nephew Gajananrao reported that most of them died before the age ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8d98c74a-e286-4cac-bc66-11d83f363f6c",
+      "locator": "public chapter 7 summary",
+      "text_sha256": "cf12b3a36ca7eb1fb0cb2cc83906a067ddc0819a2dddafa7c9c366b2f9b0a7ea",
+      "excerpt_preview": "He took part in the first attempts in Pune to liberalise attitudes towards the remarriage of widows. In 1863 he made an even bolder move with the opening of a ‘Home for the prevention of infanticide’. Here, high caste widows who had become ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

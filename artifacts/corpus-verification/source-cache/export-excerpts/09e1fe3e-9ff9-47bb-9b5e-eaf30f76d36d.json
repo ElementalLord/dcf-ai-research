@@ -1,0 +1,44 @@
+{
+  "source_id": "09e1fe3e-9ff9-47bb-9b5e-eaf30f76d36d",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "Decisive events of the Indian Rebellion. National Army Museum, London. https://www.nam.ac.uk/explore/decisive-events-indian-mutiny",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "National Army Museum, London",
+    "rights_or_access_note": "Public original; short research excerpts. Scholarly abstract/summary access does not imply full chapter access.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Decisive events of the Indian Rebellion",
+    "url": "https://www.nam.ac.uk/explore/decisive-events-indian-mutiny"
+  },
+  "claim_ids": [
+    "5ac75373-a99a-4554-81de-a180fa162527",
+    "6b5d2f3c-c850-4272-a4a8-c149b2905c0e",
+    "880073e5-70ca-408a-be1e-5e2a5a9daa7f"
+  ],
+  "passages": [
+    {
+      "chunk_id": "83dba5bf-03d4-4c6a-ace1-0482eff8e7ca",
+      "locator": "Gwalior; date disagreement with Leader, 31 July 1858",
+      "text_sha256": "5934a1be375606d38e8de13494ce9f7452291667050c7d972a46c5ac33932c90",
+      "excerpt_preview": "17 June 1858 Leaving Kalpi, Rose marched through the summer heat to Gwalior. He recaptured Morar and then defeated the rebels at Kotah-ke-Serai on 17 June. The Rani was killed in this action.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ce80f0d4-50b3-4e36-951c-a1dcdbc95578",
+      "locator": "Gwalior; June 1858",
+      "text_sha256": "451c324ff5ca641511133f537921898b65b9ca5813d8e7ba530e176135716651",
+      "excerpt_preview": "June 1858 The rebels took their remaining forces into Gwalior, hoping to defeat its pro-British ruler. At Morar, east of Gwalior, Sindia's troops defected to the rebels on 1 June. 17 June 1858 Leaving Kalpi, Rose marched through the summer ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

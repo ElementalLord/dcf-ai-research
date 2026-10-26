@@ -1,0 +1,80 @@
+{
+  "source_id": "76e7203e-991e-4cf3-a340-d79e4446a94d",
+  "source": {
+    "author": "Gajendra Singh",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Gajendra Singh. Indian National Army (Azad Hind Fauj). Oxford Bibliographies in Military History. https://academic.oup.com/reference/62399/reference-article-abstract/574541864",
+    "original_work_identity": {},
+    "publication_year": 2026,
+    "publisher_or_institution": "Oxford Bibliographies in Military History",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Indian National Army (Azad Hind Fauj)",
+    "url": "https://academic.oup.com/reference/62399/reference-article-abstract/574541864"
+  },
+  "claim_ids": [
+    "078c39e6-b94c-4bac-9954-23bdb66686f3",
+    "174ec699-adfd-4cf3-86ef-1cf9aad8409d",
+    "3512f4a7-65c6-4757-bdde-09058a9645d9",
+    "3c9d166e-1757-4c5c-8ff5-3115afbe7df8",
+    "42996e5c-6003-4451-8259-7f1f5c213ef6",
+    "5726f069-8aef-4510-9d8c-59c6dc280cb9",
+    "7b85de08-5ff3-4dba-80c3-197d103f3d59"
+  ],
+  "passages": [
+    {
+      "chunk_id": "126fa11a-442c-4792-891c-66de04a7e6e8",
+      "locator": "Red Fort trials",
+      "text_sha256": "1b91627da29526c1d2cba32811d2be5e68963d7457acaa3475e400f344f856f2",
+      "excerpt_preview": "The Red Fort trials helped create an upsurge in nationalist sentiment, while the extent to which they hastened decolonisation remains debated.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "2a541de0-2184-48da-8c7d-71841cb9ff27",
+      "locator": "Rani of Jhansi Regiment",
+      "text_sha256": "fb6b1c62f885c73d200fc07c26fa8d727ba57893c99e2de1fc6ad5f7835f2d2c",
+      "excerpt_preview": "The Rani of Jhansi Regiment performed nursing work but did not see combat.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "30ff9d46-61c1-41da-b6ba-d47c22d9a2a1",
+      "locator": "3,000-strong Indian Legion",
+      "text_sha256": "a80b929e5602994519d95f6fae755746419da6be16084c84f0cd89d40a503cfb",
+      "excerpt_preview": "Bose established a 3,000-strong Indian Legion in Europe with Nazi German cooperation.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8a829f27-7532-4c71-aafe-18379e6a33a1",
+      "locator": "civilian volunteers",
+      "text_sha256": "e326e656d7943ada9df7b353f3eb04e0a45c7ac7d5a36bb0f093420b61218807",
+      "excerpt_preview": "he INA initially formed from former British Indian Army personnel captured by Japanese forces in late 1941 and early 1942, then incorporated civilian volunteers.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "977b7a7f-cc64-42f5-b847-91f2ac121d7e",
+      "locator": "Arakan and Imphal campaigns",
+      "text_sha256": "195b712172d694c4b3ea63463c75a0b5ef81667c886dabaaf59adae94cec1238",
+      "excerpt_preview": "INA units fought in the Arakan and Imphal campaigns and suffered casualties alongside defeated Japanese forces.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e26944b9-8c43-43d8-8db0-63c8ed02d6b0",
+      "locator": "first phase under Mohan Singh",
+      "text_sha256": "16c64598d304daad8945d87d738f4ceb02248f766f4f1b4a0bee7d45ea5128fd",
+      "excerpt_preview": "Its first phase under Mohan Singh ended in December 1942 amid disagreements with Japanese authorities.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,34 @@
+{
+  "source_id": "f11b191d-68d1-425c-97ca-3524770b6b8f",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:47.711Z"
+    },
+    "citation": "Rigveda 1.176: Agastya hymn. Vedic Heritage Portal, Government of India. https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-176/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Vedic Heritage Portal, Government of India",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Rigveda 1.176: Agastya hymn",
+    "url": "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-176/"
+  },
+  "claim_ids": [
+    "ada86ef9-65af-42cc-9f4b-1a038f17f68e"
+  ],
+  "passages": [
+    {
+      "chunk_id": "67b62d0a-e22e-4f1d-99e2-466638ea3dcd",
+      "locator": "Rigveda 1.176",
+      "text_sha256": "2f7ecb8651bf16460b823e1ea8a1bd4f5e4c30d6fcddcc667aa35dff1aa1208d",
+      "excerpt_preview": "177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 Rigveda – Shakala Samhita – Mandala 01 Sukta 176 /video/RIGSS_01_176.mp4 A A+ ६ अगस्त्यो मैत्रावरुणिः । इन्द्रः। अनुष्टुप्, ६ त्रिष्टुप्। मत्सि॑ नो॒ वस्य॑ इष्टय॒ इन्द्र॑मिन्दो॒ वृष",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

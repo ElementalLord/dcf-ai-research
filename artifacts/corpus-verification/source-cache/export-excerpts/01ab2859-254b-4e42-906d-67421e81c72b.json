@@ -1,0 +1,115 @@
+{
+  "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+  "source": {
+    "author": "Øystein Ore",
+    "authority_metadata": {
+      "verified_at": "2026-10-09T14:28:32.271Z"
+    },
+    "citation": "Øystein Ore. Ramanujan — Complete Dictionary of Scientific Biography. Charles Scribner's Sons; hosted by MacTutor. https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+    "original_work_identity": {},
+    "publication_year": 2008,
+    "publisher_or_institution": "Charles Scribner's Sons; hosted by MacTutor",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Ramanujan — Complete Dictionary of Scientific Biography",
+    "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf"
+  },
+  "claim_ids": [
+    "0b2c7697-5769-46da-8cd9-9803ba52a5b0",
+    "26bdefd9-02ee-4c6d-8056-d60c9ce4fc23",
+    "46736aad-f6bb-47e0-b3db-5b527261036d",
+    "4d7dbe8f-af18-4ca6-a948-cc2b7ce7b0da",
+    "4f719a7e-9a8e-4658-9d3f-1f85056b8e01",
+    "6a0204bb-9cfc-44c7-8d6c-9f3b0ded5325",
+    "79805d3f-c103-4e40-8ded-72dfb49bc7ba",
+    "9a09447e-6d59-408b-b117-44b6d1cf38bd",
+    "be47b43a-987f-4369-a61e-d7757b42d0ed",
+    "d0aa1e8b-a7e3-425a-bdd0-9d680b36836a"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0711765a-d5a4-4381-b02b-54112bd7d41c",
+      "locator": "Biography, mathematical background",
+      "text_sha256": "957b76b2a518159d640ecccc11968c583bf1c304abffb77774df439a06a8ecac",
+      "excerpt_preview": "-- 1 of 2 -- It was inevitable that a large portion of Ramanujan’s results from his notebooks consisted of rediscoveries; he had never had systematic training in mathematics or access to a good library.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "46142016-50d1-42fb-9638-a952b7f6c200",
+      "locator": "Biography, proof practice",
+      "text_sha256": "4170377a47b930d59365e08a5ac3d2c444ea9b8898daec10c2addc37d9a2c5aa",
+      "excerpt_preview": "Most of the theorems in the notebooks were not proved in the standard sense but were only made plausible: “His ideas as to what constituted a mathematical proof were of the most shadowy description.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7499ed0d-98d1-4034-9c51-8514b182bbe4",
+      "locator": "Biography, partitions",
+      "text_sha256": "0de7a173b7292d10fdb70e1b169117dd8ef03caba053e6f5ec2d0420ba557342",
+      "excerpt_preview": "Ramanujan returned to the question of the average number of prime divisors of a number in a paper written with Hardy,’The Normal Number of Prime Factors of a Number n.” The part of Ramanujan’s work that stimulated most contributions from la",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "896bc4fb-d4af-4556-815a-9a408c19e0d9",
+      "locator": "Biography, highly composite numbers",
+      "text_sha256": "dd2278b127842f17fd940f16d3a70e79b9d02ed06b4f101db434397d62ffdadf",
+      "excerpt_preview": "Of greater systematic interest is his long memoir “Highly Composite Numbers,” in which he derived some important properties of these numbers. Ramanujan returned to the question of the average number of prime divisors of a number in a paper ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "afb0c024-8e16-4d5c-88a4-46cdeaf8b88e",
+      "locator": "Biography, recognition",
+      "text_sha256": "40c63d609389b41743b37aab5cb018e3423c5f53366abf7a2a0f9a7772444f69",
+      "excerpt_preview": "In 1918 he was elected a fellow of the Royal Society and in the same year a fellow of Trinity College. These high distinctions seemed to improve his health and stimulate his mathematical production.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ba3d5dfb-9aad-49a3-b543-3da21f30923a",
+      "locator": "Biography, later proof",
+      "text_sha256": "d83adda997f0f484ca5c45dfb2c1bc7fa621342d1561bbc763ac30fe17baf040",
+      "excerpt_preview": "Their result was remarkable, since not only did their formula give good approximations to the values already calculated but also seemed to give an exact expression for p(n); Rademacher later established that this was correct. Ramanujan’s ot",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c0a95063-ce93-4bf5-825b-ddac008b4da1",
+      "locator": "Biography, Cambridge",
+      "text_sha256": "66682ada1aedb2d40f025d18ab2033f5f4b3b96fb63569c3cb45ce6dedbe7b1f",
+      "excerpt_preview": "Very favorable fellowship arrangements were made, and Ramanujan was admitted to Trinity College in 1914. He developed rapidly under the guidance of Hardy and Littlewood, who also helped him to publish his papers in English periodicals.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "dfda9eaa-dc47-4dcd-a15a-738f34e45e73",
+      "locator": "Biography, European papers",
+      "text_sha256": "c924d466bbcb572096af35e69f04a029103deaa286238d87acbf977c78ebe288",
+      "excerpt_preview": "Ramanujan’s first paper published in Europe, “Modular Equations and Approximations to π” contained a number of peculiar and very good approximations to π, many of them by means of square root expressions.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ef99a356-5615-4d17-b994-a3fecab9cbbe",
+      "locator": "Biography, Hardy collaboration",
+      "text_sha256": "a3c5be07410f6f2f203d325533df0a6780e743f6bc83f3a5e39b1f942fdc9ef5",
+      "excerpt_preview": "These papers by Ramanujan on partitions were followed by a joint paper with Hardy on the asymptotic value of p(n). Their result was remarkable, since not only did their formula give good approximations to the values already calculated but a",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fb2f77e5-1c8f-4c6a-bcdd-477817d48315",
+      "locator": "Biography, first letter",
+      "text_sha256": "446ef57eacdcef7cbb21167c740be2a90555cd46aa02e88d99abca07740e4d4b",
+      "excerpt_preview": "In his first letter Ramanujan mentioned his investigations on the distribution of primes and then added more than 100 theorems he had found in various parts of mathematics. Hardy was duly impressed and invited Ramanujan to come to England b",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

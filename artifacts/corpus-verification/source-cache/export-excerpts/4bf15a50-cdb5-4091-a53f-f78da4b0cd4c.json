@@ -1,0 +1,61 @@
+{
+  "source_id": "4bf15a50-cdb5-4091-a53f-f78da4b0cd4c",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-13T14:33:10.135Z"
+    },
+    "citation": "Sri Guru Granth Sahib. Shiromani Gurdwara Parbandhak Committee. https://sgpc.net/sri-guru-granth-sahib-2/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Shiromani Gurdwara Parbandhak Committee",
+    "rights_or_access_note": "Publicly accessible source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Sri Guru Granth Sahib",
+    "url": "https://sgpc.net/sri-guru-granth-sahib-2/"
+  },
+  "claim_ids": [
+    "28e5f5af-6d15-4afb-804d-601b49fa03cb",
+    "29073a05-1796-4353-8db6-b98e310096e0",
+    "519a7f10-4daf-4ac9-80d3-bdc47c3ac214",
+    "dd1c1120-96f5-4f8f-afa4-0f28cbf6e223"
+  ],
+  "passages": [
+    {
+      "chunk_id": "67638495-f8d2-4a6b-97bb-8c33296d331e",
+      "locator": "language of the masses",
+      "text_sha256": "debceff654aea8311aa6453ea1e8461c9605f1b50d4b4073671cae3123115db3",
+      "excerpt_preview": "The Sikh Gurus preached their principles in the language of the masses. The adopted popular forms of poetry such as salok Chhant, Bara Mahan, Thhittin, Bawan Akhari, Var (heroic ballad). The Var is also a song of praise.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6f5850d9-44df-4892-97b2-0134da732e01",
+      "locator": "Formalism and ritualism of Hinduism and Islam",
+      "text_sha256": "63733438b084849678fb027c0dea92f21bca8b70c91462d4757e6c71a0308e55",
+      "excerpt_preview": "Formalism and ritualism of Hinduism and Islam have been condemned. Great spiritual truths have been illustrated through simple and homely similes. The devotional hymns are full of sincerity and emotion.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8ba88c7b-9640-481c-9e5d-043fd5deff6a",
+      "locator": "verses which praised God and denounced superstition and caste",
+      "text_sha256": "23932fa442fe923415761a737704e589d51b92e991d309dccda17ae0925f6a9e",
+      "excerpt_preview": "The major principle of compilation was that verses which praised God and denounced superstition and caste were to be included in the Guru Granth Sahib. As regards the compositions of Bhagats, generally the same principle was observed.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fa54f0ac-a733-4286-871d-abaf56049aa8",
+      "locator": "Japji, Asa-di- Var of Guru Nanak",
+      "text_sha256": "65adbcc73e686de5a6cadd9783ba44697d187cb86eccf1a2ed4d02ec12496324",
+      "excerpt_preview": "The Japji, Asa-di- Var of Guru Nanak, the Anand of Guru Amardas, the Sukhmani of Guru Arjan are rightly esteemed as classics of Panjabi literature. The verses of the ninth Guru are included in the Guru Granth Sahib.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

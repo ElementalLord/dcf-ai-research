@@ -1,0 +1,25 @@
+{
+  "source_id": "5d691354-d41e-4e2b-8f55-8de88be0c506",
+  "source": {
+    "author": "Valmiki (traditional attribution)",
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "IIT Kanpur Valmiki Ramayanam Project",
+    "rights_or_access_note": "The original IITK link has a TLS certificate mismatch. A readable parallel translation of the same Bala Kanda chapter is linked below; compare editions before using a quotation.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayanam, Bala Kanda, Sarga 50",
+    "url": "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=50"
+  },
+  "claim_ids": [
+    "925113d6-b92d-497a-bd0e-ecfcc6cffa5b",
+    "98000dfd-249f-42d3-90ca-cfa8b402a4a0",
+    "998e75fe-790d-4f6b-9cf0-e3bcaf468879"
+  ],
+  "passages": [],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

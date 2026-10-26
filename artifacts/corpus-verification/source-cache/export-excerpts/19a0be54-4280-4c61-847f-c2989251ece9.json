@@ -1,0 +1,65 @@
+{
+  "source_id": "19a0be54-4280-4c61-847f-c2989251ece9",
+  "source": {
+    "author": "Gyasuddin Siddiqi",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Gyasuddin Siddiqi. Sentiments and Patriotism: The Indian National Army, General Elections and the Congress’s Appropriation of the INA Legacy. Modern Asian Studies, Cambridge University Press. https://www.cambridge.org/core/journals/modern-asian-studies/article/abs/sentiments-and-patriotism-the-indian-national-army-general-elections-and-the-congresss-appropriation-of-the-ina-legacy/5078B65021CF091F03535E193281814A",
+    "original_work_identity": {},
+    "publication_year": 2009,
+    "publisher_or_institution": "Modern Asian Studies, Cambridge University Press",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Sentiments and Patriotism: The Indian National Army, General Elections and the Congress’s Appropriation of the INA Legacy",
+    "url": "https://www.cambridge.org/core/journals/modern-asian-studies/article/abs/sentiments-and-patriotism-the-indian-national-army-general-elections-and-the-congresss-appropriation-of-the-ina-legacy/5078B65021CF091F03535E193281814A"
+  },
+  "claim_ids": [
+    "1265081b-c31c-4629-9a51-406a2d9278d6",
+    "16ffb566-e440-4fcb-9bed-1c7a1b240deb",
+    "411cb68f-6a39-40f0-9837-5c3ddbad1a50",
+    "85bca90e-b813-4caf-bd31-b9c85f45c8a1",
+    "941a8b49-0414-4fb1-b3af-a161e4db4908",
+    "97dfff0d-4582-4b06-8df3-f9369f76e19c",
+    "9a0bca9a-c566-4d72-8c4a-d83fee9883fd",
+    "da9fb8a5-f58c-4668-9a1b-7f9a58d39478"
+  ],
+  "passages": [
+    {
+      "chunk_id": "802c2800-8b75-4c73-87c1-f020e98f91b3",
+      "locator": "departed India in January 1941",
+      "text_sha256": "de1e54254b3d46dc1f377d8809054c99b495d2dc0bff313a8ca2d409ceffe6c1",
+      "excerpt_preview": "He departed India in January 1941 to seek help from Britain’s wartime enemies.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a8452595-5a5c-487a-80fc-4cd00062e163",
+      "locator": "fought British forces in eastern India and Burma",
+      "text_sha256": "8d168f26b699284957c1dfb898184d5bf65c800175e28602a9d4605ed8d7ef72",
+      "excerpt_preview": "In 1943 he took control of the INA in Southeast Asia, which fought British forces in eastern India and Burma.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "dee3df46-522e-4117-a0d0-df44bc17b962",
+      "locator": "Congress leaders defended INA prisoners",
+      "text_sha256": "91c34c8736cf11f6b6346d368e7d4d5efe43953d674ae7d6d321ca0af6b276fa",
+      "excerpt_preview": "Congress leaders defended INA prisoners after the war, while the political meaning of that defence and its effects remain matters of historical analysis.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fa63bf8d-4e6f-4b17-8f22-b8ddd4bb0901",
+      "locator": "elected Congress President in 1938 and 1939",
+      "text_sha256": "26fae7a2caa3e335782ab99448f07e3905c97c6f9acabf6f94849f2b5fa50955",
+      "excerpt_preview": "ose was elected Congress President in 1938 and 1939, but resigned in April 1939 after disagreement with Gandhi and a majority of Working Committee members over the nationalist programme.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

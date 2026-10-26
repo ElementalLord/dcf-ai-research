@@ -1,0 +1,32 @@
+{
+  "source_id": "f2873536-aa75-49bb-b23f-bd9434775b1d",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Rigveda, Shakala Samhita, Mandala 7. https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita-2/rigveda-shakala-samhita-mandal-07-sukta-047/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Vedic Heritage Portal / IGNCA / Ministry of Culture",
+    "rights_or_access_note": "Public HTML page; use subject to source review.",
+    "source_status": "candidate",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Rigveda, Shakala Samhita, Mandala 7 — Sukta 047",
+    "url": "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita-2/rigveda-shakala-samhita-mandal-07-sukta-047/"
+  },
+  "claim_ids": [
+    "a4bfc06c-266d-4d21-b757-6c67da6d8e5a"
+  ],
+  "passages": [
+    {
+      "chunk_id": "c02ac2d5-3707-4a76-821e-f076c625167a",
+      "locator": "RV 7.47",
+      "text_sha256": "8e01d3b3485056af93310b77318a72b458fefd8848401214bd4ef928e1670c99",
+      "excerpt_preview": "Home - Samhitas - Rigveda - Shakala Samhita - Mandala 07  SELECT MANDALA Mandala  01 Mandala  02 Mandala  03 Mandala  04 Mandala  05 Mandala  06 Mandala  07 Mandala  08 Mandala  09 Mandala  10 SELECT SUKTA OF MANDALA 07 001 002 003 004 005 ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

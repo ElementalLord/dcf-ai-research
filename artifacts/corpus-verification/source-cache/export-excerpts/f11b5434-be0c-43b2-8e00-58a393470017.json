@@ -1,0 +1,64 @@
+{
+  "source_id": "f11b5434-be0c-43b2-8e00-58a393470017",
+  "source": {
+    "author": "Subhas Chandra Bose",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Subhas Chandra Bose. The Indian Struggle, 1920–1934. National Digital Library of India. https://www.ndl.iitkgp.ac.in/ch_document/dli/dli_ndli/50066",
+    "original_work_identity": {},
+    "publication_year": 1935,
+    "publisher_or_institution": "National Digital Library of India",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "The Indian Struggle, 1920–1934",
+    "url": "https://www.ndl.iitkgp.ac.in/ch_document/dli/dli_ndli/50066"
+  },
+  "claim_ids": [
+    "0ff2fff6-b483-438e-a633-1d5815d8c18d",
+    "17def78a-84f5-447a-b690-6c43e9712d05",
+    "49d64c6e-2a1c-41ca-bd79-871277bf01c1",
+    "81d9eaf0-659c-4543-9dbd-7f72bbc2aa02",
+    "b393911f-b705-4f00-a0d0-9d3387e646f1",
+    "b5ec86c9-df21-44df-a2a9-55017f141401",
+    "b94ef564-158f-4336-b7b1-5cc01c685c40"
+  ],
+  "passages": [
+    {
+      "chunk_id": "17408308-6b61-4b43-996f-404f5dd3b5e7",
+      "locator": "non-cooperation movement",
+      "text_sha256": "bfe40e4ed404e90c2a072c2bd191e9b4518f47c4f8296c098333aa21d2350f49",
+      "excerpt_preview": "He criticized constitutional compromise and described Gandhi’s non-cooperation movement as historically important while disagreeing with its suspension after Chauri Chaura.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "507187e5-8921-4fcc-b25f-b53ce25e4048",
+      "locator": "strong central state",
+      "text_sha256": "73078fe7e8570f61ca52e65ad7038d00a79a45f8f0e48037b468b81ecd563a5c",
+      "excerpt_preview": "He envisaged a strong central state, economic planning and a national army after independence.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a8eda199-4348-440b-a2d5-c14999196d48",
+      "locator": "Chittaranjan Das",
+      "text_sha256": "d70f52242e7af12266134da1e7a8d691795e6d8b73499e36b1add533f5d08514",
+      "excerpt_preview": "He associated his political rise with Chittaranjan Das and argued that India required complete independence, mass mobilisation and a disciplined national organization.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b0cb7874-0984-4ee7-ba82-c565b12d9323",
+      "locator": "resigned from the Indian Civil Service",
+      "text_sha256": "e78a20a1195dd76c06d8014ab8597c7412e0036809a57b62259b40a1cd757547",
+      "excerpt_preview": "ose resigned from the Indian Civil Service before taking up an appointment, choosing the nationalist movement.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

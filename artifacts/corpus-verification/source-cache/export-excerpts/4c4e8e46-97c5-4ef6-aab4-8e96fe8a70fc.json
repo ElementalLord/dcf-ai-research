@@ -1,0 +1,62 @@
+{
+  "source_id": "4c4e8e46-97c5-4ef6-aab4-8e96fe8a70fc",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Remembering Father of White Revolution on this World Milk Day. Gujarat Cooperative Milk Marketing Federation. https://old.amul.com/files/pdf/Worldmilkday_storyinEnglish_31stMay2021.pdf",
+    "original_work_identity": {},
+    "publication_year": 2021,
+    "publisher_or_institution": "Gujarat Cooperative Milk Marketing Federation",
+    "rights_or_access_note": "Short original-page transcript excerpts checked on 2026-10-12; direct fetch intermittent.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Remembering Father of White Revolution on this World Milk Day",
+    "url": "https://old.amul.com/files/pdf/Worldmilkday_storyinEnglish_31stMay2021.pdf"
+  },
+  "claim_ids": [
+    "12210a49-9884-4111-b3ba-b5335c832d8d",
+    "128f0481-c218-4345-92d4-139368a2df7c",
+    "4b36a24a-2c31-4417-a546-05617b0a1fb0",
+    "8a9dd89e-5918-4c14-a150-dd9ca30cf1fb",
+    "947b885a-9d1c-4ea6-b4dc-045ef6d0dc1e"
+  ],
+  "passages": [
+    {
+      "chunk_id": "10005987-ecef-4e74-8faa-0bde2b0c70fa",
+      "locator": "Cooperative retrospective",
+      "text_sha256": "0bbe2ab3bea9df4e09ff4173fa1e395a86732908428b20aec2694e6d41722812",
+      "excerpt_preview": "About 411 farmers in Anand, Gujarat started a cooperative movement dairy in the 1940s for the betterment of farmers under the leadership of Tribhuvandas K. Patel, founder Chairman of Amul and with the support of Sardar Vallabhbhai Patel. Be",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "af3863e4-3f03-4366-b18e-6646b44b45ba",
+      "locator": "Cooperative retrospective",
+      "text_sha256": "66e999cc77764257151b68bfd6f85b2843bf0344a8a4cd82c70a3183151e090d",
+      "excerpt_preview": "The farmers involved were exploited in financial terms by the middleman. To provide better remuneration to farmers and remove the middleman, Tribhuvandas Patel and Sardar Patel helped create the Kaira District Cooperative Milk Producer's Un",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e17c9968-81e2-4223-924d-d80d0de52785",
+      "locator": "Cooperative retrospective",
+      "text_sha256": "fd65851823d0328b767ccaae2927feec705e3ce16322c2c1a02eba6c4bcce76e",
+      "excerpt_preview": "Before that, Polson was supplying milk products to British Army and the Bombay Milk Scheme. The farmers involved were exploited in financial terms by the middleman. To provide better remuneration to farmers and remove the middleman, Tribhuv",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ec669bfe-6a6d-49f7-b9b6-c3c9f718ebf0",
+      "locator": "Cooperative retrospective",
+      "text_sha256": "4f77a0a0afc8e690fe2592bb601d115f68b7659037128ef2a9ecc0f5887ed345",
+      "excerpt_preview": "Patel, founder Chairman of Amul and with the support of Sardar Vallabhbhai Patel. Before that, Polson was supplying milk products to British Army and the Bombay Milk Scheme. The farmers involved were exploited in financial terms by the midd",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

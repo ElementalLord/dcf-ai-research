@@ -1,0 +1,43 @@
+{
+  "source_id": "f9ea5d3d-99f4-4ee6-a092-231872021627",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Śatapatha-Brāhmaṇa 14 (Mādhyandina), Sanskrit e-text. GRETIL, Göttingen Register of Electronic Texts in Indian Languages, Göttingen State and University Library. https://gretil.sub.uni-goettingen.de/gretil/1_sanskr/1_veda/2_bra/satapath/sb_14_u.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "GRETIL, Göttingen Register of Electronic Texts in Indian Languages, Göttingen State and University Library",
+    "rights_or_access_note": "University-hosted Sanskrit e-text; unaccented transliteration.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Śatapatha-Brāhmaṇa 14 (Mādhyandina), Sanskrit e-text",
+    "url": "https://gretil.sub.uni-goettingen.de/gretil/1_sanskr/1_veda/2_bra/satapath/sb_14_u.htm"
+  },
+  "claim_ids": [
+    "57b29ee0-18db-49c5-b81e-59cf808c63b5",
+    "61a900a0-1d72-47a7-a206-b0e0cf923118"
+  ],
+  "passages": [
+    {
+      "chunk_id": "50de653d-8c0a-4148-9091-626301487c9b",
+      "locator": "ŚB 14.6.11.6 (BAU 4.2.4)",
+      "text_sha256": "0f7ead23ccd276f312d1f3bb630f2cf5c28d4288a26d2ce4fe2653c2fcc75a6e",
+      "excerpt_preview": "sa eṣa neti netyātmā agṛhyo na hi gṛhyate'śīryo na hi śīryate'saṅgo'sito na sajyate na vyathate'bhayaṃ vai janaka prāpto'sīti hovāca yājñavalkyaḥ sa hovāca janako vaideho namaste yājñavalkyābhayaṃ tvāgacatādyo no bhagavannabhayaṃ vedayasa i",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f768db0e-6182-4b45-867a-03f202e1227f",
+      "locator": "ŚB 14.5.3.11–14.5.4.1 (BAU 2.3.6–2.4.1)",
+      "text_sha256": "6d2aac2a181c087a8b4e7db1bd57c087ffdd86a06157af84a9fbdce3f622a3b9",
+      "excerpt_preview": "athāta ādeśo neti neti na hyetasmāditi netyanyatparamastyatha nāmadheyaṃ satyasya satyamiti prāṇā vai satyaṃ teṣāmeṣa satyam 14.5.4.[1] maitreyīti hovāca yājñavalkyaḥ udyāsyanvā are'hamasmātsthānādasmi hanta te'nayā kātyāyanyāntaṃ karavāṇīt",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

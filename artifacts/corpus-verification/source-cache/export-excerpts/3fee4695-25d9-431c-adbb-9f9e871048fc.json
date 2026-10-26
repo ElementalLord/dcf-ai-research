@@ -1,0 +1,36 @@
+{
+  "source_id": "3fee4695-25d9-431c-adbb-9f9e871048fc",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Jamison and Brereton, The Rigveda, Book I, Agastya introduction. https://wiswo.org/books/_resources/book-reference-pdfs/Jamison-Brereton-2014-The%20Rigveda-The%20Earliest%20Poetry%20of%20India%20all%203%20Volume%20Sets.pdf",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Oxford University Press / WISWO digital copy",
+    "rights_or_access_note": "Publicly accessible source; brief excerpts stored for research citation.",
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "Jamison and Brereton, The Rigveda, Book I, Agastya introduction",
+    "url": "https://wiswo.org/books/_resources/book-reference-pdfs/Jamison-Brereton-2014-The%20Rigveda-The%20Earliest%20Poetry%20of%20India%20all%203%20Volume%20Sets.pdf"
+  },
+  "claim_ids": [
+    "023afcd5-e9a0-40cc-968b-72143ad0c55a",
+    "448599d4-a69d-47ff-8867-d93a1d42d408",
+    "7251f38b-5611-44b0-848a-6f3817384447",
+    "7caec56a-d170-4dea-8d40-b0b5301af918",
+    "f0eb3ca3-702e-4de4-8fad-ce73176554f9"
+  ],
+  "passages": [
+    {
+      "chunk_id": "ab72bc88-d51d-4c6c-b52a-41dcd809ed59",
+      "locator": "Jamison and Brereton, vol. 1, p. 360 (PDF p. 377)",
+      "text_sha256": "9a0e591f202f9b0ce9f14b9e37623d083f3ed78543544a94205e51f365996b99",
+      "excerpt_preview": "This lively and difficult poetry marks Agastya as one of the great masters of the Rgvedic tradition. He is best known for three hymns, 165, 170, and 171, which together describe how Indra and the Maruts argued over a sacrifice offered by Ag",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

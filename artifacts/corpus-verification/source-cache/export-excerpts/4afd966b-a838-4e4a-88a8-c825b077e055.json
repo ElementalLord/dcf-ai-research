@@ -1,0 +1,97 @@
+{
+  "source_id": "4afd966b-a838-4e4a-88a8-c825b077e055",
+  "source": {
+    "author": "R. C. Majumdar",
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "R. C. Majumdar. The Sepoy Mutiny and the Revolt of 1857: The Rani of Jhansi. 1957 edition, preserved by IGNCA / Central Archaeological Library. https://ignca.gov.in/Asi_data/6048.pdf",
+    "original_work_identity": {},
+    "publication_year": 1957,
+    "publisher_or_institution": "1957 edition, preserved by IGNCA / Central Archaeological Library",
+    "rights_or_access_note": "Scanned PDF; short visually checked transcriptions, original PDF SHA-256 recorded.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "The Sepoy Mutiny and the Revolt of 1857: The Rani of Jhansi",
+    "url": "https://ignca.gov.in/Asi_data/6048.pdf"
+  },
+  "claim_ids": [
+    "0278673b-2889-40c5-97cc-bca6a508bcd9",
+    "0fa84617-f26f-4197-b8ad-089eb10686d6",
+    "19deece8-8678-4241-b398-4a6cf2597ead",
+    "2ad1debb-4ee1-4f31-a4c9-ae7ab4cd7dca",
+    "53a8e7fb-a1ae-416a-8d39-cbe3858b951a",
+    "5ee6922f-3412-4f0c-bb77-2233bfdd00f7",
+    "9f2e8ecd-208b-4b9e-8cfa-9321516cb59c",
+    "b5e9949f-22b0-489e-9936-b69a8467a11d"
+  ],
+  "passages": [
+    {
+      "chunk_id": "413c35bf-d2ac-4134-9577-1bea1d0ca546",
+      "locator": "p. 148; Erskine’s letter of 2 July 1857",
+      "text_sha256": "2059ca64f43dc6638d3d9e54b4d5bbfd4b27f133a35a1752abaa3af8dbd2b02f",
+      "excerpt_preview": "manage the district for the British Government, collecting the revenue, raising such police as may be necessary, and making other proper arrangements.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "532fa5d1-58f1-4030-b3ad-912cdbd3220e",
+      "locator": "p. 148; letter of 14 June 1857",
+      "text_sha256": "08f34ed9188a7ac4f24c8c6d263dd2c2cecd5b4714c5c16e6d65e779d91903e8",
+      "excerpt_preview": "She then mentions that the various chiefs are acting like independent rulers, that the country was being plundered",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "61c2ceab-12d3-4a7a-a60a-dc06564c16d5",
+      "locator": "p. 155; attributed historical interpretation",
+      "text_sha256": "b93e380561f8adb964b2183a77d17aaa06b4f158e356d869b0c03483422288e1",
+      "excerpt_preview": "Even up to March, 1858, when Sir Hugh Rose had already begun his campaign in Central India, the Rani was unable to decide whether to fight against the British or to make terms with them.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8143151e-58ec-464f-92d9-b7e1a7ea75af",
+      "locator": "p. 148; account in the letter of about 12 June 1857",
+      "text_sha256": "490eae46c0d3de774c747a49892f901713ce822f24ab96e64880cd4f64f83533",
+      "excerpt_preview": "The Rani first condemns the cruelty and violence of the forces of Jhansi who killed all the European civil and military officers, the clerks, and all their families.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a4e220c7-85c0-48b4-9cd7-6eec353f3fdc",
+      "locator": "p. 149; Majumdar’s conclusion",
+      "text_sha256": "a18476e7d2388a32ada46ec4345b4f4efc5d652b1fa712c0eaca706a916a79cc",
+      "excerpt_preview": "The only possible verdict of history is, therefore, that the Rani of Jhansi had no share in instigating the mutiny",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "bf9783b5-d8c4-4b0e-8e5b-96be04eed104",
+      "locator": "p. 151; government reply of 23 July 1857",
+      "text_sha256": "74fac9c7a19147ce4b80cbf250b2d2c9038c82e445d09dda669ff79c0049cce6",
+      "excerpt_preview": "this circumstance will not protect her if her account shall turn to be false.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c6ccf0ba-7053-4f1d-89ca-f52c6ea9344e",
+      "locator": "p. 148; letter of about 12 June 1857",
+      "text_sha256": "c011fde667aa48a54c60a82899119ac30278da560aca89b6c18d39990ad6b900",
+      "excerpt_preview": "She also states that these forces acted rudely to her and extorted a great deal of money from her.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "cd02da82-0796-479a-a4a5-fc979b6a9bad",
+      "locator": "p. 147; Pinkney report",
+      "text_sha256": "08bea42b2811d4484da74373571808b852178fa85c254b4047e43075cdc2c755",
+      "excerpt_preview": "on August 10, Tehree (Orcha) state invaded Jhansi, occupied parts of it, and besieged Jhansi fort. Rani of Jhansi expelled Tehree troops",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

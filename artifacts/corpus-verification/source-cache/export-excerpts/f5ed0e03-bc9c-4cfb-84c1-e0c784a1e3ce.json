@@ -1,0 +1,44 @@
+{
+  "source_id": "f5ed0e03-bc9c-4cfb-84c1-e0c784a1e3ce",
+  "source": {
+    "author": "Arthur A. Macdonell",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Arthur A. Macdonell. A History of Sanskrit Literature, Chapter VIII: The Brāhmaṇas. D. Appleton and Company, New York; Wikisource transcription. https://en.wikisource.org/wiki/A_History_of_Sanskrit_Literature/Chapter_8",
+    "original_work_identity": {},
+    "publication_year": 1900,
+    "publisher_or_institution": "D. Appleton and Company, New York; Wikisource transcription",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "A History of Sanskrit Literature, Chapter VIII: The Brāhmaṇas",
+    "url": "https://en.wikisource.org/wiki/A_History_of_Sanskrit_Literature/Chapter_8"
+  },
+  "claim_ids": [
+    "a3fef0fc-46aa-4183-9f89-c48893fec90c",
+    "b4031018-f744-4189-9be2-d73e4e3efaa5",
+    "e2118586-e597-4cd8-b320-044c2924a166"
+  ],
+  "passages": [
+    {
+      "chunk_id": "95aa13a0-e650-4e0c-b409-262e0f41dd72",
+      "locator": "A History of Sanskrit Literature, ch. 8",
+      "text_sha256": "f56e96dd52960a9488429db95c581c13823cbfa863a9179e3630f763b507fca0",
+      "excerpt_preview": "A comparison of these lists seems to justify the conclusion that the first part (called Madhukāṇḍa) and the second (Yājnavalkya-kāṇḍa) existed during nine generations as independent Upanishads within the school of the White Yajurveda, and w",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "cb889632-c152-4bd2-8909-f33fcdc3cfca",
+      "locator": "A History of Sanskrit Literature, ch. 8",
+      "text_sha256": "e73d252f0f21be33fb4b092417a166bb76906a5e7f9abaff79c8abc202d68718",
+      "excerpt_preview": "The hero of these is Yājnavalkya, who, himself a pupil of Āruṇi, is regarded as the chief spiritual authority in the Brāhmaṇa (excepting Books VI.-X.). Certain passages of the Brāhmaṇa render it highly probable that Yājnavalkya was a native",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

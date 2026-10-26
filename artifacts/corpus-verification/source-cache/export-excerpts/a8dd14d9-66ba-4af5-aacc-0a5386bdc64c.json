@@ -1,0 +1,52 @@
+{
+  "source_id": "a8dd14d9-66ba-4af5-aacc-0a5386bdc64c",
+  "source": {
+    "author": "Julius Eggeling",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Julius Eggeling. Introduction to The Satapatha-Brahmana, Part I (Sacred Books of the East 12). Clarendon Press, Oxford; transcription archived from sacred-texts.com. https://web.archive.org/web/2023id_/https://www.sacred-texts.com/hin/sbr/sbe12/sbe1202.htm",
+    "original_work_identity": {},
+    "publication_year": 1882,
+    "publisher_or_institution": "Clarendon Press, Oxford; transcription archived from sacred-texts.com",
+    "rights_or_access_note": "Public-domain 1882 introduction; transcription read through the Internet Archive Wayback Machine.",
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "Introduction to The Satapatha-Brahmana, Part I (Sacred Books of the East 12)",
+    "url": "https://web.archive.org/web/2023id_/https://www.sacred-texts.com/hin/sbr/sbe12/sbe1202.htm"
+  },
+  "claim_ids": [
+    "9235138e-1430-4350-a3a6-1fab84afa0fc",
+    "9a13397b-69a8-45c5-839d-0fc8d7f94f4e",
+    "aeeb1610-f68f-4803-b69e-1550032c5828"
+  ],
+  "passages": [
+    {
+      "chunk_id": "5f672947-edfa-48be-8038-7696beb21b05",
+      "locator": "SBE 12, Introduction, pp. xxvii–xxviii, note",
+      "text_sha256": "2b841503e614c63a29121a97543b4f10e1eb816d87f909e1989a4ef37b40eb29",
+      "excerpt_preview": "According to the story alluded to, Yâgñavalkya, having been taught the old Yagus texts by Vaisampâyana, incurred the displeasure of his teacher, and was forced by him to disgorge the sacred science which, on falling to the ground, became so",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ab4ca36f-a447-45cb-b423-f6a378a9a55f",
+      "locator": "SBE 12, Introduction, pp. xxvi–xxvii",
+      "text_sha256": "47f83fb25639c97970203cfb9710bc993eeef3e73b71a680c5a8e1fa10b20e91",
+      "excerpt_preview": "It was with the view of remedying this want of arrangement, by entirely separating the exegetic matter from the formulas, that the new school of Adhvaryus was founded. The name given to this school is Vâgasaneyins, its origin being ascribed",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ae6043ff-f57f-4c34-8a9c-67d889b80165",
+      "locator": "SBE 12, Introduction, pp. xxx–xxxi",
+      "text_sha256": "894b4b716bcb08a3ea636009071283e9477f94d0493062be8addbdb8e45a9585",
+      "excerpt_preview": "As regards the earlier portion of the work, however, it is a remarkable fact that, while in the first five books Yâgñavalkya's opinion is frequently recorded as authoritative 1, he is not once mentioned in the four succeeding kândas (6-9). ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

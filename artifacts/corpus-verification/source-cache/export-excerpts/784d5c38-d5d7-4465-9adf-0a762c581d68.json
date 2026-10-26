@@ -1,0 +1,61 @@
+{
+  "source_id": "784d5c38-d5d7-4465-9adf-0a762c581d68",
+  "source": {
+    "author": "Ellen Embleton",
+    "authority_metadata": {
+      "verified_at": "2026-10-09T14:28:25.928Z"
+    },
+    "citation": "Ellen Embleton. Revisiting Ramanujan. Royal Society. https://royalsociety.org/blog/2018/10/revisiting-ramanujan/",
+    "original_work_identity": {},
+    "publication_year": 2018,
+    "publisher_or_institution": "Royal Society",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Revisiting Ramanujan",
+    "url": "https://royalsociety.org/blog/2018/10/revisiting-ramanujan/"
+  },
+  "claim_ids": [
+    "02673619-894a-418f-ab9a-ab70388921eb",
+    "285a1a93-e013-4e8d-abeb-1fc6f10b0370",
+    "48f4d44c-fa37-4778-a9a9-1e883a58674b",
+    "df488441-3145-41a2-bb41-5bf5d773aa6e"
+  ],
+  "passages": [
+    {
+      "chunk_id": "09f67d23-2242-47af-b646-2e0ea444e453",
+      "locator": "Royal Society archive, early work",
+      "text_sha256": "d8d7150db6ec4403afe97c485e8b7f4e066182695d7411c2223ff813eede8798",
+      "excerpt_preview": "By this point he had already had papers published in the Journal of the Indian Mathematical Society, the first of which, ‘Some properties of Bernoulli’s numbers’ (1911) can be found in the Royal Society Library and is currently on display i",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "0ce9087b-ae7f-4260-893e-d5594c60256d",
+      "locator": "Royal Society archive, Hardy testimony",
+      "text_sha256": "9604d98bc663f514fdacecbe1be542c3f7707156daa4e86053f7caa971a999b9",
+      "excerpt_preview": "Some of the formulae were familiar, and others seemed scarcely possible to believe … one thing was obvious, that the writer was a mathematician of the highest quality, a man of altogether exceptional originality and power.’ (G.H. Hardy, in ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "16c60ad4-e928-492d-8284-28511a46c3fb",
+      "locator": "Royal Society archive, election",
+      "text_sha256": "033c94084b2fa8f9c39bfe0178d3e3e00ed3b3d1cd0175b6750fe49a5e5f4ddb",
+      "excerpt_preview": "Ramanujan was made a Fellow of the Society on 2 May 1918. Though already suffering from the illness that would eventually take his life, it is said that his election stimulated him to the discovery of some of his ‘most beautiful’ theorems.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c6a148b3-6343-4016-94ca-4849cb0e0fbd",
+      "locator": "Royal Society archive, joint paper",
+      "text_sha256": "c4912076bb8a89165b339364673183bc7e2d495f169e1ccdde646c80b7b605e9",
+      "excerpt_preview": "We have on display one of Ramanujan and Hardy’s most significant joint contributions, ‘On the coefficients in the expansions of certain modular functions’ (1918). Published in the Society’s own Proceedings journal, this paper formed part of",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

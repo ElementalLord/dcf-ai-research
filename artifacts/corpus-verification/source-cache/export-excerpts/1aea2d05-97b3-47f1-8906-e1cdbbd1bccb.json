@@ -1,0 +1,32 @@
+{
+  "source_id": "1aea2d05-97b3-47f1-8906-e1cdbbd1bccb",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Letter by Ramanujan on mock theta functions. Trinity College Library, Cambridge. https://archives.trin.cam.ac.uk/index.php/letter-by-ramanujan-on-mock-theta-functions-2?sf_culture=en",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Trinity College Library, Cambridge",
+    "rights_or_access_note": "Publicly accessible research excerpt only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Letter by Ramanujan on mock theta functions",
+    "url": "https://archives.trin.cam.ac.uk/index.php/letter-by-ramanujan-on-mock-theta-functions-2?sf_culture=en"
+  },
+  "claim_ids": [
+    "e2c9d704-a3c5-4935-ab30-073368087c5d"
+  ],
+  "passages": [
+    {
+      "chunk_id": "5a554664-683f-4a08-9bb3-5a1e21faff30",
+      "locator": "Letter by Ramanujan on mock theta functions",
+      "text_sha256": "555a00c6a04f7c7c76f999f54f99da98dc8713bd2116f8dc99e4e76ab7d8c55a",
+      "excerpt_preview": "ntent Archive Site Trinity College Cambridge Quick search Search File 14 - Letter by Ramanujan on mock theta functions Identity area Reference codeAdd. MS a/94/14 TitleLetter by Ramanujan on mock theta functions Date(s) 12 Jan 1920 (Creatio",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

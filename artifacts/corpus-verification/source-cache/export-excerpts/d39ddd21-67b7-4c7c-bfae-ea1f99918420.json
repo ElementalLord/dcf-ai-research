@@ -1,0 +1,53 @@
+{
+  "source_id": "d39ddd21-67b7-4c7c-bfae-ea1f99918420",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.63, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 63 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga63/bala_63_prose.htm"
+  },
+  "claim_ids": [
+    "0c73e76e-6d41-4831-ab52-92cb3e140a02",
+    "1a10ad90-85e2-4a01-8e3e-57e9b26ed54f",
+    "1c0f0a3c-38e8-4ff7-99e6-08f1a6dfb7dc",
+    "28fae74f-9fed-454e-a367-094a03e0e39e",
+    "2b83e277-2744-4aea-ac1a-cbf3ff205cc1",
+    "4b527ad6-0edd-4d2c-9aee-d3df728949a5",
+    "5909bf8a-b6ac-425f-b74c-a9df3fe197de",
+    "7562e441-ee71-4c12-a9a4-8769da12c232",
+    "88575aed-b45d-4148-b30f-2af470dd8103",
+    "921abb4e-69b7-4225-92ef-fddac41f8f66",
+    "948f90bd-4f53-42e7-8c19-190892b0918d",
+    "b6948da1-9a8d-4be6-abf9-b618ccccbcd9"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1c601c57-75d6-404c-868e-11361f2be7ee",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\niSarga 63 n Prose",
+      "text_sha256": "9e48513e1b41cb067016cfcc5ddfa4beffd567a1b46ae2889a9083868cff4547",
+      "excerpt_preview": "\" 'All this is the mischief of gods to defraud me of the great merit of my ascesis.  Ten years have rolled by as if they are just a day and a night. Furthermore, I who  am under the influence of lust and lure had to encounter this hindrance",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9c862712-4d53-404e-a5bb-1c24e1296451",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\niSarga 63 n Prose",
+      "text_sha256": "a375f72d58a40451885c62e51cc4b198c4e7944073cb1ab4efa37b87d65130b8",
+      "excerpt_preview": "On Vishvamitra's performing severe ascesis Brahma accords the sageship   of 'Great-sage' to him, whereas Vishvamitra's ambition is to acquire   the sageship of a 'Brahma-sage' Absolute-sageship. In the meanwhile,   the celestial wench Menak",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

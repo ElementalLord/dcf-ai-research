@@ -1,0 +1,34 @@
+{
+  "source_id": "ac1c9e7d-6931-4097-98fc-83e8a1cf664c",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:07.064Z"
+    },
+    "citation": "Karma-Yoga: The Secret of Work. Complete Works of Swami Vivekananda. https://www.ramakrishnavivekananda.info/vivekananda/volume_1/karma-yoga/secret_of_work.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Complete Works of Swami Vivekananda",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Karma-Yoga: The Secret of Work",
+    "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/karma-yoga/secret_of_work.htm"
+  },
+  "claim_ids": [
+    "57dbbab7-53e7-490c-982d-bbf7693a3325"
+  ],
+  "passages": [
+    {
+      "chunk_id": "aeb64586-ac0c-4aed-b676-6ab634547e9d",
+      "locator": "Collected lecture",
+      "text_sha256": "ed420b2323d2e26dd5fac306d99f039742edb9971dbbb69fb62cfb1ca1ac7224",
+      "excerpt_preview": "← Home / Complete-Works / Volume 1 / Karma-Yoga / → CHAPTER III THE SECRET OF WORK Helping others physically, by removing their physical needs, is indeed great, but the help is great according as the need is greater and according as the hel",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

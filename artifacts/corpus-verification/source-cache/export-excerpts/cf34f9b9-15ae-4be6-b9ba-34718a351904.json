@@ -1,0 +1,45 @@
+{
+  "source_id": "cf34f9b9-15ae-4be6-b9ba-34718a351904",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_kind": "Contemporary royal pillar inscriptions concerning Buddhist sites",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Ashoka Library: Rummindei and Nigali Sagar Pillar Inscriptions. University of Oslo / University of Texas at Austin. https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=378",
+    "original_work_identity": {},
+    "publication_year": 2014,
+    "publisher_or_institution": "University of Oslo / University of Texas at Austin",
+    "rights_or_access_note": "Short documented research excerpts only; source layer is shown so translation, later tradition and modern scholarship are not conflated.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Ashoka Library: Rummindei and Nigali Sagar Pillar Inscriptions",
+    "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=378"
+  },
+  "claim_ids": [
+    "0f0589ac-0b75-479c-ba43-08ec250e1beb",
+    "b1f391e8-502c-4078-80b9-69265174c8e1",
+    "e95a563f-ff64-49e9-90b7-c6fae169bdd6"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0dba1dfb-0e5e-4f65-85ea-69de02069cba",
+      "locator": "Buddha Sakyamuni was born here",
+      "text_sha256": "4e335e08e6b651a23d9e63cf9d851d6e04a5512fcb2f26051106fbb956e116b6",
+      "excerpt_preview": "ing Piyadasi, beloved of the gods, having been consecrated twenty years, came himself and worshipped, because the Buddha Sakyamuni was born here.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "10d33019-e827-4fa6-bb11-eee858371da6",
+      "locator": "enlarged the stupa",
+      "text_sha256": "44843afa187c23f9d402d4e0f162c102edc758049bfa5caaf03179700f937ced",
+      "excerpt_preview": "When he had been consecrated fourteen years, King Piyadasi enlarged the stupa of the Buddha Konakamana; when he had been consecrated twenty years, he came himself and worshipped.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

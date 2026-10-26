@@ -1,0 +1,35 @@
+{
+  "source_id": "c23e92e1-d8a8-4e87-8476-09120bed5d01",
+  "source": {
+    "author": "Traditional Vedic text",
+    "authority_metadata": {},
+    "citation": "Rigveda 3.33, Shakala Samhita. Vedic Heritage Portal.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Vedic Heritage Portal, IGNCA, Ministry of Culture, Government of India",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Rigveda Shakala Samhita — Mandala 3, Sukta 33",
+    "url": "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-033/"
+  },
+  "claim_ids": [
+    "7b03f702-ca50-452c-b6e4-03894f1e84a8",
+    "a953ef3f-5b7a-492b-bf55-a38553087bb5",
+    "b17c2307-937a-4cdf-897b-7ade4295182f",
+    "e8a2e30c-1b64-4e28-90e2-c897a66f3f3e"
+  ],
+  "passages": [
+    {
+      "chunk_id": "28e43212-3a25-40bd-b90a-b626c17c3dfc",
+      "locator": "Links",
+      "text_sha256": "6ee7ff9f6b95fa692716b4947524221fe2f55ffb81353bd8b825140638a41e15",
+      "excerpt_preview": "Hindi Translation by Pt. Sripada Damodara Satavalekar  English Translation by H.H. Wilson  Commentary of Sayanacharya",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

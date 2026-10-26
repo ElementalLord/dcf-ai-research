@@ -1,0 +1,36 @@
+{
+  "source_id": "dce0aa42-af66-4b99-a8b6-aa89fe5c7a1e",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "History of the Tata Institute of Social Sciences. Tata Institute of Social Sciences. https://www.tiss.edu/view/6/about-tiss/history/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Tata Institute of Social Sciences",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "History of the Tata Institute of Social Sciences",
+    "url": "https://www.tiss.edu/view/6/about-tiss/history/"
+  },
+  "claim_ids": [
+    "e59c32eb-0dc8-4830-a1ff-c543559cd2e8",
+    "ece4d18b-3953-4999-a6e1-37e637a08f55"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0de01bdc-1210-4818-acce-0d92b78c8551",
+      "locator": "established in 1936",
+      "text_sha256": "7cf9a6001abe1a2a4af9819fbcf0995f10bb89aa6d37d24a9c6e229e33df2790",
+      "excerpt_preview": "he Sir Dorabji Tata Graduate School of Social Work was established in 1936 and renamed the Tata Institute of Social Sciences in 1944.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

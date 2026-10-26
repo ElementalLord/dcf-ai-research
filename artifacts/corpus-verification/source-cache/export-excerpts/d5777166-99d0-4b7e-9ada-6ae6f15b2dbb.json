@@ -1,0 +1,55 @@
+{
+  "source_id": "d5777166-99d0-4b7e-9ada-6ae6f15b2dbb",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Guide to Microfilms of Indian Collection. National Archives of India. https://nationalarchives.nic.in/sites/default/files/2026-01/10.Guide%20to%20Microfilms%20of%20Indian%20Collection.pdf",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "National Archives of India",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Guide to Microfilms of Indian Collection",
+    "url": "https://nationalarchives.nic.in/sites/default/files/2026-01/10.Guide%20to%20Microfilms%20of%20Indian%20Collection.pdf"
+  },
+  "claim_ids": [
+    "37a2aab4-0a9c-43da-ac63-8b813e0fea3b",
+    "4a2afe7f-402d-4b8b-b99b-37a4bf8b7390",
+    "4db826e6-907d-4e2f-b8cd-16085c0074e1",
+    "961458a5-0906-4c7a-bed5-f3bdf5df8f0c",
+    "a7eb47f8-6604-466b-b430-9d6fd0bf2f24",
+    "ddf282aa-dc2e-4a28-b7b2-578871a02555"
+  ],
+  "passages": [
+    {
+      "chunk_id": "78e7b534-d8f0-4c38-9427-38ce4a785559",
+      "locator": "trial and prison records survive",
+      "text_sha256": "0523e543a7551c62a19c7d76fdb869327dcf5deaaad9238a36918d13b7f55e4b",
+      "excerpt_preview": "The guide makes clear that trial and prison records survive as archival material.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "bff457b8-ff36-4e27-8c81-876e58987d81",
+      "locator": "Assembly Bomb Case",
+      "text_sha256": "ae93de297d6d6d384171887e88cdc88f8cab2b6779094e614a7d2185e076dacf",
+      "excerpt_preview": "he National Archives guide lists papers for the Assembly Bomb Case involving Bhagat Singh and Batukeshwar Dutt in 1929, documents from the Lahore Conspiracy Case, and an address declining participation before the Special Tribunal in 1930.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "de063369-1e8f-45f1-81a2-b337442c2fd3",
+      "locator": "Saunders murder",
+      "text_sha256": "46dc450a52e1ab19ce71d519dbb79179743d5893e7161cd085075026973b72cc",
+      "excerpt_preview": "Its catalogue describes Singh and associates as later tried in connection with the Saunders murder and records execution on 23 March 1931.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

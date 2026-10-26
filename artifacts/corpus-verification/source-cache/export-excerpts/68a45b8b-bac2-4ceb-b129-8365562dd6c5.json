@@ -1,0 +1,73 @@
+{
+  "source_id": "68a45b8b-bac2-4ceb-b129-8365562dd6c5",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Pather Panchali (1955). British Film Institute. https://www.bfi.org.uk/film/bfbb9ef1-1b2c-58fd-b030-4f50c4827d91/pather-panchali",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "British Film Institute",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Pather Panchali (1955)",
+    "url": "https://www.bfi.org.uk/film/bfbb9ef1-1b2c-58fd-b030-4f50c4827d91/pather-panchali"
+  },
+  "claim_ids": [
+    "0dfa6ec0-f770-4b01-9425-83d169c2e9f2",
+    "356cc62a-fbb0-4dc0-ae90-c9b94ef3d2c5",
+    "62335617-105a-4086-8a5c-efe4dde05070",
+    "6f9bc708-4a89-4f0b-823a-666d5c61b751",
+    "8ffbecea-a36f-4f7b-bffb-7d9856edf3a5",
+    "901daf5e-1f18-4de7-ad67-e3dcd2795b88",
+    "bccf145e-3d4b-4ab0-bbcc-3c2c3caece93"
+  ],
+  "passages": [
+    {
+      "chunk_id": "3a8cf085-fb78-4848-8bed-12428c69135f",
+      "locator": "debut and the first film",
+      "text_sha256": "2cf4c5de00a03c32cecc4f5b94c419018612cf43bd64904c1f230048fe77e747",
+      "excerpt_preview": "ather Panchali was Ray’s debut and the first film of the Apu Trilogy.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "3c263afa-12e5-42a5-801e-8e3b22ee2081",
+      "locator": "Parallel Cinema",
+      "text_sha256": "2b8e0dda34d9e19ce57b09444d0fd2d655a3b9d199afcefe8658851673a7c113",
+      "excerpt_preview": "Later critics connect its achievement to Indian Parallel Cinema, but that movement developed through many filmmakers and institutions.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4b893f77-bbec-485d-80e7-593300cbfa33",
+      "locator": "international circulation",
+      "text_sha256": "27505ebcb758dc254be291cdbf33881f8f56014a388d8eafe10d5b4f2513b150",
+      "excerpt_preview": "Its international circulation drew attention to a Bengali art cinema distinct from dominant commercial forms.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b23e721d-236c-4c93-946f-a18dc878764c",
+      "locator": "Italian neorealism",
+      "text_sha256": "ec77f8543ac57f0ff79dba24ea2f48cbb5fbdad2010137e727d22745f270ff47",
+      "excerpt_preview": "The example of Italian neorealism, especially Bicycle Thieves, encouraged Ray to pursue low-budget location filmmaking focused on ordinary life.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "cc932732-f1b8-4252-afa1-bc2540eccbfe",
+      "locator": "discovery, hardship, joy and death",
+      "text_sha256": "19a2c978939fd16baf43b2e9cef379607c6aa9e8e7cdc2af09448011ebed4a28",
+      "excerpt_preview": "The film’s visual lyricism holds discovery, hardship, joy and death within the same village world.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

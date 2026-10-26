@@ -1,0 +1,1212 @@
+[
+  {
+    "claim_id": "1ce09b33-1e0f-4853-8440-ff35a63e31dd",
+    "personality": "C. V. Raman",
+    "original_claim_text": "Raman invited Max Born to IISc as a Reader in Theoretical Physics in 1935.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Raman invited Max Born to IISc as a Reader in Theoretical Physics in 1935.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "d7691143-40b3-4088-8ddb-90caadebea0b",
+        "url": "https://iisc.ac.in/wp-content/uploads/2018/03/CV_RAMAN_AND_PHYSICS_AT_IISc.pdf",
+        "locator": "PDF p. 1, lines 26–34",
+        "source_authority": "Indian Institute of Science official institutional history leaflet, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The IISc leaflet expressly says Raman invited Born in 1935 as Reader in Theoretical Physics.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional retrospective; exact appointment paperwork not inspected.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "6ec58b8d-6bc3-4390-b3a4-b9a3251f5f6f",
+    "personality": "C. V. Raman",
+    "original_claim_text": "G. N. Ramachandran, S. Ramaseshan, and Vikram Sarabhai were among Raman's students at IISc.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "G. N. Ramachandran, S. Ramaseshan, and Vikram Sarabhai were among Raman's students at IISc.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "d7691143-40b3-4088-8ddb-90caadebea0b",
+        "url": "https://iisc.ac.in/wp-content/uploads/2018/03/CV_RAMAN_AND_PHYSICS_AT_IISc.pdf",
+        "locator": "PDF p. 1, lines 19–25",
+        "source_authority": "Indian Institute of Science official institutional history leaflet, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The IISc leaflet lists all three as Raman’s students.",
+    "original_source_inspected": true,
+    "material_limitation": "The leaflet gives no dates or degree relationships.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a5bc4238-53c0-4193-9c98-ecef855ed2f0",
+    "personality": "C. V. Raman",
+    "original_claim_text": "Raman became the first Indian Director of the Indian Institute of Science in 1933.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Raman became the first Indian Director of the Indian Institute of Science in 1933.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "d7691143-40b3-4088-8ddb-90caadebea0b",
+        "url": "https://iisc.ac.in/wp-content/uploads/2018/03/CV_RAMAN_AND_PHYSICS_AT_IISc.pdf",
+        "locator": "PDF p. 1, lines 3–7",
+        "source_authority": "Indian Institute of Science official institutional history leaflet, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The IISc leaflet names Raman first Indian director and dates entry to 31 March 1933.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional retrospective.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b304d59a-03af-4ac4-8d8a-ec42ade9b652",
+    "personality": "C. V. Raman",
+    "original_claim_text": "Raman established IISc's Department of Physics in 1933.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Raman established IISc's Department of Physics in 1933.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "d7691143-40b3-4088-8ddb-90caadebea0b",
+        "url": "https://iisc.ac.in/wp-content/uploads/2018/03/CV_RAMAN_AND_PHYSICS_AT_IISc.pdf",
+        "locator": "PDF p. 1, lines 3–7",
+        "source_authority": "Indian Institute of Science official institutional history leaflet, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The IISc leaflet expressly says he established the Department of Physics in 1933.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional retrospective; departmental founding records not inspected.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0f7737cd-0303-400f-817b-52ded2beddd4",
+    "personality": "C. V. Raman",
+    "original_claim_text": "The Raman Research Institute was initially funded by Raman and private donations.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Raman Research Institute was initially funded by Raman and private donations.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "12a36918-2787-41d3-8457-6d2eae056465",
+        "url": "https://www.rri.res.in/about/overview",
+        "locator": "lines 15–17",
+        "source_authority": "Raman Research Institute official institutional overview, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The institute’s official overview says it was personally funded by Raman and private donations.",
+    "original_source_inspected": true,
+    "material_limitation": "The precise financing amounts and dates are not given.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "86985b26-e282-476e-ad16-3ef4594e7eef",
+    "personality": "C. V. Raman",
+    "original_claim_text": "Raman founded the Indian Academy of Sciences in 1934.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Raman founded the Indian Academy of Sciences in 1934.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "12a36918-2787-41d3-8457-6d2eae056465",
+        "url": "https://www.rri.res.in/about/overview",
+        "locator": "lines 18–20",
+        "source_authority": "Raman Research Institute official institutional overview, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The institute’s official overview states that Raman founded the Indian Academy of Sciences in 1934.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional retrospective; Academy charter not separately inspected.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "c513228c-6a62-4646-815a-ef6a96b0c8f2",
+    "personality": "C. V. Raman",
+    "original_claim_text": "Raman founded the Raman Research Institute in 1948 after retiring from IISc.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Raman founded the Raman Research Institute in 1948 after retiring from IISc.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "12a36918-2787-41d3-8457-6d2eae056465",
+        "url": "https://www.rri.res.in/about/overview",
+        "locator": "lines 15–19",
+        "source_authority": "Raman Research Institute official institutional overview, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The institute’s overview identifies the 1948 founding after Raman’s IISc retirement.",
+    "original_source_inspected": true,
+    "material_limitation": "The source presents the institute’s founding perspective.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "fc2bd190-62fb-4dfc-8530-716df5df36e8",
+    "personality": "C. V. Raman",
+    "original_claim_text": "Raman directed the Raman Research Institute and pursued research there until 1970.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Raman directed the Raman Research Institute and pursued research there until 1970.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "12a36918-2787-41d3-8457-6d2eae056465",
+        "url": "https://www.rri.res.in/about/overview",
+        "locator": "lines 15–17",
+        "source_authority": "Raman Research Institute official institutional overview, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The institute states Raman remained its director and carried on research until his death in 1970.",
+    "original_source_inspected": true,
+    "material_limitation": "The source does not detail each research project.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "180328bf-d785-4a6e-9287-9b20d04411ff",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam recalled missing selection as an Air Force pilot and moving into technical work in aerospace and defence instead.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam recalled missing selection as an Air Force pilot and moving into technical work in aerospace and defence instead.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "bfe4fc55-cb3b-4d50-848d-50baf547fd95",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/questionnaire-foreign-journalist",
+        "locator": "lines 34–43",
+        "source_authority": "A. P. J. Abdul Kalam, 2003 interview answers hosted by President of India, first-person primary testimony, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Kalam directly recounts not entering the Air Force as a pilot and beginning technical work in the cited answer.",
+    "original_source_inspected": true,
+    "material_limitation": "Self-report; the exact selection process is not independently reconstructed.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1c531c7b-124d-4103-9f1c-87c8f9114fcd",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam used Dhawan's response to SLV failure and success as a model of leaders taking responsibility for setbacks and sharing credit for success.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam used Dhawan's response to SLV failure and success as a model of leaders taking responsibility for setbacks and sharing credit for success.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "bfe4fc55-cb3b-4d50-848d-50baf547fd95",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/questionnaire-foreign-journalist",
+        "locator": "lines 41–43",
+        "source_authority": "A. P. J. Abdul Kalam, 2003 interview answers hosted by President of India, first-person primary testimony, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Kalam recounts Dhawan taking responsibility after SLV-III failure and giving team credit after success, then explicitly states the leadership lesson.",
+    "original_source_inspected": true,
+    "material_limitation": "This is Kalam’s retrospective interpretation of events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "86c3e492-11eb-4ce7-854a-435f7fa80d47",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam credited Satish Dhawan with appointing him SLV project director and supporting him through its first failed orbital attempt.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam credited Satish Dhawan with appointing him SLV project director and supporting him through its first failed orbital attempt.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "bfe4fc55-cb3b-4d50-848d-50baf547fd95",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/questionnaire-foreign-journalist",
+        "locator": "lines 41–43",
+        "source_authority": "A. P. J. Abdul Kalam, 2003 interview answers hosted by President of India, first-person primary testimony, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Kalam directly says Dhawan appointed him project director in 1973 and describes the initial unsuccessful launch.",
+    "original_source_inspected": true,
+    "material_limitation": "This is Kalam’s first-person recollection.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "cd5f243a-2303-4e8b-89c8-f4f8db25bf04",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam described work spanning rockets, target aircraft, hovercraft, missiles, and fighter-aircraft design across ISRO and DRDO.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam described work spanning rockets, target aircraft, hovercraft, missiles, and fighter-aircraft design across ISRO and DRDO.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "bfe4fc55-cb3b-4d50-848d-50baf547fd95",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/questionnaire-foreign-journalist",
+        "locator": "line 41",
+        "source_authority": "A. P. J. Abdul Kalam, 2003 interview answers hosted by President of India, first-person primary testimony, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Kalam lists these technical areas in his own answer.",
+    "original_source_inspected": true,
+    "material_limitation": "The answer does not separate which employer was responsible for each project.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "2cb39f70-470f-4d22-918f-a9d7fb8651c0",
+    "personality": "Jagadish Chandra Bose",
+    "original_claim_text": "John Burdon-Sanderson’s earlier work on Venus flytrap predates Bose’s plant-electrophysiology program, so Bose should not be described as the sole originator of plant electrical-response research.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "John Burdon-Sanderson’s earlier work on Venus flytrap predates Bose’s plant-electrophysiology program, so Bose should not be described as the sole originator of plant electrical-response research.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6702694/",
+        "locator": "lines 80–84; references 3–4, lines 155–160",
+        "source_authority": "Prakash Narain Tandon, 2019 Indian Journal of Medical Research scholarly review, full text inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Tandon explicitly recognizes Burdon-Sanderson’s earlier Dionaea research and cites his 1873 Royal Society report; Bose’s plant studies came later.",
+    "original_source_inspected": true,
+    "material_limitation": "Tandon elsewhere uses broad plant-neurobiology language; this decision makes only the chronology and priority distinction.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "37f8e70b-3501-4b5b-baec-2b9893d50b8c",
+    "personality": "Jagadish Chandra Bose",
+    "original_claim_text": "The claim that later work confirmed most of Bose’s observations is the judgment of a modern review and should not be generalized into endorsement of every original interpretation.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The claim that later work confirmed most of Bose’s observations is the judgment of a modern review and should not be generalized into endorsement of every original interpretation.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6702694/",
+        "locator": "abstract lines 67–70; body lines 82–86",
+        "source_authority": "Prakash Narain Tandon, 2019 Indian Journal of Medical Research scholarly review, full text inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Tandon says later work confirmed most observations; the claim correctly limits that to his judgment and does not endorse every Bose interpretation.",
+    "original_source_inspected": true,
+    "material_limitation": "The review’s sweeping conclusion about plant nervous systems is contested; this claim carefully attributes only the review’s assessment.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d75e4c71-3df2-4cee-be37-eea309c0dd75",
+    "personality": "Jagadish Chandra Bose",
+    "original_claim_text": "Bose’s high-sensitivity recording instruments mattered because they turned subtle plant changes into durable experimental traces.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Tandon reports that Bose devised recording instruments to make plant responses to stimuli experimentally visible.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6702694/",
+        "locator": "lines 72–79",
+        "source_authority": "Prakash Narain Tandon, 2019 Indian Journal of Medical Research scholarly review, full text inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The review directly supports recording plant responses; the original wording about durable traces adds an unsupported characterization.",
+    "original_source_inspected": true,
+    "material_limitation": "Specific instrument designs and recordings were not individually checked in Bose’s original books.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "2531ba47-40fb-415d-a0e1-7b56814dab0c",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam described education as learning from teachers, libraries, and laboratories, a view that joined classroom knowledge with practical inquiry.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam described education as learning from teachers, libraries, and laboratories, a view that joined classroom knowledge with practical inquiry.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "1125b617-27c3-4121-8d9d-c587ad01e804",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-st-aloysius-college",
+        "locator": "lines 18–21",
+        "source_authority": "A. P. J. Abdul Kalam, official 28 March 2003 St Aloysius College address, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Kalam explicitly names classroom teachers, libraries and laboratories as sources of education.",
+    "original_source_inspected": true,
+    "material_limitation": "The claim summarizes his stated educational view.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "51b623f2-bea9-4af4-9d2e-ddf6be258d7a",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam argued that meaningful education of young people was a central investment in India's future.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam argued that meaningful education of young people was a central investment in India's future.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "1125b617-27c3-4121-8d9d-c587ad01e804",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-st-aloysius-college",
+        "locator": "lines 22–25",
+        "source_authority": "A. P. J. Abdul Kalam, official 28 March 2003 St Aloysius College address, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Kalam describes education of the younger generation as an investment for the future.",
+    "original_source_inspected": true,
+    "material_limitation": "This is a normative argument in a public speech.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ba7c9fc4-5142-421c-8633-4e8f0e3996b5",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam recalled schooling at Schwartz High School and study at St Joseph's College before his engineering training.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Kalam recalled study at Schwartz High School and St Joseph’s College.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "1125b617-27c3-4121-8d9d-c587ad01e804",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-st-aloysius-college",
+        "locator": "lines 18–20",
+        "source_authority": "A. P. J. Abdul Kalam, official 28 March 2003 St Aloysius College address, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The speech confirms the two institutions but does not itself establish the temporal relation to later engineering training.",
+    "original_source_inspected": true,
+    "material_limitation": "This is Kalam’s retrospective recollection.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1586e287-eaa7-49fe-a262-bbf7e70a06bb",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam publicly urged a developed India by 2020; this was a political and social goal whose realization requires separate evaluation.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam publicly urged a developed India by 2020; this was a political and social goal whose realization requires separate evaluation.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "c71e72cc-db1f-462b-9bb8-c313b07b825a",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-nation-ramparts-red-fort-new-delhi",
+        "locator": "lines 20–26, 45–49",
+        "source_authority": "A. P. J. Abdul Kalam, official 11 May 2007 Red Fort address, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The speech explicitly urges national development by 2020; its future-oriented wording is an aspiration, not evidence of realization.",
+    "original_source_inspected": true,
+    "material_limitation": "Contemporary outcomes are outside the claim and require a separate assessment.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "6ec6add7-c0f0-4ff9-bf1e-4d7181a37982",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam's development agenda combined agriculture and food processing, education and healthcare, ICT, infrastructure, and strategic technological self-reliance.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam's development agenda combined agriculture and food processing, education and healthcare, ICT, infrastructure, and strategic technological self-reliance.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "c71e72cc-db1f-462b-9bb8-c313b07b825a",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-nation-ramparts-red-fort-new-delhi",
+        "locator": "lines 23–26",
+        "source_authority": "A. P. J. Abdul Kalam, official 11 May 2007 Red Fort address, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Kalam enumerates all five sectors in the Red Fort speech.",
+    "original_source_inspected": true,
+    "material_limitation": "The five-sector agenda is a stated proposal, not an evaluation of outcomes.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "cc16e922-aa9f-424f-8a38-93a1f236d2ee",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "He envisaged narrowing the rural–urban divide and improving access to water, energy, and education as measures of national development.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "He envisaged narrowing the rural–urban divide and improving access to water, energy, and education as measures of national development.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "c71e72cc-db1f-462b-9bb8-c313b07b825a",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-nation-ramparts-red-fort-new-delhi",
+        "locator": "lines 27–35",
+        "source_authority": "A. P. J. Abdul Kalam, official 11 May 2007 Red Fort address, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Kalam lists a smaller rural–urban divide and access to energy, water and education as components of his 2020 vision.",
+    "original_source_inspected": true,
+    "material_limitation": "The speech is evidence of a proposal, not completed development.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0b2c7697-5769-46da-8cd9-9803ba52a5b0",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Ramanujan published unusually effective approximations to pi in his work on modular equations.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramanujan published unusually effective approximations to pi in his work on modular equations.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF p. 2, lines 57–59; compare Hardy PDF p. 15, lines 615–622",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ore identifies the modular-equations paper’s unusually good pi approximations; Hardy independently singles out the series.",
+    "original_source_inspected": true,
+    "material_limitation": "Effectiveness is an expert assessment, not a claim all approximations were original.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "26bdefd9-02ee-4c6d-8056-d60c9ce4fc23",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Many notebook results were recorded without proofs meeting the standard mathematical expectations of his Cambridge peers.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Many notebook results were recorded without proofs meeting the standard mathematical expectations of his Cambridge peers.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF pp. 1–2, lines 47–54; compare Hardy PDF p. 11, lines 434–441",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ore directly says most notebook theorems lacked standard proofs, quoting Hardy’s assessment.",
+    "original_source_inspected": true,
+    "material_limitation": "Ore relies on Hardy for this judgment; these are not independent evaluations.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "46736aad-f6bb-47e0-b3db-5b527261036d",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "The scholarly biography notes that limited training and library access led Ramanujan to rediscover some results already known elsewhere.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The scholarly biography notes that limited training and library access led Ramanujan to rediscover some results already known elsewhere.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF p. 2, lines 47–54",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Ore biography expressly connects limited systematic training and library access to rediscovery of existing results.",
+    "original_source_inspected": true,
+    "material_limitation": "Historical explanation is Ore’s scholarly interpretation.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "4d7dbe8f-af18-4ca6-a948-cc2b7ce7b0da",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Hardy and Ramanujan developed an asymptotic formula for the partition function p(n).",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Hardy and Ramanujan developed an asymptotic formula for the partition function p(n).",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF p. 2, lines 62–68; compare MacTutor lines 78–80",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ore directly identifies the Hardy–Ramanujan asymptotic formula for p(n); MacTutor corroborates.",
+    "original_source_inspected": true,
+    "material_limitation": "Mathematical implications are not extended beyond the stated formula.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "4f719a7e-9a8e-4658-9d3f-1f85056b8e01",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Ramanujan studied integer partitions and identified striking congruence patterns in partition counts.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramanujan studied integer partitions and identified striking congruence patterns in partition counts.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF p. 2, lines 62–66",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ore describes Ramanujan’s work on p(n) and congruence properties.",
+    "original_source_inspected": true,
+    "material_limitation": "Some conjectures were proved later; the claim says identified, not proved all.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "6a0204bb-9cfc-44c7-8d6c-9f3b0ded5325",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Ramanujan's first letter to Hardy presented more than one hundred mathematical assertions across several topics.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramanujan's first letter to Hardy presented more than one hundred mathematical assertions across several topics.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF p. 1, lines 37–41",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ore says Ramanujan’s first letter added more than one hundred theorems on several mathematical topics.",
+    "original_source_inspected": true,
+    "material_limitation": "The claim calls them assertions and does not presume proof or originality for each.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "79805d3f-c103-4e40-8ded-72dfb49bc7ba",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Ramanujan entered Trinity College, Cambridge, in 1914 and developed his work with Hardy and Littlewood's guidance.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramanujan entered Trinity College, Cambridge, in 1914 and developed his work with Hardy and Littlewood's guidance.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF p. 1, lines 42–47; compare MacTutor lines 55–64",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ore gives Trinity entry in 1914 and work under Hardy and Littlewood.",
+    "original_source_inspected": true,
+    "material_limitation": "Guidance is a scholarly description; collaboration was not a simple teacher-student relation.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "9a09447e-6d59-408b-b117-44b6d1cf38bd",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "In 1918 Ramanujan became a Fellow of Trinity College as well as a Fellow of the Royal Society.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In 1918 Ramanujan became a Fellow of Trinity College as well as a Fellow of the Royal Society.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF p. 2, lines 72–75; compare MacTutor lines 71–72",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ore lists both 1918 fellowships, and MacTutor gives Royal Society and Trinity dates.",
+    "original_source_inspected": true,
+    "material_limitation": "Distinct election dates are omitted from the claim.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "be47b43a-987f-4369-a61e-d7757b42d0ed",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Hans Rademacher later established an exact convergent formula extending the Hardy–Ramanujan partition work.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Ore writes that Rademacher later established an exact expression for p(n) extending the Hardy–Ramanujan work.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF p. 2, lines 66–68",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ore says an exact expression; the original’s specific convergent-formula characterization is not stated here.",
+    "original_source_inspected": true,
+    "material_limitation": "The mathematical form should be checked against Rademacher’s own publication before restoring greater specificity.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d0aa1e8b-a7e3-425a-bdd0-9d680b36836a",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Ramanujan's study of highly composite numbers established important properties of integers with exceptionally many divisors.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramanujan's study of highly composite numbers established important properties of integers with exceptionally many divisors.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF p. 2, lines 57–60; compare Hardy PDF p. 15, lines 623–626",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ore calls the highly composite numbers memoir important and Hardy describes its elementary analysis.",
+    "original_source_inspected": true,
+    "material_limitation": "Importance is an expert evaluation.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0ca8537d-384c-49a7-ab8c-0e545d36e47a",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "As project director, Kalam led development of India's first indigenous satellite launch vehicle, SLV-III, which put Rohini into near-Earth orbit in July 1980.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "As project director, Kalam led development of India's first indigenous satellite launch vehicle, SLV-III, which put Rohini into near-Earth orbit in July 1980.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+        "locator": "lines 13–16",
+        "source_authority": "President of India, official profile provided by the President’s Secretariat, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The official profile expressly names Kalam as SLV-III project director and dates the Rohini orbit insertion to July 1980.",
+    "original_source_inspected": true,
+    "material_limitation": "The institutional profile credits one leader; it does not apportion every engineering contribution.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0fe168d7-9b34-49b4-afcf-9cfc23b469db",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "His major books include Wings of Fire, India 2020, My Journey, and Ignited Minds, linking personal history with scientific and national-development ideas.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The President’s official profile lists Wings of Fire, India 2020, My Journey, and Ignited Minds among Kalam’s books.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+        "locator": "lines 21–22",
+        "source_authority": "President of India, official profile provided by the President’s Secretariat, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The book titles are directly listed, while the original interpretive clause about linking themes is not demonstrated by this passage.",
+    "original_source_inspected": true,
+    "material_limitation": "The profile provides a selected list, not a bibliography.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1f24f631-9f71-45f8-8020-344583ae60d9",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam was born in Rameswaram, Tamil Nadu, in 1931 and trained in aeronautical engineering at Madras Institute of Technology.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam was born in Rameswaram, Tamil Nadu, in 1931 and trained in aeronautical engineering at Madras Institute of Technology.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+        "locator": "line 15",
+        "source_authority": "President of India, official profile provided by the President’s Secretariat, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The official profile states birth at Rameswaram in 1931 and aeronautical engineering specialization at Madras Institute of Technology.",
+    "original_source_inspected": true,
+    "material_limitation": "The profile is a retrospective institutional biography.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "4215c7e3-8dc4-4a4c-b8b2-ca88ec823589",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam served as India's eleventh president from 25 July 2002 to 25 July 2007.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam served as India's eleventh president from 25 July 2002 to 25 July 2007.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+        "locator": "lines 3, 24",
+        "source_authority": "President of India, official profile provided by the President’s Secretariat, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The profile lists the office term and identifies him as the eleventh president.",
+    "original_source_inspected": true,
+    "material_limitation": "Official office record provides direct administrative evidence.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "59e0de88-bec6-4ffa-9b35-f346e2885e8b",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam combined technical leadership with national advisory duties, including chairing the Scientific Advisory Committee to the Cabinet.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam combined technical leadership with national advisory duties, including chairing the Scientific Advisory Committee to the Cabinet.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+        "locator": "lines 19–20",
+        "source_authority": "President of India, official profile provided by the President’s Secretariat, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The official profile lists TIFAC and principal scientific advisor work as well as the Cabinet science advisory chair.",
+    "original_source_inspected": true,
+    "material_limitation": "Broad wording omits precise tenures; the profile provides them.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "5f99454a-d63b-4386-872b-e1c91608383f",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "The presidential profile credits Kalam with helping shape the later Indian launch vehicle programme, especially the PSLV configuration.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The presidential profile credits Kalam with helping shape the later Indian launch vehicle programme, especially the PSLV configuration.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+        "locator": "line 16",
+        "source_authority": "President of India, official profile provided by the President’s Secretariat, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The President’s profile specifically credits him with the evolution of ISRO’s launch vehicle programme, particularly the PSLV configuration.",
+    "original_source_inspected": true,
+    "material_limitation": "This is a credit assigned by the presidential office, not independent engineering attribution.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a0fbf8c8-5cc6-4ae6-8cff-85a27b4b54ef",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam received the Padma Bhushan, Padma Vibhushan, and Bharat Ratna, reflecting recognition before his presidency.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Kalam received the Padma Bhushan in 1981, Padma Vibhushan in 1990, and Bharat Ratna in 1997.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+        "locator": "line 23",
+        "source_authority": "President of India, official profile provided by the President’s Secretariat, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The profile gives all three awards with dates; the phrase about what they reflect was interpretive.",
+    "original_source_inspected": true,
+    "material_limitation": "Award record is taken from an official institutional biography.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d60c168d-8fb0-49b5-a88a-406e53292d33",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "From November 2001, Kalam pursued teaching and research at Anna University as professor of technology and societal transformation.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "From November 2001, Kalam pursued teaching and research at Anna University as professor of technology and societal transformation.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+        "locator": "line 21",
+        "source_authority": "President of India, official profile provided by the President’s Secretariat, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The profile dates the Anna University position to November 2001 and names its professorship.",
+    "original_source_inspected": true,
+    "material_limitation": "The official profile does not specify the exact end date.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "e95fea19-bcf4-49db-9c92-db5e87b14e7b",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "After his ISRO career, Kalam led DRDO's Integrated Guided Missile Development Programme as its chief executive.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "After his ISRO career, Kalam led DRDO's Integrated Guided Missile Development Programme as its chief executive.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+        "locator": "lines 15–17",
+        "source_authority": "President of India, official profile provided by the President’s Secretariat, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The profile describes the move from roughly two decades at ISRO to chief executive of IGMDP at DRDO.",
+    "original_source_inspected": true,
+    "material_limitation": "The official profile emphasizes Kalam’s leadership; team contributions are not individually assessed.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "152f4d43-8f8c-4cf2-970a-d367292a15fa",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "In his letter to Hardy, Ramanujan emphasized that he had no university education and was pursuing an unconventional path in mathematics.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In his letter to Hardy, Ramanujan emphasized that he had no university education and was pursuing an unconventional path in mathematics.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+        "locator": "lines 45–55; compare Hardy PDF p. 2, lines 86–95",
+        "source_authority": "MacTutor History of Mathematics, University of St Andrews, J. J. O’Connor and E. F. Robertson, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "MacTutor reproduces Ramanujan’s 1913 letter saying he lacked university education and was taking a new path. Hardy’s obituary reproduces the letter directly.",
+    "original_source_inspected": true,
+    "material_limitation": "The letter is primary self-report; its wording should remain attributed.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1e6631e9-0a39-4425-b6f2-2242a5540d82",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Ramanujan was born in Erode in 1887 and grew up chiefly in Kumbakonam in South India.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramanujan was born in Erode in 1887 and grew up chiefly in Kumbakonam in South India.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+        "locator": "lines 8–13, 24–26; compare Hardy PDF p. 1, lines 10–16",
+        "source_authority": "MacTutor History of Mathematics, University of St Andrews, J. J. O’Connor and E. F. Robertson, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "MacTutor gives Erode birth in 1887 and childhood in Kumbakonam; Hardy’s contemporary obituary corroborates those locations.",
+    "original_source_inspected": true,
+    "material_limitation": "Hardy drew some early-life details from Indian acquaintances, so the works are not wholly independent on childhood.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1e794aaa-d278-41d9-b460-bcd635f3ac3f",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Ramanujan supported himself as a clerk at the Madras Port Trust while continuing mathematical research.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramanujan supported himself as a clerk at the Madras Port Trust while continuing mathematical research.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+        "locator": "lines 37–47; compare Hardy PDF pp. 1–2, lines 43–50, 86–94",
+        "source_authority": "MacTutor History of Mathematics, University of St Andrews, J. J. O’Connor and E. F. Robertson, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "MacTutor and Hardy’s obituary both describe Port Trust clerkship and concurrent mathematical work; the obituary embeds Ramanujan’s own statement.",
+    "original_source_inspected": true,
+    "material_limitation": "Hardy’s obituary misdates the start of the clerkship to 1911; MacTutor says 1 March 1912. The claim does not specify the date.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "59760176-5476-469b-bdb2-9b8265df81d3",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Ramanujan left unpublished notebooks whose theorems continued to attract mathematical research after his death.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramanujan left unpublished notebooks whose theorems continued to attract mathematical research after his death.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+        "locator": "lines 77–82; compare Hardy PDF p. 14, lines 607–612",
+        "source_authority": "MacTutor History of Mathematics, University of St Andrews, J. J. O’Connor and E. F. Robertson, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "MacTutor describes the unpublished notebooks and later mathematical study; Hardy’s obituary says unpublished material still awaited analysis.",
+    "original_source_inspected": true,
+    "material_limitation": "Later research on notebooks is assessed from the scholarly biography, not inferred from mere survival of manuscripts.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "7387a37c-37d0-4d63-9121-bc44651ab5fd",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Srinivasa Ramanujan was an Indian mathematician whose main contributions were to analytic number theory, alongside work on continued fractions and infinite series.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Srinivasa Ramanujan was an Indian mathematician whose main contributions were to analytic number theory, alongside work on continued fractions and infinite series.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+        "locator": "lines 17–24",
+        "source_authority": "MacTutor History of Mathematics, University of St Andrews, J. J. O’Connor and E. F. Robertson, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "MacTutor explicitly identifies analytic number theory, continued fractions, and infinite series among his contributions.",
+    "original_source_inspected": true,
+    "material_limitation": "The word main is an evaluative scholarly characterization.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "97b951fd-6fff-41c1-9751-fa7569aab009",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "As a student, Ramanujan studied G. S. Carr's compendium of mathematical results, an important resource for his independent mathematical learning.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "As a student, Ramanujan studied G. S. Carr's compendium of mathematical results, an important resource for his independent mathematical learning.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+        "locator": "lines 26–29; compare Hardy PDF p. 1, lines 15–20",
+        "source_authority": "MacTutor History of Mathematics, University of St Andrews, J. J. O’Connor and E. F. Robertson, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "MacTutor identifies Carr’s Synopsis as a basis of independent study; Hardy quotes a schoolfellow describing its use.",
+    "original_source_inspected": true,
+    "material_limitation": "The recollection in Hardy is mediated through Seshu Aiyar, so corroboration is partly dependent.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ad9ccf96-0f14-4e64-aeab-50cefad8edd6",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Ramanujan's 1911 paper on Bernoulli numbers in the Journal of the Indian Mathematical Society brought wider notice to his mathematical work.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramanujan's 1911 paper on Bernoulli numbers in the Journal of the Indian Mathematical Society brought wider notice to his mathematical work.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+        "locator": "lines 35–36; compare Hardy PDF p. 2, lines 48–54",
+        "source_authority": "MacTutor History of Mathematics, University of St Andrews, J. J. O’Connor and E. F. Robertson, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "MacTutor links the 1911 Bernoulli paper to growing recognition; Hardy confirms the publication and describes its editorial reception.",
+    "original_source_inspected": true,
+    "material_limitation": "The degree of wider notice is a scholarly assessment.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "fa02e01d-7471-4263-9266-599ac65ce5bc",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Without a university mathematics education or regular access to current research, Ramanujan continued developing ideas independently.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Without a university mathematics education or regular access to current research, Ramanujan continued developing ideas independently.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+        "locator": "lines 28–34; compare Hardy PDF pp. 2, 10, lines 86–95, 434–441",
+        "source_authority": "MacTutor History of Mathematics, University of St Andrews, J. J. O’Connor and E. F. Robertson, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "MacTutor documents failed degree examinations and independent work; Ramanujan’s letter and Hardy’s assessment confirm limited conventional training.",
+    "original_source_inspected": true,
+    "material_limitation": "Regular access to current literature cannot be precisely quantified from these sources; the claim says only that it was lacking.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "fd263fc9-4a9c-43be-b27a-c8fba87c8e1f",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "The University of Madras awarded Ramanujan a two-year scholarship in 1913, enabling him to pursue research.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The University of Madras awarded Ramanujan a two-year scholarship in 1913, enabling him to pursue research.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+        "locator": "lines 55–58; compare Hardy PDF p. 2, lines 65–75",
+        "source_authority": "MacTutor History of Mathematics, University of St Andrews, J. J. O’Connor and E. F. Robertson, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "MacTutor gives a two-year 1913 scholarship; Hardy describes a two-year research studentship sponsored after mathematical advocacy.",
+    "original_source_inspected": true,
+    "material_limitation": "The separate accounts agree on the award, but use different administrative terms.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "382b8752-680f-4f7e-b6c5-cc577956ade0",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Hardy said he taught Ramanujan some modern mathematics but learned even more from him.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Hardy said he taught Ramanujan some modern mathematics but learned even more from him.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "ff146686-2ab5-4e47-957e-09be837c3ef7",
+        "url": "https://mathshistory.st-andrews.ac.uk/RS/ramanujan_rs.pdf",
+        "locator": "PDF p. 11, lines 442–457",
+        "source_authority": "G. H. Hardy, 1921 Royal Society obituary; contemporary collaborator testimony and embedded Ramanujan correspondence, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Hardy states in first person that he tried to teach Ramanujan and learned more from him.",
+    "original_source_inspected": true,
+    "material_limitation": "This is Hardy’s subjective recollection and is explicitly attributed.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "6fb226a9-d29a-45fc-8101-2ad37def143d",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Hardy described Ramanujan as often generalizing from numerical examples, including in his discoveries about partition congruences.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Hardy described Ramanujan as often generalizing from numerical examples, including in his discoveries about partition congruences.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "ff146686-2ab5-4e47-957e-09be837c3ef7",
+        "url": "https://mathshistory.st-andrews.ac.uk/RS/ramanujan_rs.pdf",
+        "locator": "PDF p. 16, lines 669–678",
+        "source_authority": "G. H. Hardy, 1921 Royal Society obituary; contemporary collaborator testimony and embedded Ramanujan correspondence, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Hardy describes numerical induction and explicitly mentions partition congruences and generalization.",
+    "original_source_inspected": true,
+    "material_limitation": "Assessment of method is Hardy’s collaborator testimony.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "8fff980e-0194-4bd6-b48b-a58038743fbd",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Hardy especially admired Ramanujan's insight into algebraic formulas and transformations of infinite series.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Hardy especially admired Ramanujan's insight into algebraic formulas and transformations of infinite series.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "ff146686-2ab5-4e47-957e-09be837c3ef7",
+        "url": "https://mathshistory.st-andrews.ac.uk/RS/ramanujan_rs.pdf",
+        "locator": "PDF p. 16, lines 669–678",
+        "source_authority": "G. H. Hardy, 1921 Royal Society obituary; contemporary collaborator testimony and embedded Ramanujan correspondence, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Hardy singles out Ramanujan’s insight into algebraic formulae and transformations of infinite series.",
+    "original_source_inspected": true,
+    "material_limitation": "Admiration is Hardy’s opinion, not an objective rank.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "9089927e-e956-4e71-8c00-c7732bf74a27",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Hardy noted that Ramanujan's work on the Rogers–Ramanujan identities should share credit with L. J. Rogers, who had earlier results.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Hardy noted that Ramanujan's work on the Rogers–Ramanujan identities should share credit with L. J. Rogers, who had earlier results.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "ff146686-2ab5-4e47-957e-09be837c3ef7",
+        "url": "https://mathshistory.st-andrews.ac.uk/RS/ramanujan_rs.pdf",
+        "locator": "PDF p. 15, lines 631–640",
+        "source_authority": "G. H. Hardy, 1921 Royal Society obituary; contemporary collaborator testimony and embedded Ramanujan correspondence, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Hardy praises the identities while assigning Rogers priority in this specific work.",
+    "original_source_inspected": true,
+    "material_limitation": "The claim is explicitly about Hardy’s judgment.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ed302467-5986-4973-94d7-97b850ee8813",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Hardy recounted the 1729 taxicab exchange as his own memory of Ramanujan's unusual familiarity with numbers; it remains attributed testimony rather than an independently verified transcript.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Hardy recounted the 1729 taxicab exchange as his own memory of Ramanujan's unusual familiarity with numbers; it remains attributed testimony rather than an independently verified transcript.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "ff146686-2ab5-4e47-957e-09be837c3ef7",
+        "url": "https://mathshistory.st-andrews.ac.uk/RS/ramanujan_rs.pdf",
+        "locator": "PDF p. 16, lines 651–660",
+        "source_authority": "G. H. Hardy, 1921 Royal Society obituary; contemporary collaborator testimony and embedded Ramanujan correspondence, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Hardy presents the 1729 episode as his own memory, satisfying the claim’s careful attribution.",
+    "original_source_inspected": true,
+    "material_limitation": "No independent transcript of the exchange was inspected.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ff8c6a25-6dc2-4162-89f6-74cf137974fb",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Hardy judged that some of Ramanujan's early prime-number results were false, illustrating the limits of intuition without rigorous proof.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Hardy judged that some of Ramanujan's early prime-number results were false, illustrating the limits of intuition without rigorous proof.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "ff146686-2ab5-4e47-957e-09be837c3ef7",
+        "url": "https://mathshistory.st-andrews.ac.uk/RS/ramanujan_rs.pdf",
+        "locator": "PDF p. 4, lines 154–176; PDF p. 11, lines 434–452",
+        "source_authority": "G. H. Hardy, 1921 Royal Society obituary; contemporary collaborator testimony and embedded Ramanujan correspondence, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Hardy explicitly judges several early prime-number results wrong and explains the mathematical issue.",
+    "original_source_inspected": true,
+    "material_limitation": "The mathematical assessment is Hardy’s and is not extended to all Ramanujan results.",
+    "removal_reason": null
+  }
+]

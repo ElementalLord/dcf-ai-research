@@ -1,0 +1,69 @@
+{
+  "source_id": "826d5c8a-6135-4304-8825-09579ff9a478",
+  "source": {
+    "author": "Valmiki",
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Bala Kanda, Sarga 19 (https://valmikiramayan.net/utf8/baala/sarga19/balasans19.htm)",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Bala Kanda, Sarga 19",
+    "url": "https://valmikiramayan.net/utf8/baala/sarga19/balasans19.htm"
+  },
+  "claim_ids": [
+    "0b71d9d8-29f4-40e5-a464-005f435fc2a4",
+    "190611a0-bb2d-4b01-b063-b3354d3f3450",
+    "5c0d6459-cb4f-4fe4-b012-8b62d4972b43",
+    "7beb27aa-8818-4859-9e04-beb1c8f19db5",
+    "d5d917d2-47a1-4747-ae77-5407b5a23e34",
+    "e7f3f6e9-2653-45df-8506-27d02bc380ff"
+  ],
+  "passages": [
+    {
+      "chunk_id": "22f5abe8-802f-451a-a350-7a0c994f1637",
+      "locator": "Introduction",
+      "text_sha256": "f8f7e09a0081a2bff6cc6b8edfa49e66cbc0bf1d73a8fd60c3cbd0c9b4117ecc",
+      "excerpt_preview": "These verses are commented extensively by early commentators. In 14th verse, the   pronoun aham, 'I' used by Sage Vishvamitra is to announce definiteness   about his own stature to know the Absolute vis-a-vis the Absolute Himself. Vishvamit",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "405d9d7b-f196-44bf-b8db-e65a2e9886f2",
+      "locator": "Introduction",
+      "text_sha256": "8455868c45ff7d14cf5b90fe6d6ac476d6982692d41e90e8baee9129c30d740f",
+      "excerpt_preview": "न च तौ राममासाद्य शक्तौ स्थातुं कथञ्चन || १-१९-११  न च तौ राघवादन्यो हन्तुमुत्सहते पुमान् |  11b, 12a. tau = those two [demons]; raamam aasaadya = on getting [affronting] Rama   ; katha~nchana = in any way; sthaatum   = to stand fast; na sh",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "49491f41-5500-43be-977a-a8f12fc6841f",
+      "locator": "Introduction",
+      "text_sha256": "4ce54472dcf17ffc3d88f3e1aba7ad7d7743740af0e1d682b26ebd6ea66b60dd",
+      "excerpt_preview": "\"At the near end of almost completed ritual of mine two valiant and well-trained   demons, namely Mareecha and Subaahu, are drenching the Altar of Fire with streams   of meat and blood. [1-19-5, 6a]  अवधूते तथाभूते तस्मिन्नियमनिश्चये || १-१",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9374da7d-e000-40d3-83fc-7d752aa7f76c",
+      "locator": "Introduction",
+      "text_sha256": "7ad35c8fdf69d81cbbd1b2cdcee0428cdf24233f83a5911017ca53ac190f6ccd",
+      "excerpt_preview": "Sage Vishvamitra asks King Dasharatha to send Rama to protect the Vedic ritual   that is being conducted by him, from the demons that are constantly disrupting   it. The sage asserts King Dasharatha that he and the other sages in Dasharatha",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b1bc66f5-1954-483e-a7db-b00c168c90df",
+      "locator": "Introduction",
+      "text_sha256": "fde5900a7e23dda70603641e372aaff5f55f1c574c70db54de7f4441be7a310e",
+      "excerpt_preview": "Now Rama's reputation is going to be enhanced by Sage Vishvamitra in eliminating   demoness Tataka, in releasing Ahalya from her curse, breaking Shiva's bow, marriage   with Seetha, rebuffing Parashuraama etc. And also Vishvamitra leaves th",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

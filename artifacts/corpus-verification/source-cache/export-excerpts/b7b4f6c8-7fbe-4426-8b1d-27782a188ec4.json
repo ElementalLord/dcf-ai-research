@@ -1,0 +1,44 @@
+{
+  "source_id": "b7b4f6c8-7fbe-4426-8b1d-27782a188ec4",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "From Trade to Territory. NCERT, Our Pasts III, chapter 2. https://ncert.nic.in/textbook/pdf/hess202.pdf",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "NCERT, Our Pasts III, chapter 2",
+    "rights_or_access_note": "Public original; short research excerpts. Scholarly abstract/summary access does not imply full chapter access.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "From Trade to Territory",
+    "url": "https://ncert.nic.in/textbook/pdf/hess202.pdf"
+  },
+  "claim_ids": [
+    "58ac0dee-22a9-4155-bef4-895a81af58e0",
+    "627faf17-0b68-495b-8439-9e76d0c3ad58",
+    "a3611065-b930-446e-8fc8-a2ef28fdab42"
+  ],
+  "passages": [
+    {
+      "chunk_id": "40779457-6204-431b-82df-fe5c372480ac",
+      "locator": "Governor-General from 1848 to 1856",
+      "text_sha256": "324e02b386df7060d8c6381c3085f1256b894bbd7e4b93180fa03a8804f18c88",
+      "excerpt_preview": "Ultimately, in 1849, Punjab was annexed. The Doctrine of Lapse The final wave of annexations occurred under Lord Dalhousie who was the Governor-General from 1848 to 1856. He devised a policy that came to be known as the Doctrine of Lapse.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6eea7bc2-58fd-4c27-bf5e-74545a25690d",
+      "locator": "Jhansi (1854)",
+      "text_sha256": "55435234e1fc70d5564c9e97466dbc0dcc847ff1d8a466a148ede883ff73a210",
+      "excerpt_preview": "The doctrine declared that if an Indian ruler died without a male heir his kingdom would “lapse”, that is, become a part of Company territory. One kingdom after another was annexed simply by applying this doctrine: Satara (1848), Sambalpur ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

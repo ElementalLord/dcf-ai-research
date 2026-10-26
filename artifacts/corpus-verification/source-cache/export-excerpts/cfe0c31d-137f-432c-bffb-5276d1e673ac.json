@@ -1,0 +1,53 @@
+{
+  "source_id": "cfe0c31d-137f-432c-bffb-5276d1e673ac",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "The global relevance of Tagore’s cosmopolitan educational philosophy for social justice in a post-Westphalian world. Journal of Philosophy of Education, Oxford University Press. https://academic.oup.com/jope/article/57/3/611/7250432",
+    "original_work_identity": {},
+    "publication_year": 2023,
+    "publisher_or_institution": "Journal of Philosophy of Education, Oxford University Press",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "The global relevance of Tagore’s cosmopolitan educational philosophy for social justice in a post-Westphalian world",
+    "url": "https://academic.oup.com/jope/article/57/3/611/7250432"
+  },
+  "claim_ids": [
+    "a2ccdad2-ef4f-41a8-a4aa-441af49d258a",
+    "db22c34b-8d28-416a-a3c9-cd4530e82698",
+    "ef605285-6d21-4e4c-abad-346368d8ed09"
+  ],
+  "passages": [
+    {
+      "chunk_id": "14d50dc4-3ec7-4254-8ba0-b75f763c1f10",
+      "locator": "cosmopolitan rather than narrowly national",
+      "text_sha256": "4ac474c3bc2a79f0f8dd71c8ce7966af6ec9f9a21374df36c915df2eb53aedf5",
+      "excerpt_preview": "ontemporary educational scholarship interprets Tagore’s philosophy as cosmopolitan rather than narrowly national.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b372f244-c036-4126-bf6c-8fd86afd744e",
+      "locator": "resisted rote instruction and isolation from life",
+      "text_sha256": "7b0549cb2c05d3e6c2f5a445448c2551817fc6abfcc055b7ca4707b6a9f34d5e",
+      "excerpt_preview": "The model resisted rote instruction and isolation from life.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d2f76619-f98d-4017-b75c-c9085cd87a11",
+      "locator": "historically situated experiment",
+      "text_sha256": "138d6de6f43a9f2c0a2605c3d0de06bce8ed953c77447e71a4b36bd0e8239cfa",
+      "excerpt_preview": "Scholars treat the ideal critically as a historically situated experiment, not a ready-made universal policy.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

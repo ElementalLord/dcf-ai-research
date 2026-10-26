@@ -1,0 +1,52 @@
+{
+  "source_id": "998c6796-ec32-4888-b842-8b1322408052",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "About Founder: Dr. Verghese Kurien. Institute of Rural Management Anand. https://irma.ac.in/about-irma/about-founder",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Institute of Rural Management Anand",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "About Founder: Dr. Verghese Kurien",
+    "url": "https://irma.ac.in/about-irma/about-founder"
+  },
+  "claim_ids": [
+    "a8817c0a-4649-41fa-be95-476b959f96b2",
+    "b8b7a39c-1804-4bc3-b6cb-fdc89d5edda5",
+    "cf9a4062-6231-47b4-b76b-d633393cc8b3"
+  ],
+  "passages": [
+    {
+      "chunk_id": "2275a909-dff9-4418-989b-27b3c5a23e6f",
+      "locator": "Founder profile",
+      "text_sha256": "dc6c41842ec008e6e1c92febbefafa7a32e6804e4700b7cf4f7f49a0626959a2",
+      "excerpt_preview": "As a young engineer in the small town of Anand, he took on the challenge of professionally organizing and managing the Kaira Cooperative in 1950. He created a robust supply chain, incorporated modern technology & production systems, introdu",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "77c52120-8764-49a5-a6bb-2bfd8c544dc1",
+      "locator": "Founder profile",
+      "text_sha256": "95c51a81d6cefc8f755e4fc29fbc0ff30283fb9cad63c3fb3942ef5c9fde4c76",
+      "excerpt_preview": "Kurien recognized that professional management had brought about this visible socio-economic impact to an underserved segment. This thought inspired him to establish the Institute of Rural Management Anand (IRMA) in the year 1979 with an ai",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e79b1e91-3088-445d-b633-054b079e5dca",
+      "locator": "Founder profile",
+      "text_sha256": "0593533017bc398909aa58ebe67cdf9ca33d81d9c0ea8e945c7ce7cc5fe90a3d",
+      "excerpt_preview": "Verghese Kurien HomeAbout IRMAAbout Founder Knowing IRMAAbout FounderExecutive Board of IRMADirector’s Message About Founder Dr Verghese Kurien’s Vision Acclaimed as the Father of the White Revolution, Dr. Verghese Kurien transformed the da",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

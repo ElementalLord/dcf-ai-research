@@ -1,0 +1,116 @@
+{
+  "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Operation Flood. National Dairy Development Board. https://www.nddb.coop/about/genesis/flood",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "National Dairy Development Board",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Operation Flood",
+    "url": "https://www.nddb.coop/about/genesis/flood"
+  },
+  "claim_ids": [
+    "225dcd87-20d0-4b1c-95fc-6f76c45f8e5d",
+    "6550d9a8-9e99-421d-be2c-be60a0155d07",
+    "7ac5f497-5e28-447d-9141-3aedfa8d6db1",
+    "84257218-4123-41c7-87b5-9267adafa75a",
+    "a59a0330-ecda-4812-a816-6d34a36ecd7c",
+    "b4512f78-8b4e-4916-b9ab-7bd53a5b5fdb",
+    "c47b3514-30ca-41a2-80c4-e0c6a388fd14",
+    "d5ca29df-8313-4800-9d7e-2fcf755eecba",
+    "d8de79e9-1a07-4460-8555-561ef7527852",
+    "e9171056-70a4-45f2-b42f-9d6123d49706",
+    "ef8e6050-2e0b-459c-a0b5-3d5c9397712b"
+  ],
+  "passages": [
+    {
+      "chunk_id": "178f51a1-6aca-4ece-8f7a-d2200af5c97a",
+      "locator": "Phase III",
+      "text_sha256": "ec6feae253df87de346996e789df8a68e90ff021aa67c1cfdee19727b942af69",
+      "excerpt_preview": "Direct marketing of milk by producers' cooperatives increased by several million litres a day. Phase III Phase III (1985-1996) enabled dairy cooperatives to expand and strengthen the infrastructure required to procure and market increasing ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "19506600-64e2-426a-ae58-db6358797821",
+      "locator": "Phase II",
+      "text_sha256": "5d6a3dd8eb4a3ed7bb05d31b97d33217e1027a284ee4eb2ad412707e12d663b8",
+      "excerpt_preview": "During its first phase, Operation Flood linked 18 of India's premier milksheds with consumers in India's four major metropolitan cities: Delhi, Mumbai, Kolkata and Chennai. Phase II Operation Flood's Phase II (1981-85) increased the milkshe",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "3a6bf761-ffb2-4b03-be0f-b7995755df5b",
+      "locator": "Programme overview",
+      "text_sha256": "bcc901ad4d0ef46ba218c0b411e6c455b203bad777a010d748e2fa84b9db7949",
+      "excerpt_preview": "Launched in 1970, Operation Flood has helped dairy farmers direct their own development, placing control of the resources they create in their own hands. A National Milk Grid links milk producers throughout India with consumers in over 700 ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "45509f03-18b3-4ef9-80f7-f15981d080ec",
+      "locator": "Phase III",
+      "text_sha256": "bb1c81264897cf4a8a48a27a1cbe80035d9d44b66585d28766fd2c0a4addf4ea",
+      "excerpt_preview": "Operation Flood's Phase III consolidated India's dairy cooperative movement, adding 30,000 new dairy cooperatives to the 42,000 existing societies organised during Phase II. Milksheds peaked to 173 in 1988-89 with the numbers of women membe",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "529b88cf-8cf1-41ff-a318-b9b11052de28",
+      "locator": "Phase II",
+      "text_sha256": "a8a6e39c3c4fb0e71abf173477bc68142d443d1b9a829e1abd988394f9cd5bc6",
+      "excerpt_preview": "Phase II Operation Flood's Phase II (1981-85) increased the milksheds from 18 to 136; 290 urban markets expanded the outlets for milk. By the end of 1985, a self-sustaining system of 43,000 village cooperatives covering 4.25 million milk pr",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "680cec3a-ab5d-497c-abcb-6e17870d48ac",
+      "locator": "Programme overview",
+      "text_sha256": "bcc901ad4d0ef46ba218c0b411e6c455b203bad777a010d748e2fa84b9db7949",
+      "excerpt_preview": "Launched in 1970, Operation Flood has helped dairy farmers direct their own development, placing control of the resources they create in their own hands. A National Milk Grid links milk producers throughout India with consumers in over 700 ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8a4a8bf2-4926-4c4c-83d3-ee9bc75e061d",
+      "locator": "Phase I",
+      "text_sha256": "9e66772c2b529894323770e984b225b4a5a5e4fe8500931fdad85b5565356e9f",
+      "excerpt_preview": "Operation Flood's objectives included : Increase milk production (\"a flood of milk\") Augment rural incomes Reasonable prices for consumers Programme Implementation Operation Flood was implemented in three phases. Phase I Phase I (1970-1980)",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8e081862-886b-4b2e-ac00-e6f46e8d082e",
+      "locator": "Programme overview",
+      "text_sha256": "f6b74345b295c9133f475a6a3b53877b54ba85bbd54afff73dd79966fec6c4e9",
+      "excerpt_preview": "A National Milk Grid links milk producers throughout India with consumers in over 700 towns and cities, reducing seasonal and regional price variations while ensuring that the producer gets fair market prices in a transparent manner on a re",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d0c2cb72-7024-486b-a7a8-199d286c2ec6",
+      "locator": "Programme objectives",
+      "text_sha256": "642ed2a50d706c8d796df6effbac4fd75e4af07158261e5d2736f31fd99352c3",
+      "excerpt_preview": "The bedrock of Operation Flood has been village milk producers' cooperatives, which procure milk and provide inputs and services, making modern management and technology available to members. Operation Flood's objectives included : Increase",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d9e4e58b-bbe0-4af4-8b09-0060c5173c33",
+      "locator": "Phase I",
+      "text_sha256": "89b7b88e658cc9945b31d783cc1a74bf67c55615435e75882122ee9814a34da4",
+      "excerpt_preview": "NDDB planned the programme and negotiated the details of EEC assistance. During its first phase, Operation Flood linked 18 of India's premier milksheds with consumers in India's four major metropolitan cities: Delhi, Mumbai, Kolkata and Che",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

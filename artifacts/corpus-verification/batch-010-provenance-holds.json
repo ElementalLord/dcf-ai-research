@@ -1,0 +1,354 @@
+[
+  {
+    "claim_id": "1faad601-fb6e-4549-bf56-1be814ed28f3",
+    "worker_file": "artifacts/corpus-verification/worker-raman-lecture-decisions.json",
+    "reason": "Official Nobel lecture PDF returned 403; indexed snippets and third-party facsimile are diagnostic only. No final decision is proposed.",
+    "unlinked_source_ids": [
+      null
+    ],
+    "status": "HOLD_SOURCE_ACCESS",
+    "diagnostic_candidate_only": {
+      "claim_id": "1faad601-fb6e-4549-bf56-1be814ed28f3",
+      "personality": "C. V. Raman",
+      "original_claim_text": "Raman's team then used the monochromatic light of a mercury arc to inspect the scattered spectrum.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "Raman's team then used the monochromatic light of a mercury arc to inspect the scattered spectrum.",
+      "epistemic_type": "TEXTUAL_ASSERTION",
+      "evidence_references": [
+        {
+          "source_id": null,
+          "url": "https://www.slideshare.net/slideshow/raman-cvthemolecularscatteringoflightnobellecture-16089188/16089188",
+          "locator": "reproduced lecture p. 5–6, source lines 80–84",
+          "source_authority": "C. V. Raman, 11 December 1930 Nobel lecture reproduced as nine page images with searchable OCR; complete page sequence inspected 2026-10-19",
+          "independence_assessment": "Primary participant text in a third-party reproduction. The official Nobel PDF was inaccessible (403), and this reproduction is one work, not independent corroboration.",
+          "original_source_inspected": true
+        }
+      ],
+      "verification_rationale": "Raman describes replacing sunlight with monochromatic mercury-arc light and examining scattered spectra of liquids and solids.",
+      "original_source_inspected": true,
+      "material_limitation": "His own retrospective description; exact apparatus records not independently inspected.",
+      "removal_reason": null
+    },
+    "final_decision": null
+  },
+  {
+    "claim_id": "2eaab8e3-b0d4-4b7c-9d1a-a525e0ca3ea8",
+    "worker_file": "artifacts/corpus-verification/worker-raman-lecture-decisions.json",
+    "reason": "Official Nobel lecture PDF returned 403; indexed snippets and third-party facsimile are diagnostic only. No final decision is proposed.",
+    "unlinked_source_ids": [
+      null
+    ],
+    "status": "HOLD_SOURCE_ACCESS",
+    "diagnostic_candidate_only": {
+      "claim_id": "2eaab8e3-b0d4-4b7c-9d1a-a525e0ca3ea8",
+      "personality": "C. V. Raman",
+      "original_claim_text": "Raman reported new sharp spectral lines in scattered light that were absent from the incident mercury light.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "Raman reported new sharp spectral lines in scattered light that were absent from the incident mercury light.",
+      "epistemic_type": "TEXTUAL_ASSERTION",
+      "evidence_references": [
+        {
+          "source_id": null,
+          "url": "https://www.slideshare.net/slideshow/raman-cvthemolecularscatteringoflightnobellecture-16089188/16089188",
+          "locator": "reproduced lecture p. 6, source lines 82–85",
+          "source_authority": "C. V. Raman, 11 December 1930 Nobel lecture reproduced as nine page images with searchable OCR; complete page sequence inspected 2026-10-19",
+          "independence_assessment": "Primary participant text in a third-party reproduction. The official Nobel PDF was inaccessible (403), and this reproduction is one work, not independent corroboration.",
+          "original_source_inspected": true
+        }
+      ],
+      "verification_rationale": "The lecture reports new sharp lines or bands missing from the incident mercury-arc spectrum.",
+      "original_source_inspected": true,
+      "material_limitation": "This is Raman’s description of his group’s observations.",
+      "removal_reason": null
+    },
+    "final_decision": null
+  },
+  {
+    "claim_id": "30ceffee-330c-4097-945c-4802fb45ffd8",
+    "worker_file": "artifacts/corpus-verification/worker-raman-lecture-decisions.json",
+    "reason": "Official Nobel lecture PDF returned 403; indexed snippets and third-party facsimile are diagnostic only. No final decision is proposed.",
+    "unlinked_source_ids": [
+      null
+    ],
+    "status": "HOLD_SOURCE_ACCESS",
+    "diagnostic_candidate_only": {
+      "claim_id": "30ceffee-330c-4097-945c-4802fb45ffd8",
+      "personality": "C. V. Raman",
+      "original_claim_text": "The research group used purification and repeated distillation to test whether the new radiation came from an impurity.",
+      "decision": "REVISE AND APPROVE",
+      "final_proposed_wording": "Raman reported that Ramanathan used chemical purification and repeated slow vacuum distillation to test whether the secondary radiation came from an impurity.",
+      "epistemic_type": "TEXTUAL_ASSERTION",
+      "evidence_references": [
+        {
+          "source_id": null,
+          "url": "https://www.slideshare.net/slideshow/raman-cvthemolecularscatteringoflightnobellecture-16089188/16089188",
+          "locator": "reproduced lecture p. 4, source lines 68–70",
+          "source_authority": "C. V. Raman, 11 December 1930 Nobel lecture reproduced as nine page images with searchable OCR; complete page sequence inspected 2026-10-19",
+          "independence_assessment": "Primary participant text in a third-party reproduction. The official Nobel PDF was inaccessible (403), and this reproduction is one work, not independent corroboration.",
+          "original_source_inspected": true
+        }
+      ],
+      "verification_rationale": "The original obscured Ramanathan’s named experimental role; the lecture directly assigns those tests to him.",
+      "original_source_inspected": true,
+      "material_limitation": "Retrospective participant account; laboratory records not separately inspected.",
+      "removal_reason": null
+    },
+    "final_decision": null
+  },
+  {
+    "claim_id": "430096a3-caf5-4af2-a598-e2ec0cc13516",
+    "worker_file": "artifacts/corpus-verification/worker-raman-lecture-decisions.json",
+    "reason": "Official Nobel lecture PDF returned 403; indexed snippets and third-party facsimile are diagnostic only. No final decision is proposed.",
+    "unlinked_source_ids": [
+      null
+    ],
+    "status": "HOLD_SOURCE_ACCESS",
+    "diagnostic_candidate_only": {
+      "claim_id": "430096a3-caf5-4af2-a598-e2ec0cc13516",
+      "personality": "C. V. Raman",
+      "original_claim_text": "Raman explained that shifted frequencies can reveal molecular rotation and vibration.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "Raman explained that shifted frequencies can reveal molecular rotation and vibration.",
+      "epistemic_type": "TEXTUAL_ASSERTION",
+      "evidence_references": [
+        {
+          "source_id": null,
+          "url": "https://www.slideshare.net/slideshow/raman-cvthemolecularscatteringoflightnobellecture-16089188/16089188",
+          "locator": "reproduced lecture p. 8, source lines 94–97",
+          "source_authority": "C. V. Raman, 11 December 1930 Nobel lecture reproduced as nine page images with searchable OCR; complete page sequence inspected 2026-10-19",
+          "independence_assessment": "Primary participant text in a third-party reproduction. The official Nobel PDF was inaccessible (403), and this reproduction is one work, not independent corroboration.",
+          "original_source_inspected": true
+        }
+      ],
+      "verification_rationale": "Raman distinguishes shifted frequencies arising from translational, rotational, and vibrational motion.",
+      "original_source_inspected": true,
+      "material_limitation": "The explanation reflects Raman’s 1930 theoretical framing.",
+      "removal_reason": null
+    },
+    "final_decision": null
+  },
+  {
+    "claim_id": "4ec4b5b5-201d-4aa7-b678-2f9c01b9f782",
+    "worker_file": "artifacts/corpus-verification/worker-raman-lecture-decisions.json",
+    "reason": "Official Nobel lecture PDF returned 403; indexed snippets and third-party facsimile are diagnostic only. No final decision is proposed.",
+    "unlinked_source_ids": [
+      null
+    ],
+    "status": "HOLD_SOURCE_ACCESS",
+    "diagnostic_candidate_only": {
+      "claim_id": "4ec4b5b5-201d-4aa7-b678-2f9c01b9f782",
+      "personality": "C. V. Raman",
+      "original_claim_text": "Raman's Nobel lecture credited a succession of collaborators in the Calcutta light-scattering program.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "Raman's Nobel lecture credited a succession of collaborators in the Calcutta light-scattering program.",
+      "epistemic_type": "TEXTUAL_ASSERTION",
+      "evidence_references": [
+        {
+          "source_id": null,
+          "url": "https://www.slideshare.net/slideshow/raman-cvthemolecularscatteringoflightnobellecture-16089188/16089188",
+          "locator": "reproduced lecture pp. 2–5, source lines 56–63, 68–79",
+          "source_authority": "C. V. Raman, 11 December 1930 Nobel lecture reproduced as nine page images with searchable OCR; complete page sequence inspected 2026-10-19",
+          "independence_assessment": "Primary participant text in a third-party reproduction. The official Nobel PDF was inaccessible (403), and this reproduction is one work, not independent corroboration.",
+          "original_source_inspected": true
+        }
+      ],
+      "verification_rationale": "The lecture names Krishnan, Ramanathan, Venkateswaran, Ramakrishna Rao, Ramachandra Rao, and Ramdas in successive investigations.",
+      "original_source_inspected": true,
+      "material_limitation": "The list of collaborators is based on Raman’s own retrospective acknowledgment.",
+      "removal_reason": null
+    },
+    "final_decision": null
+  },
+  {
+    "claim_id": "664d0df2-8216-41d3-b547-03e5593c735c",
+    "worker_file": "artifacts/corpus-verification/worker-raman-lecture-decisions.json",
+    "reason": "Official Nobel lecture PDF returned 403; indexed snippets and third-party facsimile are diagnostic only. No final decision is proposed.",
+    "unlinked_source_ids": [
+      null
+    ],
+    "status": "HOLD_SOURCE_ACCESS",
+    "diagnostic_candidate_only": {
+      "claim_id": "664d0df2-8216-41d3-b547-03e5593c735c",
+      "personality": "C. V. Raman",
+      "original_claim_text": "Raman specifically credited K. S. Krishnan with examining many liquids in the scattering experiments.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "Raman specifically credited K. S. Krishnan with examining many liquids in the scattering experiments.",
+      "epistemic_type": "TEXTUAL_ASSERTION",
+      "evidence_references": [
+        {
+          "source_id": null,
+          "url": "https://www.slideshare.net/slideshow/raman-cvthemolecularscatteringoflightnobellecture-16089188/16089188",
+          "locator": "reproduced lecture p. 2, source lines 60–63",
+          "source_authority": "C. V. Raman, 11 December 1930 Nobel lecture reproduced as nine page images with searchable OCR; complete page sequence inspected 2026-10-19",
+          "independence_assessment": "Primary participant text in a third-party reproduction. The official Nobel PDF was inaccessible (403), and this reproduction is one work, not independent corroboration.",
+          "original_source_inspected": true
+        }
+      ],
+      "verification_rationale": "Raman expressly credits Krishnan with examining many liquids and assessing molecular optical anisotropy.",
+      "original_source_inspected": true,
+      "material_limitation": "Raman’s collaborator credit is direct testimony.",
+      "removal_reason": null
+    },
+    "final_decision": null
+  },
+  {
+    "claim_id": "8c098e8c-0d66-414a-9f6b-286247ee4798",
+    "worker_file": "artifacts/corpus-verification/worker-raman-lecture-decisions.json",
+    "reason": "Official Nobel lecture PDF returned 403; indexed snippets and third-party facsimile are diagnostic only. No final decision is proposed.",
+    "unlinked_source_ids": [
+      null
+    ],
+    "status": "HOLD_SOURCE_ACCESS",
+    "diagnostic_candidate_only": {
+      "claim_id": "8c098e8c-0d66-414a-9f6b-286247ee4798",
+      "personality": "C. V. Raman",
+      "original_claim_text": "In his Nobel lecture, Raman traced his light-scattering research to curiosity about the blue Mediterranean Sea.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "In his Nobel lecture, Raman traced his light-scattering research to curiosity about the blue Mediterranean Sea.",
+      "epistemic_type": "TEXTUAL_ASSERTION",
+      "evidence_references": [
+        {
+          "source_id": null,
+          "url": "https://www.slideshare.net/slideshow/raman-cvthemolecularscatteringoflightnobellecture-16089188/16089188",
+          "locator": "reproduced lecture p. 1, source lines 50–53",
+          "source_authority": "C. V. Raman, 11 December 1930 Nobel lecture reproduced as nine page images with searchable OCR; complete page sequence inspected 2026-10-19",
+          "independence_assessment": "Primary participant text in a third-party reproduction. The official Nobel PDF was inaccessible (403), and this reproduction is one work, not independent corroboration.",
+          "original_source_inspected": true
+        }
+      ],
+      "verification_rationale": "Raman recounts Mediterranean sea color during a 1921 voyage as the stimulus for liquid-scattering experiments.",
+      "original_source_inspected": true,
+      "material_limitation": "This is Raman’s autobiographical memory.",
+      "removal_reason": null
+    },
+    "final_decision": null
+  },
+  {
+    "claim_id": "b1abc00d-bb85-4bf4-8084-1083ca581f0a",
+    "worker_file": "artifacts/corpus-verification/worker-raman-lecture-decisions.json",
+    "reason": "Official Nobel lecture PDF returned 403; indexed snippets and third-party facsimile are diagnostic only. No final decision is proposed.",
+    "unlinked_source_ids": [
+      null
+    ],
+    "status": "HOLD_SOURCE_ACCESS",
+    "diagnostic_candidate_only": {
+      "claim_id": "b1abc00d-bb85-4bf4-8084-1083ca581f0a",
+      "personality": "C. V. Raman",
+      "original_claim_text": "Raman argued that the effect could help investigate a wide range of problems in physics and chemistry.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "Raman argued that the effect could help investigate a wide range of problems in physics and chemistry.",
+      "epistemic_type": "TEXTUAL_ASSERTION",
+      "evidence_references": [
+        {
+          "source_id": null,
+          "url": "https://www.slideshare.net/slideshow/raman-cvthemolecularscatteringoflightnobellecture-16089188/16089188",
+          "locator": "reproduced lecture pp. 8–9, source lines 99–102",
+          "source_authority": "C. V. Raman, 11 December 1930 Nobel lecture reproduced as nine page images with searchable OCR; complete page sequence inspected 2026-10-19",
+          "independence_assessment": "Primary participant text in a third-party reproduction. The official Nobel PDF was inaccessible (403), and this reproduction is one work, not independent corroboration.",
+          "original_source_inspected": true
+        }
+      ],
+      "verification_rationale": "Raman states broad uses in physics and chemistry and explains how spectra inform structural study.",
+      "original_source_inspected": true,
+      "material_limitation": "A forecast and argument in 1930, not an assessment of all later applications.",
+      "removal_reason": null
+    },
+    "final_decision": null
+  },
+  {
+    "claim_id": "df52cd8d-0722-4f43-a328-5c40cbf1e8b3",
+    "worker_file": "artifacts/corpus-verification/worker-raman-lecture-decisions.json",
+    "reason": "Official Nobel lecture PDF returned 403; indexed snippets and third-party facsimile are diagnostic only. No final decision is proposed.",
+    "unlinked_source_ids": [
+      null
+    ],
+    "status": "HOLD_SOURCE_ACCESS",
+    "diagnostic_candidate_only": {
+      "claim_id": "df52cd8d-0722-4f43-a328-5c40cbf1e8b3",
+      "personality": "C. V. Raman",
+      "original_claim_text": "Raman said he began experiments on light scattering in liquids after returning to Calcutta in 1921.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "Raman said he began experiments on light scattering in liquids after returning to Calcutta in 1921.",
+      "epistemic_type": "TEXTUAL_ASSERTION",
+      "evidence_references": [
+        {
+          "source_id": null,
+          "url": "https://www.slideshare.net/slideshow/raman-cvthemolecularscatteringoflightnobellecture-16089188/16089188",
+          "locator": "reproduced lecture p. 1, source lines 50–53",
+          "source_authority": "C. V. Raman, 11 December 1930 Nobel lecture reproduced as nine page images with searchable OCR; complete page sequence inspected 2026-10-19",
+          "independence_assessment": "Primary participant text in a third-party reproduction. The official Nobel PDF was inaccessible (403), and this reproduction is one work, not independent corroboration.",
+          "original_source_inspected": true
+        }
+      ],
+      "verification_rationale": "The lecture dates his return to Calcutta and immediate experiments to September 1921.",
+      "original_source_inspected": true,
+      "material_limitation": "This is Raman’s retrospective chronology.",
+      "removal_reason": null
+    },
+    "final_decision": null
+  },
+  {
+    "claim_id": "dfc69a57-1a01-40db-b862-f1760c298138",
+    "worker_file": "artifacts/corpus-verification/worker-raman-lecture-decisions.json",
+    "reason": "Official Nobel lecture PDF returned 403; indexed snippets and third-party facsimile are diagnostic only. No final decision is proposed.",
+    "unlinked_source_ids": [
+      null
+    ],
+    "status": "HOLD_SOURCE_ACCESS",
+    "diagnostic_candidate_only": {
+      "claim_id": "dfc69a57-1a01-40db-b862-f1760c298138",
+      "personality": "C. V. Raman",
+      "original_claim_text": "Raman described glycerine observations that helped reveal a clear color shift in scattered light.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "Raman described glycerine observations that helped reveal a clear color shift in scattered light.",
+      "epistemic_type": "TEXTUAL_ASSERTION",
+      "evidence_references": [
+        {
+          "source_id": null,
+          "url": "https://www.slideshare.net/slideshow/raman-cvthemolecularscatteringoflightnobellecture-16089188/16089188",
+          "locator": "reproduced lecture pp. 4–5, source lines 73–76",
+          "source_authority": "C. V. Raman, 11 December 1930 Nobel lecture reproduced as nine page images with searchable OCR; complete page sequence inspected 2026-10-19",
+          "independence_assessment": "Primary participant text in a third-party reproduction. The official Nobel PDF was inaccessible (403), and this reproduction is one work, not independent corroboration.",
+          "original_source_inspected": true
+        }
+      ],
+      "verification_rationale": "Raman recounts Venkateswaran’s purified glycerine finding and filter tests showing a red-shifted scattered color.",
+      "original_source_inspected": true,
+      "material_limitation": "The observation is attributed to the group and Venkateswaran’s named role is retained in the original wording.",
+      "removal_reason": null
+    },
+    "final_decision": null
+  },
+  {
+    "claim_id": "ecf23f83-83d2-48a7-bd5b-10bb2cae30c6",
+    "worker_file": "artifacts/corpus-verification/worker-raman-lecture-decisions.json",
+    "reason": "Official Nobel lecture PDF returned 403; indexed snippets and third-party facsimile are diagnostic only. No final decision is proposed.",
+    "unlinked_source_ids": [
+      null
+    ],
+    "status": "HOLD_SOURCE_ACCESS",
+    "diagnostic_candidate_only": {
+      "claim_id": "ecf23f83-83d2-48a7-bd5b-10bb2cae30c6",
+      "personality": "C. V. Raman",
+      "original_claim_text": "The group concentrated sunlight with a seven-inch refracting telescope to make the weak effect visible.",
+      "decision": "APPROVE",
+      "final_proposed_wording": "The group concentrated sunlight with a seven-inch refracting telescope to make the weak effect visible.",
+      "epistemic_type": "TEXTUAL_ASSERTION",
+      "evidence_references": [
+        {
+          "source_id": null,
+          "url": "https://www.slideshare.net/slideshow/raman-cvthemolecularscatteringoflightnobellecture-16089188/16089188",
+          "locator": "reproduced lecture p. 5, source lines 77–80",
+          "source_authority": "C. V. Raman, 11 December 1930 Nobel lecture reproduced as nine page images with searchable OCR; complete page sequence inspected 2026-10-19",
+          "independence_assessment": "Primary participant text in a third-party reproduction. The official Nobel PDF was inaccessible (403), and this reproduction is one work, not independent corroboration.",
+          "original_source_inspected": true
+        }
+      ],
+      "verification_rationale": "Raman expressly says the weak effect was made visible by concentrating sunlight with a seven-inch refractor and lens.",
+      "original_source_inspected": true,
+      "material_limitation": "The lecture is primary participant testimony; ACS’s historical account separately confirms the telescope setup.",
+      "removal_reason": null
+    },
+    "final_decision": null
+  }
+]

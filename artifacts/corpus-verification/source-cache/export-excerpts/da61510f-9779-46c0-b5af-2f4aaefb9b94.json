@@ -1,0 +1,134 @@
+{
+  "source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+  "source": {
+    "author": "Bradley J. Malkovsky",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Bradley J. Malkovsky. Sankara. Stanford Encyclopedia of Philosophy. https://plato.stanford.edu/entries/shankara/",
+    "original_work_identity": {},
+    "publication_year": 2025,
+    "publisher_or_institution": "Stanford Encyclopedia of Philosophy",
+    "rights_or_access_note": "Publicly accessible source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Sankara",
+    "url": "https://plato.stanford.edu/entries/shankara/"
+  },
+  "claim_ids": [
+    "44984def-80e6-4c07-a411-216eb2e031a5",
+    "4ec3c901-037a-45cd-8925-41b457c04f70",
+    "6037e150-d873-4a4b-874a-4058fbeb0645",
+    "6eedc4ab-6cff-40c8-bad8-c616cd941467",
+    "6ef8c100-50f7-4803-bf01-8ead5d774262",
+    "711cf2d2-2d4d-45ab-bc9e-86d0a77a1873",
+    "7ea0f689-a9c1-4b95-8098-74ae820c7699",
+    "94339bed-5eea-4fd3-a18a-7a145baa358a",
+    "967e920a-f812-4d9e-a3d3-ab6420ed4ba3",
+    "a85760f8-9f86-423f-81ca-dab8c9921458",
+    "d5db24e8-aa1c-40e1-aa31-0d890bce3357",
+    "da6ebdd0-ef8f-43bc-b329-7bd0ddca0b10",
+    "fb507cbb-5254-4bb7-b6ad-bd3764e03ca0"
+  ],
+  "passages": [
+    {
+      "chunk_id": "096b3221-8204-4e13-b839-b55ba7335772",
+      "locator": "SEP: Introduction",
+      "text_sha256": "cfe5241ce75d72bb95f8e519e9a447aced7b9eb5504a41f669839faf4df01974",
+      "excerpt_preview": "This philosophical tradition finds its most sustained early articulation in the works of the preeminent Advaita Vedantin, Sankaracarya (hereafter Sankara), who flourished during the eighth century CE. Sankara endeavored to communicate nondu",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "1142cbe8-7b7f-4768-8bd7-0774329d4e9f",
+      "locator": "SEP: Introduction",
+      "text_sha256": "784b182886e4a9fcdbf9eda1d6e66321fdb84451b43a43881f14873d67985bd7",
+      "excerpt_preview": "This effort entails tying a metaphysics of brahman to a philosophy of consciousness. This philosophical tradition finds its most sustained early articulation in the works of the preeminent Advaita Vedantin, Sankaracarya (hereafter Sankara),",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "14fe189d-111b-49da-b08c-9dbbd6062717",
+      "locator": "SEP: Life and Works",
+      "text_sha256": "23d8898829cb8967fc7f5f186dc03a7ae0936c79bebe29d746664365db738056",
+      "excerpt_preview": "According to the Advaita Vedanta tradition itself, he was Saiva (a devotee of the deity Siva); but several scholars believe he was Vaisnava, a devotee of the deity Visnu (see Clark 2006: 159–170 for an overview of these theories). Hagiograp",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "25a7116a-37f2-414c-a9a2-68a7289da5f6",
+      "locator": "SEP: Life and Works",
+      "text_sha256": "849267ca8e6372413c5823d1ae6825278319ec91411d9769051a7b85d61c6a3d",
+      "excerpt_preview": "Scholars are also not clear about his religious identity. According to the Advaita Vedanta tradition itself, he was Saiva (a devotee of the deity Siva); but several scholars believe he was Vaisnava, a devotee of the deity Visnu (see Clark 2",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "2f95eee7-d616-407b-a57d-4bf78ed684ef",
+      "locator": "SEP: Life and Works",
+      "text_sha256": "c83bd40de662c9ca625d705f1e44970114a1a8ad2c9ab666559c3798388e1977",
+      "excerpt_preview": "Nakamura (1983: 48–88) argues for an earlier date of 700–750 CE, and discusses the various dating theories at length. Potter (1981: 14–15, 116–119) places him from the late seventh to early eighth centuries CE due to the dating of a contemp",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4c7e78bc-5c6c-4979-80a3-4ca33b6a5ae1",
+      "locator": "SEP: Life and Works",
+      "text_sha256": "f8c0706db09cd9b92a19658d5adb96b0b625f7bfd9c33d74ab8b9a9040fc21ce",
+      "excerpt_preview": "There are no dependable historical records of Sankara’s life beyond his written works which provide few biographical clues. Scholars are also not clear about his religious identity. According to the Advaita Vedanta tradition itself, he was ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "5805b6c6-9bc9-4c69-98ab-e78c77dc9fe6",
+      "locator": "SEP: Life and Works",
+      "text_sha256": "e18b7f6219bd0fb845f2f0f7a35d26cd50af292c506c26c33c2b00ffcda2de13",
+      "excerpt_preview": "Early scholars placed him from 788–820 CE. Nakamura (1983: 48–88) argues for an earlier date of 700–750 CE, and discusses the various dating theories at length. Potter (1981: 14–15, 116–119) places him from the late seventh to early eighth ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b2eef562-2758-4a09-8b04-32aab6927214",
+      "locator": "SEP: Life and Works",
+      "text_sha256": "4ce1f9130bc995b38db44778c3b170651c29e1d89a09cc80155da04920922cd6",
+      "excerpt_preview": "Consciousness, Mind, and Personal Identity 3.1 Witnessing Consciousness 3.2 Self-Illumination of Consciousness 3.3 Reflection: Consciousness, Mind, and Personal Identity 3.4 Superimposition: The Fundamental Problem of Ignorance 4. Contempla",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "be2c6c82-fecf-423a-a990-4a5be5632e8c",
+      "locator": "SEP: Introduction",
+      "text_sha256": "74893d0c40b2ca23d45d97a831bf02247bdbb830bb91b3703ef901ae23ceb59c",
+      "excerpt_preview": "His philosophy and methods comprise a teaching tradition intended to culminate in a direct liberating recognition of nonduality that is synonymous with liberation or freedom (moksa). Sankara is one of the most widely known and influential I",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d2a1d8f2-e158-4335-9cf1-4b47fa1e9092",
+      "locator": "SEP: Life and Works",
+      "text_sha256": "875676ba7fa133db37d000daed4f53b6acbbaec618b7eab936a24a1a347f8279",
+      "excerpt_preview": "The fundamental thrust of Advaita Vedanta is that the atman is pure non-intentional consciousness. It is one without a second, nondual, infinite existence, and numerically identical with brahman. This effort entails tying a metaphysics of b",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "dcc477dd-fc6e-480f-b7ff-13c16ec73699",
+      "locator": "SEP: Introduction",
+      "text_sha256": "c3ddcce9e769c115b8d27a6e98618f845e01e75f3a887237debed92fab37ab84",
+      "excerpt_preview": "Sankara endeavored to communicate nonduality through systematized theories of metaphysics, language, and epistemology. He also incorporated specific methods of philosophical teaching, along with learning methods of listening, reflection, an",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f008f8d0-fb9a-4280-b64e-8bdc31249028",
+      "locator": "SEP: Introduction",
+      "text_sha256": "960551e346833293f6da8d87e2958018ba76935d3eff364bee6cb7200cd8f0ab",
+      "excerpt_preview": "He also incorporated specific methods of philosophical teaching, along with learning methods of listening, reflection, and contemplation. His philosophy and methods comprise a teaching tradition intended to culminate in a direct liberating ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

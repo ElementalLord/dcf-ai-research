@@ -1,0 +1,105 @@
+{
+  "source_id": "7efe2589-0b7e-4cee-bcc0-b71b0ba418e6",
+  "source": {
+    "author": "Sri Aurobindo",
+    "authority_metadata": {},
+    "citation": "Sri Aurobindo, The Secret of the Veda. Sri Aurobindo Ashram.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Sri Aurobindo Ashram",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "The Secret of the Veda",
+    "url": "https://www.sriaurobindoashram.org/sriaurobindo/downloadpdf.php?id=30"
+  },
+  "claim_ids": [
+    "062ff005-15a9-4f97-8259-1d0698482a87",
+    "0eb957fc-9afa-4434-9aa8-2e2c3700d2d9",
+    "0fb2a930-8edc-4f7f-af97-fc310a3d16fe",
+    "0fbc0b62-3ccf-459a-9da3-7c92fb57a426",
+    "183a42a7-fd03-4cea-8b72-f4755be90dc9",
+    "28e7e129-ebd5-4953-be7d-539ec83d01b1",
+    "47553e92-4174-4b83-98aa-ed295cbaf923",
+    "597dc8b2-1382-4632-83b1-51319f1bfb53",
+    "6d8963cd-9b9e-4775-b9f8-1a08ccb4b846",
+    "6df9ba55-b447-46b9-a821-7e4aa40d516e",
+    "8cca657d-fb35-4e39-9953-ec339ec0f81a",
+    "8db3179b-83c5-4d31-b27d-e2706c5ca3da",
+    "91009fc6-dccf-463d-9b6f-b43748a0c8dc",
+    "9ce64740-e77d-4bd8-b47f-2acdd768a570",
+    "b5244f1a-f73f-4ea8-943c-01877b54cf06",
+    "b75384c6-f2a9-42d9-9ed8-530a91b3ad57",
+    "bda45d3d-cbe2-4b40-b7cd-4ff011403811",
+    "c1d204f1-fe1e-4cd1-9b27-650267a116ed"
+  ],
+  "passages": [
+    {
+      "chunk_id": "13cd0822-035c-4563-bcfe-e14feeadd8d7",
+      "locator": "Page 384",
+      "text_sha256": "301b657d926730ed56589ebacc94dbf67ec2d2863fb242f20a734f911b46ff3f",
+      "excerpt_preview": "372 Hymns of the Atris three heavens. More, there is a triple world below, — Heaven, Earth and the intervening mid-region; a triple world between, the shining heavens of the Sun; a triple world above, the supreme and rapturous abodes of the",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "525c0ae6-7a16-4124-9cea-cc389895f9eb",
+      "locator": "Page 129",
+      "text_sha256": "eba89d718563913df49b11687821f6eeda71272193c26c26f025cd780727f7b5",
+      "excerpt_preview": "The Seven Rivers 117 increases by knowledge and makes his home and rest in the source of the Truth, of whom Heaven and Earth are the wives and lovers, who is increased by the divine waters in the unob- structed Vast, his own seat, and dwell",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7b8d5d5a-7383-421e-af2d-3dcaa593c7e1",
+      "locator": "Page 105",
+      "text_sha256": "dca0d74e3d4f4b8f0224add4d52250fe45f08fb44dcbec07d0a3811035d4b730",
+      "excerpt_preview": "Saraswati and Her Consorts 93 movement, or sometimes footing. In Greek itself it is connected with p¯eg¯e, a stream. There is, therefore, in the terms of this legend a constant association with the image of a forceful move- ment of inspirat",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7cea0014-4181-4a8d-8a84-16128f1b66ce",
+      "locator": "Page 28",
+      "text_sha256": "96a218b5be90ae30fb6c01f3c5bbb7bb447ad77184c68fcd426ba10fc5e27acb",
+      "excerpt_preview": "16 The Secret of the Veda ritual but of the Vedic text. Upanishads, increasingly clear and direct in their language, became the fountainhead of the highest Indian thought and replaced the inspired verses of Vasishtha and Vishwamitra.3 The V",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "98573e10-d4b9-4da7-af79-d9b99141d9e8",
+      "locator": "Page 72",
+      "text_sha256": "49d56b05c5552cc528e46c96f4fe242e4bd7b4f06174b6cfaf7a8aa1ebc313a8",
+      "excerpt_preview": "60 The Secret of the Veda Bharadwaja. The fifth is occupied by the hymns of the house of Atri. In each of these Mandalas the Suktas addressed to Agni are first collected together and followed by those of which Indra is the deity; the invoca",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b3afae10-af26-4987-b206-61ddc5477469",
+      "locator": "Page 125",
+      "text_sha256": "8e19e22751eca63abe6b60b29e72d6d3603e61ecf4129d0748730aa8769da971",
+      "excerpt_preview": "The Seven Rivers 113 construction upon such expressions. Obviously these are the waters of the Truth and the Bliss that flow from the supreme ocean. These rivers flow not upon earth, but in heaven; they are prevented by Vritra the Besieger,",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ef24ca05-1fe2-47cc-a308-9e19c7d14740",
+      "locator": "Page 120",
+      "text_sha256": "dcd922878a7264e09215107103d56e0de86d4e25f9fc8329c47a9774fd897776",
+      "excerpt_preview": "108 The Secret of the Veda Thus we find that both Veda and Purana use the same symbolic images; the ocean is for them the image of infinite and eternal existence. We find also that the image of the river or flowing current is used to symbol",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f39f9469-2abe-4d18-b267-8a6a7ee0dbe9",
+      "locator": "Page 71",
+      "text_sha256": "e0ece6089e48593be974e3b557e3c8aa15fd2e81e75c03ed4da4d6c0aa284ec6",
+      "excerpt_preview": "Agni and the Truth 59 be necessary. A critical scrutiny covering the whole of the ten Mandalas would be indispensable. To justify for instance the idea I attach to the Vedic term Ritam, the Truth, or my ex- planation of the symbol of the Co",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

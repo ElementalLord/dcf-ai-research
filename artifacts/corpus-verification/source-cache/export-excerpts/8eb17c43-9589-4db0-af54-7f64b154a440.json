@@ -1,0 +1,43 @@
+{
+  "source_id": "8eb17c43-9589-4db0-af54-7f64b154a440",
+  "source": {
+    "author": "A. P. J. Abdul Kalam",
+    "authority_metadata": {
+      "verified_at": "2026-10-10T05:42:25.481Z"
+    },
+    "citation": "A. P. J. Abdul Kalam. Address at the National Workshop on Vision 2020 and PURA. President of India. https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-inauguration-national-workshop-vision-2020-india-pura-and",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "President of India",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Address at the National Workshop on Vision 2020 and PURA",
+    "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-inauguration-national-workshop-vision-2020-india-pura-and"
+  },
+  "claim_ids": [
+    "0b6d468b-feda-438b-a3c2-bab5b0e51b93",
+    "7fbccc67-b226-4a1a-9b91-2baea451fa0a"
+  ],
+  "passages": [
+    {
+      "chunk_id": "963c324d-7d7d-49f3-b6f7-ae92069dd300",
+      "locator": "PURA workshop",
+      "text_sha256": "78fc5d681d71212de7e9974712b042335d65efe35030242a22770909d83a35af",
+      "excerpt_preview": "This PURA complex has all the three Connectivities - physical, electronic and knowledge - leading to economic connectivity. The center of activity emanates from the women engineering college that provides the electronic and knowledge connec",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9cf31a90-1bd7-4b13-a12f-e93cf3c23a48",
+      "locator": "PURA workshop",
+      "text_sha256": "632b3bb5d012ad960323d2ad1513dcb30f6516c49eb7bc0bd6eb2c76e86eedbc",
+      "excerpt_preview": "This will provide direct quality employment to over one million who will be instrumental in promoting higher level of wealth generation in PURA Complexes.ConclusionAs you are aware we have been talking about PURA (Providing Urban Amenities ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

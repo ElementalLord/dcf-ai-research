@@ -1,0 +1,53 @@
+{
+  "source_id": "8b707bab-dfe5-44e5-a59e-292e671b53a1",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_kind": "Contemporary temple inscription and institutional presentation",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Brihadisvara Temple: Foundation Inscription. Indira Gandhi National Centre for the Arts. https://ignca.gov.in/brhadisvaratemple/VIMAN/INSCRIPTIONS/inscription_01.html",
+    "original_work_identity": {},
+    "publication_year": 1010,
+    "publisher_or_institution": "Indira Gandhi National Centre for the Arts",
+    "rights_or_access_note": "Short documented research excerpts only; contemporary inscriptions, later chronicle tradition and modern scholarship are kept distinct.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Brihadisvara Temple: Foundation Inscription",
+    "url": "https://ignca.gov.in/brhadisvaratemple/VIMAN/INSCRIPTIONS/inscription_01.html"
+  },
+  "claim_ids": [
+    "33df08ad-a231-4362-a9cf-5a8b47684d87",
+    "428334de-b663-43b1-a69b-6cb3760b442e",
+    "44c805ac-21ba-4a49-b073-c8948c4cf2e5"
+  ],
+  "passages": [
+    {
+      "chunk_id": "4ef6ba75-9679-46bc-a927-915b72d04298",
+      "locator": "25th regnal year",
+      "text_sha256": "fcf0f38d63180a5a16fa8576957b203e8212c12173c8d43e916175d8fde1d998",
+      "excerpt_preview": "he foundation inscription refers to construction of the stone temple of Raja Rajesvara by the emperor Rajaraja Chola in his 25th regnal year, 1010 A.D., at Tanjore.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "85137731-51b0-4137-aaf1-d0644b28dc6f",
+      "locator": "gold diadems",
+      "text_sha256": "2d61ef1edcd3adb3792f27ac0ef0ca1923d1ab942af60f731b0b18a07c091abe",
+      "excerpt_preview": "The gifts include gold diadems, plates, bowls, pitchers, chains, trumpets, parasols and fly whisks.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8fd9b7be-35a3-410a-8302-1735e7a966eb",
+      "locator": "gifts made by him, his sister, his queens",
+      "text_sha256": "bdc63a899c48212e05d634fa939d72b62cc31ca02b223741cee511aeac5ee931",
+      "excerpt_preview": "It records the royal order to be engraved on the base of the main temple and the gifts made by him, his sister, his queens and others.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

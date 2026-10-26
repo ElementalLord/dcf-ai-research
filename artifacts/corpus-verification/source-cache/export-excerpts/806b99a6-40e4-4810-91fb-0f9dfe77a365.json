@@ -1,0 +1,34 @@
+{
+  "source_id": "806b99a6-40e4-4810-91fb-0f9dfe77a365",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:36.645Z"
+    },
+    "citation": "Rigveda 1.166: Agastya hymn. Vedic Heritage Portal, Government of India. https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-166/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Vedic Heritage Portal, Government of India",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Rigveda 1.166: Agastya hymn",
+    "url": "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-166/"
+  },
+  "claim_ids": [
+    "83e96665-4213-498d-b420-8fcc89db4ed0"
+  ],
+  "passages": [
+    {
+      "chunk_id": "62a8f6a4-b8c8-4a5a-8aa2-0dcd53d8f168",
+      "locator": "Rigveda 1.166",
+      "text_sha256": "0ace6422e2c762541a129541550b06c827a7f766eb7c7dbf59ed0ee70bf18cdf",
+      "excerpt_preview": "77 178 179 180 181 182 183 184 185 186 187 188 189 190 191 Rigveda – Shakala Samhita – Mandala 01 Sukta 166 /video/RIGSS_01_166.mp4 A A+ १५ अगस्त्यो मैत्रावरुणिः । मरुतः। जगती, १४-१५ त्रिष्टुप्। तन्नु वो॑चाम रभ॒साय॒ जन्म॑ने॒ पूर्वं॑ महि॒त्व",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

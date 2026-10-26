@@ -1,0 +1,43 @@
+{
+  "source_id": "ca29e431-b425-45c2-9399-21c10c2d25ba",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.24, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 24 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga24/bala_24_prose.htm"
+  },
+  "claim_ids": [
+    "20323952-4f89-4e5d-b034-a1fb74461c33",
+    "9fceb517-48f7-4dcf-8441-78dd274c31d3"
+  ],
+  "passages": [
+    {
+      "chunk_id": "76d47139-2b81-4cb8-ba5e-62ea2cdbe778",
+      "locator": "Book I : Bala Kanda - The Youthful \nMajestiesSarga 24  in Prose",
+      "text_sha256": "015e76620af45220af5e7b5dd2276aba6f83822695577b5afc9c8659353b0b71",
+      "excerpt_preview": "\"Indeed, none is able to enter this sort of province, Rama, destroyed by the hazardous  and invincible unearthly being who turned into a demoness, namely Tataka, hence you have to make the  provinces habitable.  \"As to how that ghoulish Tat",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ec0ac32a-ede9-42a8-ac78-dcb0d578d54c",
+      "locator": "Book I : Bala Kanda - The Youthful \nMajestiesSarga 24  in Prose",
+      "text_sha256": "322e1290b986067e74d2bc7f44e02e48261fac07d720b450a4729ba1dcf6b83a",
+      "excerpt_preview": "While crossing over the River Ganga, sage Vishvamitra sails them through its confluence  with River Sarayu, which flows at their capital Ayodhya. The sage leads them to a deadly forest on the  other bank of River Ganga and narrates about th",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

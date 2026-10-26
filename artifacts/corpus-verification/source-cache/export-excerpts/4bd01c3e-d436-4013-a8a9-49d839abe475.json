@@ -1,0 +1,71 @@
+{
+  "source_id": "4bd01c3e-d436-4013-a8a9-49d839abe475",
+  "source": {
+    "author": "Valmiki",
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Bala Kanda, Sarga 62 (https://www.valmikiramayan.net/utf8/baala/sarga62/balasans62.htm)",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Bala Kanda, Sarga 62",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga62/balasans62.htm"
+  },
+  "claim_ids": [
+    "16f8e94b-2975-4e65-bc9e-1d8146d7e87e",
+    "32feb28c-6727-45f8-821e-81f755d06bbc",
+    "85bf1dad-c1ac-42d8-a0f1-241649cbdb81",
+    "9bedb2d7-24cf-4f1b-9740-eed513164e45",
+    "bb309837-64ce-4503-aaee-5bf344de434c",
+    "d8df62b0-a6ef-448b-b9d6-8ec7bbc73075",
+    "d9dca12d-f5e9-4f01-8a68-5d72d022c18b",
+    "dede2f64-dbd6-424f-8ca0-a4d1564de84d"
+  ],
+  "passages": [
+    {
+      "chunk_id": "01b9c2bc-82aa-4320-b659-3d37088c6c3b",
+      "locator": "Introduction",
+      "text_sha256": "8774a73ee4c5dc591003f80cbec4ddbb69605e30af61b8e78eed1497b4da7a95",
+      "excerpt_preview": "Vividly: 'A father's ambition in begetting sons is to do something good and positive  to the society in the present world and when departed a right place is acquired  in heavens through these sons, by their yearly death-day rituals etc., an",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "72182ad9-a330-4762-8f24-13100a2975a7",
+      "locator": "Introduction",
+      "text_sha256": "eb3ee51e240615501162a10b24e75cbb3bade14c5de15a3b236264b892bb4086",
+      "excerpt_preview": "Vishvamitra will be nagged by almost all, including his sons, on this 'dog-meat-eating.'  There is a parable in Maha Bharata that Vishvamitra once tried to eat dog's meat  when he did not get any food, but caught red-handedly. Later this ha",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "90006a17-a967-4741-b750-d7d0a4a667c8",
+      "locator": "Introduction",
+      "text_sha256": "ed28aa8f12f0e4ba6ae112ba8d9fed753bca67673bdd618505b371c8d82c92a8",
+      "excerpt_preview": "When Shunashepa is tied to ritual post he immensely pleased two gods, namely Indra  and Upendra as well, with those two hymns he got from Vishvamitra. [1-62-25]  ततः प्रीतः सहस्राक्षो रहस्यस्तुतितोषितः | दीर्घमायुस्तदा प्रादाच्छुनःशेपाय राघ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "dc4c7878-13d3-455d-94ef-43178aa33bc6",
+      "locator": "Introduction",
+      "text_sha256": "4c9719a4a8cfce2f890d4d311ff3f5e35523e0cba30d6cd153a34e943a7c9d09",
+      "excerpt_preview": "I have no mother or a father to save me. Then wherefore cousins or relatives  will be there to protect me. Oh, peaceable saint the eminent, it will be apt of  you to protect me according to saintliness. [1-62-4b, 5a]  त्राता त्वं हि नरश्रेष",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e4ea51bd-02c1-4363-af67-82b98757e401",
+      "locator": "Introduction",
+      "text_sha256": "4578aa53afa41ce692c2e2945692ca5e9d22a86405b727e50b49313e9f8bc590",
+      "excerpt_preview": "Sage Vishvamitra curses his sons as they defy his orders and accords two esoteric  hymns to Shunashepa, for chanting them in the Vedic-ritual of Ambariisha. Shunashepa  gets longevity on chanting those hymns. Thus Vishvamitra not only creat",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

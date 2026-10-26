@@ -163,7 +163,7 @@ export default function WebsiteAccess() {
   }
 
   return <section className="website-access-panel" aria-labelledby="website-access-title">
-    <div className="website-panel-head"><div><p className="section-label">Page permissions</p><h2 id="website-access-title">Page access</h2></div><Button variant="outline" onClick={() => edit()}><Plus size={15}/> Add website</Button></div>
+    <div className="website-panel-head"><div><h2 id="website-access-title">Page access</h2></div><Button variant="outline" onClick={() => edit()}><Plus size={15}/> Add website</Button></div>
     <div className="website-record-views" role="group" aria-label="Website access records"><button type="button" className={recordView === "current" ? "is-active" : ""} aria-pressed={recordView === "current"} onClick={() => setRecordView("current")}>Current <span>{currentRules.length}</span></button><button type="button" className={recordView === "rejected" ? "is-active" : ""} aria-pressed={recordView === "rejected"} onClick={() => setRecordView("rejected")}>Rejected <span>{rejectedCount}</span></button></div>
     <div className="website-list-toolbar"><label className="website-search"><Search size={16} aria-hidden="true"/><Input value={query} onChange={event => { setQuery(event.target.value); setShownSites(8); }} placeholder="Find a page or site" aria-label="Find a page or site"/></label><span>{loading ? "Loading…" : recordView === "rejected" ? `${rejectedCount} rejected rules` : `${currentRules.length} ${currentRules.length === 1 ? "rule" : "rules"} · ${siteCount} ${siteCount === 1 ? "site" : "sites"}`}</span></div>
     {notice && <p className="inline-success" role="status"><Check size={15}/>{notice}</p>}

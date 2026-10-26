@@ -1,0 +1,34 @@
+{
+  "source_id": "898fbcae-e238-4cb3-8790-b348ec367e0d",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:39.116Z"
+    },
+    "citation": "Rigveda 1.168: Agastya hymn. Vedic Heritage Portal, Government of India. https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-168/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Vedic Heritage Portal, Government of India",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Rigveda 1.168: Agastya hymn",
+    "url": "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-168/"
+  },
+  "claim_ids": [
+    "a598e0a4-fad3-4e6f-8795-a20fbedc1bf5"
+  ],
+  "passages": [
+    {
+      "chunk_id": "62c87fac-0dcb-4dfb-b2d9-185ed34d61ce",
+      "locator": "Rigveda 1.168",
+      "text_sha256": "75e75f0f19dcf7d9de48bb4b63ef5c916904e7a52686028cd543c1f7638895d5",
+      "excerpt_preview": "77 178 179 180 181 182 183 184 185 186 187 188 189 190 191 Rigveda – Shakala Samhita – Mandala 01 Sukta 168 /video/RIGSS_01_168.mp4 A A+ १० अगस्त्यो मैत्रावरुणिः । मरुतः। जगती, ८-१० त्रिष्टुप्। य॒ज्ञाय॑ज्ञा वः सम॒ना तु॑तु॒र्वणि॒र्धियं॑धियं ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

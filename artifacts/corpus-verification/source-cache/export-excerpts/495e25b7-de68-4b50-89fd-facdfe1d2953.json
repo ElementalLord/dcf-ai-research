@@ -1,0 +1,42 @@
+{
+  "source_id": "495e25b7-de68-4b50-89fd-facdfe1d2953",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Ayodhya Kanda 111. https://sanskritdocuments.org/sites/valmikiramayan/ayodhya/sarga111/ayodhyaroman111.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Sanskrit Documents",
+    "rights_or_access_note": "Public HTML page; use subject to source review.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Ayodhya Kanda 111",
+    "url": "https://sanskritdocuments.org/sites/valmikiramayan/ayodhya/sarga111/ayodhyaroman111.htm"
+  },
+  "claim_ids": [
+    "1bf101c0-0abe-4d2e-8999-1d9915142612",
+    "351565b0-cc73-4cb1-8652-d2f66af029e5",
+    "517f5497-6313-4e3d-a74f-28b01fceadc0"
+  ],
+  "passages": [
+    {
+      "chunk_id": "04a68da7-c38f-4ce4-8371-afe7eb30c4a2",
+      "locator": "Valmiki Ramayana, Ayodhya Kanda 111",
+      "text_sha256": "99e4e4ccdd933e3998df3460199f17a2506be10502a2b76462fffaed3522c44f",
+      "excerpt_preview": "vR^iddhayaa = who is aged; dharma shiilayaaH = and of noble conduct; kurvan = by carrying out; asyaaH = her; vachanam = words; naati vartate = you will not deviate; gatim = from the path; sataam = of the virtuous. \"You ought not to be lacki",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "de8eed44-d576-43f2-a8d2-b2b9740f226d",
+      "locator": "Valmiki Ramayana, Ayodhya Kanda 111",
+      "text_sha256": "705a81f21d81200ed810d153081730fcc780dbd352ca0d3c9c43d9eb8be8c819",
+      "excerpt_preview": "Book II : Ayodhya Kanda - Book Of Ayodhya Chapter[Sarga] 111 Verses converted to UTF-8, Nov 09 Introduction Vashishta urges Rama to grant the prayer of Bharata. Rama replies that the command given by his father cannot be disregarded. Bharat",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,61 @@
+{
+  "source_id": "08835182-230a-4455-a16b-0c659409722f",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-09T03:48:45.737Z"
+    },
+    "citation": "The Nobel Prizes in Physics 1901–2000. NobelPrize.org. https://www.nobelprize.org/prizes/themes/the-nobel-prize-in-physics-1901-2000/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "NobelPrize.org",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "The Nobel Prizes in Physics 1901–2000",
+    "url": "https://www.nobelprize.org/prizes/themes/the-nobel-prize-in-physics-1901-2000/"
+  },
+  "claim_ids": [
+    "19c38f00-f17e-4a4a-9eb6-ebf95ade134b",
+    "2e1e250a-5707-4353-8540-052dbeab095b",
+    "671d4055-9804-41e9-b3e7-446e5381e1e1",
+    "9dcd50b2-262c-4a28-929d-cccc1641638f"
+  ],
+  "passages": [
+    {
+      "chunk_id": "21ec9e4a-a794-4ad6-a555-5557dfeb7c39",
+      "locator": "1930 Raman paragraph",
+      "text_sha256": "44e283d0c6a916f46c311f7a2abac304b917a3e6370ecf2f2935af254cab3204",
+      "excerpt_preview": "These shifts are caused by the molecules’ gain or loss of characteristic amounts of energy when they change their rotational or vibrational motion. Raman spectroscopy soon became an important source of information on molecular structure and",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "97dd3a8f-9670-4f2d-ba16-0cfe62f6e4b3",
+      "locator": "1930 Raman paragraph",
+      "text_sha256": "b71d7e34ad1c682bbe512fbc928eeb4b7e84ad78df589b2d2768d17ef6f007af",
+      "excerpt_preview": "Raman spectroscopy soon became an important source of information on molecular structure and dynamics. A plasma is a gaseous state of matter in which the atoms or molecules are strongly ionized.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ab8d6b32-524a-4f13-92c8-210feeb04e37",
+      "locator": "1930 Raman paragraph",
+      "text_sha256": "5f0f1c9f6b5ba9b7f4c5911c98f85fd1c6a7ca6220a18d99d824b667f1f1e778",
+      "excerpt_preview": "Venkata Raman received the Physics Prize for his observations that light scattered from molecules contained components which were shifted in frequency with respect to the infalling monochromatic light. These shifts are caused by the molecul",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b9f2ac02-0d85-40ae-8c5e-bfec41f25ef7",
+      "locator": "1930 Raman paragraph",
+      "text_sha256": "9f7c0b3c10334c712632f7ee97c7b386f6670139f0f0eede02d9e0ee9125473b",
+      "excerpt_preview": "Michelson received the Physics Prize in 1907. The mechanisms for emission of light by carriers of electric charge was studied by Hendrik A.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

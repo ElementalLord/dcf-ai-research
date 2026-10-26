@@ -1,0 +1,54 @@
+{
+  "source_id": "685aedc9-c39f-4c63-a43b-2b7d4086b6ae",
+  "source": {
+    "author": "Thomas J. Hopkins (1987); revised by Brian A. Hatcher (2005)",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Thomas J. Hopkins (1987); revised by Brian A. Hatcher (2005). Vivekananda (Encyclopedia of Religion, 2nd edition). Macmillan Reference / Gale; read through Encyclopedia.com. https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/vivekananda",
+    "original_work_identity": {},
+    "publication_year": 2005,
+    "publisher_or_institution": "Macmillan Reference / Gale; read through Encyclopedia.com",
+    "rights_or_access_note": "Reference entry; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Vivekananda (Encyclopedia of Religion, 2nd edition)",
+    "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/vivekananda"
+  },
+  "claim_ids": [
+    "26d70474-49e1-455b-8f6b-a99c290bacad",
+    "2dc1487d-5e85-47b3-b7ec-a84aa58b688b",
+    "7180fef3-c2ab-4874-9ebf-63b949cda6c2",
+    "a46df63b-dcae-4504-b6f8-337212c04b88",
+    "ad245e15-54a5-4b4c-9032-2a28bbb95cb5"
+  ],
+  "passages": [
+    {
+      "chunk_id": "630728d0-c520-4cad-b238-14b1c2b35838",
+      "locator": "Encyclopedia of Religion: Vivekananda",
+      "text_sha256": "6a0102cd65d3e6be9cb35423ff99beb54c636529d079ea7c44feda499fba98ef",
+      "excerpt_preview": "Narendranath first met Ramakrishna in 1881. Although impressed by the depth of Ramakrishna's renunciation and spiritual attainments, he was disturbed by Ramakrishna's image-oriented worship of Kālī and his apparent lack of social concern. W",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "68537643-3c3f-46b1-a0ae-f7a11b2b298b",
+      "locator": "Encyclopedia of Religion: Vivekananda",
+      "text_sha256": "4772599c664c76cef69555d48c6f2b5818eaf1da02e1c59fe54f59d0c88fae4e",
+      "excerpt_preview": "They were even more uncertain when Vivekananda revealed his plan to turn them into a band of modern saṃnyāsin s dedicated to social service (sevā ), a plan he claimed Ramakrishna had intended.Vivekananda's dynamism and persuasive powers car",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "711e5f3a-deb2-4426-af20-a43c48f2f0f9",
+      "locator": "Encyclopedia of Religion: Vivekananda",
+      "text_sha256": "dd1539eb3cdcb2bd41b36ebe1ecd5270b237204049894ef23c72ff90d58a3138",
+      "excerpt_preview": "Scholars debate whether Ramakrishna viewed himself as a Vedāntin; the case can be made that his nondualism was more Tantric than Vedāntic. What is clear is that Vivekananda's Practical Vedānta represents a creative transformation of Ramakri",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

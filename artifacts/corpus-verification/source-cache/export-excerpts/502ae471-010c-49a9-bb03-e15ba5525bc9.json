@@ -1,0 +1,142 @@
+{
+  "source_id": "502ae471-010c-49a9-bb03-e15ba5525bc9",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T05:22:34.328Z"
+    },
+    "citation": "Sangli District Gazetteer: Maratha Period. Maharashtra State Gazetteers. https://www.gazetteers.maharashtra.gov.in/cultural.maharashtra.gov.in/english/gazetteer/SANGLI/his_maratha%20period.html",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Maharashtra State Gazetteers",
+    "rights_or_access_note": "The Maharashtra Gazetteers page currently presents an expired TLS certificate. Its original link is retained for provenance, but direct access cannot be guaranteed until the publisher repairs it.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Sangli District Gazetteer: Maratha Period",
+    "url": "https://www.gazetteers.maharashtra.gov.in/cultural.maharashtra.gov.in/english/gazetteer/SANGLI/his_maratha%20period.html"
+  },
+  "claim_ids": [
+    "014b091d-95cf-40dd-9561-6dbb9ecebafc",
+    "2f0bfe8b-185d-4767-a02b-48257b44f0a6",
+    "40ce5704-3541-41e5-a410-76a95149ba2e",
+    "695dfff7-2972-494e-9d8c-920d0b94465f",
+    "7e9a11cb-8ef6-4603-b199-42fa209d5887",
+    "96f17945-8866-421d-b64c-fbb5bf2fe902",
+    "bc711676-c31a-4bb3-991e-a3b2683295a0",
+    "c50df3de-98f6-40d1-a5a5-7acadf5533c3",
+    "c83306bd-a4be-4a54-942a-d796c30bb4c5",
+    "d7952ecf-d359-4f91-8506-b76ffa2121ae",
+    "dddcc29d-2686-4471-b82d-585b5be2985c",
+    "e62f848e-abc8-41c5-8ab2-58148d1d4f39",
+    "f1b5bbd2-8a63-47c0-a278-2840d6af24b1"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1467cca6-2b31-4b0a-96fa-6c8f6f36fa44",
+      "locator": "did not approve of the jagir or estate system",
+      "text_sha256": "6169e7d653dffd44a9bd59625a6738080e69a1f0ae016b4c78e5981e52aff392",
+      "excerpt_preview": "Sivaji did not approve of the jagir or estate system; he confirmed many, but, with the exception of the establishment for his forts he seldom bestowed new military estates and gave away very few as personal assignments.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "1c2c4580-65dd-42d1-acb1-078b5bf1b65f",
+      "locator": "All plunder as well as prize was the property of government",
+      "text_sha256": "f189688b76e1c858c51dc134582434a15f486863258263d1a1023754f4a7ac63",
+      "excerpt_preview": "All plunder as well as prize was the property of government.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "21fc148f-a766-4ea2-bf44-38377ef782de",
+      "locator": "foundation of his power was his infantry",
+      "text_sha256": "8faad7d4fd645f30eb5cf4a5bf9b20888ffb75dd33b5c781aab165f71ab58135",
+      "excerpt_preview": "The foundation of his power was his infantry; his occupation of the forts gave him a hold on the country and a place of deposit for his plunder.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "2946d8e1-f4e0-44c5-b4fe-124eea6d61d5",
+      "locator": "wrested all the forts ceded by him",
+      "text_sha256": "54df5ad70334816320c17592f8a4e4a358700fb0ffab17bcc91a0c18c6af3944",
+      "excerpt_preview": "Sivaji wrested all the forts ceded by him to the Moghals and carried on the war in Baglan.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "33be3d0b-f661-486c-98b7-75f9242b3458",
+      "locator": "Sivaji established eight officers",
+      "text_sha256": "a6c53ea1728fbab4d70e5db9a8ef1546236747c037e0f9c6bbee7e4937aa7666",
+      "excerpt_preview": "To aid in the conduct of his government, Sivaji established eight officers; first the Pesava or head manager which office was held by Moropant or Moresvar Trimbak Pingle; second, the Muzumdar or general superintendent of finance and auditor",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4ca9e1f0-5452-4709-9a23-1925e7480613",
+      "locator": "treaty of Purandar Sivaji visited Agra",
+      "text_sha256": "ab93a367900a955902d31d14fcc34226f249f3a5eb76dde134ec1e2b87982b29",
+      "excerpt_preview": "The campaign, however, faile.d and Jaysihgh had to withdraw from the Bijapur territory in humiliation, As per the terms of the treaty of Purandar Sivaji visited Agra in May 1666.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "5525e759-d60b-48a9-9181-2597c5d61ef3",
+      "locator": "occupation of the forts gave him a hold",
+      "text_sha256": "71697ff87d46cbcecceef03e89e3907f96b208a0135b336d2a2c94da74f9dc64",
+      "excerpt_preview": "of his arrangements for the genius of his countrymen. The foundation of his power was his infantry; his occupation of the forts gave him a hold on the country and a place of deposit for his plunder. His cavalry had not yet spread the terror",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "79cb8252-6e90-472d-91ff-3d1edb662dfd",
+      "locator": "strong forts of Torna",
+      "text_sha256": "da7ee4aed5862ad4b7850ac8b266eca57e5af0f74ffb75eb0a8a97ca8c1ea991",
+      "excerpt_preview": "By 1648 he obtained control over the strong forts of Torna in Bhor about thirty-five miles south-west of Poona, Kondana or Sinhgad about twelve miles south-west of Poona, Purandar about twenty miles south of Poona, and Rajgad in Bhor about ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b89c46bf-5baf-4a6e-89df-7606f467a95f",
+      "locator": "support of tombs, mosques, or saints' shrines",
+      "text_sha256": "19c7cd01f66687c394ef4814ce61934052eac2df218d54bf546b63c3053c0f87",
+      "excerpt_preview": "Sivaji never sequestrated any allowance fixed by the Muhammedan government for the support of tombs, mosques, or saints' shrines.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d6eadd4b-2775-4fa1-bc19-866b010c51ef",
+      "locator": "completed the conquest of Javli",
+      "text_sha256": "216969a85904cd01c60195240d2c2aef0f6436ac3092e955d9be3812c0a20e64",
+      "excerpt_preview": "The capture of the strong fort of Vasoth, which had also belonged to Mores, about fifteen miles west of Satara, subsequently called Vajragad by Sivaji and the conquest of Sivthar valley completed the conquest of Javli.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d728c2cf-2a27-4f9e-a5b3-63e5298dc866",
+      "locator": "exceptions to plunder made by Sivaji",
+      "text_sha256": "a4caa3c2ba658e4e714c094ee895f57c385ab3b5fcb01114dacc7b48f5854fd8",
+      "excerpt_preview": "The only exceptions to plunder made by Sivaji were in favour of cows, cultivators, and women; these were never to be molested nor were any but rich Muhammedans or Hindus in their service who could pay a ransom to be made prisoners.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "db543633-4bb3-4df6-b831-8780d0f64840",
+      "locator": "patils, khots and kulkarnis were strictly superintended",
+      "text_sha256": "667ba6da8c726862bd4c13dc248dd7e429a7d9181d84ea78526fa30bf52b03d6",
+      "excerpt_preview": "The patils, khots and kulkarnis were strictly superintended, and Sivaji's government, though popular with the common cultivators, would have been unpopular with village and district officers, of whom Sivaji was always jealous, had it not be",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fbae8059-472f-404a-adb9-3aa010a9479b",
+      "locator": "rules of formation and discipline",
+      "text_sha256": "c2272bb216bba711c4006502f0957c09118bb3696be156d5fa4dec85c1704c2c",
+      "excerpt_preview": "His cavalry had not yet spread the terror of the Maratha name; but the rules of formation and discipline for his troops, the interior economy of his infantry and cavalry, the regulations for his forts, his revenue and judicial arrangements,",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

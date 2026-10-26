@@ -1,0 +1,42 @@
+{
+  "source_id": "cd5ab49d-c448-4872-9ac8-d51b431647e6",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.52, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 52 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga52/bala_52_prose.htm"
+  },
+  "claim_ids": [
+    "a3ac2e12-2923-4423-a36f-b4cf5b6f17d0"
+  ],
+  "passages": [
+    {
+      "chunk_id": "3de92d6c-3eb4-4ea0-bc5a-1c74580fe53b",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\n Sarga 52 in Prose",
+      "text_sha256": "9cea60280058d57f0930f67c7d5b60546d0c23f08034c7c574b21164c4f69dd0",
+      "excerpt_preview": "Vashishta offers hospitality to Vishvamitra and his armies. Even though   the King Vishvamitra is disinclined to pressurise a hermit with such   a burdensome affair of hospitality to hosts, Vashishta entreats the   king to accept. Vishvamit",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7aeb0416-a6d5-40b8-8ab4-bef492be6d50",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\n Sarga 52 in Prose",
+      "text_sha256": "8af36e40553c54f8580db8abc90c564b513ae27f75a4fae8bce266e2a5249087",
+      "excerpt_preview": "'It is quiet meaningless on the part of this sage, subsisting on wild fruits and  tubers, to offer a royal banquet or rations to military and feed to horses and elephants'  - is the thinking of King Vishvamitra. For that, the sage is saying",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

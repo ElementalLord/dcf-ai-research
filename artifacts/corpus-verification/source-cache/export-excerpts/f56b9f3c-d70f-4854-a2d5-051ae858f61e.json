@@ -1,0 +1,42 @@
+{
+  "source_id": "f56b9f3c-d70f-4854-a2d5-051ae858f61e",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Chicago Inter Ocean, September 21, 1893. Chicago Inter Ocean; reproduced in Complete Works. https://www.ramakrishnavivekananda.info/vivekananda/volume_9/newspaper_reports/part_i_american_newspaper_reports/03_chicago_inter_ocean_sep_21_1893.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Chicago Inter Ocean; reproduced in Complete Works",
+    "rights_or_access_note": "Publicly accessible page; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Chicago Inter Ocean, September 21, 1893",
+    "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_9/newspaper_reports/part_i_american_newspaper_reports/03_chicago_inter_ocean_sep_21_1893.htm"
+  },
+  "claim_ids": [
+    "0322cc9d-f197-425b-aeec-f731f944374b",
+    "58f64140-570c-452d-bfed-f8c3f5a65934",
+    "9b178552-5429-4bfd-8cbf-80928a3a08f9"
+  ],
+  "passages": [
+    {
+      "chunk_id": "4a2dd2c4-b517-44ba-a7dc-678b00dbcd1a",
+      "locator": "Chicago Inter Ocean, September 21, 1893",
+      "text_sha256": "3ee218dbaac03ad8650ef1f73cf3cca054ef609b78004e4774fde39d5c75c7f7",
+      "excerpt_preview": "d's paper on \"Religion in Peking\" Dr. Momerie announced that the other speakers bulletined for the evening had failed to appear. It was but 9 o'clock, and the main auditorium and galleries were well filled. There was an outburst of applause",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "80643f51-376f-45a3-b6d9-ee27e3bb5e04",
+      "locator": "Chicago Inter Ocean, September 21, 1893",
+      "text_sha256": "60325862d97c1abdb50e4e029768635df8d0778fac0be529de4422424123557b",
+      "excerpt_preview": "peak to-night. He took occasion, however, to criticise many of the statements made in the paper by Mr. Headland. Referring to the poverty which prevails in China, he said that the missionaries would do better to work in appeasing hunger tha",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

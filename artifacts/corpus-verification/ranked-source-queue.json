@@ -1,0 +1,4603 @@
+[
+  {
+    "personality": "M. S. Subbulakshmi",
+    "work_key": "narayana menon | forty second conference souvenir m s subbulakshmi | 1968",
+    "pending_claim_count": 22,
+    "source_urls": [
+      "https://musicacademymadras.in/catalogue/files/souv/1968_42nd%20conference%20souvenir.pdf"
+    ],
+    "score": 58,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "sri aurobindo | the secret of the veda | ",
+    "pending_claim_count": 18,
+    "source_urls": [
+      "https://www.sriaurobindoashram.org/sriaurobindo/downloadpdf.php?id=30"
+    ],
+    "score": 45.56,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.44
+  },
+  {
+    "personality": "C. V. Raman",
+    "work_key": "c v raman | the molecular scattering of light nobel lecture | ",
+    "pending_claim_count": 11,
+    "source_urls": [
+      "https://www.nobelprize.org/uploads/2018/06/raman-lecture.pdf"
+    ],
+    "score": 45,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "C. V. Raman",
+    "work_key": " | sir chandrasekhara venkata raman biographical | ",
+    "pending_claim_count": 9,
+    "source_urls": [
+      "https://www.nobelprize.org/prizes/physics/1930/raman/biographical/"
+    ],
+    "score": 40.11,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 0.89
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": " | sangli district gazetteer maratha period | ",
+    "pending_claim_count": 13,
+    "source_urls": [
+      "https://www.gazetteers.maharashtra.gov.in/cultural.maharashtra.gov.in/english/gazetteer/SANGLI/his_maratha%20period.html"
+    ],
+    "score": 40,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 65 | ",
+    "pending_claim_count": 13,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=65",
+      "https://www.valmiki.iitk.ac.in/sloka?field_kanda_tid=1&field_sarga_value=65&language=dv"
+    ],
+    "score": 36.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic heritage portal | vedic heritage portal rigveda overview | ",
+    "pending_claim_count": 14,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/"
+    ],
+    "score": 35.71,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.21
+  },
+  {
+    "personality": "Rani Lakshmibai of Jhansi",
+    "work_key": "hugh rose | hugh rose s dispatch on the fortress and fortified city of jhansi 30 april 1858 | 1858",
+    "pending_claim_count": 11,
+    "source_urls": [
+      "https://www.thegazette.co.uk/London/issue/22163"
+    ],
+    "score": 35.27,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.91
+  },
+  {
+    "personality": "Rabindranath Tagore",
+    "work_key": "amartya sen | tagore and his india | 2001",
+    "pending_claim_count": 7,
+    "source_urls": [
+      "https://www.nobelprize.org/prizes/literature/1913/tagore/article/"
+    ],
+    "score": 34.71,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 0.71
+  },
+  {
+    "personality": "Yajnavalkya",
+    "work_key": "brian black | the upanis ads | ",
+    "pending_claim_count": 10,
+    "source_urls": [
+      "https://iep.utm.edu/upanisad/"
+    ],
+    "score": 34,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Jagadish Chandra Bose",
+    "work_key": "darrel t emerson | the work of jagadis chandra bose 100 years of millimeter wave research | 1997",
+    "pending_claim_count": 11,
+    "source_urls": [
+      "https://ieeexplore.ieee.org/document/643830/"
+    ],
+    "score": 33.09,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.64
+  },
+  {
+    "personality": "Rabindranath Tagore",
+    "work_key": " | rabindranath tagore biographical | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.nobelprize.org/prizes/literature/1913/tagore/biographical/"
+    ],
+    "score": 33,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "traditional text | arsheya upanishad | ",
+    "pending_claim_count": 13,
+    "source_urls": [
+      "https://vedicheritage.gov.in/upanishads/aarsheyopanishad/"
+    ],
+    "score": 32.62,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.08
+  },
+  {
+    "personality": "Bhagat Singh",
+    "work_key": "chris moffat | india s revolutionary inheritance politics and the promise of bhagat singh | 2019",
+    "pending_claim_count": 12,
+    "source_urls": [
+      "https://www.cambridge.org/core/books/indias-revolutionary-inheritance/introduction/4941F781AE3ECA0E821302FA47D34B4B"
+    ],
+    "score": 32.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.25
+  },
+  {
+    "personality": "Rajaraja Chola I",
+    "work_key": "k a nilakanta sastri | the cholas | 1935",
+    "pending_claim_count": 12,
+    "source_urls": [
+      "https://archive.org/details/in.ernet.dli.2015.100711"
+    ],
+    "score": 32.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.25
+  },
+  {
+    "personality": "Srinivasa Ramanujan",
+    "work_key": "be la bolloba s | the man who taught infinity hardy and ramanujan | 2016",
+    "pending_claim_count": 9,
+    "source_urls": [
+      "https://www.cam.ac.uk/research/news/opinion-the-man-who-taught-infinity-how-gh-hardy-tamed-srinivasa-ramanujans-genius"
+    ],
+    "score": 32,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Yajnavalkya",
+    "work_key": "michael witzel | ya jn avalkya as ritualist and philosopher and his personal language | 2003",
+    "pending_claim_count": 9,
+    "source_urls": [
+      "https://list.indology.info/pipermail/indology/attachments/20170714/f690c648/attachment.pdf"
+    ],
+    "score": 32,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Ashoka",
+    "work_key": " | the ashoka project ashoka and his contexts | 2014",
+    "pending_claim_count": 7,
+    "source_urls": [
+      "https://www2.hf.uio.no/polyglotta/index.php?bid=14&page=library"
+    ],
+    "score": 31.71,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.71
+  },
+  {
+    "personality": "C. V. Raman",
+    "work_key": " | the nobel prizes in physics 1901 2000 | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.nobelprize.org/prizes/themes/the-nobel-prize-in-physics-1901-2000/"
+    ],
+    "score": 31,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Verghese Kurien",
+    "work_key": " | india the dairy revolution | 1998",
+    "pending_claim_count": 9,
+    "source_urls": [
+      "https://documents1.worldbank.org/curated/en/967841468771597123/pdf/multi-page.pdf"
+    ],
+    "score": 30.22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.78
+  },
+  {
+    "personality": "Ramakrishna Paramahamsa",
+    "work_key": "walter g neevel jr 1987 revised by brian a hatcher 2005 | ramakrishna encyclopedia of religion 2nd edition | 2005",
+    "pending_claim_count": 8,
+    "source_urls": [
+      "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna"
+    ],
+    "score": 30,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Rani Lakshmibai of Jhansi",
+    "work_key": "r c majumdar | the sepoy mutiny and the revolt of 1857 the rani of jhansi | 1957",
+    "pending_claim_count": 8,
+    "source_urls": [
+      "https://ignca.gov.in/Asi_data/6048.pdf"
+    ],
+    "score": 30,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Ashoka",
+    "work_key": " | ashoka library major pillar edicts | 2014",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=370"
+    ],
+    "score": 29.33,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "A. P. J. Abdul Kalam",
+    "work_key": "a p j abdul kalam | address to the nation on teachers day 2005 | 2005",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-nation-teachers-day-2005"
+    ],
+    "score": 29,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "A. P. J. Abdul Kalam",
+    "work_key": "pranab mukherjee | reminiscences of president mukherjee on dr kalam | 2015",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://presidentofindia.nic.in/pranab-mukherjee/press_releases/reminiscences-president-mukherjee-former-president-india-dr-apj"
+    ],
+    "score": 29,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Jamsetji Tata",
+    "work_key": " | about heritage | 2024",
+    "pending_claim_count": 8,
+    "source_urls": [
+      "https://www.iisc.ac.in/about/general-information/about-heritage/"
+    ],
+    "score": 29.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.88
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": " | kolaba district gazetteer raigad | ",
+    "pending_claim_count": 7,
+    "source_urls": [
+      "https://gazetteers.maharashtra.gov.in/cultural.maharashtra.gov.in/english/gazetteer/KOLABA/places_Rayagad.html"
+    ],
+    "score": 28,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": "john f richards | maratha insurgency and mughal conquest in the deccan | 1993",
+    "pending_claim_count": 7,
+    "source_urls": [
+      "https://www.cambridge.org/core/books/abs/mughal-empire/maratha-insurgency-and-mughal-conquest-in-the-deccan/EA21D51169D801D5BDC238E2DC75B29A"
+    ],
+    "score": 28,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Jagadish Chandra Bose",
+    "work_key": " | acharya jagadish chandra bose founder | 2026",
+    "pending_claim_count": 8,
+    "source_urls": [
+      "https://www.boseinst.ernet.in/web/acharya-jagadish-chandra-bose"
+    ],
+    "score": 28.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.75
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vyasa traditional attribution bori critical edition | mahabharata bori critical edition udyoga parva adhyaya 104 | ",
+    "pending_claim_count": 11,
+    "source_urls": [
+      "https://vedapath.app/en/mahabharata-bori/udyoga-parva/104"
+    ],
+    "score": 28.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vyasa traditional attribution | mahabharata gita press edition shanti parva adhyaya 142 | ",
+    "pending_claim_count": 11,
+    "source_urls": [
+      "https://vedapath.app/en/mahabharata-gita-press/shanti-parva/142"
+    ],
+    "score": 28.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Yajnavalkya",
+    "work_key": "julius eggeling translator | the satapatha brahmana according to the text of the madhyandina school sacred books of the east 12 26 44 | 1900",
+    "pending_claim_count": 7,
+    "source_urls": [
+      "https://web.archive.org/web/2023id_/https://www.sacred-texts.com/hin/sbr/index.htm"
+    ],
+    "score": 28,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "A. P. J. Abdul Kalam",
+    "work_key": "a p j abdul kalam | address at the national workshop on vision 2020 and pura | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-inauguration-national-workshop-vision-2020-india-pura-and"
+    ],
+    "score": 27,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Subhas Chandra Bose",
+    "work_key": "joyce c lebra | the indian national army and japan | 2008",
+    "pending_claim_count": 8,
+    "source_urls": [
+      "https://www.cambridge.org/core/books/the-indian-national-army-and-japan/94C748A99A85E8CC60A126563BF46B3B"
+    ],
+    "score": 27.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.62
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki | valmiki ramayana bala kanda sarga 62 | ",
+    "pending_claim_count": 8,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga62/balasans62.htm"
+    ],
+    "score": 27.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.62
+  },
+  {
+    "personality": "Subhas Chandra Bose",
+    "work_key": "gajendra singh | indian national army azad hind fauj | 2026",
+    "pending_claim_count": 7,
+    "source_urls": [
+      "https://academic.oup.com/reference/62399/reference-article-abstract/574541864"
+    ],
+    "score": 26.86,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.86
+  },
+  {
+    "personality": "Ramakrishna Paramahamsa",
+    "work_key": "swami nikhilananda | introduction to the gospel of sri ramakrishna biography of sri ramakrishna | 1942",
+    "pending_claim_count": 9,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+    ],
+    "score": 26.67,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.33
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": " | bombay the genealogy of a global imperial city | ",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://www.cambridge.org/core/journals/urban-history/article/bombay-the-genealogy-of-a-global-imperial-city/237543805FDCB1EE8A058304813B787C"
+    ],
+    "score": 26,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": " | satara district gazetteer muslim rule and the marathas | ",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://gazetteers.maharashtra.gov.in/cultural.maharashtra.gov.in/english/gazetteer/SATARA/his_muslim_rule.html"
+    ],
+    "score": 26,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Guru Nanak",
+    "work_key": " | janam sa khi | ",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://eos.learnpunjabi.org/JANAM%20SAKHI%20.html"
+    ],
+    "score": 26,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "M. S. Subbulakshmi",
+    "work_key": "keshav desiraju interviewed by shruti rajagopalan | keshav desiraju on indian classical music and the legacy of m s subbulakshmi | 2021",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://www.mercatus.org/ideasofindia/keshav-desiraju-indian-classical-music-and-legacy-m-s-subbulakshmi"
+    ],
+    "score": 26,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Savitribai Phule",
+    "work_key": "savitribai phule english translations introduced by sunil sardar | savitribai phule s letters to jyotiba october 1856 august 1868 april 1877 | 2016",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://scroll.in/article/801848/to-jyotiba-from-savitribai-phule-these-arent-love-letters-but-tell-you-what-love-is-all-about"
+    ],
+    "score": 26,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Subhas Chandra Bose",
+    "work_key": "gyasuddin siddiqi | sentiments and patriotism the indian national army general elections and the congress s appropriation of the ina legacy | 2009",
+    "pending_claim_count": 8,
+    "source_urls": [
+      "https://www.cambridge.org/core/journals/modern-asian-studies/article/abs/sentiments-and-patriotism-the-indian-national-army-general-elections-and-the-congresss-appropriation-of-the-ina-legacy/5078B65021CF091F03535E193281814A"
+    ],
+    "score": 26.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Verghese Kurien",
+    "work_key": " | dairy development and milk cooperatives the effects of a dairy project in india | 1987",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://documents1.worldbank.org/curated/en/675491468751143730/pdf/multi-page.pdf"
+    ],
+    "score": 26,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": " | aitareya brahmana related indian antiquarian edition shunahshepa devarata passage | ",
+    "pending_claim_count": 10,
+    "source_urls": [
+      "https://ignca.gov.in/Asi_data/14189.pdf"
+    ],
+    "score": 26.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "J. R. D. Tata",
+    "work_key": " | leading the tata group the ratan tata years | ",
+    "pending_claim_count": 7,
+    "source_urls": [
+      "https://management.web.uniroma1.it/sites/default/files/Leading%20The%20TATA%20Group.pdf"
+    ],
+    "score": 25.71,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.71
+  },
+  {
+    "personality": "Satyajit Ray",
+    "work_key": " | pather panchali 1955 | ",
+    "pending_claim_count": 7,
+    "source_urls": [
+      "https://www.bfi.org.uk/film/bfbb9ef1-1b2c-58fd-b030-4f50c4827d91/pather-panchali"
+    ],
+    "score": 25.71,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.71
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vyasa traditional attribution bori critical edition | mahabharata bori critical edition adi parva adhyaya 90 | ",
+    "pending_claim_count": 7,
+    "source_urls": [
+      "https://vedapath.app/en/mahabharata-bori/adi-parva/90"
+    ],
+    "score": 25.71,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.71
+  },
+  {
+    "personality": "A. P. J. Abdul Kalam",
+    "work_key": " | address at the summit of the powerless | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/addresss-summit-powerless-new-delhi"
+    ],
+    "score": 25,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "A. P. J. Abdul Kalam",
+    "work_key": " | all india radio address on science day 2004 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/all-india-radio-address-science-day"
+    ],
+    "score": 25,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "A. P. J. Abdul Kalam",
+    "work_key": " | attracting young people to careers in science | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-inauguration-seminar-attracting-young-people-careers-science"
+    ],
+    "score": 25,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "A. P. J. Abdul Kalam",
+    "work_key": " | conference on moral values in education | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-conference-moral-values-education"
+    ],
+    "score": 25,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "A. P. J. Abdul Kalam",
+    "work_key": " | cultural harmony and peace summit address | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-international-summit-towards-cultural-harmony-and-peace"
+    ],
+    "score": 25,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "A. P. J. Abdul Kalam",
+    "work_key": " | india eu science icons and students | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/interaction-meet-eu-and-indian-science-icons-indian-students-india-eu"
+    ],
+    "score": 25,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "A. P. J. Abdul Kalam",
+    "work_key": " | science day address to the nation 2005 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-nation-president-india-science-day-2005"
+    ],
+    "score": 25,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "A. P. J. Abdul Kalam",
+    "work_key": " | technology day address 2006 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-president-india-technology-day-2006"
+    ],
+    "score": 25,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "A. P. J. Abdul Kalam",
+    "work_key": " | vision 2026 and science communication | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-inauguration-national-conference-vision-2026-challenges-science"
+    ],
+    "score": 25,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "C. V. Raman",
+    "work_key": " | nobel nomination archive c v raman | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.nobelprize.org/nomination/archive/show_people.php?id=7540&lang=en"
+    ],
+    "score": 25,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "C. V. Raman",
+    "work_key": " | the nobel prize in physics 1930 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.nobelprize.org/prizes/physics/1930/summary/"
+    ],
+    "score": 25,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "C. V. Raman",
+    "work_key": "h pleijel | nobel prize in physics 1930 presentation speech | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.nobelprize.org/prizes/physics/1930/ceremony-speech/"
+    ],
+    "score": 25,
+    "authority_prior": 5,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "mahidasa aitareya traditional attribution | aitareya brahmana | ",
+    "pending_claim_count": 9,
+    "source_urls": [
+      "https://vedicheritage.gov.in/brahmanas/aitareya-brahmana/"
+    ],
+    "score": 24.89,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.11
+  },
+  {
+    "personality": "J. R. D. Tata",
+    "work_key": " | j r d tata exhibition | 2002",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://www.tatacentralarchives.com/exhibitions/jrd-tata-exhibitio.html"
+    ],
+    "score": 24.67,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.83
+  },
+  {
+    "personality": "Jamsetji Tata",
+    "work_key": " | from artisanal production to machine tools industrialization in india over the long run | 2016",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://doi.org/10.1093/acprof:oso/9780198753643.003.0010"
+    ],
+    "score": 24.67,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.83
+  },
+  {
+    "personality": "Jamsetji Tata",
+    "work_key": " | jamsetji tata | ",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://www.tata.com/about-us/tata-group-our-heritage/tata-titans/jamsetji-tata"
+    ],
+    "score": 24.67,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.83
+  },
+  {
+    "personality": "Satyajit Ray",
+    "work_key": " | satyajit ray biography | ",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://satyajitray.org/biography/"
+    ],
+    "score": 24.67,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.83
+  },
+  {
+    "personality": "Verghese Kurien",
+    "work_key": "verghese kurien | india s milk revolution investing in rural producer organizations | 2007",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://documents1.worldbank.org/curated/en/961161468101986656/pdf/382870SAR0Endi11OFFICIAL0USE0ONLY11.pdf"
+    ],
+    "score": 24.67,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.83
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "adheesh sathaye | how to become a brahman the construction of varn a as social place in the maha bha rata s legends of vis va mitra | 2007",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://www.journals.vu.lt/acta-orientalia-vilnensia/article/download/3751/5207"
+    ],
+    "score": 24.67,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.83
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki | valmiki ramayana bala kanda sarga 19 | ",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://valmikiramayan.net/utf8/baala/sarga19/balasans19.htm"
+    ],
+    "score": 24.67,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.83
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki | valmiki ramayana bala kanda sarga 65 | ",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig"
+    ],
+    "score": 24.67,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.83
+  },
+  {
+    "personality": "Subhas Chandra Bose",
+    "work_key": "subhas chandra bose | the indian struggle 1920 1934 | 1935",
+    "pending_claim_count": 7,
+    "source_urls": [
+      "https://www.ndl.iitkgp.ac.in/ch_document/dli/dli_ndli/50066"
+    ],
+    "score": 24.57,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.57
+  },
+  {
+    "personality": "Ashoka",
+    "work_key": " | ashoka library major rock edicts | 2014",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362"
+    ],
+    "score": 24,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Ashoka",
+    "work_key": " | ashoka library separate rock edicts of dhauli and jaugada | 2014",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=364"
+    ],
+    "score": 24,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Ashoka",
+    "work_key": "romila thapar | asoka and the decline of the mauryas | 1997",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://global.oup.com/academic/product/asoka-and-the-decline-of-the-mauryas-9780195644456"
+    ],
+    "score": 24,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "C. V. Raman",
+    "work_key": "rajinder singh | 80 years ago the discovery of the raman effect at iacs | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.iacs.res.in/ijp/ijp_august_08_abstract.pdf"
+    ],
+    "score": 24,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Guru Nanak",
+    "work_key": " | karta rpur | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://eos.learnpunjabi.org/KARTARPUR.html"
+    ],
+    "score": 24,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Guru Nanak",
+    "work_key": "gurinder singh mann | the formation of the sikh tradition | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://punjab.global.ucsb.edu/sites/default/files/sitefiles/journals/volume17/JPS_17_nos_1-2_Mann.pdf"
+    ],
+    "score": 24,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Jamsetji Tata",
+    "work_key": " | electric dreams | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.tata.com/newsroom/heritage/jamsetji-tata-hydro-power-frank-harris"
+    ],
+    "score": 24,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Jamsetji Tata",
+    "work_key": "karthik ramaswamy | how iisc found a home in bangalore | 2018",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://connect.iisc.ac.in/2018/03/how-iisc-found-a-home-in-bangalore/"
+    ],
+    "score": 24,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Rani Lakshmibai of Jhansi",
+    "work_key": "hugh rose | hugh rose s dispatch on the capture of calpee kalpi 22 june 1858 | 1859",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.thegazette.co.uk/London/issue/22251/page/1595/data.pdf"
+    ],
+    "score": 24,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Savitribai Phule",
+    "work_key": "hari narake t sundararaman | savitribai phule first memorial lecture dnyanajyoti savitribai phule | 2009",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf"
+    ],
+    "score": 24,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": "swami vivekananda | my master | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/vivekananda/volume_4/lectures_and_discourses/my_master.htm"
+    ],
+    "score": 24,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": " | aitareya brahmana related indian edition devarata lineage passage | ",
+    "pending_claim_count": 9,
+    "source_urls": [
+      "https://ignca.gov.in/Asi_data/24136.pdf"
+    ],
+    "score": 24.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 64 | ",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/sloka?field_kanda_tid=1&field_sarga_value=64&language=dv"
+    ],
+    "score": 24.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Bhagat Singh",
+    "work_key": "bhagat singh | to young political workers | 1931",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://www.marxists.org/archive/bhagat-singh/1931/02/02.htm"
+    ],
+    "score": 23.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Rajaraja Chola I",
+    "work_key": "hermann kulke k kesavapany and vijay sakhuja eds | nagapattinam to suvarnadwipa reflections on the chola naval expeditions to southeast asia | 2009",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://www.cambridge.org/core/books/abs/nagapattinam-to-suvarnadwipa/naval-expeditions-of-the-cholas-in-the-context-of-asian-history/0D28FFD296A5575E375ACB928E294977"
+    ],
+    "score": 23.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Rani Lakshmibai of Jhansi",
+    "work_key": " | from trade to territory | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://ncert.nic.in/textbook/pdf/hess202.pdf"
+    ],
+    "score": 23.33,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Satyajit Ray",
+    "work_key": " | official biography of satyajit ray | ",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://www.satyajitraysociety.org/biography.html"
+    ],
+    "score": 23.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Guru Nanak",
+    "work_key": " | sikh tradition historiography | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://eos.learnpunjabi.org/SIKH%20TRADITION%20%28HISTORIOGRAPHY%29.html"
+    ],
+    "score": 22.4,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.8
+  },
+  {
+    "personality": "J. R. D. Tata",
+    "work_key": " | about air india our history | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.airindia.com/in/en/about-us.html"
+    ],
+    "score": 22.4,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.8
+  },
+  {
+    "personality": "J. R. D. Tata",
+    "work_key": " | journey of civil aviation in india | 2007",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.pib.gov.in/newsite/erelcontent.aspx?lang=2&reg=48&relid=30992"
+    ],
+    "score": 22.4,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.8
+  },
+  {
+    "personality": "Jagadish Chandra Bose",
+    "work_key": "a k ghosh and m s r rao | jagdish chandra bose plant neurobiology | 2019",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC6702694/"
+    ],
+    "score": 22.4,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.8
+  },
+  {
+    "personality": "Ramakrishna Paramahamsa",
+    "work_key": "f max mu ller | ramakrishna his life and sayings | 1899",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://archive.org/download/rmakrishnahisl00mliala/rmakrishnahisl00mliala.pdf"
+    ],
+    "score": 22.4,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.8
+  },
+  {
+    "personality": "Ramakrishna Paramahamsa",
+    "work_key": "narasingha prosad sil | the nectar of the master s speech an anatomy of sri ramakrishna s katha mr ta | 2021",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.southasianist.ed.ac.uk/southasianist/article/download/5556/8906"
+    ],
+    "score": 22.4,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.8
+  },
+  {
+    "personality": "Verghese Kurien",
+    "work_key": " | remembering father of white revolution on this world milk day | 2021",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://old.amul.com/files/pdf/Worldmilkday_storyinEnglish_31stMay2021.pdf"
+    ],
+    "score": 22.4,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.8
+  },
+  {
+    "personality": "A. P. J. Abdul Kalam",
+    "work_key": "a p j abdul kalam and y s rajan | india 2020 a vision for the new millennium | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.presidentofindia.gov.in/dr-apj-abdul-kalam/book/2020-vision-new-millennium"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Ashoka",
+    "work_key": " | ashoka library rummindei and nigali sagar pillar inscriptions | 2014",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=378"
+    ],
+    "score": 22,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Bhagat Singh",
+    "work_key": " | guide to microfilms of indian collection | ",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://nationalarchives.nic.in/sites/default/files/2026-01/10.Guide%20to%20Microfilms%20of%20Indian%20Collection.pdf"
+    ],
+    "score": 22.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Bhagat Singh",
+    "work_key": "bhagat singh and batukeshwar dutt | statement in the assembly bomb case | 1929",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://www.marxists.org/archive/bhagat-singh/1929/06/06.htm"
+    ],
+    "score": 22.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": "james w laine | shivaji hindu king in islamic india | 2003",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://academic.oup.com/book/10230"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": "stewart gordon | the marathas 1600 1818 | 1993",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.cambridge.org/core/books/marathas-16001818/1098497E96D2AFA760D18DB311A91C80"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Guru Nanak",
+    "work_key": " | hukam | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.learnpunjabi.org/eos/HUKAM.html"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Guru Nanak",
+    "work_key": " | main principles | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://sgpc.net/sikhism/main-principles-2/"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Guru Nanak",
+    "work_key": " | mu l mantra | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://learnpunjabi.org/eos/MUL%20MANTRA.html"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Guru Nanak",
+    "work_key": " | san gat | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://eos.learnpunjabi.org/SANGAT.html"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Guru Nanak",
+    "work_key": " | sri guru granth sahib | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://sgpc.net/sri-guru-granth-sahib-2/"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "J. R. D. Tata",
+    "work_key": " | history of tifr | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.tifr.res.in/portal/history.php"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "J. R. D. Tata",
+    "work_key": "mircea raianu | philanthropy and the making of a new moral order a history of developing community | 2022",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://link.springer.com/article/10.1007/s10551-022-05094-1"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Jagadish Chandra Bose",
+    "work_key": "j c bose | response in the living and non living | 1902",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://archive.org/details/responseinliving00boseuoft"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Jamsetji Tata",
+    "work_key": "mircea raianu | a mass of anomalies land law and sovereignty in an indian company town | 2018",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.cambridge.org/core/journals/comparative-studies-in-society-and-history/article/mass-of-anomalies-land-law-and-sovereignty-in-an-indian-company-town/FF52D5DA176FD5122DED4778497A4E1D"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "M. S. Subbulakshmi",
+    "work_key": " | m s subbulakshmi sangeet natak akademi fellow citation | 1974",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://sangeetnatak.gov.in/public/uploads/awardees/docs/1749450913_1741156983_M.%20S.%20Subalakshmi.pdf"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Rabindranath Tagore",
+    "work_key": " | correspondence relating to rabindranath tagore s wish to renounce knighthood | 1919",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://searcharchives.bl.uk/catalog/041-000562205"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Rabindranath Tagore",
+    "work_key": "rabindranath tagore | gitanjali song offerings | 1912",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.gutenberg.org/ebooks/7164"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Rajaraja Chola I",
+    "work_key": "wilhelm geiger trans | the cu l avam sa being the more recent part of the maha vam sa | 1929",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://archive.org/details/culavamsabeingmo01geiguoft"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Satyajit Ray",
+    "work_key": "andrew pulver | where to begin with satyajit ray | 2017",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://www.bfi.org.uk/features/where-begin-with-satyajit-ray"
+    ],
+    "score": 22.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Satyajit Ray",
+    "work_key": "satyajit ray and satyajit ray org editors | making of pather panchali | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://satyajitray.org/making-of-pather-panchali/"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Savitribai Phule",
+    "work_key": " | life and work of mahatma jotirao phule | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/Life_%20%26%20_Work.htm"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Srinivasa Ramanujan",
+    "work_key": "bruce c berndt in conversation with atul dixit | fifty golden years with ramanujan | 2024",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://math.illinois.edu/sites/default/files/2025-03/Berndt-Dixit-interview.pdf"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Srinivasa Ramanujan",
+    "work_key": "ellen embleton | revisiting ramanujan | 2018",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://royalsociety.org/blog/2018/10/revisiting-ramanujan/"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": "swami vivekananda | raja yoga introductory | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/raja-yoga/introductory.htm"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": "swami vivekananda | we help ourselves not the world | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/karma-yoga/we_help_ourselves.htm"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Verghese Kurien",
+    "work_key": " | the anand pattern | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.nddb.coop/about/genesis/pattern"
+    ],
+    "score": 22,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 26 | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=26"
+    ],
+    "score": 22.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 27 | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/sloka?field_kanda_tid=1&field_sarga_value=27&language=dv"
+    ],
+    "score": 22.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 35 | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=35"
+    ],
+    "score": 22.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 59 | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=59"
+    ],
+    "score": 22.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vyasa traditional attribution bori critical edition | mahabharata bori critical edition anushasana parva adhyaya 4 | ",
+    "pending_claim_count": 8,
+    "source_urls": [
+      "https://vedapath.app/en/mahabharata-bori/anushasana-parva/4"
+    ],
+    "score": 22.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vyasa traditional attribution bori critical edition | mahabharata bori critical edition shalya parva | ",
+    "pending_claim_count": 8,
+    "source_urls": [
+      "https://vedapath.app/en/mahabharata-bori/shalya-parva"
+    ],
+    "score": 22.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic heritage portal | vedic heritage portal rigveda mandala 3 | ",
+    "pending_claim_count": 7,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/mandal-03/"
+    ],
+    "score": 21.14,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.14
+  },
+  {
+    "personality": "Bhagat Singh",
+    "work_key": "bhagat singh | why i am an atheist | 1930",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.marxists.org/archive/bhagat-singh/1930/10/05.htm"
+    ],
+    "score": 20.8,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.6
+  },
+  {
+    "personality": "Jagadish Chandra Bose",
+    "work_key": "j c bose | plant response as a means of physiological investigation | 1906",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://archive.org/details/plantresponseasm00bose"
+    ],
+    "score": 20.8,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.6
+  },
+  {
+    "personality": "Subhas Chandra Bose",
+    "work_key": "sugata bose | his majesty s opponent subhas chandra bose and india s struggle against empire | 2011",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.jstor.org/stable/j.ctt24hjbb"
+    ],
+    "score": 20.8,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.6
+  },
+  {
+    "personality": "Vasistha",
+    "work_key": "valmiki | valmiki ramayana bala kanda sarga 65 | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig"
+    ],
+    "score": 20.8,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.6
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 26 prose | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga26/bala_26_prose.htm"
+    ],
+    "score": 20.8,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.6
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 27 prose | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga27/bala_27_prose.htm"
+    ],
+    "score": 20.8,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.6
+  },
+  {
+    "personality": "Rajaraja Chola I",
+    "work_key": "noboru karashima | south indian society ancient to medieval | 2009",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://global.oup.com/academic/product/south-indian-society-9780195696663"
+    ],
+    "score": 20.67,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.33
+  },
+  {
+    "personality": "A. P. J. Abdul Kalam",
+    "work_key": " | cabinet condoles death of former president dr a p j abdul kalam | 2015",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.pib.gov.in/newsite/PrintRelease.aspx?lang=2&reg=48&relid=123859"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | mahabharata vana parva section 104 ganguli translation | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://mahabharata-online.github.io/3/104.html"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | valmiki ramayana aranya kanda 11 | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.valmikiramayan.net/aranya/sarga11/aranya_11_prose.htm"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | valmiki ramayana aranya kanda 12 | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.valmikiramayan.net/aranya/sarga12/aranya_12_prose.htm"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | valmiki ramayana yuddha kanda 105 | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/yuddha/sarga105/yuddha_105_prose.htm"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Ashoka",
+    "work_key": "patrick olivelle janice leoshko and himanshu prabha ray eds | reimagining ashoka memory and history | 2012",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://global.oup.com/academic/product/reimagining-ashoka-9780198076162"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Bhagat Singh",
+    "work_key": "bhagat singh and fellow political prisoners | hunger strikers demands and prison letters | 1929",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.marxists.org/archive/bhagat-singh/1929/06/24.htm"
+    ],
+    "score": 20.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.75
+  },
+  {
+    "personality": "Bhagat Singh",
+    "work_key": "neeladri bhattacharya | bhagat singh as satyagrahi the limits to non violence in late colonial india | 2009",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.cambridge.org/core/journals/modern-asian-studies/article/abs/bhagat-singh-as-satyagrahi-the-limits-to-nonviolence-in-late-colonial-india1/F79D7BD2974B9D6B676173AD9EFD4866"
+    ],
+    "score": 20.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.75
+  },
+  {
+    "personality": "J. R. D. Tata",
+    "work_key": " | life of jrd a timeline | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.tata.com/about-us/tata-group-our-heritage/jrd-tata-life-timeline"
+    ],
+    "score": 20.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.75
+  },
+  {
+    "personality": "J. R. D. Tata",
+    "work_key": "shashank shah | corporate social responsibility a way of life at the tata group | 2014",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://journals.sagepub.com/doi/10.1177/0971685813515591"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Jagadish Chandra Bose",
+    "work_key": "a g volkov | the plant neurobiology revolution | 2024",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC11085955/"
+    ],
+    "score": 20.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.75
+  },
+  {
+    "personality": "Jagadish Chandra Bose",
+    "work_key": "samantha hill | the thinking plant s man | 2024",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.sciencehistory.org/stories/magazine/the-thinking-plants-man/"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Jamsetji Tata",
+    "work_key": " | taj mahal palace mumbai our history | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.tajhotels.com/en-in/about-taj/taj-history-and-heritage"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Jamsetji Tata",
+    "work_key": " | the road to nagpur | 2025",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.tata.com/newsroom/heritage/jamsetji-empress-mills-nagpur"
+    ],
+    "score": 20.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.75
+  },
+  {
+    "personality": "M. S. Subbulakshmi",
+    "work_key": " | the inimitable m s subbulakshmi | 2016",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.pib.gov.in/newsite/printrelease.aspx?lang=2&reg=48&relid=149779"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "M. S. Subbulakshmi",
+    "work_key": "u thant | statement by secretary general u thant at united nations concert 21 october 1966 | 1966",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://digitallibrary.un.org/record/4095124/files/%5EST_DPI_PRESS_%5ESG_SM_595--SG_SM_595-EN.pdf"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Rabindranath Tagore",
+    "work_key": " | rabindra bhavana | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.visvabharati.ac.in/home/rabindra-bhavana/"
+    ],
+    "score": 20.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.75
+  },
+  {
+    "personality": "Rabindranath Tagore",
+    "work_key": " | the global relevance of tagore s cosmopolitan educational philosophy for social justice in a post westphalian world | 2023",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://academic.oup.com/jope/article/57/3/611/7250432"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Rajaraja Chola I",
+    "work_key": " | brihadisvara temple foundation inscription | 1010",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://ignca.gov.in/brhadisvaratemple/VIMAN/INSCRIPTIONS/inscription_01.html"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Ramakrishna Paramahamsa",
+    "work_key": " | the most versatile of mystics | 2011",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://lareviewofbooks.org/essay/the-most-versatile-of-mystics"
+    ],
+    "score": 20.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.75
+  },
+  {
+    "personality": "Rani Lakshmibai of Jhansi",
+    "work_key": "prachi deshpande | the making of an indian nationalist archive lakshmibai jhansi and 1857 | 2008",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.cambridge.org/core/journals/journal-of-asian-studies/article/abs/making-of-an-indian-nationalist-archive-lakshmibai-jhansi-and-1857/74E72394E5186C2C2AE99C7021235A5D"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Satyajit Ray",
+    "work_key": "andrew robinson and satyajit ray | satyajit ray a moral attitude | 2013",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.bfi.org.uk/sight-and-sound/interviews/satyajit-ray-moral-attitude"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Savitribai Phule",
+    "work_key": " | life sketch of mahatma jotirao phule | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/life_sketch.htm"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Savitribai Phule",
+    "work_key": "rosalind o hanlon | ritual status and political conflict in later nineteenth century maharashtra | 1985",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.cambridge.org/core/books/abs/caste-conflict-and-ideology/ritual-status-and-political-conflict-in-later-nineteenthcentury-maharashtra/5B894F9D29677C97AEC50840D3A31CA2"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Subhas Chandra Bose",
+    "work_key": "subhas chandra bose | subhas chandra bose a national army | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://library.niti.gov.in/cgi-bin/koha/opac-retrieve-file.pl?id=13932e48dd8bc7da60cbafaea68668d7"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Subhas Chandra Bose",
+    "work_key": "zardas shuk man lee | the indian national army and the making of indian nationalism in japanese occupied malaya | 2025",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.cambridge.org/core/journals/historical-journal/article/indian-national-army-and-the-making-of-indian-nationalism-in-japaneseoccupied-malaya/CCA89C3F046DFFFA2870CD1B6035171A"
+    ],
+    "score": 20.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.75
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": "a raghuramaraju | vivekananda cosmopolitan vedantic philosopher | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://scholarworks.iu.edu/iupjournals/index.php/jwp/article/download/6328/550/28258"
+    ],
+    "score": 20.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.75
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": "swami vivekananda | address at the final session | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_final_session.htm"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": "swami vivekananda | my plan of campaign | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/vivekananda/volume_3/lectures_from_colombo_to_almora/my_plan_of_campaign.htm"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": "swami vivekananda | practical vedanta part i | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://ramakrishnavivekananda.info/vivekananda/volume_2/practical_vedanta_and_other_lectures/practical_vedanta_part_i.htm"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": "swami vivekananda | the goal and methods of realisation | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/vivekananda/volume_5/notes_from_lectures_and_discourses/the_goal_and_the_methods_of_realisation.htm"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Verghese Kurien",
+    "work_key": " | about founder dr verghese kurien | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://irma.ac.in/about-irma/about-founder"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": " | rigveda samhita volume iii | ",
+    "pending_claim_count": 7,
+    "source_urls": [
+      "https://ignca.gov.in/eBooks/RigVeda_Samhita_Vol_03.pdf"
+    ],
+    "score": 20.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 56 | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/sloka?field_kanda_tid=1&field_sarga_value=56&language=dv"
+    ],
+    "score": 20.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki | valmiki ramayana bala kanda sarga 29 | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga29/balasans29.htm"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki | valmiki ramayana bala kanda sarga 60 | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga60/bala_60_prose.htm"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vyasa traditional attribution bori critical edition | mahabharata bori critical edition udyoga parva | ",
+    "pending_claim_count": 7,
+    "source_urls": [
+      "https://vedapath.app/en/mahabharata-bori/udyoga-parva"
+    ],
+    "score": 20.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Yajnavalkya",
+    "work_key": "horace hayman wilson translator | the vishnu purana book iii chapter v | 1840",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://web.archive.org/web/2023id_/https://www.sacred-texts.com/hin/vp/vp079.htm"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Yajnavalkya",
+    "work_key": "julius eggeling | introduction to the satapatha brahmana part i sacred books of the east 12 | 1882",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://web.archive.org/web/2023id_/https://www.sacred-texts.com/hin/sbr/sbe12/sbe1202.htm"
+    ],
+    "score": 20,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Rajaraja Chola I",
+    "work_key": "e hultzsch | the great temple at tanjore | 1891",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://ignca.gov.in/Asi_data/11617.pdf"
+    ],
+    "score": 19.2,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.4
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 59 prose | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga59/bala_59_prose.htm"
+    ],
+    "score": 19.2,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.4
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 63 prose | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga63/bala_63_prose.htm"
+    ],
+    "score": 19.2,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.4
+  },
+  {
+    "personality": "A. P. J. Abdul Kalam",
+    "work_key": " | pokhran ii tests were fully successful drdo and dae scientists | 2009",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.pib.gov.in/newsite/PrintRelease.aspx?lang=2&reg=48&relid=52813"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | mahabharata vana parva section 96 ganguli translation | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://mahabharata-online.github.io/3/96.html"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | mahabharata vana parva section 97 ganguli translation | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://mahabharata-online.github.io/3/97.html"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | valmiki ramayana aranya kanda 13 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmikiramayan.net/aranya/sarga13/aranya_13_prose.htm"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Ashoka",
+    "work_key": "n a nikam and richard mckeon | the edicts of asoka | 1959",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://press.uchicago.edu/ucp/books/book/chicago/E/bo3627097.html"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "C. V. Raman",
+    "work_key": " | science education programmes indian academy of sciences | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://webjapps.ias.ac.in/SEP/index.jsp"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Guru Nanak",
+    "work_key": " | guru ka lan gar | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://eos.learnpunjabi.org/GURU%20KA%20LANGAR%20%28LIT.%2C%20LANGAR%20OR%20REFECTORY%20OF%20THE%20GURU%29.html"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "J. R. D. Tata",
+    "work_key": " | india s aviation journey and pilot licence no 1 | 2025",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.civilaviation.gov.in/node/5992"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Jagadish Chandra Bose",
+    "work_key": "j c bose | the nervous mechanism of plants | 1926",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://archive.org/details/nervousmechanism00bose"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Jamsetji Tata",
+    "work_key": " | document collections | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.tatacentralarchives.com/our-collections/documents.html"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Jamsetji Tata",
+    "work_key": " | through the mill | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.tata.com/newsroom/through-the-mill"
+    ],
+    "score": 18.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Jamsetji Tata",
+    "work_key": "chikayoshi nomura | the house of tata meets the second industrial revolution | 2018",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://link.springer.com/book/10.1007/978-981-10-8678-6"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "M. S. Subbulakshmi",
+    "work_key": "garrett field | from threatened by modernity to reinvented by modernity the history of the history of indian classical music | 2010",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://ethnomusicologyreview.ucla.edu/journal/volume/15/piece/482"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Rabindranath Tagore",
+    "work_key": " | bichitra online tagore variorum | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://bichitra.jdvu.ac.in/"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Rabindranath Tagore",
+    "work_key": "rabindranath tagore | nationalism | 1917",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.gutenberg.org/files/40766/40766-h/40766-h.htm"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Ramakrishna Paramahamsa",
+    "work_key": " | sri ramakrishna | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://belurmath.org/sri-ramakrishna/"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Ramakrishna Paramahamsa",
+    "work_key": "swami saradananda translated by swami jagadananda | sri ramakrishna the great master sri ramakrishna lilaprasanga | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/sriramakrishna_thegreatmaster/srk_tgm_content.htm"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Ramakrishna Paramahamsa",
+    "work_key": "thomas j hopkins 1987 revised by brian a hatcher 2005 | vivekananda encyclopedia of religion 2nd edition | 2005",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/vivekananda"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Rani Lakshmibai of Jhansi",
+    "work_key": " | history of jhansi | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://jhansi.nic.in/history/"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Rani Lakshmibai of Jhansi",
+    "work_key": " | palace of rani lakshmi bai | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://jhansi.nic.in/others/"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Rani Lakshmibai of Jhansi",
+    "work_key": "harleen singh | the rani of jhansi introduction | 2014",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.cambridge.org/core/books/abs/rani-of-jhansi/introduction/30451DFC0ED016927CAFBE4F14088AEB"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Rani Lakshmibai of Jhansi",
+    "work_key": "s r nathan | foreword to women against the raj the rani of jhansi regiment | 2008",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.cambridge.org/core/books/abs/women-against-the-raj/foreword/C16B790570D74BA800D068874B0112D1"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Satyajit Ray",
+    "work_key": " | academy honorary award to satyajit ray | 1992",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://awardsdatabase.oscars.org/Search/GetResults?query=%7B%22AwardCategory%22:%5B%2227%22%5D,%22Sort%22:%223-Award+Category-Chron%22,%22Search%22:%22Basic%22%7D"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Satyajit Ray",
+    "work_key": " | satyajit ray film and study collection | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://guides.library.ucsc.edu/satyajitray"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Savitribai Phule",
+    "work_key": "medha sundar and sumon chitrakar | people and ideas savitribai phule | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://publications.azimpremjiuniversity.edu.in/429/1/Savitribai%20Phule_English.pdf"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Savitribai Phule",
+    "work_key": "muktabai translated by braj ranjan mani | the revolt of a dalit girl about the grief of the mangs and mahars | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://wagtail.ruralindiaonline.org/media/documents/About_the_Grief_of_Mahar_and_Mangs.pdf"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Subhas Chandra Bose",
+    "work_key": " | public release of declassified files relating to netaji subhas chandra bose | 2016",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.pib.gov.in/newsite/PrintRelease.aspx?lang=2&reg=3&relid=153088"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Subhas Chandra Bose",
+    "work_key": " | report of the justice mukherjee commission of inquiry | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.mha.gov.in/sites/default/files/2022-08/jmci-I-eng%5B1%5D.pdf"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": " | chicago inter ocean september 21 1893 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/vivekananda/volume_9/newspaper_reports/part_i_american_newspaper_reports/03_chicago_inter_ocean_sep_21_1893.htm"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": " | narendra | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/introduction/narendra.htm"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vasistha",
+    "work_key": " | valmiki ramayana bala kanda 56 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://sanskritdocuments.org/sites/valmikiramayan/baala/sarga56/balaitrans56.htm"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vasistha",
+    "work_key": "valmiki | valmiki ramayana bala kanda sarga 53 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://valmikiramayan.net/utf8/baala/sarga53/balasans53.htm.orig"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Verghese Kurien",
+    "work_key": " | dr verghese kurien | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.nddb.coop/about/chairman/vkurien"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "sri aurobindo | hymns to the mystic fire | ",
+    "pending_claim_count": 6,
+    "source_urls": [
+      "https://www.sriaurobindoashram.org/sriaurobindo/downloadpdf.php?id=31"
+    ],
+    "score": 18.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki ramayana project | valmiki ramayana textual introduction | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/ramayana.shtml"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 21 prose | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga21/bala_21_prose.htm"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 23 prose | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga23/bala_23_prose.htm"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 24 prose | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga24/bala_24_prose.htm"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 31 prose | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga31/bala_31_prose.htm"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 32 prose | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga32/bala_32_prose.htm"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 35 prose | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga35/bala_35_prose.htm"
+    ],
+    "score": 18.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 51 prose | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga51/bala_51_prose.htm"
+    ],
+    "score": 18.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 56 prose | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga56/bala_56_prose.htm"
+    ],
+    "score": 18.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 58 prose | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga58/bala_58_prose.htm"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 22 | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=22",
+      "https://www.valmiki.iitk.ac.in/sloka?field_kanda_tid=1&field_sarga_value=22&language=dv"
+    ],
+    "score": 18.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 30 | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=30"
+    ],
+    "score": 18.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 49 | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=49"
+    ],
+    "score": 18.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 50 | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=50"
+    ],
+    "score": 18.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 63 | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/sloka?field_kanda_tid=1&field_sarga_value=63&language=dv"
+    ],
+    "score": 18.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki | valmiki ramayana bala kanda sarga 22 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki | valmiki ramayana bala kanda sarga 64 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga64/balasans64.htm"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki | valmiki ramayana bala kanda sarga 74 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga74/balasans74.htm"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Yajnavalkya",
+    "work_key": " | s atapatha bra hman a 14 ma dhyandina sanskrit e text | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://gretil.sub.uni-goettingen.de/gretil/1_sanskr/1_veda/2_bra/satapath/sb_14_u.htm"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Yajnavalkya",
+    "work_key": "steven e lindquist | the literary life of ya jn avalkya publisher s description | 2023",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://sunypress.edu/Books/T/The-Literary-Life-of-Yajnavalkya"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Yajnavalkya",
+    "work_key": "swami madhavananda translator | the brhadaranyaka upanisad with the commentary of sankaracarya | 1950",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://archive.org/download/Brihadaranyaka.Upanishad.Shankara.Bhashya.by.Swami.Madhavananda/Brihadaranyaka.Upanishad.Shankara.Bhashya.by.Swami.Madhavananda_djvu.txt"
+    ],
+    "score": 18,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | jamison and brereton the rigveda book i agastya introduction | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://wiswo.org/books/_resources/book-reference-pdfs/Jamison-Brereton-2014-The%20Rigveda-The%20Earliest%20Poetry%20of%20India%20all%203%20Volume%20Sets.pdf"
+    ],
+    "score": 17.6,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.2
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": " | vedic heritage portal rigveda shakala samhita | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/"
+    ],
+    "score": 17.6,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.2
+  },
+  {
+    "personality": "Bhagat Singh",
+    "work_key": " | writing from behind bars jail notebook and other prison writings by bhagat singh | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://cmsadmin.amritmahotsav.nic.in/district-reopsitory-detail.htm?25100="
+    ],
+    "score": 17.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Bhagat Singh",
+    "work_key": "rama sundari mantena | the portrait s journey the image social communication and martyr making in colonial india | 2011",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.cambridge.org/core/journals/journal-of-asian-studies/article/abs/portraits-journey-the-image-social-communication-and-martyrmaking-in-colonial-india/757F7B655EF06985845A802674B0112D1"
+    ],
+    "score": 17.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Guru Nanak",
+    "work_key": " | japji sahib ang 1 | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.srigranth.org/servlet/gurbani.gurbani?Action=Page&Param=1&g=0&h=0&k=0&p=1&r=1&t=2"
+    ],
+    "score": 17.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Jagadish Chandra Bose",
+    "work_key": " | catalogue of the papers and referee reports for jagadis chunder bose | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://catalogues.royalsociety.org/CalmView/Record.aspx?id=NA7962&src=CalmView.Persons"
+    ],
+    "score": 17.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Jagadish Chandra Bose",
+    "work_key": "subrata dasgupta | jagadis chandra bose and the politics of science | 2016",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://cris.maastrichtuniversity.nl/en/publications/jagadis-chandra-bose-and-the-politics-of-science"
+    ],
+    "score": 17.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Jamsetji Tata",
+    "work_key": "blair b kling | paternalism in indian labor the tata iron and steel company of jamshedpur | 2008",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.cambridge.org/core/journals/international-labor-and-working-class-history/article/abs/paternalism-in-indian-labor-the-tata-iron-and-steel-company-of-jamshedpur/32A1A82226B591A17C4D87380B217556"
+    ],
+    "score": 17.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Rajaraja Chola I",
+    "work_key": " | great living chola temples | 2026",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://whc.unesco.org/en/list/250"
+    ],
+    "score": 17.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Rani Lakshmibai of Jhansi",
+    "work_key": " | decisive events of the indian rebellion | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.nam.ac.uk/explore/decisive-events-indian-mutiny"
+    ],
+    "score": 17.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Rani Lakshmibai of Jhansi",
+    "work_key": " | the indian revolt gwalior report 31 july 1858 | 1858",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://ncse.ac.uk/periodicals/l/issues/cld_31071858/page/6/"
+    ],
+    "score": 17.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Rani Lakshmibai of Jhansi",
+    "work_key": "harleen singh | india s aryan queen colonial ambivalence and race in the mutiny | 2014",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.cambridge.org/core/books/abs/rani-of-jhansi/indias-aryan-queen-colonial-ambivalence-and-race-in-the-mutiny/BF99F8118BBBC5A579168CC8F7312BA8"
+    ],
+    "score": 17.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Vasistha",
+    "work_key": " | valmiki ramayana ayodhya kanda 111 | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://sanskritdocuments.org/sites/valmikiramayan/ayodhya/sarga111/ayodhyaroman111.htm"
+    ],
+    "score": 17.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Vasistha",
+    "work_key": " | valmiki ramayana ayodhya kanda 67 | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://sanskritdocuments.org/sites/valmikiramayan/ayodhya/sarga67/ayodhya_67_prose.htm"
+    ],
+    "score": 17.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 30 prose | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga30/bala_30_prose.htm"
+    ],
+    "score": 17.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 34 prose | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga34/bala_34_prose.htm"
+    ],
+    "score": 17.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 50 prose | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga50/bala_50_prose.htm"
+    ],
+    "score": 17.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Yajnavalkya",
+    "work_key": "arthur a macdonell | a history of sanskrit literature chapter viii the bra hman as | 1900",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://en.wikisource.org/wiki/A_History_of_Sanskrit_Literature/Chapter_8"
+    ],
+    "score": 17.33,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.67
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | rigveda 1 166 agastya hymn | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-166/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | rigveda 1 167 agastya hymn | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-167/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | rigveda 1 168 agastya hymn | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-168/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | rigveda 1 169 agastya hymn | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-169/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | rigveda 1 171 agastya hymn | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-171/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | rigveda 1 172 agastya hymn | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-172/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | rigveda 1 173 agastya hymn | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-173/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | rigveda 1 174 agastya hymn | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-174/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | rigveda 1 175 agastya hymn | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-175/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | rigveda 1 176 agastya hymn | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-176/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Agastya",
+    "work_key": " | rigveda book 1 metrically restored text | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://lrc.la.utexas.edu/books/rigveda/RV01"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "C. V. Raman",
+    "work_key": " | a new radiation 1928 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://repository.ias.ac.in/70648/1/36-PUb.pdf"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "C. V. Raman",
+    "work_key": " | a new type of secondary radiation 1928 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://repository.ias.ac.in/28460/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "C. V. Raman",
+    "work_key": " | iacs raman effect discovery site | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.indiascienceandtechnology.gov.in/organisations/ministry-and-departments/department-science-technology-dst/indian-association"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "C. V. Raman",
+    "work_key": " | on some indian stringed instruments 1921 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://repository.ias.ac.in/69870/1/69870.pdf"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "C. V. Raman",
+    "work_key": " | raman s diamond research with d krishnamurti | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://wwws.rri.res.in/htmls/library/raman_era/Bios/krishnamurti.html"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "C. V. Raman",
+    "work_key": " | remembering asia s first nobel laureate | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.indiascienceandtechnology.gov.in/listingpage/remembering-asias-1st-nobel-laureate-who-explained-why-sea-looks-blue"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "C. V. Raman",
+    "work_key": " | royal society election certificate for c v raman | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://catalogues.royalsociety.org/CalmView/Record.aspx?id=EC%2F1924%2F11&src=CalmView.Catalog"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "C. V. Raman",
+    "work_key": " | the heat capacity of diamond between 0 and 1000 k 1957 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://repository.ias.ac.in/69772/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "C. V. Raman",
+    "work_key": " | the indian musical drums 1934 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://repository.ias.ac.in/50700/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "C. V. Raman",
+    "work_key": " | the raman effect investigation of molecular structure by light scattering 1929 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://repository.ias.ac.in/50709/1/24_pub.pdf"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": " | panhala fort maharashtra tourism | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://maharashtratourism.gov.in/fort/panhala/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": " | pratapgad fort maharashtra tourism | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://maharashtratourism.gov.in/fort/pratapgad/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": " | purandar fort maharashtra tourism | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://maharashtratourism.gov.in/fort/purandar/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": " | rajgad fort maharashtra tourism | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://maharashtratourism.gov.in/fort/rajgad/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": " | shivneri fort maharashtra tourism | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://maharashtratourism.gov.in/fort/shivneri/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": " | sindhudurg fort maharashtra tourism | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://maharashtratourism.gov.in/fort/sindhudurg/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": " | sinhagad fort maharashtra tourism | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://maharashtratourism.gov.in/fort/sinhagad/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": " | the deccan | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.cambridge.org/core/books/the-cambridge-economic-history-of-india/FAE3A6C0264445BBCEB02B5CD0CC2A2F"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": " | torna fort maharashtra tourism | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://maharashtratourism.gov.in/fort/torna/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": " | vijaydurg fort maharashtra tourism | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://maharashtratourism.gov.in/fort/vijaydurg/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": " | vishalgad fort maharashtra tourism | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://maharashtratourism.gov.in/fort/vishalgad/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": "nandini chatterjee | invaders marathas and the british | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.cambridge.org/core/books/negotiating-mughal-law/invaders-marathas-and-the-british/6DEDEB745C48491604CD838677FF0C2E"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Chhatrapati Shivaji Maharaj",
+    "work_key": "stewart gordon | shivaji 1630 80 and the maratha polity | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.cambridge.org/core/books/abs/marathas-16001818/shivaji-163080-and-the-maratha-polity/77CF65447181F279BA73A6A5D6B1E048"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Jagadish Chandra Bose",
+    "work_key": "meghnad saha | sir jagadis chunder bose 1858 1937 | 1940",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://wellcomecollection.org/works/aekzqabr"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "M. S. Subbulakshmi",
+    "work_key": " | akashvani national artists and archives | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://prasarbharati.gov.in/en/akashvani/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "M. S. Subbulakshmi",
+    "work_key": " | gazette of india bharat ratna notification 1 march 1998 | 1998",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.padmaawards.gov.in/Document/pdf/Notifications/BharatRatna/1992BR.pdf"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "M. S. Subbulakshmi",
+    "work_key": " | journal of the music academy madras volume 71 | 2000",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://musicacademymadras.in/catalogue/files/journals/Vol.71_2000.pdf"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "M. S. Subbulakshmi",
+    "work_key": " | m s subbulakshmi 1974 award citation and response | 1974",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://rmaward.asia/rmawardees/subbulakshmi-m-s/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "M. S. Subbulakshmi",
+    "work_key": " | sangita kalanidhi awardees | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://musicacademymadras.in/sangita-kalanidhi/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "M. S. Subbulakshmi",
+    "work_key": " | yojana october 1970 united nations concert account | 1970",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.publicationsdivision.nic.in/journals/Journalarchives/Yojana/Yojana-English/1970/October/Yojana_1970_October_pdf.pdf"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Rabindranath Tagore",
+    "work_key": " | history of visva bharati | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.visvabharati.ac.in/home/history_land_page/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Rajaraja Chola I",
+    "work_key": " | icomos evaluation chola temples india | 1987",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://whc.unesco.org/document/153044"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Ramakrishna Paramahamsa",
+    "work_key": " | supreme court to rk mission you re hindus | 1995",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://hinduismtoday.com/magazine/september-1995/1995-09-supreme-court-to-rk-mission-you-re-hindus/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Ramakrishna Paramahamsa",
+    "work_key": "swami vivekananda | my master | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/vivekananda/volume_4/lectures_and_discourses/my_master.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Ramakrishna Paramahamsa",
+    "work_key": "the editors of encyclopaedia britannica | brahmo samaj | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.britannica.com/topic/Brahmo-Samaj"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Savitribai Phule",
+    "work_key": " | annual quality assurance report 2014 15 | 2015",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.unipune.ac.in/iqac/pdf/AQAR_2014-15.pdf"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Savitribai Phule",
+    "work_key": " | associates of mahatma phule savitribai phule | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/accociate.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Srinivasa Ramanujan",
+    "work_key": " | collected works correspondence trinity archive | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://archives.trin.cam.ac.uk/index.php/correspondence-of-g-h-hardy-with-cambridge-university-press-and-others-about-ramanujans-collected-works1916-291-bundle"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Srinivasa Ramanujan",
+    "work_key": " | g n watson s notes on ramanujan trinity archive | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://archives.trin.cam.ac.uk/index.php/notes-on-ramanujan-and-his-work-by-g-n-watson"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Srinivasa Ramanujan",
+    "work_key": " | hardy s letter to ramanujan on partition series trinity archive | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://archives.trin.cam.ac.uk/index.php/letter-from-g-h-hardy-to-ramanujan-on-summing-partition-series-for-xxxx-2"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Srinivasa Ramanujan",
+    "work_key": " | hardy s london mathematical society obituary of ramanujan | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://mathshistory.st-andrews.ac.uk/LMS/ramanujan_lms_obit.pdf"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Srinivasa Ramanujan",
+    "work_key": " | letter by ramanujan on mock theta functions | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://archives.trin.cam.ac.uk/index.php/letter-by-ramanujan-on-mock-theta-functions-2?sf_culture=en"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Srinivasa Ramanujan",
+    "work_key": " | letters from ramanujan to g h hardy trinity archive | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://archives.trin.cam.ac.uk/index.php/letters-from-ramanujan-to-g-h-hardy"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Srinivasa Ramanujan",
+    "work_key": " | papers of srinivasa ramanujan archival inventory | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://archives.trin.cam.ac.uk/index.php/papers-of-srinivasa-ramanujan/informationobject/inventory"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Srinivasa Ramanujan",
+    "work_key": " | ramanujan correspondence and life records trinity archive | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://archives.trin.cam.ac.uk/index.php/correspondence-of-ramanujan-and-miscellaneous-correspondence-relating-to-his-life-and-works"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Srinivasa Ramanujan",
+    "work_key": " | ramanujan properties of p n and tau n trinity archive | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://archives.trin.cam.ac.uk/index.php/s-ramanujan-properties-of-p-n-and-n"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Srinivasa Ramanujan",
+    "work_key": " | ramanujan s 1918 letter to eric neville trinity archive | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://archives.trin.cam.ac.uk/index.php/letter-from-srinivasa-ramanujan-to-eric-harold-neville-2"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Srinivasa Ramanujan",
+    "work_key": " | ramanujan s lost notebook trinity archive | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://archives.trin.cam.ac.uk/index.php/the-so-called-lost-notebook-2"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Srinivasa Ramanujan",
+    "work_key": " | royal society election certificate for ramanujan | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://catalogues.royalsociety.org/CalmView/Record.aspx?id=EC%2F1918%2F18&src=CalmView.Catalog"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Srinivasa Ramanujan",
+    "work_key": " | s ramanujan | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.cambridge.org/core/journals/mathematical-gazette/article/abs/s-ramanujan/F44F622E3F1019211D391AE26B0B692B"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Srinivasa Ramanujan",
+    "work_key": " | the man who knew infinity the story of srinivasa ramanujan frs | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://royalsociety.org/blog/2016/04/the-man-who-knew-infinity-the-story-of-srinivasa-ramanujan-frs/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Srinivasa Ramanujan",
+    "work_key": "j j o connor and e f robertson | srinivasa ramanujan biography | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Subhas Chandra Bose",
+    "work_key": " | netaji inquiry committee report 11 september 1956 | 1956",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://nehruarchive.in/documents/netaji-inquiry-committee-report-11-september-1956-9jqqkk"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": " | karma yoga each is great in his own place | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/karma-yoga/each_is_great.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": " | karma yoga freedom | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/karma-yoga/freedom.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": " | karma yoga karma in its effect on character | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/karma-yoga/effect_on_character.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": " | karma yoga the ideal | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/karma-yoga/the_ideal.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": " | karma yoga the secret of work | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/karma-yoga/secret_of_work.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": " | karma yoga what is duty | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/karma-yoga/what_is_duty.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": " | response to welcome at chicago | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_response_to_welcome.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": " | the future of india | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/vivekananda/volume_3/lectures_from_colombo_to_almora/the_future_of_india.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Swami Vivekananda",
+    "work_key": "swami vivekananda | paper on hinduism | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_paper_on_hinduism.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vasistha",
+    "work_key": " | dharmasutras | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://sites.utexas.edu/sanskrit/resources/dharmasastra/dharmasutras/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vasistha",
+    "work_key": " | rigveda shakala samhita mandala 7 sukta 047 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita-2/rigveda-shakala-samhita-mandal-07-sukta-047/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vasistha",
+    "work_key": " | rigveda shakala samhita mandala 7 sukta 070 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita-2/mandal-07/hindi-rigveda-shakala-samhita-mandal-07-sukta-070/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vasistha",
+    "work_key": " | rigveda shakala samhita mandala 7 sukta 089 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita-2/mandal-07/hindi-rigveda-shakala-samhita-mandal-07-sukta-089/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vasistha",
+    "work_key": " | valmiki ramayana ayodhya kanda 110 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://sanskritdocuments.org/sites/valmikiramayan/ayodhya/sarga110/ayodhyaitrans110.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vasistha",
+    "work_key": " | valmiki ramayana bala kanda 12 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.valmikiramayan.net/baala/sarga12/bala_12_prose.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vasistha",
+    "work_key": " | valmiki ramayana bala kanda 21 | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga21/balasans21.htm"
+    ],
+    "score": 16.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.25
+  },
+  {
+    "personality": "Vasistha",
+    "work_key": " | valmiki ramayana bala kanda 52 | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://valmikiramayan.net/utf8/baala/sarga52/balasans52.htm"
+    ],
+    "score": 16.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.25
+  },
+  {
+    "personality": "Vasistha",
+    "work_key": " | valmiki ramayana bala kanda 54 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.sanskritdocuments.org/sites/valmikiramayan/baala/sarga54/balaroman54.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vasistha",
+    "work_key": " | valmiki ramayana bala kanda 55 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://sanskritdocuments.org/sites/valmikiramayan/baala/sarga55/bala_55_prose.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": " | aitareya brahmana of the rigveda vol 2 repository scan copy in gov ignca 24136 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://archive.org/details/in.gov.ignca.24136"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": " | man d ala 3 62 hymns of the vis va mitra family incl ga yatri rigveda swaveda | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.swaveda.com/texts/rigveda/3/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "traditional vedic text | rigveda shakala samhita mandala 3 sukta 33 | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-033/"
+    ],
+    "score": 16.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.25
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "traditional vedic text | rigveda shakala samhita mandala 3 sukta 62 | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://vedicheritage.gov.in/hi/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-062/"
+    ],
+    "score": 16.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.25
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 20 prose | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga20/bala_20_prose.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 52 prose | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga52/bala_52_prose.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 57 prose | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga57/bala_57_prose.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 61 prose | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga61/bala_61_prose.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam 1 66 sibling page valmikiramayan net | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga66/bala_66_prose.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 23 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=23"
+    ],
+    "score": 16.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 24 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=24"
+    ],
+    "score": 16.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 28 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/sloka?field_kanda_tid=1&field_sarga_value=28&language=dv"
+    ],
+    "score": 16.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 31 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=31"
+    ],
+    "score": 16.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 32 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=32"
+    ],
+    "score": 16.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 34 | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=34",
+      "https://www.valmiki.iitk.ac.in/sloka?field_kanda_tid=1&field_sarga_value=34&language=dv"
+    ],
+    "score": 16.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 51 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=51"
+    ],
+    "score": 16.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 55 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=55"
+    ],
+    "score": 16.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 58 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=58"
+    ],
+    "score": 16.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 62 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/sloka?field_kanda_tid=1&field_sarga_value=62&language=ro"
+    ],
+    "score": 16.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 67 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=67"
+    ],
+    "score": 16.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki | valmiki ramayana bala kanda sarga 55 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga55/bala_55_prose.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic heritage portal | rigveda 3 53 | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-053/"
+    ],
+    "score": 16.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.25
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 10 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-010/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 11 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-011/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 12 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-012/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 14 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-014/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 15 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-015/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 16 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-016/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 19 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-019/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 20 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-020/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 21 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-021/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 22 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-022/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 24 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-024/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 27 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-027/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 3 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-003/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 30 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-030/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 32 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-032/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 37 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-037/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 39 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-039/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 4 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-004/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 40 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-040/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 5 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-005/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 6 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-006/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 7 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-007/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 8 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-008/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 9 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-009/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vyasa traditional attribution bori critical edition | mahabharata bori critical edition adi parva adhyaya 166 | ",
+    "pending_claim_count": 5,
+    "source_urls": [
+      "https://vedapath.app/en/mahabharata-bori/adi-parva/166"
+    ],
+    "score": 16.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Yajnavalkya",
+    "work_key": "dominik wujastyk | the yoga texts attributed to ya jn avalkya and their remarks on posture | 2017",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://alt.cardiffuniversitypress.org/articles/25/files/submission/proof/25-1-25-1-10-20170908.pdf"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Yajnavalkya",
+    "work_key": "hans henrich hock | the ya jn avalkya cycle in the br had a ran yaka upanis ad abstract | 2002",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://experts.illinois.edu/en/publications/the-y%C4%81j%C3%B1avalkya-cycle-in-the-brcombining-ring-belowhad-%C4%81rancombin/"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Yajnavalkya",
+    "work_key": "kisari mohan ganguli translator | the mahabharata book 12 santi parva section cccxix | 1891",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://web.archive.org/web/2023id_/https://www.sacred-texts.com/hin/m12/m12c018.htm"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Yajnavalkya",
+    "work_key": "patrick olivelle editor and translator | a treatise on dharma by yajnavalkya edited and translated by patrick olivelle publisher s description | 2019",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.murtylibrary.com/books/a-treatise-on-dharma"
+    ],
+    "score": 16,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 1
+  },
+  {
+    "personality": "Rajaraja Chola I",
+    "work_key": " | brihadisvara temple inscription no 66 | 1014",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://ignca.gov.in/brhadisvaratemple/VIMAN/INSCRIPTIONS/66.html"
+    ],
+    "score": 14.67,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.33
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "dcf framework supplied from dr sampadananda mishra | dcf parameters to study rishis | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "NO_URL"
+    ],
+    "score": 14.67,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.33
+  },
+  {
+    "personality": "J. R. D. Tata",
+    "work_key": " | history of the tata institute of social sciences | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.tiss.edu/view/6/about-tiss/history/"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "M. S. Subbulakshmi",
+    "work_key": " | m s subbulakshmi song list | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://r.saregama.com/resources/pdf/musiccard/Subbulakshmi-song-list.pdf"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Rajaraja Chola I",
+    "work_key": " | brihadisvara temple inscription no 69 | 1014",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.ignca.gov.in/brhadisvaratemple/VIMAN/INSCRIPTIONS/69.html"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Rajaraja Chola I",
+    "work_key": " | brihadisvara temple inscription no 94 | 1014",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://ignca.gov.in/brhadisvaratemple/VIMAN/INSCRIPTIONS/94.html"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Rajaraja Chola I",
+    "work_key": "burton stein | peasant state and society in medieval south india | 1980",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://global.oup.com/academic/product/peasant-state-and-society-in-medieval-south-india-9780195610553"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Satyajit Ray",
+    "work_key": " | indian panorama catalogue the director | 1980",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.dff.nic.in/images/Documents/142_IPCatalogue1979-80.pdf"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Subhas Chandra Bose",
+    "work_key": " | india office records ior l pj 12 217 file 1115 24 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://searcharchives.bl.uk/catalog/040-000897281"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Vasistha",
+    "work_key": "valmiki | valmiki ramayana bala kanda sarga 22 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "baudhayana traditional attribution | the baudhayana srauta sutra volume i | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://ignca.gov.in/eBooks/The_Baudhayana_Srauta-Sutra_Vol_I.pdf"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution english rendering by desiraju hanumanta rao | valmiki ramayana bala kanda sarga 28 prose | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.valmikiramayan.net/utf8/baala/sarga28/bala_28_prose.htm"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 19 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=19"
+    ],
+    "score": 14.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 20 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=20"
+    ],
+    "score": 14.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 21 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=21"
+    ],
+    "score": 14.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 45 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=45"
+    ],
+    "score": 14.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 52 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=52"
+    ],
+    "score": 14.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 57 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/sloka?field_kanda_tid=1&field_sarga_value=57&language=te"
+    ],
+    "score": 14.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 60 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/sloka?field_kanda_tid=1&field_sarga_value=60&language=dv"
+    ],
+    "score": 14.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 61 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/sloka?field_kanda_tid=1&field_sarga_value=61&language=dv"
+    ],
+    "score": 14.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki traditional attribution | valmiki ramayanam bala kanda sarga 66 | ",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://www.valmiki.iitk.ac.in/summary?field_kanda_tid=1&field_sarga_value=66"
+    ],
+    "score": 14.0,
+    "authority_prior": 4,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "valmiki | valmiki ramayana bala kanda sarga 53 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://valmikiramayan.net/utf8/baala/sarga53/balasans53.htm.orig"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic heritage portal | rigveda 3 54 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-054/"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 13 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-013/"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 17 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-017/"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 18 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-018/"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 2 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-002/"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 23 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-023/"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vedic rishi attribution as recorded by source | rigveda mandala 3 sukta 36 | ",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-036/"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.5
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": "vyasa traditional attribution bori critical edition | mahabharata bori critical edition adi parva | ",
+    "pending_claim_count": 4,
+    "source_urls": [
+      "https://vedapath.app/en/mahabharata-bori/adi-parva"
+    ],
+    "score": 14.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": " | rigveda translation study mandala 3 passages | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://ignca.gov.in/Asi_data/8739.pdf"
+    ],
+    "score": 12.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Vishvamitra",
+    "work_key": " | traditional history from the earliest time | ",
+    "pending_claim_count": 3,
+    "source_urls": [
+      "https://ignca.gov.in/Asi_data/73904.pdf"
+    ],
+    "score": 12.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Ramakrishna Paramahamsa",
+    "work_key": "mahendranath gupta m translated by swami nikhilananda | the gospel of sri ramakrishna kathamrita conversations recorded by m | 1942",
+    "pending_claim_count": 2,
+    "source_urls": [
+      "https://www.ramakrishnavivekananda.info/gospel/gospel.htm"
+    ],
+    "score": 10.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.0
+  },
+  {
+    "personality": "Ramakrishna Paramahamsa",
+    "work_key": "william page | review interpreting ramakrishna kali s child revisited | 2010",
+    "pending_claim_count": 1,
+    "source_urls": [
+      "https://americanvedantist.org/2010/media-reviews/reviewinterpreting-ramakrishna-kali%E2%80%99s-child-revisited/"
+    ],
+    "score": 8.0,
+    "authority_prior": 2,
+    "exported_passage_coverage_hint": 0.0
+  }
+]

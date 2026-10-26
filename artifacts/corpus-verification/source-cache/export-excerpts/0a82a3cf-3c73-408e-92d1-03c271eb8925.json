@@ -1,0 +1,34 @@
+{
+  "source_id": "0a82a3cf-3c73-408e-92d1-03c271eb8925",
+  "source": {
+    "author": "Valmiki (traditional attribution)",
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana",
+    "original_work_identity": {
+      "underlyingWork": "Valmiki Ramayanam"
+    },
+    "publication_year": null,
+    "publisher_or_institution": "IIT Kanpur Valmiki Ramayanam Project",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayanam 1.66 — sibling page (valmikiramayan.net)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga66/bala_66_prose.htm"
+  },
+  "claim_ids": [
+    "e1be22d5-5ace-4b0f-8889-ceda50212a7b"
+  ],
+  "passages": [
+    {
+      "chunk_id": "ad2aa921-7d84-43f3-b6ff-f5dcf27b708d",
+      "locator": "Book I : Bala Kanda - The Youthful MajestiesSarga 66 in Prose",
+      "text_sha256": "47a286ee6d3c37410e065553eb3b214f25cda19105a2ba5a37ae1150e7886e2a",
+      "excerpt_preview": "Legend of Shiva's bow is narrated as Vishvamitra asks Janaka to show   that bow to Rama and Lakshmana, as they have come this far to have a   glimpse of that great bow. Janaka, while narrating its history, makes   an offer saying that his d",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

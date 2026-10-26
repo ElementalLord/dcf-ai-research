@@ -1,0 +1,44 @@
+{
+  "source_id": "f76efd31-3f90-4b32-b386-99e3cce78d6a",
+  "source": {
+    "author": "Traditional text",
+    "authority_metadata": {},
+    "citation": "Arsheya Upanishad",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Vedic Heritage Portal / IGNCA / Ministry of Culture, Government of India",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Arsheya Upanishad",
+    "url": "https://vedicheritage.gov.in/upanishads/aarsheyopanishad/"
+  },
+  "claim_ids": [
+    "0073259b-5428-4888-a85a-9edb0ff04776",
+    "10feff07-2e7e-44e7-af77-2780a905e89e",
+    "17e108fa-cbdb-4f1e-b11c-51d6cc22b8d3",
+    "1e7de698-bda7-442d-9d6e-3eaa323c38c1",
+    "767ca43f-fbcc-46c8-ac6c-4c285ed1eedb",
+    "9649f2d5-b0b2-4ba9-bc0b-7096352f358d",
+    "ac72a43b-7713-4faf-a3fb-395a26137752",
+    "afdb795a-80bc-444d-bc3b-3d78a4db6bdf",
+    "b1b6f11d-3340-40c0-8b4c-c375872b36a7",
+    "ba6afc2a-361a-4340-9b10-57d4f44d4c22",
+    "bf538f50-667a-41c3-b0a5-6c5aef606ef8",
+    "ccaa820e-2581-480c-8dd2-b2af7ba6df99",
+    "ec01577c-6342-40f4-bf36-cd6bb4a9b0f2"
+  ],
+  "passages": [
+    {
+      "chunk_id": "2d2aac38-e6ad-4b85-b8a5-5c566247b921",
+      "locator": "Arsheyopanishad",
+      "text_sha256": "4b2838fd053f4d3950b9da69b38b6debe7a3bf53446b8ec6bef9210c3498af28",
+      "excerpt_preview": "Ārṣeya Upaniṣad is not considered as a principal Upaniṣad of Vedic Literature but it is recognised as a significant Upaniṣad among the ‘Vedānta-Upanis̩ads’ of comparatively later times. Later Upaniṣads were developed to propound the ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

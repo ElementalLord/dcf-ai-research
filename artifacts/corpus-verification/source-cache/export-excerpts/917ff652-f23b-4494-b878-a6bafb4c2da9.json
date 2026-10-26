@@ -1,0 +1,34 @@
+{
+  "source_id": "917ff652-f23b-4494-b878-a6bafb4c2da9",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:26:58.946Z"
+    },
+    "citation": "Ramanujan Correspondence and Life Records — Trinity Archive. Trinity College Library, Cambridge. https://archives.trin.cam.ac.uk/index.php/correspondence-of-ramanujan-and-miscellaneous-correspondence-relating-to-his-life-and-works",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Trinity College Library, Cambridge",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Ramanujan Correspondence and Life Records — Trinity Archive",
+    "url": "https://archives.trin.cam.ac.uk/index.php/correspondence-of-ramanujan-and-miscellaneous-correspondence-relating-to-his-life-and-works"
+  },
+  "claim_ids": [
+    "4936ab1e-0d59-4b8d-bd27-a2e0883bd516"
+  ],
+  "passages": [
+    {
+      "chunk_id": "285f7665-0aff-4fa9-8589-0e41ef29e597",
+      "locator": "Archival correspondence record",
+      "text_sha256": "5dbc5a358811c70d3771e1cdc7e1abf471890012f7d91443af1bbe3b2f7eae31",
+      "excerpt_preview": "Skip to main content Archive Site Trinity College Cambridge Quick search Search File 1 - Correspondence of Ramanujan and miscellaneous correspondence relating to his life and works Identity area Reference codeAdd. MS a/94/1 TitleCorresponde",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

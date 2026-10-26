@@ -1,0 +1,61 @@
+{
+  "source_id": "148863e8-03aa-49a9-bf84-c6a026c10f79",
+  "source": {
+    "author": "Stewart Gordon",
+    "authority_metadata": {
+      "verified_at": "2026-10-10T05:23:24.107Z"
+    },
+    "citation": "Stewart Gordon. The Marathas 1600–1818. Cambridge University Press. https://www.cambridge.org/core/books/marathas-16001818/1098497E96D2AFA760D18DB311A91C80",
+    "original_work_identity": {},
+    "publication_year": 1993,
+    "publisher_or_institution": "Cambridge University Press",
+    "rights_or_access_note": "Public page; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "The Marathas 1600–1818",
+    "url": "https://www.cambridge.org/core/books/marathas-16001818/1098497E96D2AFA760D18DB311A91C80"
+  },
+  "claim_ids": [
+    "2662e78d-9bfe-4df2-af6b-8e8fe81a1c41",
+    "8dab59fe-e3ef-4f38-80c1-9da0e2fee5e1",
+    "937da2e8-b926-41a1-b552-869ba305260c",
+    "b015f938-b178-42e5-a6df-37880cd02af6"
+  ],
+  "passages": [
+    {
+      "chunk_id": "250805d8-7de1-4cf0-a741-5f41d14edbf6",
+      "locator": "administrative documents of the Maratha polity",
+      "text_sha256": "7eda50f055c18f1aa7e3ca85280a2c36a8d5d9b1176f708f36d16cb1d8eea4e1",
+      "excerpt_preview": "Using administrative documents of the Maratha polity, family papers and Histories of the Empire, Stewart Gordon explores the origin of the Marathas, their emergence as elite families, patterns of loyalty and strategies for maintaining legit",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "aee6a585-3a10-4805-9e51-d3348e6de9f6",
+      "locator": "origin of the Marathas",
+      "text_sha256": "e17b9876aac6c16d82eaa2070c668222c96e43ff9d1cbf9f795cc74da6a99005",
+      "excerpt_preview": "documents of the Maratha polity, family papers and Histories of the Empire, Stewart Gordon explores the origin of the Marathas, their emergence as elite families, patterns of loyalty and strategies for maintaining legitimacy. He traces how ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "db059edb-5cee-4b60-9633-80c333d417a3",
+      "locator": "lasting effects the empire had on administrations",
+      "text_sha256": "43bad5893ae0f73e823fdbd533355090c42376d163155ebfbe9b5bd03933773a",
+      "excerpt_preview": "Finally the author considers the lasting effects the empire had on administrations, law and trade patterns of Central India, Gujarat and Maharashtra.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e76f03aa-93f2-4b6a-b597-b13e2279d7bf",
+      "locator": "founded by Shivaji in the mid-seventeenth century",
+      "text_sha256": "6b257894504dd4afd850483bc54f79db1df6fb5e979664e25fefdf2efa785985",
+      "excerpt_preview": "The empire was founded by Shivaji in the mid-seventeenth century, spread across most of India during the following century, and was conquered by the British in the nineteenth century.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

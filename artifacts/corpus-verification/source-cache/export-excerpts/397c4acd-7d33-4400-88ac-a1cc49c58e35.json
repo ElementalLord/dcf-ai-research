@@ -1,0 +1,43 @@
+{
+  "source_id": "397c4acd-7d33-4400-88ac-a1cc49c58e35",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.58, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 58 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga58/bala_58_prose.htm"
+  },
+  "claim_ids": [
+    "0b9eef21-41df-49fa-91de-c6580704eb75",
+    "9e04db9f-e074-4f3a-a770-2e3a7109a3c5"
+  ],
+  "passages": [
+    {
+      "chunk_id": "4849c222-55e8-426f-b3a6-c482a6154f41",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\nSarga 58  in Prose",
+      "text_sha256": "bf81a5a33757e2f07f78855d0f78167856b276d5ce178a242b2a88a9b5f12b5a",
+      "excerpt_preview": "Trishanku seeks shelter of Vishvamitra when the sons of Vashishta rebuffed   him, and even cursed him to become a profaner. Narrating his sad tale   and his idealistic idea of going to heaven with mortal body, Trishanku   earnestly appeals ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "832c5c38-711a-4f73-9f40-6263ac1cc2bf",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\nSarga 58  in Prose",
+      "text_sha256": "2b09419f5d79d39415ed70faf8588fc132429e717936d12ca363f1dc1b0b55ff",
+      "excerpt_preview": "\"But the sons of the sage Vashishta, on hearing that sentence of the king, that  is inclusive of and leading to a calamitous situation, have become very highly infuriated  and cursed saying, 'you shall get into a state of basely profaner.' ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

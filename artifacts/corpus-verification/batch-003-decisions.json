@@ -1,0 +1,640 @@
+[
+  {
+    "claim_id": "2956ea6c-6e71-40a4-b441-6d265f37ef5b",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "Vivekananda returned to India in January 1897 and lectured across the country about religion and social uplift.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Vivekananda returned to India in January 1897 and lectured across the country about religion and social uplift.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+        "url": "https://belurmath.org/swami-vivekananda/",
+        "locator": "Awakening His Countrymen, lines 175–179",
+        "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+        "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Order's biography directly dates the return and describes lectures about religion and uplift.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "be3364aa-4ab2-4aa9-85fc-572b0c1dc1d7",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "Belur Math records that Narendra was associated for a time with the Brahmo movement, part of his nineteenth-century religious setting.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Belur Math records that Narendra was associated for a time with the Brahmo movement, part of his nineteenth-century religious setting.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+        "url": "https://belurmath.org/swami-vivekananda/",
+        "locator": "Early life, line 143",
+        "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+        "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Belur Math explicitly records an association with the Brahmo movement; the claim attributes the record to Belur Math.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0322cc9d-f197-425b-aeec-f731f944374b",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "The evidence supports describing Vivekananda as a Hindu monk and public Vedanta teacher whose international speaking, Ramakrishna lineage, and institution-building were distinct but connected parts of his vocation.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Belur Math's biography presents Vivekananda as a monk and Vedanta lecturer who travelled internationally and helped establish the Ramakrishna Mission and Belur Math.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+        "url": "https://belurmath.org/swami-vivekananda/",
+        "locator": "Biography, lines 141–143, 152–154, 171–185",
+        "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+        "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The original broad vocational synthesis was narrowed to the institution's documented biography.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional biography is a participant account; impact claims would need independent assessment.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1b080ff0-764b-401e-9f71-a61fc18947e3",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "Belur Math describes Narendra's Calcutta University education as including substantial study of Western philosophy and history.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Belur Math describes Narendra's Calcutta University education as including substantial study of Western philosophy and history.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+        "url": "https://belurmath.org/swami-vivekananda/",
+        "locator": "Early life, line 143",
+        "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+        "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The biography directly reports Calcutta University graduation and study of Western philosophy and history.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "510eec4d-634e-4b97-ae3a-554df2da7f75",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "Before becoming a monk, Vivekananda was known as Narendra Nath Datta; he was born in Kolkata in 1863.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Before becoming a monk, Vivekananda was known as Narendra Nath Datta; he was born in Kolkata in 1863.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+        "url": "https://belurmath.org/swami-vivekananda/",
+        "locator": "Early life, line 142",
+        "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+        "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Order gives the pre-monastic name, Kolkata birthplace, and 12 January 1863 date.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d389f5b2-51e9-4c67-b4bf-523e8766fb7d",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "Belur Math connects Vivekananda's travels across India with his growing concern for poverty and education.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Belur Math connects Vivekananda's travels across India with his growing concern for poverty and education.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+        "url": "https://belurmath.org/swami-vivekananda/",
+        "locator": "Discovery of Real India, lines 158–162",
+        "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+        "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The biography links travel with concern for poverty, practical education, and confidence in the masses; the claim attributes that reading to Belur Math.",
+    "original_source_inspected": true,
+    "material_limitation": "This is the Order's interpretation of his motives.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ef6ba99b-f8af-44cb-84a3-7e0293543761",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "After Ramakrishna's death in 1886, Narendra and fellow disciples formed a monastic brotherhood at Baranagar.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "After Ramakrishna's death in 1886, Narendra and fellow disciples formed a monastic brotherhood at Baranagar.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+        "url": "https://belurmath.org/swami-vivekananda/",
+        "locator": "Beginnings of a Monastic Brotherhood, lines 152–154",
+        "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+        "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The biography dates Ramakrishna's death to 1886 and describes the Baranagar community formed afterward.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ab8e3fcc-bb17-4d7f-806e-ebe8ef1d5b7b",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "Vivekananda founded the Ramakrishna Mission on 1 May 1897 to organize teaching and service by monks and lay members.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Vivekananda founded the Ramakrishna Mission on 1 May 1897 to organize teaching and service by monks and lay members.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+        "url": "https://belurmath.org/swami-vivekananda/",
+        "locator": "Founding of Ramakrishna Mission, lines 181–183",
+        "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+        "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The founding date and monks-and-lay-members purpose are explicit in the institution's own history.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d14c737b-1b29-49ba-9b02-8db9a4bdfb90",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "Vivekananda established Belur as the permanent centre for the monastic order associated with the Ramakrishna Math.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Vivekananda established Belur as the permanent centre for the monastic order associated with the Ramakrishna Math.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+        "url": "https://belurmath.org/swami-vivekananda/",
+        "locator": "Belur Math, lines 184–186",
+        "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+        "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Belur Math records his 1898 acquisition of Belur land for a permanent monastic home.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "e5f3862e-85bb-428b-b7b0-87fed3e193ce",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "The Order describes Vivekananda's plan for the masses as combining practical education with spiritual knowledge and self-confidence.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Order describes Vivekananda's plan for the masses as combining practical education with spiritual knowledge and self-confidence.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+        "url": "https://belurmath.org/swami-vivekananda/",
+        "locator": "Discovery of Real India, lines 159–164",
+        "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+        "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The biography expressly combines secular education, spiritual teaching, and self-confidence in its account of his programme.",
+    "original_source_inspected": true,
+    "material_limitation": "Attributed Order account; not independent proof of social impact.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "97902d17-3e78-4675-b750-43bc1a528914",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "Belur Math recounts Narendra asking Ramakrishna whether he had seen God and presents Ramakrishna's response as pivotal; this is the Order's account of their relationship.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Belur Math recounts Narendra asking Ramakrishna whether he had seen God and presents Ramakrishna's response as pivotal; this is the Order's account of their relationship.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+        "url": "https://belurmath.org/swami-vivekananda/",
+        "locator": "With Sri Ramakrishna, lines 145–147",
+        "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+        "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Belur Math recounts the question and response; the claim properly marks this as the Order's account.",
+    "original_source_inspected": true,
+    "material_limitation": "The reported dialogue is not independently contemporaneously attested here.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "9fc61920-3ce3-4759-88a0-a94aaf045b0f",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "The Ramakrishna Order's account says a college professor first directed Narendra's attention to Ramakrishna.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Ramakrishna Order's account says a college professor first directed Narendra's attention to Ramakrishna.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+        "url": "https://belurmath.org/swami-vivekananda/",
+        "locator": "With Sri Ramakrishna, line 145",
+        "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+        "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The biography says an English professor first told Narendra about Ramakrishna, and the claim preserves that attribution.",
+    "original_source_inspected": true,
+    "material_limitation": "This is the Order's retrospective account.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "af02de58-3741-42ed-b756-0b65918db830",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "Belur Math recounts that Narendra questioned God's existence before meeting Ramakrishna, rather than accepting spiritual claims uncritically.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Belur Math recounts that Narendra questioned God's existence before meeting Ramakrishna, rather than accepting spiritual claims uncritically.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+        "url": "https://belurmath.org/swami-vivekananda/",
+        "locator": "With Sri Ramakrishna, lines 145–146",
+        "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+        "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The biography describes Narendra's religious doubts before the meeting; the claim attributes the account.",
+    "original_source_inspected": true,
+    "material_limitation": "Inner state is known through retrospective testimony.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "c4d4ce8e-d797-4cab-9d45-95445ea46e8f",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "Belur Math dates Narendra's meeting with Ramakrishna at Dakshineshwar to November 1881 and recounts his direct questioning of the teacher.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Belur Math dates Narendra's meeting with Ramakrishna at Dakshineshwar to November 1881 and recounts his direct questioning of the teacher.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+        "url": "https://belurmath.org/swami-vivekananda/",
+        "locator": "With Sri Ramakrishna, lines 145–147",
+        "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+        "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Belur Math supplies November 1881 and the direct question; the claim explicitly says Belur Math dates the encounter.",
+    "original_source_inspected": true,
+    "material_limitation": "Other chronologies may place the first meeting differently; retain attribution.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "fcc8401e-be45-4e7c-bace-e356266f00f0",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "According to Belur Math, Ramakrishna entrusted Narendra with organizing the young disciples into a monastic order.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "According to Belur Math, Ramakrishna entrusted Narendra with organizing the young disciples into a monastic order.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+        "url": "https://belurmath.org/swami-vivekananda/",
+        "locator": "Beginnings of a Monastic Brotherhood, lines 152–154",
+        "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+        "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Order says Ramakrishna instructed Narendra to form a monastic order; attribution is explicit.",
+    "original_source_inspected": true,
+    "material_limitation": "Retrospective institutional tradition.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "7206448f-4fc2-421f-8b88-27091022b873",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "In accepting the World Food Prize, Kurien credited millions of farmers rather than presenting the White Revolution as his individual achievement.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In accepting the World Food Prize, Kurien credited millions of farmers rather than presenting the White Revolution as his individual achievement.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://drkurien.com/october-17-1989/",
+        "locator": "Acceptance speech, lines 9–23",
+        "source_authority": "Kurien's published 1989 acceptance speech",
+        "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Kurien's published acceptance speech explicitly credits collective contributors and dairy farmers over his own individual accomplishment.",
+    "original_source_inspected": true,
+    "material_limitation": "Speech is hosted by the Kurien memorial site; archival provenance of the transcript should be retained.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "edecc47a-240e-468a-948e-b550372acee9",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "The cooperative’s move toward direct marketing mattered because farmers could capture more of the value between the village and urban consumer.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Kurien argued that farmer-owned processing and direct marketing returned a greater share of the consumer's payment to dairy producers.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://drkurien.com/october-17-1989/",
+        "locator": "Acceptance speech, lines 21–24",
+        "source_authority": "Kurien's published 1989 acceptance speech",
+        "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The direct passage supports Kurien's stated economic rationale; the original unqualified causal conclusion was recast as his argument.",
+    "original_source_inspected": true,
+    "material_limitation": "The speech does not independently measure the size of the gain.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "5542934d-b046-424a-993c-a7105b1eb87d",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "Kurien earned a science degree at Madras University in 1940 before entering engineering.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kurien earned a science degree at Madras University in 1940 before entering engineering.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien",
+        "locator": "Background, line 41",
+        "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+        "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The award foundation's 2012 biographical tribute directly reports the 1940 science degree.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "7f406348-934e-43dc-9358-49d8d0782840",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "A government scholarship took Kurien to Michigan State University, where he completed a master’s degree in mechanical engineering in 1948.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "A government scholarship took Kurien to Michigan State University, where he completed a master’s degree in mechanical engineering in 1948.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien",
+        "locator": "Background, line 41",
+        "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+        "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The tribute directly reports a government scholarship and Michigan State master's degree in 1948; Amul independently corroborates the institution and year.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "810f1e3c-feb0-442f-b298-105f04ec1b70",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "Kurien arrived in Anand in 1949 as a Government of India dairy engineer assigned to the Government Research Creamery.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kurien arrived in Anand in 1949 as a Government of India dairy engineer assigned to the Government Research Creamery.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien",
+        "locator": "Background, line 43",
+        "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+        "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The tribute names the Government Research Creamery in Anand and 1949; Amul gives an arrival date of 13 May 1949.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "84a2f266-94d2-42d5-806c-6f0cfb661e5e",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "His preparatory training included special engineering studies at Jamshedpur and nine months of dairy-engineering training in Bangalore.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "His preparatory training included special engineering studies at Jamshedpur and nine months of dairy-engineering training in Bangalore.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien",
+        "locator": "Background, line 42",
+        "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+        "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The tribute explicitly identifies Jamshedpur engineering studies and nine months' Bangalore dairy training.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "9ee5ecd9-0272-4016-b59a-3a810321d286",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "Verghese Kurien was born in Kerala on 26 November 1921; his later career was built in Gujarat rather than his birthplace.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Verghese Kurien was born in Kerala on 26 November 1921; his later career was built in Gujarat rather than his birthplace.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien",
+        "locator": "Background, lines 40–43",
+        "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+        "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The tribute gives Kerala and 26 November 1921, then places his dairy career in Anand; Amul independently gives Kozhikode and Anand.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "fa8f0682-0bde-41da-a4e0-7d1ac942cd0d",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "He completed a Bachelor of Mechanical Engineering at Madras University in 1943.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "He completed a Bachelor of Mechanical Engineering at Madras University in 1943.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien",
+        "locator": "Background, line 41",
+        "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+        "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The foundation's biography directly reports the 1943 mechanical-engineering bachelor's degree from Madras University.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "01474b6e-2c2f-4a8f-b529-99002a07eede",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "After the Anand cooperative demonstrated its model, Prime Minister Lal Bahadur Shastri backed a national board in 1965 to replicate it; the government’s sponsorship was central to scaling.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "After the Kaira cooperative's success, Prime Minister Lal Bahadur Shastri created the National Dairy Development Board in 1965 to replicate the model nationally.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien",
+        "locator": "Achievements, lines 50–51",
+        "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+        "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The tribute directly supports the sequence, prime minister, board, and year. The broad causal claim about government sponsorship was removed.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "c49dd80e-e4b1-4a56-a005-bf7df968648d",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "Kurien helped establish the Institute of Rural Management Anand in 1979 to train managers for rural producer organizations, extending the model beyond dairy hardware.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kurien helped establish the Institute of Rural Management Anand in 1979 to train managers for rural producer organizations, extending the model beyond dairy hardware.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.nddb.coop/about/chairman/vkurien",
+        "locator": "Kurien biography, line 243",
+        "source_authority": "National Dairy Development Board institutional biography",
+        "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "NDDB directly records Kurien establishing IRMA in Anand in 1979 for cooperative management training and research; WFP tribute line 63 agrees.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "e9171056-70a4-45f2-b42f-9d6123d49706",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "Kurien's major contribution was institutional rather than solitary: he helped connect engineering, professional management, farmer ownership, processing, and national market infrastructure in the Anand pattern and Operation Flood.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Kurien described Operation Flood as a combination of farmer-owned cooperatives, professional management, processing, markets, and supportive policy, rather than an individual technological achievement.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://drkurien.com/october-17-1989/",
+        "locator": "Acceptance speech, lines 21–24 and 37",
+        "source_authority": "Kurien's published 1989 acceptance speech",
+        "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "His own speech supplies the institutional synthesis; WFP tribute lines 48–56 independently describes the multi-actor programme. The original broader significance claim was narrowed and attributed.",
+    "original_source_inspected": true,
+    "material_limitation": "The magnitude of national impact requires separate evaluation.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "3eca349c-3c0e-4a15-b17d-29366a09f33c",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "Kurien received the 1989 World Food Prize for his dairy-development work; the award foundation also records his insistence that farmer efforts deserved recognition.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Kurien received the 1989 World Food Prize for his work on India's cooperative dairy-development system.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien",
+        "locator": "Award notice, lines 30–35; honors, line 60",
+        "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+        "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The foundation directly records the award and stated basis. The original farmer-credit clause overlaps the separately retained speech claim 7206448f.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "aead8773-3c07-44d4-b2be-70b2e7b440d6",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "The World Food Prize biography lists Kurien’s 1999 Padma Vibhushan among later formal honors.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The World Food Prize biography lists Kurien’s 1999 Padma Vibhushan among later formal honors.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien",
+        "locator": "Honors, line 60",
+        "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+        "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The award foundation lists the 1999 Padma Vibhushan by name and year.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "05942d45-7c17-4a41-882f-364543e8aed6",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "At the Kaira union he helped establish processing capacity so members could handle milk beyond raw collection.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "At the Kaira union he helped establish processing capacity so members could handle milk beyond raw collection.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien",
+        "locator": "Achievements, lines 49–50",
+        "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+        "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The tribute directly describes an in-house processing plant and cooperative direct marketing at the Kaira union.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  }
+]

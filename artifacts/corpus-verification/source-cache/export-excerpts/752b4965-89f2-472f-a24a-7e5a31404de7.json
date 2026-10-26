@@ -1,0 +1,62 @@
+{
+  "source_id": "752b4965-89f2-472f-a24a-7e5a31404de7",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "History of TIFR. Tata Institute of Fundamental Research. https://www.tifr.res.in/portal/history.php",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Tata Institute of Fundamental Research",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "History of TIFR",
+    "url": "https://www.tifr.res.in/portal/history.php"
+  },
+  "claim_ids": [
+    "696708d2-2953-4875-a21a-9559a02479d4",
+    "95f782cc-ac12-4299-95b9-b7155cf3acc8",
+    "c1797dca-9d93-4ee7-b1eb-2602e8f355df",
+    "dffaba02-4a02-4544-8a86-7a1efcc1bc83"
+  ],
+  "passages": [
+    {
+      "chunk_id": "506aa19a-e412-42ba-bce0-022ebc0d0c63",
+      "locator": "Government partnership later became central",
+      "text_sha256": "baf242961c684947c63dfa7e38146624bf44876d07d6892fdc92d6bc235b68a4",
+      "excerpt_preview": "Government partnership later became central to its development and to India’s atomic-energy program.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "999c7f54-babb-4955-ba6b-2fbb3b5bf212",
+      "locator": "Homi J. Bhabha proposed",
+      "text_sha256": "96f4ef76a64fdaf1f193ebaf70374da4eadc4d8a3050b2f50f53847cad675032",
+      "excerpt_preview": "hysicist Homi J. Bhabha proposed an institute for fundamental research during the 1940s.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a6b25270-a4a4-4ab6-843a-c3d45786f621",
+      "locator": "organizational ally rather than as the scientist",
+      "text_sha256": "a8aafd84ff320522e8ee13084bf9ca7e0df93261ee8ce4299437ad46a3265d1b",
+      "excerpt_preview": "The institutional history shows Tata acting as sponsor and organizational ally rather than as the scientist who designed the research program.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ffe36130-680c-4e6e-ae0b-632215dde2c6",
+      "locator": "supported the proposal",
+      "text_sha256": "8a9aa67600ba7b670e28f178b6a7c31df463f72095e3cd41a4c57d8c77986852",
+      "excerpt_preview": "Tata and the Sir Dorabji Tata Trust supported the proposal, and the Tata Institute of Fundamental Research was founded in 1945.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,61 @@
+{
+  "source_id": "870365d0-173d-47c5-9376-d9f0452b026f",
+  "source": {
+    "author": "James W. Laine",
+    "authority_metadata": {
+      "verified_at": "2026-10-10T05:23:18.398Z"
+    },
+    "citation": "James W. Laine. Shivaji: Hindu King in Islamic India. Oxford University Press. https://academic.oup.com/book/10230",
+    "original_work_identity": {},
+    "publication_year": 2003,
+    "publisher_or_institution": "Oxford University Press",
+    "rights_or_access_note": "Public page; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Shivaji: Hindu King in Islamic India",
+    "url": "https://academic.oup.com/book/10230"
+  },
+  "claim_ids": [
+    "01202538-b09b-4e1f-9e85-f40ff4d7f1b8",
+    "1a20cb49-e467-4bb1-851b-9a58cc8e2729",
+    "d690067c-748b-4355-8d42-29afb7294fa2",
+    "f8caa897-f8fa-4a7b-b05a-ce402f47db95"
+  ],
+  "passages": [
+    {
+      "chunk_id": "3b09ff48-c4d2-4c6f-94e5-4ac2f0b5452d",
+      "locator": "retold, in several different versions",
+      "text_sha256": "70b5554268cc739d89dbb33f62b8afc580d310429883c8b44d4566e713270614",
+      "excerpt_preview": "legend is well known and has been retold, in several different versions, as it serves as an important part of Hindu nationalist ideology.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "5940557d-4592-427b-8ad9-c4f7e78a968f",
+      "locator": "Hindu nationalist ideology",
+      "text_sha256": "f1950c6a570642ea6a57d2e7ed726898d06dd303ffb235799b5fec260c7a0cd0",
+      "excerpt_preview": "d is well known and has been retold, in several different versions, as it serves as an important part of Hindu nationalist ideology. Through presenting specific points about the similarities of themes and the contexts in which this legend h",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9f47510c-165f-48be-a7af-d2d5b07cc7c3",
+      "locator": "influence of an author's experience",
+      "text_sha256": "57d174692c0d7f27d0747de48ed82121a33cfb62090af5970c0dcf25f1bce22f",
+      "excerpt_preview": "book traces the origin and development of the Shivaji legend, examining its meaning for those who have composed and read it, and paints a complex picture of the past four centuries of national identity, awareness of themes present during co",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e006a357-f0d4-4a76-9764-d971695081bf",
+      "locator": "past four centuries of national identity",
+      "text_sha256": "2f1193db172ae1fef6668ff5b1c7c5d0e2775935f0d3fc5597c88c83819f1150",
+      "excerpt_preview": "points about the similarities of themes and the contexts in which this legend has been set, this book traces the origin and development of the Shivaji legend, examining its meaning for those who have composed and read it, and paints a compl",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

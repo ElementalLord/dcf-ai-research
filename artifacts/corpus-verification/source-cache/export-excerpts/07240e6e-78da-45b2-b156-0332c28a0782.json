@@ -1,0 +1,44 @@
+{
+  "source_id": "07240e6e-78da-45b2-b156-0332c28a0782",
+  "source": {
+    "author": "Harleen Singh",
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "Harleen Singh. India's Aryan Queen: Colonial Ambivalence and Race in the Mutiny. Cambridge University Press, The Rani of Jhansi, chapter III. https://www.cambridge.org/core/books/abs/rani-of-jhansi/indias-aryan-queen-colonial-ambivalence-and-race-in-the-mutiny/BF99F8118BBBC5A579168CC8F7312BA8",
+    "original_work_identity": {},
+    "publication_year": 2014,
+    "publisher_or_institution": "Cambridge University Press, The Rani of Jhansi, chapter III",
+    "rights_or_access_note": "Public original; short research excerpts. Scholarly abstract/summary access does not imply full chapter access.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "India's Aryan Queen: Colonial Ambivalence and Race in the Mutiny",
+    "url": "https://www.cambridge.org/core/books/abs/rani-of-jhansi/indias-aryan-queen-colonial-ambivalence-and-race-in-the-mutiny/BF99F8118BBBC5A579168CC8F7312BA8"
+  },
+  "claim_ids": [
+    "31f17b80-5678-4eb0-8a76-20ee3eb021ec",
+    "c30eaf65-cadc-4381-95b4-2fa0c65d12ce",
+    "dfae9bb3-108f-40d4-a43a-b52aedbe1f16"
+  ],
+  "passages": [
+    {
+      "chunk_id": "6ccb1d66-a5b4-4371-95b3-94a39e8147ba",
+      "locator": "public chapter III summary",
+      "text_sha256": "96cb5c4f55c234c569e977463fc022047200c5cfb2144b81b0c5ac43fac22fdc",
+      "excerpt_preview": "Yet, there was another narrative – a disjunctive love story of sorts that in some literary portrayals gave the Rani of Jhansi, variously vilified as a ‘murderous whore’ and ‘India's Jezebel’, a heroic aspect. Published in 1901, Michael Whit",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d846107e-82fe-4d43-9726-49182b0dae57",
+      "locator": "public chapter III summary, pp. 67–94",
+      "text_sha256": "8cabb0ee77c03fe8a405d45fa03494f1a2edb3670de799df234e804a1d2145f9",
+      "excerpt_preview": "Published in 1901, Michael White's novel Lachmi Bai Rani of Jhansi: The Jeanne D'Arc of India places the Rani within the structural imperatives of a hagiography by smoothing over her anti-colonial sentiments and comparing her to a European ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

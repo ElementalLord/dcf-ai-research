@@ -1,0 +1,70 @@
+{
+  "source_id": "a9c22a74-dd4f-4a15-b618-11ac985dfdc7",
+  "source": {
+    "author": "Hugh Rose",
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "Hugh Rose. Hugh Rose's dispatch on the capture of Calpee (Kalpi), 22 June 1858. The London Gazette, 18 April 1859, p. 1595. https://www.thegazette.co.uk/London/issue/22251/page/1595/data.pdf",
+    "original_work_identity": {},
+    "publication_year": 1859,
+    "publisher_or_institution": "The London Gazette, 18 April 1859, p. 1595",
+    "rights_or_access_note": "Public original; short research excerpts. Scholarly abstract/summary access does not imply full chapter access.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Hugh Rose's dispatch on the capture of Calpee (Kalpi), 22 June 1858",
+    "url": "https://www.thegazette.co.uk/London/issue/22251/page/1595/data.pdf"
+  },
+  "claim_ids": [
+    "37e25848-c968-4059-98c3-2bef52f6fe45",
+    "40f7442c-cb73-4ef4-bf7d-b1d825d047d7",
+    "4b607b3d-e1b3-4a81-a895-2d55eee24c2d",
+    "6205f74f-2ca4-4af8-a32d-3611a6e07f9f",
+    "d5029caa-1824-46ce-807d-0d7c16e8019e"
+  ],
+  "passages": [
+    {
+      "chunk_id": "66347636-d7d7-42e2-a849-54b596631bde",
+      "locator": "p. 1595",
+      "text_sha256": "426769569fc98bc317e1e2d1ad1091add673d04a21cb97c1a11739cce2f2ea5b",
+      "excerpt_preview": ".Forage also wa,s as scant as water. The scarcity of these two essentials hurt the efficiency of the cavalry and the transport, at the very time that they were both urgently required —the first against the rebel cavalry, whose numbers and o",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8738cf72-fae8-4489-872c-5883ead65994",
+      "locator": "p. 1595",
+      "text_sha256": "9ae146d33f21aea646cccba63c32e8524dccafcaf53d8530dbe997ea14d26d8a",
+      "excerpt_preview": "Whilst so na«ny drawbacks weakened me, the enemy, physically speaking, was unusually strong. They were under three leaders of considerable influence, Rao Sahib, a nephew of Nana Sahib, the Nawab of Banda, and the Ranee of Jhansi. The high d",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d464c9f7-4037-49e2-aeaa-d57d5c9c9e64",
+      "locator": "p. 1595",
+      "text_sha256": "e564bfd173fb3700711a137eeedc4385d5e6322e51a38e6117589b6cee05a570",
+      "excerpt_preview": "They were under three leaders of considerable influence, Rao Sahib, a nephew of Nana Sahib, the Nawab of Banda, and the Ranee of Jhansi. The high descent of the Ranee, her unbounded liberality to her troops and retainers, and her fortitude,",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "eb72cc9a-9ca2-4758-8425-6f468ee293fc",
+      "locator": "p. 1595; report written 22 June 1858, published 18 April 1859",
+      "text_sha256": "cc8ac031e82f5151536b73331defc5ac52616038c0fa8f1785fb6c480306bd62",
+      "excerpt_preview": "HIS Excellency the Governor-General in Council is pleased to direct the publication of the following -letter, from the Deputy Adjutant- General of the Army, No. 11, of the 2nd instant, forwarding a despatch from Major-General Sir Hugh Rose,",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f2e71005-7401-41ee-83f3-37d6fbd85cbb",
+      "locator": "p. 1595",
+      "text_sha256": "30db011f419d7a470775b8b67f18414ea0bb9cd02a5d7a0e08c656af1a291c7a",
+      "excerpt_preview": "The rebels had another great source of strength. They fought their best because they were defend- ing Ca,]pce, their best fortified stronghold in central and western India and only arsenal full of warl'ke stores and ammunition. Calpee, on t",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

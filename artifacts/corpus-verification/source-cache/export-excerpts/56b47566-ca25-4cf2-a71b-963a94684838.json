@@ -1,0 +1,98 @@
+{
+  "source_id": "56b47566-ca25-4cf2-a71b-963a94684838",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-09T03:48:19.893Z"
+    },
+    "citation": "Sir Chandrasekhara Venkata Raman — Biographical. NobelPrize.org. https://www.nobelprize.org/prizes/physics/1930/raman/biographical/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "NobelPrize.org",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Sir Chandrasekhara Venkata Raman — Biographical",
+    "url": "https://www.nobelprize.org/prizes/physics/1930/raman/biographical/"
+  },
+  "claim_ids": [
+    "3472e303-0182-43cd-beaa-24eac6c86683",
+    "397d6fe6-29c8-4df8-bad1-898f2b868692",
+    "4fa1ccc7-cd30-48ff-9007-f3f0843c7dab",
+    "52a4b2ec-bbef-48a6-a221-d8d2e1d692f3",
+    "85476a90-6fde-400e-9fc5-c2fe2c498ef9",
+    "95945c07-62cc-4403-884c-c18beb269e5f",
+    "a9e8f396-be79-4235-9c8d-77c90ba0544c",
+    "e56844c4-30a4-4846-918c-5134496f0af8",
+    "f8a723f3-4304-48ee-ab08-fdf52d5df24a"
+  ],
+  "passages": [
+    {
+      "chunk_id": "160d89e4-2895-4a9d-963f-c11a975f10f2",
+      "locator": "Biographical, recognition",
+      "text_sha256": "9cc07a43bc9fc75fcecdd6bdab0d100dd52f4b46cac104c35e0a0e53ee968a41",
+      "excerpt_preview": "He was elected a Fellow of the Royal Society early in his career (1924), and was knighted in 1929. This autobiography/biography was written at the time of the award and first published in the book series Les Prix Nobel.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "3431b4e2-cd3d-4ad5-a780-05f8711214c4",
+      "locator": "Biographical, 1928 discovery",
+      "text_sha256": "a08d55c240f85c3399052a9fe653981f820c584b5bbb3d5d81e5b4c1e9205a4d",
+      "excerpt_preview": "In 1922 he published his work on the “Molecular Diffraction of Light”, the first of a series of investigations with his collaborators which ultimately led to his discovery, on the 28th of February, 1928, of the radiation effect which bears ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "73c62934-02e7-4cbf-bd99-aae004a42438",
+      "locator": "Biographical, civil service",
+      "text_sha256": "97a45f93be603be774c7c223fb3212c90b1e58eb18b46923d3760938c150e7b9",
+      "excerpt_preview": "Since at that time a scientific career did not appear to present the best possibilities, Raman joined the Indian Finance Department in 1907; though the duties of his office took most of his time, Raman found opportunities for carrying on ex",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7d564461-778e-4ec8-9a9c-85d5dabd5919",
+      "locator": "Biographical, education",
+      "text_sha256": "c0b88f10af83ab2e757a5de3c1244c23a877a674ae812de13824d01e7bf3fb64",
+      "excerpt_preview": "He entered Presidency College, Madras, in 1902, and in 1904 passed his B.A. examination, winning the first place and the gold medal in physics; in 1907 he gained his M.A.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9ca5972d-27f5-41c8-b7cc-5b29f539b0a7",
+      "locator": "Biographical, opening",
+      "text_sha256": "3423d78bd602d83093649ccf05209ff9116d6b903fa6fad88d9007ac5a3d5758",
+      "excerpt_preview": "h3> Enhanced Page Navigation </h3> <ol> <li> <a href=\"https://www.nobelprize.org/prizes/physics/1930/raman/biographical/\" title=\"Sir Chandrasekhara Venkata Raman - Biographical\" data-related=\"1\" > Sir Chandrasekhara Venkata Raman - Biograph",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b7fcf10d-ce50-4cf5-8b98-bc098a5118c1",
+      "locator": "Biographical, later research",
+      "text_sha256": "c775b8b891f2edceca6b0d1c4e34bd90cdfe9994d94be43b59722faa9bf68f68",
+      "excerpt_preview": "His laboratory has been dealing with the structure and properties of diamond, the structure and optical behaviour of numerous iridescent substances (labradorite, pearly felspar, agate, opal, and pearls).",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d5c9317f-e5ab-44c2-8c61-c714e0f6c97f",
+      "locator": "Biographical, Calcutta University",
+      "text_sha256": "9a6b98fb1c13960c6e0d31f721b7d5945593ee293cdd40c312f6adc4ed5ae383",
+      "excerpt_preview": "In 1917 he was offered the newly endowed Palit Chair of Physics at Calcutta University, and decided to accept it. After 15 years at Calcutta he became Professor at the Indian Institute of Science at Bangalore (1933-1948), and since 1948 he ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f110bfca-f8dd-41c2-89d0-65191037bad0",
+      "locator": "Biographical, early research",
+      "text_sha256": "c173e1c67bd7a6eb0322f94c362c693fe7bf3759863a34c04652570ae8ca9c93",
+      "excerpt_preview": "His earliest researches in optics and acoustics – the two fields of investigation to which he has dedicated his entire career – were carried out while he was a student.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

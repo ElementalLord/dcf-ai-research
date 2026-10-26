@@ -1,0 +1,89 @@
+{
+  "source_id": "ee63d0c2-3d55-4afc-96eb-d5afc5287ddf",
+  "source": {
+    "author": "Andrew Robinson and Satyajit Ray",
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Andrew Robinson and Satyajit Ray. Satyajit Ray: a moral attitude. BFI Sight and Sound. https://www.bfi.org.uk/sight-and-sound/interviews/satyajit-ray-moral-attitude",
+    "original_work_identity": {},
+    "publication_year": 2013,
+    "publisher_or_institution": "BFI Sight and Sound",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Satyajit Ray: a moral attitude",
+    "url": "https://www.bfi.org.uk/sight-and-sound/interviews/satyajit-ray-moral-attitude"
+  },
+  "claim_ids": [
+    "000db328-dd28-4dab-ba9c-fae122156360",
+    "239d8bad-b212-491f-bbbc-4b80ecd736a2",
+    "3aadabfc-c5fa-4f87-8b26-cce94bf58d73",
+    "6abd6700-6c8a-47a9-969d-5d925b2bb3e2",
+    "8dcdae75-73b6-4e59-b9ac-f746aed60a98",
+    "9bfc8815-6fd0-4159-87e2-2ab53aea578c",
+    "ad72d539-5a3c-4eca-9227-f4d5e44a3064"
+  ],
+  "passages": [
+    {
+      "chunk_id": "15bef2e5-3557-4396-a185-7e43ab8b3b2c",
+      "locator": "did not begin with a formulated moral message",
+      "text_sha256": "b7c25750d9227d4404334cfb038c7fcf5e387fb3eec76fdc7b4e09b315438898",
+      "excerpt_preview": "n interviews with Andrew Robinson, Ray said he did not begin with a formulated moral message and preferred critics to draw conclusions from the films.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "2ca1e46c-7e83-42c3-8740-05803bf9dabd",
+      "locator": "gaining confidence in directing",
+      "text_sha256": "0dca9ffbcd3e9a9404bec2b3d6a850f76f75311b76c49ed64e20ec0955afd718",
+      "excerpt_preview": "He recalled gaining confidence in directing through Pather Panchali.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4a0fca21-0372-41fc-9492-46e5eb162eb5",
+      "locator": "Feluda proved very popular",
+      "text_sha256": "3a45c6cd625a9469835c86850684fc9e46db80ee0d6a46feb5206737f149d0ba",
+      "excerpt_preview": "The BFI notes that his young detective Feluda proved very popular and that Ray adapted two Feluda tales for cinema.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "760ac84b-3de2-44d9-9587-cddb9720891d",
+      "locator": "concentrated into shorter spans of time",
+      "text_sha256": "8f5d60af9b375a91f49eb779dca098731a0b296a5c98ca9d06d1de6bbed3570a",
+      "excerpt_preview": "After the Apu Trilogy he preferred stories concentrated into shorter spans of time.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d596fccd-3564-4454-9ca9-1e63a7130934",
+      "locator": "folk and classical traditions",
+      "text_sha256": "71d67e87ba7ae82a5d3427912530c52028b55d91f937e071c1220ba45026fe88",
+      "excerpt_preview": "Discussing Goopy Gyne Bagha Byne, he described music drawing on Indian folk and classical traditions as well as Western orchestration.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "da8069b7-9231-4eda-a8bf-61a46de22c1f",
+      "locator": "increasingly composed film scores",
+      "text_sha256": "14094a3a4ea216ddb0060f30d193986a4126ed9f53cc4866a8f2eaede18d61d7",
+      "excerpt_preview": "Over his career he increasingly composed film scores and songs himself.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e692056a-e5f2-463d-b755-bcad6f5b7ae9",
+      "locator": "separates Ray’s own account",
+      "text_sha256": "c0ff5f96cd84201e1d7c4dfcf1f15f3e99493338d025ca01d0942eae389d247a",
+      "excerpt_preview": "The interview separates Ray’s own account of method from critical claims about humanism or social meaning.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

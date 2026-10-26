@@ -1,0 +1,73 @@
+{
+  "source_id": "ebbf9d05-f302-444b-a35a-3ade642b25a8",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_kind": "University project introduction and historiographical context, not a primary inscription",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "The Ashoka Project: Ashoka and his Contexts. University of Oslo / University of Texas at Austin. https://www2.hf.uio.no/polyglotta/index.php?bid=14&page=library",
+    "original_work_identity": {},
+    "publication_year": 2014,
+    "publisher_or_institution": "University of Oslo / University of Texas at Austin",
+    "rights_or_access_note": "Short documented research excerpts only; source layer is shown so translation, later tradition and modern scholarship are not conflated.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "The Ashoka Project: Ashoka and his Contexts",
+    "url": "https://www2.hf.uio.no/polyglotta/index.php?bid=14&page=library"
+  },
+  "claim_ids": [
+    "11b6a061-26db-4723-9c10-0e09f6d42bc3",
+    "149c568f-21e3-45ba-89d8-0e461f470535",
+    "21b03211-cfd7-47cb-b554-7c19907beb4c",
+    "40392c65-ac27-47a8-bfa3-cc89301df329",
+    "456f38bc-759b-4944-8e10-00596bbbcac5",
+    "4945a020-1cc4-4a76-9ca7-b999813cb34d",
+    "fc45c4bb-c822-444b-8c24-bf21ca509c43"
+  ],
+  "passages": [
+    {
+      "chunk_id": "055d3c0a-7090-490a-84f3-c86ffa97446c",
+      "locator": "written in Aramaic and Greek",
+      "text_sha256": "b32b84249fff65b86f51fe851d9a2bc3e52d2417ca83557184030fa25849c60b",
+      "excerpt_preview": "The edicts were also written in Aramaic and Greek, bearing witness to Ashoka’s projection of power westwards.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "71d67421-9d96-49a5-9803-4694e5b60617",
+      "locator": "Indian flag adopted at independence in 1947",
+      "text_sha256": "f8ef5c2616e56ae181b136850572da2278517a1f278ecb51ed40b80f8913b149",
+      "excerpt_preview": "In the modern construction of India Ashoka has played a great role as a unifying figure: the Indian flag adopted at independence in 1947 has the Wheel of Ashoka as its central symbol.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "721d9fe3-1cb5-4ebc-9841-b6f9c0f5c6a9",
+      "locator": "sponsored religion in general",
+      "text_sha256": "2c5fb7e17da5925d350172c12b4a3b5dd4bc094202bc871e774f628f5d43e89d",
+      "excerpt_preview": "Ashoka seems to have sponsored religion in general and probably Buddhism in particular, as documented by his inscriptions.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a4e14caf-a25c-48fa-8cf6-6ac202a8c725",
+      "locator": "Buddhist traditions preserve a plethora of legends",
+      "text_sha256": "6d369174ab342d99fe86d7eae68962f76c232f0ec1419e953b2b2c50f5b2d521",
+      "excerpt_preview": "Buddhist traditions preserve a plethora of legends of Ashoka; much remains to be analysed to distinguish real history and legend.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c36e5fa9-c239-40f5-a1d2-16c6b6b079fc",
+      "locator": "earliest examples of writing in India",
+      "text_sha256": "0d384262be70902c35c54d480da71c7b97ef4d722705211d476334016cff4a5b",
+      "excerpt_preview": "The earliest examples of writing in India are found in his edicts, and Brahmi is the forefather of modern Indian and several South and Southeast Asian writing systems.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

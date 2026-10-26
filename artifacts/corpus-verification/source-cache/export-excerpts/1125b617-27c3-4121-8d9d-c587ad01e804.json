@@ -1,0 +1,52 @@
+{
+  "source_id": "1125b617-27c3-4121-8d9d-c587ad01e804",
+  "source": {
+    "author": "A. P. J. Abdul Kalam",
+    "authority_metadata": {
+      "verified_at": "2026-10-10T05:42:04.917Z"
+    },
+    "citation": "A. P. J. Abdul Kalam. Address at St Aloysius College. President of India. https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-st-aloysius-college",
+    "original_work_identity": {},
+    "publication_year": 2003,
+    "publisher_or_institution": "President of India",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Address at St Aloysius College",
+    "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-st-aloysius-college"
+  },
+  "claim_ids": [
+    "2531ba47-40fb-415d-a0e1-7b56814dab0c",
+    "51b623f2-bea9-4af4-9d2e-ddf6be258d7a",
+    "ba7c9fc4-5142-421c-8633-4e8f0e3996b5"
+  ],
+  "passages": [
+    {
+      "chunk_id": "454c5912-c28e-4607-b0f5-de34bfd182d1",
+      "locator": "My education",
+      "text_sha256": "e1883a2f6bfe1f0aef471e0b98f1fc244d960016af9a752f8654f039fcd62ba3",
+      "excerpt_preview": "Our education is what we learn in the class and from teachers, what we learn in the Libraries and what we learn in the laboratories. I received an excellent education at my School at Schwartz High School, Ramanathapuram and later at St Jose",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d378a57c-7fd5-4934-a512-960e16fe82ad",
+      "locator": "My education",
+      "text_sha256": "f269742b2bcb0b6b03bd8295fda88878b1971a37faa9f4b8bd50a971354a73dd",
+      "excerpt_preview": "If education in its real sense can be imparted to the younger generation, there is nothing better than that as an investment for an assured future. In my view, education is the ultimate realisation of eternal human values fortified by incre",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e57bb8e7-bc50-4747-b5b9-3aed70d777bd",
+      "locator": "My education",
+      "text_sha256": "f722e32c1a1eb86a3a66502d0c2cec2fc7e2a1344b11f36bc6be52b02aa79f6a",
+      "excerpt_preview": "My secondary school education started with Schwarts High School founded by Rev. Schwartz nearly 200 years. My college education was at St. Joseph College Trichy.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

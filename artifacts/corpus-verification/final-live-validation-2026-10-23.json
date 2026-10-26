@@ -1,0 +1,95 @@
+{
+  "question": "In what year was C. V. Raman awarded the Nobel Prize in Physics?",
+  "at": "2026-10-23T23:51:15.520Z",
+  "target": "http://127.0.0.1:54321",
+  "counts": {
+    "brave": 0,
+    "originalPages": 0,
+    "robots": 0,
+    "gemini": 0,
+    "otherExternal": 0
+  },
+  "requests": [],
+  "preflight": {
+    "state": "research_required",
+    "sufficient": false,
+    "researchRequest": true,
+    "gaps": [
+      "Evidence for awarded in the question",
+      "Evidence for prize in the question"
+    ],
+    "localEvidence": 7
+  },
+  "first": {
+    "status": "abstained",
+    "answer": "The approved sources currently available do not provide reliable evidence to answer this question about C. V. Raman.\n\nTry asking about a documented part of C. V. Raman's life or work.",
+    "citations": [],
+    "debug": {
+      "demandResearchStatus": "cooldown",
+      "demandVerificationOutcomes": [],
+      "webSearchCalls": 0,
+      "liveFetches": 0,
+      "demandVerificationModelCalls": 0
+    }
+  },
+  "research": {
+    "requestId": "3e08cc25-5214-40ac-918d-a62e7803b38f",
+    "needId": "63df1def5dcd74447aa442991c3c3bb46692d53b7c3f9b17bcf086f18d911dfa",
+    "workId": "791a8abb78b51a820822e203848c5650bc1025a1675f454754d73d57ea2a4bda",
+    "status": "cooldown",
+    "attempted": false,
+    "candidates": [],
+    "findings": [],
+    "passages": [],
+    "unresolvedGaps": [
+      {
+        "id": "706cc7e943a88a90fbb2651784f76158607348f62bc328c9c7dc78a34f91ba3b",
+        "requirementKey": "awarded",
+        "type": "factual_detail",
+        "requirement": "Evidence for awarded in the question",
+        "subjectId": "6b9a4d86-8330-4256-a749-4daf0f596128",
+        "topic": "award nobel physic prize",
+        "suitableSources": [
+          "primary record",
+          "scholarly source"
+        ],
+        "completion": "Verified evidence directly addresses awarded.",
+        "contested": false
+      },
+      {
+        "id": "ed898a55cc7c362097d7e15f381b62d59ce3a14e3b08cf4e080a512cb3de8134",
+        "requirementKey": "prize",
+        "type": "factual_detail",
+        "requirement": "Evidence for prize in the question",
+        "subjectId": "6b9a4d86-8330-4256-a749-4daf0f596128",
+        "topic": "award nobel physic prize",
+        "suitableSources": [
+          "primary record",
+          "scholarly source"
+        ],
+        "completion": "Verified evidence directly addresses prize.",
+        "contested": false
+      }
+    ],
+    "sufficientForVerification": false,
+    "citeableNow": false,
+    "usage": {
+      "searchCalls": 0,
+      "sourceFetches": 0,
+      "modelCalls": 0,
+      "provider": "brave",
+      "errorCategory": null
+    }
+  },
+  "verification": null,
+  "resources": [],
+  "budget": {
+    "status": "reserved",
+    "search_calls": 0,
+    "model_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "actual_micro": null,
+    "settlement_reason": null
+  }
+}

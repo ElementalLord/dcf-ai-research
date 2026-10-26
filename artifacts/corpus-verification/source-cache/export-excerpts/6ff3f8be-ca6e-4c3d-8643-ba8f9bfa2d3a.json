@@ -1,0 +1,50 @@
+{
+  "source_id": "6ff3f8be-ca6e-4c3d-8643-ba8f9bfa2d3a",
+  "source": {
+    "author": "Swami Vivekananda",
+    "authority_metadata": {},
+    "citation": "Swami Vivekananda. Address at the Final Session. Complete Works of Swami Vivekananda. https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_final_session.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Complete Works of Swami Vivekananda",
+    "rights_or_access_note": "Publicly accessible page; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Address at the Final Session",
+    "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_final_session.htm"
+  },
+  "claim_ids": [
+    "66e4eb4e-5410-455c-886b-507263e72871",
+    "ce5a42e9-2b02-4a5e-bedb-f331f501d6dd",
+    "f8894d30-f94f-46a5-8dbc-bd87c135f247"
+  ],
+  "passages": [
+    {
+      "chunk_id": "45320b73-333e-45b9-b6a4-b8239c091766",
+      "locator": "Address at the Final Session",
+      "text_sha256": "b7526e41262decb1d52408b9f76355c50852f5636a333545d35f7ad23e9fc4d4",
+      "excerpt_preview": "xclusive survival of his own religion and the destruction of the others, I pity him from the bottom of my heart, and point out to him that upon the banner of every religion will soon be written, in spite of resistance: \"Help and not Fight,\"",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "63fdf7dc-1534-436a-bdf6-2ef43ad0796c",
+      "locator": "Address at the Final Session",
+      "text_sha256": "1581e58824f524bc8268b10baaa7d5df6e25f2256477ddc14585d0abd3d67096",
+      "excerpt_preview": "e my own theory. But if any one here hopes that this unity will come by the triumph of any one of the religions and the destruction of the others, to him I say, “Brother, yours is an impossible hope.” Do I wish that the Christian would beco",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d38dbaaa-74b6-4ae9-9215-f7eee3be5334",
+      "locator": "Address at the Final Session",
+      "text_sha256": "9862cdd8c7dfef55f95fd874565a85031f40c0007616b21dc1efa5d52b65b722",
+      "excerpt_preview": "water, converts them into plant substance, and grows into a plant. Similar is the case with religion. The Christian is not to become a Hindu or a Buddhist, nor a Hindu or a Buddhist to become a Christian. But each must assimilate the spirit",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

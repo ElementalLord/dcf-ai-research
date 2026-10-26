@@ -1,0 +1,32 @@
+{
+  "source_id": "7a60f86e-b687-4907-b123-b0cf70e37c0b",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Bala Kanda 55. https://sanskritdocuments.org/sites/valmikiramayan/baala/sarga55/bala_55_prose.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Sanskrit Documents",
+    "rights_or_access_note": "Public HTML page; use subject to source review.",
+    "source_status": "candidate",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Bala Kanda 55",
+    "url": "https://sanskritdocuments.org/sites/valmikiramayan/baala/sarga55/bala_55_prose.htm"
+  },
+  "claim_ids": [
+    "de4fec93-d0e0-4307-bf9a-1cdddc188a2a"
+  ],
+  "passages": [
+    {
+      "chunk_id": "b23d40da-1826-4d72-a160-abe65c3fdb67",
+      "locator": "Valmiki Ramayana, Bala Kanda 55",
+      "text_sha256": "7951fca5fb0bc81cc3c63e58cab9b76e6dca8fe76b7c1d53768a23a354e22128",
+      "excerpt_preview": "gandharva-s, yaksha-s, and demons... oh, God, the Exquisite... let them dawn upon  me... for you alone are the God of Gods, your blessings alone can fulfil my aspiration...' Thus Vishvamitra entreated God Shiva. \" 'So be it!' Thus on sancti",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

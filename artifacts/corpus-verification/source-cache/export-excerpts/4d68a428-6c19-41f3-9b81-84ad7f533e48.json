@@ -1,0 +1,53 @@
+{
+  "source_id": "4d68a428-6c19-41f3-9b81-84ad7f533e48",
+  "source": {
+    "author": "Zardas Shuk-man Lee",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Zardas Shuk-man Lee. The Indian National Army and the Making of Indian Nationalism in Japanese-Occupied Malaya. The Historical Journal, Cambridge University Press. https://www.cambridge.org/core/journals/historical-journal/article/indian-national-army-and-the-making-of-indian-nationalism-in-japaneseoccupied-malaya/CCA89C3F046DFFFA2870CD1B6035171A",
+    "original_work_identity": {},
+    "publication_year": 2025,
+    "publisher_or_institution": "The Historical Journal, Cambridge University Press",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "The Indian National Army and the Making of Indian Nationalism in Japanese-Occupied Malaya",
+    "url": "https://www.cambridge.org/core/journals/historical-journal/article/indian-national-army-and-the-making-of-indian-nationalism-in-japaneseoccupied-malaya/CCA89C3F046DFFFA2870CD1B6035171A"
+  },
+  "claim_ids": [
+    "3bf2f9be-39e3-4ff3-97b5-320d6eecb5b4",
+    "928b8dc8-0ed9-4598-bb65-13c183c683db",
+    "a19140df-9cf5-48a2-979d-08b0fa9adf0d",
+    "bfea4bfd-bfea-4a19-8414-0df49db2d945"
+  ],
+  "passages": [
+    {
+      "chunk_id": "6986d83f-80de-49a6-823a-7bf18c3c626a",
+      "locator": "Japanese-occupied Asia",
+      "text_sha256": "390f1b5e0ae4694f229f8d98475bb1bb343780d6e7f793e48cf769c0a595ec9a",
+      "excerpt_preview": "rom 1942 to 1945, the INA and Indian Independence League operated in Japanese-occupied Asia to prepare for war against Britain.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6c63a956-bc31-439f-852f-6cf8e597a391",
+      "locator": "led first by Rash Behari Bose",
+      "text_sha256": "a44e67492b50b76dbf40460c205a6bd4f9cdbf14eac90fe40a493c84b2a05596",
+      "excerpt_preview": "The INA was led first by Rash Behari Bose and then by Subhas Chandra Bose.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e1fdd9f8-fc29-4466-a1c4-f98064428b05",
+      "locator": "recruited from diverse Indian communities",
+      "text_sha256": "79236dbec3c04f666f991770fa8d1fb1732c3c49217beba93798884af3495d6e",
+      "excerpt_preview": "It recruited from diverse Indian communities in Asia, including former British Indian Army personnel and civilians.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

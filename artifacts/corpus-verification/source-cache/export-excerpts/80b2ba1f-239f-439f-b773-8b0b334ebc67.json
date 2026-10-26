@@ -1,0 +1,34 @@
+{
+  "source_id": "80b2ba1f-239f-439f-b773-8b0b334ebc67",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:08.184Z"
+    },
+    "citation": "Karma-Yoga: Karma in Its Effect on Character. Complete Works of Swami Vivekananda. https://www.ramakrishnavivekananda.info/vivekananda/volume_1/karma-yoga/effect_on_character.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Complete Works of Swami Vivekananda",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Karma-Yoga: Karma in Its Effect on Character",
+    "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/karma-yoga/effect_on_character.htm"
+  },
+  "claim_ids": [
+    "e2cacad5-65e3-497d-b924-f371e5ca62e1"
+  ],
+  "passages": [
+    {
+      "chunk_id": "e85c609d-a04b-4d10-8a04-606787ad27be",
+      "locator": "Collected lecture",
+      "text_sha256": "50d8302d52bf18c28fadca2f61a85b28d46076d3f90f709435a84fe34beff137",
+      "excerpt_preview": "← Home / Complete-Works / Volume 1 / Karma-Yoga / → CHAPTER I KARMA IN ITS EFFECT ON CHARACTER The word Karma is derived from the Sanskrit Kri, to do; all action is Karma. Technically, this word also means the effects of actions. In connect",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

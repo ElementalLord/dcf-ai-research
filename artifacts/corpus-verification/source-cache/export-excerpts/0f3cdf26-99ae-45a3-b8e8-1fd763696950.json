@@ -1,0 +1,34 @@
+{
+  "source_id": "0f3cdf26-99ae-45a3-b8e8-1fd763696950",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:00.031Z"
+    },
+    "citation": "Ramanujan's 1918 Letter to Eric Neville — Trinity Archive. Trinity College Library, Cambridge. https://archives.trin.cam.ac.uk/index.php/letter-from-srinivasa-ramanujan-to-eric-harold-neville-2",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Trinity College Library, Cambridge",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Ramanujan's 1918 Letter to Eric Neville — Trinity Archive",
+    "url": "https://archives.trin.cam.ac.uk/index.php/letter-from-srinivasa-ramanujan-to-eric-harold-neville-2"
+  },
+  "claim_ids": [
+    "267febaf-f89b-4bb5-9ae3-51171d05ba14"
+  ],
+  "passages": [
+    {
+      "chunk_id": "5e4a9d8c-483e-4ce6-8ad0-16b87e34af9d",
+      "locator": "1918 archival letter description",
+      "text_sha256": "6f4e0c8860545b319694c09fea06f418947413eaf377bed3fb01dff91003a872",
+      "excerpt_preview": "s nights. Became very ill after Neville saw him last and has not recovered; was much worse in March and April. Is currently investigating a continued fraction, which he writes out; discusses some of its properties with mathematical notation",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,209 @@
+{
+  "worker": "vishvamitra",
+  "screened_claim_count": 393,
+  "final_decision_count": 55,
+  "cached_source_group_count": 8,
+  "sources": [
+    {
+      "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+      "authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+      "checked_utc_date": "2026-10-19",
+      "cache_policy": "Locator and assessment only; full source text remains at publisher site.",
+      "precise_locations": [
+        "Bala Kanda 1.22.10–12, 20–22",
+        "Bala Kanda 1.22.11–12, 19–22",
+        "Bala Kanda 1.22.11–12, 20–22",
+        "Bala Kanda 1.22.12–13, 17",
+        "Bala Kanda 1.22.12–17",
+        "Bala Kanda 1.22.20–22",
+        "Bala Kanda 1.22.2–3, 11–22",
+        "Bala Kanda 1.22.2–3, 6–12, 20–23",
+        "Bala Kanda 1.22.2–3, 8–10",
+        "Bala Kanda 1.22.6–10, 20–23",
+        "Bala Kanda 1.22.6–12, 20–23"
+      ],
+      "claim_ids": [
+        "35c9c378-40ea-4ff7-a1ac-9681cd4cf575",
+        "3cb766e5-8aef-4c09-be60-00e9870c4be1",
+        "596594fb-0cb9-4718-b8dc-9f9336fa9d0e",
+        "77471114-8d0a-43dd-ba6c-0aee9dfe4d1a",
+        "79dc18aa-e604-40bf-a754-553f10851aa9",
+        "7ba43136-895b-4e78-a5a6-74ca4b738d75",
+        "b070cd29-c722-4478-b2ce-56ff7085e386",
+        "b8f844d3-900f-43b3-9f59-6000e38a86ec",
+        "ef713392-697f-4e1a-854d-46c3b143d848",
+        "917c9de6-090a-41fb-a395-d4d7e2334eae",
+        "97f0b346-8b02-4297-8b71-5765954446f0",
+        "d966314a-3bbb-4e33-8806-d703f95acc35"
+      ],
+      "original_link_repair_claim_ids": [
+        "917c9de6-090a-41fb-a395-d4d7e2334eae",
+        "97f0b346-8b02-4297-8b71-5765954446f0",
+        "d966314a-3bbb-4e33-8806-d703f95acc35"
+      ]
+    },
+    {
+      "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+      "authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+      "checked_utc_date": "2026-10-19",
+      "cache_policy": "Locator and assessment only; full source text remains at publisher site.",
+      "precise_locations": [
+        "Bala Kanda 1.65.19–27",
+        "Bala Kanda 1.65.19–28",
+        "Bala Kanda 1.65.1–2",
+        "Bala Kanda 1.65.1–3, 6–9",
+        "Bala Kanda 1.65.4–7",
+        "Bala Kanda 1.65.4–9",
+        "Bala Kanda 1.65.8–16",
+        "Bala Kanda 1.65.8–9"
+      ],
+      "claim_ids": [
+        "06015b7f-650f-4522-976d-43ef2fec7e7e",
+        "1e2b8e30-0d45-470e-9fa1-4fd4c652cb47",
+        "23be0733-87bf-4483-b320-9850b727605b",
+        "2c34ef2c-b24d-405f-a625-408f57dc366e",
+        "4d7839f8-7966-4f4c-b6f0-7c22a3771c2f",
+        "54f22437-c791-4cbb-ba1b-d31af2814b53",
+        "960e78c9-9fb2-463b-99ab-6bb3988a0ddf",
+        "b358938a-3a13-4a7f-ac36-a1cd2a00bd59",
+        "fd077ec7-e2c8-4b05-829f-521fb9f895ce",
+        "311c35fc-6cc5-4e7d-b1bf-cd2983ecf69b",
+        "375deee8-bbb1-4032-b108-692c108c2bd2",
+        "5c040721-d928-4eb0-96bd-7c0c37803768",
+        "c0e8ed43-1bfd-4bb2-81b7-492f6500fb4e",
+        "0c49c16d-3da1-4dce-84ca-7b2f51944b46",
+        "21eef295-6488-45ca-b86e-fc5ae5e7c25d"
+      ],
+      "original_link_repair_claim_ids": [
+        "06015b7f-650f-4522-976d-43ef2fec7e7e",
+        "1e2b8e30-0d45-470e-9fa1-4fd4c652cb47",
+        "23be0733-87bf-4483-b320-9850b727605b",
+        "2c34ef2c-b24d-405f-a625-408f57dc366e",
+        "4d7839f8-7966-4f4c-b6f0-7c22a3771c2f",
+        "54f22437-c791-4cbb-ba1b-d31af2814b53",
+        "960e78c9-9fb2-463b-99ab-6bb3988a0ddf",
+        "b358938a-3a13-4a7f-ac36-a1cd2a00bd59",
+        "fd077ec7-e2c8-4b05-829f-521fb9f895ce",
+        "c0e8ed43-1bfd-4bb2-81b7-492f6500fb4e"
+      ]
+    },
+    {
+      "url": "https://www.valmikiramayan.net/utf8/baala/sarga63/bala_63_prose.htm",
+      "authority": "Valmiki Ramayana, Bala Kanda 1.63, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+      "checked_utc_date": "2026-10-19",
+      "cache_policy": "Locator and assessment only; full source text remains at publisher site.",
+      "precise_locations": [
+        "Bala Kanda 1.63.16–19",
+        "Bala Kanda 1.63.16–20",
+        "Bala Kanda 1.63.17–20",
+        "Bala Kanda 1.63.1–3",
+        "Bala Kanda 1.63.4–11",
+        "Bala Kanda 1.63.4–16",
+        "Bala Kanda 1.63.8–16"
+      ],
+      "claim_ids": [
+        "1a10ad90-85e2-4a01-8e3e-57e9b26ed54f",
+        "28fae74f-9fed-454e-a367-094a03e0e39e",
+        "2b83e277-2744-4aea-ac1a-cbf3ff205cc1",
+        "5909bf8a-b6ac-425f-b74c-a9df3fe197de",
+        "7562e441-ee71-4c12-a9a4-8769da12c232",
+        "921abb4e-69b7-4225-92ef-fddac41f8f66",
+        "b6948da1-9a8d-4be6-abf9-b618ccccbcd9"
+      ],
+      "original_link_repair_claim_ids": []
+    },
+    {
+      "url": "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/mandal-03/",
+      "authority": "Government of India Vedic Heritage Portal, Rigveda 3.1 Sanskrit text and seer metadata; passage checked 2026-10-19",
+      "checked_utc_date": "2026-10-19",
+      "cache_policy": "Locator and assessment only; full source text remains at publisher site.",
+      "precise_locations": [
+        "Rigveda Rigveda 3.1 seer metadata, portal line 414",
+        "Rigveda Rigveda 3.1.21, portal lines 453–456"
+      ],
+      "claim_ids": [
+        "8e7bea8b-3659-4a65-9118-ceaf8e12da55",
+        "95e35dcf-d4fa-4896-bc02-88d10f7fcc83"
+      ],
+      "original_link_repair_claim_ids": []
+    },
+    {
+      "url": "https://www.valmikiramayan.net/utf8/baala/sarga21/bala_21_prose.htm",
+      "authority": "Valmiki Ramayana, Bala Kanda 1.21, Desiraju Hanumanta Rao prose English rendering; corresponding Sanskrit verse page also checked 2026-10-19",
+      "checked_utc_date": "2026-10-19",
+      "cache_policy": "Locator and assessment only; full source text remains at publisher site.",
+      "precise_locations": [
+        "Bala Kanda 1.21.11–12",
+        "Bala Kanda 1.21.11–20",
+        "Bala Kanda 1.21.5–22",
+        "Bala Kanda 1.21.9, 20–22",
+        "Bala Kanda 1.21.9–10, 20–22"
+      ],
+      "claim_ids": [
+        "2490638e-c070-403f-b630-206f85ad94ff",
+        "4e722593-ea71-48ac-93d6-f3fd80160670",
+        "bf922fd9-48be-4064-8c41-eed5a28c9adc",
+        "d1590d47-4e3e-401e-8ad7-d399d4ae7ac9",
+        "ffcc8e6e-758f-4c3b-9a4a-e27c98ac2b53"
+      ],
+      "original_link_repair_claim_ids": []
+    },
+    {
+      "url": "https://www.valmikiramayan.net/utf8/baala/sarga28/bala_28_prose.htm",
+      "authority": "Valmiki Ramayana, Bala Kanda 1.28, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+      "checked_utc_date": "2026-10-19",
+      "cache_policy": "Locator and assessment only; full source text remains at publisher site.",
+      "precise_locations": [
+        "Bala Kanda 1.28.1–5, prose lines 9–14"
+      ],
+      "claim_ids": [
+        "003a9c62-4155-458b-b5f9-af45bbc4d7b3",
+        "178faf90-3962-4fa1-9a17-e72cf51d35a3",
+        "2544eb75-52a8-44b9-ae76-c182c5e1f5ad",
+        "414589e3-ad4f-4f1c-941a-b93274ca0444",
+        "cde8a2ea-9593-4a01-ad44-d58967d139c0"
+      ],
+      "original_link_repair_claim_ids": []
+    },
+    {
+      "url": "https://www.valmikiramayan.net/utf8/baala/sarga64/balasans64.htm",
+      "authority": "Valmiki Ramayana, Bala Kanda 1.64, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+      "checked_utc_date": "2026-10-19",
+      "cache_policy": "Locator and assessment only; full source text remains at publisher site.",
+      "precise_locations": [
+        "Bala Kanda 1.64.11–17"
+      ],
+      "claim_ids": [
+        "2c8cdc9c-0229-4e9e-9623-31512b609a4c",
+        "51c9b51f-76a0-44c1-910a-c07dfaa17c65",
+        "9559d070-c4a4-4f00-81c1-271b2d20bc49",
+        "99acbe03-a70c-4ad2-ba5c-4b099da1e780",
+        "a14fa6d2-5519-4606-9b3b-56cc3ac61dff",
+        "be9c9822-362d-48f6-9964-38c02d26b3c6"
+      ],
+      "original_link_repair_claim_ids": [
+        "2c8cdc9c-0229-4e9e-9623-31512b609a4c",
+        "51c9b51f-76a0-44c1-910a-c07dfaa17c65"
+      ]
+    },
+    {
+      "url": "https://vedicheritage.gov.in/hi/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-062/",
+      "authority": "Government of India Vedic Heritage Portal, Rigveda 3.62 Sanskrit text and seer metadata; passage checked 2026-10-19",
+      "checked_utc_date": "2026-10-19",
+      "cache_policy": "Locator and assessment only; full source text remains at publisher site.",
+      "precise_locations": [
+        "Rigveda 3.62 seer/deity metadata, portal line 414; verse 10 line 427",
+        "Rigveda 3.62.10, portal lines 407–409, 427",
+        "Rigveda 3.62.10, portal lines 414, 427"
+      ],
+      "claim_ids": [
+        "0207c641-72a8-456d-ad19-97221c8b97e6",
+        "78d42ac5-b62c-42cb-bf06-01f5ca27490f",
+        "9ea370a1-5ea4-49b3-a42f-a4b4a3fcb985"
+      ],
+      "original_link_repair_claim_ids": []
+    }
+  ],
+  "screening_boundary": "Screening is metadata/excerpt routing only. Only decisions.json records reflect actual online passage checks.",
+  "research_expenditure_usd": 0
+}

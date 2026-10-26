@@ -1,0 +1,64 @@
+{
+  "source_id": "fe080bf7-04a6-4253-935c-b01ce2c13d9f",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Official Biography of Satyajit Ray. Satyajit Ray Society. https://www.satyajitraysociety.org/biography.html",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Satyajit Ray Society",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Official Biography of Satyajit Ray",
+    "url": "https://www.satyajitraysociety.org/biography.html"
+  },
+  "claim_ids": [
+    "03dcb5a8-b462-4446-9524-319411619242",
+    "3695c7a4-5caf-41f0-b8d3-6d99f9a6643c",
+    "3b5ed0ad-c368-4066-8629-aded74a4e4ce",
+    "4f7a7559-b0f4-4603-ac1f-209571697171",
+    "8ffbecea-a36f-4f7b-bffb-7d9856edf3a5",
+    "e070abe3-5bf6-48c8-a01f-3c7c718f5521"
+  ],
+  "passages": [
+    {
+      "chunk_id": "08eb0d4d-b92a-4cea-bc7e-2b21957af1fb",
+      "locator": "complete filmmaker",
+      "text_sha256": "bcd36222703c4782b8613cb69cadab156d8595074c877c498dd3ae09c7b0ab53",
+      "excerpt_preview": "This range makes the idea of a complete filmmaker descriptively useful when it is tied to specific work.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "0ad67abc-a378-4e73-9ddb-2c719644e9bc",
+      "locator": "layout, typography, calligraphy and illustration",
+      "text_sha256": "47fcabf6f2c9ca853e1adbebdba7c30c9215bbf75f31ba02ff4e3329383b125e",
+      "excerpt_preview": "His training in layout, typography, calligraphy and illustration preceded filmmaking and continued in his posters, credits and publications.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "47208e87-e0c0-453e-b1a5-5f26b0d6a155",
+      "locator": "editor, writer and composer",
+      "text_sha256": "cf80163ec583398132af9c5d6373a97edbc3039324a17c2c6777fded1819b16e",
+      "excerpt_preview": "Ray worked as director, screenwriter, illustrator, designer, editor, writer and composer.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "659652a7-c428-4881-ace9-417af42f27d6",
+      "locator": "Signet Press",
+      "text_sha256": "93e84bf3794bcf7001c91300212e34373b3189ac83f260632c094b7a41506c18",
+      "excerpt_preview": "At the publishing house Signet Press he designed book covers and illustrated texts, including a children’s edition of Bibhutibhushan Bandyopadhyay’s Pather Panchali.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

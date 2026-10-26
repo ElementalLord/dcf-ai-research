@@ -1,0 +1,2946 @@
+[
+  {
+    "claim_id": "000db328-dd28-4dab-ba9c-fae122156360",
+    "personality": "Satyajit Ray",
+    "original_claim_text": "Ray said he did not begin a film by formulating a moral message and preferred viewers and critics to infer meaning from the completed work.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ray said he did not begin a film by formulating a moral message and preferred viewers and critics to infer meaning from the completed work.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.bfi.org.uk/sight-and-sound/interviews/satyajit-ray-moral-attitude",
+        "locator": "lines 38–40",
+        "source_id": "ee63d0c2-3d55-4afc-96eb-d5afc5287ddf",
+        "source_authority": "BFI / Sight and Sound edited interview compiled by Andrew Robinson from conversations with Ray; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ray explicitly says he did not formulate a moral attitude first and left conclusions to critics.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "003a9c62-4155-458b-b5f9-af45bbc4d7b3",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The narrative of the astras portrays pedagogical completeness: Vishvamitra does not stop after granting power but answers Rama's request for the knowledge needed to withdraw it safely.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.28 narrates Rama asking Vishvamitra for knowledge of how to annul astras after receiving them, and Vishvamitra teaching him that knowledge.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b829b48c-8875-4cb2-802b-bcb274d48fa9",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga28/bala_28_prose.htm",
+        "locator": "Bala Kanda 1.28.1–5, prose lines 9–14",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.28, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Directly supported event replaces an editorial claim about pedagogical completeness.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0207c641-72a8-456d-ad19-97221c8b97e6",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Rigveda 3.62.10 invokes Savitar’s radiance and asks that it impel or guide human thought/intellect. Within the Vishvamitra textual corpus, this is a central spiritual-intellectual motif grounded directly in the mantra.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Rigveda 3.62.10 invokes Savitar’s divine radiance and asks that it impel our thoughts (dhiyo). The Vedic Heritage Portal places it in a Savitar section associated by seer metadata with Gathina Vishvamitra.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "c2d10c6c-8da2-4f5a-becf-93b160eb267b",
+        "url": "https://vedicheritage.gov.in/hi/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-062/",
+        "locator": "Rigveda 3.62.10, portal lines 414, 427",
+        "source_authority": "Government of India Vedic Heritage Portal, Rigveda 3.62 Sanskrit text and seer metadata; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The Sanskrit directly supports Savitar and dhiyo; “central spiritual-intellectual motif” was interpretive.",
+    "original_source_inspected": true,
+    "material_limitation": "Traditional rishi attribution and hymn text; not independent proof of single-person authorship.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "044ff4fd-33c2-459e-90ff-c7a0c68da704",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "In his Chicago Paper on Hinduism, Vivekananda argued that religion should be realized in life rather than reduced to assent to doctrine.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In his Chicago Paper on Hinduism, Vivekananda argued that religion should be realized in life rather than reduced to assent to doctrine.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_paper_on_hinduism.htm",
+        "locator": "lines 45–49",
+        "source_id": "e09fe440-cb23-4395-b7e3-bcc179d574a9",
+        "source_authority": "Ramakrishna Order edition of Vivekananda’s Chicago address; primary text edition; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Vivekananda’s own published Chicago paper contrasts realization with mere belief.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "07e3d3b8-9611-426a-99a9-126ee46a01b5",
+    "personality": "Satyajit Ray",
+    "original_claim_text": "Pather Panchali developed through prolonged financial difficulty, so Ray’s debut was not the product of an established studio pathway.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Pather Panchali developed through prolonged financial difficulty, so Ray’s debut was not the product of an established studio pathway.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://satyajitray.org/making-of-pather-panchali/",
+        "locator": "lines 3–14, 28–34",
+        "source_id": "9b0e27ff-f724-407c-872f-f199da70334f",
+        "source_authority": "SatyajitRay.org production account, using Ray recollections and editorial narration; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The making-of account details unsuccessful financing searches, personal borrowing, and later public support.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0b2c7697-5769-46da-8cd9-9803ba52a5b0",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Ramanujan published unusually effective approximations to pi in his work on modular equations.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramanujan published unusually effective approximations to pi in his work on modular equations.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF p. 2, lines 57–59; compare Hardy PDF p. 15, lines 615–622",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ore identifies the modular-equations paper’s unusually good pi approximations; Hardy independently singles out the series.",
+    "original_source_inspected": true,
+    "material_limitation": "Effectiveness is an expert assessment, not a claim all approximations were original.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0c49c16d-3da1-4dce-84ca-7b2f51944b46",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The Bala Kanda account culminates with Vasistha recognizing Vishvamitra as a Brahmarshi, making Brahmarshi the final status within that narrative arc.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Bala Kanda account culminates with Vasistha recognizing Vishvamitra as a Brahmarshi, making Brahmarshi the final status within that narrative arc.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.19–28",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Vasistha explicitly calls him Brahmarshi after divine recognition.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0ca8537d-384c-49a7-ab8c-0e545d36e47a",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "As project director, Kalam led development of India's first indigenous satellite launch vehicle, SLV-III, which put Rohini into near-Earth orbit in July 1980.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "As project director, Kalam led development of India's first indigenous satellite launch vehicle, SLV-III, which put Rohini into near-Earth orbit in July 1980.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+        "locator": "lines 13–16",
+        "source_authority": "President of India, official profile provided by the President’s Secretariat, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The official profile expressly names Kalam as SLV-III project director and dates the Rohini orbit insertion to July 1980.",
+    "original_source_inspected": true,
+    "material_limitation": "The institutional profile credits one leader; it does not apportion every engineering contribution.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0f7737cd-0303-400f-817b-52ded2beddd4",
+    "personality": "C. V. Raman",
+    "original_claim_text": "The Raman Research Institute was initially funded by Raman and private donations.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Raman Research Institute was initially funded by Raman and private donations.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "12a36918-2787-41d3-8457-6d2eae056465",
+        "url": "https://www.rri.res.in/about/overview",
+        "locator": "lines 15–17",
+        "source_authority": "Raman Research Institute official institutional overview, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The institute’s official overview says it was personally funded by Raman and private donations.",
+    "original_source_inspected": true,
+    "material_limitation": "The precise financing amounts and dates are not given.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0fe168d7-9b34-49b4-afcf-9cfc23b469db",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "His major books include Wings of Fire, India 2020, My Journey, and Ignited Minds, linking personal history with scientific and national-development ideas.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The President’s official profile lists Wings of Fire, India 2020, My Journey, and Ignited Minds among Kalam’s books.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+        "locator": "lines 21–22",
+        "source_authority": "President of India, official profile provided by the President’s Secretariat, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The book titles are directly listed, while the original interpretive clause about linking themes is not demonstrated by this passage.",
+    "original_source_inspected": true,
+    "material_limitation": "The profile provides a selected list, not a bibliography.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1326cb2a-0343-4d51-9002-f4504e3e6c9d",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "Vivekananda presented Hindu traditions as accommodating diverse philosophical and devotional approaches, including views outside orthodox theism.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Vivekananda presented Hindu traditions as accommodating diverse philosophical and devotional approaches, including views outside orthodox theism.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_paper_on_hinduism.htm",
+        "locator": "lines 4–8",
+        "source_id": "e09fe440-cb23-4395-b7e3-bcc179d574a9",
+        "source_authority": "Ramakrishna Order edition of Vivekananda’s Chicago address; primary text edition; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The paper itself lays out diverse schools, including Buddhist agnosticism and Jain atheism.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "152f4d43-8f8c-4cf2-970a-d367292a15fa",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "In his letter to Hardy, Ramanujan emphasized that he had no university education and was pursuing an unconventional path in mathematics.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In his letter to Hardy, Ramanujan emphasized that he had no university education and was pursuing an unconventional path in mathematics.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+        "locator": "lines 45–55; compare Hardy PDF p. 2, lines 86–95",
+        "source_authority": "MacTutor History of Mathematics, University of St Andrews, J. J. O’Connor and E. F. Robertson, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "MacTutor reproduces Ramanujan’s 1913 letter saying he lacked university education and was taking a new path. Hardy’s obituary reproduces the letter directly.",
+    "original_source_inspected": true,
+    "material_limitation": "The letter is primary self-report; its wording should remain attributed.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1586e287-eaa7-49fe-a262-bbf7e70a06bb",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam publicly urged a developed India by 2020; this was a political and social goal whose realization requires separate evaluation.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam publicly urged a developed India by 2020; this was a political and social goal whose realization requires separate evaluation.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "c71e72cc-db1f-462b-9bb8-c313b07b825a",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-nation-ramparts-red-fort-new-delhi",
+        "locator": "lines 20–26, 45–49",
+        "source_authority": "A. P. J. Abdul Kalam, official 11 May 2007 Red Fort address, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The speech explicitly urges national development by 2020; its future-oriented wording is an aspiration, not evidence of realization.",
+    "original_source_inspected": true,
+    "material_limitation": "Contemporary outcomes are outside the claim and require a separate assessment.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "178faf90-3962-4fa1-9a17-e72cf51d35a3",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Rama actively asks Vishvamitra for the knowledge needed to withdraw the astras, showing a dialogic student role rather than merely passive reception of gifts.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Rama actively asks Vishvamitra for the knowledge needed to withdraw the astras, showing a dialogic student role rather than merely passive reception of gifts.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b829b48c-8875-4cb2-802b-bcb274d48fa9",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga28/bala_28_prose.htm",
+        "locator": "Bala Kanda 1.28.1–5, prose lines 9–14",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.28, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Rama asks for annulment knowledge and receives it.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "180328bf-d785-4a6e-9287-9b20d04411ff",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam recalled missing selection as an Air Force pilot and moving into technical work in aerospace and defence instead.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam recalled missing selection as an Air Force pilot and moving into technical work in aerospace and defence instead.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "bfe4fc55-cb3b-4d50-848d-50baf547fd95",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/questionnaire-foreign-journalist",
+        "locator": "lines 34–43",
+        "source_authority": "A. P. J. Abdul Kalam, 2003 interview answers hosted by President of India, first-person primary testimony, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Kalam directly recounts not entering the Air Force as a pilot and beginning technical work in the cited answer.",
+    "original_source_inspected": true,
+    "material_limitation": "Self-report; the exact selection process is not independently reconstructed.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1a10ad90-85e2-4a01-8e3e-57e9b26ed54f",
+    "personality": "Vishvamitra",
+    "original_claim_text": "In the Bala Kanda narrative, Vishvamitra is explicitly presented first as a kingly sage (rajarshi) before the culmination of his ascetic transformation.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.63 recounts Brahma addressing Vishvamitra as a kingly sage (rajarshi) before later stages of ascetic recognition.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "d39ddd21-67b7-4c7c-bfae-ea1f99918420",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga63/bala_63_prose.htm",
+        "locator": "Bala Kanda 1.63.1–3",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.63, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The source has the title; “first” could imply a broader chronology than this passage establishes.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1c531c7b-124d-4103-9f1c-87c8f9114fcd",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam used Dhawan's response to SLV failure and success as a model of leaders taking responsibility for setbacks and sharing credit for success.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam used Dhawan's response to SLV failure and success as a model of leaders taking responsibility for setbacks and sharing credit for success.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "bfe4fc55-cb3b-4d50-848d-50baf547fd95",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/questionnaire-foreign-journalist",
+        "locator": "lines 41–43",
+        "source_authority": "A. P. J. Abdul Kalam, 2003 interview answers hosted by President of India, first-person primary testimony, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Kalam recounts Dhawan taking responsibility after SLV-III failure and giving team credit after success, then explicitly states the leadership lesson.",
+    "original_source_inspected": true,
+    "material_limitation": "This is Kalam’s retrospective interpretation of events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1ce09b33-1e0f-4853-8440-ff35a63e31dd",
+    "personality": "C. V. Raman",
+    "original_claim_text": "Raman invited Max Born to IISc as a Reader in Theoretical Physics in 1935.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Raman invited Max Born to IISc as a Reader in Theoretical Physics in 1935.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "d7691143-40b3-4088-8ddb-90caadebea0b",
+        "url": "https://iisc.ac.in/wp-content/uploads/2018/03/CV_RAMAN_AND_PHYSICS_AT_IISc.pdf",
+        "locator": "PDF p. 1, lines 26–34",
+        "source_authority": "Indian Institute of Science official institutional history leaflet, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The IISc leaflet expressly says Raman invited Born in 1935 as Reader in Theoretical Physics.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional retrospective; exact appointment paperwork not inspected.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1e6631e9-0a39-4425-b6f2-2242a5540d82",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Ramanujan was born in Erode in 1887 and grew up chiefly in Kumbakonam in South India.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramanujan was born in Erode in 1887 and grew up chiefly in Kumbakonam in South India.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+        "locator": "lines 8–13, 24–26; compare Hardy PDF p. 1, lines 10–16",
+        "source_authority": "MacTutor History of Mathematics, University of St Andrews, J. J. O’Connor and E. F. Robertson, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "MacTutor gives Erode birth in 1887 and childhood in Kumbakonam; Hardy’s contemporary obituary corroborates those locations.",
+    "original_source_inspected": true,
+    "material_limitation": "Hardy drew some early-life details from Indian acquaintances, so the works are not wholly independent on childhood.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1e794aaa-d278-41d9-b460-bcd635f3ac3f",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Ramanujan supported himself as a clerk at the Madras Port Trust while continuing mathematical research.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramanujan supported himself as a clerk at the Madras Port Trust while continuing mathematical research.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+        "locator": "lines 37–47; compare Hardy PDF pp. 1–2, lines 43–50, 86–94",
+        "source_authority": "MacTutor History of Mathematics, University of St Andrews, J. J. O’Connor and E. F. Robertson, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "MacTutor and Hardy’s obituary both describe Port Trust clerkship and concurrent mathematical work; the obituary embeds Ramanujan’s own statement.",
+    "original_source_inspected": true,
+    "material_limitation": "Hardy’s obituary misdates the start of the clerkship to 1911; MacTutor says 1 March 1912. The claim does not specify the date.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1f24f631-9f71-45f8-8020-344583ae60d9",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam was born in Rameswaram, Tamil Nadu, in 1931 and trained in aeronautical engineering at Madras Institute of Technology.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam was born in Rameswaram, Tamil Nadu, in 1931 and trained in aeronautical engineering at Madras Institute of Technology.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+        "locator": "line 15",
+        "source_authority": "President of India, official profile provided by the President’s Secretariat, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The official profile states birth at Rameswaram in 1931 and aeronautical engineering specialization at Madras Institute of Technology.",
+    "original_source_inspected": true,
+    "material_limitation": "The profile is a retrospective institutional biography.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "21eef295-6488-45ca-b86e-fc5ae5e7c25d",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The Brahmarshi transformation is securely a fact about the Ramayana narrative even when questions about the historical individual remain open.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Brahmarshi transformation is securely a fact about the Ramayana narrative even when questions about the historical individual remain open.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.19–28",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "This is a fact about the epic narrative, not about independently established biography.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "225dcd87-20d0-4b1c-95fc-6f76c45f8e5d",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "Phase III, 1985–96, strengthened procurement and marketing infrastructure and extended veterinary, feed and insemination services rather than simply creating new outlets.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Phase III, 1985–96, strengthened procurement and marketing infrastructure and extended veterinary, feed and insemination services rather than simply creating new outlets.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 266–270",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "NDDB directly describes Phase III dates, infrastructure, and expanded services.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "239d8bad-b212-491f-bbbc-4b80ecd736a2",
+    "personality": "Satyajit Ray",
+    "original_claim_text": "After the Apu Trilogy, Ray increasingly preferred stories concentrated into a day, week or short period rather than the long temporal sweep of a saga.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "After the Apu Trilogy, Ray increasingly preferred stories concentrated into a day, week or short period rather than the long temporal sweep of a saga.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.bfi.org.uk/sight-and-sound/interviews/satyajit-ray-moral-attitude",
+        "locator": "lines 94–97",
+        "source_id": "ee63d0c2-3d55-4afc-96eb-d5afc5287ddf",
+        "source_authority": "BFI / Sight and Sound edited interview compiled by Andrew Robinson from conversations with Ray; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ray says he lost his taste for the saga after the trilogy and preferred shorter spans.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "2490638e-c070-403f-b630-206f85ad94ff",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Vasistha is not portrayed only as Vishvamitra's rival: in Bala Kanda 1.21 he strongly endorses Vishvamitra's knowledge and trustworthiness when persuading Dasharatha to send Rama.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Vasistha is not portrayed only as Vishvamitra's rival: in Bala Kanda 1.21 he strongly endorses Vishvamitra's knowledge and trustworthiness when persuading Dasharatha to send Rama.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "9227358e-67a7-46f5-a873-bb5582ebb893",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga21/bala_21_prose.htm",
+        "locator": "Bala Kanda 1.21.5–22",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.21, Desiraju Hanumanta Rao prose English rendering; corresponding Sanskrit verse page also checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Vasistha praises Vishvamitra and urges Dasharatha to send Rama with him.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "2531ba47-40fb-415d-a0e1-7b56814dab0c",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam described education as learning from teachers, libraries, and laboratories, a view that joined classroom knowledge with practical inquiry.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam described education as learning from teachers, libraries, and laboratories, a view that joined classroom knowledge with practical inquiry.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "1125b617-27c3-4121-8d9d-c587ad01e804",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-st-aloysius-college",
+        "locator": "lines 18–21",
+        "source_authority": "A. P. J. Abdul Kalam, official 28 March 2003 St Aloysius College address, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Kalam explicitly names classroom teachers, libraries and laboratories as sources of education.",
+    "original_source_inspected": true,
+    "material_limitation": "The claim summarizes his stated educational view.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "2544eb75-52a8-44b9-ae76-c182c5e1f5ad",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Vishvamitra's instruction in Bala Kanda 1.28 includes methods for withdrawing astras after deployment, so his martial teaching role explicitly includes control and recall rather than only acquisition.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In Bala Kanda 1.28, Vishvamitra teaches Rama methods of annulling astras after Rama asks for them; the preceding chapter covers the original grant of astras.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b829b48c-8875-4cb2-802b-bcb274d48fa9",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga28/bala_28_prose.htm",
+        "locator": "Bala Kanda 1.28.1–5, prose lines 9–14",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.28, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The text speaks of annulment missiles, and “control and recall” was too broad.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "26bdefd9-02ee-4c6d-8056-d60c9ce4fc23",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Many notebook results were recorded without proofs meeting the standard mathematical expectations of his Cambridge peers.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Many notebook results were recorded without proofs meeting the standard mathematical expectations of his Cambridge peers.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF pp. 1–2, lines 47–54; compare Hardy PDF p. 11, lines 434–441",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ore directly says most notebook theorems lacked standard proofs, quoting Hardy’s assessment.",
+    "original_source_inspected": true,
+    "material_limitation": "Ore relies on Hardy for this judgment; these are not independent evaluations.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "28fae74f-9fed-454e-a367-094a03e0e39e",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The Menaka interruption in Bala Kanda 1.63 is narrated as lasting ten years in Vishvamitra's hermitage before he recognizes the interruption and resumes his quest.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Menaka interruption in Bala Kanda 1.63 is narrated as lasting ten years in Vishvamitra's hermitage before he recognizes the interruption and resumes his quest.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "d39ddd21-67b7-4c7c-bfae-ea1f99918420",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga63/bala_63_prose.htm",
+        "locator": "Bala Kanda 1.63.4–11",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.63, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The Menaka stay is said to last ten years before renewed austerity.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "2b83e277-2744-4aea-ac1a-cbf3ff205cc1",
+    "personality": "Vishvamitra",
+    "original_claim_text": "After the Menaka episode, the narrative does not depict Vishvamitra abandoning tapas; it uses his remorse as the transition into another, stricter stage of ascetic effort.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "After the Menaka episode, the narrative does not depict Vishvamitra abandoning tapas; it uses his remorse as the transition into another, stricter stage of ascetic effort.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "d39ddd21-67b7-4c7c-bfae-ea1f99918420",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga63/bala_63_prose.htm",
+        "locator": "Bala Kanda 1.63.8–16",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.63, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The chapter links remorse to renewed austerity.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "301254f3-1f75-402d-ab27-1e86082dec97",
+    "personality": "M. S. Subbulakshmi",
+    "original_claim_text": "The Magsaysay Foundation listed foundations for poor people, hospitals, orphanages, schools and music institutes among beneficiaries of her concert receipts.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Magsaysay Foundation listed foundations for poor people, hospitals, orphanages, schools and music institutes among beneficiaries of her concert receipts.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+        "locator": "lines 41–44",
+        "source_id": "6d26dd86-6c07-4a2f-81b8-35ffb661fc21",
+        "source_authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The awarding foundation explicitly lists these beneficiary categories for her concert contributions.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "311c35fc-6cc5-4e7d-b1bf-cd2983ecf69b",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The final phase described in Bala Kanda includes a vow of silence and severe ascetic discipline.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The final phase described in Bala Kanda includes a vow of silence and severe ascetic discipline.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.1–3, 6–9",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Vow of silence and severe tapas are explicit.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "35c9c378-40ea-4ff7-a1ac-9681cd4cf575",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The relationship is not merely advisory: Dasharatha ultimately entrusts Rama to Vishvamitra, placing the sage in temporary guardianship and instruction of the prince.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In Bala Kanda 1.22, Dasharatha entrusts Rama to Vishvamitra, who then guides and instructs him.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.2–3, 11–22",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Entrustment and teaching are explicit; guardianship is an interpretive label.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "375deee8-bbb1-4032-b108-692c108c2bd2",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The transformation narrative culminates not merely with divine recognition but with Vasistha's explicit acceptance of Vishvamitra as Brahmarshi.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The transformation narrative culminates not merely with divine recognition but with Vasistha's explicit acceptance of Vishvamitra as Brahmarshi.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.19–27",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The gods recognize him, then Vasistha accepts him as Brahmarshi.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "382b8752-680f-4f7e-b6c5-cc577956ade0",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Hardy said he taught Ramanujan some modern mathematics but learned even more from him.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Hardy said he taught Ramanujan some modern mathematics but learned even more from him.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "ff146686-2ab5-4e47-957e-09be837c3ef7",
+        "url": "https://mathshistory.st-andrews.ac.uk/RS/ramanujan_rs.pdf",
+        "locator": "PDF p. 11, lines 442–457",
+        "source_authority": "G. H. Hardy, 1921 Royal Society obituary; contemporary collaborator testimony and embedded Ramanujan correspondence, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Hardy states in first person that he tried to teach Ramanujan and learned more from him.",
+    "original_source_inspected": true,
+    "material_limitation": "This is Hardy’s subjective recollection and is explicitly attributed.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "3cb766e5-8aef-4c09-be60-00e9870c4be1",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The Sarayu riverbank is an important teaching location because Vishvamitra gives Bala and Atibala to Rama there.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Sarayu riverbank is an important teaching location because Vishvamitra gives Bala and Atibala to Rama there.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.10–12, 20–22",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The south bank of the Sarayu is stated before the Bala–Atibala teaching and their stay there.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "414589e3-ad4f-4f1c-941a-b93274ca0444",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Vishvamitra's instruction to Rama includes both invocation and withdrawal procedures for astras, presenting restraint and reversibility as part of competent sacred-weapon practice.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.28 presents instruction in neutralizing astras after Rama has received projectile astras. This is part of the epic’s martial instruction narrative.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b829b48c-8875-4cb2-802b-bcb274d48fa9",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga28/bala_28_prose.htm",
+        "locator": "Bala Kanda 1.28.1–5, prose lines 9–14",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.28, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The passage supports neutralization; “restraint and reversibility as competent practice” is modern interpretation.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "4215c7e3-8dc4-4a4c-b8b2-ca88ec823589",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam served as India's eleventh president from 25 July 2002 to 25 July 2007.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam served as India's eleventh president from 25 July 2002 to 25 July 2007.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+        "locator": "lines 3, 24",
+        "source_authority": "President of India, official profile provided by the President’s Secretariat, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The profile lists the office term and identifies him as the eleventh president.",
+    "original_source_inspected": true,
+    "material_limitation": "Official office record provides direct administrative evidence.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "46736aad-f6bb-47e0-b3db-5b527261036d",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "The scholarly biography notes that limited training and library access led Ramanujan to rediscover some results already known elsewhere.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The scholarly biography notes that limited training and library access led Ramanujan to rediscover some results already known elsewhere.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF p. 2, lines 47–54",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Ore biography expressly connects limited systematic training and library access to rediscovery of existing results.",
+    "original_source_inspected": true,
+    "material_limitation": "Historical explanation is Ore’s scholarly interpretation.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "46db9183-cef3-4d3a-b18d-cb583d2fe485",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "In the Chicago paper, Vivekananda grounded spiritual freedom in an account of the divine nature of the human self.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In the Chicago paper, Vivekananda grounded spiritual freedom in an account of the divine nature of the human self.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_paper_on_hinduism.htm",
+        "locator": "lines 24–34, 45–49",
+        "source_id": "e09fe440-cb23-4395-b7e3-bcc179d574a9",
+        "source_authority": "Ramakrishna Order edition of Vivekananda’s Chicago address; primary text edition; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The paper explicitly describes the soul as free and divine within his religious argument.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "47f14b97-63c5-4fea-ae11-e73fe9c0d9a9",
+    "personality": "M. S. Subbulakshmi",
+    "original_claim_text": "Her repertoire reached beyond Carnatic compositions to North Indian devotional and other regional songs, which helped extend her audience beyond the South.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Her repertoire reached beyond Carnatic compositions to North Indian devotional and other regional songs, which helped extend her audience beyond the South.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+        "locator": "lines 32–33, 40",
+        "source_id": "6d26dd86-6c07-4a2f-81b8-35ffb661fc21",
+        "source_authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The award citation names Hindustani and regional song repertoire and the wider audience beyond southern India.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "4d7dbe8f-af18-4ca6-a948-cc2b7ce7b0da",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Hardy and Ramanujan developed an asymptotic formula for the partition function p(n).",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Hardy and Ramanujan developed an asymptotic formula for the partition function p(n).",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF p. 2, lines 62–68; compare MacTutor lines 78–80",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ore directly identifies the Hardy–Ramanujan asymptotic formula for p(n); MacTutor corroborates.",
+    "original_source_inspected": true,
+    "material_limitation": "Mathematical implications are not extended beyond the stated formula.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "4e722593-ea71-48ac-93d6-f3fd80160670",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Vasistha's intervention in Dasharatha's court is itself evidence of Vishvamitra's recognized standing: the royal priest argues that entrusting Rama to Vishvamitra is the safer and more honorable course.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In Bala Kanda 1.21, Vasistha argues that Vishvamitra can protect Rama and persuades Dasharatha to let Rama accompany him.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "9227358e-67a7-46f5-a873-bb5582ebb893",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga21/bala_21_prose.htm",
+        "locator": "Bala Kanda 1.21.9–10, 20–22",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.21, Desiraju Hanumanta Rao prose English rendering; corresponding Sanskrit verse page also checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The action and persuasion are explicit; “recognized standing” was an inference.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "4efc52f0-280e-41bf-b58e-daf3ad23bf31",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "Vivekananda delivered his Paper on Hinduism at the Chicago Parliament on 19 September 1893.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Vivekananda delivered his Paper on Hinduism at the Chicago Parliament on 19 September 1893.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_paper_on_hinduism.htm",
+        "locator": "lines 1–3",
+        "source_id": "e09fe440-cb23-4395-b7e3-bcc179d574a9",
+        "source_authority": "Ramakrishna Order edition of Vivekananda’s Chicago address; primary text edition; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The edition gives the address title and delivery date.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "4f719a7e-9a8e-4658-9d3f-1f85056b8e01",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Ramanujan studied integer partitions and identified striking congruence patterns in partition counts.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramanujan studied integer partitions and identified striking congruence patterns in partition counts.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF p. 2, lines 62–66",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ore describes Ramanujan’s work on p(n) and congruence properties.",
+    "original_source_inspected": true,
+    "material_limitation": "Some conjectures were proved later; the claim says identified, not proved all.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "51b623f2-bea9-4af4-9d2e-ddf6be258d7a",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam argued that meaningful education of young people was a central investment in India's future.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam argued that meaningful education of young people was a central investment in India's future.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "1125b617-27c3-4121-8d9d-c587ad01e804",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-st-aloysius-college",
+        "locator": "lines 22–25",
+        "source_authority": "A. P. J. Abdul Kalam, official 28 March 2003 St Aloysius College address, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Kalam describes education of the younger generation as an investment for the future.",
+    "original_source_inspected": true,
+    "material_limitation": "This is a normative argument in a public speech.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "5909bf8a-b6ac-425f-b74c-a9df3fe197de",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The intermediate Maharshi title in Bala Kanda 1.63 should be reviewed alongside the earlier Rajarshi and later Brahmarshi labels so the profile represents a sequence rather than treating all honorifics as simultaneous equivalents.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.63 depicts Maharshi as an intermediate recognition: after another long austerity Brahma grants that title, but says Vishvamitra has not yet conquered his senses.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "d39ddd21-67b7-4c7c-bfae-ea1f99918420",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga63/bala_63_prose.htm",
+        "locator": "Bala Kanda 1.63.17–20",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.63, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Narrowed cross-chapter editorial advice to the inspected episode.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "596594fb-0cb9-4718-b8dc-9f9336fa9d0e",
+    "personality": "Vishvamitra",
+    "original_claim_text": "In Bala Kanda 1.22 the Ramayana calls Vishvamitra the son of Kushika (kushikaputra).",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In Bala Kanda 1.22 the Ramayana calls Vishvamitra the son of Kushika (kushikaputra).",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.2–3, 8–10",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The Sanskrit uses kushikaputra/kushikasuta for Vishvamitra.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "59760176-5476-469b-bdb2-9b8265df81d3",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Ramanujan left unpublished notebooks whose theorems continued to attract mathematical research after his death.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramanujan left unpublished notebooks whose theorems continued to attract mathematical research after his death.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+        "locator": "lines 77–82; compare Hardy PDF p. 14, lines 607–612",
+        "source_authority": "MacTutor History of Mathematics, University of St Andrews, J. J. O’Connor and E. F. Robertson, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "MacTutor describes the unpublished notebooks and later mathematical study; Hardy’s obituary says unpublished material still awaited analysis.",
+    "original_source_inspected": true,
+    "material_limitation": "Later research on notebooks is assessed from the scholarly biography, not inferred from mere survival of manuscripts.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "59e0de88-bec6-4ffa-9b35-f346e2885e8b",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam combined technical leadership with national advisory duties, including chairing the Scientific Advisory Committee to the Cabinet.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam combined technical leadership with national advisory duties, including chairing the Scientific Advisory Committee to the Cabinet.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+        "locator": "lines 19–20",
+        "source_authority": "President of India, official profile provided by the President’s Secretariat, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The official profile lists TIFAC and principal scientific advisor work as well as the Cabinet science advisory chair.",
+    "original_source_inspected": true,
+    "material_limitation": "Broad wording omits precise tenures; the profile provides them.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "5c040721-d928-4eb0-96bd-7c0c37803768",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Vishvamitra gives away all of the cooked food he was finally about to eat after a long vow.",
+    "decision": "REMOVE FROM ACTIVE CORPUS",
+    "final_proposed_wording": "Vishvamitra gives away all of the cooked food he was finally about to eat after a long vow.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.4–7",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Exact factual duplicate of retained claim 06015b7f.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": "Exact factual duplicate of retained claim 06015b7f."
+  },
+  {
+    "claim_id": "5f99454a-d63b-4386-872b-e1c91608383f",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "The presidential profile credits Kalam with helping shape the later Indian launch vehicle programme, especially the PSLV configuration.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The presidential profile credits Kalam with helping shape the later Indian launch vehicle programme, especially the PSLV configuration.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+        "locator": "line 16",
+        "source_authority": "President of India, official profile provided by the President’s Secretariat, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The President’s profile specifically credits him with the evolution of ISRO’s launch vehicle programme, particularly the PSLV configuration.",
+    "original_source_inspected": true,
+    "material_limitation": "This is a credit assigned by the presidential office, not independent engineering attribution.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "62f0166c-ba36-42d0-978a-1f9075e5a09e",
+    "personality": "M. S. Subbulakshmi",
+    "original_claim_text": "In her 1974 award response, Subbulakshmi publicly credited T. Sadasivam as a guide; it is her own statement of the relationship, not a full account of their joint decision making.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In her 1974 award response, Subbulakshmi publicly credited T. Sadasivam as a guide; it is her own statement of the relationship, not a full account of their joint decision making.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+        "locator": "lines 46–52",
+        "source_id": "6d26dd86-6c07-4a2f-81b8-35ffb661fc21",
+        "source_authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Her award response directly credits Sadasivam; the claim properly limits this to her own account.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "64e952cd-6726-4138-9d25-346e96abdc07",
+    "personality": "Satyajit Ray",
+    "original_claim_text": "Ravi Shankar composed the music for Pather Panchali; crediting the early score to Ray would confuse the director’s role with that of a major collaborator.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ravi Shankar composed the music for Pather Panchali; crediting the early score to Ray would confuse the director’s role with that of a major collaborator.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://satyajitray.org/making-of-pather-panchali/",
+        "locator": "lines 36–38",
+        "source_id": "9b0e27ff-f724-407c-872f-f199da70334f",
+        "source_authority": "SatyajitRay.org production account, using Ray recollections and editorial narration; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The account explicitly credits Ravi Shankar with composing the film music.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "6550d9a8-9e99-421d-be2c-be60a0155d07",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "Operation Flood began in 1970 to scale the Anand pattern nationally through producer cooperatives, urban markets and dairy services.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Operation Flood began in 1970 and used village milk-producer cooperatives, urban markets and dairy services to expand milk production and marketing.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 237–257",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The page supports launch and structure, but does not itself use the claim’s Anand-pattern formulation.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "66bd0a54-511d-436c-9aa6-37a8a6aad2d9",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "Tagore’s curriculum treated music, painting and dramatic performance as integral to developing the whole person, not as decorative extras.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Tagore’s curriculum treated music, painting and dramatic performance as integral to developing the whole person, not as decorative extras.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://www.visvabharati.ac.in/home/history_land_page/",
+        "locator": "lines 340–342",
+        "source_id": "55a1ae10-2af1-4020-bc48-db13546ecfe6",
+        "source_authority": "Visva-Bharati institutional history; founding institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The university history explicitly treats music, painting and drama as part of cultivating multiple human faculties.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "6a0204bb-9cfc-44c7-8d6c-9f3b0ded5325",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Ramanujan's first letter to Hardy presented more than one hundred mathematical assertions across several topics.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramanujan's first letter to Hardy presented more than one hundred mathematical assertions across several topics.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF p. 1, lines 37–41",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ore says Ramanujan’s first letter added more than one hundred theorems on several mathematical topics.",
+    "original_source_inspected": true,
+    "material_limitation": "The claim calls them assertions and does not presume proof or originality for each.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "6abd6700-6c8a-47a9-969d-5d925b2bb3e2",
+    "personality": "Satyajit Ray",
+    "original_claim_text": "Ray described the Goopy-Bagha music as drawing on Indian folk and classical forms alongside Western orchestration, not as belonging to one pure tradition.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ray described the Goopy-Bagha music as drawing on Indian folk and classical forms alongside Western orchestration, not as belonging to one pure tradition.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.bfi.org.uk/sight-and-sound/interviews/satyajit-ray-moral-attitude",
+        "locator": "lines 102–113",
+        "source_id": "ee63d0c2-3d55-4afc-96eb-d5afc5287ddf",
+        "source_authority": "BFI / Sight and Sound edited interview compiled by Andrew Robinson from conversations with Ray; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ray explicitly identifies folk, classical, and Western influences in these songs.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "6ec58b8d-6bc3-4390-b3a4-b9a3251f5f6f",
+    "personality": "C. V. Raman",
+    "original_claim_text": "G. N. Ramachandran, S. Ramaseshan, and Vikram Sarabhai were among Raman's students at IISc.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "G. N. Ramachandran, S. Ramaseshan, and Vikram Sarabhai were among Raman's students at IISc.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "d7691143-40b3-4088-8ddb-90caadebea0b",
+        "url": "https://iisc.ac.in/wp-content/uploads/2018/03/CV_RAMAN_AND_PHYSICS_AT_IISc.pdf",
+        "locator": "PDF p. 1, lines 19–25",
+        "source_authority": "Indian Institute of Science official institutional history leaflet, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The IISc leaflet lists all three as Raman’s students.",
+    "original_source_inspected": true,
+    "material_limitation": "The leaflet gives no dates or degree relationships.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "6ec6add7-c0f0-4ff9-bf1e-4d7181a37982",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam's development agenda combined agriculture and food processing, education and healthcare, ICT, infrastructure, and strategic technological self-reliance.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam's development agenda combined agriculture and food processing, education and healthcare, ICT, infrastructure, and strategic technological self-reliance.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "c71e72cc-db1f-462b-9bb8-c313b07b825a",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-nation-ramparts-red-fort-new-delhi",
+        "locator": "lines 23–26",
+        "source_authority": "A. P. J. Abdul Kalam, official 11 May 2007 Red Fort address, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Kalam enumerates all five sectors in the Red Fort speech.",
+    "original_source_inspected": true,
+    "material_limitation": "The five-sector agenda is a stated proposal, not an evaluation of outcomes.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "6fb226a9-d29a-45fc-8101-2ad37def143d",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Hardy described Ramanujan as often generalizing from numerical examples, including in his discoveries about partition congruences.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Hardy described Ramanujan as often generalizing from numerical examples, including in his discoveries about partition congruences.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "ff146686-2ab5-4e47-957e-09be837c3ef7",
+        "url": "https://mathshistory.st-andrews.ac.uk/RS/ramanujan_rs.pdf",
+        "locator": "PDF p. 16, lines 669–678",
+        "source_authority": "G. H. Hardy, 1921 Royal Society obituary; contemporary collaborator testimony and embedded Ramanujan correspondence, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Hardy describes numerical induction and explicitly mentions partition congruences and generalization.",
+    "original_source_inspected": true,
+    "material_limitation": "Assessment of method is Hardy’s collaborator testimony.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "7387a37c-37d0-4d63-9121-bc44651ab5fd",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Srinivasa Ramanujan was an Indian mathematician whose main contributions were to analytic number theory, alongside work on continued fractions and infinite series.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Srinivasa Ramanujan was an Indian mathematician whose main contributions were to analytic number theory, alongside work on continued fractions and infinite series.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+        "locator": "lines 17–24",
+        "source_authority": "MacTutor History of Mathematics, University of St Andrews, J. J. O’Connor and E. F. Robertson, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "MacTutor explicitly identifies analytic number theory, continued fractions, and infinite series among his contributions.",
+    "original_source_inspected": true,
+    "material_limitation": "The word main is an evaluative scholarly characterization.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "7562e441-ee71-4c12-a9a4-8769da12c232",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Bala Kanda 1.63 explicitly marks one austerity cycle as lasting a thousand years before the gods approach Vishvamitra, showing that the epic uses enormous time spans to signal ascetic intensity.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.63 explicitly marks one austerity cycle as lasting a thousand years before the gods approach Vishvamitra, showing that the epic uses enormous time spans to signal ascetic intensity.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "d39ddd21-67b7-4c7c-bfae-ea1f99918420",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga63/bala_63_prose.htm",
+        "locator": "Bala Kanda 1.63.16–19",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.63, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "A thousand-year austerity precedes the gods’ approach in the translation; this is epic sacred chronology.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "77471114-8d0a-43dd-ba6c-0aee9dfe4d1a",
+    "personality": "Vishvamitra",
+    "original_claim_text": "One securely text-grounded aspect of Vishvamitra's teaching role is transmission of disciplined sacred knowledge from teacher to student, exemplified by Bala and Atibala.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.22 portrays Vishvamitra teaching Rama the Bala and Atibala formulae, followed by Rama performing duties toward his teacher.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.11–12, 20–22",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The passage directly supplies instruction and pupil duties; the abstract modern language was narrowed.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "78d42ac5-b62c-42cb-bf06-01f5ca27490f",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Rigveda 3.62.10 remains directly accessible through the Government of India’s Vedic Heritage Portal with preserved text and recitation resources. Contemporary relevance can therefore be described in terms of continued access to the mantra without inventing popularity statistics.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The Government of India’s Vedic Heritage Portal provides the text of Rigveda 3.62.10 and links to recitation material.",
+    "epistemic_type": "MODERN_RECEPTION",
+    "evidence_references": [
+      {
+        "source_id": "c2d10c6c-8da2-4f5a-becf-93b160eb267b",
+        "url": "https://vedicheritage.gov.in/hi/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-062/",
+        "locator": "Rigveda 3.62.10, portal lines 407–409, 427",
+        "source_authority": "Government of India Vedic Heritage Portal, Rigveda 3.62 Sanskrit text and seer metadata; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The portal supplies the verse and a recitation-video link; the claim confines relevance to access. Coordinator removed the unsupported general conclusion about contemporary relevance.",
+    "original_source_inspected": true,
+    "material_limitation": "Traditional rishi attribution and hymn text; not independent proof of single-person authorship.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "79805d3f-c103-4e40-8ded-72dfb49bc7ba",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Ramanujan entered Trinity College, Cambridge, in 1914 and developed his work with Hardy and Littlewood's guidance.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramanujan entered Trinity College, Cambridge, in 1914 and developed his work with Hardy and Littlewood's guidance.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF p. 1, lines 42–47; compare MacTutor lines 55–64",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ore gives Trinity entry in 1914 and work under Hardy and Littlewood.",
+    "original_source_inspected": true,
+    "material_limitation": "Guidance is a scholarly description; collaboration was not a simple teacher-student relation.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "79dc18aa-e604-40bf-a754-553f10851aa9",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Bala Kanda attributes extraordinary effects to Bala and Atibala—protection from fatigue, hunger, thirst, and attack while asleep—within the story-world.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In Vishvamitra’s speech in Bala Kanda 1.22, Bala and Atibala are said to protect Rama from fatigue and attacks while asleep, and to avert hunger and thirst. These are claims within the epic.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.12–13, 17",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Direct speech presents extraordinary effects; wording attributes them to the text.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "7ac5f497-5e28-447d-9141-3aedfa8d6db1",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "NDDB states three linked objectives: more milk, higher rural incomes and reasonable consumer prices; each depended on a functioning supply chain rather than output alone.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "NDDB states Operation Flood’s three objectives as increasing milk production, augmenting rural incomes and providing reasonable prices for consumers.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 237–245",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The three objectives are direct; the original supply-chain dependence is analysis beyond this passage.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "7ba43136-895b-4e78-a5a6-74ca4b738d75",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Bala Kanda explicitly places Rama in a student relationship to Vishvamitra when he receives Bala and Atibala and performs guru duties afterward.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Bala Kanda explicitly places Rama in a student relationship to Vishvamitra when he receives Bala and Atibala and performs guru duties afterward.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.20–22",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Rama receives the teachings and performs duties to Vishvamitra as guru.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "7cedb480-e757-4823-96c9-f003c9d19388",
+    "personality": "M. S. Subbulakshmi",
+    "original_claim_text": "The Magsaysay citation praised her tonal and rhythmic control and said listeners unfamiliar with Indian melodic music responded to her singing; the musical evaluation is institutional praise.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Magsaysay citation praised her tonal and rhythmic control and said listeners unfamiliar with Indian melodic music responded to her singing; the musical evaluation is institutional praise.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+        "locator": "lines 36–41",
+        "source_id": "6d26dd86-6c07-4a2f-81b8-35ffb661fc21",
+        "source_authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The award citation contains precisely this musical praise and audience assessment; it is attributed to the award body.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "7fa33007-0541-4a59-9d57-5793514b1cf4",
+    "personality": "M. S. Subbulakshmi",
+    "original_claim_text": "The Magsaysay Foundation identified both Edinburgh and the United Nations as landmarks of her performances abroad, evidence that international visibility had become part of her public significance by 1974.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The Magsaysay Foundation listed performances at the Edinburgh International Music Festival and the United Nations among Subbulakshmi’s appearances abroad.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+        "locator": "lines 40–41",
+        "source_id": "6d26dd86-6c07-4a2f-81b8-35ffb661fc21",
+        "source_authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Both venues are stated. The original inference about public significance by 1974 is broader than the passage directly establishes.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "84257218-4123-41c7-87b5-9267adafa75a",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "The programme used village producer societies for milk procurement and member services, with processing, marketing and management coordinated at higher tiers.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "NDDB describes village producer cooperatives as procuring milk and providing inputs and services, with management and technology made available to members.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 237–238",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The passage directly supports village procurement and services; higher-tier processing detail needs a separate source.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "86985b26-e282-476e-ad16-3ef4594e7eef",
+    "personality": "C. V. Raman",
+    "original_claim_text": "Raman founded the Indian Academy of Sciences in 1934.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Raman founded the Indian Academy of Sciences in 1934.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "12a36918-2787-41d3-8457-6d2eae056465",
+        "url": "https://www.rri.res.in/about/overview",
+        "locator": "lines 18–20",
+        "source_authority": "Raman Research Institute official institutional overview, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The institute’s official overview states that Raman founded the Indian Academy of Sciences in 1934.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional retrospective; Academy charter not separately inspected.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "86c3e492-11eb-4ce7-854a-435f7fa80d47",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam credited Satish Dhawan with appointing him SLV project director and supporting him through its first failed orbital attempt.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam credited Satish Dhawan with appointing him SLV project director and supporting him through its first failed orbital attempt.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "bfe4fc55-cb3b-4d50-848d-50baf547fd95",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/questionnaire-foreign-journalist",
+        "locator": "lines 41–43",
+        "source_authority": "A. P. J. Abdul Kalam, 2003 interview answers hosted by President of India, first-person primary testimony, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Kalam directly says Dhawan appointed him project director in 1973 and describes the initial unsuccessful launch.",
+    "original_source_inspected": true,
+    "material_limitation": "This is Kalam’s first-person recollection.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "898869f8-5cf0-4cff-9fab-cb3ce2c3576e",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "Tagore criticized the nation when it became an organized political and commercial machine that subordinated human relationships to collective power.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Tagore criticized the nation when it became an organized political and commercial machine that subordinated human relationships to collective power.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.gutenberg.org/files/40766/40766-h/40766-h.htm",
+        "locator": "lines 201–208, 227–234",
+        "source_id": "5cce5617-0320-4efd-b9cd-87b2750768c5",
+        "source_authority": "Project Gutenberg edition of Tagore, Nationalism, 1917 original text; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "In the original lecture collection Tagore criticizes nationalism as a political and commercial machine at odds with humane obligations.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "89c8e168-6c9f-4a0b-8127-90585badb707",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "Open-air teaching at Santiniketan expressed Tagore’s effort to reconnect learning with nature and shared life rather than confine it to rote classroom instruction.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Visva-Bharati’s history says Tagore’s Santiniketan school held classes outdoors under trees as part of an education linking people and nature.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://www.visvabharati.ac.in/home/history_land_page/",
+        "locator": "lines 340–342",
+        "source_id": "55a1ae10-2af1-4020-bc48-db13546ecfe6",
+        "source_authority": "Visva-Bharati institutional history; founding institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Outdoor classes and nature connection are direct; the contrast with rote instruction is not stated there.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "8dcdae75-73b6-4e59-b9ac-f746aed60a98",
+    "personality": "Satyajit Ray",
+    "original_claim_text": "Ray recalled that directing Pather Panchali revealed his ability to lead a production and increased his confidence from film to film.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ray recalled that directing Pather Panchali revealed his ability to lead a production and increased his confidence from film to film.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.bfi.org.uk/sight-and-sound/interviews/satyajit-ray-moral-attitude",
+        "locator": "lines 34–37",
+        "source_id": "ee63d0c2-3d55-4afc-96eb-d5afc5287ddf",
+        "source_authority": "BFI / Sight and Sound edited interview compiled by Andrew Robinson from conversations with Ray; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ray recounts his growth in directing confidence starting with Pather Panchali.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "8e7bea8b-3659-4a65-9118-ceaf8e12da55",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Rigveda 3.1 identifies Gathina Vishvamitra as the rishi of the hymn to Agni.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Rigveda 3.1 identifies Gathina Vishvamitra as the rishi of the hymn to Agni.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "5bef2a36-07ca-4a1f-91a1-1454275e2dfa",
+        "url": "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/mandal-03/",
+        "locator": "Rigveda Rigveda 3.1 seer metadata, portal line 414",
+        "source_authority": "Government of India Vedic Heritage Portal, Rigveda 3.1 Sanskrit text and seer metadata; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The portal explicitly identifies Gathina Vishvamitra as seer and Agni as deity. This is a traditional rishi attribution, not modern authorship proof.",
+    "original_source_inspected": true,
+    "material_limitation": "Traditional rishi attribution and hymn text; not independent proof of single-person authorship.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "8fff980e-0194-4bd6-b48b-a58038743fbd",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Hardy especially admired Ramanujan's insight into algebraic formulas and transformations of infinite series.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Hardy especially admired Ramanujan's insight into algebraic formulas and transformations of infinite series.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "ff146686-2ab5-4e47-957e-09be837c3ef7",
+        "url": "https://mathshistory.st-andrews.ac.uk/RS/ramanujan_rs.pdf",
+        "locator": "PDF p. 16, lines 669–678",
+        "source_authority": "G. H. Hardy, 1921 Royal Society obituary; contemporary collaborator testimony and embedded Ramanujan correspondence, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Hardy singles out Ramanujan’s insight into algebraic formulae and transformations of infinite series.",
+    "original_source_inspected": true,
+    "material_limitation": "Admiration is Hardy’s opinion, not an objective rank.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "9089927e-e956-4e71-8c00-c7732bf74a27",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Hardy noted that Ramanujan's work on the Rogers–Ramanujan identities should share credit with L. J. Rogers, who had earlier results.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Hardy noted that Ramanujan's work on the Rogers–Ramanujan identities should share credit with L. J. Rogers, who had earlier results.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "ff146686-2ab5-4e47-957e-09be837c3ef7",
+        "url": "https://mathshistory.st-andrews.ac.uk/RS/ramanujan_rs.pdf",
+        "locator": "PDF p. 15, lines 631–640",
+        "source_authority": "G. H. Hardy, 1921 Royal Society obituary; contemporary collaborator testimony and embedded Ramanujan correspondence, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Hardy praises the identities while assigning Rogers priority in this specific work.",
+    "original_source_inspected": true,
+    "material_limitation": "The claim is explicitly about Hardy’s judgment.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "921abb4e-69b7-4225-92ef-fddac41f8f66",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The Menaka episode is not just a seduction anecdote in Bala Kanda: the text emphasizes a ten-year lapse, Vishvamitra's later grief, recognition of interruption, and return to austerity.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.63 narrates a ten-year stay with Menaka, Vishvamitra’s regret over interrupted austerity, and his return to severe tapas.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "d39ddd21-67b7-4c7c-bfae-ea1f99918420",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga63/bala_63_prose.htm",
+        "locator": "Bala Kanda 1.63.4–16",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.63, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Removed the editorial phrase “not just a seduction anecdote”.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "9559d070-c4a4-4f00-81c1-271b2d20bc49",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The Rambha episode likewise presents the tension between great tapas and incomplete anger-control, followed by remorse and renewed self-discipline.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Rambha episode likewise presents the tension between great tapas and incomplete anger-control, followed by remorse and renewed self-discipline.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "8d1e7888-6577-4564-b935-96ed0ae1b902",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga64/balasans64.htm",
+        "locator": "Bala Kanda 1.64.11–17",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.64, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The sequence shows severe tapas, anger, remorse, and renewed self-discipline.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "95e35dcf-d4fa-4896-bc02-88d10f7fcc83",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Rigveda 3.1.21 uses the plural 'Vishvamitras' within the hymn, providing internal textual evidence that the Mandala 3 tradition can speak in family or collective terms rather than only as the voice of one individual.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Rigveda 3.1.21 uses the plural 'Vishvamitras' within the hymn, providing internal textual evidence that the Mandala 3 tradition can speak in family or collective terms rather than only as the voice of one individual.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "5bef2a36-07ca-4a1f-91a1-1454275e2dfa",
+        "url": "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/mandal-03/",
+        "locator": "Rigveda Rigveda 3.1.21, portal lines 453–456",
+        "source_authority": "Government of India Vedic Heritage Portal, Rigveda 3.1 Sanskrit text and seer metadata; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Verse 21 uses the plural Vishvamitras; the claim draws a cautious implication about family/collective usage.",
+    "original_source_inspected": true,
+    "material_limitation": "Traditional rishi attribution and hymn text; not independent proof of single-person authorship.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "97b951fd-6fff-41c1-9751-fa7569aab009",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "As a student, Ramanujan studied G. S. Carr's compendium of mathematical results, an important resource for his independent mathematical learning.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "As a student, Ramanujan studied G. S. Carr's compendium of mathematical results, an important resource for his independent mathematical learning.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+        "locator": "lines 26–29; compare Hardy PDF p. 1, lines 15–20",
+        "source_authority": "MacTutor History of Mathematics, University of St Andrews, J. J. O’Connor and E. F. Robertson, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "MacTutor identifies Carr’s Synopsis as a basis of independent study; Hardy quotes a schoolfellow describing its use.",
+    "original_source_inspected": true,
+    "material_limitation": "The recollection in Hardy is mediated through Seshu Aiyar, so corroboration is partly dependent.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "99acbe03-a70c-4ad2-ba5c-4b099da1e780",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The epic portrayal treats mastery of anger as part of Vishvamitra's ascetic project, not merely acquisition of supernatural power.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The epic portrayal treats mastery of anger as part of Vishvamitra's ascetic project, not merely acquisition of supernatural power.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "8d1e7888-6577-4564-b935-96ed0ae1b902",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga64/balasans64.htm",
+        "locator": "Bala Kanda 1.64.11–17",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.64, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The narrative expressly treats anger as undoing ascetic merit.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "9a09447e-6d59-408b-b117-44b6d1cf38bd",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "In 1918 Ramanujan became a Fellow of Trinity College as well as a Fellow of the Royal Society.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In 1918 Ramanujan became a Fellow of Trinity College as well as a Fellow of the Royal Society.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF p. 2, lines 72–75; compare MacTutor lines 71–72",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ore lists both 1918 fellowships, and MacTutor gives Royal Society and Trinity dates.",
+    "original_source_inspected": true,
+    "material_limitation": "Distinct election dates are omitted from the claim.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "9ea370a1-5ea4-49b3-a42f-a4b4a3fcb985",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Rigveda 3.62 attributes verses 1-15 to Gathina Vishvamitra; the Savitr section includes the celebrated 3.62.10 mantra.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The Government of India’s Vedic Heritage Portal gives Gathina Vishvamitra as a traditional rishi attribution for Rigveda 3.62.10, the Savitr mantra.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "c2d10c6c-8da2-4f5a-becf-93b160eb267b",
+        "url": "https://vedicheritage.gov.in/hi/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-062/",
+        "locator": "Rigveda 3.62 seer/deity metadata, portal line 414; verse 10 line 427",
+        "source_authority": "Government of India Vedic Heritage Portal, Rigveda 3.62 Sanskrit text and seer metadata; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Portal metadata identifies Gathina Vishvamitra and Savitar for 10–12; other verses have alternatives. Coordinator narrowed the wording because the source does not assign all verses 1–15 exclusively to him.",
+    "original_source_inspected": true,
+    "material_limitation": "Traditional rishi attribution and hymn text; not independent proof of single-person authorship.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a0fbf8c8-5cc6-4ae6-8cff-85a27b4b54ef",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam received the Padma Bhushan, Padma Vibhushan, and Bharat Ratna, reflecting recognition before his presidency.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Kalam received the Padma Bhushan in 1981, Padma Vibhushan in 1990, and Bharat Ratna in 1997.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+        "locator": "line 23",
+        "source_authority": "President of India, official profile provided by the President’s Secretariat, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The profile gives all three awards with dates; the phrase about what they reflect was interpretive.",
+    "original_source_inspected": true,
+    "material_limitation": "Award record is taken from an official institutional biography.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a14fa6d2-5519-4606-9b3b-56cc3ac61dff",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Self-control is presented as an achieved goal rather than an effortless starting trait: the Rambha episode explicitly shows anger as a failure that prompts renewed discipline.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Self-control is presented as an achieved goal rather than an effortless starting trait: the Rambha episode explicitly shows anger as a failure that prompts renewed discipline.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "8d1e7888-6577-4564-b935-96ed0ae1b902",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga64/balasans64.htm",
+        "locator": "Bala Kanda 1.64.11–17",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.64, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Anger and subsequent renewed discipline are explicit.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a31cf40f-2154-4697-8812-393814511f49",
+    "personality": "M. S. Subbulakshmi",
+    "original_claim_text": "In April 1944 she gave five benefit performances for the Kasturba Gandhi Memorial Fund, an early organized charitable series rather than a single symbolic concert.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The Magsaysay Foundation states that Subbulakshmi gave five benefit performances for the Kasturba Gandhi Memorial Fund in April 1944.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+        "locator": "lines 34, 42",
+        "source_id": "6d26dd86-6c07-4a2f-81b8-35ffb661fc21",
+        "source_authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The foundation gives number, date, and beneficiary; the original characterization as an early organized series is unnecessary.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a59a0330-ecda-4812-a816-6d34a36ecd7c",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "NDDB records growth in women members and women’s dairy societies during Phase III; membership growth alone does not show equal control over income or governance.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "NDDB records growth in women members and women’s dairy societies during Phase III; membership growth alone does not show equal control over income or governance.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 266–270",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "NDDB reports increased participation by women in Phase III; the claim explicitly avoids an unsupported equality inference.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a5bc4238-53c0-4193-9c98-ecef855ed2f0",
+    "personality": "C. V. Raman",
+    "original_claim_text": "Raman became the first Indian Director of the Indian Institute of Science in 1933.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Raman became the first Indian Director of the Indian Institute of Science in 1933.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "d7691143-40b3-4088-8ddb-90caadebea0b",
+        "url": "https://iisc.ac.in/wp-content/uploads/2018/03/CV_RAMAN_AND_PHYSICS_AT_IISc.pdf",
+        "locator": "PDF p. 1, lines 3–7",
+        "source_authority": "Indian Institute of Science official institutional history leaflet, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The IISc leaflet names Raman first Indian director and dates entry to 31 March 1933.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional retrospective.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a73ab751-999c-433e-a8f0-61888f0c723a",
+    "personality": "Satyajit Ray",
+    "original_claim_text": "West Bengal government support helped complete Pather Panchali, showing that the celebrated independent production also depended on public finance.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "West Bengal government support helped complete Pather Panchali, showing that the celebrated independent production also depended on public finance.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://satyajitray.org/making-of-pather-panchali/",
+        "locator": "lines 28–34",
+        "source_id": "9b0e27ff-f724-407c-872f-f199da70334f",
+        "source_authority": "SatyajitRay.org production account, using Ray recollections and editorial narration; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The account directly describes West Bengal government funding after other financing failed.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ad9ccf96-0f14-4e64-aeab-50cefad8edd6",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Ramanujan's 1911 paper on Bernoulli numbers in the Journal of the Indian Mathematical Society brought wider notice to his mathematical work.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramanujan's 1911 paper on Bernoulli numbers in the Journal of the Indian Mathematical Society brought wider notice to his mathematical work.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+        "locator": "lines 35–36; compare Hardy PDF p. 2, lines 48–54",
+        "source_authority": "MacTutor History of Mathematics, University of St Andrews, J. J. O’Connor and E. F. Robertson, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "MacTutor links the 1911 Bernoulli paper to growing recognition; Hardy confirms the publication and describes its editorial reception.",
+    "original_source_inspected": true,
+    "material_limitation": "The degree of wider notice is a scholarly assessment.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b02a5de3-ef98-48c0-9bfd-921ddb75677b",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "Tagore warned Japan and other Asian societies against imitating the aggressive nationalism through which Western powers had dominated others.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Tagore warned Japan and other Asian societies against imitating the aggressive nationalism through which Western powers had dominated others.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.gutenberg.org/files/40766/40766-h/40766-h.htm",
+        "locator": "lines 227–234, 362–367",
+        "source_id": "5cce5617-0320-4efd-b9cd-87b2750768c5",
+        "source_authority": "Project Gutenberg edition of Tagore, Nationalism, 1917 original text; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Tagore explicitly warns Japan against adopting Western organized nationalism and aggression.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b070cd29-c722-4478-b2ce-56ff7085e386",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Bala and Atibala are presented as disciplines transmitted by Vishvamitra to Rama, and the text links their efficacy to practice and ascetic cultivation.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.22 presents Bala and Atibala as teachings Vishvamitra transmits to Rama and says their practice and ascetic cultivation produce effects within the story.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.11–12, 19–22",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Narrowed from general disciplines to the text’s teaching scene.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b21e74fa-ba31-4c2a-9d96-ebf9edca2052",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "Visva-Bharati’s history presents the early school as a conscious alternative to colonial education, while its actual development also involved adaptation and experimentation.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Visva-Bharati’s history characterizes Tagore’s early Santiniketan school as a conscious departure from British-introduced education in India.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://www.visvabharati.ac.in/home/history_land_page/",
+        "locator": "lines 340–342",
+        "source_id": "55a1ae10-2af1-4020-bc48-db13546ecfe6",
+        "source_authority": "Visva-Bharati institutional history; founding institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The institutional characterization is direct; later adaptation and experimentation are not established on this page.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b304d59a-03af-4ac4-8d8a-ec42ade9b652",
+    "personality": "C. V. Raman",
+    "original_claim_text": "Raman established IISc's Department of Physics in 1933.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Raman established IISc's Department of Physics in 1933.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "d7691143-40b3-4088-8ddb-90caadebea0b",
+        "url": "https://iisc.ac.in/wp-content/uploads/2018/03/CV_RAMAN_AND_PHYSICS_AT_IISc.pdf",
+        "locator": "PDF p. 1, lines 3–7",
+        "source_authority": "Indian Institute of Science official institutional history leaflet, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The IISc leaflet expressly says he established the Department of Physics in 1933.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional retrospective; departmental founding records not inspected.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b4512f78-8b4e-4916-b9ab-7bd53a5b5fdb",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "Operation Flood’s first phase, 1970–80, used proceeds from donated EEC milk powder and butter oil, via the World Food Programme, to finance Indian dairy infrastructure.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "NDDB states that Phase I of Operation Flood (1970–80) was financed by sales of EEC skimmed milk powder and butter oil donated through the World Food Programme.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 252–257",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The primary programme page directly supports financing and dates; the original reference to Indian infrastructure is too broad here.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b49afa73-c614-4127-bf6a-694ecadc1ed8",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "Tagore opened the Brahmacharyasrama school at Santiniketan in December 1901 with only five students.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Tagore opened the Brahmacharyasrama school at Santiniketan in December 1901 with only five students.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.visvabharati.ac.in/home/history_land_page/",
+        "locator": "line 340",
+        "source_id": "55a1ae10-2af1-4020-bc48-db13546ecfe6",
+        "source_authority": "Visva-Bharati institutional history; founding institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The institution dates the formal start to December 22, 1901 and reports no more than five students.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b531170b-8ea9-4879-9baa-61b1c7aae36d",
+    "personality": "M. S. Subbulakshmi",
+    "original_claim_text": "The 1974 Ramon Magsaysay Award recognized her public service through devotional performance and sustained benefit concerts, not only her standing as a virtuoso.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The 1974 Ramon Magsaysay Award recognized her public service through devotional performance and sustained benefit concerts, not only her standing as a virtuoso.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+        "locator": "lines 42–44",
+        "source_id": "6d26dd86-6c07-4a2f-81b8-35ffb661fc21",
+        "source_authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The foundation’s award citation explicitly recognizes devotional song and support of public causes.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b6948da1-9a8d-4be6-abf9-b618ccccbcd9",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Bala Kanda 1.63 presents Maharshi as an intermediate title in Vishvamitra's progression: after a thousand-year austerity cycle the gods approach, yet the narrative continues because his goal is not complete.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.63 presents Maharshi as an intermediate title in Vishvamitra's progression: after a thousand-year austerity cycle the gods approach, yet the narrative continues because his goal is not complete.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "d39ddd21-67b7-4c7c-bfae-ea1f99918420",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga63/bala_63_prose.htm",
+        "locator": "Bala Kanda 1.63.16–20",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.63, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Maharshi is granted, Vishvamitra seeks Brahmarshi, and Brahma says further effort is needed.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b8f844d3-900f-43b3-9f59-6000e38a86ec",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Lakshmana accompanies Rama under Vishvamitra's guidance throughout the same journey, although the transmission scene addresses Rama most directly.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Lakshmana accompanies Rama under Vishvamitra's guidance throughout the same journey, although the transmission scene addresses Rama most directly.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.6–10, 20–23",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Lakshmana accompanies Rama; the direct teaching speech addresses Rama.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ba7c9fc4-5142-421c-8633-4e8f0e3996b5",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam recalled schooling at Schwartz High School and study at St Joseph's College before his engineering training.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Kalam recalled study at Schwartz High School and St Joseph’s College.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "1125b617-27c3-4121-8d9d-c587ad01e804",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-st-aloysius-college",
+        "locator": "lines 18–20",
+        "source_authority": "A. P. J. Abdul Kalam, official 28 March 2003 St Aloysius College address, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The speech confirms the two institutions but does not itself establish the temporal relation to later engineering training.",
+    "original_source_inspected": true,
+    "material_limitation": "This is Kalam’s retrospective recollection.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "be1f3367-0c4e-4b1a-9fb9-df33de5cb139",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "Tagore directly attacked imperial exploitation, so his criticism of nationalism cannot reasonably be read as approval of British colonial rule.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In Nationalism, Tagore criticized British colonial domination and suppression of Indian industry while also criticizing narrow nationalism.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.gutenberg.org/files/40766/40766-h/40766-h.htm",
+        "locator": "lines 143–167, 527",
+        "source_id": "5cce5617-0320-4efd-b9cd-87b2750768c5",
+        "source_authority": "Project Gutenberg edition of Tagore, Nationalism, 1917 original text; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The text explicitly criticizes colonial conduct; the original claim’s interpretation of what cannot reasonably be read from it is unnecessary.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "be47b43a-987f-4369-a61e-d7757b42d0ed",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Hans Rademacher later established an exact convergent formula extending the Hardy–Ramanujan partition work.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Ore writes that Rademacher later established an exact expression for p(n) extending the Hardy–Ramanujan work.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF p. 2, lines 66–68",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ore says an exact expression; the original’s specific convergent-formula characterization is not stated here.",
+    "original_source_inspected": true,
+    "material_limitation": "The mathematical form should be checked against Rademacher’s own publication before restoring greater specificity.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "be9c9822-362d-48f6-9964-38c02d26b3c6",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The Rambha episode should not be reduced to a story of supernatural cursing; its narrative function also includes Vishvamitra's recognition that anger has disrupted his ascetic goal.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.64 narrates Vishvamitra cursing Rambha, regretting his anger, and resolving not to succumb to anger again.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "8d1e7888-6577-4564-b935-96ed0ae1b902",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga64/balasans64.htm",
+        "locator": "Bala Kanda 1.64.11–17",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.64, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The chapter directly supports this sequence; “narrative function” was an interpretation.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "bf922fd9-48be-4064-8c41-eed5a28c9adc",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Bala Kanda 1.21 attributes to Vishvamitra knowledge of weapons unknown even to other divine and nonhuman beings; this is a statement inside Vasistha's epic speech and should be labeled accordingly.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In Vasistha’s speech in Bala Kanda 1.21, Vishvamitra is praised for knowledge of many astras and described as beyond the knowledge of gods, sages, and other beings. This is epic praise within Vasistha’s speech.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "9227358e-67a7-46f5-a873-bb5582ebb893",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga21/bala_21_prose.htm",
+        "locator": "Bala Kanda 1.21.11–12",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.21, Desiraju Hanumanta Rao prose English rendering; corresponding Sanskrit verse page also checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The verse praises his knowledge and says others cannot know him; it does not literally say that the astras are unknown to all those beings.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "c47b3514-30ca-41a2-80c4-e0c6a388fd14",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "Phase I linked 18 milksheds with Delhi, Mumbai, Kolkata and Chennai, creating large urban outlets for farmer-supplied milk.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Phase I linked 18 milksheds with Delhi, Mumbai, Kolkata and Chennai, creating large urban outlets for farmer-supplied milk.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 255–257",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "NDDB names 18 milksheds and the four metropolitan markets for Phase I.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "c513228c-6a62-4646-815a-ef6a96b0c8f2",
+    "personality": "C. V. Raman",
+    "original_claim_text": "Raman founded the Raman Research Institute in 1948 after retiring from IISc.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Raman founded the Raman Research Institute in 1948 after retiring from IISc.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "12a36918-2787-41d3-8457-6d2eae056465",
+        "url": "https://www.rri.res.in/about/overview",
+        "locator": "lines 15–19",
+        "source_authority": "Raman Research Institute official institutional overview, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The institute’s overview identifies the 1948 founding after Raman’s IISc retirement.",
+    "original_source_inspected": true,
+    "material_limitation": "The source presents the institute’s founding perspective.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "cc16e922-aa9f-424f-8a38-93a1f236d2ee",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "He envisaged narrowing the rural–urban divide and improving access to water, energy, and education as measures of national development.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "He envisaged narrowing the rural–urban divide and improving access to water, energy, and education as measures of national development.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "c71e72cc-db1f-462b-9bb8-c313b07b825a",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-nation-ramparts-red-fort-new-delhi",
+        "locator": "lines 27–35",
+        "source_authority": "A. P. J. Abdul Kalam, official 11 May 2007 Red Fort address, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Kalam lists a smaller rural–urban divide and access to energy, water and education as components of his 2020 vision.",
+    "original_source_inspected": true,
+    "material_limitation": "The speech is evidence of a proposal, not completed development.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "cd5f243a-2303-4e8b-89c8-f4f8db25bf04",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "Kalam described work spanning rockets, target aircraft, hovercraft, missiles, and fighter-aircraft design across ISRO and DRDO.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Kalam described work spanning rockets, target aircraft, hovercraft, missiles, and fighter-aircraft design across ISRO and DRDO.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "bfe4fc55-cb3b-4d50-848d-50baf547fd95",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/questionnaire-foreign-journalist",
+        "locator": "line 41",
+        "source_authority": "A. P. J. Abdul Kalam, 2003 interview answers hosted by President of India, first-person primary testimony, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Kalam lists these technical areas in his own answer.",
+    "original_source_inspected": true,
+    "material_limitation": "The answer does not separate which employer was responsible for each project.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "cde8a2ea-9593-4a01-ad44-d58967d139c0",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Vishvamitra's weapon instruction to Rama includes how to neutralize or withdraw an astra after it has been invoked, so the teaching tradition represented in Bala Kanda values command over power rather than mere possession of power.",
+    "decision": "REMOVE FROM ACTIVE CORPUS",
+    "final_proposed_wording": "Vishvamitra's weapon instruction to Rama includes how to neutralize or withdraw an astra after it has been invoked, so the teaching tradition represented in Bala Kanda values command over power rather than mere possession of power.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b829b48c-8875-4cb2-802b-bcb274d48fa9",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga28/bala_28_prose.htm",
+        "locator": "Bala Kanda 1.28.1–5, prose lines 9–14",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.28, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Substance duplicates retained and more narrowly worded claim 2544eb75.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": "Substance duplicates retained and more narrowly worded claim 2544eb75."
+  },
+  {
+    "claim_id": "d0aa1e8b-a7e3-425a-bdd0-9d680b36836a",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Ramanujan's study of highly composite numbers established important properties of integers with exceptionally many divisors.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramanujan's study of highly composite numbers established important properties of integers with exceptionally many divisors.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "01ab2859-254b-4e42-906d-67421e81c72b",
+        "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+        "locator": "PDF p. 2, lines 57–60; compare Hardy PDF p. 15, lines 623–626",
+        "source_authority": "Øystein Ore, Complete Dictionary of Scientific Biography scholarly entry reproduced by MacTutor, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ore calls the highly composite numbers memoir important and Hardy describes its elementary analysis.",
+    "original_source_inspected": true,
+    "material_limitation": "Importance is an expert evaluation.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d1590d47-4e3e-401e-8ad7-d399d4ae7ac9",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Vasistha's speech to Dasharatha in Bala Kanda 1.21 portrays Vishvamitra as an expert in the full range of celestial weapons and even as capable, within the epic narrative, of generating new ones.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Vasistha's speech to Dasharatha in Bala Kanda 1.21 portrays Vishvamitra as an expert in the full range of celestial weapons and even as capable, within the epic narrative, of generating new ones.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "9227358e-67a7-46f5-a873-bb5582ebb893",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga21/bala_21_prose.htm",
+        "locator": "Bala Kanda 1.21.11–20",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.21, Desiraju Hanumanta Rao prose English rendering; corresponding Sanskrit verse page also checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Vasistha describes knowledge of astras and ability to generate new ones.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d5ca29df-8313-4800-9d7e-2fcf755eecba",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "NDDB reports 43,000 village cooperatives and 4.25 million producer members by 1985; these are programme records, not a count of all Indian dairy farmers.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "NDDB reports 43,000 village cooperatives and 4.25 million producer members by 1985; these are programme records, not a count of all Indian dairy farmers.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 260–263",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "NDDB gives both figures and the claim properly identifies them as programme counts.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d60c168d-8fb0-49b5-a88a-406e53292d33",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "From November 2001, Kalam pursued teaching and research at Anna University as professor of technology and societal transformation.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "From November 2001, Kalam pursued teaching and research at Anna University as professor of technology and societal transformation.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+        "locator": "line 21",
+        "source_authority": "President of India, official profile provided by the President’s Secretariat, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The profile dates the Anna University position to November 2001 and names its professorship.",
+    "original_source_inspected": true,
+    "material_limitation": "The official profile does not specify the exact end date.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d713e2b5-57c7-4a40-8210-2975436ee170",
+    "personality": "M. S. Subbulakshmi",
+    "original_claim_text": "In the same response she described music in devotional terms and acknowledged Chandrasekharendra Saraswathi of Kanchi; this records her stated religious understanding of performance.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In the same response she described music in devotional terms and acknowledged Chandrasekharendra Saraswathi of Kanchi; this records her stated religious understanding of performance.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+        "locator": "lines 49–53",
+        "source_id": "6d26dd86-6c07-4a2f-81b8-35ffb661fc21",
+        "source_authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Her recorded response describes devotional music and acknowledges the Sage of Kanchi as her own view.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d8de79e9-1a07-4460-8555-561ef7527852",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "NDDB describes a National Milk Grid linking producing areas to urban demand; the network reduced dependence on each village’s immediate market and moderated seasonal and regional price swings.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "NDDB states that the National Milk Grid linked producers with urban consumers and reduced seasonal and regional price variations.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 233–238",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The grid and price effect are the board’s statement; the original village-market framing adds an inference.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "e44892a1-aa0f-4a91-8ebc-6f4dcdd7b648",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "Tagore founded Visva-Bharati in 1921 by developing an international university around the Santiniketan school.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Tagore founded Visva-Bharati in 1921, building on his earlier Santiniketan school.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.visvabharati.ac.in/home/history_land_page/",
+        "locator": "lines 337–347",
+        "source_id": "55a1ae10-2af1-4020-bc48-db13546ecfe6",
+        "source_authority": "Visva-Bharati institutional history; founding institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The institution directly dates founding and describes the earlier school as the university’s nucleus.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "e95fea19-bcf4-49db-9c92-db5e87b14e7b",
+    "personality": "A. P. J. Abdul Kalam",
+    "original_claim_text": "After his ISRO career, Kalam led DRDO's Integrated Guided Missile Development Programme as its chief executive.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "After his ISRO career, Kalam led DRDO's Integrated Guided Missile Development Programme as its chief executive.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+        "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+        "locator": "lines 15–17",
+        "source_authority": "President of India, official profile provided by the President’s Secretariat, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The profile describes the move from roughly two decades at ISRO to chief executive of IGMDP at DRDO.",
+    "original_source_inspected": true,
+    "material_limitation": "The official profile emphasizes Kalam’s leadership; team contributions are not individually assessed.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ed302467-5986-4973-94d7-97b850ee8813",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Hardy recounted the 1729 taxicab exchange as his own memory of Ramanujan's unusual familiarity with numbers; it remains attributed testimony rather than an independently verified transcript.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Hardy recounted the 1729 taxicab exchange as his own memory of Ramanujan's unusual familiarity with numbers; it remains attributed testimony rather than an independently verified transcript.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "ff146686-2ab5-4e47-957e-09be837c3ef7",
+        "url": "https://mathshistory.st-andrews.ac.uk/RS/ramanujan_rs.pdf",
+        "locator": "PDF p. 16, lines 651–660",
+        "source_authority": "G. H. Hardy, 1921 Royal Society obituary; contemporary collaborator testimony and embedded Ramanujan correspondence, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Hardy presents the 1729 episode as his own memory, satisfying the claim’s careful attribution.",
+    "original_source_inspected": true,
+    "material_limitation": "No independent transcript of the exchange was inspected.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ed929c42-4dd7-4591-9aeb-16790a2bd94b",
+    "personality": "M. S. Subbulakshmi",
+    "original_claim_text": "The Magsaysay citation presents early discipline and willingness to learn as central to her formation; this is an award body’s interpretation of character.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Magsaysay citation presents early discipline and willingness to learn as central to her formation; this is an award body’s interpretation of character.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+        "locator": "lines 38–39",
+        "source_id": "6d26dd86-6c07-4a2f-81b8-35ffb661fc21",
+        "source_authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The citation ascribes these formative traits; the claim correctly frames them as the award body’s evaluation.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ef713392-697f-4e1a-854d-46c3b143d848",
+    "personality": "Vishvamitra",
+    "original_claim_text": "In Bala Kanda, Vishvamitra functions as Rama's teacher, transmitting Bala and Atibala and guiding Rama and Lakshmana during their journey.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In Bala Kanda, Vishvamitra functions as Rama's teacher, transmitting Bala and Atibala and guiding Rama and Lakshmana during their journey.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.6–12, 20–23",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The chapter portrays guidance and transmission to Rama on the joint journey.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ef8e6050-2e0b-459c-a0b5-3d5c9397712b",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "NDDB reports that Phase II expanded the network to 136 milksheds and 290 urban markets by the mid-1980s; this marks the move from a few major corridors toward national coverage.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "NDDB reports that Phase II expanded Operation Flood from 18 to 136 milksheds and reached 290 urban markets.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 260–263",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Both counts are direct, while the original broader national-coverage inference is not required.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "f0b7218a-596c-47fa-892c-ec9804ca5731",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "In Nationalism in India, Tagore argued that India’s central problem was social—how diverse communities could live together—rather than merely the transfer of state power.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In Nationalism in India, Tagore argued that India’s central problem was social—how diverse communities could live together—rather than merely the transfer of state power.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.gutenberg.org/files/40766/40766-h/40766-h.htm",
+        "locator": "lines 425–433, 511–517",
+        "source_id": "5cce5617-0320-4efd-b9cd-87b2750768c5",
+        "source_authority": "Project Gutenberg edition of Tagore, Nationalism, 1917 original text; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The India lecture explicitly gives the social problem priority over politics and discusses relations among communities.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "f1c7d0fc-3884-4062-9ec0-70388731a6f7",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "Visva-Bharati became a central university and institution of national importance in 1951, extending Tagore’s educational experiment into a durable public institution.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Visva-Bharati became a central university and institution of national importance in 1951, extending Tagore’s educational experiment into a durable public institution.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.visvabharati.ac.in/home/history_land_page/",
+        "locator": "line 347",
+        "source_id": "55a1ae10-2af1-4020-bc48-db13546ecfe6",
+        "source_authority": "Visva-Bharati institutional history; founding institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The institution directly states the 1951 parliamentary designation.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "fa02e01d-7471-4263-9266-599ac65ce5bc",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Without a university mathematics education or regular access to current research, Ramanujan continued developing ideas independently.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Without a university mathematics education or regular access to current research, Ramanujan continued developing ideas independently.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+        "locator": "lines 28–34; compare Hardy PDF pp. 2, 10, lines 86–95, 434–441",
+        "source_authority": "MacTutor History of Mathematics, University of St Andrews, J. J. O’Connor and E. F. Robertson, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "MacTutor documents failed degree examinations and independent work; Ramanujan’s letter and Hardy’s assessment confirm limited conventional training.",
+    "original_source_inspected": true,
+    "material_limitation": "Regular access to current literature cannot be precisely quantified from these sources; the claim says only that it was lacking.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "fc2bd190-62fb-4dfc-8530-716df5df36e8",
+    "personality": "C. V. Raman",
+    "original_claim_text": "Raman directed the Raman Research Institute and pursued research there until 1970.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Raman directed the Raman Research Institute and pursued research there until 1970.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "12a36918-2787-41d3-8457-6d2eae056465",
+        "url": "https://www.rri.res.in/about/overview",
+        "locator": "lines 15–17",
+        "source_authority": "Raman Research Institute official institutional overview, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The institute states Raman remained its director and carried on research until his death in 1970.",
+    "original_source_inspected": true,
+    "material_limitation": "The source does not detail each research project.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "fd263fc9-4a9c-43be-b27a-c8fba87c8e1f",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "The University of Madras awarded Ramanujan a two-year scholarship in 1913, enabling him to pursue research.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The University of Madras awarded Ramanujan a two-year scholarship in 1913, enabling him to pursue research.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+        "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+        "locator": "lines 55–58; compare Hardy PDF p. 2, lines 65–75",
+        "source_authority": "MacTutor History of Mathematics, University of St Andrews, J. J. O’Connor and E. F. Robertson, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "MacTutor gives a two-year 1913 scholarship; Hardy describes a two-year research studentship sponsored after mathematical advocacy.",
+    "original_source_inspected": true,
+    "material_limitation": "The separate accounts agree on the award, but use different administrative terms.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ff8c6a25-6dc2-4162-89f6-74cf137974fb",
+    "personality": "Srinivasa Ramanujan",
+    "original_claim_text": "Hardy judged that some of Ramanujan's early prime-number results were false, illustrating the limits of intuition without rigorous proof.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Hardy judged that some of Ramanujan's early prime-number results were false, illustrating the limits of intuition without rigorous proof.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "ff146686-2ab5-4e47-957e-09be837c3ef7",
+        "url": "https://mathshistory.st-andrews.ac.uk/RS/ramanujan_rs.pdf",
+        "locator": "PDF p. 4, lines 154–176; PDF p. 11, lines 434–452",
+        "source_authority": "G. H. Hardy, 1921 Royal Society obituary; contemporary collaborator testimony and embedded Ramanujan correspondence, inspected 2026-10-19",
+        "independence_assessment": "One directly inspected work; supporting contemporary or scholarly corroboration is identified in the rationale where checked. Repetition of the same underlying account is not counted as independent evidence.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Hardy explicitly judges several early prime-number results wrong and explains the mathematical issue.",
+    "original_source_inspected": true,
+    "material_limitation": "The mathematical assessment is Hardy’s and is not extended to all Ramanujan results.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ffcc8e6e-758f-4c3b-9a4a-e27c98ac2b53",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Vasistha's reassurance to Dasharatha treats Vishvamitra as sufficiently capable to protect and advance Rama even before Rama has demonstrated martial expertise, revealing recognized trust in Vishvamitra as preceptor.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Vasistha's reassurance to Dasharatha treats Vishvamitra as sufficiently capable to protect and advance Rama even before Rama has demonstrated martial expertise, revealing recognized trust in Vishvamitra as preceptor.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "9227358e-67a7-46f5-a873-bb5582ebb893",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga21/bala_21_prose.htm",
+        "locator": "Bala Kanda 1.21.9, 20–22",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.21, Desiraju Hanumanta Rao prose English rendering; corresponding Sanskrit verse page also checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Vasistha explicitly says Rama is safe whether trained or untrained and persuades Dasharatha.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  }
+]

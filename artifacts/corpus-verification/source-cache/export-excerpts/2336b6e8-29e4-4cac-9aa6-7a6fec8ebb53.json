@@ -1,0 +1,53 @@
+{
+  "source_id": "2336b6e8-29e4-4cac-9aa6-7a6fec8ebb53",
+  "source": {
+    "author": "Shashank Shah",
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Shashank Shah. Corporate Social Responsibility: A Way of Life at the Tata Group. Journal of Human Values, Sage. https://journals.sagepub.com/doi/10.1177/0971685813515591",
+    "original_work_identity": {},
+    "publication_year": 2014,
+    "publisher_or_institution": "Journal of Human Values, Sage",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Corporate Social Responsibility: A Way of Life at the Tata Group",
+    "url": "https://journals.sagepub.com/doi/10.1177/0971685813515591"
+  },
+  "claim_ids": [
+    "a66dc0a7-1997-40a9-a1f2-d1bde78795c8",
+    "c3cd63db-ed4a-4390-8490-4c3924733d1f",
+    "d0036635-b22c-4354-a174-950c3665bc45"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1811a9ec-7497-4c66-9cf3-927ca33e7f78",
+      "locator": "operating companies and philanthropic trusts",
+      "text_sha256": "62f823084caf3e11335628441e1bee5188019e79337be7327e063ced490ab5de",
+      "excerpt_preview": "cholarship on Tata corporate responsibility describes a structure in which operating companies and philanthropic trusts are institutionally linked but distinct.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "1c6977e2-ca77-4e56-8e32-8fe8d626fdc5",
+      "locator": "cannot be assigned to one chairman",
+      "text_sha256": "df48c942e612333736b4a4592abe89415a7adaa7f99563d504d52c41a17223a0",
+      "excerpt_preview": "Tata and continued after him, so philanthropic outcomes cannot be assigned to one chairman.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6adc1da1-b842-4dcd-9b59-4046bb409c27",
+      "locator": "IISc, TIFR and TISS",
+      "text_sha256": "2c3eff16ab88eb4f420c5200e4a9ffa66c84ccfe810be53330a9169062e31aa3",
+      "excerpt_preview": "It discusses long-lived support for education, science, health and social development, including IISc, TIFR and TISS.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

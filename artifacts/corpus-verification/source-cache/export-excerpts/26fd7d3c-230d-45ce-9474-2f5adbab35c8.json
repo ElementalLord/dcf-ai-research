@@ -1,0 +1,36 @@
+{
+  "source_id": "26fd7d3c-230d-45ce-9474-2f5adbab35c8",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_kind": "Temple inscription recording ritual supply",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Brihadisvara Temple: Inscription No. 94. Indira Gandhi National Centre for the Arts. https://ignca.gov.in/brhadisvaratemple/VIMAN/INSCRIPTIONS/94.html",
+    "original_work_identity": {},
+    "publication_year": 1014,
+    "publisher_or_institution": "Indira Gandhi National Centre for the Arts",
+    "rights_or_access_note": "Short documented research excerpts only; contemporary inscriptions, later chronicle tradition and modern scholarship are kept distinct.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Brihadisvara Temple: Inscription No. 94",
+    "url": "https://ignca.gov.in/brhadisvaratemple/VIMAN/INSCRIPTIONS/94.html"
+  },
+  "claim_ids": [
+    "000c02ac-e342-4aa4-b023-86ab30590f27",
+    "eb2a4863-deee-4f17-bd5f-1aab0d5760b0"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1a5ebfb9-af84-401e-b6df-6cfa531eab74",
+      "locator": "supply ghee for lamps",
+      "text_sha256": "fa37a01e18883954932a050affc07a7e578012f618240beeab40fd957ae6d65f",
+      "excerpt_preview": "t contains a list of shepherds who had to supply ghee for lamps to the Rajarajesvara temple.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

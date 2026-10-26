@@ -1,0 +1,73 @@
+{
+  "source_id": "f9392019-8e73-464e-9356-e4f12a1a634a",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Leading the Tata Group: The Ratan Tata Years. Harvard Business School case distributed by university teaching repositories. https://management.web.uniroma1.it/sites/default/files/Leading%20The%20TATA%20Group.pdf",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Harvard Business School case distributed by university teaching repositories",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Leading the Tata Group: The Ratan Tata Years",
+    "url": "https://management.web.uniroma1.it/sites/default/files/Leading%20The%20TATA%20Group.pdf"
+  },
+  "claim_ids": [
+    "13e2d794-1461-4dce-924b-b68dc5d887e6",
+    "42752742-f9e2-44a0-948a-191f969b4ead",
+    "4d089838-ef54-460d-aa7b-3a97d3d3a642",
+    "57ef125b-4279-46b7-bebe-5c8efec5b6c2",
+    "6d29c9c0-b3a7-46e5-b608-cc1ab6b09bf1",
+    "9b2daaa7-6f9b-40ed-a133-9f015bba744a",
+    "9bf8112a-3d98-4b96-9fe7-a72c5bdb1a50"
+  ],
+  "passages": [
+    {
+      "chunk_id": "08c4c7dc-8971-45c8-892c-996f3860caa3",
+      "locator": "small stakes in several affiliates",
+      "text_sha256": "2781e01a397eb14dc4493e0cf429aa1a7f4773d8b656a736eb51b11c200a434b",
+      "excerpt_preview": "Over time, dilution of Tata Sons holdings left the center with small stakes in several affiliates, complicating strategic control.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "3e758b64-cd4d-44d5-9563-61e2cca700cc",
+      "locator": "without completing a university degree",
+      "text_sha256": "7ab534f2f83a00314693d141e4c17c7daa3947c8b03eb739ba597486596fd910",
+      "excerpt_preview": "Tata joined the group in 1925 without completing a university degree and later governed a highly decentralized federation of companies.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4eb69c77-f012-4827-8151-2170d540517f",
+      "locator": "licensing and monopoly-regulation regime",
+      "text_sha256": "fea1b67f1562dfdb8ec6552aecac97f7db117e80abd884b72eb24aa80d24e99d",
+      "excerpt_preview": "India’s licensing and monopoly-regulation regime also shaped group decisions.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "bf5d06f9-3c7a-43e2-9348-3727c3179c7b",
+      "locator": "professional managers had considerable autonomy",
+      "text_sha256": "5620ab1ee35ce0b91d57ba9b948e5acfc74eb849236e39e084062e4bdc9a9a61",
+      "excerpt_preview": "Under his leadership, professional managers had considerable autonomy.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "cd9a58c7-3e3a-4fa1-8f8a-b62e96eefa8b",
+      "locator": "public policy constraints",
+      "text_sha256": "260ca457fab2c08a6bd62b4ed2a4e38ecb368c29e1ff2288b9e5449b746c0abf",
+      "excerpt_preview": "The case helps balance personal-leadership narratives with governance structure and public policy constraints.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

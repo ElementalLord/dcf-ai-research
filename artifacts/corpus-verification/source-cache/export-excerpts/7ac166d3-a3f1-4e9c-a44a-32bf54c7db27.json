@@ -1,0 +1,45 @@
+{
+  "source_id": "7ac166d3-a3f1-4e9c-a44a-32bf54c7db27",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.35, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 35 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga35/bala_35_prose.htm"
+  },
+  "claim_ids": [
+    "0d05d868-f451-4311-9b5b-8887ea9e7f80",
+    "104cc799-9d9f-4ef8-aa26-c71e1813c82d",
+    "a7dcdb04-4d15-494c-bb14-adfdb233a33c",
+    "bf2a8831-bb66-4186-98ca-4e0d51e4054a"
+  ],
+  "passages": [
+    {
+      "chunk_id": "c66709a7-d35e-4ec5-9dd5-3d0a4e99a306",
+      "locator": "Book I : Bala Kanda - The Youthful \nMajesties Sarga 35 in Prose",
+      "text_sha256": "f1f233eb754d989d41c12e05f176cb4d4673817cade8cb9886709dd960f2db33",
+      "excerpt_preview": "Motivated by Rama's words the eminent-sage Vishvamitra commenced to narrate about the  emergence and that way even about the progression of River Ganga.  \"The lordly mountain Himavan who is the greatest treasure trove of minerals, Rama, als",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e1e7a506-57fb-4b64-96bc-065eb978949e",
+      "locator": "Book I : Bala Kanda - The Youthful \nMajesties Sarga 35 in Prose",
+      "text_sha256": "3a99e2942e64b6eb6c5323da02ba27f864d057889b64e36e661943b59756bc3b",
+      "excerpt_preview": "Sage Vishvamitra along with others reach the banks of River Ganga and they make their  sojourn on that riverbank. There when Rama inquisitively enquires about River Ganga Vishvamitra narrates  the legend of Ganga, as to how she is taken to ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

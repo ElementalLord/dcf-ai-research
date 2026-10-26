@@ -1,0 +1,35 @@
+{
+  "source_id": "91083ab0-e904-4bc3-bba3-a172d04d54c6",
+  "source": {
+    "author": "Adi Shankaracharya (attributed)",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Adi Shankaracharya (attributed). Bhagavadgita Sankarabhasya. Sanskrit Documents. https://sanskritdocuments.org/doc_giitaa/gItAshAMkarabhAShya.pdf",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Sanskrit Documents",
+    "rights_or_access_note": "Publicly accessible source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Bhagavadgita Sankarabhasya",
+    "url": "https://sanskritdocuments.org/doc_giitaa/gItAshAMkarabhAShya.pdf"
+  },
+  "claim_ids": [
+    "28401dfa-7157-482a-a8be-74bca54e6111",
+    "d8f9f1b9-e3ca-4ca7-afa9-06fc0feb1af3"
+  ],
+  "passages": [
+    {
+      "chunk_id": "5ecd1ab7-405b-4f98-9299-c19f7d161698",
+      "locator": "Sanskrit Documents: text information",
+      "text_sha256": "243f4365565cde17ce973417266c82de7db496b39bda891b0f21048b6c610d88",
+      "excerpt_preview": "hrImadbhagavadgItAshA NkarabhAShyam ौीमगवीताशारभाम् Document Information Text title : Bhagavadgita Shankarabhashya File name : gItAshAMkarabhAShya.itx Category : gItA, giitaa, bhagavadgItA, shankarAchArya, bhAShya Location : doc_giitaa ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

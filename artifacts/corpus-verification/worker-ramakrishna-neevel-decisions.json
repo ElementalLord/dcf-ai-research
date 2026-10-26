@@ -1,0 +1,465 @@
+[
+  {
+    "claim_id": "1d1cf9df-2890-432d-b491-ed58fed8c516",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Scholars read his gospel of the truth of all religions as based less on the belief that all lead to one formless Absolute than on his own experience of divine power at work in every manifest form, in line with his saying yato mat, tato path (\"as many paths as points of view\").",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Scholars read his gospel of the truth of all religions as based less on the belief that all lead to one formless Absolute than on his own experience of divine power at work in every manifest form, in line with his saying yato mat, tato path (\"as many paths as points of view\").",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "d5a13923-a194-487e-8a9b-0d61f574d7e7",
+        "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "locator": "Teachings, lines 59–64",
+        "source_authority": "Walter G. Neevel Jr. and Brian A. Hatcher, Encyclopedia of Religion entry (1987; revised 2005); first entry only, lines 29–99",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The entry explicitly contrasts formless-absolute reduction with experience of divine power in forms and gives the yato mat saying.",
+    "original_source_inspected": true,
+    "material_limitation": "This verifies Neevel/Hatcher’s reading, not an exclusive interpretation shared by all scholars.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "3700d177-cf5d-49c9-8c4c-00d885205139",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Walter Neevel (1976), building on Heinrich Zimmer, argued that Ramakrishna's view of the ultimate is best understood as Tantric nondualism rather than Vedantic, which fits his concern with worldly activity as the Mother's playful power.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Walter Neevel (1976), building on Heinrich Zimmer, argued that Ramakrishna's view of the ultimate is best understood as Tantric nondualism rather than Vedantic, which fits his concern with worldly activity as the Mother's playful power.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "d5a13923-a194-487e-8a9b-0d61f574d7e7",
+        "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "locator": "Interpretations, lines 67–70",
+        "source_authority": "Walter G. Neevel Jr. and Brian A. Hatcher, Encyclopedia of Religion entry (1987; revised 2005); first entry only, lines 29–99",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Hatcher expressly describes Neevel’s 1976 argument building on Zimmer and its Tantric-nondual interpretation.",
+    "original_source_inspected": true,
+    "material_limitation": "The claim attributes Neevel’s position; it does not decide the disputed classification.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "3ee6fdc4-598f-49be-97c0-d6018fe62f94",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Scholars suggest Victorian-era stigma attached to Tantra made Vivekananda and the early disciples sensitive about foregrounding it, and that \"bourgeois prudery\" among devotees and Western interpreters led to aspects of his psychosexual life being denied or interpreted away.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Hatcher argues that late-Victorian stigma around Tantra made early disciples wary of emphasizing it, and that prudery among devotees and Western interpreters contributed to some aspects of Ramakrishna’s psychosexual life being denied or explained away.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "d5a13923-a194-487e-8a9b-0d61f574d7e7",
+        "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "locator": "Interpretations, lines 74–77",
+        "source_authority": "Walter G. Neevel Jr. and Brian A. Hatcher, Encyclopedia of Religion entry (1987; revised 2005); first entry only, lines 29–99",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The passage presents a scholarly explanation and uses cautious language. The revision names Hatcher and avoids asserting historical motives as settled fact.",
+    "original_source_inspected": true,
+    "material_limitation": "This is Hatcher’s contested interpretation of reception history, not direct evidence of each disciple’s motive.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "4fe46d59-f0d6-4c9e-9cd8-e7a04fc6dc72",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Ramakrishna left no written work; his conversations from 1882 to 1886 were recorded in Bengali by Mahendranath Gupta (\"M.\"), as the Kathamrita, which most English readers know through Nikhilananda's translation, The Gospel of Sri Ramakrishna.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramakrishna left no written work; his conversations from 1882 to 1886 were recorded in Bengali by Mahendranath Gupta (\"M.\"), as the Kathamrita, which most English readers know through Nikhilananda's translation, The Gospel of Sri Ramakrishna.",
+    "epistemic_type": "TEXTUAL_HISTORY",
+    "evidence_references": [
+      {
+        "source_id": "d5a13923-a194-487e-8a9b-0d61f574d7e7",
+        "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "locator": "Teachings, line 58",
+        "source_authority": "Walter G. Neevel Jr. and Brian A. Hatcher, Encyclopedia of Religion entry (1987; revised 2005); first entry only, lines 29–99",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      },
+      {
+        "source_id": null,
+        "url": "https://belurmath.org/sri-ramakrishna/",
+        "locator": "The Gospel of Sri Ramakrishna, lines 163–165",
+        "source_authority": "Ramakrishna Math and Ramakrishna Mission, official Sri Ramakrishna biography; community account",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "Independent scholarly and Order descriptions agree that Gupta recorded the conversations and Nikhilananda translated the Gospel.",
+    "original_source_inspected": true,
+    "material_limitation": "The publication history is summarized; exact dates of all Kathamrita volumes are not asserted.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "56d372f8-89b4-491d-8535-99e2d6e2abab",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Jeffrey Kripal's Kali's Child (1995) applied psychoanalytic theory to Ramakrishna and argued that homoeroticism and sexual abuse lay at the secret heart of his life and work; the Encyclopedia of Religion adds that Kripal rejected reducing his spirituality to pathology.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Jeffrey Kripal offered a contested psychoanalytic reading of Ramakrishna involving homoerotic themes and possible sexual trauma. Hatcher’s scholarly account says Kripal rejected reducing Ramakrishna’s spirituality to pathology. These are interpretations, not established biographical facts.",
+    "epistemic_type": "CONTESTED_SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ruf.rice.edu/~kalischi/textuality.html",
+        "locator": "Author’s response, lines 54–60, 72–74",
+        "source_authority": "Jeffrey J. Kripal, author’s explanation of Kali’s Child and its interpretive claims; primary statement by scholar",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      },
+      {
+        "source_id": "d5a13923-a194-487e-8a9b-0d61f574d7e7",
+        "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "locator": "Interpretations, lines 78–82",
+        "source_authority": "Walter G. Neevel Jr. and Brian A. Hatcher, Encyclopedia of Religion entry (1987; revised 2005); first entry only, lines 29–99",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Kripal’s own explanation documents his sexual-trauma thesis; Hatcher documents his non-reductive claim. The original wording could be mistaken for factual allegations.",
+    "original_source_inspected": true,
+    "material_limitation": "Highly contested sensitive interpretation; no independent historical finding of abuse or sexual orientation is asserted.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "5aea2401-ccea-467f-b4fa-fc1db8d70fed",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Max Müller's 1898 book on Ramakrishna drew on a written account that he asked Vivekananda, one of Ramakrishna's \"most eminent pupils\", to supply; the Encyclopedia of Religion lists the book as an early account by a Westerner.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In the preface to his 1898 book Ramakrishna: His Life and Sayings, Max Müller says he asked Vivekananda for an account of his teacher and received one; the Encyclopedia of Religion lists the work as an early Western account.",
+    "epistemic_type": "HISTORICAL_DOCUMENTATION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://tianmu.org/good-work-library/hindu/general-texts/ramakrishna-his-life-and-sayings-f-max-mller",
+        "locator": "Title/date, lines 13–19; book text, line 239",
+        "source_authority": "F. Max Müller, Ramakrishna: His Life and Sayings (1898), digitized text of original book; title and text cross-checked against book metadata",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      },
+      {
+        "source_id": "d5a13923-a194-487e-8a9b-0d61f574d7e7",
+        "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "locator": "Bibliography, line 89",
+        "source_authority": "Walter G. Neevel Jr. and Brian A. Hatcher, Encyclopedia of Religion entry (1987; revised 2005); first entry only, lines 29–99",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Müller’s own text directly confirms his request and the received account. The encyclopedia bibliography gives 1899, apparently a later edition; original 1898 title metadata resolves the date.",
+    "original_source_inspected": true,
+    "material_limitation": "The encyclopedia bibliography cites an 1899 edition; wording specifies the 1898 book text.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "709e10d2-155a-4bd4-b9c6-a056abe759e5",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Mozoomdar told Müller that Ramakrishna was \"not in the least a Vedantist\" beyond the Vedantism every Hindu absorbs, whereas the Order treats his Advaita realization under Totapuri as the culmination of his sadhana and later scholars debate whether he saw himself as a Vedantin.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In a letter quoted by Max Müller, Protap Chunder Mozoomdar disputed describing Ramakrishna as a Vedantist except in a broad cultural sense. Neevel and Hatcher contrast the Order’s Advaita-centered account with scholarly debate over the importance of Tantra and Vedanta.",
+    "epistemic_type": "CONTESTED_SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://tianmu.org/good-work-library/hindu/general-texts/ramakrishna-his-life-and-sayings-f-max-mller",
+        "locator": "Mozoomdar letter quoted in Müller, lines 419–424",
+        "source_authority": "F. Max Müller, Ramakrishna: His Life and Sayings (1898), digitized text of original book; title and text cross-checked against book metadata",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      },
+      {
+        "source_id": "d5a13923-a194-487e-8a9b-0d61f574d7e7",
+        "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "locator": "Life, lines 45–46; Interpretations, lines 67–74",
+        "source_authority": "Walter G. Neevel Jr. and Brian A. Hatcher, Encyclopedia of Religion entry (1987; revised 2005); first entry only, lines 29–99",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Müller directly prints Mozoomdar’s contrasting view. Hatcher documents the official/scholarly interpretive divide. The revision avoids implying one view wins.",
+    "original_source_inspected": true,
+    "material_limitation": "The letter is known here through Müller’s reproduction, not the surviving manuscript; the precise quoted phrase is not repeated in corpus wording.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "70c1dffa-4bc4-4b70-8ce1-b40d6d6c2739",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Scholars explain his appeal in colonial Calcutta: his visitors had been schooled in reason, learning and social progress, but his disdain for book-learning and for the clerk's world, and the authenticity of his experience, made them re-examine the dignity of their spiritual heritage.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Scholars explain his appeal in colonial Calcutta: his visitors had been schooled in reason, learning and social progress, but his disdain for book-learning and for the clerk's world, and the authenticity of his experience, made them re-examine the dignity of their spiritual heritage.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "d5a13923-a194-487e-8a9b-0d61f574d7e7",
+        "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "locator": "Life, lines 49–50",
+        "source_authority": "Walter G. Neevel Jr. and Brian A. Hatcher, Encyclopedia of Religion entry (1987; revised 2005); first entry only, lines 29–99",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The entry explicitly explains the appeal to educated visitors in colonial Calcutta in these terms.",
+    "original_source_inspected": true,
+    "material_limitation": "This is Hatcher’s historical interpretation of visitors’ responses.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "996d54e9-0a2c-4c3d-9d90-cdfc2501c507",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "A scholarly reference entry summarises that he expanded his religious experience beyond Hinduism, first devoting three days to Allah and, years later, four to Christ, with visionary realisations he held to be the same as those of the Hindu divinities; these became the experiential basis for his claim that all religions can lead to the same realization.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "A scholarly reference entry summarises that he expanded his religious experience beyond Hinduism, first devoting three days to Allah and, years later, four to Christ, with visionary realisations he held to be the same as those of the Hindu divinities; these became the experiential basis for his claim that all religions can lead to the same realization.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "d5a13923-a194-487e-8a9b-0d61f574d7e7",
+        "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "locator": "Life, lines 47–48",
+        "source_authority": "Walter G. Neevel Jr. and Brian A. Hatcher, Encyclopedia of Religion entry (1987; revised 2005); first entry only, lines 29–99",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The entry directly reports the three- and four-day practices, visions, and conclusion. The claim attributes the account to a scholarly reference work.",
+    "original_source_inspected": true,
+    "material_limitation": "Specific visionary experiences remain reported experiences, not independently verifiable events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a34c7f26-381e-408a-a9e5-b005a10bdf3c",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Whether the Mission's ethic of service continues Ramakrishna's own teaching is debated: scholars note the Kathamrita shows his outspoken impatience with those trying to improve the world, while Order sources read his compassion for the poor as service of God in man.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Whether the Mission's ethic of service continues Ramakrishna's own teaching is debated: scholars note the Kathamrita shows his outspoken impatience with those trying to improve the world, while Order sources read his compassion for the poor as service of God in man.",
+    "epistemic_type": "CONTESTED_SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "d5a13923-a194-487e-8a9b-0d61f574d7e7",
+        "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "locator": "Interpretations, lines 70–73",
+        "source_authority": "Walter G. Neevel Jr. and Brian A. Hatcher, Encyclopedia of Religion entry (1987; revised 2005); first entry only, lines 29–99",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      },
+      {
+        "source_id": null,
+        "url": "https://belurmath.org/sri-ramakrishna/",
+        "locator": "Message, lines 182–184",
+        "source_authority": "Ramakrishna Math and Ramakrishna Mission, official Sri Ramakrishna biography; community account",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "Hatcher states the continuity question and Kathamrita evidence; the Order articulates service to God in people.",
+    "original_source_inspected": true,
+    "material_limitation": "The two source traditions differ; the corpus wording keeps the debate explicit.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a46df63b-dcae-4504-b6f8-337212c04b88",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Scholars call Vivekananda's Practical Vedanta a creative transformation of Ramakrishna's teaching, and some argue that his neo-Vedanta also reflects Western reconstructions of Advaita and Brahmo influence.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Neevel and Hatcher describe Vivekananda’s Practical Vedanta as a creative contribution to the movement and report scholarly theories connecting it to Western morality and Western reconstructions of Vedanta.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "d5a13923-a194-487e-8a9b-0d61f574d7e7",
+        "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "locator": "Life, line 53; Interpretations, lines 71–73",
+        "source_authority": "Walter G. Neevel Jr. and Brian A. Hatcher, Encyclopedia of Religion entry (1987; revised 2005); first entry only, lines 29–99",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The entry supports creative contribution and alternate Western influences. The original’s Brahmo-influence clause is not established in this passage.",
+    "original_source_inspected": true,
+    "material_limitation": "These are reported scholarly theories, not a settled causal account.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b43a959b-4558-4ff1-9c5e-81e09a9a05af",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Read across the Order's biography and the scholarly summary, what was unusual about his sadhana was its breadth and method: Kali worship, Tantra, several Vaishnava attitudes, Advaita, Islam and Christianity, each pursued as a practice to be walked to experience rather than studied, with images of Mahavira and Christ kept in his room.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The Order’s biography and Neevel–Hatcher’s scholarly entry both describe Ramakrishna’s practice of multiple paths, including Kali devotion, Tantra, Vaishnava practice, Advaita, Islam, and Christianity, as experiential disciplines.",
+    "epistemic_type": "SYNTHETIC_SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "d5a13923-a194-487e-8a9b-0d61f574d7e7",
+        "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "locator": "Life, lines 37–48",
+        "source_authority": "Walter G. Neevel Jr. and Brian A. Hatcher, Encyclopedia of Religion entry (1987; revised 2005); first entry only, lines 29–99",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      },
+      {
+        "source_id": null,
+        "url": "https://belurmath.org/sri-ramakrishna/",
+        "locator": "Intense Spiritual Practices and Following Other Faiths, lines 147–153",
+        "source_authority": "Ramakrishna Math and Ramakrishna Mission, official Sri Ramakrishna biography; community account",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "Both inspected accounts support the breadth and practice-based sequence. The claim’s images-of-Mahavira-and-Christ detail is not supported by these passages and is omitted.",
+    "original_source_inspected": true,
+    "material_limitation": "The accounts report religious practice and visions; they do not independently validate supernatural realization.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "c8d59d4f-47fc-42a3-9a72-26fc16c3f97b",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "After Ramakrishna's death Sarada became \"Sarada Ma, the Holy Mother\" (d. 1920), a status that scholars read as reflecting both her service to him and the power of the Divine Mother.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "After Ramakrishna's death Sarada became \"Sarada Ma, the Holy Mother\" (d. 1920), a status that scholars read as reflecting both her service to him and the power of the Divine Mother.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "d5a13923-a194-487e-8a9b-0d61f574d7e7",
+        "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "locator": "Life, lines 52–55",
+        "source_authority": "Walter G. Neevel Jr. and Brian A. Hatcher, Encyclopedia of Religion entry (1987; revised 2005); first entry only, lines 29–99",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The entry explicitly notes Sarada’s posthumous status and interprets it using both service and Divine Mother themes.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive account of religious status and its symbolism.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d4303758-2cde-468d-8a4f-bd0282b3bed3",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Scholars treat the Tantric training under the female adept Yogeshvari as formative: it helped turn his self-destructive longing into the joyful \"play\" (lila) of a child in the Mother's \"mansion of mirth\", and gave him a framework for integrating his religious experiences.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Scholars treat the Tantric training under the female adept Yogeshvari as formative: it helped turn his self-destructive longing into the joyful \"play\" (lila) of a child in the Mother's \"mansion of mirth\", and gave him a framework for integrating his religious experiences.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "d5a13923-a194-487e-8a9b-0d61f574d7e7",
+        "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "locator": "Life, lines 41–44",
+        "source_authority": "Walter G. Neevel Jr. and Brian A. Hatcher, Encyclopedia of Religion entry (1987; revised 2005); first entry only, lines 29–99",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The entry describes Yogeshvari’s Tantric guidance and Hatcher’s interpretation of its effect on Ramakrishna’s theology.",
+    "original_source_inspected": true,
+    "material_limitation": "The psychological transformation is a scholarly reading of religious biographical reports.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d8394e89-3e50-41a2-b145-70f92070b0bb",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Scholars say the Ramakrishna Mission's official position treats his experience as epitomised by Advaita Vedanta, relativising his Tantric transformation under Yogeshvari beneath Totapuri's teaching, and they ask why Tantra is played down in the official literature.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Scholars say the Ramakrishna Mission's official position treats his experience as epitomised by Advaita Vedanta, relativising his Tantric transformation under Yogeshvari beneath Totapuri's teaching, and they ask why Tantra is played down in the official literature.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "d5a13923-a194-487e-8a9b-0d61f574d7e7",
+        "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "locator": "Teachings/Interpretations, lines 59–60, 67–74",
+        "source_authority": "Walter G. Neevel Jr. and Brian A. Hatcher, Encyclopedia of Religion entry (1987; revised 2005); first entry only, lines 29–99",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The entry directly contrasts official Advaita primacy with Tantric interpretations and asks why Tantra was downplayed.",
+    "original_source_inspected": true,
+    "material_limitation": "The statement reports a scholarly characterization of the Order, which the Order may contest.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "e25fbaa7-23c6-4fab-b70f-3f0e1bb94fc9",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Scholarly reference works give Ramakrishna's dates as c. 1834/6–1886 and note he was born Gadadhar Chatterjee into a Vaishnava brahmin family, whereas the Ramakrishna Order and its Gospel chronology fix his birth on 18 February 1836; his death in 1886 is not in dispute.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The Neevel–Hatcher Encyclopedia of Religion entry gives Ramakrishna’s dates as 1834/6–1886 and identifies his birth name as Gadadhar Chatterjee and family as Vaishnava Brahmin; Belur Math gives 18 February 1836 as his birth date.",
+    "epistemic_type": "SOURCE_DISAGREEMENT",
+    "evidence_references": [
+      {
+        "source_id": "d5a13923-a194-487e-8a9b-0d61f574d7e7",
+        "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "locator": "Lead and Life, lines 29–35",
+        "source_authority": "Walter G. Neevel Jr. and Brian A. Hatcher, Encyclopedia of Religion entry (1987; revised 2005); first entry only, lines 29–99",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      },
+      {
+        "source_id": null,
+        "url": "https://belurmath.org/sri-ramakrishna/",
+        "locator": "Sri Ramakrishna, lines 140–143, 166–168",
+        "source_authority": "Ramakrishna Math and Ramakrishna Mission, official Sri Ramakrishna biography; community account",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "Two inspected sources use different precision for the birth date while agreeing on 1886 death. The revision changes “reference works” to this specific entry.",
+    "original_source_inspected": true,
+    "material_limitation": "The entry’s 1834/6 notation preserves uncertainty; the Order’s exact birth date is traditional institutional chronology.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ee73dc34-1a5b-45c7-8de3-62d5901b682b",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "The Order says that while seeking union with Krishna he regarded himself as a gopi (cowherd woman) of Vrindavan and, at his request, his patron Mathur provided woman's dress and jewelry; a scholarly reference entry lists his \"fondness for wearing women's clothing\" among the \"scandalous particulars\" long played down.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Saradananda’s Order biography says Ramakrishna adopted women’s dress and ornaments during madhura-bhava practice associated with the women of Vraja, and that Mathur supplied the attire. Neevel–Hatcher note that this aspect of his life was often played down in later accounts.",
+    "epistemic_type": "TRADITIONAL_ACCOUNT_AND_SCHOLARLY_RECEPTION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/sriramakrishna_thegreatmaster/2_14_madhura_sadhana.htm",
+        "locator": "The Master’s Sadhana of the Madhura Bhava, sections 5–9, lines 23–43",
+        "source_authority": "Swami Saradananda, Sri Ramakrishna: The Great Master, chapter 2.14; Ramakrishna Order account",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      },
+      {
+        "source_id": "d5a13923-a194-487e-8a9b-0d61f574d7e7",
+        "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "locator": "Interpretations, lines 75–77",
+        "source_authority": "Walter G. Neevel Jr. and Brian A. Hatcher, Encyclopedia of Religion entry (1987; revised 2005); first entry only, lines 29–99",
+        "independence_assessment": "Distinct scholarly and institutional works where multiple works are listed; shared tradition and possible source dependence are not counted as independent historical corroboration.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The Order account directly reports attire and devotional identification; the scholarly entry supplies reception context. Wording identifies each source’s perspective.",
+    "original_source_inspected": true,
+    "material_limitation": "Saradananda reports a devotional account; later interpretation of why it was downplayed remains contested.",
+    "removal_reason": null
+  }
+]

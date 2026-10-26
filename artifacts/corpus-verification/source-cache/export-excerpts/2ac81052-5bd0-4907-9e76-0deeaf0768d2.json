@@ -1,0 +1,58 @@
+{
+  "source_id": "2ac81052-5bd0-4907-9e76-0deeaf0768d2",
+  "source": {
+    "author": "Valmiki",
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Bala Kanda, Sarga 60 (https://www.valmikiramayan.net/utf8/baala/sarga60/bala_60_prose.htm)",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Bala Kanda, Sarga 60",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga60/bala_60_prose.htm"
+  },
+  "claim_ids": [
+    "41c9ddfb-95bc-437c-9659-27d8049b91da",
+    "5c753397-3c97-40be-9a52-13438a2206df",
+    "f5c51054-b7b5-4aaf-aadf-45e44846b679"
+  ],
+  "passages": [
+    {
+      "chunk_id": "33a57f01-6ce1-4db2-9ee5-8d3a9443e449",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\n Sarga 60 in Prose",
+      "text_sha256": "ffd1f79aea554362e9b48fd8feea4c11e053e6da76839d825926b6ef4bf47e62",
+      "excerpt_preview": "Vishvamitra effectuates Trishanku's travel to heaven, but Indra throws him down  as Trishanku has not acquired any merit to reach heaven. Vishvamitra enraged at  this starts to replicate universe with constellation of stars and galaxies, an",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "67aab880-1e94-490d-97fc-b74d4a1dbe70",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\n Sarga 60 in Prose",
+      "text_sha256": "fdd3a62f5ba8f827565ebddf45850ecc4bb0444134ab826fd0f515a8db0f4a8d",
+      "excerpt_preview": "\" 'Oh great-fortunate Vishvamitra, this king Trishnaku is damned by his mentor,  hence oh, ascetically wealthy sage, he is not at all eligible to go to heaven with  his mortal body.' So said gods to Vishvamitra.  \"On hearing that sentence o",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6d6d9134-993a-496d-8286-852086790698",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\n Sarga 60 in Prose",
+      "text_sha256": "e3fce48b23c6a1d2c17e0141cbc5ce36569321c9482eefc1d686e4f2986c3b7e",
+      "excerpt_preview": "\" 'Oh, ruler of people, now you shall see the potency of my ascesis which I personally  achieved. Such as I am I shall lead you forth to haven with your own body just by  my personal capability. Oh, king of people, now you will go to heaven",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e99d9182-5399-46ab-9d2e-f0eb1b2babb7",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\n Sarga 60 in Prose",
+      "text_sha256": "89e28722f5c566b2c5cf14d51747509c94008da30891972eccd1f5284892b5ec",
+      "excerpt_preview": "Trishanku is the son of one Suuryaaruna and his original name is Satyavrat and this name Trishanku is  his pseudonym. He got this because three sins are attached to him tri shanka-s  as said in another work Harivamsha. There it is said: pit",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

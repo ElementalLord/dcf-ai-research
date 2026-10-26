@@ -1,0 +1,34 @@
+{
+  "source_id": "44f4f4d7-66a6-44f4-8c32-1c3b2de57b2a",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:26:51.682Z"
+    },
+    "citation": "Ramanujan's Lost Notebook — Trinity Archive. Trinity College Library, Cambridge. https://archives.trin.cam.ac.uk/index.php/the-so-called-lost-notebook-2",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Trinity College Library, Cambridge",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Ramanujan's Lost Notebook — Trinity Archive",
+    "url": "https://archives.trin.cam.ac.uk/index.php/the-so-called-lost-notebook-2"
+  },
+  "claim_ids": [
+    "37bc06c7-5431-438a-862b-11853fd6d8ca"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1d6f8f36-a13e-496c-b40a-1434b7f6767c",
+      "locator": "Archival manuscript record",
+      "text_sha256": "068ac7e306b48544fda8b22006d1638531076c722e7078d606c5b469146b1bc3",
+      "excerpt_preview": "Skip to main content Archive Site Trinity College Cambridge Quick search Search Item 15 - The so-called Lost Notebook Identity area Reference codeAdd. MS a/94/15 TitleThe so-called Lost Notebook Date(s) n.d. (Creation) Level of descriptionI",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,54 @@
+{
+  "source_id": "740ecd70-044b-4aeb-a923-da54d901e5f0",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "The Road to Nagpur. Tata group. https://www.tata.com/newsroom/heritage/jamsetji-empress-mills-nagpur",
+    "original_work_identity": {},
+    "publication_year": 2025,
+    "publisher_or_institution": "Tata group",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "The Road to Nagpur",
+    "url": "https://www.tata.com/newsroom/heritage/jamsetji-empress-mills-nagpur"
+  },
+  "claim_ids": [
+    "17937d83-b3f6-4358-8fcd-ac154479258c",
+    "765ab56d-02e9-4e5a-85a3-19c3662cec67",
+    "df787718-bc76-4f49-b687-496de9ca4521",
+    "fb33ab5f-64e3-4d6b-a87b-04b5f87cdc08"
+  ],
+  "passages": [
+    {
+      "chunk_id": "a04d5fb9-88aa-4c35-bb35-cbe4d18de52d",
+      "locator": "poor yarn and low output",
+      "text_sha256": "49914128493ecddc8ad9d9d02a058368bb86a64999c463674c3f66a9310230e8",
+      "excerpt_preview": "Early machinery purchased to conserve capital produced poor yarn and low output, and shares fell to half their nominal value.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a4cb17d1-0415-46ca-9919-f30110706ff1",
+      "locator": "fire devastated the loom shed",
+      "text_sha256": "7e20e28892bb295876e214ad17d39badf26ad06b0bed0bb169eb70cd3ddbb505",
+      "excerpt_preview": "A fire devastated the loom shed and required renewal of equipment.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "aba80a64-759a-4481-a516-f24cf8105e69",
+      "locator": "James Brooksby",
+      "text_sha256": "dfbb3ef48f9ca28df7e551a9a5552973e3a68ebc013843901169913125bbee5a",
+      "excerpt_preview": "Tata and technical expert James Brooksby.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

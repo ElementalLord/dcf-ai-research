@@ -1,0 +1,79 @@
+{
+  "source_id": "ff146686-2ab5-4e47-957e-09be837c3ef7",
+  "source": {
+    "author": "G. H. Hardy",
+    "authority_metadata": {
+      "verified_at": "2026-10-09T14:28:47.652Z"
+    },
+    "citation": "G. H. Hardy. Srinivasa Ramanujan — Obituary Notices of Fellows Deceased. Royal Society; hosted by MacTutor. https://mathshistory.st-andrews.ac.uk/RS/ramanujan_rs.pdf",
+    "original_work_identity": {},
+    "publication_year": 1921,
+    "publisher_or_institution": "Royal Society; hosted by MacTutor",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Srinivasa Ramanujan — Obituary Notices of Fellows Deceased",
+    "url": "https://mathshistory.st-andrews.ac.uk/RS/ramanujan_rs.pdf"
+  },
+  "claim_ids": [
+    "382b8752-680f-4f7e-b6c5-cc577956ade0",
+    "6fb226a9-d29a-45fc-8101-2ad37def143d",
+    "8fff980e-0194-4bd6-b48b-a58038743fbd",
+    "9089927e-e956-4e71-8c00-c7732bf74a27",
+    "ed302467-5986-4973-94d7-97b850ee8813",
+    "ff8c6a25-6dc2-4162-89f6-74cf137974fb"
+  ],
+  "passages": [
+    {
+      "chunk_id": "3adf9423-b68e-4c0b-8326-7f3a7fdcf3e5",
+      "locator": "Hardy obituary, p. xxviii",
+      "text_sha256": "17c668ea7c6fab0f0159fed438799b6021899bda44744efcbe91feeb69bb7daf",
+      "excerpt_preview": "I had ridden in taxicab No. 1729, and remarked that the number (7.13.19) seemed to me rather a dull one, and that I hoped it was not an unfavourable omen.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "489a20dd-9e28-4f46-84fc-d6e1cf6125b4",
+      "locator": "Hardy obituary, p. xxviii",
+      "text_sha256": "306281a3e0f7804fceb24da1c38036c06686ebcff707ca8b7d735b3ceefee419",
+      "excerpt_preview": "He worked, far more than the majority of modern mathematicians, by induction from numerical exam ples; all of his congruence properties of partitions, for example, were discovered in this way.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b1ff75b2-364e-42c4-834f-b656ef78865a",
+      "locator": "Hardy obituary, p. xxviii",
+      "text_sha256": "fc28ccd173d0f288ab0ee43bd333ca40d085ff0599d18d5b387e0b721b66976c",
+      "excerpt_preview": "I t was his insight into algebraical formulae, transformations of infinite series, and so forth, that was most amazing. On this side most certainly I have never met his equal, and I can compare him only with Euler or Jacobi.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d22402a7-2ccf-4134-95fb-580b170e8b1f",
+      "locator": "Hardy obituary, pp. xvi–xvii",
+      "text_sha256": "2a695f9aacbaab085e51662878a9763a17511c457a5824fcc0f2c8343c4a868d",
+      "excerpt_preview": "There are regions of mathematics in which the precepts of modern rigour may be disregarded with comparative safety, but the Analytic Theory of Numbers is not one of them, and Ramanujan’s Indian work on primes, and on all the allied problems",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f4f1484e-8499-4972-b7b2-0545e53f7655",
+      "locator": "Hardy obituary, p. xxvii",
+      "text_sha256": "7e69587be00ee3934775b4e682ed0ce4b9a2e219f37d908844367e47b4195a92",
+      "excerpt_preview": "It would be difficult to find more beautiful formulae than the “ Rogers-Ramanujan ” identities, proved in (19); but here Ramanujan must take second place to Prof.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fd00b174-8541-428b-976d-69d3425da4b2",
+      "locator": "Hardy obituary, p. xx",
+      "text_sha256": "f2585765c9ff94287763052b37de31372fabd4d8d34bc22bdfddfed9ca176563",
+      "excerpt_preview": "So I had to try to teach him, and in a measure I succeeded, though obviously I learnt from him much more than he learnt from me. In a few years’ time he had a very tolerable knowledge of the theory of functions and the analytic theory of nu",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,124 @@
+{
+  "source_id": "a48d7974-124d-40ea-8a35-537422f481eb",
+  "source": {
+    "author": "C. V. Raman",
+    "authority_metadata": {
+      "verified_at": "2026-10-09T03:48:31.388Z"
+    },
+    "citation": "C. V. Raman. The Molecular Scattering of Light — Nobel Lecture. NobelPrize.org. https://www.nobelprize.org/uploads/2018/06/raman-lecture.pdf",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "NobelPrize.org",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "The Molecular Scattering of Light — Nobel Lecture",
+    "url": "https://www.nobelprize.org/uploads/2018/06/raman-lecture.pdf"
+  },
+  "claim_ids": [
+    "1faad601-fb6e-4549-bf56-1be814ed28f3",
+    "2eaab8e3-b0d4-4b7c-9d1a-a525e0ca3ea8",
+    "30ceffee-330c-4097-945c-4802fb45ffd8",
+    "430096a3-caf5-4af2-a598-e2ec0cc13516",
+    "4ec4b5b5-201d-4aa7-b678-2f9c01b9f782",
+    "664d0df2-8216-41d3-b547-03e5593c735c",
+    "8c098e8c-0d66-414a-9f6b-286247ee4798",
+    "b1abc00d-bb85-4bf4-8084-1083ca581f0a",
+    "df52cd8d-0722-4f43-a328-5c40cbf1e8b3",
+    "dfc69a57-1a01-40db-b862-f1760c298138",
+    "ecf23f83-83d2-48a7-bd5b-10bb2cae30c6"
+  ],
+  "passages": [
+    {
+      "chunk_id": "05701e16-e8bc-4b99-a647-13a2bd8b33ea",
+      "locator": "Nobel lecture, p. 269",
+      "text_sha256": "64eba830956f2093ce5c86ea3eaceab071d389714b66443f9979bb04b820428e",
+      "excerpt_preview": "The various problems requiring solution indicated in this essay were in- vestigated with the aid of a succession of able collaborators. It is possible to mention briefly only a few of the numerous investigations which were car- ried out at ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "1a97d3dc-7cba-42c2-8afe-d98a52d597eb",
+      "locator": "Nobel lecture, p. 271",
+      "text_sha256": "371578fc954c0ea9e4d6c9c9d7d54f2ee69359dac84f99294523fd5f9831ac32",
+      "excerpt_preview": "This suggested the employment, instead of sunlight, of the highly monochromatic radiations given by a mercury arc in combination with a condenser of large aperture and a cobalt-glass filter. -- 5 of 9 -- 272 1930 C.V.RAMAN With these arrang",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "28e75017-a400-4a2c-8543-e1a5bdcf82b7",
+      "locator": "Nobel lecture, p. 267",
+      "text_sha256": "ed4dcacb73327223b6ca007bd267b999bfdb9f13d2319f21cf3cc9c9e2543e31",
+      "excerpt_preview": "To test this explana- tion, it appeared desirable to ascertain the laws governing the diffusion of light in liquids, and experiments with this object were started immediately on my return to Calcutta in September, 1921. It soon became evide",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "29132652-de8c-4c4a-aef7-c161dc20042c",
+      "locator": "Nobel lecture, p. 271",
+      "text_sha256": "59290e77e2c1cfae276953ddd42ef9410425c6e81e523580b4e8eb482a07117e",
+      "excerpt_preview": "This was overcome by using a 7-inch refracting telescope in combination with a short-focus lens to condense sunlight into a pencil of very great intensity.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "2a717063-47d6-4a52-b2ef-0b1e502163dd",
+      "locator": "Nobel lecture, p. 269",
+      "text_sha256": "5b40eff46039a84c1dfdcde08438274f05153d8873e04e2f68492738a2026db4",
+      "excerpt_preview": "Krishnan examined a great many liquids, and by his work showed very clearly the dependence of the optical anisotropy of the mole- cule on its chemical constitution.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "2f07a8a6-d548-453d-96d2-2d557801d1d5",
+      "locator": "Nobel lecture, pp. 273–274",
+      "text_sha256": "68d2167774f424233a75678060614d4ec19a9873f2f6474c339c3d66933fe0f6",
+      "excerpt_preview": "As is well known from studies on molecular spectra, a gaseous molecule has four different species of energy of increasing orders of magnitude, namely those corresponding to translatory motion, rotation, vibration, and electronic excitation.",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "3b440621-a0d1-4673-b9d1-da7b6c29ac2c",
+      "locator": "Nobel lecture, p. 274",
+      "text_sha256": "00181dee76c0ca3c5de3de2694bf93b7c903456e73f8426b76886fd0206ec9dc",
+      "excerpt_preview": "The significance of the effect The universality of the phenomenon, the convenience of the experimental technique and the simplicity of the spectra obtained enable the effect to be used as an experimental aid to the solution of a wide range ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "66a5094a-0d74-4eb4-8771-6abf67333316",
+      "locator": "Nobel lecture, pp. 267–268",
+      "text_sha256": "413f1f51c5546a991875b4214cf97ffa5f6df6e86a5a60eec07764e06c3f1ca1",
+      "excerpt_preview": "A voyage to Europe in the summer of 1921 gave me the first opportunity of observing the wonderful blue opalescence of the Mediter- ranean Sea. It seemed not unlikely that the phenomenon owed its origin to the scattering of sunlight by the m",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "789404c9-b726-489c-a3eb-488cdb3077b7",
+      "locator": "Nobel lecture, p. 272",
+      "text_sha256": "b27f65c00a6570d4d473a51715c03074cd31e347dedbb94eba096a5a58a2bb70",
+      "excerpt_preview": "-- 5 of 9 -- 272 1930 C.V.RAMAN With these arrangements the spectrum of the scattered light from a variety of liquids and solids was visually examined, and the startling observation was made that the spectrum generally included a number of ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a8e01b83-3b62-49de-bac7-861d78bc23ff",
+      "locator": "Nobel lecture, p. 270",
+      "text_sha256": "a60cdcb713c2f31d0e55b7ca6bfd91f641a6d4f5c732a3f4c980a2d072e30201",
+      "excerpt_preview": "Ramanathan found that after exhaustive chemical purification and repeated slow distillation of the liquid in vacuum, the new radiation persisted un- diminished in intensity, showing that it was a characteristic property of the substance stu",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b7e41ac6-a005-4390-8c35-64d5cb48c63e",
+      "locator": "Nobel lecture, p. 270",
+      "text_sha256": "8c9224d6041bd364ebf482778fa604a319a7cf511c845e2960b24cffb7de6d34",
+      "excerpt_preview": "Venkateswaran undertook to study this question, and re- ported the highly interesting result that the colour of sunlight scattered in a highly purified sample of glycerine was a brilliant green instead of the usual blue. Th e p henomenon ap",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

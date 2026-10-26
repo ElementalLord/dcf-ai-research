@@ -1,0 +1,41 @@
+{
+  "source_id": "6d030916-9eaf-4f25-a4a0-a24e1d0a77d6",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Mahabharata, Vana Parva, section 96 (Ganguli translation). https://mahabharata-online.github.io/3/96.html",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Mahabharata Online",
+    "rights_or_access_note": "Publicly accessible source; brief excerpts stored for research citation.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Mahabharata, Vana Parva, section 96 (Ganguli translation)",
+    "url": "https://mahabharata-online.github.io/3/96.html"
+  },
+  "claim_ids": [
+    "3113222e-e8a7-43e1-9630-99a1f7855dbe",
+    "debabc5a-b8b5-4432-915a-4b228d560150"
+  ],
+  "passages": [
+    {
+      "chunk_id": "2ce29d3d-8a75-46c0-8076-1f060a27ed2c",
+      "locator": "Vana Parva 3.96",
+      "text_sha256": "f8f2ff3c3f16f3f10004507e24122796666665519b4769858f6cafa7cfe2c129",
+      "excerpt_preview": "himself to the kingof the Vidharbhas who was then undergoing ascetic penances for obtainingoffspring. And that blessed girl of sweet face (thus disposed of) thentook her birth (in Vidarbha's royal line) and, beautiful as the effulgentlightn",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "46fc8857-8097-4a48-8c7d-1ed5929ef703",
+      "locator": "Vana Parva 3.96",
+      "text_sha256": "c518b9c84ecf8761b374d8001d8218add2809e038aecdf3ca3fdb14fc53dac56",
+      "excerpt_preview": "who was everdistinguished for his profuse gifts unto Brahmanas, proceeded to theasylum of Agastya and took up his abode in Durjaya. It was here that thatforemost of speakers, king Yudhishthira asked Lomasa as to why Agastyahad slain Vatapi ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,111 @@
+{
+  "worker": "ramakrishna-neevel",
+  "screened_claim_count": 17,
+  "final_decision_count": 17,
+  "holds_count": 0,
+  "inspected_source_count": 5,
+  "research_expenditure_usd": 0,
+  "sources": [
+    {
+      "url": "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+      "source_authority": "Walter G. Neevel Jr. and Brian A. Hatcher, Encyclopedia of Religion entry (1987; revised 2005); first entry only, lines 29–99",
+      "claim_ids": [
+        "1d1cf9df-2890-432d-b491-ed58fed8c516",
+        "3700d177-cf5d-49c9-8c4c-00d885205139",
+        "3ee6fdc4-598f-49be-97c0-d6018fe62f94",
+        "4fe46d59-f0d6-4c9e-9cd8-e7a04fc6dc72",
+        "56d372f8-89b4-491d-8535-99e2d6e2abab",
+        "5aea2401-ccea-467f-b4fa-fc1db8d70fed",
+        "709e10d2-155a-4bd4-b9c6-a056abe759e5",
+        "70c1dffa-4bc4-4b70-8ce1-b40d6d6c2739",
+        "996d54e9-0a2c-4c3d-9d90-cdfc2501c507",
+        "a34c7f26-381e-408a-a9e5-b005a10bdf3c",
+        "a46df63b-dcae-4504-b6f8-337212c04b88",
+        "b43a959b-4558-4ff1-9c5e-81e09a9a05af",
+        "c8d59d4f-47fc-42a3-9a72-26fc16c3f97b",
+        "d4303758-2cde-468d-8a4f-bd0282b3bed3",
+        "d8394e89-3e50-41a2-b145-70f92070b0bb",
+        "e25fbaa7-23c6-4fab-b70f-3f0e1bb94fc9",
+        "ee73dc34-1a5b-45c7-8de3-62d5901b682b"
+      ],
+      "locators": [
+        "Bibliography, line 89",
+        "Interpretations, lines 67–70",
+        "Interpretations, lines 70–73",
+        "Interpretations, lines 74–77",
+        "Interpretations, lines 75–77",
+        "Interpretations, lines 78–82",
+        "Lead and Life, lines 29–35",
+        "Life, line 53; Interpretations, lines 71–73",
+        "Life, lines 37–48",
+        "Life, lines 41–44",
+        "Life, lines 45–46; Interpretations, lines 67–74",
+        "Life, lines 47–48",
+        "Life, lines 49–50",
+        "Life, lines 52–55",
+        "Teachings, line 58",
+        "Teachings, lines 59–64",
+        "Teachings/Interpretations, lines 59–60, 67–74"
+      ],
+      "existing_source_id": "d5a13923-a194-487e-8a9b-0d61f574d7e7",
+      "needs_source_record_or_link": false
+    },
+    {
+      "url": "https://belurmath.org/sri-ramakrishna/",
+      "source_authority": "Ramakrishna Math and Ramakrishna Mission, official Sri Ramakrishna biography; community account",
+      "claim_ids": [
+        "4fe46d59-f0d6-4c9e-9cd8-e7a04fc6dc72",
+        "a34c7f26-381e-408a-a9e5-b005a10bdf3c",
+        "b43a959b-4558-4ff1-9c5e-81e09a9a05af",
+        "e25fbaa7-23c6-4fab-b70f-3f0e1bb94fc9"
+      ],
+      "locators": [
+        "Intense Spiritual Practices and Following Other Faiths, lines 147–153",
+        "Message, lines 182–184",
+        "Sri Ramakrishna, lines 140–143, 166–168",
+        "The Gospel of Sri Ramakrishna, lines 163–165"
+      ],
+      "existing_source_id": null,
+      "needs_source_record_or_link": true
+    },
+    {
+      "url": "https://www.ruf.rice.edu/~kalischi/textuality.html",
+      "source_authority": "Jeffrey J. Kripal, author’s explanation of Kali’s Child and its interpretive claims; primary statement by scholar",
+      "claim_ids": [
+        "56d372f8-89b4-491d-8535-99e2d6e2abab"
+      ],
+      "locators": [
+        "Author’s response, lines 54–60, 72–74"
+      ],
+      "existing_source_id": null,
+      "needs_source_record_or_link": true
+    },
+    {
+      "url": "https://tianmu.org/good-work-library/hindu/general-texts/ramakrishna-his-life-and-sayings-f-max-mller",
+      "source_authority": "F. Max Müller, Ramakrishna: His Life and Sayings (1898), digitized text of original book; title and text cross-checked against book metadata",
+      "claim_ids": [
+        "5aea2401-ccea-467f-b4fa-fc1db8d70fed",
+        "709e10d2-155a-4bd4-b9c6-a056abe759e5"
+      ],
+      "locators": [
+        "Mozoomdar letter quoted in Müller, lines 419–424",
+        "Title/date, lines 13–19; book text, line 239"
+      ],
+      "existing_source_id": null,
+      "needs_source_record_or_link": true
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/sriramakrishna_thegreatmaster/2_14_madhura_sadhana.htm",
+      "source_authority": "Swami Saradananda, Sri Ramakrishna: The Great Master, chapter 2.14; Ramakrishna Order account",
+      "claim_ids": [
+        "ee73dc34-1a5b-45c7-8de3-62d5901b682b"
+      ],
+      "locators": [
+        "The Master’s Sadhana of the Madhura Bhava, sections 5–9, lines 23–43"
+      ],
+      "existing_source_id": null,
+      "needs_source_record_or_link": true
+    }
+  ],
+  "citation_issue": "Original archive.org scan of Müller was inaccessible through web tool; the 1898 text was checked in a readable digitized mirror. For the Order clothing account the old citation pointed to an introduction index, and the decision now cites the supporting chapter directly."
+}

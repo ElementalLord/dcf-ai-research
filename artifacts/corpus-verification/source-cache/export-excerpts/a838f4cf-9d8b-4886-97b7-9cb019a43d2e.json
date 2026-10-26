@@ -1,0 +1,53 @@
+{
+  "source_id": "a838f4cf-9d8b-4886-97b7-9cb019a43d2e",
+  "source": {
+    "author": "Patrick Olivelle, Janice Leoshko and Himanshu Prabha Ray, eds.",
+    "authority_metadata": {
+      "source_kind": "Modern interdisciplinary historiography and reception studies",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Patrick Olivelle, Janice Leoshko and Himanshu Prabha Ray, eds.. Reimagining Ashoka: Memory and History. Oxford University Press. https://global.oup.com/academic/product/reimagining-ashoka-9780198076162",
+    "original_work_identity": {},
+    "publication_year": 2012,
+    "publisher_or_institution": "Oxford University Press",
+    "rights_or_access_note": "Short documented research excerpts only; source layer is shown so translation, later tradition and modern scholarship are not conflated.",
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "Reimagining Ashoka: Memory and History",
+    "url": "https://global.oup.com/academic/product/reimagining-ashoka-9780198076162"
+  },
+  "claim_ids": [
+    "6b9725c2-e800-4936-98f0-55a4919ffd60",
+    "8c2c91cd-9bba-4af3-92d8-a222001bb4f0",
+    "cc065d6b-ab6a-4e91-b177-3ac21326f075"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0e9b145e-4047-4f7a-bbc8-92d4e508b656",
+      "locator": "colonial decipherment and national memory",
+      "text_sha256": "0c7e312ad42aaff5dcf93bbabdc68dcdfb4fb9f01dc42795070bc2c980cae025",
+      "excerpt_preview": "odern work on Ashoka examines the relation between material remains, inscriptions, Buddhist traditions, colonial decipherment and national memory.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "21d8dec6-cb3e-409c-9863-02bf562d9c6b",
+      "locator": "decipherment of Brahmi inscriptions",
+      "text_sha256": "2c40e1538ea2832a09e1648c0d9e713d39aa2c20de0acaf0c40202ccd0626e9d",
+      "excerpt_preview": "The recovery and decipherment of Brahmi inscriptions made the historical identification of Piyadasi with Ashoka central to modern Indian historiography.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "5cdea159-4ec5-4b93-9e45-4ca53ed9c2d0",
+      "locator": "posthumous image as a model ruler",
+      "text_sha256": "5682fc8a686ad606c7f4368ebea321d10ee2620c7bb23f3e062d417b63662fd0",
+      "excerpt_preview": "Ashoka’s posthumous image as a model ruler has been repeatedly remade; it is not identical to the historically recoverable ruler in the third century BCE.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

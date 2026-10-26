@@ -1,0 +1,53 @@
+{
+  "source_id": "ff913930-89f5-4f50-ac11-db6205f5a5b3",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_kind": "Contemporary royal inscriptions, including statements of Buddhist affiliation",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Ashoka Library: Minor Rock Inscriptions. University of Oslo / University of Texas at Austin. https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=399",
+    "original_work_identity": {},
+    "publication_year": 2014,
+    "publisher_or_institution": "University of Oslo / University of Texas at Austin",
+    "rights_or_access_note": "Short documented research excerpts only; source layer is shown so translation, later tradition and modern scholarship are not conflated.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Ashoka Library: Minor Rock Inscriptions",
+    "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=399"
+  },
+  "claim_ids": [
+    "703d0b52-4449-4b89-8f65-4a771c952965",
+    "a0e13cea-bb7e-405e-9197-68698a826df5",
+    "be5e3251-a901-4d3c-956b-1d82f7ad75be"
+  ],
+  "passages": [
+    {
+      "chunk_id": "6a414276-0c90-4f66-b347-a237ab998096",
+      "locator": "recommends texts",
+      "text_sha256": "0517457e87612eb984a7a39c4850d130f85eab4457ea3d2a99b5c19386cf8c21",
+      "excerpt_preview": "In the Bairat message, the Beloved of the Gods honours the community of monks and nuns and recommends texts which, he says, should be heard and reflected upon.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "91a96e93-f753-4a92-b8c5-c120ca2f9676",
+      "locator": "became a lay disciple",
+      "text_sha256": "65210395f14b71c790de70cda92480364610e0e44dd2656f5eb3311cd167f1a2",
+      "excerpt_preview": "ore than two and a half years have passed since I became a lay disciple, but for a year I did not exert myself strongly.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "932584fa-7b3c-477c-b089-8081f2ce57f4",
+      "locator": "This has been caused to be written by King Asoka",
+      "text_sha256": "ebc203b6c26eb4af7e28c5c1962f27946497096b345efa68bc7c32dd2acb7b2c",
+      "excerpt_preview": "This has been caused to be written by King Asoka.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,52 @@
+{
+  "source_id": "1d457b5a-ad3a-44fa-ae3c-ec16a7df6ff4",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "The inimitable M.S. Subbulakshmi. Press Information Bureau, Government of India. https://www.pib.gov.in/newsite/printrelease.aspx?lang=2&reg=48&relid=149779",
+    "original_work_identity": {},
+    "publication_year": 2016,
+    "publisher_or_institution": "Press Information Bureau, Government of India",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "The inimitable M.S. Subbulakshmi",
+    "url": "https://www.pib.gov.in/newsite/printrelease.aspx?lang=2&reg=48&relid=149779"
+  },
+  "claim_ids": [
+    "85a08ca7-b79c-4489-b669-0d4ecaead601",
+    "9e84d266-ad43-4c9f-83c4-869eb121fdd9",
+    "c6e722ed-738f-4a31-82ee-d1e05bb08412"
+  ],
+  "passages": [
+    {
+      "chunk_id": "4e066210-5709-4fe1-9152-91d728948168",
+      "locator": "Government centenary profile",
+      "text_sha256": "8afaafee204bf530f1c8a3aad9ff870250c1b7d3ca459695d7bf37b604cadba6",
+      "excerpt_preview": "Narayanan on January 14, 1998 at a function held in Rashtrapati Bhavan in New Delhi. Subbulakshmi’s was deeply immersed in the devotional music of Saint Thyagaraja. The only time she was out of touch of Thyagraja’s bhajans were in 1940s whe",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9cac7ee2-6e9f-4194-abd7-3fee2ba82ac3",
+      "locator": "Government centenary profile",
+      "text_sha256": "f6bbcd03a330d91f7c705cb6fa620b14dcd2d03115a0269e63faff0bf6a040bd",
+      "excerpt_preview": "Subbulakshmi Mela Ragamaliga song was written by Mahavaidyanatha Sivan composed in 72 ragas on the instructions of Paramacharya Sri Chandrasekharendra Saraswati of Kanchi Kamakoti Peetham. Subbulakshmi was a bit nervous, but the Paramcharya",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "dedae4d1-6651-4a81-977e-93476098a0e8",
+      "locator": "Government centenary profile",
+      "text_sha256": "e99ba5f1aa4947bb4486444cd1bb08e317f482480e598a7afa976cabc7fc5449",
+      "excerpt_preview": "But within a few months she had something to cheer about. She had won her Padma Bhushan in 1954 and Padma Vibhushan in 1975. Now the Government of India declared Bharat Ratna for her.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

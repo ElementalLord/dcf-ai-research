@@ -1,0 +1,90 @@
+{
+  "source_id": "a419d399-18d8-497a-a050-659b7658d7eb",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "India: The Dairy Revolution. World Bank Operations Evaluation Department. https://documents1.worldbank.org/curated/en/967841468771597123/pdf/multi-page.pdf",
+    "original_work_identity": {},
+    "publication_year": 1998,
+    "publisher_or_institution": "World Bank Operations Evaluation Department",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "India: The Dairy Revolution",
+    "url": "https://documents1.worldbank.org/curated/en/967841468771597123/pdf/multi-page.pdf"
+  },
+  "claim_ids": [
+    "1c656213-9c37-4f84-9234-0e5b467127e6",
+    "225ffc81-80a8-4d29-a9f1-31ece13e6baf",
+    "4b36a24a-2c31-4417-a546-05617b0a1fb0",
+    "4f338199-2ef2-43cc-840e-b25d63e6fd63",
+    "91aaebe5-56dd-479c-bd8a-da1ecda2e1c8",
+    "95d69421-083e-4963-8f87-066581d75c12",
+    "97b3dd5b-de38-43af-b7f5-c9565db15e1e",
+    "a5464cf0-c7fc-4517-8966-9bfec2e82976",
+    "b3edde19-46d5-495b-a239-7c5b0dfb1dd1"
+  ],
+  "passages": [
+    {
+      "chunk_id": "5c910141-3109-49e3-ab68-868697193720",
+      "locator": "Executive summary",
+      "text_sha256": "c1862ad122218f9e97e50b9f735cd51bbf91799a063da451ff189ebbf2b82ab4",
+      "excerpt_preview": "A byproduct impact of Operation Flood and the accompanying dairy expansion has been the establishment of an indigenous dairy equipment manufacturing industry and an impressive body of indigenous expertise that includes animal nutrition, ani",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "94be0f21-999b-4b33-b427-0c7e27b250aa",
+      "locator": "Executive summary",
+      "text_sha256": "ecdb4ebcf4d6f757b73778f697ca84f0fbea479dc0d1beefa7f0d6396ec46963",
+      "excerpt_preview": "Operation Flood is not an all purpose poverty removal program. It cannot be, because it focuses clearly on a single productive activity, dairying, while the ranks of the rural poor include many different categories of the disenfranchised.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b2da94b1-f29b-4f52-ba52-b88d59c666a3",
+      "locator": "Executive summary",
+      "text_sha256": "33754ae69cbc13ab02d39591c4ca56be31b7d3c3643cdee2b05b12ded7a1cc4a",
+      "excerpt_preview": "Operation Flood provided the example of large-scale modern milk processing fed by a well-organized milkshed procuring milk from a large number of producers in very small amounts (1 and 2 liters). The actual volume of milk handled by Operati",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c427979a-c451-4759-a53a-a250588bc0a1",
+      "locator": "Executive summary",
+      "text_sha256": "99657676c1b9b9f52286797f2583f0b991d08ecd18f709a72b85a377ce1a2893",
+      "excerpt_preview": "At that time India was following a self-reliant macroeconomic development policy with heavy emphasis on import substitution (a policy which remained essentially unchanged until 1991). In the dairy sector, a policy decision had been made to ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "dddb17c4-1811-4386-a341-56c58d484b13",
+      "locator": "Executive summary",
+      "text_sha256": "231377785f3b880a6c50cb1d49b8dc05332b9be1ff121c9412f570b3cd752370",
+      "excerpt_preview": "The Anand principles call for a three-tier system of cooperatives owned and controlled by farmers, with professional management. They are to be free of government or political interference. Actual compliance has been mixed, with many states",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e165e449-d2be-4562-aaae-760507d2dbb1",
+      "locator": "Executive summary",
+      "text_sha256": "dfea3594ee4361bebd3f7e8ae651ad073c362a91e6827c28c5cc3e7ad8d40c1e",
+      "excerpt_preview": "For those landless people who own or have been able to purchase a milch animal, it has been a boon. Of course, those who are both cowless and landless have only been slightly affected by some of the social programs supported by the village ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f705de78-3555-4cc6-9787-bf03c067a5a3",
+      "locator": "Executive summary",
+      "text_sha256": "a8adeba443939f17113319f10e2cd4095bf9d6bc11cd0915f1bddac994b64dd2",
+      "excerpt_preview": "Rising per capita incomes, together with rising population and a high income elasticity of demand for milk, resulted in a rapid growth in the demand for milk. The shift in the supply function from the policy changes introduced with Operatio",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

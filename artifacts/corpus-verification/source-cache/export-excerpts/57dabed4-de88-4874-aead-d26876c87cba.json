@@ -1,0 +1,106 @@
+{
+  "source_id": "57dabed4-de88-4874-aead-d26876c87cba",
+  "source": {
+    "author": "Béla Bollobás",
+    "authority_metadata": {
+      "verified_at": "2026-10-09T14:28:13.168Z"
+    },
+    "citation": "Béla Bollobás. The man who taught infinity: Hardy and Ramanujan. University of Cambridge. https://www.cam.ac.uk/research/news/opinion-the-man-who-taught-infinity-how-gh-hardy-tamed-srinivasa-ramanujans-genius",
+    "original_work_identity": {},
+    "publication_year": 2016,
+    "publisher_or_institution": "University of Cambridge",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "The man who taught infinity: Hardy and Ramanujan",
+    "url": "https://www.cam.ac.uk/research/news/opinion-the-man-who-taught-infinity-how-gh-hardy-tamed-srinivasa-ramanujans-genius"
+  },
+  "claim_ids": [
+    "0e1ddda4-2ce7-4805-9ed9-3ea3e738eaa1",
+    "24b5e9e7-2182-4147-95d5-1f8a3c706908",
+    "5933f2c7-8272-48ce-9151-e1d57e26dd86",
+    "6772c98a-5cdb-451b-abea-b9f5dba73daf",
+    "966271bb-1757-4388-a169-c41300057c0b",
+    "a706a217-cc46-498a-a955-f855469c442c",
+    "b85d03c9-feb4-49d6-9933-e230d675725b",
+    "ba85e6af-7ae3-4de5-b8f4-3d665f9fa97a",
+    "e55190e9-a2b9-48f1-a377-2ff5b38c2650"
+  ],
+  "passages": [
+    {
+      "chunk_id": "48a025db-7852-476b-a6bb-5a155ed5ccbd",
+      "locator": "Final mathematical work",
+      "text_sha256": "064cff0977ffc6171890a9a3a1a50f58b019d262861d3eddefdf33fbb8b732af",
+      "excerpt_preview": "Ramanujan’s letter contained some examples of his latest discovery, mock theta functions, which have turned out to be very important. A main conjecture about them was solved 80 years later, and these functions are now seen as interesting ex",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "60390d7e-74d0-4b76-945c-b177adb7f3cc",
+      "locator": "Illness in England",
+      "text_sha256": "a5a76bd1afca3e71e081d0865f1475afe2c54dba6b5e121733dd628710db3509",
+      "excerpt_preview": "Sadly, in the spring of 1917 Ramanujan fell ill, and was in and out of sanatoria for the rest of his stay in Cambridge. By early 1919 Ramanujan seemed to have recovered sufficiently, and decided to travel back to India.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "68dd8957-3ced-4ee1-b21d-86543cdbebc6",
+      "locator": "Hardy's reply",
+      "text_sha256": "0b3228da7494eede8308900e6b1501c72e2ac1a596876b3755ca50d5a745f7a3",
+      "excerpt_preview": "So Hardy sent an encouraging reply to Ramanujan, which led to a frequent exchange of letters. It was clear to Hardy that Ramanujan was totally exceptional: however, in spite of his amazing feats in mathematics, he lacked the basic tools of ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7e5fea35-6ecb-4501-9da8-44709c39f458",
+      "locator": "Journey to Cambridge",
+      "text_sha256": "15be06ced499e58daacf44e64b7b39997d903e04b6f38932ae275adbf321e53e",
+      "excerpt_preview": "Ramanujan of Madras promises to be the most interesting event of our time in the mathematical world …\" Ramanujan sailed for England in the company of Neville, and arrived in Cambridge in April 1914. Fearless mentoring I cannot but admire Ha",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9f655b02-d5b0-4734-93f8-93c220272839",
+      "locator": "Hardy and Littlewood assessment",
+      "text_sha256": "2c9f87732969b07fe9bd7c39233d44a92264443134268fd62a1d6923236b87a2",
+      "excerpt_preview": "Some assertions they knew well, others they could prove, others they could disprove, but many they found not only fascinating and unusual but also impossible to resolve.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c6a18b8c-319d-4318-82fe-2c4eb8ba31c6",
+      "locator": "Cambridge collaboration",
+      "text_sha256": "160de52dea1dd2a748968650fe1b5b5e1b0d6250a4dcd44433694fa399d5fa84",
+      "excerpt_preview": "He published one excellent paper after another, with a great deal of Hardy’s help in the proofs and presentation. They also collaborated on several great projects, and published wonderful joint papers.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "df8ef198-e477-4a6f-a4af-eb71d78c2027",
+      "locator": "Mathematical training",
+      "text_sha256": "941d5959ae035fe13a1924bdbf96444e6c489d8ed6d004d2d8fd4b4fce55a957",
+      "excerpt_preview": "Hardy knew that if Ramanujan was to fulfil his potential, he had to have a solid foundation in mathematics, at least as much as the best Cambridge graduates. It was for Ramanujan’s good that Hardy invited him to Cambridge, then, and he was ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f9a8fa33-b99e-45e0-9c83-f35948f000d0",
+      "locator": "Hardy correspondence",
+      "text_sha256": "2ce23416dbb45049ab2d17761452329195dbdc45d6057fc14ae9211b6047536c",
+      "excerpt_preview": "So, at the beginning of 1913, when he was just past 25, he dispatched a letter to Hardy in Cambridge with a long list of his discoveries –- a letter which changed both their lives. Although only 36 when he received Ramanujan’s letter, Hardy",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fd400001-dc7e-4088-a646-cb14a2a769b4",
+      "locator": "Later mathematics",
+      "text_sha256": "1ca47f64bf5e3695b5b8c3beccd318e00c0aa6e8564cca393ebd80288e865052",
+      "excerpt_preview": "A main conjecture about them was solved 80 years later, and these functions are now seen as interesting examples of a much larger class of mock modular forms in mathematics, which have applications to elliptic curves, Borcherds products, Ei",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

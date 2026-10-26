@@ -1,0 +1,36 @@
+{
+  "source_id": "c779e1e9-eec7-477d-a3ab-5ac540a7137e",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_kind": "Temple inscription recording institutional staffing",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Brihadisvara Temple: Inscription No. 69. Indira Gandhi National Centre for the Arts. https://www.ignca.gov.in/brhadisvaratemple/VIMAN/INSCRIPTIONS/69.html",
+    "original_work_identity": {},
+    "publication_year": 1014,
+    "publisher_or_institution": "Indira Gandhi National Centre for the Arts",
+    "rights_or_access_note": "Short documented research excerpts only; contemporary inscriptions, later chronicle tradition and modern scholarship are kept distinct.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Brihadisvara Temple: Inscription No. 69",
+    "url": "https://www.ignca.gov.in/brhadisvaratemple/VIMAN/INSCRIPTIONS/69.html"
+  },
+  "claim_ids": [
+    "5b7fdeb7-be6d-4040-8c41-2581909f267e",
+    "90e8d823-b0e6-4521-a7fa-d7b6bedc78f0"
+  ],
+  "passages": [
+    {
+      "chunk_id": "9d63f5dc-30d6-4109-865a-4af45251fa75",
+      "locator": "treasurers, servants and accountants",
+      "text_sha256": "48717c01bcc17c67430cd161263807fa174c51415329a17dfefd49e09f294f20",
+      "excerpt_preview": "69 consists of a list of villages which had to supply treasurers, servants and accountants to the Rajarajesvara temple, in accordance with an order which Rajarajadeva had issued before the 29th year of his reign.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

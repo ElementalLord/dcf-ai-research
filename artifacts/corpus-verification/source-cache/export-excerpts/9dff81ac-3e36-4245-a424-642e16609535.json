@@ -1,0 +1,34 @@
+{
+  "source_id": "9dff81ac-3e36-4245-a424-642e16609535",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:13.871Z"
+    },
+    "citation": "Rajgad Fort — Maharashtra Tourism. Department of Tourism, Government of Maharashtra. https://maharashtratourism.gov.in/fort/rajgad/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Department of Tourism, Government of Maharashtra",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Rajgad Fort — Maharashtra Tourism",
+    "url": "https://maharashtratourism.gov.in/fort/rajgad/"
+  },
+  "claim_ids": [
+    "3a42bbdc-f6b0-4c5a-ae1b-a8908787e88c"
+  ],
+  "passages": [
+    {
+      "chunk_id": "954390a1-8103-4ffe-8dd0-116272869403",
+      "locator": "Government heritage page",
+      "text_sha256": "ce75a4e6363a9f4e917c87326480c4870a294e2f2ff13520dbbd368ab8f71e90",
+      "excerpt_preview": "ange, Rajgad Fort stands as an enduring symbol of Maratha pride, resilience, and architectural brilliance. This majestic fortress, once the capital of the Maratha Empire under Chhatrapati Shivaji Maharaj, offers breathtaking views, thrillin",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

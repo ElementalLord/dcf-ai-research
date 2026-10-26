@@ -1,0 +1,32 @@
+{
+  "source_id": "1940cc5c-b04c-4dcb-a492-f3db927d6241",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Bala Kanda 54. https://www.sanskritdocuments.org/sites/valmikiramayan/baala/sarga54/balaroman54.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Sanskrit Documents",
+    "rights_or_access_note": "Public HTML page; use subject to source review.",
+    "source_status": "candidate",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Bala Kanda 54",
+    "url": "https://www.sanskritdocuments.org/sites/valmikiramayan/baala/sarga54/balaroman54.htm"
+  },
+  "claim_ids": [
+    "99535623-f7f3-4172-8287-f23cc69edcd3"
+  ],
+  "passages": [
+    {
+      "chunk_id": "57aabec8-5282-4e1f-8730-dc5a14baf4b7",
+      "locator": "Valmiki Ramayana, Bala Kanda 54",
+      "text_sha256": "9f2e074bcc8387557500ef18a8e27438bfd142bfcf6e8ada355c0aa3cca02a1d",
+      "excerpt_preview": "Book I : Bala Kanda - The Youthful Majesties Chapter [Sarga] 54 Verses converted to UTF-8, Oct 09 Introduction  The seizure of Kaamadhenu, the Sacred Cow, causes anxiety in her and   she urges Vashishta to counteract the atrocity of Vishvam",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

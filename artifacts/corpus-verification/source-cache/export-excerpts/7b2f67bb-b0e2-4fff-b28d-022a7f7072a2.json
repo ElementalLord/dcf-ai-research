@@ -1,0 +1,54 @@
+{
+  "source_id": "7b2f67bb-b0e2-4fff-b28d-022a7f7072a2",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Life of JRD – A Timeline. Tata group. https://www.tata.com/about-us/tata-group-our-heritage/jrd-tata-life-timeline",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Tata group",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Life of JRD – A Timeline",
+    "url": "https://www.tata.com/about-us/tata-group-our-heritage/jrd-tata-life-timeline"
+  },
+  "claim_ids": [
+    "091a8fe1-ef77-4706-974a-de2793f7bafc",
+    "2149abea-95aa-49b5-a888-f777e1f4f249",
+    "219c8e1e-3a74-4911-88f7-877a6d1219a6",
+    "8f74c4ba-9443-4e63-9f2f-21cdedfb3a43"
+  ],
+  "passages": [
+    {
+      "chunk_id": "08b428df-3049-4257-84a5-18c15bfa8b11",
+      "locator": "entered or expanded engineering, chemicals",
+      "text_sha256": "ada9b76b138ea1cdc77c340d61b63b788454c071fe2d62cd99e1e5fb87a3d7dc",
+      "excerpt_preview": "During his chairmanship the group entered or expanded engineering, chemicals, hospitality, consulting and other fields.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7e252aa0-b63e-4bfa-89ab-0d544bc3c365",
+      "locator": "stepped down as chairman in 1991",
+      "text_sha256": "95153515b3e667686fd715eaa4a7cee9face8b04a2e2c49b0332cdd39c672d7f",
+      "excerpt_preview": "He stepped down as chairman in 1991.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "dd0cef72-11ef-430c-af6c-b1c5de84e9d6",
+      "locator": "joined the Tata organization in 1925",
+      "text_sha256": "a1076400a527fa8be0004c732d1d9c30635ec6d7d457a8bf623528abc9e7a842",
+      "excerpt_preview": "Tata joined the Tata organization in 1925 and became chairman of Tata Sons in 1938.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

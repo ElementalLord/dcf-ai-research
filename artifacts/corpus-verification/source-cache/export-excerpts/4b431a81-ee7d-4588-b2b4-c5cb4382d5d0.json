@@ -1,0 +1,35 @@
+{
+  "source_id": "4b431a81-ee7d-4588-b2b4-c5cb4382d5d0",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Bala Kanda 21. https://www.valmikiramayan.net/utf8/baala/sarga21/balasans21.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "valmikiramayan.net",
+    "rights_or_access_note": "Public HTML page; use subject to source review.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Bala Kanda 21",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga21/balasans21.htm"
+  },
+  "claim_ids": [
+    "75225704-ef35-4d6e-bfc3-ec0e8ecb1ac7",
+    "9c3af79b-1df8-469c-8908-56dbdd0411b3",
+    "caccd3cf-0ea2-4ff0-8ca3-f895831a8f7f",
+    "db9e2786-920f-4fe5-b883-3a75906c3d53"
+  ],
+  "passages": [
+    {
+      "chunk_id": "c2b6fce3-bc77-4196-9004-ded19073e5cf",
+      "locator": "Valmiki Ramayana, Bala Kanda 21",
+      "text_sha256": "5e0256f8e17d4a58bb966031b3ba9d506fa0b0c02b1f5add5d6aa47c44172c4a",
+      "excerpt_preview": "Book I : Bala Kanda - The Youthful Majesties Chapter [Sarga] 21 Verses converted to UTF-8 - Sep 2009 Introduction  The ire of sage Vishvamitra is shown at king Dasharatha. To pacify sage Vishvamitra,   sage Vashishta intervenes and convince",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

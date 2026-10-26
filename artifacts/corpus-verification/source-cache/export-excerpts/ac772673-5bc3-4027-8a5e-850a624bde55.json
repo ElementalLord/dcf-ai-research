@@ -1,0 +1,43 @@
+{
+  "source_id": "ac772673-5bc3-4027-8a5e-850a624bde55",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.32, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 32 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga32/bala_32_prose.htm"
+  },
+  "claim_ids": [
+    "4ca08cf5-5933-46e7-89ed-3271a527e3c6",
+    "70f6b183-1ca5-4f8b-87bb-2db1836e80d6"
+  ],
+  "passages": [
+    {
+      "chunk_id": "2353c0ef-2a8c-4573-8347-a6f24b6f7946",
+      "locator": "Valmiki Ramayana - Bala Kanda in Prose Sarga 32",
+      "text_sha256": "b5a27f4c896661f444e125d407dd08ebcb712433db62d51519ba9509ee0da11a",
+      "excerpt_preview": "\"On seeing them who are flourishing with all their aspects together with comeliness and ripeness,  the all pervading Air-god, Vayu, spoke this word to them.  \" 'I have a desire for you all, hence leaving off the notions pertaining to human ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b187e383-2a5f-492d-b5c6-dc6a7f9c8e78",
+      "locator": "Valmiki Ramayana - Bala Kanda in Prose Sarga 32",
+      "text_sha256": "1cf0de33d73b0cfbbc371d63fe0c1928883545491847da21d43e5c6d774c1d16",
+      "excerpt_preview": "Sage Vishvamitra starts to narrate Kusha's legend. Vishvamitra is the offspring of   Kusha's dynasty. Brahma gives boon to Kusha to beget four sons and one among them is   Kushanaabha. Kushanaba begets a hundred daughters of excellent beaut",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -24,6 +24,7 @@ describe("scope-aware grounded answers", () => {
     expect(classifyQuestionScope("What did A. P. J. Abdul Kalam do that mattered?")).toBe("BROAD_SIGNIFICANCE");
     expect(classifyQuestionScope("Why does A. P. J. Abdul Kalam matter?")).toBe("BROAD_SIGNIFICANCE");
     expect(classifyQuestionScope("What made A. P. J. Abdul Kalam important?")).toBe("BROAD_SIGNIFICANCE");
+    expect(classifyQuestionScope("What ideas are associated with A. P. J. Abdul Kalam?")).toBe("BROAD_SIGNIFICANCE");
     expect(classifyQuestionScope("What happened between Vishvamitra and Vasistha?")).toBe("RELATIONSHIP");
     expect(classifyQuestionScope("What was Vishvamitra's role in Rama's story?")).toBe("EXPLANATION");
     expect(classifyQuestionScope("What is the significance of Rigveda 3.33 for Vishvamitra?")).toBe("TEXT_SPECIFIC");

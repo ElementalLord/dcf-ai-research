@@ -1,0 +1,72 @@
+{
+  "source_id": "5cce5617-0320-4efd-b9cd-87b2750768c5",
+  "source": {
+    "author": "Rabindranath Tagore",
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Rabindranath Tagore. Nationalism. Project Gutenberg. https://www.gutenberg.org/files/40766/40766-h/40766-h.htm",
+    "original_work_identity": {},
+    "publication_year": 1917,
+    "publisher_or_institution": "Project Gutenberg",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Nationalism",
+    "url": "https://www.gutenberg.org/files/40766/40766-h/40766-h.htm"
+  },
+  "claim_ids": [
+    "0b6a9798-196f-4528-9516-6d3f3459fe03",
+    "898869f8-5cf0-4cff-9fab-cb3ce2c3576e",
+    "8e681ee3-4cf0-49e6-8647-292e5f0494b2",
+    "b02a5de3-ef98-48c0-9bfd-921ddb75677b",
+    "be1f3367-0c4e-4b1a-9fb9-df33de5cb139",
+    "f0b7218a-596c-47fa-892c-ec9804ca5731"
+  ],
+  "passages": [
+    {
+      "chunk_id": "3e6b9202-a02b-4191-8d92-d3fef2b703de",
+      "locator": "organized political and commercial machine",
+      "text_sha256": "8b2f30cbc2ea342802fc484cd7931df66ac3ee59ae01762f4c97f229f71fb09c",
+      "excerpt_preview": "He distinguishes living societies from the nation understood as an organized political and commercial machine.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4b37dd5e-4b09-42d2-813f-85ce38d0596b",
+      "locator": "real problem is social",
+      "text_sha256": "a658f7b56e96b9cb8870fbfe758f7fc40054c3fdb70d79211c5cbc1da3f6d71d",
+      "excerpt_preview": "In the India lecture he says the country’s real problem is social, including how diverse peoples live together.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "5a4cad9b-3147-483c-a123-54b50a4c4b27",
+      "locator": "attacks imperial exploitation",
+      "text_sha256": "5cf4ed5ef8dd065c031a3c4ee50e751bf336c1156850c30839b323bad0e474aa",
+      "excerpt_preview": "He attacks imperial exploitation and the manufacture of hatred while also warning Asian societies against copying aggressive Western nationalism.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6bf7f293-1748-4938-aaa4-8aeaf0e4c12b",
+      "locator": "humanity beyond state power",
+      "text_sha256": "62cdd62e30f703f02eed8d4298b327b86db96e9775d05773fa885f0e258fec90",
+      "excerpt_preview": "His alternative emphasizes cooperation, moral freedom, cultural exchange and humanity beyond state power.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c21d46f3-e936-416d-be48-c15d8514a49d",
+      "locator": "First World War era",
+      "text_sha256": "cf66279c59c837478ef2ac88dfaf4b2f563484839eb364d70b6ff797c7515bd7",
+      "excerpt_preview": "ationalism collects Tagore’s lectures on the West, Japan and India during the First World War era.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

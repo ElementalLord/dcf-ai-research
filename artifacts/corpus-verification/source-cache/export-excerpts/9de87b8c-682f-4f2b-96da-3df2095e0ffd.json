@@ -1,0 +1,34 @@
+{
+  "source_id": "9de87b8c-682f-4f2b-96da-3df2095e0ffd",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:23.077Z"
+    },
+    "citation": "Vijaydurg Fort — Maharashtra Tourism. Department of Tourism, Government of Maharashtra. https://maharashtratourism.gov.in/fort/vijaydurg/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Department of Tourism, Government of Maharashtra",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Vijaydurg Fort — Maharashtra Tourism",
+    "url": "https://maharashtratourism.gov.in/fort/vijaydurg/"
+  },
+  "claim_ids": [
+    "cbedbc7f-24c1-4066-b2b8-39b7433dfeb6"
+  ],
+  "passages": [
+    {
+      "chunk_id": "d2d2fe8a-563b-4731-907c-6ac20be4349c",
+      "locator": "Government heritage page",
+      "text_sha256": "f3f2f44502f132a4cc7702f6548c8cbf4139df6ea6a9ef1911da88656c1d34ba",
+      "excerpt_preview": "ost. It wasn’t until 1653 that the great Maratha warrior, Chhatrapati Shivaji Maharaj, seized control of the fort from Adilshahi rulers and renamed it Vijaydurg, meaning “Fort of Victory.” Shivaji recognized its potential as a formidable na",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

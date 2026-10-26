@@ -1,0 +1,32 @@
+{
+  "source_id": "c5c67d55-d3df-458d-87e9-cf7ff856bdb9",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Remembering Asia's first Nobel laureate. India Science, Technology & Innovation Portal. https://www.indiascienceandtechnology.gov.in/listingpage/remembering-asias-1st-nobel-laureate-who-explained-why-sea-looks-blue",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "India Science, Technology & Innovation Portal",
+    "rights_or_access_note": "Publicly accessible research excerpt only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Remembering Asia's first Nobel laureate",
+    "url": "https://www.indiascienceandtechnology.gov.in/listingpage/remembering-asias-1st-nobel-laureate-who-explained-why-sea-looks-blue"
+  },
+  "claim_ids": [
+    "3f434725-9973-4383-815c-85c6d072758d"
+  ],
+  "passages": [
+    {
+      "chunk_id": "ff652a82-4511-4b73-83fb-74a0fbbe7f48",
+      "locator": "Remembering Asia's first Nobel laureate",
+      "text_sha256": "5159aa356fdb042c436b01d29c31c29a28188abff40767391c5f2b148b3b0dae",
+      "excerpt_preview": "as awarded the Nobel prize in 1930.India celebrates National Science Day on 28 Feb every year to commemorate the day he discovered the Raman effect. In 1954, he was honoured with the highest civilian award in India, the Bharat Ratna.He was ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

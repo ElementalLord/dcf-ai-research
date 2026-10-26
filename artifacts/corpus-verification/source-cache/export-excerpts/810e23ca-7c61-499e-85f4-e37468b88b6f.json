@@ -1,0 +1,54 @@
+{
+  "source_id": "810e23ca-7c61-499e-85f4-e37468b88b6f",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.27, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 27 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga27/bala_27_prose.htm"
+  },
+  "claim_ids": [
+    "524298c4-56e4-44d2-886a-8e4304877f88",
+    "5570814f-30f0-4646-8356-cb40b235e457",
+    "68d6c632-9f87-4185-a79d-5ca204aac047",
+    "9c7297ce-96f5-4d38-955f-36bfa96d2e94",
+    "eff3931e-3bfe-49bd-9c14-497b21a6a68f"
+  ],
+  "passages": [
+    {
+      "chunk_id": "4cd2f9db-d7f3-4cbf-a7ba-5ba1b92b5363",
+      "locator": "Book I : Bala Kanda - The Youthful MajestiesSarga 27 in Prose",
+      "text_sha256": "779e5a3434556849dda9dc814a3bc6fe37b664d9514cb53958843378136d2edf",
+      "excerpt_preview": "\"Oh, mighty armed son of the best king, I am giving a great missile named Vaidyadhara  by its name, and a gem of sword named Nandana. Thus, the missile which is very much liked by Gandharva-s,  namely Mohana, [The Stupefier,] the missile ca",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6fe6bb6e-47f1-458e-b2f9-8f7a60f0b08f",
+      "locator": "Book I : Bala Kanda - The Youthful MajestiesSarga 27 in Prose",
+      "text_sha256": "6d920aeaa4c6e3d9d084462a8bcda15a9ad16412aa648ae2f071835c43aa0766",
+      "excerpt_preview": "Sage Vishvamitra satisfied with the behaviour of Rama in obliging the orders of elders  and performing the act that is assigned to him, gives many weapons to Rama, called shastra, astra-s.  The weaponry is categorised mainly into two types.",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d76099f9-326d-4287-88a0-b53e1c0a17a8",
+      "locator": "Book I : Bala Kanda - The Youthful MajestiesSarga 27 in Prose",
+      "text_sha256": "18d7e67d2cbbf7a9971978d5165da8685e73673f2fc26985c3c2473d5e90f6c7",
+      "excerpt_preview": "The nature of some astra-s - missiles  There are some verses that depict the nature of these astra-s. A few of them are  given under. Though we may not actually acquire a projectile power with these verses, they may at least  detail what th",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

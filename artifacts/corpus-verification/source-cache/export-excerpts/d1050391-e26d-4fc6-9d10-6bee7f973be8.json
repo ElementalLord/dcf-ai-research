@@ -1,0 +1,63 @@
+{
+  "source_id": "d1050391-e26d-4fc6-9d10-6bee7f973be8",
+  "source": {
+    "author": "Bhagat Singh",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Bhagat Singh. To Young Political Workers. Marxists Internet Archive transcription of 2 February 1931 letter. https://www.marxists.org/archive/bhagat-singh/1931/02/02.htm",
+    "original_work_identity": {},
+    "publication_year": 1931,
+    "publisher_or_institution": "Marxists Internet Archive transcription of 2 February 1931 letter",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "To Young Political Workers",
+    "url": "https://www.marxists.org/archive/bhagat-singh/1931/02/02.htm"
+  },
+  "claim_ids": [
+    "7519f505-85be-4b5b-9631-6e874839b068",
+    "79f8d819-c135-4d1d-8fa5-5394dcde66ef",
+    "940e5b07-7975-436e-8503-e92447136a84",
+    "c0eb5405-2154-48cc-9858-4bd23716af05",
+    "de429f87-b2b8-4697-854f-90052fbcb30f",
+    "f855c5c6-4a1c-476d-86fa-703567e0f6ef"
+  ],
+  "passages": [
+    {
+      "chunk_id": "21dd183b-81e2-46ca-a2d5-a8c1daede820",
+      "locator": "opposed communalism",
+      "text_sha256": "437bab88bd37e353ff041cb5ec7cce9142fa42b6778de6524a928402493dcf7e",
+      "excerpt_preview": "He opposed communalism and asked young people to develop a scientific, critical outlook.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "373ada14-8f99-4900-8361-4dee341af259",
+      "locator": "study, organization",
+      "text_sha256": "0b5acde954766b133acc8d618e6ea19b9328e877356c1688e9e23606f42c07eb",
+      "excerpt_preview": "He urged study, organization, work among peasants and workers, and warned against individual heroics substituting for a disciplined mass movement.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "662f833c-889b-428a-9fac-c241a8cfe738",
+      "locator": "socialist order",
+      "text_sha256": "7726b493b94d5b62f580c36bb567fb7c255fb81e700d754a47ce7a9fc0c30ed2",
+      "excerpt_preview": "He defined it as overthrow of an unjust existing social order and its replacement by a socialist order.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b810a5ca-0d8a-4e53-832e-7f83f2dbee12",
+      "locator": "did not mean bombs and pistols alone",
+      "text_sha256": "dbef8596b067223019a94a4da55337f7820ca2f03f6c74893acb73150797fc9a",
+      "excerpt_preview": "n February 1931 Bhagat Singh told young political workers that revolution did not mean bombs and pistols alone.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

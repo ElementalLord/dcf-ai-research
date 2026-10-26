@@ -1,0 +1,43 @@
+{
+  "source_id": "52c4e7a7-871d-4464-a85a-cdcb9d2b250f",
+  "source": {
+    "author": "Swami Madhavananda (translator)",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Swami Madhavananda (translator). The Brhadaranyaka Upanisad with the Commentary of Sankaracarya. Advaita Ashrama, Mayavati. https://archive.org/download/Brihadaranyaka.Upanishad.Shankara.Bhashya.by.Swami.Madhavananda/Brihadaranyaka.Upanishad.Shankara.Bhashya.by.Swami.Madhavananda_djvu.txt",
+    "original_work_identity": {},
+    "publication_year": 1950,
+    "publisher_or_institution": "Advaita Ashrama, Mayavati",
+    "rights_or_access_note": "Scanned third edition; machine-read text with occasional recognition errors, excerpts chosen from clean passages.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "The Brhadaranyaka Upanisad with the Commentary of Sankaracarya",
+    "url": "https://archive.org/download/Brihadaranyaka.Upanishad.Shankara.Bhashya.by.Swami.Madhavananda/Brihadaranyaka.Upanishad.Shankara.Bhashya.by.Swami.Madhavananda_djvu.txt"
+  },
+  "claim_ids": [
+    "66475555-a7c0-4a37-b280-5faffb18ecea",
+    "6c4f3f53-107b-43ac-8ef7-f79690cae79e"
+  ],
+  "passages": [
+    {
+      "chunk_id": "5ffaf887-d5dd-4710-986f-6041d41f4461",
+      "locator": "Shankara on BAU 2.4.1",
+      "text_sha256": "416028800ef0cfb6e5942901b62d4c6ac36997f48daf0e8a787865ef948a239d",
+      "excerpt_preview": "It is to show this that renunciation of the world, which consists in giving up all means, is sought to be enjoined as a subsidiary step.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "944f6405-c4ff-431c-9064-9a0b3911b65c",
+      "locator": "Shankara on BAU 2.3.6",
+      "text_sha256": "7777cfb49a0a470150f2c07a699db0a4eba458f8bba39732931ba203ea9a7f2e",
+      "excerpt_preview": "How through these two terms 'Not this, not this' is it sought to describe the Truth of truth? By the elimination of all differences due to limiting adjuncts, the words refer to something that has no distinguishing mark such as name, or form",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,45 @@
+{
+  "source_id": "7a3546e2-6126-489c-a987-5f8354045ba2",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.51, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 51 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga51/bala_51_prose.htm"
+  },
+  "claim_ids": [
+    "18db6e1f-5966-47ce-bccd-faf0eedfe78d",
+    "a972419e-df1c-4a74-b8c1-8063afde85a0",
+    "ed7d40c3-c8ca-4149-835a-0e26a7d342a3",
+    "fca7eb49-d669-44bc-b631-f22c9c04f0cf"
+  ],
+  "passages": [
+    {
+      "chunk_id": "df62e567-491e-404e-9393-0f4f24f23977",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\nSarga 51 in Prose",
+      "text_sha256": "417f1d55bcc4ed7518fa7c71f76f2932290e2c45bba3386c6548fab8986a2e8d",
+      "excerpt_preview": "Enquiring about his father Gautama's reuniting with his mother Ahalya,   Sage Shataananda relates the legend of Vishvamitra. Shataananda greets   Rama for his adherence to the rectitude of Vishvamitra, which Vishvamitra   gained through a s",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "efd46cc3-a4a3-4524-bd56-a1c0168d4ca8",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\nSarga 51 in Prose",
+      "text_sha256": "cfa0d1074432356384fc1e1569512c5bf72efc850e7ab9fdda251923d4af6e68",
+      "excerpt_preview": "On hearing those words of that highly intellectual Vishvamitra, high refulgent sage  Shataananda spoke these words to Rama. \"Hail to thee! Oh, best one among men Rama,  your arrival is a godsend, not only to Mithila but to entire humanity, ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

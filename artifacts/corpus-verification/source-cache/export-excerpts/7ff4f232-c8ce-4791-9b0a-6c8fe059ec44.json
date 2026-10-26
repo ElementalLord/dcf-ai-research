@@ -1,0 +1,34 @@
+{
+  "source_id": "7ff4f232-c8ce-4791-9b0a-6c8fe059ec44",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:26:55.130Z"
+    },
+    "citation": "Collected Works Correspondence — Trinity Archive. Trinity College Library, Cambridge. https://archives.trin.cam.ac.uk/index.php/correspondence-of-g-h-hardy-with-cambridge-university-press-and-others-about-ramanujans-collected-works1916-291-bundle",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Trinity College Library, Cambridge",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Collected Works Correspondence — Trinity Archive",
+    "url": "https://archives.trin.cam.ac.uk/index.php/correspondence-of-g-h-hardy-with-cambridge-university-press-and-others-about-ramanujans-collected-works1916-291-bundle"
+  },
+  "claim_ids": [
+    "b61f902a-eac7-431c-8a78-5e64413fd7b7"
+  ],
+  "passages": [
+    {
+      "chunk_id": "62f037fd-f11f-498c-a824-b3f7dd7e843b",
+      "locator": "Archival publication record",
+      "text_sha256": "f774ba46fd51046ddf8ea747ccaa7a70a7f5d8d1378fea210c9e07e833095bbe",
+      "excerpt_preview": "e Site Trinity College Cambridge Quick search Search File 12 - Correspondence of G H Hardy with Cambridge University Press and others about Ramanujan’s Collected Works Identity area Reference codeAdd. MS a/94/12 TitleCorrespondence of G H H",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

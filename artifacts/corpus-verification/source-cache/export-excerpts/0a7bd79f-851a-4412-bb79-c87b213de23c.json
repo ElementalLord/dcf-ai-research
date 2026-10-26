@@ -1,0 +1,61 @@
+{
+  "source_id": "0a7bd79f-851a-4412-bb79-c87b213de23c",
+  "source": {
+    "author": "J. C. Bose",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "J. C. Bose. Response in the Living and Non-Living. Longmans, Green, and Co.; Internet Archive. https://archive.org/details/responseinliving00boseuoft",
+    "original_work_identity": {},
+    "publication_year": 1902,
+    "publisher_or_institution": "Longmans, Green, and Co.; Internet Archive",
+    "rights_or_access_note": "Short documented research excerpts only. Primary claims, archival records, and later interpretations stay distinct.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Response in the Living and Non-Living",
+    "url": "https://archive.org/details/responseinliving00boseuoft"
+  },
+  "claim_ids": [
+    "7504365b-332a-4afb-88ec-5181d97a4cc7",
+    "a6f61bbb-960c-4f47-813f-d5ca966b5a8c",
+    "e033fa7e-587e-4ef2-ba5a-e44c19a245c6",
+    "e27474cc-f7c2-47df-8bf2-145c8abbbd36"
+  ],
+  "passages": [
+    {
+      "chunk_id": "4cc03a3f-7ecf-4b6f-8581-52d86c472b87",
+      "locator": "not be equated automatically with present-day physiology",
+      "text_sha256": "2cdd6298b9270a3a6656eba0b53f292adf9ab030ebc2b858d8c55103f23ae0f0",
+      "excerpt_preview": "His broad philosophical inference is Bose’s own argument and should not be equated automatically with present-day physiology.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6ae3b71f-29a5-471c-aadc-746b95dbf441",
+      "locator": "mechanical, thermal, chemical and electrical stimuli",
+      "text_sha256": "e96a07ee289d60ab209b93a9f97d6936ff154efff92f024080a183deaa61a7eb",
+      "excerpt_preview": "He described using mechanical, thermal, chemical and electrical stimuli, and compared recorded response curves.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a801f0e4-0804-4d35-8c30-7a469593e40d",
+      "locator": "electrical response in metals and living tissues",
+      "text_sha256": "8555b5b7b9fe72af22bfedcf9187f1de553754ff8870686ade2976faf28e391d",
+      "excerpt_preview": "n Response in the Living and Non-Living, Bose presented experiments on electrical response in metals and living tissues.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fa4855ec-2b03-4065-814b-fa20bb7a5c85",
+      "locator": "distinctions between living and non-living matter",
+      "text_sha256": "92488ce238b81c0750bb346cc217652414a9c393495c5c0a4660818ed1973257",
+      "excerpt_preview": "Bose argued that response could be investigated through sensitive instruments and that apparent distinctions between living and non-living matter might be less absolute than contemporary accounts allowed.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

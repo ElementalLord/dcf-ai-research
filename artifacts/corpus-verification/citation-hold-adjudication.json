@@ -1,0 +1,914 @@
+{
+  "scope": "46 active legacy citation-link mismatches only; original decision ledger unchanged",
+  "inspected_utc": "2026-10-19",
+  "repaired": 2,
+  "quarantined": 44,
+  "claims": [
+    {
+      "claim_id": "d8f9f1b9-e3ca-4ca7-afa9-06fc0feb1af3",
+      "personality": "Adi Shankaracharya",
+      "recorded_decision_preserved": "REVISE AND APPROVE",
+      "final_wording": "Shankara systematized nondual interpretation of the Upanishads and taught liberation through knowledge; many later works attributed to him have disputed authorship.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "91083ab0-e904-4bc3-bba3-a172d04d54c6",
+        "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+        "c833b2a2-932f-4715-8339-d3f1860dc99d"
+      ],
+      "original_source_urls": [
+        "https://iep.utm.edu/advaita-vedanta/",
+        "https://iep.utm.edu/upanisad/",
+        "https://sanskritdocuments.org/doc_giitaa/gItAshAMkarabhAShya.pdf"
+      ],
+      "checked_reference_urls": [
+        "https://plato.stanford.edu/entries/shankara/"
+      ],
+      "rationale": "Checked SEP entry is absent from original claim-source relationships; the linked Sanskrit PDF and IEP pages have not been shown to support the full final wording including disputed attribution.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "1e12002c-eeee-4f7d-b26c-648f36aa5a16",
+      "personality": "Ashoka",
+      "recorded_decision_preserved": "REVISE AND APPROVE",
+      "final_wording": "Major Rock Edict III orders yuktas, rajukas and pradesikas to tour every five years for dhamma instruction and other official business.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "0662151b-0d88-4b60-b631-cedc9303e5b6"
+      ],
+      "original_source_urls": [
+        "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=370"
+      ],
+      "checked_reference_urls": [
+        "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362",
+        "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf"
+      ],
+      "rationale": "Existing linked Polyglotta source is the Major Pillar Edicts (volume 370), whereas checked support is Major Rock Edict III (volume 362); document identity does not match.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "5609a45d-ff75-4996-bc9f-556be05c0dba",
+      "personality": "Rajaraja Chola I",
+      "recorded_decision_preserved": "REVISE AND APPROVE",
+      "final_wording": "UNESCO identifies the Brihadisvara Temple at Thanjavur, built under Rajaraja I, as a major example of Chola architecture and art.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "ae8abe7a-5576-4e83-86f0-bfcd4ea240f6"
+      ],
+      "original_source_urls": [
+        "https://whc.unesco.org/document/153044"
+      ],
+      "checked_reference_urls": [
+        "https://whc.unesco.org/en/list/250/"
+      ],
+      "rationale": "Original ICOMOS PDF supports temple attribution, but its stored excerpt omits Rajaraja and the approved wording attributes the assessment to UNESCO rather than ICOMOS; precise citation and wording repair remains necessary.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "08cff6a7-0e1c-4a21-9b03-23087f2ea745",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "REVISE AND APPROVE",
+      "final_wording": "In his introduction to The Gospel of Sri Ramakrishna, Swami Nikhilananda calls Ramakrishna the first religious prophet in recorded history to teach harmony among religions. This is the Order's retrospective devotional assessment, not an independently established priority claim.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "61914dc5-f03e-451c-81ef-145d18079b40"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/summary_of.htm",
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/keshab.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "0f36dc1e-79a2-465a-981b-77b75665f4d7",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "REVISE AND APPROVE",
+      "final_wording": "In a note to his English Gospel, translator Swami Nikhilananda explains Ramakrishna's phrase kamini-kanchan ('woman and gold') as 'lust and greed' and says he used 'woman' for the sex instinct when addressing male devotees.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "6bd19767-fd30-4b73-900b-11576daedd8e",
+        "ac02dde3-2c64-4cb9-bac4-1425c20d8add"
+      ],
+      "original_source_urls": [
+        "https://lareviewofbooks.org/essay/the-most-versatile-of-mystics",
+        "https://www.ramakrishnavivekananda.info/gospel/gospel.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/volume_1/01_master_and_disciple.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "2d6d5273-b58d-4fc2-977c-df009060e4bd",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "The Order contrasts the Brahmo leader Keshab, an orator and writer who stressed social reform and treated Hindu images as allegory, with Ramakrishna, who \"hardly knew how to write his own name\", disliked lecturing and held God-realization the only goal of life.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "61914dc5-f03e-451c-81ef-145d18079b40"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/keshab.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "4a430925-c049-4438-a455-b4c2d2c2acaf",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "The Order's biography says the Dakshineswar temple garden built by Rani Rasmani, centred on Kali as Bhavatarini, was dedicated on 31 May 1855, and that Ramakrishna came to it with his elder brother Ramkumar, who was appointed priest of the Kali temple.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "61914dc5-f03e-451c-81ef-145d18079b40"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/kali.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "ecc7fc2c-617c-4f29-b365-462f1c4aa0cb",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "The Ramakrishna Order's biography says Gadadhar, later Ramakrishna, was born on 18 February 1836 at Kamarpukur, a village in Hooghly district, Bengal, to a devout brahmin family.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "61914dc5-f03e-451c-81ef-145d18079b40",
+        "d5a13923-a194-487e-8a9b-0d61f574d7e7"
+      ],
+      "original_source_urls": [
+        "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/boyhood.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "463a43cf-ce07-4734-afd1-f82d2875592b",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "The Order says that around November 1874 he was seized with a desire to learn the truth of Christianity and listened to the Bible read by the devotee Sambhu Charan Mallick, and then — it reports — had a vision of Christ as \"Love Incarnate\" embracing him.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "61914dc5-f03e-451c-81ef-145d18079b40"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/christianity.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "6d6352c0-e4ed-4414-90a4-c290e54dfa4e",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "REVISE AND APPROVE",
+      "final_wording": "Nikhilananda's Ramakrishna Order biography dates Totapuri's arrival at Dakshineswar to late 1864 and says he was perhaps born in Punjab.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "61914dc5-f03e-451c-81ef-145d18079b40",
+        "d5a13923-a194-487e-8a9b-0d61f574d7e7"
+      ],
+      "original_source_urls": [
+        "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/totapuri.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "71062ea0-f9bd-4671-9b10-a7e4027d10c6",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "In Ramakrishna's later account as the Order records it, longing for a vision of the Mother grew so unbearable that he seized the temple sword to end his life, and at that moment \"the blessed Mother revealed Herself\"; this is a reported mystical experience, not independently attested.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "61914dc5-f03e-451c-81ef-145d18079b40",
+        "8cd5175c-1fa9-4fc0-9d96-2edce7212fec"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm",
+        "https://www.southasianist.ed.ac.uk/southasianist/article/download/5556/8906"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/the_first_vision.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "9a849445-4c16-4ef2-bf13-c514db5f9a9c",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "Ramakrishna is quoted saying that after Totapuri left he remained for six months in a state of absolute identity with Brahman, unaware of day and night; this is a reported mystical state recorded by the Order and not independently verifiable.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "61914dc5-f03e-451c-81ef-145d18079b40"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/totapuris_lesson.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "d3d4217a-a201-414d-934a-6dab91650ba1",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "REVISE AND APPROVE",
+      "final_wording": "The Ramakrishna Order's account says a Bhairavi Brahmani skilled in Tantric and Vaishnava practice reassured Ramakrishna about his visions, described his state as mahabhava, and later became his guru.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "61914dc5-f03e-451c-81ef-145d18079b40"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/the_brahmani.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "f4e89c5c-b9bc-4327-abf5-44136177a80e",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "The Order says that from the end of 1866 he practised Islam under a Muslim guru — dressing as a Muslim, repeating the name of Allah and giving up temple visits — and after three days reportedly saw a radiant figure, perhaps Muhammad.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "61914dc5-f03e-451c-81ef-145d18079b40"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/islam.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "1d81056a-92c0-4452-8cb1-ada016b09a58",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "After Ramakrishna's death in August 1886 the young disciples gathered at a house at Baranagore rented with help from the householder Surendra, which gradually became the first monastery of the Order.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "6bd19767-fd30-4b73-900b-11576daedd8e"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/gospel.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/volume_2/52_after_the_passing_away.htm",
+        "https://belurmath.org/surendra-nath-mitra/",
+        "https://belurmath.org/ramakrishna-math-baranagar/"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "41d4823f-d7c5-4757-bde5-316192902188",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "In M.'s record of 6 December 1884, Ramakrishna says that selfless work (karma yoga) is a way to God but very difficult and unsuited to the present age, and that helping others is the work of God alone; a man's duty is to take refuge in God.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "6bd19767-fd30-4b73-900b-11576daedd8e"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/gospel.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/volume_2/34_bankim_chandra.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "c387e462-e053-47bb-8ea0-b641a90acb46",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "The Order says that at Cossipore Ramakrishna gave the ochre cloth of the sannyasi to his young disciples and Girish, and that \"the Master himself laid the foundation of the future Ramakrishna Order of monks\".",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "61914dc5-f03e-451c-81ef-145d18079b40"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/last_days.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "53c4046e-5fef-439f-b594-5f84b61f63b0",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "The Order says Ramakrishna remained \"totally untouched by the idea of being a teacher\", saying that the ideas of being a guru, a father and a master pricked his flesh like thorns, yet was an extraordinary teacher.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "61914dc5-f03e-451c-81ef-145d18079b40"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/masters_method.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "7180fef3-c2ab-4874-9ebf-63b949cda6c2",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "In the Order's account of their first meetings, Narendranath, a Brahmo college student of eighteen, sang for Ramakrishna, who took him aside and wept that he had come \"very late\"; Narendra, startled, thought \"He must be stark mad\".",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "61914dc5-f03e-451c-81ef-145d18079b40",
+        "685aedc9-c39f-4c63-a43b-2b7d4086b6ae"
+      ],
+      "original_source_urls": [
+        "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/vivekananda",
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/narendra.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "a4fcf4d2-e3e1-4230-bb9d-2f4770cec4b3",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "In a boat talk with Keshab Chandra Sen on 27 October 1882, Ramakrishna is recorded saying that God alone is the Teacher, that his own attitude toward God is that of a child toward its mother, and that human gurus can be had by the million but few want to be disciples.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "6bd19767-fd30-4b73-900b-11576daedd8e"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/gospel.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/volume_1/05_the_master_and_keshab.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "ad245e15-54a5-4b4c-9032-2a28bbb95cb5",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "REVISE AND APPROVE",
+      "final_wording": "The Ramakrishna Order's account says Ramakrishna told Narendra at Cossipore that he had given him all he possessed spiritually; the account presents this as a transmission during samadhi.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "61914dc5-f03e-451c-81ef-145d18079b40",
+        "685aedc9-c39f-4c63-a43b-2b7d4086b6ae"
+      ],
+      "original_source_urls": [
+        "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/vivekananda",
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/last_days.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "b0d5d60d-c2dc-43f8-9fe3-34a21ce75cff",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "In the Order's account Ramakrishna was grateful to the Divine Mother for sending him a disciple who doubted his realizations, often asking Narendra to test him as money-changers test coins, and laughing at his biting criticism of his samadhi.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "61914dc5-f03e-451c-81ef-145d18079b40"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/narendra.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "db679fec-a8ef-41cd-a1d9-a1138b0d2d01",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "The Order says the Brahmani proclaimed him an Incarnation of God, and that the Vaishnava leader Vaishnavcharan, at a scholars' conference convened by Mathur Babu, agreed that his experience of mahabhava signalled a rare manifestation of God in a man; Ramakrishna is reported to have felt relief that \"it is not a disease\".",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "61914dc5-f03e-451c-81ef-145d18079b40"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/the_brahmani.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "e33d7beb-875d-489b-958d-ac717133982f",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "REVISE AND APPROVE",
+      "final_wording": "Nikhilananda's Ramakrishna Order biography says Ramakrishna married Saradamani of Jayrambati when she was five and describes their marriage as permanently unconsummated.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "61914dc5-f03e-451c-81ef-145d18079b40",
+        "d5a13923-a194-487e-8a9b-0d61f574d7e7"
+      ],
+      "original_source_urls": [
+        "https://www.encyclopedia.com/people/philosophy-and-religion/hinduism-biographies/ramakrishna",
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/marriage.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "e76a77c7-134b-4723-92c7-2af6224bd1b1",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "The Order says that a few months after Sarada joined him at Dakshineswar in 1872 he arranged a special worship of the Divine Mother and seated Sarada herself as the living image; both reportedly went into samadhi, and the Order presents their bond as a spiritual companionship.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "2aa55178-75fe-4a1c-92b5-3ec77c532dca",
+        "61914dc5-f03e-451c-81ef-145d18079b40"
+      ],
+      "original_source_urls": [
+        "https://belurmath.org/sri-sarada-devi/",
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/introduction/relation_with_wife.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "0886e626-38d7-482f-bbbc-24db2fb27d60",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "Visiting the scholar Vidyasagar on 5 August 1882, Ramakrishna is recorded saying that the Vedas, Puranas, Tantras and philosophies have been \"defiled\" by being spoken, while Brahman alone has not, since no one can say what it is; Vidyasagar is recorded replying that he had learnt something new.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "6bd19767-fd30-4b73-900b-11576daedd8e",
+        "8cd5175c-1fa9-4fc0-9d96-2edce7212fec"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/gospel.htm",
+        "https://www.southasianist.ed.ac.uk/southasianist/article/download/5556/8906"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/volume_1/03_visit_to_vidyasagar.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "52dc3737-5124-467a-a553-0257baa6638e",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "REVISE AND APPROVE",
+      "final_wording": "In M.'s Gospel record, Ramakrishna contrasts the jnani, who reaches Brahman through 'not this, not this', with the vijnani, who sees the steps and roof as made of the same materials and sees Brahman manifested as the universe and living beings.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "6bd19767-fd30-4b73-900b-11576daedd8e"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/gospel.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/volume_1/03_visit_to_vidyasagar.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "9dfc87bf-82fa-41a1-b230-15ed33c2e01b",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "Alongside his acceptance of all paths, M. records him telling a Brahmo devotee that the Eternal Religion of the rishis contains every form of worship, whereas \"the modern cults\" will last a few days and disappear — a reminder that his inclusiveness was framed within Hindu tradition.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "6bd19767-fd30-4b73-900b-11576daedd8e"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/gospel.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/volume_1/20_rules.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "a22646cc-d3b9-4e43-924a-dfda00d10d24",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "Ramakrishna is recorded arguing that in the present age (Kaliyuga) people are too dependent on food and body-consciousness to say \"I am Brahman\"; those unable to give up worldly attachment should rather cherish the idea \"I am God's servant\" and follow devotion.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "6bd19767-fd30-4b73-900b-11576daedd8e"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/gospel.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/volume_1/03_visit_to_vidyasagar.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "bc2dadea-f37a-41e6-96db-4b6df8faea15",
+      "personality": "Ramakrishna Paramahamsa",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "In M.'s record of a conversation on 13 August 1882, Ramakrishna says God can be realized through all paths and that all religions are true, comparing the paths to stone stairs, wooden stairs, bamboo steps or a rope by which one reaches the same roof.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "6bd19767-fd30-4b73-900b-11576daedd8e"
+      ],
+      "original_source_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/gospel.htm"
+      ],
+      "checked_reference_urls": [
+        "https://www.ramakrishnavivekananda.info/gospel/volume_1/04_advice_to_householders.htm"
+      ],
+      "rationale": "Existing linked Gospel URL is a contents/index page, while checked support is in a specific chapter. Stored excerpts do not establish that the linked URL contains the passage; secondary links do not replace the missing direct relationship.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "61e944ef-a848-4865-b28b-7ab1b56dc7eb",
+      "personality": "Satyajit Ray",
+      "recorded_decision_preserved": "REVISE AND APPROVE",
+      "final_wording": "At the 1992 Academy Awards, Satyajit Ray received an Honorary Award recognizing his filmmaking, rather than an award for an individual film.",
+      "citation_resolution": "REPAIRED",
+      "original_source_ids": [
+        "119d6b37-13d5-4af9-8f21-ad2252084141"
+      ],
+      "original_source_urls": [
+        "https://awardsdatabase.oscars.org/Search/GetResults?query=%7B%22AwardCategory%22:%5B%2227%22%5D,%22Sort%22:%223-Award+Category-Chron%22,%22Search%22:%22Basic%22%7D"
+      ],
+      "checked_reference_urls": [
+        "https://www.oscars.org/oscars/ceremonies/1992/memorable-moments"
+      ],
+      "rationale": "Existing Academy awards-database relationship directly contains Ray’s Honorary Award citation; the Academy 64th-ceremony page confirms 1992 presentation. Staging wording omits the ceremony year because the selected linked database page is organized by 1991 award year; the separate Academy ceremony page remains checked in the audit.",
+      "staging_review_status": "approved",
+      "evidence_locator": "Academy awards database, 1991 (64th), Honorary Award, Satyajit Ray; Academy 1992 memorable moments",
+      "staging_applied_wording": "Satyajit Ray received an Academy Honorary Award recognizing his filmmaking, rather than an award for an individual film."
+    },
+    {
+      "claim_id": "0d6e0dc3-6b43-453e-b1f3-8b8abf08e8ab",
+      "personality": "Satyajit Ray",
+      "recorded_decision_preserved": "REVISE AND APPROVE",
+      "final_wording": "The Academy's 1992 Honorary Award citation credited Ray with influence on filmmakers and audiences worldwide; this records the Academy's judgment of his reception.",
+      "citation_resolution": "REPAIRED",
+      "original_source_ids": [
+        "119d6b37-13d5-4af9-8f21-ad2252084141"
+      ],
+      "original_source_urls": [
+        "https://awardsdatabase.oscars.org/Search/GetResults?query=%7B%22AwardCategory%22:%5B%2227%22%5D,%22Sort%22:%223-Award+Category-Chron%22,%22Search%22:%22Basic%22%7D"
+      ],
+      "checked_reference_urls": [
+        "https://www.oscars.org/oscars/ceremonies/1992/memorable-moments"
+      ],
+      "rationale": "Existing Academy awards-database relationship directly contains Ray’s Honorary Award citation; the Academy 64th-ceremony page confirms 1992 presentation. Staging wording omits the ceremony year because the selected linked database page is organized by 1991 award year; the separate Academy ceremony page remains checked in the audit.",
+      "staging_review_status": "approved",
+      "evidence_locator": "Academy awards database, 1991 (64th), Honorary Award, Satyajit Ray; Academy 1992 memorable moments",
+      "staging_applied_wording": "The Academy’s Honorary Award citation credited Ray with influence on filmmakers and audiences worldwide; this records the Academy’s judgment of his reception."
+    },
+    {
+      "claim_id": "7206448f-4fc2-421f-8b88-27091022b873",
+      "personality": "Verghese Kurien",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "In accepting the World Food Prize, Kurien credited millions of farmers rather than presenting the White Revolution as his individual achievement.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "162fa362-1a24-42ce-92fe-64a13cc81160"
+      ],
+      "original_source_urls": [
+        "https://www.worldfoodprize.org/blog/people/dr-verghese-kurien/"
+      ],
+      "checked_reference_urls": [
+        "https://drkurien.com/october-17-1989/"
+      ],
+      "rationale": "Existing linked World Food Prize biography currently blocks source-page inspection; checked references point to a different WFP notice, NDDB biography, or acceptance speech. Cached excerpt alone cannot establish an accessible claim-specific citation.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "edecc47a-240e-468a-948e-b550372acee9",
+      "personality": "Verghese Kurien",
+      "recorded_decision_preserved": "REVISE AND APPROVE",
+      "final_wording": "Kurien argued that farmer-owned processing and direct marketing returned a greater share of the consumer's payment to dairy producers.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "162fa362-1a24-42ce-92fe-64a13cc81160"
+      ],
+      "original_source_urls": [
+        "https://www.worldfoodprize.org/blog/people/dr-verghese-kurien/"
+      ],
+      "checked_reference_urls": [
+        "https://drkurien.com/october-17-1989/"
+      ],
+      "rationale": "Existing linked World Food Prize biography currently blocks source-page inspection; checked references point to a different WFP notice, NDDB biography, or acceptance speech. Cached excerpt alone cannot establish an accessible claim-specific citation.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "5542934d-b046-424a-993c-a7105b1eb87d",
+      "personality": "Verghese Kurien",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "Kurien earned a science degree at Madras University in 1940 before entering engineering.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "162fa362-1a24-42ce-92fe-64a13cc81160"
+      ],
+      "original_source_urls": [
+        "https://www.worldfoodprize.org/blog/people/dr-verghese-kurien/"
+      ],
+      "checked_reference_urls": [
+        "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+      ],
+      "rationale": "Existing linked World Food Prize biography currently blocks source-page inspection; checked references point to a different WFP notice, NDDB biography, or acceptance speech. Cached excerpt alone cannot establish an accessible claim-specific citation.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "7f406348-934e-43dc-9358-49d8d0782840",
+      "personality": "Verghese Kurien",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "A government scholarship took Kurien to Michigan State University, where he completed a master’s degree in mechanical engineering in 1948.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "162fa362-1a24-42ce-92fe-64a13cc81160"
+      ],
+      "original_source_urls": [
+        "https://www.worldfoodprize.org/blog/people/dr-verghese-kurien/"
+      ],
+      "checked_reference_urls": [
+        "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+      ],
+      "rationale": "Existing linked World Food Prize biography currently blocks source-page inspection; checked references point to a different WFP notice, NDDB biography, or acceptance speech. Cached excerpt alone cannot establish an accessible claim-specific citation.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "810f1e3c-feb0-442f-b298-105f04ec1b70",
+      "personality": "Verghese Kurien",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "Kurien arrived in Anand in 1949 as a Government of India dairy engineer assigned to the Government Research Creamery.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "162fa362-1a24-42ce-92fe-64a13cc81160"
+      ],
+      "original_source_urls": [
+        "https://www.worldfoodprize.org/blog/people/dr-verghese-kurien/"
+      ],
+      "checked_reference_urls": [
+        "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+      ],
+      "rationale": "Existing linked World Food Prize biography currently blocks source-page inspection; checked references point to a different WFP notice, NDDB biography, or acceptance speech. Cached excerpt alone cannot establish an accessible claim-specific citation.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "84a2f266-94d2-42d5-806c-6f0cfb661e5e",
+      "personality": "Verghese Kurien",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "His preparatory training included special engineering studies at Jamshedpur and nine months of dairy-engineering training in Bangalore.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "162fa362-1a24-42ce-92fe-64a13cc81160"
+      ],
+      "original_source_urls": [
+        "https://www.worldfoodprize.org/blog/people/dr-verghese-kurien/"
+      ],
+      "checked_reference_urls": [
+        "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+      ],
+      "rationale": "Existing linked World Food Prize biography currently blocks source-page inspection; checked references point to a different WFP notice, NDDB biography, or acceptance speech. Cached excerpt alone cannot establish an accessible claim-specific citation.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "9ee5ecd9-0272-4016-b59a-3a810321d286",
+      "personality": "Verghese Kurien",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "Verghese Kurien was born in Kerala on 26 November 1921; his later career was built in Gujarat rather than his birthplace.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "162fa362-1a24-42ce-92fe-64a13cc81160"
+      ],
+      "original_source_urls": [
+        "https://www.worldfoodprize.org/blog/people/dr-verghese-kurien/"
+      ],
+      "checked_reference_urls": [
+        "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+      ],
+      "rationale": "Existing linked World Food Prize biography currently blocks source-page inspection; checked references point to a different WFP notice, NDDB biography, or acceptance speech. Cached excerpt alone cannot establish an accessible claim-specific citation.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "fa8f0682-0bde-41da-a4e0-7d1ac942cd0d",
+      "personality": "Verghese Kurien",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "He completed a Bachelor of Mechanical Engineering at Madras University in 1943.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "162fa362-1a24-42ce-92fe-64a13cc81160"
+      ],
+      "original_source_urls": [
+        "https://www.worldfoodprize.org/blog/people/dr-verghese-kurien/"
+      ],
+      "checked_reference_urls": [
+        "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+      ],
+      "rationale": "Existing linked World Food Prize biography currently blocks source-page inspection; checked references point to a different WFP notice, NDDB biography, or acceptance speech. Cached excerpt alone cannot establish an accessible claim-specific citation.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "01474b6e-2c2f-4a8f-b529-99002a07eede",
+      "personality": "Verghese Kurien",
+      "recorded_decision_preserved": "REVISE AND APPROVE",
+      "final_wording": "After the Kaira cooperative's success, Prime Minister Lal Bahadur Shastri created the National Dairy Development Board in 1965 to replicate the model nationally.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "162fa362-1a24-42ce-92fe-64a13cc81160"
+      ],
+      "original_source_urls": [
+        "https://www.worldfoodprize.org/blog/people/dr-verghese-kurien/"
+      ],
+      "checked_reference_urls": [
+        "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+      ],
+      "rationale": "Existing linked World Food Prize biography currently blocks source-page inspection; checked references point to a different WFP notice, NDDB biography, or acceptance speech. Cached excerpt alone cannot establish an accessible claim-specific citation.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "c49dd80e-e4b1-4a56-a005-bf7df968648d",
+      "personality": "Verghese Kurien",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "Kurien helped establish the Institute of Rural Management Anand in 1979 to train managers for rural producer organizations, extending the model beyond dairy hardware.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "162fa362-1a24-42ce-92fe-64a13cc81160"
+      ],
+      "original_source_urls": [
+        "https://www.worldfoodprize.org/blog/people/dr-verghese-kurien/"
+      ],
+      "checked_reference_urls": [
+        "https://www.nddb.coop/about/chairman/vkurien"
+      ],
+      "rationale": "Existing linked World Food Prize biography currently blocks source-page inspection; checked references point to a different WFP notice, NDDB biography, or acceptance speech. Cached excerpt alone cannot establish an accessible claim-specific citation.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "e9171056-70a4-45f2-b42f-9d6123d49706",
+      "personality": "Verghese Kurien",
+      "recorded_decision_preserved": "REVISE AND APPROVE",
+      "final_wording": "Kurien described Operation Flood as a combination of farmer-owned cooperatives, professional management, processing, markets, and supportive policy, rather than an individual technological achievement.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "162fa362-1a24-42ce-92fe-64a13cc81160",
+        "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "3d12e474-d1b1-4b71-8e55-b354470ffbb7"
+      ],
+      "original_source_urls": [
+        "https://www.nddb.coop/about/genesis/flood",
+        "https://www.nddb.coop/about/genesis/pattern",
+        "https://www.worldfoodprize.org/blog/people/dr-verghese-kurien/"
+      ],
+      "checked_reference_urls": [
+        "https://drkurien.com/october-17-1989/"
+      ],
+      "rationale": "Existing linked World Food Prize biography currently blocks source-page inspection; checked references point to a different WFP notice, NDDB biography, or acceptance speech. Cached excerpt alone cannot establish an accessible claim-specific citation.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "3eca349c-3c0e-4a15-b17d-29366a09f33c",
+      "personality": "Verghese Kurien",
+      "recorded_decision_preserved": "REVISE AND APPROVE",
+      "final_wording": "Kurien received the 1989 World Food Prize for his work on India's cooperative dairy-development system.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "162fa362-1a24-42ce-92fe-64a13cc81160"
+      ],
+      "original_source_urls": [
+        "https://www.worldfoodprize.org/blog/people/dr-verghese-kurien/"
+      ],
+      "checked_reference_urls": [
+        "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+      ],
+      "rationale": "Existing linked World Food Prize biography currently blocks source-page inspection; checked references point to a different WFP notice, NDDB biography, or acceptance speech. Cached excerpt alone cannot establish an accessible claim-specific citation.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "aead8773-3c07-44d4-b2be-70b2e7b440d6",
+      "personality": "Verghese Kurien",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "The World Food Prize biography lists Kurien’s 1999 Padma Vibhushan among later formal honors.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "162fa362-1a24-42ce-92fe-64a13cc81160"
+      ],
+      "original_source_urls": [
+        "https://www.worldfoodprize.org/blog/people/dr-verghese-kurien/"
+      ],
+      "checked_reference_urls": [
+        "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+      ],
+      "rationale": "Existing linked World Food Prize biography currently blocks source-page inspection; checked references point to a different WFP notice, NDDB biography, or acceptance speech. Cached excerpt alone cannot establish an accessible claim-specific citation.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    },
+    {
+      "claim_id": "05942d45-7c17-4a41-882f-364543e8aed6",
+      "personality": "Verghese Kurien",
+      "recorded_decision_preserved": "APPROVE",
+      "final_wording": "At the Kaira union he helped establish processing capacity so members could handle milk beyond raw collection.",
+      "citation_resolution": "QUARANTINED",
+      "original_source_ids": [
+        "162fa362-1a24-42ce-92fe-64a13cc81160"
+      ],
+      "original_source_urls": [
+        "https://www.worldfoodprize.org/blog/people/dr-verghese-kurien/"
+      ],
+      "checked_reference_urls": [
+        "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien"
+      ],
+      "rationale": "Existing linked World Food Prize biography currently blocks source-page inspection; checked references point to a different WFP notice, NDDB biography, or acceptance speech. Cached excerpt alone cannot establish an accessible claim-specific citation.",
+      "staging_review_status": "needs_review",
+      "evidence_locator": null
+    }
+  ]
+}

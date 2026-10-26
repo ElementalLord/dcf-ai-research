@@ -1,0 +1,42 @@
+{
+  "source_groups_inspected": [
+    {
+      "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+      "authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record",
+      "cache_policy": "locator and paraphrased assessment only; full copyrighted text not cached"
+    },
+    {
+      "url": "https://www.nddb.coop/about/genesis/flood",
+      "authority": "National Dairy Development Board programme history; issuing institution",
+      "cache_policy": "locator and paraphrased assessment only; full copyrighted text not cached"
+    },
+    {
+      "url": "https://www.visvabharati.ac.in/home/history_land_page/",
+      "authority": "Visva-Bharati institutional history; founding institution",
+      "cache_policy": "locator and paraphrased assessment only; full copyrighted text not cached"
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_paper_on_hinduism.htm",
+      "authority": "Ramakrishna Order edition of Vivekananda\u2019s Chicago address; primary text edition",
+      "cache_policy": "locator and paraphrased assessment only; full copyrighted text not cached"
+    },
+    {
+      "url": "https://www.bfi.org.uk/sight-and-sound/interviews/satyajit-ray-moral-attitude",
+      "authority": "BFI / Sight and Sound edited interview compiled by Andrew Robinson from conversations with Ray",
+      "cache_policy": "locator and paraphrased assessment only; full copyrighted text not cached"
+    },
+    {
+      "url": "https://satyajitray.org/making-of-pather-panchali/",
+      "authority": "SatyajitRay.org production account, using Ray recollections and editorial narration",
+      "cache_policy": "locator and paraphrased assessment only; full copyrighted text not cached"
+    },
+    {
+      "url": "https://www.gutenberg.org/files/40766/40766-h/40766-h.htm",
+      "authority": "Project Gutenberg edition of Tagore, Nationalism, 1917 original text",
+      "cache_policy": "locator and paraphrased assessment only; full copyrighted text not cached"
+    }
+  ],
+  "research_spend_usd": 0,
+  "screening_file": "worker-modern-screening.jsonl",
+  "decision_file": "worker-modern-decisions.json"
+}

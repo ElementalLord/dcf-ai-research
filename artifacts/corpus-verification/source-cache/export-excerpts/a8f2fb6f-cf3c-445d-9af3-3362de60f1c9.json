@@ -1,0 +1,88 @@
+{
+  "source_id": "a8f2fb6f-cf3c-445d-9af3-3362de60f1c9",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T05:22:51.634Z"
+    },
+    "citation": "Kolaba District Gazetteer: Raigad. Maharashtra State Gazetteers. https://gazetteers.maharashtra.gov.in/cultural.maharashtra.gov.in/english/gazetteer/KOLABA/places_Rayagad.html",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Maharashtra State Gazetteers",
+    "rights_or_access_note": "The Maharashtra Gazetteers page currently presents an expired TLS certificate. Its original link is retained for provenance, but direct access cannot be guaranteed until the publisher repairs it.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Kolaba District Gazetteer: Raigad",
+    "url": "https://gazetteers.maharashtra.gov.in/cultural.maharashtra.gov.in/english/gazetteer/KOLABA/places_Rayagad.html"
+  },
+  "claim_ids": [
+    "0167b854-caf3-4106-8dce-edb76aa887b5",
+    "377eda2b-ec0e-47b0-a8f4-c0ff5573f70a",
+    "5e509a7d-88fa-4edc-8cde-6e3119e6ce35",
+    "6f6d681d-bcb4-41fc-bc56-1b439fb60957",
+    "e47078c8-ad20-49e7-856c-3d52811941ff",
+    "ea6352a4-581c-43f0-a254-d1bc35583dc6",
+    "f44fc8ff-0fea-4454-8506-3a9db0814fea"
+  ],
+  "passages": [
+    {
+      "chunk_id": "29f7bcb2-600d-467d-82de-8ea498ad4a83",
+      "locator": "According to Sabhasad",
+      "text_sha256": "ce8f86615943b1ef43b3ad1cbeefd472a7dc295372c0d0e097f7e6df3f36e6b8",
+      "excerpt_preview": "According to Sabhasad, the seventeenth century author of a chronicle, Gagabhatt and men of his school felt that while Muslims did not hesitate to sit on the throne and crown them-selves as kings and hold canopy on their head, why should Siv",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "2da1695a-a1e1-4645-aa46-9e7e53668969",
+      "locator": "English embassy from Bombay",
+      "text_sha256": "29ce22036327ed2e12b053d63962cb29bfa1ec1534993583f3cefde464b4ae9d",
+      "excerpt_preview": "Some account of the installation ceremony has been preserved by an English embassy from Bombay who seem to have spent the three months of May, June, and July on the top of Rayagad.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "327d4a8a-5128-46a6-8d7f-99e3d5c119fd",
+      "locator": "In June 1674, Sivaji was crowned",
+      "text_sha256": "09e5824190467c6f96e823c05c8acb0544d78f3a5879febe8b24a6c515720303",
+      "excerpt_preview": "In June 1674, Sivaji was crowned with much splendour at Rayagad.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8e17106f-1d6b-4c11-99e5-669c79726c5d",
+      "locator": "Under the Convention of Purandhar",
+      "text_sha256": "2f88c0cfc5c934d5ef83b3e3996817f9d07ad730571117af7682c4916c0ab3a2",
+      "excerpt_preview": "Under the Convention of Purandhar, Sivaji's territory included twelve forts of which Rayagad was the chief and the most central.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "94e2c7a4-1349-414a-bc30-bd5b8325ff3a",
+      "locator": "Jagadisvar temple",
+      "text_sha256": "6ed3bb2b65af271155909926567a2c79c023d5bf21af7996da84bceea6f23da6",
+      "excerpt_preview": "The temple at present is locally known as the Jagadisvar temple and bears a Sanskrt inscription with the same date as the coronation.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b760ad1e-c283-4f7c-b7a7-258f5b940a5d",
+      "locator": "trace the descent of Sivaji from Sisodias",
+      "text_sha256": "de0d189f6edce3998dbfa4ce0546c2f2044ff806c446057c7f9c0302ef75a3eb",
+      "excerpt_preview": "Fortunately Gagabhatt was able to trace the descent of Sivaji from Sisodias, a Rajput family which had for many generations established itself in the South.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "cba2781f-2d91-4b95-9c46-6cfa0c399c86",
+      "locator": "Gagabhatt",
+      "text_sha256": "ce9dbc188c6b52d649f1f5f7f7af45da3cfa2de63b0a0c1521b59cb0660597cf",
+      "excerpt_preview": "Brahmans were consulted, and a learned priest from Benares (Varanasi) named Gagabhatt, fixed the sixth of Tune for the installation.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}
