@@ -26,7 +26,7 @@ export function answerIntent(question: string): AnswerIntent {
  * answer even when the broad-profile coverage target is not met. */
 export function hasDirectLiveIdentity(question: string, evidence: RetrievedEvidence[]): boolean {
   if (answerIntent(question) !== "identity") return false;
-  return evidence.some((item) => item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live")
+  return evidence.some((item) => item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live" || item.origin === "pmc_oai")
     && Boolean(item.sourceUrl) && /\b(?:sage|seer|rishi|priest|teacher|preceptor|king|queen|poet|philosopher|scientist|physicist|chemist|inventor|researcher|engineer|musician|performer|singer|vocalist)\b/i.test(item.text));
 }
 
@@ -77,7 +77,7 @@ export function prioritizeEvidence(question: string, evidence: RetrievedEvidence
       : intent === "learning" && /method|experiment|persist|qualit|educat|mentor/i.test(metadata) ? 6 : 0;
     const noisePenalty = /research framework|should be stored|source set|portal metadata|metrical|grammatical|not enough evidence/i.test(text) ? 7 : 0;
     const episodePenalty = (intent === "identity" || intent === "importance") && /\b(?:episode|cycle|summons?|invit(?:es?|ed)|gather(?:s|ed)?|undertaking|rejected)\b/i.test(text) ? 5 : 0;
-    const authority = item.kind === "claim" ? 2 : item.origin === "google_grounding" || item.origin === "brave_live" ? 1 : 0;
+    const authority = item.kind === "claim" ? 2 : item.origin === "google_grounding" || item.origin === "brave_live" || item.origin === "pmc_oai" ? 1 : 0;
     // A requested angle or historical placement outweighs generic relevance, so the answer is built from that evidence.
     const lensFit = lens && (lens.evidence.test(text) || lens.evidence.test(metadata)) ? 6 : 0;
     const contextFit = contextIntent && CONTEXT_EVIDENCE.test(text) ? 5 : 0;
@@ -98,7 +98,7 @@ export function prioritizeEvidence(question: string, evidence: RetrievedEvidence
     perSource.set(source, (perSource.get(source) || 0) + 1);
     if (selected.length >= limit) break;
   }
-  const bestLive = ranked.find(({ item, score }) => item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live") && score > 0);
+  const bestLive = ranked.find(({ item, score }) => item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live" || item.origin === "pmc_oai") && score > 0);
   if (bestLive && !selected.includes(bestLive.item) && selected.length) selected[selected.length - 1] = bestLive.item;
   // A profile or significance answer should be able to say when; keep one dated record if the packet has room.
   if ((intent === "identity" || intent === "importance") && selected.length >= 5 && !selected.some((item) => DATED.test(item.text))) {

@@ -105,7 +105,7 @@ function eligibleEvidence(item: RetrievedEvidence, input: ResolutionInput, now: 
     return true;
   }
   if (item.sourceStatus !== "approved") return false;
-  if (item.origin === "google_grounding" || item.origin === "brave_live") return false;
+  if (item.origin === "google_grounding" || item.origin === "brave_live" || item.origin === "pmc_oai") return false;
   if (item.origin === "live_cache" && (!item.cacheExpiresAt || !Number.isFinite(Date.parse(item.cacheExpiresAt)) || new Date(item.cacheExpiresAt) <= now)) return false;
   return item.accessibility !== "UNREADABLE" && item.supportLevel !== "RELATED";
 }

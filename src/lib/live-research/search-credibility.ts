@@ -11,6 +11,7 @@ import { extractPdf } from "@/lib/corpus/source-extract";
 import { canonicalRetentionRights, hasExplicitRetentionRights } from "./retention-rights";
 import { assessPassageSupport, authenticateSource, evidenceTypeFor, isBroadIdeaQuestion, type PassageSupport, type SourceIdentity } from "./research-quality";
 import { pmcArticleId, readPmcOpenArticle } from "./pmc-open-access";
+import { passageAddressesTarget, splitEvidenceSentences } from "@/lib/ask/target-support";
 
 const lowQualityHost = /(?:^|\.)(?:quora\.com|reddit\.com|pinterest\.[a-z.]+|blogspot\.[a-z.]+|medium\.com|wikipedia\.org|facebook\.com|instagram\.com|tiktok\.com|brainyquote\.com|goodreads\.com)$/i;
 const institutionalHost = /(?:^|\.)(?:edu|gov|ac\.[a-z]{2}|edu\.[a-z]{2}|gov\.[a-z]{2}|jstor\.org|cambridge\.org|oup\.com|oxfordacademic\.com|springer\.com|nature\.com|muse\.jhu\.edu|wiley\.com|tandfonline\.com|sagepub\.com|nobelprize\.org|ignca\.gov\.in|vedicheritage\.gov\.in|gretil\.sub\.uni-goettingen\.de|archive\.org|britannica\.com)$/i;
@@ -177,7 +178,10 @@ export async function readGroundedExcerpt(source: CredibleSource, statement: str
   if (academic && !names.some((name) => title.includes(name)) && best.overlap < 4 && !broadIdeaSupport) return null;
   // Naming the person is relevance; sharing the statement's own terms is support. Both are required.
   if ((!broadIdeaSupport && best.overlap < Math.min(2, terms.length)) || !["EXACT", "STRONG"].includes(best.support.level)) return null;
-  const excerpt = readableEvidence(best.context.slice(0, 600));
+  const directSentence = !isBroadIdeaQuestion(statement) ? splitEvidenceSentences(best.context)
+    .map((sentence) => sentence.trim())
+    .find((sentence) => sentence.length <= 600 && passageAddressesTarget(statement, sentence, aliases)) : null;
+  const excerpt = readableEvidence(directSentence || best.context.slice(0, 600));
   if (!excerpt) return null;
   const identity = loaded.identity.title ? loaded.identity : authenticateSource({ url: loaded.finalUrl, title: loaded.title || source.title, category: source.category });
   return { text: excerpt, title: loaded.title || source.title, url: loaded.finalUrl, locator: best.locator,

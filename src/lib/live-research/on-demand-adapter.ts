@@ -7,6 +7,7 @@ import { loadSearchPolicy } from "./search-policy";
 import { canonicalResearchUrl } from "./source-policy";
 import type { ResearchDependencies } from "./on-demand-engine";
 import { reserveResearchBudget } from "./research-budget";
+import { searchPmcArticles } from "./pmc-discovery";
 
 export function robotsDecision(text: string, path: string): boolean {
   const groups: Array<{ agents: string[]; rules: Array<{ path: string; allow: boolean }> }> = [];
@@ -80,6 +81,7 @@ export function productionResearchDependencies(): ResearchDependencies {
   };
   return {
     provider: new BraveSearchProvider(),
+    openAccessSearch: searchPmcArticles,
     async reserveBudget(requestId) {
       const planned = process.env.DEMAND_AUTO_ADMISSION_ENABLED === "true" || process.env.DEMAND_VERIFICATION_SHADOW_ENABLED === "true" ? 8 : 3;
       return reserveResearchBudget(requestId, planned);

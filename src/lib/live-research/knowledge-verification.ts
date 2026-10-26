@@ -9,7 +9,7 @@ import { normalizedClaim, tokenJaccard } from "@/lib/corpus/dedupe";
 import { isClaimEligible } from "@/lib/corpus/approval-policy";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import type { OnDemandResearchResult, ResearchFinding } from "./on-demand-engine";
-import { hasExplicitRetentionRights } from "./retention-rights";
+import { hasAutomaticAdmissionRights } from "./retention-rights";
 import { normalizeForMatch } from "@/lib/corpus/text";
 import { passageAddressesTarget, splitEvidenceSentences } from "@/lib/ask/target-support";
 
@@ -43,7 +43,15 @@ const risky = /\b(?:first|earliest|only|invented|discovered|caused|led to|proved
 const uncertainty = /\b(?:may|might|possibly|perhaps|allegedly|reportedly|appears|suggests|estimated|approximately|about|circa|disputed)\b/i;
 const numbers = (value: string) => value.match(/\b\d+(?:[.,]\d+)*\b/g) || [];
 const propositionStopWords = new Set(["the", "a", "an", "and", "or", "was", "were", "is", "are", "in", "on", "at", "of", "to", "for", "by", "with", "from"]);
-const factWord = (word: string) => /^(?:award|awarded|receive|received|honor|honored|honour|honoured|won)$/.test(word) ? "award" : word;
+const factWord = (word: string) => /^(?:award|awarded|receive|received|honor|honored|honour|honoured|won|earn|earned|earning)$/.test(word) ? "award" : word;
+
+function identifiesPerson(passage: string, personality: string): boolean {
+  const person = normalizeForMatch(personality);
+  if (normalizeForMatch(passage).includes(person)) return true;
+  const parts = person.split(" ");
+  if (parts.length !== 3 || parts[0].length !== 1 || parts[1].length !== 1) return false;
+  return new RegExp(`\\b${parts[0]}[a-z]+\\s+${parts[1]}[a-z]+\\s+${parts[2]}\\b`, "i").test(normalizeForMatch(passage));
+}
 
 function adjacentNamedCoreference(passage: string, proposition: string, personality: string): string | null {
   const parts = splitEvidenceSentences(passage).map((part) => part.trim()).filter(Boolean);
@@ -71,7 +79,7 @@ function adjacentNamedCoreference(passage: string, proposition: string, personal
 function directlyStates(passage: string, proposition: string, personality: string): boolean {
   const coreference = adjacentNamedCoreference(passage, proposition, personality);
   if (passage.trim().split(/\s+/).length < 7
-    || (!normalizeForMatch(passage).includes(normalizeForMatch(personality)) && !coreference)
+    || (!identifiesPerson(passage, personality) && !coreference)
     || !(passageAddressesTarget(proposition, passage, [personality]) || coreference)) return false;
   const personWords = new Set(normalizedClaim(personality).split(" "));
   const passageWords = new Set(normalizedClaim(passage).split(" ").map(factWord));
@@ -88,7 +96,7 @@ function supportingExcerpt(passage: string, proposition: string, personality: st
     .sort((a, b) => b.overlap - a.overlap);
   const first = (ranked[0]?.sentence || passage).slice(0, 240).trim();
   const coreference = adjacentNamedCoreference(passage, proposition, personality);
-  const firstNamesSubject = normalizeForMatch(first).includes(normalizeForMatch(personality));
+  const firstNamesSubject = identifiesPerson(first, personality);
   const excerpt = firstNamesSubject && passageAddressesTarget(proposition, first, [personality]) ? first
     : (coreference || first).slice(0, coreference ? 300 : 240).trim();
   if (excerpt.length < 20 || (!passageAddressesTarget(proposition, excerpt, [personality])
@@ -111,7 +119,7 @@ function retainable(finding: ResearchFinding): boolean {
     const url = new URL(finding.source.url);
     return url.protocol === "https:" && finding.retention === "license_candidate" && finding.verificationReady
       && finding.source.provenanceComplete && Boolean(finding.source.title && finding.source.publisher && finding.source.workKey)
-      && Boolean(finding.passage.locator) && hasExplicitRetentionRights(finding.rightsDeclaration)
+      && Boolean(finding.passage.locator) && hasAutomaticAdmissionRights(finding.rightsDeclaration)
       && finding.passage.text.length <= 600;
   } catch { return false; }
 }

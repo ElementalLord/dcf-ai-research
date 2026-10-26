@@ -5,6 +5,15 @@ export function hasExplicitRetentionRights(value: string | null | undefined): bo
   return /(?:^|\s)https:\/\/creativecommons\.org\/(?:licenses\/(?:by|by-sa|by-nc|by-nc-sa|by-nd|by-nc-nd)\/[1-4]\.0|publicdomain\/(?:zero|mark)\/1\.0)\/?(?:\s|$)/i.test(value);
 }
 
+/** Automatic admission keeps excerpts only under rights that permit reuse
+ * without noncommercial, no-derivatives, or share-alike conditions. */
+export function hasAutomaticAdmissionRights(value: string | null | undefined): boolean {
+  if (!hasExplicitRetentionRights(value)) return false;
+  if (/\bpublic domain\b|\bcc0(?:\s+1\.0)?\b/i.test(value!)) return true;
+  return /^https:\/\/creativecommons\.org\/licenses\/by\/[1-4]\.0\/?$/i.test(value!.trim())
+    || /^https:\/\/creativecommons\.org\/publicdomain\/(?:zero|mark)\/1\.0\/?$/i.test(value!.trim());
+}
+
 /** A publisher may use HTTP in an article-specific Creative Commons link. */
 export function canonicalRetentionRights(value: string | null | undefined): string | null {
   if (!value) return null;
