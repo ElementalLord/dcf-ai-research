@@ -58,7 +58,7 @@ export type RetrievedPassage = {
   parameterNames?: string[];
   personalityId?: string;
   personalityName?: string;
-  origin?: "permanent" | "live_cache" | "google_grounding" | "brave_live";
+  origin?: "permanent" | "live_cache" | "google_grounding" | "brave_live" | "pmc_oai";
   retrievedAt?: string | null;
   cacheExpiresAt?: string | null;
   lexicalScore?: number;

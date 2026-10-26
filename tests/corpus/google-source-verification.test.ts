@@ -64,6 +64,17 @@ describe("live source admission", () => {
     expect(result?.text).toContain("1928");
   });
 
+  it("keeps the full dated support sentence when earlier context would fill the excerpt limit", async () => {
+    const url = "https://records.gov/awards/raman-context";
+    const lead = "Researchers examined the spectroscopy equipment and documented its calibration. ".repeat(8);
+    state.preview.mockResolvedValueOnce({ status: 200, finalUrl: url,
+      html: `<html><head><title>Raman award record</title></head><main><p>${lead}The Raman effect, discovered by Sir Chandrasekhara Venkata Raman in 1928, earned him the Nobel Prize in Physics in 1930.</p></main></html>` });
+    const result = await readGroundedExcerpt(source(url), "In what year was C. V. Raman awarded the Nobel Prize in Physics?",
+      ["C. V. Raman", "Chandrasekhara Venkata Raman"], policy);
+    expect(result?.text).toContain("Nobel Prize in Physics in 1930");
+    expect(result?.text?.length).toBeLessThanOrEqual(600);
+  });
+
   it("recognizes a Creative Commons link in an article-specific rights statement", async () => {
     const url = "https://publisher.example/articles/raman";
     state.preview.mockResolvedValueOnce({ status: 200, finalUrl: url,

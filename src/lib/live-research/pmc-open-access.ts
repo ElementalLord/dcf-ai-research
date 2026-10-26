@@ -5,6 +5,14 @@ import { canonicalRetentionRights } from "./retention-rights";
 
 const articlePath = /^\/articles\/(PMC[1-9][0-9]{0,11})\/?$/i;
 const maxXmlBytes = 2 * 1024 * 1024;
+let nextPmcRequestAt = 0;
+
+async function pacePmcRequest(): Promise<void> {
+  const now = Date.now();
+  const start = Math.max(now, nextPmcRequestAt);
+  nextPmcRequestAt = start + 400; // PMC documents a limit of three requests per second.
+  if (start > now) await new Promise((resolve) => setTimeout(resolve, start - now));
+}
 
 export function pmcArticleId(rawUrl: string): string | null {
   try {
@@ -24,6 +32,7 @@ export async function readPmcOpenArticle(rawUrl: string, fetchImpl: typeof fetch
   api.searchParams.set("identifier", `oai:pubmedcentral.nih.gov:${id.slice(3)}`);
   api.searchParams.set("metadataPrefix", "pmc");
   const safe = await validate(api.toString());
+  if (fetchImpl === fetch) await pacePmcRequest();
   const response = await fetchImpl(safe, { redirect: "error", signal: AbortSignal.timeout(12_000),
     headers: { Accept: "application/xml,text/xml", "Accept-Encoding": "gzip, deflate", "User-Agent": "DCF-AI-Research/1.0 (+controlled-source-research)" } });
   if (!response.ok || !/^(?:application|text)\/xml(?:;|$)/i.test(response.headers.get("content-type") || "")) return null;

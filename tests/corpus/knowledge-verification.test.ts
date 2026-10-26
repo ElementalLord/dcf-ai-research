@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import { verifyDemandKnowledge } from "@/lib/live-research/knowledge-verification";
 import type { OnDemandResearchResult, ResearchFinding } from "@/lib/live-research/on-demand-engine";
 import type { EvidenceGapRequest } from "@/lib/ask/question-resolution";
-import { hasExplicitRetentionRights } from "@/lib/live-research/retention-rights";
+import { hasAutomaticAdmissionRights, hasExplicitRetentionRights } from "@/lib/live-research/retention-rights";
 
 const request = { needId: "need", personalityId: "00000000-0000-0000-0000-000000000001", personalityName: "Anika Sen",
   normalizedIntent: "date", category: "SPECIFIC", gaps: [], existingEvidenceIds: [], maxExternalSearches: 1 } as unknown as EvidenceGapRequest;
@@ -51,6 +51,10 @@ describe("demand knowledge verification", () => {
     expect(hasExplicitRetentionRights("not CC0 1.0")).toBe(false);
     expect(hasExplicitRetentionRights("https://creativecommons.org/licenses/unknown/4.0/")).toBe(false);
     expect(hasExplicitRetentionRights("open access")).toBe(false);
+    expect(hasAutomaticAdmissionRights("https://creativecommons.org/licenses/by/4.0/")).toBe(true);
+    expect(hasAutomaticAdmissionRights("https://creativecommons.org/licenses/by-nc-sa/4.0/")).toBe(false);
+    expect(hasAutomaticAdmissionRights("https://creativecommons.org/licenses/by-sa/4.0/")).toBe(false);
+    expect(hasAutomaticAdmissionRights("open access")).toBe(false);
   });
   it("admits a directly documented routine official date and reuses the stored claim", async () => {
     const deps = setup();

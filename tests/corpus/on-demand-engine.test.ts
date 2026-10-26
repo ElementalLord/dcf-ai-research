@@ -34,6 +34,32 @@ function fixture(results = [{ title: "History of the prism effect", url, sourceP
 }
 
 describe("bounded on-demand research", () => {
+  it("admits two independently licensed PMC leads without a paid Brave search", async () => {
+    const previous = process.env.DEMAND_AUTO_ADMISSION_ENABLED;
+    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
+    try {
+      const ids = ["PMC4763617", "PMC11505626", "PMC10937994"];
+      const { deps, calls } = fixture([]);
+      deps.openAccessSearch = async () => ids.map((value) => ({ url: `https://pmc.ncbi.nlm.nih.gov/articles/${value}/`,
+        title: value, sourceProvider: "pmc" }));
+      deps.inspect = async (candidate) => ({ url: candidate, domain: "pmc.ncbi.nlm.nih.gov", category: "institutional", title: candidate });
+      deps.read = async (source) => excerpt({ url: source.url,
+        identity: authenticateSource({ url: source.url, title: source.url, author: "Researcher",
+          publisher: source.url.includes("4763617") ? "Restricted Press" : source.url.includes("11505626") ? "MDPI" : "Nature",
+          doi: source.url.includes("4763617") ? "10.1000/one" : source.url.includes("11505626") ? "10.1000/two" : "10.1000/three",
+          sourceType: "scholarly journal" }),
+        rightsDeclaration: source.url.includes("4763617") ? "https://creativecommons.org/licenses/by-nc-sa/3.0/"
+          : "https://creativecommons.org/licenses/by/4.0/" });
+      const result = await executeDemandResearch(request, "What physics discovery did Anika Sen make?", [], ["Anika Sen"], deps);
+      expect(calls).toHaveLength(0);
+      expect(result.usage).toMatchObject({ searchCalls: 0, sourceFetches: 3 });
+      expect(result.findings.map((finding) => finding.retention)).toEqual(["transient_only", "license_candidate", "license_candidate"]);
+      expect(result.passages.every((passage) => passage.origin === "pmc_oai")).toBe(true);
+    } finally {
+      if (previous === undefined) delete process.env.DEMAND_AUTO_ADMISSION_ENABLED;
+      else process.env.DEMAND_AUTO_ADMISSION_ENABLED = previous;
+    }
+  });
   it("replays the Bose discovery failure and preserves the named institution in admission search", () => {
     const replay = JSON.parse(readFileSync(new URL("../fixtures/bose-source-selection-2026-10-23.json", import.meta.url), "utf8")) as {
       question: string; previousQuery: string; observedRankedCandidates: Array<{ url: string; selectionOrder: number }>;

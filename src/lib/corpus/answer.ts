@@ -61,7 +61,7 @@ async function answerQuestionInternal(
   const categorySlugs = configurations.map((configuration) => configuration.categorySlug);
   const withAuthority = (items: RetrievedEvidence[], rules: Awaited<typeof searchPolicyPromise>["rules"]) => {
     for (const item of items) item.authority ||= classifySourceAuthority({ url: item.sourceUrl, sourceType: item.sourceType, institution: item.sourceInstitution,
-      live: item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live") }, rules);
+      live: item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live" || item.origin === "pmc_oai") }, rules);
   };
   // Retrieve local evidence first so the single Google step can target its gaps.
   // Brave's original-source workflow runs only if grounding cannot cover them.
@@ -160,7 +160,7 @@ async function answerQuestionInternal(
         // The final cited-answer guard still checks the named target and date.
       }
       local.debug.localEvidenceBeforeSearch = localEvidenceCount;
-      local.debug.localSourcesUsed = local.evidence.filter((item) => item.kind === "claim" || item.origin !== "brave_live").length;
+      local.debug.localSourcesUsed = local.evidence.filter((item) => item.kind === "claim" || (item.origin !== "brave_live" && item.origin !== "pmc_oai")).length;
       withAuthority(local.evidence, searchPolicy.rules);
       return local;
     }
@@ -194,7 +194,7 @@ async function answerQuestionInternal(
     } else {
       base.debug.answerable = Boolean(base.debug.answerable || resolution.route === "answer" || resolution.route === "partial_answer");
     }
-    base.debug.liveSourcesUsed = base.evidence.filter((item) => item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live")).length;
+    base.debug.liveSourcesUsed = base.evidence.filter((item) => item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live" || item.origin === "pmc_oai")).length;
     if (resolution.state !== "unsupported" && !base.debug.answerable && hasDirectLiveIdentity(queryContext.resolvedQuestion, base.evidence)) {
       base.debug.answerable = true;
       base.debug.coverageStatus = "partial";
@@ -209,7 +209,7 @@ async function answerQuestionInternal(
       base.debug.answerable = false;
       base.debug.unresolvedEvidenceGap = true;
     }
-    base.debug.localSourcesUsed = base.evidence.filter((item) => item.kind === "claim" || (item.origin !== "google_grounding" && item.origin !== "brave_live")).length;
+    base.debug.localSourcesUsed = base.evidence.filter((item) => item.kind === "claim" || (item.origin !== "google_grounding" && item.origin !== "brave_live" && item.origin !== "pmc_oai")).length;
     withAuthority(base.evidence, searchPolicy.rules);
     return base;
   }));

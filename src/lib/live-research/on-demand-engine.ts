@@ -8,7 +8,7 @@ import type { RetrievedEvidence, RetrievedPassage } from "@/lib/corpus/types";
 import { planResearchQueries, type SourceIdentity } from "./research-quality";
 import type { CredibleSource } from "./search-credibility";
 import { sourcePriority } from "./search-credibility";
-import { hasExplicitRetentionRights } from "./retention-rights";
+import { hasAutomaticAdmissionRights } from "./retention-rights";
 import { WebSearchError, type WebSearchResult } from "./web-search-provider";
 
 export type ResearchStatus = "complete" | "insufficient" | "failed" | "in_progress" | "cooldown" | "budget_exhausted";
@@ -54,6 +54,7 @@ export type ResearchDependencies = {
   robotsAllowed(url: string): Promise<boolean>;
   read(source: CredibleSource, statement: string, aliases: string[]): Promise<FetchedExcerpt | null>;
   existingSourceId(url: string): Promise<string | null>;
+  openAccessSearch?(personality: string, aliases: string[], question: string): Promise<WebSearchResult[]>;
   reserveBudget?(requestId: string): Promise<{ status: string; reservationId?: string; reservedMicro?: number;
     searchEstimateMicro?: number; inputMicroPer1k?: number; outputMicroPer1k?: number; fallbackMicro?: number }>;
   now?: () => Date;
@@ -105,7 +106,7 @@ function blank(request: EvidenceGapRequest, requestId: string, workId: string, s
     usage: { searchCalls: 0, sourceFetches: 0, modelCalls: 0, provider, errorCategory } };
 }
 
-/** One question-triggered need, one provider call, and at most four original-source reads. */
+/** One question-triggered need, at most one paid search, and bounded original-source reads. */
 export async function executeDemandResearch(request: EvidenceGapRequest, question: string,
   existing: RetrievedEvidence[], aliases: string[], deps: ResearchDependencies): Promise<OnDemandResearchResult> {
   const requestId = randomUUID();
@@ -113,7 +114,7 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
   const provider = deps.provider.name;
   if (!request.gaps.length) return blank(request, requestId, workId, "complete", provider);
   if (request.maxExternalSearches < 1 || request.maxExternalSearches > 1) return blank(request, requestId, workId, "budget_exhausted", provider, "BUDGET_LIMIT");
-  if (!deps.provider.isConfigured()) return blank(request, requestId, workId, "failed", provider, "NOT_CONFIGURED");
+  if (!deps.provider.isConfigured() && !deps.openAccessSearch) return blank(request, requestId, workId, "failed", provider, "NOT_CONFIGURED");
   let lease: "acquired" | "active" | "cooldown";
   try { lease = await deps.claimNeed(workId, request.personalityId, requestId); }
   catch { return blank(request, requestId, workId, "failed", provider, "COORDINATION_UNAVAILABLE"); }
@@ -143,18 +144,29 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
   result.attempted = true;
   try {
     const query = narrowQuery(request, question);
-    // One direct provider call. Search output is request-local and is never persisted.
-    result.usage.searchCalls = 1;
-    recordResearchSearchCall();
-    const searchResults = await deps.provider.search(query, { maxResults: 20 });
+    // For scientific gaps, try the official free PMC index first. Its result
+    // IDs are discovery leads only; original articles still pass every gate.
+    const pmcResults = deps.openAccessSearch
+      ? await deps.openAccessSearch(request.personalityName, aliases, question).catch(() => []) : [];
+    if (pmcResults.length) result.usage.provider = "pmc";
     const works = new Set<string>();
-    // Search snippets are discovery hints only. Rank URLs and titles before the
-    // bounded original-document reads, then verify against the fetched pages.
-    const ranked = searchResults.slice(0, 20).map((hit, index) => ({ hit, index,
-      priority: sourcePriority(hit.url, `${hit.title} ${hit.snippet || ""}`, question, "", hit.snippet || "") }))
-      .sort((a, b) => b.priority - a.priority || a.index - b.index);
-    for (const { hit } of ranked) {
-      if (result.usage.sourceFetches >= 4) break;
+    const ranked = pmcResults.slice(0, 4).map((hit, index) => ({ hit, index, priority: 0 }));
+    let braveAttempted = false;
+    for (let position = 0; position < ranked.length || !braveAttempted; position++) {
+      if (position === ranked.length && !braveAttempted) {
+        braveAttempted = true;
+        if (!deps.provider.isConfigured()) break;
+        result.usage.provider = provider;
+        result.usage.searchCalls = 1;
+        recordResearchSearchCall();
+        const searchResults = await deps.provider.search(query, { maxResults: 20 });
+        // Snippets are discovery hints only; the original document must verify the fact.
+        ranked.push(...searchResults.slice(0, 20).map((hit, index) => ({ hit, index: index + 4,
+          priority: sourcePriority(hit.url, `${hit.title} ${hit.snippet || ""}`, question, "", hit.snippet || "") }))
+          .sort((a, b) => b.priority - a.priority || a.index - b.index));
+      }
+      if (position >= ranked.length || result.usage.sourceFetches >= (braveAttempted ? 8 : 4)) break;
+      const { hit } = ranked[position];
       let source: CredibleSource | null;
       try { source = await deps.inspect(hit.url, hit.title); }
       catch { result.candidates.push({ url: hit.url, decision: "unsafe", reason: "Source inspection failed or URL was disallowed.", workKey: null }); continue; }
@@ -183,7 +195,7 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
         continue;
       }
       works.add(preliminary); works.add(workKey);
-      const retained = hasExplicitRetentionRights(excerpt.rightsDeclaration);
+      const retained = hasAutomaticAdmissionRights(excerpt.rightsDeclaration);
       const metadataApproved = source.category === "approved exact source";
       const finding: ResearchFinding = {
         source: { ...excerpt.identity, url: excerpt.url, sourceId,
@@ -202,7 +214,7 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
         textualLayer: excerpt.identity.evidenceType, sourceTitle: excerpt.identity.title || excerpt.title,
         sourceAuthor: excerpt.identity.author, sourceInstitution: excerpt.identity.publisher, sourceUrl: excerpt.url,
         sourceType: excerpt.identity.evidenceType, sourceStatus: "discovered", personalityId: request.personalityId,
-        personalityName: request.personalityName, origin: "brave_live", retrievedAt: finding.source.retrievedAt,
+        personalityName: request.personalityName, origin: hit.sourceProvider === "pmc" ? "pmc_oai" : "brave_live", retrievedAt: finding.source.retrievedAt,
         supportLevel: excerpt.supportLevel as "EXACT" | "STRONG", workKey, accessibility: "READABLE",
         provenance: { title: excerpt.identity.title, author: excerpt.identity.author, publisher: excerpt.identity.publisher,
           publicationDate: excerpt.identity.publicationDate, journal: excerpt.identity.journal, doi: excerpt.identity.doi,

@@ -73,6 +73,13 @@ describe("final named-target citation gate", () => {
       "Anika Sen died in 1948.", ["Anika Sen"])).toBe(true);
   });
 
+  it("recognizes an explicitly earned prize as an award in the same dated sentence", () => {
+    const question = "In what year was C. V. Raman awarded the Nobel Prize in Physics?";
+    const passage = "The Raman effect, discovered by Sir Chandrasekhara Venkata Raman in 1928, changed spectroscopy, earning him the Nobel Prize in Physics in 1930.";
+    expect(passageAddressesTarget(question, passage, ["C. V. Raman", "Chandrasekhara Venkata Raman"])).toBe(true);
+    expect(["STRONG", "EXACT"]).toContain(assessPassageSupport(passage, question, "C. V. Raman", ["Chandrasekhara Venkata Raman"]).level);
+  });
+
   it("checks every cited passage in a grouped citation", () => {
     const question = "When was Anika Sen awarded the Aurora Medal?";
     const right = claim("Anika Sen was awarded the Aurora Medal in 1928.",
