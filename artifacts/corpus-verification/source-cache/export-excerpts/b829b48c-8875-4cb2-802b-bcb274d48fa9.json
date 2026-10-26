@@ -1,0 +1,40 @@
+{
+  "source_id": "b829b48c-8875-4cb2-802b-bcb274d48fa9",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.28, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 28 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga28/bala_28_prose.htm"
+  },
+  "claim_ids": [
+    "003a9c62-4155-458b-b5f9-af45bbc4d7b3",
+    "03b34b29-beed-4666-bbf6-b4d41b1701ae",
+    "178faf90-3962-4fa1-9a17-e72cf51d35a3",
+    "23d9fdeb-3e27-430f-85e4-38378c8570dd",
+    "2544eb75-52a8-44b9-ae76-c182c5e1f5ad",
+    "414589e3-ad4f-4f1c-941a-b93274ca0444",
+    "cde8a2ea-9593-4a01-ad44-d58967d139c0"
+  ],
+  "passages": [
+    {
+      "chunk_id": "618e42b7-09de-4ee2-9794-6231f2f36deb",
+      "locator": "Book I : Bala Kanda - The Youthful MajestiesSarga 28 in Prose",
+      "text_sha256": "950071f222df59e03a01db88da97e947e0f8e2dc318355fce5d0a6fb4a91fb4f",
+      "excerpt_preview": "Rama requests sage Vishvamitra for endowing annulment missiles, besides projectile ones  that have been accorded in the previous chapter. Sage Vishvamitra accords them, and while they are journeying  further, they chance to see a picturesqu",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

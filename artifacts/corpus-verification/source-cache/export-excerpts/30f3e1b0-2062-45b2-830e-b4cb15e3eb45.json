@@ -1,0 +1,61 @@
+{
+  "source_id": "30f3e1b0-2062-45b2-830e-b4cb15e3eb45",
+  "source": {
+    "author": "A. P. J. Abdul Kalam and Y. S. Rajan",
+    "authority_metadata": {
+      "verified_at": "2026-10-10T05:42:19.767Z"
+    },
+    "citation": "A. P. J. Abdul Kalam and Y. S. Rajan. India 2020: A Vision for the New Millennium. President of India; Penguin Books India. https://www.presidentofindia.gov.in/dr-apj-abdul-kalam/book/2020-vision-new-millennium",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "President of India; Penguin Books India",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "India 2020: A Vision for the New Millennium",
+    "url": "https://www.presidentofindia.gov.in/dr-apj-abdul-kalam/book/2020-vision-new-millennium"
+  },
+  "claim_ids": [
+    "2c3535b5-6b22-4218-821d-c094e549897b",
+    "2e2f0ee6-dadb-4a9c-b15c-3993c2f85c0a",
+    "5bdd615b-823e-45bb-99f8-86d23ffa54ab",
+    "87387d9f-ff10-428d-9ebe-23b546286eef"
+  ],
+  "passages": [
+    {
+      "chunk_id": "039836e3-f053-4bb3-bca5-2ebb5c495cc8",
+      "locator": "India 2020, authorship",
+      "text_sha256": "2af5ab0811fe11b3a7dd46b770d82061fb81e191dddbe5960c563e466f697f5a",
+      "excerpt_preview": "2 Description APJ Abdul Kalam With YS Rajan Image Published By: Penguin Books India(Private) Limited, New Delhi. www.penguinbooksindia.com Select President DR APJ Abdul Kalam Subscribe to Newsletter Name Subscription Type Speech Photo Galle",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "87912d19-353a-40ce-902f-b465b94022f8",
+      "locator": "India 2020, origins",
+      "text_sha256": "dc24a9175929ed0a0a34cc953295341c68fb86ab081c49df6aabbbd40bf80dc9",
+      "excerpt_preview": "These came substantially through a novel organization, the Technology Information, Forecasting and Assessment Council (TIFAC), which launched a major exercise called Technology Vision for India up to 2020.About 500 experts with unique exper",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9fe2ebca-7af7-48aa-af4e-1a3d19f61c56",
+      "locator": "India 2020, priorities",
+      "text_sha256": "7ec49d9cc4682c75f28adc34f1612f6e3832a7fb979233bf3eaa5c0fd04de9aa",
+      "excerpt_preview": "However, the vision of a prosperous India without poverty, an India strong in trade and commerce, an India strong in many fields of science and technology, an India with innovative industry and with health and education for all, has remaine",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "df23c68c-b838-4093-8e7d-e5137f08f591",
+      "locator": "India 2020, horizon",
+      "text_sha256": "cf2ec0ab74777a3c55a6ba5a88186a2d7bdbf02e21453b7ffef9690a38004ca5",
+      "excerpt_preview": "The execution of these schemes provided varied experiences, which worked as base line knowledge for the shaping of this book.Having taken these factors into account and after studying several vision reports of India and other countries, we ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

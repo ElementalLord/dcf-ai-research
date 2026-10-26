@@ -1,0 +1,44 @@
+{
+  "source_id": "97d602de-f163-49e6-9d4c-fbfe076b6607",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.34, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 34 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga34/bala_34_prose.htm"
+  },
+  "claim_ids": [
+    "9b38fbaa-b69d-4dfb-804c-d93e855bf18d",
+    "e3926185-b82d-40dd-bd0c-73dbbcd1fc3e",
+    "ec936486-2b69-48f6-8229-38096e7495f4"
+  ],
+  "passages": [
+    {
+      "chunk_id": "93d24551-cef8-448c-a3d3-b0f8ad34b73e",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\nsarga 34 in prose",
+      "text_sha256": "a86728c23ba02c3418157df214f2bd04f87e6ae160e7071f5682c50cbfcff7ca",
+      "excerpt_preview": "\"Owing to my vow, oh, Rama, I left her for a while and came to the Accomplished Hermitage  and owing to your magnificence I have become accomplished in that vow of mine. Oh, dextrous Rama, this  is all about my dynasty, my province on which",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c060e52a-01eb-48d8-947e-9c835d8da08e",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\nsarga 34 in prose",
+      "text_sha256": "f92cb887e1aa168e591d0a41e49f560cea8e2ebe80ff7673a4f540cb632f1520",
+      "excerpt_preview": "Vishvamitra narrates about the birth of Gaadhi, his own father and the son of Kushanaabha.  Incidentally he narrates about the emergence and prominence of River Kaushiki, who is Vishwamitra's  elder sister turned out as a sacred River.  Whe",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

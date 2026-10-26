@@ -1,0 +1,43 @@
+{
+  "source_id": "a3b84f59-46c2-4809-a1d1-59b7ad515dc0",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "Palace of Rani Lakshmi Bai. District Jhansi, Government of Uttar Pradesh. https://jhansi.nic.in/others/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "District Jhansi, Government of Uttar Pradesh",
+    "rights_or_access_note": "Public original; short research excerpts. Scholarly abstract/summary access does not imply full chapter access.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Palace of Rani Lakshmi Bai",
+    "url": "https://jhansi.nic.in/others/"
+  },
+  "claim_ids": [
+    "91c4d60d-1eaf-4b8e-8800-48da5e5c48d9",
+    "e500715b-3e14-4845-9a05-2505cfeff2c9"
+  ],
+  "passages": [
+    {
+      "chunk_id": "5c7c6de2-7d3b-4b2f-9378-ea9614972d49",
+      "locator": "Durbar Hall on the first floor",
+      "text_sha256": "be7aafa98955e70afd894f47aa6179e7f31ed89f37f246dfe05884e89ae79432",
+      "excerpt_preview": "As a result, it came to be known as ‘Rani Mahal’. The most magnificent room in the building is the richly painted Durbar Hall on the first floor, where the Rani used to hold her court. It was here that the Rani met the famous British lawyer",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6423ba36-0080-4992-ab69-45a6419068a1",
+      "locator": "met the famous British lawyer John Lang in 1854",
+      "text_sha256": "51303b32155d7bb153848107c0c18258a3989ec93b410c4987c869f9e33980f0",
+      "excerpt_preview": "The most magnificent room in the building is the richly painted Durbar Hall on the first floor, where the Rani used to hold her court. It was here that the Rani met the famous British lawyer John Lang in 1854, for her legal battle against t",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

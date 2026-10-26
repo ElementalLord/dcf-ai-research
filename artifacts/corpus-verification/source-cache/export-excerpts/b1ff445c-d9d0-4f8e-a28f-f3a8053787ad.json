@@ -1,0 +1,79 @@
+{
+  "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+  "source": {
+    "author": "Valmiki",
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Bala Kanda, Sarga 65 (https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig)",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Bala Kanda, Sarga 65",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig"
+  },
+  "claim_ids": [
+    "0597d5db-8bf6-4b3f-974a-b0e80e5fc97b",
+    "07086872-dc08-40ea-b1d7-ce928d9af277",
+    "0c49c16d-3da1-4dce-84ca-7b2f51944b46",
+    "18db6e1f-5966-47ce-bccd-faf0eedfe78d",
+    "21eef295-6488-45ca-b86e-fc5ae5e7c25d",
+    "311c35fc-6cc5-4e7d-b1bf-cd2983ecf69b",
+    "375deee8-bbb1-4032-b108-692c108c2bd2",
+    "490291af-1c18-43c2-9092-281553b49ad9",
+    "59c517e4-43e6-4dc8-a5fb-a83ca3e0ba0d",
+    "5c040721-d928-4eb0-96bd-7c0c37803768",
+    "a4921ab7-2783-4151-bf51-e2730ddbbe2f",
+    "acaa016e-224e-45bc-b5fa-86e6384cae84",
+    "adde98b6-351c-4b52-b2ac-fde270b4e193",
+    "c20928a6-f1d5-4a73-b31d-de78684a4f7c",
+    "fca7eb49-d669-44bc-b631-f22c9c04f0cf",
+    "ff09192b-7da6-4617-886a-8d18771c983a"
+  ],
+  "passages": [
+    {
+      "chunk_id": "5b71c4bf-b0a2-47bd-b126-271b16c341d3",
+      "locator": "Introduction",
+      "text_sha256": "cbac97943a28798c0bbc8753cc144b71fd8fa6b3c26e2648e95df3fa5295b9a5",
+      "excerpt_preview": "\" 'Along with the assemblages of Marut-Wind-gods, I bestow upon you a long life.  Let blissfulness betide you. You be safe. Oh, gentle sage, you may take leave as  you please.' Thus, Brahma said to Vishvamitra. [1-65-20b, 21a]  पितामह वचः श",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "78708c3d-c722-4223-95c2-92c74a53f606",
+      "locator": "Introduction",
+      "text_sha256": "65ceb801d46f9c81674e627facd8d27c83d65343122b0423fee2e65aafabc9e9",
+      "excerpt_preview": "\" 'All the beings in the triad of the worlds are very highly perturbed at their  senses and they are as though stupefied, and when juxtaposed the sun is lustreless  before the resplendence of that great sage. [1-65-15b, 16a]  बुद्धिम् न कुर",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d5e6cd91-c377-43d8-a3aa-a6233c8d0a82",
+      "locator": "Introduction",
+      "text_sha256": "01a29c8d3edb8981ea11f5d5b016e6b7c32ecc79cbb00d39c05212b62c0064dd",
+      "excerpt_preview": "This meal is prepared by Vishvamitra alone after a thousand years and such self-cooking  of food by the ascetics is called, vaishva devam, since it is a sacred  preparation anena vaishvadeva ante samaagato atithiH svayam upoShyaa api sviiya",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ef5de7fd-af8f-4eaa-9685-ac9b0a43aa7d",
+      "locator": "Introduction",
+      "text_sha256": "061eeb339c9403d479648cfe9d6b3784879b5b19d9dfb9d3a48fe20acbc112ad",
+      "excerpt_preview": "Vishvamitra becomes Brahma-sage after a prolonged ascesis that made all the worlds  to startle. All gods request Brahma to accord the supreme Brahma-sageship on Vishvamitra  as he is cleansed of all mortal impurities, and Brahma accords tha",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f5d6ea55-a71d-40d3-a62f-a3c4632bc140",
+      "locator": "Introduction",
+      "text_sha256": "697508c9e1dff0e59aa4100baf3c2cb5ffe1617d2a0a62284f3d26bcee4bea7d",
+      "excerpt_preview": "ब्रह्मर्षिः त्वम् न संदेहः सर्वम् संपद्यते तव | इति उक्त्वा देवताः च अपि सर्वा जग्मुः यथा आगतम् || १-६५-२६  26. tvam brahmarSiH = you are, Brahma-sage; sandehaH na = doubt,  is not there; tava sarvam sampadyate = to you, everything, will ac",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

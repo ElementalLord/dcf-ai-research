@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-19",
+  "database": "local Docker container dcf-corpus-verification-20261019 / dcf_review",
+  "scope": "claim-focused PostgreSQL review copy, not full Supabase application schema",
+  "original_claims": 1585,
+  "review_decisions": 10,
+  "final_active_view": 10,
+  "internal_audit_history": 1585,
+  "pending_excluded_from_final_active_view": 1575,
+  "applied_claim_ids": [
+    "1c773840-34a3-435e-8e8d-f51227baa7a5",
+    "0056e637-ab83-4d5e-906a-a4fd1a6add5a",
+    "0ad9f692-4372-4895-936d-6383d12a7a96",
+    "bbaeed4c-7325-42ef-b531-88ec1c970ac6",
+    "61e944ef-a848-4865-b28b-7ab1b56dc7eb",
+    "0d6e0dc3-6b43-453e-b1f3-8b8abf08e8ab",
+    "af48b048-b6a9-4e9a-a59f-09ee0496a5e4",
+    "e4ee4929-f977-4c13-ae94-5cf2912a281f",
+    "fb1ea3bb-ab07-44df-8d1d-b586cb7ab895",
+    "5609a45d-ff75-4996-bc9f-556be05c0dba"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "source_id": "79c7b597-9a06-4c5f-a71b-dd97b7604b01",
+  "source": {
+    "author": "Swami Vivekananda",
+    "authority_metadata": {},
+    "citation": "Swami Vivekananda. My Plan of Campaign. Complete Works of Swami Vivekananda. https://www.ramakrishnavivekananda.info/vivekananda/volume_3/lectures_from_colombo_to_almora/my_plan_of_campaign.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Complete Works of Swami Vivekananda",
+    "rights_or_access_note": "Publicly accessible page; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "My Plan of Campaign",
+    "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_3/lectures_from_colombo_to_almora/my_plan_of_campaign.htm"
+  },
+  "claim_ids": [
+    "37781b99-3b15-4453-a64e-e7d2833faa57",
+    "72cb2e5f-5d99-446f-89e7-6250eba3851d",
+    "dc742ea1-36e7-4c3f-9984-09afbec75058"
+  ],
+  "passages": [
+    {
+      "chunk_id": "177e1fe2-b060-4362-9216-c46b2f29b4e6",
+      "locator": "My Plan of Campaign",
+      "text_sha256": "a8f91c0c852e576a8f8ca5fb4da051789d7c01487a2567087de74981faf09cfa",
+      "excerpt_preview": "nd generous expressions and by working all my life for the cause of our religion and to serve our motherland; and may the Lord make me worthy of them. With all my faults, I think I have a little bit of boldness. I had a message from India t",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "362c0926-b19b-4121-b900-b59a72704570",
+      "locator": "My Plan of Campaign",
+      "text_sha256": "ba013210c46cf00b1c6f8b3ae9ab17064155c178251e568d4eea1bc48bbba24e",
+      "excerpt_preview": "What we want is muscles of iron and nerves of steel. We have wept long enough. No more weeping, but stand on your feet and be men. It is a man-making religion that we want. It is man-making theories that we want. It is man-making education ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f4680567-e52f-42ec-90c0-f1f9e41e23fd",
+      "locator": "My Plan of Campaign",
+      "text_sha256": "123067ccebe61aa462ea6769c421bc3a577d9d786c9234ac6c3bc4b23e639d55",
+      "excerpt_preview": "make himself the servant of all. I bear the feet of that man on my head; he is my hero; that hero's life I will try to imitate. By being the servant of all, a Hindu seeks to uplift himself. That is how the Hindus should uplift the masses, a",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

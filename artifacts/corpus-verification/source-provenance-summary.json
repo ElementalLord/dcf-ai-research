@@ -1,0 +1,1767 @@
+{
+  "assessed_claims": 148,
+  "source_works": 44,
+  "source_references": 176,
+  "works": [
+    {
+      "url": "https://belurmath.org/ramakrishna-math-baranagar/",
+      "claim_count": 1,
+      "claim_ids": [
+        "1d81056a-92c0-4452-8cb1-ada016b09a58"
+      ],
+      "passages": [
+        {
+          "claim_id": "1d81056a-92c0-4452-8cb1-ada016b09a58",
+          "locator": "opening description",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+          "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech."
+        }
+      ]
+    },
+    {
+      "url": "https://belurmath.org/sri-sarada-devi/",
+      "claim_count": 1,
+      "claim_ids": [
+        "038f67fd-150f-47ea-92c3-c2d8cce51178"
+      ],
+      "passages": [
+        {
+          "claim_id": "038f67fd-150f-47ea-92c3-c2d8cce51178",
+          "locator": "Leading the Sangha after the Master's Passing, lines 157–159",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+          "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech."
+        }
+      ]
+    },
+    {
+      "url": "https://belurmath.org/surendra-nath-mitra/",
+      "claim_count": 1,
+      "claim_ids": [
+        "1d81056a-92c0-4452-8cb1-ada016b09a58"
+      ],
+      "passages": [
+        {
+          "claim_id": "1d81056a-92c0-4452-8cb1-ada016b09a58",
+          "locator": "paragraph beginning 'After Sri Ramakrishna’s Maha Samadhi'",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+          "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech."
+        }
+      ]
+    },
+    {
+      "url": "https://belurmath.org/swami-vivekananda/",
+      "claim_count": 15,
+      "claim_ids": [
+        "0322cc9d-f197-425b-aeec-f731f944374b",
+        "1b080ff0-764b-401e-9f71-a61fc18947e3",
+        "2956ea6c-6e71-40a4-b441-6d265f37ef5b",
+        "510eec4d-634e-4b97-ae3a-554df2da7f75",
+        "97902d17-3e78-4675-b750-43bc1a528914",
+        "9fc61920-3ce3-4759-88a0-a94aaf045b0f",
+        "ab8e3fcc-bb17-4d7f-806e-ebe8ef1d5b7b",
+        "af02de58-3741-42ed-b756-0b65918db830",
+        "be3364aa-4ab2-4aa9-85fc-572b0c1dc1d7",
+        "c4d4ce8e-d797-4cab-9d45-95445ea46e8f",
+        "d14c737b-1b29-49ba-9b02-8db9a4bdfb90",
+        "d389f5b2-51e9-4c67-b4bf-523e8766fb7d",
+        "e5f3862e-85bb-428b-b7b0-87fed3e193ce",
+        "ef6ba99b-f8af-44cb-84a3-7e0293543761",
+        "fcc8401e-be45-4e7c-bace-e356266f00f0"
+      ],
+      "passages": [
+        {
+          "claim_id": "2956ea6c-6e71-40a4-b441-6d265f37ef5b",
+          "locator": "Awakening His Countrymen, lines 175–179",
+          "original_source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+          "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+          "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source."
+        },
+        {
+          "claim_id": "be3364aa-4ab2-4aa9-85fc-572b0c1dc1d7",
+          "locator": "Early life, line 143",
+          "original_source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+          "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+          "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source."
+        },
+        {
+          "claim_id": "0322cc9d-f197-425b-aeec-f731f944374b",
+          "locator": "Biography, lines 141–143, 152–154, 171–185",
+          "original_source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+          "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+          "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source."
+        },
+        {
+          "claim_id": "1b080ff0-764b-401e-9f71-a61fc18947e3",
+          "locator": "Early life, line 143",
+          "original_source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+          "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+          "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source."
+        },
+        {
+          "claim_id": "510eec4d-634e-4b97-ae3a-554df2da7f75",
+          "locator": "Early life, line 142",
+          "original_source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+          "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+          "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source."
+        },
+        {
+          "claim_id": "d389f5b2-51e9-4c67-b4bf-523e8766fb7d",
+          "locator": "Discovery of Real India, lines 158–162",
+          "original_source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+          "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+          "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source."
+        },
+        {
+          "claim_id": "ef6ba99b-f8af-44cb-84a3-7e0293543761",
+          "locator": "Beginnings of a Monastic Brotherhood, lines 152–154",
+          "original_source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+          "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+          "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source."
+        },
+        {
+          "claim_id": "ab8e3fcc-bb17-4d7f-806e-ebe8ef1d5b7b",
+          "locator": "Founding of Ramakrishna Mission, lines 181–183",
+          "original_source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+          "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+          "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source."
+        },
+        {
+          "claim_id": "d14c737b-1b29-49ba-9b02-8db9a4bdfb90",
+          "locator": "Belur Math, lines 184–186",
+          "original_source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+          "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+          "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source."
+        },
+        {
+          "claim_id": "e5f3862e-85bb-428b-b7b0-87fed3e193ce",
+          "locator": "Discovery of Real India, lines 159–164",
+          "original_source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+          "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+          "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source."
+        },
+        {
+          "claim_id": "97902d17-3e78-4675-b750-43bc1a528914",
+          "locator": "With Sri Ramakrishna, lines 145–147",
+          "original_source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+          "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+          "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source."
+        },
+        {
+          "claim_id": "9fc61920-3ce3-4759-88a0-a94aaf045b0f",
+          "locator": "With Sri Ramakrishna, line 145",
+          "original_source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+          "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+          "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source."
+        },
+        {
+          "claim_id": "af02de58-3741-42ed-b756-0b65918db830",
+          "locator": "With Sri Ramakrishna, lines 145–146",
+          "original_source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+          "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+          "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source."
+        },
+        {
+          "claim_id": "c4d4ce8e-d797-4cab-9d45-95445ea46e8f",
+          "locator": "With Sri Ramakrishna, lines 145–147",
+          "original_source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+          "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+          "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source."
+        },
+        {
+          "claim_id": "fcc8401e-be45-4e7c-bace-e356266f00f0",
+          "locator": "Beginnings of a Monastic Brotherhood, lines 152–154",
+          "original_source_id": "fa137d4d-ccc8-4f05-a615-2d7655f427a2",
+          "source_authority": "Ramakrishna Math and Mission's own biography; authoritative for institutional records, retrospective for reported dialogue",
+          "independence_assessment": "Institutional participant account; independently corroborated only where rationale names another source."
+        }
+      ]
+    },
+    {
+      "url": "https://drkurien.com/october-17-1989/",
+      "claim_count": 3,
+      "claim_ids": [
+        "7206448f-4fc2-421f-8b88-27091022b873",
+        "e9171056-70a4-45f2-b42f-9d6123d49706",
+        "edecc47a-240e-468a-948e-b550372acee9"
+      ],
+      "passages": [
+        {
+          "claim_id": "7206448f-4fc2-421f-8b88-27091022b873",
+          "locator": "Acceptance speech, lines 9–23",
+          "original_source_id": null,
+          "source_authority": "Kurien's published 1989 acceptance speech",
+          "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used."
+        },
+        {
+          "claim_id": "edecc47a-240e-468a-948e-b550372acee9",
+          "locator": "Acceptance speech, lines 21–24",
+          "original_source_id": null,
+          "source_authority": "Kurien's published 1989 acceptance speech",
+          "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used."
+        },
+        {
+          "claim_id": "e9171056-70a4-45f2-b42f-9d6123d49706",
+          "locator": "Acceptance speech, lines 21–24 and 37",
+          "original_source_id": null,
+          "source_authority": "Kurien's published 1989 acceptance speech",
+          "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used."
+        }
+      ]
+    },
+    {
+      "url": "https://iep.utm.edu/advaita-vedanta/",
+      "claim_count": 13,
+      "claim_ids": [
+        "04ab8e88-171e-4775-87aa-14606f861089",
+        "110d5f9b-661f-496b-b5ef-0ee082f0502b",
+        "17f2e466-30da-4300-8886-46f0fbd4de4c",
+        "24588828-a855-4564-9312-947d198c3a7b",
+        "3145b253-d7df-4c55-92c3-97d37e19b80e",
+        "42e1e4c3-c2d5-4588-9a61-4b09f5a0d498",
+        "563b9b45-6040-4f93-8651-bcde09ed3e28",
+        "60f530b0-4a93-4118-b912-096bfac95f9f",
+        "6146df78-6954-40d4-992d-034606ddcd8d",
+        "84b4c463-2345-45cf-b4a5-7ff4c68bbfa6",
+        "ae4b169c-d8a3-4c15-a5a4-9bfb3a8bb416",
+        "b7ccb18f-d986-4bdc-86dc-fd81ed04e5b3",
+        "d51d4e9b-c30d-4926-8cfc-d7d3e4dcd3d9"
+      ],
+      "passages": [
+        {
+          "claim_id": "110d5f9b-661f-496b-b5ef-0ee082f0502b",
+          "locator": "History, lines 23–24; Brahman/Jiva section, lines 40–43",
+          "original_source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "6146df78-6954-40d4-992d-034606ddcd8d",
+          "locator": "History, lines 22–23",
+          "original_source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "d51d4e9b-c30d-4926-8cfc-d7d3e4dcd3d9",
+          "locator": "Introduction, line 3; History, line 19",
+          "original_source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "3145b253-d7df-4c55-92c3-97d37e19b80e",
+          "locator": "Error, True Knowledge and Practical Teachings, lines 74–75",
+          "original_source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "563b9b45-6040-4f93-8651-bcde09ed3e28",
+          "locator": "Error, True Knowledge and Practical Teachings, lines 72–73",
+          "original_source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "ae4b169c-d8a3-4c15-a5a4-9bfb3a8bb416",
+          "locator": "Error, True Knowledge and Practical Teachings, lines 74–75",
+          "original_source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "04ab8e88-171e-4775-87aa-14606f861089",
+          "locator": "Error, True Knowledge and Practical Teachings, lines 63–67",
+          "original_source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "17f2e466-30da-4300-8886-46f0fbd4de4c",
+          "locator": "Brahman, Jiva, Isvara, and Maya, line 31",
+          "original_source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "24588828-a855-4564-9312-947d198c3a7b",
+          "locator": "Error, True Knowledge and Practical Teachings, lines 63–65",
+          "original_source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "42e1e4c3-c2d5-4588-9a61-4b09f5a0d498",
+          "locator": "Introduction, lines 3–4",
+          "original_source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "60f530b0-4a93-4118-b912-096bfac95f9f",
+          "locator": "Brahman, Jiva, Isvara, and Maya, line 31",
+          "original_source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "84b4c463-2345-45cf-b4a5-7ff4c68bbfa6",
+          "locator": "Brahman, Jiva, Isvara, and Maya, line 40",
+          "original_source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "b7ccb18f-d986-4bdc-86dc-fd81ed04e5b3",
+          "locator": "Introduction, lines 4–6; Brahman, Jiva section, lines 34–36",
+          "original_source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        }
+      ]
+    },
+    {
+      "url": "https://iep.utm.edu/hindu-ph/",
+      "claim_count": 1,
+      "claim_ids": [
+        "8f24c364-a473-4359-a500-77dbf397cd9e"
+      ],
+      "passages": [
+        {
+          "claim_id": "8f24c364-a473-4359-a500-77dbf397cd9e",
+          "locator": "Vedanta, Bhedabheda, lines 234–240",
+          "original_source_id": "71da4400-6fe9-49cd-808c-8cec554ee3a8",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        }
+      ]
+    },
+    {
+      "url": "https://iep.utm.edu/upanisad/",
+      "claim_count": 4,
+      "claim_ids": [
+        "00674e84-54f4-4e11-be53-d3a58eedfce1",
+        "62814db2-74ec-42eb-97e3-f8377d65acad",
+        "a2282d0d-3591-40ce-bbdf-66dd0dd70594",
+        "d488392f-4df0-4f67-8664-d2c1a901452c"
+      ],
+      "passages": [
+        {
+          "claim_id": "d488392f-4df0-4f67-8664-d2c1a901452c",
+          "locator": "The Upanishads and Vedanta, lines 138–145",
+          "original_source_id": "c833b2a2-932f-4715-8339-d3f1860dc99d",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "a2282d0d-3591-40ce-bbdf-66dd0dd70594",
+          "locator": "The Upanishads and Vedanta, lines 140–141",
+          "original_source_id": "c833b2a2-932f-4715-8339-d3f1860dc99d",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "00674e84-54f4-4e11-be53-d3a58eedfce1",
+          "locator": "The Upanishads and Vedanta, lines 138–140",
+          "original_source_id": "c833b2a2-932f-4715-8339-d3f1860dc99d",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "62814db2-74ec-42eb-97e3-f8377d65acad",
+          "locator": "The Upanishads and Vedanta, lines 142–143",
+          "original_source_id": "c833b2a2-932f-4715-8339-d3f1860dc99d",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        }
+      ]
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/shankara/",
+      "claim_count": 14,
+      "claim_ids": [
+        "44984def-80e6-4c07-a411-216eb2e031a5",
+        "4ec3c901-037a-45cd-8925-41b457c04f70",
+        "6037e150-d873-4a4b-874a-4058fbeb0645",
+        "6eedc4ab-6cff-40c8-bad8-c616cd941467",
+        "6ef8c100-50f7-4803-bf01-8ead5d774262",
+        "711cf2d2-2d4d-45ab-bc9e-86d0a77a1873",
+        "7ea0f689-a9c1-4b95-8098-74ae820c7699",
+        "94339bed-5eea-4fd3-a18a-7a145baa358a",
+        "967e920a-f812-4d9e-a3d3-ab6420ed4ba3",
+        "a85760f8-9f86-423f-81ca-dab8c9921458",
+        "d5db24e8-aa1c-40e1-aa31-0d890bce3357",
+        "d8f9f1b9-e3ca-4ca7-afa9-06fc0feb1af3",
+        "da6ebdd0-ef8f-43bc-b329-7bd0ddca0b10",
+        "fb507cbb-5254-4bb7-b6ad-bd3764e03ca0"
+      ],
+      "passages": [
+        {
+          "claim_id": "6eedc4ab-6cff-40c8-bad8-c616cd941467",
+          "locator": "Life and Works, line 44",
+          "original_source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "da6ebdd0-ef8f-43bc-b329-7bd0ddca0b10",
+          "locator": "Introduction, line 18; Life and Works, lines 57–59",
+          "original_source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "fb507cbb-5254-4bb7-b6ad-bd3764e03ca0",
+          "locator": "Introduction, line 18; Life and Works, line 48",
+          "original_source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "4ec3c901-037a-45cd-8925-41b457c04f70",
+          "locator": "Life and Works, lines 45–46",
+          "original_source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "6037e150-d873-4a4b-874a-4058fbeb0645",
+          "locator": "Life and Works, line 44",
+          "original_source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "6ef8c100-50f7-4803-bf01-8ead5d774262",
+          "locator": "Life and Works, lines 45–47 and 57",
+          "original_source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "711cf2d2-2d4d-45ab-bc9e-86d0a77a1873",
+          "locator": "Introduction, lines 17–18; Life and Works, lines 44–46",
+          "original_source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "7ea0f689-a9c1-4b95-8098-74ae820c7699",
+          "locator": "Life and Works, line 45",
+          "original_source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "967e920a-f812-4d9e-a3d3-ab6420ed4ba3",
+          "locator": "Life and Works, line 45",
+          "original_source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "94339bed-5eea-4fd3-a18a-7a145baa358a",
+          "locator": "Introduction, line 17",
+          "original_source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "d5db24e8-aa1c-40e1-aa31-0d890bce3357",
+          "locator": "Introduction, line 18; Metaphysics, line 67; Methods, lines 202–204",
+          "original_source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "44984def-80e6-4c07-a411-216eb2e031a5",
+          "locator": "Life and Works, lines 46 and 57",
+          "original_source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "a85760f8-9f86-423f-81ca-dab8c9921458",
+          "locator": "Introduction, line 17; Life and Works, lines 54–55",
+          "original_source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        },
+        {
+          "claim_id": "d8f9f1b9-e3ca-4ca7-afa9-06fc0feb1af3",
+          "locator": "Life and Works, lines 51–56; Methods, lines 202–204",
+          "original_source_id": null,
+          "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+          "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship."
+        }
+      ]
+    },
+    {
+      "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+      "claim_count": 25,
+      "claim_ids": [
+        "03029219-0bd4-4396-aa14-9cddf074e25a",
+        "0a07ea19-5303-42b1-b028-c6a06788953c",
+        "12073932-efe6-4337-b8e4-43ce16eb6257",
+        "145b3ed1-dd94-403b-a3e5-dc7a51e5c05d",
+        "1a3e3b52-c30f-4460-a490-42f5fb5f9da3",
+        "1c6ca1ef-95b8-4efb-a1c5-79ec2a456f58",
+        "1cdd2257-0e78-4f1f-a14f-044f5661a387",
+        "1e12002c-eeee-4f7d-b26c-648f36aa5a16",
+        "484c2601-2461-42e9-9899-d9b927065189",
+        "6587fef5-f0f9-404d-a641-960ab1cc493c",
+        "699f3619-930c-4de3-8424-794d7e38594c",
+        "703d0b52-4449-4b89-8f65-4a771c952965",
+        "70b081cb-2344-4bd5-ba09-aca44565c67b",
+        "72d5cc0b-06da-4e67-bceb-84e02791294e",
+        "a0e13cea-bb7e-405e-9197-68698a826df5",
+        "aa325491-b9d3-47d0-8ea9-0a4ede4e7379",
+        "b1f391e8-502c-4078-80b9-69265174c8e1",
+        "bb4d1e8f-7e29-4555-9109-05fd272d28c6",
+        "be5e3251-a901-4d3c-956b-1d82f7ad75be",
+        "c00f9223-9075-4d15-afab-4f7771f185c3",
+        "cc9a5d34-1583-4ccc-9289-4f6204ee8b45",
+        "e22a25ca-a4dd-432f-ad3f-0346ebae6593",
+        "e95a563f-ff64-49e9-90b7-c6fae169bdd6",
+        "ef6898e4-5bfa-489b-b7d4-5ee29481470c",
+        "f560127d-4eb6-42c7-bf5c-600417870b9b"
+      ],
+      "passages": [
+        {
+          "claim_id": "aa325491-b9d3-47d0-8ea9-0a4ede4e7379",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 250, 253 (PDF pages 1, 4)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "be5e3251-a901-4d3c-956b-1d82f7ad75be",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 259 (PDF pages 10)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "03029219-0bd4-4396-aa14-9cddf074e25a",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 258 (PDF pages 9)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "1e12002c-eeee-4f7d-b26c-648f36aa5a16",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 251 (PDF pages 2)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "484c2601-2461-42e9-9899-d9b927065189",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 251 (PDF pages 2)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "6587fef5-f0f9-404d-a641-960ab1cc493c",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 254 (PDF pages 5)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "70b081cb-2344-4bd5-ba09-aca44565c67b",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 257 (PDF pages 8)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "c00f9223-9075-4d15-afab-4f7771f185c3",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 255 (PDF pages 6)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "cc9a5d34-1583-4ccc-9289-4f6204ee8b45",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 257 (PDF pages 8)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "e22a25ca-a4dd-432f-ad3f-0346ebae6593",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 257–258 (PDF pages 8, 9)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "f560127d-4eb6-42c7-bf5c-600417870b9b",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 250 (PDF pages 1)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "1cdd2257-0e78-4f1f-a14f-044f5661a387",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 250 (PDF pages 1)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "699f3619-930c-4de3-8424-794d7e38594c",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 255 (PDF pages 6)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "ef6898e4-5bfa-489b-b7d4-5ee29481470c",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 253–254 (PDF pages 4, 5)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "1a3e3b52-c30f-4460-a490-42f5fb5f9da3",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 254 (PDF pages 5)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "1c6ca1ef-95b8-4efb-a1c5-79ec2a456f58",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 253 (PDF pages 4)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "72d5cc0b-06da-4e67-bceb-84e02791294e",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 253 (PDF pages 4)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "bb4d1e8f-7e29-4555-9109-05fd272d28c6",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 253 (PDF pages 4)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "0a07ea19-5303-42b1-b028-c6a06788953c",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 250 (PDF pages 1)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "145b3ed1-dd94-403b-a3e5-dc7a51e5c05d",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 254 (PDF pages 5)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "12073932-efe6-4337-b8e4-43ce16eb6257",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 253 (PDF pages 4)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "703d0b52-4449-4b89-8f65-4a771c952965",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 259 (PDF pages 10)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "a0e13cea-bb7e-405e-9197-68698a826df5",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 259 (PDF pages 10)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "b1f391e8-502c-4078-80b9-69265174c8e1",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 260 (PDF pages 11)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        },
+        {
+          "claim_id": "e95a563f-ff64-49e9-90b7-c6fae169bdd6",
+          "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 260 (PDF pages 11)",
+          "original_source_id": null,
+          "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+          "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler"
+        }
+      ]
+    },
+    {
+      "url": "https://sanskritdocuments.org/doc_giitaa/gItAshAMkarabhAShya.pdf",
+      "claim_count": 1,
+      "claim_ids": [
+        "28401dfa-7157-482a-a8be-74bca54e6111"
+      ],
+      "passages": [
+        {
+          "claim_id": "28401dfa-7157-482a-a8be-74bca54e6111",
+          "locator": "PDF title; HTML companion document information, lines 9651–9670",
+          "original_source_id": "91083ab0-e904-4bc3-bba3-a172d04d54c6",
+          "source_authority": "Volunteer text repository; title and document metadata checked against the live PDF and companion page",
+          "independence_assessment": "Repository label is not independent evidence of eighth-century authorship."
+        }
+      ]
+    },
+    {
+      "url": "https://whc.unesco.org/en/list/250/",
+      "claim_count": 4,
+      "claim_ids": [
+        "5609a45d-ff75-4996-bc9f-556be05c0dba",
+        "af48b048-b6a9-4e9a-a59f-09ee0496a5e4",
+        "e4ee4929-f977-4c13-ae94-5cf2912a281f",
+        "fb1ea3bb-ab07-44df-8d1d-b586cb7ab895"
+      ],
+      "passages": [
+        {
+          "claim_id": "af48b048-b6a9-4e9a-a59f-09ee0496a5e4",
+          "locator": "Protection and management requirements, lines 75–76; site summary, lines 2–5",
+          "original_source_id": "dfea9d16-e203-4fc9-aa62-53a649dbd7b4",
+          "source_authority": "UNESCO World Heritage Centre official site entry, live page inspected in batch 001",
+          "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone."
+        },
+        {
+          "claim_id": "e4ee4929-f977-4c13-ae94-5cf2912a281f",
+          "locator": "Outstanding Universal Value, brief synthesis, line 50",
+          "original_source_id": "dfea9d16-e203-4fc9-aa62-53a649dbd7b4",
+          "source_authority": "UNESCO World Heritage Centre official site entry, live page inspected in batch 001",
+          "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone."
+        },
+        {
+          "claim_id": "fb1ea3bb-ab07-44df-8d1d-b586cb7ab895",
+          "locator": "Outstanding Universal Value, brief synthesis, lines 51–52",
+          "original_source_id": "dfea9d16-e203-4fc9-aa62-53a649dbd7b4",
+          "source_authority": "UNESCO World Heritage Centre official site entry, live page inspected in batch 001",
+          "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone."
+        },
+        {
+          "claim_id": "5609a45d-ff75-4996-bc9f-556be05c0dba",
+          "locator": "Site description and Outstanding Universal Value, lines 4–5 and 50–61",
+          "original_source_id": null,
+          "source_authority": "UNESCO World Heritage Centre official site entry, live page inspected in batch 001",
+          "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone."
+        }
+      ]
+    },
+    {
+      "url": "https://www.isro.gov.in/SLV.html",
+      "claim_count": 4,
+      "claim_ids": [
+        "0056e637-ab83-4d5e-906a-a4fd1a6add5a",
+        "0ad9f692-4372-4895-936d-6383d12a7a96",
+        "1c773840-34a3-435e-8e8d-f51227baa7a5",
+        "bbaeed4c-7325-42ef-b531-88ec1c970ac6"
+      ],
+      "passages": [
+        {
+          "claim_id": "1c773840-34a3-435e-8e8d-f51227baa7a5",
+          "locator": "SLV, introductory paragraphs, lines 4–6",
+          "original_source_id": "b1670b9f-a5fa-4b1c-84d8-4ae3cd652c5f",
+          "source_authority": "ISRO official mission record, live page inspected in batch 001",
+          "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone."
+        },
+        {
+          "claim_id": "0056e637-ab83-4d5e-906a-a4fd1a6add5a",
+          "locator": "SLV, launch account, line 4",
+          "original_source_id": "b1670b9f-a5fa-4b1c-84d8-4ae3cd652c5f",
+          "source_authority": "ISRO official mission record, live page inspected in batch 001",
+          "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone."
+        },
+        {
+          "claim_id": "0ad9f692-4372-4895-936d-6383d12a7a96",
+          "locator": "SLV, final paragraph, line 7",
+          "original_source_id": "b1670b9f-a5fa-4b1c-84d8-4ae3cd652c5f",
+          "source_authority": "ISRO official mission record, live page inspected in batch 001",
+          "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone."
+        },
+        {
+          "claim_id": "bbaeed4c-7325-42ef-b531-88ec1c970ac6",
+          "locator": "SLV, opening paragraph, line 2",
+          "original_source_id": "b1670b9f-a5fa-4b1c-84d8-4ae3cd652c5f",
+          "source_authority": "ISRO official mission record, live page inspected in batch 001",
+          "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+      "claim_count": 23,
+      "claim_ids": [
+        "25c136e6-160b-4f03-ad54-859388b163ff",
+        "263c076a-5504-4784-a30c-3167859c3981",
+        "2f80f915-ba83-48f9-add8-29b559ff4ef3",
+        "506dddf0-81f1-406f-b089-5b25ebb460a3",
+        "56a15ec9-f3c4-47ec-8a62-6be756266d69",
+        "5d478bab-d1b1-4dc5-905a-fbc0aa021521",
+        "67488e84-8936-4b12-8626-03907d611ae2",
+        "6e42d0c1-5b81-4d73-a01d-ec209673256c",
+        "789ce60a-d2bc-4620-9b53-1ccc3659d85e",
+        "7ac96059-1720-4e25-98ce-2e8ec2971b4e",
+        "7bfdd484-7601-4e98-9604-7a64d81643b9",
+        "8391cad4-a1f8-4d36-8d82-a6f539c7ec14",
+        "868f69cb-5892-4a43-bdf7-a77627dd123f",
+        "86c4920b-5175-4c8d-898d-5517b8e3dc16",
+        "8787018f-bd39-4e41-ba16-55da7c58fc1e",
+        "944f6918-7e13-42cf-9843-2b07e604dce2",
+        "a4cabecf-a0fc-4001-ab58-d44c11b9077d",
+        "b24333d3-f62f-4c66-b017-136298ac3ff9",
+        "b3a996c1-ea1a-48d3-8fc3-ee5a346d4541",
+        "ba565e39-49a9-4e56-bd5f-fd1b8ff761df",
+        "c88fb96f-4659-4de7-ba26-1bf867ccf4ad",
+        "d0445e5b-2692-486f-ba48-9206c4d11420",
+        "e71d639e-7dfa-4afa-9efc-cad089bec84c"
+      ],
+      "passages": [
+        {
+          "claim_id": "25c136e6-160b-4f03-ad54-859388b163ff",
+          "locator": "PDF pp. 10–11, lines 300–311",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "7ac96059-1720-4e25-98ce-2e8ec2971b4e",
+          "locator": "PDF p. 10, lines 300–315",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "8787018f-bd39-4e41-ba16-55da7c58fc1e",
+          "locator": "PDF cover p. 0, line 48; essay pp. 25–26, lines 875–887",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "ba565e39-49a9-4e56-bd5f-fd1b8ff761df",
+          "locator": "PDF p. 10, lines 293–295",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "b24333d3-f62f-4c66-b017-136298ac3ff9",
+          "locator": "PDF p. 19, lines 621–645",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "d0445e5b-2692-486f-ba48-9206c4d11420",
+          "locator": "PDF pp. 25–26, lines 868–887",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "67488e84-8936-4b12-8626-03907d611ae2",
+          "locator": "PDF p. 22, lines 750–755",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "a4cabecf-a0fc-4001-ab58-d44c11b9077d",
+          "locator": "PDF pp. 21–22, lines 726–740",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "506dddf0-81f1-406f-b089-5b25ebb460a3",
+          "locator": "PDF p. 10, lines 309–315",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "7bfdd484-7601-4e98-9604-7a64d81643b9",
+          "locator": "PDF pp. 13–14, lines 420–435",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "944f6918-7e13-42cf-9843-2b07e604dce2",
+          "locator": "PDF pp. 21–22, lines 726–740",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "b3a996c1-ea1a-48d3-8fc3-ee5a346d4541",
+          "locator": "PDF p. 25, lines 837–869",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "86c4920b-5175-4c8d-898d-5517b8e3dc16",
+          "locator": "PDF pp. 6–7, lines 150–170, 183–187",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "263c076a-5504-4784-a30c-3167859c3981",
+          "locator": "PDF p. 16, lines 518–537",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "2f80f915-ba83-48f9-add8-29b559ff4ef3",
+          "locator": "PDF p. 16, lines 527–537",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "8391cad4-a1f8-4d36-8d82-a6f539c7ec14",
+          "locator": "PDF p. 16, lines 518–526",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "868f69cb-5892-4a43-bdf7-a77627dd123f",
+          "locator": "PDF p. 16, lines 518–526",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "c88fb96f-4659-4de7-ba26-1bf867ccf4ad",
+          "locator": "PDF pp. 14–15, lines 430–435 and 473–484",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "e71d639e-7dfa-4afa-9efc-cad089bec84c",
+          "locator": "PDF pp. 16–17, lines 544–557",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "6e42d0c1-5b81-4d73-a01d-ec209673256c",
+          "locator": "PDF p. 13, lines 401–409",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "56a15ec9-f3c4-47ec-8a62-6be756266d69",
+          "locator": "PDF p. 5, lines 136–149",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "5d478bab-d1b1-4dc5-905a-fbc0aa021521",
+          "locator": "PDF p. 27, lines 931–947",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        },
+        {
+          "claim_id": "789ce60a-d2bc-4620-9b53-1ccc3659d85e",
+          "locator": "PDF p. 1, lines 51–81",
+          "original_source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+          "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+          "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals."
+        }
+      ]
+    },
+    {
+      "url": "https://www.nddb.coop/about/chairman/vkurien",
+      "claim_count": 1,
+      "claim_ids": [
+        "c49dd80e-e4b1-4a56-a005-bf7df968648d"
+      ],
+      "passages": [
+        {
+          "claim_id": "c49dd80e-e4b1-4a56-a005-bf7df968648d",
+          "locator": "Kurien biography, line 243",
+          "original_source_id": null,
+          "source_authority": "National Dairy Development Board institutional biography",
+          "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used."
+        }
+      ]
+    },
+    {
+      "url": "https://www.oscars.org/oscars/ceremonies/1992/memorable-moments",
+      "claim_count": 2,
+      "claim_ids": [
+        "0d6e0dc3-6b43-453e-b1f3-8b8abf08e8ab",
+        "61e944ef-a848-4865-b28b-7ab1b56dc7eb"
+      ],
+      "passages": [
+        {
+          "claim_id": "61e944ef-a848-4865-b28b-7ab1b56dc7eb",
+          "locator": "Honorary Award, lines 79–80",
+          "original_source_id": null,
+          "source_authority": "Academy of Motion Picture Arts and Sciences official awards record, live page inspected in batch 001",
+          "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone."
+        },
+        {
+          "claim_id": "0d6e0dc3-6b43-453e-b1f3-8b8abf08e8ab",
+          "locator": "Honorary Award citation, lines 79–80",
+          "original_source_id": null,
+          "source_authority": "Academy of Motion Picture Arts and Sciences official awards record, live page inspected in batch 001",
+          "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/boyhood.htm",
+      "claim_count": 1,
+      "claim_ids": [
+        "ecc7fc2c-617c-4f29-b365-462f1c4aa0cb"
+      ],
+      "passages": [
+        {
+          "claim_id": "ecc7fc2c-617c-4f29-b365-462f1c4aa0cb",
+          "locator": "lines 5, 7, 13",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+          "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/christianity.htm",
+      "claim_count": 1,
+      "claim_ids": [
+        "463a43cf-ce07-4734-afd1-f82d2875592b"
+      ],
+      "passages": [
+        {
+          "claim_id": "463a43cf-ce07-4734-afd1-f82d2875592b",
+          "locator": "lines 3–7",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+          "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/islam.htm",
+      "claim_count": 1,
+      "claim_ids": [
+        "f4e89c5c-b9bc-4327-abf5-44136177a80e"
+      ],
+      "passages": [
+        {
+          "claim_id": "f4e89c5c-b9bc-4327-abf5-44136177a80e",
+          "locator": "lines 2–4",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+          "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/kali.htm",
+      "claim_count": 1,
+      "claim_ids": [
+        "4a430925-c049-4438-a455-b4c2d2c2acaf"
+      ],
+      "passages": [
+        {
+          "claim_id": "4a430925-c049-4438-a455-b4c2d2c2acaf",
+          "locator": "lines 3, 10–11",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+          "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/keshab.htm",
+      "claim_count": 2,
+      "claim_ids": [
+        "08cff6a7-0e1c-4a21-9b03-23087f2ea745",
+        "2d6d5273-b58d-4fc2-977c-df009060e4bd"
+      ],
+      "passages": [
+        {
+          "claim_id": "08cff6a7-0e1c-4a21-9b03-23087f2ea745",
+          "locator": "lines 3–7",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+          "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech."
+        },
+        {
+          "claim_id": "2d6d5273-b58d-4fc2-977c-df009060e4bd",
+          "locator": "lines 3–7",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+          "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/last_days.htm",
+      "claim_count": 2,
+      "claim_ids": [
+        "ad245e15-54a5-4b4c-9032-2a28bbb95cb5",
+        "c387e462-e053-47bb-8ea0-b641a90acb46"
+      ],
+      "passages": [
+        {
+          "claim_id": "c387e462-e053-47bb-8ea0-b641a90acb46",
+          "locator": "lines 22–23",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+          "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events."
+        },
+        {
+          "claim_id": "ad245e15-54a5-4b4c-9032-2a28bbb95cb5",
+          "locator": "lines 37–38",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+          "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/marriage.htm",
+      "claim_count": 1,
+      "claim_ids": [
+        "e33d7beb-875d-489b-958d-ac717133982f"
+      ],
+      "passages": [
+        {
+          "claim_id": "e33d7beb-875d-489b-958d-ac717133982f",
+          "locator": "lines 3–5",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+          "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/masters_method.htm",
+      "claim_count": 1,
+      "claim_ids": [
+        "53c4046e-5fef-439f-b594-5f84b61f63b0"
+      ],
+      "passages": [
+        {
+          "claim_id": "53c4046e-5fef-439f-b594-5f84b61f63b0",
+          "locator": "lines 2–4",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+          "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/narendra.htm",
+      "claim_count": 2,
+      "claim_ids": [
+        "7180fef3-c2ab-4874-9ebf-63b949cda6c2",
+        "b0d5d60d-c2dc-43f8-9fe3-34a21ce75cff"
+      ],
+      "passages": [
+        {
+          "claim_id": "7180fef3-c2ab-4874-9ebf-63b949cda6c2",
+          "locator": "lines 8–15",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+          "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech."
+        },
+        {
+          "claim_id": "b0d5d60d-c2dc-43f8-9fe3-34a21ce75cff",
+          "locator": "lines 20–22",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+          "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/relation_with_wife.htm",
+      "claim_count": 1,
+      "claim_ids": [
+        "e76a77c7-134b-4723-92c7-2af6224bd1b1"
+      ],
+      "passages": [
+        {
+          "claim_id": "e76a77c7-134b-4723-92c7-2af6224bd1b1",
+          "locator": "lines 3, 8–11",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+          "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/summary_of.htm",
+      "claim_count": 1,
+      "claim_ids": [
+        "08cff6a7-0e1c-4a21-9b03-23087f2ea745"
+      ],
+      "passages": [
+        {
+          "claim_id": "08cff6a7-0e1c-4a21-9b03-23087f2ea745",
+          "locator": "lines 3–9",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+          "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/the_brahmani.htm",
+      "claim_count": 2,
+      "claim_ids": [
+        "d3d4217a-a201-414d-934a-6dab91650ba1",
+        "db679fec-a8ef-41cd-a1d9-a1138b0d2d01"
+      ],
+      "passages": [
+        {
+          "claim_id": "d3d4217a-a201-414d-934a-6dab91650ba1",
+          "locator": "lines 3–5, 20–21",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+          "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events."
+        },
+        {
+          "claim_id": "db679fec-a8ef-41cd-a1d9-a1138b0d2d01",
+          "locator": "lines 7–13",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+          "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/the_first_vision.htm",
+      "claim_count": 1,
+      "claim_ids": [
+        "71062ea0-f9bd-4671-9b10-a7e4027d10c6"
+      ],
+      "passages": [
+        {
+          "claim_id": "71062ea0-f9bd-4671-9b10-a7e4027d10c6",
+          "locator": "lines 13–15",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+          "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/totapuri.htm",
+      "claim_count": 1,
+      "claim_ids": [
+        "6d6352c0-e4ed-4414-90a4-c290e54dfa4e"
+      ],
+      "passages": [
+        {
+          "claim_id": "6d6352c0-e4ed-4414-90a4-c290e54dfa4e",
+          "locator": "lines 2–3",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+          "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/totapuris_lesson.htm",
+      "claim_count": 1,
+      "claim_ids": [
+        "9a849445-4c16-4ef2-bf13-c514db5f9a9c"
+      ],
+      "passages": [
+        {
+          "claim_id": "9a849445-4c16-4ef2-bf13-c514db5f9a9c",
+          "locator": "paragraph beginning 'After the departure of Totapuri'",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+          "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/volume_1/01_master_and_disciple.htm",
+      "claim_count": 1,
+      "claim_ids": [
+        "0f36dc1e-79a2-465a-981b-77b75665f4d7"
+      ],
+      "passages": [
+        {
+          "claim_id": "0f36dc1e-79a2-465a-981b-77b75665f4d7",
+          "locator": "translator's note 1, lines 243–246",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+          "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/volume_1/03_visit_to_vidyasagar.htm",
+      "claim_count": 3,
+      "claim_ids": [
+        "0886e626-38d7-482f-bbbc-24db2fb27d60",
+        "52dc3737-5124-467a-a553-0257baa6638e",
+        "a22646cc-d3b9-4e43-924a-dfda00d10d24"
+      ],
+      "passages": [
+        {
+          "claim_id": "52dc3737-5124-467a-a553-0257baa6638e",
+          "locator": "5 August 1882 entry, lines 55–59",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+          "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech."
+        },
+        {
+          "claim_id": "a22646cc-d3b9-4e43-924a-dfda00d10d24",
+          "locator": "5 August 1882 entry, lines 53–56",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+          "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech."
+        },
+        {
+          "claim_id": "0886e626-38d7-482f-bbbc-24db2fb27d60",
+          "locator": "5 August 1882 entry, lines 3, 33–39",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+          "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/volume_1/04_advice_to_householders.htm",
+      "claim_count": 1,
+      "claim_ids": [
+        "bc2dadea-f37a-41e6-96db-4b6df8faea15"
+      ],
+      "passages": [
+        {
+          "claim_id": "bc2dadea-f37a-41e6-96db-4b6df8faea15",
+          "locator": "13 August 1882 entry, lines 4–15",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+          "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/volume_1/05_the_master_and_keshab.htm",
+      "claim_count": 1,
+      "claim_ids": [
+        "a4fcf4d2-e3e1-4230-bb9d-2f4770cec4b3"
+      ],
+      "passages": [
+        {
+          "claim_id": "a4fcf4d2-e3e1-4230-bb9d-2f4770cec4b3",
+          "locator": "27 October 1882 entry, lines 4–5 and 165–169",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+          "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/volume_1/20_rules.htm",
+      "claim_count": 1,
+      "claim_ids": [
+        "9dfc87bf-82fa-41a1-b230-15ed33c2e01b"
+      ],
+      "passages": [
+        {
+          "claim_id": "9dfc87bf-82fa-41a1-b230-15ed33c2e01b",
+          "locator": "entry preceding 23 March 1884, lines 74–76",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+          "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/volume_2/34_bankim_chandra.htm",
+      "claim_count": 1,
+      "claim_ids": [
+        "41d4823f-d7c5-4757-bde5-316192902188"
+      ],
+      "passages": [
+        {
+          "claim_id": "41d4823f-d7c5-4757-bde5-316192902188",
+          "locator": "6 December 1884 entry, lines 4 and 60–70",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+          "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech."
+        }
+      ]
+    },
+    {
+      "url": "https://www.ramakrishnavivekananda.info/gospel/volume_2/52_after_the_passing_away.htm",
+      "claim_count": 1,
+      "claim_ids": [
+        "1d81056a-92c0-4452-8cb1-ada016b09a58"
+      ],
+      "passages": [
+        {
+          "claim_id": "1d81056a-92c0-4452-8cb1-ada016b09a58",
+          "locator": "lines 4–12",
+          "original_source_id": null,
+          "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+          "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech."
+        }
+      ]
+    },
+    {
+      "url": "https://www.worldfoodprize.org/index.cfm/87428/40143/the_world_food_prize_pays_tribute_to_1989_laureate_dr_verghese_kurien",
+      "claim_count": 10,
+      "claim_ids": [
+        "01474b6e-2c2f-4a8f-b529-99002a07eede",
+        "05942d45-7c17-4a41-882f-364543e8aed6",
+        "3eca349c-3c0e-4a15-b17d-29366a09f33c",
+        "5542934d-b046-424a-993c-a7105b1eb87d",
+        "7f406348-934e-43dc-9358-49d8d0782840",
+        "810f1e3c-feb0-442f-b298-105f04ec1b70",
+        "84a2f266-94d2-42d5-806c-6f0cfb661e5e",
+        "9ee5ecd9-0272-4016-b59a-3a810321d286",
+        "aead8773-3c07-44d4-b2be-70b2e7b440d6",
+        "fa8f0682-0bde-41da-a4e0-7d1ac942cd0d"
+      ],
+      "passages": [
+        {
+          "claim_id": "5542934d-b046-424a-993c-a7105b1eb87d",
+          "locator": "Background, line 41",
+          "original_source_id": null,
+          "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+          "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used."
+        },
+        {
+          "claim_id": "7f406348-934e-43dc-9358-49d8d0782840",
+          "locator": "Background, line 41",
+          "original_source_id": null,
+          "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+          "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used."
+        },
+        {
+          "claim_id": "810f1e3c-feb0-442f-b298-105f04ec1b70",
+          "locator": "Background, line 43",
+          "original_source_id": null,
+          "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+          "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used."
+        },
+        {
+          "claim_id": "84a2f266-94d2-42d5-806c-6f0cfb661e5e",
+          "locator": "Background, line 42",
+          "original_source_id": null,
+          "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+          "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used."
+        },
+        {
+          "claim_id": "9ee5ecd9-0272-4016-b59a-3a810321d286",
+          "locator": "Background, lines 40–43",
+          "original_source_id": null,
+          "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+          "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used."
+        },
+        {
+          "claim_id": "fa8f0682-0bde-41da-a4e0-7d1ac942cd0d",
+          "locator": "Background, line 41",
+          "original_source_id": null,
+          "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+          "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used."
+        },
+        {
+          "claim_id": "01474b6e-2c2f-4a8f-b529-99002a07eede",
+          "locator": "Achievements, lines 50–51",
+          "original_source_id": null,
+          "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+          "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used."
+        },
+        {
+          "claim_id": "3eca349c-3c0e-4a15-b17d-29366a09f33c",
+          "locator": "Award notice, lines 30–35; honors, line 60",
+          "original_source_id": null,
+          "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+          "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used."
+        },
+        {
+          "claim_id": "aead8773-3c07-44d4-b2be-70b2e7b440d6",
+          "locator": "Honors, line 60",
+          "original_source_id": null,
+          "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+          "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used."
+        },
+        {
+          "claim_id": "05942d45-7c17-4a41-882f-364543e8aed6",
+          "locator": "Achievements, lines 49–50",
+          "original_source_id": null,
+          "source_authority": "World Food Prize Foundation's 2012 laureate tribute",
+          "independence_assessment": "Distinct original speech or institutional issuer account; additional institutional corroboration is named in the rationale where used."
+        }
+      ]
+    },
+    {
+      "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362",
+      "claim_count": 14,
+      "claim_ids": [
+        "0a07ea19-5303-42b1-b028-c6a06788953c",
+        "12073932-efe6-4337-b8e4-43ce16eb6257",
+        "145b3ed1-dd94-403b-a3e5-dc7a51e5c05d",
+        "1a3e3b52-c30f-4460-a490-42f5fb5f9da3",
+        "1c6ca1ef-95b8-4efb-a1c5-79ec2a456f58",
+        "1cdd2257-0e78-4f1f-a14f-044f5661a387",
+        "1e12002c-eeee-4f7d-b26c-648f36aa5a16",
+        "484c2601-2461-42e9-9899-d9b927065189",
+        "6587fef5-f0f9-404d-a641-960ab1cc493c",
+        "72d5cc0b-06da-4e67-bceb-84e02791294e",
+        "aa325491-b9d3-47d0-8ea9-0a4ede4e7379",
+        "bb4d1e8f-7e29-4555-9109-05fd272d28c6",
+        "ef6898e4-5bfa-489b-b7d4-5ee29481470c",
+        "f560127d-4eb6-42c7-bf5c-600417870b9b"
+      ],
+      "passages": [
+        {
+          "claim_id": "aa325491-b9d3-47d0-8ea9-0a4ede4e7379",
+          "locator": "Major Rock Edicts, recurring royal titulary; especially II and XIII",
+          "original_source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "1e12002c-eeee-4f7d-b26c-648f36aa5a16",
+          "locator": "Major Rock Edict III, five-year circuits",
+          "original_source_id": null,
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "484c2601-2461-42e9-9899-d9b927065189",
+          "locator": "Major Rock Edict VI, reports and audiences",
+          "original_source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "6587fef5-f0f9-404d-a641-960ab1cc493c",
+          "locator": "Major Rock Edict XIV, short, medium, and expanded versions",
+          "original_source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "f560127d-4eb6-42c7-bf5c-600417870b9b",
+          "locator": "Major Rock Edict II, medical provision",
+          "original_source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "1cdd2257-0e78-4f1f-a14f-044f5661a387",
+          "locator": "Major Rock Edict II, southern polities",
+          "original_source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "ef6898e4-5bfa-489b-b7d4-5ee29481470c",
+          "locator": "Major Rock Edict XIII, remorse and religious households",
+          "original_source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "1a3e3b52-c30f-4460-a490-42f5fb5f9da3",
+          "locator": "Major Rock Edict XIII, conquest by dhamma",
+          "original_source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "1c6ca1ef-95b8-4efb-a1c5-79ec2a456f58",
+          "locator": "Major Rock Edict XIII, opening Kalinga sentence",
+          "original_source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "72d5cc0b-06da-4e67-bceb-84e02791294e",
+          "locator": "Major Rock Edict XIII, reported casualties",
+          "original_source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "bb4d1e8f-7e29-4555-9109-05fd272d28c6",
+          "locator": "Major Rock Edict XIII, Kalinga casualty figures",
+          "original_source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "0a07ea19-5303-42b1-b028-c6a06788953c",
+          "locator": "Major Rock Edict II, Antiochus and neighboring polities",
+          "original_source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "145b3ed1-dd94-403b-a3e5-dc7a51e5c05d",
+          "locator": "Major Rock Edict XIII, Hellenistic rulers",
+          "original_source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "12073932-efe6-4337-b8e4-43ce16eb6257",
+          "locator": "Major Rock Edict XII, sectarian speech",
+          "original_source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        }
+      ]
+    },
+    {
+      "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=364",
+      "claim_count": 2,
+      "claim_ids": [
+        "699f3619-930c-4de3-8424-794d7e38594c",
+        "c00f9223-9075-4d15-afab-4f7771f185c3"
+      ],
+      "passages": [
+        {
+          "claim_id": "c00f9223-9075-4d15-afab-4f7771f185c3",
+          "locator": "Separate Kalinga Edict I, urban officials and five-year inspectors",
+          "original_source_id": "052250de-cf26-4d76-80a7-786721c7638d",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "699f3619-930c-4de3-8424-794d7e38594c",
+          "locator": "Separate Kalinga Edict I, children and officials",
+          "original_source_id": "052250de-cf26-4d76-80a7-786721c7638d",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        }
+      ]
+    },
+    {
+      "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=370",
+      "claim_count": 4,
+      "claim_ids": [
+        "03029219-0bd4-4396-aa14-9cddf074e25a",
+        "70b081cb-2344-4bd5-ba09-aca44565c67b",
+        "cc9a5d34-1583-4ccc-9289-4f6204ee8b45",
+        "e22a25ca-a4dd-432f-ad3f-0346ebae6593"
+      ],
+      "passages": [
+        {
+          "claim_id": "03029219-0bd4-4396-aa14-9cddf074e25a",
+          "locator": "Pillar Edict VII, public works paragraph",
+          "original_source_id": "0662151b-0d88-4b60-b631-cedc9303e5b6",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "70b081cb-2344-4bd5-ba09-aca44565c67b",
+          "locator": "Pillar Edict IV, condemned prisoners",
+          "original_source_id": "0662151b-0d88-4b60-b631-cedc9303e5b6",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "cc9a5d34-1583-4ccc-9289-4f6204ee8b45",
+          "locator": "Pillar Edict IV, judicial uniformity",
+          "original_source_id": "0662151b-0d88-4b60-b631-cedc9303e5b6",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "e22a25ca-a4dd-432f-ad3f-0346ebae6593",
+          "locator": "Pillar Edict VII, dhamma officers and sects",
+          "original_source_id": "0662151b-0d88-4b60-b631-cedc9303e5b6",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        }
+      ]
+    },
+    {
+      "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=378",
+      "claim_count": 2,
+      "claim_ids": [
+        "b1f391e8-502c-4078-80b9-69265174c8e1",
+        "e95a563f-ff64-49e9-90b7-c6fae169bdd6"
+      ],
+      "passages": [
+        {
+          "claim_id": "b1f391e8-502c-4078-80b9-69265174c8e1",
+          "locator": "Nigali Sagar pillar inscription",
+          "original_source_id": "cf34f9b9-15ae-4be6-b9ba-34718a351904",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "e95a563f-ff64-49e9-90b7-c6fae169bdd6",
+          "locator": "Lumbini/Rummindei pillar inscription",
+          "original_source_id": "cf34f9b9-15ae-4be6-b9ba-34718a351904",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        }
+      ]
+    },
+    {
+      "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=399",
+      "claim_count": 3,
+      "claim_ids": [
+        "703d0b52-4449-4b89-8f65-4a771c952965",
+        "a0e13cea-bb7e-405e-9197-68698a826df5",
+        "be5e3251-a901-4d3c-956b-1d82f7ad75be"
+      ],
+      "passages": [
+        {
+          "claim_id": "be5e3251-a901-4d3c-956b-1d82f7ad75be",
+          "locator": "Maski Minor Rock Edict I",
+          "original_source_id": "ff913930-89f5-4f50-ac11-db6205f5a5b3",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "703d0b52-4449-4b89-8f65-4a771c952965",
+          "locator": "Minor Rock Edict I, lay devotion and sangha",
+          "original_source_id": "ff913930-89f5-4f50-ac11-db6205f5a5b3",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        },
+        {
+          "claim_id": "a0e13cea-bb7e-405e-9197-68698a826df5",
+          "locator": "Bairat/Bhabru inscription, recommended teachings",
+          "original_source_id": "ff913930-89f5-4f50-ac11-db6205f5a5b3",
+          "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+          "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes"
+        }
+      ]
+    }
+  ]
+}

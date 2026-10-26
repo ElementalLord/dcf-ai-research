@@ -1,0 +1,70 @@
+{
+  "source_id": "88158ef6-e0af-4635-b05b-699b8123840d",
+  "source": {
+    "author": "Swami Vivekananda",
+    "authority_metadata": {},
+    "citation": "Swami Vivekananda. My Master. Complete Works of Swami Vivekananda. https://www.ramakrishnavivekananda.info/vivekananda/volume_4/lectures_and_discourses/my_master.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Complete Works of Swami Vivekananda",
+    "rights_or_access_note": "Publicly accessible page; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "My Master",
+    "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_4/lectures_and_discourses/my_master.htm"
+  },
+  "claim_ids": [
+    "0322cc9d-f197-425b-aeec-f731f944374b",
+    "251ada8d-403b-405f-be8d-24c0df481209",
+    "2f6bb48d-e80d-4227-9821-949f47aad776",
+    "39b5b2e8-f8ab-4ed9-837d-80b79535871a",
+    "83b5b76c-928b-4331-9b3b-0df6909fd0f4",
+    "8e789fe4-041e-40f8-9aa8-5f7b11b57fdf",
+    "d870bacf-d650-4374-b318-1ea555bbfb0d"
+  ],
+  "passages": [
+    {
+      "chunk_id": "148a9e94-4e9e-40cb-9478-04af92004da8",
+      "locator": "My Master",
+      "text_sha256": "f0de8cf8f3a86b544c4534c0de8f274027386e237c00d6badb4816abfe59932a",
+      "excerpt_preview": "ahamsa is known all over India to its millions of people. Nay, the power of that man has spread beyond India; and if there has ever been a word of truth, a word of spirituality, that I have spoken anywhere in the world, I owe it to my Maste",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "154260b6-11d6-4910-a6a0-91263b002a17",
+      "locator": "My Master",
+      "text_sha256": "6a1253e5bd14d448555892db02dcac398c48e363be617a34eece565e3e4025d6",
+      "excerpt_preview": "is favourite illustration was, \"When the lotus opens, the bees come of their own accord to seek the honey; so let the lotus of your character be full-blown, and the results will follow.\" This is a great lesson to learn. My Master taught me ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "41305a25-6559-477f-9bcb-1d6c5a1b23d6",
+      "locator": "Vivekananda, My Master (1896)",
+      "text_sha256": "2410440d8dee4730ee4445a81bc5b86a4abe45b6dad0597e923315ba2f9ecfe0",
+      "excerpt_preview": "Today the name of Shri Ramakrishna Paramahamsa is known all over India to its millions of people. Nay, the power of that man has spread beyond India; and if there has ever been a word of truth, a word of spirituality, that I have spoken any",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6263f9cf-abfe-431d-9d81-a541828fea8a",
+      "locator": "My Master",
+      "text_sha256": "260b6e8aaeb47766efa8ddf1d54206b809c396ae82bab02033f943e25ea7f0ee",
+      "excerpt_preview": "will be raised; and that country where such men absolutely do not exist is simply doomed nothing can save it. Therefore my Master's message to mankind is: \"Be spiritual and realise truth for Yourself.\" He would have you give up for the sake",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "93d670c8-892b-4f82-a96a-7d781c968499",
+      "locator": "My Master",
+      "text_sha256": "68949726ca4f8f415e5df42dc5e30c9cb7a83a649e1fa2fc4fda01a6dff20695",
+      "excerpt_preview": "t after wards; they will all come. This was the attitude of nay Master. He criticised no one. For years I lived with that man, but never did I hear those lips utter one word of condemnation for any sect. He had the same sympathy for all sec",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

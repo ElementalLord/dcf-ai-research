@@ -1,0 +1,44 @@
+{
+  "source_id": "b1e84432-d1e0-4c78-a9bf-5932440464cf",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-13T14:33:54.329Z"
+    },
+    "citation": "Japji Sahib, Ang 1. Sri Granth. https://www.srigranth.org/servlet/gurbani.gurbani?Action=Page&Param=1&g=0&h=0&k=0&p=1&r=1&t=2",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Sri Granth",
+    "rights_or_access_note": "Publicly accessible source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Japji Sahib, Ang 1",
+    "url": "https://www.srigranth.org/servlet/gurbani.gurbani?Action=Page&Param=1&g=0&h=0&k=0&p=1&r=1&t=2"
+  },
+  "claim_ids": [
+    "897a99f8-92c3-47be-a4a0-87d9f582c137",
+    "b83c336c-f180-4459-b514-b039249accae",
+    "e78b8cb4-cd3e-4e7e-a587-e255bb44cfb1"
+  ],
+  "passages": [
+    {
+      "chunk_id": "aba43f3e-a817-45f8-8368-80e91c1f704a",
+      "locator": "without fear sans enmity",
+      "text_sha256": "b4e0bea5a6027cdbb24e2ce498c64135b11b115c8baebdc7e8683a476d6b539e",
+      "excerpt_preview": "He is without fear sans enmity, unborn and self-illuminated. By the Guru’s grace He is obtained. ਵਾਹਿਗੁਰੂ ਕੇਵਲ ਇਕ ਹੈ। ਸੱਚਾ ਹੈ ਉਸ ਦਾ ਨਾਮ, ਰਚਨਹਾਰ ਉਸ ਦੀ ਵਿਅਕਤੀ ਅਤੇ ਅਮਰ ਉਸ ਦਾ ਸਰੂਪ। ਉਹ ਨਿਡਰ, ਕੀਨਾ-ਰਹਿਤ, ਅਜਨਮਾ ਤੇ ਸਵੈ-ਪ੍ਰਕਾਸ਼ਵਾਨ ਹੈ। ਗੁਰਾਂ ਦੀ ਦਯਾ ਦੁਆ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e4e578ba-b774-4c90-aebd-eda460937e45",
+      "locator": "Guru’s grace He is obtained",
+      "text_sha256": "80063b159010c0ef835300722483e6f134832681ebcbd1daedfb46598561a45b",
+      "excerpt_preview": "By the Guru’s grace He is obtained. ਵਾਹਿਗੁਰੂ ਕੇਵਲ ਇਕ ਹੈ। ਸੱਚਾ ਹੈ ਉਸ ਦਾ ਨਾਮ, ਰਚਨਹਾਰ ਉਸ ਦੀ ਵਿਅਕਤੀ ਅਤੇ ਅਮਰ ਉਸ ਦਾ ਸਰੂਪ। ਉਹ ਨਿਡਰ, ਕੀਨਾ-ਰਹਿਤ, ਅਜਨਮਾ ਤੇ ਸਵੈ-ਪ੍ਰਕਾਸ਼ਵਾਨ ਹੈ। ਗੁਰਾਂ ਦੀ ਦਯਾ ਦੁਆਰਾ ਉਹ ਪਰਾਪਤ ਹੁੰਦਾ ਹੈ। Jap.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,1267 @@
+[
+  {
+    "claim_id": "35c9c378-40ea-4ff7-a1ac-9681cd4cf575",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The relationship is not merely advisory: Dasharatha ultimately entrusts Rama to Vishvamitra, placing the sage in temporary guardianship and instruction of the prince.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In Bala Kanda 1.22, Dasharatha entrusts Rama to Vishvamitra, who then guides and instructs him.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.2–3, 11–22",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Entrustment and teaching are explicit; guardianship is an interpretive label.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "3cb766e5-8aef-4c09-be60-00e9870c4be1",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The Sarayu riverbank is an important teaching location because Vishvamitra gives Bala and Atibala to Rama there.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Sarayu riverbank is an important teaching location because Vishvamitra gives Bala and Atibala to Rama there.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.10–12, 20–22",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The south bank of the Sarayu is stated before the Bala–Atibala teaching and their stay there.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "596594fb-0cb9-4718-b8dc-9f9336fa9d0e",
+    "personality": "Vishvamitra",
+    "original_claim_text": "In Bala Kanda 1.22 the Ramayana calls Vishvamitra the son of Kushika (kushikaputra).",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In Bala Kanda 1.22 the Ramayana calls Vishvamitra the son of Kushika (kushikaputra).",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.2–3, 8–10",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The Sanskrit uses kushikaputra/kushikasuta for Vishvamitra.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "77471114-8d0a-43dd-ba6c-0aee9dfe4d1a",
+    "personality": "Vishvamitra",
+    "original_claim_text": "One securely text-grounded aspect of Vishvamitra's teaching role is transmission of disciplined sacred knowledge from teacher to student, exemplified by Bala and Atibala.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.22 portrays Vishvamitra teaching Rama the Bala and Atibala formulae, followed by Rama performing duties toward his teacher.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.11–12, 20–22",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The passage directly supplies instruction and pupil duties; the abstract modern language was narrowed.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "79dc18aa-e604-40bf-a754-553f10851aa9",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Bala Kanda attributes extraordinary effects to Bala and Atibala—protection from fatigue, hunger, thirst, and attack while asleep—within the story-world.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In Vishvamitra’s speech in Bala Kanda 1.22, Bala and Atibala are said to protect Rama from fatigue and attacks while asleep, and to avert hunger and thirst. These are claims within the epic.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.12–13, 17",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Direct speech presents extraordinary effects; wording attributes them to the text.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "7ba43136-895b-4e78-a5a6-74ca4b738d75",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Bala Kanda explicitly places Rama in a student relationship to Vishvamitra when he receives Bala and Atibala and performs guru duties afterward.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Bala Kanda explicitly places Rama in a student relationship to Vishvamitra when he receives Bala and Atibala and performs guru duties afterward.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.20–22",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Rama receives the teachings and performs duties to Vishvamitra as guru.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b070cd29-c722-4478-b2ce-56ff7085e386",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Bala and Atibala are presented as disciplines transmitted by Vishvamitra to Rama, and the text links their efficacy to practice and ascetic cultivation.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.22 presents Bala and Atibala as teachings Vishvamitra transmits to Rama and says their practice and ascetic cultivation produce effects within the story.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.11–12, 19–22",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Narrowed from general disciplines to the text’s teaching scene.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b8f844d3-900f-43b3-9f59-6000e38a86ec",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Lakshmana accompanies Rama under Vishvamitra's guidance throughout the same journey, although the transmission scene addresses Rama most directly.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Lakshmana accompanies Rama under Vishvamitra's guidance throughout the same journey, although the transmission scene addresses Rama most directly.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.6–10, 20–23",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Lakshmana accompanies Rama; the direct teaching speech addresses Rama.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ef713392-697f-4e1a-854d-46c3b143d848",
+    "personality": "Vishvamitra",
+    "original_claim_text": "In Bala Kanda, Vishvamitra functions as Rama's teacher, transmitting Bala and Atibala and guiding Rama and Lakshmana during their journey.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In Bala Kanda, Vishvamitra functions as Rama's teacher, transmitting Bala and Atibala and guiding Rama and Lakshmana during their journey.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.6–12, 20–23",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The chapter portrays guidance and transmission to Rama on the joint journey.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "917c9de6-090a-41fb-a395-d4d7e2334eae",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Bala Kanda attributes extraordinary effects to Bala and Atibala—protection from fatigue, hunger, thirst, and attack while asleep—within the story-world; these should not be converted into biomedical claims.",
+    "decision": "REMOVE FROM ACTIVE CORPUS",
+    "final_proposed_wording": null,
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.12–13, 17",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "Verified substance repeats claim 79dc18aa, which retains the traditional attribution.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": "Verified substance repeats claim 79dc18aa, which retains the traditional attribution."
+  },
+  {
+    "claim_id": "97f0b346-8b02-4297-8b71-5765954446f0",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The exceptional bodily benefits attributed to Bala and Atibala belong to Vishvamitra's speech within the epic and should be represented as traditional claims, not experimentally verified effects.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The exceptional bodily benefits attributed to Bala and Atibala belong to Vishvamitra's speech within the epic and should be represented as traditional claims, not experimentally verified effects.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.12–17",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "The claimed bodily benefits appear in Vishvamitra’s epic speech, not independent experimental evidence.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d966314a-3bbb-4e33-8806-d703f95acc35",
+    "personality": "Vishvamitra",
+    "original_claim_text": "In the Bala Kanda, Vishvamitra is a major guide and teacher of Rama and Lakshmana; he brings them from Ayodhya and transmits Bala and Atibala.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In the Bala Kanda, Vishvamitra is a major guide and teacher of Rama and Lakshmana; he brings them from Ayodhya and transmits Bala and Atibala.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm",
+        "locator": "Bala Kanda 1.22.2–3, 6–12, 20–23",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.22, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "The journey with both princes and the Bala–Atibala teaching are explicit.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "06015b7f-650f-4522-976d-43ef2fec7e7e",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The final food-gift episode places tapas and generosity in direct tension: Vishvamitra has completed a long fasting vow but gives the entire meal to a disguised supplicant instead of ending his deprivation.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.65 narrates that after a long vow Vishvamitra offered all his prepared food to Indra in Brahmin disguise, foregoing his own meal and continuing his silence.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.4–7",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "Both deprivation and gift are explicit; “tension” was interpretive.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1e2b8e30-0d45-470e-9fa1-4fd4c652cb47",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The final food-gift episode should not be reduced to a miracle of fasting; the narrative foregrounds hospitality to a supplicant and maintenance of a vow before escalating to supernatural tapas imagery.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.65 places Vishvamitra’s gift of his entire prepared meal to a disguised supplicant before its later imagery of breath restraint and smoke from his head.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.4–9",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "Replaced editorial direction with the chapter’s actual sequence.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "23be0733-87bf-4483-b320-9850b727605b",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The final food-gift episode shows that ritual silence remains unbroken even when Vishvamitra gives away his entire prepared meal to a supplicant.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The final food-gift episode shows that ritual silence remains unbroken even when Vishvamitra gives away his entire prepared meal to a supplicant.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.4–7",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "The chapter expressly says he gave the meal and maintained silence.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "2c34ef2c-b24d-405f-a625-408f57dc366e",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Bala Kanda 1.65 relocates Vishvamitra from the northern Himalaya to its eastern region for another phase of austerity, so the epic maps successive ascetic stages onto changing geography.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.65 says Vishvamitra left the Himalayan north and moved east for another stage of austerity.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.1–2",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "The original’s “northern Himalaya to its eastern region” overstates a geographical precision the verse does not give.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "4d7839f8-7966-4f4c-b6f0-7c22a3771c2f",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The smoke-and-world-burning imagery at the climax of Vishvamitra's tapas should be classified as epic supernatural narration, even though the narrative uses it to mark the extremity of his ascetic power.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The smoke-and-world-burning imagery at the climax of Vishvamitra's tapas should be classified as epic supernatural narration, even though the narrative uses it to mark the extremity of his ascetic power.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.8–16",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "Smoke and cosmic distress are narrated as supernatural epic imagery.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "54f22437-c791-4cbb-ba1b-d31af2814b53",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The final Bala Kanda austerity stage includes suspended breathing for another thousand-year period in the narrative, an extreme ascetic motif that should be recorded as epic description rather than biological history.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The final Bala Kanda austerity stage includes suspended breathing for another thousand-year period in the narrative, an extreme ascetic motif that should be recorded as epic description rather than biological history.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.8–9",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "The text presents another thousand years without respiration; original already marks it as epic motif.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "960e78c9-9fb2-463b-99ab-6bb3988a0ddf",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The final tapas narrative describes smoke issuing from Vishvamitra's head and distress spreading through the worlds; this is an epic supernatural image of ascetic potency, not an empirical physiological observation.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The final tapas narrative describes smoke issuing from Vishvamitra's head and distress spreading through the worlds; this is an epic supernatural image of ascetic potency, not an empirical physiological observation.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.8–9",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "The described smoke and cosmic distress are in the text, and the claim rules out physiological reading.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b358938a-3a13-4a7f-ac36-a1cd2a00bd59",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Bala Kanda 1.65 portrays generosity under deprivation when Vishvamitra gives away all of the cooked food he was finally about to eat after a long vow, while keeping his silence intact.",
+    "decision": "REMOVE FROM ACTIVE CORPUS",
+    "final_proposed_wording": null,
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.4–7",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "Substance repeats the more precise retained claim 06015b7f.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": "Substance repeats the more precise retained claim 06015b7f."
+  },
+  {
+    "claim_id": "fd077ec7-e2c8-4b05-829f-521fb9f895ce",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Near the end of the final austerity cycle, Vishvamitra gives away all the cooked food he was about to eat to Indra disguised as a Brahmin and begins another period of penance without breaking silence.",
+    "decision": "REMOVE FROM ACTIVE CORPUS",
+    "final_proposed_wording": null,
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.4–7",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "Substance repeats the more precise retained claim 06015b7f.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": "Substance repeats the more precise retained claim 06015b7f."
+  },
+  {
+    "claim_id": "311c35fc-6cc5-4e7d-b1bf-cd2983ecf69b",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The final phase described in Bala Kanda includes a vow of silence and severe ascetic discipline.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The final phase described in Bala Kanda includes a vow of silence and severe ascetic discipline.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.1–3, 6–9",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Vow of silence and severe tapas are explicit.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "375deee8-bbb1-4032-b108-692c108c2bd2",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The transformation narrative culminates not merely with divine recognition but with Vasistha's explicit acceptance of Vishvamitra as Brahmarshi.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The transformation narrative culminates not merely with divine recognition but with Vasistha's explicit acceptance of Vishvamitra as Brahmarshi.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.19–27",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The gods recognize him, then Vasistha accepts him as Brahmarshi.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "5c040721-d928-4eb0-96bd-7c0c37803768",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Vishvamitra gives away all of the cooked food he was finally about to eat after a long vow.",
+    "decision": "REMOVE FROM ACTIVE CORPUS",
+    "final_proposed_wording": null,
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.4–7",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Exact factual duplicate of retained claim 06015b7f.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": "Exact factual duplicate of retained claim 06015b7f."
+  },
+  {
+    "claim_id": "c0e8ed43-1bfd-4bb2-81b7-492f6500fb4e",
+    "personality": "Vishvamitra",
+    "original_claim_text": "In the Valmiki Ramayana tradition, Vishvamitra passes through royal and ascetic statuses and is ultimately recognized as a Brahmarshi. This is a textual/traditional classification rather than a modern historical credential.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In the Bala Kanda tradition, Vishvamitra’s extended ascetic narrative culminates in Brahma’s and Vasistha’s recognition of him as a Brahmarshi. This is an epic status, not a historical credential.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.19–28",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "The inspected chapter proves the culmination but does not alone establish the earlier royal status.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0c49c16d-3da1-4dce-84ca-7b2f51944b46",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The Bala Kanda account culminates with Vasistha recognizing Vishvamitra as a Brahmarshi, making Brahmarshi the final status within that narrative arc.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Bala Kanda account culminates with Vasistha recognizing Vishvamitra as a Brahmarshi, making Brahmarshi the final status within that narrative arc.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.19–28",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Vasistha explicitly calls him Brahmarshi after divine recognition.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "21eef295-6488-45ca-b86e-fc5ae5e7c25d",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The Brahmarshi transformation is securely a fact about the Ramayana narrative even when questions about the historical individual remain open.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Brahmarshi transformation is securely a fact about the Ramayana narrative even when questions about the historical individual remain open.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "b1ff445c-d9d0-4f8e-a28f-f3a8053787ad",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga65/balasans65.htm.orig",
+        "locator": "Bala Kanda 1.65.19–28",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.65, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "This is a fact about the epic narrative, not about independently established biography.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1a10ad90-85e2-4a01-8e3e-57e9b26ed54f",
+    "personality": "Vishvamitra",
+    "original_claim_text": "In the Bala Kanda narrative, Vishvamitra is explicitly presented first as a kingly sage (rajarshi) before the culmination of his ascetic transformation.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.63 recounts Brahma addressing Vishvamitra as a kingly sage (rajarshi) before later stages of ascetic recognition.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "d39ddd21-67b7-4c7c-bfae-ea1f99918420",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga63/bala_63_prose.htm",
+        "locator": "Bala Kanda 1.63.1–3",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.63, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The source has the title; “first” could imply a broader chronology than this passage establishes.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "28fae74f-9fed-454e-a367-094a03e0e39e",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The Menaka interruption in Bala Kanda 1.63 is narrated as lasting ten years in Vishvamitra's hermitage before he recognizes the interruption and resumes his quest.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Menaka interruption in Bala Kanda 1.63 is narrated as lasting ten years in Vishvamitra's hermitage before he recognizes the interruption and resumes his quest.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "d39ddd21-67b7-4c7c-bfae-ea1f99918420",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga63/bala_63_prose.htm",
+        "locator": "Bala Kanda 1.63.4–11",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.63, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The Menaka stay is said to last ten years before renewed austerity.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "2b83e277-2744-4aea-ac1a-cbf3ff205cc1",
+    "personality": "Vishvamitra",
+    "original_claim_text": "After the Menaka episode, the narrative does not depict Vishvamitra abandoning tapas; it uses his remorse as the transition into another, stricter stage of ascetic effort.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "After the Menaka episode, the narrative does not depict Vishvamitra abandoning tapas; it uses his remorse as the transition into another, stricter stage of ascetic effort.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "d39ddd21-67b7-4c7c-bfae-ea1f99918420",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga63/bala_63_prose.htm",
+        "locator": "Bala Kanda 1.63.8–16",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.63, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The chapter links remorse to renewed austerity.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "5909bf8a-b6ac-425f-b74c-a9df3fe197de",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The intermediate Maharshi title in Bala Kanda 1.63 should be reviewed alongside the earlier Rajarshi and later Brahmarshi labels so the profile represents a sequence rather than treating all honorifics as simultaneous equivalents.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.63 depicts Maharshi as an intermediate recognition: after another long austerity Brahma grants that title, but says Vishvamitra has not yet conquered his senses.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "d39ddd21-67b7-4c7c-bfae-ea1f99918420",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga63/bala_63_prose.htm",
+        "locator": "Bala Kanda 1.63.17–20",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.63, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Narrowed cross-chapter editorial advice to the inspected episode.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "7562e441-ee71-4c12-a9a4-8769da12c232",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Bala Kanda 1.63 explicitly marks one austerity cycle as lasting a thousand years before the gods approach Vishvamitra, showing that the epic uses enormous time spans to signal ascetic intensity.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.63 explicitly marks one austerity cycle as lasting a thousand years before the gods approach Vishvamitra, showing that the epic uses enormous time spans to signal ascetic intensity.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "d39ddd21-67b7-4c7c-bfae-ea1f99918420",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga63/bala_63_prose.htm",
+        "locator": "Bala Kanda 1.63.16–19",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.63, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "A thousand-year austerity precedes the gods’ approach in the translation; this is epic sacred chronology.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "921abb4e-69b7-4225-92ef-fddac41f8f66",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The Menaka episode is not just a seduction anecdote in Bala Kanda: the text emphasizes a ten-year lapse, Vishvamitra's later grief, recognition of interruption, and return to austerity.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.63 narrates a ten-year stay with Menaka, Vishvamitra’s regret over interrupted austerity, and his return to severe tapas.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "d39ddd21-67b7-4c7c-bfae-ea1f99918420",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga63/bala_63_prose.htm",
+        "locator": "Bala Kanda 1.63.4–16",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.63, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Removed the editorial phrase “not just a seduction anecdote”.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b6948da1-9a8d-4be6-abf9-b618ccccbcd9",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Bala Kanda 1.63 presents Maharshi as an intermediate title in Vishvamitra's progression: after a thousand-year austerity cycle the gods approach, yet the narrative continues because his goal is not complete.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.63 presents Maharshi as an intermediate title in Vishvamitra's progression: after a thousand-year austerity cycle the gods approach, yet the narrative continues because his goal is not complete.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "d39ddd21-67b7-4c7c-bfae-ea1f99918420",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga63/bala_63_prose.htm",
+        "locator": "Bala Kanda 1.63.16–20",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.63, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Maharshi is granted, Vishvamitra seeks Brahmarshi, and Brahma says further effort is needed.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "8e7bea8b-3659-4a65-9118-ceaf8e12da55",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Rigveda 3.1 identifies Gathina Vishvamitra as the rishi of the hymn to Agni.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Rigveda 3.1 identifies Gathina Vishvamitra as the rishi of the hymn to Agni.",
+    "epistemic_type": "TEXTUAL_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "5bef2a36-07ca-4a1f-91a1-1454275e2dfa",
+        "url": "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/mandal-03/",
+        "locator": "Rigveda Rigveda 3.1 seer metadata, portal line 414",
+        "source_authority": "Government of India Vedic Heritage Portal, Rigveda 3.1 Sanskrit text and seer metadata; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The portal explicitly identifies Gathina Vishvamitra as seer and Agni as deity. This is a traditional rishi attribution, not modern authorship proof.",
+    "original_source_inspected": true,
+    "material_limitation": "Traditional rishi attribution and hymn text; not independent proof of single-person authorship.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "95e35dcf-d4fa-4896-bc02-88d10f7fcc83",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Rigveda 3.1.21 uses the plural 'Vishvamitras' within the hymn, providing internal textual evidence that the Mandala 3 tradition can speak in family or collective terms rather than only as the voice of one individual.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Rigveda 3.1.21 uses the plural 'Vishvamitras' within the hymn, providing internal textual evidence that the Mandala 3 tradition can speak in family or collective terms rather than only as the voice of one individual.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "5bef2a36-07ca-4a1f-91a1-1454275e2dfa",
+        "url": "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/mandal-03/",
+        "locator": "Rigveda Rigveda 3.1.21, portal lines 453–456",
+        "source_authority": "Government of India Vedic Heritage Portal, Rigveda 3.1 Sanskrit text and seer metadata; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Verse 21 uses the plural Vishvamitras; the claim draws a cautious implication about family/collective usage.",
+    "original_source_inspected": true,
+    "material_limitation": "Traditional rishi attribution and hymn text; not independent proof of single-person authorship.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "2490638e-c070-403f-b630-206f85ad94ff",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Vasistha is not portrayed only as Vishvamitra's rival: in Bala Kanda 1.21 he strongly endorses Vishvamitra's knowledge and trustworthiness when persuading Dasharatha to send Rama.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Vasistha is not portrayed only as Vishvamitra's rival: in Bala Kanda 1.21 he strongly endorses Vishvamitra's knowledge and trustworthiness when persuading Dasharatha to send Rama.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "9227358e-67a7-46f5-a873-bb5582ebb893",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga21/bala_21_prose.htm",
+        "locator": "Bala Kanda 1.21.5–22",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.21, Desiraju Hanumanta Rao prose English rendering; corresponding Sanskrit verse page also checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Vasistha praises Vishvamitra and urges Dasharatha to send Rama with him.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "4e722593-ea71-48ac-93d6-f3fd80160670",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Vasistha's intervention in Dasharatha's court is itself evidence of Vishvamitra's recognized standing: the royal priest argues that entrusting Rama to Vishvamitra is the safer and more honorable course.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In Bala Kanda 1.21, Vasistha argues that Vishvamitra can protect Rama and persuades Dasharatha to let Rama accompany him.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "9227358e-67a7-46f5-a873-bb5582ebb893",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga21/bala_21_prose.htm",
+        "locator": "Bala Kanda 1.21.9–10, 20–22",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.21, Desiraju Hanumanta Rao prose English rendering; corresponding Sanskrit verse page also checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The action and persuasion are explicit; “recognized standing” was an inference.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "bf922fd9-48be-4064-8c41-eed5a28c9adc",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Bala Kanda 1.21 attributes to Vishvamitra knowledge of weapons unknown even to other divine and nonhuman beings; this is a statement inside Vasistha's epic speech and should be labeled accordingly.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In Vasistha’s speech in Bala Kanda 1.21, Vishvamitra is praised for knowledge of many astras and described as beyond the knowledge of gods, sages, and other beings. This is epic praise within Vasistha’s speech.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "9227358e-67a7-46f5-a873-bb5582ebb893",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga21/bala_21_prose.htm",
+        "locator": "Bala Kanda 1.21.11–12",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.21, Desiraju Hanumanta Rao prose English rendering; corresponding Sanskrit verse page also checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The verse praises his knowledge and says others cannot know him; it does not literally say that the astras are unknown to all those beings.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d1590d47-4e3e-401e-8ad7-d399d4ae7ac9",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Vasistha's speech to Dasharatha in Bala Kanda 1.21 portrays Vishvamitra as an expert in the full range of celestial weapons and even as capable, within the epic narrative, of generating new ones.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Vasistha's speech to Dasharatha in Bala Kanda 1.21 portrays Vishvamitra as an expert in the full range of celestial weapons and even as capable, within the epic narrative, of generating new ones.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "9227358e-67a7-46f5-a873-bb5582ebb893",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga21/bala_21_prose.htm",
+        "locator": "Bala Kanda 1.21.11–20",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.21, Desiraju Hanumanta Rao prose English rendering; corresponding Sanskrit verse page also checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Vasistha describes knowledge of astras and ability to generate new ones.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ffcc8e6e-758f-4c3b-9a4a-e27c98ac2b53",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Vasistha's reassurance to Dasharatha treats Vishvamitra as sufficiently capable to protect and advance Rama even before Rama has demonstrated martial expertise, revealing recognized trust in Vishvamitra as preceptor.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Vasistha's reassurance to Dasharatha treats Vishvamitra as sufficiently capable to protect and advance Rama even before Rama has demonstrated martial expertise, revealing recognized trust in Vishvamitra as preceptor.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "9227358e-67a7-46f5-a873-bb5582ebb893",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga21/bala_21_prose.htm",
+        "locator": "Bala Kanda 1.21.9, 20–22",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.21, Desiraju Hanumanta Rao prose English rendering; corresponding Sanskrit verse page also checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Vasistha explicitly says Rama is safe whether trained or untrained and persuades Dasharatha.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "003a9c62-4155-458b-b5f9-af45bbc4d7b3",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The narrative of the astras portrays pedagogical completeness: Vishvamitra does not stop after granting power but answers Rama's request for the knowledge needed to withdraw it safely.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.28 narrates Rama asking Vishvamitra for knowledge of how to annul astras after receiving them, and Vishvamitra teaching him that knowledge.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b829b48c-8875-4cb2-802b-bcb274d48fa9",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga28/bala_28_prose.htm",
+        "locator": "Bala Kanda 1.28.1–5, prose lines 9–14",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.28, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Directly supported event replaces an editorial claim about pedagogical completeness.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "178faf90-3962-4fa1-9a17-e72cf51d35a3",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Rama actively asks Vishvamitra for the knowledge needed to withdraw the astras, showing a dialogic student role rather than merely passive reception of gifts.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Rama actively asks Vishvamitra for the knowledge needed to withdraw the astras, showing a dialogic student role rather than merely passive reception of gifts.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b829b48c-8875-4cb2-802b-bcb274d48fa9",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga28/bala_28_prose.htm",
+        "locator": "Bala Kanda 1.28.1–5, prose lines 9–14",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.28, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Rama asks for annulment knowledge and receives it.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "2544eb75-52a8-44b9-ae76-c182c5e1f5ad",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Vishvamitra's instruction in Bala Kanda 1.28 includes methods for withdrawing astras after deployment, so his martial teaching role explicitly includes control and recall rather than only acquisition.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In Bala Kanda 1.28, Vishvamitra teaches Rama methods of annulling astras after Rama asks for them; the preceding chapter covers the original grant of astras.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b829b48c-8875-4cb2-802b-bcb274d48fa9",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga28/bala_28_prose.htm",
+        "locator": "Bala Kanda 1.28.1–5, prose lines 9–14",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.28, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The text speaks of annulment missiles, and “control and recall” was too broad.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "414589e3-ad4f-4f1c-941a-b93274ca0444",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Vishvamitra's instruction to Rama includes both invocation and withdrawal procedures for astras, presenting restraint and reversibility as part of competent sacred-weapon practice.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.28 presents instruction in neutralizing astras after Rama has received projectile astras. This is part of the epic’s martial instruction narrative.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b829b48c-8875-4cb2-802b-bcb274d48fa9",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga28/bala_28_prose.htm",
+        "locator": "Bala Kanda 1.28.1–5, prose lines 9–14",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.28, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The passage supports neutralization; “restraint and reversibility as competent practice” is modern interpretation.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "cde8a2ea-9593-4a01-ad44-d58967d139c0",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Vishvamitra's weapon instruction to Rama includes how to neutralize or withdraw an astra after it has been invoked, so the teaching tradition represented in Bala Kanda values command over power rather than mere possession of power.",
+    "decision": "REMOVE FROM ACTIVE CORPUS",
+    "final_proposed_wording": null,
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "b829b48c-8875-4cb2-802b-bcb274d48fa9",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga28/bala_28_prose.htm",
+        "locator": "Bala Kanda 1.28.1–5, prose lines 9–14",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.28, Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Substance duplicates retained and more narrowly worded claim 2544eb75.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": "Substance duplicates retained and more narrowly worded claim 2544eb75."
+  },
+  {
+    "claim_id": "2c8cdc9c-0229-4e9e-9623-31512b609a4c",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The curse placed on Rambha is itself followed by Vishvamitra's distress at having failed to contain anger, making emotional self-mastery a measurable threshold in the narrative progression.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The curse placed on Rambha is itself followed by Vishvamitra's distress at having failed to contain anger, making emotional self-mastery a measurable threshold in the narrative progression.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "8d1e7888-6577-4564-b935-96ed0ae1b902",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga64/balasans64.htm",
+        "locator": "Bala Kanda 1.64.11–17",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.64, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "The curse is followed by regret and a decision to control anger.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "51c9b51f-76a0-44c1-910a-c07dfaa17c65",
+    "personality": "Vishvamitra",
+    "original_claim_text": "In the Rambha episode Vishvamitra explicitly identifies conquering both desire and anger as his ascetic objective, showing that internal discipline is part of the intensity of tapas in the story.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In the Rambha episode Vishvamitra explicitly identifies conquering both desire and anger as his ascetic objective, showing that internal discipline is part of the intensity of tapas in the story.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "8d1e7888-6577-4564-b935-96ed0ae1b902",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga64/balasans64.htm",
+        "locator": "Bala Kanda 1.64.11–17",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.64, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": false
+      }
+    ],
+    "verification_rationale": "Verse 12 says he seeks victory over desire and anger; verses 14–17 narrate the failure and renewed vow.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "9559d070-c4a4-4f00-81c1-271b2d20bc49",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The Rambha episode likewise presents the tension between great tapas and incomplete anger-control, followed by remorse and renewed self-discipline.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Rambha episode likewise presents the tension between great tapas and incomplete anger-control, followed by remorse and renewed self-discipline.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "8d1e7888-6577-4564-b935-96ed0ae1b902",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga64/balasans64.htm",
+        "locator": "Bala Kanda 1.64.11–17",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.64, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The sequence shows severe tapas, anger, remorse, and renewed self-discipline.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "99acbe03-a70c-4ad2-ba5c-4b099da1e780",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The epic portrayal treats mastery of anger as part of Vishvamitra's ascetic project, not merely acquisition of supernatural power.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The epic portrayal treats mastery of anger as part of Vishvamitra's ascetic project, not merely acquisition of supernatural power.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "8d1e7888-6577-4564-b935-96ed0ae1b902",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga64/balasans64.htm",
+        "locator": "Bala Kanda 1.64.11–17",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.64, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The narrative expressly treats anger as undoing ascetic merit.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a14fa6d2-5519-4606-9b3b-56cc3ac61dff",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Self-control is presented as an achieved goal rather than an effortless starting trait: the Rambha episode explicitly shows anger as a failure that prompts renewed discipline.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Self-control is presented as an achieved goal rather than an effortless starting trait: the Rambha episode explicitly shows anger as a failure that prompts renewed discipline.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "8d1e7888-6577-4564-b935-96ed0ae1b902",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga64/balasans64.htm",
+        "locator": "Bala Kanda 1.64.11–17",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.64, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Anger and subsequent renewed discipline are explicit.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "be9c9822-362d-48f6-9964-38c02d26b3c6",
+    "personality": "Vishvamitra",
+    "original_claim_text": "The Rambha episode should not be reduced to a story of supernatural cursing; its narrative function also includes Vishvamitra's recognition that anger has disrupted his ascetic goal.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Bala Kanda 1.64 narrates Vishvamitra cursing Rambha, regretting his anger, and resolving not to succumb to anger again.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "8d1e7888-6577-4564-b935-96ed0ae1b902",
+        "url": "https://www.valmikiramayan.net/utf8/baala/sarga64/balasans64.htm",
+        "locator": "Bala Kanda 1.64.11–17",
+        "source_authority": "Valmiki Ramayana, Bala Kanda 1.64, Sanskrit text with Desiraju Hanumanta Rao English rendering; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The chapter directly supports this sequence; “narrative function” was an interpretation.",
+    "original_source_inspected": true,
+    "material_limitation": "Epic sacred narrative; the passage does not independently establish historical biography or supernatural events.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0207c641-72a8-456d-ad19-97221c8b97e6",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Rigveda 3.62.10 invokes Savitar’s radiance and asks that it impel or guide human thought/intellect. Within the Vishvamitra textual corpus, this is a central spiritual-intellectual motif grounded directly in the mantra.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Rigveda 3.62.10 invokes Savitar’s divine radiance and asks that it impel our thoughts (dhiyo). The Vedic Heritage Portal places it in a Savitar section associated by seer metadata with Gathina Vishvamitra.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "c2d10c6c-8da2-4f5a-becf-93b160eb267b",
+        "url": "https://vedicheritage.gov.in/hi/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-062/",
+        "locator": "Rigveda 3.62.10, portal lines 414, 427",
+        "source_authority": "Government of India Vedic Heritage Portal, Rigveda 3.62 Sanskrit text and seer metadata; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The Sanskrit directly supports Savitar and dhiyo; “central spiritual-intellectual motif” was interpretive.",
+    "original_source_inspected": true,
+    "material_limitation": "Traditional rishi attribution and hymn text; not independent proof of single-person authorship.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "78d42ac5-b62c-42cb-bf06-01f5ca27490f",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Rigveda 3.62.10 remains directly accessible through the Government of India’s Vedic Heritage Portal with preserved text and recitation resources. Contemporary relevance can therefore be described in terms of continued access to the mantra without inventing popularity statistics.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Rigveda 3.62.10 remains directly accessible through the Government of India’s Vedic Heritage Portal with preserved text and recitation resources. Contemporary relevance can therefore be described in terms of continued access to the mantra without inventing popularity statistics.",
+    "epistemic_type": "MODERN_ACCESS",
+    "evidence_references": [
+      {
+        "source_id": "c2d10c6c-8da2-4f5a-becf-93b160eb267b",
+        "url": "https://vedicheritage.gov.in/hi/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-062/",
+        "locator": "Rigveda 3.62.10, portal lines 407–409, 427",
+        "source_authority": "Government of India Vedic Heritage Portal, Rigveda 3.62 Sanskrit text and seer metadata; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "The portal supplies the verse and a recitation-video link; the claim confines relevance to access.",
+    "original_source_inspected": true,
+    "material_limitation": "Traditional rishi attribution and hymn text; not independent proof of single-person authorship.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "9ea370a1-5ea4-49b3-a42f-a4b4a3fcb985",
+    "personality": "Vishvamitra",
+    "original_claim_text": "Rigveda 3.62 attributes verses 1-15 to Gathina Vishvamitra; the Savitr section includes the celebrated 3.62.10 mantra.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Rigveda 3.62 attributes verses 1-15 to Gathina Vishvamitra; the Savitr section includes the celebrated 3.62.10 mantra.",
+    "epistemic_type": "TEXTUAL_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "c2d10c6c-8da2-4f5a-becf-93b160eb267b",
+        "url": "https://vedicheritage.gov.in/hi/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-062/",
+        "locator": "Rigveda 3.62 seer/deity metadata, portal line 414; verse 10 line 427",
+        "source_authority": "Government of India Vedic Heritage Portal, Rigveda 3.62 Sanskrit text and seer metadata; passage checked 2026-10-19",
+        "independence_assessment": "One textual tradition. Independent historical corroboration is neither asserted nor needed for a statement explicitly about that tradition.",
+        "original_source_inspected": true,
+        "original_claim_source_linked": true
+      }
+    ],
+    "verification_rationale": "Portal metadata identifies Gathina Vishvamitra and Savitar for 10–12; other verses have alternatives.",
+    "original_source_inspected": true,
+    "material_limitation": "Traditional rishi attribution and hymn text; not independent proof of single-person authorship.",
+    "removal_reason": null
+  }
+]

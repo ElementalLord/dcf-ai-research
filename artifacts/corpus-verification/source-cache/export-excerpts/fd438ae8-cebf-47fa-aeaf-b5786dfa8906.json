@@ -1,0 +1,32 @@
+{
+  "source_id": "fd438ae8-cebf-47fa-aeaf-b5786dfa8906",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Bala Kanda 12. https://www.valmikiramayan.net/baala/sarga12/bala_12_prose.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "valmikiramayan.net",
+    "rights_or_access_note": "Public HTML page; use subject to source review.",
+    "source_status": "candidate",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Bala Kanda 12",
+    "url": "https://www.valmikiramayan.net/baala/sarga12/bala_12_prose.htm"
+  },
+  "claim_ids": [
+    "20024701-b49a-47ec-8356-5179d80b8f0a"
+  ],
+  "passages": [
+    {
+      "chunk_id": "c1d09c71-550a-4326-8abb-720d81735ad0",
+      "locator": "Valmiki Ramayana, Bala Kanda 12",
+      "text_sha256": "9c0940abd081dd07ff239a8b4b0548d7be2548a176e41062fefc86948e7da373",
+      "excerpt_preview": "Book I : Bala Kanda - The Youthful Majesties Sarga 12 in Prose   King Dasharatha requests the Sages to conduct the Vedic ritual for which the   sages indent paraphernalia, which the ministers are ordered to supply   forthwith. This chapter ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

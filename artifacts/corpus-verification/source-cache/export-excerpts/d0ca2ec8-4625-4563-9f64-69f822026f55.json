@@ -1,0 +1,59 @@
+{
+  "source_id": "d0ca2ec8-4625-4563-9f64-69f822026f55",
+  "source": {
+    "author": "Swami Vivekananda",
+    "authority_metadata": {},
+    "citation": "Swami Vivekananda. Raja Yoga: Introductory. Complete Works of Swami Vivekananda. https://www.ramakrishnavivekananda.info/vivekananda/volume_1/raja-yoga/introductory.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Complete Works of Swami Vivekananda",
+    "rights_or_access_note": "Publicly accessible page; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Raja Yoga: Introductory",
+    "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/raja-yoga/introductory.htm"
+  },
+  "claim_ids": [
+    "6d177f45-14a9-4901-8545-04dc465f98a5",
+    "95ce1382-2da1-4f74-8ad4-d2ade9b42802",
+    "cb352c70-af11-4c65-bdcb-4115af50f76a",
+    "effeaf6a-008d-460e-977b-1bc85a5b88e7"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0e121ed5-c764-49e0-9862-9a7bc9045772",
+      "locator": "Raja Yoga: Introductory",
+      "text_sha256": "e80aa8dc98320b4f3e782d48112328bde50f08cbc400121d0928db51c5f15335",
+      "excerpt_preview": "← Home / Complete-Works / Volume 1 / Raja-Yoga / → CHAPTER I INTRODUCTORY All our knowledge is based upon experience. What we call inferential knowledge, in which we go from the less to the more general, or from the general to the particula",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6961a762-8bb4-413f-8c2d-7119857af035",
+      "locator": "Raja Yoga: Introductory",
+      "text_sha256": "c498f3276588fa9902cef5dd3582921038c346d8df1d7639a9e67eb3930578a5",
+      "excerpt_preview": "sychologists have been quarrelling among themselves since the beginning of time, except those few who found out the means of observation. The science of Raja-Yoga, in the first place, proposes to give us such a means of observing the intern",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "98af9b4f-47d0-4c9e-9f39-28bdca95fea3",
+      "locator": "Raja Yoga: Introductory",
+      "text_sha256": "9292b6674ab433568fba90af90eeae03336361707c30025a05c0514e70a80f1c",
+      "excerpt_preview": "a great secret of the remainder. In modern times many so-called teachers have arisen in the West worse than those of India, because the latter knew something, while these modern exponents know nothing. Anything that is secret and mysterious",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9a239fcb-984b-4b2f-bd73-e38814da6340",
+      "locator": "Raja Yoga: Introductory",
+      "text_sha256": "9b00473b15d049ec91ca179b4b41cfe8b0da607f798a2d92ba4dec1c46ae3779",
+      "excerpt_preview": "among themselves since the beginning of time, except those few who found out the means of observation. The science of Raja-Yoga, in the first place, proposes to give us such a means of observing the internal states. The instrument is the mi",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

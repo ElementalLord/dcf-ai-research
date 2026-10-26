@@ -1,0 +1,34 @@
+{
+  "source_id": "9f7bcd31-4d16-41de-b2b5-7a79301cfe1b",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:11.629Z"
+    },
+    "citation": "Response to Welcome at Chicago. Complete Works of Swami Vivekananda. https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_response_to_welcome.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Complete Works of Swami Vivekananda",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Response to Welcome at Chicago",
+    "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_response_to_welcome.htm"
+  },
+  "claim_ids": [
+    "c07a4edb-57c7-49a2-b3ca-40c6d66a871f"
+  ],
+  "passages": [
+    {
+      "chunk_id": "da310f9b-6332-41b3-9a41-6a5cdc11d098",
+      "locator": "1893 Parliament address",
+      "text_sha256": "7ce98380382ecc4382015747dc296a16db85ec6e34f05dfe1364c7fe278c5750",
+      "excerpt_preview": "Religions, Chicago 11th September, 1893 Sisters and Brothers of America, It fills my heart with joy unspeakable to rise in response to the warm and cordial welcome which you have given us. I thank you in the name of the most ancient order o",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

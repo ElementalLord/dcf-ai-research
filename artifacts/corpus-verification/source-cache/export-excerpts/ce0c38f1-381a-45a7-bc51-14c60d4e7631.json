@@ -1,0 +1,45 @@
+{
+  "source_id": "ce0c38f1-381a-45a7-bc51-14c60d4e7631",
+  "source": {
+    "author": "Hermann Kulke, K. Kesavapany and Vijay Sakhuja, eds.",
+    "authority_metadata": {
+      "source_kind": "Modern maritime historical scholarship",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Hermann Kulke, K. Kesavapany and Vijay Sakhuja, eds.. Nagapattinam to Suvarnadwipa: Reflections on the Chola Naval Expeditions to Southeast Asia. ISEAS–Yusof Ishak Institute. https://www.cambridge.org/core/books/abs/nagapattinam-to-suvarnadwipa/naval-expeditions-of-the-cholas-in-the-context-of-asian-history/0D28FFD296A5575E375ACB928E294977",
+    "original_work_identity": {},
+    "publication_year": 2009,
+    "publisher_or_institution": "ISEAS–Yusof Ishak Institute",
+    "rights_or_access_note": "Short documented research excerpts only; contemporary inscriptions, later chronicle tradition and modern scholarship are kept distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "Nagapattinam to Suvarnadwipa: Reflections on the Chola Naval Expeditions to Southeast Asia",
+    "url": "https://www.cambridge.org/core/books/abs/nagapattinam-to-suvarnadwipa/naval-expeditions-of-the-cholas-in-the-context-of-asian-history/0D28FFD296A5575E375ACB928E294977"
+  },
+  "claim_ids": [
+    "0d2aadbd-1523-4340-8dcc-0a56900e1b0b",
+    "472421b2-33af-4aca-b674-d3fc747cd7c9",
+    "97156bf1-4f76-4235-b94a-8d113c0dbc7f"
+  ],
+  "passages": [
+    {
+      "chunk_id": "69ffe671-8060-498d-80dd-aa67ec590b84",
+      "locator": "ports and trade mattered",
+      "text_sha256": "a37352bd99b1b7eda76b3891edb48d98103e037f51d34cfee9ce6766b7c84801",
+      "excerpt_preview": "Maritime mobility, ports and trade mattered to Chola power, but surviving evidence does not provide a modern-style roster or technical description of a permanent navy under Rajaraja.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "79b08427-1e98-4eb0-923f-abe76412c909",
+      "locator": "Rajaraja",
+      "text_sha256": "7057c881a72928e68ac08f941b8d0b84cbeb0e6b54a0f3dfea7ac63ba1cbbfbf",
+      "excerpt_preview": "he volume places Chola expeditions in Asian history and distinguishes Rajaraja's early eleventh-century expansion from Rajendra I's 1025 expedition against Srivijaya.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

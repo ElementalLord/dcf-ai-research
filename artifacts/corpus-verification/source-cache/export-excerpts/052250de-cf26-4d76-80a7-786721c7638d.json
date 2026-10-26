@@ -1,0 +1,62 @@
+{
+  "source_id": "052250de-cf26-4d76-80a7-786721c7638d",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_kind": "Contemporary royal inscriptions addressed to officials in recently conquered Kalinga",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Ashoka Library: Separate Rock Edicts of Dhauli and Jaugada. University of Oslo / University of Texas at Austin. https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=364",
+    "original_work_identity": {},
+    "publication_year": 2014,
+    "publisher_or_institution": "University of Oslo / University of Texas at Austin",
+    "rights_or_access_note": "Short documented research excerpts only; source layer is shown so translation, later tradition and modern scholarship are not conflated.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Ashoka Library: Separate Rock Edicts of Dhauli and Jaugada",
+    "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=364"
+  },
+  "claim_ids": [
+    "1d0977b4-1df1-4928-8424-87ec82fcb64d",
+    "34b04874-dfd9-47fa-bbd9-ea63e4b8b30c",
+    "699f3619-930c-4de3-8424-794d7e38594c",
+    "c00f9223-9075-4d15-afab-4f7771f185c3"
+  ],
+  "passages": [
+    {
+      "chunk_id": "314e063d-9ce8-4b3c-9cde-d39620203a5f",
+      "locator": "All men are my children",
+      "text_sha256": "e9ebe8076ca547043988cf3bc154a6f77819d8b9d88aa300d32f287b650411a0",
+      "excerpt_preview": "ll men are my children.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "37b730f4-58df-437f-93f0-3ff673fa0f1f",
+      "locator": "city magistrates",
+      "text_sha256": "4209c90dc9ad07e5f07ff0dcb69082912292b1eb7ee35eb91e21504a1725e295",
+      "excerpt_preview": "The city magistrates are ordered to go out every five years and instruct the people in dhamma.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4050af1c-d7c7-46b7-ab38-00a502e8811f",
+      "locator": "wishes them no fear or injury",
+      "text_sha256": "4f6e80133a4372d3ffca92e325707460e57ad58966925ecfcb98db4a9dd65a11",
+      "excerpt_preview": "The people of the unconquered borderlands should know that the king wishes them no fear or injury but happiness.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "dde755b8-6778-4642-911f-a486c14796c2",
+      "locator": "welfare and happiness in this world and in the next",
+      "text_sha256": "bd647a44584c09600ca17f6ed0413aef78388785b30ed70e40adc65cdb3ddb78",
+      "excerpt_preview": "As I desire for my children welfare and happiness in this world and in the next, so do I desire for all men.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

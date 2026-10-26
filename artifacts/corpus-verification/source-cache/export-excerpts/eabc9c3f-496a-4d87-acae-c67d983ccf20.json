@@ -1,0 +1,29 @@
+{
+  "source_id": "eabc9c3f-496a-4d87-acae-c67d983ccf20",
+  "source": {
+    "author": "",
+    "authority_metadata": {},
+    "citation": "Rigveda Mandala 3 translation edition",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "IGNCA Digital Library, Government of India",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Rigveda Samhita, Volume III",
+    "url": "https://ignca.gov.in/eBooks/RigVeda_Samhita_Vol_03.pdf"
+  },
+  "claim_ids": [
+    "13e26eb9-f8f4-4612-b1e9-db0952f397d3",
+    "3fee4a02-7952-4225-89c7-41360576e194",
+    "6237bce9-cc10-42c3-8421-1f83604af642",
+    "774bb3e4-a19f-4e5d-af85-733bdce7a8e6",
+    "8797c1b5-ffa0-40d1-80de-9b7f082e3f9c",
+    "8939f28a-6119-408b-86a4-5ed8dea7b6bd",
+    "e3f3146d-9126-4ae3-84db-4425811a7633"
+  ],
+  "passages": [],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

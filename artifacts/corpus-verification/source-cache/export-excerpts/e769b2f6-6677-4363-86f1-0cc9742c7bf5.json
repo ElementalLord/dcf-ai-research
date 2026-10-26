@@ -1,0 +1,44 @@
+{
+  "source_id": "e769b2f6-6677-4363-86f1-0cc9742c7bf5",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Writing from Behind Bars: Jail Notebook and Other Prison Writings by Bhagat Singh. Ministry of Culture, Government of India. https://cmsadmin.amritmahotsav.nic.in/district-reopsitory-detail.htm?25100=",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Ministry of Culture, Government of India",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Writing from Behind Bars: Jail Notebook and Other Prison Writings by Bhagat Singh",
+    "url": "https://cmsadmin.amritmahotsav.nic.in/district-reopsitory-detail.htm?25100="
+  },
+  "claim_ids": [
+    "0b5ead37-a50a-42ba-9acd-1609a5a4a01b",
+    "3152e38b-b5b6-473f-8873-322589623929",
+    "a1a11372-fe66-47a5-bd0e-4c1ce6b689b4"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1abb2a69-d1eb-4099-98d6-eb4986d5c2e7",
+      "locator": "literature, sociology, economics and history",
+      "text_sha256": "1ccd94b9c97b4d82b21bc0f3af043de379abf6f2e30a2bdc430824b74a43ddff",
+      "excerpt_preview": "It says the surviving material records extensive reading in literature, sociology, economics and history as well as political beliefs and ideas.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9c2faefc-9ce8-437f-8d24-c6ad4ef03214",
+      "locator": "Jail Notebook",
+      "text_sha256": "53610c9f9eb76b64c5fb34f30ea44769b2be77cf06d24fad2c37f77b54931232",
+      "excerpt_preview": "he Ministry of Culture describes Bhagat Singh’s Jail Notebook, essays and open letters as prominent prison writings of the freedom struggle.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

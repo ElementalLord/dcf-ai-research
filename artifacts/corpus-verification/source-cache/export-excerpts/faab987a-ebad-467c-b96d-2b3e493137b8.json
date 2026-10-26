@@ -1,0 +1,34 @@
+{
+  "source_id": "faab987a-ebad-467c-b96d-2b3e493137b8",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:01.229Z"
+    },
+    "citation": "Royal Society Election Certificate for Ramanujan. Royal Society archive. https://catalogues.royalsociety.org/CalmView/Record.aspx?id=EC%2F1918%2F18&src=CalmView.Catalog",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Royal Society archive",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Royal Society Election Certificate for Ramanujan",
+    "url": "https://catalogues.royalsociety.org/CalmView/Record.aspx?id=EC%2F1918%2F18&src=CalmView.Catalog"
+  },
+  "claim_ids": [
+    "095966ed-9d33-4a3d-90bb-935ee7784c13"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0352414f-d319-4489-b028-a4d773a772c4",
+      "locator": "1918 archival record",
+      "text_sha256": "37e839d747a4b58fc213b530596b8cafa0df554fbeecbb38d4d31f7b873e81f2",
+      "excerpt_preview": "for Fellowship of the Royal Society 1918 - Certificates of Election 1918 RefNoEC/1918/18Previous numbersCert XIII, 147; A05893LevelItemTitleRamanujan, Srinivasa Aaiyangar: certificate of election to the Royal SocietyDate2 May 1918Descriptio",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

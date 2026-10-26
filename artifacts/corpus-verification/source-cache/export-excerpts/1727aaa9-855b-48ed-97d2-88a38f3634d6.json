@@ -1,0 +1,52 @@
+{
+  "source_id": "1727aaa9-855b-48ed-97d2-88a38f3634d6",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "Life Sketch of Mahatma Jotirao Phule. Mahatma Phule Chair, Savitribai Phule Pune University. https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/life_sketch.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Mahatma Phule Chair, Savitribai Phule Pune University",
+    "rights_or_access_note": "Public original; short research excerpts. Scholarly abstract/summary access does not imply full chapter access.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Life Sketch of Mahatma Jotirao Phule",
+    "url": "https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/life_sketch.htm"
+  },
+  "claim_ids": [
+    "4aec2637-cd71-4387-b28a-4b0a5e8684f7",
+    "d1c73e2b-8446-4d77-9ab6-711fe7261f81",
+    "ee2f6fc0-142b-432a-9f17-34d11099600c"
+  ],
+  "passages": [
+    {
+      "chunk_id": "61b942b7-2826-43c1-acb1-008db45ecfa2",
+      "locator": "1868 entry; Jyotirao’s action, not reassigned to Savitribai alone",
+      "text_sha256": "e99e94c44307a006c2232470eb6f75f7c42574a3adaee75e00a76758be0550bf",
+      "excerpt_preview": "1868 Death of Jotirao's father- Govindrao. 1868 Allowed the untouchables to take water from the well (in the premises of his house) June 1869 Ballad- Chhatrapati Shivajiraje Bhonsale Yancha pavaada. 1869 Brahmnanche Kasab 1869 Ballad- Vidya",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a0c04ea9-104e-418b-8303-c58570ee3225",
+      "locator": "1855 entry; shared institutional context",
+      "text_sha256": "8e3f621ef38ab1468d7ffc78e2fb3df2d45288e1cf35cb25416912455b40943a",
+      "excerpt_preview": "1855 Writing of a drama ; Trutiya Ratna. 1855 Established a night school. 1856 An unsuccessful attempt to kill Jotirao, by two persons who were hired for the purpose.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b602cce9-6658-4c03-b1ef-3b203fc6570d",
+      "locator": "1849 entry",
+      "text_sha256": "811dc0462f58752e49ac1428f17f4526d705db00201bbb4170e14efcbaf06c1d",
+      "excerpt_preview": "1848 Started a school for girls of Shudras & Atee Shudras/ Mahar & Mangs . 1849 Jotirao along with his wife had to leave home (as they both were working for the education among Shudras & Atee Shudras). 1849 Provided protection to the meetin",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,108 @@
+{
+  "source_id": "6bd19767-fd30-4b73-900b-11576daedd8e",
+  "source": {
+    "author": "Mahendranath Gupta (M.), translated by Swami Nikhilananda",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Mahendranath Gupta (M.), translated by Swami Nikhilananda. The Gospel of Sri Ramakrishna (Kathamrita): conversations recorded by M.. Ramakrishna-Vivekananda Center, New York (1942); online edition ramakrishnavivekananda.info. https://www.ramakrishnavivekananda.info/gospel/gospel.htm",
+    "original_work_identity": {},
+    "publication_year": 1942,
+    "publisher_or_institution": "Ramakrishna-Vivekananda Center, New York (1942); online edition ramakrishnavivekananda.info",
+    "rights_or_access_note": "Translation of the Bengali Kathamrita; Sil and others argue the translation omits or softens some passages.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "The Gospel of Sri Ramakrishna (Kathamrita): conversations recorded by M.",
+    "url": "https://www.ramakrishnavivekananda.info/gospel/gospel.htm"
+  },
+  "claim_ids": [
+    "0886e626-38d7-482f-bbbc-24db2fb27d60",
+    "0f36dc1e-79a2-465a-981b-77b75665f4d7",
+    "1d81056a-92c0-4452-8cb1-ada016b09a58",
+    "41d4823f-d7c5-4757-bde5-316192902188",
+    "52dc3737-5124-467a-a553-0257baa6638e",
+    "9dfc87bf-82fa-41a1-b230-15ed33c2e01b",
+    "a22646cc-d3b9-4e43-924a-dfda00d10d24",
+    "a34c7f26-381e-408a-a9e5-b005a10bdf3c",
+    "a4fcf4d2-e3e1-4230-bb9d-2f4770cec4b3",
+    "bc2dadea-f37a-41e6-96db-4b6df8faea15",
+    "fcdfedd3-4caa-42a2-8d18-56a2f76fc3fe"
+  ],
+  "passages": [
+    {
+      "chunk_id": "25560911-71d0-4342-bc5a-f3fd8c15b58f",
+      "locator": "Gospel vol. 1, ch. 1 (translator's note)",
+      "text_sha256": "0c7f9f9b8ab41af852b6a5d2f517a1653e354b15701cb48163f5f7e4eb3876de",
+      "excerpt_preview": "This favourite expression of the Master, \"kaminikanchan\", has often been misconstrued. By it he meant only \"lust and greed\", the baneful influence of which retards the aspirant's spiritual growth. He used the word \"kamini\", or \"woman\", as a",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4f754e7b-7f01-471b-ae97-b4239c3002ba",
+      "locator": "Gospel vol. 1, ch. 3 (5 Aug 1882)",
+      "text_sha256": "d174dedde78d7c1b68ab373c11cb3cfaaca1496bf4e76d96d5f398afb79b580d",
+      "excerpt_preview": "Only thus did they realize Brahman as their own inner consciousness. \"But in the Kaliyuga, man, being totally dependent on food for life, cannot altogether shake off the idea that he is the body. In this state of mind it is not proper for h",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "78abb773-19f5-49f8-b755-c8485e48b323",
+      "locator": "Gospel vol. 1, ch. 5 (27 Oct 1882)",
+      "text_sha256": "57b268068cc392f027dfa9afd72f0699499850e07d6334b788a50fca61b8ffda",
+      "excerpt_preview": "My attitude toward God is that of a child toward its mother. One can get human gurus by the million. All want to be teachers.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8aac7300-70bd-46f9-9f86-bfad1ef74a18",
+      "locator": "Gospel vol. 1, ch. 3 (5 Aug 1882)",
+      "text_sha256": "9628c07538dc6be728d6ead8781976690ba433663ba9ffb6ece748c7f06a37de",
+      "excerpt_preview": "But the vijnani, who is more intimately acquainted with Brahman, realizes something more. He realizes that the steps are made of the same materials as the roof: bricks, lime, and brick-dust. That which is realized intuitively as Brahman, th",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9d5ff842-fe76-45ce-b5bc-4caca90fad96",
+      "locator": "Gospel vol. 1, ch. 20",
+      "text_sha256": "e69820af824fbd81a8dd0221a049e31bb5e3d1b8d42e8f7c153f1fdec5fdb115",
+      "excerpt_preview": "It contains all paths — the path of knowledge, the path of devotion, and so on. Other forms of religion, the modern cults, will remain for a few days and then disappear.\" March 23, 1884 Sri Ramakrishna was sitting in his room after his midd",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a24c2255-bdf6-4389-83a2-d5bbff6fe380",
+      "locator": "Gospel vol. 2, ch. 34 (6 Dec 1884)",
+      "text_sha256": "ae46de949e6d1c5863b349d673d08603679eb61658ac0bd12d5ac17300fce4f0",
+      "excerpt_preview": "\"Therefore I say, he who works in such a detached spirit — who is kind and charitable — benefits only himself. Helping others, doing good to others — this is the work of God alone, who for men has created the sun and moon, father and mother",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d9f8135e-db35-48e5-832c-bf0790227ca9",
+      "locator": "Gospel vol. 1, ch. 3 (5 Aug 1882)",
+      "text_sha256": "c76765edd0695a837de93a13b4cfa930d825cab9e30688e1eff0e6a43bdd4872",
+      "excerpt_preview": "Only one thing has not been defiled in this way, and that is Brahman. No one has ever been able to say what Brahman is.\" VIDYASAGAR (to his friends): \"Oh! That is a remarkable statement. I have learnt something new today.\" MASTER: \"A man ha",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f67d5ee6-6db7-4efc-98cd-47bc3b7ffcae",
+      "locator": "Gospel vol. 2, ch. 52",
+      "text_sha256": "e1f9d0aedfb3194f776bb6d7b4f6d40a798b020032db8a7919582e26e49494cd",
+      "excerpt_preview": "How can we pass all our days and nights with our wives and children in the world? I used to spend a sum of money for the Master at Cossipore. I shall gladly give it now for your expenses.\" Accordingly he rented a house for them at Baranagor",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fd6aa2ce-1983-4d34-8644-efe82fa6937c",
+      "locator": "Gospel vol. 1, ch. 4 (13 Aug 1882)",
+      "text_sha256": "bcf44292af63788c7f280da4292aa12a1ac8ab44bd1bf3d263db5a3953372881",
+      "excerpt_preview": "I am a mere machine. (To Kedar and the other devotees) \"God can be realized through all paths. All religions are true.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

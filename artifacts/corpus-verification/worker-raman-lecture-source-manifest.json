@@ -1,0 +1,24 @@
+{
+  "worker": "raman_lecture",
+  "official_source_url": "https://www.nobelprize.org/uploads/2018/06/raman-lecture.pdf",
+  "source_id": "a48d7974-124d-40ea-8a35-537422f481eb",
+  "source_type": "C. V. Raman official 1930 Nobel lecture",
+  "source_access": "Direct official PDF fetch 403; official indexed text retrieved for distinctive passages and compared with all nine pages of a complete lecture facsimile. Cited link is the original official PDF.",
+  "claim_count": 0,
+  "passage_locs": {
+    "1faad601-fb6e-4549-bf56-1be814ed28f3": "printed pp. 271\u2013272, The spectroscopic characters of the new effect",
+    "2eaab8e3-b0d4-4b7c-9d1a-a525e0ca3ea8": "printed p. 272, The spectroscopic characters of the new effect",
+    "30ceffee-330c-4097-945c-4802fb45ffd8": "printed p. 270, secondary radiation and purification paragraph",
+    "430096a3-caf5-4af2-a598-e2ec0cc13516": "printed p. 274, Interpretation of the effect",
+    "4ec4b5b5-201d-4aa7-b678-2f9c01b9f782": "printed pp. 268\u2013271, collaborators and optical analogue sections",
+    "664d0df2-8216-41d3-b547-03e5593c735c": "printed pp. 268\u2013269, The theory of fluctuations",
+    "8c098e8c-0d66-414a-9f6b-286247ee4798": "printed p. 267, The colour of the sea",
+    "b1abc00d-bb85-4bf4-8084-1083ca581f0a": "printed pp. 274\u2013275, The significance of the effect",
+    "df52cd8d-0722-4f43-a328-5c40cbf1e8b3": "printed p. 267, The colour of the sea",
+    "dfc69a57-1a01-40db-b862-f1760c298138": "printed pp. 270\u2013271, glycerine observations",
+    "ecf23f83-83d2-48a7-bd5b-10bb2cae30c6": "printed p. 271, telescope paragraph"
+  },
+  "citation_problem": "Official PDF returns 403. Indexed excerpts and third-party facsimile are diagnostic only for this workload.",
+  "held_claim_count": 11,
+  "publication_gate": "NO_FINAL_DECISIONS_OFFICIAL_PDF_403"
+}

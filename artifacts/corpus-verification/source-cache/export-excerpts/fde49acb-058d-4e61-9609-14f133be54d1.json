@@ -1,0 +1,52 @@
+{
+  "source_id": "fde49acb-058d-4e61-9609-14f133be54d1",
+  "source": {
+    "author": "Prachi Deshpande",
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "Prachi Deshpande. The Making of an Indian Nationalist Archive: Lakshmibai, Jhansi, and 1857. The Journal of Asian Studies / Cambridge University Press. https://www.cambridge.org/core/journals/journal-of-asian-studies/article/abs/making-of-an-indian-nationalist-archive-lakshmibai-jhansi-and-1857/74E72394E5186C2C2AE99C7021235A5D",
+    "original_work_identity": {},
+    "publication_year": 2008,
+    "publisher_or_institution": "The Journal of Asian Studies / Cambridge University Press",
+    "rights_or_access_note": "Public original; short research excerpts. Scholarly abstract/summary access does not imply full chapter access.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "The Making of an Indian Nationalist Archive: Lakshmibai, Jhansi, and 1857",
+    "url": "https://www.cambridge.org/core/journals/journal-of-asian-studies/article/abs/making-of-an-indian-nationalist-archive-lakshmibai-jhansi-and-1857/74E72394E5186C2C2AE99C7021235A5D"
+  },
+  "claim_ids": [
+    "46617174-2a2d-4314-a8c6-b758e803aadf",
+    "62ac09ef-c25d-4842-b655-471462684e91",
+    "80aec94d-65b6-4b7a-b648-03cdf11c2238"
+  ],
+  "passages": [
+    {
+      "chunk_id": "5ef4d080-60af-4a6f-858d-07ed093a58ca",
+      "locator": "public article abstract",
+      "text_sha256": "6f65183fbce6c2ced825aaedb13b7be175998bc661d490e6b43f245d11046849",
+      "excerpt_preview": "This paper examines a concatenation of influential narratives of different genres that have become critical sources for a history of the rebel leader Rani Lakshmibai of Jhansi and for configuring her as an icon of heroic Indian womanhood. I",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d5e1a865-e4f8-46a4-ae57-b7a10de5e8b4",
+      "locator": "public article abstract",
+      "text_sha256": "6f65183fbce6c2ced825aaedb13b7be175998bc661d490e6b43f245d11046849",
+      "excerpt_preview": "This paper examines a concatenation of influential narratives of different genres that have become critical sources for a history of the rebel leader Rani Lakshmibai of Jhansi and for configuring her as an icon of heroic Indian womanhood. I",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e4e42872-2ad5-45e1-b665-d467cf012e38",
+      "locator": "public article abstract",
+      "text_sha256": "7b5cc99d886bff78b9695e89992595556858c9e10d2fdf69546abee1b7ff77d8",
+      "excerpt_preview": "contradictory regional projects underlying apparently smooth nationalist narratives.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,27 @@
+{
+  "source_id": "45d82d9c-b330-4c24-8bb2-25434372729d",
+  "source": {
+    "author": "Vyasa (traditional attribution); BORI Critical Edition",
+    "authority_metadata": {},
+    "citation": "Mahabharata BORI, Adi Parva, 166",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Bhandarkar Oriental Research Institute critical text / Vedapath presentation",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Mahabharata (BORI Critical Edition), Adi Parva, Adhyaya 166",
+    "url": "https://vedapath.app/en/mahabharata-bori/adi-parva/166"
+  },
+  "claim_ids": [
+    "0d8f57ad-7515-4109-bdc2-a27ba156bb73",
+    "39f9e3ff-e2a7-43a2-a973-da64a23d2b64",
+    "441e8d01-56b4-40dc-83b2-2e53446245d6",
+    "b9d19737-9bca-4614-800f-081200b79689",
+    "fd3c1362-9063-4b38-a97d-65d97363ea41"
+  ],
+  "passages": [],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

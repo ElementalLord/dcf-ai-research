@@ -1,0 +1,105 @@
+{
+  "source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_kind": "Contemporary royal inscriptions; University of Oslo digital edition, based on Hultzsch (1925)",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Ashoka Library: Major Rock Edicts. University of Oslo / University of Texas at Austin. https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362",
+    "original_work_identity": {},
+    "publication_year": 2014,
+    "publisher_or_institution": "University of Oslo / University of Texas at Austin",
+    "rights_or_access_note": "Short documented research excerpts only; source layer is shown so translation, later tradition and modern scholarship are not conflated.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Ashoka Library: Major Rock Edicts",
+    "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362"
+  },
+  "claim_ids": [
+    "0a07ea19-5303-42b1-b028-c6a06788953c",
+    "12073932-efe6-4337-b8e4-43ce16eb6257",
+    "145b3ed1-dd94-403b-a3e5-dc7a51e5c05d",
+    "1a3e3b52-c30f-4460-a490-42f5fb5f9da3",
+    "1c6ca1ef-95b8-4efb-a1c5-79ec2a456f58",
+    "1cdd2257-0e78-4f1f-a14f-044f5661a387",
+    "484c2601-2461-42e9-9899-d9b927065189",
+    "6587fef5-f0f9-404d-a641-960ab1cc493c",
+    "72d5cc0b-06da-4e67-bceb-84e02791294e",
+    "786e8209-7e1e-46e8-8651-f41e0ab1891c",
+    "aa325491-b9d3-47d0-8ea9-0a4ede4e7379",
+    "bb4d1e8f-7e29-4555-9109-05fd272d28c6",
+    "c7fe95bd-b159-4478-8292-f437ab5fb702",
+    "ef6898e4-5bfa-489b-b7d4-5ee29481470c",
+    "f560127d-4eb6-42c7-bf5c-600417870b9b"
+  ],
+  "passages": [
+    {
+      "chunk_id": "120a4baa-09a6-4e99-b9a9-611b87665172",
+      "locator": "There is now remorse",
+      "text_sha256": "efa80fd7ada07398ad847bb573d62cb92713c5ab371783395d6cc3c501c866ae",
+      "excerpt_preview": "There is now remorse in the Beloved of the Gods after he conquered the Kalingas.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "1e29da7c-8ac3-435d-a4f4-e79bf61f48e6",
+      "locator": "victory by dhamma the chief victory",
+      "text_sha256": "d04fab0603ae804bf508a0eab582a086f15285f4ec7168cd18a5e594b2b32644",
+      "excerpt_preview": "The Beloved of the Gods considers victory by dhamma the chief victory.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "346cb83b-c782-4216-a42c-77bd1b396e03",
+      "locator": "honour only one's own sect",
+      "text_sha256": "9539822ca681263fee1d86679caef689c771d05ce4fcda355edd888aa50d0330",
+      "excerpt_preview": "One should not honour only one's own sect and condemn other sects without reason.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4ca69df5-38c0-4f29-8f4e-d8f855e23f6f",
+      "locator": "One hundred and fifty thousand were carried away",
+      "text_sha256": "d3e9e91837ad91216793db4974bb3e7a4bc7ea09a2e678118674f5956cf0aa73",
+      "excerpt_preview": "One hundred and fifty thousand were carried away, one hundred thousand were killed and many times that number died.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "bf4fd006-287f-4f8f-a65a-e0fce37230b0",
+      "locator": "King Piyadasi, beloved of the gods",
+      "text_sha256": "f7dcee231cc621a6f1eb2af5b3c96054674f5e55f886e7848480731b4b650d4a",
+      "excerpt_preview": "hen he had been consecrated eight years, King Piyadasi, beloved of the gods, conquered the Kalingas.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d030acfb-e1db-4dea-9561-258fa90d5d61",
+      "locator": "The king has caused this dhamma edict to be written",
+      "text_sha256": "1f9579383715cdfb86f805bf8c48822279fefacd3203ecd28fa82b490b12833a",
+      "excerpt_preview": "The king has caused this dhamma edict to be written so that it may endure long.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d1fcfca8-6950-4f0e-b013-d3b37cbcc9b0",
+      "locator": "medical treatment for men",
+      "text_sha256": "39166eae34f42f83e0008879326ede5d93bcdb1c6a0e05fbab2c3966c31c55f0",
+      "excerpt_preview": "Everywhere in the dominions of the Beloved of the Gods, and among his borderers, medical treatment for men and medical treatment for animals has been arranged.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "da22d05a-c2af-4a81-94cd-1f5d887b0a91",
+      "locator": "affairs of the people at all times",
+      "text_sha256": "cbfb8564ef7c7c1442eac3542e8f675cbb9455c0d7019da8ae09e052ecb1e407",
+      "excerpt_preview": "The king desires that his officials should be informed of the affairs of the people at all times and in all places.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,38 @@
+{
+  "source_id": "681b7993-1899-497d-864c-287d302819ec",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "editorialStatus": "Public-domain text reproduction; Swaveda articles are AI drafted and not peer reviewed"
+    },
+    "citation": "https://www.swaveda.com/texts/rigveda/3/",
+    "original_work_identity": {
+      "independentWorkKey": "rigveda|ralph t. h. griffith|1896",
+      "sourceFamily": "www.swaveda.com/texts/rigveda/",
+      "underlyingWork": "Rigveda, Mandala 3"
+    },
+    "publication_year": null,
+    "publisher_or_institution": null,
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Maṇḍala 3 — 62 hymns of the Viśvāmitra family (incl. Gāyatrī) — Rigveda — Swaveda",
+    "url": "https://www.swaveda.com/texts/rigveda/3/"
+  },
+  "claim_ids": [
+    "a4d6ed9a-8640-42c8-abf9-6e9f1bc35dfc"
+  ],
+  "passages": [
+    {
+      "chunk_id": "b544cd7e-eb36-444f-9618-4a82bab1d8fa",
+      "locator": "3.53.12",
+      "text_sha256": "61684df237e686805fec00bdca1e3edcd7231ebe0a35da5c5d18daba78a66bff",
+      "excerpt_preview": "य इमे रोदसी उभे अहमिन्द्रमतुष्टवम् । विश्वामित्रस्य रक्षति ब्रह्मेदं भारतं जनम् ya ime rodasī ubhe ahamindramatuṣṭavam | viśvāmitrasya rakṣati brahmedaṃ bhārataṃ janam Praises to Indra have I sung, sustainer of this earth and heaven. This p",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

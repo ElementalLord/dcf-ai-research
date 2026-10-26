@@ -88,3 +88,47 @@
 @media (prefers-reduced-motion: reduce) {
   .home-path-card,.explore-page .category-filter button { transition: none; }
 }
+
+/* Quiet visual finish for the public pages; keep their existing layout. */
+:is(body:has(.home-page), body:has(.explore-page), body:has(.profile-page)) {
+  background: #0b1221;
+}
+:is(body:has(.home-page), body:has(.explore-page), body:has(.profile-page)) .site-header {
+  background: #0b1221;
+  border-color: #ffffff29;
+}
+:is(body:has(.home-page), body:has(.explore-page), body:has(.profile-page)) .site-nav a {
+  transition: color .15s ease, border-color .15s ease;
+}
+.home-hero { min-height: 0; padding-block: clamp(62px, 7vw, 94px) 68px; }
+.home-hero h1 { font-size: clamp(50px, 6.2vw, 80px); line-height: 1.04; }
+.home-hero-copy > p { color: #c7d1e1; }
+.home-primary { background: #49618b; border-color: #7086aa; }
+.home-primary:hover { background: #58729e; transform: none; }
+.home-secondary { background: transparent; }
+.home-secondary:hover { transform: none; }
+.home-stats dd { color: #b5c2d6; font-size: 12px; letter-spacing: 0; text-transform: none; }
+.home-overview { padding-block: 62px 72px; }
+.home-path-card { min-height: 205px; padding: 22px; transition: background-color .15s ease; }
+.home-path-card strong { margin-top: 25px; }
+.home-path-card > span:nth-of-type(3) { color: #c2cde0; font-size: 14px; }
+.home-path-card > svg { right: 22px; bottom: 22px; }
+.explore-page .explore-browser { padding-top: 28px; }
+.explore-page .explore-search input,
+.explore-page .explore-role-filter select { color: #edf2fa; min-height: 44px; }
+.explore-page .explore-search input::placeholder { color: #b0bed4; }
+.explore-page .category-filter button { transition: background-color .15s ease, border-color .15s ease; }
+.explore-page .personality-entry:hover { background: #ffffff0c; }
+:is(.home-page, .explore-page, .profile-page) a:focus-visible,
+:is(.home-page, .explore-page, .profile-page) button:focus-visible,
+:is(.home-page, .explore-page, .profile-page) input:focus-visible,
+:is(.home-page, .explore-page, .profile-page) select:focus-visible {
+  outline: 2px solid #bdd0ed;
+  outline-offset: 3px;
+}
+@media (max-width: 700px) {
+  .home-hero { padding-block: 48px 54px; }
+  .home-hero h1 { font-size: clamp(42px, 10vw, 56px); }
+  .home-overview { padding-block: 48px 58px; }
+  .home-path-card { min-height: 180px; }
+}

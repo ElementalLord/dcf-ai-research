@@ -1,0 +1,24 @@
+{
+  "question": "In what year was C. V. Raman awarded the Nobel Prize in Physics?",
+  "at": "2026-10-23T23:48:58.591Z",
+  "target": "http://127.0.0.1:54321",
+  "counts": {
+    "brave": 0,
+    "originalPages": 0,
+    "robots": 0,
+    "gemini": 0,
+    "otherExternal": 0
+  },
+  "requests": [],
+  "preflight": {
+    "state": "research_required",
+    "sufficient": false,
+    "researchRequest": true,
+    "gaps": [
+      "Evidence for awarded in the question",
+      "Evidence for prize in the question"
+    ],
+    "localEvidence": 7
+  },
+  "preflightOnly": true
+}

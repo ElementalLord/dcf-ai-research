@@ -1,0 +1,43 @@
+{
+  "source_id": "cbf8da74-b628-4740-8b73-25b2f56bf1d9",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "History of Jhansi. District Jhansi, Government of Uttar Pradesh. https://jhansi.nic.in/history/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "District Jhansi, Government of Uttar Pradesh",
+    "rights_or_access_note": "Public original; short research excerpts. Scholarly abstract/summary access does not imply full chapter access.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "History of Jhansi",
+    "url": "https://jhansi.nic.in/history/"
+  },
+  "claim_ids": [
+    "1ee7799f-2edb-444a-81fd-24a63919a3d4",
+    "8ab01197-c3e0-4628-b5a5-b33f5696b262"
+  ],
+  "passages": [
+    {
+      "chunk_id": "6db91cad-ec51-4d75-9613-e23e1f881c41",
+      "locator": "In 1842 Raja Gangadhar Rao married Mannikarnika",
+      "text_sha256": "ebf335562a809ff86515504939b586cb1fac5d7443b0300203f79a938a67aa02",
+      "excerpt_preview": "During his period the local population of Jhansi was very satisfied. In 1842 Raja Gangadhar Rao married Mannikarnika. After this marriage Mannikarnika was given the new name Lakshmi Bai, who led forces against British in 1857.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "83d2b843-def9-42b4-9231-ad6beef45613",
+      "locator": "The British rulers then accepted Gangadhar Rao",
+      "text_sha256": "5ebc55cd69ef94eb7d3099b25e5ba2d2a6fa93bfa1c7931fe1c0d01cda0f6f28",
+      "excerpt_preview": "In 1838 Raghunath Rao (III) also died. The British rulers then accepted Gangadhar Rao as the Raja of Jhansi. Due to the inefficient administration during the period of Raghunath Rao (III) the financial position of Jhansi was very critical.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

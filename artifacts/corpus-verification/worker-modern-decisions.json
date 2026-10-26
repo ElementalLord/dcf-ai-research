@@ -1,0 +1,882 @@
+[
+  {
+    "claim_id": "301254f3-1f75-402d-ab27-1e86082dec97",
+    "personality": "M. S. Subbulakshmi",
+    "original_claim_text": "The Magsaysay Foundation listed foundations for poor people, hospitals, orphanages, schools and music institutes among beneficiaries of her concert receipts.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Magsaysay Foundation listed foundations for poor people, hospitals, orphanages, schools and music institutes among beneficiaries of her concert receipts.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+        "locator": "lines 41–44",
+        "source_id": "6d26dd86-6c07-4a2f-81b8-35ffb661fc21",
+        "source_authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The awarding foundation explicitly lists these beneficiary categories for her concert contributions.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "47f14b97-63c5-4fea-ae11-e73fe9c0d9a9",
+    "personality": "M. S. Subbulakshmi",
+    "original_claim_text": "Her repertoire reached beyond Carnatic compositions to North Indian devotional and other regional songs, which helped extend her audience beyond the South.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Her repertoire reached beyond Carnatic compositions to North Indian devotional and other regional songs, which helped extend her audience beyond the South.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+        "locator": "lines 32–33, 40",
+        "source_id": "6d26dd86-6c07-4a2f-81b8-35ffb661fc21",
+        "source_authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The award citation names Hindustani and regional song repertoire and the wider audience beyond southern India.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "62f0166c-ba36-42d0-978a-1f9075e5a09e",
+    "personality": "M. S. Subbulakshmi",
+    "original_claim_text": "In her 1974 award response, Subbulakshmi publicly credited T. Sadasivam as a guide; it is her own statement of the relationship, not a full account of their joint decision making.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In her 1974 award response, Subbulakshmi publicly credited T. Sadasivam as a guide; it is her own statement of the relationship, not a full account of their joint decision making.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+        "locator": "lines 46–52",
+        "source_id": "6d26dd86-6c07-4a2f-81b8-35ffb661fc21",
+        "source_authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Her award response directly credits Sadasivam; the claim properly limits this to her own account.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "7cedb480-e757-4823-96c9-f003c9d19388",
+    "personality": "M. S. Subbulakshmi",
+    "original_claim_text": "The Magsaysay citation praised her tonal and rhythmic control and said listeners unfamiliar with Indian melodic music responded to her singing; the musical evaluation is institutional praise.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Magsaysay citation praised her tonal and rhythmic control and said listeners unfamiliar with Indian melodic music responded to her singing; the musical evaluation is institutional praise.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+        "locator": "lines 36–41",
+        "source_id": "6d26dd86-6c07-4a2f-81b8-35ffb661fc21",
+        "source_authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The award citation contains precisely this musical praise and audience assessment; it is attributed to the award body.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "7fa33007-0541-4a59-9d57-5793514b1cf4",
+    "personality": "M. S. Subbulakshmi",
+    "original_claim_text": "The Magsaysay Foundation identified both Edinburgh and the United Nations as landmarks of her performances abroad, evidence that international visibility had become part of her public significance by 1974.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The Magsaysay Foundation listed performances at the Edinburgh International Music Festival and the United Nations among Subbulakshmi’s appearances abroad.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+        "locator": "lines 40–41",
+        "source_id": "6d26dd86-6c07-4a2f-81b8-35ffb661fc21",
+        "source_authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Both venues are stated. The original inference about public significance by 1974 is broader than the passage directly establishes.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a31cf40f-2154-4697-8812-393814511f49",
+    "personality": "M. S. Subbulakshmi",
+    "original_claim_text": "In April 1944 she gave five benefit performances for the Kasturba Gandhi Memorial Fund, an early organized charitable series rather than a single symbolic concert.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The Magsaysay Foundation states that Subbulakshmi gave five benefit performances for the Kasturba Gandhi Memorial Fund in April 1944.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+        "locator": "lines 34, 42",
+        "source_id": "6d26dd86-6c07-4a2f-81b8-35ffb661fc21",
+        "source_authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The foundation gives number, date, and beneficiary; the original characterization as an early organized series is unnecessary.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b531170b-8ea9-4879-9baa-61b1c7aae36d",
+    "personality": "M. S. Subbulakshmi",
+    "original_claim_text": "The 1974 Ramon Magsaysay Award recognized her public service through devotional performance and sustained benefit concerts, not only her standing as a virtuoso.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The 1974 Ramon Magsaysay Award recognized her public service through devotional performance and sustained benefit concerts, not only her standing as a virtuoso.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+        "locator": "lines 42–44",
+        "source_id": "6d26dd86-6c07-4a2f-81b8-35ffb661fc21",
+        "source_authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The foundation’s award citation explicitly recognizes devotional song and support of public causes.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d713e2b5-57c7-4a40-8210-2975436ee170",
+    "personality": "M. S. Subbulakshmi",
+    "original_claim_text": "In the same response she described music in devotional terms and acknowledged Chandrasekharendra Saraswathi of Kanchi; this records her stated religious understanding of performance.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In the same response she described music in devotional terms and acknowledged Chandrasekharendra Saraswathi of Kanchi; this records her stated religious understanding of performance.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+        "locator": "lines 49–53",
+        "source_id": "6d26dd86-6c07-4a2f-81b8-35ffb661fc21",
+        "source_authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Her recorded response describes devotional music and acknowledges the Sage of Kanchi as her own view.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ed929c42-4dd7-4591-9aeb-16790a2bd94b",
+    "personality": "M. S. Subbulakshmi",
+    "original_claim_text": "The Magsaysay citation presents early discipline and willingness to learn as central to her formation; this is an award body’s interpretation of character.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Magsaysay citation presents early discipline and willingness to learn as central to her formation; this is an award body’s interpretation of character.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://rmaward.asia/rmawardees/subbulakshmi-m-s/",
+        "locator": "lines 38–39",
+        "source_id": "6d26dd86-6c07-4a2f-81b8-35ffb661fc21",
+        "source_authority": "Ramon Magsaysay Award Foundation citation and awardee response; first-hand award record; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The citation ascribes these formative traits; the claim correctly frames them as the award body’s evaluation.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "225dcd87-20d0-4b1c-95fc-6f76c45f8e5d",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "Phase III, 1985–96, strengthened procurement and marketing infrastructure and extended veterinary, feed and insemination services rather than simply creating new outlets.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Phase III, 1985–96, strengthened procurement and marketing infrastructure and extended veterinary, feed and insemination services rather than simply creating new outlets.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 266–270",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "NDDB directly describes Phase III dates, infrastructure, and expanded services.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "6550d9a8-9e99-421d-be2c-be60a0155d07",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "Operation Flood began in 1970 to scale the Anand pattern nationally through producer cooperatives, urban markets and dairy services.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Operation Flood began in 1970 and used village milk-producer cooperatives, urban markets and dairy services to expand milk production and marketing.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 237–257",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The page supports launch and structure, but does not itself use the claim’s Anand-pattern formulation.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "7ac5f497-5e28-447d-9141-3aedfa8d6db1",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "NDDB states three linked objectives: more milk, higher rural incomes and reasonable consumer prices; each depended on a functioning supply chain rather than output alone.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "NDDB states Operation Flood’s three objectives as increasing milk production, augmenting rural incomes and providing reasonable prices for consumers.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 237–245",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The three objectives are direct; the original supply-chain dependence is analysis beyond this passage.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "84257218-4123-41c7-87b5-9267adafa75a",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "The programme used village producer societies for milk procurement and member services, with processing, marketing and management coordinated at higher tiers.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "NDDB describes village producer cooperatives as procuring milk and providing inputs and services, with management and technology made available to members.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 237–238",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The passage directly supports village procurement and services; higher-tier processing detail needs a separate source.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a59a0330-ecda-4812-a816-6d34a36ecd7c",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "NDDB records growth in women members and women’s dairy societies during Phase III; membership growth alone does not show equal control over income or governance.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "NDDB records growth in women members and women’s dairy societies during Phase III; membership growth alone does not show equal control over income or governance.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 266–270",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "NDDB reports increased participation by women in Phase III; the claim explicitly avoids an unsupported equality inference.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b4512f78-8b4e-4916-b9ab-7bd53a5b5fdb",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "Operation Flood’s first phase, 1970–80, used proceeds from donated EEC milk powder and butter oil, via the World Food Programme, to finance Indian dairy infrastructure.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "NDDB states that Phase I of Operation Flood (1970–80) was financed by sales of EEC skimmed milk powder and butter oil donated through the World Food Programme.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 252–257",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The primary programme page directly supports financing and dates; the original reference to Indian infrastructure is too broad here.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "c47b3514-30ca-41a2-80c4-e0c6a388fd14",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "Phase I linked 18 milksheds with Delhi, Mumbai, Kolkata and Chennai, creating large urban outlets for farmer-supplied milk.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Phase I linked 18 milksheds with Delhi, Mumbai, Kolkata and Chennai, creating large urban outlets for farmer-supplied milk.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 255–257",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "NDDB names 18 milksheds and the four metropolitan markets for Phase I.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d5ca29df-8313-4800-9d7e-2fcf755eecba",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "NDDB reports 43,000 village cooperatives and 4.25 million producer members by 1985; these are programme records, not a count of all Indian dairy farmers.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "NDDB reports 43,000 village cooperatives and 4.25 million producer members by 1985; these are programme records, not a count of all Indian dairy farmers.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 260–263",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "NDDB gives both figures and the claim properly identifies them as programme counts.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d8de79e9-1a07-4460-8555-561ef7527852",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "NDDB describes a National Milk Grid linking producing areas to urban demand; the network reduced dependence on each village’s immediate market and moderated seasonal and regional price swings.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "NDDB states that the National Milk Grid linked producers with urban consumers and reduced seasonal and regional price variations.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 233–238",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The grid and price effect are the board’s statement; the original village-market framing adds an inference.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ef8e6050-2e0b-459c-a0b5-3d5c9397712b",
+    "personality": "Verghese Kurien",
+    "original_claim_text": "NDDB reports that Phase II expanded the network to 136 milksheds and 290 urban markets by the mid-1980s; this marks the move from a few major corridors toward national coverage.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "NDDB reports that Phase II expanded Operation Flood from 18 to 136 milksheds and reached 290 urban markets.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://www.nddb.coop/about/genesis/flood",
+        "locator": "lines 260–263",
+        "source_id": "3cd25b95-a326-4c77-b5fb-8a274e7827d3",
+        "source_authority": "National Dairy Development Board programme history; issuing institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Both counts are direct, while the original broader national-coverage inference is not required.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "66bd0a54-511d-436c-9aa6-37a8a6aad2d9",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "Tagore’s curriculum treated music, painting and dramatic performance as integral to developing the whole person, not as decorative extras.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Tagore’s curriculum treated music, painting and dramatic performance as integral to developing the whole person, not as decorative extras.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://www.visvabharati.ac.in/home/history_land_page/",
+        "locator": "lines 340–342",
+        "source_id": "55a1ae10-2af1-4020-bc48-db13546ecfe6",
+        "source_authority": "Visva-Bharati institutional history; founding institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The university history explicitly treats music, painting and drama as part of cultivating multiple human faculties.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "89c8e168-6c9f-4a0b-8127-90585badb707",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "Open-air teaching at Santiniketan expressed Tagore’s effort to reconnect learning with nature and shared life rather than confine it to rote classroom instruction.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Visva-Bharati’s history says Tagore’s Santiniketan school held classes outdoors under trees as part of an education linking people and nature.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://www.visvabharati.ac.in/home/history_land_page/",
+        "locator": "lines 340–342",
+        "source_id": "55a1ae10-2af1-4020-bc48-db13546ecfe6",
+        "source_authority": "Visva-Bharati institutional history; founding institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Outdoor classes and nature connection are direct; the contrast with rote instruction is not stated there.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b21e74fa-ba31-4c2a-9d96-ebf9edca2052",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "Visva-Bharati’s history presents the early school as a conscious alternative to colonial education, while its actual development also involved adaptation and experimentation.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Visva-Bharati’s history characterizes Tagore’s early Santiniketan school as a conscious departure from British-introduced education in India.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "url": "https://www.visvabharati.ac.in/home/history_land_page/",
+        "locator": "lines 340–342",
+        "source_id": "55a1ae10-2af1-4020-bc48-db13546ecfe6",
+        "source_authority": "Visva-Bharati institutional history; founding institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The institutional characterization is direct; later adaptation and experimentation are not established on this page.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b49afa73-c614-4127-bf6a-694ecadc1ed8",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "Tagore opened the Brahmacharyasrama school at Santiniketan in December 1901 with only five students.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Tagore opened the Brahmacharyasrama school at Santiniketan in December 1901 with only five students.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.visvabharati.ac.in/home/history_land_page/",
+        "locator": "line 340",
+        "source_id": "55a1ae10-2af1-4020-bc48-db13546ecfe6",
+        "source_authority": "Visva-Bharati institutional history; founding institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The institution dates the formal start to December 22, 1901 and reports no more than five students.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "e44892a1-aa0f-4a91-8ebc-6f4dcdd7b648",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "Tagore founded Visva-Bharati in 1921 by developing an international university around the Santiniketan school.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Tagore founded Visva-Bharati in 1921, building on his earlier Santiniketan school.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.visvabharati.ac.in/home/history_land_page/",
+        "locator": "lines 337–347",
+        "source_id": "55a1ae10-2af1-4020-bc48-db13546ecfe6",
+        "source_authority": "Visva-Bharati institutional history; founding institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The institution directly dates founding and describes the earlier school as the university’s nucleus.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "f1c7d0fc-3884-4062-9ec0-70388731a6f7",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "Visva-Bharati became a central university and institution of national importance in 1951, extending Tagore’s educational experiment into a durable public institution.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Visva-Bharati became a central university and institution of national importance in 1951, extending Tagore’s educational experiment into a durable public institution.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.visvabharati.ac.in/home/history_land_page/",
+        "locator": "line 347",
+        "source_id": "55a1ae10-2af1-4020-bc48-db13546ecfe6",
+        "source_authority": "Visva-Bharati institutional history; founding institution; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The institution directly states the 1951 parliamentary designation.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "898869f8-5cf0-4cff-9fab-cb3ce2c3576e",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "Tagore criticized the nation when it became an organized political and commercial machine that subordinated human relationships to collective power.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Tagore criticized the nation when it became an organized political and commercial machine that subordinated human relationships to collective power.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.gutenberg.org/files/40766/40766-h/40766-h.htm",
+        "locator": "lines 201–208, 227–234",
+        "source_id": "5cce5617-0320-4efd-b9cd-87b2750768c5",
+        "source_authority": "Project Gutenberg edition of Tagore, Nationalism, 1917 original text; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "In the original lecture collection Tagore criticizes nationalism as a political and commercial machine at odds with humane obligations.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b02a5de3-ef98-48c0-9bfd-921ddb75677b",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "Tagore warned Japan and other Asian societies against imitating the aggressive nationalism through which Western powers had dominated others.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Tagore warned Japan and other Asian societies against imitating the aggressive nationalism through which Western powers had dominated others.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.gutenberg.org/files/40766/40766-h/40766-h.htm",
+        "locator": "lines 227–234, 362–367",
+        "source_id": "5cce5617-0320-4efd-b9cd-87b2750768c5",
+        "source_authority": "Project Gutenberg edition of Tagore, Nationalism, 1917 original text; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Tagore explicitly warns Japan against adopting Western organized nationalism and aggression.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "be1f3367-0c4e-4b1a-9fb9-df33de5cb139",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "Tagore directly attacked imperial exploitation, so his criticism of nationalism cannot reasonably be read as approval of British colonial rule.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In Nationalism, Tagore criticized British colonial domination and suppression of Indian industry while also criticizing narrow nationalism.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.gutenberg.org/files/40766/40766-h/40766-h.htm",
+        "locator": "lines 143–167, 527",
+        "source_id": "5cce5617-0320-4efd-b9cd-87b2750768c5",
+        "source_authority": "Project Gutenberg edition of Tagore, Nationalism, 1917 original text; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The text explicitly criticizes colonial conduct; the original claim’s interpretation of what cannot reasonably be read from it is unnecessary.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "f0b7218a-596c-47fa-892c-ec9804ca5731",
+    "personality": "Rabindranath Tagore",
+    "original_claim_text": "In Nationalism in India, Tagore argued that India’s central problem was social—how diverse communities could live together—rather than merely the transfer of state power.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In Nationalism in India, Tagore argued that India’s central problem was social—how diverse communities could live together—rather than merely the transfer of state power.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.gutenberg.org/files/40766/40766-h/40766-h.htm",
+        "locator": "lines 425–433, 511–517",
+        "source_id": "5cce5617-0320-4efd-b9cd-87b2750768c5",
+        "source_authority": "Project Gutenberg edition of Tagore, Nationalism, 1917 original text; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The India lecture explicitly gives the social problem priority over politics and discusses relations among communities.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "044ff4fd-33c2-459e-90ff-c7a0c68da704",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "In his Chicago Paper on Hinduism, Vivekananda argued that religion should be realized in life rather than reduced to assent to doctrine.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In his Chicago Paper on Hinduism, Vivekananda argued that religion should be realized in life rather than reduced to assent to doctrine.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_paper_on_hinduism.htm",
+        "locator": "lines 45–49",
+        "source_id": "e09fe440-cb23-4395-b7e3-bcc179d574a9",
+        "source_authority": "Ramakrishna Order edition of Vivekananda’s Chicago address; primary text edition; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Vivekananda’s own published Chicago paper contrasts realization with mere belief.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1326cb2a-0343-4d51-9002-f4504e3e6c9d",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "Vivekananda presented Hindu traditions as accommodating diverse philosophical and devotional approaches, including views outside orthodox theism.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Vivekananda presented Hindu traditions as accommodating diverse philosophical and devotional approaches, including views outside orthodox theism.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_paper_on_hinduism.htm",
+        "locator": "lines 4–8",
+        "source_id": "e09fe440-cb23-4395-b7e3-bcc179d574a9",
+        "source_authority": "Ramakrishna Order edition of Vivekananda’s Chicago address; primary text edition; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The paper itself lays out diverse schools, including Buddhist agnosticism and Jain atheism.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "46db9183-cef3-4d3a-b18d-cb583d2fe485",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "In the Chicago paper, Vivekananda grounded spiritual freedom in an account of the divine nature of the human self.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In the Chicago paper, Vivekananda grounded spiritual freedom in an account of the divine nature of the human self.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_paper_on_hinduism.htm",
+        "locator": "lines 24–34, 45–49",
+        "source_id": "e09fe440-cb23-4395-b7e3-bcc179d574a9",
+        "source_authority": "Ramakrishna Order edition of Vivekananda’s Chicago address; primary text edition; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The paper explicitly describes the soul as free and divine within his religious argument.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "4efc52f0-280e-41bf-b58e-daf3ad23bf31",
+    "personality": "Swami Vivekananda",
+    "original_claim_text": "Vivekananda delivered his Paper on Hinduism at the Chicago Parliament on 19 September 1893.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Vivekananda delivered his Paper on Hinduism at the Chicago Parliament on 19 September 1893.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/addresses_at_the_parliament/v1_c1_paper_on_hinduism.htm",
+        "locator": "lines 1–3",
+        "source_id": "e09fe440-cb23-4395-b7e3-bcc179d574a9",
+        "source_authority": "Ramakrishna Order edition of Vivekananda’s Chicago address; primary text edition; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The edition gives the address title and delivery date.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "000db328-dd28-4dab-ba9c-fae122156360",
+    "personality": "Satyajit Ray",
+    "original_claim_text": "Ray said he did not begin a film by formulating a moral message and preferred viewers and critics to infer meaning from the completed work.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ray said he did not begin a film by formulating a moral message and preferred viewers and critics to infer meaning from the completed work.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.bfi.org.uk/sight-and-sound/interviews/satyajit-ray-moral-attitude",
+        "locator": "lines 38–40",
+        "source_id": "ee63d0c2-3d55-4afc-96eb-d5afc5287ddf",
+        "source_authority": "BFI / Sight and Sound edited interview compiled by Andrew Robinson from conversations with Ray; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ray explicitly says he did not formulate a moral attitude first and left conclusions to critics.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "239d8bad-b212-491f-bbbc-4b80ecd736a2",
+    "personality": "Satyajit Ray",
+    "original_claim_text": "After the Apu Trilogy, Ray increasingly preferred stories concentrated into a day, week or short period rather than the long temporal sweep of a saga.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "After the Apu Trilogy, Ray increasingly preferred stories concentrated into a day, week or short period rather than the long temporal sweep of a saga.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.bfi.org.uk/sight-and-sound/interviews/satyajit-ray-moral-attitude",
+        "locator": "lines 94–97",
+        "source_id": "ee63d0c2-3d55-4afc-96eb-d5afc5287ddf",
+        "source_authority": "BFI / Sight and Sound edited interview compiled by Andrew Robinson from conversations with Ray; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ray says he lost his taste for the saga after the trilogy and preferred shorter spans.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "6abd6700-6c8a-47a9-969d-5d925b2bb3e2",
+    "personality": "Satyajit Ray",
+    "original_claim_text": "Ray described the Goopy-Bagha music as drawing on Indian folk and classical forms alongside Western orchestration, not as belonging to one pure tradition.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ray described the Goopy-Bagha music as drawing on Indian folk and classical forms alongside Western orchestration, not as belonging to one pure tradition.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.bfi.org.uk/sight-and-sound/interviews/satyajit-ray-moral-attitude",
+        "locator": "lines 102–113",
+        "source_id": "ee63d0c2-3d55-4afc-96eb-d5afc5287ddf",
+        "source_authority": "BFI / Sight and Sound edited interview compiled by Andrew Robinson from conversations with Ray; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ray explicitly identifies folk, classical, and Western influences in these songs.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "8dcdae75-73b6-4e59-b9ac-f746aed60a98",
+    "personality": "Satyajit Ray",
+    "original_claim_text": "Ray recalled that directing Pather Panchali revealed his ability to lead a production and increased his confidence from film to film.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ray recalled that directing Pather Panchali revealed his ability to lead a production and increased his confidence from film to film.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.bfi.org.uk/sight-and-sound/interviews/satyajit-ray-moral-attitude",
+        "locator": "lines 34–37",
+        "source_id": "ee63d0c2-3d55-4afc-96eb-d5afc5287ddf",
+        "source_authority": "BFI / Sight and Sound edited interview compiled by Andrew Robinson from conversations with Ray; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Ray recounts his growth in directing confidence starting with Pather Panchali.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "07e3d3b8-9611-426a-99a9-126ee46a01b5",
+    "personality": "Satyajit Ray",
+    "original_claim_text": "Pather Panchali developed through prolonged financial difficulty, so Ray’s debut was not the product of an established studio pathway.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Pather Panchali developed through prolonged financial difficulty, so Ray’s debut was not the product of an established studio pathway.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://satyajitray.org/making-of-pather-panchali/",
+        "locator": "lines 3–14, 28–34",
+        "source_id": "9b0e27ff-f724-407c-872f-f199da70334f",
+        "source_authority": "SatyajitRay.org production account, using Ray recollections and editorial narration; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The making-of account details unsuccessful financing searches, personal borrowing, and later public support.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "64e952cd-6726-4138-9d25-346e96abdc07",
+    "personality": "Satyajit Ray",
+    "original_claim_text": "Ravi Shankar composed the music for Pather Panchali; crediting the early score to Ray would confuse the director’s role with that of a major collaborator.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ravi Shankar composed the music for Pather Panchali; crediting the early score to Ray would confuse the director’s role with that of a major collaborator.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://satyajitray.org/making-of-pather-panchali/",
+        "locator": "lines 36–38",
+        "source_id": "9b0e27ff-f724-407c-872f-f199da70334f",
+        "source_authority": "SatyajitRay.org production account, using Ray recollections and editorial narration; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The account explicitly credits Ravi Shankar with composing the film music.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a73ab751-999c-433e-a8f0-61888f0c723a",
+    "personality": "Satyajit Ray",
+    "original_claim_text": "West Bengal government support helped complete Pather Panchali, showing that the celebrated independent production also depended on public finance.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "West Bengal government support helped complete Pather Panchali, showing that the celebrated independent production also depended on public finance.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://satyajitray.org/making-of-pather-panchali/",
+        "locator": "lines 28–34",
+        "source_id": "9b0e27ff-f724-407c-872f-f199da70334f",
+        "source_authority": "SatyajitRay.org production account, using Ray recollections and editorial narration; live passage inspected 2026-10-19",
+        "independence_assessment": "Single original or institutional source. No second independent source is inferred.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The account directly describes West Bengal government funding after other financing failed.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional accounts and first-person recollections support the attributed or narrow claim; broader historical interpretations need independent corroboration.",
+    "removal_reason": null
+  }
+]

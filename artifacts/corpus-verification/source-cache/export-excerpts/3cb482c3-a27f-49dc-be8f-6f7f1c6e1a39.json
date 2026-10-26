@@ -1,0 +1,45 @@
+{
+  "source_id": "3cb482c3-a27f-49dc-be8f-6f7f1c6e1a39",
+  "source": {
+    "author": "Hermann Kulke, K. Kesavapany and Vijay Sakhuja, eds.",
+    "authority_metadata": {
+      "source_kind": "Modern maritime historical scholarship",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Hermann Kulke, K. Kesavapany and Vijay Sakhuja, eds.. Nagapattinam to Suvarnadwipa: Reflections on the Chola Naval Expeditions to Southeast Asia. ISEAS–Yusof Ishak Institute. https://www.cambridge.org/core/books/abs/nagapattinam-to-suvarnadwipa/naval-expeditions-of-the-cholas-in-the-context-of-asian-history/0D28FFD296A5575E375ACB928E294977",
+    "original_work_identity": {},
+    "publication_year": 2009,
+    "publisher_or_institution": "ISEAS–Yusof Ishak Institute",
+    "rights_or_access_note": "Short documented research excerpts only; contemporary inscriptions, later chronicle tradition and modern scholarship are kept distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "Nagapattinam to Suvarnadwipa: Reflections on the Chola Naval Expeditions to Southeast Asia",
+    "url": "https://www.cambridge.org/core/books/abs/nagapattinam-to-suvarnadwipa/naval-expeditions-of-the-cholas-in-the-context-of-asian-history/0D28FFD296A5575E375ACB928E294977"
+  },
+  "claim_ids": [
+    "000bd57d-122e-4744-913a-870cc698ed88",
+    "c6ad7d30-0036-430a-9e2c-226df4e0bdeb",
+    "dea80149-86a2-438c-98c6-b0f91c592be4"
+  ],
+  "passages": [
+    {
+      "chunk_id": "188123fa-25a1-483b-a99b-0351a62b8a00",
+      "locator": "Rajaraja",
+      "text_sha256": "7057c881a72928e68ac08f941b8d0b84cbeb0e6b54a0f3dfea7ac63ba1cbbfbf",
+      "excerpt_preview": "he volume places Chola expeditions in Asian history and distinguishes Rajaraja's early eleventh-century expansion from Rajendra I's 1025 expedition against Srivijaya.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "bc139c8c-bc87-4c79-aaa8-930cf5d021e4",
+      "locator": "ports and trade mattered",
+      "text_sha256": "a37352bd99b1b7eda76b3891edb48d98103e037f51d34cfee9ce6766b7c84801",
+      "excerpt_preview": "Maritime mobility, ports and trade mattered to Chola power, but surviving evidence does not provide a modern-style roster or technical description of a permanent navy under Rajaraja.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

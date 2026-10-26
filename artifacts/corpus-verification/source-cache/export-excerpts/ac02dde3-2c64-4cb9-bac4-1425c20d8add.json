@@ -1,0 +1,54 @@
+{
+  "source_id": "ac02dde3-2c64-4cb9-bac4-1425c20d8add",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "The Most Versatile of Mystics. Los Angeles Review of Books. https://lareviewofbooks.org/essay/the-most-versatile-of-mystics",
+    "original_work_identity": {},
+    "publication_year": 2011,
+    "publisher_or_institution": "Los Angeles Review of Books",
+    "rights_or_access_note": "Magazine review of Interpreting Ramakrishna; the author says he is not an expert on Ramakrishna.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "The Most Versatile of Mystics",
+    "url": "https://lareviewofbooks.org/essay/the-most-versatile-of-mystics"
+  },
+  "claim_ids": [
+    "0f36dc1e-79a2-465a-981b-77b75665f4d7",
+    "38295f1a-da7d-42e1-9909-ae5530af2fb3",
+    "56d372f8-89b4-491d-8535-99e2d6e2abab",
+    "9da069fc-7576-4529-8efa-a04df22b6f5a",
+    "fcdfedd3-4caa-42a2-8d18-56a2f76fc3fe"
+  ],
+  "passages": [
+    {
+      "chunk_id": "5d934ba0-f268-44f0-a254-b25a72225f01",
+      "locator": "Los Angeles Review of Books, 2011",
+      "text_sha256": "64a80ec2c160e16fc7c9fcc486acf79945ca5f5aefd8efef884c63a4399cc5f1",
+      "excerpt_preview": "Intrigued by the man so many consider a modern saint, Kripal set about dissecting the sage's psyche with the scalpel of psychoanalytic theory. What he believed he uncovered at the secret heart of Ramakrishna's life and work was homoeroticis",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8bfac353-ec78-495d-b2af-e19b5012fb31",
+      "locator": "Los Angeles Review of Books, 2011",
+      "text_sha256": "7c32a319a79318bbf2442ddeb980d067f12ef0333220d74e01dff1213d220a30",
+      "excerpt_preview": "Some critics treated Kripal to the same facile psychoanalysis that they accused him of applying to Ramakrishna. Attempts to ban his book went all the way to the Indian Parliament. He was even personally threatened in the closest thing to a ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b4b8d388-69d2-4b1d-a9ff-4541600a795e",
+      "locator": "Los Angeles Review of Books, 2011",
+      "text_sha256": "3eec66b7bcd7ec356cde39acf86c4b053f321c44e6b619f5f786837937f08827",
+      "excerpt_preview": "With the declared intention of playing by academic rules, they took their time, dug deeply, and, 15 years after the appearance of Kripal's casus belli, released their multi-pronged rebuttal.One line of attack in Interpreting Ramakrishna is ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

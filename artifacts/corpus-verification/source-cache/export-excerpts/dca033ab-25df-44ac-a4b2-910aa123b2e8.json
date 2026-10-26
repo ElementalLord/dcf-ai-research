@@ -1,0 +1,53 @@
+{
+  "source_id": "dca033ab-25df-44ac-a4b2-910aa123b2e8",
+  "source": {
+    "author": "A. G. Volkov",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "A. G. Volkov. The “plant neurobiology” revolution. Plant Signaling & Behavior / PubMed Central. https://pmc.ncbi.nlm.nih.gov/articles/PMC11085955/",
+    "original_work_identity": {},
+    "publication_year": 2024,
+    "publisher_or_institution": "Plant Signaling & Behavior / PubMed Central",
+    "rights_or_access_note": "Short documented research excerpts only. Primary claims, archival records, and later interpretations stay distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "The “plant neurobiology” revolution",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11085955/"
+  },
+  "claim_ids": [
+    "263b72a3-3149-4e90-89d5-ca753f278637",
+    "9b372448-2fa5-4fb4-a52d-3d4e20490722",
+    "ab0823a6-6d4e-42c9-9959-ad0902f36679",
+    "f1c4ca3e-a97c-4590-acda-dd6fbb16dfc3"
+  ],
+  "passages": [
+    {
+      "chunk_id": "433781ce-22c1-4a8e-8b79-e3068b2e7f43",
+      "locator": "motile plants to ordinary plants",
+      "text_sha256": "4cc0fc4b782cec0defbe19556024272c487e18290358b9aaf646424469704656",
+      "excerpt_preview": "It notes that Bose made the conceptual extension from motile plants to ordinary plants, while modern plant signaling does not imply that plants have animal neurons or brains.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8d3caa77-ce32-4060-a572-c3dc54020d54",
+      "locator": "transition from radio-wave physics to plant physiology",
+      "text_sha256": "ce142c8665cc731d06770e7baea9ebfb8dd1d7e5f2004c5319a64844c1cc1ddb",
+      "excerpt_preview": "The review places Bose’s transition from radio-wave physics to plant physiology in the early twentieth century and treats his instrumentation and questions as historically important to plant electrophysiology.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a672a389-c16b-4d1c-af09-c0515c73c478",
+      "locator": "Burdon-Sanderson’s demonstration of plant action potentials",
+      "text_sha256": "ae2e757015d4acd942fe8b3d49b65204a6a91fe2260ce0f11b5554c5132cb957",
+      "excerpt_preview": "he review dates Burdon-Sanderson’s demonstration of plant action potentials in Dionaea to 1873 and calls Bose a prolific early twentieth-century investigator of plant electrical responses.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,54 @@
+{
+  "source_id": "f3ea3f71-829d-4b8d-82b5-cf67b02aca9e",
+  "source": {
+    "author": "Sugata Bose",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Sugata Bose. His Majesty’s Opponent: Subhas Chandra Bose and India’s Struggle against Empire. Harvard University Press / JSTOR. https://www.jstor.org/stable/j.ctt24hjbb",
+    "original_work_identity": {},
+    "publication_year": 2011,
+    "publisher_or_institution": "Harvard University Press / JSTOR",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "His Majesty’s Opponent: Subhas Chandra Bose and India’s Struggle against Empire",
+    "url": "https://www.jstor.org/stable/j.ctt24hjbb"
+  },
+  "claim_ids": [
+    "7be808f0-28de-4b87-b073-0e6de4f69fb1",
+    "94ea68a1-2ad9-4188-a3d3-5e77f97fcedf",
+    "9c5eaff4-ef55-40f5-a00f-cee25e5c4d87",
+    "ccaa6c0b-e23d-4fe3-b3c0-9c32a827cdd9",
+    "f4f1a802-64d6-4867-9c5f-8d7ca088d79b"
+  ],
+  "passages": [
+    {
+      "chunk_id": "3a748c2d-e3f3-4a99-992f-5efc996423fa",
+      "locator": "President of the Indian National Congress",
+      "text_sha256": "f4c239321d78ea3839b31a1182924ea51d8b1f5a3914e110597cc7521ecf0f8a",
+      "excerpt_preview": "ubhas Chandra Bose was President of the Indian National Congress in 1938–1939 and raised and led the Indian National Army against Allied forces during the Second World War.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "59915485-7367-459e-9414-3b5693c94d77",
+      "locator": "condemnation in the West",
+      "text_sha256": "f561e2a61fbe6fd485c56c8ec0c5174fa066e9ff54231b14533db6200f7afcb1",
+      "excerpt_preview": "Gandhi judged his patriotism second to none, but Bose’s actions generated controversy in India and condemnation in the West.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d8900e8c-25aa-4e61-9cdb-dd8b5bf8c167",
+      "locator": "contradictions",
+      "text_sha256": "f8fe0b17f5da95f4e30d46a4e7f31653bae8ac11b4dfedad9b042ba1f45b1c12",
+      "excerpt_preview": "The biography treats his public and private life as revealing contradictions in the world history of the first half of the twentieth century.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

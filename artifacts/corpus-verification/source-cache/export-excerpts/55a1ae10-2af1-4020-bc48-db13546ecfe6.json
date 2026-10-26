@@ -1,0 +1,73 @@
+{
+  "source_id": "55a1ae10-2af1-4020-bc48-db13546ecfe6",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "History of Visva-Bharati. Visva-Bharati. https://www.visvabharati.ac.in/home/history_land_page/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Visva-Bharati",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "History of Visva-Bharati",
+    "url": "https://www.visvabharati.ac.in/home/history_land_page/"
+  },
+  "claim_ids": [
+    "4e77285d-b4ce-48f6-b215-a842e6e164ad",
+    "66bd0a54-511d-436c-9aa6-37a8a6aad2d9",
+    "89c8e168-6c9f-4a0b-8127-90585badb707",
+    "b21e74fa-ba31-4c2a-9d96-ebf9edca2052",
+    "b49afa73-c614-4127-bf6a-694ecadc1ed8",
+    "e44892a1-aa0f-4a91-8ebc-6f4dcdd7b648",
+    "f1c7d0fc-3884-4062-9ec0-70388731a6f7"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1c0cf98b-5dcb-455a-b7e0-31b9633b428d",
+      "locator": "bringing cultures together",
+      "text_sha256": "e060f8ee8b7ff56f5d9519fc81efdc5ff498cc3ffad75ec67da738bda6b913ee",
+      "excerpt_preview": "Its purpose included bringing cultures together for study and creation.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "5c46b186-dde5-4220-832a-72a982188934",
+      "locator": "opened the Brahmacharyasrama school",
+      "text_sha256": "ca9204351690ddb8dd1199eeb761cbb00cb0dad531d9ba7b728f24caba7f4878",
+      "excerpt_preview": "Rabindranath Tagore formally opened the Brahmacharyasrama school there on 22 December 1901 with five students.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "63d8c18b-433d-4416-89f6-462015733f69",
+      "locator": "founded Visva-Bharati in 1921",
+      "text_sha256": "e91255dc1a8e069fcd65ea47f7b4ffd0f9e35f21f9b44594a13caa8b2ce42666",
+      "excerpt_preview": "Tagore developed an unconventional university around the school and founded Visva-Bharati in 1921.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "677f4103-e053-41fe-9989-639dc5be5474",
+      "locator": "classes met in the open air",
+      "text_sha256": "ed5b29ba9efcb912ba82bd807402510b8cb5833378ac9d6fe7f7b49c8171aa0c",
+      "excerpt_preview": "The school consciously departed from colonial classroom conventions: classes met in the open air, simplicity mattered, and music, painting and drama belonged within education.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "86e2a8c0-7372-4c76-90d5-daf5d5002296",
+      "locator": "central university and institution of national importance in 1951",
+      "text_sha256": "8fdd704faba189d6b3e87fd0deab026bc1b579560aed16734d0f438777a638ac",
+      "excerpt_preview": "Parliament made Visva-Bharati a central university and institution of national importance in 1951.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

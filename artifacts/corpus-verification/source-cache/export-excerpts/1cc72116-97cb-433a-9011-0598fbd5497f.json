@@ -1,0 +1,53 @@
+{
+  "source_id": "1cc72116-97cb-433a-9011-0598fbd5497f",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Taj Mahal Palace, Mumbai: Our History. Taj Hotels. https://www.tajhotels.com/en-in/about-taj/taj-history-and-heritage",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Taj Hotels",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Taj Mahal Palace, Mumbai: Our History",
+    "url": "https://www.tajhotels.com/en-in/about-taj/taj-history-and-heritage"
+  },
+  "claim_ids": [
+    "52005d90-650d-4853-8f48-48b6d0f9a1df",
+    "8b612354-cd20-48ba-97a0-c5fe5daa1cea",
+    "abea33d5-f2bb-461c-8333-ec4d79118970"
+  ],
+  "passages": [
+    {
+      "chunk_id": "df6150ab-ca09-48fa-97de-0adffab52b2b",
+      "locator": "anecdotes to its origins",
+      "text_sha256": "dc05c8aeeb00222e09cfaba34df302340fef27243cee9564b59db938d03013d5",
+      "excerpt_preview": "Later accounts attach several anecdotes to its origins; those anecdotes are not necessary to establish the documented project.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ee22ce2c-513c-4592-9e5e-911aa094bd8a",
+      "locator": "capital-intensive urban project",
+      "text_sha256": "d195dce2a73d9f5408133b9ae994cceb03aef723af6494a3bc4ac0b1033f5bd6",
+      "excerpt_preview": "The hotel was a capital-intensive urban project completed during Tata’s lifetime, unlike the steel and hydroelectric ventures.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fbd572e6-ea77-4e64-a547-84425f9dc413",
+      "locator": "opened in 1903",
+      "text_sha256": "6bd151056722a320383e9a4f849ef796635f8298435ecfd2db680b510597b72d",
+      "excerpt_preview": "he Taj Mahal Palace in Bombay opened in 1903.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

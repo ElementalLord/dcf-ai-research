@@ -1,0 +1,34 @@
+{
+  "source_id": "0caa0b48-fc2d-4714-bd79-eeac94ae20f6",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Supreme Court to RK Mission: 'You're Hindus'. Hinduism Today (Himalayan Academy). https://hinduismtoday.com/magazine/september-1995/1995-09-supreme-court-to-rk-mission-you-re-hindus/",
+    "original_work_identity": {},
+    "publication_year": 1995,
+    "publisher_or_institution": "Hinduism Today (Himalayan Academy)",
+    "rights_or_access_note": "Secondary report of the 2 July 1995 Supreme Court judgment, not the judgment text.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Supreme Court to RK Mission: 'You're Hindus'",
+    "url": "https://hinduismtoday.com/magazine/september-1995/1995-09-supreme-court-to-rk-mission-you-re-hindus/"
+  },
+  "claim_ids": [
+    "95608243-4634-4f40-965a-5c144940e1f2"
+  ],
+  "passages": [
+    {
+      "chunk_id": "57d5b1e2-0442-430e-a56c-9d4c2d7da7d4",
+      "locator": "Hinduism Today, September 1995",
+      "text_sha256": "b28976f50ea857366fda511a6691613e6ef07964dc3ad07591690369209141c3",
+      "excerpt_preview": "On July 2nd, 1995, the Supreme Court of India declared that neither Sri Ramakrishna nor Swami Vivekananda founded any independent, non-Hindu religion. Thus ended the RK Mission's labyrinthine attempt to gain the privileges accorded only to ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

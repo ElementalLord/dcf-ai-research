@@ -1,0 +1,45 @@
+{
+  "source_id": "0642b497-b792-4551-95ba-b3572ddac573",
+  "source": {
+    "author": "Blair B. Kling",
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Blair B. Kling. Paternalism in Indian Labor: The Tata Iron and Steel Company of Jamshedpur. International Labor and Working-Class History, Cambridge University Press. https://www.cambridge.org/core/journals/international-labor-and-working-class-history/article/abs/paternalism-in-indian-labor-the-tata-iron-and-steel-company-of-jamshedpur/32A1A82226B591A17C4D87380B217556",
+    "original_work_identity": {},
+    "publication_year": 2008,
+    "publisher_or_institution": "International Labor and Working-Class History, Cambridge University Press",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Paternalism in Indian Labor: The Tata Iron and Steel Company of Jamshedpur",
+    "url": "https://www.cambridge.org/core/journals/international-labor-and-working-class-history/article/abs/paternalism-in-indian-labor-the-tata-iron-and-steel-company-of-jamshedpur/32A1A82226B591A17C4D87380B217556"
+  },
+  "claim_ids": [
+    "26f3a223-56f2-4966-b6ac-65f2df006c2c",
+    "2f4c1fb7-74e6-40b2-9cf4-fffd9df0a389",
+    "5eb89fda-178d-4b93-9e6e-865857e5c73f"
+  ],
+  "passages": [
+    {
+      "chunk_id": "5b624d7e-5068-430a-bcb7-c55e81b8a621",
+      "locator": "most celebrated case of paternalism",
+      "text_sha256": "c4a34af51042003ab371b846e65da49a02d887eb802bbf29a6d6e0a92394c4f8",
+      "excerpt_preview": "ling calls TISCO and Jamshedpur the most celebrated case of paternalism in Indian labor.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8fac78af-d30f-449a-9762-b5ddd0d9b4f9",
+      "locator": "founded and capitalized by the Indian business community in Bombay in 1907",
+      "text_sha256": "d52c856346e784a1631e4e7bead1f66148a7c4e6cd53e1ced0d6748b69a55adc",
+      "excerpt_preview": "Tata Iron and Steel was founded and capitalized by the Indian business community in Bombay in 1907, began production in 1911, and became the largest private company in India and the largest integrated steel mill in the British Empire.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

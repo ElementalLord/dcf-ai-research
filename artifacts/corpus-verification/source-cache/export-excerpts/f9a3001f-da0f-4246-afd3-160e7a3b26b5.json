@@ -1,0 +1,33 @@
+{
+  "source_id": "f9a3001f-da0f-4246-afd3-160e7a3b26b5",
+  "source": {
+    "author": "Vedic rishi attribution as recorded by source",
+    "authority_metadata": {},
+    "citation": "Rigveda 3.18",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Vedic Heritage Portal / IGNCA / Ministry of Culture, Government of India",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Rigveda, Mandala 3, Sukta 18",
+    "url": "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-018/"
+  },
+  "claim_ids": [
+    "477f07df-c7e6-4a03-8b17-ee2a9d26cb65",
+    "e8872217-efb3-4976-86b9-db1f45f436c1"
+  ],
+  "passages": [
+    {
+      "chunk_id": "7ad96a60-0328-4b7f-a0d3-8612db29414f",
+      "locator": "Links",
+      "text_sha256": "6ee7ff9f6b95fa692716b4947524221fe2f55ffb81353bd8b825140638a41e15",
+      "excerpt_preview": "Hindi Translation by Pt. Sripada Damodara Satavalekar  English Translation by H.H. Wilson  Commentary of Sayanacharya",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

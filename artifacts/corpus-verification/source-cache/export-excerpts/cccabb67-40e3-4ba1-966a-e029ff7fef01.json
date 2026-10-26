@@ -1,0 +1,32 @@
+{
+  "source_id": "cccabb67-40e3-4ba1-966a-e029ff7fef01",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "The Man Who Knew Infinity: the story of Srinivasa Ramanujan FRS. Royal Society. https://royalsociety.org/blog/2016/04/the-man-who-knew-infinity-the-story-of-srinivasa-ramanujan-frs/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Royal Society",
+    "rights_or_access_note": "Publicly accessible research excerpt only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "The Man Who Knew Infinity: the story of Srinivasa Ramanujan FRS",
+    "url": "https://royalsociety.org/blog/2016/04/the-man-who-knew-infinity-the-story-of-srinivasa-ramanujan-frs/"
+  },
+  "claim_ids": [
+    "85849c8f-2d46-4bf4-9dce-eefc82099ad9"
+  ],
+  "passages": [
+    {
+      "chunk_id": "cd7aced6-332f-4cd7-b8ae-59ead3ab9552",
+      "locator": "The Man Who Knew Infinity: the story of Srinivasa Ramanujan FRS",
+      "text_sha256": "67f0f2fa48c4a601f595da424fac8d345808942393188859132ce19174af70e0",
+      "excerpt_preview": "he role Ramanujan played in driving forward the field of number theory, highlighting key discoveries over the last 100 years which would not have been possible without his work. Without proofs for many of his equations, mathematicians today",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,53 @@
+{
+  "source_id": "70576013-926d-4b78-8e16-b3a9698ff7f6",
+  "source": {
+    "author": "Bhagat Singh and fellow political prisoners",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Bhagat Singh and fellow political prisoners. Hunger-strikers’ demands and prison letters. Marxists Internet Archive transcription. https://www.marxists.org/archive/bhagat-singh/1929/06/24.htm",
+    "original_work_identity": {},
+    "publication_year": 1929,
+    "publisher_or_institution": "Marxists Internet Archive transcription",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Hunger-strikers’ demands and prison letters",
+    "url": "https://www.marxists.org/archive/bhagat-singh/1929/06/24.htm"
+  },
+  "claim_ids": [
+    "43862109-1d1b-4c46-b15f-8fbfb02d7b50",
+    "47463af7-b5ab-4a2b-b2a9-fbf562bd5618",
+    "76efde32-b9ce-4396-a3c3-7672838cd4f1",
+    "7a57330e-1231-40a0-928e-90e9791f9ad0"
+  ],
+  "passages": [
+    {
+      "chunk_id": "2b7d53f3-8cb8-4bb8-bd1c-0637ff702cf7",
+      "locator": "Indian and European prisoners",
+      "text_sha256": "7c5d383fc9f3be7b2def48a1c27a639f97e52a10094368c825980aeb4249f37e",
+      "excerpt_preview": "The protest compared treatment of Indian and European prisoners and made prison conditions a public political question.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8c5e4885-30bc-4aa2-9add-9f70437f4aba",
+      "locator": "Jatin Das died",
+      "text_sha256": "10465d67ac2730b074e4175d79722e4aeb3c9acb21f96d34d508d7c98605015e",
+      "excerpt_preview": "Jatin Das died during the hunger strike in September 1929, which widened its public resonance; this later outcome should be distinguished from the prisoners’ original demands.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f920d812-8d1d-4032-9e45-264d64a54e23",
+      "locator": "treatment as political prisoners",
+      "text_sha256": "a0754f3be0651c4aebd114f8ed2041ae1be2df78cae0ef118e559ebbc11ce568",
+      "excerpt_preview": "he 1929 hunger-strikers demanded treatment as political prisoners, including better food, clothing, reading material, newspapers, and an end to degrading labour and discriminatory conditions.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,62 @@
+{
+  "source_id": "bdc90b7f-2ae8-452a-bd09-bfe924078785",
+  "source": {
+    "author": "A. K. Ghosh and M. S. R. Rao",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "A. K. Ghosh and M. S. R. Rao. Jagdish Chandra Bose & plant neurobiology. Indian Journal of History of Science / PubMed Central. https://pmc.ncbi.nlm.nih.gov/articles/PMC6702694/",
+    "original_work_identity": {},
+    "publication_year": 2019,
+    "publisher_or_institution": "Indian Journal of History of Science / PubMed Central",
+    "rights_or_access_note": "Short documented research excerpts only. Primary claims, archival records, and later interpretations stay distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Jagdish Chandra Bose & plant neurobiology",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6702694/"
+  },
+  "claim_ids": [
+    "2cb39f70-470f-4d22-918f-a9d7fb8651c0",
+    "37f8e70b-3501-4b5b-baec-2b9893d50b8c",
+    "d75e4c71-3df2-4cee-be37-eea309c0dd75",
+    "e74b8488-f027-47af-a604-f4536dafce8c",
+    "f8110f89-c0fb-4429-ab7b-685d0c47f67f"
+  ],
+  "passages": [
+    {
+      "chunk_id": "183b957a-0f68-4d48-9f49-42cf18efe5b5",
+      "locator": "Mimosa and Desmodium",
+      "text_sha256": "c487f9516b90f9c24eefad1866697209dc3fc58414da9416e763237b77a3329d",
+      "excerpt_preview": "It describes Bose’s early twentieth-century studies of electrical response and transmission in plants, including Mimosa and Desmodium, and his use of instruments to record changes too small to observe directly.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8e8697ec-ab4a-4aef-b1e9-3cf3791b7034",
+      "locator": "pioneering",
+      "text_sha256": "2ff1fc8b127d0a602412360f9f80a2f0bfb3a8573942d194dd3f3b246eb20666",
+      "excerpt_preview": "The authors call the work pioneering and connect it to later interest in plant electrophysiology.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "cd8ad016-efe2-4032-86ba-17341fce526a",
+      "locator": "Burdon-Sanderson had demonstrated action potentials",
+      "text_sha256": "52b4a61bb714b21900a3daad1970622ec4a02cc16c0a7cb06128d4f34b32d045",
+      "excerpt_preview": "he review notes that John Burdon-Sanderson had demonstrated action potentials in Venus flytrap before Bose’s program.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fabd3759-8d9f-4a8b-b248-bc9e859628a5",
+      "locator": "confirmed most of Bose’s observations",
+      "text_sha256": "30bdd1b0c1362ec8e51d2493c65cdae1721ec4b47a95204a2bedb0cb7d2ee2e0",
+      "excerpt_preview": "Their claim that later work confirmed most of Bose’s observations is a modern review interpretation, not a substitute for re-evaluating each historical experiment.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

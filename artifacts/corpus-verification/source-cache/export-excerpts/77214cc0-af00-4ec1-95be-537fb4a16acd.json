@@ -1,0 +1,34 @@
+{
+  "source_id": "77214cc0-af00-4ec1-95be-537fb4a16acd",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:29.081Z"
+    },
+    "citation": "Attracting Young People to Careers in Science. President of India. https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-inauguration-seminar-attracting-young-people-careers-science",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "President of India",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Attracting Young People to Careers in Science",
+    "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-inauguration-seminar-attracting-young-people-careers-science"
+  },
+  "claim_ids": [
+    "bfa95cfe-992b-40bf-8979-342f6b22a070"
+  ],
+  "passages": [
+    {
+      "chunk_id": "f7fd1061-8879-4541-84e7-f64d44ac43aa",
+      "locator": "Presidential speech",
+      "text_sha256": "4fa019cbe325ca0ee0ac2fd00eca8b585d03b8f5ba1e6481a442167d590c99d9",
+      "excerpt_preview": "motivator for the science students and also their parents for pursuing advanced courses in science. This is the first and foremost need for attracting young people to career in science ? an assurance to the youth and the parents that the fu",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

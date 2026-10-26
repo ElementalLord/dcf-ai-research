@@ -1,0 +1,120 @@
+{
+  "total": 1585,
+  "evidence_assessed": 319,
+  "pending": 1266,
+  "decision_counts": {
+    "APPROVE": 239,
+    "REVISE AND APPROVE": 76,
+    "PENDING": 1266,
+    "REMOVE FROM ACTIVE CORPUS": 4
+  },
+  "by_personality": {
+    "A. P. J. Abdul Kalam": {
+      "APPROVE": 16,
+      "REVISE AND APPROVE": 7,
+      "PENDING": 26
+    },
+    "Adi Shankaracharya": {
+      "REVISE AND APPROVE": 3,
+      "APPROVE": 28,
+      "REMOVE FROM ACTIVE CORPUS": 2
+    },
+    "Agastya": {
+      "PENDING": 34
+    },
+    "Ashoka": {
+      "PENDING": 28,
+      "REVISE AND APPROVE": 9,
+      "APPROVE": 16
+    },
+    "Bhagat Singh": {
+      "PENDING": 49
+    },
+    "C. V. Raman": {
+      "PENDING": 44,
+      "APPROVE": 8
+    },
+    "Chhatrapati Shivaji Maharaj": {
+      "PENDING": 60
+    },
+    "Guru Nanak": {
+      "PENDING": 46
+    },
+    "J. R. D. Tata": {
+      "PENDING": 42
+    },
+    "Jagadish Chandra Bose": {
+      "PENDING": 49
+    },
+    "Jamsetji Tata": {
+      "PENDING": 52
+    },
+    "M. S. Subbulakshmi": {
+      "PENDING": 48,
+      "APPROVE": 7,
+      "REVISE AND APPROVE": 2
+    },
+    "Rabindranath Tagore": {
+      "PENDING": 32,
+      "APPROVE": 6,
+      "REVISE AND APPROVE": 4
+    },
+    "Rajaraja Chola I": {
+      "PENDING": 49,
+      "REVISE AND APPROVE": 4
+    },
+    "Ramakrishna Paramahamsa": {
+      "REVISE AND APPROVE": 9,
+      "PENDING": 27,
+      "APPROVE": 28
+    },
+    "Rani Lakshmibai of Jhansi": {
+      "PENDING": 44,
+      "APPROVE": 5,
+      "REVISE AND APPROVE": 4
+    },
+    "Satyajit Ray": {
+      "APPROVE": 7,
+      "PENDING": 35,
+      "REVISE AND APPROVE": 2
+    },
+    "Savitribai Phule": {
+      "REVISE AND APPROVE": 3,
+      "APPROVE": 20,
+      "PENDING": 24
+    },
+    "Srinivasa Ramanujan": {
+      "APPROVE": 24,
+      "PENDING": 32,
+      "REVISE AND APPROVE": 1
+    },
+    "Subhas Chandra Bose": {
+      "PENDING": 49
+    },
+    "Swami Vivekananda": {
+      "PENDING": 41,
+      "APPROVE": 18,
+      "REVISE AND APPROVE": 1
+    },
+    "Vasistha": {
+      "PENDING": 25
+    },
+    "Verghese Kurien": {
+      "PENDING": 33,
+      "APPROVE": 14,
+      "REVISE AND APPROVE": 10
+    },
+    "Vishvamitra": {
+      "PENDING": 353,
+      "REVISE AND APPROVE": 16,
+      "APPROVE": 22,
+      "REMOVE FROM ACTIVE CORPUS": 2
+    },
+    "Yajnavalkya": {
+      "APPROVE": 20,
+      "PENDING": 44,
+      "REVISE AND APPROVE": 1
+    }
+  },
+  "applied_to_isolated_database": 319
+}

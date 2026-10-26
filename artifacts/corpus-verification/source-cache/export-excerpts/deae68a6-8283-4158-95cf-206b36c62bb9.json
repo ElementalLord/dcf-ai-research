@@ -1,0 +1,70 @@
+{
+  "source_id": "deae68a6-8283-4158-95cf-206b36c62bb9",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-13T14:31:57.063Z"
+    },
+    "citation": "Kartārpur. Encyclopaedia of Sikhism / Punjabi University. https://eos.learnpunjabi.org/KARTARPUR.html",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Encyclopaedia of Sikhism / Punjabi University",
+    "rights_or_access_note": "Publicly accessible source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Kartārpur",
+    "url": "https://eos.learnpunjabi.org/KARTARPUR.html"
+  },
+  "claim_ids": [
+    "4f2e190e-a721-4115-a2a3-d1f516cc4e1e",
+    "676ae93e-8c25-4be7-b6b6-4429c40aba16",
+    "e5df430f-286f-4a16-9911-e621597f61d9",
+    "ef79c975-cda3-4a11-9bfb-1c1d3ca1c6ce",
+    "f148a103-6df9-4cbd-930c-3957cb1260d8"
+  ],
+  "passages": [
+    {
+      "chunk_id": "02d7d04b-af77-40c8-afc2-c17a35c9e9db",
+      "locator": "settled here at the end",
+      "text_sha256": "4743c0f67f9469b4eb6b222b31827f3a38a51fd87cb14f901f3eaf72ceb2238c",
+      "excerpt_preview": "�<HTML><HEAD><TITLE>KART&#256RPUR</TITLE> <style type=\"text/css\"> .BODY { background-color: #EAF1F7; background-image: url('images/gtbh.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-position: center; color: #",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "11268cd7-72d8-4e58-9d48-222be06237f6",
+      "locator": "later Gur",
+      "text_sha256": "253c9e04f31b52588cfb2c97d58d8ba8f1a0cbb87c3fd6340e97228b4f0210d3",
+      "excerpt_preview": "It was here that Bh&#257&#299 Lahi&#7751&#257, later Gur&#363 A&#7749gad, came to receive instruction and it was here that, after nominating (Gur&#363) A&#7749gad his spiritual successor, he passed away on Ass&#363 <i>v&#257d&#299</i> 10, 1",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "844acb83-5a78-46a5-bd34-f269abcdf0cd",
+      "locator": "1469",
+      "text_sha256": "4743c0f67f9469b4eb6b222b31827f3a38a51fd87cb14f901f3eaf72ceb2238c",
+      "excerpt_preview": "�<HTML><HEAD><TITLE>KART&#256RPUR</TITLE> <style type=\"text/css\"> .BODY { background-color: #EAF1F7; background-image: url('images/gtbh.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-position: center; color: #",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c7ea62a8-c12b-4182-98ad-8626c753c128",
+      "locator": "last two decades of his life",
+      "text_sha256": "447416cf628d40d8565f88b35cfc839f777029f132cebfe63ae831e422ea8ad5",
+      "excerpt_preview": "Gur&#363 N&#257nak spent the last two decades of his life with his wife and children at Kart&#257rpur which became the principal seat of the Sikh faith. It was here that Bh&#257&#299 Lahi&#7751&#257, later Gur&#363 A&#7749gad, came to recei",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e9ab7bf6-0aa8-4f3b-9d77-a13ed3f738ca",
+      "locator": "spiritual successor",
+      "text_sha256": "87613ea5f173b19c88dec648f9b1e8b6ce5685dd7032972166ffe6cceb0b1a14",
+      "excerpt_preview": "It was here that Bh&#257&#299 Lahi&#7751&#257, later Gur&#363 A&#7749gad, came to receive instruction and it was here that, after nominating (Gur&#363) A&#7749gad his spiritual successor, he passed away on Ass&#363 <i>v&#257d&#299</i> 10, 1",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

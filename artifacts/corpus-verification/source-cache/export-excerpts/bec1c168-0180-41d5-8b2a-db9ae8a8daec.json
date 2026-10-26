@@ -1,0 +1,51 @@
+{
+  "source_id": "bec1c168-0180-41d5-8b2a-db9ae8a8daec",
+  "source": {
+    "author": "A. Raghuramaraju",
+    "authority_metadata": {},
+    "citation": "A. Raghuramaraju. Vivekananda: Cosmopolitan Vedantic Philosopher?. Journal of World Philosophies, Indiana University. https://scholarworks.iu.edu/iupjournals/index.php/jwp/article/download/6328/550/28258",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Journal of World Philosophies, Indiana University",
+    "rights_or_access_note": "Publicly accessible page; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Vivekananda: Cosmopolitan Vedantic Philosopher?",
+    "url": "https://scholarworks.iu.edu/iupjournals/index.php/jwp/article/download/6328/550/28258"
+  },
+  "claim_ids": [
+    "2f6bb48d-e80d-4227-9821-949f47aad776",
+    "6b3b98a7-89ef-4cc9-8416-724f8c7d4c7c",
+    "b6190d9b-76ff-4fc1-bf4e-83ee5d2b7561",
+    "e512fd7d-4fa6-4281-be88-a2b1407932dd"
+  ],
+  "passages": [
+    {
+      "chunk_id": "23f2ba9b-21a3-48b2-bd96-86b10896d9fb",
+      "locator": "Vivekananda: Cosmopolitan Vedantic Philosopher?",
+      "text_sha256": "250be02220d6f1cacbe92aeada5f452506259d857de96b5c67314f96d2b33394",
+      "excerpt_preview": "a similar attempt to claim “immersive cosmopolitanism” in Krishnachandra Bhattacharyya. (4) In this carefully argued book, Medhananda maintains that Vivekananda is a sophisticated and original thinker and challenges the two prevailing inter",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9d29ae57-9323-46ff-8f66-a51fcaee528a",
+      "locator": "Vivekananda: Cosmopolitan Vedantic Philosopher?",
+      "text_sha256": "8cc97a01d67b31fe6071c4637ba87938dbc9ee5d422961bec3bf3f06991ead9a",
+      "excerpt_preview": "s the impact of Sen on Vivekananda (17). Further, it dissociates Vivekananda from Sankaracharya and his Advaita Vedānta on two substantial grounds. The chapter highlights Vivekananda’s teacher, Ramakrishna Paramahansa’s central role in Vive",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c20a5065-ffee-4594-b012-1bdfdae90b57",
+      "locator": "Vivekananda: Cosmopolitan Vedantic Philosopher?",
+      "text_sha256": "58b810413a92f99d0b152be945369d163bc716508854c5f2368ef34e6cbe6f0b",
+      "excerpt_preview": "itarian Integral Advaita philosophy” (88) is first detected by Sister Nivedita, the Irish-born schoolteacher who became a follower of Vivekananda. Pursuing the problem, the next chapter critically examines Vivekananda's vacillation between ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

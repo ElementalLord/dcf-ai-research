@@ -1,0 +1,288 @@
+[
+  {
+    "claim_id": "4a430925-c049-4438-a455-b4c2d2c2acaf",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "The Order's biography says the Dakshineswar temple garden built by Rani Rasmani, centred on Kali as Bhavatarini, was dedicated on 31 May 1855, and that Ramakrishna came to it with his elder brother Ramkumar, who was appointed priest of the Kali temple.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Order's biography says the Dakshineswar temple garden built by Rani Rasmani, centred on Kali as Bhavatarini, was dedicated on 31 May 1855, and that Ramakrishna came to it with his elder brother Ramkumar, who was appointed priest of the Kali temple.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/kali.htm",
+        "locator": "lines 3, 10–11",
+        "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+        "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Order text directly gives the dedication date, founder, shrine dedication, and Ramkumar appointment. The wording already attributes the account.",
+    "original_source_inspected": true,
+    "material_limitation": "Retrospective institutional account; private and mystical events cannot be independently established from this source alone.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ecc7fc2c-617c-4f29-b365-462f1c4aa0cb",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "The Ramakrishna Order's biography says Gadadhar, later Ramakrishna, was born on 18 February 1836 at Kamarpukur, a village in Hooghly district, Bengal, to a devout brahmin family.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Ramakrishna Order's biography says Gadadhar, later Ramakrishna, was born on 18 February 1836 at Kamarpukur, a village in Hooghly district, Bengal, to a devout brahmin family.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/boyhood.htm",
+        "locator": "lines 5, 7, 13",
+        "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+        "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Order text directly supplies place, date, childhood name, and brahmin family context. This is its traditional biographical dating.",
+    "original_source_inspected": true,
+    "material_limitation": "Retrospective institutional account; private and mystical events cannot be independently established from this source alone.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "463a43cf-ce07-4734-afd1-f82d2875592b",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "The Order says that around November 1874 he was seized with a desire to learn the truth of Christianity and listened to the Bible read by the devotee Sambhu Charan Mallick, and then — it reports — had a vision of Christ as \"Love Incarnate\" embracing him.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Order says that around November 1874 he was seized with a desire to learn the truth of Christianity and listened to the Bible read by the devotee Sambhu Charan Mallick, and then — it reports — had a vision of Christ as \"Love Incarnate\" embracing him.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/christianity.htm",
+        "locator": "lines 3–7",
+        "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+        "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The chapter reports the date, Bible readings, and vision. The claim attributes the experience to the Order rather than establishing it independently.",
+    "original_source_inspected": true,
+    "material_limitation": "Retrospective institutional account; private and mystical events cannot be independently established from this source alone.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "6d6352c0-e4ed-4414-90a4-c290e54dfa4e",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "The Order says Totapuri, a wandering Advaita monk who may have been born in the Punjab, arrived at Dakshineswar toward the end of 1864; a scholarly reference entry places Ramakrishna's instruction by him in 1864 or 1865.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Nikhilananda's Ramakrishna Order biography dates Totapuri's arrival at Dakshineswar to late 1864 and says he was perhaps born in Punjab.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/totapuri.htm",
+        "locator": "lines 2–3",
+        "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+        "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The inspected chapter supports the Order's account; the separate scholarly reference mentioned in the original wording was not checked for this decision, so that clause is removed.",
+    "original_source_inspected": true,
+    "material_limitation": "Retrospective institutional account; private and mystical events cannot be independently established from this source alone.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "71062ea0-f9bd-4671-9b10-a7e4027d10c6",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "In Ramakrishna's later account as the Order records it, longing for a vision of the Mother grew so unbearable that he seized the temple sword to end his life, and at that moment \"the blessed Mother revealed Herself\"; this is a reported mystical experience, not independently attested.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In Ramakrishna's later account as the Order records it, longing for a vision of the Mother grew so unbearable that he seized the temple sword to end his life, and at that moment \"the blessed Mother revealed Herself\"; this is a reported mystical experience, not independently attested.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/the_first_vision.htm",
+        "locator": "lines 13–15",
+        "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+        "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Nikhilananda explicitly presents Ramakrishna's later first-person recollection, including the sword and reported vision. The wording marks it as reported and not independently attested.",
+    "original_source_inspected": true,
+    "material_limitation": "Retrospective institutional account; private and mystical events cannot be independently established from this source alone.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d3d4217a-a201-414d-934a-6dab91650ba1",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "In the Order's account, a Bhairavi Brahmani, a woman adept in Tantric and Vaishnava worship who arrived at Dakshineswar around 1861, told him that his visions and ecstasies were not madness — \"you are mad for God\" — and named his state mahabhava, the exalted rapture of divine love.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The Ramakrishna Order's account says a Bhairavi Brahmani skilled in Tantric and Vaishnava practice reassured Ramakrishna about his visions, described his state as mahabhava, and later became his guru.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/the_brahmani.htm",
+        "locator": "lines 3–5, 20–21",
+        "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+        "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The chapter directly supports the encounter and reported interpretation. An exact arrival year is not given on this page, so the date was removed.",
+    "original_source_inspected": true,
+    "material_limitation": "Retrospective institutional account; private and mystical events cannot be independently established from this source alone.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "f4e89c5c-b9bc-4327-abf5-44136177a80e",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "The Order says that from the end of 1866 he practised Islam under a Muslim guru — dressing as a Muslim, repeating the name of Allah and giving up temple visits — and after three days reportedly saw a radiant figure, perhaps Muhammad.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Order says that from the end of 1866 he practised Islam under a Muslim guru — dressing as a Muslim, repeating the name of Allah and giving up temple visits — and after three days reportedly saw a radiant figure, perhaps Muhammad.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/islam.htm",
+        "locator": "lines 2–4",
+        "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+        "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The chapter directly states the late-1866 practice, Muslim guide, changed observances, three-day period, and vision; its own 'perhaps' is retained.",
+    "original_source_inspected": true,
+    "material_limitation": "Retrospective institutional account; private and mystical events cannot be independently established from this source alone.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "c387e462-e053-47bb-8ea0-b641a90acb46",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "The Order says that at Cossipore Ramakrishna gave the ochre cloth of the sannyasi to his young disciples and Girish, and that \"the Master himself laid the foundation of the future Ramakrishna Order of monks\".",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Order says that at Cossipore Ramakrishna gave the ochre cloth of the sannyasi to his young disciples and Girish, and that \"the Master himself laid the foundation of the future Ramakrishna Order of monks\".",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/last_days.htm",
+        "locator": "lines 22–23",
+        "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+        "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Order narrative directly reports the ochre cloth and interprets it as laying the monastic order's foundation. This is an attributed institutional account.",
+    "original_source_inspected": true,
+    "material_limitation": "Retrospective institutional account; private and mystical events cannot be independently established from this source alone.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ad245e15-54a5-4b4c-9032-2a28bbb95cb5",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "The Order reports that at Cossipore, in samadhi, Ramakrishna wept and told Narendra, \"Today I have given you my all and I am now only a poor fakir\"; this is traditional narrative about a spiritual transmission that scholars describe as resting on official accounts.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The Ramakrishna Order's account says Ramakrishna told Narendra at Cossipore that he had given him all he possessed spiritually; the account presents this as a transmission during samadhi.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/last_days.htm",
+        "locator": "lines 37–38",
+        "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+        "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The inspected chapter records the speech and interpretation. The original's assertion about scholars and official accounts was not verified here and is omitted.",
+    "original_source_inspected": true,
+    "material_limitation": "Retrospective institutional account; private and mystical events cannot be independently established from this source alone.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "db679fec-a8ef-41cd-a1d9-a1138b0d2d01",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "The Order says the Brahmani proclaimed him an Incarnation of God, and that the Vaishnava leader Vaishnavcharan, at a scholars' conference convened by Mathur Babu, agreed that his experience of mahabhava signalled a rare manifestation of God in a man; Ramakrishna is reported to have felt relief that \"it is not a disease\".",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Order says the Brahmani proclaimed him an Incarnation of God, and that the Vaishnava leader Vaishnavcharan, at a scholars' conference convened by Mathur Babu, agreed that his experience of mahabhava signalled a rare manifestation of God in a man; Ramakrishna is reported to have felt relief that \"it is not a disease\".",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/the_brahmani.htm",
+        "locator": "lines 7–13",
+        "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+        "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The text directly reports the Brahmani's avatar proclamation, Vaishnavcharan's agreement, and Ramakrishna's reported response; all are attributed.",
+    "original_source_inspected": true,
+    "material_limitation": "Retrospective institutional account; private and mystical events cannot be independently established from this source alone.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "e33d7beb-875d-489b-958d-ac717133982f",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "The Order's biography says Ramakrishna married Sarada, a little girl of five from Jayrambati, in an early marriage that was in the nature of a betrothal, and that it \"remained for ever unconsummated\"; a scholarly reference entry makes the same statement.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Nikhilananda's Ramakrishna Order biography says Ramakrishna married Saradamani of Jayrambati when she was five and describes their marriage as permanently unconsummated.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/marriage.htm",
+        "locator": "lines 3–5",
+        "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+        "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Order chapter supports the description. The original's claim of scholarly corroboration was not verified for this decision and is removed; the private-life assertion remains explicitly attributed.",
+    "original_source_inspected": true,
+    "material_limitation": "Retrospective institutional account; private and mystical events cannot be independently established from this source alone.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "e76a77c7-134b-4723-92c7-2af6224bd1b1",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "The Order says that a few months after Sarada joined him at Dakshineswar in 1872 he arranged a special worship of the Divine Mother and seated Sarada herself as the living image; both reportedly went into samadhi, and the Order presents their bond as a spiritual companionship.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Order says that a few months after Sarada joined him at Dakshineswar in 1872 he arranged a special worship of the Divine Mother and seated Sarada herself as the living image; both reportedly went into samadhi, and the Order presents their bond as a spiritual companionship.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/relation_with_wife.htm",
+        "locator": "lines 3, 8–11",
+        "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+        "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The chapter reports Sarada's 1872 arrival, the worship ceremony, the reported samadhi, and the Order's spiritual interpretation. The wording preserves attribution.",
+    "original_source_inspected": true,
+    "material_limitation": "Retrospective institutional account; private and mystical events cannot be independently established from this source alone.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "9a849445-4c16-4ef2-bf13-c514db5f9a9c",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Ramakrishna is quoted saying that after Totapuri left he remained for six months in a state of absolute identity with Brahman, unaware of day and night; this is a reported mystical state recorded by the Order and not independently verifiable.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramakrishna is quoted saying that after Totapuri left he remained for six months in a state of absolute identity with Brahman, unaware of day and night; this is a reported mystical state recorded by the Order and not independently verifiable.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/totapuris_lesson.htm",
+        "locator": "paragraph beginning 'After the departure of Totapuri'",
+        "source_authority": "Swami Nikhilananda's retrospective introduction to The Gospel of Sri Ramakrishna, hosted by the Ramakrishna Order; original chapter inspected 2026-10-19",
+        "independence_assessment": "Institutional devotional account; direct evidence for what the Order says, not independent corroboration of reported private or mystical events.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The chapter quotes Ramakrishna's reported six-month recollection. The wording correctly identifies an unverified subjective state.",
+    "original_source_inspected": true,
+    "material_limitation": "Retrospective institutional account; private and mystical events cannot be independently established from this source alone.",
+    "removal_reason": null
+  }
+]

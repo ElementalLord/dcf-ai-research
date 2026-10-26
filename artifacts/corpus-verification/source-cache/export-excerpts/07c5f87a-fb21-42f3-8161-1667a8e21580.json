@@ -1,0 +1,52 @@
+{
+  "source_id": "07c5f87a-fb21-42f3-8161-1667a8e21580",
+  "source": {
+    "author": "Pranab Mukherjee",
+    "authority_metadata": {
+      "verified_at": "2026-10-10T05:42:36.568Z"
+    },
+    "citation": "Pranab Mukherjee. Reminiscences of President Mukherjee on Dr. Kalam. President of India. https://presidentofindia.nic.in/pranab-mukherjee/press_releases/reminiscences-president-mukherjee-former-president-india-dr-apj",
+    "original_work_identity": {},
+    "publication_year": 2015,
+    "publisher_or_institution": "President of India",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Reminiscences of President Mukherjee on Dr. Kalam",
+    "url": "https://presidentofindia.nic.in/pranab-mukherjee/press_releases/reminiscences-president-mukherjee-former-president-india-dr-apj"
+  },
+  "claim_ids": [
+    "9149e2c7-e1b0-4f8d-ae12-8087ea828ec5",
+    "f2ab2000-f568-4827-8585-4eb2e12c1776",
+    "fc163414-ca60-4b85-99dd-5b7eb4e2c169"
+  ],
+  "passages": [
+    {
+      "chunk_id": "18cc5cf1-b91a-483c-a149-21d3e2733c9c",
+      "locator": "Presidential reception",
+      "text_sha256": "d48821f6f5491c6b74a684c3e453e64cfe9c94f6af01d29281d1cd5dfc30645b",
+      "excerpt_preview": "He was humble but had a mighty mind.He was the people’s President during his tenure as President and will continue to remain so in the hearts of people after his demise.No President was ever loved so much.Jawaharlal Nehru received a great d",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7bfc9e4f-0c2e-41c8-aef4-76af607e9de0",
+      "locator": "Pokhran-II, political briefing",
+      "text_sha256": "95b4a94bbb96f31d65c68c22b23d5711b33c0ff49465c90a7f17d9bb553a18b8",
+      "excerpt_preview": "Sonia Gandhi and a couple of others were present.The technical aspects of the tests at Pokhran II was explained by Dr. Kalam through an impressive presentation.Vajpayeeji, Ministers and other political leaders analysed it from the political",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d1be7b41-5efb-45c2-a801-2fdc1eb69809",
+      "locator": "Later years",
+      "text_sha256": "be929c064cd2530f9ad74acb9542f00affae0cfb0733394b88257a14a54bf582",
+      "excerpt_preview": "On his last visit, he presented me his book ‘Beyond 2020’.I was shocked when I heard the unexpected news of his demise.A sense of tremendous loss overwhelmed me.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

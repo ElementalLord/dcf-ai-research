@@ -1,0 +1,50 @@
+{
+  "source_id": "ea02b6f1-7cc5-4996-a911-130a02394a91",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Aranya Kanda 12. https://www.valmikiramayan.net/aranya/sarga12/aranya_12_prose.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana",
+    "rights_or_access_note": "Publicly accessible source; brief excerpts stored for research citation.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Aranya Kanda 12",
+    "url": "https://www.valmikiramayan.net/aranya/sarga12/aranya_12_prose.htm"
+  },
+  "claim_ids": [
+    "081bd946-edf4-4d82-91ae-296049ac7638",
+    "0865f774-32ec-4e67-b015-8790e3fabfcc",
+    "5455bf76-2459-46a0-b2fa-2b909c44b066"
+  ],
+  "passages": [
+    {
+      "chunk_id": "13eba931-6fe3-4009-bbc7-2eea959be5e6",
+      "locator": "Aranya Kanda 12",
+      "text_sha256": "987f9164bb6614c544a35230d6262ddd210ee8ca7ce37af1520af8a6b05fca9c",
+      "excerpt_preview": "Valmiki Ramayana - Aranya Kanda in ProseSarga 12 Rama, Lakshmana, and Seetha enter the hermitage of Sage Agastya. Sage Agastya is also waiting to receive Rama for along time, and now receives them with all honours, sagaciously perceiving Ra",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6f53ed14-78d7-4530-93d7-f9ab93d7d472",
+      "locator": "Aranya Kanda 12",
+      "text_sha256": "3dcf060cd5cc8f33b84e29789d8c1d16310f85f702ea860c0b5f0707be1e24b1",
+      "excerpt_preview": "lso waiting to receive Rama for along time, and now receives them with all honours, sagaciously perceiving Rama as Vishnu incarnate. Sage Agastya gives a divine bow of Vishnu, two quivers with ever replenishing with arrows, and a golden swo",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fe705ff6-9b92-44e3-81ea-86928728398c",
+      "locator": "Aranya Kanda 12",
+      "text_sha256": "873760afe9784e1ae4db9fb194064c1b54df18f21fadde35ff1ba0f5702fe265",
+      "excerpt_preview": ". Sage Agastya is also waiting to receive Rama for along time, and now receives them with all honours, sagaciously perceiving Rama as Vishnu incarnate. Sage Agastya gives a divine bow of Vishnu, two quivers with ever replenishing with arrow",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

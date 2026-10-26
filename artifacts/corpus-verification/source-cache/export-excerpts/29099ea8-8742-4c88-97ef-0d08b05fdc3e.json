@@ -1,0 +1,44 @@
+{
+  "source_id": "29099ea8-8742-4c88-97ef-0d08b05fdc3e",
+  "source": {
+    "author": "Rama Sundari Mantena",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Rama Sundari Mantena. The Portrait’s Journey: The Image, Social Communication and Martyr-Making in Colonial India. Journal of Asian Studies, Cambridge University Press. https://www.cambridge.org/core/journals/journal-of-asian-studies/article/abs/portraits-journey-the-image-social-communication-and-martyrmaking-in-colonial-india/757F7B655EF06985845A802674B0112D1",
+    "original_work_identity": {},
+    "publication_year": 2011,
+    "publisher_or_institution": "Journal of Asian Studies, Cambridge University Press",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "The Portrait’s Journey: The Image, Social Communication and Martyr-Making in Colonial India",
+    "url": "https://www.cambridge.org/core/journals/journal-of-asian-studies/article/abs/portraits-journey-the-image-social-communication-and-martyrmaking-in-colonial-india/757F7B655EF06985845A802674B0112D1"
+  },
+  "claim_ids": [
+    "2554aa4b-cb95-45bc-92db-641c6f354051",
+    "4519638c-b52a-47e1-a7aa-04c6cdebbbd3",
+    "7f1b9c25-a363-4c21-ba36-8902649b2a85"
+  ],
+  "passages": [
+    {
+      "chunk_id": "5f9e3e6b-b2f8-4f8b-a5bc-eebd1df4bef0",
+      "locator": "distinctive-hatted portrait",
+      "text_sha256": "47299272550bb94f68386c79e3e088c737eba54352ca090c6c01f8483c19abba",
+      "excerpt_preview": "he study describes Bhagat Singh’s distinctive-hatted portrait as revolutionary propaganda that became a widely recognizable icon of defiant nationalism and imperial injustice.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e6d5e79c-f52f-4748-b1cc-9b2c3edcf704",
+      "locator": "posters, stickers and placards",
+      "text_sha256": "c639af6c18fd4f5fb46d3eef7058c01a20cdeefaa11c06973f84cccc51191f61",
+      "excerpt_preview": "Its later circulation on posters, stickers and placards shows that visual memory has often detached the image from the complexity of his writing, organizations and political development.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

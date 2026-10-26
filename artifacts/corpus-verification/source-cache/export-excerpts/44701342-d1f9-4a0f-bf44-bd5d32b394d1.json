@@ -1,0 +1,32 @@
+{
+  "source_id": "44701342-d1f9-4a0f-bf44-bd5d32b394d1",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "The Nobel Prize in Physics 1930. NobelPrize.org. https://www.nobelprize.org/prizes/physics/1930/summary/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "NobelPrize.org",
+    "rights_or_access_note": "Publicly accessible research excerpt only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "The Nobel Prize in Physics 1930",
+    "url": "https://www.nobelprize.org/prizes/physics/1930/summary/"
+  },
+  "claim_ids": [
+    "e466ae04-771e-44b0-b5f2-19e4fc7b7d8b"
+  ],
+  "passages": [
+    {
+      "chunk_id": "3c01fb33-a237-49b6-8d44-b34f8d4f562e",
+      "locator": "The Nobel Prize in Physics 1930",
+      "text_sha256": "3d5a4a2f6b307d47ceb565ca1114ea072a1f6503f7a800fa57ec991a2b381d13",
+      "excerpt_preview": "a Raman Presentation Speech <img src=\"https://www.nobelprize.org/images/raman-12972-portrait-medium.jpg\" alt=\"Sir Chandrasekhara Venkata Raman\" />Photo from the Nobel Foundation archive. Sir Chandrasekhara Venkata Raman Prize share: 1/1 The",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,55 @@
+{
+  "source_id": "97041519-fa56-4075-9e3d-94ed0879c7d8",
+  "source": {
+    "author": "Bhagat Singh and Batukeshwar Dutt",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Bhagat Singh and Batukeshwar Dutt. Statement in the Assembly Bomb Case. Marxists Internet Archive transcription. https://www.marxists.org/archive/bhagat-singh/1929/06/06.htm",
+    "original_work_identity": {},
+    "publication_year": 1929,
+    "publisher_or_institution": "Marxists Internet Archive transcription",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Statement in the Assembly Bomb Case",
+    "url": "https://www.marxists.org/archive/bhagat-singh/1929/06/06.htm"
+  },
+  "claim_ids": [
+    "01a0d410-b39f-4d91-a3a9-76919805ef6b",
+    "216db6a7-61d4-4e00-922e-757c5af28ade",
+    "29d44a29-fbe8-431f-be19-2b6b7ee43ea7",
+    "50b30405-a5e4-4775-bf8b-50f7e38a8bc8",
+    "7ab5b189-db96-4337-b8b0-e4f5e11c4c66",
+    "b026825d-f4d8-4e66-8785-a70614fbf71b"
+  ],
+  "passages": [
+    {
+      "chunk_id": "03b687ee-e7ba-40f2-a7cb-1723d23b936e",
+      "locator": "8 April 1929",
+      "text_sha256": "29d933490de44f948608d7154fa2bb0fc8f48f92b5345b8211d131eddfcb6180",
+      "excerpt_preview": "hagat Singh and Batukeshwar Dutt stated that they threw bombs in the Central Legislative Assembly on 8 April 1929 in protest against repressive bills and to make the deaf hear.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "696ff3c2-f3ab-4bb7-b942-c253f20184be",
+      "locator": "propaganda by deed",
+      "text_sha256": "23773ff1d2f07a6452a3cc73948277dcbcafa95fa55f60e4c25e8d58748a5b6c",
+      "excerpt_preview": "The statement presents the action as propaganda by deed and connects revolution to an end of exploitation, while accepting responsibility for the act.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c7d89946-e53a-4240-8d40-56a80b2cdb06",
+      "locator": "not intended to kill",
+      "text_sha256": "15220afd85433c81e5f1656d78354b143ad16e3205f974461f2f412a5d24b3de",
+      "excerpt_preview": "They said the bombs were not intended to kill and had been thrown in empty spaces after care to avoid casualties.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

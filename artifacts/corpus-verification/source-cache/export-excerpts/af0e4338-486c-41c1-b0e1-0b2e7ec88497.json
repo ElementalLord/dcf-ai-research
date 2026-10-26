@@ -1,0 +1,32 @@
+{
+  "source_id": "af0e4338-486c-41c1-b0e1-0b2e7ec88497",
+  "source": {
+    "author": "Nandini Chatterjee",
+    "authority_metadata": {},
+    "citation": "Nandini Chatterjee. Invaders: Marathas and the British. Cambridge University Press, Negotiating Mughal Law. https://www.cambridge.org/core/books/negotiating-mughal-law/invaders-marathas-and-the-british/6DEDEB745C48491604CD838677FF0C2E",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Cambridge University Press, Negotiating Mughal Law",
+    "rights_or_access_note": "Publicly accessible research excerpt only.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Invaders: Marathas and the British",
+    "url": "https://www.cambridge.org/core/books/negotiating-mughal-law/invaders-marathas-and-the-british/6DEDEB745C48491604CD838677FF0C2E"
+  },
+  "claim_ids": [
+    "e69af90a-8b8c-42aa-9c29-8d46d30e6b6e"
+  ],
+  "passages": [
+    {
+      "chunk_id": "00d6451a-be7b-4498-9a63-366b665d7678",
+      "locator": "Invaders: Marathas and the British",
+      "text_sha256": "1d2043ef650c59495c56c0a7aebfe7e8ea4343272a5b3b2b5e5956c7e2cbce08",
+      "excerpt_preview": "In 1656, around the same time that Purshottam Das was picking up the family mantle, Shivaji, the ambitious son of a high-ranking noble of Bijapur, offered his services to the equally ambitious Mughal prince, Aurangzeb.Footnote 1 Bijapur was",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

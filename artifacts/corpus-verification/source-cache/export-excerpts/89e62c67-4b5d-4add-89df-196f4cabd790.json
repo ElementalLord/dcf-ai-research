@@ -1,0 +1,44 @@
+{
+  "source_id": "89e62c67-4b5d-4add-89df-196f4cabd790",
+  "source": {
+    "author": "Chikayoshi Nomura",
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Chikayoshi Nomura. The House of Tata Meets the Second Industrial Revolution. Springer. https://link.springer.com/book/10.1007/978-981-10-8678-6",
+    "original_work_identity": {},
+    "publication_year": 2018,
+    "publisher_or_institution": "Springer",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "The House of Tata Meets the Second Industrial Revolution",
+    "url": "https://link.springer.com/book/10.1007/978-981-10-8678-6"
+  },
+  "claim_ids": [
+    "582c495e-06a3-43a2-a894-9b4819a1519f",
+    "8260c1de-98a0-4adc-9898-ee2e17932220"
+  ],
+  "passages": [
+    {
+      "chunk_id": "8360b107-d447-4659-a6c2-10189e640f1c",
+      "locator": "capital-intensive industry",
+      "text_sha256": "2bbfdd24856c784d37e4c26eceaeb80aeb18b1c098e1541b7ef46c38e8d1e4f1",
+      "excerpt_preview": "The book places the Tata enterprise within the Second Industrial Revolution and colonial India, where capital-intensive industry depended on institutions, expertise and relations with the state.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "eda1a4d3-e938-4725-b0f5-0de4be765f2b",
+      "locator": "corporate-level institutional responses",
+      "text_sha256": "fa2f0961ab8d1d1bbbb20c4728de85455bc273e1a50f7989157986a64719d20e",
+      "excerpt_preview": "It argues that colonial industrial growth cannot be explained only by government policy or factor endowment; corporate-level institutional responses also mattered.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -15,7 +15,7 @@ export default async function ExplorePage({ searchParams }: { searchParams: Prom
   const discovery = getDiscoveryPeople();
   const byId = new Map(people.map((person) => [person.id, person]));
   return (
-    <main className="explore-shell explore-page">
+    <main className="explore-shell">
       <header className="explore-intro">
         <h1>Explore the collection</h1>
         <p>{people.length} people, with the sources behind approved claims. Search by name, role, or idea, or browse the collection.</p>

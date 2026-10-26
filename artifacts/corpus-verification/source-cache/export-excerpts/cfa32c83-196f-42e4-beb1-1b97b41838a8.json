@@ -1,0 +1,44 @@
+{
+  "source_id": "cfa32c83-196f-42e4-beb1-1b97b41838a8",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "The Indian Revolt: Gwalior report, 31 July 1858. The Leader; Nineteenth-Century Serials Edition, King's College London. https://ncse.ac.uk/periodicals/l/issues/cld_31071858/page/6/",
+    "original_work_identity": {},
+    "publication_year": 1858,
+    "publisher_or_institution": "The Leader; Nineteenth-Century Serials Edition, King's College London",
+    "rights_or_access_note": "Short public-domain original archive transcript snapshot checked on 2026-10-11; runtime access intermittent.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "The Indian Revolt: Gwalior report, 31 July 1858",
+    "url": "https://ncse.ac.uk/periodicals/l/issues/cld_31071858/page/6/"
+  },
+  "claim_ids": [
+    "5ac75373-a99a-4554-81de-a180fa162527",
+    "880073e5-70ca-408a-be1e-5e2a5a9daa7f",
+    "e02aa4d4-9b4d-4ec9-8eef-e8fb6619480e"
+  ],
+  "passages": [
+    {
+      "chunk_id": "267cc8d4-abb7-4527-bc6e-91c694a25a37",
+      "locator": "p. 734; Gwalior report; archive transcript",
+      "text_sha256": "63e9cedbd6384a426fc93320580fa0bab985121ac12540c412580e5076ec6960",
+      "excerpt_preview": "On the 17 th, four guns were taken by the Seepree Brigade. On the 18 th, the Ranee of Jhansi was killed. On the 19 th, the town and palace of Gwalior were taken by Sir Hugh Rose.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "397f5fc7-98d3-4bef-9eea-d57de43f6562",
+      "locator": "p. 734; Gwalior report",
+      "text_sha256": "7a5975c3b575576dd31cfa57b37b65b606cb73a296d32b777dd2f803bfe0b1e0",
+      "excerpt_preview": "On the 19 th, the town and palace of Gwalior were taken by Sir Hugh Rose. On the 20 th of June, Sir Hugh Rose and Sir Robert Hamilton conducted the Maharajah of Gwalior to his palace.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

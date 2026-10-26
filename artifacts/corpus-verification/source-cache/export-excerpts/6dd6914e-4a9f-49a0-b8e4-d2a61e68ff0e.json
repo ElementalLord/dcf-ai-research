@@ -1,0 +1,43 @@
+{
+  "source_id": "6dd6914e-4a9f-49a0-b8e4-d2a61e68ff0e",
+  "source": {
+    "author": "Steven E. Lindquist",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Steven E. Lindquist. The Literary Life of Yājñavalkya (publisher’s description). State University of New York Press. https://sunypress.edu/Books/T/The-Literary-Life-of-Yajnavalkya",
+    "original_work_identity": {},
+    "publication_year": 2023,
+    "publisher_or_institution": "State University of New York Press",
+    "rights_or_access_note": "Publisher’s summary of the monograph, not the monograph’s own argument in full.",
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "The Literary Life of Yājñavalkya (publisher’s description)",
+    "url": "https://sunypress.edu/Books/T/The-Literary-Life-of-Yajnavalkya"
+  },
+  "claim_ids": [
+    "644a190e-2f41-4176-9d31-946f006cef47",
+    "d826ff8d-dd8e-4437-8bdf-285f715e9aa7"
+  ],
+  "passages": [
+    {
+      "chunk_id": "84c30d23-6ebc-4a1a-ab79-59310e1d9383",
+      "locator": "Publisher’s description",
+      "text_sha256": "c35548e52ca32ab3d40f437914c7dd45f571525f4bbf4b38e571ffa46b4914bd",
+      "excerpt_preview": "Throughout early Indian history, he was seen as a priestly bearer of ritual authority, a sage of mystical knowledge, and an innovative propagator of philosophical ideas and religious law. Drawing on history, literary studies, ritual studies",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9a5b6607-946d-4402-9236-26f13bb066aa",
+      "locator": "Publisher’s description",
+      "text_sha256": "15c58b1ed27e8ed59ecd21bf21ba2a99aaef768158172807514e46d678920478",
+      "excerpt_preview": "In this fascinating study, Steven E. Lindquist investigates the intersections between historical context and literary production in the \"life\" of Yājñavalkya, the most important ancient Indian literary figure prior to the Buddha. Known for ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

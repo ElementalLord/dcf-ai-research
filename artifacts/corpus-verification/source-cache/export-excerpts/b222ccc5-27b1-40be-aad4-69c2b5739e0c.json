@@ -1,0 +1,34 @@
+{
+  "source_id": "b222ccc5-27b1-40be-aad4-69c2b5739e0c",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:34.322Z"
+    },
+    "citation": "Cultural Harmony and Peace Summit Address. President of India. https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-international-summit-towards-cultural-harmony-and-peace",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "President of India",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Cultural Harmony and Peace Summit Address",
+    "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-international-summit-towards-cultural-harmony-and-peace"
+  },
+  "claim_ids": [
+    "a4bc7ccd-8b5d-4c42-8aa6-d1141561f909"
+  ],
+  "passages": [
+    {
+      "chunk_id": "b44115e5-6d4a-461c-9026-bb89e7dcfd18",
+      "locator": "Presidential speech",
+      "text_sha256": "81bf9c08af7a7a6d67f89c5a35c614a35ca37a52783d2c95b97bbfc42a7e3361",
+      "excerpt_preview": "of India that is in need of social and economic development in an ambience of peace and harmony. India has a road map, our national dream, India Vision 2020. This encompasses five important areas relevant and vitally important to bring in s",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

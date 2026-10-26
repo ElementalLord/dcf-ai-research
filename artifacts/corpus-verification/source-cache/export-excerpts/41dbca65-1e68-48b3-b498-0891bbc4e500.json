@@ -1,0 +1,41 @@
+{
+  "source_id": "41dbca65-1e68-48b3-b498-0891bbc4e500",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Narendra. The Gospel of Sri Ramakrishna, introduction. https://www.ramakrishnavivekananda.info/gospel/introduction/narendra.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "The Gospel of Sri Ramakrishna, introduction",
+    "rights_or_access_note": "Publicly accessible page; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Narendra",
+    "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/narendra.htm"
+  },
+  "claim_ids": [
+    "482ff677-5592-42dc-9535-58df0bf92a74",
+    "f74beb5d-180c-4fa5-b45a-2edaa3fa46a4"
+  ],
+  "passages": [
+    {
+      "chunk_id": "a509984e-dca4-4336-8435-e62a0b07e84a",
+      "locator": "Narendra",
+      "text_sha256": "9d77a67264e6a4d1c606a1cd508b91648cf9e6dc09f700a9ef096ae4bf888a51",
+      "excerpt_preview": "an saying that he had seen God. But he could not reconcile these words of the Master with the scene that had taken place on the verandah only a few minutes before. He concluded that Sri Ramakrishna was a monomaniac, and returned home rather",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f7915d41-0470-47c2-a568-c0409980dcda",
+      "locator": "Narendra",
+      "text_sha256": "228f6865d5cae46110ab99c45fe34a02d21f7c82e08c0f9d89fe0e8e2484f82f",
+      "excerpt_preview": "ho wants to see God? People shed jugs of tears for money, wife, and children. But if they would weep for God for only one day they would surely see Him.\" Narendra was amazed. These words he could not doubt. This was the first time he had ev",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

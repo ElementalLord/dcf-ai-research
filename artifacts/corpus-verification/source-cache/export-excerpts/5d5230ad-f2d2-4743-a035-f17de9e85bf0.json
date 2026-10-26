@@ -1,0 +1,50 @@
+{
+  "source_id": "5d5230ad-f2d2-4743-a035-f17de9e85bf0",
+  "source": {
+    "author": "Swami Vivekananda",
+    "authority_metadata": {},
+    "citation": "Swami Vivekananda. The Goal and Methods of Realisation. Complete Works of Swami Vivekananda. https://www.ramakrishnavivekananda.info/vivekananda/volume_5/notes_from_lectures_and_discourses/the_goal_and_the_methods_of_realisation.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Complete Works of Swami Vivekananda",
+    "rights_or_access_note": "Publicly accessible page; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "The Goal and Methods of Realisation",
+    "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_5/notes_from_lectures_and_discourses/the_goal_and_the_methods_of_realisation.htm"
+  },
+  "claim_ids": [
+    "1cf56550-d437-4567-9ef5-a80651ea01b8",
+    "4fd7f213-48ea-4b34-af2b-87d668587677",
+    "e9fea8f1-1884-4e90-8c42-7aa3d43a57c2"
+  ],
+  "passages": [
+    {
+      "chunk_id": "601b4119-47c0-431a-affa-b974421710bb",
+      "locator": "The Goal and Methods of Realisation",
+      "text_sha256": "ec6f126a7d4debee5cc85a197004ee5536edac09d8a34f6ab28d85c152f9f6c8",
+      "excerpt_preview": "ching it are called Yoga, a word derived from the same Sanskrit root as the English \"yoke\", meaning \"to join\", to join us to our reality, God. There are various such Yogas, or methods of union — but the chief ones are — Karma-Yoga, Bhakti-Y",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a3abb0e5-fa55-44e0-819f-7e36b62bf478",
+      "locator": "The Goal and Methods of Realisation",
+      "text_sha256": "2e1de68d237cfc9d0040bdcbec84d3c43bdef4e967534e92824e4a4a01f687b3",
+      "excerpt_preview": "Yoga — The realisation of the divinity through the control of mind. (4) Jnana-Yoga — The realisation of a man's own divinity through knowledge. These are all different roads leading to the same centre — God. Indeed, the varieties of religio",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a9846518-4525-41c8-8af2-f50eb2256072",
+      "locator": "The Goal and Methods of Realisation",
+      "text_sha256": "74304806c8c9f09013e16aa7ee40666db3cf4f4ad2e9311e45e0d9efb3a154f8",
+      "excerpt_preview": "according to his own nature. As every science has its methods, so has every religion. The methods of attaining the end of religion are called Yoga by us, and the different forms of Yoga that we teach, are adapted to the different natures an",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

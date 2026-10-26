@@ -1,0 +1,32 @@
+{
+  "source_id": "cccfee3c-e8f5-488c-b532-22a98713d129",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Papers of Srinivasa Ramanujan: archival inventory. Trinity College Library, Cambridge. https://archives.trin.cam.ac.uk/index.php/papers-of-srinivasa-ramanujan/informationobject/inventory",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Trinity College Library, Cambridge",
+    "rights_or_access_note": "Publicly accessible research excerpt only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Papers of Srinivasa Ramanujan: archival inventory",
+    "url": "https://archives.trin.cam.ac.uk/index.php/papers-of-srinivasa-ramanujan/informationobject/inventory"
+  },
+  "claim_ids": [
+    "7c330666-9cb3-435d-9a8f-88a50db447c7"
+  ],
+  "passages": [
+    {
+      "chunk_id": "4e0f2f8c-c8a8-4d5a-89ba-294018777f83",
+      "locator": "Papers of Srinivasa Ramanujan: archival inventory",
+      "text_sha256": "5a8fff48303daffa1a0ed0159c591f76c4b5a19ad8316ec3d923636731a96f40",
+      "excerpt_preview": "le n.d. View Add 9 displayed formulae for preparation as slides Item n.d. View Add 13 S. Ramanujan: ‘Properties of p(n) and τ(n)’ File View Add 14 Letter by Ramanujan on mock theta functions File 12 Jan 1920 View Add 15 The so-called Lost N",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

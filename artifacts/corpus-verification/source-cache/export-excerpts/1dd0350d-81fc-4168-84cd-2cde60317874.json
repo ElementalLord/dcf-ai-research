@@ -1,0 +1,62 @@
+{
+  "source_id": "1dd0350d-81fc-4168-84cd-2cde60317874",
+  "source": {
+    "author": "F. Max Müller",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "F. Max Müller. Ramakrishna: His Life and Sayings. Charles Scribner's Sons (first edition Longmans, London, November 1898); Internet Archive scan. https://archive.org/download/rmakrishnahisl00mliala/rmakrishnahisl00mliala.pdf",
+    "original_work_identity": {},
+    "publication_year": 1899,
+    "publisher_or_institution": "Charles Scribner's Sons (first edition Longmans, London, November 1898); Internet Archive scan",
+    "rights_or_access_note": "Public-domain 1899 edition; OCR text layer garbles some Bengali and Sanskrit names.",
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "Ramakrishna: His Life and Sayings",
+    "url": "https://archive.org/download/rmakrishnahisl00mliala/rmakrishnahisl00mliala.pdf"
+  },
+  "claim_ids": [
+    "10d60574-26c1-4d5d-98c8-0284d29ea5be",
+    "4f33bfc4-3624-4e0b-9a1e-cbc3e0061f7f",
+    "5aea2401-ccea-467f-b4fa-fc1db8d70fed",
+    "709e10d2-155a-4bd4-b9c6-a056abe759e5",
+    "99e0a864-3b8d-469e-81ad-3f435b7b2490"
+  ],
+  "passages": [
+    {
+      "chunk_id": "019e6740-f9d8-4183-83a3-7d6f53c488e9",
+      "locator": "Müller 1898, Ramakrishna's life",
+      "text_sha256": "55d8ea571fd426c523a6086b178b10f698389d14515bdef3c9f1a884f953787e",
+      "excerpt_preview": "We possess indeed full accounts of his life, but they are often so strangely exaggerated, nay so contradictory, that it seemed almost hopeless to form a correct and true idea of his earthly career and his character. I applied therefore to o",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "02dda01e-82a9-452f-b67c-67f18f7dcd08",
+      "locator": "Müller 1898, Mozoomdar's judgement",
+      "text_sha256": "256bbb9484fc3e928c2201185a33feae5110d35e7f1ec08e013d6a33cd1cdb94",
+      "excerpt_preview": "For all that, he was, as you say, a real Mahatman, and I would not with- draw a single word I wrote in his praise. Ramakr/shna was not in the least a Vedantist, except that every Hindu uncon- sciously imbibes from the atmosphere around some",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "79067bb0-5a81-40c8-8acc-2410326cfa7e",
+      "locator": "Müller 1898, Remarks on Ramakrishna's life",
+      "text_sha256": "8f248cb4b5ee1a350f44337da59b2114046af5edf4f9eddfe0e3fb4b6d9c7866",
+      "excerpt_preview": "Yet we can hardly fail to see the first beginnings of the ravages which the Dialogic Process works even in the first generation. Given his own veneration for his departed master, there is a natural unwillingness, nay, an incapability, to be",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ee59e810-51ff-4b40-86ea-c2b282eea114",
+      "locator": "Müller 1898, Ramakrishna's influence on Keshub",
+      "text_sha256": "b7baf2bb41dd4239c6de2164f9b50a5eb545b046f031e657fc452875e1e5c42f",
+      "excerpt_preview": "F 2 68 THE LIFE AND SAYINGS OF RAMAK/2/SHJVA. It would be a real help in judging of Keshub Chunder Sen if we knew that to quote the words of Mozoomdar ' his association with Ramakrzsha developed the conception of the Motherhood of God'; or,",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

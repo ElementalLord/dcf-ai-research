@@ -1,0 +1,61 @@
+{
+  "source_id": "ce8e069e-8c61-45b0-83f3-e95a0bbbab55",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "M. S. Subbulakshmi: Sangeet Natak Akademi Fellow citation. Sangeet Natak Akademi. https://sangeetnatak.gov.in/public/uploads/awardees/docs/1749450913_1741156983_M.%20S.%20Subalakshmi.pdf",
+    "original_work_identity": {},
+    "publication_year": 1974,
+    "publisher_or_institution": "Sangeet Natak Akademi",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "M. S. Subbulakshmi: Sangeet Natak Akademi Fellow citation",
+    "url": "https://sangeetnatak.gov.in/public/uploads/awardees/docs/1749450913_1741156983_M.%20S.%20Subalakshmi.pdf"
+  },
+  "claim_ids": [
+    "691b7a2e-fc9e-4644-aae8-b2fc27d1537f",
+    "75243eba-d626-46a9-b6b0-79b64535ad22",
+    "bcf9d004-3339-49e3-b9aa-b86a1319c7cc",
+    "fd18b892-6c50-4eaa-a4fb-75be9c5ce577"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0b84bf66-73aa-4e30-9cd9-1060d3bcfdaf",
+      "locator": "Fellow citation",
+      "text_sha256": "7d9f920fd2e40e6c61b6eedac861ffa7262bbc300e6271843fcdc3add918f051",
+      "excerpt_preview": "was launched on her music career Quite early in life and she has for well-nigh four decades now been among the front rank musicians of the country. She is known both for her mellifluous presentation of ragas and her chaste diction. Her rend",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "3a47c782-6617-4a17-abea-929cd8daefdb",
+      "locator": "Fellow citation",
+      "text_sha256": "405703e6d4741d550d456b2edf24206659aa527e9526c205934c593fcf8a5191",
+      "excerpt_preview": "She is known both for her mellifluous presentation of ragas and her chaste diction. Her rendition of devotional music in South Indian languages as well as in Hindi has won her a whole class of music-lovers. She has also acted in a few films",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "710fbc0c-0b8f-46bb-aa85-153fa0a8fd8e",
+      "locator": "Fellow citation",
+      "text_sha256": "b1ea56ab4c975b1d6f9f4b813ef0a22c0e27fb5bd15f9088208dd19792f72f94",
+      "excerpt_preview": "Subbulakshmi has, through the years, won world-wide recognition and acclaim. Born in 1916, M.S.-which is how she is endearingly referred to by her legion of admirers, received her training in Karnatak music from her mother, Shamu- gavadivu.",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8dec5da8-237a-478d-82fe-4f8f180f51eb",
+      "locator": "Fellow citation",
+      "text_sha256": "26c827a9294d3b623914a7125bb6825b65b96d819e0fdc11f5bdbc6a0053e698",
+      "excerpt_preview": "For her eminence in the field of Music and her con- tribution to its enrichment Smt. Subbulakshmi has been elected Fellow of the Sangeet Natak Akademi.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

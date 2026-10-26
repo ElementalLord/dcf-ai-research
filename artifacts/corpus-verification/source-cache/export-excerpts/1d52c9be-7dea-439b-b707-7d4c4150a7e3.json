@@ -1,0 +1,50 @@
+{
+  "source_id": "1d52c9be-7dea-439b-b707-7d4c4150a7e3",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Yuddha Kanda 105. https://www.valmikiramayan.net/utf8/yuddha/sarga105/yuddha_105_prose.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana",
+    "rights_or_access_note": "Publicly accessible source; brief excerpts stored for research citation.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Yuddha Kanda 105",
+    "url": "https://www.valmikiramayan.net/utf8/yuddha/sarga105/yuddha_105_prose.htm"
+  },
+  "claim_ids": [
+    "14de1694-1ebd-47e5-ba59-623c2322f47e",
+    "7c148ec2-831d-4ab1-9252-b04a2c447b44",
+    "d2e0b38f-e61e-4ead-8344-fa44f6406716"
+  ],
+  "passages": [
+    {
+      "chunk_id": "22da4e05-31b2-447f-b6f7-fa8911b14689",
+      "locator": "Yuddha Kanda 105",
+      "text_sha256": "2bceadf594593803189c53f9d973f3438f8c25854ad116933380b03b649b3e73",
+      "excerpt_preview": "iculties; in the woods or in times of peril, comes to grief. Worship this sun-god, the lord of the universe and the god of all gods with undivided attention. Muttering this praise three times, you will come out victorious in battles.\" \"You ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6d6ab330-769c-421f-94ed-da7aeac202d7",
+      "locator": "Yuddha Kanda 105",
+      "text_sha256": "d04bcf4eb6a6cfc615287c74da78a2de026a8afa988f8e03237010529178d5c5",
+      "excerpt_preview": "Valmiki Ramayana - Yuddha Kanda in Prose Sarga 105 Sage Agastya advises Rama to recite the ' Aditya Hridaya', a collection of verses in praise of the sun-god, with a view to gaining victory. - - - - Approaching Rama standing absorbed in fig",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7a302e4f-761e-4af0-a94e-5dff994eb6f3",
+      "locator": "Yuddha Kanda 105",
+      "text_sha256": "41db9bab48c764d385b9eadc8b7e6b9be6babfcd1bacd8d535f165fe22230525",
+      "excerpt_preview": "ses in praise of the sun-god, with a view to gaining victory. - - - - Approaching Rama standing absorbed in fight in the battle-field, exhausted as he was by the fight, and seeing Ravana who came nearby, facing him duly prepared for the bat",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

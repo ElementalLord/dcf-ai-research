@@ -1,0 +1,34 @@
+{
+  "source_id": "1353f424-7d5c-4142-9f8d-ca0a216be640",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "Annual Quality Assurance Report 2014–15. Savitribai Phule Pune University. https://www.unipune.ac.in/iqac/pdf/AQAR_2014-15.pdf",
+    "original_work_identity": {},
+    "publication_year": 2015,
+    "publisher_or_institution": "Savitribai Phule Pune University",
+    "rights_or_access_note": "Public original; short research excerpts. Scholarly abstract/summary access does not imply full chapter access.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Annual Quality Assurance Report 2014–15",
+    "url": "https://www.unipune.ac.in/iqac/pdf/AQAR_2014-15.pdf"
+  },
+  "claim_ids": [
+    "3fb5c727-12d7-476a-beae-4807a0e72628"
+  ],
+  "passages": [
+    {
+      "chunk_id": "2be6b8dd-5054-4882-bc4f-1c93a173a333",
+      "locator": "PDF p. 1",
+      "text_sha256": "e902182a3b4d790d5e02d7a5ab61695ca8e8fdd5a2ae91198e94d263f4df3acf",
+      "excerpt_preview": "No. with STD Code: Mobile: 020 25693868 Savitribai Phule Pune University ( formerly University of Pune) Savitribai Phule Pune University Ganeshkhind Pune Maharashtra 411007 vc@unipune.ac.in Dr. W.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

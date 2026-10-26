@@ -1,0 +1,56 @@
+{
+  "source_id": "6039be83-71e0-44ad-a5c0-b8b46fde104a",
+  "source": {
+    "author": "Andrew Pulver",
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Andrew Pulver. Where to begin with Satyajit Ray. British Film Institute. https://www.bfi.org.uk/features/where-begin-with-satyajit-ray",
+    "original_work_identity": {},
+    "publication_year": 2017,
+    "publisher_or_institution": "British Film Institute",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Where to begin with Satyajit Ray",
+    "url": "https://www.bfi.org.uk/features/where-begin-with-satyajit-ray"
+  },
+  "claim_ids": [
+    "12781dc9-5bd1-4b4a-a975-82014dd6dfad",
+    "86de8ccb-4698-42bd-b940-9bde9f7e263d",
+    "afe4c265-b711-4931-b600-60572336a7e6",
+    "b3e127f5-3fbc-4da6-9dcd-bbd8adf8f7a3",
+    "e459f0cb-1dcd-4656-9dbc-0713f2e9e4de",
+    "ff600fbb-3579-485d-867c-057067de38c8"
+  ],
+  "passages": [
+    {
+      "chunk_id": "8fc1540c-ee7c-4d03-b21d-755257078b51",
+      "locator": "Jalsaghar studies aristocratic decline",
+      "text_sha256": "b1c5b91a14582a0fbb5ac91322a495087622ef654e858b6d141f913eed60d94f",
+      "excerpt_preview": "Jalsaghar studies aristocratic decline; Mahanagar follows a working woman in Calcutta; Charulata adapts Tagore; and the Calcutta films confront a changing post-independence city.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e0fa2a63-6529-45e3-92d6-5cb6e49203e7",
+      "locator": "family life, gender, class, modernity",
+      "text_sha256": "a638ffcd8f3960b677a4bdb33dbb0bac332b232ae56713adc6bed60f9fafc971",
+      "excerpt_preview": "Ray’s films range beyond the Apu Trilogy across family life, gender, class, modernity, urban work, colonial history and political disillusionment.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f8451458-5f9e-4a6c-99e5-dd71dcf7c1ab",
+      "locator": "critical interpretations grounded in films",
+      "text_sha256": "1e134793723b57ad2c75e75519c614e4c9d334c8bc0126f2c8bac63bdc4ddf55",
+      "excerpt_preview": "These themes are critical interpretations grounded in films, not statements Ray necessarily made about himself.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

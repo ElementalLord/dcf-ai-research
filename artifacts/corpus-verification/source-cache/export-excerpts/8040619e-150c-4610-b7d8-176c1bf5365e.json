@@ -1,0 +1,32 @@
+{
+  "source_id": "8040619e-150c-4610-b7d8-176c1bf5365e",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "The Deccan. Cambridge University Press, The Cambridge Economic History of India. https://www.cambridge.org/core/books/the-cambridge-economic-history-of-india/FAE3A6C0264445BBCEB02B5CD0CC2A2F",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Cambridge University Press, The Cambridge Economic History of India",
+    "rights_or_access_note": "Publicly accessible research excerpt only.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "The Deccan",
+    "url": "https://www.cambridge.org/core/books/the-cambridge-economic-history-of-india/FAE3A6C0264445BBCEB02B5CD0CC2A2F"
+  },
+  "claim_ids": [
+    "bc7943a5-97be-4894-85fe-c4a597b80546"
+  ],
+  "passages": [
+    {
+      "chunk_id": "525f5bef-d62f-44a7-b08d-07546bb17a05",
+      "locator": "The Deccan",
+      "text_sha256": "8b373f7c4cfd5508cb36433c32fb68416b61b39fac561c6b86d4f3c1033e4128",
+      "excerpt_preview": "nturies may be divided into three groups: the Deccan Muslim kingdoms 'Adilshahi kingdom, and the Maratha kingdom. Regarding the land-revenue system, the maratha empire, Shivaji, mostly followed the pattern introduced by Malik 'Ambar: doing ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

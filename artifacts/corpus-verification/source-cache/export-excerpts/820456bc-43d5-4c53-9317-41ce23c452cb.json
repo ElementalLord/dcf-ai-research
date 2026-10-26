@@ -1,0 +1,34 @@
+{
+  "source_id": "820456bc-43d5-4c53-9317-41ce23c452cb",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:32.985Z"
+    },
+    "citation": "Address at the Summit of the Powerless. President of India. https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/addresss-summit-powerless-new-delhi",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "President of India",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Address at the Summit of the Powerless",
+    "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/addresss-summit-powerless-new-delhi"
+  },
+  "claim_ids": [
+    "b3a884f6-b2d9-4dd4-9c37-69f4bebae367"
+  ],
+  "passages": [
+    {
+      "chunk_id": "c0d659df-2034-46af-9720-05c80ae4c7b1",
+      "locator": "Presidential speech",
+      "text_sha256": "8bdcbada34cd7754f27c2a37b2d9f396bca9640868132c922d401c3d2dbf751b",
+      "excerpt_preview": "n the whole country. Each PURA calls for providing connectivities for 15 to 20 villages with 50,000 population. The main connectivities are physical connectivity which enable provision of road and transportation system, electronic connectiv",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

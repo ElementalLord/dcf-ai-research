@@ -56,6 +56,14 @@ button,
 summary,
 select {
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+a,
+[role="button"] {
+  touch-action: manipulation;
 }
 
 .eyebrow {

@@ -1,0 +1,72 @@
+{
+  "source_id": "8b00fbab-cc93-43af-bbe2-ed0693d6d97b",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Jamsetji Tata. Tata group. https://www.tata.com/about-us/tata-group-our-heritage/tata-titans/jamsetji-tata",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Tata group",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Jamsetji Tata",
+    "url": "https://www.tata.com/about-us/tata-group-our-heritage/tata-titans/jamsetji-tata"
+  },
+  "claim_ids": [
+    "08fc269e-9d5f-4c35-a87c-87a188aae66a",
+    "704c1256-8ee5-41d6-8d15-f96db04a4bab",
+    "708223f6-9d4d-4bfd-ac5b-3d17e0ff056c",
+    "a9121919-3fcf-4951-84ca-a971b9e8afda",
+    "cffac2f5-fd48-4ef8-908c-7d56cfb2b54d",
+    "d4fc456d-b313-4085-a284-29be17792579"
+  ],
+  "passages": [
+    {
+      "chunk_id": "37a29a06-b7f4-4f9f-93cf-a18ae7eafb43",
+      "locator": "Central India Spinning, Weaving and Manufacturing Company",
+      "text_sha256": "0aba688c8568381372539c961c752bbf5b28d9e54d51c17a3f77d03ff7511d50",
+      "excerpt_preview": "In 1874 he floated the Central India Spinning, Weaving and Manufacturing Company.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "944360f1-c3ca-4882-99fa-88675656e107",
+      "locator": "Empress Mills opened at Nagpur on 1 January 1877",
+      "text_sha256": "da6a507f0ea314109f6d945eeec582c543dfa5dfa96a21e708ec259dde26dae3",
+      "excerpt_preview": "Empress Mills opened at Nagpur on 1 January 1877.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b68b8c8a-816c-4ca1-818d-8cd55ffddbcc",
+      "locator": "proximity to cotton-growing areas",
+      "text_sha256": "c69a7a123277e33eae13e6695c39b8753582eb0e5e02cd667918f663be64899f",
+      "excerpt_preview": "Tata chose Nagpur for proximity to cotton-growing areas, a railway junction, and water and fuel.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "da777d6f-562f-47e8-a5d1-626704ea7c36",
+      "locator": "trading firm in 1868",
+      "text_sha256": "f68af9bad96bd82a429b4286ff7b9513a4a1b7096a5f2dc3c61e1859d08a9690",
+      "excerpt_preview": "amsetji Tata founded a trading firm in 1868.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ec11289f-7c62-41b1-8243-fe9dcc37dad3",
+      "locator": "did not live to see the steel",
+      "text_sha256": "e050544713561ae8f496ec16db022276776c73e332a0b2ee40106eaedc83135f",
+      "excerpt_preview": "It identifies steel, hydroelectric power, a research university and a hotel as major late-life ambitions, and notes that Tata did not live to see the steel, power, or science projects completed.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

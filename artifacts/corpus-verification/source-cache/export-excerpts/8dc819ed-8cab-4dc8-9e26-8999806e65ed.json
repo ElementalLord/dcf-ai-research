@@ -1,0 +1,73 @@
+{
+  "source_id": "8dc819ed-8cab-4dc8-9e26-8999806e65ed",
+  "source": {
+    "author": "Joyce C. Lebra",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Joyce C. Lebra. The Indian National Army and Japan. ISEAS–Yusof Ishak Institute / Cambridge University Press. https://www.cambridge.org/core/books/the-indian-national-army-and-japan/94C748A99A85E8CC60A126563BF46B3B",
+    "original_work_identity": {},
+    "publication_year": 2008,
+    "publisher_or_institution": "ISEAS–Yusof Ishak Institute / Cambridge University Press",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "The Indian National Army and Japan",
+    "url": "https://www.cambridge.org/core/books/the-indian-national-army-and-japan/94C748A99A85E8CC60A126563BF46B3B"
+  },
+  "claim_ids": [
+    "36786522-4e3b-4352-841c-69331b2e05f6",
+    "6e8049ea-45aa-4363-9b99-15f608e1a250",
+    "8515a11c-e3b4-495e-bd74-76c7340d4f4e",
+    "97f3ae1c-bfaf-49ee-9d2d-9ca0cc7a5642",
+    "9d3375c6-e06c-498b-afa1-ba5d20665dab",
+    "a2817e21-9d60-4d4a-b883-cba5304cd93d",
+    "cfb26443-b78d-4991-b12f-f50a4ebc58af",
+    "eb8eaa5a-827c-4acf-b0ff-08c807f78b15"
+  ],
+  "passages": [
+    {
+      "chunk_id": "362b035b-70f5-4411-97a9-7a11deb07567",
+      "locator": "Japanese officials saw anti-British sentiment",
+      "text_sha256": "41db4abbeef2906ab565cf0d3235a88b02b51d49f074efa183e8446f643ced78",
+      "excerpt_preview": "Japanese officials saw anti-British sentiment as a political and military asset.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "423744fb-9f2d-427b-b5a6-2b1e99fd3f1e",
+      "locator": "fate of Imphal",
+      "text_sha256": "f1af19d2d88dae3c7254cb927ae5755a40d08b00f853473dd013851185480aa0",
+      "excerpt_preview": "The fate of Imphal determined the course of Japanese cooperation with the Indian independence movement.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c267d3a6-812f-42e8-bab5-b8f4ce05c074",
+      "locator": "Imperial Japanese Army and the INA",
+      "text_sha256": "a6ace52263537aa261170f2780359d5198a69ad975a6ea6015e54e67a07f5583",
+      "excerpt_preview": "he study traces the INA’s origins in Iwaichi Fujiwara’s initiative and the evolving relationship between the Imperial Japanese Army and the INA under Subhas Chandra Bose.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e7de7521-de9e-4c08-8ebd-966861eb6a2f",
+      "locator": "arrived in Southeast Asia after the INA already existed",
+      "text_sha256": "594c3c1f366c257896d0645c178fd196c995640ddb4771205ec08fc2df1b20d8",
+      "excerpt_preview": "Bose arrived in Southeast Asia after the INA already existed.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fff66dd0-0013-4a22-9100-7cf6833c7140",
+      "locator": "Imphal campaign",
+      "text_sha256": "0e8f1f3a548ca82b17c3f2e9911f8d4cf49a6f48c6a553d70cf3eb65587c5889",
+      "excerpt_preview": "The Imphal campaign exposed Japanese logistics problems, differing command protocols, Japanese policy aims and the INA’s hope that entering India could ignite revolution.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

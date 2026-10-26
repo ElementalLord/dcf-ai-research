@@ -1,0 +1,44 @@
+{
+  "source_id": "7645b3e4-4657-4a89-9cc3-cbb98eae6d57",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Document Collections. Tata Central Archives. https://www.tatacentralarchives.com/our-collections/documents.html",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Tata Central Archives",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Document Collections",
+    "url": "https://www.tatacentralarchives.com/our-collections/documents.html"
+  },
+  "claim_ids": [
+    "2120a218-c70c-4e1b-a92f-74bf067bdceb",
+    "ad5f849d-0e3b-443a-a945-766614b40573"
+  ],
+  "passages": [
+    {
+      "chunk_id": "62de20e2-5c17-4aac-a594-df34f00eb07a",
+      "locator": "1875 annual report",
+      "text_sha256": "e291bec8fbd0c669f759c77b41aea03dbfe46982d9fb13cedb6e53ff38549d6a",
+      "excerpt_preview": "Among its oldest documents is the 1875 annual report of Jamsetji Tata’s Central India Spinning, Weaving and Manufacturing Company.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9180834f-b08b-459a-93ce-13af8dd7f784",
+      "locator": "trace Tata group history",
+      "text_sha256": "b41629689508ef6c99f266204834c7af031e7155fce4024f98bcab31376e3a62",
+      "excerpt_preview": "ata Central Archives holds print and digital records used to trace Tata group history and its economic and social impact.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

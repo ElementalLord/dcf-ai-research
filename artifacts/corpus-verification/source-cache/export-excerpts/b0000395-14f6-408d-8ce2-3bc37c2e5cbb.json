@@ -1,0 +1,34 @@
+{
+  "source_id": "b0000395-14f6-408d-8ce2-3bc37c2e5cbb",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Akashvani: National Artists and archives. Prasar Bharati. https://prasarbharati.gov.in/en/akashvani/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Prasar Bharati",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Akashvani: National Artists and archives",
+    "url": "https://prasarbharati.gov.in/en/akashvani/"
+  },
+  "claim_ids": [
+    "fe804d2e-e54e-4450-a831-3aab43ff2348"
+  ],
+  "passages": [
+    {
+      "chunk_id": "8a5a3dd4-f338-44df-8638-db0df8cd63ea",
+      "locator": "National Artists list",
+      "text_sha256": "ec25d1ce2bb0bb8e5dd3ee7b0fa5fe0da1a053967167975034776a67b3f21b1f",
+      "excerpt_preview": "M. Balamuralikrishna Karnatic Vocal 10 Vidushi M.S. Subbulakshmi Karnatic Vocal 11 Vidwan M.S. Viswanathan Composer 12 Pandit Manna Dey Light Music 13 Dr.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,35 @@
+{
+  "source_id": "f3218cdd-3c32-43c9-8197-0d3adf3785e5",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Bala Kanda 52. https://valmikiramayan.net/utf8/baala/sarga52/balasans52.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "valmikiramayan.net",
+    "rights_or_access_note": "Public HTML page; use subject to source review.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Bala Kanda 52",
+    "url": "https://valmikiramayan.net/utf8/baala/sarga52/balasans52.htm"
+  },
+  "claim_ids": [
+    "24c6079b-d86a-41f5-897a-626b13ee96ba",
+    "3a2a5442-674f-46ec-b86b-a6e5e0f087d0",
+    "acaa016e-224e-45bc-b5fa-86e6384cae84",
+    "ea0757da-b67e-4b9f-88d4-de92b6ec0535"
+  ],
+  "passages": [
+    {
+      "chunk_id": "2057a5ef-6255-40af-b36a-7b4099a73403",
+      "locator": "Valmiki Ramayana, Bala Kanda 52",
+      "text_sha256": "3bbe49dbe4307f2fe52148855a6319432de69d7491d2221a92f288691acf866c",
+      "excerpt_preview": "Book I : Bala Kanda - The Youthful Majesties  Chapter [Sarga] 52 Verses converted to UTF-8, Oct 09 Introduction  Vashishta offers hospitality to Vishvamitra and his armies. Even though the King Vishvamitra is   disinclined to pressurise a h",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

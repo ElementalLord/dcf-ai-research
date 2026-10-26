@@ -1,0 +1,72 @@
+{
+  "source_id": "7360a982-1fdd-4839-bb62-34f58f17cf75",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "From Artisanal Production to Machine Tools: Industrialization in India over the Long Run. Oxford University Press. https://doi.org/10.1093/acprof:oso/9780198753643.003.0010",
+    "original_work_identity": {},
+    "publication_year": 2016,
+    "publisher_or_institution": "Oxford University Press",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "From Artisanal Production to Machine Tools: Industrialization in India over the Long Run",
+    "url": "https://doi.org/10.1093/acprof:oso/9780198753643.003.0010"
+  },
+  "claim_ids": [
+    "48f92d11-3715-4d99-84f6-e1956d13e0bf",
+    "8952d2e7-ef5f-4046-a028-6a9485c4f6a4",
+    "b3dcff2e-d430-43f5-a259-3fc30ffa0a48",
+    "c70cb18f-bb74-460c-b0ff-f413c94c333b",
+    "e4a3510e-2dd9-4ebb-938b-7d7ea85b7413",
+    "f560b696-53c1-4d6a-a059-31b6f59664c4"
+  ],
+  "passages": [
+    {
+      "chunk_id": "324b4322-ee86-44cc-a532-ca686d13fb4d",
+      "locator": "Geological Survey data",
+      "text_sha256": "1928138f85fbc1e1f734fac652579d103292b1d8878378bc6fa83388a4843da1",
+      "excerpt_preview": "Its realization depended on Jamsetji Tata’s confidence, Geological Survey data, an Indo-European advisory team, access to European know-how and purchase contracts from European-owned railways.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "33061903-4075-44d9-8fd3-54c324ca9712",
+      "locator": "large factories outside port cities as few",
+      "text_sha256": "38ead216658fa8a95369230ea3c76e4de542fac073c53508af6694ec5527e35b",
+      "excerpt_preview": "he Oxford chapter describes large factories outside port cities as few in nineteenth-century India.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6afa4dc1-278a-47f4-ba09-f5c5a1888b50",
+      "locator": "integrated enterprise included mines, transport and a coal washery",
+      "text_sha256": "144c6b6f490a3c6aa90d23f19ae44abbc82857630cb0cfee397f937f0f9be8b4",
+      "excerpt_preview": "The integrated enterprise included mines, transport and a coal washery.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c5e7810e-ffb6-445f-b391-d555d4078372",
+      "locator": "relative factor costs did not make steelmaking an obvious outcome",
+      "text_sha256": "1c72b16a5ad4522d95694076d6171e1a5311f38203aa765cd7f2dfb8152bc082",
+      "excerpt_preview": "The chapter cautions that India’s relative factor costs did not make steelmaking an obvious outcome.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e6b6c6fd-872d-4e6d-b1a6-f4f109d5d4f7",
+      "locator": "conceived in the 1880s",
+      "text_sha256": "012bcd61f85b1254861607a93d18e64fda3f48091171bc593710ece7b9efb924",
+      "excerpt_preview": "Tata Steel was conceived in the 1880s but required more than twenty years before implementation.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

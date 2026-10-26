@@ -1,0 +1,41 @@
+{
+  "source_id": "582a2381-dc45-429d-a615-f021939714cb",
+  "source": {
+    "author": "Valmiki",
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Bala Kanda, Sarga 74 (https://www.valmikiramayan.net/utf8/baala/sarga74/balasans74.htm)",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Bala Kanda, Sarga 74",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga74/balasans74.htm"
+  },
+  "claim_ids": [
+    "1154a63a-081f-4456-ba98-d9c7f4cc7066",
+    "da2f1e6f-07c7-4df4-a3e9-8ca154a5b17d"
+  ],
+  "passages": [
+    {
+      "chunk_id": "c14197c2-5339-4c55-aa09-7d6d165943ad",
+      "locator": "Introduction",
+      "text_sha256": "e6690ab1a48bbdb2cff60c959309b6eb09d8f527ca5b1b8252c1eedf6517bd80",
+      "excerpt_preview": "5b, 6a. raajaa  = king Janaka;   susamhR^iSTaH  = very highly  gladdened; hiraNyasya = of gold; suvarNasya = of silver; muktaanaam =  of pearls; vidrumasya ca = red corals, even; anuttamam = beau idéal;   kanyaadhanam = bridal riches; dadau",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d2971222-8d87-4bae-a49a-935718f3f74a",
+      "locator": "Introduction",
+      "text_sha256": "ef4d40b7034208af8ac6022c4c0c724c98590e153dfeb40ed2a641f0ef2f9d03",
+      "excerpt_preview": "Parashu Rama confronts the wedding party that is returning to Ayodhya from  Mithila. On his very entry, the atmosphere becomes pell-mell and a whirlwind ensues.  Expecting some problem from this Parashu Rama, the sages like Vashishta and ot",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

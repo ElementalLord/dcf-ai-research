@@ -1,0 +1,36 @@
+{
+  "source_id": "210ff1a8-35b1-4ce1-9441-95fcc36d4247",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Vedic Heritage Portal, Rigveda, Shakala Samhita, Mandala overview.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Indira Gandhi National Centre for the Arts (IGNCA), Ministry of Culture, Government of India",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Vedic Heritage Portal — Rigveda Shakala Samhita",
+    "url": "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/"
+  },
+  "claim_ids": [
+    "166c37a2-67ae-46fb-b62d-d6806897988f",
+    "2e8e3116-46db-41ac-a8f1-3b9eaeb942b5",
+    "70c96611-5873-46df-a5c5-42dd42a0361c",
+    "a67b288b-5a52-4cca-bf8b-9b4f6c2b3101",
+    "bbd641a5-b3bf-4355-9302-09ef5c5b1223"
+  ],
+  "passages": [
+    {
+      "chunk_id": "4d335f55-eed8-451c-9446-68933b6c4bc1",
+      "locator": "Links",
+      "text_sha256": "0736f019c3497e9a2586b9b878a68730c9287ffa32d88beedc144147eb6eb230",
+      "excerpt_preview": "Techniques for the Recitation of Sakalasamhita prevalent in Kerala Tradition(Prof. C. M. Neelakandan)  Rigveda Shakala Samhita Urdu Translation (S. Mohammed Reza Jalali Naini)",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,61 @@
+{
+  "source_id": "934d553b-c035-4bd1-a55e-db2243d0ffb1",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-13T14:32:05.496Z"
+    },
+    "citation": "Saṅgat. Encyclopaedia of Sikhism / Punjabi University. https://eos.learnpunjabi.org/SANGAT.html",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Encyclopaedia of Sikhism / Punjabi University",
+    "rights_or_access_note": "Publicly accessible source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Saṅgat",
+    "url": "https://eos.learnpunjabi.org/SANGAT.html"
+  },
+  "claim_ids": [
+    "183f4370-a7fd-453d-850a-80cac5475e38",
+    "284fc96a-a826-4b32-92d6-c97bbcc2641b",
+    "62c5a61a-a48d-4c82-aa9d-bb80c59c8c1b",
+    "71092a5d-3d95-4e1b-93fd-914ffac8f572"
+  ],
+  "passages": [
+    {
+      "chunk_id": "282958df-2147-46ff-b6d5-0bbb21d1c844",
+      "locator": "recite his hymns",
+      "text_sha256": "ce194f3c622e80208df6a03b28f7c499ce68dbaafe7a8f9adb9309da137d3494",
+      "excerpt_preview": "Group of disciples formed in different places and met together in <i>sa&#7749gat</i> to recite his hymns.</p> <p class=\"C1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As an institution, <i>sa&#7749gat</i> had, with its concomitants <i>",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "64e96d0f-4082-4bc8-992a-30fb5f97f7cb",
+      "locator": "fellowship of the holy",
+      "text_sha256": "a61715abbb9490572c0f50c63a29a96d398c3b90365338bc1671f024cd88edb4",
+      "excerpt_preview": "Again, \"As one lost in a thick jungle rediscovers one's path, so will one be enlightened in the company of the holy\"(GG,282).</p> <p class=\"C1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>Sa&#7749gat</i>, fellowship of the holy, is t",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "bdfba5e5-9ffc-4967-afba-9bfbe4d469d4",
+      "locator": "Mard",
+      "text_sha256": "62d899ac408b6ddf2e7ba596f1d318ad6f7ee6f33afea17a00b58d892980e5de",
+      "excerpt_preview": "Out of the 19 disciples of Gur&#363 N&#257nak mentioned by Bh&#257&#299 Gurd&#257s, two were Muslims-- Mard&#257n&#257, a <i>m&#299ras&#299</i> or bard, from his own village, and Daulat <u>Kh</u>&#257n Lodi, an Af<u>gh</u>&#257n noble.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fad639e1-0c48-43d0-916a-81818ef2c1fd",
+      "locator": "not a monastic order",
+      "text_sha256": "807bd708ceae42a35e8cf08c6bb235ea5d8cd9d2dc13483eb892c857e21f03e6",
+      "excerpt_preview": "It was not a monastic order, but a fellowship of ordinary men engaged in ordinary occupation of life. A key element in this process of restructuring of religious and social life was the spirit of <i>sev&#257</i>.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

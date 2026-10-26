@@ -1,0 +1,43 @@
+{
+  "source_id": "e575ca6d-c08c-49dc-af19-79145f502cc5",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T05:42:33.365Z"
+    },
+    "citation": "Pokhran-II tests were fully successful: DRDO and DAE scientists. Press Information Bureau, Government of India. https://www.pib.gov.in/newsite/PrintRelease.aspx?lang=2&reg=48&relid=52813",
+    "original_work_identity": {},
+    "publication_year": 2009,
+    "publisher_or_institution": "Press Information Bureau, Government of India",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Pokhran-II tests were fully successful: DRDO and DAE scientists",
+    "url": "https://www.pib.gov.in/newsite/PrintRelease.aspx?lang=2&reg=48&relid=52813"
+  },
+  "claim_ids": [
+    "8a6dc555-f12c-433b-91ba-98612bf00398",
+    "a06f6c1f-5b9f-453b-8cf9-1c0ffdda500a"
+  ],
+  "passages": [
+    {
+      "chunk_id": "8eddca6a-8398-4326-8d94-974d2217ecb0",
+      "locator": "Pokhran-II, contested yields",
+      "text_sha256": "743c3bbbdc92dd9742ef941994811b35cdf0b56ae401ccbec74b7fffa842bef5",
+      "excerpt_preview": "K. Santhanam and Mr. P. K. Iyengar on the success of the Pokhran-II nuclear tests conducted by India on 11th and 13th May, 1998.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b065975e-88ea-4c85-af81-29bf3c7941b0",
+      "locator": "Pokhran-II, official response",
+      "text_sha256": "1c8309eac2fe405e55fd3828a3bed6c8745ffea65fe933c149af43cc303077a4",
+      "excerpt_preview": "Chidambaram, Principal Scientific Advisor and former Chairman, Atomic Energy Commission said, “The Pokhran-II tests had achieved their scientific objectives and had given India the capability to build fission and thermonuclear fusion weapon",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

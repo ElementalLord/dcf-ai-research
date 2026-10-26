@@ -1,0 +1,73 @@
+{
+  "source_id": "06fec486-e5af-4c7e-95db-afbb2e237c75",
+  "source": {
+    "author": "Adheesh Sathaye",
+    "authority_metadata": {},
+    "citation": "Sathaye, Adheesh. “How to become a Brahman.” Acta Orientalia Vilnensia 8.1 (2007): 41–67. doi:10.15388/AOV.2007.1.3751.",
+    "original_work_identity": {
+      "doi": "10.15388/aov.2007.1.3751",
+      "independentWorkKey": "10.15388/aov.2007.1.3751",
+      "sourceFamily": "journals.vu.lt/acta-orientalia-vilnensia"
+    },
+    "publication_year": 2007,
+    "publisher_or_institution": "Acta Orientalia Vilnensia / Vilnius University Press",
+    "rights_or_access_note": "Official journal diamond open access, CC BY 4.0: https://www.journals.vu.lt/acta-orientalia-vilnensia/journalpolicy",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "How to become a Brahman: The construction of varṇa as social place in the Mahābhārata’s legends of Viśvāmitra",
+    "url": "https://www.journals.vu.lt/acta-orientalia-vilnensia/article/download/3751/5207"
+  },
+  "claim_ids": [
+    "09980ef1-ba12-4d0a-8d99-8213b3f9c813",
+    "1b0df374-b0dc-41a9-82bd-409dc072570f",
+    "a270dd64-9866-4032-b0dc-0c05a107bf10",
+    "c0e8ed43-1bfd-4bb2-81b7-492f6500fb4e",
+    "f37fc520-e58f-49da-bc2b-d1e12accfc1c",
+    "ff0e9fdc-4fa6-4eaf-9636-9292b0ae20e8"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0e7accd9-6836-4438-852c-e1f2101925d5",
+      "locator": "p. 51 (PDF page 11)",
+      "text_sha256": "d83dc9bb5ef942f454055ff374cae250f24fe24ff6913bdb6c649bfed34e284b",
+      "excerpt_preview": "51 by the Brahman, Viśvāmitra becomes disenchanted with his Kṣatriya status and decides to become a Brahman himself. Divine forces urge him to stop, declaring that such a feat is impossible, but nonetheless, Viśvāmitra eventually succeeds i",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "2ddc390c-b991-4dca-9651-3b58162db2c5",
+      "locator": "p. 60 (PDF page 20)",
+      "text_sha256": "7d4d053364037c50a57da40e1cb5429bbf6e2d32aaac0be4abed4197981e1023",
+      "excerpt_preview": "60 be viewed as a return home. As Bhīṣma himself explains, ‘So, King Yudhiṣṭhira, the great ascetic Viśvāmitra was not in fact a Kṣatriya, since Ṛcīka had infused the highest brahman within him’ (Mbh 13.4.59). through this strategic use of ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9d02c7d9-66e5-49c5-95b0-ee468f63dcd1",
+      "locator": "p. 57 (PDF page 17)",
+      "text_sha256": "97e394ade899282be4c7255a39a4e251690ce0aa25c3f52333bc0a558a3ecd15",
+      "excerpt_preview": "57 duel between the sage and the king. Viśvāmitra’s utter defeat—including the death of his hundred sons incinerated by Vasiṣṭha himself—prompts the king to travel to the himālaya Mountains, perform tapas, and procure magic weapons from Śiv",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b5253384-909b-4ea2-b372-29b9842165a4",
+      "locator": "p. 61 (PDF page 21)",
+      "text_sha256": "cae37a9617bf09d359a1311556529bc9780f5723bcaffae58d09abcdff40a2be",
+      "excerpt_preview": "61 at best what Ramanujan has termed ‘a presence of reflexive worlds’—a brief, fleeting glimpse of Kṣatriya-centered possibilities within the discourse of varṇa (ramanujan 1991, 54). Along with Viśvāmitra’s self-transformation, the resistan",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c5aafcbd-e8cb-4400-8a22-215f9ea5322c",
+      "locator": "p. 59 (PDF page 19)",
+      "text_sha256": "29fccc05cd932766e8dcdb729f5464eccffa220184aef6e7cd0773c3bdb739e3",
+      "excerpt_preview": "59 asks Gādhi for his daughter’s hand in marriage. Gādhi, deeming the destitute ascetic to be an unworthy groom for his daughter, demands a seemingly unattainable bride price [śulka]: ‘one thousand horses, the color of the moon’s rays, fast",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

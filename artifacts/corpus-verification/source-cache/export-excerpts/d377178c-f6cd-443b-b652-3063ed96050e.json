@@ -1,0 +1,34 @@
+{
+  "source_id": "d377178c-f6cd-443b-b652-3063ed96050e",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Journal of the Music Academy Madras, volume 71. Music Academy Madras. https://musicacademymadras.in/catalogue/files/journals/Vol.71_2000.pdf",
+    "original_work_identity": {},
+    "publication_year": 2000,
+    "publisher_or_institution": "Music Academy Madras",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Journal of the Music Academy Madras, volume 71",
+    "url": "https://musicacademymadras.in/catalogue/files/journals/Vol.71_2000.pdf"
+  },
+  "claim_ids": [
+    "fbab389d-b707-4040-8869-c6bca7045b09"
+  ],
+  "passages": [
+    {
+      "chunk_id": "9dd6ad5a-8e31-48ce-9790-803b62ac332d",
+      "locator": "Journal vol. 71, p. 114",
+      "text_sha256": "08b997a8c57bbfcb9af8aa0e45e93ac94712e7d2d28f9db7be920896334b9b02",
+      "excerpt_preview": "As the audience was constantly glancing at their watches to mark the arrival o f the eagerly awaited millennium about 500 school children all dressed in spotless white quietely walked on to the stage and aisles. As they took their positions",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

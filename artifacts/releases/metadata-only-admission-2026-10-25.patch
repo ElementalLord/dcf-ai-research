@@ -1,0 +1,820 @@
+diff --git a/src/app/api/resources/route.ts b/src/app/api/resources/route.ts
+index f88a1d7..d661f3c 100644
+--- a/src/app/api/resources/route.ts
++++ b/src/app/api/resources/route.ts
+@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
+     const personalityId = id.parse(request.nextUrl.searchParams.get("personalityId"));
+     const [links, claimResult] = await Promise.all([
+       supabaseAdmin.from("source_personalities").select("source_id").eq("personality_id", personalityId).limit(1000),
+-      supabaseAdmin.from("claims").select("id,claim_text,claim_kind,certainty,review_status,approval_origin,approval_metadata,approval_note,approved_by_label,approved_at,created_at,updated_at,evidence_type,researcher_notes,parameter_fields(label),claim_sources(id,relationship,evidence_excerpt,page_or_section,notes,source_id,sources(id,title,author,url,source_status,citation)),claim_chunks(relationship,confidence,link_method,metadata,source_chunks(id,chunk_text,page_or_section,textual_layer,sources(id,title,url))),claim_reviews(reviewer_name,decision,notes,reviewed_at)").eq("personality_id", personalityId).order("created_at", { ascending: false }).limit(500),
++      supabaseAdmin.from("claims").select("id,claim_text,claim_kind,certainty,review_status,approval_origin,approval_metadata,approval_note,approved_by_label,approved_at,created_at,updated_at,evidence_type,researcher_notes,parameter_fields(label),claim_sources(id,relationship,evidence_excerpt,page_or_section,notes,source_id,sources(id,title,author,url,source_status,citation)),claim_chunks(relationship,confidence,link_method,metadata,source_chunks(id,chunk_text,page_or_section,textual_layer,sources(id,title,url))),metadata_claim_evidence(source_id,locator,accessed_at,valid_until,validity_status,metadata_admission_permissions(source_url,is_active)),claim_reviews(reviewer_name,decision,notes,reviewed_at)").eq("personality_id", personalityId).order("created_at", { ascending: false }).limit(500),
+     ]);
+     if (links.error || claimResult.error) throw links.error || claimResult.error;
+     const claims = claimResult.data || [];
+diff --git a/src/app/ask/ask-client.tsx b/src/app/ask/ask-client.tsx
+index b0cff6f..d3ff178 100644
+--- a/src/app/ask/ask-client.tsx
++++ b/src/app/ask/ask-client.tsx
+@@ -78,6 +78,7 @@ function citationLabel(value: string | null | undefined, fallback: string) {
+ function citationReview(citation: AskCitation): string {
+   if (citation.kind === "live_web_source") return "live page, not reviewed by DCF";
+   if (citation.kind === "approved_source_passage") return "library passage, interpretation not reviewed";
++  if (citation.storageMode === "metadata_only") return "verified factual claim; original source passage not stored";
+   return citation.approvalOrigin === "human_manual" || citation.approvalOrigin === "mentor_review"
+     ? "human-reviewed claim" : "claim admitted for testing or import";
+ }
+@@ -351,11 +352,11 @@ export default function AskClient({ personalities, loadError }: { personalities:
+         <div><dt>Who published it</dt><dd><strong className={`authority-badge authority-${selectedAuthority.level}`}>{AUTHORITY_LABELS[selectedAuthority.level]}</strong><span>{selectedAuthority.primary && selectedAuthority.level === "general_web"
+           ? "The original text is the evidence. This copy of it is hosted on a website that is not a recognized institution, so compare it with an institutional edition when exact wording matters."
+           : `${selectedAuthority.basis ? `${selectedAuthority.basis.replace(/\.$/, "")}. ` : ""}${AUTHORITY_HELP[selectedAuthority.level]}`}</span></dd></div>
+-        <div><dt>Found in</dt><dd><strong>{selectedLive ? "Live research" : "DCF Library"}</strong><span>{selectedLive ? "Fetched for this answer; this passage is not saved in Resources or reviewed by DCF." : selectedCitation.kind === "approved_claim" ? selectedCitation.approvalOrigin === "human_manual" || selectedCitation.approvalOrigin === "mentor_review" ? "This claim was reviewed by a person." : "This claim was admitted for testing or import; it has not been reviewed by a person." : "This source passage is admitted for AI evidence. Its presence does not mean any interpretation of it was reviewed by a person."}</span></dd></div>
++        <div><dt>Found in</dt><dd><strong>{selectedLive ? "Live research" : "DCF Library"}</strong><span>{selectedLive ? "Fetched for this answer; this passage is not saved in Resources or reviewed by DCF." : selectedCitation.storageMode === "metadata_only" ? "Verified factual claim. DCF stores the citation and locator, but no source passage." : selectedCitation.kind === "approved_claim" ? selectedCitation.approvalOrigin === "human_manual" || selectedCitation.approvalOrigin === "mentor_review" ? "This claim was reviewed by a person." : "This claim was admitted for testing or import; it has not been reviewed by a person." : "This source passage is admitted for AI evidence. Its presence does not mean any interpretation of it was reviewed by a person."}</span></dd></div>
+         <div><dt>Where to find it</dt><dd>{selectedCitation.pageOrSection || "Specific location not recorded"}</dd></div>
+       </dl>
+       <h3 className="section-label source-section-heading">Evidence from this source</h3>
+-      {selectedExcerpt ? <blockquote>{selectedExcerpt}</blockquote> : <p className="citation-unavailable">A readable passage is unavailable for this citation. Check the original source before relying on it.</p>}
++      {selectedExcerpt ? <blockquote>{selectedExcerpt}</blockquote> : <p className="citation-unavailable">{selectedCitation.storageMode === "metadata_only" ? "No source passage is stored for this metadata-only verified claim. Check the linked original work at the locator above." : "A readable passage is unavailable for this citation. Check the original source before relying on it."}</p>}
+       <p className="source-note">{selectedCitation.evidenceType ? <><strong>Kind of statement:</strong> {citationLabel(selectedCitation.evidenceType, "Source material")}. </> : null}{AUTHORITY_CAVEAT}</p>
+       {selectedCitation.url && <a href={selectedCitation.url} target="_blank" rel="noreferrer" className="editorial-link">Open original source<span className="sr-only"> (opens in a new tab)</span> <ArrowUpRight size={16} aria-hidden="true" /></a>}
+     </>}</div></SheetContent></Sheet>
+diff --git a/src/app/resources/resources-client.tsx b/src/app/resources/resources-client.tsx
+index bc8ea25..6c77866 100644
+--- a/src/app/resources/resources-client.tsx
++++ b/src/app/resources/resources-client.tsx
+@@ -24,7 +24,8 @@ type Person = { id: string; canonical_name: string; category?: string | null };
+ type Evidence = { id: string; relationship: string; evidence_excerpt: string | null; page_or_section: string | null; sources: { id: string; title: string; author: string | null; url: string | null; source_status: string } | null };
+ type ChunkLink = { relationship: string; confidence: number | null; link_method: string | null; metadata: Record<string, unknown> | null; source_chunks: { id: string; chunk_text: string; page_or_section: string | null; textual_layer: string | null; sources: { id: string; title: string; url: string | null } | null } | null };
+ type EvidenceAssessment = { status: string; label: string; confidence: number; reasons: string[]; independentCorroborationNeeded: boolean; humanReviewRequired: true };
+-type Claim = { id: string; claim_text: string; claim_kind: string; certainty: string; review_status: string; approval_origin: string | null; approval_metadata: { testing_only?: boolean } | null; approved_by_label: string | null; approved_at?: string | null; created_at?: string | null; updated_at?: string | null; evidence_type: string | null; researcher_notes: string | null; parameter_fields: { label: string } | null; claim_sources: Evidence[]; claim_chunks: ChunkLink[]; epistemics: { epistemic_type: string | null; proposed_type: string; contract_status: string; contract_basis: string | null } | null; evidenceAssessment: EvidenceAssessment; claim_reviews: Array<{ reviewer_name: string; decision: string; notes: string | null; reviewed_at: string }> };
++type MetadataEvidence = { source_id: string; locator: string; accessed_at: string; valid_until: string; validity_status: string; metadata_admission_permissions: { source_url: string; is_active: boolean } | null };
++type Claim = { id: string; claim_text: string; claim_kind: string; certainty: string; review_status: string; approval_origin: string | null; approval_metadata: { testing_only?: boolean; storage_mode?: string } | null; approved_by_label: string | null; approved_at?: string | null; created_at?: string | null; updated_at?: string | null; evidence_type: string | null; researcher_notes: string | null; parameter_fields: { label: string } | null; claim_sources: Evidence[]; claim_chunks: ChunkLink[]; metadata_claim_evidence: MetadataEvidence[]; epistemics: { epistemic_type: string | null; proposed_type: string; contract_status: string; contract_basis: string | null } | null; evidenceAssessment: EvidenceAssessment; claim_reviews: Array<{ reviewer_name: string; decision: string; notes: string | null; reviewed_at: string }> };
+ type Source = { id: string; title: string; author: string | null; publisher_or_institution: string | null; source_type: string; url: string | null; citation: string | null; textual_layer: string | null; source_status: string; approval_origin: string | null; approval_note: string | null; approved_by_label: string | null; approved_at?: string | null; created_at?: string | null; ingestion_status: string; rights_or_access_note: string | null; publication_year: number | null; updated_at: string | null; metadata: { testing_only?: boolean; resourceAudit?: { access?: string; parallelUrl?: string; parallelLabel?: string; parallelLinkLabel?: string; evidenceNote?: string; checkedAt?: string; checkedExcerpts?: number; matchedExcerpts?: number } } | null };
+ type Detail = { kind: "source"; item: Source } | { kind: "claim"; item: Claim };
+ type ReviewAction = "approved" | "candidate" | "needs_review" | "rejected";
+@@ -40,8 +41,14 @@ const sourceChoice = (source: Source) => source.url ? `${source.title} · ${sour
+ const claimSourceCount = (claim: Claim) => new Set([...claim.claim_sources.map(link => link.sources?.id), ...claim.claim_chunks.map(link => link.source_chunks?.sources?.id)].filter(Boolean)).size;
+ const sourceReviewLabel = (source: Source) => source.source_status === "approved" ? "Admitted" : "Not admitted";
+ const answerEligible = (claim: Claim) => isClaimEligible(claim.review_status, claim.approval_origin, "strict")
+-  && claim.claim_sources.some(link => link.sources?.source_status === "approved" && (link.evidence_excerpt?.trim().length || 0) >= 20);
+-const claimReviewLabel = (claim: Claim) => answerEligible(claim) ? "Verified for answers" : claim.review_status === "approved" ? "Approved · excluded from answers" : claim.review_status === "draft" ? "Draft" : claim.review_status === "rejected" ? "Rejected" : "Needs review";
++  && (claim.approval_metadata?.storage_mode === "metadata_only"
++    ? claim.metadata_claim_evidence.length > 0 && claim.metadata_claim_evidence.length === claim.claim_sources.length
++      && claim.metadata_claim_evidence.every(item => item.validity_status === "valid" && Date.parse(item.valid_until) > Date.now()
++        && item.metadata_admission_permissions?.is_active && claim.claim_sources.some(link => link.sources?.id === item.source_id
++          && link.sources.source_status === "approved" && link.sources.url === item.metadata_admission_permissions?.source_url
++          && link.page_or_section === item.locator && !link.evidence_excerpt))
++    : claim.claim_sources.some(link => link.sources?.source_status === "approved" && (link.evidence_excerpt?.trim().length || 0) >= 20));
++const claimReviewLabel = (claim: Claim) => answerEligible(claim) ? claim.approval_metadata?.storage_mode === "metadata_only" ? "Verified fact · no passage stored" : "Verified for answers" : claim.review_status === "approved" ? "Approved · excluded from answers" : claim.review_status === "draft" ? "Draft" : claim.review_status === "rejected" ? "Rejected" : "Needs review";
+ const filterStatusLabel = (value: string, area: string) => value === "all" ? "All statuses" : area === "sources" ? value === "approved" ? "Admitted" : value === "not_admitted" ? "Not admitted" : "Rejected archive" : value === "approved" ? "Verified for answers" : value === "draft" ? "Draft" : value === "needs_review" ? "Needs review" : "Rejected archive";
+ const sourceAuthority = (source: Pick<Source, "url" | "source_type" | "publisher_or_institution">) => classifySourceAuthority({ url: source.url, sourceType: source.source_type, institution: source.publisher_or_institution });
+ const day = (value: string | null | undefined) => value ? new Date(value).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" }) : "Not recorded";
+diff --git a/src/lib/ask/presentation.ts b/src/lib/ask/presentation.ts
+index 98203db..5d36d4f 100644
+--- a/src/lib/ask/presentation.ts
++++ b/src/lib/ask/presentation.ts
+@@ -15,6 +15,7 @@ export type AskCitation = {
+   chunkId?: string;
+   personalityName?: string;
+   approvalOrigin?: string;
++  storageMode?: "licensed_excerpt" | "metadata_only";
+   evidenceType?: string;
+   authority?: SourceAuthority;
+   authorityBasis?: string;
+diff --git a/src/lib/ask/target-support.ts b/src/lib/ask/target-support.ts
+index a2846d1..cb4b556 100644
+--- a/src/lib/ask/target-support.ts
++++ b/src/lib/ask/target-support.ts
+@@ -50,7 +50,8 @@ export function citedAnswerAddressesTarget(question: string, answer: string,
+   const cited = citations.map((citation, index) => ({ citation, evidence: selected[index] }))
+     .filter(({ citation }) => citedIds.has(citation.id));
+   if (cited.length !== citedIds.size) return false;
+-  const passages = cited.map(({ evidence }) => evidence.kind === "claim" ? evidence.evidenceExcerpt || "" : evidence.text);
++  const passages = cited.map(({ evidence }) => evidence.kind === "claim"
++    ? evidence.storageMode === "metadata_only" ? evidence.text : evidence.evidenceExcerpt || "" : evidence.text);
+   if (!passages.every((passage) => passageAddressesTarget(question, passage, aliases))) return false;
+   if (/\b(?:when|year|date)\b/i.test(question)) {
+     const answerYears = [...new Set(answer.match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g) || [])];
+diff --git a/src/lib/corpus/answer.ts b/src/lib/corpus/answer.ts
+index f5c8d50..7489b1f 100644
+--- a/src/lib/corpus/answer.ts
++++ b/src/lib/corpus/answer.ts
+@@ -294,7 +294,7 @@ async function answerQuestionInternal(
+   const targetAliases = retrievals.flatMap((retrieval) => retrieval.personalityAliases);
+   const namedTarget = !isBroadScope(queryContext.scope) && namedTargetTerms(queryContext.resolvedQuestion, targetAliases).length > 0;
+   const answerEvidence = namedTarget ? evidence.filter((item) => passageAddressesTarget(queryContext.resolvedQuestion,
+-    item.kind === "claim" ? item.evidenceExcerpt || "" : item.text, targetAliases)) : evidence;
++    item.kind === "claim" ? item.storageMode === "metadata_only" ? item.text : item.evidenceExcerpt || "" : item.text, targetAliases)) : evidence;
+   const evidenceBudget = options.responseStyle === "research" ? 14 : options.responseStyle === "detailed" ? 11 : options.responseStyle === "simple" ? 5 : isBroadScope(queryContext.scope) ? 9 : 7;
+   const selected = prioritizeEvidence(queryContext.resolvedQuestion, answerEvidence, evidenceBudget);
+   const bounded = buildBoundedContext(selected, evidenceBudget);
+diff --git a/src/lib/corpus/context.ts b/src/lib/corpus/context.ts
+index ae40665..2b18d6a 100644
+--- a/src/lib/corpus/context.ts
++++ b/src/lib/corpus/context.ts
+@@ -41,7 +41,7 @@ export function buildBoundedContext(
+       ? "\nEpistemic limit: this passage supports what the tradition states or narrates; it does not by itself establish historical occurrence." : "";
+     const metadata = `${item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live") ? `Live web research; not DCF approved. This passage was fetched from the original source after ${item.origin === "google_grounding" ? "Google grounding" : "Brave discovery"}.\n` : ""}${item.personalityName ? `Personality: ${item.personalityName}\n` : ""}Work: ${item.sourceTitle || "not linked"}; locator: ${location}; layer: ${item.textualLayer || "unspecified"}; source type: ${item.sourceType || "unspecified"}; publisher standing: ${AUTHORITY_LABELS[authority.level]}${authority.primary ? ", primary source" : ""}${passageAudit}${traditionalCaveat}`;
+     const record = item.kind === "claim"
+-      ? `[${citationId}] Claim / topic: ${item.parameterName || item.fieldLabel || topic || "unclassified"}\nProposition: ${body}\n${metadata}\nEpistemic: ${item.epistemicType || "unclassified"}; evidence: ${item.evidenceType}; support: ${item.contractStatus || "not classified"}; certainty: ${item.certainty || "unspecified"}; contested: ${item.epistemicType === "CONTESTED" || item.contractStatus === "CONTESTED_REPRESENTED" ? "yes" : "not marked"}${item.evidenceExcerpt ? `\nSupporting passage: ${truncateText(item.evidenceExcerpt, 170)}` : ""}`
++      ? `[${citationId}] Claim / topic: ${item.parameterName || item.fieldLabel || topic || "unclassified"}\nProposition: ${body}\n${metadata}\nEpistemic: ${item.epistemicType || "unclassified"}; evidence: ${item.evidenceType}; support: ${item.contractStatus || "not classified"}; certainty: ${item.certainty || "unspecified"}; contested: ${item.epistemicType === "CONTESTED" || item.contractStatus === "CONTESTED_REPRESENTED" ? "yes" : "not marked"}${item.storageMode === "metadata_only" ? "\nOriginal source verified at admission; no source passage is stored." : item.evidenceExcerpt ? `\nSupporting passage: ${truncateText(item.evidenceExcerpt, 170)}` : ""}`
+       : `[${citationId}] Supporting passage / topic: ${item.parameterNames?.join(", ") || "source passage"}\n${metadata}\nPassage: ${body}`;
+ 
+     if (records.length > 0 && characters + record.length > maxCharacters) break;
+@@ -66,6 +66,7 @@ export function buildBoundedContext(
+       personalityId: item.personalityId,
+       personalityName: item.personalityName,
+       approvalOrigin: item.kind === "claim" ? item.approvalOrigin : undefined,
++      storageMode: item.kind === "claim" ? item.storageMode : undefined,
+       evidenceType: item.kind === "claim" ? item.evidenceType : undefined,
+       epistemicType: item.kind === "claim" ? item.epistemicType ?? null : undefined,
+       contractStatus: item.kind === "claim" ? item.contractStatus ?? null : undefined,
+diff --git a/src/lib/corpus/retrieval.ts b/src/lib/corpus/retrieval.ts
+index ba316c9..4c89d43 100644
+--- a/src/lib/corpus/retrieval.ts
++++ b/src/lib/corpus/retrieval.ts
+@@ -92,6 +92,25 @@ export function rankApprovedClaims(
+   const ranked = rows
+     .filter((row) => {
+       const links = (row.claim_sources as Array<Record<string, unknown>> | null) || [];
++      const metadata = row.approval_metadata as Record<string, unknown> | null;
++      if (metadata?.storage_mode === "metadata_only") {
++        const audit = (row.demand_verification_decisions as Array<Record<string, unknown>> | null) || [];
++        const validity = (row.metadata_claim_evidence as Array<Record<string, unknown>> | null) || [];
++        const supported = unwrap(row.claim_epistemics as Record<string, unknown> | Array<Record<string, unknown>> | null);
++        return row.approval_origin === "automated_evidence_verification"
++          && audit.some((decision) => decision.outcome === "admitted" && decision.support === "SUPPORTED")
++          && supported?.contract_status === "SUPPORTED"
++          && links.length > 0 && validity.length === links.length
++          && links.every((link) => {
++            const source = unwrap<Record<string, unknown>>(link.sources as Record<string, unknown> | null);
++            const record = validity.find((item) => item.source_id === source?.id);
++            const permission = unwrap<Record<string, unknown>>(record?.metadata_admission_permissions as Record<string, unknown> | null);
++            return source?.source_status === "approved" && source?.url === permission?.source_url
++              && permission?.is_active === true && !link.evidence_excerpt
++              && String(link.page_or_section || "") === String(record?.locator || "")
++              && record?.validity_status === "valid" && Date.parse(String(record?.valid_until || "")) > Date.now();
++          });
++      }
+       return options.requirePassage
+         ? links.some((link) => unwrap<Record<string, unknown>>(link.sources as Record<string, unknown> | null)?.source_status === "approved"
+           && String(link.evidence_excerpt || "").trim().length >= 20)
+@@ -134,11 +153,13 @@ export function rankApprovedClaims(
+           claimKind: String(row.claim_kind || "unknown"),
+           certainty: String(row.certainty || "unknown"),
+           approvalOrigin: String(row.approval_origin || "imported_existing"),
++          storageMode: (row.approval_metadata as Record<string, unknown> | null)?.storage_mode === "metadata_only" ? "metadata_only" as const : "licensed_excerpt" as const,
+           reviewStatus: String(row.review_status || ""),
+           evidenceType: String(row.evidence_type || "uncertain"),
+           epistemicType: epistemics?.epistemic_type ? String(epistemics.epistemic_type) : null,
+           contractStatus: epistemics?.contract_status ? String(epistemics.contract_status) : null,
+-          provenanceSignature: JSON.stringify({ reviewStatus: row.review_status, sources: links.map((candidate) => candidate.sources), support: row.claim_chunks }),
++          provenanceSignature: JSON.stringify({ reviewStatus: row.review_status, sources: links.map((candidate) => candidate.sources),
++            support: row.claim_chunks, metadataEvidence: row.metadata_claim_evidence, mode: (row.approval_metadata as Record<string, unknown> | null)?.storage_mode }),
+           personalityId: options.personalityId,
+           personalityName: options.personalityName,
+           parameterName: parameter?.name ? String(parameter.name) : null,
+@@ -301,12 +322,15 @@ export async function retrieveEvidence(
+   const claimsPromise = supabaseAdmin
+     .from("claims")
+     .select(`
+-      id, claim_text, claim_kind, certainty, review_status, approval_origin, evidence_type,
++      id, claim_text, claim_kind, certainty, review_status, approval_origin, approval_metadata, evidence_type,
+       parameter_fields(id, code, label, parameters(id, code, name, sort_order)),
+       claim_sources(relationship, evidence_excerpt, page_or_section,
+         sources(id, title, author, publisher_or_institution, source_type, url, citation, source_status)),
+       claim_chunks(relationship, source_chunks(id, textual_layer)),
+-      claim_epistemics(epistemic_type, contract_status)
++      claim_epistemics(epistemic_type, contract_status),
++      demand_verification_decisions(outcome,support),
++      metadata_claim_evidence(source_id,locator,validity_status,valid_until,
++        metadata_admission_permissions(source_url,is_active))
+     `, { count: "exact" })
+     .eq("personality_id", personalityId)
+     .eq("review_status", "approved")
+diff --git a/src/lib/corpus/types.ts b/src/lib/corpus/types.ts
+index 592d577..83bf527 100644
+--- a/src/lib/corpus/types.ts
++++ b/src/lib/corpus/types.ts
+@@ -85,6 +85,7 @@ export type RetrievedClaim = {
+   claimKind: string;
+   certainty: string;
+   approvalOrigin: string;
++  storageMode?: "licensed_excerpt" | "metadata_only";
+   reviewStatus?: string;
+   provenanceSignature?: string;
+   evidenceType: string;
+@@ -129,6 +130,7 @@ export type Citation = {
+   personalityId?: string;
+   personalityName?: string;
+   approvalOrigin?: string;
++  storageMode?: "licensed_excerpt" | "metadata_only";
+   evidenceType?: string;
+   epistemicType?: string | null;
+   contractStatus?: string | null;
+diff --git a/src/lib/live-research/knowledge-verification.ts b/src/lib/live-research/knowledge-verification.ts
+index 24b08fa..8781e1a 100644
+--- a/src/lib/live-research/knowledge-verification.ts
++++ b/src/lib/live-research/knowledge-verification.ts
+@@ -34,6 +34,8 @@ type Provider = { extract(input: { personality: string; findings: ResearchFindin
+ type ExistingClaim = { id: string; claim_text: string; approval_origin?: string | null };
+ type Store = { existing(personalityId: string): Promise<ExistingClaim[]>;
+   admit(input: Record<string, unknown>): Promise<{ claimId: string; created: boolean }>;
++  admitMetadata?(input: Record<string, unknown>): Promise<{ claimId: string; created: boolean }>;
++  metadataPermission?(url: string, publisher: string): Promise<boolean>;
+   record(input: Record<string, unknown>): Promise<void> };
+ 
+ const hash = (value: string) => createHash("sha256").update(value).digest("hex");
+@@ -72,6 +74,17 @@ function retainable(finding: ResearchFinding): boolean {
+   } catch { return false; }
+ }
+ 
++function independentlyWorded(proposition: string, passage: string): boolean {
++  const words = (value: string) => normalizeForMatch(value).split(" ").filter(Boolean);
++  const claim = words(proposition);
++  const source = words(passage);
++  if (claim.join(" ") === source.join(" ")) return false;
++  for (let index = 0; index + 8 <= claim.length; index++) {
++    if (source.join(" ").includes(claim.slice(index, index + 8).join(" "))) return false;
++  }
++  return true;
++}
++
+ function cleanCandidate(value: AtomicCandidate, count: number): AtomicCandidate | null {
+   if (!value || typeof value.proposition !== "string" || value.proposition.length < 18 || value.proposition.length > 350) return null;
+   const indexes = Array.isArray(value.evidenceIndexes) ? [...new Set(value.evidenceIndexes.filter((index) => Number.isInteger(index) && index >= 0 && index < count))].slice(0, 4) : [];
+@@ -113,6 +126,19 @@ export function productionAdmissionStore(): Store {
+       if (!value.claim_id) throw new Error("Admission returned no claim ID");
+       return { claimId: value.claim_id, created: value.created === true };
+     },
++    async admitMetadata(input) {
++      const { data, error } = await supabaseAdmin.rpc("admit_metadata_verified_claim", { p_admission: input });
++      if (error || !data || typeof data !== "object") throw error || new Error("Metadata-only admission transaction failed");
++      const value = data as { claim_id?: string; created?: boolean };
++      if (!value.claim_id) throw new Error("Metadata-only admission returned no claim ID");
++      return { claimId: value.claim_id, created: value.created === true };
++    },
++    async metadataPermission(url, publisher) {
++      const { data, error } = await supabaseAdmin.from("metadata_admission_permissions")
++        .select("id").eq("source_url", url).eq("publisher", publisher).eq("is_active", true).maybeSingle();
++      if (error) return false;
++      return Boolean(data?.id);
++    },
+     async record(input) {
+       const { error } = await supabaseAdmin.rpc("record_demand_verification_decision", { p_decision: input });
+       if (error) throw error;
+@@ -125,9 +151,26 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
+   deps: { provider: Provider; store: Store; enabled: boolean }): Promise<VerificationResult> {
+   const result: VerificationResult = { decisions: [], usage: { extractionCalls: 0, verificationCalls: 0, databaseCalls: 0 }, publicationEnabled: deps.enabled };
+   if (!research.attempted || !research.findings.length || research.status === "failed") return result;
+-  const findings = research.findings.filter(retainable).slice(0, 4);
++  if (research.findings.some((finding) => finding.relation === "potential_contradiction"))
++    return { ...result, decisions: [{ proposition: "[conflicting original evidence]", outcome: "quarantined",
++      support: "UNRESOLVED", reasons: ["Original research found potentially contradictory evidence"],
++      epistemicType: "HISTORICAL_FACT", workKeys: [] }] };
++  const licensed = research.findings.filter(retainable).slice(0, 4);
++  const licensedReady = licensed.length >= 2 || (licensed.length === 1
++    && sourceClass(licensed[0]) === "REFERENCE" && licensed[0].passage.supportLevel === "EXACT");
++  const metadataOnly = !licensedReady && Boolean(deps.store.metadataPermission && deps.store.admitMetadata);
++  let findings = licensed;
++  if (metadataOnly) {
++    const permitted = await Promise.all(research.findings.slice(0, 4).map(async (finding) => {
++      if (!finding.source.provenanceComplete || !finding.passage.locator || !finding.source.publisher
++        || !finding.source.title || !finding.source.url.startsWith("https://")) return false;
++      result.usage.databaseCalls++;
++      return deps.store.metadataPermission!(finding.source.url, finding.source.publisher).catch(() => false);
++    }));
++    findings = research.findings.slice(0, 4).filter((_, index) => permitted[index]);
++  }
+   if (!findings.length) return { ...result, decisions: [{ proposition: "[no retainable findings]", outcome: "quarantined",
+-    support: "UNRESOLVED", reasons: ["No original passage has complete provenance and explicit retention rights"],
++    support: "UNRESOLVED", reasons: ["No original passage has explicit excerpt rights or reviewed metadata-use terms"],
+     epistemicType: "HISTORICAL_FACT", workKeys: [] }] };
+   if (findings.length < 2 && !(sourceClass(findings[0]) === "REFERENCE" && findings[0].passage.supportLevel === "EXACT"))
+     return { ...result, decisions: [{ proposition: "[insufficient retainable findings]", outcome: "quarantined",
+@@ -157,7 +200,9 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
+     const competingValue = existing.find((item) => tokenJaccard(item.claim_text.replace(/\d+(?:[.,]\d+)*/g, ""), candidate.proposition.replace(/\d+(?:[.,]\d+)*/g, "")) >= 0.8
+       && numbers(item.claim_text).join("|") !== numbers(candidate.proposition).join("|"));
+     if (competingValue) { decision.reasons.push("Existing approved claim has a competing date or quantity"); continue; }
+-    if (!cited.every(({ finding }) => retainable(finding))) { decision.reasons.push("Source identity, locator or explicit retention license is missing"); continue; }
++    if (!cited.every(({ finding }) => metadataOnly ? findings.includes(finding) : retainable(finding))) {
++      decision.reasons.push("Source identity, locator or admission permission is missing"); continue;
++    }
+     if (/[“”"']/.test(candidate.proposition) || numbers(candidate.proposition).some((value) => !cited.some(({ finding }) => finding.passage.text.includes(value)))) {
+       decision.reasons.push("Quotation or numeric/date detail cannot be deterministically matched to the passage"); continue;
+     }
+@@ -197,17 +242,23 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
+     if (excerpts.some((excerpt) => !excerpt)) {
+       decision.reasons.push("A bounded retained excerpt does not establish the exact proposition"); continue;
+     }
++    if (metadataOnly && cited.some(({ finding }) => !independentlyWorded(candidate.proposition, finding.passage.text))) {
++      decision.reasons.push("Claim wording copies a source passage"); continue;
++    }
+     if (!deps.enabled) { decision.outcome = "shadow"; decision.reasons.push("Admission flag disabled; verification evaluated without writing"); continue; }
+     try {
+       result.usage.databaseCalls++;
+-      const saved = await deps.store.admit({ personality_id: request.personalityId, claim_text: candidate.proposition, claim_hash: hash(`${request.personalityId}:${identity}`),
++      const payload = { personality_id: request.personalityId, claim_text: candidate.proposition, claim_hash: hash(`${request.personalityId}:${identity}`),
+         epistemic_type: candidate.type, classifier_version: CLASSIFIER_VERSION, contract_version: CONTRACT_VERSION,
+         contract_status: "SUPPORTED", contract_basis: "fact", policy_version: ADMISSION_POLICY_VERSION,
+         research_request_id: research.requestId, research_work_id: research.workId,
+         sources: cited.map(({ finding }, index) => ({ url: finding.source.url, title: finding.source.title, author: finding.source.author,
+           publisher: finding.source.publisher, publication_date: finding.source.publicationDate, evidence_type: finding.source.evidenceType,
+-          work_key: finding.source.workKey, rights: finding.rightsDeclaration, locator: finding.passage.locator,
+-          excerpt: excerpts[index] })) });
++          work_key: finding.source.workKey, locator: finding.passage.locator,
++          ...(metadataOnly ? { accessed_at: finding.source.retrievedAt } : { rights: finding.rightsDeclaration, excerpt: excerpts[index] }) })) };
++      const saved = metadataOnly ? await deps.store.admitMetadata!({ ...payload, storage_mode: "metadata_only",
++        category: candidate.category, independent_documents: assessment.independentDocuments,
++        official_issuer: assessment.officialIssuer }) : await deps.store.admit(payload);
+       decision.outcome = saved.created ? "admitted" : "duplicate";
+       decision.claimId = saved.claimId;
+       decision.reasons.push(saved.created ? "Passed all admission gates and committed atomically" : "Concurrent admission already committed");
+@@ -218,7 +269,8 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
+           result.usage.databaseCalls++;
+           await deps.store.record({ personality_id: request.personalityId, claim_hash: hash(`${request.personalityId}:${identity}`),
+             outcome: decision.outcome, support: decision.support, epistemic_type: decision.epistemicType,
+-            policy_version: ADMISSION_POLICY_VERSION, reason_codes: decision.reasons.map((reason) => reason.slice(0, 120)),
++            policy_version: ADMISSION_POLICY_VERSION, reason_codes: metadataOnly
++              ? ["metadata_only", decision.outcome, decision.support] : decision.reasons.map((reason) => reason.slice(0, 120)),
+             source_work_keys: workKeys, research_request_id: research.requestId });
+         } catch { /* Decision logging is best effort; it cannot upgrade knowledge. */ }
+       }
+diff --git a/src/lib/live-research/search-credibility.ts b/src/lib/live-research/search-credibility.ts
+index 8195d86..cd15f42 100644
+--- a/src/lib/live-research/search-credibility.ts
++++ b/src/lib/live-research/search-credibility.ts
+@@ -117,7 +117,12 @@ function cachedSourceText(url: string): Promise<SourceText | null> {
+   if (hit && hit.expires > now) return hit.loaded;
+   if (sourceTextCache.size >= 30) sourceTextCache.delete(sourceTextCache.keys().next().value!);
+   // A network failure is not remembered. A refusal (403 and similar) is, so a blocked site is asked only once.
+-  const loaded = fetchDiscoveryPreview(url).then(readSourceText).catch(() => { sourceTextCache.delete(url); return null; });
++  const loaded = fetchDiscoveryPreview(url).then(readSourceText).then((value) => {
++    // Share an in-flight read, but never keep unlicensed original text in the cache.
++    if (value.status === 200 && value.sections.length && !hasExplicitRetentionRights(value.rightsDeclaration))
++      sourceTextCache.delete(url);
++    return value;
++  }).catch(() => { sourceTextCache.delete(url); return null; });
+   sourceTextCache.set(url, { expires: now + 5 * 60_000, loaded });
+   return loaded;
+ }
+diff --git a/supabase/migrations/20261025010000_metadata_only_verified_admission.sql b/supabase/migrations/20261025010000_metadata_only_verified_admission.sql
+new file mode 100644
+index 0000000..be58e90
+--- /dev/null
++++ b/supabase/migrations/20261025010000_metadata_only_verified_admission.sql
+@@ -0,0 +1,197 @@
++-- An explicit, human-reviewed terms decision is required for each original URL.
++-- This is not permission to copy the work or a replacement for source access checks.
++create table public.metadata_admission_permissions (
++  id uuid primary key default gen_random_uuid(),
++  source_url text not null unique check (source_url ~ '^https://[^ /]+'),
++  publisher text not null check (length(btrim(publisher)) >= 2),
++  terms_url text not null check (terms_url ~ '^https://[^ /]+'),
++  decision_basis text not null check (length(btrim(decision_basis)) >= 20),
++  reviewed_by text not null check (length(btrim(reviewed_by)) >= 2),
++  reviewed_at timestamptz not null default now(),
++  is_active boolean not null default false,
++  created_at timestamptz not null default now()
++);
++
++create table public.metadata_claim_evidence (
++  id uuid primary key default gen_random_uuid(),
++  claim_id uuid not null references public.claims(id) on delete cascade,
++  source_id uuid not null references public.sources(id) on delete restrict,
++  permission_id uuid not null references public.metadata_admission_permissions(id) on delete restrict,
++  work_key text not null check (length(btrim(work_key)) >= 5),
++  locator text not null check (length(btrim(locator)) >= 1),
++  accessed_at timestamptz not null,
++  verified_at timestamptz not null default now(),
++  valid_until timestamptz not null,
++  validity_status text not null default 'valid' check (validity_status in ('valid','suspended')),
++  invalid_reason text check (invalid_reason in ('inaccessible','material_change','contradiction','terms_restricted','verification_expired')),
++  unique (claim_id, source_id)
++);
++create index metadata_claim_evidence_validity_idx on public.metadata_claim_evidence(claim_id, validity_status, valid_until);
++
++create table public.metadata_claim_validity_events (
++  id uuid primary key default gen_random_uuid(),
++  claim_id uuid not null references public.claims(id) on delete cascade,
++  reason text not null check (reason in ('inaccessible','material_change','contradiction','terms_restricted','verification_expired')),
++  recorded_at timestamptz not null default now()
++);
++
++alter table public.metadata_admission_permissions enable row level security;
++alter table public.metadata_claim_evidence enable row level security;
++alter table public.metadata_claim_validity_events enable row level security;
++revoke all on public.metadata_admission_permissions, public.metadata_claim_evidence, public.metadata_claim_validity_events from anon, authenticated;
++grant select, insert, update on public.metadata_admission_permissions to service_role;
++grant select on public.metadata_claim_evidence, public.metadata_claim_validity_events to service_role;
++
++create function public.admit_metadata_verified_claim(p_admission jsonb)
++returns jsonb language plpgsql security definer set search_path = public, pg_temp as $$
++declare
++  v_personality uuid := (p_admission->>'personality_id')::uuid;
++  v_text text := btrim(p_admission->>'claim_text');
++  v_hash text := p_admission->>'claim_hash';
++  v_source jsonb;
++  v_source_id uuid;
++  v_claim_id uuid;
++  v_permission public.metadata_admission_permissions%rowtype;
++  v_existing record;
++  v_work_keys text[] := '{}';
++  v_domains text[] := '{}';
++  v_url text;
++  v_accessed timestamptz;
++  v_count integer;
++begin
++  if auth.role() <> 'service_role' then raise exception 'service role required'; end if;
++  if length(v_text) not between 18 and 350 or v_hash !~ '^[0-9a-f]{64}$'
++    or p_admission->>'epistemic_type' <> 'HISTORICAL_FACT'
++    or p_admission->>'contract_status' <> 'SUPPORTED'
++    or p_admission->>'policy_version' <> 'demand-admission/1'
++    or p_admission->>'storage_mode' <> 'metadata_only'
++    or p_admission ? 'excerpt' or p_admission ? 'passage'
++    or jsonb_typeof(p_admission->'sources') <> 'array'
++    or jsonb_array_length(p_admission->'sources') not between 1 and 4 then
++    raise exception 'Invalid metadata-only admission payload';
++  end if;
++  v_count := jsonb_array_length(p_admission->'sources');
++  if not ((v_count >= 2 and p_admission->>'category' = 'ordinary_fact'
++      and p_admission->>'independent_documents' = 'true')
++    or (v_count = 1 and p_admission->>'category' = 'official_record_fact'
++      and p_admission->>'official_issuer' = 'true'
++      and v_text ~* '\m(awarded|award|appointed|appointment|elected)\M')) then
++    raise exception 'Metadata-only evidence contract failed';
++  end if;
++  perform pg_advisory_xact_lock(hashtextextended(v_personality::text || ':' || v_hash, 0));
++  select d.claim_id into v_claim_id from public.demand_verification_decisions d
++    where d.personality_id=v_personality and d.claim_hash=v_hash and d.outcome='admitted' limit 1;
++  if v_claim_id is not null then
++    if not exists (select 1 from public.claims c where c.id=v_claim_id and c.review_status='approved')
++      then raise exception 'Prior admitted claim is suspended; review required'; end if;
++    return jsonb_build_object('claim_id',v_claim_id,'created',false);
++  end if;
++  select id into v_claim_id from public.claims where personality_id=v_personality
++    and btrim(regexp_replace(lower(claim_text),'[^a-z0-9]+',' ','g')) = btrim(regexp_replace(lower(v_text),'[^a-z0-9]+',' ','g'))
++    and review_status='approved'
++    and approval_origin in ('human_manual','mentor_review','automated_evidence_verification','corpus_evidence_review') limit 1;
++  if v_claim_id is not null then return jsonb_build_object('claim_id',v_claim_id,'created',false); end if;
++
++  -- Reject unknown keys: publisher text cannot hide in notes or extra JSON fields.
++  for v_source in select value from jsonb_array_elements(p_admission->'sources') loop
++    if exists (select 1 from jsonb_object_keys(v_source) k where k not in
++      ('url','title','author','publisher','publication_date','evidence_type','work_key','locator','accessed_at')) then
++      raise exception 'Metadata-only source contains unapproved fields';
++    end if;
++    v_url := v_source->>'url';
++    if coalesce(v_url,'') !~ '^https://[^ /]+' or length(v_url) > 2000
++      or length(btrim(coalesce(v_source->>'title',''))) not between 5 and 500
++      or length(btrim(coalesce(v_source->>'publisher',''))) not between 2 and 300
++      or length(coalesce(v_source->>'author','')) > 300
++      or length(btrim(coalesce(v_source->>'work_key',''))) not between 5 and 500
++      or length(btrim(coalesce(v_source->>'locator',''))) not between 1 and 300
++      or length(coalesce(v_source->>'publication_date','')) > 80 then
++      raise exception 'Incomplete metadata-only source identity';
++    end if;
++    begin v_accessed := (v_source->>'accessed_at')::timestamptz;
++      exception when others then raise exception 'Invalid source access date'; end;
++    if v_accessed is null or v_accessed > now() + interval '5 minutes'
++      or v_accessed < now() - interval '1 hour' then raise exception 'Source access date is stale'; end if;
++    select * into v_permission from public.metadata_admission_permissions
++      where source_url=v_url and publisher=v_source->>'publisher' and is_active=true
++        and reviewed_at <= v_accessed limit 1;
++    if not found then raise exception 'Metadata-only source terms are not approved'; end if;
++    if v_source->>'work_key' = any(v_work_keys) or substring(v_url from '^https://([^/]+)') = any(v_domains) then
++      raise exception 'Duplicate metadata-only work';
++    end if;
++    v_work_keys := array_append(v_work_keys, v_source->>'work_key');
++    v_domains := array_append(v_domains, substring(v_url from '^https://([^/]+)'));
++  end loop;
++  if v_count > 1 and array_length(array(select distinct x from unnest(v_domains) x),1) <> v_count
++    then raise exception 'Corroborating publishers are not independent'; end if;
++
++  insert into public.claims(personality_id,claim_text,claim_kind,certainty,review_status,approval_origin,
++    evidence_type,approved_at,approved_by_label,approval_note,approval_metadata)
++  values(v_personality,v_text,'established_fact','high','approved','automated_evidence_verification',
++    'historical_fact',now(),'automated_evidence_verification','Demand-driven metadata-only evidence verification',
++    jsonb_build_object('policy_version',p_admission->>'policy_version','storage_mode','metadata_only',
++      'research_work_id',p_admission->>'research_work_id','machine_verified',true,
++      'independent_work_keys',to_jsonb(v_work_keys))) returning id into v_claim_id;
++
++  for v_source in select value from jsonb_array_elements(p_admission->'sources') loop
++    v_url := v_source->>'url';
++    v_accessed := (v_source->>'accessed_at')::timestamptz;
++    select * into v_permission from public.metadata_admission_permissions where source_url=v_url and is_active=true;
++    select id,source_status,title,publisher_or_institution into v_existing from public.sources where url=v_url limit 1;
++    if v_existing.id is not null and (v_existing.source_status <> 'approved'
++      or lower(v_existing.title) <> lower(v_source->>'title')
++      or lower(coalesce(v_existing.publisher_or_institution,'')) <> lower(v_source->>'publisher')) then
++      raise exception 'Existing source identity differs from verified work'; end if;
++    v_source_id := v_existing.id;
++    if v_source_id is null then
++      insert into public.sources(title,url,author,publisher_or_institution,source_type,citation,source_status,
++        ingestion_status,rights_or_access_note,approval_origin,approved_at,approved_by_label,approval_note,metadata)
++      values(v_source->>'title',v_url,nullif(v_source->>'author',''),v_source->>'publisher',
++        case v_source->>'evidence_type' when 'institutional_record' then 'institutional'
++          when 'primary_document' then 'archival' when 'scholarly_interpretation' then 'scholarly_article'
++          else 'other' end,(v_source->>'title') || ' (' || v_url || ')','approved','ready',
++        'Metadata-only factual citation; no source text retained','automated_evidence_verification',now(),
++        'automated_evidence_verification','Publisher terms reviewed for metadata-only use',
++        jsonb_build_object('independentWorkKey',v_source->>'work_key','publicationDate',v_source->>'publication_date'))
++      returning id into v_source_id;
++    end if;
++    insert into public.claim_sources(claim_id,source_id,relationship,evidence_excerpt,page_or_section)
++      values(v_claim_id,v_source_id,'supports',null,v_source->>'locator');
++    insert into public.source_personalities(source_id,personality_id,relationship,confidence,mapping_method)
++      values(v_source_id,v_personality,'supports_claims',1,'claim_link')
++      on conflict (source_id,personality_id) do nothing;
++    insert into public.metadata_claim_evidence(claim_id,source_id,permission_id,work_key,locator,accessed_at,valid_until)
++      values(v_claim_id,v_source_id,v_permission.id,v_source->>'work_key',v_source->>'locator',
++        v_accessed,v_accessed + interval '30 days');
++  end loop;
++  insert into public.claim_epistemics(claim_id,personality_id,epistemic_type,proposed_type,type_origin,type_confidence,
++    type_review_status,classifier_version,contract_status,contract_satisfied,contract_basis,contract_version,contract_detail)
++  values(v_claim_id,v_personality,'HISTORICAL_FACT','HISTORICAL_FACT','deterministic',0.7,'auto_assigned',
++    p_admission->>'classifier_version','SUPPORTED',true,'fact',p_admission->>'contract_version',
++    jsonb_build_object('policy_version',p_admission->>'policy_version','work_keys',to_jsonb(v_work_keys),
++      'storage_mode','metadata_only'));
++  insert into public.demand_verification_decisions(personality_id,claim_hash,claim_id,outcome,support,epistemic_type,
++    policy_version,reason_codes,source_work_keys,research_request_id)
++  values(v_personality,v_hash,v_claim_id,'admitted','SUPPORTED','HISTORICAL_FACT',p_admission->>'policy_version',
++    array['all_gates_passed','metadata_only'],v_work_keys,p_admission->>'research_request_id');
++  return jsonb_build_object('claim_id',v_claim_id,'created',true);
++end $$;
++
++create function public.suspend_metadata_verified_claim(p_claim_id uuid, p_reason text)
++returns boolean language plpgsql security definer set search_path = public, pg_temp as $$
++begin
++  if auth.role() <> 'service_role' then raise exception 'service role required'; end if;
++  if p_reason not in ('inaccessible','material_change','contradiction','terms_restricted','verification_expired')
++    then raise exception 'Invalid suspension reason'; end if;
++  if not exists (select 1 from public.claims where id=p_claim_id and approval_origin='automated_evidence_verification'
++    and approval_metadata->>'storage_mode'='metadata_only') then raise exception 'Not a metadata-only claim'; end if;
++  update public.claims set review_status='needs_review',updated_at=now() where id=p_claim_id;
++  update public.metadata_claim_evidence set validity_status='suspended',invalid_reason=p_reason where claim_id=p_claim_id;
++  insert into public.metadata_claim_validity_events(claim_id,reason) values(p_claim_id,p_reason);
++  return true;
++end $$;
++
++revoke execute on function public.admit_metadata_verified_claim(jsonb) from public, anon, authenticated;
++revoke execute on function public.suspend_metadata_verified_claim(uuid,text) from public, anon, authenticated;
++grant execute on function public.admit_metadata_verified_claim(jsonb) to service_role;
++grant execute on function public.suspend_metadata_verified_claim(uuid,text) to service_role;
+diff --git a/tests/corpus/google-source-verification.test.ts b/tests/corpus/google-source-verification.test.ts
+index c79e49e..def307a 100644
+--- a/tests/corpus/google-source-verification.test.ts
++++ b/tests/corpus/google-source-verification.test.ts
+@@ -116,4 +116,12 @@ describe("live source admission", () => {
+     expect(await sourceAccess(url)).toBe("blocked");
+     expect(state.preview.mock.calls.filter(([candidate]) => candidate === url)).toHaveLength(1);
+   });
++  it("does not retain unlicensed page text in the in-memory source cache", async () => {
++    const url = "https://records.example.edu/unlicensed-cache-fixture";
++    state.preview.mockResolvedValue({ status: 200, finalUrl: url, contentType: "text/html",
++      html: "<html><title>Register</title><main><p>The original register contains an unlicensed source passage.</p></main></html>" });
++    expect(await sourceAccess(url)).toBe("readable");
++    expect(await sourceAccess(url)).toBe("readable");
++    expect(state.preview.mock.calls.filter(([candidate]) => candidate === url)).toHaveLength(2);
++  });
+ });
+diff --git a/tests/corpus/metadata-only-local-db.test.ts b/tests/corpus/metadata-only-local-db.test.ts
+new file mode 100644
+index 0000000..c7959a6
+--- /dev/null
++++ b/tests/corpus/metadata-only-local-db.test.ts
+@@ -0,0 +1,123 @@
++import { createHash, randomUUID } from "node:crypto";
++import { afterAll, describe, expect, it } from "vitest";
++import { supabaseAdmin } from "@/lib/supabase-admin";
++import { retrieveEvidence } from "@/lib/corpus/retrieval";
++import { resolveQuestion } from "@/lib/ask/question-resolution";
++import { answerQuestion } from "@/lib/corpus/answer";
++import { productionAdmissionStore, verifyDemandKnowledge } from "@/lib/live-research/knowledge-verification";
++import type { EvidenceGapRequest } from "@/lib/ask/question-resolution";
++import type { OnDemandResearchResult, ResearchFinding } from "@/lib/live-research/on-demand-engine";
++
++const enabled = process.env.DCF_LOCAL_DB_VALIDATION === "true";
++if (enabled && !/^http:\/\/(?:127\.0\.0\.1|localhost):\d+/.test(process.env.NEXT_PUBLIC_SUPABASE_URL || ""))
++  throw new Error("Metadata admission tests require loopback Supabase");
++const suite = enabled ? describe : describe.skip;
++const personId = randomUUID();
++const categoryId = randomUUID();
++const personName = `Mira ${personId.slice(0, 8)} Rao`;
++const claimText = `${personName} was awarded the Meridian Medal in 1931.`;
++const question = `What year was ${personName} awarded the Meridian Medal?`;
++const url = `https://records.example.edu/meridian/${personId}`;
++const title = "Meridian Medal register";
++const publisher = "Example Institute Records";
++const locator = "Register entry 1931, row 14";
++const hash = createHash("sha256").update(`${personId}:${claimText.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim()}`).digest("hex");
++const ok = <T>(result: { data: T; error: { message: string } | null }): T => {
++  if (result.error) throw new Error(result.error.message);
++  return result.data;
++};
++const payload = (sourceUrl = url) => ({ personality_id: personId, claim_text: claimText, claim_hash: hash,
++  epistemic_type: "HISTORICAL_FACT", classifier_version: "local-test", contract_version: "local-test",
++  contract_status: "SUPPORTED", policy_version: "demand-admission/1", storage_mode: "metadata_only",
++  category: "official_record_fact", official_issuer: true, independent_documents: true,
++  research_request_id: randomUUID(), research_work_id: "local-test",
++  sources: [{ url: sourceUrl, title, author: "Registrar", publisher, publication_date: "1931",
++    evidence_type: "institutional_record", work_key: `register:${personId}`, locator, accessed_at: new Date().toISOString() }] });
++
++suite("metadata-only verified admission against isolated Supabase", () => {
++  let claimId = "";
++  afterAll(async () => {
++    ok(await supabaseAdmin.from("personalities").delete().eq("id", personId));
++    ok(await supabaseAdmin.from("categories").delete().eq("id", categoryId));
++    ok(await supabaseAdmin.from("sources").delete().eq("url", url));
++    ok(await supabaseAdmin.from("metadata_admission_permissions").delete().eq("source_url", url));
++  });
++
++  it("requires a reviewed exact URL, admits metadata atomically, displays Resources data, and reuses the claim", async () => {
++    ok(await supabaseAdmin.from("personalities").insert({ id: personId, canonical_name: personName, research_status: "approved" }));
++    ok(await supabaseAdmin.from("categories").insert({ id: categoryId, slug: `metadata-local-${categoryId}`, name: "Metadata local test" }));
++    ok(await supabaseAdmin.from("personality_categories").insert({ personality_id: personId, category_id: categoryId, is_primary: true }));
++    const noTerms = await supabaseAdmin.rpc("admit_metadata_verified_claim", { p_admission: payload() });
++    expect(noTerms.error?.message).toContain("terms are not approved");
++    ok(await supabaseAdmin.from("metadata_admission_permissions").insert({ source_url: url, publisher,
++      terms_url: "https://records.example.edu/terms", decision_basis: "Reviewed terms permit factual metadata citation without stored source text.",
++      reviewed_by: "isolated-test-reviewer", reviewed_at: new Date(Date.now() - 60_000).toISOString(), is_active: true }));
++    const before = await retrieveEvidence(question, personId);
++    expect(before.evidence.some(item => item.kind === "claim" && item.text === claimText)).toBe(false);
++    const sourceText = `The 1931 register awarded ${personName} its Meridian Medal.`;
++    const sourceFinding: ResearchFinding = { source: { url, sourceId: null, publisherDomain: new URL(url).hostname,
++      retrievedAt: new Date().toISOString(), title, author: "Registrar", publisher, publicationDate: "1931",
++      journal: null, doi: null, isbn: null, evidenceType: "institutional_record", workKey: `register:${personId}`,
++      provenanceComplete: true }, passage: { text: sourceText, locator, supportLevel: "EXACT", supportReason: "Direct date" },
++      relation: "supports", retention: "transient_only", rightsDeclaration: null, citeableNow: true, verificationReady: false };
++    const research: OnDemandResearchResult = { requestId: randomUUID(), needId: "fixture", workId: "fixture",
++      status: "complete", attempted: true, candidates: [], findings: [sourceFinding], passages: [], unresolvedGaps: [],
++      sufficientForVerification: false, citeableNow: true, usage: { searchCalls: 1, sourceFetches: 1, modelCalls: 0,
++        provider: "fixture", errorCategory: null } };
++    const provider = { async extract() { return [{ proposition: claimText, type: "HISTORICAL_FACT" as const,
++      evidenceIndexes: [0], context: null, period: "1931", qualification: null, category: "official_record_fact" as const }]; },
++      async assess() { return { support: "SUPPORTED" as const, supportingIndexes: [0], equivalentExisting: false,
++        conflictsExisting: false, materialContradiction: false, exactEntities: true, exactDatesAndUnits: true,
++        qualifiersPreserved: true, officialIssuer: true, independentDocuments: true, reason: "Direct register entry" }; } };
++    const verified = await verifyDemandKnowledge({ personalityId: personId, personalityName: personName } as EvidenceGapRequest,
++      research, { provider, store: productionAdmissionStore(), enabled: true });
++    expect(verified.decisions[0], JSON.stringify(verified.decisions[0])).toMatchObject({ outcome: "admitted" });
++    claimId = verified.decisions[0].claimId!;
++    const duplicate = ok(await supabaseAdmin.rpc("admit_metadata_verified_claim", { p_admission: payload() })) as { claim_id: string; created: boolean };
++    expect(duplicate).toEqual({ claim_id: claimId, created: false });
++    const resource = ok(await supabaseAdmin.from("claims").select("approval_metadata,claim_sources(evidence_excerpt,page_or_section,sources(title,url,source_status)),claim_chunks(chunk_id),metadata_claim_evidence(locator,accessed_at,validity_status)").eq("id", claimId).single()) as {
++      approval_metadata: { storage_mode: string }; claim_sources: Array<{ evidence_excerpt: string | null; page_or_section: string; sources: { title: string; url: string; source_status: string } }>;
++      claim_chunks: unknown[]; metadata_claim_evidence: Array<{ locator: string; accessed_at: string; validity_status: string }> };
++    expect(resource.approval_metadata.storage_mode).toBe("metadata_only");
++    expect(resource.claim_sources[0]).toMatchObject({ evidence_excerpt: null, page_or_section: locator,
++      sources: { title, url, source_status: "approved" } });
++    expect(resource.claim_chunks).toHaveLength(0);
++    expect(resource.metadata_claim_evidence[0]).toMatchObject({ locator, validity_status: "valid" });
++    const second = await retrieveEvidence(question, personId);
++    const reused = second.evidence.find(item => item.kind === "claim" && item.text === claimText);
++    expect(reused).toMatchObject({ storageMode: "metadata_only", sourceUrl: url, pageOrSection: locator, evidenceExcerpt: null });
++    const resolution = resolveQuestion({ question, personalityId: personId, personalityName: personName,
++      personalityAliases: second.personalityAliases, termAliases: second.termAliases,
++      allParameters: second.allParameters, evidence: second.evidence, policyMode: "strict", researchAvailable: true });
++    expect(resolution.researchRequest).toBeNull();
++    process.env.SYNTHESIS_DISABLED = "true";
++    const answer = await answerQuestion(question, personId);
++    expect(answer.debug.webSearchCalls).toBe(0);
++    expect(answer.citations.some(citation => citation.storageMode === "metadata_only" && citation.url === url && citation.pageOrSection === locator && !citation.excerpt)).toBe(true);
++    const source = ok(await supabaseAdmin.from("sources").select("id,rights_or_access_note,metadata").eq("url", url).single()) as { id: string; rights_or_access_note: string; metadata: unknown };
++    const chunks = ok(await supabaseAdmin.from("source_chunks").select("id").eq("source_id", source.id));
++    const audit = ok(await supabaseAdmin.from("demand_verification_decisions").select("reason_codes,source_work_keys").eq("claim_id", claimId));
++    expect(chunks).toHaveLength(0);
++    expect(JSON.stringify({ resource, source, chunks, audit, answer })).not.toContain(sourceText);
++  }, 30_000);
++
++  it("rejects restricted URLs and source text in the admission payload", async () => {
++    const differentClaim = `${personName} was awarded the Nova Medal in 1931.`;
++    const distinct = { ...payload(`${url}/restricted`), claim_text: differentClaim,
++      claim_hash: createHash("sha256").update(`${personId}:${differentClaim.toLowerCase()}`).digest("hex") };
++    const restricted = await supabaseAdmin.rpc("admit_metadata_verified_claim", { p_admission: distinct });
++    expect(restricted.error?.message).toContain("terms are not approved");
++    const copied = { ...distinct, sources: [{ ...distinct.sources[0], url }] } as typeof distinct & { sources: Array<Record<string, unknown>> };
++    copied.sources[0].excerpt = "Unlicensed publisher passage must never be stored.";
++    const result = await supabaseAdmin.rpc("admit_metadata_verified_claim", { p_admission: copied });
++    expect(result.error?.message).toContain("unapproved fields");
++  });
++
++  it("suspends a claim when source validity cannot be established", async () => {
++    expect(ok(await supabaseAdmin.rpc("suspend_metadata_verified_claim", { p_claim_id: claimId, p_reason: "inaccessible" }))).toBe(true);
++    const evidence = await retrieveEvidence(question, personId);
++    expect(evidence.evidence.some(item => item.kind === "claim" && item.claimId === claimId)).toBe(false);
++    const rows = ok(await supabaseAdmin.from("metadata_claim_validity_events").select("reason").eq("claim_id", claimId));
++    expect(rows).toEqual([{ reason: "inaccessible" }]);
++  });
++});
+diff --git a/tests/corpus/metadata-only-verification.test.ts b/tests/corpus/metadata-only-verification.test.ts
+new file mode 100644
+index 0000000..e9f66fe
+--- /dev/null
++++ b/tests/corpus/metadata-only-verification.test.ts
+@@ -0,0 +1,106 @@
++import { describe, expect, it, vi } from "vitest";
++import { verifyDemandKnowledge, type AtomicCandidate } from "@/lib/live-research/knowledge-verification";
++import type { EvidenceGapRequest } from "@/lib/ask/question-resolution";
++import type { OnDemandResearchResult, ResearchFinding } from "@/lib/live-research/on-demand-engine";
++
++const request = { personalityId: "00000000-0000-0000-0000-000000000001", personalityName: "Mira Rao" } as EvidenceGapRequest;
++const claim = "Mira Rao was awarded the Meridian Medal in 1931.";
++const original = "The 1931 register awarded Mira Rao its Meridian Medal.";
++const finding = (url = "https://records.example.edu/medal", passage = original): ResearchFinding => ({
++  source: { url, sourceId: null, publisherDomain: new URL(url).hostname, retrievedAt: new Date().toISOString(),
++    title: "Meridian Medal register", author: "Registrar", publisher: "Example Institute Records",
++    publicationDate: "1931", journal: null, doi: null, isbn: null, evidenceType: "institutional_record",
++    workKey: `register:${url}`, provenanceComplete: true },
++  passage: { text: passage, locator: "Register entry 1931", supportLevel: "EXACT", supportReason: "Direct date" },
++  relation: "supports", retention: "transient_only", rightsDeclaration: null, citeableNow: true, verificationReady: false,
++});
++const research = (findings: ResearchFinding[]): OnDemandResearchResult => ({ requestId: "fixture", needId: "fixture", workId: "fixture",
++  status: "complete", attempted: true, candidates: [], findings, passages: [], unresolvedGaps: [],
++  sufficientForVerification: false, citeableNow: true,
++  usage: { searchCalls: 1, sourceFetches: findings.length, modelCalls: 0, provider: "fixture", errorCategory: null } });
++const candidate = (): AtomicCandidate => ({ proposition: claim, type: "HISTORICAL_FACT", evidenceIndexes: [0],
++  context: null, period: "1931", qualification: null, category: "official_record_fact" });
++function deps(permission = true, assessment: Record<string, unknown> = {}) {
++  const provider = { extract: vi.fn(async () => [candidate()]), assess: vi.fn(async () => ({
++    support: "SUPPORTED" as const, supportingIndexes: [0], equivalentExisting: false, conflictsExisting: false,
++    materialContradiction: false, exactEntities: true, exactDatesAndUnits: true, qualifiersPreserved: true,
++    officialIssuer: true, independentDocuments: true, reason: "Directly supported", ...assessment })) };
++  const store = { existing: vi.fn(async () => []),
++    admit: vi.fn(async (input: Record<string, unknown>) => { void input; return { claimId: "licensed", created: true }; }),
++    admitMetadata: vi.fn(async (input: Record<string, unknown>) => { void input; return { claimId: "metadata", created: true }; }),
++    metadataPermission: vi.fn(async () => permission), record: vi.fn(async () => {}) };
++  return { provider, store, enabled: true };
++}
++
++describe("metadata-only verifier", () => {
++  it("passes transient original text to verification but writes only reviewed bibliographic metadata", async () => {
++    const setup = deps();
++    const result = await verifyDemandKnowledge(request, research([finding()]), setup);
++    expect(result.decisions[0], JSON.stringify(result.decisions[0])).toMatchObject({ outcome: "admitted", claimId: "metadata" });
++    expect(setup.provider.assess).toHaveBeenCalledOnce();
++    expect(setup.store.admit).not.toHaveBeenCalled();
++    const payload = setup.store.admitMetadata.mock.calls[0]?.[0] as unknown as Record<string, unknown>;
++    expect(payload).toMatchObject({ storage_mode: "metadata_only", sources: [expect.objectContaining({
++      url: "https://records.example.edu/medal", locator: "Register entry 1931" })] });
++    expect(JSON.stringify(payload)).not.toContain(original);
++    expect(JSON.stringify(payload)).not.toContain("excerpt");
++  });
++
++  it("rejects uncertain access terms before a model call", async () => {
++    const setup = deps(false);
++    const result = await verifyDemandKnowledge(request, research([finding()]), setup);
++    expect(result.decisions[0].outcome).toBe("quarantined");
++    expect(setup.provider.extract).not.toHaveBeenCalled();
++    expect(setup.store.admitMetadata).not.toHaveBeenCalled();
++  });
++
++  it("rejects contradictory or inaccurate evidence", async () => {
++    const contradiction = deps(true, { support: "CONTRADICTED", materialContradiction: true });
++    const result = await verifyDemandKnowledge(request, research([finding()]), contradiction);
++    expect(result.decisions[0].outcome).not.toBe("admitted");
++    expect(contradiction.store.admitMetadata).not.toHaveBeenCalled();
++    const inaccurate = deps(true, { exactDatesAndUnits: false });
++    const second = await verifyDemandKnowledge(request, research([finding()]), inaccurate);
++    expect(second.decisions[0].outcome).toBe("quarantined");
++    const flagged = deps();
++    const conflict = finding("https://independent.example.org/medal");
++    conflict.relation = "potential_contradiction";
++    const third = await verifyDemandKnowledge(request, research([finding(), conflict]), flagged);
++    expect(third.decisions[0].outcome).toBe("quarantined");
++    expect(flagged.provider.extract).not.toHaveBeenCalled();
++  });
++
++  it("requires independent works and publishers for an ordinary historical fact", async () => {
++    const first = finding();
++    const second = finding("https://university.example.org/medal");
++    second.source.publisher = "Example University Press";
++    const setup = deps();
++    setup.provider.extract.mockResolvedValueOnce([{ ...candidate(), evidenceIndexes: [0, 1], category: "ordinary_fact" }]);
++    setup.provider.assess.mockResolvedValueOnce({ support: "SUPPORTED", supportingIndexes: [0, 1],
++      equivalentExisting: false, conflictsExisting: false, materialContradiction: false,
++      exactEntities: true, exactDatesAndUnits: true, qualifiersPreserved: true,
++      officialIssuer: false, independentDocuments: true, reason: "Independent records" });
++    expect((await verifyDemandKnowledge(request, research([first, second]), setup)).decisions[0].outcome).toBe("admitted");
++    const dependent = deps();
++    const mirror = finding("https://records.example.edu/mirror");
++    mirror.source.workKey = "separate-looking-work";
++    dependent.provider.extract.mockResolvedValueOnce([{ ...candidate(), evidenceIndexes: [0, 1], category: "ordinary_fact" }]);
++    expect((await verifyDemandKnowledge(request, research([first, mirror]), dependent)).decisions[0].outcome).toBe("quarantined");
++    expect(dependent.store.admitMetadata).not.toHaveBeenCalled();
++  });
++
++  it("rejects copied source wording", async () => {
++    const setup = deps();
++    setup.provider.extract.mockResolvedValueOnce([{ ...candidate(), proposition: original }]);
++    const result = await verifyDemandKnowledge(request, research([finding()]), setup);
++    expect(result.decisions[0].outcome).toBe("quarantined");
++    expect(setup.store.admitMetadata).not.toHaveBeenCalled();
++  });
++
++  it("does not persist model explanations containing transient source text", async () => {
++    const setup = deps(true, { support: "INSUFFICIENT_EVIDENCE", reason: original });
++    await verifyDemandKnowledge(request, research([finding()]), setup);
++    expect(setup.store.record).toHaveBeenCalledOnce();
++    expect(JSON.stringify(setup.store.record.mock.calls)).not.toContain(original);
++  });
++});

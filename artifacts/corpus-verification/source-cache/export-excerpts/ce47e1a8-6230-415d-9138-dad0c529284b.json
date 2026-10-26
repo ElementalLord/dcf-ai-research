@@ -1,0 +1,44 @@
+{
+  "source_id": "ce47e1a8-6230-415d-9138-dad0c529284b",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Bichitra: Online Tagore Variorum. Jadavpur University School of Cultural Texts and Records. https://bichitra.jdvu.ac.in/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Jadavpur University School of Cultural Texts and Records",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Bichitra: Online Tagore Variorum",
+    "url": "https://bichitra.jdvu.ac.in/"
+  },
+  "claim_ids": [
+    "0a0572c1-5ecf-4c85-a449-244f26f5addf",
+    "472d139c-68c1-450f-9ae3-85d6e8d393f5"
+  ],
+  "passages": [
+    {
+      "chunk_id": "06670e44-48ec-40a8-9167-06d421eed56c",
+      "locator": "manuscript and print witnesses",
+      "text_sha256": "544b35e6037dad187d20e30f284847c641183b693a7d2037738bee74fa03614d",
+      "excerpt_preview": "It preserves manuscript and print witnesses and enables comparison across textual versions.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "3c429326-0c27-4648-9bc1-8b5bac5d2107",
+      "locator": "quotation websites",
+      "text_sha256": "65d9a5ecdae390c06cf2e10f43aba8f6443d02071a0b8aef59c4af0913608608",
+      "excerpt_preview": "Reliable quotation should identify the work, version and language rather than rely on quotation websites.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

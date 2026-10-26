@@ -1,0 +1,43 @@
+{
+  "source_id": "f1d84ece-67ea-4fe4-9b87-cfbc92f45e87",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Public release of declassified files relating to Netaji Subhas Chandra Bose. Press Information Bureau, Government of India. https://www.pib.gov.in/newsite/PrintRelease.aspx?lang=2&reg=3&relid=153088",
+    "original_work_identity": {},
+    "publication_year": 2016,
+    "publisher_or_institution": "Press Information Bureau, Government of India",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Public release of declassified files relating to Netaji Subhas Chandra Bose",
+    "url": "https://www.pib.gov.in/newsite/PrintRelease.aspx?lang=2&reg=3&relid=153088"
+  },
+  "claim_ids": [
+    "f4a901eb-0c36-4f1e-9e5e-a4f37b5e6944",
+    "f795f222-0f46-488e-a622-f42bb549f99c"
+  ],
+  "passages": [
+    {
+      "chunk_id": "12b6e05a-00d0-4835-b572-1731dce986c1",
+      "locator": "Khosla Commission",
+      "text_sha256": "386498b889be2ba5f1e12355b1ce0b4b8b49304e3aecb54ef4ba8ddb42372f1d",
+      "excerpt_preview": "It also received 271 files or items relating to the Khosla Commission and 759 files or items relating to the Justice Mukherjee Commission.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6e0045d3-bfd0-4503-ac11-855ca4b59f61",
+      "locator": "990 declassified files",
+      "text_sha256": "ecd47e437bb7e5040218cb52ee418f215b4853b812ce16baa2c120c0367fee00",
+      "excerpt_preview": "he National Archives of India received 990 declassified files concerning the INA from the Ministry of Defence in 1997.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

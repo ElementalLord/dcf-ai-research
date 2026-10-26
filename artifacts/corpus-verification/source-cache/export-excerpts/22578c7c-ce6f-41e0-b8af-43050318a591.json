@@ -1,0 +1,44 @@
+{
+  "source_id": "22578c7c-ce6f-41e0-b8af-43050318a591",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Catalogue of the papers and referee reports for Jagadis Chunder Bose. Royal Society Archives. https://catalogues.royalsociety.org/CalmView/Record.aspx?id=NA7962&src=CalmView.Persons",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Royal Society Archives",
+    "rights_or_access_note": "Short documented research excerpts only. Primary claims, archival records, and later interpretations stay distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Catalogue of the papers and referee reports for Jagadis Chunder Bose",
+    "url": "https://catalogues.royalsociety.org/CalmView/Record.aspx?id=NA7962&src=CalmView.Persons"
+  },
+  "claim_ids": [
+    "196f2246-de66-46ea-be5f-944de5be3c52",
+    "5de7cc62-505c-4825-8fb2-1c6396bf21a7",
+    "669eeb72-ee22-41ca-a06c-1c66bdb1d556"
+  ],
+  "passages": [
+    {
+      "chunk_id": "b572d4fc-4837-4f9a-83ec-a07cc9d22d47",
+      "locator": "Mechanical and electrical response in plants",
+      "text_sha256": "edefc6410ddf4a9a736ae03a3a914715061fc56afd35990205bb35ae9e608862",
+      "excerpt_preview": "he Royal Society catalogue for Jagadis Chunder Bose lists referee reports on papers including “Mechanical and electrical response in plants,” “Transmission of death excitation in plants,” and “On cellular pulsations in the maintenance of th",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fc7222b7-09ef-4ecd-a798-5204b1436626",
+      "locator": "does not itself establish the experiments’ conclusions",
+      "text_sha256": "7cb3e0ccfe2f9f02700745d29f67a04ad47f958eb702a072302c503dda66277c",
+      "excerpt_preview": "A catalogue entry does not itself establish the experiments’ conclusions or explain every editorial decision.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

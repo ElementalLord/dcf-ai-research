@@ -1,0 +1,88 @@
+{
+  "source_id": "c414b2dc-2684-4326-a343-38694e3da374",
+  "source": {
+    "author": "John F. Richards",
+    "authority_metadata": {
+      "verified_at": "2026-10-10T05:22:22.239Z"
+    },
+    "citation": "John F. Richards. Maratha insurgency and Mughal conquest in the Deccan. Cambridge University Press, The Mughal Empire. https://www.cambridge.org/core/books/abs/mughal-empire/maratha-insurgency-and-mughal-conquest-in-the-deccan/EA21D51169D801D5BDC238E2DC75B29A",
+    "original_work_identity": {},
+    "publication_year": 1993,
+    "publisher_or_institution": "Cambridge University Press, The Mughal Empire",
+    "rights_or_access_note": "Public page; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Maratha insurgency and Mughal conquest in the Deccan",
+    "url": "https://www.cambridge.org/core/books/abs/mughal-empire/maratha-insurgency-and-mughal-conquest-in-the-deccan/EA21D51169D801D5BDC238E2DC75B29A"
+  },
+  "claim_ids": [
+    "6b5703f9-0c77-49ef-b6eb-89f73ab55bc5",
+    "9dc0b442-8e50-4a82-ae29-83d77c6e63fd",
+    "aa669b0d-3e3c-4f55-808b-30259ed4344b",
+    "dd164ae7-571d-46b5-ba74-c3930cbe7076",
+    "ddcb93d4-f9cc-4ed1-a9e3-9789e5b05249",
+    "e82fc484-e510-463f-b2ff-aa7ba266550f",
+    "e899499a-2a51-47cf-a287-bafa2b80e969"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0823c836-9318-4689-8d2c-c91e0cb774c9",
+      "locator": "carving out a self-sufficient state",
+      "text_sha256": "2f2377830bbbc0c74b9d35bd999bd22b1c55bf2c8beb7225e06c6532045c874f",
+      "excerpt_preview": "In the hilly areas of the western Deccan, around Puna, the Maratha leader Shivaji Bhonsla (1627–1680) was carving out a self-sufficient state within the enfeebled shell of the Sultanate of Bijapur.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "11df8f49-4d93-43fe-9760-48cbf2c56a5f",
+      "locator": "Shahji took service in the Karnatak campaigns",
+      "text_sha256": "2ed66fe4ae29811e809c218a9336448c117935960e5175c70451ad9f9250cbdf",
+      "excerpt_preview": "When Ahmadnagar was swallowed up by the Timurids, Shahji took service in the Karnatak campaigns of the Sultan of Bijapur.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "64dabde8-e9e8-4b1d-b950-b4246b34ceec",
+      "locator": "de facto ceded political control",
+      "text_sha256": "cbf68553fb32831f5daa1eb2dd8dbadb505acfb60bc13c621d1fd547ea16895a",
+      "excerpt_preview": "pur. Shahji retained control of his large fief in the western Ghats near Puna. The Sultan of Bijapur had de facto ceded political control of much of the western Ghats to the powerful Maratha chiefs or deshmukhs in that remote area.Shivaji w",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a1a69fe2-10ad-489e-8d28-ecc42fc3db92",
+      "locator": "raised by Jija Bai",
+      "text_sha256": "8b03b2de570214215d3e7e531f2f3c69bccb85ce0ce9ebd59d059afa8c99623b",
+      "excerpt_preview": "The Sultan of Bijapur had de facto ceded political control of much of the western Ghats to the powerful Maratha chiefs or deshmukhs in that remote area.Shivaji was raised by Jija Bai, Shahji's estranged wife, at Puna as a rustic Maratha ari",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e685971d-7b4f-4de7-b9be-ac42594b2562",
+      "locator": "second son of Shahji Bhonsla",
+      "text_sha256": "f5ca10d8461175ce2dfcb52133e8bdb5d64f5b066398f5399851de42e17bf886",
+      "excerpt_preview": "So successful was Shivaji that by the 1660s he seriously threatened Mughal prestige and domination in the south.Shivaji was the second son of Shahji Bhonsla, a Maratha general and aristocrat, and Jija Bai, daughter of one of the great Marat",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ead58a3c-814a-4d4f-b2a1-e2d2ccc08f69",
+      "locator": "Maratha warrior caste and literate Maratha Brahmin castes",
+      "text_sha256": "d9b7ec7f5533eb33d4aeda09103eeb135a600af04ac8b8eb42d5a72a2e524063",
+      "excerpt_preview": "The Bhonsla regime offered a new option for ambitious and aggressive men from both the Maratha warrior caste and literate Maratha Brahmin castes.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f9dae065-8d0a-44bb-9d33-7088e074dc85",
+      "locator": "seriously threatened Mughal prestige",
+      "text_sha256": "b835c9d3fd66dea85efc836576bbced2838b14173c6a0e2917728bf1ee9821bb",
+      "excerpt_preview": "aratha warrior caste and literate Maratha Brahmin castes. So successful was Shivaji that by the 1660s he seriously threatened Mughal prestige and domination in the south.Shivaji was the second son of Shahji Bhonsla, a Maratha general and ar",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

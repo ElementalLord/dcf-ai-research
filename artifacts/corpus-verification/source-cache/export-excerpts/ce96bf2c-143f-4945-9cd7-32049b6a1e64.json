@@ -1,0 +1,34 @@
+{
+  "source_id": "ce96bf2c-143f-4945-9cd7-32049b6a1e64",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:26:56.536Z"
+    },
+    "citation": "Hardy's Letter to Ramanujan on Partition Series — Trinity Archive. Trinity College Library, Cambridge. https://archives.trin.cam.ac.uk/index.php/letter-from-g-h-hardy-to-ramanujan-on-summing-partition-series-for-xxxx-2",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Trinity College Library, Cambridge",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Hardy's Letter to Ramanujan on Partition Series — Trinity Archive",
+    "url": "https://archives.trin.cam.ac.uk/index.php/letter-from-g-h-hardy-to-ramanujan-on-summing-partition-series-for-xxxx-2"
+  },
+  "claim_ids": [
+    "8253f2ea-1139-4679-b605-c62bedf73e95"
+  ],
+  "passages": [
+    {
+      "chunk_id": "d1d2a998-949c-4acc-9faf-65bde03da1d2",
+      "locator": "Archival correspondence record",
+      "text_sha256": "081a00fdd3fe461346edcaf98de28acca765ea5d06e103c0bedcb7924922d3c5",
+      "excerpt_preview": "Skip to main content Archive Site Trinity College Cambridge Quick search Search File 16 - Letter from G H Hardy to Ramanujan on summing ‘partition series’ for XXXX Identity area Reference codeAdd. MS a/94/16 TitleLetter from G H Hardy to Ra",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

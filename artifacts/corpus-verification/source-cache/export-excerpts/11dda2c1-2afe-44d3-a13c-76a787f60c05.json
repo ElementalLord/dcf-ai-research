@@ -1,0 +1,34 @@
+{
+  "source_id": "11dda2c1-2afe-44d3-a13c-76a787f60c05",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:26:43.373Z"
+    },
+    "citation": "On Some Indian Stringed Instruments (1921). Indian Academy of Sciences repository. https://repository.ias.ac.in/69870/1/69870.pdf",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Indian Academy of Sciences repository",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "On Some Indian Stringed Instruments (1921)",
+    "url": "https://repository.ias.ac.in/69870/1/69870.pdf"
+  },
+  "claim_ids": [
+    "b38216d1-6fe1-471c-a17a-f099d1e8f8f4"
+  ],
+  "passages": [
+    {
+      "chunk_id": "05f710c3-55d8-462e-98e3-cdce2786e3e2",
+      "locator": "1921 original paper",
+      "text_sha256": "c4cfd838d2e43e67a2b018e4ca86dbabaf7aa70dd5bb5cd7c6f6f5b325ca0146",
+      "excerpt_preview": "Proc. Indian Assoc. Cultiv. Sci. 7 29-33 (1921) On some Indian stringed instruments C V RAMAN, M.A., D.Sc. (Hon.) (Palit Professor of Physics in the Calcutta University) (Plate I) CONTENTS I. Introduction 11, The form of the bridge in the \"",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,44 @@
+{
+  "source_id": "1c8e472c-d8aa-4fe2-9fca-b5b3d067165f",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.50, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 50 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga50/bala_50_prose.htm"
+  },
+  "claim_ids": [
+    "925113d6-b92d-497a-bd0e-ecfcc6cffa5b",
+    "98000dfd-249f-42d3-90ca-cfa8b402a4a0",
+    "998e75fe-790d-4f6b-9cf0-e3bcaf468879"
+  ],
+  "passages": [
+    {
+      "chunk_id": "488dfd2b-47d8-44d7-86f8-bba5d8548695",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\nSarga 50 in Prose",
+      "text_sha256": "bda03504cb0083c60c1704bb37b079a7f3be71089138816dc7508201883b731d",
+      "excerpt_preview": "\"Today my Vedic ritual is enriched with your advent, whereby I deem that gods  have fructified the ritual. Let the ritual be like that. I deem that I have  obtained the fruit of the ritual just on seeing godlike you here today.  \"Oh, Brahma",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "60f34feb-d36a-4a60-b89c-8fd47e1c04ba",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\nSarga 50 in Prose",
+      "text_sha256": "73a452a68418fbfea88863e3919097c3390e0d7519976802ddcd2cf219f6a17a",
+      "excerpt_preview": "Rama arrives at Mithila along with Lakshmana led on by Vishvamitra. On hearing that  Vishvamitra has arrived at their city Mithila, King Janaka proceeds to him welcomingly.  On seeing Rama and Lakshmana near at Vishvamitra, Janaka inquisiti",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

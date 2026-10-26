@@ -1,0 +1,63 @@
+{
+  "source_id": "d006af45-ad2f-4874-8957-3ebae12569e7",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Journey of Civil Aviation in India. Press Information Bureau, Government of India. https://www.pib.gov.in/newsite/erelcontent.aspx?lang=2&reg=48&relid=30992",
+    "original_work_identity": {},
+    "publication_year": 2007,
+    "publisher_or_institution": "Press Information Bureau, Government of India",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Journey of Civil Aviation in India",
+    "url": "https://www.pib.gov.in/newsite/erelcontent.aspx?lang=2&reg=48&relid=30992"
+  },
+  "claim_ids": [
+    "145f90ab-fcfe-494b-9fc9-318d79d3cebc",
+    "2a0fa5ee-3881-46bb-b8cb-0cade9310c67",
+    "363d8eb6-cbde-449a-ba14-c8bfdd1b89b7",
+    "80318b56-ce90-4e4f-b723-a16b0d04d77b",
+    "d7bd9d07-c805-4718-875b-b51077414f95"
+  ],
+  "passages": [
+    {
+      "chunk_id": "427213ff-00df-4d7e-a27b-165bbfe8547e",
+      "locator": "weekly air-mail service to 1932",
+      "text_sha256": "9f813d582faa3361c00133f9dd3408df620b73547145e24d307d93b7ba2cac50",
+      "excerpt_preview": "government account dates India’s weekly air-mail service to 1932, when J.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4a58a94e-72ba-4ca6-b18a-1e5dcd321a75",
+      "locator": "private enterprise, postal infrastructure and the state",
+      "text_sha256": "b430a00ef96d29e34c7ac869283be77792f462c9f66aabcff9837b01e5f05b60",
+      "excerpt_preview": "This policy history places Tata’s airline within a long interaction between private enterprise, postal infrastructure and the state.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f9608307-8b20-4f72-bdf8-0ec7c35d7ff1",
+      "locator": "built a national network",
+      "text_sha256": "ac01f47864a22b0d31bd418f3c2ead825677bfc0f8ca7bd0021b72f8f6e78eb7",
+      "excerpt_preview": "The later system built a national network but also developed inefficiencies.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fd3044cb-6fdd-4393-a55b-b560de7c8d57",
+      "locator": "nationalized air transport in 1953",
+      "text_sha256": "ba10ad07c253c2438163d11166dfde8c4a1cc7ad207d5047945f6b4b7307722a",
+      "excerpt_preview": "The Indian government nationalized air transport in 1953 and created public-sector monopoly carriers, Air India and Indian Airlines.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

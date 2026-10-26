@@ -1,0 +1,35 @@
+{
+  "source_id": "78130614-1653-47e4-9286-4add1d5a8a33",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "M. S. Subbulakshmi song list. Saregama. https://r.saregama.com/resources/pdf/musiccard/Subbulakshmi-song-list.pdf",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Saregama",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "M. S. Subbulakshmi song list",
+    "url": "https://r.saregama.com/resources/pdf/musiccard/Subbulakshmi-song-list.pdf"
+  },
+  "claim_ids": [
+    "2212c66f-895f-4a79-ab10-94e5df537970",
+    "aa6ca6ee-85f8-483c-8e10-cdca4e16ff2c"
+  ],
+  "passages": [
+    {
+      "chunk_id": "88488cf5-c159-48ab-9a83-ec0550f6bafb",
+      "locator": "Record-label song list",
+      "text_sha256": "d32e9313e66e5047b40a3c1811927fa2fb24758647f89bc2dc3f07e864c34f52",
+      "excerpt_preview": "Dvadasa Stotram Featuring Radha Vishwanathan Album: Balaji Pancharatnamala 60. Sri Rangapura Vihara Album: Sri Venkatesa Suprabhatam 61. Srimannarayana Featuring Radha Vishwanathan Album: Balaji Pancharatnamala 62.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

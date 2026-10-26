@@ -1,0 +1,368 @@
+{
+  "worker": "science",
+  "created_utc": "2026-10-19T23:07:10.922722+00:00",
+  "cache_type": "permitted paraphrase and precise source locator, no bulk copyrighted source text",
+  "inspected_source_count": 10,
+  "claim_decision_count": 55,
+  "inspected_sources": [
+    {
+      "url": "https://iisc.ac.in/wp-content/uploads/2018/03/CV_RAMAN_AND_PHYSICS_AT_IISc.pdf",
+      "claim_count": 4,
+      "passages": [
+        {
+          "claim_id": "1ce09b33-1e0f-4853-8440-ff35a63e31dd",
+          "locator": "PDF p. 1, lines 26–34",
+          "evidence_assessment": "The IISc leaflet expressly says Raman invited Born in 1935 as Reader in Theoretical Physics."
+        },
+        {
+          "claim_id": "6ec58b8d-6bc3-4390-b3a4-b9a3251f5f6f",
+          "locator": "PDF p. 1, lines 19–25",
+          "evidence_assessment": "The IISc leaflet lists all three as Raman’s students."
+        },
+        {
+          "claim_id": "a5bc4238-53c0-4193-9c98-ecef855ed2f0",
+          "locator": "PDF p. 1, lines 3–7",
+          "evidence_assessment": "The IISc leaflet names Raman first Indian director and dates entry to 31 March 1933."
+        },
+        {
+          "claim_id": "b304d59a-03af-4ac4-8d8a-ec42ade9b652",
+          "locator": "PDF p. 1, lines 3–7",
+          "evidence_assessment": "The IISc leaflet expressly says he established the Department of Physics in 1933."
+        }
+      ]
+    },
+    {
+      "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+      "claim_count": 9,
+      "passages": [
+        {
+          "claim_id": "152f4d43-8f8c-4cf2-970a-d367292a15fa",
+          "locator": "lines 45–55; compare Hardy PDF p. 2, lines 86–95",
+          "evidence_assessment": "MacTutor reproduces Ramanujan’s 1913 letter saying he lacked university education and was taking a new path. Hardy’s obituary reproduces the letter directly."
+        },
+        {
+          "claim_id": "1e6631e9-0a39-4425-b6f2-2242a5540d82",
+          "locator": "lines 8–13, 24–26; compare Hardy PDF p. 1, lines 10–16",
+          "evidence_assessment": "MacTutor gives Erode birth in 1887 and childhood in Kumbakonam; Hardy’s contemporary obituary corroborates those locations."
+        },
+        {
+          "claim_id": "1e794aaa-d278-41d9-b460-bcd635f3ac3f",
+          "locator": "lines 37–47; compare Hardy PDF pp. 1–2, lines 43–50, 86–94",
+          "evidence_assessment": "MacTutor and Hardy’s obituary both describe Port Trust clerkship and concurrent mathematical work; the obituary embeds Ramanujan’s own statement."
+        },
+        {
+          "claim_id": "59760176-5476-469b-bdb2-9b8265df81d3",
+          "locator": "lines 77–82; compare Hardy PDF p. 14, lines 607–612",
+          "evidence_assessment": "MacTutor describes the unpublished notebooks and later mathematical study; Hardy’s obituary says unpublished material still awaited analysis."
+        },
+        {
+          "claim_id": "7387a37c-37d0-4d63-9121-bc44651ab5fd",
+          "locator": "lines 17–24",
+          "evidence_assessment": "MacTutor explicitly identifies analytic number theory, continued fractions, and infinite series among his contributions."
+        },
+        {
+          "claim_id": "97b951fd-6fff-41c1-9751-fa7569aab009",
+          "locator": "lines 26–29; compare Hardy PDF p. 1, lines 15–20",
+          "evidence_assessment": "MacTutor identifies Carr’s Synopsis as a basis of independent study; Hardy quotes a schoolfellow describing its use."
+        },
+        {
+          "claim_id": "ad9ccf96-0f14-4e64-aeab-50cefad8edd6",
+          "locator": "lines 35–36; compare Hardy PDF p. 2, lines 48–54",
+          "evidence_assessment": "MacTutor links the 1911 Bernoulli paper to growing recognition; Hardy confirms the publication and describes its editorial reception."
+        },
+        {
+          "claim_id": "fa02e01d-7471-4263-9266-599ac65ce5bc",
+          "locator": "lines 28–34; compare Hardy PDF pp. 2, 10, lines 86–95, 434–441",
+          "evidence_assessment": "MacTutor documents failed degree examinations and independent work; Ramanujan’s letter and Hardy’s assessment confirm limited conventional training."
+        },
+        {
+          "claim_id": "fd263fc9-4a9c-43be-b27a-c8fba87c8e1f",
+          "locator": "lines 55–58; compare Hardy PDF p. 2, lines 65–75",
+          "evidence_assessment": "MacTutor gives a two-year 1913 scholarship; Hardy describes a two-year research studentship sponsored after mathematical advocacy."
+        }
+      ]
+    },
+    {
+      "url": "https://mathshistory.st-andrews.ac.uk/DSB/Ramanujan.pdf",
+      "claim_count": 10,
+      "passages": [
+        {
+          "claim_id": "0b2c7697-5769-46da-8cd9-9803ba52a5b0",
+          "locator": "PDF p. 2, lines 57–59; compare Hardy PDF p. 15, lines 615–622",
+          "evidence_assessment": "Ore identifies the modular-equations paper’s unusually good pi approximations; Hardy independently singles out the series."
+        },
+        {
+          "claim_id": "26bdefd9-02ee-4c6d-8056-d60c9ce4fc23",
+          "locator": "PDF pp. 1–2, lines 47–54; compare Hardy PDF p. 11, lines 434–441",
+          "evidence_assessment": "Ore directly says most notebook theorems lacked standard proofs, quoting Hardy’s assessment."
+        },
+        {
+          "claim_id": "46736aad-f6bb-47e0-b3db-5b527261036d",
+          "locator": "PDF p. 2, lines 47–54",
+          "evidence_assessment": "The Ore biography expressly connects limited systematic training and library access to rediscovery of existing results."
+        },
+        {
+          "claim_id": "4d7dbe8f-af18-4ca6-a948-cc2b7ce7b0da",
+          "locator": "PDF p. 2, lines 62–68; compare MacTutor lines 78–80",
+          "evidence_assessment": "Ore directly identifies the Hardy–Ramanujan asymptotic formula for p(n); MacTutor corroborates."
+        },
+        {
+          "claim_id": "4f719a7e-9a8e-4658-9d3f-1f85056b8e01",
+          "locator": "PDF p. 2, lines 62–66",
+          "evidence_assessment": "Ore describes Ramanujan’s work on p(n) and congruence properties."
+        },
+        {
+          "claim_id": "6a0204bb-9cfc-44c7-8d6c-9f3b0ded5325",
+          "locator": "PDF p. 1, lines 37–41",
+          "evidence_assessment": "Ore says Ramanujan’s first letter added more than one hundred theorems on several mathematical topics."
+        },
+        {
+          "claim_id": "79805d3f-c103-4e40-8ded-72dfb49bc7ba",
+          "locator": "PDF p. 1, lines 42–47; compare MacTutor lines 55–64",
+          "evidence_assessment": "Ore gives Trinity entry in 1914 and work under Hardy and Littlewood."
+        },
+        {
+          "claim_id": "9a09447e-6d59-408b-b117-44b6d1cf38bd",
+          "locator": "PDF p. 2, lines 72–75; compare MacTutor lines 71–72",
+          "evidence_assessment": "Ore lists both 1918 fellowships, and MacTutor gives Royal Society and Trinity dates."
+        },
+        {
+          "claim_id": "be47b43a-987f-4369-a61e-d7757b42d0ed",
+          "locator": "PDF p. 2, lines 66–68",
+          "evidence_assessment": "Ore says an exact expression; the original’s specific convergent-formula characterization is not stated here."
+        },
+        {
+          "claim_id": "d0aa1e8b-a7e3-425a-bdd0-9d680b36836a",
+          "locator": "PDF p. 2, lines 57–60; compare Hardy PDF p. 15, lines 623–626",
+          "evidence_assessment": "Ore calls the highly composite numbers memoir important and Hardy describes its elementary analysis."
+        }
+      ]
+    },
+    {
+      "url": "https://mathshistory.st-andrews.ac.uk/RS/ramanujan_rs.pdf",
+      "claim_count": 6,
+      "passages": [
+        {
+          "claim_id": "382b8752-680f-4f7e-b6c5-cc577956ade0",
+          "locator": "PDF p. 11, lines 442–457",
+          "evidence_assessment": "Hardy states in first person that he tried to teach Ramanujan and learned more from him."
+        },
+        {
+          "claim_id": "6fb226a9-d29a-45fc-8101-2ad37def143d",
+          "locator": "PDF p. 16, lines 669–678",
+          "evidence_assessment": "Hardy describes numerical induction and explicitly mentions partition congruences and generalization."
+        },
+        {
+          "claim_id": "8fff980e-0194-4bd6-b48b-a58038743fbd",
+          "locator": "PDF p. 16, lines 669–678",
+          "evidence_assessment": "Hardy singles out Ramanujan’s insight into algebraic formulae and transformations of infinite series."
+        },
+        {
+          "claim_id": "9089927e-e956-4e71-8c00-c7732bf74a27",
+          "locator": "PDF p. 15, lines 631–640",
+          "evidence_assessment": "Hardy praises the identities while assigning Rogers priority in this specific work."
+        },
+        {
+          "claim_id": "ed302467-5986-4973-94d7-97b850ee8813",
+          "locator": "PDF p. 16, lines 651–660",
+          "evidence_assessment": "Hardy presents the 1729 episode as his own memory, satisfying the claim’s careful attribution."
+        },
+        {
+          "claim_id": "ff8c6a25-6dc2-4162-89f6-74cf137974fb",
+          "locator": "PDF p. 4, lines 154–176; PDF p. 11, lines 434–452",
+          "evidence_assessment": "Hardy explicitly judges several early prime-number results wrong and explains the mathematical issue."
+        }
+      ]
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6702694/",
+      "claim_count": 3,
+      "passages": [
+        {
+          "claim_id": "2cb39f70-470f-4d22-918f-a9d7fb8651c0",
+          "locator": "lines 80–84; references 3–4, lines 155–160",
+          "evidence_assessment": "Tandon explicitly recognizes Burdon-Sanderson’s earlier Dionaea research and cites his 1873 Royal Society report; Bose’s plant studies came later."
+        },
+        {
+          "claim_id": "37f8e70b-3501-4b5b-baec-2b9893d50b8c",
+          "locator": "abstract lines 67–70; body lines 82–86",
+          "evidence_assessment": "Tandon says later work confirmed most observations; the claim correctly limits that to his judgment and does not endorse every Bose interpretation."
+        },
+        {
+          "claim_id": "d75e4c71-3df2-4cee-be37-eea309c0dd75",
+          "locator": "lines 72–79",
+          "evidence_assessment": "The review directly supports recording plant responses; the original wording about durable traces adds an unsupported characterization."
+        }
+      ]
+    },
+    {
+      "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+      "claim_count": 9,
+      "passages": [
+        {
+          "claim_id": "0ca8537d-384c-49a7-ab8c-0e545d36e47a",
+          "locator": "lines 13–16",
+          "evidence_assessment": "The official profile expressly names Kalam as SLV-III project director and dates the Rohini orbit insertion to July 1980."
+        },
+        {
+          "claim_id": "0fe168d7-9b34-49b4-afcf-9cfc23b469db",
+          "locator": "lines 21–22",
+          "evidence_assessment": "The book titles are directly listed, while the original interpretive clause about linking themes is not demonstrated by this passage."
+        },
+        {
+          "claim_id": "1f24f631-9f71-45f8-8020-344583ae60d9",
+          "locator": "line 15",
+          "evidence_assessment": "The official profile states birth at Rameswaram in 1931 and aeronautical engineering specialization at Madras Institute of Technology."
+        },
+        {
+          "claim_id": "4215c7e3-8dc4-4a4c-b8b2-ca88ec823589",
+          "locator": "lines 3, 24",
+          "evidence_assessment": "The profile lists the office term and identifies him as the eleventh president."
+        },
+        {
+          "claim_id": "59e0de88-bec6-4ffa-9b35-f346e2885e8b",
+          "locator": "lines 19–20",
+          "evidence_assessment": "The official profile lists TIFAC and principal scientific advisor work as well as the Cabinet science advisory chair."
+        },
+        {
+          "claim_id": "5f99454a-d63b-4386-872b-e1c91608383f",
+          "locator": "line 16",
+          "evidence_assessment": "The President’s profile specifically credits him with the evolution of ISRO’s launch vehicle programme, particularly the PSLV configuration."
+        },
+        {
+          "claim_id": "a0fbf8c8-5cc6-4ae6-8cff-85a27b4b54ef",
+          "locator": "line 23",
+          "evidence_assessment": "The profile gives all three awards with dates; the phrase about what they reflect was interpretive."
+        },
+        {
+          "claim_id": "d60c168d-8fb0-49b5-a88a-406e53292d33",
+          "locator": "line 21",
+          "evidence_assessment": "The profile dates the Anna University position to November 2001 and names its professorship."
+        },
+        {
+          "claim_id": "e95fea19-bcf4-49db-9c92-db5e87b14e7b",
+          "locator": "lines 15–17",
+          "evidence_assessment": "The profile describes the move from roughly two decades at ISRO to chief executive of IGMDP at DRDO."
+        }
+      ]
+    },
+    {
+      "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-nation-ramparts-red-fort-new-delhi",
+      "claim_count": 3,
+      "passages": [
+        {
+          "claim_id": "1586e287-eaa7-49fe-a262-bbf7e70a06bb",
+          "locator": "lines 20–26, 45–49",
+          "evidence_assessment": "The speech explicitly urges national development by 2020; its future-oriented wording is an aspiration, not evidence of realization."
+        },
+        {
+          "claim_id": "6ec6add7-c0f0-4ff9-bf1e-4d7181a37982",
+          "locator": "lines 23–26",
+          "evidence_assessment": "Kalam enumerates all five sectors in the Red Fort speech."
+        },
+        {
+          "claim_id": "cc16e922-aa9f-424f-8a38-93a1f236d2ee",
+          "locator": "lines 27–35",
+          "evidence_assessment": "Kalam lists a smaller rural–urban divide and access to energy, water and education as components of his 2020 vision."
+        }
+      ]
+    },
+    {
+      "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-st-aloysius-college",
+      "claim_count": 3,
+      "passages": [
+        {
+          "claim_id": "2531ba47-40fb-415d-a0e1-7b56814dab0c",
+          "locator": "lines 18–21",
+          "evidence_assessment": "Kalam explicitly names classroom teachers, libraries and laboratories as sources of education."
+        },
+        {
+          "claim_id": "51b623f2-bea9-4af4-9d2e-ddf6be258d7a",
+          "locator": "lines 22–25",
+          "evidence_assessment": "Kalam describes education of the younger generation as an investment for the future."
+        },
+        {
+          "claim_id": "ba7c9fc4-5142-421c-8633-4e8f0e3996b5",
+          "locator": "lines 18–20",
+          "evidence_assessment": "The speech confirms the two institutions but does not itself establish the temporal relation to later engineering training."
+        }
+      ]
+    },
+    {
+      "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/questionnaire-foreign-journalist",
+      "claim_count": 4,
+      "passages": [
+        {
+          "claim_id": "180328bf-d785-4a6e-9287-9b20d04411ff",
+          "locator": "lines 34–43",
+          "evidence_assessment": "Kalam directly recounts not entering the Air Force as a pilot and beginning technical work in the cited answer."
+        },
+        {
+          "claim_id": "1c531c7b-124d-4103-9f1c-87c8f9114fcd",
+          "locator": "lines 41–43",
+          "evidence_assessment": "Kalam recounts Dhawan taking responsibility after SLV-III failure and giving team credit after success, then explicitly states the leadership lesson."
+        },
+        {
+          "claim_id": "86c3e492-11eb-4ce7-854a-435f7fa80d47",
+          "locator": "lines 41–43",
+          "evidence_assessment": "Kalam directly says Dhawan appointed him project director in 1973 and describes the initial unsuccessful launch."
+        },
+        {
+          "claim_id": "cd5f243a-2303-4e8b-89c8-f4f8db25bf04",
+          "locator": "line 41",
+          "evidence_assessment": "Kalam lists these technical areas in his own answer."
+        }
+      ]
+    },
+    {
+      "url": "https://www.rri.res.in/about/overview",
+      "claim_count": 4,
+      "passages": [
+        {
+          "claim_id": "0f7737cd-0303-400f-817b-52ded2beddd4",
+          "locator": "lines 15–17",
+          "evidence_assessment": "The institute’s official overview says it was personally funded by Raman and private donations."
+        },
+        {
+          "claim_id": "86985b26-e282-476e-ad16-3ef4594e7eef",
+          "locator": "lines 18–20",
+          "evidence_assessment": "The institute’s official overview states that Raman founded the Indian Academy of Sciences in 1934."
+        },
+        {
+          "claim_id": "c513228c-6a62-4646-815a-ef6a96b0c8f2",
+          "locator": "lines 15–19",
+          "evidence_assessment": "The institute’s overview identifies the 1948 founding after Raman’s IISc retirement."
+        },
+        {
+          "claim_id": "fc2bd190-62fb-4dfc-8530-716df5df36e8",
+          "locator": "lines 15–17",
+          "evidence_assessment": "The institute states Raman remained its director and carried on research until his death in 1970."
+        }
+      ]
+    }
+  ],
+  "access_problems": [
+    {
+      "url": "https://www.nobelprize.org/uploads/2018/06/raman-lecture.pdf",
+      "status": "403 via research browser; no final decisions based on search snippets"
+    },
+    {
+      "url": "https://www.boseinst.ernet.in/web/acharya-jagadish-chandra-bose",
+      "status": "web tool fetch failed; no final decisions from this source"
+    },
+    {
+      "url": "https://www.iacs.res.in/ijp/ijp_august_08_abstract.pdf",
+      "status": "timeout; no final decisions from this source"
+    },
+    {
+      "url": "https://repository.ias.ac.in/70648/1/36-PUb.pdf",
+      "status": "403; no final decisions from this source"
+    }
+  ],
+  "citation_record_problems": [
+    {
+      "linked_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6702694/",
+      "problem": "Audit source-group metadata names A. K. Ghosh/M. S. R. Rao but actual inspected 2019 paper is by Prakash Narain Tandon. Decisions leave source_id null pending correct source-record creation."
+    }
+  ]
+}

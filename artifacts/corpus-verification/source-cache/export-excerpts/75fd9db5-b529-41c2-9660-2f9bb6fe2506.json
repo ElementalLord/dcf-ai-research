@@ -1,0 +1,34 @@
+{
+  "source_id": "75fd9db5-b529-41c2-9660-2f9bb6fe2506",
+  "source": {
+    "author": "Hans Henrich Hock",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Hans Henrich Hock. The Yājñavalkya Cycle in the Bṛhad Āraṇyaka Upaniṣad (abstract). Journal of the American Oriental Society 122(2); University of Illinois research record. https://experts.illinois.edu/en/publications/the-y%C4%81j%C3%B1avalkya-cycle-in-the-brcombining-ring-belowhad-%C4%81rancombin/",
+    "original_work_identity": {},
+    "publication_year": 2002,
+    "publisher_or_institution": "Journal of the American Oriental Society 122(2); University of Illinois research record",
+    "rights_or_access_note": "Abstract only; the full article is behind the journal’s access controls.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "The Yājñavalkya Cycle in the Bṛhad Āraṇyaka Upaniṣad (abstract)",
+    "url": "https://experts.illinois.edu/en/publications/the-y%C4%81j%C3%B1avalkya-cycle-in-the-brcombining-ring-belowhad-%C4%81rancombin/"
+  },
+  "claim_ids": [
+    "16b518dc-2076-4fad-ad53-acb1910b3c2c"
+  ],
+  "passages": [
+    {
+      "chunk_id": "074fd95a-1c0a-4503-b464-1300a7a82dac",
+      "locator": "JAOS 122(2), abstract",
+      "text_sha256": "768180ad63810bcd3d0d64237363c4e0d8e3f7ca7fd4a4182ac7121840e11ada",
+      "excerpt_preview": "I present evidence that Brereton's passage forms part of a much larger text (BAU 2.1-4.5), which is even more clearly a ring composition. This larger composition in turn may constitute a later expansion of Brereton's text, and recognizing t",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

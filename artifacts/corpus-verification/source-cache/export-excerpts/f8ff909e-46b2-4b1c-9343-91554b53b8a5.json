@@ -1,0 +1,34 @@
+{
+  "source_id": "f8ff909e-46b2-4b1c-9343-91554b53b8a5",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:04.743Z"
+    },
+    "citation": "Karma-Yoga: What Is Duty?. Complete Works of Swami Vivekananda. https://www.ramakrishnavivekananda.info/vivekananda/volume_1/karma-yoga/what_is_duty.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Complete Works of Swami Vivekananda",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Karma-Yoga: What Is Duty?",
+    "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/karma-yoga/what_is_duty.htm"
+  },
+  "claim_ids": [
+    "2fbe48f9-8f59-49e7-bc73-732d75b67678"
+  ],
+  "passages": [
+    {
+      "chunk_id": "c38f567f-3c9f-4498-b696-e7154b80a794",
+      "locator": "Collected lecture",
+      "text_sha256": "c5e6915d73e6c845db2a7e83af819eef03338c0b934260f1fddf71ab2aaa5445",
+      "excerpt_preview": "-Yoga to know what duty is. If I have to do something I must first know that it is my duty, and then I can do it. The idea of duty again is different in different nations. The Mohammedan says what is written in his book, the Koran, is his d",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

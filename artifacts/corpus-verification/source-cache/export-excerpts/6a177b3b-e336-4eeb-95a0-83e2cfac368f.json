@@ -1,0 +1,62 @@
+{
+  "source_id": "6a177b3b-e336-4eeb-95a0-83e2cfac368f",
+  "source": {
+    "author": "Mircea Raianu",
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Mircea Raianu. Philanthropy and the Making of a New Moral Order: A History of Developing Community. Journal of Business Ethics, Springer. https://link.springer.com/article/10.1007/s10551-022-05094-1",
+    "original_work_identity": {},
+    "publication_year": 2022,
+    "publisher_or_institution": "Journal of Business Ethics, Springer",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Philanthropy and the Making of a New Moral Order: A History of Developing Community",
+    "url": "https://link.springer.com/article/10.1007/s10551-022-05094-1"
+  },
+  "claim_ids": [
+    "82239add-4037-488c-82ec-bdba3231a4c1",
+    "a3f11d46-8186-461b-98c8-b4f3d2e543da",
+    "c13736e0-810a-4857-8932-ab6188f875d5",
+    "c650734f-2998-4c3c-ab4d-ad20b66a3601"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1dedd955-b1ca-4040-bd49-acb61ac14e95",
+      "locator": "changing periods",
+      "text_sha256": "4e6652f16b79bb02fe7b43912308877846919e7fc988dbd933976bd227d38328",
+      "excerpt_preview": "istorical scholarship divides Tata philanthropy from the 1860s onward into changing periods rather than presenting one timeless philosophy.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "782ba879-839b-4a6e-bd4b-883758b1ffca",
+      "locator": "outside power, governance or corporate interest",
+      "text_sha256": "856977b7b39b2492e426529b2d80f97a5a487f626feb8a6343c13c859856a9eb",
+      "excerpt_preview": "The scholarship cautions against treating philanthropy as outside power, governance or corporate interest.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7e2dec4c-b8cb-40b9-8d97-a357720af3bf",
+      "locator": "community, welfare and national development evolved",
+      "text_sha256": "97e26fa8e5b48ac8c0449d7120e50112f7dd88e16ae133891764539706237417",
+      "excerpt_preview": "Definitions of community, welfare and national development evolved with business organization, colonial rule and the postcolonial state.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "afc7284e-b00d-4210-8b63-6fbfbef46cac",
+      "locator": "inherited institutions and moral claims",
+      "text_sha256": "1277707fe9dc167e93c557da7f59743c60264fc61ddfda056d4018f6704228de",
+      "excerpt_preview": "Tata inherited institutions and moral claims created by earlier generations and reshaped them during industrial expansion and state-led development.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

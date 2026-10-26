@@ -1,0 +1,115 @@
+{
+  "source_id": "b436d76b-b701-4a8b-9b5b-51b60b92f7b0",
+  "source": {
+    "author": "J. J. O'Connor and E. F. Robertson",
+    "authority_metadata": {
+      "verified_at": "2026-10-09T14:27:59.505Z"
+    },
+    "citation": "J. J. O'Connor and E. F. Robertson. Srinivasa Ramanujan — Biography. MacTutor History of Mathematics, University of St Andrews. https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "MacTutor History of Mathematics, University of St Andrews",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Srinivasa Ramanujan — Biography",
+    "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/"
+  },
+  "claim_ids": [
+    "152f4d43-8f8c-4cf2-970a-d367292a15fa",
+    "1e6631e9-0a39-4425-b6f2-2242a5540d82",
+    "1e794aaa-d278-41d9-b460-bcd635f3ac3f",
+    "59760176-5476-469b-bdb2-9b8265df81d3",
+    "5c3c9017-4d95-4d1e-ba5a-5aef8d235321",
+    "7387a37c-37d0-4d63-9121-bc44651ab5fd",
+    "97b951fd-6fff-41c1-9751-fa7569aab009",
+    "ad9ccf96-0f14-4e64-aeab-50cefad8edd6",
+    "fa02e01d-7471-4263-9266-599ac65ce5bc",
+    "fd263fc9-4a9c-43be-b27a-c8fba87c8e1f"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0488e11b-8f5c-47a2-bf68-7799cdedeb33",
+      "locator": "Biography, first letter",
+      "text_sha256": "cc628ecff85debd5d812408a0070448e956268908f24398a2082edb6e5390fa7",
+      "excerpt_preview": "Despite the fact that he had no university education, Ramanujan was clearly well known to the university mathematicians in Madras for, with his letter of application, Ramanujan included a reference from E W Middlemast who was the Professor ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "05eb061c-c849-4135-a447-b19de8d8e2f7",
+      "locator": "Biography, opening",
+      "text_sha256": "1783d0751e59910f0ff313ae68a2c098384ed1aebd08babbdc13f4f2dddbb84f",
+      "excerpt_preview": "rinivasa Aiyangar Ramanujan Quick Info Born 22 December 1887 Erode, Tamil Nadu state, India Died 26 April 1920 Kumbakonam, Tamil Nadu state, India Summary Ramanujan made substantial contributions to the analytical theory of numbers and work",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "1482e0ea-f126-492f-96fa-95e61899dd45",
+      "locator": "Biography, Madras support",
+      "text_sha256": "a45bd9879fa440fc705ebb0a58b7fdc2fa3d9a1c46eb44e39ef3885bb2534fbf",
+      "excerpt_preview": "Indeed the University of Madras did give Ramanujan a scholarship in May 1913 for two years and, in 1914, Hardy brought Ramanujan to Trinity College, Cambridge, to begin an extraordinary collaboration.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "3e9a35ef-7a8f-474f-8f61-06298d3aa8c6",
+      "locator": "Biography, early life",
+      "text_sha256": "f0987a2f75da1ea3ebe4afafbb34cb7b8662eeddbe0da3759f96f30ff46d4e7f",
+      "excerpt_preview": "Ramanujan was born in his grandmother's house in Erode, a small village about 400 km southwest of Madras (now Chennai). When Ramanujan was a year old his mother took him to the town of Kumbakonam, about 160 km nearer Madras.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "490ed87b-f5a6-4539-a1e2-7e8f35b24314",
+      "locator": "Biography, employment",
+      "text_sha256": "ebd04582c860aef61860b3a6eced0045273fac32f0f091d76d6a925a304a1177",
+      "excerpt_preview": "In 1912 Ramanujan applied for the post of clerk in the accounts section of the Madras Port Trust. In his letter of application he wrote [3]:- I have passed the Matriculation Examination and studied up to the First Arts but was prevented fro",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "62a47105-f3ff-46bf-8fd5-46066f799460",
+      "locator": "Biography, college",
+      "text_sha256": "806ad7818e1f567eb6176abf21c713074cdb0a468696cd822a18f91c92421de1",
+      "excerpt_preview": "However, the following year his scholarship was not renewed because Ramanujan devoted more and more of his time to mathematics and neglected his other subjects.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9e0553ae-4306-4da3-8aad-bd8d9b596951",
+      "locator": "Biography, early education",
+      "text_sha256": "91750e4ad81203a438e117a7bd37485bf00b5eceb6432e6d0c82283410fc048a",
+      "excerpt_preview": "It was in the Town High School that Ramanujan came across a mathematics book by G S Carr called Synopsis of elementary results in pure mathematics. This book, with its very concise style, allowed Ramanujan to teach himself mathematics, but ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "adde5cbd-eb80-4b3a-b63f-a66f191ba08f",
+      "locator": "Biography, later reception",
+      "text_sha256": "e607b89d696b4219d0b6adefd1676fb2d58865f7323590535ce14d790a75a8f9",
+      "excerpt_preview": "Ramanujan left a number of unpublished notebooks filled with theorems that mathematicians have continued to study. G N Watson, Mason Professor of Pure Mathematics at Birmingham from 1918 to 1951 published 14 papers under the general title T",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d1313020-b72a-41c1-803b-161ece9c6e02",
+      "locator": "Biography, independent study",
+      "text_sha256": "21a1aee2ffb48566fffa55154c7c1f3d6221e6cf8f5da6facc0b9ddd1a6761df",
+      "excerpt_preview": "In the following years he worked on mathematics developing his own ideas without any help and without any real idea of the then current research topics other than that provided by Carr's book.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ecea1290-ec79-43ec-8df4-b60f9b3c6369",
+      "locator": "Biography, early publication",
+      "text_sha256": "15ec33d90e26c912b3e8e4103c244231f06070cc8d272d3138ce51a85fea803a",
+      "excerpt_preview": "After publication of a brilliant research paper on Bernoulli numbers in 1911 in the Journal of the Indian Mathematical Society, he gained recognition for his work.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

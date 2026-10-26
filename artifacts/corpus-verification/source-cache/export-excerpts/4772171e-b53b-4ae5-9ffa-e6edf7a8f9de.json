@@ -1,0 +1,92 @@
+{
+  "source_id": "4772171e-b53b-4ae5-9ffa-e6edf7a8f9de",
+  "source": {
+    "author": "Valmiki",
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Bala Kanda, Sarga 22 (https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm)",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Bala Kanda, Sarga 22",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga22/balasans22.htm"
+  },
+  "claim_ids": [
+    "35c9c378-40ea-4ff7-a1ac-9681cd4cf575",
+    "3cb766e5-8aef-4c09-be60-00e9870c4be1",
+    "596594fb-0cb9-4718-b8dc-9f9336fa9d0e",
+    "77471114-8d0a-43dd-ba6c-0aee9dfe4d1a",
+    "784c19c9-be79-429f-a56d-e05280db9bbe",
+    "79dc18aa-e604-40bf-a754-553f10851aa9",
+    "7ba43136-895b-4e78-a5a6-74ca4b738d75",
+    "821877ac-b19c-4cd1-ab3d-8c2da11b3bd4",
+    "acaa016e-224e-45bc-b5fa-86e6384cae84",
+    "b070cd29-c722-4478-b2ce-56ff7085e386",
+    "b8f844d3-900f-43b3-9f59-6000e38a86ec",
+    "e05a95af-7c44-4558-811f-78ea7688bb36",
+    "ef713392-697f-4e1a-854d-46c3b143d848"
+  ],
+  "passages": [
+    {
+      "chunk_id": "271446df-1b16-4af1-b22d-f06365591e27",
+      "locator": "Introduction",
+      "text_sha256": "dcce277abada6790d5db1a2c75de17a25bd13bed79f4707a4951cf2e3297e1db",
+      "excerpt_preview": "गृहाण वत्स सलिलं मा भूत् कालस्य पर्ययः || १-२२-११  मंत्रग्रामं गृहाण त्वं बलामतिबलां तथा |  11b, 12a. vatsa salilam gR^ihaaNa = my boy, you take water; tvam   tathaa = you, like that; mantragraamam = group of hymns; balaam   atibalaam = bal",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "347af684-3faf-459c-902b-b4f21353fb0c",
+      "locator": "bala-atibala-teachings",
+      "text_sha256": "54efee94fb20855ce8e89ac4c1db5318247d9190be84fab1aac24d0a47c1c8b8",
+      "excerpt_preview": "Sage Vishvamitra is the Seer for Gayatri hymn. He is the same Sage to impart balaatibala  hymns to Rama and Lakshmana. For those readers that are interested to know or to practice,  the Upanishad of balaatibala is included hereunder. This h",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "3953cd95-3cdf-4535-8e2d-1cc370c49c78",
+      "locator": "Introduction",
+      "text_sha256": "da7b1fdac066cd74b2ba7ccf736ca95f97a1d4a9fb15ef7d96634e05cb0d03e2",
+      "excerpt_preview": "The meaning of As'vins from as'va a horse, Persian asp, Greek  ιππος Latin equus, Welsh *eck, is   Horsemen. They were twin deities of whom frequent mention is made in the Vedas   and the Indian myths. The As'vins have much in common with t",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "3e790a17-403e-47fd-b349-d85f9c4d92bd",
+      "locator": "Introduction",
+      "text_sha256": "ee50ab183c8597339040406b778edd649a96ff7580815caa441a634706bf74dd",
+      "excerpt_preview": "King Dasharatha sends Rama and Lakshmana along with Sage Vishvamitra as requested   by the sage. In their course of travel, Sage Vishvamitra imparts a secret knowledge   to the young princes Rama and Lakshmana, called bala-atibala-   vidya-",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6e846439-227f-40f0-9421-4bab574c778b",
+      "locator": "Introduction",
+      "text_sha256": "5c99c320d2a07a5fd9c9f9a68998f08dc2626363bcf66ce8db3d355a541903d9",
+      "excerpt_preview": "21b, 22. bhuurivikramaH = one with marvellous valiance; Rama;  vidyaasamuditaH = on obtaining teachings; kushikaatmaje =   in respect of Vishvamitra; sarvaaNi gurukaaryaaNi = all, teacher's   works - works to be done in respect of teacher; ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a7dff378-bd46-4f5a-9958-77bd7d682412",
+      "locator": "Introduction",
+      "text_sha256": "df0f97206c53127250e06335f8ca43c8947e50f696aa52edc4f877f48815d6f4",
+      "excerpt_preview": "5. tataH vishvaamitragatam = then, the one following Vishvamitra; raajiivalocanam raamam =   lotus-eyed Rama; dR^iSTvaa = on seeing; tadaa = then;   sukhasparshaH virajaskaH vaayuH   = pleasant for touch and dustless breeze; vavau = blew.  ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b6e661c7-935d-4437-966f-55bbe4dbc538",
+      "locator": "Introduction",
+      "text_sha256": "bcd58c09bd3af0b37680e201bc944b8d666d871c3fc90084f629d8338abd1129",
+      "excerpt_preview": "क्षुत्पिपासे न ते राम भविष्येते नरोत्तम |  बलामतिबलां चैव पठतस्तात राघव || १-२२-१७  17. narottama raaghava = oh best among people, Raghava; balam atibalam   cha eva = bala and atibala hymns; paThataH = if recited; taata   = my dear; te = to",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

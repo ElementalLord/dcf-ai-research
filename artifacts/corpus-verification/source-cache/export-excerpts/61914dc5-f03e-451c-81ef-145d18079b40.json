@@ -1,0 +1,221 @@
+{
+  "source_id": "61914dc5-f03e-451c-81ef-145d18079b40",
+  "source": {
+    "author": "Swami Nikhilananda",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Swami Nikhilananda. Introduction to The Gospel of Sri Ramakrishna (biography of Sri Ramakrishna). Ramakrishna-Vivekananda Center, New York (1942); online edition ramakrishnavivekananda.info. https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm",
+    "original_work_identity": {},
+    "publication_year": 1942,
+    "publisher_or_institution": "Ramakrishna-Vivekananda Center, New York (1942); online edition ramakrishnavivekananda.info",
+    "rights_or_access_note": "Unofficial online edition of a monk's biography of his own order's founder; institutional tradition, not independent history.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Introduction to The Gospel of Sri Ramakrishna (biography of Sri Ramakrishna)",
+    "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/introduction.htm"
+  },
+  "claim_ids": [
+    "08cff6a7-0e1c-4a21-9b03-23087f2ea745",
+    "2b9c30d3-6e88-45ac-8b3d-a73541083437",
+    "2d6d5273-b58d-4fc2-977c-df009060e4bd",
+    "2dc1487d-5e85-47b3-b7ec-a84aa58b688b",
+    "463a43cf-ce07-4734-afd1-f82d2875592b",
+    "4a430925-c049-4438-a455-b4c2d2c2acaf",
+    "4f33bfc4-3624-4e0b-9a1e-cbc3e0061f7f",
+    "53c4046e-5fef-439f-b594-5f84b61f63b0",
+    "6d6352c0-e4ed-4414-90a4-c290e54dfa4e",
+    "71062ea0-f9bd-4671-9b10-a7e4027d10c6",
+    "7180fef3-c2ab-4874-9ebf-63b949cda6c2",
+    "996d54e9-0a2c-4c3d-9d90-cdfc2501c507",
+    "9a849445-4c16-4ef2-bf13-c514db5f9a9c",
+    "a34c7f26-381e-408a-a9e5-b005a10bdf3c",
+    "ad245e15-54a5-4b4c-9032-2a28bbb95cb5",
+    "b0d5d60d-c2dc-43f8-9fe3-34a21ce75cff",
+    "b43a959b-4558-4ff1-9c5e-81e09a9a05af",
+    "c387e462-e053-47bb-8ea0-b641a90acb46",
+    "d3d4217a-a201-414d-934a-6dab91650ba1",
+    "db679fec-a8ef-41cd-a1d9-a1138b0d2d01",
+    "e25fbaa7-23c6-4fab-b70f-3f0e1bb94fc9",
+    "e33d7beb-875d-489b-958d-ac717133982f",
+    "e76a77c7-134b-4723-92c7-2af6224bd1b1",
+    "ecc7fc2c-617c-4f29-b365-462f1c4aa0cb",
+    "ee73dc34-1a5b-45c7-8de3-62d5901b682b",
+    "f225e1d1-7a6e-4156-9a9e-d9c8bff18bf8",
+    "f33a6a7b-f3be-442a-952b-a4b896fc1d06",
+    "f4e89c5c-b9bc-4327-abf5-44136177a80e"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1df793d7-77d8-41cb-94c5-ee85882ece36",
+      "locator": "Gospel introduction: Narendra",
+      "text_sha256": "52879bb741a7a0e7dcc7bf4c970e8d5f719f76814b906e40852b40bb7c3c9ed0",
+      "excerpt_preview": "Sri Ramakrishna was grateful to the Divine Mother for sending him one who doubted his own realizations. Often he asked Narendra to test him as the money-changers test their coins. He laughed at Narendra's biting criticism of his spiritual e",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "25972267-7868-412a-80cd-4ae4b1419c40",
+      "locator": "Gospel introduction: Keshab Chandra Sen",
+      "text_sha256": "ef14d9b870696ad0bf67db53524948fb5935a855c2397ddaa30f6c1ac9446ac3",
+      "excerpt_preview": "Keshab was an orator and a writer of books and magazine articles; Sri Ramakrishna had a horror of lecturing and hardly knew how to write his own name, Keshab's fame spread far and wide, even reaching the distant shores of England; the Maste",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "446b4390-c17e-434f-9c08-da7f113d0ebc",
+      "locator": "Gospel introduction: Summary of the Master's spiritual experiences",
+      "text_sha256": "71d92625cd35287457ecd4a660efc1841f9cae785c1429757e4b55564c19bcf8",
+      "excerpt_preview": "He had followed all the main paths and all had led him to the same goal. He was the first religious prophet recorded in history to preach the harmony of religions. Second, the three great systems of thought known as Dualism, Qualified Non-d",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "5cc49b48-22f6-42d6-b589-7f790c5d3701",
+      "locator": "Gospel introduction: Totapuri",
+      "text_sha256": "ee83731d4ae18737f3d522776176c3a3f1310a603193d94126a3eee9d1c0193e",
+      "excerpt_preview": "Totapuri arrived at the Dakshineswar temple garden toward the end of 1864. Perhaps born in the Punjab, he was the head of a monastery in that province of India and claimed leadership of seven hundred sannyasis. Trained from early youth in t",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "730510e8-ba47-4898-8be2-51572ec57e9d",
+      "locator": "Gospel introduction: In communion with the Divine Beloved",
+      "text_sha256": "9d1b19ea13d3b1da6322897b7b912d6801a9c6874b3b566a97f57d03c6e4aa92",
+      "excerpt_preview": "He regarded himself as one of the gopis of Vrindavan, mad with longing for her divine Sweetheart. At his request Mathur provided him with woman's dress and jewelry. In this love-pursuit, food and drink were forgotten.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "74166853-47c7-49c7-bae9-792140f08f5a",
+      "locator": "Gospel introduction: Kali",
+      "text_sha256": "787e86f442d1e7200ff0d1574f3a6863a3a2840a8323dc32d438f27512f488fa",
+      "excerpt_preview": "(Romain Holland, Prophets of the New India, p. 11.) Rani Rasmani spent a fortune for the construction of the temple garden and another fortune for its dedication ceremony, which took place on May 31, 1855. Sri Ramakrishna — henceforth we sh",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7c49a682-9ea3-4775-9398-02b10ae84ecd",
+      "locator": "Gospel introduction: Totapuri's lesson",
+      "text_sha256": "2fbe048fba40d97a1669509fd6c6975762145181c327c9ebb1e09af79e960c79",
+      "excerpt_preview": "The Divine Mother and Brahman are one.\" After the departure of Totapuri, Sri Ramakrishna remained for six months in a state of absolute identity with Brahman. \"For six months at a stretch\", he said, \"I remained in that state from which ordi",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7c7324ed-6716-41bb-a909-45abdd2739cf",
+      "locator": "Gospel introduction: Last days at Cossipore",
+      "text_sha256": "0536c9af85e6137c1439d204a48ae8b00c358b47cab5f536c5fccc69035c1d35",
+      "excerpt_preview": "Regaining presently the normal mood, he found the Master weeping. Sri Ramakrishna said to him: \"Today I have given you my all and I am now only a poor fakir, possessing nothing. By this power you will do immense good in the world, and not u",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7cca7c11-1b40-4679-813d-5e7d4d463749",
+      "locator": "Gospel introduction: Islam",
+      "text_sha256": "08927037956ce6e4d39f215a566eea122a03280aa6b4805df8661a04a87bf0b6",
+      "excerpt_preview": "Toward the end of 1866 he began to practise the disciplines of Islam. Under the direction of his Mussalman guru he abandoned himself to his new sadhana. He dressed as a Mussalman and repeated the name of Allah. His prayers took the form of ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ad090a89-415f-4aea-b4da-44d966b15d4e",
+      "locator": "Gospel introduction: The first vision of Kali",
+      "text_sha256": "93b047280f7618729e27b22a90de0e89af91547704a411cd1fb7b46ae6950ec4",
+      "excerpt_preview": "Suddenly my glance fell on the sword that was kept in the Mother's temple. I determined to put an end to my life. When I jumped up like a madman and seized it, suddenly the blessed Mother revealed Herself.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c1839c0c-41a0-433b-9656-5c847db0daf9",
+      "locator": "Gospel introduction: Attitude toward different religions",
+      "text_sha256": "6f8f45002f7f8845e008a35f0f1f696aaa5fc39e828445a0f0987e6efe9d6bce",
+      "excerpt_preview": "He kept in his room at Dakshineswar a small statue of Tirthankara Mahavira and a picture of Christ, before which incense was burnt morning and evening. Without being formally initiated into their doctrines, Sri Ramakrishna thus realized the",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c53c98a1-b4bd-466c-a136-5ad23c6ed70a",
+      "locator": "Gospel introduction: The Brahmani",
+      "text_sha256": "21c0dbbc9a8a8bd36ae58e25f68e12d7f883ad76b585d5e757291127714731d9",
+      "excerpt_preview": "As the pundits discussed the deep theological question, Sri Ramakrishna, perfectly indifferent to everything happening around him, sat in their midst like a child, immersed in his own thoughts, sometimes smiling, sometimes chewing a pinch o",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d462c17d-eba3-4685-91ba-8cea0a1cddea",
+      "locator": "Gospel introduction: Boyhood",
+      "text_sha256": "1af9a72cf36595e5d9c92efc8928164751390818e6b5419b52bae2e29ab86d58",
+      "excerpt_preview": "Upon his return the husband found that she had conceived. It was on February 18, 1836, that the child, to be known afterwards as Ramakrishna, was born. In memory of the dream at Gaya he was given the name of Gadadhar, the \"Bearer of the Mac",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d5a354bb-40c9-4f7b-ad26-72d684d498ce",
+      "locator": "Gospel introduction: Christianity",
+      "text_sha256": "c63ecef8e36d5c0450cff145525b6de3133ebfb80ec9622a90c3711838937b1f",
+      "excerpt_preview": "Eight years later, some time in November 1874, Sri Ramakrishna was seized with an irresistible desire to learn the truth of the Christian religion. He began to listen to readings from the Bible, by Sambhu Charan Mallick, a gentleman of Calc",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d795cec8-1729-4518-a837-46837fc98739",
+      "locator": "Gospel introduction: Marriage and after",
+      "text_sha256": "9bd7f6ecd7cb7e3c4764081bdb161ab39e74d58b38269e40fe31bf72c1527be2",
+      "excerpt_preview": "Such early marriage in India is in the nature of a betrothal, the marriage being consummated when the girl attains puberty. But in this case the marriage remained for ever unconsummated. Sri Ramakrishna lived at Kamarpukur about a year and ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d8a289c3-eb36-4621-8c85-70b2979cac62",
+      "locator": "Gospel introduction: Monastic disciples",
+      "text_sha256": "fa9a5dcbc393ccc119b3454230e09a4f0e1e0ba6492e88768e6f9a85c05c0d84",
+      "excerpt_preview": "← Home / The Gospel of Sri Ramakrishna / Introduction / → MONASTIC DISCIPLES The disciples whom the Master trained for monastic life were the following: Narendranath Dutta (Swami Vivekananda) Rakhal Chandra Ghosh (Swami Brahmananda) Gopal S",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d9d884ea-c964-4291-8528-9751c25bf088",
+      "locator": "Gospel introduction: Last days at Cossipore",
+      "text_sha256": "bd390668095e4bea6fe3035bc7abe355a458bb29c7f0f2625d8c32c392e85293",
+      "excerpt_preview": "A few days later he gave the ochre cloth of the sannyasi to each of them, including Girish, who was now second to none in his spirit of renunciation. Thus the Master himself laid the foundation of the future Ramakrishna Order of monks. Sri ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e11167b2-d367-4f02-a409-dfb828337512",
+      "locator": "Gospel introduction: The Master's method of teaching",
+      "text_sha256": "234151a4b086423ae4517df2a369502c3d67331c602a1303cc8f781409465189",
+      "excerpt_preview": "He used to say that three ideas — that he was a guru, a father, and a master — pricked his flesh like thorns. Yet he was an extraordinary teacher.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e355a384-34ef-443a-a7e3-7abd06980c5d",
+      "locator": "Gospel introduction: Narendra",
+      "text_sha256": "80404cf3010e5b7d0f0f1cb9ed1e248f04698ae6f24980d2350194f5c5aea61f",
+      "excerpt_preview": "He entered the Master's room accompanied by some light-hearted friends. At Sri Ramakrishna's request he sang a few songs, pouring his whole soul into them, and the Master went into samadhi. A few minutes later Sri Ramakrishna suddenly left ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e6ac86ae-ea1f-4a64-8867-61ddc5d64fe8",
+      "locator": "Gospel introduction: The Brahmani",
+      "text_sha256": "6d6f98fadd4acb4f9c7d3cce6fe46a42b3b582e2191ba49ec2f1faece95c12e6",
+      "excerpt_preview": "Sri Ramakrishna welcomed the visitor with great respect, described to her his experiences and visions, and told her of people's belief that these were symptoms of madness. She listened to him attentively and said: \"My son, everyone in this ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ecd02658-a920-444d-9fde-5b9dd1e9aaad",
+      "locator": "Gospel introduction: Relation with his wife",
+      "text_sha256": "f19650610441ac6b0eae4d8140085b3bb8bdfeacf6337d85346c4c9d83f4fb09",
+      "excerpt_preview": "A few months after Sarada Devi's arrival Sri Ramakrishna arranged, on an auspicious day, a special worship of Kali, the Divine Mother. Instead of an image of the Deity, he placed on the seat the living image, Sarada Devi herself. The worshi",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

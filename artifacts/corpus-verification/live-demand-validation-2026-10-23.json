@@ -1,0 +1,214 @@
+{
+  "question": "In what year was C. V. Raman awarded the Nobel Prize in Physics?",
+  "at": "2026-10-23T23:06:34.873Z",
+  "target": "http://127.0.0.1:54321",
+  "counts": {
+    "brave": 1,
+    "originalPages": 1,
+    "robots": 1,
+    "gemini": 1,
+    "otherExternal": 0
+  },
+  "requests": [
+    {
+      "kind": "brave",
+      "url": "https://api.search.brave.com/res/v1/web/search?q=C.+V.+Raman+year+awarded+nobel+prize+physics+archive+museum+university&count=20",
+      "status": 200
+    },
+    {
+      "kind": "robots",
+      "url": "https://www.nobelprize.org/robots.txt",
+      "status": 200
+    },
+    {
+      "kind": "originalPages",
+      "url": "https://www.nobelprize.org/prizes/physics/1930/raman/facts/",
+      "status": 200
+    },
+    {
+      "kind": "gemini",
+      "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.7-flash:generateContent",
+      "status": 200
+    }
+  ],
+  "preflight": {
+    "state": "research_required",
+    "sufficient": false,
+    "researchRequest": true,
+    "gaps": [
+      "Evidence for awarded in the question",
+      "Evidence for prize in the question"
+    ],
+    "localEvidence": 7
+  },
+  "first": {
+    "status": "extractive_fallback",
+    "answer": "Raman established IISc's Department of Physics in 1933. [C1]",
+    "citations": [
+      {
+        "id": "C1",
+        "kind": "approved_claim",
+        "claimId": "b304d59a-03af-4ac4-8d8a-ec42ade9b652",
+        "chunkId": "2223ccb4-3034-4271-a872-cbc909a2fa7b",
+        "title": "CV Raman and Physics at IISc",
+        "author": null,
+        "institution": "Indian Institute of Science",
+        "url": "https://iisc.ac.in/wp-content/uploads/2018/03/CV_RAMAN_AND_PHYSICS_AT_IISc.pdf",
+        "sourceType": "institutional",
+        "pageOrSection": "PDF p. 1, lines 3–7",
+        "textualLayer": "Institutional archive",
+        "retrievedAt": null,
+        "excerpt": "V Raman with Homi Bhabha and others CV Raman became IISc’s first Indian Director on 31 March 1933 and established the Department of Physics the same year. Homi Jehangir Bhabha was appointed Special Reader in Physics in 1939.",
+        "personalityId": "6b9a4d86-8330-4256-a749-4daf0f596128",
+        "personalityName": "C. V. Raman",
+        "approvalOrigin": "corpus_evidence_review",
+        "evidenceType": "uncertain",
+        "epistemicType": "HISTORICAL_FACT",
+        "contractStatus": "SUPPORTED",
+        "authority": "authoritative",
+        "authorityBasis": "University website",
+        "primarySource": false
+      }
+    ],
+    "debug": {
+      "demandResearchStatus": "complete",
+      "demandVerificationOutcomes": [
+        "quarantined"
+      ],
+      "demandAdmittedClaims": 0,
+      "webSearchCalls": 1,
+      "liveFetches": 1,
+      "demandVerificationModelCalls": 1,
+      "estimatedMicroUsd": 10813
+    }
+  },
+  "research": {
+    "requestId": "723a43ff-2f90-4ac0-b3b1-c3fe466e390e",
+    "needId": "63df1def5dcd74447aa442991c3c3bb46692d53b7c3f9b17bcf086f18d911dfa",
+    "workId": "791a8abb78b51a820822e203848c5650bc1025a1675f454754d73d57ea2a4bda",
+    "status": "complete",
+    "attempted": true,
+    "candidates": [
+      {
+        "url": "https://www.nobelprize.org/prizes/physics/1930/raman/facts/",
+        "decision": "authenticated",
+        "reason": "Original document identified and a directly relevant passage extracted.",
+        "workKey": "work:sir venkata raman facts nobelprize orgopen the search menuclose the search menuopen the search menuclose the search menu|"
+      }
+    ],
+    "findings": [
+      {
+        "source": {
+          "title": "Sir Venkata Raman – Facts - NobelPrize.orgOpen the search menuClose the search menuOpen the search menuClose the search menu",
+          "author": null,
+          "publisher": "NobelPrize.org",
+          "publicationDate": null,
+          "journal": null,
+          "doi": null,
+          "isbn": null,
+          "evidenceType": "institutional_record",
+          "workKey": "work:sir venkata raman facts nobelprize orgopen the search menuclose the search menuopen the search menuclose the search menu|",
+          "provenanceComplete": true,
+          "url": "https://www.nobelprize.org/prizes/physics/1930/raman/facts/",
+          "sourceId": null,
+          "publisherDomain": "www.nobelprize.org",
+          "retrievedAt": "2026-10-23T23:06:29.316Z"
+        },
+        "passage": {
+          "text": "Sir Chandrasekhara Venkata Raman Nobel Prize in Physics 1930",
+          "locator": "Sir Venkata Raman – Facts - NobelPrize.orgOpen the search menuClose the search menuOpen the search menuClose the search menu",
+          "supportLevel": "STRONG",
+          "supportReason": "The passage identifies the person and directly covers the central topic."
+        },
+        "relation": "supports",
+        "retention": "transient_only",
+        "rightsDeclaration": null,
+        "citeableNow": true,
+        "verificationReady": false
+      }
+    ],
+    "passages": [
+      {
+        "kind": "passage",
+        "id": "demand:723a43ff-2f90-4ac0-b3b1-c3fe466e390e:0",
+        "chunkId": "demand:723a43ff-2f90-4ac0-b3b1-c3fe466e390e:0",
+        "sourceId": "demand:723a43ff-2f90-4ac0-b3b1-c3fe466e390e",
+        "text": "Sir Chandrasekhara Venkata Raman Nobel Prize in Physics 1930",
+        "sectionTitle": null,
+        "pageOrSection": "Sir Venkata Raman – Facts - NobelPrize.orgOpen the search menuClose the search menuOpen the search menuClose the search menu",
+        "textualLayer": "institutional_record",
+        "sourceTitle": "Sir Venkata Raman – Facts - NobelPrize.orgOpen the search menuClose the search menuOpen the search menuClose the search menu",
+        "sourceAuthor": null,
+        "sourceInstitution": "NobelPrize.org",
+        "sourceUrl": "https://www.nobelprize.org/prizes/physics/1930/raman/facts/",
+        "sourceType": "institutional_record",
+        "sourceStatus": "discovered",
+        "personalityId": "6b9a4d86-8330-4256-a749-4daf0f596128",
+        "personalityName": "C. V. Raman",
+        "origin": "brave_live",
+        "retrievedAt": "2026-10-23T23:06:29.316Z",
+        "supportLevel": "STRONG",
+        "workKey": "work:sir venkata raman facts nobelprize orgopen the search menuclose the search menuopen the search menuclose the search menu|",
+        "accessibility": "READABLE",
+        "provenance": {
+          "title": "Sir Venkata Raman – Facts - NobelPrize.orgOpen the search menuClose the search menuOpen the search menuClose the search menu",
+          "author": null,
+          "publisher": "NobelPrize.org",
+          "publicationDate": null,
+          "journal": null,
+          "doi": null,
+          "isbn": null,
+          "complete": true
+        },
+        "authority": {
+          "level": "authoritative",
+          "basis": "Recognized research institute or academy",
+          "primary": false
+        }
+      }
+    ],
+    "unresolvedGaps": [],
+    "sufficientForVerification": false,
+    "citeableNow": true,
+    "usage": {
+      "searchCalls": 1,
+      "sourceFetches": 1,
+      "modelCalls": 0,
+      "provider": "brave",
+      "errorCategory": null
+    },
+    "budgetReservationId": "0fa7af3c-5ca0-4720-ade3-1339cb55a981"
+  },
+  "verification": {
+    "decisions": [
+      {
+        "proposition": "Sir Chandrasekhara Venkata Raman was awarded the Nobel Prize in Physics in 1930.",
+        "outcome": "quarantined",
+        "support": "UNRESOLVED",
+        "reasons": [
+          "Source identity, locator or explicit retention license is missing"
+        ],
+        "epistemicType": "HISTORICAL_FACT",
+        "workKeys": [
+          "work:sir venkata raman facts nobelprize orgopen the search menuclose the search menuopen the search menuclose the search menu|"
+        ]
+      }
+    ],
+    "usage": {
+      "extractionCalls": 1,
+      "verificationCalls": 0,
+      "databaseCalls": 2
+    },
+    "publicationEnabled": true
+  },
+  "resources": [],
+  "budget": {
+    "status": "settled",
+    "search_calls": 1,
+    "model_calls": 1,
+    "input_tokens": 326,
+    "output_tokens": 108,
+    "actual_micro": 10813,
+    "settlement_reason": "reported_usage"
+  }
+}

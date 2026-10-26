@@ -1,0 +1,29 @@
+{
+  "url": "https://ncert.nic.in/textbook/pdf/hess205.pdf",
+  "authority": "NCERT government textbook",
+  "inspected_utc_date": "2026-10-19",
+  "claim_ids": [
+    "0c4e58aa-1112-4318-8e31-c8570bb09c52",
+    "3dbec416-e973-4e68-8e52-9f5fdfcb5ebb",
+    "708d3c72-9514-40a2-9159-8dc2ce0fdbbc",
+    "8c4303bd-4fa0-4c79-bad5-79840a1bcc1e",
+    "2f477182-18fd-4865-91f2-bc8f2f79c084",
+    "a440cd86-3531-45e2-adda-d77cfc4249e1",
+    "2cc515c2-2208-42e5-8675-29a20b2629bd",
+    "f5905511-5e26-4faf-ae07-1f2d6fdc923c",
+    "b7a31dad-213d-410c-92d5-cda396c53230"
+  ],
+  "precise_locations": [
+    "PDF p. 1, lines 10–21",
+    "PDF p. 7, lines 286–300",
+    "PDF pp. 6–7, lines 226–237 and 297–300",
+    "PDF pp. 5–7, lines 183–190 and 210–237, 272–280",
+    "PDF p. 10, lines 407–429; p. 7, lines 297–300",
+    "PDF pp. 1 and 11, lines 17–30 and 438–443",
+    "PDF pp. 1–2, lines 17–30",
+    "PDF pp. 7–8, lines 297–307",
+    "PDF pp. 1–2, lines 17–30"
+  ],
+  "cached_source_text": "none; source PDF remains at publisher and this file records locators and paraphrased assessment",
+  "research_expenditure_usd": 0
+}

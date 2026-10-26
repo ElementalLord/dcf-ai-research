@@ -1,0 +1,63 @@
+{
+  "source_id": "ffc862af-af1b-4ac8-b87c-83984219ee99",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "About Air India – Our History. Air India. https://www.airindia.com/in/en/about-us.html",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Air India",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "About Air India – Our History",
+    "url": "https://www.airindia.com/in/en/about-us.html"
+  },
+  "claim_ids": [
+    "035b3162-3aff-42d3-9521-0fa026c9723c",
+    "1406105e-6466-428d-a136-93bb52ecdde7",
+    "45e86ab5-90ed-4c2a-9022-207172e7ad5a",
+    "877ee7df-1102-4e5c-a677-c2f7e9423e43",
+    "b2bc715d-ebde-418d-8d4e-537761ec9d07"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0fc3f16d-b82e-4d28-ac90-cf6062f79ee2",
+      "locator": "close attention to service",
+      "text_sha256": "42b9f0d9958a876b0b9107ef0e56732e76c369d6f9fd6708952dd93cc1420775",
+      "excerpt_preview": "The airline’s history associates his leadership with close attention to service, operations and international reputation.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4ce89c26-81ff-4efc-a85d-740c2c29678b",
+      "locator": "developed into Tata Airlines",
+      "text_sha256": "e9396a2dc172755c60836849952771e0df70368ed8ad766fc9e2bf152758da81",
+      "excerpt_preview": "ata’s airline began in 1932 as an air-mail operation and developed into Tata Airlines.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "afb25700-0b97-4bbd-9b65-c98decb281ae",
+      "locator": "remained chairman of Air India",
+      "text_sha256": "a98b02acda207a3169915f9e6f8be9480c61405048c4c0fe3c415e6ee0d192b9",
+      "excerpt_preview": "Tata remained chairman of Air India for many years even though the state owned the airline.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c6ae7915-d08b-473e-a483-ba7f0ee4ad56",
+      "locator": "became Air India in 1946",
+      "text_sha256": "9972ae6add3d82532c27d7c53e16da36c017e00c430ef9d63a2ca9089cfcf2a6",
+      "excerpt_preview": "It became Air India in 1946 and expanded international service.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

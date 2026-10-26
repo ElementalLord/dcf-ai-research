@@ -1,0 +1,43 @@
+{
+  "source_id": "7657cab6-88d0-42a3-84fc-f3c7d0e488df",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Sri Ramakrishna. Belur Math, Ramakrishna Math and Ramakrishna Mission. https://belurmath.org/sri-ramakrishna/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Belur Math, Ramakrishna Math and Ramakrishna Mission",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Sri Ramakrishna",
+    "url": "https://belurmath.org/sri-ramakrishna/"
+  },
+  "claim_ids": [
+    "370f7dd5-b1a3-41b8-94d9-98c7e00af81f",
+    "7ea3394f-d5cb-4af2-85ed-bd473cf325a6"
+  ],
+  "passages": [
+    {
+      "chunk_id": "051437a8-9989-4d9f-bcb6-72da6d5ab899",
+      "locator": "Belur Math: Sri Ramakrishna",
+      "text_sha256": "b997b779c7e7fbe41388d623bbd78f6724ace53526c1361a61b196e165f97e51",
+      "excerpt_preview": "No one can read the story of his life without being convinced that God alone is real and that all else is an illusion.” Harmony of Religions : Sri Ramakrishna, however, is more well known all over the world as the Prophet of Harmony of Reli",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8952c8b4-a32a-43a0-a80e-25e6b45c4eea",
+      "locator": "Belur Math: Sri Ramakrishna",
+      "text_sha256": "8e08321cf25605d0c7b7f3933346ddf181533483837cf2baff7ff7aee79826c8",
+      "excerpt_preview": "The Gospel of Sri Ramakrishna Sri Ramakrishna did not write any book, nor did he deliver public lectures. Instead, he chose to speak in a simple language using parables and metaphors by way of illustration, drawn from the observation of nat",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,1169 @@
+From b9655d515010848b0b9e58da397c1d77230f044b Mon Sep 17 00:00:00 2001
+From: Naitik Patel <naitik.s.patel10@gmail.com>
+Date: Fri, 23 Oct 2026 19:14:57 -0500
+Subject: [PATCH] feat: enable guarded research-backed Ask responses
+
+---
+ docs/question-resolution.md                   |  12 +-
+ src/app/api/ask/route.ts                      |   4 +-
+ src/app/ask/ask-client.tsx                    |   9 +-
+ src/lib/ask/target-support.ts                 |  62 ++++++++
+ src/lib/corpus/answer.ts                      |  65 ++++++--
+ src/lib/feedback.ts                           |   5 +
+ .../live-research/knowledge-verification.ts   |  35 ++++-
+ src/lib/live-research/on-demand-engine.ts     |  48 +++---
+ src/lib/live-research/research-quality.ts     |   5 +
+ src/lib/live-research/retention-rights.ts     |   5 +
+ src/lib/live-research/search-credibility.ts   |  17 +-
+ src/lib/live-research/sufficiency.ts          |   9 ++
+ tests/corpus/demand-local-db.test.ts          | 146 +++++++++++++++++-
+ tests/corpus/demand-target-support.test.ts    |  91 +++++++++++
+ .../corpus/google-source-verification.test.ts |  28 ++++
+ tests/corpus/knowledge-verification.test.ts   |  10 ++
+ tests/corpus/on-demand-engine.test.ts         |  86 +++++++++++
+ tests/corpus/resilient-flow.test.ts           |   5 +-
+ tests/feedback.test.ts                        |  10 ++
+ tests/fixtures/raman-demand-live.json         |   8 +
+ 20 files changed, 607 insertions(+), 53 deletions(-)
+ create mode 100644 src/lib/ask/target-support.ts
+ create mode 100644 src/lib/live-research/retention-rights.ts
+ create mode 100644 tests/corpus/demand-target-support.test.ts
+ create mode 100644 tests/fixtures/raman-demand-live.json
+
+diff --git a/docs/question-resolution.md b/docs/question-resolution.md
+index a4cbad7..cf14bcb 100644
+--- a/docs/question-resolution.md
++++ b/docs/question-resolution.md
+@@ -24,9 +24,11 @@ The automatic publication class is deliberately narrow: a routine historical fac
+ 
+ Permanent passage storage requires complete bibliographic identity, HTTPS, a stable locator, and an explicit public-domain or Creative Commons declaration from the original document. A vague “open access” label is insufficient. Only a 240-character supporting excerpt, bibliographic source and independently worded claim are retained. Search-result content and full copyrighted documents are never admitted by this path. Nonadmitted decisions store hashes, outcomes and reason codes, rather than untrusted source prose.
+ 
++For demand admission, source titles, authors, publishers, locators, original-page links and citations are bibliographic metadata; an independently worded short factual claim can be stored only after the strict evidence and transaction checks. A copied source excerpt is retained only when the original page explicitly declares public-domain or Creative Commons rights accepted by the admission policy, and the selected 240-character sentence supports the admitted claim. Public readability and a generic “open access” label do not establish excerpt-retention rights. Brave result titles, links and snippets stay transient under the standard Search API arrangement. The NobelPrize.org Raman facts page in the saved 2026-10-23 trace has no detected retention declaration; it remains a research lead and cannot seed a reusable claim under this policy. Treating its excerpt as retainable would require a source-specific rights decision outside automatic admission.
++
+ `20261018020000_demand_verified_admission.sql` adds a service-role-only decision ledger, a distinct `automated_evidence_verification` origin, and an atomic RPC. That single transaction checks the payload and existing identity, inserts the claim, source, passage, links, epistemic contract and decision, or rolls back all publication. An advisory lock and admitted identity index make repeated admission idempotent. The approved claim enters the existing retrieval path in both strict and test policies only after commit; it is never labeled Mentor-approved. Suspension deactivates its exclusive passage. Ask recomputes its evidence-signed answer-cache key from current retrieval, so a suspended claim cannot keep an old answer valid. Existing Ask sufficiency gates still apply.
+ 
+-Both `DEMAND_AUTO_ADMISSION_ENABLED` and `DEMAND_VERIFICATION_SHADOW_ENABLED` default to false and are independent from `DEMAND_RESEARCH_ENABLED`. Shadow mode evaluates and records decisions without publishing claims. Enable research only after its migration; apply this second migration before enabling shadow or admission; then validate with fixtures and monitored requests before enabling `DEMAND_AUTO_ADMISSION_ENABLED`. Neither migration has been applied to the live database in this work. If admission fails, Ask may still cite suitably labeled live evidence for the current response, but the claim is not reported as saved.
++Both `DEMAND_AUTO_ADMISSION_ENABLED` and `DEMAND_VERIFICATION_SHADOW_ENABLED` default to false and are independent from `DEMAND_RESEARCH_ENABLED`. Shadow mode evaluates and records decisions without publishing claims. In strict mode, a narrow question may receive a `research_answer` from an authenticated, lawfully fetched original page when its passage closes every evidence gap and the final cited-answer check confirms the named target and any requested date. Demand-backed live answers use bounded extractive synthesis, so the research-only path does not make a Gemini synthesis or verification request. Approved-library answers retain their existing synthesis behavior. A live passage stays request-scoped, is never put in the answer cache or Resources, and cannot seed permanent knowledge without the existing retention and verification gates. Feedback stores a placeholder rather than an extractive live answer snapshot. If the retrieved passages remain incomplete or contradictory, Ask abstains.
+ 
+ ## Stage 4 budget, reuse, and oversight
+ 
+@@ -34,18 +36,18 @@ Both `DEMAND_AUTO_ADMISSION_ENABLED` and `DEMAND_VERIFICATION_SHADOW_ENABLED` de
+ 
+ The database policy row is locked while reserving a full request ceiling, so simultaneous serverless instances cannot both spend the same remaining daily or monthly allowance. The reservation is made after obtaining the existing need lease and before the Brave request. The application also holds a conservative estimate before every research model call; provider token counts reconcile usage when returned. An abandoned reservation expires after 180 seconds and is charged at its full ceiling in this local ledger until reconciled. A missing migration, policy failure, exhausted allowance, or malformed pricing response stops paid research. This mechanism limits application-initiated operations; provider prices and final bills can differ from the configured estimates. A request may still use already verified evidence and must state its remaining limitation.
+ 
+-The existing `needId` and gap-specific work key share a database lease across instances. An active lease suppresses a second search; the waiting request briefly checks for newly admitted local evidence. Completed searches without admission have a six-hour cooldown, insufficient searches ten minutes, and temporary failures two minutes. The need row stores status, retry eligibility, usage counts, and structured failure code without question text. Expired leases can be reclaimed. There is no background retry or crawler. The exact current evidence and policy version are included in every answer-cache identity, and retrieval rechecks approval and active passages before cache lookup.
++The existing `needId` and gap-specific work key share a database lease across instances. An active lease suppresses a second search; the waiting request briefly checks for newly admitted local evidence. Completed searches without admission have a six-hour cooldown, insufficient searches ten minutes, and temporary failures two minutes. During that cooldown a repeat question with no saved claim may abstain, because unlicensed source text is not retained for reuse. The need row stores status, retry eligibility, usage counts, and structured failure code without question text. Expired leases can be reclaimed. There is no background retry or crawler. Approved local answers use an evidence-signed answer cache; request-scoped live answers bypass it.
+ 
+ The Resources knowledge page is admin-session protected. It shows recorded activity, estimated costs, budget exhaustion, admission decisions, work identities, cooldowns, and source-rights declarations; existing Resources feedback remains linked for ratings and comments. `DEMAND_TELEMETRY_ENABLED=false` by default. When enabled, question activity records counts, status, hashed need identity, personality IDs, and latency, without question text, answer text, search query, URL, or user ID. Existing feedback already stores a signed answer snapshot and rating, rejects duplicates, and never changes claim status. Operational logs report decision codes and counts. The overview's costs use reservation settlement, while question-level activity requires telemetry to be enabled.
+ 
+ ### Release validation and rollout
+ 
+-**Local database admission has been release-validated.** A schema-only export of the existing pre-demand `public` schema was restored to disposable local Supabase PostgreSQL 17.6. All three demand migrations applied in order on a fresh instance. Real database tests exercised publication and Ask reuse, transaction rollback, duplicate admission, rights rejection, anonymous and authenticated role denial, suspension, simultaneous leases, cooldowns, budget limits, and admission pause. Paid providers were mocked. See [the reproducible validation procedure](./demand-db-validation.md). The three migrations have **not** been applied to production, and production feature flags remain off.
++**Local database admission and research-only answering have been validated with provider fixtures.** The isolated Supabase suite covers first Ask, transactional publication, Resources read shape, Ask reuse, rights rejection, rollback, duplicate admission, role denial, suspension, leases, cooldowns, budgets and admission pause. Paid providers were mocked. See [the reproducible validation procedure](./demand-db-validation.md). The demand migrations are already present in production; production feature flags remain off.
+ 
+-Rollout order: confirm backup and recovery; validate the isolated database as above; apply the migrations to production only after authorization; deploy compatible code with all `DEMAND_*` flags off; confirm local-only Ask; enable research for controlled traffic; enable shadow verification and compare against expert-reviewed cases; then enable automatic admission only for the existing narrow policy. Audit early admitted claims and provider invoices. Pause automatic admission immediately with the Resources control or `DEMAND_AUTO_ADMISSION_ENABLED=false`; pause new research with the Resources control or `DEMAND_RESEARCH_ENABLED=false`. Rollback the flags before reverting application code; retain ledger data for audit. Verify Vercel function duration covers the bounded source fetch and sequential verification calls, and confirm Supabase service-role credentials remain server-only. No deployment or migration is part of this branch commit.
++Controlled launch configuration after deployment and an authorized smoke test: `EVIDENCE_POLICY_MODE=strict`, `DEMAND_RESEARCH_ENABLED=true`, `DEMAND_AUTO_ADMISSION_ENABLED=false`, `DEMAND_VERIFICATION_SHADOW_ENABLED=false`; retain the existing Brave key, source-access rules, robots checks, and demand budget/pause policy. `DEMAND_TELEMETRY_ENABLED=true` is recommended for counts and failure codes without source text. Admission can be enabled later only after a licensed original-source live test verifies the transaction, Resources display, duplicate handling, and second Ask reuse, with provider billing and early decisions reviewed. Pause research with `DEMAND_RESEARCH_ENABLED=false`; pause admission independently with `DEMAND_AUTO_ADMISSION_ENABLED=false`. Confirm production function duration covers the bounded fetch and synthesis path. No deployment or production flag change is part of this development pass.
+ 
+ ## Provider and retention boundary
+ 
+ The new service uses Brave results transiently to locate sources, calls the original publisher, and never persists Brave titles, snippets, or result lists. The existing general Brave cache is bypassed by default unless `BRAVE_SEARCH_STORAGE_RIGHTS=true` documents an account with storage rights. The new service does not use Gemini grounding links for acquisition. This follows [Brave's Search API terms](https://api-dashboard.search.brave.com/documentation/resources/terms-of-service) and [Gemini API grounding terms](https://ai.google.dev/gemini-api/terms.md), reviewed 2026-10-18. Original-source passages remain request-scoped. Explicit open-license or public-domain metadata marks a *candidate* for Prompt 3 retention review; uncertain rights remain transient. No complete third-party document is saved by this engine. Source access, copyright and licensing still require source-specific checks before permanent ingestion.
+ 
+-The feature remains on the development branch. Applying the migration and enabling the flag are separate rollout steps; neither is part of this stage's code commit. The legacy Google-grounding path remains outside the new engine and should be reviewed before any future attempt to use its results for permanent acquisition.
++The legacy Google-grounding path remains outside the new engine and must not be used for permanent demand acquisition.
+diff --git a/src/app/api/ask/route.ts b/src/app/api/ask/route.ts
+index 4e6edb9..885f9be 100644
+--- a/src/app/api/ask/route.ts
++++ b/src/app/api/ask/route.ts
+@@ -4,6 +4,7 @@ import { answerQuestion } from "@/lib/corpus/answer";
+ import { assertRequestSize, corpusErrorResponse } from "@/lib/corpus/api";
+ import { CorpusError } from "@/lib/corpus/errors";
+ import { newResponseId, signFeedbackContext } from "@/lib/feedback-token";
++import { feedbackAnswerSnapshot } from "@/lib/feedback";
+ 
+ const askSchema = z.object({
+   personalityId: z.string().uuid().optional(),
+@@ -30,7 +31,8 @@ export async function POST(request: NextRequest) {
+     const { debug: _serverDiagnostics, ...publicResult } = result;
+     void _serverDiagnostics;
+     const feedbackToken = signFeedbackContext({
+-      responseId: newResponseId(), question: result.question, answer: result.answer,
++      responseId: newResponseId(), question: result.question,
++      answer: feedbackAnswerSnapshot(result.status, result.answer),
+       personalityId: ids.length === 1 ? ids[0] : null, personalityName: result.personality,
+       citations: result.citations.map(citation => ({ id: citation.id, kind: citation.kind, title: citation.title,
+         url: citation.url, claimId: citation.claimId, chunkId: citation.chunkId, pageOrSection: citation.pageOrSection })),
+diff --git a/src/app/ask/ask-client.tsx b/src/app/ask/ask-client.tsx
+index da3be56..b0cff6f 100644
+--- a/src/app/ask/ask-client.tsx
++++ b/src/app/ask/ask-client.tsx
+@@ -14,12 +14,13 @@ import { AUTHORITY_CAVEAT, AUTHORITY_HELP, AUTHORITY_LABELS, PRIMARY_SOURCE_HELP
+ import { fetchJsonWithTimeout } from "@/lib/client/fetch-json";
+ import { readableEvidence } from "@/lib/corpus/readable-evidence";
+ import ResponseFeedback from "./response-feedback";
+-import type { FeedbackContext } from "@/lib/feedback";
++import { feedbackAnswerSnapshot, type FeedbackContext } from "@/lib/feedback";
+ 
+ export type Personality = { id: string; canonical_name: string; category?: string | null; lenses?: Array<{ id: string; label: string }> };
+ type Result = { question: string; resolvedQuestion?: string; personality: string; answer: string; citations?: AskCitation[]; status?: string; lens?: { id: string; label: string } | null; feedbackToken?: string; feedbackId?: string };
+ function legacyFeedbackContext(turn: Result, personalityId: string): FeedbackContext {
+-  return { responseId: turn.feedbackId!, question: turn.question, answer: turn.answer,
++  return { responseId: turn.feedbackId!, question: turn.question,
++    answer: feedbackAnswerSnapshot(turn.status, turn.answer),
+     personalityId, personalityName: turn.personality,
+     citations: (turn.citations || []).slice(0, 30).map(citation => ({ id: citation.id, kind: citation.kind, title: citation.title,
+       url: citation.url, claimId: citation.claimId, chunkId: citation.chunkId, pageOrSection: citation.pageOrSection })),
+@@ -306,7 +307,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
+           {!turns.length && !pendingQuestion && <div className="chat-welcome"><span className="chat-avatar" aria-hidden="true"><Sparkles size={19}/></span><div><p className="chat-name">DCF</p><p>Hi! What would you like to know about {person}? Start anywhere.</p></div></div>}
+           {turns.map((turn, turnIndex) => <div className="chat-exchange" key={`${personId}:${turnIndex}`}>
+             <div className="chat-message chat-message-user"><span className="chat-name">You</span><p>{turn.question}</p></div>
+-            <article className="chat-message chat-message-assistant"><span className="chat-avatar" aria-hidden="true"><Sparkles size={17}/></span><div className="chat-message-content"><span className="chat-name">DCF{turn.lens && <span className="chat-lens-tag">{turn.lens.label} angle</span>}</span>{isUnusableStoredAnswer(turn.answer, turn.status)
++            <article className="chat-message chat-message-assistant"><span className="chat-avatar" aria-hidden="true"><Sparkles size={17}/></span><div className="chat-message-content"><span className="chat-name">DCF{turn.lens && <span className="chat-lens-tag">{turn.lens.label} angle</span>}</span>{turn.status === "research_answer" && <p>Live research · cited for this answer, not saved to Resources</p>}{isUnusableStoredAnswer(turn.answer, turn.status)
+               ? <div className="chat-repair"><p>{isIncompleteQuestion(turn.question) ? "That question stopped partway through. Finish it below and I can give you a useful answer." : !turn.answer.trim() ? "That earlier reply was empty. Ask it again for a complete answer." : "That earlier reply pulled in page text instead of answering. Ask it again for a fresh response."}</p><button type="button" onClick={() => { setQuestion(isIncompleteQuestion(turn.question) ? `${turn.question.trim()} ` : turn.question); input.current?.focus(); }}>{isIncompleteQuestion(turn.question) ? "Finish question" : "Ask again"}<ArrowRight size={14} aria-hidden="true" /></button></div>
+               : <><Answer answer={turn.answer} show={id => setSourceId(`${turnIndex}:${id}`)} citations={turn.citations || []}/>{turn.feedbackToken ? <ResponseFeedback key={turn.feedbackToken} token={turn.feedbackToken}/> : turn.feedbackId && <ResponseFeedback key={turn.feedbackId} legacyContext={legacyFeedbackContext(turn, personId)}/>}</>}</div></article>
+           </div>)}
+@@ -350,7 +351,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
+         <div><dt>Who published it</dt><dd><strong className={`authority-badge authority-${selectedAuthority.level}`}>{AUTHORITY_LABELS[selectedAuthority.level]}</strong><span>{selectedAuthority.primary && selectedAuthority.level === "general_web"
+           ? "The original text is the evidence. This copy of it is hosted on a website that is not a recognized institution, so compare it with an institutional edition when exact wording matters."
+           : `${selectedAuthority.basis ? `${selectedAuthority.basis.replace(/\.$/, "")}. ` : ""}${AUTHORITY_HELP[selectedAuthority.level]}`}</span></dd></div>
+-        <div><dt>Found in</dt><dd><strong>{selectedLive ? "Live research" : "DCF Library"}</strong><span>{selectedLive ? "Fetched for this question; DCF has not reviewed this page." : selectedCitation.kind === "approved_claim" ? selectedCitation.approvalOrigin === "human_manual" || selectedCitation.approvalOrigin === "mentor_review" ? "This claim was reviewed by a person." : "This claim was admitted for testing or import; it has not been reviewed by a person." : "This source passage is admitted for AI evidence. Its presence does not mean any interpretation of it was reviewed by a person."}</span></dd></div>
++        <div><dt>Found in</dt><dd><strong>{selectedLive ? "Live research" : "DCF Library"}</strong><span>{selectedLive ? "Fetched for this answer; this passage is not saved in Resources or reviewed by DCF." : selectedCitation.kind === "approved_claim" ? selectedCitation.approvalOrigin === "human_manual" || selectedCitation.approvalOrigin === "mentor_review" ? "This claim was reviewed by a person." : "This claim was admitted for testing or import; it has not been reviewed by a person." : "This source passage is admitted for AI evidence. Its presence does not mean any interpretation of it was reviewed by a person."}</span></dd></div>
+         <div><dt>Where to find it</dt><dd>{selectedCitation.pageOrSection || "Specific location not recorded"}</dd></div>
+       </dl>
+       <h3 className="section-label source-section-heading">Evidence from this source</h3>
+diff --git a/src/lib/ask/target-support.ts b/src/lib/ask/target-support.ts
+new file mode 100644
+index 0000000..a2846d1
+--- /dev/null
++++ b/src/lib/ask/target-support.ts
+@@ -0,0 +1,62 @@
++import { normalizeForMatch } from "@/lib/corpus/text";
++import type { Citation, RetrievedEvidence } from "@/lib/corpus/types";
++import { classifyQuestionScope, isBroadScope } from "./question-scope";
++
++const framing = new Set(["what", "which", "when", "where", "why", "how", "who", "explain", "describe", "summarize", "tell", "was", "were", "did", "does", "the", "and", "for", "with", "from", "into", "about", "year", "date", "in", "on", "of", "to", "by"]);
++const eventWords = /\b(?:award(?:ed)?|receive(?:d)?|won|winner|laureate|discover(?:ed|y)?|report(?:ed)?|observ(?:e|ed)|identif(?:y|ied)|found(?:ed)?|establish(?:ed)?|join(?:ed)?|appoint(?:ed)?|elect(?:ed)?)\b/i;
++const eventRelations: Array<[RegExp, RegExp]> = [
++  [/\b(?:award|awarded|prize|medal|receive|received|won)\b/i, /\b(?:award(?:ed)?|receiv(?:e|ed)|won|winner|laureate)\b/i],
++  [/\b(?:discover|discovery|invent|invention)\b/i, /\b(?:discover(?:ed|y)?|invent(?:ed|ion)?|report(?:ed)?|observ(?:e|ed)|identif(?:y|ied))\b/i],
++  [/\b(?:join|joined|appoint|appointed|elect|elected)\b/i, /\b(?:join(?:ed)?|appoint(?:ed|ment)?|elect(?:ed|ion)?)\b/i],
++  [/\b(?:found|founded|establish|established)\b/i, /\b(?:found(?:ed)?|establish(?:ed|ment)?)\b/i],
++  [/\b(?:die|died|death)\b/i, /\b(?:die|died|death|deceased|passed away)\b/i],
++  [/\b(?:born|birth)\b/i, /\b(?:born|birth)\b/i],
++];
++
++export function splitEvidenceSentences(passage: string): string[] {
++  return passage.split(/(?<!\b\p{Lu}\.)(?<=[.!?])\s+/u);
++}
++
++export function namedTargetTerms(question: string, aliases: string[]): string[] {
++  const aliasWords = new Set(aliases.flatMap((alias) => normalizeForMatch(alias).split(" ")));
++  return [...new Set((question.match(/\b\p{Lu}[\p{L}\p{N}-]*/gu) || [])
++    .map(normalizeForMatch).filter((term) => term.length > 2 && !framing.has(term) && !aliasWords.has(term)))];
++}
++
++function sentenceAddressesTarget(question: string, passage: string, aliases: string[]): boolean {
++  const text = normalizeForMatch(passage);
++  const target = namedTargetTerms(question, aliases);
++  if (target.some((term) => !text.split(" ").includes(term))) return false;
++  if (eventRelations.some(([inQuestion, inPassage]) => inQuestion.test(question) && !inPassage.test(passage))) return false;
++  if (/\b(?:when|what year|which year|what date|date of)\b/i.test(question)
++    && !/\b(?:1[0-9]{3}|20[0-9]{2})\b/.test(passage)) return false;
++  return true;
++}
++
++/** A date or event elsewhere in the same paragraph cannot support the target. */
++export function passageAddressesTarget(question: string, passage: string, aliases: string[]): boolean {
++  return splitEvidenceSentences(passage).some((sentence) => sentenceAddressesTarget(question, sentence, aliases));
++}
++
++/** Final cited passages must answer a narrow named fact, even if retrieval ranked other records highly. */
++export function citedAnswerAddressesTarget(question: string, answer: string,
++  selected: RetrievedEvidence[], citations: Citation[], aliases: string[]): boolean {
++  if (isBroadScope(classifyQuestionScope(question))) return true;
++  const target = namedTargetTerms(question, aliases);
++  if (!target.length && !eventWords.test(question) && !/\b(?:when|year|date)\b/i.test(question)) return true;
++  const citedIds = new Set([...answer.matchAll(/\[([^\]\n]+)\]/g)]
++    .flatMap((match) => [...match[1].matchAll(/\b[CS]\d+\b/g)].map((id) => id[0])));
++  if (!citedIds.size) return false;
++  const cited = citations.map((citation, index) => ({ citation, evidence: selected[index] }))
++    .filter(({ citation }) => citedIds.has(citation.id));
++  if (cited.length !== citedIds.size) return false;
++  const passages = cited.map(({ evidence }) => evidence.kind === "claim" ? evidence.evidenceExcerpt || "" : evidence.text);
++  if (!passages.every((passage) => passageAddressesTarget(question, passage, aliases))) return false;
++  if (/\b(?:when|year|date)\b/i.test(question)) {
++    const answerYears = [...new Set(answer.match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g) || [])];
++    if (!answerYears.length || answerYears.some((year) => !passages.some((passage) =>
++      splitEvidenceSentences(passage).some((sentence) => sentence.includes(year)
++        && sentenceAddressesTarget(question, sentence, aliases))))) return false;
++  }
++  return true;
++}
+diff --git a/src/lib/corpus/answer.ts b/src/lib/corpus/answer.ts
+index 0914f49..f5c8d50 100644
+--- a/src/lib/corpus/answer.ts
++++ b/src/lib/corpus/answer.ts
+@@ -23,6 +23,7 @@ import { detectLens } from "@/lib/ask/lenses";
+ import { chronologyGuidance, CONTEXT_SEARCH_FOCUS, detectContextIntent } from "@/lib/ask/historical-context";
+ import { classifySourceAuthority } from "@/lib/sources/authority";
+ import { fillsEvidenceGaps, resolveQuestion } from "@/lib/ask/question-resolution";
++import { citedAnswerAddressesTarget, namedTargetTerms, passageAddressesTarget } from "@/lib/ask/target-support";
+ import { executeDemandResearch } from "@/lib/live-research/on-demand-engine";
+ import { productionResearchDependencies } from "@/lib/live-research/on-demand-adapter";
+ import { productionAdmissionStore, productionVerificationProvider, verifyDemandKnowledge } from "@/lib/live-research/knowledge-verification";
+@@ -96,6 +97,7 @@ async function answerQuestionInternal(
+           fetched: research.usage.sourceFetches, findings: research.findings?.length || 0,
+           unresolvedGaps: research.unresolvedGaps.length, budget: research.budgetStatus || null });
+         let reusedAfterWait = false;
++        let admittedThisRequest = false;
+         if (research.status === "in_progress" || research.status === "cooldown") {
+           // Another serverless request owns the lease. Give a short completed admission a chance to become local evidence.
+           for (let attempt = 0; attempt < 3; attempt++) {
+@@ -118,6 +120,19 @@ async function answerQuestionInternal(
+             local.debug.demandVerificationOutcomes = verification.decisions.map((decision) => decision.outcome);
+             local.debug.demandVerificationModelCalls = verification.usage.extractionCalls + verification.usage.verificationCalls;
+             local.debug.demandAdmittedClaims = verification.decisions.filter((decision) => decision.outcome === "admitted").length;
++            if (verification.decisions.some((decision) => decision.outcome === "admitted" || decision.outcome === "duplicate")) {
++              const refreshed = await retrieveEvidence(retrievalQuestion, id, retrievalOptions).catch(() => null);
++              if (refreshed) {
++                const updated = resolveQuestion({ question: queryContext.resolvedQuestion, personalityId: id,
++                  personalityName: configurations[index].canonicalName, personalityAliases: refreshed.personalityAliases,
++                  termAliases: refreshed.termAliases, allParameters: refreshed.allParameters, evidence: refreshed.evidence,
++                  policyMode: refreshed.debug.evidencePolicyMode || "test", researchAvailable: false });
++                if (updated.sufficient) {
++                  local.evidence = [...updated.verifiedClaims, ...updated.verifiedPassages];
++                  admittedThisRequest = true;
++                }
++              }
++            }
+             logStage("DEMAND_VERIFICATION", { admitted: local.debug.demandAdmittedClaims,
+               quarantined: verification.decisions.filter((decision) => decision.outcome === "quarantined").length,
+               rejected: verification.decisions.filter((decision) => decision.outcome === "rejected").length,
+@@ -126,7 +141,7 @@ async function answerQuestionInternal(
+             local.debug.demandVerificationOutcomes = ["quarantined"];
+           }
+         }
+-        local.evidence.push(...research.passages);
++        if (!reusedAfterWait && !admittedThisRequest) local.evidence.push(...research.passages);
+         local.debug.demandResearchStatus = research.status;
+         local.debug.demandBudgetStatus = research.budgetStatus;
+         local.debug.demandResearchRequestId = research.requestId;
+@@ -134,12 +149,15 @@ async function answerQuestionInternal(
+         local.debug.webSearchCalls = research.usage.searchCalls;
+         local.debug.liveFetches = research.usage.sourceFetches;
+         local.debug.liveSourcesUsed = research.passages.length;
+-        local.debug.missingEvidenceDimensions = reusedAfterWait ? [] : research.unresolvedGaps.map((gap) => gap.requirement);
+-        local.debug.unresolvedEvidenceGap = !reusedAfterWait && research.unresolvedGaps.length > 0;
+-        local.debug.answerable = reusedAfterWait || resolution.state === "partial_local" || research.citeableNow;
+-        local.debug.coverageStatus = reusedAfterWait || research.status === "complete" ? "sufficient" : local.debug.answerable ? "partial" : "unsupported";
+-        local.debug.localEvidenceSufficiencyReason = reusedAfterWait ? "Another question completed verification; the admitted claim is now available locally." : research.status === "complete" ? "The original source supplies the missing evidence for this response; it remains unadmitted." :
++        local.debug.missingEvidenceDimensions = reusedAfterWait || admittedThisRequest ? [] : research.unresolvedGaps.map((gap) => gap.requirement);
++        local.debug.unresolvedEvidenceGap = !reusedAfterWait && !admittedThisRequest && research.unresolvedGaps.length > 0;
++        local.debug.answerable = reusedAfterWait || admittedThisRequest || research.citeableNow
++          || (isBroadScope(queryContext.scope) && resolution.state === "partial_local");
++        local.debug.coverageStatus = reusedAfterWait || admittedThisRequest || research.citeableNow ? "sufficient" : local.debug.answerable ? "partial" : "unsupported";
++        local.debug.localEvidenceSufficiencyReason = admittedThisRequest ? "The newly admitted claim is available as verified local evidence." : reusedAfterWait ? "Another question completed verification; the admitted claim is now available locally." : research.status === "complete" ? "The original source supplies the missing evidence for this response; it remains unadmitted." :
+           "The bounded research request did not establish every missing requirement.";
++        // Request-scoped original-source evidence may answer a narrow question.
++        // The final cited-answer guard still checks the named target and date.
+       }
+       local.debug.localEvidenceBeforeSearch = localEvidenceCount;
+       local.debug.localSourcesUsed = local.evidence.filter((item) => item.kind === "claim" || item.origin !== "brave_live").length;
+@@ -273,8 +291,12 @@ async function answerQuestionInternal(
+   const evidence = comparisonMode
+     ? mergePersonalityEvidence(retrievals.map((retrieval) => ({ personalityId: retrieval.personalityId, personalityName: retrieval.personality, evidence: retrieval.evidence })))
+     : retrievals[0].evidence;
++  const targetAliases = retrievals.flatMap((retrieval) => retrieval.personalityAliases);
++  const namedTarget = !isBroadScope(queryContext.scope) && namedTargetTerms(queryContext.resolvedQuestion, targetAliases).length > 0;
++  const answerEvidence = namedTarget ? evidence.filter((item) => passageAddressesTarget(queryContext.resolvedQuestion,
++    item.kind === "claim" ? item.evidenceExcerpt || "" : item.text, targetAliases)) : evidence;
+   const evidenceBudget = options.responseStyle === "research" ? 14 : options.responseStyle === "detailed" ? 11 : options.responseStyle === "simple" ? 5 : isBroadScope(queryContext.scope) ? 9 : 7;
+-  const selected = prioritizeEvidence(queryContext.resolvedQuestion, evidence, evidenceBudget);
++  const selected = prioritizeEvidence(queryContext.resolvedQuestion, answerEvidence, evidenceBudget);
+   const bounded = buildBoundedContext(selected, evidenceBudget);
+   debug.evidenceRetrievedCount = evidence.length;
+   debug.answerIntent = answerIntent(queryContext.resolvedQuestion);
+@@ -316,7 +338,9 @@ async function answerQuestionInternal(
+   debug.answerCacheKey = identity.key;
+   debug.estimatedEvidenceTokens = Math.ceil(bounded.context.length / 4);
+   const stopCache = stageTimer("ANSWER_CACHE");
+-  const cached = await readAnswerCache(identity.key, bounded.citations);
++  const hasLiveEvidence = bounded.citations.some((citation) => citation.kind === "live_web_source");
++  const liveDemandAnswer = hasLiveEvidence && process.env.DEMAND_RESEARCH_ENABLED === "true";
++  const cached = hasLiveEvidence ? null : await readAnswerCache(identity.key, bounded.citations);
+   debug.latenciesMs.answerCache = stopCache();
+   debug.answerCacheHit = Boolean(cached);
+   if (cached) incrementMetric("answerCacheHits");
+@@ -341,11 +365,13 @@ async function answerQuestionInternal(
+     debug.provider = cached.provider;
+     debug.synthesisMode = `cached ${cached.provider}`;
+     debug.model = cached.model;
+-  } else if (!health.healthy) {
++  } else if (liveDemandAnswer || !health.healthy) {
+     usedLocalSynthesis = true;
+-    console.warn("synthesis_fallback", JSON.stringify({ reason: health.configured ? "provider_circuit_open" : "provider_not_configured",
+-      category: health.circuit.category, primaryModel: provider.model, evidenceRecords: bounded.selected.length }));
+-    debug.generationFallbackReason = "AI synthesis unavailable; showing verified evidence.";
++    if (!liveDemandAnswer) {
++      console.warn("synthesis_fallback", JSON.stringify({ reason: health.configured ? "provider_circuit_open" : "provider_not_configured",
++        category: health.circuit.category, primaryModel: provider.model, evidenceRecords: bounded.selected.length }));
++      debug.generationFallbackReason = "AI synthesis unavailable; showing verified evidence.";
++    }
+     generated = await safeFallback();
+   } else {
+     const prompt = buildSynthesisPrompt({ personality, question, resolvedQuestion: queryContext.resolvedQuestion, scope: queryContext.scope, evidenceContext: bounded.context, evidenceRecords: bounded.selected.length, responseStyle: options.responseStyle, conversation, openingTurn: !options.history?.length,
+@@ -406,9 +432,17 @@ async function answerQuestionInternal(
+   const guarded = generated.text.trim() === ABSTENTION || usedLocalSynthesis ? { answer: generated.text, notes: [] as string[] }
+     : epistemicSafeguard(generated.text, bounded.selected.map((item) => item.kind === "claim" ? item : { text: item.text, textualLayer: item.textualLayer }));
+   debug.epistemicSafeguardNotes = guarded.notes;
+-  const cleanedAnswer = !guarded.answer.trim() || guarded.answer.trim() === ABSTENTION ? ABSTENTION
++  const candidateAnswer = !guarded.answer.trim() || guarded.answer.trim() === ABSTENTION ? ABSTENTION
+     : ensureOpeningIntro(guarded.answer.trim(), personality, bounded.selected, bounded.citations, !options.history?.length);
+-  if (!cached && !usedLocalSynthesis && cleanedAnswer !== ABSTENTION) {
++  const targetSupported = candidateAnswer === ABSTENTION || citedAnswerAddressesTarget(queryContext.resolvedQuestion,
++    candidateAnswer, bounded.selected, bounded.citations, targetAliases);
++  if (!targetSupported) {
++    debug.answerable = false;
++    debug.unresolvedEvidenceGap = true;
++    debug.localEvidenceSufficiencyReason = "The cited passages do not establish the named target of the question.";
++  }
++  const cleanedAnswer = targetSupported ? candidateAnswer : ABSTENTION;
++  if (!hasLiveEvidence && !cached && !usedLocalSynthesis && cleanedAnswer !== ABSTENTION) {
+     await writeAnswerCache(identity, personalityIds, debug.evidencePolicyMode || "test", { answer: cleanedAnswer, provider: debug.provider, model: debug.model });
+   }
+   const abstained = cleanedAnswer === ABSTENTION;
+@@ -430,7 +464,8 @@ async function answerQuestionInternal(
+     queryContext,
+     lens: lens ? { id: lens.id, label: lens.label } : null,
+     structuredContext: { active_personality_ids: personalityIds, recent_named_entities: queryContext.subjects, recent_topic: queryContext.resolvedQuestion.slice(0, 200), recent_parameters: parameters.map((parameter) => parameter.code) },
+-    status: abstained ? "abstained" as const : usedLocalSynthesis ? "extractive_fallback" as const : "complete" as const,
++    status: abstained ? "abstained" as const : citedEvidence.some((entry) => entry.citation.kind === "live_web_source")
++      ? "research_answer" as const : usedLocalSynthesis ? "extractive_fallback" as const : "complete" as const,
+     answer,
+     retrievedParameters: parameters,
+     citations: citedEvidence.map((entry) => entry.citation),
+diff --git a/src/lib/feedback.ts b/src/lib/feedback.ts
+index 0a0f1df..216bb9d 100644
+--- a/src/lib/feedback.ts
++++ b/src/lib/feedback.ts
+@@ -2,6 +2,11 @@ import { z } from "zod";
+ 
+ export const feedbackTags = ["Inaccurate", "Weak sources", "Missing information", "Too vague", "Hard to understand", "Other"] as const;
+ 
++/** Feedback stores no extractive answer text from request-scoped live pages. */
++export function feedbackAnswerSnapshot(status: string | undefined, answer: string): string {
++  return status === "research_answer" ? "Live research answer; source text was not retained in feedback." : answer;
++}
++
+ export const feedbackSubmissionSchema = z.object({
+   token: z.string().min(20).max(100_000),
+   rating: z.number().int().min(1).max(5),
+diff --git a/src/lib/live-research/knowledge-verification.ts b/src/lib/live-research/knowledge-verification.ts
+index d32602a..24b08fa 100644
+--- a/src/lib/live-research/knowledge-verification.ts
++++ b/src/lib/live-research/knowledge-verification.ts
+@@ -9,6 +9,9 @@ import { normalizedClaim, tokenJaccard } from "@/lib/corpus/dedupe";
+ import { isClaimEligible } from "@/lib/corpus/approval-policy";
+ import { supabaseAdmin } from "@/lib/supabase-admin";
+ import type { OnDemandResearchResult, ResearchFinding } from "./on-demand-engine";
++import { hasExplicitRetentionRights } from "./retention-rights";
++import { normalizeForMatch } from "@/lib/corpus/text";
++import { passageAddressesTarget, splitEvidenceSentences } from "@/lib/ask/target-support";
+ 
+ export const ADMISSION_POLICY_VERSION = "demand-admission/1";
+ export type VerificationOutcome = "admitted" | "quarantined" | "rejected" | "duplicate" | "shadow";
+@@ -37,7 +40,18 @@ const hash = (value: string) => createHash("sha256").update(value).digest("hex")
+ const risky = /\b(?:first|earliest|only|invented|discovered|caused|led to|proved|pioneer|father of|greatest|significant|influenced)\b/i;
+ const uncertainty = /\b(?:may|might|possibly|perhaps|allegedly|reportedly|appears|suggests|estimated|approximately|about|circa|disputed)\b/i;
+ const numbers = (value: string) => value.match(/\b\d+(?:[.,]\d+)*\b/g) || [];
+-const explicitLicense = /\bpublic domain\b|\bcc0\b|creativecommons\.org\/(?:licenses|publicdomain)\//i;
++
++function supportingExcerpt(passage: string, proposition: string, personality: string): string | null {
++  const terms = new Set(normalizeForMatch(proposition).split(" ").filter((term) => term.length > 2));
++  const sentences = splitEvidenceSentences(passage).map((sentence) => sentence.trim()).filter(Boolean);
++  const ranked = sentences.map((sentence) => ({ sentence,
++    overlap: normalizeForMatch(sentence).split(" ").filter((term) => terms.has(term)).length }))
++    .sort((a, b) => b.overlap - a.overlap);
++  const excerpt = (ranked[0]?.sentence || passage).slice(0, 240).trim();
++  if (excerpt.length < 20 || !passageAddressesTarget(proposition, excerpt, [personality])
++    || numbers(proposition).some((value) => !excerpt.includes(value))) return null;
++  return excerpt;
++}
+ 
+ function sourceClass(finding: ResearchFinding): SourceClass {
+   switch (finding.source.evidenceType) {
+@@ -53,7 +67,7 @@ function retainable(finding: ResearchFinding): boolean {
+     const url = new URL(finding.source.url);
+     return url.protocol === "https:" && finding.retention === "license_candidate" && finding.verificationReady
+       && finding.source.provenanceComplete && Boolean(finding.source.title && finding.source.publisher && finding.source.workKey)
+-      && Boolean(finding.passage.locator) && explicitLicense.test(finding.rightsDeclaration || "")
++      && Boolean(finding.passage.locator) && hasExplicitRetentionRights(finding.rightsDeclaration)
+       && finding.passage.text.length <= 600;
+   } catch { return false; }
+ }
+@@ -111,7 +125,14 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
+   deps: { provider: Provider; store: Store; enabled: boolean }): Promise<VerificationResult> {
+   const result: VerificationResult = { decisions: [], usage: { extractionCalls: 0, verificationCalls: 0, databaseCalls: 0 }, publicationEnabled: deps.enabled };
+   if (!research.attempted || !research.findings.length || research.status === "failed") return result;
+-  const findings = research.findings.slice(0, 4);
++  const findings = research.findings.filter(retainable).slice(0, 4);
++  if (!findings.length) return { ...result, decisions: [{ proposition: "[no retainable findings]", outcome: "quarantined",
++    support: "UNRESOLVED", reasons: ["No original passage has complete provenance and explicit retention rights"],
++    epistemicType: "HISTORICAL_FACT", workKeys: [] }] };
++  if (findings.length < 2 && !(sourceClass(findings[0]) === "REFERENCE" && findings[0].passage.supportLevel === "EXACT"))
++    return { ...result, decisions: [{ proposition: "[insufficient retainable findings]", outcome: "quarantined",
++      support: "UNRESOLVED", reasons: ["One non-issuing source cannot satisfy the historical-fact admission contract"],
++      epistemicType: "HISTORICAL_FACT", workKeys: [findings[0].source.workKey] }] };
+   let extracted: AtomicCandidate[];
+   try { result.usage.extractionCalls++; extracted = await deps.provider.extract({ personality: request.personalityName, findings }); }
+   catch { return { ...result, decisions: [{ proposition: "[extraction unavailable]", outcome: "quarantined", support: "UNRESOLVED", reasons: ["Extraction provider failed"], epistemicType: "HISTORICAL_FACT", workKeys: [] }] }; }
+@@ -172,6 +193,10 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
+     if ((!contract.satisfied && !officialException) || candidate.type !== "HISTORICAL_FACT" || !["official_record_fact", "ordinary_fact"].includes(candidate.category)) {
+       decision.reasons.push(contract.reasons.join("; ") || "Claim class is not eligible for autonomous admission"); continue;
+     }
++    const excerpts = cited.map(({ finding }) => supportingExcerpt(finding.passage.text, candidate.proposition, request.personalityName));
++    if (excerpts.some((excerpt) => !excerpt)) {
++      decision.reasons.push("A bounded retained excerpt does not establish the exact proposition"); continue;
++    }
+     if (!deps.enabled) { decision.outcome = "shadow"; decision.reasons.push("Admission flag disabled; verification evaluated without writing"); continue; }
+     try {
+       result.usage.databaseCalls++;
+@@ -179,10 +204,10 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
+         epistemic_type: candidate.type, classifier_version: CLASSIFIER_VERSION, contract_version: CONTRACT_VERSION,
+         contract_status: "SUPPORTED", contract_basis: "fact", policy_version: ADMISSION_POLICY_VERSION,
+         research_request_id: research.requestId, research_work_id: research.workId,
+-        sources: cited.map(({ finding }) => ({ url: finding.source.url, title: finding.source.title, author: finding.source.author,
++        sources: cited.map(({ finding }, index) => ({ url: finding.source.url, title: finding.source.title, author: finding.source.author,
+           publisher: finding.source.publisher, publication_date: finding.source.publicationDate, evidence_type: finding.source.evidenceType,
+           work_key: finding.source.workKey, rights: finding.rightsDeclaration, locator: finding.passage.locator,
+-          excerpt: finding.passage.text.slice(0, 600) })) });
++          excerpt: excerpts[index] })) });
+       decision.outcome = saved.created ? "admitted" : "duplicate";
+       decision.claimId = saved.claimId;
+       decision.reasons.push(saved.created ? "Passed all admission gates and committed atomically" : "Concurrent admission already committed");
+diff --git a/src/lib/live-research/on-demand-engine.ts b/src/lib/live-research/on-demand-engine.ts
+index 4fa1c10..875368a 100644
+--- a/src/lib/live-research/on-demand-engine.ts
++++ b/src/lib/live-research/on-demand-engine.ts
+@@ -2,10 +2,13 @@ import { createHash, randomUUID } from "node:crypto";
+ import type { EvidenceGap, EvidenceGapRequest } from "@/lib/ask/question-resolution";
+ import { fillsEvidenceGaps } from "@/lib/ask/question-resolution";
+ import { normalizeForMatch } from "@/lib/corpus/text";
++import { passageAddressesTarget } from "@/lib/ask/target-support";
+ import { recordResearchBudgetReservation, recordResearchSearchCall } from "@/lib/corpus/usage";
+ import type { RetrievedEvidence, RetrievedPassage } from "@/lib/corpus/types";
+ import { planResearchQueries, sourceWorkKey, type SourceIdentity } from "./research-quality";
+ import type { CredibleSource } from "./search-credibility";
++import { sourcePriority } from "./search-credibility";
++import { hasExplicitRetentionRights } from "./retention-rights";
+ import { WebSearchError, type WebSearchResult } from "./web-search-provider";
+ 
+ export type ResearchStatus = "complete" | "insufficient" | "failed" | "in_progress" | "cooldown" | "budget_exhausted";
+@@ -57,25 +60,25 @@ export type ResearchDependencies = {
+ };
+ 
+ function narrowQuery(request: EvidenceGapRequest, question: string): string {
+-  // Existing planner supplies source-class terminology; the gap topic controls the search focus.
+-  const gap = request.gaps[0];
+-  const focus = gap?.topic && gap.topic !== "subject" ? gap.topic : question;
+-  const plan = planResearchQueries(request.personalityName, focus, request.gaps.map((item) => `${item.requirement} ${item.suitableSources[0] || ""}`), 1)[0];
+-  return (plan?.query || `${request.personalityName} ${focus}`).slice(0, 500);
++  // Gap requirements are generic descriptions. Search for the event and entities
++  // in the actual question, with the planner's source-class hint.
++  const plan = planResearchQueries(request.personalityName, question, [], 1)[0];
++  return (plan?.query || `${request.personalityName} ${question}`).slice(0, 500);
+ }
+ 
+-function positiveRights(value: string | null | undefined): boolean {
+-  return Boolean(value && /\bpublic domain\b|creativecommons\.org\/(?:licenses|publicdomain)\/|\bcc[- ](?:by|0)\b|\bopen access\b/i.test(value));
+-}
+-
+-function possibleContradiction(text: string, existing: RetrievedEvidence[]): boolean {
++function possibleContradiction(text: string, existing: RetrievedEvidence[], question: string, aliases: string[]): boolean {
+   const normalized = normalizeForMatch(text);
+   const negated = /\b(?:not|never|no evidence|did not|was not)\b/i.test(text);
+   const terms = new Set(normalized.split(" ").filter((term) => term.length >= 5));
+   return existing.some((item) => {
++    if (!passageAddressesTarget(question, item.text, aliases)) return false;
+     const other = normalizeForMatch(item.text);
+     const overlap = other.split(" ").filter((term) => terms.has(term)).length;
+-    return overlap >= 3 && negated !== /\b(?:not|never|no evidence|did not|was not)\b/i.test(item.text);
++    if (overlap < 3) return false;
++    if (negated !== /\b(?:not|never|no evidence|did not|was not)\b/i.test(item.text)) return true;
++    const years = new Set(text.match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g) || []);
++    const otherYears = new Set(item.text.match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g) || []);
++    return years.size > 0 && otherYears.size > 0 && ![...years].some((year) => otherYears.has(year));
+   });
+ }
+ 
+@@ -131,9 +134,14 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
+     // One direct provider call. Search output is request-local and is never persisted.
+     result.usage.searchCalls = 1;
+     recordResearchSearchCall();
+-    const searchResults = await deps.provider.search(query, { maxResults: 8 });
++    const searchResults = await deps.provider.search(query, { maxResults: 20 });
+     const works = new Set<string>();
+-    for (const hit of searchResults.slice(0, 8)) {
++    // Search snippets are discovery hints only. Rank URLs and titles before the
++    // bounded original-document reads, then verify against the fetched pages.
++    const ranked = searchResults.slice(0, 20).map((hit, index) => ({ hit, index,
++      priority: sourcePriority(hit.url, `${hit.title} ${hit.snippet || ""}`, question) }))
++      .sort((a, b) => b.priority - a.priority || a.index - b.index);
++    for (const { hit } of ranked) {
+       if (result.usage.sourceFetches >= 4) break;
+       let source: CredibleSource | null;
+       try { source = await deps.inspect(hit.url, hit.title); }
+@@ -144,7 +152,7 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
+       if (!await deps.robotsAllowed(source.url)) { result.candidates.push({ url: source.url, decision: "access_restricted", reason: "Robots or access policy disallows automated retrieval.", workKey: preliminary }); continue; }
+       result.usage.sourceFetches += 1;
+       let excerpt: FetchedExcerpt | null;
+-      try { excerpt = await deps.read(source, `${question} ${request.gaps[0]?.topic || ""}`, aliases); }
++      try { excerpt = await deps.read(source, question, aliases); }
+       catch { result.candidates.push({ url: source.url, decision: "unreadable", reason: "Original document retrieval or extraction failed.", workKey: preliminary }); continue; }
+       if (!excerpt || !["EXACT", "STRONG"].includes(excerpt.supportLevel)) {
+         result.candidates.push({ url: source.url, decision: "irrelevant", reason: "The original document has no directly supporting passage.", workKey: preliminary }); continue;
+@@ -161,11 +169,11 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
+         continue;
+       }
+       works.add(preliminary); works.add(workKey);
+-      const retained = positiveRights(excerpt.rightsDeclaration);
++      const retained = hasExplicitRetentionRights(excerpt.rightsDeclaration);
+       const finding: ResearchFinding = {
+         source: { ...excerpt.identity, url: excerpt.url, sourceId, publisherDomain: new URL(excerpt.url).hostname, retrievedAt: (deps.now?.() || new Date()).toISOString() },
+         passage: { text: excerpt.text.slice(0, 600), locator: excerpt.locator, supportLevel: excerpt.supportLevel as "EXACT" | "STRONG", supportReason: excerpt.supportReason },
+-        relation: possibleContradiction(excerpt.text, existing) ? "potential_contradiction" : "supports",
++        relation: possibleContradiction(excerpt.text, [...existing, ...result.passages], question, aliases) ? "potential_contradiction" : "supports",
+         retention: retained ? "license_candidate" : "transient_only", rightsDeclaration: excerpt.rightsDeclaration || null,
+         citeableNow: true, verificationReady: retained && excerpt.identity.provenanceComplete,
+       };
+@@ -182,7 +190,11 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
+           publicationDate: excerpt.identity.publicationDate, journal: excerpt.identity.journal, doi: excerpt.identity.doi,
+           isbn: excerpt.identity.isbn, complete: excerpt.identity.provenanceComplete },
+       });
+-      if (!remainingGaps(request.gaps, [...existing, ...result.passages], result.passages).length) break;
++      // Once the answer is supported, continue only if admission or its shadow
++      // evaluation is enabled and still needs a retainable source.
++      if (!remainingGaps(request.gaps, [...existing, ...result.passages], result.passages).length
++        && (process.env.DEMAND_AUTO_ADMISSION_ENABLED !== "true" && process.env.DEMAND_VERIFICATION_SHADOW_ENABLED !== "true"
++          || result.findings.some((item) => item.verificationReady))) break;
+     }
+     result.unresolvedGaps = remainingGaps(request.gaps, [...existing, ...result.passages], result.passages);
+     if (result.findings.some((finding) => finding.relation === "potential_contradiction")) {
+@@ -192,7 +204,7 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
+         suitableSources: ["independent primary record", "critical scholarship"],
+         completion: "Independent evidence explains or resolves the disagreement.", contested: true });
+     }
+-    result.citeableNow = result.passages.length > 0;
++    result.citeableNow = result.unresolvedGaps.length === 0 && result.passages.length > 0;
+     result.sufficientForVerification = result.unresolvedGaps.length === 0 && result.findings.some((finding) => finding.verificationReady)
+       && !result.findings.some((finding) => finding.relation === "potential_contradiction");
+     result.status = result.unresolvedGaps.length === 0 && result.passages.length ? "complete" : "insufficient";
+diff --git a/src/lib/live-research/research-quality.ts b/src/lib/live-research/research-quality.ts
+index 2b557f6..7384b52 100644
+--- a/src/lib/live-research/research-quality.ts
++++ b/src/lib/live-research/research-quality.ts
+@@ -1,4 +1,5 @@
+ import { normalizeForMatch } from "@/lib/corpus/text";
++import { passageAddressesTarget } from "@/lib/ask/target-support";
+ 
+ export type QueryIntent = "primary" | "scholarly" | "institutional" | "context" | "controversy" | "exact_work";
+ export type EvidenceType = "primary_document" | "traditional_text" | "scholarly_interpretation" | "institutional_record" | "edited_secondary" | "general_web";
+@@ -107,6 +108,10 @@ export function assessPassageSupport(text: string, questionOrStatement: string,
+   const hits = terms.filter((term) => normalized.includes(term) || (term.length > 6 && normalized.includes(term.replace(/(?:ing|ed|es|s)$/i, "")))).length;
+   const overlap = terms.length ? hits / terms.length : 0;
+   if (!entity.matched) return { level: "RELATED", overlap, reason: entity.reason };
++  if (!passageAddressesTarget(questionOrStatement, text, [canonicalName, ...aliases])) return {
++    level: hits ? "PARTIAL" : "RELATED", overlap,
++    reason: "The passage does not establish the named target, event relationship, or requested date.",
++  };
+   if (hits >= 3 && overlap >= 0.7) return { level: "EXACT", overlap, reason: "The passage identifies the person and directly covers nearly all material terms." };
+   if (hits >= 2 && overlap >= 0.4) return { level: "STRONG", overlap, reason: "The passage identifies the person and directly covers the central topic." };
+   if (hits >= 1) return { level: "PARTIAL", overlap, reason: "The passage supports only part of the requested point." };
+diff --git a/src/lib/live-research/retention-rights.ts b/src/lib/live-research/retention-rights.ts
+new file mode 100644
+index 0000000..fd5bdf8
+--- /dev/null
++++ b/src/lib/live-research/retention-rights.ts
+@@ -0,0 +1,5 @@
++/** Matches only rights declarations accepted by the demand admission RPC. */
++export function hasExplicitRetentionRights(value: string | null | undefined): boolean {
++  if (!value || /\b(?:not|no|without)\s+(?:in\s+the\s+)?public domain\b/i.test(value)) return false;
++  return /\bpublic domain\b|\bcc0\b|creativecommons\.org\/(?:licenses|publicdomain)\//i.test(value);
++}
+diff --git a/src/lib/live-research/search-credibility.ts b/src/lib/live-research/search-credibility.ts
+index b6f32ed..e677fee 100644
+--- a/src/lib/live-research/search-credibility.ts
++++ b/src/lib/live-research/search-credibility.ts
+@@ -85,7 +85,22 @@ async function readSourceText(preview: Preview): Promise<SourceText> {
+     const text = root.text().replace(/\s+/g, " ").trim().slice(0, MAX_SOURCE_CHARACTERS);
+     if (text) sections.push({ text, locator: heading });
+   }
+-  const rightsDeclaration = meta("dc.rights") || meta("dcterms.rights") || meta("citation_license") || $("link[rel='license']").attr("href") || null;
++  // Some publishers state the article's CC licence in its own rights panel
++  // rather than machine-readable metadata. Require article-specific wording
++  // beside the licence link; a generic site footer is not a grant for the work.
++  const articleLicense = $("a[href*='creativecommons.org/licenses/'],a[href*='creativecommons.org/publicdomain/']")
++    .map((_, element) => {
++      let context = $(element);
++      for (let depth = 0; depth < 6; depth++, context = context.parent()) {
++        const text = context.text().replace(/\s+/g, " ").trim();
++        if (text.length > 1500) break;
++        if (/\b(?:this article is licensed|this is an? open access article.{0,100}distributed)\b/i.test(text))
++          return $(element).attr("href") || null;
++      }
++      return null;
++    }).get().find(Boolean) || null;
++  const rightsDeclaration = meta("dc.rights") || meta("dcterms.rights") || meta("citation_license") || meta("license")
++    || $("link[rel~='license'],a[rel~='license']").first().attr("href") || articleLicense;
+   return { ...base, title, identity, rightsDeclaration, sections };
+ }
+ 
+diff --git a/src/lib/live-research/sufficiency.ts b/src/lib/live-research/sufficiency.ts
+index cde31c6..14f8192 100644
+--- a/src/lib/live-research/sufficiency.ts
++++ b/src/lib/live-research/sufficiency.ts
+@@ -112,6 +112,15 @@ export function assessEvidenceSufficiency(
+       reason: enough ? "Approved evidence spans multiple parameters and sources." : "The broad answer needs more parameter or source coverage.", missingDimensions: missing };
+   }
+   const missing = requested.filter((term) => !covered.includes(term));
++  // A narrow question can share generic words with a different named award,
++  // work or institution. Do not let the aggregate coverage score substitute it.
++  const aliasWords = new Set(personalityAliases.flatMap((alias) => normalizeForMatch(alias).split(" ")));
++  const namedTargetMissing = (question.match(/\b\p{Lu}[\p{L}\p{N}-]*/gu) || [])
++    .map((term) => normalizeForMatch(term))
++    .filter((term) => term.length > 2 && !IGNORED.has(term) && !aliasWords.has(term) && requested.includes(term))
++    .some((term) => missing.includes(term));
++  if (namedTargetMissing) return { sufficient: false, answerable: false, mode, coverage,
++    reason: "The approved evidence does not identify the named subject of the question.", missingDimensions: missing };
+   const missingDecisiveQualifier = missing.some((term) => /^(?:favorite|best|first|only|earliest|latest|greatest|biggest|most|least)$/.test(term));
+   if (missingDecisiveQualifier) return { sufficient: false, answerable: false, mode, coverage,
+     reason: "The available evidence does not establish the requested ranking or preference.", missingDimensions: missing };
+diff --git a/tests/corpus/demand-local-db.test.ts b/tests/corpus/demand-local-db.test.ts
+index 59f2c95..a01e05f 100644
+--- a/tests/corpus/demand-local-db.test.ts
++++ b/tests/corpus/demand-local-db.test.ts
+@@ -1,6 +1,6 @@
+ import { createHash, createHmac, randomUUID } from "node:crypto";
+ import { createClient } from "@supabase/supabase-js";
+-import { afterAll, describe, expect, it } from "vitest";
++import { afterAll, describe, expect, it, vi } from "vitest";
+ import { answerQuestion } from "@/lib/corpus/answer";
+ import { retrieveEvidence } from "@/lib/corpus/retrieval";
+ import { withRequestUsage } from "@/lib/corpus/usage";
+@@ -11,6 +11,13 @@ import { productionAdmissionStore, verifyDemandKnowledge } from "@/lib/live-rese
+ import { reserveResearchBudget, settleResearchBudget } from "@/lib/live-research/research-budget";
+ import { supabaseAdmin } from "@/lib/supabase-admin";
+ 
++const fixtureProviders = vi.hoisted(() => ({ research: null as unknown, verification: null as unknown }));
++vi.mock("@/lib/live-research/on-demand-adapter", () => ({ productionResearchDependencies: () => fixtureProviders.research }));
++vi.mock("@/lib/live-research/knowledge-verification", async (importOriginal) => {
++  const actual = await importOriginal<typeof import("@/lib/live-research/knowledge-verification")>();
++  return { ...actual, productionVerificationProvider: () => fixtureProviders.verification };
++});
++
+ const enabled = process.env.DCF_LOCAL_DB_VALIDATION === "true";
+ if (enabled && !/^http:\/\/(?:127\.0\.0\.1|localhost):\d+/.test(process.env.NEXT_PUBLIC_SUPABASE_URL || ""))
+   throw new Error("Local database validation requires a loopback Supabase API URL");
+@@ -99,6 +106,10 @@ suite("real local Supabase demand transactions", () => {
+       const verified = await verifyDemandKnowledge(resolution.researchRequest!, research,
+         { provider, store: productionAdmissionStore(), enabled: true });
+       expect(verified.decisions[0], JSON.stringify(verified.decisions[0])).toMatchObject({ outcome: "admitted" });
++      const repeated = await verifyDemandKnowledge(resolution.researchRequest!, research,
++        { provider, store: productionAdmissionStore(), enabled: true });
++      expect(repeated.decisions[0]).toMatchObject({ outcome: "duplicate", claimId: verified.decisions[0].claimId });
++      expect(repeated.usage.verificationCalls).toBe(0);
+       expect(await settleResearchBudget(usage)).toBe(10_000);
+     });
+     expect(searches).toBe(1);
+@@ -110,6 +121,17 @@ suite("real local Supabase demand transactions", () => {
+     expect(claims[0].claim_sources).toHaveLength(1);
+     expect(claims[0].claim_chunks).toHaveLength(1);
+     expect(claims[0].claim_epistemics).toMatchObject({ contract_status: "SUPPORTED" });
++    // Resources uses these linked rows to label an admitted source and an
++    // answer-eligible claim. Exercise its read shape against the real database.
++    const resource = required(await supabaseAdmin.from("claims")
++      .select("id,review_status,approval_origin,claim_sources(evidence_excerpt,page_or_section,sources(id,title,url,source_status,approval_origin))")
++      .eq("personality_id", personId).eq("claim_text", claimText).single()) as {
++        review_status: string; approval_origin: string; claim_sources: Array<{ evidence_excerpt: string;
++          page_or_section: string; sources: { title: string; url: string; source_status: string; approval_origin: string } }> };
++    expect(resource.review_status).toBe("approved");
++    expect(resource.approval_origin).toBe("automated_evidence_verification");
++    expect(resource.claim_sources[0]).toMatchObject({ evidence_excerpt: excerpt, page_or_section: "Award register, 1928",
++      sources: { title: sourceTitle, url: sourceUrl, source_status: "approved" } });
+     const second = await retrieveEvidence(secondQuestion, personId);
+     const reused = resolveQuestion({ question: secondQuestion, personalityId: personId,
+       personalityName: personName, personalityAliases: second.personalityAliases, termAliases: second.termAliases,
+@@ -124,11 +146,123 @@ suite("real local Supabase demand transactions", () => {
+     expect(searches).toBe(1);
+   }, 30_000);
+ 
++  it("runs Ask through fixture search, extraction, verification, admission and a cited local answer", async () => {
++    const liveQuestion = `When was ${personName} awarded the Comet Medal?`;
++    const liveClaim = `${personName} was awarded the Comet Medal in 1938.`;
++    const liveUrl = `https://archive.example.org/comet-register/${personId}`;
++    const liveExcerpt = `The award register records that ${personName} was awarded the Comet Medal in 1938.`;
++    const liveSource = authenticateSource({ url: liveUrl, title: "Comet Medal award register", author: "Registrar",
++      publisher: "Example Archive", publicationDate: "1938", category: "institutional" });
++    let searches = 0;
++    fixtureProviders.research = {
++      provider: { name: "fixture", isConfigured: () => true, async search() {
++        searches++; return [{ title: "Comet Medal award register", url: liveUrl, sourceProvider: "fixture" }];
++      } },
++      async claimNeed(needId: string, personalityId: string, owner: string) {
++        return required(await supabaseAdmin.rpc("claim_demand_research_need", { p_need_id: needId, p_personality_id: personalityId, p_owner: owner }));
++      },
++      async finishNeed(needId: string, owner: string, status: string, calls: number, outcome: object, cooldown: number) {
++        required(await supabaseAdmin.rpc("finish_demand_research_need", { p_need_id: needId, p_owner: owner,
++          p_status: status, p_search_calls: calls, p_outcome: outcome, p_cooldown_seconds: cooldown }));
++      },
++      reserveBudget: (requestId: string) => reserveResearchBudget(requestId, 8),
++      async inspect(url: string) { return { url, domain: new URL(url).hostname, category: "institutional", title: "Comet Medal award register" }; },
++      async robotsAllowed() { return true; },
++      async read() { return { text: liveExcerpt, title: "Comet Medal award register", url: liveUrl, locator: "Award register, 1938",
++        supportLevel: "EXACT", supportReason: "Direct date and person", identity: liveSource, rightsDeclaration: rights }; },
++      async existingSourceId() { return null; },
++    };
++    fixtureProviders.verification = {
++      async extract() { return [{ proposition: liveClaim, type: "HISTORICAL_FACT", evidenceIndexes: [0], context: null,
++        period: "1938", qualification: null, category: "official_record_fact" }]; },
++      async assess() { return { support: "SUPPORTED", supportingIndexes: [0], equivalentExisting: false,
++        conflictsExisting: false, materialContradiction: false, exactEntities: true, exactDatesAndUnits: true,
++        qualifiersPreserved: true, officialIssuer: true, independentDocuments: true, reason: "Issuing register" }; },
++    };
++    const previous = [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
++      process.env.DEMAND_VERIFICATION_SHADOW_ENABLED];
++    process.env.DEMAND_RESEARCH_ENABLED = "true";
++    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
++    process.env.DEMAND_VERIFICATION_SHADOW_ENABLED = "false";
++    try {
++      const first = await answerQuestion(liveQuestion, personId);
++      expect(first.debug.demandAdmittedClaims).toBe(1);
++      expect(first.status).not.toBe("abstained");
++      expect(first.citations.some((citation) => citation.claimId && citation.url === liveUrl)).toBe(true);
++      const second = await answerQuestion(liveQuestion, personId);
++      expect(second.debug.webSearchCalls).toBe(0);
++      expect(second.citations.some((citation) => citation.claimId && citation.url === liveUrl)).toBe(true);
++      expect(searches).toBe(1);
++    } finally {
++      [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
++        process.env.DEMAND_VERIFICATION_SHADOW_ENABLED] = previous;
++      fixtureProviders.research = null;
++      fixtureProviders.verification = null;
++    }
++  }, 30_000);
++
++  it("answers from an unlicensed original passage without admitting or caching it", async () => {
++    const missingQuestion = `When was ${personName} awarded the Orion Medal?`;
++    const missingClaim = `${personName} was awarded the Orion Medal in 1941.`;
++    const missingUrl = `https://archive.example.org/orion-register/${personId}`;
++    const missingExcerpt = `The award register records that ${personName} was awarded the Orion Medal in 1941.`;
++    fixtureProviders.research = {
++      provider: { name: "fixture", isConfigured: () => true, async search() {
++        return [{ title: "Orion Medal award register", url: missingUrl, sourceProvider: "fixture" }];
++      } },
++      async claimNeed(needId: string, personalityId: string, owner: string) {
++        return required(await supabaseAdmin.rpc("claim_demand_research_need", { p_need_id: needId, p_personality_id: personalityId, p_owner: owner }));
++      },
++      async finishNeed(needId: string, owner: string, status: string, calls: number, outcome: object, cooldown: number) {
++        required(await supabaseAdmin.rpc("finish_demand_research_need", { p_need_id: needId, p_owner: owner,
++          p_status: status, p_search_calls: calls, p_outcome: outcome, p_cooldown_seconds: cooldown }));
++      },
++      reserveBudget: (requestId: string) => reserveResearchBudget(requestId, 8),
++      async inspect(url: string) { return { url, domain: new URL(url).hostname, category: "institutional", title: "Orion Medal award register" }; },
++      async robotsAllowed() { return true; },
++      async read() { return { text: missingExcerpt, title: "Orion Medal award register", url: missingUrl,
++        locator: "Award register, 1941", supportLevel: "EXACT", supportReason: "Direct award date",
++        identity: authenticateSource({ url: missingUrl, title: "Orion Medal award register",
++          publisher: "Example Archive", category: "institutional" }), rightsDeclaration: null }; },
++      async existingSourceId() { return null; },
++    };
++    fixtureProviders.verification = {
++      async extract() { throw new Error("Research-only answers must not enter permanent verification"); },
++      async assess() { throw new Error("Research-only answers must not enter permanent verification"); },
++    };
++    const previous = [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
++      process.env.DEMAND_VERIFICATION_SHADOW_ENABLED];
++    process.env.DEMAND_RESEARCH_ENABLED = "true";
++    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "false";
++    process.env.DEMAND_VERIFICATION_SHADOW_ENABLED = "false";
++    try {
++      const result = await answerQuestion(missingQuestion, personId);
++      expect(result.status).toBe("research_answer");
++      expect(result.citations).toHaveLength(1);
++      expect(result.citations[0]).toMatchObject({ kind: "live_web_source", url: missingUrl, excerpt: missingExcerpt });
++      expect(result.answer).toContain("1941");
++      expect(result.answer).toContain("[S1]");
++      expect(result.debug.demandAdmittedClaims || 0).toBe(0);
++      expect(result.debug.answerCacheHit).toBe(false);
++      expect(result.debug.demandVerificationModelCalls || 0).toBe(0);
++      const cached = required(await supabaseAdmin.from("answer_cache").select("id")
++        .eq("id", result.debug.answerCacheKey!).limit(1)) as unknown[];
++      expect(cached).toHaveLength(0);
++      expect(required(await supabaseAdmin.from("claims").select("id")
++        .eq("personality_id", personId).eq("claim_text", missingClaim))).toHaveLength(0);
++    } finally {
++      [process.env.DEMAND_RESEARCH_ENABLED, process.env.DEMAND_AUTO_ADMISSION_ENABLED,
++        process.env.DEMAND_VERIFICATION_SHADOW_ENABLED] = previous;
++      fixtureProviders.research = null;
++      fixtureProviders.verification = null;
++    }
++  }, 30_000);
++
+   it("keeps unsupported, contradictory, rights-restricted and provider-failed findings out of verified claims", async () => {
+-    const candidate = `${personName} was awarded the Comet Medal in 1941.`;
++    const candidate = `${personName} was awarded the Orion Medal in 1941.`;
+     const finding = { source: { ...source, url: `https://archive.example.org/comet/${randomUUID()}`, sourceId: null,
+       publisherDomain: "archive.example.org", retrievedAt: new Date().toISOString() },
+-      passage: { text: `The register records that ${personName} was awarded the Comet Medal in 1941.`, locator: "Comet register, 1941",
++      passage: { text: `The register records that ${personName} was awarded the Orion Medal in 1941.`, locator: "Orion register, 1941",
+         supportLevel: "EXACT" as const, supportReason: "Direct statement" },
+       relation: "supports" as const, retention: "license_candidate" as const, rightsDeclaration: rights,
+       citeableNow: true, verificationReady: true };
+@@ -144,6 +278,12 @@ suite("real local Supabase demand transactions", () => {
+         equivalentExisting: false, conflictsExisting: false, materialContradiction: false, exactEntities: true,
+         exactDatesAndUnits: true, qualifiersPreserved: true, officialIssuer: true, independentDocuments: true, reason: "Contradicted" }; } } });
+     expect(contradicted.decisions[0]?.outcome).toBe("rejected");
++    const weak = await verifyDemandKnowledge(request, research, { enabled: true, store: productionAdmissionStore(),
++      provider: { extract, async assess() { return { support: "PARTIALLY_SUPPORTED" as const, supportingIndexes: [0],
++        equivalentExisting: false, conflictsExisting: false, materialContradiction: false, exactEntities: true,
++        exactDatesAndUnits: true, qualifiersPreserved: true, officialIssuer: true, independentDocuments: true,
++        reason: "The passage does not establish the precise award claim" }; } } });
++    expect(weak.decisions[0]?.outcome).toBe("quarantined");
+     const restricted = await verifyDemandKnowledge(request, { ...research, findings: [{ ...finding, retention: "transient_only", rightsDeclaration: null }] },
+       { enabled: true, store: productionAdmissionStore(), provider: { extract, async assess() { throw new Error("must not assess restricted source"); } } });
+     expect(restricted.decisions[0]?.outcome).toBe("quarantined");
+diff --git a/tests/corpus/demand-target-support.test.ts b/tests/corpus/demand-target-support.test.ts
+new file mode 100644
+index 0000000..9581272
+--- /dev/null
++++ b/tests/corpus/demand-target-support.test.ts
+@@ -0,0 +1,91 @@
++import { describe, expect, it } from "vitest";
++import saved from "../fixtures/raman-demand-live.json";
++import { citedAnswerAddressesTarget, passageAddressesTarget } from "@/lib/ask/target-support";
++import { assessPassageSupport } from "@/lib/live-research/research-quality";
++import { hasExplicitRetentionRights } from "@/lib/live-research/retention-rights";
++import type { Citation, RetrievedClaim, RetrievedPassage } from "@/lib/corpus/types";
++
++const claim = (text: string, excerpt: string): RetrievedClaim => ({ kind: "claim", id: "claim", claimId: "claim", text,
++  claimKind: "established_fact", certainty: "high", approvalOrigin: "corpus_evidence_review", evidenceType: "historical_fact",
++  parameterName: null, fieldLabel: null, sourceTitle: "Institutional record", sourceAuthor: null, sourceInstitution: null,
++  sourceUrl: "https://example.org/record", sourceType: "institutional", pageOrSection: "record", evidenceExcerpt: excerpt, chunkId: null,
++  textualLayer: null });
++const citation = (id = "C1"): Citation => ({ id, kind: "approved_claim", title: "Institutional record", author: null,
++  institution: null, url: "https://example.org/record", sourceType: "institutional", pageOrSection: "record",
++  textualLayer: null, excerpt: "record" });
++
++describe("final named-target citation gate", () => {
++  it("reproduces the saved Raman failure and refuses its unrelated IISc citation", () => {
++    const item = claim(saved.unrelatedClaim, saved.unrelatedExcerpt);
++    expect(citedAnswerAddressesTarget(saved.question, `${saved.unrelatedClaim} [C1]`, [item], [citation()],
++      ["C. V. Raman", "Raman"])).toBe(false);
++    expect(passageAddressesTarget(saved.question, saved.passage, ["C. V. Raman", "Raman"])).toBe(false);
++    expect(["PARTIAL", "RELATED"]).toContain(assessPassageSupport(saved.passage, saved.question,
++      "C. V. Raman", ["Raman", "Sir Chandrasekhara Venkata Raman"]).level);
++    expect(hasExplicitRetentionRights(saved.rightsDeclaration)).toBe(false);
++  });
++
++  it("requires the cited passage to identify a second named award and its date", () => {
++    const question = "When was Anika Sen awarded the Aurora Medal?";
++    const wrong = claim("Anika Sen was awarded the Comet Medal in 1938.",
++      "The register records that Anika Sen was awarded the Comet Medal in 1938.");
++    expect(citedAnswerAddressesTarget(question, "She received the Aurora Medal in 1938. [C1]", [wrong], [citation()],
++      ["Anika Sen"])).toBe(false);
++    const right = claim("Anika Sen was awarded the Aurora Medal in 1928.",
++      "The register records that Anika Sen was awarded the Aurora Medal in 1928.");
++    expect(citedAnswerAddressesTarget(question, "She received the Aurora Medal in 1928. [C1]", [right], [citation()],
++      ["Anika Sen"])).toBe(true);
++    expect(citedAnswerAddressesTarget(question, "She received the Aurora Medal in 1938. [C1]", [right], [citation()],
++      ["Anika Sen"])).toBe(false);
++    const mixed = claim("Anika Sen was awarded the Aurora Medal in 1928.",
++      "Anika Sen was awarded the Aurora Medal in 1928. The university was founded in 1938.");
++    expect(citedAnswerAddressesTarget(question, "She received the Aurora Medal in 1938. [C1]", [mixed], [citation()],
++      ["Anika Sen"])).toBe(false);
++  });
++
++  it("keeps initials with the dated award sentence", () => {
++    expect(passageAddressesTarget(saved.question,
++      "On 10 December 1930, C.V. Raman took the stage to receive the Nobel Prize in Physics.",
++      ["C. V. Raman", "Raman"])).toBe(true);
++  });
++
++  it("requires a cited original passage, not merely a claim or source title", () => {
++    const question = "When was Anika Sen awarded the Aurora Medal?";
++    const unsupported = claim("Anika Sen was awarded the Aurora Medal in 1928.", "Anika Sen worked at the university in 1928.");
++    expect(citedAnswerAddressesTarget(question, "Anika Sen won the Aurora Medal in 1928. [C1]",
++      [unsupported], [citation()], ["Anika Sen"])).toBe(false);
++    const live: RetrievedPassage = { kind: "passage", id: "p", chunkId: "p", sourceId: "s",
++      text: "Anika Sen was awarded the Aurora Medal in 1928.", sectionTitle: null, pageOrSection: "register",
++      textualLayer: "institutional_record", sourceTitle: "Award register", sourceAuthor: null, sourceInstitution: "Archive",
++      sourceUrl: "https://example.org/award", sourceType: "institutional", sourceStatus: "discovered" };
++    expect(citedAnswerAddressesTarget(question, "Anika Sen won the Aurora Medal in 1928. [S1]",
++      [live], [citation("S1")], ["Anika Sen"])).toBe(true);
++  });
++
++  it("requires the requested event and date in institution and life-date questions", () => {
++    expect(passageAddressesTarget("When did Anika Sen join Aurora University?",
++      "Anika Sen visited Aurora University in 1928.", ["Anika Sen"])).toBe(false);
++    expect(passageAddressesTarget("When did Anika Sen join Aurora University?",
++      "Anika Sen joined Aurora University in 1928.", ["Anika Sen"])).toBe(true);
++    expect(passageAddressesTarget("When did Anika Sen die?",
++      "Anika Sen received a medal in 1938.", ["Anika Sen"])).toBe(false);
++    expect(passageAddressesTarget("When did Anika Sen die?",
++      "Anika Sen died in 1948.", ["Anika Sen"])).toBe(true);
++  });
++
++  it("checks every cited passage in a grouped citation", () => {
++    const question = "When was Anika Sen awarded the Aurora Medal?";
++    const right = claim("Anika Sen was awarded the Aurora Medal in 1928.",
++      "Anika Sen was awarded the Aurora Medal in 1928.");
++    const wrong = claim("Anika Sen joined the university in 1928.", "Anika Sen joined the university in 1928.");
++    expect(citedAnswerAddressesTarget(question, "1928. [C1, C2]", [right, wrong], [citation(), citation("C2")],
++      ["Anika Sen"])).toBe(false);
++  });
++
++  it("recognizes only explicit retention declarations", () => {
++    expect(hasExplicitRetentionRights("open access")).toBe(false);
++    expect(hasExplicitRetentionRights("publicly readable")).toBe(false);
++    expect(hasExplicitRetentionRights("not public domain")).toBe(false);
++    expect(hasExplicitRetentionRights("https://creativecommons.org/licenses/by/4.0/")).toBe(true);
++  });
++});
+diff --git a/tests/corpus/google-source-verification.test.ts b/tests/corpus/google-source-verification.test.ts
+index 5d2cefd..f69c0ca 100644
+--- a/tests/corpus/google-source-verification.test.ts
++++ b/tests/corpus/google-source-verification.test.ts
+@@ -50,6 +50,34 @@ describe("live source admission", () => {
+     expect(result?.text).toContain("700–750 CE");
+   });
+ 
++  it("extracts a licensed, dated award passage with its institutional provenance", async () => {
++    const url = "https://records.gov/awards/anika-sen";
++    state.preview.mockResolvedValueOnce({ status: 200, finalUrl: url,
++      html: `<html><head><title>Aurora Medal register</title><meta name="citation_title" content="Aurora Medal register" />
++        <meta name="citation_author" content="Registrar" /><meta name="citation_publisher" content="National Records Office" />
++        <link rel="license" href="https://creativecommons.org/licenses/by/4.0/" /></head>
++        <main><h2>1928 award register</h2><p>Anika Sen was awarded the Aurora Medal in 1928 by the National Records Office.</p></main></html>` });
++    const result = await readGroundedExcerpt(source(url), "When was Anika Sen awarded the Aurora Medal?", ["Anika Sen"], policy);
++    expect(result).toMatchObject({ supportLevel: expect.stringMatching(/EXACT|STRONG/), locator: "1928 award register",
++      rightsDeclaration: "https://creativecommons.org/licenses/by/4.0/",
++      identity: { title: "Aurora Medal register", publisher: "National Records Office", provenanceComplete: true } });
++    expect(result?.text).toContain("1928");
++  });
++
++  it("recognizes a Creative Commons link in an article-specific rights statement", async () => {
++    const url = "https://publisher.example/articles/raman";
++    state.preview.mockResolvedValueOnce({ status: 200, finalUrl: url,
++      html: `<html><head><title>Raman's award history</title><meta name="citation_title" content="Raman's award history" />
++        <meta name="citation_author" content="Historian" /><meta name="citation_publisher" content="University Press" /></head>
++        <body><div class="article-rights">This is an Open Access article, distributed under the terms of the Creative Commons Attribution licence
++        (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>).</div>
++        <main><p>C. V. Raman was awarded the Nobel Prize in Physics in 1930.</p></main></body></html>` });
++    const result = await readGroundedExcerpt(source(url), "In what year was C. V. Raman awarded the Nobel Prize in Physics?",
++      ["C. V. Raman", "Raman"], policy);
++    expect(result).toMatchObject({ rightsDeclaration: "https://creativecommons.org/licenses/by/4.0/",
++      supportLevel: expect.stringMatching(/EXACT|STRONG/) });
++  });
++
+   it("does not borrow a subject from a preceding paragraph for an unrelated date", async () => {
+     const url = "https://plato.stanford.edu/entries/unrelated-date/";
+     state.preview.mockResolvedValueOnce({ status: 200, finalUrl: url, html: `<html><title>Śaṅkara (Stanford Encyclopedia of Philosophy)</title><main><p>Śaṅkara wrote commentaries on several texts.</p><p>Nakamura (1983) dates another philosopher's work to 700–750 CE.</p></main></html>` });
+diff --git a/tests/corpus/knowledge-verification.test.ts b/tests/corpus/knowledge-verification.test.ts
+index 26a9692..224e80b 100644
+--- a/tests/corpus/knowledge-verification.test.ts
++++ b/tests/corpus/knowledge-verification.test.ts
+@@ -117,6 +117,16 @@ describe("demand knowledge verification", () => {
+     expect(result.decisions[0].outcome).toBe("admitted");
+     const input = deps.store.admit.mock.calls[0][0] as { sources: Array<{ excerpt: string }> };
+     expect(input.sources[0].excerpt).toContain(proposition);
++    expect(input.sources[0].excerpt.length).toBeLessThanOrEqual(240);
++  });
++
++  it("refuses a title-like line even if an upstream model calls it supported", async () => {
++    const title = "Anika Sen Aurora Medal 1928";
++    const deps = setup({ findings: [finding({ passage: { text: title, locator: "Award register",
++      supportLevel: "EXACT", supportReason: "Incorrect upstream title rating" } })] });
++    const result = await verifyDemandKnowledge(request, research(deps.findings), deps);
++    expect(result.decisions[0].outcome).toBe("quarantined");
++    expect(deps.store.admit).not.toHaveBeenCalled();
+   });
+ 
+   it("quarantines a competing date in the approved corpus", async () => {
+diff --git a/tests/corpus/on-demand-engine.test.ts b/tests/corpus/on-demand-engine.test.ts
+index 9cb534c..43ce483 100644
+--- a/tests/corpus/on-demand-engine.test.ts
++++ b/tests/corpus/on-demand-engine.test.ts
+@@ -50,6 +50,27 @@ describe("bounded on-demand research", () => {
+     expect(result).not.toHaveProperty("claims");
+   });
+ 
++  it("prioritizes a relevant institutional result before spending the four source reads", async () => {
++    const weak = Array.from({ length: 7 }, (_, index) => ({ title: `General profile ${index}`,
++      url: `https://profiles.example.com/person/${index}`, sourceProvider: "mock" }));
++    const official = { title: "Anika Sen prism effect discovery date", url: "https://records.gov/prism-effect",
++      sourceProvider: "mock" };
++    const { deps, calls } = fixture([...weak, official]);
++    const readUrls: string[] = [];
++    deps.read = async (source, statement) => {
++      readUrls.push(source.url);
++      expect(statement).toBe("When did Anika Sen discover the prism effect?");
++      return source.url === official.url ? excerpt({ url: official.url }) : null;
++    };
++    const result = await executeDemandResearch(request, "When did Anika Sen discover the prism effect?", [], ["Anika Sen"], deps);
++    expect(calls).toHaveLength(1);
++    expect(calls[0]).toContain("prism effect");
++    expect(calls[0]).not.toContain("dated original account");
++    expect(readUrls[0]).toBe(official.url);
++    expect(result.findings).toHaveLength(1);
++    expect(result.usage.sourceFetches).toBe(1);
++  });
++
+   it("rejects a reputable but irrelevant source", async () => {
+     const { deps } = fixture();
+     const finish = async (...args: Parameters<ResearchDependencies["finishNeed"]>) => { expect(args[2]).toBe("insufficient"); expect(args[5]).toBe(600); };
+@@ -89,6 +110,71 @@ describe("bounded on-demand research", () => {
+     deps.read = async () => excerpt({ rightsDeclaration: null });
+     const result = await executeDemandResearch(request, "When was the prism effect discovered?", [], ["Anika Sen"], deps);
+     expect(result.findings[0]).toMatchObject({ retention: "transient_only", verificationReady: false });
++    expect(result).toMatchObject({ status: "complete", citeableNow: true, sufficientForVerification: false });
++  });
++
++  it("stops after a sufficient transient source when admission is disabled", async () => {
++    const secondUrl = "https://archive.example.org/second-prism-record";
++    const { deps } = fixture([{ title: "History of the prism effect", url, sourceProvider: "mock" },
++      { title: "Second prism record", url: secondUrl, sourceProvider: "mock" }]);
++    const reads: string[] = [];
++    deps.read = async (source) => { reads.push(source.url); return excerpt({ url: source.url, rightsDeclaration: null }); };
++    const result = await executeDemandResearch(request, "When did Anika Sen discover the prism effect?", [], ["Anika Sen"], deps);
++    expect(result).toMatchObject({ status: "complete", citeableNow: true, usage: { sourceFetches: 1 } });
++    expect(reads).toHaveLength(1);
++  });
++
++  it("continues the same bounded search past an unlicensed page to an explicitly licensed work", async () => {
++    const previous = process.env.DEMAND_AUTO_ADMISSION_ENABLED;
++    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
++    try {
++    const licensedUrl = "https://archive.example.org/prism-record";
++    const title = "Anika Sen prism effect date";
++    const { deps, calls } = fixture([{ title, url, sourceProvider: "mock" },
++      { title: "Anika Sen prism effect dated record", url: licensedUrl, sourceProvider: "mock" }]);
++    deps.inspect = async (candidate, sourceTitle) => ({ url: candidate, domain: new URL(candidate).hostname,
++      category: "institutional", title: sourceTitle });
++    deps.read = async (source) => excerpt({ url: source.url,
++      identity: authenticateSource({ url: source.url, title: `Record at ${new URL(source.url).hostname}`,
++        author: "Registrar", publisher: "University" }),
++      rightsDeclaration: source.url === licensedUrl ? "https://creativecommons.org/licenses/by/4.0/" : null });
++    const result = await executeDemandResearch(request, "When did Anika Sen discover the prism effect?", [], ["Anika Sen"], deps);
++    expect(calls).toHaveLength(1);
++    expect(result.usage.sourceFetches).toBe(2);
++    expect(result.findings.map((finding) => finding.retention)).toEqual(["transient_only", "license_candidate"]);
++    expect(result.findings[1].verificationReady).toBe(true);
++    expect(result.sufficientForVerification).toBe(true);
++    } finally {
++      if (previous === undefined) delete process.env.DEMAND_AUTO_ADMISSION_ENABLED;
++      else process.env.DEMAND_AUTO_ADMISSION_ENABLED = previous;
++    }
++  });
++
++  it("withholds an answer when two retrieved original pages give conflicting dates", async () => {
++    const previous = process.env.DEMAND_AUTO_ADMISSION_ENABLED;
++    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
++    try {
++      const secondUrl = "https://archive.example.org/other-prism-date";
++      const { deps } = fixture([{ title: "Prism date history", url, sourceProvider: "mock" },
++        { title: "Other prism date history", url: secondUrl, sourceProvider: "mock" }]);
++      deps.inspect = async (candidate, sourceTitle) => ({ url: candidate, domain: new URL(candidate).hostname,
++        category: "institutional", title: sourceTitle });
++      deps.read = async (source) => excerpt({ url: source.url,
++        text: `Anika Sen discovered the prism effect in ${source.url === url ? "1928" : "1929"}.`,
++        identity: authenticateSource({ url: source.url, title: `Prism date at ${new URL(source.url).hostname}`,
++          author: "Registrar", publisher: "University" }),
++        rightsDeclaration: source.url === url ? null : "https://creativecommons.org/licenses/by/4.0/" });
++      const contested = { ...request, gaps: [...request.gaps, { ...request.gaps[0],
++        id: "c".repeat(64), requirementKey: "contested", type: "contested_claim" as const }] };
++      const result = await executeDemandResearch(contested, "When did Anika Sen discover the prism effect?", [], ["Anika Sen"], deps);
++      expect(result.usage.sourceFetches).toBe(2);
++      expect(result.status).toBe("insufficient");
++      expect(result.citeableNow).toBe(false);
++      expect(result.unresolvedGaps.some((gap) => gap.type === "conflicting_evidence")).toBe(true);
++    } finally {
++      if (previous === undefined) delete process.env.DEMAND_AUTO_ADMISSION_ENABLED;
++      else process.env.DEMAND_AUTO_ADMISSION_ENABLED = previous;
++    }
+   });
+ 
+   it("does not trust a reputable domain without document provenance", async () => {
+diff --git a/tests/corpus/resilient-flow.test.ts b/tests/corpus/resilient-flow.test.ts
+index 2182b70..eef2456 100644
+--- a/tests/corpus/resilient-flow.test.ts
++++ b/tests/corpus/resilient-flow.test.ts
+@@ -113,6 +113,8 @@ describe("Ask orchestration", () => {
+   });
+   it("uses demand research without dispatching either legacy search path", async () => {
+     vi.stubEnv("DEMAND_RESEARCH_ENABLED", "true");
++    vi.stubEnv("GEMINI_API_KEY", "fixture-key");
++    vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
+     state.claims = []; state.chunks = [];
+     state.demand.mockResolvedValue({ requestId: "research-one", status: "complete", attempted: true, citeableNow: true,
+       unresolvedGaps: [], usage: { searchCalls: 1, sourceFetches: 1 }, passages: [{ kind: "passage", id: "demand:one", chunkId: "demand:one", sourceId: "demand:one",
+@@ -124,6 +126,7 @@ describe("Ask orchestration", () => {
+     expect(state.demand).toHaveBeenCalledTimes(1);
+     expect(state.google).not.toHaveBeenCalled();
+     expect(state.webDiscover).not.toHaveBeenCalled();
++    expect(state.generate).not.toHaveBeenCalled();
+     expect(result.citations.some((item) => item.kind === "live_web_source")).toBe(true);
+   });
+   it("merges credible Google grounding with DCF evidence without invoking Brave", async () => {
+@@ -255,7 +258,7 @@ describe("Ask orchestration", () => {
+     state.claims = []; state.chunks = [];
+     state.discover.mockResolvedValue({ accepted: ["https://example.test/approved"], rejected: [{ url: "https://unapproved.test/", reason: "SOURCE_NOT_APPROVED" }], approvedSourcesConsidered: ["Primary text"] });
+     const result = await answerQuestion("Who taught Rama Bala and Atibala?", "p");
+-    expect(result.status).toBe("extractive_fallback");
++    expect(result.status).toBe("research_answer");
+     expect(result.debug.liveResearchTriggered).toBe(true);
+     expect(result.debug.liveFetches).toBe(1);
+     expect(result.debug.liveUrlsRejected).toHaveLength(1);
+diff --git a/tests/feedback.test.ts b/tests/feedback.test.ts
+index bd0429f..014d564 100644
+--- a/tests/feedback.test.ts
++++ b/tests/feedback.test.ts
+@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
+ import { NextRequest } from "next/server";
+ import { feedbackSubmissionSchema } from "@/lib/feedback";
+ import { signFeedbackContext } from "@/lib/feedback-token";
++import { feedbackAnswerSnapshot } from "@/lib/feedback";
+ 
+ const { insert } = vi.hoisted(() => ({ insert: vi.fn() }));
+ vi.mock("@/lib/supabase-admin", () => ({ supabaseAdmin: { from: () => ({ insert }) } }));
+@@ -24,6 +25,15 @@ function submit(value: Record<string, unknown>) {
+ beforeEach(() => { insert.mockReset().mockResolvedValue({ error: null }); });
+ 
+ describe("response feedback", () => {
++  it("stores no live source sentence in a research-only feedback snapshot", async () => {
++    const liveSentence = "The archive records Example Person receiving the Aurora Medal in 1928.";
++    const answer = feedbackAnswerSnapshot("research_answer", `${liveSentence} [S1]`);
++    const response = await submit({ token: signFeedbackContext({ ...context, answer, answerMode: "research_answer",
++      usedLiveSearch: true, citations: [{ id: "S1", kind: "live_web_source", title: "Archive", url: "https://example.org/archive", pageOrSection: "Register" }] }), rating: 4 });
++    expect(response.status).toBe(201);
++    expect(answer).not.toContain(liveSentence);
++    expect(insert).toHaveBeenCalledWith(expect.objectContaining({ answer_snapshot: answer, answer_mode: "research_answer" }));
++  });
+   it.each([1, 5])("stores a %i-star rating and the signed answer snapshot", async rating => {
+     const response = await submit({ token: signFeedbackContext(context), rating, comment: "", tags: [] });
+     expect(response.status).toBe(201);
+diff --git a/tests/fixtures/raman-demand-live.json b/tests/fixtures/raman-demand-live.json
+new file mode 100644
+index 0000000..c2e20de
+--- /dev/null
++++ b/tests/fixtures/raman-demand-live.json
+@@ -0,0 +1,8 @@
++{
++  "question": "In what year was C. V. Raman awarded the Nobel Prize in Physics?",
++  "sourceUrl": "https://www.nobelprize.org/prizes/physics/1930/raman/facts/",
++  "passage": "Sir Chandrasekhara Venkata Raman Nobel Prize in Physics 1930",
++  "rightsDeclaration": null,
++  "unrelatedClaim": "Raman established IISc's Department of Physics in 1933.",
++  "unrelatedExcerpt": "CV Raman became IISc’s first Indian Director on 31 March 1933 and established the Department of Physics the same year."
++}
+-- 
+2.50.1 (Apple Git-155)
+

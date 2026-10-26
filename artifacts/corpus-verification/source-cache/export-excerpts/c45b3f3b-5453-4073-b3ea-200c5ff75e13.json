@@ -1,0 +1,79 @@
+{
+  "source_id": "c45b3f3b-5453-4073-b3ea-200c5ff75e13",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T05:23:10.012Z"
+    },
+    "citation": "Bombay: the genealogy of a global imperial city. Cambridge University Press, Urban History. https://www.cambridge.org/core/journals/urban-history/article/bombay-the-genealogy-of-a-global-imperial-city/237543805FDCB1EE8A058304813B787C",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Cambridge University Press, Urban History",
+    "rights_or_access_note": "Public page; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Bombay: the genealogy of a global imperial city",
+    "url": "https://www.cambridge.org/core/journals/urban-history/article/bombay-the-genealogy-of-a-global-imperial-city/237543805FDCB1EE8A058304813B787C"
+  },
+  "claim_ids": [
+    "2ba173ca-192d-4572-a668-2c493fbcaacc",
+    "30573836-1769-4aa0-9a94-a3e6c1ed9d27",
+    "8929e569-a66e-4fc6-9c07-2ab1088feadd",
+    "a021c897-d8f2-4873-8c91-cee744c32578",
+    "f0bdf49f-e4ef-4a7b-8156-15757aed46c0",
+    "f550b175-837d-4fac-98ca-c73eee2b02c6"
+  ],
+  "passages": [
+    {
+      "chunk_id": "18c64016-22de-48b2-ac51-15186307256a",
+      "locator": "significant investments and interests in maintaining power and control over the sea",
+      "text_sha256": "0890704c1102526a11d86689cb9ddf19491aba62aef1a503ee76652efb4bd97b",
+      "excerpt_preview": "Both the Mughals and Marathas had significant investments and interests in maintaining power and control over the sea.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "777586de-02bf-4a29-b404-2070a0e0f22a",
+      "locator": "layered networks of tributary relationships",
+      "text_sha256": "e61d4531e2ad3de5eb84ae39b4dcf886db5f7e196a8dd9353a1343bd4b10ab14",
+      "excerpt_preview": "Both Mughal and Maratha ‘navies’ were, as with both empires’ territorial armies and local administration, layered networks of tributary relationships, formal and informal offices, and assignments, honorifics and revenue assignments; both – ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "96262882-34d4-4224-8164-db8cedd549fd",
+      "locator": "seafaring Sidis of Janjira",
+      "text_sha256": "c7b7ef2d4ed40b1d8309faeeb3c8c22f4509c2b920ed3878a57ad44d24db3c8e",
+      "excerpt_preview": "8 Chief among the Maratha sarkhails (troop commanders) was Kanhoji Angre, who would later be branded an ‘arch-pyrate’ by the English at Bombay.Footnote 9 For its part, Mughal maritime power was based on a long-standing tributary relationshi",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ce58b36d-e448-4370-b53b-2d04d8e8db07",
+      "locator": "Portuguese, Dutch, French and English naval power",
+      "text_sha256": "b237e5ae0cfad675559e1812a94eeab799eb9ca01974d463681f4bc8a87558dc",
+      "excerpt_preview": "words of Stewart Gordon, ‘turned Shivaji from a minor regional irritation to a major problem for the Mughal Empire’.Footnote 7 Both Mughals and Marathas also engaged in extended and complicated manoeuvres which attempted either to capitaliz",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d6f4af8f-a20e-4f2a-a4f8-9dd0a2ffa176",
+      "locator": "Sindhudurg at Malwan",
+      "text_sha256": "1f73a171e7edf90cdddc7fe317e2e6ceba2bd596cd675f4aeeffce9d6f38c5d3",
+      "excerpt_preview": "For their part, the Marathas under Sivaji built and retained a number of coastal fortifications, most notably Sindhudurg at Malwan, about 500 kilometres south of Bombay.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f230dabe-243c-4e8b-ba07-b6b2309d700e",
+      "locator": "western Indian littoral was in fact a critical theatre",
+      "text_sha256": "38faba0e03313af6d4d9d9a187c14934e5608cabbe8f775f44c1724d1908efb7",
+      "excerpt_preview": "Despite the long-held belief, especially on the part of Europeans, that the ‘Asiatick’ empires were primarily territorial and uninterested in maritime affairs, the seventeenth-century western Indian littoral was in fact a critical theatre f",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

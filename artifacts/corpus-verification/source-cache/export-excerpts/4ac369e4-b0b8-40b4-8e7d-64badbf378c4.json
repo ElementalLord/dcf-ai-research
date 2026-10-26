@@ -1,0 +1,70 @@
+{
+  "source_id": "4ac369e4-b0b8-40b4-8e7d-64badbf378c4",
+  "source": {
+    "author": "Gurinder Singh Mann",
+    "authority_metadata": {
+      "verified_at": "2026-10-13T14:33:46.684Z"
+    },
+    "citation": "Gurinder Singh Mann. The Formation of the Sikh Tradition. Journal of Punjab Studies, University of California, Santa Barbara. https://punjab.global.ucsb.edu/sites/default/files/sitefiles/journals/volume17/JPS_17_nos_1-2_Mann.pdf",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Journal of Punjab Studies, University of California, Santa Barbara",
+    "rights_or_access_note": "Publicly accessible source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "The Formation of the Sikh Tradition",
+    "url": "https://punjab.global.ucsb.edu/sites/default/files/sitefiles/journals/volume17/JPS_17_nos_1-2_Mann.pdf"
+  },
+  "claim_ids": [
+    "00344550-1df8-4b43-889a-a32875d6e60e",
+    "373c1506-5532-4eee-8823-cdba1aa782fb",
+    "55e165f3-98b6-4bec-92d0-339750e74fc6",
+    "df14197b-9c54-4300-8b0f-f75d50faa40d",
+    "f55da9e8-f72c-4d06-b4ba-e09d6b20ef41"
+  ],
+  "passages": [
+    {
+      "chunk_id": "80081d30-2f1f-4698-ab63-78f3386c7581",
+      "locator": "minting a new coin",
+      "text_sha256": "de479b5871cebd2dc50da0695296737ea6d04162e542c659fba65bad608281d0",
+      "excerpt_preview": "The Goindval Pothis compiled in the early 1570s refer to Guru Nanak as the “Bedi King,” who supports both the religious and the temporal dimensions of the world (Baba Nanak Vedi Patisahu din dunia ki tek, Pinjore, folio 215), and call him a",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9bac1fef-e15b-442e-ab5c-75e9301b5b45",
+      "locator": "After the establishment of Kartarpur",
+      "text_sha256": "908df3da9b0521676e0f3adddf417923ae5dfe3da2ad23413cb6739dd3a89ecb",
+      "excerpt_preview": "After the establishment of Kartarpur, the Puratan reports four long missionary journeys—to the region of Sindh in the south, the Himalayan foothills in the north, Mecca in the west, and the present-day Peshawar area in the northwest.27 Duri",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a5c33d93-69d7-4d24-997e-fcda2c10219f",
+      "locator": "Sikhs in their religious life did not follow",
+      "text_sha256": "c7d175bed6cb3ee737f9a9db8121f445ca719a3d05ff5e68b252cee27edd3458",
+      "excerpt_preview": "Given this description, his home would have been a sizable establishment large enough to accommodate congregational prayers, provide facilities for the making and serving of the food, and put up visitors.24 The Puratan refers to the recitat",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "afdfa4f1-e001-45a7-a316-4f0ace322439",
+      "locator": "home would have been a sizable establishment",
+      "text_sha256": "c7d175bed6cb3ee737f9a9db8121f445ca719a3d05ff5e68b252cee27edd3458",
+      "excerpt_preview": "Given this description, his home would have been a sizable establishment large enough to accommodate congregational prayers, provide facilities for the making and serving of the food, and put up visitors.24 The Puratan refers to the recitat",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "de5a3c48-2867-4cf4-9280-94fc004aaf4f",
+      "locator": "Bedi King",
+      "text_sha256": "de479b5871cebd2dc50da0695296737ea6d04162e542c659fba65bad608281d0",
+      "excerpt_preview": "The Goindval Pothis compiled in the early 1570s refer to Guru Nanak as the “Bedi King,” who supports both the religious and the temporal dimensions of the world (Baba Nanak Vedi Patisahu din dunia ki tek, Pinjore, folio 215), and call him a",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

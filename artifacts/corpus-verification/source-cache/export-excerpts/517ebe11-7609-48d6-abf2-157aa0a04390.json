@@ -1,0 +1,34 @@
+{
+  "source_id": "517ebe11-7609-48d6-abf2-157aa0a04390",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "Associates of Mahatma Phule: Savitribai Phule. Mahatma Phule Chair, Savitribai Phule Pune University. https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/accociate.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Mahatma Phule Chair, Savitribai Phule Pune University",
+    "rights_or_access_note": "Public original; short research excerpts. Scholarly abstract/summary access does not imply full chapter access.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Associates of Mahatma Phule: Savitribai Phule",
+    "url": "https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/accociate.htm"
+  },
+  "claim_ids": [
+    "ef000791-8fa3-492c-a9c6-ecdd1af5e2fa"
+  ],
+  "passages": [
+    {
+      "chunk_id": "9cf2a92a-3ab1-4966-b698-e3e343d9ce91",
+      "locator": "1893 account; compared with NCERT printed p. 24",
+      "text_sha256": "c63563193033600660768051fe91a21e54e391abc7e30e71628a9747f0a5be74",
+      "excerpt_preview": "Nevertheless she was a kind, compassionate, determined and courageous lady who brought drastic and revolutionary changes in society at large. She was the Chairperson of the Satyashodhak Samaj, the society which was devoted to the cause of t",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

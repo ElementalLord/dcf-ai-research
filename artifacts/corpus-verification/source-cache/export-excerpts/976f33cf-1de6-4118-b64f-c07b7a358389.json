@@ -1,0 +1,70 @@
+{
+  "source_id": "976f33cf-1de6-4118-b64f-c07b7a358389",
+  "source": {
+    "author": "Vyasa (traditional attribution); BORI Critical Edition",
+    "authority_metadata": {},
+    "citation": "Mahabharata BORI, Adi Parva, 90",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Bhandarkar Oriental Research Institute critical text / Vedapath presentation",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Mahabharata (BORI Critical Edition), Adi Parva, Adhyaya 90",
+    "url": "https://vedapath.app/en/mahabharata-bori/adi-parva/90"
+  },
+  "claim_ids": [
+    "2e71baba-394f-4d47-a2d5-0d40f2fcc588",
+    "3496f004-7b6b-4ba8-9262-a2cc200464c1",
+    "5e436375-781c-4b07-baa2-4bafcd5230a3",
+    "8583457f-521b-461d-b3c9-78c236ac82e4",
+    "abeca18e-c146-4f95-a996-fa30c63f4a54",
+    "b17375a8-1e95-471c-9f56-31798dd6fbc8",
+    "fc365f5c-ce67-432e-931e-2fb59278cb82"
+  ],
+  "passages": [
+    {
+      "chunk_id": "29a70543-dcfe-48cb-9a29-3a3fed666876",
+      "locator": "Shlokas",
+      "text_sha256": "4623eb40ac704be1e82d68f09c1a4fbf08980cc4b05b0cc53f074d2097ed0f4c",
+      "excerpt_preview": "Saṃyāti, it is said, married Varāṅgī, the fair-limbed daughter of Dṛṣadvata. From her, Ahaṃpāti was born to him.  अहंपातिस्तु खलु कृतवीर्यदुहितरमुपयेमे भानुमतीं नाम । तस्यामस्य जज्ञे सार्वभौमः  Ahaṃpāti, it is said, married Bhānumatī, the d",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "2ad0891e-0801-48ee-9214-f551339926d0",
+      "locator": "Frequently Asked Questions",
+      "text_sha256": "4990cb0371eadce0740b60676aae5163ed5d82d2de943e4f6babfc6b52609de5",
+      "excerpt_preview": "The central dilemma is dynastic preservation versus normative constraints: when succession fails (Vicitravīrya dies heirless), the tradition authorizes exceptional mechanisms (Vyāsa’s niyoga) to sustain political order and lineage legitimac",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8277035d-74ce-48b1-993e-17952dd165df",
+      "locator": "Shlokas",
+      "text_sha256": "b5ad28f6dddd8d2b387db42eb54d7746d2fd2e879e23fa377e64a2b62deb02f1",
+      "excerpt_preview": "जनमेजय उवाच । श्रुतस्त्वत्तो मया विप्र पूर्वेषां संभवो महान् । उदाराश्चापि वंशेऽस्मिन्राजानो मे परिश्रुताः  Janamejaya said: “O brāhmaṇa, I have heard from you the great origins of the ancients; and I have also heard that in this lineage th",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b240b588-247f-4b52-b144-d2bc945e7701",
+      "locator": "Shlokas",
+      "text_sha256": "2aa2526a4a9f2fc0f89f647f294000d22f78c8c52dc7114e697fb6f947b2395e",
+      "excerpt_preview": "रेतोधाः पुत्र उन्नयति नरदेव यमक्षयात् । त्वं चास्य धाता गर्भस्य सत्यमाह शकुन्तला  ‘O king, the son—born of a man’s seed—raises him beyond the condition of Yama (death). And you are indeed the begetter of this pregnancy; Śakuntalā speaks the",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c93b8ceb-826c-4dc9-b6cc-adb66be98503",
+      "locator": "Adhyaya 90",
+      "text_sha256": "c297fc8c71a4ea3d5771d1550c6cb5793570a7e1580c3dcdaf5336a14e431d3b",
+      "excerpt_preview": "Ādi Parva, Adhyāya 90 — Pūror Vaṃśa, Kuru-Pravara, and the Janamejaya Line (Genealogical Recitation)  Upa-parva: Anuvaṃśa (Pūru–Kuru Vaṃśānukīrtana) — Dynastic Genealogy and Legitimacy Discourse  This chapter begins with Janamejaya asking f",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

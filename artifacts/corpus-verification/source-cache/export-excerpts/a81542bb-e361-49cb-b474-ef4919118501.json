@@ -1,0 +1,61 @@
+{
+  "source_id": "a81542bb-e361-49cb-b474-ef4919118501",
+  "source": {
+    "author": "Vedic Heritage Portal",
+    "authority_metadata": {},
+    "citation": "Vedic Heritage Portal: Rigveda Overview (https://vedicheritage.gov.in/samhitas/rigveda/)",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "IGNCA / Ministry of Culture, Government of India",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Vedic Heritage Portal: Rigveda Overview",
+    "url": "https://vedicheritage.gov.in/samhitas/rigveda/"
+  },
+  "claim_ids": [
+    "17f34059-e261-42f7-bd44-5cfc42a5d9c2",
+    "18ae987c-c024-49b3-b452-375bfa153f75",
+    "2bc7b256-c728-4363-b090-0dea5a655bb1",
+    "2f5ce657-2949-470a-b1d7-4ef54fa87785",
+    "3b730549-f714-4956-8602-e26a519d208f",
+    "497ecd3e-909d-4d46-a2a9-91f3c20a0927",
+    "590244a5-7cdb-49e1-9796-65a48f25d983",
+    "5f5eb567-b0a6-482e-84fe-edf2e7a37162",
+    "6257829a-59fa-4ad3-9623-0a7df78676db",
+    "62d4198c-1c7f-460f-9e13-75963db479f2",
+    "79b8a200-b6d2-4033-bf5b-0e50a42b542d",
+    "9f58e385-3af9-449e-9184-3b982c2f2a5a",
+    "ddd79c96-183f-4ecb-9722-a1c3b0133f9a",
+    "f03c311f-0e3f-4d38-bc86-1df90392da1e"
+  ],
+  "passages": [
+    {
+      "chunk_id": "4a6201da-d8d2-4984-83c0-9ab33f9820c5",
+      "locator": "A. Nature and Importance:",
+      "text_sha256": "d3bc4bba4076be96580b4d74cb1018b3ef7657f2dd676e2af97836eba37db97b",
+      "excerpt_preview": "The Rigveda is the oldest compilation of human wisdom. This Samhita (Collection) is unique in its nature. In fact, it is not a book, but a compilation composed of several books which can be individually distinguished from each other. The pr",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9b97ceb8-689b-43d6-a99c-34242db71f5a",
+      "locator": "B. Form and Classification :",
+      "text_sha256": "7e625998824c2b5296b60128d4dbb2e3e557ec375c5483c696f7428241511fb3",
+      "excerpt_preview": "The whole of the Rigveda-Samhita is in form of verses, known as Rik.  ‘Rik’ is the name given to those Mantras which are meant for the praise of the deities. Thus the collection (Samhita) of Riks is known as Rigveda-Samhita. Only one recess",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "bd805da5-7fe7-4dc6-b84f-f4582b0f721c",
+      "locator": "C. Some Important Hymns:",
+      "text_sha256": "622070b8f901ab1e3bea8b7a2ee466ecefa9e5f7f1ffbbc1e35125246b48e6e3",
+      "excerpt_preview": "Among 1028 Suktas of the Rigveda Samhita some suktas are very popular and frequently referred by the readers of Vedas. Some of them are:  Hiranya-garbha Sukta  Dhana-anna-dana Sukta  Duhsvapna-nashna Sukta  Yama-yami-samvada Sukta  Besides,",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

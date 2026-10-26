@@ -1,0 +1,43 @@
+{
+  "source_id": "b7ff816c-3e45-4654-b346-40745dad60a9",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Dr. Verghese Kurien. National Dairy Development Board. https://www.nddb.coop/about/chairman/vkurien",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "National Dairy Development Board",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Dr. Verghese Kurien",
+    "url": "https://www.nddb.coop/about/chairman/vkurien"
+  },
+  "claim_ids": [
+    "4c157077-cdc4-4d0c-a4f6-22e9a4d949bd",
+    "76e448b2-1a21-49c9-9931-e69081565788"
+  ],
+  "passages": [
+    {
+      "chunk_id": "aa3aacfd-b85c-457d-b232-373b733a3b12",
+      "locator": "Chairman biography",
+      "text_sha256": "3bc7ba1d02dc5c2b0dacb3da1524ccefecc22d11f2bf5f1e127cae38518d5abe",
+      "excerpt_preview": "Verghese Kurien was the Founder Chairman of National Dairy Development Board from 1965 to 1998. He is the architect of India’s White Revolution, which helped India emerge as the largest milk producer in the world. In the late 60s Dr.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "bc2089db-4d5a-44f9-bcd8-a590e46d7027",
+      "locator": "Chairman biography",
+      "text_sha256": "0ec4d2a9ca02f43f866cdcfaf1bd0e45de23441d19a83d9fbc08f295d23ac3b3",
+      "excerpt_preview": "Verghese Kurien Images Dr. Verghese Kurien was the Founder Chairman of National Dairy Development Board from 1965 to 1998. He is the architect of India’s White Revolution, which helped India emerge as the largest milk producer in the world.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

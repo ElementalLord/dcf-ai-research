@@ -1,0 +1,47 @@
+{
+  "source_id": "722ef691-9589-44ae-83d5-2089aa69c1dd",
+  "source": {
+    "author": "E. Hultzsch",
+    "authority_metadata": {
+      "source_kind": "Contemporary royal and temple inscriptions, translated and published in Epigraphia Indica",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "E. Hultzsch. The Great Temple at Tanjore. Epigraphia Indica / IGNCA digital archive. https://ignca.gov.in/Asi_data/11617.pdf",
+    "original_work_identity": {},
+    "publication_year": 1891,
+    "publisher_or_institution": "Epigraphia Indica / IGNCA digital archive",
+    "rights_or_access_note": "Short documented research excerpts only; contemporary inscriptions, later chronicle tradition and modern scholarship are kept distinct.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "The Great Temple at Tanjore",
+    "url": "https://ignca.gov.in/Asi_data/11617.pdf"
+  },
+  "claim_ids": [
+    "202e76c5-81c8-442b-8b28-12c23916176d",
+    "31305e0e-82d9-4265-98e4-93e3a15df1c9",
+    "6678bd9d-1c1e-4181-a70f-5094b3359219",
+    "bd6e4351-dbf9-40ec-a492-5af9bb92cb0e",
+    "fdbd42a2-c67c-48dc-99cd-aa3ba795cd5d"
+  ],
+  "passages": [
+    {
+      "chunk_id": "20ee87d3-d33e-46f6-b159-44114a0e3ed9",
+      "locator": "military achievements at the beginning",
+      "text_sha256": "e16c0d777cda722f5e3d8cb9ba82b970150aadbfcbbf05fdf212c84f98100347",
+      "excerpt_preview": "ajaraja seems to have been the first King of South India who recorded a short account of his military achievements at the beginning of every one of his inscriptions.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "458160cf-8cc5-4844-821b-85050aa76aa7",
+      "locator": "engraved on stone",
+      "text_sha256": "fb42097a67b4cb16c2590b6eada3220d0f6c2ab094259ceaf8fe3f39f7321f76",
+      "excerpt_preview": "The order which he issued was: Let all the gifts made by us, the gifts made by our elder sister, the gifts made by our queens, and the gifts made by other donors to the Lord of the sacred stone Temple erected by us at Tanjavur be engraved o",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

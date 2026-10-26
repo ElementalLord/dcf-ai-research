@@ -1,0 +1,728 @@
+[
+  {
+    "claim_id": "6eedc4ab-6cff-40c8-bad8-c616cd941467",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Chronology is genuinely contested: scholars have proposed 788–820, roughly 700–750, and other ranges; the corpus therefore uses “eighth century” with qualifications rather than a falsely exact lifespan.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Scholarly datings of Shankara differ: proposed ranges include 788–820 CE, 700–750 CE, and the late seventh to early eighth centuries.",
+    "epistemic_type": "CONTESTED",
+    "evidence_references": [
+      {
+        "source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+        "url": "https://plato.stanford.edu/entries/shankara/",
+        "locator": "Life and Works, line 44",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "SEP enumerates the three dating proposals. The internal corpus-policy sentence was removed; none of these ranges is treated as settled.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "110d5f9b-661f-496b-b5ef-0ee082f0502b",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Post-Shankara Advaita developed major Bhamati and Vivarana sub-schools, especially through differing accounts of avidya; later Advaita should not be automatically projected back onto Shankara.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Post-Shankara Advaita developed major Bhamati and Vivarana sub-schools, especially through differing accounts of avidya; later Advaita should not be automatically projected back onto Shankara.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+        "url": "https://iep.utm.edu/advaita-vedanta/",
+        "locator": "History, lines 23–24; Brahman/Jiva section, lines 40–43",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "IEP identifies the two later schools and their differing accounts of avidya; the warning against projecting later positions backward follows the chronology.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "6146df78-6954-40d4-992d-034606ddcd8d",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Mandana Misra represents an important near-contemporary Advaita-related interlocutor: he gave greater weight than Shankara to combining knowledge and action on the path to liberation.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Mandana Misra represents an important near-contemporary Advaita-related interlocutor: he gave greater weight than Shankara to combining knowledge and action on the path to liberation.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+        "url": "https://iep.utm.edu/advaita-vedanta/",
+        "locator": "History, lines 22–23",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "IEP directly contrasts Mandana Misra's greater accommodation of knowledge and works with Shankara's knowledge-only position.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d51d4e9b-c30d-4926-8cfc-d7d3e4dcd3d9",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Advaita Vedanta predates Shankara: he systematized and powerfully defended an already existing nondual current rather than creating nonduality from nothing.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Advaita Vedanta predates Shankara: he systematized and powerfully defended an already existing nondual current rather than creating nonduality from nothing.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+        "url": "https://iep.utm.edu/advaita-vedanta/",
+        "locator": "Introduction, line 3; History, line 19",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "IEP explicitly states Advaita's origins predate Shankara; SEP Life and Works line 48 independently calls him a systematizer.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "da6ebdd0-ef8f-43bc-b329-7bd0ddca0b10",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Shankara’s philosophy and monastic reception continue to influence contemporary Advaita lineages, making later reception central to his intellectual history but distinct from secure eighth-century facts.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Shankara’s philosophy and monastic reception continue to influence contemporary Advaita lineages, making later reception central to his intellectual history but distinct from secure eighth-century facts.",
+    "epistemic_type": "MODERN_RECEPTION",
+    "evidence_references": [
+      {
+        "source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+        "url": "https://plato.stanford.edu/entries/shankara/",
+        "locator": "Introduction, line 18; Life and Works, lines 57–59",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "SEP documents continuing influence on contemporary lineages, while separating present reception from disputed early biography.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "fb507cbb-5254-4bb7-b6ad-bd3764e03ca0",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Shankara is the most authoritative philosopher in the Advaita Vedanta tradition and one of the most influential classical Indian philosophers, although Advaita did not begin with him.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Shankara is the most authoritative philosopher in the Advaita Vedanta tradition and one of the most influential classical Indian philosophers, although Advaita did not begin with him.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+        "url": "https://plato.stanford.edu/entries/shankara/",
+        "locator": "Introduction, line 18; Life and Works, line 48",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "SEP uses the authoritative/influential characterization and expressly says Shankara did not found Advaita.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "4ec3c901-037a-45cd-8925-41b457c04f70",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "The widely repeated claim that Shankara was born at Kaladi in present-day Kerala is reported in later Shankaravijaya biographies; it is traditional biography, not independently documented early history.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The widely repeated claim that Shankara was born at Kaladi in present-day Kerala is reported in later Shankaravijaya biographies; it is traditional biography, not independently documented early history.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+        "url": "https://plato.stanford.edu/entries/shankara/",
+        "locator": "Life and Works, lines 45–46",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "SEP places the Kaladi birth story in centuries-later hagiographies and says dependable biographical records are lacking.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "6037e150-d873-4a4b-874a-4058fbeb0645",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Scholars commonly place Shankara in the eighth century CE, but his exact dates remain disputed; the familiar 788–820 dates are one traditional modern scholarly proposal, not settled biography.",
+    "decision": "REMOVE FROM ACTIVE CORPUS",
+    "final_proposed_wording": "Scholars commonly place Shankara in the eighth century CE, but his exact dates remain disputed; the familiar 788–820 dates are one traditional modern scholarly proposal, not settled biography.",
+    "epistemic_type": "CONTESTED",
+    "evidence_references": [
+      {
+        "source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+        "url": "https://plato.stanford.edu/entries/shankara/",
+        "locator": "Life and Works, line 44",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The underlying date uncertainty is supported, but this record repeats the chronology already retained in claim 6eedc4ab.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": "duplicate or malformed record"
+  },
+  {
+    "claim_id": "6ef8c100-50f7-4803-bf01-8ead5d774262",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "The Shankaravijayas, the major “conquests of Shankara” biographies, were composed centuries after his death; stories they tell—birth at Kaladi, travels, debates and miracles—belong first to hagiography.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The Shankaravijaya biographies were composed centuries after Shankara's death; their accounts of his birthplace, travels, and debates are hagiographical traditions.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+        "url": "https://plato.stanford.edu/entries/shankara/",
+        "locator": "Life and Works, lines 45–47 and 57",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "SEP supports the late composition and listed biographical narratives. The original reference to miracles lacked a pinpoint in this entry and was removed.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "711cf2d2-2d4d-45ab-bc9e-86d0a77a1873",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Shankara is securely described as an influential early Advaita Vedanta philosopher, commonly placed in the eighth century, while exact dates and most biographical details remain disputed.",
+    "decision": "REMOVE FROM ACTIVE CORPUS",
+    "final_proposed_wording": "Shankara is securely described as an influential early Advaita Vedanta philosopher, commonly placed in the eighth century, while exact dates and most biographical details remain disputed.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+        "url": "https://plato.stanford.edu/entries/shankara/",
+        "locator": "Introduction, lines 17–18; Life and Works, lines 44–46",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The statement is supported but duplicates the retained chronology and intellectual-significance records without a distinct proposition.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": "duplicate or malformed record"
+  },
+  {
+    "claim_id": "7ea0f689-a9c1-4b95-8098-74ae820c7699",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "There are no dependable historical records of Shankara’s life beyond clues in his writings, so modern accounts must separate reconstruction from later devotional narrative.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "There are no dependable historical records of Shankara’s life beyond clues in his writings, so modern accounts must separate reconstruction from later devotional narrative.",
+    "epistemic_type": "METHODOLOGICAL",
+    "evidence_references": [
+      {
+        "source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+        "url": "https://plato.stanford.edu/entries/shankara/",
+        "locator": "Life and Works, line 45",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "SEP directly states the absence of dependable life records apart from sparse clues in Shankara's writings.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "967e920a-f812-4d9e-a3d3-ab6420ed4ba3",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Scholars also disagree about Shankara’s sectarian identity: Advaita tradition remembers him as Shaiva, while some scholars argue for a Vaishnava orientation.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Scholars also disagree about Shankara’s sectarian identity: Advaita tradition remembers him as Shaiva, while some scholars argue for a Vaishnava orientation.",
+    "epistemic_type": "CONTESTED",
+    "evidence_references": [
+      {
+        "source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+        "url": "https://plato.stanford.edu/entries/shankara/",
+        "locator": "Life and Works, line 45",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "SEP directly contrasts the Shaiva traditional identity with scholarly Vaishnava arguments; the claim preserves disagreement.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "3145b253-d7df-4c55-92c3-97d37e19b80e",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "In Shankara’s account, ritual and ethical action can purify the mind and prepare it for knowledge, but cannot themselves produce moksha as an action-result.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In Shankara’s account, ritual and ethical action can purify the mind and prepare it for knowledge, but cannot themselves produce moksha as an action-result.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+        "url": "https://iep.utm.edu/advaita-vedanta/",
+        "locator": "Error, True Knowledge and Practical Teachings, lines 74–75",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "IEP says knowledge alone liberates and action prepares or purifies the mind; this matches the two-part proposition.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "563b9b45-6040-4f93-8651-bcde09ed3e28",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "The Advaita discipline associated with Shankara includes discrimination between permanent and impermanent, dispassion, mental and ethical disciplines, and a desire for liberation.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Advaita discipline associated with Shankara includes discrimination between permanent and impermanent, dispassion, mental and ethical disciplines, and a desire for liberation.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+        "url": "https://iep.utm.edu/advaita-vedanta/",
+        "locator": "Error, True Knowledge and Practical Teachings, lines 72–73",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "IEP enumerates the four qualifications and their role in the discipline associated with Shankara.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "94339bed-5eea-4fd3-a18a-7a145baa358a",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Shankara’s teaching tradition joins scriptural listening, reflection and contemplation as learning practices directed toward liberating knowledge.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Shankara’s teaching tradition joins scriptural listening, reflection and contemplation as learning practices directed toward liberating knowledge.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+        "url": "https://plato.stanford.edu/entries/shankara/",
+        "locator": "Introduction, line 17",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "SEP explicitly identifies listening, reflection, and contemplation as learning methods in his teaching system.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ae4b169c-d8a3-4c15-a5a4-9bfb3a8bb416",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Shankara rejects the view that liberation comes from combining Vedic action with knowledge; knowledge of Brahman alone liberates, while disciplined action prepares the mind.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Shankara rejects the view that liberation comes from combining Vedic action with knowledge; knowledge of Brahman alone liberates, while disciplined action prepares the mind.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+        "url": "https://iep.utm.edu/advaita-vedanta/",
+        "locator": "Error, True Knowledge and Practical Teachings, lines 74–75",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "IEP directly rejects knowledge-plus-action as a joint liberating cause and assigns action the preparatory role.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d5db24e8-aa1c-40e1-aa31-0d890bce3357",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "For Shankara, the liberating recognition of nonduality is moksha: freedom, not a reward produced by ritual action.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "For Shankara, the liberating recognition of nonduality is moksha: freedom, not a reward produced by ritual action.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+        "url": "https://plato.stanford.edu/entries/shankara/",
+        "locator": "Introduction, line 18; Metaphysics, line 67; Methods, lines 202–204",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "SEP equates direct recognition with moksha and explains why action cannot newly produce an already present freedom.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "44984def-80e6-4c07-a411-216eb2e031a5",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Accounts of Shankara’s all-India digvijaya, public victories in debate, and detailed monastic foundations are transmitted chiefly through later hagiographical and institutional traditions.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Accounts of Shankara’s all-India digvijaya, public victories in debate, and detailed monastic foundations are transmitted chiefly through later hagiographical and institutional traditions.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+        "url": "https://plato.stanford.edu/entries/shankara/",
+        "locator": "Life and Works, lines 46 and 57",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "SEP attributes the all-India narrative to hagiography and describes monastic foundations as purported, as the claim does.",
+    "original_source_inspected": true,
+    "material_limitation": null,
+    "removal_reason": null
+  },
+  {
+    "claim_id": "04ab8e88-171e-4775-87aa-14606f861089",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "The opening of Shankara’s Brahma Sutra commentary analyzes adhyasa, superimposition: mistaking one thing or its properties for another, a framework for explaining self-misidentification.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The opening of Shankara’s Brahma Sutra commentary analyzes adhyasa, superimposition: mistaking one thing or its properties for another, a framework for explaining self-misidentification.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+        "url": "https://iep.utm.edu/advaita-vedanta/",
+        "locator": "Error, True Knowledge and Practical Teachings, lines 63–67",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "IEP locates adhyasa in the Brahma Sutra commentary preamble and defines it as superimposed identity or properties.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "17f2e466-30da-4300-8886-46f0fbd4de4c",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "For Advaita, consciousness is not merely a property possessed by Brahman; it is Brahman’s very nature.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "For Advaita, consciousness is not merely a property possessed by Brahman; it is Brahman’s very nature.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+        "url": "https://iep.utm.edu/advaita-vedanta/",
+        "locator": "Brahman, Jiva, Isvara, and Maya, line 31",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "IEP explicitly says consciousness is Brahman's nature rather than a property; this is a doctrinal account, not an empirical assertion.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "24588828-a855-4564-9312-947d198c3a7b",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Shankara’s account of illusion presupposes a real substratum: error is not sheer nothingness but a misapprehension of what underlies experience.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Shankara’s account of illusion presupposes a real substratum: error is not sheer nothingness but a misapprehension of what underlies experience.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+        "url": "https://iep.utm.edu/advaita-vedanta/",
+        "locator": "Error, True Knowledge and Practical Teachings, lines 63–65",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "IEP states that adhyasa requires a substratum and explains error as misapprehension of it.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "42e1e4c3-c2d5-4588-9a61-4b09f5a0d498",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Advaita is commonly rendered “non-duality,” but literally means “non-secondness”: Brahman is not one item alongside another independent reality.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Advaita is commonly rendered “non-duality,” but literally means “non-secondness”: Brahman is not one item alongside another independent reality.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+        "url": "https://iep.utm.edu/advaita-vedanta/",
+        "locator": "Introduction, lines 3–4",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "IEP gives the literal non-secondness rendering and denies the world's independent existence apart from Brahman.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "60f530b0-4a93-4118-b912-096bfac95f9f",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "In classical Advaita, Brahman is the fundamental reality underlying every object and experience; it is characterized as pure existence, consciousness and bliss.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In classical Advaita, Brahman is the fundamental reality underlying every object and experience; it is characterized as pure existence, consciousness and bliss.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+        "url": "https://iep.utm.edu/advaita-vedanta/",
+        "locator": "Brahman, Jiva, Isvara, and Maya, line 31",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "IEP directly characterizes Brahman as underlying reality and pure existence, consciousness, and bliss.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "84b4c463-2345-45cf-b4a5-7ff4c68bbfa6",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Shankara treats avidya, ignorance, as beginningless; asking for its first origin already assumes the ignorant standpoint it is meant to diagnose.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Shankara treats avidya, ignorance, as beginningless; asking for its first origin already assumes the ignorant standpoint it is meant to diagnose.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+        "url": "https://iep.utm.edu/advaita-vedanta/",
+        "locator": "Brahman, Jiva, Isvara, and Maya, line 40",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "IEP explicitly attributes beginningless avidya and the fruitless first-origin question to Shankara.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a85760f8-9f86-423f-81ca-dab8c9921458",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "What distinguished Shankara’s Advaita was a systematic articulation of nonduality across metaphysics, language and epistemology, combined with a pedagogy directed to liberation.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "What distinguished Shankara’s Advaita was a systematic articulation of nonduality across metaphysics, language and epistemology, combined with a pedagogy directed to liberation.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "da61510f-9779-46c0-b5af-2f4aaefb9b94",
+        "url": "https://plato.stanford.edu/entries/shankara/",
+        "locator": "Introduction, line 17; Life and Works, lines 54–55",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "SEP identifies systematic metaphysics, language, epistemology, and liberating pedagogy as distinctive features.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b7ccb18f-d986-4bdc-86dc-fd81ed04e5b3",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Advaita explains the experienced world through maya and avidya; this does not simply mean that ordinary experience is nothing, but that plurality lacks independent ultimate reality apart from Brahman.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Advaita explains the experienced world through maya and avidya; this does not simply mean that ordinary experience is nothing, but that plurality lacks independent ultimate reality apart from Brahman.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+        "url": "https://iep.utm.edu/advaita-vedanta/",
+        "locator": "Introduction, lines 4–6; Brahman, Jiva section, lines 34–36",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "IEP states the world is experienced and neither wholly real nor wholly unreal, with no independent ultimate existence.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d8f9f1b9-e3ca-4ca7-afa9-06fc0feb1af3",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "His significance lies in systematic nondual Upanishadic interpretation and a knowledge-centered path to liberation; received commentarial attributions require separate assessment.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Shankara systematized nondual interpretation of the Upanishads and taught liberation through knowledge; many later works attributed to him have disputed authorship.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://plato.stanford.edu/entries/shankara/",
+        "locator": "Life and Works, lines 51–56; Methods, lines 202–204",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "SEP supports both the philosophical summary and authorship caution. The revised wording specifies the disputed attributions.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "8f24c364-a473-4359-a500-77dbf397cd9e",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Textual evidence discussed by historians suggests pre-Shankara Brahma Sutra commentaries took Bhedabheda-like positions, clarifying that Shankara’s nondual reading entered a field of competing Vedanta interpretations.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Textual evidence discussed by historians suggests pre-Shankara Brahma Sutra commentaries took Bhedabheda-like positions, clarifying that Shankara’s nondual reading entered a field of competing Vedanta interpretations.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "71da4400-6fe9-49cd-808c-8cec554ee3a8",
+        "url": "https://iep.utm.edu/hindu-ph/",
+        "locator": "Vedanta, Bhedabheda, lines 234–240",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "IEP explicitly describes textual evidence for Bhedabheda-like pre-Shankara commentaries, noting that most are lost; the claim preserves the evidential qualifier.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d488392f-4df0-4f67-8664-d2c1a901452c",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Later Vedanta is often mapped through Advaita, Vishishtadvaita and Dvaita; Ramanuja and Madhva developed influential readings that reject Shankara’s identity claim in different ways.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Later Vedanta is often mapped through Advaita, Vishishtadvaita and Dvaita; Ramanuja and Madhva developed influential readings that reject Shankara’s identity claim in different ways.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "c833b2a2-932f-4715-8339-d3f1860dc99d",
+        "url": "https://iep.utm.edu/upanisad/",
+        "locator": "The Upanishads and Vedanta, lines 138–145",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "IEP distinguishes the three Vedanta branches and details Ramanuja's and Madhva's different objections to identity.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a2282d0d-3591-40ce-bbdf-66dd0dd70594",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Shankara reads the Upanishads as teaching that Atman, the deepest self, and Brahman, ultimate reality, are one and the same.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Shankara reads the Upanishads as teaching that Atman, the deepest self, and Brahman, ultimate reality, are one and the same.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "c833b2a2-932f-4715-8339-d3f1860dc99d",
+        "url": "https://iep.utm.edu/upanisad/",
+        "locator": "The Upanishads and Vedanta, lines 140–141",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "IEP directly attributes the atman–brahman identity reading to Shankara.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "00674e84-54f4-4e11-be53-d3a58eedfce1",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "The Upanishads, Brahma Sutra and Bhagavad Gita form Vedanta’s core canonical triad; Shankara’s commentaries on them made interpretation of this triad central to Advaita.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Upanishads, Brahma Sutra and Bhagavad Gita form Vedanta’s core canonical triad; Shankara’s commentaries on them made interpretation of this triad central to Advaita.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "c833b2a2-932f-4715-8339-d3f1860dc99d",
+        "url": "https://iep.utm.edu/upanisad/",
+        "locator": "The Upanishads and Vedanta, lines 138–140",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "IEP names the canonical triad and the three major commentators; SEP Life and Works lines 50–52 independently identifies Shankara's commentaries.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "28401dfa-7157-482a-a8be-74bca54e6111",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "A Sanskrit Documents repository preserves a text labeled Bhagavad Gita Shankara Bhashya; the repository’s attribution documents received textual tradition, while scholarly authorship assessment remains separate.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "A Sanskrit Documents repository preserves a text labeled Bhagavad Gita Shankara Bhashya; the repository’s attribution documents received textual tradition, while scholarly authorship assessment remains separate.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "91083ab0-e904-4bc3-bba3-a172d04d54c6",
+        "url": "https://sanskritdocuments.org/doc_giitaa/gItAshAMkarabhAShya.pdf",
+        "locator": "PDF title; HTML companion document information, lines 9651–9670",
+        "source_authority": "Volunteer text repository; title and document metadata checked against the live PDF and companion page",
+        "independence_assessment": "Repository label is not independent evidence of eighth-century authorship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The live Sanskrit Documents PDF and companion metadata identify a text under the Shankara-bhashya title. This verifies repository labeling, not historical authorship.",
+    "original_source_inspected": true,
+    "material_limitation": "The volunteer transcription may not be reproduced for site promotion without permission; this claim uses metadata only.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "62814db2-74ec-42eb-97e3-f8377d65acad",
+    "personality": "Adi Shankaracharya",
+    "original_claim_text": "Shankara treats the Upanishads not only as authorities but as texts that model methods of interpretation, using literary criteria to establish a coherent teaching.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Shankara treats the Upanishads not only as authorities but as texts that model methods of interpretation, using literary criteria to establish a coherent teaching.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "c833b2a2-932f-4715-8339-d3f1860dc99d",
+        "url": "https://iep.utm.edu/upanisad/",
+        "locator": "The Upanishads and Vedanta, lines 142–143",
+        "source_authority": "Scholarly encyclopedia entry by a named professional philosopher; full live entry inspected 2026-10-19",
+        "independence_assessment": "Separate scholarly work from the database excerpt; SEP and IEP are distinct editorial works, though not assumed independent when repeating shared underlying scholarship.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "IEP explicitly says Shankara treated the Upanishads as models for interpretive method, using literary criteria.",
+    "original_source_inspected": true,
+    "material_limitation": "Interpretive claims are attributed to the scholarly entry; primary commentary or an independent specialist study may refine details.",
+    "removal_reason": null
+  }
+]

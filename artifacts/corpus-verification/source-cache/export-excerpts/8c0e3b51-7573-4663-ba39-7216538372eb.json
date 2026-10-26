@@ -1,0 +1,34 @@
+{
+  "source_id": "8c0e3b51-7573-4663-ba39-7216538372eb",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:26:49.406Z"
+    },
+    "citation": "IACS: Raman Effect Discovery Site. India Science, Technology & Innovation Portal. https://www.indiascienceandtechnology.gov.in/organisations/ministry-and-departments/department-science-technology-dst/indian-association",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "India Science, Technology & Innovation Portal",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "IACS: Raman Effect Discovery Site",
+    "url": "https://www.indiascienceandtechnology.gov.in/organisations/ministry-and-departments/department-science-technology-dst/indian-association"
+  },
+  "claim_ids": [
+    "95cae47d-6f93-4a3c-af4f-49c041707f78"
+  ],
+  "passages": [
+    {
+      "chunk_id": "efe03416-ca09-4c42-9978-637c45dba7f0",
+      "locator": "Government institutional history",
+      "text_sha256": "13d89b4b0c6760554bd99392fb9ad4c15af7b6ca5105a5ed9501ab585d5b6123",
+      "excerpt_preview": "ion in Asia funded by the Department of Science & Technology, Government of India and the Government of West Bengal. Sir C V Raman made his historic discovery of the 'Raman Effect' at IACS. IACS continues to adorn the mantle of academic and",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

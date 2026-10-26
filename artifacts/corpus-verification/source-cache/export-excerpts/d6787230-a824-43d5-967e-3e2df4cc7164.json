@@ -1,0 +1,44 @@
+{
+  "source_id": "d6787230-a824-43d5-967e-3e2df4cc7164",
+  "source": {
+    "author": "Wilhelm Geiger, trans.",
+    "authority_metadata": {
+      "source_kind": "Later Sri Lankan chronicle tradition, to be read alongside inscriptional and archaeological evidence",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Wilhelm Geiger, trans.. The Cūḷavaṃsa: Being the More Recent Part of the Mahāvaṃsa. Oxford University Press. https://archive.org/details/culavamsabeingmo01geiguoft",
+    "original_work_identity": {},
+    "publication_year": 1929,
+    "publisher_or_institution": "Oxford University Press",
+    "rights_or_access_note": "Short documented research excerpts only; contemporary inscriptions, later chronicle tradition and modern scholarship are kept distinct.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "The Cūḷavaṃsa: Being the More Recent Part of the Mahāvaṃsa",
+    "url": "https://archive.org/details/culavamsabeingmo01geiguoft"
+  },
+  "claim_ids": [
+    "63f21bf2-af39-4418-8dcd-9ef8ceafe3b7",
+    "88a9047b-45d9-425e-b04a-f434b628a943"
+  ],
+  "passages": [
+    {
+      "chunk_id": "37ad3742-eff5-48e6-8193-ef54f4a88248",
+      "locator": "later monastic narrative",
+      "text_sha256": "76ee6949f111be2432958df7d1f212044ad14dace6537996ede0e3221d91003d",
+      "excerpt_preview": "It is a later monastic narrative with its own political and religious perspective; it supplies an important Sri Lankan memory of the conflict but is not a Chola contemporary inscription.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d0c5037a-f7e2-43e8-b504-67bd55c996d2",
+      "locator": "loss of Anuradhapura",
+      "text_sha256": "bb930da2daddf9eb8b5867c94f2b3853c264996bacc0986cb81d5d536d22bb4f",
+      "excerpt_preview": "he chronicle describes the Chola attack on Lanka and the loss of Anuradhapura in the reign of Mahinda V.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

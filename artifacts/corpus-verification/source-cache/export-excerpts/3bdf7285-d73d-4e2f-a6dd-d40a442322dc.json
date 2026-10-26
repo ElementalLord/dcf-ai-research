@@ -1,0 +1,106 @@
+{
+  "source_id": "3bdf7285-d73d-4e2f-a6dd-d40a442322dc",
+  "source": {
+    "author": "Michael Witzel",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Michael Witzel. Yājñavalkya as ritualist and philosopher, and his personal language. Paitimāna: Essays in Iranian, Indo-European, and Indian Studies in Honor of Hanns-Peter Schmidt (Mazda, Costa Mesa); author’s text circulated on the INDOLOGY list. https://list.indology.info/pipermail/indology/attachments/20170714/f690c648/attachment.pdf",
+    "original_work_identity": {},
+    "publication_year": 2003,
+    "publisher_or_institution": "Paitimāna: Essays in Iranian, Indo-European, and Indian Studies in Honor of Hanns-Peter Schmidt (Mazda, Costa Mesa); author’s text circulated on the INDOLOGY list",
+    "rights_or_access_note": "Author’s PDF; text extraction drops some under-dotted Sanskrit letters and prints å for ā.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Yājñavalkya as ritualist and philosopher, and his personal language",
+    "url": "https://list.indology.info/pipermail/indology/attachments/20170714/f690c648/attachment.pdf"
+  },
+  "claim_ids": [
+    "0961313a-d30e-49f6-84c7-4aa3a64ccfd9",
+    "18a984be-bd52-4716-ac8e-f757706a407c",
+    "1c5df0be-d523-401c-987a-4e3f25e1b6d1",
+    "31441eb5-4961-4766-ae96-792d244a25a7",
+    "3ebe5b3f-939f-4047-8478-2d53518fbdae",
+    "801adc9c-0913-4c35-9ebe-60a35fdcb182",
+    "b4031018-f744-4189-9be2-d73e4e3efaa5",
+    "f337115f-8afb-406d-bd1c-bcb823bc9f76",
+    "f5ebba7c-26fc-47d2-bb66-b4decc515c6a"
+  ],
+  "passages": [
+    {
+      "chunk_id": "4038c960-9230-4797-b195-2e9ad50a8e33",
+      "locator": "§8",
+      "text_sha256": "3edf270a624b40adc3c2d78b5375ed2e6e236933bdee57d9f141657335726c2e",
+      "excerpt_preview": "However, there is hardly anyone of equal stature in sight: One may think of Uddålaka Āru\u0003i, or perhaps of Śvetaketu Āru\u0003eya, yet, none of them is regarded as highly in the texts as Yåjñavalkya.94",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "698728f5-5174-4097-bd30-d252df01bc7c",
+      "locator": "§4",
+      "text_sha256": "908e2e7bb80dec169a653116ae1aa9e0f87ea5a2ff67fafbd80467fe67ce5250",
+      "excerpt_preview": "Most prominently, Yåjñavalkya appears as the typical YV ritualist who discusses (in in about a dozen cases) the minute details of the complicated Śrauta ritual. His opinions are sometimes clever, sometimes innovative, but they are not alway",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "778333b1-17d1-4946-83b5-e58e678ecc94",
+      "locator": "§1",
+      "text_sha256": "a540beb032ab4a32d18d7f45010fc3a2ceb018d265cd56afbf0f2f6fc0bb50b9",
+      "excerpt_preview": "All1 early information on Yåjñavalkya2 stems almost exclusively3 from the ŚB and from the slightly later BĀU, both of which have been transmitted in two recensions, the Kå\u0003va and the Mådhyandina. These four versions, thus, are a welcome mea",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7b50eafd-51c5-4432-b960-17ece2d6577c",
+      "locator": "§2, note 8",
+      "text_sha256": "d531632ce89fff05671b09ecea2a4e91673d6ea9f77fc29b79a45e0699a99ae1",
+      "excerpt_preview": "Some have doubted that we deal with the same Yåjñavalkya here (Horsch, Ruben), or some suppose that the texts in BĀU represent altogether later developments; for this see below. I agree with Tsuji in regarding Yåjñavalkya as one person, see",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "94766964-4407-490a-a84c-2aeda15df012",
+      "locator": "§4.4",
+      "text_sha256": "d0d66d7cbae10281cfd5f3befe2a13557de85bd83ca52e27f38cacfd463f3a80",
+      "excerpt_preview": "His actual quotations frequently are witty, sarcastic and even derisive of the ritual, of others, and even of himself. Self deprecating humor is not exactly a characteristic of Vedic personalities.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "95d074dd-b0db-4f8e-8315-d29a832f0e9b",
+      "locator": "§10",
+      "text_sha256": "e21468374bf5a26fdd2fb3cea6d8d385cd1ddecb55621ef2b7430d58fbc67a97",
+      "excerpt_preview": "In sum, if the strands of tradition visible in the Vedic texts are carefully screened, a nucleus emerges of texts composed by Yåjñavalkya, of his sayings and one-liners, and of reports dealing with him as an exceptional person: someone who ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "97ab34c4-cb62-4719-8daf-6b40bb7b5262",
+      "locator": "§10",
+      "text_sha256": "a16dac30114bf3b6d8ee636e657aa4f0e4b45187aaea5d6088cd58b2a9a58fac",
+      "excerpt_preview": "In sum, we see the beginnings of the legend of Yåjñavalkya arise before our eyes: the always victorious discussant of the re-arranged section BĀU 3 (Brereton 1997), who also becomes one of the first persons mentioned in the texts that leave",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "bf2cc5a2-9ec3-4f8e-b83d-a109e54c5c1c",
+      "locator": "§3",
+      "text_sha256": "8f650880000a9b67ab900225306c9a59a712f1788fd03a3adaaaf86439194460",
+      "excerpt_preview": "He occurs only in ŚB 1-5 and 11-13 as well as in the BĀU part of ŚB (14.4-9). But he is completely absent from the Śå\u0003 ilya section of ŚB (6-10), which, as A. Weber has shown long ago, is of more western origin than the Yåjñavalkya sections",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fc63b32c-176b-43ed-96d3-8f8202333052",
+      "locator": "§6",
+      "text_sha256": "fe760b5d82485af4a2429bc0c3937abdb67dde1e69429803dfe6401d891a4e16",
+      "excerpt_preview": "dvaitá- is found earlier in the sense of 'duality' ('Doppelheit', Thieme). Its occurrence as a- dvaita in BĀU is a Vedic hapax; it occurs only at ŚB 14.7.1.31, BĀU 4.3.32, and clearly is a word coined by Yåjñavalkya.89",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,35 @@
+{
+  "source_id": "d716d814-667b-4df6-a66d-d065bc4dcef6",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "India Office Records, IOR/L/PJ/12/217, File 1115/24. British Library Archives and Manuscripts Catalogue. https://searcharchives.bl.uk/catalog/040-000897281",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "British Library Archives and Manuscripts Catalogue",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "India Office Records, IOR/L/PJ/12/217, File 1115/24",
+    "url": "https://searcharchives.bl.uk/catalog/040-000897281"
+  },
+  "claim_ids": [
+    "7058a993-a9a0-48a7-820f-48d060a7c692",
+    "e078c605-56b8-4ca4-abb7-8050d20b4d26"
+  ],
+  "passages": [
+    {
+      "chunk_id": "6c97276e-42cd-4839-b505-2d164953a8d0",
+      "locator": "activities in the United Kingdom, Germany",
+      "text_sha256": "c094969410e0619fae495cbe63f3c286e7a2611b297bf401a849255c6d983309",
+      "excerpt_preview": "he India Office Records catalogue describes File 1115/24 as concerning Subhas Chandra Bose’s activities in the United Kingdom, Germany, Burma, Thailand and Japan, and his death at Taihoku.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

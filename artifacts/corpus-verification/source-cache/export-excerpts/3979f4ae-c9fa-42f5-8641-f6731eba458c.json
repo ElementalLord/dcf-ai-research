@@ -1,0 +1,34 @@
+{
+  "source_id": "3979f4ae-c9fa-42f5-8641-f6731eba458c",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:42.874Z"
+    },
+    "citation": "Rigveda 1.172: Agastya hymn. Vedic Heritage Portal, Government of India. https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-172/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Vedic Heritage Portal, Government of India",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Rigveda 1.172: Agastya hymn",
+    "url": "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-172/"
+  },
+  "claim_ids": [
+    "75b16f69-2dc7-4731-ab1b-bd7599f99156"
+  ],
+  "passages": [
+    {
+      "chunk_id": "88fceac8-783b-4841-b544-fb2784928082",
+      "locator": "Rigveda 1.172",
+      "text_sha256": "c1efcf087943a222c4e5a8d389a4a63dc472702d55895417054f2c45a2df579c",
+      "excerpt_preview": "177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 Rigveda – Shakala Samhita – Mandala 01 Sukta 172 /video/RIGSS_01_172.mp4 A A+ ३ अगस्त्यो मैत्रावरुणिः । मरुतः। गायत्री। चि॒त्रो वो॑ऽस्तु॒ याम॑श्चि॒त्र ऊ॒ती सु॑दानवः । मरु॑तो॒ अहि॑भ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

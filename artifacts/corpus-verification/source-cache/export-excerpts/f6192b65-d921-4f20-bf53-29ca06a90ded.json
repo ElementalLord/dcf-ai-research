@@ -1,0 +1,88 @@
+{
+  "source_id": "f6192b65-d921-4f20-bf53-29ca06a90ded",
+  "source": {
+    "author": "Julius Eggeling (translator)",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Julius Eggeling (translator). The Satapatha-Brahmana according to the Text of the Madhyandina School (Sacred Books of the East 12, 26, 44). Clarendon Press, Oxford; transcription archived from sacred-texts.com. https://web.archive.org/web/2023id_/https://www.sacred-texts.com/hin/sbr/index.htm",
+    "original_work_identity": {},
+    "publication_year": 1900,
+    "publisher_or_institution": "Clarendon Press, Oxford; transcription archived from sacred-texts.com",
+    "rights_or_access_note": "Public-domain Oxford translation (1882–1900); transcription read through the Internet Archive Wayback Machine.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "The Satapatha-Brahmana according to the Text of the Madhyandina School (Sacred Books of the East 12, 26, 44)",
+    "url": "https://web.archive.org/web/2023id_/https://www.sacred-texts.com/hin/sbr/index.htm"
+  },
+  "claim_ids": [
+    "0962a471-8a26-4c0a-b736-6782470e2ddf",
+    "10e98421-cc7a-49bd-af7b-b4039b1a8630",
+    "23ba382c-d287-4c35-9af9-2ee0d46e488f",
+    "25a986dc-9f66-46fd-a21e-f6f9dd06c209",
+    "53172ec1-d062-45b0-973c-cb098e5efc19",
+    "7a92f6dd-30f7-4811-93a0-5208b2ce29c3",
+    "de2822c3-85a3-4cdb-8c37-dbc9576b662c"
+  ],
+  "passages": [
+    {
+      "chunk_id": "38d058bf-9e53-4708-81c6-8cc13e35ef07",
+      "locator": "ŚB 11.3.1.2–4",
+      "text_sha256": "2ba195bc3dbe918fa415068a1e707cb047142e4185666d66d2f38cbe4bddd172",
+      "excerpt_preview": "Now, as to this Ganaka of Videha once asked Yâgñavalkya, 'Knowest thou the Agnihotra, Yâgñavalkya?'--'I know it, O king,' he said.--'What is it?'--'Milk, indeed.' 11:3:1:33. 'If there were no milk, wherewith wouldst thou sacrifice?'--'With ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "5c0504bc-9e0e-4e5a-a1a2-f42e2835e4fe",
+      "locator": "ŚB 11.6.3.1–2",
+      "text_sha256": "67941894c635dce824bdc28a140c295df37336abf42865be3d34cda9f7bc9ed0",
+      "excerpt_preview": "Ganaka of Videha performed a sacrifice accompanied with numerous gifts to the priests. Setting apart a thousand cows, he said, 'He who is the most learned in sacred writ amongst you, O Brâhmanas, shall drive away these (cows) 1!' 11:6:3:22.",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "904b06b0-68b6-490a-82e3-d4689895e2e1",
+      "locator": "ŚB 11.6.2.1–4",
+      "text_sha256": "ff23a926372c224e7172f071318ba4fb5aa9df7e2c195ba94450bb5fe1d7f2a7",
+      "excerpt_preview": "Then Yâgñavalkya said, 'When I take out the fire (from the Gârhapatya), it is the Agnihotra itself, I thereby raise 1 Now when Âditya (the sun) sets, all the gods follow him; and when they see that fire taken out by me, they turn back. Havi",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "992ff368-6cbd-4bfd-b980-55979c2935bc",
+      "locator": "ŚB 1.1.1.8–9",
+      "text_sha256": "45603f4cd44302e3cb89da73d2620aa5cd7616dd59ceb095a6f23fb2744c2664",
+      "excerpt_preview": "1:1:1:99. Yâgñavalkya, on the other hand, said: 'If he does not eat, he thereby becomes a sacrificer to the Manes; and if he does eat, he eats before the gods have eaten: let him therefore eat what, when eaten, counts as not eaten.' For tha",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b3c37e1d-8091-420c-a222-146e0beae943",
+      "locator": "ŚB 11.6.2.5",
+      "text_sha256": "f5f07d04dca00ce689692d19329284ceb64acc95501f4fd621cebdee7a5e68f5",
+      "excerpt_preview": "They said, 'Surely, this fellow of a Râganya has outtalked us: come, let us challenge him to p. 114 a theological disputation!' Yâgñavalkya said, 'We are Brâhmanas, and he is a Râganya: if we were to vanquish him, whom should we say we had ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ec6b87d9-efd9-41d5-b258-a62543d84b65",
+      "locator": "ŚB 11.6.2.10",
+      "text_sha256": "e86e2b44364743250bf023840fac4e2d8e777f6369793c0f7c673c351548b17c",
+      "excerpt_preview": "The son who is born therefrom is the renascent world: this is the Agnihotra, Yâgñavalkya, there is nothing higher than this.' Thus he spoke; and Yâgñavalkya granted him a boon. He said, 'Let mine be the (privilege of) asking questions of th",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f6f489fc-0e6a-47f6-b19e-b7bd6a6ea9a0",
+      "locator": "ŚB 3.8.2.24–25",
+      "text_sha256": "58ed6567b2cb3b22be1a63c255d7201acbf2e6d7a0439087426ca3d442343236",
+      "excerpt_preview": "Now the Karaka-Adhvaryus, forsooth, baste first the clotted ghee, arguing that the clotted ghee is the breath; and a Karaka-Adhvaryu, forsooth, cursed Yâgñavalkya for so doing, saying, 'That Adhvaryu has shut out the breath; the breath shal",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

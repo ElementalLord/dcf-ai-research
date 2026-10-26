@@ -1,0 +1,71 @@
+{
+  "source_id": "7714786b-1890-4cb0-a09d-c8ee15abe880",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Rabindranath Tagore – Biographical. Nobel Prize Outreach. https://www.nobelprize.org/prizes/literature/1913/tagore/biographical/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Nobel Prize Outreach",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Rabindranath Tagore – Biographical",
+    "url": "https://www.nobelprize.org/prizes/literature/1913/tagore/biographical/"
+  },
+  "claim_ids": [
+    "09aaa966-d6b3-4a34-bbb8-4124bd06090d",
+    "7e210307-5d12-43c9-baa7-61181b9be97d",
+    "c05bae90-a438-44a3-a62f-95e3f4038417",
+    "e1a654bf-7183-48f3-98a8-e136b5c61d9d",
+    "f87ced90-7600-4f98-ac8c-297d3c6a6ade"
+  ],
+  "passages": [
+    {
+      "chunk_id": "10e42b68-b08e-4d43-8c36-ee03601ab4d8",
+      "locator": "Nobel Prize in Literature in 1913",
+      "text_sha256": "34963799f50cf2fa9c8432e4c4ab62ba16c17bbe06774e60cf959181a483e1a0",
+      "excerpt_preview": "Tagore received the Nobel Prize in Literature in 1913.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "1b51a137-2f15-40d7-a963-8f87acba25e4",
+      "locator": "first Asian Nobel laureate",
+      "text_sha256": "8aa9d00308631a9784b2efb543442c35c9ed0d4c09d411597deab4bc32ac892d",
+      "excerpt_preview": "He was the first Asian Nobel laureate.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "2d18d068-4290-4de3-8066-40065eff0230",
+      "locator": "poetry, short stories, novels, plays, essays and songs",
+      "text_sha256": "bfa2e350baf20872cb645e9af7298509f019a34f73273f8ff84280991629b637",
+      "excerpt_preview": "His work extended across poetry, short stories, novels, plays, essays and songs.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "80ebe34b-b928-47ff-86ae-13bf33a846d6",
+      "locator": "began writing verse early",
+      "text_sha256": "68b7c5b67daa68361d8d13c28fbb7061672fbbebf4dcca91cb9592b3bc8ecb3e",
+      "excerpt_preview": "He began writing verse early and published several books in the 1880s.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a57bf239-a2b7-4a40-91dc-22721f8177df",
+      "locator": "born in Calcutta on 7 May 1861",
+      "text_sha256": "88d07dce18b0f1bbb79f44e8ee9dd36f6d6f61314a7afb8db337278d954bbda1",
+      "excerpt_preview": "abindranath Tagore was born in Calcutta on 7 May 1861 into a prominent Bengali family.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,50 @@
+{
+  "source_id": "a3ee7187-f928-4eee-ab61-f4a2918e7014",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Aranya Kanda 11. https://www.valmikiramayan.net/aranya/sarga11/aranya_11_prose.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana",
+    "rights_or_access_note": "Publicly accessible source; brief excerpts stored for research citation.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Aranya Kanda 11",
+    "url": "https://www.valmikiramayan.net/aranya/sarga11/aranya_11_prose.htm"
+  },
+  "claim_ids": [
+    "59041442-6167-48f1-b027-70865e2f6e42",
+    "add1e53c-cdda-4ae3-b696-444e8684990e",
+    "c2d7cc6f-5c63-43cf-a38d-b932cad8b476"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0ece02b3-14ca-4ea5-96e3-ddcfbbdb2eeb",
+      "locator": "Aranya Kanda 11",
+      "text_sha256": "1319661ccd79629aa0afa8424b633b579a5d0b116953d4b32f49e79fcda15333",
+      "excerpt_preview": "his efficacy, and who made this southern region a liveable region, this must be the hermitage of such a sage, such Agatya's brother. \"Once upon a time verily cruel demon brothers Vaataapi and Ilvala were here together, and they the dreadful",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "15ebead2-1630-4f48-ad68-f72c4c270523",
+      "locator": "Aranya Kanda 11",
+      "text_sha256": "f479c087e100b51fa0aa08f84693c9ff9a67b6e71b54384689d94ec36fae5bda",
+      "excerpt_preview": "re and thus elapsed are ten years. Again Rama returns to the hermitage of Sage Suteekhsna, and after staying there for some time, takes leave of that sage and proceeds to see Sage Agastya. And on the way he visits the brother of Sage Agasty",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "bfcaf050-795d-4250-88df-dc108fc6c4cb",
+      "locator": "Aranya Kanda 11",
+      "text_sha256": "535ffff3322c1ca8d40e6cee746673631a1b038dbfddf04c10c03f713d046022",
+      "excerpt_preview": "very worthy southern quarter is known in the name of that godly saint Agastya and this remained unattackable to the demons with cruel deeds. \"Complying which sage's directive Mt. Vindhya ceased to heighten in order not to obstruct the path ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

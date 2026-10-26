@@ -1,0 +1,214 @@
+{
+  "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+  "source": {
+    "author": "Robert Ernest Hume (translator)",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Robert Ernest Hume (translator). Brihad-Aranyaka Upanishad, in The Thirteen Principal Upanishads. Oxford University Press; Online Library of Liberty edition. https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+    "original_work_identity": {},
+    "publication_year": 1921,
+    "publisher_or_institution": "Oxford University Press; Online Library of Liberty edition",
+    "rights_or_access_note": "Public-domain 1921 Oxford translation; the e-book text layer prints \"?\" for some under-dotted Sanskrit letters.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Brihad-Aranyaka Upanishad, in The Thirteen Principal Upanishads",
+    "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf"
+  },
+  "claim_ids": [
+    "078cbfa2-a58a-4784-be4e-a9f304e7e6a2",
+    "0a2a7f1f-c23c-409c-ae84-7cc83bbe1aef",
+    "0cf6cd03-4ca3-4fde-8db5-a75ab4230cf9",
+    "10536bf4-11f7-4f95-82d4-068a666914ae",
+    "2c1da367-c645-4778-8047-16ca9e9bfa19",
+    "2c739399-810f-42e4-9b41-9dbc8e24313a",
+    "4525f85d-348f-41c8-b140-92ee07b1e1b6",
+    "4d0138bc-475e-41ed-95d2-2c14efa49c3c",
+    "564b9021-57c5-4f4f-a293-d24ae48f7a15",
+    "7656f462-2f77-4741-9016-d3803715daa2",
+    "827648c4-4036-4669-9813-623d6979029e",
+    "89771c0a-ff68-498d-9e7c-16527634a79d",
+    "89ab97f4-e0ce-4a2e-97b9-59b1c8e0e245",
+    "8bf94976-98cc-4f25-a8c4-21fd428692e4",
+    "917dac3a-2adb-4ffb-bb2d-34b1d1ae0ed0",
+    "91b223dc-2c04-4e24-beb9-d189d1293d20",
+    "96c36c29-be5d-4683-b991-f28d9e68d426",
+    "aa0040aa-f111-496f-b616-55ff280c1c11",
+    "b0a691c6-afed-4d9a-a406-4072bc09f177",
+    "b6320f92-958a-49bd-af9b-0eafa0f0f720",
+    "c3fda81c-2612-42bb-9053-5db48dd87fc1"
+  ],
+  "passages": [
+    {
+      "chunk_id": "38e9bb7c-a09b-4223-95dd-cf8129636970",
+      "locator": "BAU 3.8.1–2",
+      "text_sha256": "0dea628f47fb96b4151a33c626944f563486079384818f13411cb54bc2defa50",
+      "excerpt_preview": "Then [Gārgī] Vācaknavī said: ‘Venerable Brahmans, lo, I will ask him [i.e. Yājñavalkya] two questions. If he will answer me these, not one of you will surpass him in discussions about Brahma.’ ‘Ask, Gārgī.’ 2. She said: ‘As a noble youth of",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "3ade6ed2-497f-4419-ae23-4a8de3a9a262",
+      "locator": "BAU 4.5.15",
+      "text_sha256": "93ed30f54ed5aba861ab16ea4426f5f74901991ffbdfdf23373bce986ccda834",
+      "excerpt_preview": "Lo, whereby would one understand the understander? Thus you have the instruction told to you, Maitreyī. Such, lo, indeed, is immortality.’ After speaking thus, Yājñavalkya departed.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "541d56c5-6e33-4ae1-ab88-29f522e121be",
+      "locator": "BAU 4.4.6–7",
+      "text_sha256": "5ebcaed6bbafa5212f4c01af17d7a41499adca0932211f40ed62c362e1e53783",
+      "excerpt_preview": "Now the man who does not desire. He who is without desire, who is freed from desire, whose desire is satisfied, whose desire is the Soul—his breaths do not depart. Being very Brahma, he goes to Brahma. On this point there is this verse:— Wh",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "58ac49bc-b9f9-4a57-ab1c-77ed28c4e1f9",
+      "locator": "BAU 6.5.3",
+      "text_sha256": "97cde8af466d2449a24855a05df68dcdcb9b6b0534e5f4f1b7d77a56825d8e5f",
+      "excerpt_preview": "These white1 sacrificial formulas (yajur) which come from Āditya are declared by Yājñavalkya of the Vājasaneyi school.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "70c7c54b-618f-4fbe-9048-a8d5860f3465",
+      "locator": "BAU 4.4.22",
+      "text_sha256": "dd9f7e940bd08a1b54f237e8edfe130cceabd6cb49f9d9a88f2c916607ba3d58",
+      "excerpt_preview": "Such a one the Brahmans desire to know by repetition of the Vedas, by sacrifices, by offerings, by penance, by fasting. On knowing him, in truth, one becomes an ascetic (muni). Desiring him only as their home, mendicants wander forth. Veril",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7802e648-9048-4ef5-99c8-1d46a6953005",
+      "locator": "BAU 4.1.1",
+      "text_sha256": "bcf1f44c7df469c358f77a982b30dbce51fb9fe3e635347008636b6fb556b006",
+      "excerpt_preview": "Janaka, [king] of Videha, was seated. Yājñavalkya came up. To him he said: ‘Yājñavalkya, for what purpose have you come? Because you desire cattle or subtle disputations?’ ‘Indeed, for both, your Majesty,’ he said.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7c5428fd-64fb-4c4b-ab98-0645e5ff2f85",
+      "locator": "BAU 3.1.1",
+      "text_sha256": "177b014d8b9cf701a3421aa5e140aee1ecbfe08dea2dc9217094a09c3676f09f",
+      "excerpt_preview": "Janaka, [king] of Videha, sacrificed with a sacrifice at which many presents were distributed. Brahmans of the Kurupañcālas were gathered together there. In this Janaka of Videha there arose a desire to know which of these Brahmans was the ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7f047149-a954-4f73-8f19-94bf1dc24db7",
+      "locator": "BAU 6.3.7",
+      "text_sha256": "c20537ee56e407dd035136efd5a03efbb63fb288ba2c8fb2cf51ca46cc27a73b",
+      "excerpt_preview": "This, indeed, did Uddālaka Āru?i tell to his pupil Vājasaneya Yājñavalkya, and say: ‘Even if one should pour this on a dry stump, branches would be produced and leaves would spring forth.’",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "80077056-7c77-4284-bd80-4fb81164e91d",
+      "locator": "BAU 3.9.26",
+      "text_sha256": "6b93db8c3a2eb67929eb8a0172b9cc9355195e3ddd844366c9105f5e2e624329",
+      "excerpt_preview": "He who plucks apart and puts together these persons and passes beyond them—that is the Person taught in the Upanishads about whom I ask you. If him to me ye will not tell, Your head indeed will then fall off.’ But him Śākalya did not know, ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "82ecdae0-fd61-4e6f-98ce-51a8ef45efaa",
+      "locator": "BAU 3.8.8",
+      "text_sha256": "03b9d4f5b10d589565b8dcbc8e622e71fab84bb551c15fd90c5317242d76db99",
+      "excerpt_preview": "He said: ‘That, O Gārgī, Brahmans call the Imperishable (ak?ara). It is not coarse, not fine, not short, not long, not glowing [like fire], not adhesive [like water], without shadow and without darkness, without air and without space, witho",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8c25b061-a4ed-4f7e-b6a8-10947af1a579",
+      "locator": "BAU 4.4.5",
+      "text_sha256": "8612895365c7e95a12ea9f4d71c277d9459b6790b886145a4bf01528de0099cb",
+      "excerpt_preview": "According as one acts, according as one conducts himself, so does he become. The doer of good becomes good. The doer of evil becomes evil. One becomes virtuous by virtuous action, bad by bad action. But people say: “A person is made [not of",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8e367e22-ec97-4329-a46e-c8782bfb616c",
+      "locator": "BAU 4.5.1–2",
+      "text_sha256": "8290a853ff01dc0da8b877b95a23d5593ac226f4e1883e42fb2c4d82e71e6e95",
+      "excerpt_preview": "Now then, Yājñavalkya had two wives, Maitreyī and Kātyāyanī. Of the two, Maitreyī was a discourser on sacred knowledge2 (brahma-vādinī); Kātyāyanī had just (eva) a woman’s knowledge in that matter (tarhi). Now then, Yājñavalkya was about to",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "91ff8426-65d4-403d-a741-162b0d06390c",
+      "locator": "BAU 2.4.2–3",
+      "text_sha256": "b1364b7c8e2ec8ce2e09f62b32fc469bfd516d07a50c79a7c61e4908ef0de3e5",
+      "excerpt_preview": "Then said Maitreyī: ‘If now, Sir, this whole earth filled with wealth were mine, would I be immortal thereby?’ ‘No,’ said Yājñavalkya. ‘As the life of the rich, even so would your life be. Of immortality, however, there is no hope through w",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a62f4ec4-cdb7-4963-a2f2-e98a85531e28",
+      "locator": "BAU 4.3.6",
+      "text_sha256": "b2a5cde6b4e74c55054e67fbb74bf47a710521530c8ec75cf8ba01161c0d04e1",
+      "excerpt_preview": "But when the sun has set, Yājñavalkya, and the moon has set, and the fire has gone out, and speech is hushed, what light does a person here have?’ ‘The soul (ātman), indeed, is his light,’ said he, ‘for with the soul, indeed, as his light o",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "abe15184-1aa2-479d-8b13-6461f122ba97",
+      "locator": "BAU 2.4.12",
+      "text_sha256": "5db6a43bdfb6e876ccfd6052a619b138b7fa5e7124ac1083031407015154bb7e",
+      "excerpt_preview": "It is—as a lump of salt cast in water would dissolve right into the water; there would not be [any]2 of it to seize forth, as it were (iva), but wherever one may take, it is salty indeed—so, lo, verily, this great Being (bhūta). infinite, l",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "adce372c-c1ff-47f9-a5b6-f7e1208aee6c",
+      "locator": "BAU 4.2.4",
+      "text_sha256": "4d8a31abee209394055a2076e4220cae8a7a1e77132dafe048b86a50c884be46",
+      "excerpt_preview": "But the Soul (Ātman) is not this, it is not that (neti, neti). It is unseizable, for it cannot be seized. It is indestructible, for it cannot be destroyed. It is unattached, for it does not attach itself. It is unbound. It does not tremble.",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b37de7cf-a972-4d26-9182-933ab5820c95",
+      "locator": "BAU 3.8.11–12",
+      "text_sha256": "2c5fea6468a2ddcd3228e61367123168e7c679631eded1d9cc6ed1c8da83b0ac",
+      "excerpt_preview": "Across this Imperishable, O Gārgī, is space woven, warp and woof.’ 12. She said: ‘Venerable Brahmans, you may think it a great thing if you escape from this man with [merely] making a bow. Not one of you will surpass him in discussions abou",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "bc030239-b336-4cdb-afdd-b485bc65e01e",
+      "locator": "BAU 3.2.13",
+      "text_sha256": "50f14f3034cbca751271d08cc39728412e5af919f1e79bbe90e3734b99825934",
+      "excerpt_preview": "‘Ārtabhāga, my dear, take my hand. We two only will know of this. This is not for us two [to speak of] in public.’ The two went away and deliberated. What they said was karma (action). What they praised was karma. Verily, one becomes good b",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c099f21e-6200-4b75-b013-38ad8641479a",
+      "locator": "BAU 3.6",
+      "text_sha256": "228c8da15138a2d75fd5e057978162cbd22dff90f2050beba4c61a0b1185f0eb",
+      "excerpt_preview": "‘On what then, pray, are the worlds of Brahma woven, warp and woof?’ Yājñavalkya said: ‘Gārgī, do not question too much, lest your head fall off. In truth you are questioning too much about a divinity about which further questions cannot be",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c4ac643f-d470-4092-9fdd-cde54f8e4eca",
+      "locator": "BAU 3.7.23",
+      "text_sha256": "613d471fe2ee8df6e578d4ef868499f8439294a6b3eefa4fed964e978bc386e1",
+      "excerpt_preview": "He is the unseen Seer, the unheard Hearer, the unthought Thinker, the ununderstood Understander. Other than He there is no seer. Other than He there is no hearer. Other than He there is no thinker. Other than He there is no understander. He",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e623e54f-b1c9-46a2-8370-013c5578991d",
+      "locator": "BAU 2.4.5",
+      "text_sha256": "da0b13eb282258fca35a2a1a14ea5dec271bb0a14c2d7c891a4bbf0fb35263d9",
+      "excerpt_preview": "Lo, verily, not for love of all is all dear, but for love of the Soul all is dear. Lo, verily, it is the Soul (Ātman) that should be seen, that should be hearkened to, that should be thought on, that should be pondered on, O Maitreyī.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

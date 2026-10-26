@@ -1,0 +1,52 @@
+{
+  "source_id": "abf97cbf-a8e1-436f-92b6-82b38665b47b",
+  "source": {
+    "author": "Subhas Chandra Bose",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Subhas Chandra Bose. Subhas Chandra Bose: A National Army. NITI Aayog Library, Government of India. https://library.niti.gov.in/cgi-bin/koha/opac-retrieve-file.pl?id=13932e48dd8bc7da60cbafaea68668d7",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "NITI Aayog Library, Government of India",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Subhas Chandra Bose: A National Army",
+    "url": "https://library.niti.gov.in/cgi-bin/koha/opac-retrieve-file.pl?id=13932e48dd8bc7da60cbafaea68668d7"
+  },
+  "claim_ids": [
+    "1185b6f8-ed6f-48fe-9016-bf6fb54a85b6",
+    "e38a67be-be05-40a2-88d1-155a31fe6795",
+    "ea83cd57-88e9-4357-8dde-52d5ca567cca"
+  ],
+  "passages": [
+    {
+      "chunk_id": "6cedb55b-0fb4-43a8-8876-de22fb07862f",
+      "locator": "national army",
+      "text_sha256": "d0b52bd3a81d3f5d0eafb975698004b613ee38a221bcaf8c1f4cc4823eec85d4",
+      "excerpt_preview": "uilding up a national army will be a more difficult task.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "857e271c-a7ee-4ada-a779-6e2b1daef0f9",
+      "locator": "higher ranks had long been reserved",
+      "text_sha256": "c328a0b5f6146af529e33fc77cf4332edb21b9618500f0b6a6d2ef88051e6526",
+      "excerpt_preview": "India has trained and experienced soldiers, but higher ranks had long been reserved for British officers.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9f3d3def-efb2-498e-b543-9a8841e9f302",
+      "locator": "wrong to dogmatise",
+      "text_sha256": "19341197b19625b9d2f36c65f3d8820166e0f42b09a8e585dad452adf29b1b11",
+      "excerpt_preview": "It would be wrong to dogmatise from now about the exact form of the future Indian state.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

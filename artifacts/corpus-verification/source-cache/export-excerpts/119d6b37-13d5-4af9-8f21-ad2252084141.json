@@ -1,0 +1,54 @@
+{
+  "source_id": "119d6b37-13d5-4af9-8f21-ad2252084141",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Academy Honorary Award to Satyajit Ray. Academy of Motion Picture Arts and Sciences. https://awardsdatabase.oscars.org/Search/GetResults?query=%7B%22AwardCategory%22:%5B%2227%22%5D,%22Sort%22:%223-Award+Category-Chron%22,%22Search%22:%22Basic%22%7D",
+    "original_work_identity": {},
+    "publication_year": 1992,
+    "publisher_or_institution": "Academy of Motion Picture Arts and Sciences",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Academy Honorary Award to Satyajit Ray",
+    "url": "https://awardsdatabase.oscars.org/Search/GetResults?query=%7B%22AwardCategory%22:%5B%2227%22%5D,%22Sort%22:%223-Award+Category-Chron%22,%22Search%22:%22Basic%22%7D"
+  },
+  "claim_ids": [
+    "0d6e0dc3-6b43-453e-b1f3-8b8abf08e8ab",
+    "61e944ef-a848-4865-b28b-7ab1b56dc7eb",
+    "8ffbecea-a36f-4f7b-bffb-7d9856edf3a5",
+    "e89290d1-bce0-41f2-87cb-2ca21263f2c2"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1dcf2d6b-ec1e-4f5b-a210-a8875da8f06c",
+      "locator": "shortly before his death",
+      "text_sha256": "ae68852a11da21006e06faeadf27f7cbf4b512e46ba7f245ee191762a9d9a5c8",
+      "excerpt_preview": "Ray accepted from a hospital bed shortly before his death.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "5bf3232f-e478-416b-afd9-4d1670462198",
+      "locator": "influence on filmmakers and audiences worldwide",
+      "text_sha256": "e2fdd0c251a539c0d23ddabfc5891515684070821fd17e29cba1e82914e213f8",
+      "excerpt_preview": "Its citation recognized mastery of motion pictures and a humanitarian outlook with influence on filmmakers and audiences worldwide.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "61b1cdfa-7bdf-4dfc-9b3e-f454313cbb06",
+      "locator": "Honorary Award",
+      "text_sha256": "ca1c31df6afbddf6a3c61d07dc0a02375e93983dfcc8e6b6ebd185a30a09c1f0",
+      "excerpt_preview": "he Academy granted Satyajit Ray an Honorary Award for the awards year 1991, presented at the 1992 ceremony.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

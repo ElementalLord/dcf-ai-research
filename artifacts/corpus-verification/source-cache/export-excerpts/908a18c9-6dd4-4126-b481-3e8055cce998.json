@@ -1,0 +1,34 @@
+{
+  "source_id": "908a18c9-6dd4-4126-b481-3e8055cce998",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:16.076Z"
+    },
+    "citation": "Sindhudurg Fort — Maharashtra Tourism. Department of Tourism, Government of Maharashtra. https://maharashtratourism.gov.in/fort/sindhudurg/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Department of Tourism, Government of Maharashtra",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Sindhudurg Fort — Maharashtra Tourism",
+    "url": "https://maharashtratourism.gov.in/fort/sindhudurg/"
+  },
+  "claim_ids": [
+    "3ffd79c1-657f-441f-87dd-10548906f7ae"
+  ],
+  "passages": [
+    {
+      "chunk_id": "c51c94f6-da48-4284-8083-e340e37c2b42",
+      "locator": "Government heritage page",
+      "text_sha256": "b66bc6fc44d1ddd7dee8de7d101da0c199345d9fc0e3cfe33725ea600fa8f14e",
+      "excerpt_preview": "sistent threats from the Portuguese, British, and Siddis. Recognizing the need to fortify the western seaboard, Chhatrapati Shivaji Maharaj commissioned the construction of Sindhudurg Fort in 1664. Over 3,000 skilled workers, guided by the ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

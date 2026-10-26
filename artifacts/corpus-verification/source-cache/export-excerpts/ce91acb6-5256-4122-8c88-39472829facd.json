@@ -1,0 +1,34 @@
+{
+  "source_id": "ce91acb6-5256-4122-8c88-39472829facd",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:19.020Z"
+    },
+    "citation": "Shivneri Fort — Maharashtra Tourism. Department of Tourism, Government of Maharashtra. https://maharashtratourism.gov.in/fort/shivneri/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Department of Tourism, Government of Maharashtra",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Shivneri Fort — Maharashtra Tourism",
+    "url": "https://maharashtratourism.gov.in/fort/shivneri/"
+  },
+  "claim_ids": [
+    "1809fa5e-a13c-406e-a2dc-47ec714d0f48"
+  ],
+  "passages": [
+    {
+      "chunk_id": "645717d4-79a7-484d-9c47-835e12e920a5",
+      "locator": "Government heritage page",
+      "text_sha256": "2e126a34e12d8980794c4caa710a11ec156c60c7f5694432f1a2765f85db6468",
+      "excerpt_preview": "eri Fort is a magnificent stronghold steeped in history and valor. This triangular fort, surrounded by steep cliffs, is most revered as the birthplace of Chhatrapati Shivaji Maharaj, the legendary founder of the Maratha Empire. With its stu",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

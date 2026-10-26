@@ -1,0 +1,45 @@
+{
+  "source_id": "8d1e7888-6577-4564-b935-96ed0ae1b902",
+  "source": {
+    "author": "Valmiki",
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Bala Kanda, Sarga 64 (https://www.valmikiramayan.net/utf8/baala/sarga64/balasans64.htm)",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Bala Kanda, Sarga 64",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga64/balasans64.htm"
+  },
+  "claim_ids": [
+    "16e0aff5-1367-4c74-8a5b-e12a64f2e222",
+    "9473eb9c-69d6-4b37-ae0d-d7ec3476ed49",
+    "9559d070-c4a4-4f00-81c1-271b2d20bc49",
+    "99acbe03-a70c-4ad2-ba5c-4b099da1e780",
+    "a14fa6d2-5519-4606-9b3b-56cc3ac61dff",
+    "be9c9822-362d-48f6-9964-38c02d26b3c6"
+  ],
+  "passages": [
+    {
+      "chunk_id": "2a5bae86-6077-4fd8-8d21-59b2a47b760a",
+      "locator": "Introduction",
+      "text_sha256": "8b4127abcbac75f866bb785e51431ba9862541c609d0dee580ee7a3e16645c1d",
+      "excerpt_preview": "Vishvamitra curses Rambha, the celestial wench, knowing that she arrived at the behest of Indra to cause  hindrance to his ascesis. But later feels ashamed to loose his tongue and then he is determined to undertake  another round of ascesis",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "515003fb-3676-4dbd-8abb-a58e725319ce",
+      "locator": "Introduction",
+      "text_sha256": "666f2a817c51ba79189f90cfe9d8204dc0aa0f7ce007474575cd4d5488c9b40c",
+      "excerpt_preview": "Whereof you tried to entice me who am wishing to win over the wanton and wroth, you unlucky female  Rambha, thereof you will become a rocklike statued wastrel. [1-64-12]  ब्राह्मणः सुमहातेजास्तपोबलसमन्वितः |उद्धरिष्यति रंभे त्वां मत्क्रोधकल",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

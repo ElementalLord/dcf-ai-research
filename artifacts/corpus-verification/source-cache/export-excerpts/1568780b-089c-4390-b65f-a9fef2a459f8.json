@@ -1,0 +1,34 @@
+{
+  "source_id": "1568780b-089c-4390-b65f-a9fef2a459f8",
+  "source": {
+    "author": "Dominik Wujastyk",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Dominik Wujastyk. The Yoga Texts Attributed to Yājñavalkya and their Remarks on Posture. Asian Literature and Translation 4(1), Cardiff University Press (peer-reviewed, open access). https://alt.cardiffuniversitypress.org/articles/25/files/submission/proof/25-1-25-1-10-20170908.pdf",
+    "original_work_identity": {},
+    "publication_year": 2017,
+    "publisher_or_institution": "Asian Literature and Translation 4(1), Cardiff University Press (peer-reviewed, open access)",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "The Yoga Texts Attributed to Yājñavalkya and their Remarks on Posture",
+    "url": "https://alt.cardiffuniversitypress.org/articles/25/files/submission/proof/25-1-25-1-10-20170908.pdf"
+  },
+  "claim_ids": [
+    "c7284df2-e8f0-4004-8913-16b13de466f6"
+  ],
+  "passages": [
+    {
+      "chunk_id": "b2d224d7-5c68-45d7-b2df-d4b315a5bea2",
+      "locator": "pp. 159–160",
+      "text_sha256": "92eb175d8d9bff2cc4dc90ba5cfa75b7616402514208d75573b84e38ee442397",
+      "excerpt_preview": "The name of the ancient Upaniṣadic sage Yājñavalkya was associated with at least two quite different texts on yoga that circulated in medieval India. Perhaps the inspiration for the yoga works created in association with the name Yājñavalky",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

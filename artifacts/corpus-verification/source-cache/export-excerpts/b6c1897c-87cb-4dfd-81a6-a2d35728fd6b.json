@@ -1,0 +1,34 @@
+{
+  "source_id": "b6c1897c-87cb-4dfd-81a6-a2d35728fd6b",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:26:48.270Z"
+    },
+    "citation": "Royal Society Election Certificate for C. V. Raman. Royal Society archive. https://catalogues.royalsociety.org/CalmView/Record.aspx?id=EC%2F1924%2F11&src=CalmView.Catalog",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Royal Society archive",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Royal Society Election Certificate for C. V. Raman",
+    "url": "https://catalogues.royalsociety.org/CalmView/Record.aspx?id=EC%2F1924%2F11&src=CalmView.Catalog"
+  },
+  "claim_ids": [
+    "f536e05d-aaa8-4a89-ac19-b3659c9dc05a"
+  ],
+  "passages": [
+    {
+      "chunk_id": "c2bc4494-afd2-49a1-86b1-e62b93bf9324",
+      "locator": "1924 archival record",
+      "text_sha256": "45b2ffaa29cf93dc5c04479457a17e4746b380eede219d02ac2aa684c2d357c6",
+      "excerpt_preview": "for Fellowship of the Royal Society 1924 - Certificates of Election 1924 RefNoEC/1924/11Previous numbersCert XIII, 254; A05892LevelItemTitleRaman, Sir Chandrasekhara Venkata: certificate of election to the Royal SocietyDate15 May 1924Descri",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

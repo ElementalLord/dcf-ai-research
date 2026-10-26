@@ -1,0 +1,79 @@
+{
+  "source_id": "7970b877-bfa3-465a-ae22-c2d6230564fb",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Dairy Development and Milk Cooperatives: The Effects of a Dairy Project in India. World Bank. https://documents1.worldbank.org/curated/en/675491468751143730/pdf/multi-page.pdf",
+    "original_work_identity": {},
+    "publication_year": 1987,
+    "publisher_or_institution": "World Bank",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Dairy Development and Milk Cooperatives: The Effects of a Dairy Project in India",
+    "url": "https://documents1.worldbank.org/curated/en/675491468751143730/pdf/multi-page.pdf"
+  },
+  "claim_ids": [
+    "124b5b2c-7813-4285-95ff-981e6c2d403b",
+    "1eebabb0-9819-469d-8f21-b05b26e62517",
+    "265c8771-1a61-4958-8389-16a7e7379832",
+    "6f5d2edd-df6f-4ae5-9652-f715801e8a25",
+    "a24b0c59-5408-4f97-aff6-8b13d4694fc0",
+    "d9cbde56-54d0-4819-9ce7-bfc4e39826c9"
+  ],
+  "passages": [
+    {
+      "chunk_id": "22075c08-3490-4f6c-9da5-d33378af76cf",
+      "locator": "Summary",
+      "text_sha256": "5d04013e809bc49b28ca6c183d4414e414b84e0e3ddd0effde4d80a921e41e42",
+      "excerpt_preview": "Nor did they depend on the adoption of cross-bredtechnology. Although the project increased the adoption of cross-bredcows this effect was so small as to have a quantita- tively insignificanteffect on milk production. -- 15 of 162 -- -xiv- ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4a9ccf37-106c-4180-a2a6-edcb28409785",
+      "locator": "Summary",
+      "text_sha256": "d1266054200a9be248c5eb45561ccd3a949d7cf5a9f5dd643eae3dde50850d20",
+      "excerpt_preview": "Using a variety of econometrictechniquesthe analysis establishes, in the area of study, that the project improved the milk marketing system thereby increasingcompetitionwith the result that the average price of milk to producers rose about ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "687f2c05-cc90-44d8-a9c9-684d97305cb6",
+      "locator": "Summary",
+      "text_sha256": "6051c59ceddfc30d0c84c3eae3d6c30cdb37da3d76b973fc34fa9c64c26fd5ac",
+      "excerpt_preview": "Poor households who are not milk producers were found not to consume milk (a relatively expensive item) and hence towards them the project was neutral. The project did not, however, increase the number of milk animal owning households and t",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8f8e8dde-bd61-4941-9c14-fcaf863dec14",
+      "locator": "Summary",
+      "text_sha256": "e19224d72b04775902e630f1d7fd334429df330868d64b9a84f53ba4e7fb97bc",
+      "excerpt_preview": "-- 15 of 162 -- -xiv- Further analysis shows that the resulting increase in incomes for milk producers led to increased food consumption. In particular, and after accounting for both price and income effects, milk producers increasd their c",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "94e45dad-ce9a-4805-86f5-840bcb314840",
+      "locator": "Summary",
+      "text_sha256": "54b6c001ee37c673cea5f612d44dcc868e1a8cca95172cfeea091aeeb8973855",
+      "excerpt_preview": "Apart from this difference the villages were agriculturally,culturallyand ethnically similar. Using a variety of econometrictechniquesthe analysis establishes, in the area of study, that the project improved the milk marketing system thereb",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c9685a4c-e89b-480b-9727-edc9bb036844",
+      "locator": "Summary",
+      "text_sha256": "5f6189feae4c1c4c0bad1bf310e70ae9943a6f2cdfbcaf661664cf33ee3b4275",
+      "excerpt_preview": "Accordingly, farm household data from a group of villages in an Operation Flood project in Madhya Pradesh are analyzed in order to test a number of hypotheses about the effects of dairy developmentprojects. The data were collected through s",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,26 @@
+{
+  "source_id": "a97ed1ef-2f3e-46c0-a687-a334e69fc091",
+  "source": {
+    "author": "Vyasa (traditional attribution); BORI Critical Edition",
+    "authority_metadata": {},
+    "citation": "Mahabharata BORI, Adi Parva",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Bhandarkar Oriental Research Institute critical text / Vedapath presentation",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Mahabharata (BORI Critical Edition), Adi Parva",
+    "url": "https://vedapath.app/en/mahabharata-bori/adi-parva"
+  },
+  "claim_ids": [
+    "4198a791-b686-4355-8efc-732d3be41921",
+    "a4d5dfc3-75b1-4382-823e-79256abd22fb",
+    "ca4f2995-27cc-4c86-928a-42c08e06dddd",
+    "d4c49834-632a-43fe-a0e4-b0e4706a0e87"
+  ],
+  "passages": [],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

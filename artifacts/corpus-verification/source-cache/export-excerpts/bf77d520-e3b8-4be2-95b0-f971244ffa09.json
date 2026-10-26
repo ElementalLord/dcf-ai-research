@@ -1,0 +1,50 @@
+{
+  "source_id": "bf77d520-e3b8-4be2-95b0-f971244ffa09",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Mahabharata, Vana Parva, section 104 (Ganguli translation). https://mahabharata-online.github.io/3/104.html",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Mahabharata Online",
+    "rights_or_access_note": "Publicly accessible source; brief excerpts stored for research citation.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Mahabharata, Vana Parva, section 104 (Ganguli translation)",
+    "url": "https://mahabharata-online.github.io/3/104.html"
+  },
+  "claim_ids": [
+    "90095036-8a14-49b3-ab45-7dafd31d16ac",
+    "b33a4ce3-2b36-4fa7-aff7-3da560f05418",
+    "c94e6d91-bfc0-403d-a640-6f88abf2a75e"
+  ],
+  "passages": [
+    {
+      "chunk_id": "81bc519b-7ccf-4ef4-8cca-63cadb97a344",
+      "locator": "Vana Parva 3.104",
+      "text_sha256": "7e503fb602cc7ef45bae4aa90308f7c31c1b91f1397bede9cfae75ad00794dde",
+      "excerpt_preview": "ving arrived there, came near Vindhya and spake to him,saying, 'O thou best of mountains! I wish to have a path given to me bythee, as, for some purpose, I shall have to go to the southern region.Until my return, do thou wait for me. And wh",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9460cee5-ff2e-4f5f-b8a8-b1a1b89cecfc",
+      "locator": "Vana Parva 3.104",
+      "text_sha256": "eab97711dcb1242f16eb9256060494f084d518ee87a8059521375f785900300b",
+      "excerpt_preview": "not return from the southern region. Thus have I,asked by thee, narrated to thee why Vindhya doth not increase in bulk, byreason of the power of Agastya. Now, O king! hear how the Kalakeyas werekilled by the gods, after they had obtained th",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c03b3af1-9de7-401a-a337-e4d3cda58957",
+      "locator": "Vana Parva 3.104",
+      "text_sha256": "491233820c6be6d3b35e7a6d2d2349b2dd95f41eedad4e0675f48115dbfb1e40",
+      "excerpt_preview": "3. The Forest \"Yudhishthira said, 'O great saint! I am desirous of hearing in detailwhy it was that Vindhya, made senseless with wrath, suddenly began toincrease his bulk.'\"\"Lomasa said, 'The sun between his rising and setting used to revol",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

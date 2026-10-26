@@ -1,0 +1,62 @@
+{
+  "source_id": "3d12e474-d1b1-4b71-8e55-b354470ffbb7",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "The Anand Pattern. National Dairy Development Board. https://www.nddb.coop/about/genesis/pattern",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "National Dairy Development Board",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "The Anand Pattern",
+    "url": "https://www.nddb.coop/about/genesis/pattern"
+  },
+  "claim_ids": [
+    "0f4fb861-d9d3-4e9f-9e76-18403b120e82",
+    "28d89e19-c55e-4123-8a59-a0d5c765416d",
+    "419aa0d3-9204-4b89-bae6-26f756111729",
+    "69b28cb4-d514-4573-9b7c-bfa95564ea8a",
+    "e9171056-70a4-45f2-b42f-9d6123d49706"
+  ],
+  "passages": [
+    {
+      "chunk_id": "253e178e-8335-4777-977d-01e609a76715",
+      "locator": "Anand Pattern",
+      "text_sha256": "ad11c339564c5a3be6b572aa023257b3f0e3fda017cf0ad87a5aa5099467bcf3",
+      "excerpt_preview": "Union staff train and provide consulting services to support DCS leaders and staff. The State Federation The cooperative milk producers' unions in a state form, a State Federation, which is responsible for marketing the fluid milk and produ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "46839240-2238-4a80-8a21-200c51a47c1a",
+      "locator": "Anand Pattern",
+      "text_sha256": "3e5c049566bd20952b8ee5163603144c80dcf55e26a77efd875f074258062501",
+      "excerpt_preview": "At the end of each year, a portion of the DCS profits is used to pay each member a patronage bonus based on the quantity of milk poured. The District Union A District Cooperative Milk Producers' Union is owned by dairy cooperative societies",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "57bf10d3-eac6-4244-b3bd-64d54aea9faf",
+      "locator": "Anand Pattern",
+      "text_sha256": "d62e04273f4a2bafc482d353b921adf6dae7fa9d7406094aa9befacf203d66c9",
+      "excerpt_preview": "The Anand Pattern succeeds because it involves people in their own development through cooperatives where professionals are accountable to leaders elected by producers. The institutional infrastructure -- village cooperative, dairy and catt",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d5540a27-a462-4e8e-8a1d-172f2b3ef9cc",
+      "locator": "Anand Pattern",
+      "text_sha256": "c0c89b8e835e4fce819a7c8b329cd666f93d006337b2f7306ae7de8f5efe8e13",
+      "excerpt_preview": "Anand Pattern cooperatives have progressively, linked producers directly with consumers. Three tier structure Village Society An Anand Pattern village dairy cooperative society (DCS) is formed by milk producers. Any producer can become a DC",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

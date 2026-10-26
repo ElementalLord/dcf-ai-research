@@ -1,0 +1,202 @@
+[
+  {
+    "claim_id": "1c773840-34a3-435e-8e8d-f51227baa7a5",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The first experimental SLV-3 flight in August 1979 was only partially successful; the next launch, on July 18, 1980, placed Rohini RS-1 in orbit.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.isro.gov.in/SLV.html",
+        "locator": "SLV, introductory paragraphs, lines 4–6",
+        "source_id": "b1670b9f-a5fa-4b1c-84d8-4ae3cd652c5f",
+        "source_authority": "ISRO official mission record, live page inspected in batch 001",
+        "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "ISRO's mission history directly gives both flight outcomes and the July 18 date. Institutional original record is adequate for this narrowly scoped launch chronology. The original wording was precise enough, but the proposed wording names the satellite and date for clarity.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional record supports its own mission, award, or designation; broader causal history requires separate corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0056e637-ab83-4d5e-906a-a4fd1a6add5a",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "On July 18, 1980, India's SLV-3 placed the Rohini RS-1 satellite in orbit.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.isro.gov.in/SLV.html",
+        "locator": "SLV, launch account, line 4",
+        "source_id": "b1670b9f-a5fa-4b1c-84d8-4ae3cd652c5f",
+        "source_authority": "ISRO official mission record, live page inspected in batch 001",
+        "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "ISRO directly confirms the launch date and orbital placement. The broad claim that this 'established an indigenous Indian satellite-launch capability' is interpretive and was removed.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional record supports its own mission, award, or designation; broader causal history requires separate corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0ad9f692-4372-4895-936d-6383d12a7a96",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "ISRO says the successful SLV-3 project paved the way for the later ASLV, PSLV, and GSLV launch-vehicle projects.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "url": "https://www.isro.gov.in/SLV.html",
+        "locator": "SLV, final paragraph, line 7",
+        "source_id": "b1670b9f-a5fa-4b1c-84d8-4ae3cd652c5f",
+        "source_authority": "ISRO official mission record, live page inspected in batch 001",
+        "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The agency explicitly links the SLV-3 project to the three later programmes. The comparative attribution to Kalam alone is not established by this page, so it was omitted.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional record supports its own mission, award, or designation; broader causal history requires separate corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "bbaeed4c-7325-42ef-b531-88ec1c970ac6",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The SLV-3 was a four-stage, all-solid launch vehicle designed to place roughly 40 kg payloads in low Earth orbit.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.isro.gov.in/SLV.html",
+        "locator": "SLV, opening paragraph, line 2",
+        "source_id": "b1670b9f-a5fa-4b1c-84d8-4ae3cd652c5f",
+        "source_authority": "ISRO official mission record, live page inspected in batch 001",
+        "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "ISRO's vehicle description directly supports the configuration and payload capacity. Wording specifies the documented approximate capacity.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional record supports its own mission, award, or designation; broader causal history requires separate corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "61e944ef-a848-4865-b28b-7ab1b56dc7eb",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "At the 1992 Academy Awards, Satyajit Ray received an Honorary Award recognizing his filmmaking, rather than an award for an individual film.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://www.oscars.org/oscars/ceremonies/1992/memorable-moments",
+        "locator": "Honorary Award, lines 79–80",
+        "source_id": null,
+        "source_authority": "Academy of Motion Picture Arts and Sciences official awards record, live page inspected in batch 001",
+        "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Academy's own ceremony record identifies an Honorary Award to Ray and names no individual film in the citation. The original phrase 'lifetime body of work' was broader than the formal citation and was narrowed. The separately linked awards-database URL was not needed for this check.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional record supports its own mission, award, or designation; broader causal history requires separate corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0d6e0dc3-6b43-453e-b1f3-8b8abf08e8ab",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The Academy's 1992 Honorary Award citation credited Ray with influence on filmmakers and audiences worldwide; this records the Academy's judgment of his reception.",
+    "epistemic_type": "MODERN_RECEPTION",
+    "evidence_references": [
+      {
+        "url": "https://www.oscars.org/oscars/ceremonies/1992/memorable-moments",
+        "locator": "Honorary Award citation, lines 79–80",
+        "source_id": null,
+        "source_authority": "Academy of Motion Picture Arts and Sciences official awards record, live page inspected in batch 001",
+        "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Academy citation explicitly asserts the influence. Framing it as the Academy's judgment preserves the difference between an institutional honor and an independently measured effect.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional record supports its own mission, award, or designation; broader causal history requires separate corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "af48b048-b6a9-4e9a-a59f-09ee0496a5e4",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The Brihadisvara Temple at Thanjavur has been under Archaeological Survey of India protection since 1922 and is part of the UNESCO-listed Great Living Chola Temples.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://whc.unesco.org/en/list/250/",
+        "locator": "Protection and management requirements, lines 75–76; site summary, lines 2–5",
+        "source_id": "dfea9d16-e203-4fc9-aa62-53a649dbd7b4",
+        "source_authority": "UNESCO World Heritage Centre official site entry, live page inspected in batch 001",
+        "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "UNESCO's site record directly identifies the property and states ASI protection began in 1922. This is an institutional status claim.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional record supports its own mission, award, or designation; broader causal history requires separate corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "e4ee4929-f977-4c13-ae94-5cf2912a281f",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "UNESCO's architectural synthesis says construction of the Brihadisvara Temple possibly began in Rajaraja I's 19th regnal year (1003–04) and that it was consecrated in his 25th (1009–10).",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "url": "https://whc.unesco.org/en/list/250/",
+        "locator": "Outstanding Universal Value, brief synthesis, line 50",
+        "source_id": "dfea9d16-e203-4fc9-aa62-53a649dbd7b4",
+        "source_authority": "UNESCO World Heritage Centre official site entry, live page inspected in batch 001",
+        "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The UNESCO text directly supplies both regnal-year dates and marks the inauguration as possible. Attribution to its synthesis and the uncertainty qualifier avoid overstating the historical chronology.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional record supports its own mission, award, or designation; broader causal history requires separate corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "fb1ea3bb-ab07-44df-8d1d-b586cb7ab895",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "UNESCO describes the Brihadisvara Temple's vimana as 59.82 metres high with thirteen talas.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "url": "https://whc.unesco.org/en/list/250/",
+        "locator": "Outstanding Universal Value, brief synthesis, lines 51–52",
+        "source_id": "dfea9d16-e203-4fc9-aa62-53a649dbd7b4",
+        "source_authority": "UNESCO World Heritage Centre official site entry, live page inspected in batch 001",
+        "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "UNESCO directly reports the dimensions and tier count. The original interpretive phrase about material evidence of a monumental programme was removed to keep this claim tied to the documented measurement.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional record supports its own mission, award, or designation; broader causal history requires separate corroboration.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "5609a45d-ff75-4996-bc9f-556be05c0dba",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "UNESCO identifies the Brihadisvara Temple at Thanjavur, built under Rajaraja I, as a major example of Chola architecture and art.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "url": "https://whc.unesco.org/en/list/250/",
+        "locator": "Site description and Outstanding Universal Value, lines 4–5 and 50–61",
+        "source_id": null,
+        "source_authority": "UNESCO World Heritage Centre official site entry, live page inspected in batch 001",
+        "independence_assessment": "Original issuing institution; no independent corroboration is inferred from this source alone.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "UNESCO links the temple to Rajaraja I and evaluates the property as an outstanding Chola architectural example. The original claim about a 'long cultural legacy' was too open-ended for this source and was narrowed.",
+    "original_source_inspected": true,
+    "material_limitation": "Institutional record supports its own mission, award, or designation; broader causal history requires separate corroboration.",
+    "removal_reason": null
+  }
+]

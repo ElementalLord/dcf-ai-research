@@ -1,0 +1,61 @@
+{
+  "source_id": "03dac697-d0c6-4fae-b627-f49611844f82",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "Life and Work of Mahatma Jotirao Phule. Mahatma Phule Chair, Savitribai Phule Pune University. https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/Life_%20%26%20_Work.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Mahatma Phule Chair, Savitribai Phule Pune University",
+    "rights_or_access_note": "Public original; short research excerpts. Scholarly abstract/summary access does not imply full chapter access.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Life and Work of Mahatma Jotirao Phule",
+    "url": "https://www.unipune.ac.in/chairs/mahatma_phule_chair/mphule_webfiles/Life_%20%26%20_Work.htm"
+  },
+  "claim_ids": [
+    "4f0b7d9b-47d5-4e3f-b370-27f9b6c56017",
+    "84516bcb-f518-402d-827d-57101b1ca42d",
+    "cc2f0b61-2986-4826-a7cc-4a2b16ef5d91",
+    "cc4cadff-6bb3-4010-ab2e-4dfbf6d83bd0"
+  ],
+  "passages": [
+    {
+      "chunk_id": "318efb6b-6ce8-4c58-8ada-1d4894e1b069",
+      "locator": "educational institutions",
+      "text_sha256": "ddac144c38aa3bfdef294048f1471c6b5de2f11895f7a09030c41015f865b50d",
+      "excerpt_preview": "He started schools. He established institutes like the 'Pune Female Native Schools' and the 'Society for Promoting Education for Mahar, Mangs'. Jotirao prepared his wife Savitribai to teach in the girls' school, with a view to educating the",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "52edb2ee-3a18-41d1-b289-26d1049d7eb2",
+      "locator": "Satyashodhak Samaj section",
+      "text_sha256": "1d9a0d0255b74eb285558c967dea4c78ed7371f7370fcb11c63497c58f3a65d5",
+      "excerpt_preview": "Jotirao allowed the untouchables to fetch water from the well in the premises of his house. In order to institutionalize social education, and have a continuous follow up, Jotirao established 'Satyashodhak Samaj' on 24th September 1873. Mot",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c3187e8a-eebf-472c-8e7d-b0428afcbcd0",
+      "locator": "Life Sketch",
+      "text_sha256": "526c77b5bef8633f43ffdee6dabd6d4c2c7fdf394d8946dea8a7eddf2cb56759",
+      "excerpt_preview": "He had his primary education during 1834-1838. In 1840, he got married to Savitribai, the daughter of Shri. Khandoji Nevshe Patil from village Naigaon, Tal.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ff20d611-5b70-4a33-8c88-c7ec7b2abe52",
+      "locator": "university account of educational work",
+      "text_sha256": "8c37b432a4cda81e72e992190da5cadddd0f7a07443341876a27421acfb4d13d",
+      "excerpt_preview": "Jotirao prepared his wife Savitribai to teach in the girls' school, with a view to educating the women first, in order to bring in the value of equality at home. Savitribai had to face bitter opposition from the orthodox people in the socie",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

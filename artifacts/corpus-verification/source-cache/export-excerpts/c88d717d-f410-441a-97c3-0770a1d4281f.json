@@ -1,0 +1,43 @@
+{
+  "source_id": "c88d717d-f410-441a-97c3-0770a1d4281f",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Report of the Justice Mukherjee Commission of Inquiry. Ministry of Home Affairs, Government of India. https://www.mha.gov.in/sites/default/files/2022-08/jmci-I-eng%5B1%5D.pdf",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Ministry of Home Affairs, Government of India",
+    "rights_or_access_note": "Short documented research excerpts only. Source layers remain distinct in retrieval.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Report of the Justice Mukherjee Commission of Inquiry",
+    "url": "https://www.mha.gov.in/sites/default/files/2022-08/jmci-I-eng%5B1%5D.pdf"
+  },
+  "claim_ids": [
+    "23e13ff2-08ae-426d-b4ea-4276816353e8",
+    "3dbd19bd-3b34-437e-a287-10e6127c92ce"
+  ],
+  "passages": [
+    {
+      "chunk_id": "8dba8f30-48d6-4bb3-a8b8-bf10ed53ed57",
+      "locator": "underlying Japanese, British, Indian, Soviet",
+      "text_sha256": "a892f895cf12e97f56a7514e5331c18796964ecdad79dd46887fcae24ad8e4a9",
+      "excerpt_preview": "An inquiry report is evidence of an official investigation and its reasoning, not a substitute for the underlying Japanese, British, Indian, Soviet or witness records.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "97582e53-7e38-45dc-8d20-bcc2f3b696cb",
+      "locator": "reported death of Netaji",
+      "text_sha256": "c673b3e9bed4cb7382cd41bd93e0f77b4a0defd0d9c002bcab6d6d24362f24b6",
+      "excerpt_preview": "he Commission records that earlier inquiries examined the reported death of Netaji Subhas Chandra Bose in an air crash on 18 August 1945 at Taihoku.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

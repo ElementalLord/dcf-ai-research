@@ -1,0 +1,37 @@
+{
+  "source_id": "5c3c5ad5-873b-4715-9d44-f224221f0604",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_kind": "Temple inscription recording endowments and personnel",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Brihadisvara Temple: Inscription No. 66. Indira Gandhi National Centre for the Arts. https://ignca.gov.in/brhadisvaratemple/VIMAN/INSCRIPTIONS/66.html",
+    "original_work_identity": {},
+    "publication_year": 1014,
+    "publisher_or_institution": "Indira Gandhi National Centre for the Arts",
+    "rights_or_access_note": "Short documented research excerpts only; contemporary inscriptions, later chronicle tradition and modern scholarship are kept distinct.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Brihadisvara Temple: Inscription No. 66",
+    "url": "https://ignca.gov.in/brhadisvaratemple/VIMAN/INSCRIPTIONS/66.html"
+  },
+  "claim_ids": [
+    "288e111f-5069-4c6a-aa2f-4c240e49505b",
+    "7be84cc4-eb59-4005-9a4d-7877c49d5d1c",
+    "fb9f8d6a-3d9a-4d78-8454-72e8c0243c6d"
+  ],
+  "passages": [
+    {
+      "chunk_id": "7a0a9689-d4cb-4392-a726-3c6175452086",
+      "locator": "produce of certain land",
+      "text_sha256": "6e9522457fc00c00dd9b490d4a274690016f71b6dc3d51281ea53353d9a5caa4",
+      "excerpt_preview": "his long inscription records an order of King Rajarajadeva by which he assigned the produce of certain land to men who had to perform various services connected with the temple and to four hundred dancing-girls transferred to the Rajarajesv",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

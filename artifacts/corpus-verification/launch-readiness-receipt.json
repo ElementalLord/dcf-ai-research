@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-19",
+  "environment": "isolated local Supabase staging only",
+  "original_claims": 1585,
+  "decision_ledger_records": 319,
+  "undecided_legacy_decisions": 1266,
+  "active_reviewed_claims": 271,
+  "needs_review_claims": 1309,
+  "rejected_claims": 5,
+  "original_source_rows": 473,
+  "active_source_chunks": 233,
+  "citation_mismatches": 46,
+  "citation_repaired": 2,
+  "citation_quarantined": 44,
+  "all_unresolved_launch_holds": 94,
+  "held_active_claims": 0,
+  "held_active_chunks": 0,
+  "cache_rows": {
+    "answer": 0,
+    "live_research": 0,
+    "web_search": 0
+  },
+  "strict_stage_tests_passed": 60,
+  "mocked_transactional_admission_tests_passed": 5,
+  "full_non_db_tests_passed": 409,
+  "real_paid_provider_tests": "not run; cost cap not authorized",
+  "research_spend_usd": 0,
+  "real_page_probe": "fetched one Stanford Encyclopedia page; relevant date passage falsely rejected; no admission",
+  "production_changed": false
+}

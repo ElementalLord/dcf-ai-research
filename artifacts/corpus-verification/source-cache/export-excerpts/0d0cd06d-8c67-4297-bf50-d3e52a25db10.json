@@ -1,0 +1,59 @@
+{
+  "source_id": "0d0cd06d-8c67-4297-bf50-d3e52a25db10",
+  "source": {
+    "author": "Swami Vivekananda",
+    "authority_metadata": {},
+    "citation": "Swami Vivekananda. We Help Ourselves, Not the World. Complete Works of Swami Vivekananda. https://www.ramakrishnavivekananda.info/vivekananda/volume_1/karma-yoga/we_help_ourselves.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Complete Works of Swami Vivekananda",
+    "rights_or_access_note": "Publicly accessible page; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "We Help Ourselves, Not the World",
+    "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/karma-yoga/we_help_ourselves.htm"
+  },
+  "claim_ids": [
+    "18d820dd-eab8-4d9d-997b-1c0bcd090257",
+    "7ea0c5ca-a508-43fa-8a3e-083185bfe282",
+    "b54df2bf-ca5f-4b79-9aa6-e8d8569b32bc",
+    "fe04b8ba-8a2d-4acc-a8f3-f30508dbb4e4"
+  ],
+  "passages": [
+    {
+      "chunk_id": "3e204b12-215a-4971-8a24-8213819cf452",
+      "locator": "We Help Ourselves, Not the World",
+      "text_sha256": "0fc4034478d98e5428fbf979f752255541bc648e6873ab7a2c962508285bb4cb",
+      "excerpt_preview": ", He sleeps not; He is working incessantly; all the changes and manifestations of the world are His. Thirdly, we ought not to hate anyone. This world will always continue to be a mixture of good and evil. Our duty is to sympathise with the ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "71967d22-7aed-47a1-9c1b-936b097c66d1",
+      "locator": "We Help Ourselves, Not the World",
+      "text_sha256": "5cb6ad64ddd0efdc4cdf179b1725d7659f591881883c8da8c1371d46debaa2c8",
+      "excerpt_preview": "ped such and such people. It is a foolish thought, and all foolish thoughts bring misery. We think that we have helped some man and expect him to thank us, and because he does not, unhappiness comes to us. Why should we expect anything in r",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "95cc5b20-eb22-4ff5-a10d-fd76edae32cc",
+      "locator": "We Help Ourselves, Not the World",
+      "text_sha256": "2cdbe4a5ca8bfe3cfe6dd306427664f60151071b91ee0f7c20dcf3ae086429cb",
+      "excerpt_preview": "an who can really make a distinction between the sin and the sinner. It is easy to say so. If we can distinguish well between quality and substance, we may become perfect men. It is not easy to do this. And further, the calmer we are and th",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ff4b61bc-aa52-410d-ba91-7941ff9533d6",
+      "locator": "We Help Ourselves, Not the World",
+      "text_sha256": "7d84154c69a1501e702da8f5e7fa26ff69a1712195bc2d400df86db636807994",
+      "excerpt_preview": "is it not a blasphemy to say that the world needs our help? We cannot deny that there is much misery in it; to go out and help others is, therefore, the best thing we can do, although in the long run, we shall find that helping others is on",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

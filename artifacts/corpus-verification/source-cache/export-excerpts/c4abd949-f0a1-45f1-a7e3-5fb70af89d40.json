@@ -1,0 +1,55 @@
+{
+  "source_id": "c4abd949-f0a1-45f1-a7e3-5fb70af89d40",
+  "source": {
+    "author": "Romila Thapar",
+    "authority_metadata": {
+      "source_kind": "Modern historical reconstruction; book description and cited scholarly interpretation, not a primary record",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Romila Thapar. Asoka and the Decline of the Mauryas. Oxford University Press. https://global.oup.com/academic/product/asoka-and-the-decline-of-the-mauryas-9780195644456",
+    "original_work_identity": {},
+    "publication_year": 1997,
+    "publisher_or_institution": "Oxford University Press",
+    "rights_or_access_note": "Short documented research excerpts only; source layer is shown so translation, later tradition and modern scholarship are not conflated.",
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "Asoka and the Decline of the Mauryas",
+    "url": "https://global.oup.com/academic/product/asoka-and-the-decline-of-the-mauryas-9780195644456"
+  },
+  "claim_ids": [
+    "1b5e1eba-52b7-4215-9418-bb1015f37c2f",
+    "1cb83f16-79df-43a6-9d3d-58cf3414e2f4",
+    "25535445-9679-47dc-a06c-5ade31a8068b",
+    "4ff3c65f-5843-499a-8699-ca2d458dcb35",
+    "8448136e-6ede-4fcc-ab0c-4821bf102a72"
+  ],
+  "passages": [
+    {
+      "chunk_id": "384a5bd6-26ca-493b-96a6-a6575085c590",
+      "locator": "abolition of coercive imperial government",
+      "text_sha256": "8089191777be0ab37f76172e22776cf1790a17de7d5977932ba56495ebce5c0b",
+      "excerpt_preview": "A policy of dhamma should not be equated automatically with a Buddhist state or with the abolition of coercive imperial government.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4668d2f0-5a6d-4665-b94f-ebdf4627e979",
+      "locator": "approximately 268 to 232 BCE",
+      "text_sha256": "cb9f29cb1ecda6f20739d0e7300506f5f938fe7deb0ce42a56efb103d2716a16",
+      "excerpt_preview": "The conventional reign dates are approximately 268 to 232 BCE, but the chronology of accession and the dating of particular inscriptions remain matters of reconstruction rather than dates supplied by a modern calendar in the edicts.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4c9ef236-dca5-41d3-958f-57527e97e86d",
+      "locator": "Mauryan state",
+      "text_sha256": "822525002e41dca0d817d33339e33218ddb7a05d013f2f546d683ab87304a1da",
+      "excerpt_preview": "omila Thapar’s study treats Asoka’s edicts as the principal evidence for reconstructing his reign and examines the Mauryan state, dhamma, Buddhism and the later decline of the dynasty.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,508 @@
+[
+  {
+    "claim_id": "25c136e6-160b-4f03-ad54-859388b163ff",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "An 1851–52 education report quoted by Hari Narake records Jyotirao educating Savitribai at home and preparing her to teach, evidence that her formal public role followed learning after marriage.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Hari Narake cites government records for Jyotirao Phule's education of Savitribai at home after marriage and an 1851 Bombay Guardian report concerning her further education; he also records her teacher training in Ahmednagar and Pune.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF pp. 10–11, lines 300–311",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The original conflated government records with the newspaper report. Narake distinguishes them.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "7ac96059-1720-4e25-98ce-2e8ec2971b4e",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "Narake reports teacher training at Farrar’s institution in Ahmednagar and Mitchell’s Normal School in Pune; her preparation should not be reduced to a story of selfless courage without professional learning.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Narake reports teacher training at Farrar’s institution in Ahmednagar and Mitchell’s Normal School in Pune; her preparation should not be reduced to a story of selfless courage without professional learning.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF p. 10, lines 300–315",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Narake explicitly describes training at Farrar's institution and Mitchell's Normal School; the claim attributes the account.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "8787018f-bd39-4e41-ba16-55da7c58fc1e",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "Savitribai died of plague on 10 March 1897 while involved in epidemic relief; the NCERT essay body and the university graphic biography agree on this date, unlike the NCERT cover’s inconsistent 19 March entry.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Hari Narake's essay dates Savitribai Phule's death during plague relief to 10 March 1897, while the cover chronology of the same NCERT booklet says 19 March; the discrepancy requires checking against a contemporary death record.",
+    "epistemic_type": "CONTESTED",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF cover p. 0, line 48; essay pp. 25–26, lines 875–887",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The conflict is visible within the inspected NCERT booklet. The original's separate university biography agreement was not checked here and is omitted.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ba565e39-49a9-4e56-bd5f-fd1b8ff761df",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "Savitribai Phule was born on 3 January 1831 at Naigaon in the Satara region; her later educational work developed in nineteenth-century western India.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Savitribai Phule was born on 3 January 1831 at Naigaon in the Satara region; her later educational work developed in nineteenth-century western India.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF p. 10, lines 293–295",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Narake directly supplies the date and village; the surrounding western-India context follows the documented school activity.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b24333d3-f62f-4c66-b017-136298ac3ff9",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "Narake’s account describes Savitribai assisting widows in childbirth and caring for their children, linking women’s safety to practical support rather than moral condemnation.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Narake’s account describes Savitribai assisting widows in childbirth and caring for their children, linking women’s safety to practical support rather than moral condemnation.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF p. 19, lines 621–645",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The historian's account directly describes the widow shelter, childbirth assistance and care for children.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "d0445e5b-2692-486f-ba48-9206c4d11420",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "During Pune’s plague outbreak in 1897, Savitribai worked with her physician son Yeshwant to provide treatment and bring patients to a hospital, according to Narake.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "During Pune’s plague outbreak in 1897, Savitribai worked with her physician son Yeshwant to provide treatment and bring patients to a hospital, according to Narake.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF pp. 25–26, lines 868–887",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Narake directly describes Yeshwant's hospital and Savitribai bringing patients there.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "67488e84-8936-4b12-8626-03907d611ae2",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "Satyashodhak marriage pledges included education and equal rights for women, according to Narake’s history, connecting gender equality with reform of marriage practice.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Satyashodhak marriage pledges included education and equal rights for women, according to Narake’s history, connecting gender equality with reform of marriage practice.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF p. 22, lines 750–755",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The passage records the marriage pledge of education and equal rights for women.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a4cabecf-a0fc-4001-ab58-d44c11b9077d",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "The Satyashodhak Samaj promoted low-cost marriages without priestly mediation or dowry, contesting social authority through practical changes in family institutions.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Satyashodhak Samaj promoted low-cost marriages without priestly mediation or dowry, contesting social authority through practical changes in family institutions.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF pp. 21–22, lines 726–740",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Narake directly describes priestless, low-cost marriages without dowry.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "506dddf0-81f1-406f-b089-5b25ebb460a3",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "Narake interprets Savitribai’s move from the household into public teaching as a significant change in women’s public life; the significance concerns access to authority and knowledge, not an unqualified claim that no woman taught before her.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Narake interprets Savitribai’s move from the household into public teaching as a significant change in women’s public life; the significance concerns access to authority and knowledge, not an unqualified claim that no woman taught before her.",
+    "epistemic_type": "SCHOLARLY_INTERPRETATION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF p. 10, lines 309–315",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The wording names Narake and qualifies his interpretive claim about public life.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "7bfdd484-7601-4e98-9604-7a64d81643b9",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "Archival documents discussed by Narake date three girls’ schools at Chiplunkar Wada, Rasta Peth and Vetal Peth to 1851–52, showing expansion and reorganization after the initial 1848 initiative.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Archival documents discussed by Narake date three girls’ schools at Chiplunkar Wada, Rasta Peth and Vetal Peth to 1851–52, showing expansion and reorganization after the initial 1848 initiative.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF pp. 13–14, lines 420–435",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Narake reports the archival application and the three named schools with 1851–52 dates.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "944f6918-7e13-42cf-9843-2b07e604dce2",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "Narake credits Savitribai with inspiring and financing an early Satyashodhak marriage in December 1873, grounding her organizational role in an actual event.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Narake credits Savitribai with inspiring and financing an early Satyashodhak marriage in December 1873, grounding her organizational role in an actual event.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF pp. 21–22, lines 726–740",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The passage says Savitribai inspired the first marriage and bore its expenses, and dates it 25 December 1873.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b3a996c1-ea1a-48d3-8fc3-ee5a346d4541",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "After Jyotirao’s death in 1890, Savitribai continued leading Satyashodhak activity; her public contribution extended beyond work performed while her husband was alive.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "After Jyotirao’s death in 1890, Savitribai continued leading Satyashodhak activity; her public contribution extended beyond work performed while her husband was alive.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF p. 25, lines 837–869",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The passage explicitly says she led the movement after Jyotirao's death and chaired its 1893 conference.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "86c4920b-5175-4c8d-898d-5517b8e3dc16",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "NCERT’s memorial-lecture programme places Savitribai among educational thinkers and practitioners, showing later recognition of her contribution to public education and social equality.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "NCERT’s memorial-lecture programme places Savitribai among educational thinkers and practitioners, showing later recognition of her contribution to public education and social equality.",
+    "epistemic_type": "MODERN_RECEPTION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF pp. 6–7, lines 150–170, 183–187",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "NCERT states the memorial series' educational recognition purpose and lists Savitribai's lecture.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "263c076a-5504-4784-a30c-3167859c3981",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "The Phules identified poverty and lack of interest as barriers to attendance and used practical support and relevant curricula to retain poorer pupils, according to Narake.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Phules identified poverty and lack of interest as barriers to attendance and used practical support and relevant curricula to retain poorer pupils, according to Narake.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF p. 16, lines 518–537",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Narake reports poverty and disinterest as drop-out causes, with practical financial and curriculum responses.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "2f80f915-ba83-48f9-add8-29b559ff4ef3",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "Parent literacy and outreach to Dalit-Bahujan communities formed part of the Phules’ educational project, recognizing that a child’s access to learning depended on family and social conditions.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Parent literacy and outreach to Dalit-Bahujan communities formed part of the Phules’ educational project, recognizing that a child’s access to learning depended on family and social conditions.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF p. 16, lines 527–537",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The passage reports community outreach and parent literacy; the claim's causal phrasing is a bounded interpretation of those practices.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "8391cad4-a1f8-4d36-8d82-a6f539c7ec14",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "The school report of 1852 proposed a department for useful trades and crafts so pupils could support themselves after leaving school, connecting education to material independence.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The school report of 1852 proposed a department for useful trades and crafts so pupils could support themselves after leaving school, connecting education to material independence.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF p. 16, lines 518–526",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Narake reproduces the 1852 report's proposed industrial department and its stated purpose.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "868f69cb-5892-4a43-bdf7-a77627dd123f",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "Narake describes the Phules’ educational programme as vocational and trade-oriented, intended to support self-reliance and independent thought; this was a shared institutional programme, not a claim that Savitribai alone designed every method.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Narake describes the Phules’ educational programme as vocational and trade-oriented, intended to support self-reliance and independent thought; this was a shared institutional programme, not a claim that Savitribai alone designed every method.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF p. 16, lines 518–526",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The passage explicitly attributes vocational education and self-reliance to both Phules.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "c88fb96f-4659-4de7-ba26-1bf867ccf4ad",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "Savitribai served as headmistress in the Phules’ school network; her contribution included educational responsibility and organization, beyond being Jyotirao’s spouse.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Savitribai served as headmistress in the Phules’ school network; her contribution included educational responsibility and organization, beyond being Jyotirao’s spouse.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF pp. 14–15, lines 430–435 and 473–484",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The archival reports as cited identify her as headmistress and describe her unpaid school work.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "e71d639e-7dfa-4afa-9efc-cad089bec84c",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "The educational ideal attributed to the Phules emphasized judging truth and untruth and encouraging creativity, rather than treating schooling as memorization alone.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The educational ideal attributed to the Phules emphasized judging truth and untruth and encouraging creativity, rather than treating schooling as memorization alone.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF pp. 16–17, lines 544–557",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Narake states the right/wrong and truth/untruth ideal and describes encouragement of creativity.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "6e42d0c1-5b81-4d73-a01d-ec209673256c",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "Descriptions of the Phules as pioneers must be qualified: Narake’s history mentions an existing missionary girls’ school at Ahmednagar, so “India’s first girls’ school” should not be read as a literal claim that all girls’ schooling began with them.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Hari Narake describes Jyotirao Phule visiting Farrar's existing girls' school at Ahmednagar before beginning the Phules' school work in Pune; a claim that they founded India's first girls' school needs this qualification.",
+    "epistemic_type": "SCHOLARLY_ATTRIBUTION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF p. 13, lines 401–409",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The inspected passage directly establishes an earlier girls' school in Ahmednagar; the revised wording avoids an unqualified national first.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "56a15ec9-f3c4-47ec-8a62-6be756266d69",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "The adapted poem Learn English addresses Shudras and Ati-Shudras and links learning English to release from caste authority; it should be read as her emancipatory poetic argument, not a blanket endorsement of colonial rule.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The adapted poem Learn English addresses Shudras and Ati-Shudras and links learning English to release from caste authority; it should be read as her emancipatory poetic argument, not a blanket endorsement of colonial rule.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF p. 5, lines 136–149",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The adapted poem directly addresses Shudras and Ati-Shudras and links English learning with escaping caste authority; adaptation status is preserved.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "5d478bab-d1b1-4dc5-905a-fbc0aa021521",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "Savitribai published Kavyaphule in 1854; her writing addressed social and educational questions alongside nature and instruction, making her a thinker and author as well as a schoolteacher.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Savitribai published Kavyaphule in 1854; her writing addressed social and educational questions alongside nature and instruction, making her a thinker and author as well as a schoolteacher.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF p. 27, lines 931–947",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Narake dates the anthology to 1854 and describes its subject range.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "789ce60a-d2bc-4620-9b53-1ccc3659d85e",
+    "personality": "Savitribai Phule",
+    "original_claim_text": "In NCERT’s adapted version of The Greatest Wealth, Savitribai presents knowledge as more valuable than material riches and urges concentrated study; the English text is an adaptation, not her exact original Marathi wording.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In NCERT’s adapted version of The Greatest Wealth, Savitribai presents knowledge as more valuable than material riches and urges concentrated study; the English text is an adaptation, not her exact original Marathi wording.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "66e60995-852c-477c-8aaa-4ce3fe4c6d13",
+        "url": "https://www.ncert.nic.in/pdf/publication/otherpublications/Memorial-Lectures-Series/FINAL%20COVER%20OF%20SAVIRTIBAI%20PHULE.pdf",
+        "locator": "PDF p. 1, lines 51–81",
+        "source_authority": "NCERT 2009 memorial booklet; historian Hari Narake's essay or reproduced source text, full PDF inspected 2026-10-19",
+        "independence_assessment": "One scholarly source work, sometimes quoting archival material; its reproduced records are not counted as independent corroboration without the archival originals.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The NCERT adaptation directly compares knowledge and riches and urges study; the claim distinguishes adaptation from Marathi original.",
+    "original_source_inspected": true,
+    "material_limitation": "NCERT booklet is a retrospective secondary account; archival originals and conflicting dates require separate checking for broader claims.",
+    "removal_reason": null
+  }
+]

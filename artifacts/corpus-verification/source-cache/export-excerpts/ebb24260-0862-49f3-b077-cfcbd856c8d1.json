@@ -1,0 +1,52 @@
+{
+  "source_id": "ebb24260-0862-49f3-b077-cfcbd856c8d1",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T05:42:00.329Z"
+    },
+    "citation": "Cabinet condoles death of former President Dr. A. P. J. Abdul Kalam. Press Information Bureau, Government of India. https://www.pib.gov.in/newsite/PrintRelease.aspx?lang=2&reg=48&relid=123859",
+    "original_work_identity": {},
+    "publication_year": 2015,
+    "publisher_or_institution": "Press Information Bureau, Government of India",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Cabinet condoles death of former President Dr. A. P. J. Abdul Kalam",
+    "url": "https://www.pib.gov.in/newsite/PrintRelease.aspx?lang=2&reg=48&relid=123859"
+  },
+  "claim_ids": [
+    "0dedc81e-0ba7-431d-ae47-4eb479126c99",
+    "edce674b-2dd8-43bf-ab84-5eb73aa8585a",
+    "fa8bd058-51a2-45bf-847d-b90dcf435fc4"
+  ],
+  "passages": [
+    {
+      "chunk_id": "37300558-49ad-4a0e-9bc7-32847dff5db4",
+      "locator": "DRDO, tenure",
+      "text_sha256": "8d5518e9ae4a95903782b7499463ede9a0d849034679b203ac552a908cf709fb",
+      "excerpt_preview": "Kalam was the Scientific Adviser to Defence Minister and Secretary, Department of Defence Research & Development during 1992-99. During this period, strategic missile systems were developed and the Pokhran-II nuclear tests were conducted.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "84128480-9242-4dfc-b22b-f9ae1e5dcbde",
+      "locator": "DRDO, national advisory role",
+      "text_sha256": "3d1e84bfd2e334268ea70157275cb9dcd5c88d2af886a79ad56050e4e4c55eb1",
+      "excerpt_preview": "Kalam had served as the Principal Scientific Advisor to the Government of India, from 1999 to 2001 and was responsible for evolving policies, strategies and missions for many development applications and piloted India Millennium Mission 202",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d3f5f95c-f84e-4583-99d7-03fabf6aa9c3",
+      "locator": "DRDO, missile leadership",
+      "text_sha256": "1afefef9d292f48308f7223d320732a77a9fe55dd379cd53dcbc3526883b620a",
+      "excerpt_preview": "Kalam was responsible for the development and operationalisation of AGNI and PRITHVI Missiles. He gave thrust to self-reliance in defence systems by introducing Light Combat Aircraft.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

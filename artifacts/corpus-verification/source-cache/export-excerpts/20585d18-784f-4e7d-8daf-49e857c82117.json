@@ -1,0 +1,54 @@
+{
+  "source_id": "20585d18-784f-4e7d-8daf-49e857c82117",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.26, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 26 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga26/bala_26_prose.htm"
+  },
+  "claim_ids": [
+    "1e21747b-e3a9-40aa-8aaf-2992868e32a1",
+    "2039c724-d79f-43e5-ae9d-553870bffa1e",
+    "2f4ad300-608b-4b39-b15a-35a2f553150e",
+    "439a4a25-4480-4a17-a828-4cb25ddb68b5",
+    "bc2b59e2-d9ff-4d95-908e-9dc0e491b2ed"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0d13a212-8365-4a87-8d31-4148b91f702d",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\nSarga 26 in Prose",
+      "text_sha256": "bee8c6573a0b890ac4bd096c82d581da9650311bb7bff8f0c11b78c3bbd78e35",
+      "excerpt_preview": "\"Lakshmana, see that yakshii's grisly and ghastly physique, seeing which hearts of cowards are prone  to burst. She is unstoppable and has magical powers, is't, you may see now how I will make her to  readily retreat by lopping off her ears",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "2c5b47db-6540-4f24-9cc3-6db9940c0037",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\nSarga 26 in Prose",
+      "text_sha256": "72d19d81a59eb6c773ddb16af24ad678727a0c34bad2adb588a7c6993ecfff33",
+      "excerpt_preview": "Rama encounters his first problem-female demoness Tataka, also called as Taadaka, and   eliminates her at the orders of sage Vishvamitra. This is a crucial test put to Rama by   Vishvamitra in ascertaining whether Rama is the follower of dh",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d16508d6-1660-4988-b84f-4fd1d2b71a40",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\nSarga 26 in Prose",
+      "text_sha256": "e16f275e675afcd263b5072e2971be3c391e9773a68992bd1483ae2bed83b518",
+      "excerpt_preview": "These are the sons like missiles of Krishaashava Prajaapati. About them, the divine weaponry and  their birth, c.f. 21st sarga/chapter, verse 10 to 20.  \"Rama is steadfast in following your assignments and thus he is the worthy receiver of ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

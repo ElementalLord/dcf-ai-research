@@ -1,0 +1,44 @@
+{
+  "source_id": "ae8abe7a-5576-4e83-86f0-bfcd4ea240f6",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_kind": "Archaeological and art-historical evaluation",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "ICOMOS Evaluation: Chola Temples (India). UNESCO / ICOMOS. https://whc.unesco.org/document/153044",
+    "original_work_identity": {},
+    "publication_year": 1987,
+    "publisher_or_institution": "UNESCO / ICOMOS",
+    "rights_or_access_note": "Short documented research excerpts only; contemporary inscriptions, later chronicle tradition and modern scholarship are kept distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "ICOMOS Evaluation: Chola Temples (India)",
+    "url": "https://whc.unesco.org/document/153044"
+  },
+  "claim_ids": [
+    "5609a45d-ff75-4996-bc9f-556be05c0dba",
+    "9f3cd5dc-af3c-4e0d-b1db-5c082264028f"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0366d731-6301-44c8-a03d-2abb04386503",
+      "locator": "built in a few years",
+      "text_sha256": "04051d21252fcc98528aa0291717df58c2aa714de97bd09d0ca9e3b7bf55577b",
+      "excerpt_preview": "he great temple of Tanjore was built in a few years, from 1003 to 1010, during the reign of Rajaraja, 985–1014, founder of the Chola Empire which spread throughout southern India, part of Ceylon and the Maldive and Lacadive archipelagos.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ebb4f6ef-ab5b-4672-ad8e-fc256aba7df0",
+      "locator": "Chola civilization",
+      "text_sha256": "20d3ea38d78f287cf76c5c79b6ad8699957525d1e0d136691ada5d3ba44e0be9",
+      "excerpt_preview": "The sanctuary illustrates Chola civilization of the tenth to thirteenth centuries.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

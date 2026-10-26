@@ -1,0 +1,34 @@
+{
+  "source_id": "da82899f-17c4-4fbd-aa94-42b7f5a85b1c",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:26:42.068Z"
+    },
+    "citation": "The Raman Effect: Investigation of Molecular Structure by Light Scattering (1929). Indian Academy of Sciences repository. https://repository.ias.ac.in/50709/1/24_pub.pdf",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Indian Academy of Sciences repository",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "The Raman Effect: Investigation of Molecular Structure by Light Scattering (1929)",
+    "url": "https://repository.ias.ac.in/50709/1/24_pub.pdf"
+  },
+  "claim_ids": [
+    "0a610ebd-5ee7-4c87-a619-82bcbc9cf4c8"
+  ],
+  "passages": [
+    {
+      "chunk_id": "b0b9d05a-f004-4762-968d-26fc7817eccf",
+      "locator": "1929 original paper",
+      "text_sha256": "f8bee01b4240943c163139d4c712a8fa2e35d3811c2a0391af0b477aae503fe0",
+      "excerpt_preview": "Trans. Faraday Soc. 25 781-792 (1929) The Raman effect Investigation of molecular structure by light scattering C V RAMAN (Received 9th September 1929) PART I 1. Introduction and historical In the scheme of discussion organised by the Farad",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

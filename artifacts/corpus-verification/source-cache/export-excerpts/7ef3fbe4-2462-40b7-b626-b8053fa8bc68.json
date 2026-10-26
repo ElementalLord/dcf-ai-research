@@ -1,0 +1,52 @@
+{
+  "source_id": "7ef3fbe4-2462-40b7-b626-b8053fa8bc68",
+  "source": {
+    "author": "Samantha Hill",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Samantha Hill. The Thinking Plant’s Man. Science History Institute. https://www.sciencehistory.org/stories/magazine/the-thinking-plants-man/",
+    "original_work_identity": {},
+    "publication_year": 2024,
+    "publisher_or_institution": "Science History Institute",
+    "rights_or_access_note": "Short documented research excerpts only. Primary claims, archival records, and later interpretations stay distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "The Thinking Plant’s Man",
+    "url": "https://www.sciencehistory.org/stories/magazine/the-thinking-plants-man/"
+  },
+  "claim_ids": [
+    "2a3129a6-aa62-48db-a8c1-d7adfb3f494c",
+    "82f23ed7-7980-4095-a8e7-b45013027489",
+    "84769235-69da-4869-a8f3-5536adafc5ed"
+  ],
+  "passages": [
+    {
+      "chunk_id": "526dc9a8-de9f-4480-a072-cf0fd77b8198",
+      "locator": "Royal Society did not publish",
+      "text_sha256": "871fa39de0c073ffd2eaafd646874651cce3c161466be1f092deb6fcc0d987f3",
+      "excerpt_preview": "It notes that the Royal Society did not publish his work on electrical response in plants for more than a decade and that critics questioned both the analogies and the evidentiary basis.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a992f188-42b8-4aef-9628-bb267c1f4206",
+      "locator": "later revival of interest in long-distance electrical signaling",
+      "text_sha256": "2f3f17cd08ff6951ac4bb810e0f118c4a763d8675cb3f826c6665e0529cdaece",
+      "excerpt_preview": "The article also describes a later revival of interest in long-distance electrical signaling in plants.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b98de119-9fdf-44db-8003-0786a2b70c1b",
+      "locator": "conclusions about intelligence, learning and memory",
+      "text_sha256": "16aef055fc4ba2ae1e10ae6f443b48f6f4b91949e4dc2f0511affe1d9f510dce",
+      "excerpt_preview": "he Science History Institute recounts that Bose’s plant experiments impressed some contemporaries but that his conclusions about intelligence, learning and memory in plants met strong criticism.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

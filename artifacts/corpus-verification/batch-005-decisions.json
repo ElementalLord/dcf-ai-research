@@ -1,0 +1,356 @@
+[
+  {
+    "claim_id": "08cff6a7-0e1c-4a21-9b03-23087f2ea745",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "The Order's biography claims he was \"the first religious prophet recorded in history\" to preach the harmony of religions, yet its own account says Keshab Sen was discovering the harmony of religions around the time of their first contact — a superlative best read as devotional reception, not history.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In his introduction to The Gospel of Sri Ramakrishna, Swami Nikhilananda calls Ramakrishna the first religious prophet in recorded history to teach harmony among religions. This is the Order's retrospective devotional assessment, not an independently established priority claim.",
+    "epistemic_type": "MODERN_RECEPTION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/summary_of.htm",
+        "locator": "lines 3–9",
+        "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+        "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech.",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/keshab.htm",
+        "locator": "lines 3–7",
+        "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+        "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The summary directly makes the superlative claim. The adjacent Keshab chapter says Keshab's harmony concept was deepened through contact with Ramakrishna, so the superlative cannot be adopted as an established historical ranking.",
+    "original_source_inspected": true,
+    "material_limitation": "Order/disciples' retrospective accounts are primary for the reported tradition and textual record, but are not independent corroboration of private events or the precision of historical dialogue.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "2d6d5273-b58d-4fc2-977c-df009060e4bd",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "The Order contrasts the Brahmo leader Keshab, an orator and writer who stressed social reform and treated Hindu images as allegory, with Ramakrishna, who \"hardly knew how to write his own name\", disliked lecturing and held God-realization the only goal of life.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Order contrasts the Brahmo leader Keshab, an orator and writer who stressed social reform and treated Hindu images as allegory, with Ramakrishna, who \"hardly knew how to write his own name\", disliked lecturing and held God-realization the only goal of life.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/keshab.htm",
+        "locator": "lines 3–7",
+        "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+        "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Nikhilananda's Keshab chapter explicitly makes each comparison in the claim. The wording attributes these judgments to the Order.",
+    "original_source_inspected": true,
+    "material_limitation": "Order/disciples' retrospective accounts are primary for the reported tradition and textual record, but are not independent corroboration of private events or the precision of historical dialogue.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "53c4046e-5fef-439f-b594-5f84b61f63b0",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "The Order says Ramakrishna remained \"totally untouched by the idea of being a teacher\", saying that the ideas of being a guru, a father and a master pricked his flesh like thorns, yet was an extraordinary teacher.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Order says Ramakrishna remained \"totally untouched by the idea of being a teacher\", saying that the ideas of being a guru, a father and a master pricked his flesh like thorns, yet was an extraordinary teacher.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/masters_method.htm",
+        "locator": "lines 2–4",
+        "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+        "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Order's chapter contains both the teacher characterization and the reported guru/father/master saying. These remain attributed to that account.",
+    "original_source_inspected": true,
+    "material_limitation": "Order/disciples' retrospective accounts are primary for the reported tradition and textual record, but are not independent corroboration of private events or the precision of historical dialogue.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "7180fef3-c2ab-4874-9ebf-63b949cda6c2",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "In the Order's account of their first meetings, Narendranath, a Brahmo college student of eighteen, sang for Ramakrishna, who took him aside and wept that he had come \"very late\"; Narendra, startled, thought \"He must be stark mad\".",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In the Order's account of their first meetings, Narendranath, a Brahmo college student of eighteen, sang for Ramakrishna, who took him aside and wept that he had come \"very late\"; Narendra, startled, thought \"He must be stark mad\".",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/narendra.htm",
+        "locator": "lines 8–15",
+        "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+        "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Order's retrospective narrative directly gives Narendra's age, Brahmo affiliation, song, reported private exchange, and reported reaction. The claim clearly says it is the Order's account.",
+    "original_source_inspected": true,
+    "material_limitation": "Order/disciples' retrospective accounts are primary for the reported tradition and textual record, but are not independent corroboration of private events or the precision of historical dialogue.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b0d5d60d-c2dc-43f8-9fe3-34a21ce75cff",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "In the Order's account Ramakrishna was grateful to the Divine Mother for sending him a disciple who doubted his realizations, often asking Narendra to test him as money-changers test coins, and laughing at his biting criticism of his samadhi.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In the Order's account Ramakrishna was grateful to the Divine Mother for sending him a disciple who doubted his realizations, often asking Narendra to test him as money-changers test coins, and laughing at his biting criticism of his samadhi.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/introduction/narendra.htm",
+        "locator": "lines 20–22",
+        "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+        "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The chapter directly recounts Narendra's skepticism, Ramakrishna's response, and the money-changer comparison. This is attributed retrospective narrative, not independent observation of private thoughts.",
+    "original_source_inspected": true,
+    "material_limitation": "Order/disciples' retrospective accounts are primary for the reported tradition and textual record, but are not independent corroboration of private events or the precision of historical dialogue.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0f36dc1e-79a2-465a-981b-77b75665f4d7",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "The Gospel's translator, Nikhilananda, adds a note that Ramakrishna's frequent phrase kamini-kanchan (\"woman and gold\") meant only \"lust and greed\" and that he used \"woman\" as a concrete term for the sex instinct when addressing male devotees; critics dispute such translation choices.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In a note to his English Gospel, translator Swami Nikhilananda explains Ramakrishna's phrase kamini-kanchan ('woman and gold') as 'lust and greed' and says he used 'woman' for the sex instinct when addressing male devotees.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/volume_1/01_master_and_disciple.htm",
+        "locator": "translator's note 1, lines 243–246",
+        "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+        "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The original translator note directly supports the account of Nikhilananda's explanation. The separate assertion about critics disputing it has been removed because this decision did not establish that with checked criticism.",
+    "original_source_inspected": true,
+    "material_limitation": "Order/disciples' retrospective accounts are primary for the reported tradition and textual record, but are not independent corroboration of private events or the precision of historical dialogue.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1d81056a-92c0-4452-8cb1-ada016b09a58",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "After Ramakrishna's death in August 1886 the young disciples gathered at a house at Baranagore rented with help from the householder Surendra, which gradually became the first monastery of the Order.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "After Ramakrishna's death in August 1886 the young disciples gathered at a house at Baranagore rented with help from the householder Surendra, which gradually became the first monastery of the Order.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/volume_2/52_after_the_passing_away.htm",
+        "locator": "lines 4–12",
+        "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+        "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech.",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://belurmath.org/surendra-nath-mitra/",
+        "locator": "paragraph beginning 'After Sri Ramakrishna’s Maha Samadhi'",
+        "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+        "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech.",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://belurmath.org/ramakrishna-math-baranagar/",
+        "locator": "opening description",
+        "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+        "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The disciple chronicle identifies the post-death Baranagore house and Surendra's rental support; the Order's separate Surendra and Baranagar pages directly identify it as the first monastery. These are institutionally related accounts rather than independent scholarly corroboration.",
+    "original_source_inspected": true,
+    "material_limitation": "Order/disciples' retrospective accounts are primary for the reported tradition and textual record, but are not independent corroboration of private events or the precision of historical dialogue.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "41d4823f-d7c5-4757-bde5-316192902188",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "In M.'s record of 6 December 1884, Ramakrishna says that selfless work (karma yoga) is a way to God but very difficult and unsuited to the present age, and that helping others is the work of God alone; a man's duty is to take refuge in God.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In M.'s record of 6 December 1884, Ramakrishna says that selfless work (karma yoga) is a way to God but very difficult and unsuited to the present age, and that helping others is the work of God alone; a man's duty is to take refuge in God.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/volume_2/34_bankim_chandra.htm",
+        "locator": "6 December 1884 entry, lines 4 and 60–70",
+        "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+        "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "M.'s dated record directly states all three parts: selfless work as a path, difficulty in the present age, and the duty to seek refuge in God. This verifies what the Gospel records, not an independent verbatim transcript.",
+    "original_source_inspected": true,
+    "material_limitation": "Order/disciples' retrospective accounts are primary for the reported tradition and textual record, but are not independent corroboration of private events or the precision of historical dialogue.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "52dc3737-5124-467a-a553-0257baa6638e",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "He distinguishes the jnani, who reaches Brahman by negating the world step by step, from the vijnani, who then finds that the steps are made of the same material as the roof — that Brahman has itself become the universe and living beings.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In M.'s Gospel record, Ramakrishna contrasts the jnani, who reaches Brahman through 'not this, not this', with the vijnani, who sees the steps and roof as made of the same materials and sees Brahman manifested as the universe and living beings.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/volume_1/03_visit_to_vidyasagar.htm",
+        "locator": "5 August 1882 entry, lines 55–59",
+        "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+        "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Vidyasagar chapter directly supports the doctrinal contrast. Attribution to M.'s record was added so a theological position is not stated as an empirical fact.",
+    "original_source_inspected": true,
+    "material_limitation": "Order/disciples' retrospective accounts are primary for the reported tradition and textual record, but are not independent corroboration of private events or the precision of historical dialogue.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "9dfc87bf-82fa-41a1-b230-15ed33c2e01b",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Alongside his acceptance of all paths, M. records him telling a Brahmo devotee that the Eternal Religion of the rishis contains every form of worship, whereas \"the modern cults\" will last a few days and disappear — a reminder that his inclusiveness was framed within Hindu tradition.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Alongside his acceptance of all paths, M. records him telling a Brahmo devotee that the Eternal Religion of the rishis contains every form of worship, whereas \"the modern cults\" will last a few days and disappear — a reminder that his inclusiveness was framed within Hindu tradition.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/volume_1/20_rules.htm",
+        "locator": "entry preceding 23 March 1884, lines 74–76",
+        "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+        "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Gospel explicitly records this statement to Bhagavan Das, identified as a Brahmo devotee. The final clause is a transparent inference from the juxtaposition, not a claim that the prediction came true.",
+    "original_source_inspected": true,
+    "material_limitation": "Order/disciples' retrospective accounts are primary for the reported tradition and textual record, but are not independent corroboration of private events or the precision of historical dialogue.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a22646cc-d3b9-4e43-924a-dfda00d10d24",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Ramakrishna is recorded arguing that in the present age (Kaliyuga) people are too dependent on food and body-consciousness to say \"I am Brahman\"; those unable to give up worldly attachment should rather cherish the idea \"I am God's servant\" and follow devotion.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ramakrishna is recorded arguing that in the present age (Kaliyuga) people are too dependent on food and body-consciousness to say \"I am Brahman\"; those unable to give up worldly attachment should rather cherish the idea \"I am God's servant\" and follow devotion.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/volume_1/03_visit_to_vidyasagar.htm",
+        "locator": "5 August 1882 entry, lines 53–56",
+        "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+        "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The dated Vidyasagar passage directly gives the food/body-consciousness premise and recommended servant/devotee stance. The claim says 'is recorded arguing', preserving its status as reported teaching.",
+    "original_source_inspected": true,
+    "material_limitation": "Order/disciples' retrospective accounts are primary for the reported tradition and textual record, but are not independent corroboration of private events or the precision of historical dialogue.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "bc2dadea-f37a-41e6-96db-4b6df8faea15",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "In M.'s record of a conversation on 13 August 1882, Ramakrishna says God can be realized through all paths and that all religions are true, comparing the paths to stone stairs, wooden stairs, bamboo steps or a rope by which one reaches the same roof.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In M.'s record of a conversation on 13 August 1882, Ramakrishna says God can be realized through all paths and that all religions are true, comparing the paths to stone stairs, wooden stairs, bamboo steps or a rope by which one reaches the same roof.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/volume_1/04_advice_to_householders.htm",
+        "locator": "13 August 1882 entry, lines 4–15",
+        "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+        "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The dated Gospel section directly records the all-paths statement and roof/stairs/rope comparison. It is framed as what M. records, not an externally demonstrated religious proposition.",
+    "original_source_inspected": true,
+    "material_limitation": "Order/disciples' retrospective accounts are primary for the reported tradition and textual record, but are not independent corroboration of private events or the precision of historical dialogue.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0886e626-38d7-482f-bbbc-24db2fb27d60",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Visiting the scholar Vidyasagar on 5 August 1882, Ramakrishna is recorded saying that the Vedas, Puranas, Tantras and philosophies have been \"defiled\" by being spoken, while Brahman alone has not, since no one can say what it is; Vidyasagar is recorded replying that he had learnt something new.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Visiting the scholar Vidyasagar on 5 August 1882, Ramakrishna is recorded saying that the Vedas, Puranas, Tantras and philosophies have been \"defiled\" by being spoken, while Brahman alone has not, since no one can say what it is; Vidyasagar is recorded replying that he had learnt something new.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/volume_1/03_visit_to_vidyasagar.htm",
+        "locator": "5 August 1882 entry, lines 3, 33–39",
+        "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+        "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Vidyasagar chapter supplies the date, the teaching about uttered scripture and Brahman, and Vidyasagar's reported reaction. The wording identifies it as a recorded exchange.",
+    "original_source_inspected": true,
+    "material_limitation": "Order/disciples' retrospective accounts are primary for the reported tradition and textual record, but are not independent corroboration of private events or the precision of historical dialogue.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a4fcf4d2-e3e1-4230-bb9d-2f4770cec4b3",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "In a boat talk with Keshab Chandra Sen on 27 October 1882, Ramakrishna is recorded saying that God alone is the Teacher, that his own attitude toward God is that of a child toward its mother, and that human gurus can be had by the million but few want to be disciples.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In a boat talk with Keshab Chandra Sen on 27 October 1882, Ramakrishna is recorded saying that God alone is the Teacher, that his own attitude toward God is that of a child toward its mother, and that human gurus can be had by the million but few want to be disciples.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www.ramakrishnavivekananda.info/gospel/volume_1/05_the_master_and_keshab.htm",
+        "locator": "27 October 1882 entry, lines 4–5 and 165–169",
+        "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+        "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "M.'s dated steamboat account directly records the child/mother analogy and his statement about human gurus and disciples. The claim remains about what is recorded.",
+    "original_source_inspected": true,
+    "material_limitation": "Order/disciples' retrospective accounts are primary for the reported tradition and textual record, but are not independent corroboration of private events or the precision of historical dialogue.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "038f67fd-150f-47ea-92c3-c2d8cce51178",
+    "personality": "Ramakrishna Paramahamsa",
+    "original_claim_text": "Belur Math says that after Ramakrishna's death Sarada Devi, brought to Kolkata by his disciples, began to accept spiritual seekers as her disciples, becoming in its words \"the open portal to immortality for hundreds of people\" and embracing all without distinction.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Belur Math says that after Ramakrishna's death Sarada Devi, brought to Kolkata by his disciples, began to accept spiritual seekers as her disciples, becoming in its words \"the open portal to immortality for hundreds of people\" and embracing all without distinction.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://belurmath.org/sri-sarada-devi/",
+        "locator": "Leading the Sangha after the Master's Passing, lines 157–159",
+        "source_authority": "Swami Nikhilananda's published Gospel translation/introduction hosted on ramakrishnavivekananda.info, or Belur Math's institutional account; passage inspected 2026-10-19",
+        "independence_assessment": "Institutional or disciple/translator account; directly supports attributed wording or textual content, but does not independently prove private experiences or verbatim nineteenth-century speech.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Belur Math directly reports the disciples' bringing Sarada Devi to Kolkata and her subsequent acceptance of seekers. The honorific and universal embrace are attributed to the institution.",
+    "original_source_inspected": true,
+    "material_limitation": "Order/disciples' retrospective accounts are primary for the reported tradition and textual record, but are not independent corroboration of private events or the precision of historical dialogue.",
+    "removal_reason": null
+  }
+]

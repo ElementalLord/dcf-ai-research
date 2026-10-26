@@ -1,0 +1,752 @@
+[
+  {
+    "claim_id": "aa325491-b9d3-47d0-8ea9-0a4ede4e7379",
+    "personality": "Ashoka",
+    "original_claim_text": "The major edicts identify their issuer primarily as King Piyadasi, “Beloved of the Gods,” a royal titulary that foregrounds authority rather than a personal biography.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The major rock edicts identify their issuer as Devanampiya Piyadasi, conventionally translated as the king 'Beloved of the Gods, Piyadasi.'",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362",
+        "locator": "Major Rock Edicts, recurring royal titulary; especially II and XIII",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 250, 253 (PDF pages 1, 4)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The edicts repeatedly use this title. The original inference about foregrounding authority is removed because the inscription does not itself establish the author's purpose.",
+    "original_source_inspected": true,
+    "material_limitation": "The association of Piyadasi with Ashoka is a historical identification supported by other inscriptions, not a name stated in most major rock edicts.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "be5e3251-a901-4d3c-956b-1d82f7ad75be",
+    "personality": "Ashoka",
+    "original_claim_text": "Minor Rock Inscription evidence explicitly uses the name Ashoka, helping connect the named king with the Piyadasi of the larger inscriptional corpus.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The Maski version of Minor Rock Edict I names Devanampiya Ashoka, providing inscriptional evidence that connects the Ashoka name with the royal Devanampiya titulary used elsewhere.",
+    "epistemic_type": "HISTORICAL_FACT",
+    "evidence_references": [
+      {
+        "source_id": "ff913930-89f5-4f50-ac11-db6205f5a5b3",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=399",
+        "locator": "Maski Minor Rock Edict I",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 259 (PDF pages 10)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Maski version explicitly names Ashoka; this supports the identification without claiming every Piyadasi inscription independently names him.",
+    "original_source_inspected": true,
+    "material_limitation": "The name identification combines inscriptions from different sites.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "03029219-0bd4-4396-aa14-9cddf074e25a",
+    "personality": "Ashoka",
+    "original_claim_text": "Pillar Edict VII lists shade trees, mango groves, wells and rest houses as welfare measures, linking public works to the king’s dhamma program.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Pillar Edict VII lists shade trees, mango groves, wells and rest houses as welfare measures, linking public works to the king’s dhamma program.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "0662151b-0d88-4b60-b631-cedc9303e5b6",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=370",
+        "locator": "Pillar Edict VII, public works paragraph",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 258 (PDF pages 9)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Pillar VII lists shade trees, mango groves, wells, and rest houses in its catalogue of works for people and animals.",
+    "original_source_inspected": true,
+    "material_limitation": "A royal list of works is not independent proof that each work was completed everywhere claimed.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1e12002c-eeee-4f7d-b26c-648f36aa5a16",
+    "personality": "Ashoka",
+    "original_claim_text": "Pillar Edict III orders periodic official tours for dhamma instruction and other business, joining communication, inspection and administration.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Major Rock Edict III orders yuktas, rajukas and pradesikas to tour every five years for dhamma instruction and other official business.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": null,
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362",
+        "locator": "Major Rock Edict III, five-year circuits",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 251 (PDF pages 2)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The cited itinerary occurs in Major Rock Edict III; the original claim misidentified it as Pillar Edict III. The relevant rock inscription was checked directly.",
+    "original_source_inspected": true,
+    "material_limitation": "The edict records an order, not independent proof that every tour occurred.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "484c2601-2461-42e9-9899-d9b927065189",
+    "personality": "Ashoka",
+    "original_claim_text": "Major Rock Edict VI represents the king as seeking constant reports on people’s affairs, an inscriptional ideal of accessible, informed kingship.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Major Rock Edict VI represents the king as seeking constant reports on people’s affairs, an inscriptional ideal of accessible, informed kingship.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362",
+        "locator": "Major Rock Edict VI, reports and audiences",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 251 (PDF pages 2)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Rock Edict VI says reports may reach the king at any time and in several settings; this supports the stated inscriptional ideal.",
+    "original_source_inspected": true,
+    "material_limitation": "The edict cannot establish how accessible the king was in practice.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "6587fef5-f0f9-404d-a641-960ab1cc493c",
+    "personality": "Ashoka",
+    "original_claim_text": "Major Rock Edict XIV explains that multiple edicts were written in varied forms, direct evidence that inscriptions were a deliberate program of imperial communication.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Major Rock Edict XIV explains that multiple edicts were written in varied forms, direct evidence that inscriptions were a deliberate program of imperial communication.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362",
+        "locator": "Major Rock Edict XIV, short, medium, and expanded versions",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 254 (PDF pages 5)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Rock Edict XIV explicitly describes differently sized inscriptions, repetition, and geographic variation.",
+    "original_source_inspected": true,
+    "material_limitation": "Purpose is inferred from the king's own explanation, not from a surviving administrative plan.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "70b081cb-2344-4bd5-ba09-aca44565c67b",
+    "personality": "Ashoka",
+    "original_claim_text": "Pillar Edict IV orders a three-day respite for condemned prisoners, a specific intervention in punishment that should not be mistaken for abolition of capital punishment.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Pillar Edict IV orders a three-day respite for condemned prisoners, a specific intervention in punishment that should not be mistaken for abolition of capital punishment.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "0662151b-0d88-4b60-b631-cedc9303e5b6",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=370",
+        "locator": "Pillar Edict IV, condemned prisoners",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 257 (PDF pages 8)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Pillar IV grants a three-day delay to prisoners sentenced to death. Its continued reference to execution supports the claim's qualification.",
+    "original_source_inspected": true,
+    "material_limitation": "The order is not a measure of implementation.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "c00f9223-9075-4d15-afab-4f7771f185c3",
+    "personality": "Ashoka",
+    "original_claim_text": "The Separate Rock Edicts order urban officials to instruct people in dhamma and make regular tours, showing how moral policy was tied to administrative personnel.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Separate Kalinga Edict I instructs urban magistrates and provides for periodic inspection tours, linking the king's welfare language to named officials.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "052250de-cf26-4d76-80a7-786721c7638d",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=364",
+        "locator": "Separate Kalinga Edict I, urban officials and five-year inspectors",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 255 (PDF pages 6)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The source explicitly addresses town magistrates and says appointed officers would tour periodically. 'Dhamma instruction' in the original compressed distinct passages and was narrowed.",
+    "original_source_inspected": true,
+    "material_limitation": "The order is a royal claim, not proof of uniform enforcement.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "cc9a5d34-1583-4ccc-9289-4f6204ee8b45",
+    "personality": "Ashoka",
+    "original_claim_text": "Pillar Edict IV states a desire for uniform judicial procedure and punishment, revealing a claim to more regular imperial justice.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Pillar Edict IV states a desire for uniform judicial procedure and punishment, revealing a claim to more regular imperial justice.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "0662151b-0d88-4b60-b631-cedc9303e5b6",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=370",
+        "locator": "Pillar Edict IV, judicial uniformity",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 257 (PDF pages 8)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Pillar IV calls for uniformity in legal procedure and punishment.",
+    "original_source_inspected": true,
+    "material_limitation": "This is a stated aim, not an audited description of the courts.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "e22a25ca-a4dd-432f-ad3f-0346ebae6593",
+    "personality": "Ashoka",
+    "original_claim_text": "Pillar Edict VII says that Ashoka appointed dhamma officers concerned with the welfare of different groups; it is direct evidence for a named official function, though its practical reach is debated.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Pillar Edict VII says that Ashoka appointed dhamma officers concerned with the welfare of different groups; it is direct evidence for a named official function, though its practical reach is debated.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "0662151b-0d88-4b60-b631-cedc9303e5b6",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=370",
+        "locator": "Pillar Edict VII, dhamma officers and sects",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 257–258 (PDF pages 8, 9)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Pillar VII names dhamma officers and their work with religious groups and public welfare.",
+    "original_source_inspected": true,
+    "material_limitation": "The edict's appointment claim is direct; the scope of actual activity remains uncertain.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "f560127d-4eb6-42c7-bf5c-600417870b9b",
+    "personality": "Ashoka",
+    "original_claim_text": "Major Rock Edict II declares provision for medical treatment for people and animals within Ashoka’s dominions and among borderers.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Major Rock Edict II declares provision for medical treatment for people and animals within Ashoka’s dominions and among borderers.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362",
+        "locator": "Major Rock Edict II, medical provision",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 250 (PDF pages 1)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Rock II declares two kinds of medical treatment, for humans and animals, in the dominions and named neighboring regions.",
+    "original_source_inspected": true,
+    "material_limitation": "The edict is a declaration; medical provision in foreign polities is not independently established.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1cdd2257-0e78-4f1f-a14f-044f5661a387",
+    "personality": "Ashoka",
+    "original_claim_text": "The edicts name Cholas, Pandyas and other southern neighbors, placing Mauryan power alongside—not simply over—all political communities of the subcontinent.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Major Rock Edict II names the Cholas, Pandyas, Satyaputras, Keralaputras and Tambapanni separately from the king's own dominions.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362",
+        "locator": "Major Rock Edict II, southern polities",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 250 (PDF pages 1)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The text explicitly distinguishes dominions from border regions. The broader conclusion about all political communities of the subcontinent was removed.",
+    "original_source_inspected": true,
+    "material_limitation": "Its list is not a complete map of Mauryan sovereignty.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "699f3619-930c-4de3-8424-794d7e38594c",
+    "personality": "Ashoka",
+    "original_claim_text": "The Separate Kalinga Edicts use paternal language—“All men are my children”—to frame royal concern and the obligations of officials.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Separate Kalinga Edicts use paternal language—“All men are my children”—to frame royal concern and the obligations of officials.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "052250de-cf26-4d76-80a7-786721c7638d",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=364",
+        "locator": "Separate Kalinga Edict I, children and officials",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 255 (PDF pages 6)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The edict says 'All men are my children' in an address to officials about welfare and justice.",
+    "original_source_inspected": true,
+    "material_limitation": "Paternal language should not be taken as proof of subjects' experience.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "ef6898e4-5bfa-489b-b7d4-5ee29481470c",
+    "personality": "Ashoka",
+    "original_claim_text": "In Major Rock Edict XIII, Ashoka states remorse after Kalinga, especially over suffering caused to Brahmanas, ascetics and households.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In Major Rock Edict XIII, Ashoka states remorse after Kalinga, especially over suffering caused to Brahmanas, ascetics and households.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362",
+        "locator": "Major Rock Edict XIII, remorse and religious households",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 253–254 (PDF pages 4, 5)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Rock XIII explicitly expresses remorse and enumerates Brahmanas, ascetics, householders, and harm to kin.",
+    "original_source_inspected": true,
+    "material_limitation": "Remorse is the king's stated perspective, not an independently testable inner state.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1a3e3b52-c30f-4460-a490-42f5fb5f9da3",
+    "personality": "Ashoka",
+    "original_claim_text": "Ashoka presents “conquest by dhamma” as the chief kind of victory in Major Rock Edict XIII, reframing imperial success in a moral and communicative register.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Ashoka presents “conquest by dhamma” as the chief kind of victory in Major Rock Edict XIII, reframing imperial success in a moral and communicative register.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362",
+        "locator": "Major Rock Edict XIII, conquest by dhamma",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 254 (PDF pages 5)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Rock XIII contrasts armed conquest with the king's claimed dhamma victory and calls the latter foremost.",
+    "original_source_inspected": true,
+    "material_limitation": "Claims of victory beyond the realm are royal self-presentation.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "1c6ca1ef-95b8-4efb-a1c5-79ec2a456f58",
+    "personality": "Ashoka",
+    "original_claim_text": "Major Rock Edict XIII says that Ashoka conquered Kalinga in his eighth regnal year, making the campaign an unusually direct subject of contemporary royal testimony.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Major Rock Edict XIII says that Ashoka conquered Kalinga in his eighth regnal year, making the campaign an unusually direct subject of contemporary royal testimony.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362",
+        "locator": "Major Rock Edict XIII, opening Kalinga sentence",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 253 (PDF pages 4)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Rock XIII places the conquest in the eighth year after consecration.",
+    "original_source_inspected": true,
+    "material_limitation": "The calendar year depends on reconstructing the accession chronology.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "72d5cc0b-06da-4e67-bceb-84e02791294e",
+    "personality": "Ashoka",
+    "original_claim_text": "The Kalinga edict’s acknowledgement that many more died than those reported killed or deported makes it an exceptional royal statement of war’s human cost for the third century BCE.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "Major Rock Edict XIII says that 150,000 people were deported, 100,000 killed, and many times that number died in the conquest of Kalinga.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362",
+        "locator": "Major Rock Edict XIII, reported casualties",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 253 (PDF pages 4)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The casualty categories and numbers are explicit; the original comparative claim that the statement was 'exceptional' requires broader historical comparison and was removed.",
+    "original_source_inspected": true,
+    "material_limitation": "Royal casualty numbers are not independently audited.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "bb4d1e8f-7e29-4555-9109-05fd272d28c6",
+    "personality": "Ashoka",
+    "original_claim_text": "Major Rock Edict XIII reports deportation and death in the Kalinga conquest; the figures are Ashoka’s own royal inscriptional claim, not an independently audited casualty count.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Major Rock Edict XIII reports deportation and death in the Kalinga conquest; the figures are Ashoka’s own royal inscriptional claim, not an independently audited casualty count.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362",
+        "locator": "Major Rock Edict XIII, Kalinga casualty figures",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 253 (PDF pages 4)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The figures are in the royal edict; the original wording already distinguishes an inscriptional report from audited casualties.",
+    "original_source_inspected": true,
+    "material_limitation": "The casualties may be rhetorical or approximate.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0a07ea19-5303-42b1-b028-c6a06788953c",
+    "personality": "Ashoka",
+    "original_claim_text": "Major Rock Edict II frames welfare measures as extending to borderlands and names a Greek king Antiochus, showing that Ashoka’s public horizon included neighboring polities.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Major Rock Edict II frames welfare measures as extending to borderlands and names a Greek king Antiochus, showing that Ashoka’s public horizon included neighboring polities.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362",
+        "locator": "Major Rock Edict II, Antiochus and neighboring polities",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 250 (PDF pages 1)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Rock II names Antiochus and several neighbors while proclaiming human and animal medical measures.",
+    "original_source_inspected": true,
+    "material_limitation": "Reference to a king abroad establishes the claimed geographic horizon, not confirmed delivery of medical services there.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "145b3ed1-dd94-403b-a3e5-dc7a51e5c05d",
+    "personality": "Ashoka",
+    "original_claim_text": "Major Rock Edict XIII names Antiochus and other Hellenistic rulers in its account of dhamma victory; the wording is evidence of claimed diplomatic reach, not proof that foreign rulers adopted Ashoka’s policy.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Major Rock Edict XIII names Antiochus and other Hellenistic rulers in its account of dhamma victory; the wording is evidence of claimed diplomatic reach, not proof that foreign rulers adopted Ashoka’s policy.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362",
+        "locator": "Major Rock Edict XIII, Hellenistic rulers",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 254 (PDF pages 5)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Rock XIII names Antiochus and other Greek rulers within its dhamma-victory rhetoric; the claim properly avoids asserting their compliance.",
+    "original_source_inspected": true,
+    "material_limitation": "Named rulers help chronological interpretation but do not independently prove diplomatic missions.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "12073932-efe6-4337-b8e4-43ce16eb6257",
+    "personality": "Ashoka",
+    "original_claim_text": "Major Rock Edict XII warns against praising one’s own sect while condemning others without reason, making inter-sectarian restraint an explicit imperial norm.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Major Rock Edict XII warns against praising one’s own sect while condemning others without reason, making inter-sectarian restraint an explicit imperial norm.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "d7cc7107-cdf7-4d87-9e39-06c917f472b8",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=362",
+        "locator": "Major Rock Edict XII, sectarian speech",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 253 (PDF pages 4)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Rock XII cautions against glorifying one's sect by disparaging another without cause.",
+    "original_source_inspected": true,
+    "material_limitation": "This is an imperial prescription, not evidence of universal religious tolerance in practice.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "703d0b52-4449-4b89-8f65-4a771c952965",
+    "personality": "Ashoka",
+    "original_claim_text": "Minor Rock Edict I describes Ashoka as a Buddhist lay disciple and says he visited the Buddhist community, contemporary evidence for personal Buddhist affiliation.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "In Minor Rock Edict I, the king describes himself as a Buddhist lay follower and says he had visited the sangha.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "ff913930-89f5-4f50-ac11-db6205f5a5b3",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=399",
+        "locator": "Minor Rock Edict I, lay devotion and sangha",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 259 (PDF pages 10)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Rupnath and Brahmagiri versions describe his religious status and visit. The wording is tied to the inscription rather than asserting a directly observed private belief.",
+    "original_source_inspected": true,
+    "material_limitation": "English renderings vary between 'lay follower,' 'upasaka,' and 'Sakya'.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "a0e13cea-bb7e-405e-9197-68698a826df5",
+    "personality": "Ashoka",
+    "original_claim_text": "The Bairat inscription recommends particular teachings to monks, nuns and lay followers, stronger evidence of Ashoka’s engagement with Buddhism than the general Major Edicts provide.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Bairat inscription recommends particular teachings to monks, nuns and lay followers, stronger evidence of Ashoka’s engagement with Buddhism than the general Major Edicts provide.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "ff913930-89f5-4f50-ac11-db6205f5a5b3",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=399",
+        "locator": "Bairat/Bhabru inscription, recommended teachings",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 259 (PDF pages 10)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The Bairat text directly recommends named Buddhist teachings to monks, nuns, and lay followers.",
+    "original_source_inspected": true,
+    "material_limitation": "Textual patronage does not by itself establish the extent of Buddhist practice across the empire.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b1f391e8-502c-4078-80b9-69265174c8e1",
+    "personality": "Ashoka",
+    "original_claim_text": "The Nigali Sagar inscription records enlargement of a stupa for the Buddha Konakamana and an imperial visit, evidence for support of particular Buddhist sacred sites.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The Nigali Sagar pillar inscription says the king enlarged the stupa of the Buddha Konakamana and later visited and worshipped at the site.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "cf34f9b9-15ae-4be6-b9ba-34718a351904",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=378",
+        "locator": "Nigali Sagar pillar inscription",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 260 (PDF pages 11)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The inscription records these acts, but its surviving text is damaged; the original assertion of completed acts was reframed as inscriptional testimony.",
+    "original_source_inspected": true,
+    "material_limitation": "The twentieth-year reading and erection clause are partly restored in published translations.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "e95a563f-ff64-49e9-90b7-c6fae169bdd6",
+    "personality": "Ashoka",
+    "original_claim_text": "The Lumbini pillar inscription records Ashoka’s visit and worship at the Buddha’s birthplace, combining pilgrimage, tax policy and royal commemoration.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The Lumbini pillar inscription says the king visited and worshipped at the site identified there as the Buddha's birthplace and granted the village a reduced tax obligation.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "cf34f9b9-15ae-4be6-b9ba-34718a351904",
+        "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=378",
+        "locator": "Lumbini/Rummindei pillar inscription",
+        "source_authority": "University of Oslo Bibliotheca Polyglotta edition of Ashokan inscriptions, based on Hultzsch's epigraphic transcription and translation",
+        "independence_assessment": "Contemporary royal inscription; primary for what the court proclaimed, not independent proof of policy outcomes",
+        "original_source_inspected": true
+      },
+      {
+        "source_id": null,
+        "url": "https://projects.mcah.columbia.edu/indianart/pdf/asoka_thapar.pdf",
+        "locator": "Romila Thapar, 'A Translation of the Edicts of Asoka,' printed p. 260 (PDF pages 11)",
+        "source_authority": "Scholarly translation by historian Romila Thapar, hosted by Columbia University",
+        "independence_assessment": "A second scholarly translation of the same inscription, not independent confirmation of events claimed by the ruler",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The royal visit, identification, and tax provision are all explicit. The wording distinguishes the inscription's birthplace identification from independently verifying that ancient event.",
+    "original_source_inspected": true,
+    "material_limitation": "Tax translations vary in detail; the narrow phrase 'reduced tax obligation' is supported by both checked renderings.",
+    "removal_reason": null
+  }
+]

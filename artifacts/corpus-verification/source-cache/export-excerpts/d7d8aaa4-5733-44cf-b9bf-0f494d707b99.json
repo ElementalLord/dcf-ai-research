@@ -1,0 +1,40 @@
+{
+  "source_id": "d7d8aaa4-5733-44cf-b9bf-0f494d707b99",
+  "source": {
+    "author": "Mahidasa Aitareya (traditional attribution)",
+    "authority_metadata": {},
+    "citation": "Aitareya Brahmana",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Vedic Heritage Portal / IGNCA / Ministry of Culture, Government of India",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Aitareya Brahmana",
+    "url": "https://vedicheritage.gov.in/brahmanas/aitareya-brahmana/"
+  },
+  "claim_ids": [
+    "53373b04-b4b1-4b5a-b0bd-92ea0077a0ef",
+    "57712c65-7d33-4691-97c5-4f9807ca3e2a",
+    "59b3af71-7c8d-4511-a8ba-753629e90399",
+    "5fc58fe2-d554-46d7-8bec-cf18dba2c93c",
+    "b46edeb8-41a6-4e38-858b-fe14ad30e974",
+    "b8712298-1548-4e25-95a3-b157bbdefe16",
+    "c77ab698-f91c-4d86-8500-d69ce688b3b8",
+    "cbe404a2-efe8-4fd9-8572-44e9b7728225",
+    "f2a2e5df-dfe2-46f5-9d2c-f0760ea0bdc0"
+  ],
+  "passages": [
+    {
+      "chunk_id": "3e6fdfef-5922-45e7-bc56-c8468dac2c19",
+      "locator": "Aitareya Brahmana",
+      "text_sha256": "cda7ea5eaa5d30cd08bf1f0a7e0376344061e92580cf0bf116e7cbe2e987135d",
+      "excerpt_preview": "Aitareya Brahmana belongs to Shakala Shakha of the Rigveda. This work is ascribed to Mahidasa Aitareya and dated variously from 1000 BCE to 500 BCE. It is divided into eight Panchikas and each of the Panchika is divided into eight adhyayas.",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

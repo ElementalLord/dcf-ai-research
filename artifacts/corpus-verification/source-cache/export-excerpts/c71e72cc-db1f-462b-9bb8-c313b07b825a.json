@@ -1,0 +1,52 @@
+{
+  "source_id": "c71e72cc-db1f-462b-9bb8-c313b07b825a",
+  "source": {
+    "author": "A. P. J. Abdul Kalam",
+    "authority_metadata": {
+      "verified_at": "2026-10-10T05:42:28.425Z"
+    },
+    "citation": "A. P. J. Abdul Kalam. Address to the Nation from the Red Fort. President of India. https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-nation-ramparts-red-fort-new-delhi",
+    "original_work_identity": {},
+    "publication_year": 2007,
+    "publisher_or_institution": "President of India",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Address to the Nation from the Red Fort",
+    "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-nation-ramparts-red-fort-new-delhi"
+  },
+  "claim_ids": [
+    "1586e287-eaa7-49fe-a262-bbf7e70a06bb",
+    "6ec6add7-c0f0-4ff9-bf1e-4d7181a37982",
+    "cc16e922-aa9f-424f-8a38-93a1f236d2ee"
+  ],
+  "passages": [
+    {
+      "chunk_id": "28e2f50d-39ab-40cc-9854-a4636dec40e5",
+      "locator": "Red Fort, 2020 vision",
+      "text_sha256": "5273c738ed7016fd57f5dffa983c5cfdcaf44984da64f0bc0cc446ec01c7ef28",
+      "excerpt_preview": "I realize, whatever work I do if I do the best, I am contributing towards realizing the vision of developed India 2020.Dr. A. P. J. Abdul Kalam. May God Bless you. Subscribe to Newsletter Name Subscription Type Speech Photo Gallery Press Re",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8a5bbac6-ed77-49f1-b78d-0c67739af694",
+      "locator": "Red Fort, development priorities",
+      "text_sha256": "e09eef9ce89323f21a336395a53af9d2f12127579a2a544d42f342d1c66dc83e",
+      "excerpt_preview": "We have identified five areas where India has core competencies for integrated action: (1) Agriculture and Food processing (2) Education and Healthcare (3) Information and Communication Technology (4) Infrastructure: Reliable and Quality El",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "af81cb6f-0e9d-480e-9b06-56ed8a05382a",
+      "locator": "Red Fort, rural equity",
+      "text_sha256": "3dba30e25fe8ebda2d1faed83edbb42ebf3b264d911bb65d359385acf1eb0a62",
+      "excerpt_preview": "A Nation where the rural and urban divide has reduced to a thin line, by establishing 7,000 rural clusters and providing urban facilities in them.2.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

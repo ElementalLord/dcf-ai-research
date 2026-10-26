@@ -1,0 +1,34 @@
+{
+  "source_id": "498a9b5e-76df-4ff9-ba6c-bdc7aa3b1b6a",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:03.578Z"
+    },
+    "citation": "Karma-Yoga: Freedom. Complete Works of Swami Vivekananda. https://www.ramakrishnavivekananda.info/vivekananda/volume_1/karma-yoga/freedom.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Complete Works of Swami Vivekananda",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Karma-Yoga: Freedom",
+    "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_1/karma-yoga/freedom.htm"
+  },
+  "claim_ids": [
+    "41d80e19-7671-433a-8ac4-ae9be08bbdf6"
+  ],
+  "passages": [
+    {
+      "chunk_id": "21fd5d91-96c6-4d95-8e6f-6aefae6b840d",
+      "locator": "Collected lecture",
+      "text_sha256": "ce28706776a7c5c6527ee4a8e716428f032223cb77536bdbb1fbdc6e18de51c5",
+      "excerpt_preview": "its own sake; then alone will come perfect non-attachment. The bonds of the heart will thus break, and we shall reap perfect freedom. This freedom is indeed the goal of Karma-Yoga.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

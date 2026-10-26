@@ -1,0 +1,464 @@
+[
+  {
+    "claim_id": "078cbfa2-a58a-4784-be4e-a9f304e7e6a2",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "In Brihadaranyaka Upanishad 3.1, King Janaka of Videha holds a sacrifice attended by Brahmins of the Kuru-Panchala country and stakes a thousand cows, with gold tied to their horns, to find out which of them is the most learned; this is the setting of Yajnavalkya’s great debate.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In Brihadaranyaka Upanishad 3.1, King Janaka of Videha holds a sacrifice attended by Brahmins of the Kuru-Panchala country and stakes a thousand cows, with gold tied to their horns, to find out which of them is the most learned; this is the setting of Yajnavalkya’s great debate.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 3.1.1–2, PDF p. 96 (zero-based 95), text lines 3365–3381",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The translation directly gives Janaka, the sacrifice, the thousand cows, their gold, and the subsequent challenge.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0a2a7f1f-c23c-409c-ae84-7cc83bbe1aef",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "In the earlier telling at Brihadaranyaka 2.4, Maitreyi asks whether the whole earth filled with wealth would make her immortal; Yajnavalkya says wealth gives no hope of immortality, and she asks instead to be taught what he knows.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In the earlier telling at Brihadaranyaka 2.4, Maitreyi asks whether the whole earth filled with wealth would make her immortal; Yajnavalkya says wealth gives no hope of immortality, and she asks instead to be taught what he knows.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 2.4.1–3, PDF p. 88 (zero-based 87), text lines 3117–3124",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The first Maitreyi conversation directly gives the wealth question, reply and request for instruction.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "0cf6cd03-4ca3-4fde-8db5-a75ab4230cf9",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "Yajnavalkya teaches Maitreyi that nothing is dear for its own sake but for the sake of the self, and that it is the self that should be seen, heard, reflected on and pondered.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Yajnavalkya teaches Maitreyi that nothing is dear for its own sake but for the sake of the self, and that it is the self that should be seen, heard, reflected on and pondered.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 2.4.5, PDF p. 89 (zero-based 88), text lines 3129–3150",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The repeated self-for-whose-sake formula and injunction to see, hear and ponder the self are in this passage.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "10536bf4-11f7-4f95-82d4-068a666914ae",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "Brihadaranyaka 4.5.1 says Yajnavalkya had two wives: Maitreyi, called a brahmavadini (one who discourses on sacred knowledge), and Katyayani, said to have only \"a woman’s knowledge\". About to take up another mode of life, he proposes to settle his property between them.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Brihadaranyaka 4.5.1 says Yajnavalkya had two wives: Maitreyi, called a brahmavadini (one who discourses on sacred knowledge), and Katyayani, said to have only \"a woman’s knowledge\". About to take up another mode of life, he proposes to settle his property between them.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 4.5.1–2, PDF p. 129 (zero-based 128), text lines 4456–4465",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The second Maitreyi version states the two wives and the proposed property settlement, with its own gendered characterization.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "2c1da367-c645-4778-8047-16ca9e9bfa19",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "Yajnavalkya’s answer to Gargi is that space itself is woven on \"the Imperishable\" (akshara), which he describes almost entirely by negation: not coarse, not fine, not short, not long, without breath or mouth, without measure, without inside or outside.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Yajnavalkya’s answer to Gargi is that space itself is woven on \"the Imperishable\" (akshara), which he describes almost entirely by negation: not coarse, not fine, not short, not long, without breath or mouth, without measure, without inside or outside.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 3.8.7–8, PDF p. 106 (zero-based 105), text lines 3704–3717",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Gargi asks what space is woven on; the answer identifies the Imperishable and lists the negations.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "2c739399-810f-42e4-9b41-9dbc8e24313a",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "In Brihadaranyaka 3.7 Yajnavalkya teaches the self as the \"inner controller\" (antaryamin): the unseen seer, unheard hearer and unthought thinker, other than whom there is no seer, hearer or knower.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In Brihadaranyaka 3.7 Yajnavalkya teaches the self as the \"inner controller\" (antaryamin): the unseen seer, unheard hearer and unthought thinker, other than whom there is no seer, hearer or knower.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 3.7.3–23, PDF p. 103 (zero-based 102), text lines 3606–3679",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The inner-controller refrain and culminating unseen-seer formulation are explicit in the translation.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "4525f85d-348f-41c8-b140-92ee07b1e1b6",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "The second exchange with Gargi ends with her verdict: in Brihadaranyaka 3.8.12 she tells the Brahmins they should count themselves lucky to get away from Yajnavalkya with a bow, since none of them will surpass him in discussion of brahman.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The second exchange with Gargi ends with her verdict: in Brihadaranyaka 3.8.12 she tells the Brahmins they should count themselves lucky to get away from Yajnavalkya with a bow, since none of them will surpass him in discussion of brahman.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 3.8.12, PDF p. 107 (zero-based 106), text lines 3739–3742",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Gargi addresses the Brahmins with this verdict at the end of the debate.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "4d0138bc-475e-41ed-95d2-2c14efa49c3c",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "The debate closes in Brihadaranyaka 3.9.26 when Yajnavalkya demands that Shakalya identify \"the Person taught in the Upanishads\" on pain of his head falling off; Shakalya cannot, and the text says his head fell off and robbers carried away his bones. This is the narrative’s own claim, not a historical report.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The debate closes in Brihadaranyaka 3.9.26 when Yajnavalkya demands that Shakalya identify \"the Person taught in the Upanishads\" on pain of his head falling off; Shakalya cannot, and the text says his head fell off and robbers carried away his bones. This is the narrative’s own claim, not a historical report.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 3.9.26, PDF p. 114 (zero-based 113), text lines 3931–3942",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The text narrates Shakalya’s failed answer, fallen head and stolen bones; this is not independently established history.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "564b9021-57c5-4f4f-a293-d24ae48f7a15",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "In Brihadaranyaka 4.4.5 Yajnavalkya states the link between action and destiny: as one acts and conducts oneself, so one becomes; and since desire shapes resolve and resolve shapes action, a person obtains what his action (karma) earns.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In Brihadaranyaka 4.4.5 Yajnavalkya states the link between action and destiny: as one acts and conducts oneself, so one becomes; and since desire shapes resolve and resolve shapes action, a person obtains what his action (karma) earns.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 4.4.5, PDF p. 127 (zero-based 126), text lines 4376–4386",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The passage explicitly links conduct, desire, resolve, action and obtained result.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "7656f462-2f77-4741-9016-d3803715daa2",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "Brihadaranyaka 4.1 opens with Janaka asking Yajnavalkya whether he has come for cattle or for subtle disputation; Yajnavalkya answers that he has come for both.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Brihadaranyaka 4.1 opens with Janaka asking Yajnavalkya whether he has come for cattle or for subtle disputation; Yajnavalkya answers that he has come for both.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 4.1.1, PDF p. 116 (zero-based 115), text lines 3981–3988",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "Janaka’s question and Yajnavalkya’s reply are direct dialogue in the translation.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "827648c4-4036-4669-9813-623d6979029e",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "To Maitreyi, Yajnavalkya compares the great being to a lump of salt dissolved in water, which cannot be picked out yet makes all the water salty: it is a single mass of knowledge, and he adds that \"after death there is no consciousness\".",
+    "decision": "APPROVE",
+    "final_proposed_wording": "To Maitreyi, Yajnavalkya compares the great being to a lump of salt dissolved in water, which cannot be picked out yet makes all the water salty: it is a single mass of knowledge, and he adds that \"after death there is no consciousness\".",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 2.4.12–14, PDF p. 90 (zero-based 89), text lines 3181–3201",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The salt analogy, mass of knowledge and postmortem-consciousness wording appear together. The latter is contextualized by the following duality discussion.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "89771c0a-ff68-498d-9e7c-16527634a79d",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "The Maitreyi dialogue ends with the question \"whereby would one understand the understander?\"; Yajnavalkya tells her this instruction is immortality, and the text then says he departed.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The Maitreyi dialogue ends with the question \"whereby would one understand the understander?\"; Yajnavalkya tells her this instruction is immortality, and the text then says he departed.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 4.5.15, PDF p. 132 (zero-based 131), text lines 4542–4556",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The understander question, concluding instruction to Maitreyi and departure are all in the second account.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "89ab97f4-e0ce-4a2e-97b9-59b1c8e0e245",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "Liberation in Yajnavalkya’s teaching to Janaka is freedom from desire: the breaths of one whose only desire is the self do not depart at death; \"being very Brahma, he goes to Brahma\", and a quoted verse says a mortal becomes immortal when the desires lodged in the heart are released.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Liberation in Yajnavalkya’s teaching to Janaka is freedom from desire: the breaths of one whose only desire is the self do not depart at death; \"being very Brahma, he goes to Brahma\", and a quoted verse says a mortal becomes immortal when the desires lodged in the heart are released.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 4.4.6–7, PDF p. 128 (zero-based 127), text lines 4396–4404",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The text presents desireless release and the quoted verse on desires departing from the heart.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "8bf94976-98cc-4f25-a8c4-21fd428692e4",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "In Brihadaranyaka 3.6, Gargi Vachaknavi asks Yajnavalkya what each level of the world is \"woven\" upon; when she asks what the worlds of Brahma are woven on, he warns her not to question too much lest her head fall off, and she falls silent.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In Brihadaranyaka 3.6, Gargi Vachaknavi asks Yajnavalkya what each level of the world is \"woven\" upon; when she asks what the worlds of Brahma are woven on, he warns her not to question too much lest her head fall off, and she falls silent.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 3.6, PDF p. 102 (zero-based 101), text lines 3552–3581",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The successive weaving questions, warning and Gargi’s silence are direct narrative.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "917dac3a-2adb-4ffb-bb2d-34b1d1ae0ed0",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "Brihadaranyaka 6.3.7 names Uddalaka Aruni as the teacher of his pupil \"Vajasaneya Yajnavalkya\", in the handing down of a ritual saying.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Brihadaranyaka 6.3.7 names Uddalaka Aruni as the teacher of his pupil \"Vajasaneya Yajnavalkya\", in the handing down of a ritual saying.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 6.3.7, PDF p. 149 (zero-based 148), text lines 5107–5113",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The lineage passage explicitly names Uddalaka as instructor and Vajasaneya Yajnavalkya as pupil.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "91b223dc-2c04-4e24-beb9-d189d1293d20",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "The lineage at the end of the Brihadaranyaka states that \"these white sacrificial formulas which come from Aditya\" (the Sun) are declared by Yajnavalkya of the Vajasaneyi school: the Upanishad’s own link between him and the White (Shukla) Yajurveda.",
+    "decision": "REVISE AND APPROVE",
+    "final_proposed_wording": "The Bṛhadāraṇyaka Upaniṣad’s closing lineage says that white sacrificial formulas from Āditya are declared by Yājñavalkya of the Vājasaneyi school; this is the text’s own account of the tradition.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 6.5.3, PDF p. 156 (zero-based 155), text lines 5355–5371",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The lineage states white sacrificial formulas from Aditya and identifies Yajnavalkya’s school; the wording should avoid inferring an independent historical transmission.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "96c36c29-be5d-4683-b991-f28d9e68d426",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "In Brihadaranyaka 4.2.4 Yajnavalkya tells Janaka that the self \"is not this, it is not that\" (neti, neti): it cannot be grasped, destroyed, attached or bound. He declares that Janaka has reached fearlessness, and the king offers him the Videhas and himself in service.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In Brihadaranyaka 4.2.4 Yajnavalkya tells Janaka that the self \"is not this, it is not that\" (neti, neti): it cannot be grasped, destroyed, attached or bound. He declares that Janaka has reached fearlessness, and the king offers him the Videhas and himself in service.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 4.2.4, PDF p. 121 (zero-based 120), text lines 4143–4153",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The neti-neti teaching, fearlessness declaration and king’s offer are consecutive in the dialogue.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "aa0040aa-f111-496f-b616-55ff280c1c11",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "Brihadaranyaka 4.4.22 links knowledge of the self with renunciation: Brahmins seek the self through Vedic recitation, sacrifice, gifts, austerity and fasting; knowing it one becomes a sage, and those who desire it alone give up the wish for sons, wealth and worlds and wander as mendicants.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Brihadaranyaka 4.4.22 links knowledge of the self with renunciation: Brahmins seek the self through Vedic recitation, sacrifice, gifts, austerity and fasting; knowing it one becomes a sage, and those who desire it alone give up the wish for sons, wealth and worlds and wander as mendicants.",
+    "epistemic_type": "TEXTUAL_ASSERTION",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 4.4.22, PDF p. 128 (zero-based 127), text lines 4418–4434",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The passage lists Vedic recitation, rites and austerity, then connects knowing the self with mendicancy and relinquishing worldly desires.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b0a691c6-afed-4d9a-a406-4072bc09f177",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "In Brihadaranyaka 3.2.13 Yajnavalkya takes his questioner Artabhaga by the hand and withdraws to discuss a question in private rather than in public; the text reports that what they spoke of was karma: one becomes good by good action and bad by bad action.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "In Brihadaranyaka 3.2.13 Yajnavalkya takes his questioner Artabhaga by the hand and withdraws to discuss a question in private rather than in public; the text reports that what they spoke of was karma: one becomes good by good action and bad by bad action.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 3.2.13, PDF p. 99 (zero-based 98), text lines 3476–3486",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The private withdrawal and karma conclusion are narrated together.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "b6320f92-958a-49bd-af9b-0eafa0f0f720",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "Gargi returns in Brihadaranyaka 3.8 and tells the assembled Brahmins she will put two questions to Yajnavalkya, likening them to a warrior’s two arrows; if he answers them, she says, none of them will defeat him in debate about brahman.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "Gargi returns in Brihadaranyaka 3.8 and tells the assembled Brahmins she will put two questions to Yajnavalkya, likening them to a warrior’s two arrows; if he answers them, she says, none of them will defeat him in debate about brahman.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 3.8.1–2, PDF p. 106 (zero-based 105), text lines 3683–3694",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The translation has Gargi announce two questions and use the two-arrows comparison.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  },
+  {
+    "claim_id": "c3fda81c-2612-42bb-9053-5db48dd87fc1",
+    "personality": "Yajnavalkya",
+    "original_claim_text": "The long teaching of Brihadaranyaka 4.3 starts from Janaka’s question about what serves as a person’s light; when sun, moon, fire and speech are all gone, Yajnavalkya answers that the self (atman) is one’s light.",
+    "decision": "APPROVE",
+    "final_proposed_wording": "The long teaching of Brihadaranyaka 4.3 starts from Janaka’s question about what serves as a person’s light; when sun, moon, fire and speech are all gone, Yajnavalkya answers that the self (atman) is one’s light.",
+    "epistemic_type": "TRADITIONAL_NARRATIVE",
+    "evidence_references": [
+      {
+        "source_id": "5d0a41a4-b79b-4182-b6ee-afa099f453da",
+        "url": "https://oll-resources.s3.us-east-2.amazonaws.com/oll3/store/titles/2058/Hume_1395_EBk_v6.0.pdf",
+        "locator": "Bṛhadāraṇyaka Upaniṣad 4.3.2–6, PDF p. 121 (zero-based 120), text lines 4154–4186",
+        "source_authority": "Robert Ernest Hume, The Thirteen Principal Upanishads (Oxford University Press, 1921), Liberty Fund PDF; actual translated passage inspected",
+        "independence_assessment": "One public-domain scholarly translation of the textual witness; confirms what this edition says, not historical occurrence or independent Sanskrit variants.",
+        "original_source_inspected": true
+      }
+    ],
+    "verification_rationale": "The sequence of sun, moon, fire, speech and self as light follows Janaka’s questions.",
+    "original_source_inspected": true,
+    "material_limitation": "Ancient dialogue or doctrine is classified as textual assertion or traditional narrative. The translation alone does not independently establish the narrated event as history.",
+    "removal_reason": null
+  }
+]

@@ -1,0 +1,43 @@
+{
+  "source_id": "5c1913ff-55f7-4067-a8f7-f01f10b2a3b4",
+  "source": {
+    "author": "Medha Sundar and Sumon Chitrakar",
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "Medha Sundar and Sumon Chitrakar. People and Ideas: Savitribai Phule. Azim Premji University. https://publications.azimpremjiuniversity.edu.in/429/1/Savitribai%20Phule_English.pdf",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Azim Premji University",
+    "rights_or_access_note": "Public original; short research excerpts. Scholarly abstract/summary access does not imply full chapter access.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "People and Ideas: Savitribai Phule",
+    "url": "https://publications.azimpremjiuniversity.edu.in/429/1/Savitribai%20Phule_English.pdf"
+  },
+  "claim_ids": [
+    "11d2f7a2-1749-460e-a09f-9e259b20bf6c",
+    "3ace6b66-515a-4f14-bf36-a806856f7779"
+  ],
+  "passages": [
+    {
+      "chunk_id": "04bc9c8c-e660-4139-b225-a72a69ae1d1e",
+      "locator": "foreword",
+      "text_sha256": "6cdcfa0214fddfdd2e04e15893ed14752dccd8e11ea5472f4bcd65bb9af90b18",
+      "excerpt_preview": "In her own right, Savitribai was a woman ahead of her times, in thought and action, with the courage and sensitivity to lead a life defined by choices often ridiculed or aggressively opposed by society and its institutionalized ways. This g",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ba6b40c5-5543-43dd-b0cc-4ec86a281ba9",
+      "locator": "printed pp. 18–19; narration, not speech bubbles",
+      "text_sha256": "37c4355354a52f284c93b23c2be32aa7fe6f4a248a2db488361e78f25144ce13",
+      "excerpt_preview": "You cannot refuse to sit with her. In 1848, Jotirao Phule opened a school for girls in Bhidewada in Pune. Savitribai taught at this school and was its Headmistress.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,36 @@
+{
+  "source_id": "99bdcc35-539e-4e7b-9e7c-d84af8a68861",
+  "source": {
+    "author": "Burton Stein",
+    "authority_metadata": {
+      "source_kind": "Modern historical interpretation of Chola institutions",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Burton Stein. Peasant State and Society in Medieval South India. Oxford University Press. https://global.oup.com/academic/product/peasant-state-and-society-in-medieval-south-india-9780195610553",
+    "original_work_identity": {},
+    "publication_year": 1980,
+    "publisher_or_institution": "Oxford University Press",
+    "rights_or_access_note": "Short documented research excerpts only; contemporary inscriptions, later chronicle tradition and modern scholarship are kept distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "Peasant State and Society in Medieval South India",
+    "url": "https://global.oup.com/academic/product/peasant-state-and-society-in-medieval-south-india-9780195610553"
+  },
+  "claim_ids": [
+    "4555ab07-bf85-4e5e-a49d-24fe405b4f85",
+    "b34c8a17-8f8e-45b1-9054-4bfb0ffe0e9f"
+  ],
+  "passages": [
+    {
+      "chunk_id": "2d32a0da-422e-4236-949f-3b19076f6894",
+      "locator": "segmentary-state model",
+      "text_sha256": "290b25503d41f898275cb41f3f00d0e3b03968385938cc1823811bc611d1d527",
+      "excerpt_preview": "His segmentary-state model made decentralization central to debate; later scholarship has qualified it by emphasizing changing royal fiscal and administrative interventions visible in inscriptions.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

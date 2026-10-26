@@ -1,0 +1,54 @@
+{
+  "source_id": "c0537cb0-631f-4d05-81a7-7262483cf082",
+  "source": {
+    "author": "J. C. Bose",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "J. C. Bose. Plant Response as a Means of Physiological Investigation. Longmans, Green, and Co.; Internet Archive. https://archive.org/details/plantresponseasm00bose",
+    "original_work_identity": {},
+    "publication_year": 1906,
+    "publisher_or_institution": "Longmans, Green, and Co.; Internet Archive",
+    "rights_or_access_note": "Short documented research excerpts only. Primary claims, archival records, and later interpretations stay distinct.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Plant Response as a Means of Physiological Investigation",
+    "url": "https://archive.org/details/plantresponseasm00bose"
+  },
+  "claim_ids": [
+    "692c758b-eedb-4be9-9f60-e214b59060ad",
+    "8170f7cb-b0f2-4feb-8980-8441c546c8b0",
+    "8652cc10-d33e-4148-afe6-dc59b37e0d88",
+    "a7567c63-c3fb-4523-b095-ed25e46e86cd",
+    "b717c900-3498-4cd6-bb17-1cb6c9d6046e"
+  ],
+  "passages": [
+    {
+      "chunk_id": "a842db1c-0937-4639-b864-d5c1be5d1a8c",
+      "locator": "Mimosa and ordinary plants",
+      "text_sha256": "41c191391df5dfbd8b9fdb013a2821722614251c8b83750d16fe52f507b4d9bb",
+      "excerpt_preview": "Bose examined sensitive plants such as Mimosa and ordinary plants, and discussed effects of touch, temperature, light, chemicals and injury.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d6f7f448-8d1b-44c6-ae2c-56e46c5a47a1",
+      "locator": "electrical and mechanical recording",
+      "text_sha256": "be14f20f5568aad6283a493be6e92471f2e3bc913a5f818ac9e40c16fe8e9e2e",
+      "excerpt_preview": "lant Response as a Means of Physiological Investigation describes Bose’s use of electrical and mechanical recording to study plant responses to stimuli.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "df8d8cc4-13cb-4494-80b4-a6420348b866",
+      "locator": "measured instrumentally",
+      "text_sha256": "40cf04ddf0d146e92ade6baa31863572eda01948af6a75a4eb171134cba68a58",
+      "excerpt_preview": "He argued that plant response could be measured instrumentally and compared with response in animal tissues.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,34 @@
+{
+  "source_id": "8a5a9181-13dc-430c-a614-4e39e7fd49e9",
+  "source": {
+    "author": "The Editors of Encyclopaedia Britannica",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "The Editors of Encyclopaedia Britannica. Brahmo Samaj. Encyclopaedia Britannica. https://www.britannica.com/topic/Brahmo-Samaj",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Encyclopaedia Britannica",
+    "rights_or_access_note": "Read through the Internet Archive copy; the live page blocks automated reading.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Brahmo Samaj",
+    "url": "https://www.britannica.com/topic/Brahmo-Samaj"
+  },
+  "claim_ids": [
+    "f225e1d1-7a6e-4156-9a9e-d9c8bff18bf8"
+  ],
+  "passages": [
+    {
+      "chunk_id": "53ba27ab-8bca-43c3-81d0-29db6062de17",
+      "locator": "Britannica: Brahmo Samaj",
+      "text_sha256": "9e3e7e9eab563f1a1b16d334cc8718fa29c4a76a258e02f7fb694b60cf1a15e6",
+      "excerpt_preview": "The Editors of Encyclopaedia Britannica Last Updated: Article History Table of Contents Category: History & Society Sanskrit: “Society of Brahma” (Show more) Brahmo also spelled: Brahma (Show more) Date: 1828 - present (Show more) Areas Of ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

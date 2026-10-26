@@ -1,0 +1,79 @@
+{
+  "source_id": "4478f339-880f-466d-821c-5c01e0fef64a",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-13T14:33:30.291Z"
+    },
+    "citation": "Janam Sākhī. Encyclopaedia of Sikhism / Punjabi University. https://eos.learnpunjabi.org/JANAM%20SAKHI%20.html",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Encyclopaedia of Sikhism / Punjabi University",
+    "rights_or_access_note": "Publicly accessible source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Janam Sākhī",
+    "url": "https://eos.learnpunjabi.org/JANAM%20SAKHI%20.html"
+  },
+  "claim_ids": [
+    "02371743-d4b4-49bd-83c7-81effb17f453",
+    "3639799d-fb1a-449f-b6ec-abb0d8c97a84",
+    "90f45b8e-7070-49b9-a2ce-e24b017b088b",
+    "a57bc783-a55a-49c3-87fe-dfa6b5df2cd5",
+    "d2c9a805-ffa2-4092-879f-3603261eddfc",
+    "e6935518-6995-4b54-a229-e4f99616e1b9"
+  ],
+  "passages": [
+    {
+      "chunk_id": "7698850e-035a-499a-8d08-37c4f7df7e0f",
+      "locator": "traditional narratives",
+      "text_sha256": "d66bd9af93eb990468708e9995843731af61503e927859e37a709f9057ab719a",
+      "excerpt_preview": "life story, is the term used to designate traditional narratives of the life of Gur&#363 N&#257nak. Although the compound is occasionally applied to narratives concerning later Gur&#363s or other religious teachers too, it is normally confi",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ad2202cd-b122-4d7b-b047-8a525f52c375",
+      "locator": "no extant",
+      "text_sha256": "52d6b68e1044ff9c39c67468dfe753add1817859264e2a550fff35d80b5dbf92",
+      "excerpt_preview": "Although no extant <i>janam s&#257kh&#299</i> can be dated earlier than the middle of the seventeenth century, there is no sufficient reason to doubt that the earliest nucleus of <i>s&#257kh&#299s</i> must have evolved a century earlier dur",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b453f2ce-4d40-445f-937b-c2495b42ba4e",
+      "locator": "unanimous testimony",
+      "text_sha256": "e41a3f32bea90b48d27b0fa0ed7e2936bc8b47c18146a95af39f14f5bfcae20b",
+      "excerpt_preview": "The <i>janam s&#257kh&#299s</i> present unanimous testimony concerning details of his birth, parentage, and family connections, and there is unanimity concerning the general outline of his life story.</p> <p class=\"C1\">&nbsp;&nbsp;&nbsp;&nb",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "cac3ce08-6dd9-4a21-9aed-0e1e5368e776",
+      "locator": "sixteenth and seventeenth centuries",
+      "text_sha256": "484b3a3fc003b4f993700d486a6337a64d3161a80fc1968b47886aab1e55c418",
+      "excerpt_preview": "Several <i>janam s&#257kh&#299</i> traditions have evolved, particularly during the sixteenth and seventeenth centuries. From small beginnings these traditions rapidly expanded and diversified, supplementing the early nucleus with additiona",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "db035944-3b79-493e-a968-d0b1866712eb",
+      "locator": "Miharb",
+      "text_sha256": "caa9e0b6bbd6be900340d40b9f4a9364a282584f57d4936471aec333bb23d5db",
+      "excerpt_preview": "<i>Janam S&#257kh&#299s</i> which follow the gos&#7789 model are the work of the distinctive <i>Miharb&#257n</i> tradition and the massive <i>Miharb&#257n, Janam S&#257kh&#299</i> is the only example of a collection in which this form predo",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e9f0eb57-041f-45da-8aae-bfbf61d26e57",
+      "locator": "circulated and multiplied orally",
+      "text_sha256": "fa3c1435d50cbb1338fe9223a4ca213adbfb5dfa6119e5152ab16dccfc929844",
+      "excerpt_preview": "From small beginnings these traditions rapidly expanded and diversified, supplementing the early nucleus with additional anecdotes and interpretative discourses.</p> <p class=\"C1\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; At first th",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

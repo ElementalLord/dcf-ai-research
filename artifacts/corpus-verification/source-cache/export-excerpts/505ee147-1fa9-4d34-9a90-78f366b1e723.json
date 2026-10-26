@@ -1,0 +1,34 @@
+{
+  "source_id": "505ee147-1fa9-4d34-9a90-78f366b1e723",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:12.772Z"
+    },
+    "citation": "Pratapgad Fort — Maharashtra Tourism. Department of Tourism, Government of Maharashtra. https://maharashtratourism.gov.in/fort/pratapgad/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Department of Tourism, Government of Maharashtra",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Pratapgad Fort — Maharashtra Tourism",
+    "url": "https://maharashtratourism.gov.in/fort/pratapgad/"
+  },
+  "claim_ids": [
+    "589c0bb6-48b0-4be8-b8f7-54e91165853c"
+  ],
+  "passages": [
+    {
+      "chunk_id": "7533f90a-1e77-4110-891b-ffb60bda7f57",
+      "locator": "Government heritage page",
+      "text_sha256": "ff86608c46e98883496d4fc12db726085e58b85f1542a995c2af4d21b0bc2c46",
+      "excerpt_preview": "atrapati Shivaji Maharaj in 1656, the fort has witnessed some of the most defining moments in Maratha history.The HistoryPratapgad Fort was constructed under the orders of Chhatrapati Shivaji Maharaj, the founder of the Maratha Empire, to s",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

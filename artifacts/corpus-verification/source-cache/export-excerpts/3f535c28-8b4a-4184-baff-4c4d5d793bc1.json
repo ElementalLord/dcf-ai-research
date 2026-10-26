@@ -1,0 +1,41 @@
+{
+  "source_id": "3f535c28-8b4a-4184-baff-4c4d5d793bc1",
+  "source": {
+    "author": null,
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Aranya Kanda 13. https://www.valmikiramayan.net/aranya/sarga13/aranya_13_prose.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana",
+    "rights_or_access_note": "Publicly accessible source; brief excerpts stored for research citation.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana, Aranya Kanda 13",
+    "url": "https://www.valmikiramayan.net/aranya/sarga13/aranya_13_prose.htm"
+  },
+  "claim_ids": [
+    "400dad7d-ccc6-4bb9-a08e-71143d389f5c",
+    "4e85d445-c459-4bab-9e23-c0dc5f4534b2"
+  ],
+  "passages": [
+    {
+      "chunk_id": "4f82fb61-f23f-4674-abdc-a4e6d67dc253",
+      "locator": "Aranya Kanda 13",
+      "text_sha256": "5dfd967bee3b18445510c707c4061f397e415c81d57ce22a940450bf9a716e5d",
+      "excerpt_preview": "o indicate a place in the forest to make a residence during the days of exile. Sage Agastya foresees the next course of Ramayana, and orients his conversation around womanhood and Seetha. Then that sage informs Rama to proceed to Panchavati",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a1d7d838-d588-456b-a8b2-95eae0045216",
+      "locator": "Aranya Kanda 13",
+      "text_sha256": "6134f86d56352390840ff9e73acf451277fbc9c7ae89eddb0e9d7525d8e6d1be",
+      "excerpt_preview": "ce during the days of exile. Sage Agastya foresees the next course of Ramayana, and orients his conversation around womanhood and Seetha. Then that sage informs Rama to proceed to Panchavati where Seetha will be delightful of its surroundin",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

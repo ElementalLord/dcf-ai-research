@@ -1,0 +1,44 @@
+{
+  "source_id": "7b8b5acd-1392-46d8-9a5e-f056828457f4",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Satyajit Ray Film and Study Collection. University of California, Santa Cruz Library. https://guides.library.ucsc.edu/satyajitray",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "University of California, Santa Cruz Library",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Satyajit Ray Film and Study Collection",
+    "url": "https://guides.library.ucsc.edu/satyajitray"
+  },
+  "claim_ids": [
+    "21cb521b-5009-43b2-89d7-2d57ad746463",
+    "64c90d35-17b8-4778-a125-58b2345aaa44"
+  ],
+  "passages": [
+    {
+      "chunk_id": "1735cb19-d57b-4e9e-abb9-a17d906ecce6",
+      "locator": "film prints, scripts, designs, photographs",
+      "text_sha256": "1cef8a944fef23e78650d482c9dc890a71aa70148eb5383dfe2b2fbd50e913f2",
+      "excerpt_preview": "Archival and preservation work matters because film prints, scripts, designs, photographs and publications reveal different stages of production and reception.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6fe03293-8eb6-45b8-83c5-44b57a986ca2",
+      "locator": "restoration, retrospectives, teaching",
+      "text_sha256": "6602ae73d8346ae0df8c38996a0c492b4f265e63f31e4bf60e16fb64434784e5",
+      "excerpt_preview": "Ray’s continuing influence is sustained not only by rankings but by restoration, retrospectives, teaching and access to primary materials.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

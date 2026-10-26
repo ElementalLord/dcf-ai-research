@@ -1,0 +1,143 @@
+{
+  "source_id": "a2a0752d-ffce-4a6f-b5a9-77186913ac3e",
+  "source": {
+    "author": "Sangeetha Menon",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Sangeetha Menon. Advaita Vedanta. Internet Encyclopedia of Philosophy / National Institute of Advanced Studies. https://iep.utm.edu/advaita-vedanta/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Internet Encyclopedia of Philosophy / National Institute of Advanced Studies",
+    "rights_or_access_note": "Publicly accessible source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Advaita Vedanta",
+    "url": "https://iep.utm.edu/advaita-vedanta/"
+  },
+  "claim_ids": [
+    "04ab8e88-171e-4775-87aa-14606f861089",
+    "110d5f9b-661f-496b-b5ef-0ee082f0502b",
+    "17f2e466-30da-4300-8886-46f0fbd4de4c",
+    "24588828-a855-4564-9312-947d198c3a7b",
+    "3145b253-d7df-4c55-92c3-97d37e19b80e",
+    "42e1e4c3-c2d5-4588-9a61-4b09f5a0d498",
+    "563b9b45-6040-4f93-8651-bcde09ed3e28",
+    "60f530b0-4a93-4118-b912-096bfac95f9f",
+    "6146df78-6954-40d4-992d-034606ddcd8d",
+    "84b4c463-2345-45cf-b4a5-7ff4c68bbfa6",
+    "ae4b169c-d8a3-4c15-a5a4-9bfb3a8bb416",
+    "b7ccb18f-d986-4bdc-86dc-fd81ed04e5b3",
+    "d51d4e9b-c30d-4926-8cfc-d7d3e4dcd3d9",
+    "d8f9f1b9-e3ca-4ca7-afa9-06fc0feb1af3"
+  ],
+  "passages": [
+    {
+      "chunk_id": "081cf0b6-4d57-4ef8-8087-93435d1f44c6",
+      "locator": "IEP: Brahman, Jiva, Isvara, and Maya",
+      "text_sha256": "7767afdde61a7b95282c83001cfa75f79d2d8499fb5553c72648e04ae834c31a",
+      "excerpt_preview": "Brahman, Jiva, isvara, and Maya For classical Advaita Vedanta, Brahman is the fundamental reality underlying all objects and experiences. Brahman is explained as pure existence, pure consciousness and pure bliss. All forms of existence pres",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "0c53d847-fa9f-4693-8884-1b3601c07d24",
+      "locator": "IEP: Error, True Knowledge and Practical Teachings",
+      "text_sha256": "09f17a4052a26c94d34b7cc1198eb5841781acfbb8e40dc5fb09eb79caa9df5a",
+      "excerpt_preview": "On the basis of his theory of knowledge, Sankara elucidates the fourfold (mental and physical) practices or qualifications—sadana catustaya—to aid in the achievement of liberation: (i) the discrimination (viveka) between the permanent (nity",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "544b8734-df04-47d7-a384-c66963a3fa0c",
+      "locator": "IEP: History of Advaita Vedanta",
+      "text_sha256": "7c44dbaf3e5d85fcae3771142ca792441b0bf956c5ceb9984c8ce885b4ddadf3",
+      "excerpt_preview": "Vedanta is nominally a school of Indian philosophy, although in reality it is a label for any hermeneutics that attempts to provide a consistent interpretation of the philosophy of the Upanisads or, more formally, the canonical summary of t",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a17b1b86-76f4-403f-a11b-a20bb4f7606c",
+      "locator": "IEP: Error, True Knowledge and Practical Teachings",
+      "text_sha256": "dc0b8b11b2cc37a31c5aeb7baeddc22cbb624a27b864085d4e1cb57fc65361bf",
+      "excerpt_preview": "This is captured in the formula of one Advaitin: “[He] is never born again who knows that he is the only one in all beings like the ether and that all beings are in him” (Upadesa Sahasri XVII.69). Many thinkers in the history of Indian phil",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a3a0c741-f140-4f4d-9603-b281e33cb5e0",
+      "locator": "IEP: History of Advaita Vedanta",
+      "text_sha256": "35253d4d68fe13a3b79a0a4b5393b47ded3ebdaf76b694ba6acfa3c9ad3d4a8f",
+      "excerpt_preview": "Mandana Misra (eight century), an earlier adherent of the rival school of Bhatta Mimamsa, is responsible for a version of Advaita which focuses on the doctrine of sphota, a semantic theory held by the Indian philosopher of language Bhartrha",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "bc18e0e8-105a-4140-ab9a-08580a540104",
+      "locator": "IEP: Brahman, Jiva, Isvara, and Maya",
+      "text_sha256": "31189aed053a08838dc0084a1c88983fee38de8e0bc21f4e39f68451ea774df5",
+      "excerpt_preview": "The major metaphysical concepts in Advaita Vedanta tradition, such as maya, mithya (error in judgment),vivarta (illusion/whirlpool), have been subjected to a variety of interpretations. On some interpretations, Advaita Vedanta appears as a ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c15b7f8b-b951-4802-b34b-f7f12482ccfe",
+      "locator": "IEP: Error, True Knowledge and Practical Teachings",
+      "text_sha256": "ba0545bae3bf7b2bad37b446247a9017ebb2cfe2b31bb3dc26eaee575042af0b",
+      "excerpt_preview": "Many thinkers in the history of Indian philosophy have held that there is an important connection between action and liberation. In contrast, Sankara rejects the theory of jnana-karma-samuccaya, the combination of karma (Vedic duties) with ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c20f1ad6-08dc-46ec-8a0b-c43136428270",
+      "locator": "IEP: Error, True Knowledge and Practical Teachings",
+      "text_sha256": "090a2879da36ecc3346e44c7bb67e8b872127261bc185f77644fa3ee2b566b81",
+      "excerpt_preview": "Error, True Knowledge and Practical Teachings Sankara uses adhyasa to indicate illusion – illusory objects of perception as well as illusory perception. Two other words which are used to denote the same are adhyaropa (superimposition) and a",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "cf9dc580-cd73-4a22-b6eb-60d645b48924",
+      "locator": "IEP: Introduction",
+      "text_sha256": "362c7dd9a00cbe1103ff276c3a415e589b90f3f8193a30e49e1f5b5052871bce",
+      "excerpt_preview": "The names of Upansadic teachers such as Yajnavalkya, Uddalaka, and Badarayana, the author of the Brahma Sutra, could be considered as representing the thoughts of early Advaita. The essential philosophy of Advaita is an idealist monism, and",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "cff7de8f-b2e6-42ac-918b-a66f8c42c0c8",
+      "locator": "IEP: History of Advaita Vedanta",
+      "text_sha256": "923be3399b87141b63d21107e9a487971bd54f0e326621f6f9b842b3f6953795",
+      "excerpt_preview": "Sankara is supposed to have had four (prominent) pupils: Padmapada, Suresvara, Hastamalaka and Totaka. Padmapada is said to be his earliest student. Panchapadika, by Padmapada, is a lucid commentary on Sankara’s commentary on the first vers",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ddd00881-b51a-4fb8-8336-6fa025d6c392",
+      "locator": "IEP: Error, True Knowledge and Practical Teachings",
+      "text_sha256": "f19c0af839295b39f44f540c57b5c8a962870be8bae5c81cff4d25596a63c8de",
+      "excerpt_preview": "According to Sankara the case of illusion involves both superimposition and appearance.Adhyasa, as he says in his preamble to the Brahma Sutra, is the apprehension of something as something else with two kinds of confounding such as the obj",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f96abbd8-4f4e-499b-8cf3-5505be200ed1",
+      "locator": "IEP: Introduction",
+      "text_sha256": "a2517e146bea4ea3aba60076bb09b2b90db39aabf8ca078138e68e7574a9b945",
+      "excerpt_preview": "dvaita Vedanta Advaita Vedanta is one version of Vedanta. Vedanta is nominally a school of Indian philosophy, although in reality it is a label for any hermeneutics that attempts to provide a consistent interpretation of the philosophy of t",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fbaa6d3f-8868-4cce-a91f-8ccceee55f2f",
+      "locator": "IEP: Brahman, Jiva, Isvara, and Maya",
+      "text_sha256": "a3b015f1e0b10c0eb125a38c2e43db3bc06b17ad833b80f556b565ec44377f49",
+      "excerpt_preview": "As a result thejiva functions as a doer (karta) and enjoyer (bhokta) of a limited world. The classical picture may be contrasted with two sub-schools of Advaita Vedanta that arose after Sankara: Bhamati and Vivarana. The primary difference ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

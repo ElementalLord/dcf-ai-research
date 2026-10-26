@@ -1,0 +1,52 @@
+{
+  "source_id": "70f9fe64-aa40-4e70-a3c3-893d14c8dae5",
+  "source": {
+    "author": "A. P. J. Abdul Kalam",
+    "authority_metadata": {
+      "verified_at": "2026-10-10T05:42:15.249Z"
+    },
+    "citation": "A. P. J. Abdul Kalam. Address to the Nation on Teachers' Day, 2005. President of India. https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-nation-teachers-day-2005",
+    "original_work_identity": {},
+    "publication_year": 2005,
+    "publisher_or_institution": "President of India",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Address to the Nation on Teachers' Day, 2005",
+    "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-nation-teachers-day-2005"
+  },
+  "claim_ids": [
+    "3766eea2-be75-44f3-8a81-c4055aa774be",
+    "5ebe0e11-047f-4ce8-bdfa-4af3b6c5dbb6",
+    "7fe9bdcf-eb60-45ab-b9dc-74663c5cb687"
+  ],
+  "passages": [
+    {
+      "chunk_id": "48409d46-d449-484c-8bd3-b6917082fe5f",
+      "locator": "Teachers' Day 2005",
+      "text_sha256": "568f56712946856df550c551ec6040e7c8331b9fdfe0664022c09ad6063c355f",
+      "excerpt_preview": "Let us recall his advice to the teachers: \"The sense of human need is there and the teacher can satisfy it by giving to the youth an idea of the fundamental power and worth of man, his spiritual dignity as man, a supra-national culture and ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "59ca3d4f-de5d-432e-af56-bd0d5ea092e5",
+      "locator": "Teachers' Day 2005",
+      "text_sha256": "e95a3e9f56d86d0ebc30e4a74c0117d20a2d6bbb32b9554cbb69768fbfe99365",
+      "excerpt_preview": "The education system should give the training to the students to cull the relevant knowledge out of this vast information. The teachers should guide the students in this regard and build a capacity in them to become autonomous learners.</p>",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "5a071dda-8894-42c3-9e73-8c8c4428012c",
+      "locator": "Teachers' Day 2005",
+      "text_sha256": "46ef07bfec6218bc2251ace4e00d85e13f2e0aa2ed8640a254624dcd078d2e26",
+      "excerpt_preview": "I would like to talk to you on \"Injecting Beauty of Science in Teaching\".</p><p class=\"title1\">My meeting with school students</p><p>During the last five years, I have met about six hundred thousands students from all parts of the country, ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

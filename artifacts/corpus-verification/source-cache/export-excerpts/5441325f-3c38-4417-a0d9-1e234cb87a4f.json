@@ -1,0 +1,52 @@
+{
+  "source_id": "5441325f-3c38-4417-a0d9-1e234cb87a4f",
+  "source": {
+    "author": "U Thant",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "U Thant. Statement by Secretary-General U Thant at United Nations concert, 21 October 1966. United Nations Press Services. https://digitallibrary.un.org/record/4095124/files/%5EST_DPI_PRESS_%5ESG_SM_595--SG_SM_595-EN.pdf",
+    "original_work_identity": {},
+    "publication_year": 1966,
+    "publisher_or_institution": "United Nations Press Services",
+    "rights_or_access_note": "Short original UN archive transcript snapshot checked on 2026-10-12; direct PDF access intermittent.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Statement by Secretary-General U Thant at United Nations concert, 21 October 1966",
+    "url": "https://digitallibrary.un.org/record/4095124/files/%5EST_DPI_PRESS_%5ESG_SM_595--SG_SM_595-EN.pdf"
+  },
+  "claim_ids": [
+    "29ff39ef-1b4b-4185-a489-09d500fcda0c",
+    "74a60c04-5c50-4edb-968d-ff64f6f0f6e2",
+    "e30abf0b-cf13-4fc1-9a8c-779b8789f809"
+  ],
+  "passages": [
+    {
+      "chunk_id": "2ded0ece-53f7-4508-8784-023a10d9b9fb",
+      "locator": "UN press release SG/SM/595",
+      "text_sha256": "f7d70885ce6bc74bde3f4b87ff57d0306d0b701a701116862f8a4c138becd034",
+      "excerpt_preview": "Last year it was decided that, in celebration of International Co-operation Year, there should be an additional concert, not falling into our traditional pattern. I then invited Srimati Subbulakshmi to New York with her accompanying artists",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "39bd2f24-2ff9-422d-a34b-393f9bc2ecab",
+      "locator": "UN press release SG/SM/595; compare UN in India archival caption",
+      "text_sha256": "eec47c566d381588e0ef87c977dee2ef37927451ec806481f204351de09b7a60",
+      "excerpt_preview": "TEXT OF STATEMENT BY SECRETARY-GENERAL, U THANT, AT UNITED NATIONS CONCERT ON 21 OCTOBER 1966. We normally have only two concerts every year, one on United Nations Day and the other on Human Rights Day.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a1d2ae00-3555-4721-83c8-cf9a210dced4",
+      "locator": "UN press release SG/SM/595",
+      "text_sha256": "658fac06e54f6a5d7a8efb48fa9c85fa1ba75c73dfa654d096a22c1d306f5c1e",
+      "excerpt_preview": "We have listened to some extraordinarily good music today, though it may have sounded exotic to some of you. The fact that this concert is so well attended shows at the same time how receptive we are at the United Nations to new experiences",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

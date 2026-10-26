@@ -1,0 +1,101 @@
+{
+  "source_id": "0662151b-0d88-4b60-b631-cedc9303e5b6",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_kind": "Contemporary royal pillar inscriptions; later-reign statements of policy and administration",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Ashoka Library: Major Pillar Edicts. University of Oslo / University of Texas at Austin. https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=370",
+    "original_work_identity": {},
+    "publication_year": 2014,
+    "publisher_or_institution": "University of Oslo / University of Texas at Austin",
+    "rights_or_access_note": "Short documented research excerpts only; source layer is shown so translation, later tradition and modern scholarship are not conflated.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Ashoka Library: Major Pillar Edicts",
+    "url": "https://www2.hf.uio.no/polyglotta/index.php?page=volume&vid=370"
+  },
+  "claim_ids": [
+    "03029219-0bd4-4396-aa14-9cddf074e25a",
+    "1e12002c-eeee-4f7d-b26c-648f36aa5a16",
+    "3619508c-09fe-49e7-bd52-0516a1e4b1dc",
+    "3628d766-b15d-47b0-aabb-0f2406600ab7",
+    "70b081cb-2344-4bd5-ba09-aca44565c67b",
+    "cc9a5d34-1583-4ccc-9289-4f6204ee8b45",
+    "d752ae19-bbb9-4a5e-afbc-2452f19e78d7",
+    "dd4051fd-facf-4728-aa1f-f67a9b7b827b",
+    "e22a25ca-a4dd-432f-ad3f-0346ebae6593",
+    "f3819dd1-4d37-42f3-b360-1265fc2d940a",
+    "f3c9183e-b93a-43d9-97e7-6808c21fc154"
+  ],
+  "passages": [
+    {
+      "chunk_id": "2d4628c5-997a-4548-b3df-f5fabc8ec6fd",
+      "locator": "all sects, ascetics and householders",
+      "text_sha256": "8fd11e49cab8881b38dfa02689f1f3055f8066935f7175b9f34240585928cec8",
+      "excerpt_preview": "They concern themselves with all sects, ascetics and householders.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4506f4ea-8575-4dd0-a418-a3e3fd728d1c",
+      "locator": "gift of dhamma",
+      "text_sha256": "8748d110b47643a251e35e06068fbd45a3e30dd42a2f9fffd998e92ad7d1c906",
+      "excerpt_preview": "There is no gift like the gift of dhamma.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "5d07e907-12d3-40ac-8901-83ce5620d948",
+      "locator": "show respect to slaves and servants",
+      "text_sha256": "a22fc06bc3cde822e5c006dbf6c29230cab0c646e5688a36817807eb567469a4",
+      "excerpt_preview": "It is good to show respect to slaves and servants, obedience to mother and father, generosity to friends and relatives, and abstention from killing living beings.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "85316d18-96cb-4884-ad3d-8ed2627f3583",
+      "locator": "tour every five years",
+      "text_sha256": "198ff79b498eba22721b1333f474383f00fbcbfd141c9250e72d77e018f2ee4e",
+      "excerpt_preview": "My officers shall tour every five years for the instruction in dhamma and for other business.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "99213f05-8627-419a-960a-63373932f7ee",
+      "locator": "prisoners be granted a respite of three days",
+      "text_sha256": "53639714569315e5fdf4e43eed1e746ee4f0dc11cbf03be862f510f84ec50e50",
+      "excerpt_preview": "I have ordered that prisoners be granted a respite of three days.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b8cd4dd9-8974-4841-b0f2-1aa56eb8df28",
+      "locator": "uniformity in judicial procedure",
+      "text_sha256": "0df3e83a737c764388aa9079f12303d80cf5fcb6a5915ad6ac748d7e12f5312e",
+      "excerpt_preview": "My desire is that there should be uniformity in judicial procedure and punishment.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f0575114-f607-4d60-9afd-814aa182fbc4",
+      "locator": "appointed officers of dhamma",
+      "text_sha256": "e05cb93ea5f8e5fc0f105c6ad2e3b56d1d129ee08384c6bbecf52033872fcc9c",
+      "excerpt_preview": "I have appointed officers of dhamma for the welfare and happiness of the people.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f6a532be-b4d6-4e14-8c2d-b8fc4e5d3fa1",
+      "locator": "banyan trees to give shade",
+      "text_sha256": "41ccfa1708290e5c1a8df872f8945df63e7b152544a559a2f26b7fb13b86d685",
+      "excerpt_preview": "have ordered welfare measures, such as banyan trees to give shade, mango groves, wells at half-kos intervals and rest houses.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

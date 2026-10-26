@@ -1,0 +1,61 @@
+{
+  "source_id": "4210c591-26b1-4287-b8e3-cbfb51a67783",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-13T14:33:17.966Z"
+    },
+    "citation": "Mūl Mantra. Encyclopaedia of Sikhism / Punjabi University. https://learnpunjabi.org/eos/MUL%20MANTRA.html",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Encyclopaedia of Sikhism / Punjabi University",
+    "rights_or_access_note": "Publicly accessible source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Mūl Mantra",
+    "url": "https://learnpunjabi.org/eos/MUL%20MANTRA.html"
+  },
+  "claim_ids": [
+    "30c0f606-6602-41f1-a192-5ebb50594a20",
+    "bd818e10-4bfa-46a6-9f7c-a278ade51afe",
+    "e449d7e2-3566-4887-a707-f92a52d23025",
+    "f8886f8a-2562-4f9f-a13d-f1e614ab84cf"
+  ],
+  "passages": [
+    {
+      "chunk_id": "11d1bf1c-7960-432d-8476-5695fdbc24fc",
+      "locator": "gurpras",
+      "text_sha256": "9bb63fa047059d25a7d7f6510486498d6c824e4eb747e66db6622d116b6cc5ad",
+      "excerpt_preview": "Transliterated into Roman script it would read : <i>(ik) oa&#7749k&#257r satin&#257m kart&#257 purakhu nirbhau nirvairu ak&#257l m&#363rati aj&#363n&#299 saibha&#7749 gurpras&#257di</i>. The English paraphrase, given the inherent inadequaci",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "56306fc0-14d2-4c44-b236-08d286d656df",
+      "locator": "opening lines",
+      "text_sha256": "c28b481d350d5e499b6db2fb6ba9ea4686d6b053bab2e6f1e6491c57dde5d8fc",
+      "excerpt_preview": "�<HTML><HEAD><TITLE>M&#362L MANTRA</TITLE> <style type=\"text/css\"> .BODY { background-color: #EAF1F7; background-image: url('images/gtbh.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-position: center; color: ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "59ff876b-1b41-47eb-bc03-e76b153d2eb6",
+      "locator": "primary or fundamental formula",
+      "text_sha256": "461ff1a0df45f8f780ea81ec97bc3eb6fd355d6fc3d9f5b35a8bb315cd11f7d6",
+      "excerpt_preview": "This is the primary or fundamental formula of the Sikh faith. Transliterated into Roman script it would read : <i>(ik) oa&#7749k&#257r satin&#257m kart&#257 purakhu nirbhau nirvairu ak&#257l m&#363rati aj&#363n&#299 saibha&#7749 gurpras&#25",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8edf9fcf-3873-4735-9f81-c20a56274e8f",
+      "locator": "God is one",
+      "text_sha256": "9d5a4ca51c211bb746f83a6fff796544f76c5039b9b71b04f13afff68165324c",
+      "excerpt_preview": "The English paraphrase, given the inherent inadequacies of the genre translation, would read, \"God is one; call Him Eternal truth; He is the Supreme creator; He knows no fear and is at enmity with none. His being is Timeless and Formless; H",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

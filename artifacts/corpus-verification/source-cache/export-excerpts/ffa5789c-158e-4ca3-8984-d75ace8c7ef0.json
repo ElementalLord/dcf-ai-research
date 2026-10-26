@@ -1,0 +1,106 @@
+{
+  "source_id": "ffa5789c-158e-4ca3-8984-d75ace8c7ef0",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T05:41:41.118Z"
+    },
+    "citation": "Dr. A.P.J. Abdul Kalam: Profile. President of India. https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "President of India",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Dr. A.P.J. Abdul Kalam: Profile",
+    "url": "https://presidentofindia.nic.in/dr-apj-abdul-kalam-profile"
+  },
+  "claim_ids": [
+    "0ca8537d-384c-49a7-ab8c-0e545d36e47a",
+    "0fe168d7-9b34-49b4-afcf-9cfc23b469db",
+    "1f24f631-9f71-45f8-8020-344583ae60d9",
+    "4215c7e3-8dc4-4a4c-b8b2-ca88ec823589",
+    "59e0de88-bec6-4ffa-9b35-f346e2885e8b",
+    "5f99454a-d63b-4386-872b-e1c91608383f",
+    "a0fbf8c8-5cc6-4ae6-8cff-85a27b4b54ef",
+    "d60c168d-8fb0-49b5-a88a-406e53292d33",
+    "e95fea19-bcf4-49db-9c92-db5e87b14e7b"
+  ],
+  "passages": [
+    {
+      "chunk_id": "23b60eaa-bc09-4269-ad5d-3e1600dad735",
+      "locator": "Profile, books",
+      "text_sha256": "6f8b9c0a902d64b0a721d6d9368a0705c99ea2ff9032b60d4b3d2eff32d27808",
+      "excerpt_preview": "Kalam's books - \"Wings of Fire\", \"India 2020 - A Vision for the New Millennium\", \"My journey\" and \"Ignited Minds - Unleashing the power within India\" have become household names in India and among the Indian nationals abroad.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "2ca703ff-e2e6-4628-92cb-6f8fa3f2d8ba",
+      "locator": "Profile, university",
+      "text_sha256": "4e5a3ecb704316676096cc93815cea989df9498f41ce744fdcb067b61dff76f9",
+      "excerpt_preview": "Kalam took up academic pursuit as Professor, Technology & Societal Transformation at Anna University, Chennai from November 2001 and was involved in teaching and research tasks. Above all he took up a mission to ignite the young minds for n",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4646dd23-b972-4166-a40e-5b233c9f96f6",
+      "locator": "Profile, national policy",
+      "text_sha256": "c34581258c5e4285854c2413efaa46f08e510e54ca4cfc2e2b14241942f2c8bc",
+      "excerpt_preview": "Kalam was also the Chairman, Ex-officio, of the Scientific Advisory Committee to the Cabinet (SAC-C) and piloted India Millennium Mission 2020.Dr. Kalam took up academic pursuit as Professor, Technology & Societal Transformation at Anna Uni",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "5939be13-6678-47a6-a537-200aa1647ee4",
+      "locator": "Profile, recognition",
+      "text_sha256": "3f651f26e7e3c4b88f28777e0a99449bfd2363f8f23b5706c27ab750af99837e",
+      "excerpt_preview": "He has been awarded the coveted civilian awards - Padma Bhushan (1981) and Padma Vibhushan (1990) and the highest civilian award Bharat Ratna (1997). He is a recipient of several other awards and Fellow of many professional institutions.Dr.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8c88a1df-7fa7-46dd-9fca-d2165e898cc8",
+      "locator": "Profile, launch vehicles",
+      "text_sha256": "0b0d6bb7118542ad94c60469887c301ca43225f20e9cf99cb609cd043c4297ce",
+      "excerpt_preview": "He was responsible for the evolution of ISRO's launch vehicle programme, particularly the PSLV configuration. After working for two decades in ISRO and mastering launch vehicle technologies, Dr.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8f009f9d-da3b-444a-8cfc-627dd919267c",
+      "locator": "Profile, presidency",
+      "text_sha256": "2761e1a8d9ff2a3d318e80fdd04a326e72c0d3b3a191ec9906f8f0d6b660d60c",
+      "excerpt_preview": "Kalam became the 11th President of India on 25th July 2002. His focus is on transforming India into a developed nation by 2020.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d2b1b21e-e816-40ad-9b3e-d940e5372c09",
+      "locator": "Profile, missiles",
+      "text_sha256": "97817ab8b422b8149908ab208d57f6556c0bee7d9c517357b7a1212e4015f154",
+      "excerpt_preview": "Kalam took up the responsibility of developing Indigenous Guided Missiles at Defence Research and Development Organisation as the Chief Executive of Integrated Guided Missile Development Programme (IGMDP). He was responsible for the develop",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "dff4f52c-a7ad-461c-be96-ea88aa8669bd",
+      "locator": "Profile, early life",
+      "text_sha256": "48d7cdc54cc610f7041d721c9b935627806548bf855d4655e68178d2db8c9c40",
+      "excerpt_preview": "Abdul Kalam Download Profile PhotoBorn on 15th October 1931 at Rameswaram in Tamil Nadu, Dr. Avul Pakir Jainulabdeen Abdul Kalam, specialized in Aeronautical Engineering from Madras Institute of Technology.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e6a91f1b-1b58-4cdd-8897-1c6bdb478e44",
+      "locator": "Profile, space programme",
+      "text_sha256": "369d009115bd1035e905fcab90eaa9206058cfea727cb72a842ccf1f6eeca105",
+      "excerpt_preview": "Kalam made significant contribution as Project Director to develop India's first indigenous Satellite Launch Vehicle (SLV-III) which successfully injected the Rohini satellite in the near earth orbit in July 1980 and made India an exclusive",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

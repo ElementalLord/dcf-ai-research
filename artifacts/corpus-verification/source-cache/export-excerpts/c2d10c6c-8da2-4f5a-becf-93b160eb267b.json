@@ -1,0 +1,38 @@
+{
+  "source_id": "c2d10c6c-8da2-4f5a-becf-93b160eb267b",
+  "source": {
+    "author": "Traditional Vedic text",
+    "authority_metadata": {},
+    "citation": "Rigveda 3.62, Shakala Samhita. Vedic Heritage Portal.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Vedic Heritage Portal, IGNCA, Ministry of Culture, Government of India",
+    "rights_or_access_note": null,
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Rigveda Shakala Samhita — Mandala 3, Sukta 62",
+    "url": "https://vedicheritage.gov.in/hi/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhita-mandal-03-sukta-062/"
+  },
+  "claim_ids": [
+    "00719858-2216-4eb3-9b7d-61488e67193a",
+    "0207c641-72a8-456d-ad19-97221c8b97e6",
+    "5b955e77-8ebc-4140-88e7-014663f7827c",
+    "6fbdb492-7d56-4621-affa-acce86d6a3d4",
+    "78d42ac5-b62c-42cb-bf06-01f5ca27490f",
+    "9ea370a1-5ea4-49b3-a42f-a4b4a3fcb985",
+    "e69b10da-1535-453f-bdea-5f14c3b6e39f"
+  ],
+  "passages": [
+    {
+      "chunk_id": "dbcfbb5a-8120-4b13-9f5a-9d266e46e0d0",
+      "locator": "Links",
+      "text_sha256": "6ee7ff9f6b95fa692716b4947524221fe2f55ffb81353bd8b825140638a41e15",
+      "excerpt_preview": "Hindi Translation by Pt. Sripada Damodara Satavalekar  English Translation by H.H. Wilson  Commentary of Sayanacharya",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

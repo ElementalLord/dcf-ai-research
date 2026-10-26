@@ -1,0 +1,36 @@
+{
+  "source_id": "a6594ebb-c2d7-4fab-9b33-ef28441eff3f",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Indian Panorama Catalogue: The Director. Directorate of Film Festivals, Government of India. https://www.dff.nic.in/images/Documents/142_IPCatalogue1979-80.pdf",
+    "original_work_identity": {},
+    "publication_year": 1980,
+    "publisher_or_institution": "Directorate of Film Festivals, Government of India",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Indian Panorama Catalogue: The Director",
+    "url": "https://www.dff.nic.in/images/Documents/142_IPCatalogue1979-80.pdf"
+  },
+  "claim_ids": [
+    "abfc0e69-c62f-4897-a6d2-cb9a391dec87",
+    "b210cf27-45d9-42a6-8f59-d077233828be"
+  ],
+  "passages": [
+    {
+      "chunk_id": "7a9ab95a-38f9-49c1-abf1-26c2b025c0b8",
+      "locator": "director, editor, scriptwriter and music director",
+      "text_sha256": "a6e1136cea1959671b911ed7344e69ca6daf0e20e712f45b340a04c5d0817aa5",
+      "excerpt_preview": "he Directorate of Film Festivals described Ray as a director, editor, scriptwriter and music director who came to cinema from commercial art and book design.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

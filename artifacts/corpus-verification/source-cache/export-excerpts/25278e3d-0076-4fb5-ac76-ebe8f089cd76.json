@@ -1,0 +1,43 @@
+{
+  "source_id": "25278e3d-0076-4fb5-ac76-ebe8f089cd76",
+  "source": {
+    "author": "Harleen Singh",
+    "authority_metadata": {
+      "verified_at": "2026-10-11"
+    },
+    "citation": "Harleen Singh. The Rani of Jhansi: Introduction. Cambridge University Press, The Rani of Jhansi, chapter I. https://www.cambridge.org/core/books/abs/rani-of-jhansi/introduction/30451DFC0ED016927CAFBE4F14088AEB",
+    "original_work_identity": {},
+    "publication_year": 2014,
+    "publisher_or_institution": "Cambridge University Press, The Rani of Jhansi, chapter I",
+    "rights_or_access_note": "Public original; short research excerpts. Scholarly abstract/summary access does not imply full chapter access.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "The Rani of Jhansi: Introduction",
+    "url": "https://www.cambridge.org/core/books/abs/rani-of-jhansi/introduction/30451DFC0ED016927CAFBE4F14088AEB"
+  },
+  "claim_ids": [
+    "8949b011-b9c9-43a9-8491-8278fa7aa08d",
+    "a2186557-8f10-4aa7-a4ec-6ddd1d052f29"
+  ],
+  "passages": [
+    {
+      "chunk_id": "7d165026-1f05-48ff-b9ef-1d7e30f00698",
+      "locator": "public chapter I summary; inference from documented governance and resistance",
+      "text_sha256": "4d187b8706ec27701f3990508177abb25b6cc574f2e079b879f333dee110a7ed",
+      "excerpt_preview": "Rani Lakshmi Bai, the Queen of Jhansi, led her army against the British in 1857. The death of the king, Gangadhar Rao, had left the throne without a natural heir. The East India Company denied recognition to the adopted prince, or to the Qu",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ef2a2c2d-7d21-471c-a526-63128e40b040",
+      "locator": "public chapter I summary",
+      "text_sha256": "4db183dcd5a4e70ff57c5310e52efc8e9103bab6cf7b092ba1e28e12b0102ed0",
+      "excerpt_preview": "The death of the king, Gangadhar Rao, had left the throne without a natural heir. The East India Company denied recognition to the adopted prince, or to the Queen as his regent and annexed the kingdom. Undeterred, Rani Lakshmi Bai took the ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

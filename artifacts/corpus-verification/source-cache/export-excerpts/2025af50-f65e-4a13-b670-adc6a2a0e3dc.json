@@ -1,0 +1,31 @@
+{
+  "source_id": "2025af50-f65e-4a13-b670-adc6a2a0e3dc",
+  "source": {
+    "author": "Valmiki (traditional attribution)",
+    "authority_metadata": {},
+    "citation": "Valmiki Ramayana, Bala Kanda 1.63. IIT Kanpur Valmiki Ramayanam.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "IIT Kanpur",
+    "rights_or_access_note": "The original IITK link has a TLS certificate mismatch. A readable parallel translation of the same Bala Kanda chapter is linked below; compare editions before using a quotation.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayanam — Bala Kanda, Sarga 63",
+    "url": "https://www.valmiki.iitk.ac.in/sloka?field_kanda_tid=1&field_sarga_value=63&language=dv"
+  },
+  "claim_ids": [
+    "1c0f0a3c-38e8-4ff7-99e6-08f1a6dfb7dc",
+    "28fae74f-9fed-454e-a367-094a03e0e39e",
+    "2b83e277-2744-4aea-ac1a-cbf3ff205cc1",
+    "4b527ad6-0edd-4d2c-9aee-d3df728949a5",
+    "5909bf8a-b6ac-425f-b74c-a9df3fe197de",
+    "7562e441-ee71-4c12-a9a4-8769da12c232",
+    "88575aed-b45d-4148-b30f-2af470dd8103",
+    "921abb4e-69b7-4225-92ef-fddac41f8f66",
+    "b6948da1-9a8d-4be6-abf9-b618ccccbcd9"
+  ],
+  "passages": [],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

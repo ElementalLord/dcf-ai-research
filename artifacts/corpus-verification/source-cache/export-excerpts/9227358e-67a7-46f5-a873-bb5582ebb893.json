@@ -1,0 +1,49 @@
+{
+  "source_id": "9227358e-67a7-46f5-a873-bb5582ebb893",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.21, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 21 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga21/bala_21_prose.htm"
+  },
+  "claim_ids": [
+    "2490638e-c070-403f-b630-206f85ad94ff",
+    "31a9db58-f790-4094-a1fc-5e0ce309c7ef",
+    "4e722593-ea71-48ac-93d6-f3fd80160670",
+    "95e35dcf-d4fa-4896-bc02-88d10f7fcc83",
+    "bf922fd9-48be-4064-8c41-eed5a28c9adc",
+    "cf302d79-43e7-4c30-94ee-5a63e08598e9",
+    "d1590d47-4e3e-401e-8ad7-d399d4ae7ac9",
+    "ffcc8e6e-758f-4c3b-9a4a-e27c98ac2b53"
+  ],
+  "passages": [
+    {
+      "chunk_id": "16e8b4c0-c2b9-44bb-b4df-2f3f97395940",
+      "locator": "Valmiki Ramayana - Bala Kanda in \nProse Sarga 21",
+      "text_sha256": "86a84c6752d7f9556873eaf990b2a2687bc5a28a4b2e42b07e2fc469f27579a2",
+      "excerpt_preview": "\"All the missiles known to Vishvamitra are the highly righteous children of Krishaasva  Prajapati, where Prajapati-s were the earliest ruler of mankind, and god Shiva gave them to Vishvamitra  when was ruling kingdom. Those missiles are the",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "eb13ef00-ba13-431c-9957-e70d915433bf",
+      "locator": "Valmiki Ramayana - Bala Kanda in \nProse Sarga 21",
+      "text_sha256": "0e701f6a6944278373e53699f82b68ca17089487968d613deb010374f8e33228",
+      "excerpt_preview": "The ire of sage Vishvamitra is shown at king Dasharatha. To pacify sage Vishvamitra,  sage Vashishta intervenes and convinces king Dasharatha to send Rama with sage Vishvamitra. While doing  so, sage Vashishta enumerates the capabilities of",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

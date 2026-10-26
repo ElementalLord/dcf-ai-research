@@ -1,0 +1,43 @@
+{
+  "source_id": "9e7e8397-1c81-4b5e-b339-a697f9a5701f",
+  "source": {
+    "author": "J. C. Bose",
+    "authority_metadata": {
+      "verified_at": "2026-10-13"
+    },
+    "citation": "J. C. Bose. The Nervous Mechanism of Plants. Longmans, Green, and Co.; Internet Archive. https://archive.org/details/nervousmechanism00bose",
+    "original_work_identity": {},
+    "publication_year": 1926,
+    "publisher_or_institution": "Longmans, Green, and Co.; Internet Archive",
+    "rights_or_access_note": "Short documented research excerpts only. Primary claims, archival records, and later interpretations stay distinct.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "The Nervous Mechanism of Plants",
+    "url": "https://archive.org/details/nervousmechanism00bose"
+  },
+  "claim_ids": [
+    "5b402cb9-e6a0-4059-80fc-faaf69e01bdd",
+    "5bd31cb4-3709-40f4-a869-efbea6e07bca"
+  ],
+  "passages": [
+    {
+      "chunk_id": "30892245-9229-4ce8-8ebb-9b6cc044729e",
+      "locator": "excitation, conduction and movement in plants",
+      "text_sha256": "f45d81b19796f7ab2299c2ada83e4dc9171140c6d92bf79f1591d8d2e2353caa",
+      "excerpt_preview": "he Nervous Mechanism of Plants develops Bose’s interpretation of excitation, conduction and movement in plants.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "b8315ab2-9c7f-484e-ac72-16c358298e45",
+      "locator": "language of nerves and reflexes by analogy with animals",
+      "text_sha256": "7fba1a964c8909741142cdfe4aa089c36f69eb13bf0643dde789599d4d9c8b29",
+      "excerpt_preview": "The volume uses the language of nerves and reflexes by analogy with animals.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

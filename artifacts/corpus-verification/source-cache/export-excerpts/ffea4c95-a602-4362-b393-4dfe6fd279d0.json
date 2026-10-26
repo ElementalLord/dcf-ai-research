@@ -1,0 +1,45 @@
+{
+  "source_id": "ffea4c95-a602-4362-b393-4dfe6fd279d0",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.56, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 56 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga56/bala_56_prose.htm"
+  },
+  "claim_ids": [
+    "50c5e872-c9e3-459a-bd7b-be6597f2956b",
+    "7179ac2d-207b-4509-bcb4-465d21533301",
+    "ce8b99d9-ffce-49a6-80bf-660e144bc5fe",
+    "d092b2ea-3bff-4982-af58-f72ce645b262"
+  ],
+  "passages": [
+    {
+      "chunk_id": "63e4bb3c-9a10-44c8-b7b6-a9049065e49b",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\n Sarga 56 in Prose",
+      "text_sha256": "f30213a484c272290cd99adba97728ae3c822ccf1bd7710dbf326cf25abb5a4f",
+      "excerpt_preview": "Vashishta nullifies Vishvamitra's missiles just by his Brahma's baton.   All missiles are defused when Vashishta consumed tghem. Vishvamitra   launches the highest missile, namely Brahma-missile, which too is consumed   by Vashishta, whereb",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "6a94efd0-174d-4312-89b5-661d00d6acfb",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\n Sarga 56 in Prose",
+      "text_sha256": "f30a24660d61e04ad503a90e0577989b622ab398a97f76b453835b787881f922",
+      "excerpt_preview": "\"Brahma's son Vashishta defused all of those missiles just with his baton and when  all of them are thus silenced, Gaadhi's son Vishvamitra touched off Brahma's missile.  When Vishvamitra brandished and set up Brahma missile for launching, ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,46 @@
+{
+  "source_id": "7fe1e3e5-7007-4d6c-8dac-726299566240",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Through The Mill. Tata group. https://www.tata.com/newsroom/through-the-mill",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Tata group",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Through The Mill",
+    "url": "https://www.tata.com/newsroom/through-the-mill"
+  },
+  "claim_ids": [
+    "0fdd31a6-f9d4-4cde-8ba8-60f9d80e1d26",
+    "176deae5-05be-4d54-9d19-1ceb77abd55e",
+    "538443d9-915d-4aa5-8752-9454ae4c9fc9",
+    "b50d4673-001d-4d75-b90e-0d852dbe3337"
+  ],
+  "passages": [
+    {
+      "chunk_id": "de743273-a65e-42ce-9e2d-3e808b166e1b",
+      "locator": "humidifiers and fire sprinklers",
+      "text_sha256": "48a393163ae57ffd54086d55728172b65790e24524453b480bbc681295a79387",
+      "excerpt_preview": "It says Empress Mills used humidifiers and fire sprinklers, instituted a Pension Fund in 1886, and began accident compensation in 1895.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ee708965-1f72-4a5d-b88c-ddc3305526b7",
+      "locator": "laboratory for technology and labour welfare",
+      "text_sha256": "8ef1d6d0c8016996d7a85d4eb6ba8bd640bf968a5697f3beeb77e0408a0fc46c",
+      "excerpt_preview": "he Tata account calls the Nagpur textile mills a laboratory for technology and labour welfare.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

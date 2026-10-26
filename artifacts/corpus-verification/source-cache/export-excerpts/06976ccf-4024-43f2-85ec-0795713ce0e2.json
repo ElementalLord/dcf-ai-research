@@ -1,0 +1,62 @@
+{
+  "source_id": "06976ccf-4024-43f2-85ec-0795713ce0e2",
+  "source": {
+    "author": "K. A. Nilakanta Sastri",
+    "authority_metadata": {
+      "source_kind": "Classic modern synthesis using inscriptions and literary material",
+      "verified_at": "2026-10-13"
+    },
+    "citation": "K. A. Nilakanta Sastri. The Cholas. University of Madras. https://archive.org/details/in.ernet.dli.2015.100711",
+    "original_work_identity": {},
+    "publication_year": 1935,
+    "publisher_or_institution": "University of Madras",
+    "rights_or_access_note": "Short documented research excerpts only; contemporary inscriptions, later chronicle tradition and modern scholarship are kept distinct.",
+    "source_status": "approved",
+    "source_type": "scholarly_book",
+    "storage_path": null,
+    "title": "The Cholas",
+    "url": "https://archive.org/details/in.ernet.dli.2015.100711"
+  },
+  "claim_ids": [
+    "10582672-9d84-4838-b68d-1e9713de7345",
+    "186e3917-40ce-4ba8-b228-33da6967ba6b",
+    "2523a821-4b95-4660-81f4-a5e57541c25c",
+    "2feda9fe-8750-4000-8d4a-9ccb6ce56ff8",
+    "325d7cc9-dda5-4d35-a438-f68274bb7da6",
+    "45638e4b-6de6-4d60-8672-c365f9b594a9",
+    "45a6e7f0-cd07-4131-af21-958d128a6b82",
+    "acfb700d-43c8-42df-a732-4a80e91f89f9",
+    "b258bad9-fb73-475f-bc70-517fb1b97116",
+    "bb3ad9ad-4eea-499b-a67a-6aa42d08cfec",
+    "cef0d96d-71bd-4ea5-9df2-756cdb4fca0e",
+    "f047be10-17e8-433c-910b-c271be83e86f"
+  ],
+  "passages": [
+    {
+      "chunk_id": "05f751c3-7acc-4e77-a0f5-276281cd5ad6",
+      "locator": "courtly statements",
+      "text_sha256": "55db61c377265c3b666d88544cbaeae80811ded88a92175166b6cda1207aa9f4",
+      "excerpt_preview": "Royal meikeerthi lists are indispensable but are courtly statements and require comparison with other evidence.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a7b6ceca-d6d3-4df9-bb32-5858c3bc2b14",
+      "locator": "Chera/Kerala country",
+      "text_sha256": "243004171d5ab0d7489f1f65f95a338da2660eaf33054eb9696b57dd9159e9c4",
+      "excerpt_preview": "His inscriptions credit campaigns against the Chera/Kerala country, the Pandyas, Gangapadi, Nolambapadi, Tadigaipadi, northern Sri Lanka and the islands called the Twelve Thousand.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "cb41f730-4d69-442a-95a4-b54da7d8bcc2",
+      "locator": "reigned from 985 to 1014",
+      "text_sha256": "2c9c557768187f23629048946b11e687a56446f6047423b0a6ea85e84136f365",
+      "excerpt_preview": "ajaraja I reigned from 985 to 1014.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

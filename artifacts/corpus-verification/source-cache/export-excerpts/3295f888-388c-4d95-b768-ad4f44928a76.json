@@ -1,0 +1,42 @@
+{
+  "source_id": "3295f888-388c-4d95-b768-ad4f44928a76",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.20, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 20 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga20/bala_20_prose.htm"
+  },
+  "claim_ids": [
+    "121fd80b-1ab0-4f8c-b965-8c48554342d1"
+  ],
+  "passages": [
+    {
+      "chunk_id": "3ffa1903-bca8-4d56-996f-54a1495215e4",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\nSarga 20 in Prose",
+      "text_sha256": "542788a3d691ba09140e26e4a4b2645e514f9db33ea00daf6df0f6d7310759a4",
+      "excerpt_preview": "\"That formidable Ravana is not a devastator of rituals by himself, even so, two very mighty demons  called Mareecha and Subaahu will cause devastating hindrances to rituals, instigated by him.\" Thus  Sage Vishvamitra said to Dasharatha.  Th",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "fcc0eead-cb31-4021-8270-4dae2a0ac4b1",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\nSarga 20 in Prose",
+      "text_sha256": "7d245f82f29519014177e36d273bb278ff92e7ea8847345eb3ce6978e0b6cba9",
+      "excerpt_preview": "\"Here is the full-fledged battalion, called akshouhiNi sena , for which  I am the leader and controller, and fortified by this army I will go there to encounter those  demons.  One pankti row, is the first unit of ancient military, which co",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

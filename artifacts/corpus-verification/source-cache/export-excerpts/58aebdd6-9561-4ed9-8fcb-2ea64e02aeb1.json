@@ -1,0 +1,71 @@
+{
+  "source_id": "58aebdd6-9561-4ed9-8fcb-2ea64e02aeb1",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Electric Dreams. Tata group. https://www.tata.com/newsroom/heritage/jamsetji-tata-hydro-power-frank-harris",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Tata group",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "Electric Dreams",
+    "url": "https://www.tata.com/newsroom/heritage/jamsetji-tata-hydro-power-frank-harris"
+  },
+  "claim_ids": [
+    "1df1aa77-a18b-4efd-8a1b-444455151db6",
+    "2f832670-6e11-433a-a80e-2fa588ad633d",
+    "b34031a8-eca1-4d1c-b04d-655f4a2f164e",
+    "c7c3605e-f09b-4513-a4c5-0c3b104c2f10",
+    "d8c6acf5-b151-49b5-9036-23726a8f6b15"
+  ],
+  "passages": [
+    {
+      "chunk_id": "325cabd7-00d7-450b-89da-4c7345066719",
+      "locator": "son Dorabji",
+      "text_sha256": "f6402a92d82526efcb2270867f6609e23ea5a85b27c4e272de0799089c3787be",
+      "excerpt_preview": "His son Dorabji and later associates carried the hydroelectric project to completion.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "396ed6cd-50b0-4fc8-881f-1e9a5c2370a1",
+      "locator": "preliminary work rather than a completed plant",
+      "text_sha256": "c6262b30c604ffb4ec16db5b249d2032c94b41753b26d7527dd8a7455315b9e6",
+      "excerpt_preview": "At his death in 1904, preliminary work rather than a completed plant existed.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7b55cff4-e9ae-4f99-bf3b-a02c3b23f1cd",
+      "locator": "opposed an exclusive electricity monopoly",
+      "text_sha256": "196bb7d5d647acd6e09d5870632e29f7f595a3829bcdd4530920b469daecc5d7",
+      "excerpt_preview": "He sought government support and opposed an exclusive electricity monopoly.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8e3c29f9-9249-49bc-a762-de3ac6e9a229",
+      "locator": "as early as 1875",
+      "text_sha256": "39c3a45664d434ddb05393e36d35ed1f2fbc2f34fe69f26b53f07a2551eda235",
+      "excerpt_preview": "amsetji Tata contemplated hydraulic energy development as early as 1875.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "e50bb515-1559-4b0f-86aa-36cbdafecda9",
+      "locator": "Western Ghats",
+      "text_sha256": "65bd6ae6e02a0ea0094b679ce2faccc60dfe4faf3148b850e972daa3b2db34a2",
+      "excerpt_preview": "His scheme proposed using water from the Western Ghats to generate electricity for Bombay and nearby mills.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

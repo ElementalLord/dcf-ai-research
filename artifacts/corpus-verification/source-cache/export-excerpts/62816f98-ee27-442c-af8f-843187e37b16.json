@@ -1,0 +1,34 @@
+{
+  "source_id": "62816f98-ee27-442c-af8f-843187e37b16",
+  "source": {
+    "author": null,
+    "authority_metadata": {
+      "verified_at": "2026-10-10T13:27:37.841Z"
+    },
+    "citation": "Rigveda 1.167: Agastya hymn. Vedic Heritage Portal, Government of India. https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-167/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Vedic Heritage Portal, Government of India",
+    "rights_or_access_note": "Original publisher page is linked; research excerpt stored below.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Rigveda 1.167: Agastya hymn",
+    "url": "https://vedicheritage.gov.in/samhitas/rigveda/shakala-samhita/rigveda-shakala-samhitas-mandal-01-sukta-167/"
+  },
+  "claim_ids": [
+    "f05c0180-d03f-403c-9d19-e33628864ff0"
+  ],
+  "passages": [
+    {
+      "chunk_id": "7e92e713-3359-4e20-955f-9552a5fb591c",
+      "locator": "Rigveda 1.167",
+      "text_sha256": "f9fbb857db4457911a377ed8cb64cfcdb71c0b3242417b6ae2435e0074f03f12",
+      "excerpt_preview": "77 178 179 180 181 182 183 184 185 186 187 188 189 190 191 Rigveda – Shakala Samhita – Mandala 01 Sukta 167 /video/RIGSS_01_167.mp4 A A+ ११ अगस्त्यो मैत्रावरुणिः । १ इन्द्रः, २-११मरुतः। त्रिष्टुप्, (१०पुरस्ताज्ज्योतिः।) स॒हस्रं॑ त इन्द्रो॒त",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

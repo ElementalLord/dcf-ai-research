@@ -1,0 +1,34 @@
+{
+  "source_id": "e95fc345-1672-4147-847b-4d7ab480740f",
+  "source": {
+    "author": "Valmiki (traditional attribution); English rendering by Desiraju Hanumanta Rao",
+    "authority_metadata": {
+      "verified_http_status": 200
+    },
+    "citation": "Valmiki Ramayana, Bala Kanda 1.61, chapter-level prose rendering.",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Valmiki Ramayana project",
+    "rights_or_access_note": "Publicly accessible chapter page; preserve source attribution and link.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Valmiki Ramayana — Bala Kanda, Sarga 61 (prose)",
+    "url": "https://www.valmikiramayan.net/utf8/baala/sarga61/bala_61_prose.htm"
+  },
+  "claim_ids": [
+    "ccbb927c-37fc-4b62-8924-52c2433dba48"
+  ],
+  "passages": [
+    {
+      "chunk_id": "0f976ed8-309c-404b-bc7e-56c059c59280",
+      "locator": "Book I : Bala Kanda - The Youthful Majesties\nSarga 61in Prose",
+      "text_sha256": "64a06de4e8afedaf755f0f11be80209f276f43df46e449a4ea6b090a314f0bf1",
+      "excerpt_preview": "The Legend of Shunashepa is commenced and Sage Shataananda continues   this as a part of Vishvamitra's legend. When Rama's grandparent   Ambariisha undertook a ritual, Indra impounds that ritual's horse.   Then Ambariisha had to fetch a hum",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

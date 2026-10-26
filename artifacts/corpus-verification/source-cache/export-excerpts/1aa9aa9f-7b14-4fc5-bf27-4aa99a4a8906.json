@@ -1,0 +1,43 @@
+{
+  "source_id": "1aa9aa9f-7b14-4fc5-bf27-4aa99a4a8906",
+  "source": {
+    "author": "Swami Saradananda, translated by Swami Jagadananda",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Swami Saradananda, translated by Swami Jagadananda. Sri Ramakrishna the Great Master (Sri Ramakrishna Lilaprasanga). Sri Ramakrishna Math, Madras; online edition ramakrishnavivekananda.info. https://www.ramakrishnavivekananda.info/sriramakrishna_thegreatmaster/srk_tgm_content.htm",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Sri Ramakrishna Math, Madras; online edition ramakrishnavivekananda.info",
+    "rights_or_access_note": "First-generation disciple's biography, written from the Master's own reminiscences and those of companions; testimony, not independent history.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "Sri Ramakrishna the Great Master (Sri Ramakrishna Lilaprasanga)",
+    "url": "https://www.ramakrishnavivekananda.info/sriramakrishna_thegreatmaster/srk_tgm_content.htm"
+  },
+  "claim_ids": [
+    "16f2e82d-33b2-4da3-a729-d28d9c3119e9",
+    "3a96fac9-4f88-4e65-bd3b-30df6aa57acf"
+  ],
+  "passages": [
+    {
+      "chunk_id": "4b155daa-6939-4e47-88e1-5a80db9cda2d",
+      "locator": "Great Master 0.2: The book and its author",
+      "text_sha256": "4c60739f9e28af6d2d9ded7aade37250fe15c8b4ea30fe33ce8f2e3dbe2b4d5c",
+      "excerpt_preview": "The new dispensation of the age is the source of great good to the whole world, specially to India; and the inspirer of this dispensation, Bhagavan Sri Ramakrishna, is the reformed and remodelled manifestation of all the past great epoch-ma",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7dfcbf0e-2858-4249-836e-850f5544e058",
+      "locator": "Saradananda, Great Master 2.6",
+      "text_sha256": "34d38eae91cf3827aa00efae3e3b2e9976a52bdad22d96f1ee86e0e1d8cab3f6",
+      "excerpt_preview": "My eyes suddenly fell upon the sword that was there in the Mother’s temple. I made up my mind to put an end to my life with it that very moment. Like one mad, I ran and caught hold of it, when suddenly I had the wonderful vision of the Moth",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

@@ -1,0 +1,52 @@
+{
+  "source_id": "e1057aff-b432-47af-8318-f70ecf558442",
+  "source": {
+    "author": "Horace Hayman Wilson (translator)",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Horace Hayman Wilson (translator). The Vishnu Purana, Book III, Chapter V. John Murray, London; transcription archived from sacred-texts.com. https://web.archive.org/web/2023id_/https://www.sacred-texts.com/hin/vp/vp079.htm",
+    "original_work_identity": {},
+    "publication_year": 1840,
+    "publisher_or_institution": "John Murray, London; transcription archived from sacred-texts.com",
+    "rights_or_access_note": "Public-domain 1840 translation; transcription read through the Internet Archive Wayback Machine.",
+    "source_status": "approved",
+    "source_type": "primary_text",
+    "storage_path": null,
+    "title": "The Vishnu Purana, Book III, Chapter V",
+    "url": "https://web.archive.org/web/2023id_/https://www.sacred-texts.com/hin/vp/vp079.htm"
+  },
+  "claim_ids": [
+    "73b16746-4ae8-4db2-bd93-50f7f6a41a42",
+    "dca8a67a-659d-4d27-90ef-6e4c772f4250",
+    "dfcd6442-4090-4d66-a7ef-89b5eb361323"
+  ],
+  "passages": [
+    {
+      "chunk_id": "3498b27c-bd52-43ad-ac6e-fbb444b278cd",
+      "locator": "Vishnu Purana 3.5 (Wilson, p. 281)",
+      "text_sha256": "2ccc5a047e70628ada6f517f70339a1deca27f43180e1d25f764fbf578966121",
+      "excerpt_preview": "Glory to Savitrí, to Súrya, to Bháskara, to Vivaswat, to Áditya, to the first-born of gods or demons. I adore the eye of the universe, borne in a golden car, whose banners scatter ambrosia.\" Thus eulogized by Yájnawalkya, the sun, in the fo",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "469ef568-bfec-472b-a3fe-6acfe35c84d9",
+      "locator": "Vishnu Purana 3.5 (Wilson, pp. 279–280)",
+      "text_sha256": "9f689e5f59f0478e16ea3e78e572b4bdabf18a9758fa5e9aad3977f5d9040560",
+      "excerpt_preview": "Without any hesitation Yájnawalkya refused, and said, \"How shall I engage in penance with these miserable and inefficient Brahmans?\" On which his Guru, being incensed, commanded him to relinquish all that he had learnt from him. \"You speak ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "8c5f1752-a044-4255-a746-f4b58e72fe63",
+      "locator": "Vishnu Purana 3.5 (Wilson, p. 279)",
+      "text_sha256": "a7378df75a8b6dfafb8d082cb0af6600aa7c9d109e844291baca85735963b42b",
+      "excerpt_preview": "PARÁŚARA.--Of the tree of the Yajur-veda there are twenty-seven branches, which Vaiśampáyana, the pupil of Vyása, compiled, and taught to as many disciples 1. Amongst these, Yájnawalkya, the son of Brahmaráta, was distinguished for piety an",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

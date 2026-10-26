@@ -1,0 +1,61 @@
+{
+  "source_id": "b44f3150-605d-42e5-bddd-81183a8782e3",
+  "source": {
+    "author": "Bruce C. Berndt in conversation with Atul Dixit",
+    "authority_metadata": {
+      "verified_at": "2026-10-09T14:28:56.053Z"
+    },
+    "citation": "Bruce C. Berndt in conversation with Atul Dixit. Fifty Golden Years with Ramanujan. Bhāvanā; hosted by University of Illinois Mathematics. https://math.illinois.edu/sites/default/files/2025-03/Berndt-Dixit-interview.pdf",
+    "original_work_identity": {},
+    "publication_year": 2024,
+    "publisher_or_institution": "Bhāvanā; hosted by University of Illinois Mathematics",
+    "rights_or_access_note": "Public source; short research excerpts only.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "Fifty Golden Years with Ramanujan",
+    "url": "https://math.illinois.edu/sites/default/files/2025-03/Berndt-Dixit-interview.pdf"
+  },
+  "claim_ids": [
+    "10e0ae54-573d-42d7-8fb4-5a2ce0d311da",
+    "11c5f444-f29d-4233-9b63-5ca4015aec27",
+    "283ccd08-76f6-4542-9e16-655721294d09",
+    "38b7d313-1cf9-4875-9dad-c71b1ba5d6bd"
+  ],
+  "passages": [
+    {
+      "chunk_id": "09b06cee-5da8-465a-ad41-6300c8d7752e",
+      "locator": "Berndt interview, p. 5",
+      "text_sha256": "ee01406b91ce3877a910c4abf18a67f025818458ccbfedfa9ae430b157efba1c",
+      "excerpt_preview": "Engaging with a large number of students, Berndt has so far published five voluminous works in an effort to supply proofs to, as per his count, the 3254 theorems contained in the Notebooks. Atul Dixit, himself a former PhD student of Bruce ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "328b8def-5d1e-4ced-a5ef-6e37aae0ec77",
+      "locator": "Berndt interview, methods discussion",
+      "text_sha256": "e16ba52fe2f5df23a33c003dc1e929da1c79d9ec609248ecea921394574acfd6",
+      "excerpt_preview": "How far do you think you have been able to accomplish the mission of a comprehensive and complete study of Ramanujan’s work? BB: Although essentially everything has been proved in the earlier notebooks and lost notebook, we really don’t un-",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "a86a78df-d383-40c2-85fc-b629aa153fb8",
+      "locator": "Berndt interview, lost notebook discussion",
+      "text_sha256": "2ce920e60eabef7aac38e8c00d29b424ea7300f872b9d98738e02ac269f13364",
+      "excerpt_preview": "However, George Andrews told me that when he discovered Ramanujan’s lost notebook in the spring of 1976 at Trinity College, Cambridge, he also found the notes that G.N. Watson and B.M. Wilson had accumulated in their efforts to edit the not",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c7e81440-c588-40cf-b217-a225ba498c26",
+      "locator": "Berndt interview, notebook editions",
+      "text_sha256": "64c1c14313a03a5568a4140631b7a3b129f40e5552527be0a8a93724e078990d",
+      "excerpt_preview": "(Chapter 1 was on magic squares, and I felt I could handle that at any time.) After more than 20 years, with the help of many of my graduate students, I completed the work in five volumes published by Springer. COURTESY: Bruce Berndt A page",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

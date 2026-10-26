@@ -1,0 +1,71 @@
+{
+  "source_id": "92a7443a-9b09-40b1-8b07-9c8474dfa3db",
+  "source": {
+    "author": "Karthik Ramaswamy",
+    "authority_metadata": {
+      "source_authority_checked": true,
+      "verified_at": "2026-10-13"
+    },
+    "citation": "Karthik Ramaswamy. How IISc Found a Home in Bangalore. Connect with IISc. https://connect.iisc.ac.in/2018/03/how-iisc-found-a-home-in-bangalore/",
+    "original_work_identity": {},
+    "publication_year": 2018,
+    "publisher_or_institution": "Connect with IISc",
+    "rights_or_access_note": "Short documented research extracts only; primary, institutional and independent interpretive layers remain distinct.",
+    "source_status": "approved",
+    "source_type": "institutional",
+    "storage_path": null,
+    "title": "How IISc Found a Home in Bangalore",
+    "url": "https://connect.iisc.ac.in/2018/03/how-iisc-found-a-home-in-bangalore/"
+  },
+  "claim_ids": [
+    "0b730b39-50f9-4e2b-816f-5c3102e71b24",
+    "d471c6c3-1c39-4e90-a3df-b74c17cdb2ea",
+    "dc1cbe50-cc41-4f0e-bf7a-c95997a3249b",
+    "eb1ffde6-fb4e-4be2-b402-be3fe3f74b85",
+    "ff0d820d-a034-4371-bb04-26349522550e"
+  ],
+  "passages": [
+    {
+      "chunk_id": "18561bc9-86dc-4f16-a482-589e8395adbe",
+      "locator": "study European universities for 18 months",
+      "text_sha256": "a62d53679a6774709f99023a7991d5e49a22ba8c135e4fe4d2e973ee5e6daaa3",
+      "excerpt_preview": "Tata asked Burjorji Padshah in 1896 to implement his vision and sent him to study European universities for 18 months.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "30178d64-cd18-4aec-bc16-05bd441f973b",
+      "locator": "several years of negotiation",
+      "text_sha256": "146f4bc0fb01123690d17669f8630c413988baee3a24986dd86f0fa2f796725f",
+      "excerpt_preview": "The plan had to pass through several years of negotiation before the 1909 vesting order.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "4e3198cf-d335-4ea9-ad72-b39e1742a8ef",
+      "locator": "presented to Lord Curzon on 31 December 1898",
+      "text_sha256": "5a824293df6703c064bbbfba1dc478ea46f316a680f9921027b17f2f7804c948",
+      "excerpt_preview": "A majority favoured Bombay for industrial life, wealth and civic importance, but the eventual proposal was presented to Lord Curzon on 31 December 1898.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "61b84037-a6d9-4987-8f6d-7334ea90924b",
+      "locator": "limited resources and no research infrastructure",
+      "text_sha256": "f1e9b8a5e0210c6cb21bcf167dc81875bf742c15c548ac9a8bd1f2cf27c093eb",
+      "excerpt_preview": "n the late 1890s India had limited resources and no research infrastructure for building a university from scratch.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "ce4a3c5a-e76f-4542-910a-f2a8e205d2ec",
+      "locator": "consulted 76 people",
+      "text_sha256": "6dd33764a4566468e6d2fa5e4e61ae5b95fb1764bf00db2e0007fb6b04eabd24",
+      "excerpt_preview": "The committee consulted 76 people about the plan and location.",
+      "excerpt_truncated": false,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}

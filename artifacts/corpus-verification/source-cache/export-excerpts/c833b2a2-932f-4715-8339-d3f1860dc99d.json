@@ -1,0 +1,152 @@
+{
+  "source_id": "c833b2a2-932f-4715-8339-d3f1860dc99d",
+  "source": {
+    "author": "Brian Black",
+    "authority_metadata": {
+      "verified_at": "2026-10-12"
+    },
+    "citation": "Brian Black. The Upaniṣads. Internet Encyclopedia of Philosophy (peer-reviewed). https://iep.utm.edu/upanisad/",
+    "original_work_identity": {},
+    "publication_year": null,
+    "publisher_or_institution": "Internet Encyclopedia of Philosophy (peer-reviewed)",
+    "rights_or_access_note": "Public original; short research excerpts.",
+    "source_status": "approved",
+    "source_type": "scholarly_article",
+    "storage_path": null,
+    "title": "The Upaniṣads",
+    "url": "https://iep.utm.edu/upanisad/"
+  },
+  "claim_ids": [
+    "00674e84-54f4-4e11-be53-d3a58eedfce1",
+    "165cd5ea-d7ee-4855-8fef-5ece320e1700",
+    "29e61646-fd2c-4ca3-89a7-ebe20bd3a96c",
+    "4c1d1c93-36a3-465f-8a03-05ec28e3e31a",
+    "5d989d55-6b02-4626-b7b5-d9796aa33f37",
+    "62814db2-74ec-42eb-97e3-f8377d65acad",
+    "6f69c2ef-fe7f-4fe1-bf3e-435dccd91893",
+    "71791aa9-8751-49d6-8207-a2c3682cb63f",
+    "8a8cc68e-83c2-43e7-bcee-a2746f315398",
+    "a2282d0d-3591-40ce-bbdf-66dd0dd70594",
+    "d488392f-4df0-4f67-8664-d2c1a901452c",
+    "d76806bb-0150-47c8-a227-78cc1fde0c86",
+    "d8f9f1b9-e3ca-4ca7-afa9-06fc0feb1af3",
+    "dc55f82d-8149-47d0-9866-a8c2808b20cf",
+    "f2f1eeb3-0a7e-4a47-b60d-26db5a3d225f"
+  ],
+  "passages": [
+    {
+      "chunk_id": "029debdf-7896-4f81-b329-4e329144e292",
+      "locator": "§6",
+      "text_sha256": "e5951b7343179ac2ce8976d68bb3c16d923266e78382809f13bc38e809bc0bd3",
+      "excerpt_preview": "With the connection between knowledge and lifestyle, there are notable gender implications of Upanishadic teachings. Yājñavalkya, for example, assumes that the main knowers of the self will be brahmin men, even claiming that through knowled",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "206c91ea-0536-4bce-b8fa-96ba4480596d",
+      "locator": "§3",
+      "text_sha256": "b275efac87a599f8624e9355af37cac4bb2426ec856ca5b1c87251c579d5646d",
+      "excerpt_preview": "Throughout his teachings Yājñavalkya describes the self as being hidden or behind that which is immediately perceptible, suggesting that the self cannot be known by rational thought or described in conventional language because it can never",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "41956b40-4954-4b1a-bc84-5c486065ea14",
+      "locator": "IEP: Upanisads",
+      "text_sha256": "4d28f62a8776a8443173e755e5889534735fd55096de03f5eba788022faaa43e",
+      "excerpt_preview": "700 C.E.), whose interpretations of the Upanisads made a major impact on the Indian philosophical tradition in the centuries after his lifetime and continued to dominate readings of the texts throughout the 19th and early 20th centuries. Sa",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "43f056c2-4f33-4b0e-aac2-cdb8354a660d",
+      "locator": "§7",
+      "text_sha256": "88f7b7d93aff84049015221befda59d280375749f1dc3589ab9ae5d59b073312",
+      "excerpt_preview": "Another Nyāya philosopher, Gaṅgeśa (c. 1300 C.E.), seems to be quoting from the Upaniṣads to back up the claim that karmic retribution is not binding for those who know the self—a position stated by Yājñavalkya (BU 4.4.23). Moreover, a numb",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "5166ce7d-1d6d-4a05-843c-f3205f5c09d2",
+      "locator": "§8",
+      "text_sha256": "b59e7e52fc0e4312011dd1813f5072aa30799d442b1454d02ab2347a5309a2b6",
+      "excerpt_preview": "The most well-known philosopher of the Vedānta school was Śaṅkara (c. 700 C.E.), whose interpretations of the Upaniṣads made a major impact on the Indian philosophical tradition in the centuries after his lifetime and continued to dominate ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "7868b646-5dd5-498f-905f-2d5f3b3c4f3c",
+      "locator": "IEP: Upanisads",
+      "text_sha256": "4d28f62a8776a8443173e755e5889534735fd55096de03f5eba788022faaa43e",
+      "excerpt_preview": "700 C.E.), whose interpretations of the Upanisads made a major impact on the Indian philosophical tradition in the centuries after his lifetime and continued to dominate readings of the texts throughout the 19th and early 20th centuries. Sa",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "78fe7b23-6bc4-46a8-acef-427d99a93b8d",
+      "locator": "§6",
+      "text_sha256": "e1b326c83d106f5c4b73ffa1656ed5f88ad1dfd3e4615b2dd1bba5a3b8569ff2",
+      "excerpt_preview": "As we have seen, Uddālaka Āruṇi describes the self as an organic, universal life-force, while Yājñavalkya teaches that one who knows the self will see the self in all living beings (BU 4.4.23). It is also noteworthy that the Upaniṣads depic",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9a2400a8-cbd9-4b80-a9aa-d099fab08c51",
+      "locator": "§5",
+      "text_sha256": "a332c640ba049d5b9831021633461690693e98f61ef6f2f9f8714aa5a430dc43",
+      "excerpt_preview": "Rather, he seems to suggest that one can create good consequences in the future by performing good actions in the present. In other words, Yājñavalkya presents karma more as a theory to promote good actions, than as a fatalistic doctrine in",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "9a802501-b893-47a0-95d5-c7ae5210f532",
+      "locator": "§1.a",
+      "text_sha256": "dce8bc3fb3624823e040e6a83b2ff1700b414ec9f93d0afddb3b83e3cd4a79d8",
+      "excerpt_preview": "The Vedic Upaniṣads are widely recognized as being composed during two chronological stages. The texts of the first period, which would include the Bṛhadāraṇyaka (BU), Chāndogya (CU), Taittirīya (TU), Aitareya (AU) and Kauṣītakī (KsU), are ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c5b7bd3c-5284-48a4-a096-8a5908f79cb9",
+      "locator": "§3",
+      "text_sha256": "5229d39091da946df77d7be8f72ddca6c52a5171a334aaed5ab201d6e661bdeb",
+      "excerpt_preview": "This pattern continues several times, before Prajāpati finally presents ātman as the ‘one who is aware’ of his final and true teaching. One of the teachings that Prajāpati presents as false, or at least as incomplete, is a description of āt",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c7bb517f-d656-4831-9915-ba247f318b48",
+      "locator": "IEP: Upanisads",
+      "text_sha256": "8136986fd63fa75bc8acad78374a44b2ef01a49c27e090dc5f3b5a7cff3383f9",
+      "excerpt_preview": "The school divides the Vedas into two sections: karmakanda, the section of spiritual exegesis (consisting of the Samhitas and the Brahmanas), and jnanakanda, the section of knowledge (consisting of the Upanisads, and to a certain extent, th",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "c848ad43-e717-47d9-b673-b15128a07751",
+      "locator": "§4",
+      "text_sha256": "6b6eb05cd0eca7336b7ebb0dd7a85c46d809890016986a17d843a1f3e239cdab",
+      "excerpt_preview": "Although Śāṇḍilya’s teaching of ātman and brahman is often considered the central doctrine of the Upaniṣads, it is important to remember that this is not the only characterization either of the self or of ultimate reality. While some teache",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "d602cf0e-0c9f-4d6d-aeec-23ed6b5f274e",
+      "locator": "IEP: Upanisads",
+      "text_sha256": "6826c5e43fcec550752f0cd884dbd209b2863ad41e437de3f572ae8f6cde66ab",
+      "excerpt_preview": "According to the Vedanta school, the ritual section contains detailed instructions of how to perform the rituals, whereas the Upanisads contain transcendent knowledge for the sake of achieving moksa. There are three main branches of the Ved",
+      "excerpt_truncated": true,
+      "screen_only": true
+    },
+    {
+      "chunk_id": "f6683f48-d460-4929-8ead-de9a8a041163",
+      "locator": "§3",
+      "text_sha256": "79e9bcd8b1d534c9f4edc7bc0b74577289949640364074e1f5ac4ff8bf8f5186",
+      "excerpt_preview": "Thus, he offers an organic understanding of ātman, characterizing the self in terms of the life force that animates all living beings. Yājñavalkya, the most prominent teacher in the Bṛhadāraṇyaka Upaniṣad, characterizes ātman more in terms ",
+      "excerpt_truncated": true,
+      "screen_only": true
+    }
+  ],
+  "cache_kind": "short_exported_excerpts_for_screening_only",
+  "live_original_inspected": false
+}
