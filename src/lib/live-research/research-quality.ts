@@ -1,5 +1,6 @@
 import { normalizeForMatch } from "@/lib/corpus/text";
 import { passageAddressesTarget } from "@/lib/ask/target-support";
+import { CONTEXT_FRAMING_TERMS, detectContextIntent } from "@/lib/ask/historical-context";
 
 export type QueryIntent = "primary" | "scholarly" | "institutional" | "context" | "controversy" | "exact_work";
 export type EvidenceType = "primary_document" | "traditional_text" | "scholarly_interpretation" | "institutional_record" | "edited_secondary" | "general_web";
@@ -20,7 +21,7 @@ export type SourceIdentity = {
   provenanceComplete: boolean;
 };
 
-const STOP = new Set(["what", "which", "when", "where", "why", "how", "does", "did", "was", "were", "are", "the", "and", "for", "with", "from", "about", "into", "that", "this", "their", "work", "role", "known", "important", "significance"]);
+const STOP = new Set(["what", "which", "when", "where", "why", "how", "does", "did", "was", "were", "are", "the", "and", "for", "with", "from", "about", "into", "that", "this", "their", "work", "role", "known", "important", "significance", "follow", "topic", "question", ...CONTEXT_FRAMING_TERMS]);
 const IDEA_QUESTION = /\b(?:ideas|beliefs|principles|values|visions?)\b.{0,100}\b(?:associated with|known for|did|does|hold|have|advocate|promote)\b/i;
 const IDEA_EVIDENCE = /\b(?:idea|vision|belief|philosophy|principle|value|advocat|emphasiz|teach|promot|argu|aspir|thought|dream)\w*/i;
 export const isBroadIdeaQuestion = (question: string) => IDEA_QUESTION.test(question);
@@ -41,6 +42,11 @@ function focusTerms(question: string, personality: string): string[] {
 /** A small, question-directed plan. It describes missing evidence classes instead of issuing a generic name search. */
 export function planResearchQueries(personality: string, question: string, gaps: string[] = [], max = 2): ResearchQuery[] {
   const focus = focusTerms(question, personality);
+  if (detectContextIntent(question) === "contemporaries") {
+    const topic = focus.join(" ") || "documented work";
+    return [{ query: clean(`${personality} ${topic} peers contemporaries similar work`), intent: "context",
+      reason: "The question asks who else worked on the same topic in the period." }];
+  }
   if (isBroadIdeaQuestion(question)) focus.push("vision", "philosophy", "teachings");
   const gap = gaps.map(clean).filter((item) => item && !/^(?:evidence|direct evidence|general evidence)$/i.test(item)).slice(0, 2);
   const topic = [...new Set([...gap.flatMap((item) => item.split(" ")), ...focus])].slice(0, 10).join(" ") || "documented work";
