@@ -59,7 +59,7 @@ export function ProfileClient({ person, related }: { person: PublicProfilePerson
       </div>
       <aside className="explore-trust" aria-label="Evidence summary">
         <strong>{sources.length} {sources.length === 1 ? "source" : "sources"}</strong>
-        <p>{claims} approved {claims === 1 ? "claim" : "claims"}{claims ? ", linked to supporting sources." : ". Source records are available below."}</p>
+        <p>{claims} approved profile {claims === 1 ? "claim" : "claims"}{claims ? ", linked to supporting sources." : ". Source records are available below."}</p>
         <Link href="/ai">Ask about {firstName}</Link>
       </aside>
     </header>
@@ -77,8 +77,8 @@ export function ProfileClient({ person, related }: { person: PublicProfilePerson
           <p>Questions for reading the source collection. These are starting points, not approved claims.</p>
           <div className="explore-angle-grid">{person.angles.map((angle) => <article key={angle.title} className="explore-angle"><span>{lensLabel(angle.lens)}</span><h3>{angle.title}</h3><p>{angle.question}</p></article>)}</div>
         </section>
-        <div className="explore-profile-tools"><span>{claims} approved {claims === 1 ? "claim" : "claims"}</span>{claims > 0 && <button type="button" onClick={() => setAllOpen(!allOpen)}>{allOpen ? "Hide all evidence" : "Show all evidence"}</button>}</div>
-        {sections.length ? sections.map((section) => <section id={section.key} key={section.key} className={`explore-topic ${section.key === "contestedAspects" ? "explore-disputed" : ""}`}><h2>{section.title}</h2>{section.claims.map((claim) => <Claim key={`${claim.claimId}-${allOpen}`} statement={claim} sources={sources} allOpen={allOpen} />)}</section>) : <section className="explore-review-note"><h2>Claims in review</h2><p>The sources below are available to read. Biographical claims will appear here after review.</p></section>}
+        <div className="explore-profile-tools"><span>{claims} approved profile {claims === 1 ? "claim" : "claims"}</span>{claims > 0 && <button type="button" onClick={() => setAllOpen(!allOpen)}>{allOpen ? "Hide all evidence" : "Show all evidence"}</button>}</div>
+        {sections.length ? sections.map((section) => <section id={section.key} key={section.key} className={`explore-topic ${section.key === "contestedAspects" ? "explore-disputed" : ""}`}><h2>{section.title}</h2>{section.claims.map((claim) => <Claim key={`${claim.claimId}-${allOpen}`} statement={claim} sources={sources} allOpen={allOpen} />)}</section>) : <section className="explore-review-note"><h2>Claims in review</h2><p>The sources below are available to read. This profile has no published claims yet; Ask may use newer verified knowledge.</p></section>}
         <section id="sources" className="explore-source-section">
           <div className="explore-source-heading"><div><h2>Sources</h2><p>{sources.length} source {sources.length === 1 ? "record" : "records"} in this collection. Source inclusion does not mean every claim has been approved.</p></div></div>
           {sources.length ? <>
