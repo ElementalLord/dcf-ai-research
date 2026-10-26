@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { pmcArticleId, readPmcOpenArticle } from "@/lib/live-research/pmc-open-access";
+import { hasAutomaticAdmissionRights } from "@/lib/live-research/retention-rights";
 
 const url = "https://pmc.ncbi.nlm.nih.gov/articles/PMC10649960/";
 const xml = `<?xml version="1.0"?><OAI-PMH><GetRecord><record><metadata><article>
@@ -28,6 +29,34 @@ describe("PMC's permitted full-text API", () => {
     expect(article?.identity).toMatchObject({ doi: "10.3390/nano13212843", provenanceComplete: true, publisher: "Multidisciplinary Digital Publishing Institute" });
     expect(article?.rightsDeclaration).toBe("https://creativecommons.org/licenses/by/4.0/");
     expect(article?.sections).toContainEqual({ locator: "Introduction", text: "Chandrasekhara Venkata Raman was awarded the Nobel Prize in Physics in 1930." });
+  });
+
+  it("reads the official Europe PMC open-access XML first", async () => {
+    const direct = xml.slice(xml.indexOf("<article>"), xml.indexOf("</article>") + "</article>".length);
+    const fetchImpl = vi.fn(async () => new Response(direct, { headers: { "content-type": "application/xml" } })) as unknown as typeof fetch;
+    const article = await readPmcOpenArticle(url, fetchImpl, validate);
+    expect(article?.rightsDeclaration).toBe("https://creativecommons.org/licenses/by/4.0/");
+    expect(article?.identity.doi).toBe("10.3390/nano13212843");
+    expect(fetchImpl).toHaveBeenCalledOnce();
+    expect(String((fetchImpl as ReturnType<typeof vi.fn>).mock.calls[0][0])).toContain("ebi.ac.uk/europepmc/webservices/rest/");
+  });
+
+  it("keeps a mirror article's noncommercial license ineligible for admission", async () => {
+    const direct = xml.slice(xml.indexOf("<article>"), xml.indexOf("</article>") + "</article>".length)
+      .replaceAll("/by/4.0/", "/by-nc/4.0/");
+    const fetchImpl = vi.fn(async () => new Response(direct, { headers: { "content-type": "application/xml" } })) as unknown as typeof fetch;
+    const article = await readPmcOpenArticle(url, fetchImpl, validate);
+    expect(article?.rightsDeclaration).toBe("https://creativecommons.org/licenses/by-nc/4.0/");
+    expect(hasAutomaticAdmissionRights(article?.rightsDeclaration)).toBe(false);
+  });
+
+  it("uses PMC OAI when the Europe PMC endpoint is unavailable", async () => {
+    const fetchImpl = vi.fn(async (target: URL) => String(target).includes("ebi.ac.uk")
+      ? new Response("", { status: 503 })
+      : new Response(xml, { headers: { "content-type": "application/xml" } })) as unknown as typeof fetch;
+    const article = await readPmcOpenArticle(url, fetchImpl, validate);
+    expect(article?.identity.doi).toBe("10.3390/nano13212843");
+    expect(fetchImpl).toHaveBeenCalledTimes(2);
   });
 
   it("rejects a mismatched work and unavailable full text", async () => {

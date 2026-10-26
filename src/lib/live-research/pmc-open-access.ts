@@ -22,36 +22,33 @@ export function pmcArticleId(rawUrl: string): string | null {
   } catch { return null; }
 }
 
-/** PMC explicitly permits automated full-text retrieval through this OAI-PMH API.
- * Its XML contains the individual article's rights and publisher provenance. */
-export async function readPmcOpenArticle(rawUrl: string, fetchImpl: typeof fetch = fetch, validate: typeof assertSafePublicUrl = assertSafePublicUrl) {
-  const id = pmcArticleId(rawUrl);
-  if (!id) return null;
-  const api = new URL("https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/");
-  api.searchParams.set("verb", "GetRecord");
-  api.searchParams.set("identifier", `oai:pubmedcentral.nih.gov:${id.slice(3)}`);
-  api.searchParams.set("metadataPrefix", "pmc");
-  const safe = await validate(api.toString());
-  if (fetchImpl === fetch) await pacePmcRequest();
-  const response = await fetchImpl(safe, { redirect: "error", signal: AbortSignal.timeout(12_000),
-    headers: { Accept: "application/xml,text/xml", "Accept-Encoding": "gzip, deflate", "User-Agent": "DCF-AI-Research/1.0 (+controlled-source-research)" } });
-  if (!response.ok || !/^(?:application|text)\/xml(?:;|$)/i.test(response.headers.get("content-type") || "")) return null;
-  const declared = Number(response.headers.get("content-length") || 0);
-  if (declared > maxXmlBytes) return null;
-  const reader = response.body?.getReader();
-  if (!reader) return null;
-  const chunks: Uint8Array[] = [];
-  let size = 0;
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    size += value.byteLength;
-    if (size > maxXmlBytes) { await reader.cancel(); return null; }
-    chunks.push(value);
-  }
-  const xml = new TextDecoder().decode(Buffer.concat(chunks));
+async function fetchArticleXml(rawUrl: string, timeoutMs: number, fetchImpl: typeof fetch,
+  validate: typeof assertSafePublicUrl): Promise<string | null> {
+  try {
+    const safe = await validate(rawUrl);
+    if (fetchImpl === fetch) await pacePmcRequest();
+    const response = await fetchImpl(safe, { redirect: "error", signal: AbortSignal.timeout(timeoutMs),
+      headers: { Accept: "application/xml,text/xml", "User-Agent": "DCF-AI-Research/1.0 (+controlled-source-research)" } });
+    if (!response.ok || !/^(?:application|text)\/xml(?:;|$)/i.test(response.headers.get("content-type") || "")
+      || Number(response.headers.get("content-length") || 0) > maxXmlBytes) return null;
+    const reader = response.body?.getReader();
+    if (!reader) return null;
+    const chunks: Uint8Array[] = [];
+    let size = 0;
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      size += value.byteLength;
+      if (size > maxXmlBytes) { await reader.cancel(); return null; }
+      chunks.push(value);
+    }
+    return new TextDecoder().decode(Buffer.concat(chunks));
+  } catch { return null; }
+}
+
+function parseArticleXml(xml: string, id: string, rawUrl: string) {
   const $ = cheerio.load(xml, { xmlMode: true });
-  const article = $("GetRecord > record > metadata > article").first();
+  const article = $("article").first();
   if (!article.length || article.find('article-id[pub-id-type="pmcid"]').first().text().toUpperCase() !== id) return null;
   const title = article.find("article-meta > title-group > article-title").first().text().replace(/\s+/g, " ").trim();
   const authorNode = article.find('article-meta > contrib-group > contrib[contrib-type="author"]').first();
@@ -71,4 +68,23 @@ export async function readPmcOpenArticle(rawUrl: string, fetchImpl: typeof fetch
   return { status: 200, finalUrl: `https://pmc.ncbi.nlm.nih.gov/articles/${id}/`, html: "", title,
     identity: authenticateSource({ url: rawUrl, title, author, publisher, journal, doi, publicationDate: year, sourceType: "scholarly journal" }),
     rightsDeclaration, sections };
+}
+
+/** Both official endpoints serve only their open-access full-text subset.
+ * Article-specific rights and PMCID are checked from the XML itself. */
+export async function readPmcOpenArticle(rawUrl: string, fetchImpl: typeof fetch = fetch, validate: typeof assertSafePublicUrl = assertSafePublicUrl) {
+  const id = pmcArticleId(rawUrl);
+  if (!id) return null;
+  const europePmc = `https://www.ebi.ac.uk/europepmc/webservices/rest/${id}/fullTextXML`;
+  const primary = await fetchArticleXml(europePmc, 7_000, fetchImpl, validate);
+  if (primary) {
+    const parsed = parseArticleXml(primary, id, rawUrl);
+    if (parsed) return parsed;
+  }
+  const oai = new URL("https://pmc.ncbi.nlm.nih.gov/api/oai/v1/mh/");
+  oai.searchParams.set("verb", "GetRecord");
+  oai.searchParams.set("identifier", `oai:pubmedcentral.nih.gov:${id.slice(3)}`);
+  oai.searchParams.set("metadataPrefix", "pmc");
+  const fallback = await fetchArticleXml(oai.toString(), 8_000, fetchImpl, validate);
+  return fallback ? parseArticleXml(fallback, id, rawUrl) : null;
 }
