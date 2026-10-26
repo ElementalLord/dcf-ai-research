@@ -87,6 +87,7 @@ describe("Ask orchestration", () => {
     state.claims = []; state.chunks = [];
     const result = await answerQuestion("What did Vishvamitra teach Rama?", "p");
     expect(result.status).toBe("abstained");
+    expect(result.webSearchUrl).toContain("google.com/search");
     expect(state.google).toHaveBeenCalledTimes(1);
     expect(state.demand).not.toHaveBeenCalled();
   });
@@ -128,6 +129,21 @@ describe("Ask orchestration", () => {
     expect(state.webDiscover).not.toHaveBeenCalled();
     expect(state.generate).not.toHaveBeenCalled();
     expect(result.citations.some((item) => item.kind === "live_web_source")).toBe(true);
+  });
+
+  it("offers search leads after an unsupported demand request without citing or admitting them", async () => {
+    vi.stubEnv("DEMAND_RESEARCH_ENABLED", "true");
+    vi.stubEnv("EVIDENCE_POLICY_MODE", "strict");
+    state.claims = []; state.chunks = [];
+    state.demand.mockResolvedValue({ requestId: "research-missing", status: "insufficient", attempted: true,
+      citeableNow: false, findings: [], passages: [], unresolvedGaps: [{ requirement: "Direct evidence" }],
+      leads: [{ url: "https://example.test/lead", title: "A related page" }],
+      usage: { searchCalls: 1, sourceFetches: 1 } });
+    const result = await answerQuestion("What did Vishvamitra teach Rama?", "p");
+    expect(result.status).toBe("abstained");
+    expect(result.citations).toEqual([]);
+    expect(result.researchLeads).toEqual([{ url: "https://example.test/lead", title: "A related page" }]);
+    expect(result.webSearchUrl).toContain("google.com/search");
   });
   it("merges credible Google grounding with DCF evidence without invoking Brave", async () => {
     vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
@@ -341,7 +357,7 @@ describe("Ask orchestration", () => {
     state.generate.mockResolvedValue({ text: "The available sources do not contain enough evidence to answer that fully." });
     const result = await answerQuestion("How did Vasistha influence Vishvamitra's teaching of Rama?", "p");
     if (result.status !== "abstained") throw new Error(`expected an abstention, got ${result.status}`);
-    expect(result.answer).toMatch(/don't have enough evidence to establish that connection/);
+    expect(result.answer).toMatch(/couldn't verify that connection/);
     expect(result.citations).toEqual([]);
   });
   it("returns a cited fallback after both bounded synthesis attempts fail", async () => {

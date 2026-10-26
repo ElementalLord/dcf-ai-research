@@ -125,6 +125,21 @@ describe("bounded on-demand research", () => {
     expect(result).not.toHaveProperty("claims");
   });
 
+  it("returns safe page leads when none supports the question", async () => {
+    const { deps } = fixture();
+    deps.read = async () => null;
+    const result = await executeDemandResearch(request, "When did Anika Sen discover the prism effect?", [], ["Anika Sen"], deps);
+    expect(result).toMatchObject({ status: "insufficient", citeableNow: false, findings: [],
+      leads: [{ url, title: "History of the prism effect" }] });
+  });
+
+  it("does not offer access-restricted pages as leads", async () => {
+    const { deps } = fixture();
+    deps.robotsAllowed = async () => false;
+    const result = await executeDemandResearch(request, "When did Anika Sen discover the prism effect?", [], ["Anika Sen"], deps);
+    expect(result.leads).toEqual([]);
+  });
+
   it("cites a directly supporting unlicensed page for Ask without making it eligible for Resources", async () => {
     const { deps } = fixture();
     deps.read = async () => excerpt({ rightsDeclaration: null,

@@ -333,6 +333,11 @@ body:has(.ai-page) .site-header { position: relative; z-index: 2; }
 .ai-page .chat-repair button { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 5px 0; color: #d6c7ff; font-size: 13px; font-weight: 650; border-bottom: 1px solid #d6c7ff70; }
 .ai-page .chat-repair button:hover { color: #fff; border-color: #fff; }
 .ai-page .chat-repair button:focus-visible { outline: 2px solid #e1d0ff; outline-offset: 3px; }
+.ai-page .research-continuation { margin-top: 18px; padding-top: 14px; border-top: 1px solid #ffffff30; }
+.ai-page .research-continuation p { margin: 0 0 8px; color: #c6d3ea; font-size: 13px; }
+.ai-page .research-continuation a { display: flex; align-items: center; gap: 6px; width: fit-content; max-width: 100%; padding: 5px 0; color: #d6e5ff; font-size: 13px; text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.ai-page .research-continuation a:hover { color: #fff; }
+.ai-page .research-continuation a:focus-visible { outline: 2px solid #e1d0ff; outline-offset: 3px; }
 @media (max-width: 700px) {
   .ai-page.page-shell { width: calc(100% - 16px); min-height: 540px; }
   .ai-page .ai-layout { padding: 8px 0 10px; }
