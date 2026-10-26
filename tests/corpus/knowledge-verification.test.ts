@@ -112,6 +112,35 @@ describe("demand knowledge verification", () => {
     expect(deps.provider.assess).not.toHaveBeenCalled();
   });
 
+  it("ignores a model's duplicate flag when no approved matching claim exists", async () => {
+    const deps = setup({ assess: { equivalentExisting: true } });
+    const result = await verifyDemandKnowledge(request, research(deps.findings), deps);
+    expect(result.decisions[0].outcome).toBe("admitted");
+  });
+
+  it("retains a named subject and explicit award in adjacent sentences of one paragraph", async () => {
+    const named = finding({ source: { ...finding().source, url: "https://journal.example.org/article",
+      publisherDomain: "journal.example.org", title: "Raman spectroscopy", publisher: "Journal Press",
+      workKey: "doi:10.1000/raman", evidenceType: "scholarly_interpretation" },
+      passage: { text: "The Raman effect was first observed by Chandrasekhara Venkata Raman, an Indian physicist, in 1928. In recognition of his contributions to optics, he was awarded the Nobel Prize in Physics in 1930.",
+        locator: "Introduction", supportLevel: "EXACT", supportReason: "Direct award statement with explicit antecedent" } });
+    const second = finding({ source: { ...finding().source, url: "https://press.example.edu/article",
+      publisherDomain: "press.example.edu", title: "Raman and the Nobel Prize", publisher: "University Press",
+      workKey: "doi:10.1000/award", evidenceType: "scholarly_interpretation" },
+      passage: { text: "On 10 December 1930, C.V. Raman received the Nobel Prize in Physics in Stockholm.",
+        locator: "Award", supportLevel: "EXACT", supportReason: "Direct award statement" } });
+    const localRequest = { ...request, personalityName: "C V Raman" };
+    const deps = setup({ findings: [named, second], claim: "C.V. Raman was awarded the Nobel Prize in Physics in 1930." });
+    deps.provider.extract.mockResolvedValueOnce([{ proposition: "C.V. Raman was awarded the Nobel Prize in Physics in 1930.",
+      type: "HISTORICAL_FACT", evidenceIndexes: [0, 1], context: null, period: "1930", qualification: null, category: "ordinary_fact" }]);
+    const result = await verifyDemandKnowledge(localRequest, research(deps.findings), deps);
+    expect(result.decisions[0].outcome).toBe("admitted");
+    const input = deps.store.admit.mock.calls[0][0] as { sources: Array<{ excerpt: string }> };
+    expect(input.sources[0].excerpt).toContain("Chandrasekhara Venkata Raman");
+    expect(input.sources[0].excerpt).toContain("1930");
+    expect(input.sources[0].excerpt.length).toBeLessThanOrEqual(300);
+  });
+
   it("does not reuse an imported claim excluded by strict retrieval", async () => {
     const deps = setup({ existing: [proposition], existingOrigin: "imported_existing" });
     const result = await verifyDemandKnowledge(request, research(deps.findings), deps);

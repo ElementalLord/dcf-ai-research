@@ -45,8 +45,34 @@ const numbers = (value: string) => value.match(/\b\d+(?:[.,]\d+)*\b/g) || [];
 const propositionStopWords = new Set(["the", "a", "an", "and", "or", "was", "were", "is", "are", "in", "on", "at", "of", "to", "for", "by", "with", "from"]);
 const factWord = (word: string) => /^(?:award|awarded|receive|received|honor|honored|honour|honoured|won)$/.test(word) ? "award" : word;
 
+function adjacentNamedCoreference(passage: string, proposition: string, personality: string): string | null {
+  const parts = splitEvidenceSentences(passage).map((part) => part.trim()).filter(Boolean);
+  const name = normalizeForMatch(personality).split(" ").filter(Boolean);
+  const surname = name.at(-1);
+  if (!surname || name.length < 2) return null;
+  const personNamed = (sentence: string) => {
+    if (normalizeForMatch(sentence).includes(name.join(" "))) return true;
+    // A source can spell out initials in the canonical name (C. V. Raman).
+    const matches = [...sentence.matchAll(/\b([A-Z][\p{L}]+)\s+([A-Z][\p{L}]+)\s+([A-Z][\p{L}]+)\b/gu)];
+    return name.length === 3 && name[0].length === 1 && name[1].length === 1
+      && matches.some((match) => match[1][0].toLowerCase() === name[0]
+        && match[2][0].toLowerCase() === name[1] && normalizeForMatch(match[3]) === surname);
+  };
+  for (let index = 1; index < parts.length; index++) {
+    const previous = parts[index - 1];
+    const current = parts[index];
+    if (!personNamed(previous) || !/\b(?:he|she|his|her|they|their)\b/i.test(current.slice(0, 100))) continue;
+    if (!passageAddressesTarget(proposition, `${personality} ${current}`, [personality])) continue;
+    return `${previous} ${current}`;
+  }
+  return null;
+}
+
 function directlyStates(passage: string, proposition: string, personality: string): boolean {
-  if (passage.trim().split(/\s+/).length < 7 || !passageAddressesTarget(proposition, passage, [personality])) return false;
+  const coreference = adjacentNamedCoreference(passage, proposition, personality);
+  if (passage.trim().split(/\s+/).length < 7
+    || (!normalizeForMatch(passage).includes(normalizeForMatch(personality)) && !coreference)
+    || !(passageAddressesTarget(proposition, passage, [personality]) || coreference)) return false;
   const personWords = new Set(normalizedClaim(personality).split(" "));
   const passageWords = new Set(normalizedClaim(passage).split(" ").map(factWord));
   const details = normalizedClaim(proposition).split(" ")
@@ -60,8 +86,13 @@ function supportingExcerpt(passage: string, proposition: string, personality: st
   const ranked = sentences.map((sentence) => ({ sentence,
     overlap: normalizeForMatch(sentence).split(" ").filter((term) => terms.has(term)).length }))
     .sort((a, b) => b.overlap - a.overlap);
-  const excerpt = (ranked[0]?.sentence || passage).slice(0, 240).trim();
-  if (excerpt.length < 20 || !passageAddressesTarget(proposition, excerpt, [personality])
+  const first = (ranked[0]?.sentence || passage).slice(0, 240).trim();
+  const coreference = adjacentNamedCoreference(passage, proposition, personality);
+  const firstNamesSubject = normalizeForMatch(first).includes(normalizeForMatch(personality));
+  const excerpt = firstNamesSubject && passageAddressesTarget(proposition, first, [personality]) ? first
+    : (coreference || first).slice(0, coreference ? 300 : 240).trim();
+  if (excerpt.length < 20 || (!passageAddressesTarget(proposition, excerpt, [personality])
+    && !adjacentNamedCoreference(excerpt, proposition, personality))
     || numbers(proposition).some((value) => !excerpt.includes(value))) return null;
   return excerpt;
 }
@@ -237,7 +268,12 @@ export async function verifyDemandKnowledge(request: EvidenceGapRequest, researc
     catch { decision.reasons.push("Verification provider failed"); continue; }
     if (!["SUPPORTED", "PARTIALLY_SUPPORTED", "CONTRADICTED", "INSUFFICIENT_EVIDENCE", "INVALID_SOURCE", "UNRESOLVED"].includes(assessment?.support)) { decision.reasons.push("Invalid verification response"); continue; }
     decision.support = assessment.support;
-    if (assessment.equivalentExisting) { decision.outcome = "duplicate"; decision.reasons.push("Verifier found a paraphrased existing claim"); continue; }
+    // The provider can report an equivalent claim even when the supplied
+    // existing-claim list is empty. Require an actual matching approved row.
+    if (assessment.equivalentExisting && existing.some((item) => isClaimEligible("approved", item.approval_origin, "strict")
+      && tokenJaccard(item.claim_text, candidate.proposition) >= 0.75)) {
+      decision.outcome = "duplicate"; decision.reasons.push("Verifier found a paraphrased existing claim"); continue;
+    }
     if (assessment.conflictsExisting || assessment.materialContradiction) { decision.reasons.push("Material conflict requires review"); continue; }
     if (assessment.support !== "SUPPORTED" || assessment.exactEntities !== true || assessment.exactDatesAndUnits !== true || assessment.qualifiersPreserved !== true
       || !Array.isArray(assessment.supportingIndexes) || cited.some((_, index) => !assessment.supportingIndexes.includes(index))) {

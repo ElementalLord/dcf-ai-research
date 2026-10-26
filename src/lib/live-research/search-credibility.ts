@@ -10,6 +10,7 @@ import { classifySourceAuthority } from "@/lib/sources/authority";
 import { extractPdf } from "@/lib/corpus/source-extract";
 import { canonicalRetentionRights, hasExplicitRetentionRights } from "./retention-rights";
 import { assessPassageSupport, authenticateSource, evidenceTypeFor, isBroadIdeaQuestion, type PassageSupport, type SourceIdentity } from "./research-quality";
+import { pmcArticleId, readPmcOpenArticle } from "./pmc-open-access";
 
 const lowQualityHost = /(?:^|\.)(?:quora\.com|reddit\.com|pinterest\.[a-z.]+|blogspot\.[a-z.]+|medium\.com|wikipedia\.org|facebook\.com|instagram\.com|tiktok\.com|brainyquote\.com|goodreads\.com)$/i;
 const institutionalHost = /(?:^|\.)(?:edu|gov|ac\.[a-z]{2}|edu\.[a-z]{2}|gov\.[a-z]{2}|jstor\.org|cambridge\.org|oup\.com|oxfordacademic\.com|springer\.com|nature\.com|muse\.jhu\.edu|wiley\.com|tandfonline\.com|sagepub\.com|nobelprize\.org|ignca\.gov\.in|vedicheritage\.gov\.in|gretil\.sub\.uni-goettingen\.de|archive\.org|britannica\.com)$/i;
@@ -119,9 +120,9 @@ function cachedSourceText(url: string): Promise<SourceText | null> {
   if (hit && hit.expires > now) return hit.loaded;
   if (sourceTextCache.size >= 30) sourceTextCache.delete(sourceTextCache.keys().next().value!);
   // A network failure is not remembered. A refusal (403 and similar) is, so a blocked site is asked only once.
-  const loaded = fetchDiscoveryPreview(url).then(readSourceText).then((value) => {
+  const loaded = (pmcArticleId(url) ? readPmcOpenArticle(url) : fetchDiscoveryPreview(url).then(readSourceText)).then((value) => {
     // Share an in-flight read, but never keep unlicensed original text in the cache.
-    if (value.status === 200 && value.sections.length && !hasExplicitRetentionRights(value.rightsDeclaration))
+    if (value?.status === 200 && value.sections.length && !hasExplicitRetentionRights(value.rightsDeclaration))
       sourceTextCache.delete(url);
     return value;
   }).catch(() => { sourceTextCache.delete(url); return null; });

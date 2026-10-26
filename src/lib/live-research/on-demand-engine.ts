@@ -186,7 +186,10 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
       const retained = hasExplicitRetentionRights(excerpt.rightsDeclaration);
       const metadataApproved = source.category === "approved exact source";
       const finding: ResearchFinding = {
-        source: { ...excerpt.identity, url: excerpt.url, sourceId, publisherDomain: new URL(excerpt.url).hostname, retrievedAt: (deps.now?.() || new Date()).toISOString() },
+        source: { ...excerpt.identity, url: excerpt.url, sourceId,
+          publisherDomain: new URL(excerpt.url).hostname === "pmc.ncbi.nlm.nih.gov" && excerpt.identity.publisher
+            ? `publisher:${normalizeForMatch(excerpt.identity.publisher)}` : new URL(excerpt.url).hostname,
+          retrievedAt: (deps.now?.() || new Date()).toISOString() },
         passage: { text: excerpt.text.slice(0, 600), locator: excerpt.locator, supportLevel: excerpt.supportLevel as "EXACT" | "STRONG", supportReason: excerpt.supportReason },
         relation: possibleContradiction(excerpt.text, [...existing, ...result.passages], question, aliases) ? "potential_contradiction" : "supports",
         retention: retained ? "license_candidate" : "transient_only", rightsDeclaration: excerpt.rightsDeclaration || null,
