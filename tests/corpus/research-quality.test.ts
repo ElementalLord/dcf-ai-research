@@ -27,6 +27,14 @@ describe("research query planning", () => {
     expect(plan[0].query).toMatch(/philosophy/);
   });
 
+  it("searches the topic of a contemporaries follow-up without treating chat framing as source terms", () => {
+    const question = "Who else was doing similar work at the time? Follow-up to: What did A. P. J. Abdul Kalam do for India's space programme? About A. P. J. Abdul Kalam.";
+    const plan = planResearchQueries("A. P. J. Abdul Kalam", question);
+    expect(plan[0].query).toContain("space programme");
+    expect(plan[0].query).toContain("contemporaries");
+    expect(plan[0].query).not.toMatch(/doing|follow up|topic|question/);
+  });
+
   it.each([
     ["Vishvamitra", "What is securely supported by the Rigveda versus later Ramayana tradition?"],
     ["Adi Shankaracharya", "Which works are securely attributed to Shankara and which are disputed?"],

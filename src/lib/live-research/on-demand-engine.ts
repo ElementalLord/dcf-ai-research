@@ -6,6 +6,7 @@ import { passageAddressesTarget } from "@/lib/ask/target-support";
 import { recordResearchBudgetReservation, recordResearchSearchCall } from "@/lib/corpus/usage";
 import type { RetrievedEvidence, RetrievedPassage } from "@/lib/corpus/types";
 import { planResearchQueries, type SourceIdentity } from "./research-quality";
+import { detectContextIntent } from "@/lib/ask/historical-context";
 import type { CredibleSource } from "./search-credibility";
 import { sourcePriority } from "./search-credibility";
 import { hasAutomaticAdmissionRights } from "./retention-rights";
@@ -64,7 +65,7 @@ export function narrowQuery(request: EvidenceGapRequest, question: string): stri
   // Gap requirements are generic descriptions. Preserve the named object in
   // admission searches; a publisher's license is still checked on its page.
   const plan = planResearchQueries(request.personalityName, question, [], 1)[0];
-  if (process.env.DEMAND_AUTO_ADMISSION_ENABLED === "true" || process.env.DEMAND_VERIFICATION_SHADOW_ENABLED === "true") {
+  if (detectContextIntent(question) !== "contemporaries" && (process.env.DEMAND_AUTO_ADMISSION_ENABLED === "true" || process.env.DEMAND_VERIFICATION_SHADOW_ENABLED === "true")) {
     const namedTargets = [...question.matchAll(/\b\p{Lu}[\p{L}\p{N}]+(?:\s+\p{Lu}[\p{L}\p{N}]+)+/gu)]
       .map(([value]) => value.replace(/^(?:Did|Does|Do|Was|Were|Is|Are|What|Which|When|Where|Why|How)\s+/u, ""))
       .filter((value) => normalizeForMatch(value) !== normalizeForMatch(request.personalityName));
@@ -190,10 +191,9 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
       const workKey = excerpt.identity.workKey;
       if (works.has(workKey)) { result.candidates.push({ url: excerpt.url, decision: "duplicate_work", reason: "The same underlying work was already read.", workKey }); continue; }
       const sourceId = await deps.existingSourceId(excerpt.url).catch(() => null);
-      if (!excerpt.identity.provenanceComplete && !sourceId) {
-        result.candidates.push({ url: excerpt.url, decision: "unverified", reason: "The original page lacks enough bibliographic identity to authenticate its publisher or work.", workKey });
-        continue;
-      }
+      // A readable, directly supporting page may be cited for this Ask even
+      // without complete publication metadata. Admission still requires full
+      // provenance and rights below, so it cannot enter Resources.
       works.add(preliminary); works.add(workKey);
       const retained = hasAutomaticAdmissionRights(excerpt.rightsDeclaration);
       const metadataApproved = source.category === "approved exact source";
@@ -205,7 +205,7 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
         passage: { text: excerpt.text.slice(0, 600), locator: excerpt.locator, supportLevel: excerpt.supportLevel as "EXACT" | "STRONG", supportReason: excerpt.supportReason },
         relation: possibleContradiction(excerpt.text, [...existing, ...result.passages], question, aliases) ? "potential_contradiction" : "supports",
         retention: retained ? "license_candidate" : "transient_only", rightsDeclaration: excerpt.rightsDeclaration || null,
-        citeableNow: true, verificationReady: (retained || metadataApproved) && excerpt.identity.provenanceComplete,
+        citeableNow: true, verificationReady: source.category !== "general_web" && (retained || metadataApproved) && excerpt.identity.provenanceComplete,
       };
       result.findings.push(finding);
       result.candidates.push({ url: excerpt.url, decision: "authenticated", reason: "Original document identified and a directly relevant passage extracted.", workKey });

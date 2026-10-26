@@ -82,6 +82,21 @@ describe("bounded on-demand research", () => {
     }
   });
 
+  it("keeps a contemporaries follow-up focused even when admission is enabled", () => {
+    const previous = process.env.DEMAND_AUTO_ADMISSION_ENABLED;
+    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
+    try {
+      const query = narrowQuery({ ...request, personalityName: "A. P. J. Abdul Kalam" },
+        "Who else was doing similar work at the time? Follow-up to: What did A. P. J. Abdul Kalam do for India's space programme? About A. P. J. Abdul Kalam.");
+      expect(query).toContain("space programme");
+      expect(query).toContain("contemporaries");
+      expect(query).not.toContain('"Follow');
+    } finally {
+      if (previous === undefined) delete process.env.DEMAND_AUTO_ADMISSION_ENABLED;
+      else process.env.DEMAND_AUTO_ADMISSION_ENABLED = previous;
+    }
+  });
+
   it("uses article-specific license snippets only as a discovery ordering hint", () => {
     const replay = JSON.parse(readFileSync(new URL("../fixtures/bose-source-selection-2026-10-23.json", import.meta.url), "utf8")) as {
       question: string; licensedCandidatesAbsentFromBraveTop20: Array<{ url: string; discoverySummary: string }> };
@@ -108,6 +123,25 @@ describe("bounded on-demand research", () => {
     expect(result.findings[0]).toMatchObject({ passage: { locator: "p. 12" }, source: { doi: "10.1234/prism" }, retention: "license_candidate" });
     expect(result.passages[0]).toMatchObject({ origin: "brave_live", sourceStatus: "discovered", pageOrSection: "p. 12" });
     expect(result).not.toHaveProperty("claims");
+  });
+
+  it("cites a directly supporting unlicensed page for Ask without making it eligible for Resources", async () => {
+    const { deps } = fixture();
+    deps.read = async () => excerpt({ rightsDeclaration: null,
+      identity: authenticateSource({ url, title: "History of the prism effect" }) });
+    const result = await executeDemandResearch(request, "When did Anika Sen discover the prism effect?", [], ["Anika Sen"], deps);
+    expect(result).toMatchObject({ status: "complete", citeableNow: true });
+    expect(result.findings[0]).toMatchObject({ retention: "transient_only", verificationReady: false,
+      source: { provenanceComplete: false } });
+    expect(result.passages).toHaveLength(1);
+  });
+
+  it("keeps a licensed unknown-publisher page out of Resources", async () => {
+    const { deps } = fixture();
+    deps.inspect = async (candidate, title) => ({ url: candidate, domain: new URL(candidate).hostname, category: "general_web", title });
+    const result = await executeDemandResearch(request, "When did Anika Sen discover the prism effect?", [], ["Anika Sen"], deps);
+    expect(result).toMatchObject({ citeableNow: true, sufficientForVerification: false });
+    expect(result.findings[0]).toMatchObject({ retention: "license_candidate", verificationReady: false });
   });
 
   it("reads independent URLs even when search results have the same title", async () => {
@@ -281,12 +315,12 @@ describe("bounded on-demand research", () => {
     }
   });
 
-  it("does not trust a reputable domain without document provenance", async () => {
+  it("keeps a reputable page without document provenance out of admission", async () => {
     const { deps } = fixture();
     deps.read = async () => excerpt({ identity: authenticateSource({ url, title: "History of the prism effect" }) });
     const result = await executeDemandResearch(request, "When was the prism effect discovered?", [], ["Anika Sen"], deps);
-    expect(result.findings).toHaveLength(0);
-    expect(result.candidates[0].decision).toBe("unverified");
+    expect(result.findings).toHaveLength(1);
+    expect(result.findings[0].verificationReady).toBe(false);
   });
 
   it("blocks unsafe or prohibited URLs before reading", async () => {

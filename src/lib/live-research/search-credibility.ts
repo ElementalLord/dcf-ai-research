@@ -12,6 +12,7 @@ import { canonicalRetentionRights, hasExplicitRetentionRights } from "./retentio
 import { assessPassageSupport, authenticateSource, evidenceTypeFor, isBroadIdeaQuestion, type PassageSupport, type SourceIdentity } from "./research-quality";
 import { pmcArticleId, readPmcOpenArticle } from "./pmc-open-access";
 import { passageAddressesTarget, splitEvidenceSentences } from "@/lib/ask/target-support";
+import { CONTEXT_FRAMING_TERMS } from "@/lib/ask/historical-context";
 
 const lowQualityHost = /(?:^|\.)(?:quora\.com|reddit\.com|pinterest\.[a-z.]+|blogspot\.[a-z.]+|medium\.com|wikipedia\.org|facebook\.com|instagram\.com|tiktok\.com|brainyquote\.com|goodreads\.com)$/i;
 const institutionalHost = /(?:^|\.)(?:edu|gov|ac\.[a-z]{2}|edu\.[a-z]{2}|gov\.[a-z]{2}|jstor\.org|cambridge\.org|oup\.com|oxfordacademic\.com|springer\.com|nature\.com|muse\.jhu\.edu|wiley\.com|tandfonline\.com|sagepub\.com|nobelprize\.org|ignca\.gov\.in|vedicheritage\.gov\.in|gretil\.sub\.uni-goettingen\.de|archive\.org|britannica\.com)$/i;
@@ -140,7 +141,7 @@ export async function sourceAccess(url: string): Promise<SourceAccess> {
   return loaded.status === 200 && loaded.sections.length ? "readable" : "unreadable";
 }
 
-const supportStop = new Set(["the", "and", "for", "with", "from", "that", "this", "his", "her", "their", "which", "into", "also", "about", "according", "tradition", "narrative", "source", "sources", "text", "texts"]);
+const supportStop = new Set(["the", "and", "for", "with", "from", "that", "this", "his", "her", "their", "which", "into", "also", "about", "according", "tradition", "narrative", "source", "sources", "text", "texts", "follow", "topic", "question", ...CONTEXT_FRAMING_TERMS]);
 
 /** Google selects a page and topic. Only a matching excerpt fetched from the
  * original page becomes evidence; the model's search summary stays discovery. */
@@ -157,7 +158,7 @@ export async function readGroundedExcerpt(source: CredibleSource, statement: str
   const names = [...new Set([...fullNames, ...(titleIdentifiesSubject && surname.length >= 4 ? [surname] : [])])];
   const terms = [...new Set(normalizeForMatch(statement).split(" ").filter((term) => term.length >= 5 && !supportStop.has(term) && !names.some((name) => name.includes(term))))];
   const matches = loaded.sections.flatMap((section) => {
-    const sentences = section.text.split(/(?<=[.!?])\s+/).filter((sentence) => sentence.length >= 25);
+    const sentences = splitEvidenceSentences(section.text).filter((sentence) => sentence.length >= 25);
     return sentences.map((_, index) => {
       // A scholarly paragraph often identifies its subject first, then states a
       // scholar's dated view two sentences later. Keep the support sentence and
@@ -216,22 +217,21 @@ export async function inspectSearchSource(rawUrl: string, policy: SearchPolicy, 
   if (!initial.allowed) return null;
   const url = canonicalResearchUrl(rawUrl);
   const host = new URL(url).hostname;
-  if (lowQualityHost.test(host)) return null;
   const registryTrusted = trustedDomains.some((domain) => host === domain || host.endsWith(`.${domain}`));
   const exactUrlTrusted = trustedExactUrl !== null && url === canonicalResearchUrl(trustedExactUrl);
   // Who published it is decided from the publisher, not from what metadata the page happens to expose.
   const recognized = (candidate: string) => classifySourceAuthority({ url: `https://${candidate}/`, live: true }, policy.rules).level !== "general_web" || institutionalHost.test(candidate);
-  if (initial.rule?.status === "allowed" || registryTrusted || exactUrlTrusted || recognized(host)) {
+  if (!lowQualityHost.test(host) && (initial.rule?.status === "allowed" || registryTrusted || exactUrlTrusted || recognized(host))) {
     return { url, domain: host, category: initial.rule?.category || (exactUrlTrusted ? "approved exact source" : registryTrusted ? "approved source family" : "institutional"), title: title || host };
   }
-  // An unrecognized publisher has to identify itself on the page. Reading the page uses the
-  // same bounded HTTPS, redirect, and public-network checks as every other discovery fetch.
+  // Unknown publishers remain usable as request-scoped leads when an original
+  // page is readable. Passage support is checked separately; this does not
+  // grant the page admission to Resources.
   const loaded = await cachedSourceText(url);
-  if (!loaded || loaded.status !== 200 || !searchPolicyDecision(loaded.finalUrl, policy).allowed) return null;
+  if (!loaded || loaded.status !== 200 || !loaded.sections.length || !searchPolicyDecision(loaded.finalUrl, policy).allowed) return null;
   const finalHost = new URL(loaded.finalUrl).hostname;
-  if (lowQualityHost.test(finalHost)) return null;
-  if (recognized(finalHost)) return { url: canonicalResearchUrl(loaded.finalUrl), domain: finalHost, category: "institutional", title: title || finalHost };
-  if (!loaded.html) return null;
+  if (!lowQualityHost.test(finalHost) && recognized(finalHost)) return { url: canonicalResearchUrl(loaded.finalUrl), domain: finalHost, category: "institutional", title: title || finalHost };
+  if (!loaded.html) return { url: canonicalResearchUrl(loaded.finalUrl), domain: finalHost, category: "general_web", title: title || loaded.title || finalHost };
   const $ = cheerio.load(loaded.html);
   const meta = (key: string) => $(`meta[name="${key}"],meta[property="${key}"]`).first().attr("content")?.trim() || "";
   const body = $("body").text().replace(/\s+/g, " ").slice(0, 20_000);
@@ -240,6 +240,8 @@ export async function inspectSearchSource(rawUrl: string, policy: SearchPolicy, 
   const provenance = Boolean(meta("citation_author") || meta("dc.creator") || meta("citation_institution") || meta("citation_publisher") || meta("dc.publisher"));
   const scholarly = Boolean(meta("citation_doi") || meta("citation_journal_title") || meta("citation_book_title"));
   const institutional = /(?:university|college|institute|museum|library|archive|academy|society|association|research project|journal|press|encyclop)/i.test(`${meta("og:site_name")} ${meta("dc.publisher")} ${meta("citation_publisher")}`);
-  if (!((namedWork && provenance && (scholarly || institutional)) || (institutional && provenance && body.length > 900))) return null;
-  return { url: canonicalResearchUrl(loaded.finalUrl), domain: finalHost, category: scholarly ? "scholarly" : "institutional", title: title || meta("citation_title") || loaded.title || finalHost };
+  const identified = !lowQualityHost.test(finalHost) && ((namedWork && provenance && (scholarly || institutional)) || (institutional && provenance && body.length > 900));
+  return { url: canonicalResearchUrl(loaded.finalUrl), domain: finalHost,
+    category: identified ? scholarly ? "scholarly" : "institutional" : "general_web",
+    title: title || meta("citation_title") || loaded.title || finalHost };
 }

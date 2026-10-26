@@ -31,9 +31,16 @@ describe("live source admission", () => {
     expect(state.preview).not.toHaveBeenCalled();
   });
 
-  it("still rejects an unrecognized site that does not identify its publisher", async () => {
+  it("allows an unrecognized readable site as a general-web candidate", async () => {
     state.preview.mockResolvedValueOnce({ status: 200, finalUrl: "https://history-notes.example/raman", html: `<html><title>Raman</title><body>${"Raman studied light. ".repeat(100)}</body></html>` });
-    expect(await inspectSearchSource("https://history-notes.example/raman", policy)).toBeNull();
+    expect(await inspectSearchSource("https://history-notes.example/raman", policy)).toMatchObject({ category: "general_web" });
+  });
+
+  it("allows a lower-priority public web page as an Ask-only candidate", async () => {
+    const url = "https://en.wikipedia.org/wiki/C._V._Raman";
+    state.preview.mockResolvedValueOnce({ status: 200, finalUrl: url,
+      html: "<html><title>C. V. Raman</title><main><p>C. V. Raman discovered the Raman effect in 1928.</p></main></html>" });
+    expect(await inspectSearchSource(url, policy)).toMatchObject({ category: "general_web" });
   });
 
   it("rejects a recognized publisher's page that does not support the statement", async () => {
@@ -48,6 +55,17 @@ describe("live source admission", () => {
     expect(result).toMatchObject({ locator: "1. Life and Works", supportLevel: expect.stringMatching(/EXACT|STRONG/) });
     expect(result?.text).toContain("Nakamura");
     expect(result?.text).toContain("700–750 CE");
+  });
+
+  it("reads a directly relevant contemporaries passage without demanding the follow-up's framing words", async () => {
+    const url = "https://www.isro.gov.in/history/space-programme";
+    state.preview.mockResolvedValueOnce({ status: 200, finalUrl: url,
+      html: "<html><title>Early space programme</title><main><p>A. P. J. Abdul Kalam worked with Vikram Sarabhai on India's space programme in the 1960s, developing launch capabilities.</p></main></html>" });
+    const result = await readGroundedExcerpt(source(url),
+      "Who else was doing similar work at the time? Follow-up to: What did A. P. J. Abdul Kalam do for India's space programme? About A. P. J. Abdul Kalam.",
+      ["A. P. J. Abdul Kalam", "Abdul Kalam"], policy);
+    expect(result).toMatchObject({ supportLevel: expect.stringMatching(/EXACT|STRONG/), identity: { provenanceComplete: false } });
+    expect(result?.text).toContain("Vikram Sarabhai");
   });
 
   it("extracts a licensed, dated award passage with its institutional provenance", async () => {
