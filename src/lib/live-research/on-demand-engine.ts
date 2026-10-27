@@ -157,6 +157,7 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
       ? await deps.openAccessSearch(request.personalityName, aliases, question).catch(() => []) : [];
     if (pmcResults.length) result.usage.provider = "pmc";
     const works = new Set<string>();
+    let credibleAnswerSource = false;
     const ranked = pmcResults.slice(0, 4).map((hit, index) => ({ hit, index, priority: 0 }));
     let braveAttempted = false;
     for (let position = 0; position < ranked.length || !braveAttempted; position++) {
@@ -216,6 +217,7 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
         citeableNow: true, verificationReady: source.category !== "general_web" && (retained || metadataApproved) && excerpt.identity.provenanceComplete,
       };
       result.findings.push(finding);
+      if (source.category !== "general_web") credibleAnswerSource = true;
       result.candidates.push({ url: excerpt.url, decision: "authenticated", reason: "Original document identified and a directly relevant passage extracted.", workKey });
       result.passages.push({ kind: "passage", id: `demand:${requestId}:${result.passages.length}`, chunkId: `demand:${requestId}:${result.passages.length}`,
         sourceId: sourceId || `demand:${requestId}`, text: finding.passage.text, sectionTitle: null, pageOrSection: excerpt.locator,
@@ -234,8 +236,12 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
       const retainableFindings = result.findings.filter((item) => item.verificationReady);
       const independentRetainableWorks = new Set(retainableFindings.map((item) => item.source.workKey)).size >= 2
         && new Set(retainableFindings.map((item) => item.source.publisherDomain)).size >= 2;
+      const independentAnswerWorks = new Set(result.findings.map((finding) => finding.source.workKey)).size;
+      const authoritativeAnswerSource = credibleAnswerSource || result.findings.some((finding) => finding.source.evidenceType !== "general_web");
+      const explanatoryQuestion = /\b(?:how|why)\b/i.test(question);
       if (!remainingGaps(request.gaps, [...existing, ...result.passages], result.passages).length
-        && new Set(result.findings.map((finding) => finding.source.workKey)).size >= minimumIndependentWorks
+        && independentAnswerWorks >= minimumIndependentWorks
+        && (!explanatoryQuestion || authoritativeAnswerSource || independentAnswerWorks >= 2)
         && (process.env.DEMAND_AUTO_ADMISSION_ENABLED !== "true" && process.env.DEMAND_VERIFICATION_SHADOW_ENABLED !== "true"
           || independentRetainableWorks)) break;
     }

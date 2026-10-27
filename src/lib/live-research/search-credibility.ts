@@ -11,7 +11,8 @@ import { extractPdf } from "@/lib/corpus/source-extract";
 import { canonicalRetentionRights, hasExplicitRetentionRights } from "./retention-rights";
 import { assessPassageSupport, authenticateSource, evidenceTypeFor, isBroadIdeaQuestion, isBroadSignificanceQuestion, type PassageSupport, type SourceIdentity } from "./research-quality";
 import { pmcArticleId, readPmcOpenArticle } from "./pmc-open-access";
-import { passageAddressesTarget, splitEvidenceSentences } from "@/lib/ask/target-support";
+import { splitEvidenceSentences } from "@/lib/ask/target-support";
+import { detectLens } from "@/lib/ask/lenses";
 import { CONTEXT_FRAMING_TERMS } from "@/lib/ask/historical-context";
 
 const lowQualityHost = /(?:^|\.)(?:quora\.com|reddit\.com|pinterest\.[a-z.]+|blogspot\.[a-z.]+|medium\.com|wikipedia\.org|facebook\.com|instagram\.com|tiktok\.com|brainyquote\.com|goodreads\.com)$/i;
@@ -143,6 +144,12 @@ export async function sourceAccess(url: string): Promise<SourceAccess> {
 
 const supportStop = new Set(["the", "and", "for", "with", "from", "that", "this", "his", "her", "their", "which", "into", "also", "about", "known", "important", "angle", "lens", "perspective", "according", "tradition", "narrative", "source", "sources", "text", "texts", "follow", "topic", "question", ...CONTEXT_FRAMING_TERMS]);
 
+export function bestSupportingSentence(context: string, statement: string, aliases: string[]): string | null {
+  return splitEvidenceSentences(context).map((sentence) => sentence.trim())
+    .find((sentence) => sentence.length <= 600 && ["EXACT", "STRONG"].includes(
+      assessPassageSupport(sentence, statement, aliases[0] || "", aliases.slice(1)).level)) || null;
+}
+
 /** Google selects a page and topic. Only a matching excerpt fetched from the
  * original page becomes evidence; the model's search summary stays discovery. */
 export async function readGroundedExcerpt(source: CredibleSource, statement: string, aliases: string[], policy: SearchPolicy): Promise<{ text: string; title: string; url: string; locator: string | null; supportLevel: PassageSupport; supportReason: string; identity: SourceIdentity; rightsDeclaration: string | null } | null> {
@@ -178,10 +185,14 @@ export async function readGroundedExcerpt(source: CredibleSource, statement: str
   const broadProfileSupport = (isBroadIdeaQuestion(statement) || isBroadSignificanceQuestion(statement)) && best.support.level === "STRONG";
   if (academic && !names.some((name) => title.includes(name)) && best.overlap < 4 && !broadProfileSupport) return null;
   // Naming the person is relevance; sharing the statement's own terms is support. Both are required.
-  if ((!broadProfileSupport && best.overlap < Math.min(2, terms.length)) || !["EXACT", "STRONG"].includes(best.support.level)) return null;
-  const directSentence = !(isBroadIdeaQuestion(statement) || isBroadSignificanceQuestion(statement)) ? splitEvidenceSentences(best.context)
-    .map((sentence) => sentence.trim())
-    .find((sentence) => sentence.length <= 600 && passageAddressesTarget(statement, sentence, aliases)) : null;
+  // The subject and angle are already checked in the same source sentence by
+  // assessPassageSupport. A paraphrase such as "govern" versus "administration"
+  // need not share two literal search terms to be useful evidence.
+  const directLensSupport = Boolean(detectLens(statement)) && best.support.level === "STRONG"
+    && best.support.reason.includes("requested perspective");
+  if ((!broadProfileSupport && !directLensSupport && best.overlap < Math.min(2, terms.length)) || !["EXACT", "STRONG"].includes(best.support.level)) return null;
+  const directSentence = !(isBroadIdeaQuestion(statement) || isBroadSignificanceQuestion(statement))
+    ? bestSupportingSentence(best.context, statement, [aliases[0] || "", ...names.slice(1)]) : null;
   const excerpt = readableEvidence(directSentence || best.context.slice(0, 600));
   if (!excerpt) return null;
   const identity = loaded.identity.title ? loaded.identity : authenticateSource({ url: loaded.finalUrl, title: loaded.title || source.title, category: source.category });

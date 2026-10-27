@@ -152,13 +152,13 @@ export function resolveQuestion(input: ResolutionInput): QuestionResolution {
     subjectId: input.personalityId, topic, suitableSources: gap.suitableSources, completion: gap.completion, contested }));
   const retrievalFailed = Boolean(input.retrievalErrors?.length);
   const sufficient = decision.sufficient && gaps.length === 0 && !retrievalFailed;
-  const researchJustified = !sufficient && !retrievalFailed && input.researchAvailable && gaps.length > 0;
-  const state: ResolutionState = sufficient ? "local_sufficient" : retrievalFailed ? "unsupported" : researchJustified
+  const researchJustified = !sufficient && input.researchAvailable && gaps.length > 0;
+  const state: ResolutionState = sufficient ? "local_sufficient" : researchJustified
     ? decision.answerable ? "partial_local" : "research_required" : "research_unavailable";
   const route: ResolutionRoute = sufficient ? "answer" : researchJustified ? "research" : decision.answerable ? "partial_answer" : "decline";
   return { needId, subject: { id: input.personalityId, name: input.personalityName }, normalizedIntent, category, state, route,
     verifiedClaims, verifiedPassages, freshness: needs.some((need) => need.key === "current") ? missing.some((need) => need.key === "current") ? "stale" : "current" : "historical",
-    sufficient, reason: retrievalFailed ? "Local retrieval failed; external research is blocked until local evidence can be checked." : missing.length ? `Missing ${missing.map((need) => need.requirement.toLowerCase()).join("; ")}.` : decision.reason,
+    sufficient, reason: retrievalFailed ? "Local retrieval was incomplete; the missing evidence requires external research." : missing.length ? `Missing ${missing.map((need) => need.requirement.toLowerCase()).join("; ")}.` : decision.reason,
     gaps, researchJustified, researchRequest: researchJustified ? { needId, personalityId: input.personalityId, personalityName: input.personalityName,
       normalizedIntent, category, gaps, existingEvidenceIds: eligible.map((item) => item.id), maxExternalSearches: 1 } : null };
 }

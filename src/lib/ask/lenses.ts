@@ -108,6 +108,9 @@ const ADVERB = /\b(?:scientifically|educationally|institutionally|socially|polit
 
 /** The single angle a question asks for, or null when it asks generally. */
 export function detectLens(question: string): Lens | null {
+  if (/\b(?:how|what)\b.{0,100}\bgovern(?:ed|s|ing)?\b/i.test(question)
+    && !/\b(?:compare|versus|vs\.?|political and|military and)\b/i.test(question))
+    return BY_ID.get("administrative") || null;
   if (!FRAMING.test(question) && !ADVERB.test(question)) return null;
   const matches = LENSES.filter((lens) => lens.ask.test(question));
   // Two named angles is a general question about both; combine rather than pick one.

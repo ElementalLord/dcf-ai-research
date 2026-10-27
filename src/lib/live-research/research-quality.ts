@@ -138,6 +138,12 @@ export function assessPassageSupport(text: string, questionOrStatement: string, 
   if (isBroadIdeaQuestion(questionOrStatement) && IDEA_EVIDENCE.test(text) && text.trim().length >= 70)
     return { level: "STRONG", overlap, reason: "The passage identifies the person and states a documented idea or belief." };
   const lens = detectLens(questionOrStatement);
+  // Naming an angle is not an answer to how it worked. A definition of
+  // "administration" alone cannot explain someone's governing practice.
+  const governanceQuestion = lens?.id === "administrative" && /\bhow\b.{0,120}\bgovern/i.test(questionOrStatement);
+  const governanceDetail = /\b(?:council|minister|official|appoint|revenue|tax|justice|court|legal|law|land|fort|army|village|department|office|province|district|polic|collect|supervis|decentral|decree)\w*/i.test(text);
+  if (governanceQuestion && !governanceDetail)
+    return { level: "RELATED", overlap, reason: "The passage names administration but gives no governing practice or institution." };
   if (lens && splitEvidenceSentences(text).flatMap((sentence) => sentence.split(/;\s*/)).some((sentence) => sentence.trim().length >= 70
     && entityMatch(sentence, canonicalName, aliases).matched && lens.evidence.test(sentence)))
     return { level: "STRONG", overlap, reason: "The passage identifies the person and directly documents the requested perspective." };

@@ -3,7 +3,7 @@ import { detectLens, relevantLenses } from "@/lib/ask/lenses";
 import { chronologyGuidance, detectContextIntent } from "@/lib/ask/historical-context";
 import { classifySourceAuthority } from "@/lib/sources/authority";
 import { prioritizeEvidence } from "@/lib/ask/evidence-priority";
-import { assessEvidenceSufficiency } from "@/lib/live-research/sufficiency";
+import { assessEvidenceSufficiency, directlySupportsRequestedLens } from "@/lib/live-research/sufficiency";
 import { resolveQuestionContext } from "@/lib/ask/query-context";
 import { buildSynthesisPrompt } from "@/lib/corpus/synthesis-prompt";
 import { buildBoundedContext } from "@/lib/corpus/context";
@@ -27,6 +27,7 @@ describe("lenses", () => {
     expect(detectLens("Explain Raman from a scientific angle.")?.id).toBe("scientific");
     expect(detectLens("How was Tagore influential socially?")?.id).toBe("social");
     expect(detectLens("What was Shivaji's administrative impact?")?.id).toBe("administrative");
+    expect(detectLens("How did Chhatrapati Shivaji Maharaj govern his kingdom?")?.id).toBe("administrative");
     expect(detectLens("What is the environmental relevance of this person's work?")?.id).toBe("environmental");
     expect(detectLens("What about the political angle?")?.id).toBe("political");
     expect(detectLens("Explain his institutional impact.")?.id).toBe("institutional");
@@ -87,6 +88,13 @@ describe("lenses", () => {
     expect(decision.missingDimensions[0]).toMatch(/administrative perspective/);
     const direct = claim(2, "Rani Lakshmibai of Jhansi governed her territory through named officials and supervised the collection of revenue during the crisis.");
     expect(assessEvidenceSufficiency("What about the administrative angle? About Rani Lakshmibai of Jhansi.", [direct], aliases).sufficient).toBe(true);
+  });
+
+  it("recognizes a bound approved claim that uses the person's surname", () => {
+    const item = claim(4, "Kalam argued that education of young people was a central investment in India's future.",
+      { personalityName: "A. P. J. Abdul Kalam" });
+    expect(directlySupportsRequestedLens("What was A. P. J. Abdul Kalam's educational impact?", item,
+      ["A. P. J. Abdul Kalam"])).toBe(true);
   });
 
   it("treats unusual-for-the-time wording as a request for context", () => {

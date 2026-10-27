@@ -101,9 +101,10 @@ describe("local-first question resolution", () => {
     expect(result.sufficient).toBe(false);
   });
 
-  it("does not dispatch research after a database failure", () => {
+  it("uses live research when local retrieval is incomplete", () => {
     const result = resolveQuestion(input("When did Anika Sen discover the prism effect?", [], { retrievalErrors: ["database unavailable"] }));
-    expect(result).toMatchObject({ state: "unsupported", route: "decline", researchJustified: false });
+    expect(result).toMatchObject({ state: "research_required", route: "research", researchJustified: true });
+    expect(result.researchRequest).not.toBeNull();
   });
 
   it("declines or partially answers when research is unavailable", () => {

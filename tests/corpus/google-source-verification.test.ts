@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { inspectSearchSource, readGroundedExcerpt, sourceAccess, verifyGroundedStatement } from "@/lib/live-research/search-credibility";
+import { bestSupportingSentence, inspectSearchSource, readGroundedExcerpt, sourceAccess, verifyGroundedStatement } from "@/lib/live-research/search-credibility";
 
 const state = vi.hoisted(() => ({ preview: vi.fn(), pdf: vi.fn() }));
 vi.mock("@/lib/corpus/source-extract", () => ({ extractPdf: state.pdf }));
@@ -7,6 +7,11 @@ vi.mock("@/lib/live-research/live-fetch", () => ({ fetchDiscoveryPreview: state.
 const policy = { mode: "credible_web" as const, rules: [] };
 
 describe("original-page verification for Google support", () => {
+  it("does not cite an adjacent sentence just because it mentions the selected person", () => {
+    const context = "The Chhatrapati Shivaji Maharaj Museum has organized galleries. Chhatrapati Shivaji Maharaj appointed ministers to oversee revenue collection across his kingdom.";
+    expect(bestSupportingSentence(context, "How did Chhatrapati Shivaji Maharaj govern his kingdom?",
+      ["Chhatrapati Shivaji Maharaj"])).toContain("appointed ministers");
+  });
   it("admits a finding present near the named person on the original page", async () => {
     state.preview.mockResolvedValueOnce({ status: 200, finalUrl: "https://valmikiramayan.net/episode", html: "<html><title>Ramayana</title><body>In the Ramayana, Vasistha is the royal priest and counselor of king Dasharatha and advises Rama.</body></html>" });
     expect(await verifyGroundedStatement({ url: "https://valmikiramayan.net/episode", domain: "valmikiramayan.net", title: "Ramayana", category: "primary" }, "Vasistha serves as royal priest and counsels Dasharatha", ["Vasistha"], policy)).toBe(true);

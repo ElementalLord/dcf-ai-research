@@ -45,6 +45,12 @@ export function directlySupportsRequestedLens(question: string, item: RetrievedE
   const lens = detectLens(question);
   if (!lens) return true;
   const names = [...personalityAliases, item.personalityName || ""].map(normalizeForMatch).filter((name) => name.length >= 4);
+  // Approved claims are already bound to this person. Their prose often uses a
+  // surname while the selected identity is stored in full.
+  if (item.kind === "claim") {
+    const surname = normalizeForMatch(item.personalityName || "").split(" ").at(-1) || "";
+    if (surname.length >= 5) names.push(surname);
+  }
   return splitEvidenceSentences(item.text).flatMap((sentence) => sentence.split(/;\s*/)).some((sentence) => {
     const normalized = ` ${normalizeForMatch(sentence)} `;
     return lens.evidence.test(sentence) && (!names.length || names.some((name) => normalized.includes(` ${name} `))

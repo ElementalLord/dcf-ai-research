@@ -102,6 +102,8 @@ async function answerQuestionInternal(
           minimumIndependentWorks: isBroadScope(queryContext.scope) || queryContext.depthFollowup ? 3
             : lens || responseStyle === "detailed" || responseStyle === "research" ? 2 : 1 }, queryContext.resolvedQuestion, local.evidence,
           local.personalityAliases, productionResearchDependencies()) : null;
+      let reusedAfterWait = false;
+      let admittedThisRequest = false;
       if (research) {
         for (const lead of research.leads || []) {
           let safe = false;
@@ -111,8 +113,6 @@ async function answerQuestionInternal(
         logStage("DEMAND_RESEARCH", { status: research.status, searches: research.usage.searchCalls,
           fetched: research.usage.sourceFetches, findings: research.findings?.length || 0,
           unresolvedGaps: research.unresolvedGaps.length, budget: research.budgetStatus || null });
-        let reusedAfterWait = false;
-        let admittedThisRequest = false;
         if (research.status === "in_progress" || research.status === "cooldown") {
           // Another serverless request owns the lease. Give a short completed admission a chance to become local evidence.
           for (let attempt = 0; attempt < 3; attempt++) {
@@ -176,10 +176,13 @@ async function answerQuestionInternal(
       }
       local.debug.localEvidenceBeforeSearch = localEvidenceCount;
       local.debug.localSourcesUsed = local.evidence.filter((item) => item.kind === "claim" || (item.origin !== "brave_live" && item.origin !== "pmc_oai")).length;
-      // One Brave search can return only unreadable or off-topic pages. Give a
-      // failed, attempted need one bounded grounding pass before showing a nonanswer.
-      if (research && !research.citeableNow && (research.status === "cooldown"
-        || (research.status === "insufficient" && research.usage.searchCalls > 0))) {
+      // One Brave search can return only unreadable pages, or fail before search.
+      // Give an unresolved need one quota-limited grounding pass before abstaining.
+      const weakOnlyResearch = research?.citeableNow && research.passages.length > 0
+        && research.passages.every((item) => item.sourceType === "general_web")
+        && /\b(?:how|why)\b/i.test(queryContext.resolvedQuestion);
+      if (research && (!research.citeableNow || weakOnlyResearch) && research.status !== "budget_exhausted"
+        && !reusedAfterWait && !admittedThisRequest) {
         const google = await searchWithGoogleGrounding(queryContext.resolvedQuestion, id, configurations[index].canonicalName,
           responseStyle === "research" ? "research" : "normal", searchPolicy, resolution.gaps.map((gap) => gap.requirement),
           local.personalityAliases, searchEmphasis);
@@ -343,6 +346,9 @@ async function answerQuestionInternal(
   const evidenceBudget = responseStyle === "research" ? 14 : responseStyle === "detailed" ? 11 : responseStyle === "simple" ? 5 : isBroadScope(queryContext.scope) ? 9 : 7;
   const selected = prioritizeEvidence(queryContext.resolvedQuestion, answerEvidence, evidenceBudget);
   const bounded = buildBoundedContext(selected, evidenceBudget);
+  logStage("ANSWER_SELECTION", { retrieved: evidence.length, lensMatched: lensEvidence.length,
+    targetMatched: answerEvidence.length, selected: bounded.selected.length,
+    liveSelected: bounded.citations.filter((citation) => citation.kind === "live_web_source").length });
   debug.evidenceRetrievedCount = evidence.length;
   debug.answerIntent = answerIntent(queryContext.resolvedQuestion);
   debug.finalSelectedEvidenceCount = bounded.selected.length;

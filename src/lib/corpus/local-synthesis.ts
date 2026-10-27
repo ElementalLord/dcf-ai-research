@@ -197,7 +197,7 @@ function usableFallbackPassage(item: Extract<RetrievedEvidence, { kind: "passage
       && (!broadSignificance || item.supportLevel === "STRONG" && sentence.toLowerCase().includes(surname.toLowerCase())
         && !/^\s*\d+\s+(?:what|why|how|who|when|which)\b/i.test(sentence)
         && !/\b(?:read more|click here|copyright)\b|https?:\/\/|\b[a-z0-9-]+\.(?:com|org|net|in)\b/i.test(sentence) && contribution.test(sentence))
-      && (!asksWhy || /because|led to|enabled|allowed|opened|first|new|changed|impact|significan|important|influenc|resulted|provided/i.test(sentence))
+      && (!asksWhy || Boolean(lens) || /because|led to|enabled|allowed|opened|first|new|changed|impact|significan|important|influenc|resulted|provided/i.test(sentence))
       && (!asksComparison || /\b(?:similar|comparable|parallel|contemporar|independent(?:ly)?|another|other (?:scientists?|physicists?|researchers?|groups?|experiments?)|also (?:studied|worked|discovered|observed))\b/i.test(sentence)))
     .sort((a, b) => b.overlap - a.overlap);
   return ranked[0]?.sentence || null;

@@ -33,6 +33,20 @@ describe("research query planning", () => {
     expect(plan[0].query).not.toMatch(/documented work/);
   });
 
+  it("uses a concise administration query for a paraphrased governance question", () => {
+    const [plan] = planResearchQueries("Chhatrapati Shivaji Maharaj", "How did Chhatrapati Shivaji Maharaj govern his kingdom?");
+    expect(plan.query).toMatch(/administration governance/);
+    expect(plan.query).not.toMatch(/archive museum university/);
+  });
+
+  it("rejects a governance label without any governing practice", () => {
+    const q = "How did Chhatrapati Shivaji Maharaj govern his kingdom?";
+    expect(assessPassageSupport("Maratha administration is a term used to describe the administration of a Kingdom under Chhatrapati Shivaji Maharaj and his successors.",
+      q, "Chhatrapati Shivaji Maharaj").level).toBe("RELATED");
+    expect(assessPassageSupport("Chhatrapati Shivaji Maharaj appointed a council of ministers to oversee the kingdom's administration and revenue collection.",
+      q, "Chhatrapati Shivaji Maharaj").level).toBe("STRONG");
+  });
+
   it("searches the topic of a contemporaries follow-up without treating chat framing as source terms", () => {
     const question = "Who else was doing similar work at the time? Follow-up to: What did A. P. J. Abdul Kalam do for India's space programme? About A. P. J. Abdul Kalam.";
     const plan = planResearchQueries("A. P. J. Abdul Kalam", question);
