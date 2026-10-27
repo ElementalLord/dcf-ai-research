@@ -46,7 +46,11 @@ function focusTerms(question: string, personality: string): string[] {
 export function planResearchQueries(personality: string, question: string, gaps: string[] = [], max = 2): ResearchQuery[] {
   const focus = focusTerms(question, personality);
   const lens = detectLens(question);
-  if (lens) focus.push(...lens.retrievalTerms.slice(0, 3).flatMap((term) => normalizeForMatch(term).split(" ")));
+  if (lens) {
+    const topic = [...new Set([...focus.filter((term) => !lens.ask.test(term)).slice(0, 2), ...lens.retrievalTerms.slice(0, 2)])].join(" ");
+    return [{ query: clean(`${personality} ${topic}`), intent: "institutional",
+      reason: "Find original sources that document the person's requested perspective." }];
+  }
   if (isBroadSignificanceQuestion(question) && !focus.length) focus.push("contributions", "achievements", "biography");
   if (detectContextIntent(question) === "contemporaries") {
     const topic = focus.join(" ") || "documented work";

@@ -113,7 +113,7 @@ function blank(request: EvidenceGapRequest, requestId: string, workId: string, s
 export async function executeDemandResearch(request: EvidenceGapRequest, question: string,
   existing: RetrievedEvidence[], aliases: string[], deps: ResearchDependencies): Promise<OnDemandResearchResult> {
   const requestId = randomUUID();
-  const workId = createHash("sha256").update(`research/v1:${request.needId}:${request.gaps.map((gap) => gap.id).sort().join(":")}`).digest("hex");
+  const workId = createHash("sha256").update(`research/v2:${request.needId}:${request.gaps.map((gap) => gap.id).sort().join(":")}`).digest("hex");
   const provider = deps.provider.name;
   const minimumIndependentWorks = Math.max(1, Math.min(3, request.minimumIndependentWorks || 1));
   if (!request.gaps.length) return blank(request, requestId, workId, "complete", provider);

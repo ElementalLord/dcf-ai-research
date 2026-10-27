@@ -146,6 +146,23 @@ describe("Ask orchestration", () => {
     expect(result.researchLeads).toEqual([{ url: "https://example.test/lead", title: "A related page" }]);
     expect(result.webSearchUrl).toContain("google.com/search");
   });
+  it("tries a bounded grounded search when Brave fetched pages cannot answer", async () => {
+    vi.stubEnv("DEMAND_RESEARCH_ENABLED", "true");
+    state.claims = []; state.chunks = [];
+    state.demand.mockResolvedValue({ requestId: "research-missing", status: "insufficient", attempted: true,
+      citeableNow: false, findings: [], passages: [], unresolvedGaps: [{ requirement: "direct teaching evidence" }],
+      usage: { searchCalls: 1, sourceFetches: 1 } });
+    state.google.mockResolvedValue({ evidence: [{ kind: "passage", id: "google:rescue", chunkId: "google:rescue", sourceId: "google:rescue",
+      text: "Vishvamitra taught Rama the Bala and Atibala mantras in the Ramayana narrative.", sectionTitle: null, pageOrSection: null,
+      textualLayer: "Epic narrative", sourceTitle: "Ramayana teaching", sourceAuthor: null, sourceInstitution: "example.test",
+      sourceUrl: "https://example.test/teaching", sourceType: "primary_text", sourceStatus: "discovered", origin: "google_grounding", lexicalScore: 1 }],
+    requests: 1, queries: 1, latencyMs: 3, errorCategory: null });
+    const result = await answerQuestion("What did Vishvamitra teach Rama?", "p");
+    expect(state.demand).toHaveBeenCalledTimes(1);
+    expect(state.google).toHaveBeenCalledTimes(1);
+    expect(result.status).not.toBe("abstained");
+    expect(result.citations.some((citation) => citation.kind === "live_web_source")).toBe(true);
+  });
   it("merges credible Google grounding with DCF evidence without invoking Brave", async () => {
     vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
     state.generate.mockResolvedValue({ text: "The library describes Vishvamitra as Rama’s guide [C1]. A live reference also describes this role [S1]." });

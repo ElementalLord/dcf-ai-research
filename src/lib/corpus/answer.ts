@@ -174,6 +174,29 @@ async function answerQuestionInternal(
       }
       local.debug.localEvidenceBeforeSearch = localEvidenceCount;
       local.debug.localSourcesUsed = local.evidence.filter((item) => item.kind === "claim" || (item.origin !== "brave_live" && item.origin !== "pmc_oai")).length;
+      // One Brave search can return only unreadable or off-topic pages. Give a
+      // failed, attempted need one bounded grounding pass before showing a nonanswer.
+      if (research && !research.citeableNow && (research.status === "cooldown"
+        || (research.status === "insufficient" && research.usage.searchCalls > 0))) {
+        const google = await searchWithGoogleGrounding(queryContext.resolvedQuestion, id, configurations[index].canonicalName,
+          responseStyle === "research" ? "research" : "normal", searchPolicy, resolution.gaps.map((gap) => gap.requirement),
+          local.personalityAliases, searchEmphasis);
+        const rescued = google.evidence.filter((item) => !lens || directlySupportsRequestedLens(queryContext.resolvedQuestion, item, local.personalityAliases));
+        local.evidence.push(...rescued);
+        local.debug.googleGroundedSourcesReturned = new Set(rescued.map((item) => item.sourceUrl)).size;
+        local.debug.googleSearchRequests = google.requests;
+        local.debug.googleSearchQueries = google.queries;
+        local.debug.googleSearchLatencyMs = google.latencyMs;
+        local.debug.googleSearchErrorCategory = google.errorCategory;
+        if (rescued.length && assessEvidenceSufficiency(queryContext.resolvedQuestion, local.evidence, {
+          personalityAliases: local.personalityAliases, termAliases: local.termAliases, allParameters: local.allParameters,
+        }).sufficient) {
+          local.debug.answerable = true;
+          local.debug.coverageStatus = "sufficient";
+          local.debug.unresolvedEvidenceGap = false;
+          local.debug.liveResearchTriggered = true;
+        }
+      }
       withAuthority(local.evidence, searchPolicy.rules);
       // A failed need can be cooling down even when a broad biography has a
       // request-scoped answer available from the existing grounded search path.

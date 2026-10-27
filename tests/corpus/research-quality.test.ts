@@ -122,6 +122,15 @@ describe("entity and passage admission", () => {
     expect(assessPassageSupport(direct, question, "Rani Lakshmibai of Jhansi", ["Lakshmibai"]).level).toBe("STRONG");
   });
 
+  it("searches a requested angle with a concise person and topic query", () => {
+    const [plan] = planResearchQueries("Rani Lakshmibai of Jhansi", "What about the administrative angle? About Rani Lakshmibai of Jhansi.",
+      ["administrative perspective: how government was organized through councils, revenue, law, and officials"]);
+    expect(plan.query).toContain("Rani Lakshmibai of Jhansi");
+    expect(plan.query).toContain("administration governance");
+    expect(plan.query).not.toContain("perspective");
+    expect(plan.query.split(" ").length).toBeLessThan(11);
+  });
+
   it("carries passage-level provenance into the rendered citation", () => {
     const passage: RetrievedPassage = { kind: "passage", id: "p", chunkId: "p", sourceId: "s", text: "Ashoka's edict describes dhamma as restraint and proper conduct.",
       sectionTitle: "Edict", pageOrSection: "Rock Edict XII", textualLayer: "Inscription", sourceTitle: "Corpus Inscriptionum Indicarum", sourceAuthor: "Editor",
