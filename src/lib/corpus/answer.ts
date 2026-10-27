@@ -34,6 +34,8 @@ import type { RetrievedEvidence } from "./types";
 
 const ABSTENTION = "The available sources do not contain enough evidence to answer that fully.";
 const NO_EVIDENCE_REPLY = /sources (?:currently available )?do not (?:provide|contain) (?:reliable|enough) evidence|don't have enough evidence|couldn't verify (?:a reliable answer|that connection)/i;
+const answerSentenceCount = (value: string) => value.replace(/\[[CS]\d+\]/g, "")
+  .split(/(?<=[.!?])\s+(?=[\p{Lu}“"'])/u).filter((sentence) => sentence.trim()).length;
 
 async function answerQuestionInternal(
   question: string,
@@ -432,6 +434,14 @@ async function answerQuestionInternal(
         console.warn("synthesis_validation", JSON.stringify({ model: generated.model || provider.model, accepted: false,
           reason: "invalid_or_missing_citation", suppliedCitationCount: bounded.citations.length }));
         throw new Error("Invalid synthesis citations");
+      }
+      if (answerSentenceCount(generated.text) < 3) {
+        incrementMetric("synthesisAttempted");
+        const expanded = await provider.generateGroundedAnswer({ prompt: `${prompt}\n\nYour previous draft was too brief. Give at least three distinct, useful sentences grounded in the same cited evidence. Explain the central fact, its relevant context or mechanism, and its significance or limits. Do not repeat the same fact or invent details.`,
+          evidence: bounded.selected, citations: bounded.citations, broad: queryContext.broadSynthesis, scope: queryContext.scope, diagnostics });
+        if (expanded.text !== ABSTENTION && answerSentenceCount(expanded.text) >= 3
+          && validateAnswerCitations(expanded.text, bounded.citations)) generated = expanded;
+        else throw new Error("Synthesis remained too brief or unsupported");
       }
       console.info("synthesis_validation", JSON.stringify({ model: generated.model || provider.model, accepted: true,
         abstained: generated.text === ABSTENTION, suppliedCitationCount: bounded.citations.length }));

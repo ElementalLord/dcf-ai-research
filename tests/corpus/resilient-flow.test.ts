@@ -67,6 +67,7 @@ function passage(text: string) {
 }
 beforeEach(() => {
   state.caches.clear(); state.checkpoints.clear(); state.started.length = 0; state.finished.length = 0; state.sequence.length = 0; state.rulesActive = true;
+  state.generate.mockReset();
   state.chunks = []; state.lexicalResultsRemaining = null; state.webConfigured = false;
   state.google.mockResolvedValue({ evidence: [], requests: 0, queries: 0, latencyMs: 0, errorCategory: "NOT_CONFIGURED" });
   state.originalFetch.mockResolvedValue({ bytes: new Uint8Array([1]), contentType: "text/html", finalUrl: "https://example.test/approved", access: { display_name: "Public primary text", default_textual_layer: "Epic narrative", default_source_type: "primary_text" } });
@@ -165,7 +166,7 @@ describe("Ask orchestration", () => {
   });
   it("merges credible Google grounding with DCF evidence without invoking Brave", async () => {
     vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
-    state.generate.mockResolvedValue({ text: "The library describes Vishvamitra as Rama’s guide [C1]. A live reference also describes this role [S1]." });
+    state.generate.mockResolvedValue({ text: "The library describes Vishvamitra as Rama’s guide [C1]. A live reference also describes this role [S1]. The two records support the same teaching relationship [C1] [S1]." });
     state.google.mockResolvedValue({ evidence: [{ kind: "passage", id: "google:1", chunkId: "google:1", sourceId: "google:1", text: "The Ramayana presents Vishvamitra as Rama's guide and teacher.", sectionTitle: null, pageOrSection: null, textualLayer: "Epic narrative", sourceTitle: "Vishvamitra | Britannica", sourceAuthor: null, sourceInstitution: "britannica.com", sourceUrl: "https://www.britannica.com/biography/Vishvamitra", sourceType: "live web research", sourceStatus: "discovered", origin: "google_grounding" }], requests: 1, queries: 1, latencyMs: 30, errorCategory: null });
     const result = await answerQuestion("Who is Vishvamitra?", "p");
     expect(result.status).not.toBe("abstained");
@@ -303,7 +304,7 @@ describe("Ask orchestration", () => {
   });
   it("writes synthesized answers and reuses normalized repeat with zero generation", async () => {
     vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
-    state.generate.mockImplementation(async () => ({ text: "The approved text portrays a guide [C1]." }));
+    state.generate.mockImplementation(async () => ({ text: "The approved text portrays Vishvamitra as a guide [C1]. Another record connects his family to Rigveda hymns [C2]. Both details belong to his documented profile [C1] [C2]." }));
     const first = await answerQuestion("Who is Vishvamitra?", "p");
     expect(first.status).toBe("complete"); expect(first.debug.generativeCalls).toBe(1);
     expect(state.caches.size).toBe(1);
@@ -314,6 +315,15 @@ describe("Ask orchestration", () => {
     state.claims[0] = claim("one", "Updated approved guide evidence.");
     const changed = await answerQuestion("Who is Vishvamitra?", "p");
     expect(changed.debug.answerCacheHit).toBe(false);
+    expect(state.generate).toHaveBeenCalledTimes(2);
+  });
+  it("revises a one-sentence model answer once before showing it", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
+    state.generate.mockResolvedValueOnce({ text: "Vishvamitra guided Rama [C1]." })
+      .mockResolvedValueOnce({ text: "Vishvamitra guided Rama [C1]. Another record links his family to Rigveda hymns [C2]. These records establish two distinct parts of his portrayal [C1] [C2]." });
+    const result = await answerQuestion("Who is Vishvamitra?", "p");
+    expect(result.status).toBe("complete");
+    expect(result.answer).toContain("family to Rigveda hymns");
     expect(state.generate).toHaveBeenCalledTimes(2);
   });
   it("drops cached live evidence when its authorization is revoked", async () => {
@@ -338,7 +348,7 @@ describe("Ask orchestration", () => {
   });
   it("uses one alternate synthesis call after a transient primary 503", async () => {
     vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
-    state.generate.mockRejectedValueOnce(new Error("503 high demand")).mockResolvedValueOnce({ text: "The approved text portrays a guide [C1]." });
+    state.generate.mockRejectedValueOnce(new Error("503 high demand")).mockResolvedValueOnce({ text: "The approved text portrays Vishvamitra as a guide [C1]. Another record connects his family to Rigveda hymns [C2]. Both details belong to his documented profile [C1] [C2]." });
     const result = await answerQuestion("Who is Vishvamitra?", "p");
     expect(result.status).toBe("complete");
     expect(result.debug.generativeCalls).toBe(2);
@@ -346,7 +356,7 @@ describe("Ask orchestration", () => {
     expect(state.generate.mock.calls.map(([request]) => request.model)).toEqual(["gemini-3.7-flash", "gemini-3.5-flash-lite"]);
     expect(result.debug.extractiveFallbackUsed).toBe(false);
     state.generate.mockClear();
-    state.generate.mockResolvedValue({ text: "The approved text portrays a guide [C1]." });
+    state.generate.mockResolvedValue({ text: "The approved text portrays Vishvamitra as a guide [C1]. Another record connects his family to Rigveda hymns [C2]. Both details belong to his documented profile [C1] [C2]." });
     const next = await answerQuestion("Tell me about Vishvamitra.", "p");
     expect(next.status).toBe("complete");
     expect(next.debug.generativeCalls).toBe(1);

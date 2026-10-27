@@ -28,7 +28,7 @@ export class GeminiSynthesisProvider implements SynthesisProvider {
       throw new Error(`Synthesis provider cooldown: ${primaryState.category || "unknown"}`);
     }
     try {
-      return await generateText(input.prompt, { model: this.model, callLimit: process.env.DEMAND_RESEARCH_ENABLED === "true" ? 7 : 1,
+      return await generateText(input.prompt, { model: this.model, callLimit: process.env.DEMAND_RESEARCH_ENABLED === "true" ? 7 : 2,
         timeoutMs: process.env.SYNTHESIS_TIMEOUT_MS ? undefined : 12_000, synthesisDiagnostics: input.diagnostics });
     } catch (error) {
       if (!this.transient(classifyProviderError(error)) || !this.alternateAvailable() || alternateGenerationCircuit.state().open) throw error;
