@@ -8,7 +8,7 @@ import { logStage, stageTimer } from "./observability";
 import { retrieveWithApprovedResearch } from "@/lib/live-research/research";
 import { retrieveEvidence } from "./retrieval";
 import { searchWithGoogleGrounding } from "@/lib/live-research/google-grounding";
-import { assessEvidenceSufficiency } from "@/lib/live-research/sufficiency";
+import { assessEvidenceSufficiency, directlySupportsRequestedLens } from "@/lib/live-research/sufficiency";
 import { citationsMatchEvidence, mergePersonalityEvidence } from "./comparison";
 import { loadPersonalityConfiguration } from "./personality-context";
 import { normalizedAliases } from "./personality-config";
@@ -98,7 +98,7 @@ async function answerQuestionInternal(
       const research = resolution.researchRequest
         ? await executeDemandResearch({ ...resolution.researchRequest, maxExternalSearches: allocated,
           minimumIndependentWorks: isBroadScope(queryContext.scope) || queryContext.depthFollowup ? 3
-            : responseStyle === "detailed" || responseStyle === "research" ? 2 : 1 }, queryContext.resolvedQuestion, local.evidence,
+            : lens || responseStyle === "detailed" || responseStyle === "research" ? 2 : 1 }, queryContext.resolvedQuestion, local.evidence,
           local.personalityAliases, productionResearchDependencies()) : null;
       if (research) {
         for (const lead of research.leads || []) {
@@ -312,8 +312,9 @@ async function answerQuestionInternal(
     : retrievals[0].evidence;
   const targetAliases = retrievals.flatMap((retrieval) => retrieval.personalityAliases);
   const namedTarget = !isBroadScope(queryContext.scope) && namedTargetTerms(queryContext.resolvedQuestion, targetAliases).length > 0;
-  const answerEvidence = namedTarget ? evidence.filter((item) => passageAddressesTarget(queryContext.resolvedQuestion,
-    item.kind === "claim" ? item.storageMode === "metadata_only" ? item.text : item.evidenceExcerpt || "" : item.text, targetAliases)) : evidence;
+  const lensEvidence = lens ? evidence.filter((item) => directlySupportsRequestedLens(queryContext.resolvedQuestion, item, targetAliases)) : evidence;
+  const answerEvidence = namedTarget ? lensEvidence.filter((item) => passageAddressesTarget(queryContext.resolvedQuestion,
+    item.kind === "claim" ? item.storageMode === "metadata_only" ? item.text : item.evidenceExcerpt || "" : item.text, targetAliases)) : lensEvidence;
   const evidenceBudget = responseStyle === "research" ? 14 : responseStyle === "detailed" ? 11 : responseStyle === "simple" ? 5 : isBroadScope(queryContext.scope) ? 9 : 7;
   const selected = prioritizeEvidence(queryContext.resolvedQuestion, answerEvidence, evidenceBudget);
   const bounded = buildBoundedContext(selected, evidenceBudget);
@@ -360,9 +361,6 @@ async function answerQuestionInternal(
   debug.estimatedEvidenceTokens = Math.ceil(bounded.context.length / 4);
   const stopCache = stageTimer("ANSWER_CACHE");
   const hasLiveEvidence = bounded.citations.some((citation) => citation.kind === "live_web_source");
-  const liveDemandAnswer = hasLiveEvidence && process.env.DEMAND_RESEARCH_ENABLED === "true"
-    && !(queryContext.depthFollowup && bounded.citations.length >= 2)
-    && !(isBroadScope(queryContext.scope) && bounded.citations.length >= 3);
   const cached = hasLiveEvidence ? null : await readAnswerCache(identity.key, bounded.citations);
   debug.latenciesMs.answerCache = stopCache();
   debug.answerCacheHit = Boolean(cached);
@@ -388,13 +386,11 @@ async function answerQuestionInternal(
     debug.provider = cached.provider;
     debug.synthesisMode = `cached ${cached.provider}`;
     debug.model = cached.model;
-  } else if (liveDemandAnswer || !health.healthy) {
+  } else if (!health.healthy) {
     usedLocalSynthesis = true;
-    if (!liveDemandAnswer) {
-      console.warn("synthesis_fallback", JSON.stringify({ reason: health.configured ? "provider_circuit_open" : "provider_not_configured",
-        category: health.circuit.category, primaryModel: provider.model, evidenceRecords: bounded.selected.length }));
-      debug.generationFallbackReason = "AI synthesis unavailable; showing verified evidence.";
-    }
+    console.warn("synthesis_fallback", JSON.stringify({ reason: health.configured ? "provider_circuit_open" : "provider_not_configured",
+      category: health.circuit.category, primaryModel: provider.model, evidenceRecords: bounded.selected.length }));
+    debug.generationFallbackReason = "AI synthesis unavailable; showing verified evidence.";
     generated = await safeFallback();
   } else {
     const prompt = buildSynthesisPrompt({ personality, question, resolvedQuestion: queryContext.resolvedQuestion, scope: queryContext.scope, evidenceContext: bounded.context, evidenceRecords: bounded.selected.length, responseStyle, conversation, openingTurn: !options.history?.length,

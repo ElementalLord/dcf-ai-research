@@ -1,6 +1,6 @@
 import type { QuestionScope } from "@/lib/ask/question-scope";
 
-export const SYNTHESIS_PROMPT_VERSION = "historical_conversation_v18";
+export const SYNTHESIS_PROMPT_VERSION = "historical_conversation_v19";
 
 export function buildSynthesisPrompt(input: {
   personality: string;
@@ -53,7 +53,9 @@ ${styleInstruction}
 ${conversationalFraming}
 ${placement} Take every date, period, and name from the evidence packet. Keep initials and shortened names as written unless the packet gives their full forms.${input.chronologyNote ? ` ${input.chronologyNote}` : ""}
 ${perspective}
-${input.evidenceRecords && input.evidenceRecords <= 2 ? "This packet has very little evidence. Give one compact paragraph, usually under 80 words. State only the central fact the source directly supports, qualify the textual scope, and omit minor episode details or analogies. Do not make the answer sound more complete than the evidence allows." : ""}
+${input.evidenceRecords && input.evidenceRecords <= 2 ? "This packet has very little evidence. Give a compact paragraph that explains the central supported fact, its relevant context, and the limit of what the source establishes. Omit minor episode details or analogies. Do not make the answer sound more complete than the evidence allows." : ""}
+
+When the evidence supports an answer, write at least three useful sentences. Explain what the person did, the context or mechanism, and why it matters or what remains uncertain, as far as the sources allow. Never pad the answer with repeated caveats or generic source commentary.
 
 Write like a thoughtful person in a chat: connected paragraphs with clear progression, natural transitions, and no headings, bullet lists, numbered sections, bold markers, or source appendix. Use short, natural sentences. Avoid em dashes in your own prose; use periods, commas, colons, or parentheses instead. Preserve original punctuation in quotations, source titles, names, and cited material. Do not invent precise ancient dates.
 

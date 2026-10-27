@@ -128,7 +128,7 @@ describe("Ask orchestration", () => {
     expect(state.demand).toHaveBeenCalledTimes(1);
     expect(state.google).not.toHaveBeenCalled();
     expect(state.webDiscover).not.toHaveBeenCalled();
-    expect(state.generate).not.toHaveBeenCalled();
+    expect(state.generate).toHaveBeenCalledTimes(1);
     expect(result.citations.some((item) => item.kind === "live_web_source")).toBe(true);
   });
 

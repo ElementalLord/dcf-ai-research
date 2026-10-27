@@ -141,7 +141,7 @@ export async function sourceAccess(url: string): Promise<SourceAccess> {
   return loaded.status === 200 && loaded.sections.length ? "readable" : "unreadable";
 }
 
-const supportStop = new Set(["the", "and", "for", "with", "from", "that", "this", "his", "her", "their", "which", "into", "also", "about", "known", "important", "according", "tradition", "narrative", "source", "sources", "text", "texts", "follow", "topic", "question", ...CONTEXT_FRAMING_TERMS]);
+const supportStop = new Set(["the", "and", "for", "with", "from", "that", "this", "his", "her", "their", "which", "into", "also", "about", "known", "important", "angle", "lens", "perspective", "according", "tradition", "narrative", "source", "sources", "text", "texts", "follow", "topic", "question", ...CONTEXT_FRAMING_TERMS]);
 
 /** Google selects a page and topic. Only a matching excerpt fetched from the
  * original page becomes evidence; the model's search summary stays discovery. */

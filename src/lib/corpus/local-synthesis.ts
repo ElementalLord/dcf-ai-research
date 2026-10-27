@@ -6,6 +6,7 @@ import { framedStatement } from "@/lib/claim-epistemics/language";
 import { profileEvidenceSalience } from "./rerank";
 import { readableEvidence } from "./readable-evidence";
 import { isBroadSignificanceQuestion } from "@/lib/live-research/research-quality";
+import { detectLens } from "@/lib/ask/lenses";
 
 type EvidenceWithCitation = { item: RetrievedEvidence; citation: Citation };
 
@@ -174,8 +175,9 @@ function relevantWords(value: string): Set<string> {
 function usableFallbackPassage(item: Extract<RetrievedEvidence, { kind: "passage" }>, question: string): string | null {
   const text = readableEvidence(item.text);
   if (!text || /skip to main content|cookie preferences|privacy policy|all rights reserved|subscribe now|sign in to continue/i.test(text.slice(0, 220))) return null;
+  const lens = detectLens(question);
   const broadSignificance = isBroadSignificanceQuestion(question) && !/\b(?:effect|discovery|work|book|event|award|institution)\b/i.test(question);
-  const focus = [...relevantWords(question.replace(item.personalityName || "", ""))]
+  const focus = lens ? [] : [...relevantWords(question.replace(item.personalityName || "", ""))]
     .filter((word) => !/^(known|important|significant|similar|there|time|personality|selected|context|topic|related)$/.test(word));
   const asksWhy = /\b(?:why|important|significant|impact|big deal)\b/i.test(question);
   const asksComparison = /\b(?:similar|comparable|contemporar|anyone else|someone else)\b/i.test(question);
@@ -191,7 +193,7 @@ function usableFallbackPassage(item: Extract<RetrievedEvidence, { kind: "passage
       ? raw.slice(nameAt) : raw;
     return { sentence, overlap: focus.filter((word) => relevantWords(sentence).has(word)).length };
   })
-    .filter(({ sentence, overlap }) => (!focus.length || overlap > 0)
+    .filter(({ sentence, overlap }) => (!focus.length || overlap > 0) && (!lens || lens.evidence.test(sentence))
       && (!broadSignificance || item.supportLevel === "STRONG" && sentence.toLowerCase().includes(surname.toLowerCase())
         && !/^\s*\d+\s+(?:what|why|how|who|when|which)\b/i.test(sentence)
         && !/\b(?:read more|click here|copyright)\b|https?:\/\/|\b[a-z0-9-]+\.(?:com|org|net|in)\b/i.test(sentence) && contribution.test(sentence))
@@ -425,7 +427,8 @@ export function renderExtractiveEvidence(selected: RetrievedEvidence[], citation
       return true;
     });
   const claims = entries.filter(({ item }) => item.kind === "claim");
-  const pool = claims.length ? claims : entries.filter(({ item }) => item.kind === "passage");
+  const pool = entries.some(({ item, citation }) => item.kind === "passage" && citation.kind === "live_web_source")
+    ? entries : claims.length ? claims : entries.filter(({ item }) => item.kind === "passage");
   const composed = composePersonAnswer(pool, scope, question, responseStyle);
   if (composed) return composed;
   const historicalPool = historicalQuestion ? pool.filter(({ item }) => item.kind === "claim" && (

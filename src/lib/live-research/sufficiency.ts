@@ -5,6 +5,7 @@ import { classifyQuestionScope, isBroadScope, type QuestionScope } from "@/lib/a
 import { detectLens, LENS_FRAMING_TERMS } from "@/lib/ask/lenses";
 import { CONTEXT_EVIDENCE, CONTEXT_FRAMING_TERMS, CONTEXT_GAP, detectContextIntent, PERIOD_EVIDENCE } from "@/lib/ask/historical-context";
 import { independentWorkCount } from "./research-quality";
+import { splitEvidenceSentences } from "@/lib/ask/target-support";
 
 const IGNORED = new Set(["the", "and", "for", "its", "that", "this", "then", "his", "her", "what", "when", "where", "which", "who", "why", "how", "does", "did", "is", "are", "was", "were", "about", "from", "with", "into", "between", "year", "date", "role", "play", "played", "major", "story", "explain", "relationship", "relation", "significance", "significant", "happen", "happens", "happened", "disagree", "disagreed", "disagreement"]);
 
@@ -39,6 +40,17 @@ export type SufficiencyDecision = {
   reason: string;
   missingDimensions: string[];
 };
+
+export function directlySupportsRequestedLens(question: string, item: RetrievedEvidence, personalityAliases: string[]): boolean {
+  const lens = detectLens(question);
+  if (!lens) return true;
+  const names = [...personalityAliases, item.personalityName || ""].map(normalizeForMatch).filter((name) => name.length >= 4);
+  return splitEvidenceSentences(item.text).flatMap((sentence) => sentence.split(/;\s*/)).some((sentence) => {
+    const normalized = ` ${normalizeForMatch(sentence)} `;
+    return lens.evidence.test(sentence) && (!names.length || names.some((name) => normalized.includes(` ${name} `))
+      || /^(?:his|her|their)\b/i.test(sentence.trim()));
+  });
+}
 
 export function assessEvidenceSufficiency(
   question: string,
@@ -96,8 +108,8 @@ export function assessEvidenceSufficiency(
   if (similarWork && !comparableEvidence) return { sufficient: false, answerable: false, mode: "RESEARCH", coverage,
     reason: "The available evidence describes the main subject but does not identify comparable work by anyone else.", missingDimensions: ["contemporary comparable work"] };
   // A requested angle needs evidence that actually speaks to it, not just evidence about the person.
-  if (lens && !evidence.some((item) => lens.evidence.test(item.text))) return { sufficient: false, answerable: direct > 0, mode: "EXPANDED", coverage,
-    reason: `Local evidence says little about the ${lens.label.toLowerCase()} angle.`, missingDimensions: [`${lens.label.toLowerCase()} perspective: ${lens.focus}`] };
+  if (lens && !evidence.some((item) => directlySupportsRequestedLens(question, item, personalityAliases))) return { sufficient: false, answerable: direct > 0, mode: "EXPANDED", coverage,
+    reason: `Local evidence does not directly connect the person to the ${lens.label.toLowerCase()} angle.`, missingDimensions: [`${lens.label.toLowerCase()} perspective: ${lens.focus}`] };
   if (contextIntent && contextIntent !== "contemporaries" && !evidence.some((item) => (contextIntent === "period" ? PERIOD_EVIDENCE : CONTEXT_EVIDENCE).test(item.text))) return { sufficient: false, answerable: direct > 0, mode: "EXPANDED", coverage,
     reason: "Local evidence does not place this in its period.", missingDimensions: [CONTEXT_GAP[contextIntent]] };
   if (broadProfile) {

@@ -1,6 +1,7 @@
 import { normalizeForMatch } from "@/lib/corpus/text";
 import { passageAddressesTarget, splitEvidenceSentences } from "@/lib/ask/target-support";
 import { CONTEXT_FRAMING_TERMS, detectContextIntent } from "@/lib/ask/historical-context";
+import { detectLens } from "@/lib/ask/lenses";
 
 export type QueryIntent = "primary" | "scholarly" | "institutional" | "context" | "controversy" | "exact_work";
 export type EvidenceType = "primary_document" | "traditional_text" | "scholarly_interpretation" | "institutional_record" | "edited_secondary" | "general_web";
@@ -21,7 +22,7 @@ export type SourceIdentity = {
   provenanceComplete: boolean;
 };
 
-const STOP = new Set(["what", "which", "when", "where", "why", "how", "does", "did", "was", "were", "are", "the", "and", "for", "with", "from", "about", "into", "that", "this", "their", "work", "role", "known", "important", "significance", "follow", "topic", "question", ...CONTEXT_FRAMING_TERMS]);
+const STOP = new Set(["what", "which", "when", "where", "why", "how", "does", "did", "was", "were", "are", "the", "and", "for", "with", "from", "about", "into", "that", "this", "their", "work", "role", "known", "important", "significance", "angle", "lens", "perspective", "follow", "topic", "question", ...CONTEXT_FRAMING_TERMS]);
 const IDEA_QUESTION = /\b(?:ideas|beliefs|principles|values|visions?)\b.{0,100}\b(?:associated with|known for|did|does|hold|have|advocate|promote)\b/i;
 const IDEA_EVIDENCE = /\b(?:idea|vision|belief|philosophy|principle|value|advocat|emphasiz|teach|promot|argu|aspir|thought|dream)\w*/i;
 export const isBroadIdeaQuestion = (question: string) => IDEA_QUESTION.test(question);
@@ -44,6 +45,8 @@ function focusTerms(question: string, personality: string): string[] {
 /** A small, question-directed plan. It describes missing evidence classes instead of issuing a generic name search. */
 export function planResearchQueries(personality: string, question: string, gaps: string[] = [], max = 2): ResearchQuery[] {
   const focus = focusTerms(question, personality);
+  const lens = detectLens(question);
+  if (lens) focus.push(...lens.retrievalTerms.slice(0, 3).flatMap((term) => normalizeForMatch(term).split(" ")));
   if (isBroadSignificanceQuestion(question) && !focus.length) focus.push("contributions", "achievements", "biography");
   if (detectContextIntent(question) === "contemporaries") {
     const topic = focus.join(" ") || "documented work";
@@ -130,6 +133,10 @@ export function assessPassageSupport(text: string, questionOrStatement: string, 
   };
   if (isBroadIdeaQuestion(questionOrStatement) && IDEA_EVIDENCE.test(text) && text.trim().length >= 70)
     return { level: "STRONG", overlap, reason: "The passage identifies the person and states a documented idea or belief." };
+  const lens = detectLens(questionOrStatement);
+  if (lens && splitEvidenceSentences(text).flatMap((sentence) => sentence.split(/;\s*/)).some((sentence) => sentence.trim().length >= 70
+    && entityMatch(sentence, canonicalName, aliases).matched && lens.evidence.test(sentence)))
+    return { level: "STRONG", overlap, reason: "The passage identifies the person and directly documents the requested perspective." };
   if (isBroadSignificanceQuestion(questionOrStatement) && splitEvidenceSentences(text).some((sentence) =>
     sentence.trim().length >= 70 && !/\b(?:read more|click here|copyright)\b|https?:\/\/|\b[a-z0-9-]+\.(?:com|org|net|in)\b/i.test(sentence)
       && entityMatch(sentence, canonicalName, aliases).matched && SIGNIFICANCE_EVIDENCE.test(sentence)))

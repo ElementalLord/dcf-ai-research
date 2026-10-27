@@ -70,7 +70,7 @@ export function narrowQuery(request: EvidenceGapRequest, question: string): stri
   if (detectContextIntent(question) !== "contemporaries" && (process.env.DEMAND_AUTO_ADMISSION_ENABLED === "true" || process.env.DEMAND_VERIFICATION_SHADOW_ENABLED === "true")) {
     const namedTargets = [...question.matchAll(/\b\p{Lu}[\p{L}\p{N}]+(?:\s+\p{Lu}[\p{L}\p{N}]+)+/gu)]
       .map(([value]) => value.replace(/^(?:Did|Does|Do|Was|Were|Is|Are|What|Which|When|Where|Why|How)\s+/u, ""))
-      .filter((value) => normalizeForMatch(value) !== normalizeForMatch(request.personalityName));
+      .filter((value) => !normalizeForMatch(request.personalityName).includes(normalizeForMatch(value)));
     const target = namedTargets.at(-1);
     if (target) {
       const action = question.replace(new RegExp(request.personalityName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"), "")

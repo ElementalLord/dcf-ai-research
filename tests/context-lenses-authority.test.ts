@@ -79,6 +79,16 @@ describe("lenses", () => {
     expect(on.sufficient).toBe(true);
   });
 
+  it("does not treat general period context as the person's administrative record", () => {
+    const aliases = { personalityAliases: ["Rani Lakshmibai of Jhansi", "Lakshmibai"] };
+    const context = claim(1, "Company intervention weakened princely rulers through residents and reduced revenues. Lakshmibai's dispute arose within this erosion of royal power.");
+    const decision = assessEvidenceSufficiency("What about the administrative angle? About Rani Lakshmibai of Jhansi.", [context], aliases);
+    expect(decision.sufficient).toBe(false);
+    expect(decision.missingDimensions[0]).toMatch(/administrative perspective/);
+    const direct = claim(2, "Rani Lakshmibai of Jhansi governed her territory through named officials and supervised the collection of revenue during the crisis.");
+    expect(assessEvidenceSufficiency("What about the administrative angle? About Rani Lakshmibai of Jhansi.", [direct], aliases).sufficient).toBe(true);
+  });
+
   it("treats unusual-for-the-time wording as a request for context", () => {
     const result = assessEvidenceSufficiency("Why was her role unusual for her time?", [claim(1, "In 1858, women worked in the artillery batteries during the British siege.")]);
     expect(result.answerable).toBe(true);

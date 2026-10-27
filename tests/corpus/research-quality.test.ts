@@ -114,6 +114,14 @@ describe("entity and passage admission", () => {
     expect(assessPassageSupport("Jamsetji Tata appears in the index. Dorabji Tata established an industrial enterprise that transformed the city.", question, "Jamsetji Tata").level).toBe("RELATED");
   });
 
+  it("requires a named person and the requested angle in the same source statement", () => {
+    const question = "What about the administrative angle? About Rani Lakshmibai of Jhansi.";
+    const general = "British residents reduced the revenues and military forces of several princely rulers. Rani Lakshmibai of Jhansi disputed the loss of royal power.";
+    const direct = "Rani Lakshmibai of Jhansi governed the territory through appointed officials and supervised revenue collection during the crisis.";
+    expect(assessPassageSupport(general, question, "Rani Lakshmibai of Jhansi", ["Lakshmibai"]).level).toMatch(/PARTIAL|RELATED/);
+    expect(assessPassageSupport(direct, question, "Rani Lakshmibai of Jhansi", ["Lakshmibai"]).level).toBe("STRONG");
+  });
+
   it("carries passage-level provenance into the rendered citation", () => {
     const passage: RetrievedPassage = { kind: "passage", id: "p", chunkId: "p", sourceId: "s", text: "Ashoka's edict describes dhamma as restraint and proper conduct.",
       sectionTitle: "Edict", pageOrSection: "Rock Edict XII", textualLayer: "Inscription", sourceTitle: "Corpus Inscriptionum Indicarum", sourceAuthor: "Editor",

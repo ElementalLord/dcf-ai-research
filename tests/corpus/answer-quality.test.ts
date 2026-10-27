@@ -105,7 +105,8 @@ describe("scope-aware grounded answers", () => {
     expect(queries.every((query) => query.includes("Rishi A") && /textual|lineage|Rigveda/.test(query))).toBe(true);
     expect(queries.some((query) => /original text|scholarly assessment/.test(query))).toBe(true);
     const prompt = buildSynthesisPrompt({ personality: "Rishi A", question: "Who is Rishi A?", resolvedQuestion: "Who is Rishi A?", scope: "BROAD_PROFILE", evidenceContext: "[C1] Claim" });
-    expect(SYNTHESIS_PROMPT_VERSION).toBe("historical_conversation_v18");
+    expect(SYNTHESIS_PROMPT_VERSION).toBe("historical_conversation_v19");
+    expect(prompt).toContain("at least three useful sentences");
     expect(prompt).toContain("Avoid stacks of repeated citations");
     expect(prompt).toContain("silently review");
     expect(prompt).toContain("using only the supplied IDs");
@@ -192,6 +193,22 @@ describe("scope-aware grounded answers", () => {
     expect(answer).not.toContain("describes skip to main content");
     const unrelated = { ...passage, text: "The Academy of Sciences resolved to award the Nobel Prize in Physics for 1930 to Sir Chandrasekhara Venkata Raman for his work on light scattering." };
     expect(renderExtractiveEvidence([unrelated], [{ ...citation, excerpt: unrelated.text }], false, "COMPARISON", "Was anyone doing work similar to the Raman Effect at the time?")).toBe("The available sources do not contain enough evidence to answer that fully.");
+  });
+
+  it("uses fetched angle evidence even when a generic local claim is present", () => {
+    const context = claim("period", "historical_context", "Company intervention weakened princely rulers through residents and reduced revenues; Lakshmibai's dispute arose during this erosion of royal power.");
+    const passage: RetrievedPassage = { kind: "passage", id: "live:governance", chunkId: "governance", sourceId: "governance",
+      text: "Rani Lakshmibai administered Jhansi during the crisis and supervised the collection of state revenues and the recruitment of police forces.",
+      sectionTitle: null, pageOrSection: null, textualLayer: null, sourceTitle: "History of Jhansi", sourceAuthor: null,
+      sourceInstitution: "history.example", sourceUrl: "https://history.example/jhansi", sourceType: "history",
+      sourceStatus: "discovered", origin: "brave_live", personalityName: "Rani Lakshmibai", supportLevel: "STRONG" };
+    const citations: Citation[] = [
+      { id: "C1", kind: "approved_claim", claimId: "period", title: context.sourceTitle || "Claim", author: null, institution: null, url: null, sourceType: context.sourceType, pageOrSection: null, textualLayer: null, excerpt: context.text },
+      { id: "S1", kind: "live_web_source", title: passage.sourceTitle, author: null, institution: passage.sourceInstitution, url: passage.sourceUrl, sourceType: passage.sourceType, pageOrSection: null, textualLayer: null, excerpt: passage.text },
+    ];
+    const answer = renderExtractiveEvidence([context, passage], citations, false, "EXPLANATION", "What about the administrative angle? About Rani Lakshmibai.");
+    expect(answer).toContain("administered Jhansi");
+    expect(answer).toContain("[S1]");
   });
 
   it("answers a known-for question from the verified contribution sentence instead of page metadata", () => {
