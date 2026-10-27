@@ -85,13 +85,16 @@ export function narrowQuery(request: EvidenceGapRequest, question: string): stri
 function possibleContradiction(text: string, existing: RetrievedEvidence[], question: string, aliases: string[]): boolean {
   const normalized = normalizeForMatch(text);
   const negated = /\b(?:not|never|no evidence|did not|was not)\b/i.test(text);
-  const terms = new Set(normalized.split(" ").filter((term) => term.length >= 5));
+  const subjectTerms = new Set(aliases.flatMap((alias) => normalizeForMatch(alias).split(" ")));
+  const stem = (term: string) => term.replace(/(?:ing|ed|s)$/i, "");
+  const terms = new Set(normalized.split(" ").filter((term) => term.length >= 5 && !subjectTerms.has(term)).map(stem));
   return existing.some((item) => {
     if (!passageAddressesTarget(question, item.text, aliases)) return false;
     const other = normalizeForMatch(item.text);
-    const overlap = other.split(" ").filter((term) => terms.has(term)).length;
+    const overlap = other.split(" ").filter((term) => terms.has(stem(term))).length;
     if (overlap < 3) return false;
     if (negated !== /\b(?:not|never|no evidence|did not|was not)\b/i.test(item.text)) return true;
+    if (!/\b(?:when|what year|which year|date|dated|chronology|first|earliest|latest)\b/i.test(question)) return false;
     const years = new Set(text.match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g) || []);
     const otherYears = new Set(item.text.match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g) || []);
     return years.size > 0 && otherYears.size > 0 && ![...years].some((year) => otherYears.has(year));
@@ -113,7 +116,7 @@ function blank(request: EvidenceGapRequest, requestId: string, workId: string, s
 export async function executeDemandResearch(request: EvidenceGapRequest, question: string,
   existing: RetrievedEvidence[], aliases: string[], deps: ResearchDependencies): Promise<OnDemandResearchResult> {
   const requestId = randomUUID();
-  const workId = createHash("sha256").update(`research/v3:${request.needId}:${request.gaps.map((gap) => gap.id).sort().join(":")}`).digest("hex");
+  const workId = createHash("sha256").update(`research/v4:${request.needId}:${request.gaps.map((gap) => gap.id).sort().join(":")}`).digest("hex");
   const provider = deps.provider.name;
   const minimumIndependentWorks = Math.max(1, Math.min(3, request.minimumIndependentWorks || 1));
   if (!request.gaps.length) return blank(request, requestId, workId, "complete", provider);

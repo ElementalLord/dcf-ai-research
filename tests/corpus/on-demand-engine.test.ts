@@ -357,6 +357,21 @@ describe("bounded on-demand research", () => {
     }
   });
 
+  it("does not treat different years in an angle answer as a disputed date", async () => {
+    const secondUrl = "https://archive.example.org/other-administration-record";
+    const { deps } = fixture([{ title: "First administration record", url, sourceProvider: "mock" },
+      { title: "Second administration record", url: secondUrl, sourceProvider: "mock" }]);
+    deps.read = async (source) => excerpt({ url: source.url,
+      text: `Anika Sen governed the district and collected revenue in ${source.url === url ? "1928" : "1929"}.`,
+      identity: authenticateSource({ url: source.url, title: source.url, author: "Registrar", publisher: "University" }) });
+    const angleRequest = { ...request, minimumIndependentWorks: 2,
+      gaps: [{ ...request.gaps[0], requirementKey: "perspective", type: "factual_detail" as const }] };
+    const result = await executeDemandResearch(angleRequest, "What about Anika Sen's administrative angle?", [], ["Anika Sen"], deps);
+    expect(result.findings).toHaveLength(2);
+    expect(result.unresolvedGaps).toEqual([]);
+    expect(result.citeableNow).toBe(true);
+  });
+
   it("keeps a reputable page without document provenance out of admission", async () => {
     const { deps } = fixture();
     deps.read = async () => excerpt({ identity: authenticateSource({ url, title: "History of the prism effect" }) });
