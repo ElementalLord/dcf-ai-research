@@ -25,8 +25,8 @@ export function sourcePriority(rawUrl: string, title: string, question: string, 
   const terms = normalizeForMatch(question).split(" ").filter((term) => term.length >= 4 && !supportStop.has(term));
   const normalizedTitle = normalizeForMatch(title);
   const relevance = terms.length ? terms.filter((term) => normalizedTitle.includes(term)).length / terms.length : 0;
-  // Eligibility and relevance precede publisher standing. A prestigious but irrelevant page
-  // cannot outrank a directly relevant page from a merely credible publisher.
+  // Require topic overlap before publisher standing matters. Once a page is
+  // relevant, prefer an identifiable publisher over a keyword-heavy profile.
   const level = category === "trusted" ? "authoritative" : classifySourceAuthority({ url: rawUrl, sourceType: category, live: true }).level;
   const tier = level === "authoritative" ? 3 : level === "credible_secondary" || institutionalHost.test(host) || /scholarly|academic|primary|institutional/i.test(category) ? 2 : 0;
   if (terms.length >= 2 && relevance === 0) return tier ? -1 : -10;
@@ -35,7 +35,7 @@ export function sourcePriority(rawUrl: string, title: string, question: string, 
   const licenseUrl = snippet.match(/https:\/\/creativecommons\.org\/(?:licenses|publicdomain)\/[^\s)]+/i)?.[0]?.replace(/[.,;]+$/, "");
   const articleRightsHint = /\b(?:this article|this chapter|this work|article license|chapter license)\b.{0,160}creativecommons\.org\//i.test(snippet)
     && hasExplicitRetentionRights(licenseUrl);
-  return relevance * 20 + tier * 2 + (articleRightsHint ? 4 : 0);
+  return relevance * 12 + tier * 6 + (articleRightsHint ? 4 : 0);
 }
 
 export type CredibleSource = { url: string; domain: string; category: string; title: string };

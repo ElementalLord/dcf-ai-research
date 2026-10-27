@@ -241,7 +241,7 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
       const explanatoryQuestion = /\b(?:how|why)\b/i.test(question);
       if (!remainingGaps(request.gaps, [...existing, ...result.passages], result.passages).length
         && independentAnswerWorks >= minimumIndependentWorks
-        && (!explanatoryQuestion || authoritativeAnswerSource || independentAnswerWorks >= 2)
+        && (!explanatoryQuestion || authoritativeAnswerSource)
         && (process.env.DEMAND_AUTO_ADMISSION_ENABLED !== "true" && process.env.DEMAND_VERIFICATION_SHADOW_ENABLED !== "true"
           || independentRetainableWorks)) break;
     }

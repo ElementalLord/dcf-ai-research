@@ -267,6 +267,19 @@ describe("bounded on-demand research", () => {
     expect(reads).toHaveLength(1);
   });
 
+  it("keeps a bounded explanatory search open past general web findings for a credible source", async () => {
+    const urls = ["https://profiles.example.com/one", "https://profiles.example.com/two", "https://records.example.com/coop"];
+    const { deps } = fixture(urls.map((candidate) => ({ title: "Anika Sen cooperative management", url: candidate, sourceProvider: "mock" })));
+    deps.inspect = async (candidate) => ({ url: candidate, domain: new URL(candidate).hostname,
+      category: candidate.includes("records.example.com") ? "institutional" : "general_web", title: "Anika Sen cooperative management" });
+    deps.read = async (source) => excerpt({ url: source.url, rightsDeclaration: null,
+      identity: authenticateSource({ url: source.url }) });
+    const result = await executeDemandResearch(request, "How did Anika Sen organize cooperative work?", [], ["Anika Sen"], deps);
+    expect(result.findings).toHaveLength(3);
+    expect(result.usage.sourceFetches).toBe(3);
+    expect(result.findings.at(-1)?.source.url).toBe(urls[2]);
+  });
+
   it("keeps reading independent works for a depth request within the same search", async () => {
     const urls = [url, "https://archive.example.org/prism", "https://museum.example.net/prism"];
     const { deps, calls } = fixture(urls.map((candidate) => ({ title: "Anika Sen prism effect", url: candidate, sourceProvider: "mock" })));

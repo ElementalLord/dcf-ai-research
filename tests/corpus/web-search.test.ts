@@ -115,6 +115,12 @@ describe("Brave discovery", () => {
       .toBeGreaterThan(sourcePriority("https://university.edu/staff", "Faculty directory", "Raman Effect discovery"));
   });
 
+  it("prefers a relevant institutional page over a keyword-heavy general profile", () => {
+    const question = "How did a leader organize a cooperative?";
+    expect(sourcePriority("https://university.edu/cooperatives", "Leader and cooperative management", question))
+      .toBeGreaterThan(sourcePriority("https://profiles.example.com/leader", "How the leader organized a cooperative", question));
+  });
+
   it("fetches original approved content after discovery and preserves the original URL", async () => {
     const provider = new MockWebSearchProvider([result("https://example.org/original", "false snippet")]);
     const found = await discoverWebCandidates("Vishvamitra", [rule], { provider });
