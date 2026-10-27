@@ -381,6 +381,20 @@ describe("Ask orchestration", () => {
     expect(result.citations.length).toBeGreaterThan(0);
     expect(state.generate).toHaveBeenCalledTimes(1);
   });
+  it("uses a cited extractive answer when the model refuses a supported angle", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
+    state.claims = [
+      claim("leadership", "Vishvamitra was a leader who led Rama's training and organized his instruction in the narrative."),
+      claim("guidance", "Vishvamitra organized Rama's lessons in the epic account."),
+      claim("teaching", "Vishvamitra managed Rama's learning during their journey."),
+    ];
+    state.generate.mockResolvedValue({ text: "The available sources do not contain enough evidence to answer that fully." });
+    const result = await answerQuestion("What was Vishvamitra's role as a leader?", "p");
+    expect(result.status).toBe("extractive_fallback");
+    expect(result.answer).toContain("led Rama's training");
+    expect(result.answer.split(/(?<=[.!?])\s+/).length).toBeGreaterThanOrEqual(3);
+    expect(result.citations.length).toBeGreaterThan(0);
+  });
   it("says a connection is not established instead of dumping loose excerpts", async () => {
     vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");
     state.generate.mockResolvedValue({ text: "The available sources do not contain enough evidence to answer that fully." });

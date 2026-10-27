@@ -465,11 +465,10 @@ async function answerQuestionInternal(
         evidenceCharacters: bounded.context.length, promptCharacters: prompt.length }));
       incrementMetric(`synthesis_${debug.synthesisErrorCategory}`);
       debug.generationFallbackReason = "AI synthesis temporarily unavailable; showing verified evidence.";
-      // The model read the evidence and found it does not answer a specific question. Loose excerpts would pose as an answer, so say so instead.
-      // Excerpts remain the fallback for a general profile, where passages about the person do answer, and whenever the model itself fails.
-      const unsupportedFraming = error instanceof Error && /abstained/.test(error.message) && (Boolean(lens || contextIntent) || !isBroadScope(queryContext.scope));
-      if (unsupportedFraming) usedLocalSynthesis = false;
-      generated = unsupportedFraming ? { text: ABSTENTION, interactionId: null } : await safeFallback();
+      // A model refusal does not erase evidence that passed retrieval and
+      // selection. The extractive path can use those verified records; the
+      // final named-target and citation checks still reject unsupported facts.
+      generated = await safeFallback();
     }
   }
   debug.latenciesMs.generation = stopGeneration();
