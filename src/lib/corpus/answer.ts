@@ -172,7 +172,11 @@ async function answerQuestionInternal(
       local.debug.localEvidenceBeforeSearch = localEvidenceCount;
       local.debug.localSourcesUsed = local.evidence.filter((item) => item.kind === "claim" || (item.origin !== "brave_live" && item.origin !== "pmc_oai")).length;
       withAuthority(local.evidence, searchPolicy.rules);
-      return local;
+      // A failed need can be cooling down even when a broad biography has a
+      // request-scoped answer available from the existing grounded search path.
+      // This runs only after a zero-search cooldown, so an active demand attempt
+      // never adds another provider call to the same request.
+      if (research?.status !== "cooldown" || !isBroadScope(queryContext.scope) || local.evidence.length) return local;
     }
     // When bounded demand research is disabled, keep the existing grounded
     // search path available. Strict mode still filters local claims above;

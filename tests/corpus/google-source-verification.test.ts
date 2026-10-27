@@ -36,11 +36,11 @@ describe("live source admission", () => {
     expect(await inspectSearchSource("https://history-notes.example/raman", policy)).toMatchObject({ category: "general_web" });
   });
 
-  it("allows a lower-priority public web page as an Ask-only candidate", async () => {
+  it("rejects a low-quality publisher before reading it as an Ask candidate", async () => {
     const url = "https://en.wikipedia.org/wiki/C._V._Raman";
-    state.preview.mockResolvedValueOnce({ status: 200, finalUrl: url,
-      html: "<html><title>C. V. Raman</title><main><p>C. V. Raman discovered the Raman effect in 1928.</p></main></html>" });
-    expect(await inspectSearchSource(url, policy)).toMatchObject({ category: "general_web" });
+    state.preview.mockClear();
+    expect(await inspectSearchSource(url, policy)).toBeNull();
+    expect(state.preview).not.toHaveBeenCalled();
   });
 
   it("rejects a recognized publisher's page that does not support the statement", async () => {

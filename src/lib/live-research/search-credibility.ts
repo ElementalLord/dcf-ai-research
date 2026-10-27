@@ -9,7 +9,7 @@ import { readableEvidence } from "@/lib/corpus/readable-evidence";
 import { classifySourceAuthority } from "@/lib/sources/authority";
 import { extractPdf } from "@/lib/corpus/source-extract";
 import { canonicalRetentionRights, hasExplicitRetentionRights } from "./retention-rights";
-import { assessPassageSupport, authenticateSource, evidenceTypeFor, isBroadIdeaQuestion, type PassageSupport, type SourceIdentity } from "./research-quality";
+import { assessPassageSupport, authenticateSource, evidenceTypeFor, isBroadIdeaQuestion, isBroadSignificanceQuestion, type PassageSupport, type SourceIdentity } from "./research-quality";
 import { pmcArticleId, readPmcOpenArticle } from "./pmc-open-access";
 import { passageAddressesTarget, splitEvidenceSentences } from "@/lib/ask/target-support";
 import { CONTEXT_FRAMING_TERMS } from "@/lib/ask/historical-context";
@@ -141,7 +141,7 @@ export async function sourceAccess(url: string): Promise<SourceAccess> {
   return loaded.status === 200 && loaded.sections.length ? "readable" : "unreadable";
 }
 
-const supportStop = new Set(["the", "and", "for", "with", "from", "that", "this", "his", "her", "their", "which", "into", "also", "about", "according", "tradition", "narrative", "source", "sources", "text", "texts", "follow", "topic", "question", ...CONTEXT_FRAMING_TERMS]);
+const supportStop = new Set(["the", "and", "for", "with", "from", "that", "this", "his", "her", "their", "which", "into", "also", "about", "known", "important", "according", "tradition", "narrative", "source", "sources", "text", "texts", "follow", "topic", "question", ...CONTEXT_FRAMING_TERMS]);
 
 /** Google selects a page and topic. Only a matching excerpt fetched from the
  * original page becomes evidence; the model's search summary stays discovery. */
@@ -175,11 +175,11 @@ export async function readGroundedExcerpt(source: CredibleSource, statement: str
   if (!matches.length) return null;
   const best = matches[0];
   const academic = /cambridge|oxford|springer|jstor|nature/i.test(source.domain);
-  const broadIdeaSupport = isBroadIdeaQuestion(statement) && best.support.level === "STRONG";
-  if (academic && !names.some((name) => title.includes(name)) && best.overlap < 4 && !broadIdeaSupport) return null;
+  const broadProfileSupport = (isBroadIdeaQuestion(statement) || isBroadSignificanceQuestion(statement)) && best.support.level === "STRONG";
+  if (academic && !names.some((name) => title.includes(name)) && best.overlap < 4 && !broadProfileSupport) return null;
   // Naming the person is relevance; sharing the statement's own terms is support. Both are required.
-  if ((!broadIdeaSupport && best.overlap < Math.min(2, terms.length)) || !["EXACT", "STRONG"].includes(best.support.level)) return null;
-  const directSentence = !isBroadIdeaQuestion(statement) ? splitEvidenceSentences(best.context)
+  if ((!broadProfileSupport && best.overlap < Math.min(2, terms.length)) || !["EXACT", "STRONG"].includes(best.support.level)) return null;
+  const directSentence = !(isBroadIdeaQuestion(statement) || isBroadSignificanceQuestion(statement)) ? splitEvidenceSentences(best.context)
     .map((sentence) => sentence.trim())
     .find((sentence) => sentence.length <= 600 && passageAddressesTarget(statement, sentence, aliases)) : null;
   const excerpt = readableEvidence(directSentence || best.context.slice(0, 600));
@@ -217,6 +217,7 @@ export async function inspectSearchSource(rawUrl: string, policy: SearchPolicy, 
   if (!initial.allowed) return null;
   const url = canonicalResearchUrl(rawUrl);
   const host = new URL(url).hostname;
+  if (lowQualityHost.test(host)) return null;
   const registryTrusted = trustedDomains.some((domain) => host === domain || host.endsWith(`.${domain}`));
   const exactUrlTrusted = trustedExactUrl !== null && url === canonicalResearchUrl(trustedExactUrl);
   // Who published it is decided from the publisher, not from what metadata the page happens to expose.
@@ -230,6 +231,7 @@ export async function inspectSearchSource(rawUrl: string, policy: SearchPolicy, 
   const loaded = await cachedSourceText(url);
   if (!loaded || loaded.status !== 200 || !loaded.sections.length || !searchPolicyDecision(loaded.finalUrl, policy).allowed) return null;
   const finalHost = new URL(loaded.finalUrl).hostname;
+  if (lowQualityHost.test(finalHost)) return null;
   if (!lowQualityHost.test(finalHost) && recognized(finalHost)) return { url: canonicalResearchUrl(loaded.finalUrl), domain: finalHost, category: "institutional", title: title || finalHost };
   if (!loaded.html) return { url: canonicalResearchUrl(loaded.finalUrl), domain: finalHost, category: "general_web", title: title || loaded.title || finalHost };
   const $ = cheerio.load(loaded.html);

@@ -1,5 +1,5 @@
 import { normalizeForMatch } from "@/lib/corpus/text";
-import { passageAddressesTarget } from "@/lib/ask/target-support";
+import { passageAddressesTarget, splitEvidenceSentences } from "@/lib/ask/target-support";
 import { CONTEXT_FRAMING_TERMS, detectContextIntent } from "@/lib/ask/historical-context";
 
 export type QueryIntent = "primary" | "scholarly" | "institutional" | "context" | "controversy" | "exact_work";
@@ -25,6 +25,8 @@ const STOP = new Set(["what", "which", "when", "where", "why", "how", "does", "d
 const IDEA_QUESTION = /\b(?:ideas|beliefs|principles|values|visions?)\b.{0,100}\b(?:associated with|known for|did|does|hold|have|advocate|promote)\b/i;
 const IDEA_EVIDENCE = /\b(?:idea|vision|belief|philosophy|principle|value|advocat|emphasiz|teach|promot|argu|aspir|thought|dream)\w*/i;
 export const isBroadIdeaQuestion = (question: string) => IDEA_QUESTION.test(question);
+export const isBroadSignificanceQuestion = (question: string) => /\b(?:known for|why (?:is|was|are|were) .{0,80} important|main contributions?|major contributions?|significance|legacy)\b/i.test(question);
+const SIGNIFICANCE_EVIDENCE = /\b(?:founded|established|created|built|developed|discovered|invented|pioneered|introduced|led|organized|organised|advocated|contributed|transformed)\b|\b(?:is|was|became)\b.{0,100}\b(?:founder|industrialist|reformer|scientist|artist|writer|poet|educator|teacher|composer|filmmaker|researcher|entrepreneur)\b/i;
 const PRIORITY = /\b(?:first|earliest|priority|invented|discovered before|father of|pioneer(?:ed)?)\b/i;
 const CONTEXT = /\b(?:at the time|context|period|contemporar|before|after|impact|significance|compare|versus|vs\.?|differ)\b/i;
 const TEXTUAL = /\b(?:said|wrote|speech|letter|edicts?|inscriptions?|hymn|verse|chapter|mandala|kanda|teaching|primary source|original)\b/i;
@@ -42,6 +44,7 @@ function focusTerms(question: string, personality: string): string[] {
 /** A small, question-directed plan. It describes missing evidence classes instead of issuing a generic name search. */
 export function planResearchQueries(personality: string, question: string, gaps: string[] = [], max = 2): ResearchQuery[] {
   const focus = focusTerms(question, personality);
+  if (isBroadSignificanceQuestion(question) && !focus.length) focus.push("contributions", "achievements", "biography");
   if (detectContextIntent(question) === "contemporaries") {
     const topic = focus.join(" ") || "documented work";
     return [{ query: clean(`${personality} ${topic} peers contemporaries similar work`), intent: "context",
@@ -127,6 +130,10 @@ export function assessPassageSupport(text: string, questionOrStatement: string, 
   };
   if (isBroadIdeaQuestion(questionOrStatement) && IDEA_EVIDENCE.test(text) && text.trim().length >= 70)
     return { level: "STRONG", overlap, reason: "The passage identifies the person and states a documented idea or belief." };
+  if (isBroadSignificanceQuestion(questionOrStatement) && splitEvidenceSentences(text).some((sentence) =>
+    sentence.trim().length >= 70 && !/\b(?:read more|click here|copyright)\b|https?:\/\/|\b[a-z0-9-]+\.(?:com|org|net|in)\b/i.test(sentence)
+      && entityMatch(sentence, canonicalName, aliases).matched && SIGNIFICANCE_EVIDENCE.test(sentence)))
+    return { level: "STRONG", overlap, reason: "The passage identifies the person and describes a concrete role or contribution." };
   if (hits >= 3 && overlap >= 0.7) return { level: "EXACT", overlap, reason: "The passage identifies the person and directly covers nearly all material terms." };
   if (hits >= 2 && overlap >= 0.4) return { level: "STRONG", overlap, reason: "The passage identifies the person and directly covers the central topic." };
   if (hits >= 1) return { level: "PARTIAL", overlap, reason: "The passage supports only part of the requested point." };

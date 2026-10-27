@@ -5,6 +5,7 @@ import { normalizeWhitespace, truncateText } from "./text";
 import { framedStatement } from "@/lib/claim-epistemics/language";
 import { profileEvidenceSalience } from "./rerank";
 import { readableEvidence } from "./readable-evidence";
+import { isBroadSignificanceQuestion } from "@/lib/live-research/research-quality";
 
 type EvidenceWithCitation = { item: RetrievedEvidence; citation: Citation };
 
@@ -173,15 +174,27 @@ function relevantWords(value: string): Set<string> {
 function usableFallbackPassage(item: Extract<RetrievedEvidence, { kind: "passage" }>, question: string): string | null {
   const text = readableEvidence(item.text);
   if (!text || /skip to main content|cookie preferences|privacy policy|all rights reserved|subscribe now|sign in to continue/i.test(text.slice(0, 220))) return null;
+  const broadSignificance = isBroadSignificanceQuestion(question) && !/\b(?:effect|discovery|work|book|event|award|institution)\b/i.test(question);
   const focus = [...relevantWords(question.replace(item.personalityName || "", ""))]
-    .filter((word) => !/^(important|significant|similar|there|time|personality|selected|context|topic|related)$/.test(word));
+    .filter((word) => !/^(known|important|significant|similar|there|time|personality|selected|context|topic|related)$/.test(word));
   const asksWhy = /\b(?:why|important|significant|impact|big deal)\b/i.test(question);
   const asksComparison = /\b(?:similar|comparable|contemporar|anyone else|someone else)\b/i.test(question);
   const sentences = text.split(/(?<=[.!?])\s+(?=[A-Z])/).map((sentence) => sentence.trim())
     .filter((sentence) => sentence.length >= 40 && sentence.length <= 420 && sentence.split(/\s+/).length >= 8)
     .filter((sentence) => !/navigation|table of contents|download pdf|read more|click here|doi:|http[s]?:\/\//i.test(sentence));
-  const ranked = sentences.map((sentence) => ({ sentence, overlap: focus.filter((word) => relevantWords(sentence).has(word)).length }))
+  const surname = (item.personalityName || "").split(/\s+/).at(-1) || "";
+  const contribution = /\b(?:founded|established|created|built|developed|discovered|invented|pioneered|introduced|led|advocated|contributed|transformed)\b|\b(?:is|was|became)\b.{0,100}\b(?:founder|industrialist|reformer|scientist|artist|writer|poet|educator|teacher|composer|filmmaker|researcher|entrepreneur)\b/i;
+  const firstName = (item.personalityName || "").split(/\s+/)[0] || "";
+  const ranked = sentences.map((raw) => {
+    const nameAt = firstName ? raw.toLowerCase().indexOf(firstName.toLowerCase()) : -1;
+    const sentence = broadSignificance && nameAt > 0 && /\b(?:birthday|born in|age|nationality|read more)\b/i.test(raw.slice(0, nameAt))
+      ? raw.slice(nameAt) : raw;
+    return { sentence, overlap: focus.filter((word) => relevantWords(sentence).has(word)).length };
+  })
     .filter(({ sentence, overlap }) => (!focus.length || overlap > 0)
+      && (!broadSignificance || item.supportLevel === "STRONG" && sentence.toLowerCase().includes(surname.toLowerCase())
+        && !/^\s*\d+\s+(?:what|why|how|who|when|which)\b/i.test(sentence)
+        && !/\b(?:read more|click here|copyright)\b|https?:\/\/|\b[a-z0-9-]+\.(?:com|org|net|in)\b/i.test(sentence) && contribution.test(sentence))
       && (!asksWhy || /because|led to|enabled|allowed|opened|first|new|changed|impact|significan|important|influenc|resulted|provided/i.test(sentence))
       && (!asksComparison || /\b(?:similar|comparable|parallel|contemporar|independent(?:ly)?|another|other (?:scientists?|physicists?|researchers?|groups?|experiments?)|also (?:studied|worked|discovered|observed))\b/i.test(sentence)))
     .sort((a, b) => b.overlap - a.overlap);
@@ -464,7 +477,7 @@ export function renderExtractiveEvidence(selected: RetrievedEvidence[], citation
   if (historicalQuestion && !chosen.some(({ item }) => item.kind === "claim" && (item.epistemicType === "TEXTUAL_ASSERTION" || item.epistemicType === "HISTORICAL_FACT" || /historical biography|historical individual|historically/i.test(item.text))))
     return "The available sources do not contain enough evidence to answer that fully.";
   const sentence = ({ item, citation }: EvidenceWithCitation) => {
-    const statement = proposition(item);
+    const statement = item.kind === "passage" && scope === "BROAD_SIGNIFICANCE" ? item.text : proposition(item);
     const framed = item.kind === "claim" ? framedStatement({ ...item, text: statement }) : statement;
     return `${framed.replace(/[.!?\s]+$/, "")}. [${citation.id}]`;
   };

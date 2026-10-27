@@ -27,6 +27,12 @@ describe("research query planning", () => {
     expect(plan[0].query).toMatch(/philosophy/);
   });
 
+  it("searches a person's contributions for a known-for question", () => {
+    const plan = planResearchQueries("Jamsetji Tata", "What is Jamsetji Tata known for?");
+    expect(plan[0].query).toMatch(/contributions achievements biography/);
+    expect(plan[0].query).not.toMatch(/documented work/);
+  });
+
   it("searches the topic of a contemporaries follow-up without treating chat framing as source terms", () => {
     const question = "Who else was doing similar work at the time? Follow-up to: What did A. P. J. Abdul Kalam do for India's space programme? About A. P. J. Abdul Kalam.";
     const plan = planResearchQueries("A. P. J. Abdul Kalam", question);
@@ -99,6 +105,13 @@ describe("entity and passage admission", () => {
       "A. P. J. Abdul Kalam").level).toBe("RELATED");
     expect(assessPassageSupport("A. P. J. Abdul Kalam described a vision of a developed India built through education, scientific work, and opportunities for young people.",
       question, "A. P. J. Abdul Kalam").level).toBe("STRONG");
+  });
+
+  it("accepts a named contribution for a known-for question without accepting an index entry or another person's work", () => {
+    const question = "What is Jamsetji Tata known for?";
+    expect(assessPassageSupport("Jamsetji Tata appears in the index of this historical collection.", question, "Jamsetji Tata").level).toBe("RELATED");
+    expect(assessPassageSupport("Jamsetji Tata founded major industrial enterprises and laid the groundwork for the Indian Institute of Science in Bengaluru.", question, "Jamsetji Tata").level).toBe("STRONG");
+    expect(assessPassageSupport("Jamsetji Tata appears in the index. Dorabji Tata established an industrial enterprise that transformed the city.", question, "Jamsetji Tata").level).toBe("RELATED");
   });
 
   it("carries passage-level provenance into the rendered citation", () => {

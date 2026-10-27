@@ -16,7 +16,7 @@ export function answerIntent(question: string): AnswerIntent {
   if (/\bhow\b.*\b(?:discover|discover(?:y|ies)|research|experiment|invent|develop|make .* discovery)\b/.test(value)) return "method";
   if (/teach|taught|instruction|transmit/.test(value)) return "teaching";
   if (/how .* (?:become|became|turn|attain|achiev)/.test(value)) return "transformation";
-  if (/why .* important|why .* matter|do (?:that|which) matter|(?:made|makes?) .* important|significance|contribution|impact|legacy/.test(value)) return "importance";
+  if (/\bknown for\b|why .* important|why .* matter|do (?:that|which) matter|(?:made|makes?) .* important|significance|contribution|impact|legacy/.test(value)) return "importance";
   if (/accomplish|what did .* do|deeds|actions/.test(value)) return "actions";
   if (/^who (?:is|was|are)\b/.test(value.trim())) return "identity";
   return "specific";

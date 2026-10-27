@@ -84,7 +84,7 @@ async function fetchQuestionPassages(
         if (englishWords < 2 || !window.split(/[.!?]/).some((sentence) => sentence.trim().split(/\s+/).length >= 7)) continue;
         const normalizedWindow = normalizeForMatch(window);
         const focusScore = focus.reduce((sum, term) => sum + Number(normalizedWindow.includes(term)), 0);
-        if (focus.length && focusScore === 0) continue;
+        if (focus.length && focusScore === 0 && answerIntent(question) !== "importance") continue;
         const support = assessPassageSupport(window, question, personalityName, personalityAliases);
         if (support.level === "RELATED") continue;
         candidates.push({ section, index, text: window, support,

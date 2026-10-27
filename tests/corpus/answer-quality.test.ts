@@ -194,6 +194,22 @@ describe("scope-aware grounded answers", () => {
     expect(renderExtractiveEvidence([unrelated], [{ ...citation, excerpt: unrelated.text }], false, "COMPARISON", "Was anyone doing work similar to the Raman Effect at the time?")).toBe("The available sources do not contain enough evidence to answer that fully.");
   });
 
+  it("answers a known-for question from the verified contribution sentence instead of page metadata", () => {
+    const passage: RetrievedPassage = { kind: "passage", id: "live:tata", chunkId: "tata", sourceId: "tata",
+      text: "Tata Group — Jamsetji Tata, Founder — example.com R.M. Jamsetji Nusserwanji Tata was an Indian industrialist and entrepreneur who founded the Tata Group, India’s largest conglomerate.",
+      sectionTitle: null, pageOrSection: null, textualLayer: null, sourceTitle: "Jamsetji Tata biography", sourceAuthor: null,
+      sourceInstitution: "example.com", sourceUrl: "https://example.com/tata", sourceType: "institutional",
+      sourceStatus: "discovered", personalityName: "Jamsetji Tata", supportLevel: "STRONG" };
+    const citation: Citation = { id: "S1", kind: "live_web_source", title: passage.sourceTitle, author: null,
+      institution: passage.sourceInstitution, url: passage.sourceUrl, sourceType: passage.sourceType,
+      pageOrSection: null, textualLayer: null, excerpt: passage.text };
+    const answer = renderExtractiveEvidence([passage], [citation], true, "BROAD_SIGNIFICANCE", "What is Jamsetji Tata known for?");
+    expect(answer).toContain("founded the Tata Group");
+    expect(answer).toContain("[S1]");
+    expect(answer).not.toContain("example.com R.M.");
+    expect(answer).not.toContain("g…");
+  });
+
   it("requires evidence about another line of work before answering a similarity follow-up", () => {
     const ramanOnly = [claim("effect", "textual_contribution", "Raman demonstrated the Raman Effect and received the Nobel Prize in Physics.")];
     const decision = assessEvidenceSufficiency("Was anyone doing work similar to the Raman Effect at the time?", ramanOnly, { personalityAliases: ["Raman"] });

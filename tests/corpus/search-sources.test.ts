@@ -42,6 +42,7 @@ describe("focused evidence selection", () => {
   it("changes the focus with the question and preserves a useful live finding", () => {
     const evidence = [passage("minor", "A minor metrical observation about the text."), passage("teaching", "The sage taught Rama the Bala and Atibala mantras."), passage("relationship", "Vishvamitra clashed with Vasistha over the wish-giving cow."), passage("live", "A scholarly source explains the transmission of divine weapons to Rama.", "google_grounding")];
     expect(answerIntent("What did Vishvamitra teach Rama?")).toBe("teaching");
+    expect(answerIntent("What is Jamsetji Tata known for?")).toBe("importance");
     const chosen = prioritizeEvidence("What did Vishvamitra teach Rama?", evidence, 2);
     expect(chosen.map((item) => item.id)).toContain("teaching");
     expect(chosen.map((item) => item.id)).toContain("live");
