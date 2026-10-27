@@ -3,6 +3,6 @@ const CONNECTION = /\b(?:influenc\w+|inspir\w+|connect\w+|relationship|related t
 
 export function abstentionMessage(personality: string, question = ""): string {
   // A missing link is said plainly; nearby names and loosely related passages are never offered as if they answered it.
-  if (CONNECTION.test(question)) return `I couldn't verify that connection for ${personality} from the evidence I found.\n\nUse the links below to look for a source that documents the link.`;
-  return `I couldn't verify a reliable answer to this question about ${personality}.\n\nUse the links below to continue researching this topic.`;
+  if (CONNECTION.test(question)) return `I couldn't verify that connection for ${personality} from the evidence I found. The sources checked did not document how the two subjects were linked, so presenting a relationship would be speculation.\n\nThe links below are places to inspect for a source that establishes the connection.`;
+  return `I couldn't verify a reliable answer to this question about ${personality}. The sources available to this request did not establish the specific fact well enough to present it as a supported answer.\n\nThe links below are places to inspect for further evidence on the question.`;
 }

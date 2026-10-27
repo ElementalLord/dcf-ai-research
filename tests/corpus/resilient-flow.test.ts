@@ -143,6 +143,7 @@ describe("Ask orchestration", () => {
       usage: { searchCalls: 1, sourceFetches: 1 } });
     const result = await answerQuestion("What did Vishvamitra teach Rama?", "p");
     expect(result.status).toBe("abstained");
+    expect(result.answer.split(/(?<=[.!?])\s+/)).toHaveLength(3);
     expect(result.citations).toEqual([]);
     expect(result.researchLeads).toEqual([{ url: "https://example.test/lead", title: "A related page" }]);
     expect(result.webSearchUrl).toContain("google.com/search");

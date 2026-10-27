@@ -322,7 +322,7 @@ async function answerQuestionInternal(
       lens: lens ? { id: lens.id, label: lens.label } : null,
       structuredContext: { active_personality_ids: personalityIds, recent_named_entities: queryContext.subjects, recent_topic: queryContext.resolvedQuestion.slice(0, 200), recent_parameters: parameters.map((parameter) => parameter.code) },
       status: "abstained" as const,
-      answer: limitReached ? "The available verified sources do not answer this fully. Additional research is temporarily unavailable because its research limit was reached." : abstentionMessage(personality, question),
+      answer: limitReached ? "The available verified sources do not answer this fully. Additional research is temporarily unavailable because its research limit was reached. The links below can help you inspect further sources while the limit resets." : abstentionMessage(personality, question),
       retrievedParameters: parameters,
       citations: [],
       evidence: [],

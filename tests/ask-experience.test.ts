@@ -168,6 +168,7 @@ describe("grounded Ask presentation", () => {
     const blocks = answerBlocks(message);
     expect(blocks).toHaveLength(2);
     expect(message).toContain("couldn't verify a reliable answer");
+    expect(message.split(/(?<=[.!?])\s+/)).toHaveLength(3);
   });
 
   it("uses readable local corpus synthesis by default without a Gemini request", () => {
