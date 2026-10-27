@@ -21,6 +21,22 @@ const citation: AskCitation = {
 };
 
 describe("grounded Ask query context", () => {
+  it("drops a conversational retrieval lead-in and resolves the selected person", () => {
+    const resolved = resolveQuestionContext("Find me it, what did he do that is important", ["Adi Shankaracharya"],
+      [{ question: "Which works are attributed to him?", answer: "The commentary discusses an Advaita Vedanta theory." }]);
+    expect(resolved.resolvedQuestion).toBe("what did Adi Shankaracharya do that is important");
+    expect(resolved.scope).toBe("BROAD_SIGNIFICANCE");
+    expect(resolved.broadSynthesis).toBe(true);
+  });
+  it.each([
+    ["Show me this: what did she do that mattered?", "Savitribai Phule"],
+    ["Please find me this, what did he do that was significant?", "C. V. Raman"],
+    ["Tell me what he did that mattered", "Verghese Kurien"],
+  ])("keeps a free-form importance question broad: %s", (question, person) => {
+    const resolved = resolveQuestionContext(question, [person]);
+    expect(resolved.resolvedQuestion).toContain(person);
+    expect(resolved.scope).toBe("BROAD_SIGNIFICANCE");
+  });
   it.each([
     ["Explain this in mroe depth", "J. R. D. Tata", "What is J. R. D. Tata known for?"],
     ["Could you elaborate on that?", "C. V. Raman", "Why was C. V. Raman's discovery important?"],

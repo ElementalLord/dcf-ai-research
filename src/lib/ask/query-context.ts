@@ -140,7 +140,10 @@ export function resolveQuestionContext(
       ? [selected[0], recentNames[0]]
       : [];
   const pluralSubject = pluralSubjects.length > 1 ? pluralSubjects.join(" and ") : singularSubject;
-  const rewritten = replaceReferences(question.trim(), singularSubject, pluralSubject);
+  const rewritten = replaceReferences(question.trim(), singularSubject, pluralSubject)
+    // Conversational lead-ins are instructions to retrieve an answer, not part
+    // of the historical question or a named fact to verify in a source.
+    .replace(/^(?:(?:please|can you|could you|would you)\s+)?(?:find|show|tell|give)\s+(?:me|us)\s+(?:(?:it|this|that)\s*)?[,;:]\s*(?=(?:what|who|why|how|when|where|which)\b)/i, "");
   // A request for depth refers to the preceding topic. Keep that topic as the
   // factual question so search and passage validation do not look for words
   // such as a pronoun, a spelling slip, or "follow-up" in original sources.

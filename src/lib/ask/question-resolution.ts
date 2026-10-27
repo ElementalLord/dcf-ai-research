@@ -73,7 +73,7 @@ export type ResolutionInput = {
 };
 
 const hash = (value: string) => createHash("sha256").update(value).digest("hex");
-const FILLER = new Set(["what", "which", "when", "where", "why", "how", "did", "does", "was", "were", "is", "are", "the", "a", "an", "of", "to", "in", "on", "for", "by", "about", "tell", "me", "year", "date", "happen", "happened", "occur", "occurred", "discovered", "discover", "discovery", "scientifically", "scientific", "important", "importance", "significant", "significance", "matter", "mattered"]);
+const FILLER = new Set(["what", "which", "when", "where", "why", "how", "did", "does", "was", "were", "is", "are", "the", "a", "an", "of", "to", "in", "on", "for", "by", "about", "tell", "me", "find", "show", "give", "search", "look", "please", "year", "date", "happen", "happened", "occur", "occurred", "discovered", "discover", "discovery", "scientifically", "scientific", "important", "importance", "significant", "significance", "matter", "mattered"]);
 
 function questionNeeds(question: string): Array<{ key: string; type: GapType; requirement: string; suitableSources: string[]; completion: string }> {
   const needs = [] as ReturnType<typeof questionNeeds>;

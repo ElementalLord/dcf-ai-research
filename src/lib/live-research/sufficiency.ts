@@ -7,7 +7,7 @@ import { CONTEXT_EVIDENCE, CONTEXT_FRAMING_TERMS, CONTEXT_GAP, detectContextInte
 import { independentWorkCount } from "./research-quality";
 import { splitEvidenceSentences } from "@/lib/ask/target-support";
 
-const IGNORED = new Set(["the", "and", "for", "its", "that", "this", "then", "his", "her", "what", "when", "where", "which", "who", "why", "how", "does", "did", "is", "are", "was", "were", "about", "from", "with", "into", "between", "year", "date", "role", "play", "played", "major", "story", "explain", "relationship", "relation", "significance", "significant", "happen", "happens", "happened", "disagree", "disagreed", "disagreement"]);
+const IGNORED = new Set(["the", "and", "for", "its", "that", "this", "then", "his", "her", "what", "when", "where", "which", "who", "why", "how", "does", "did", "is", "are", "was", "were", "about", "from", "with", "into", "between", "year", "date", "role", "play", "played", "major", "story", "explain", "relationship", "relation", "significance", "significant", "happen", "happens", "happened", "disagree", "disagreed", "disagreement", "find", "show", "tell", "give", "search", "look", "please"]);
 
 function normalizeAliases(value: string, termAliases: TermAliasRecord[]): string {
   return canonicalizeTerms(value, termAliases)

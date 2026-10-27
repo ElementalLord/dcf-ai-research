@@ -33,6 +33,12 @@ describe("research query planning", () => {
     expect(plan[0].query).not.toMatch(/documented work/);
   });
 
+  it("searches broad contributions for an ordinary custom importance question", () => {
+    const [plan] = planResearchQueries("Adi Shankaracharya", "what did Adi Shankaracharya do that is important");
+    expect(plan.query).toContain("contributions achievements biography");
+    expect(plan.query).not.toMatch(/find me it/i);
+  });
+
   it("uses a concise administration query for a paraphrased governance question", () => {
     const [plan] = planResearchQueries("Chhatrapati Shivaji Maharaj", "How did Chhatrapati Shivaji Maharaj govern his kingdom?");
     expect(plan.query).toMatch(/administration governance/);

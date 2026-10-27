@@ -69,7 +69,7 @@ export function lexicalSearchExpression(
   const stopWords = new Set([
     "the", "a", "an", "and", "or", "of", "to", "in", "on", "for", "with",
     "what", "who", "why", "how", "when", "where", "was", "were", "is", "are",
-    "did", "does", "do", "his", "her", "their", "tell", "me", "about",
+    "did", "does", "do", "his", "her", "their", "tell", "me", "about", "find", "show", "give", "search", "look", "please",
   ]);
   for (const alias of personalityAliases) {
     for (const token of normalizeForMatch(alias).split(" ")) stopWords.add(token);

@@ -101,12 +101,12 @@ describe("Ask orchestration", () => {
         text: "Vishvamitra taught Rama the Bala and Atibala mantras, giving him knowledge used in the epic narrative.",
         sectionTitle: null, pageOrSection: "Bala Kanda", textualLayer: "Epic narrative", sourceTitle: "Ramayana teaching",
         sourceAuthor: null, sourceInstitution: "example.test", sourceUrl: "https://example.test/teaching",
-        sourceType: "primary_text", sourceStatus: "discovered", origin: "google_grounding", lexicalScore: 1 },
+        sourceType: "primary_text", sourceStatus: "discovered", origin: "google_grounding", lexicalScore: 1, supportLevel: "STRONG" },
       { kind: "passage", id: "google:two", chunkId: "google:two", sourceId: "google:two",
         text: "Vishvamitra guided Rama through the protection of the sacrifice, an important episode in the Ramayana.",
         sectionTitle: null, pageOrSection: "Bala Kanda", textualLayer: "Epic narrative", sourceTitle: "Ramayana teaching",
         sourceAuthor: null, sourceInstitution: "example.test", sourceUrl: "https://example.test/teaching",
-        sourceType: "primary_text", sourceStatus: "discovered", origin: "google_grounding", lexicalScore: 1 },
+        sourceType: "primary_text", sourceStatus: "discovered", origin: "google_grounding", lexicalScore: 1, supportLevel: "STRONG" },
     ], requests: 1, queries: 1, latencyMs: 3, errorCategory: null });
     const result = await answerQuestion("What did Vishvamitra do that mattered?", "p");
     expect(result.status).not.toBe("abstained");

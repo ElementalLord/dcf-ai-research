@@ -185,7 +185,7 @@ function usableFallbackPassage(item: Extract<RetrievedEvidence, { kind: "passage
     .filter((sentence) => sentence.length >= 40 && sentence.length <= 420 && sentence.split(/\s+/).length >= 8)
     .filter((sentence) => !/navigation|table of contents|download pdf|read more|click here|doi:|http[s]?:\/\//i.test(sentence));
   const surname = (item.personalityName || "").split(/\s+/).at(-1) || "";
-  const contribution = /\b(?:founded|established|created|built|developed|discovered|invented|pioneered|introduced|led|advocated|contributed|transformed)\b|\b(?:is|was|became)\b.{0,100}\b(?:founder|industrialist|reformer|scientist|artist|writer|poet|educator|teacher|composer|filmmaker|researcher|entrepreneur)\b/i;
+  const contribution = /\b(?:founded|established|created|built|developed|discovered|invented|pioneered|introduced|led|organized|organised|advocated|contributed|transformed|taught|guided|wrote|composed|published|translated)\b|\b(?:is|was|became)\b.{0,100}\b(?:founder|industrialist|reformer|scientist|artist|writer|poet|educator|teacher|composer|filmmaker|researcher|entrepreneur)\b/i;
   const firstName = (item.personalityName || "").split(/\s+/)[0] || "";
   const ranked = sentences.map((raw) => {
     const nameAt = firstName ? raw.toLowerCase().indexOf(firstName.toLowerCase()) : -1;

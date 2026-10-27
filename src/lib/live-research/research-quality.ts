@@ -1,5 +1,6 @@
 import { normalizeForMatch } from "@/lib/corpus/text";
 import { passageAddressesTarget, splitEvidenceSentences } from "@/lib/ask/target-support";
+import { isBroadImportanceQuestion } from "@/lib/ask/question-scope";
 import { CONTEXT_FRAMING_TERMS, detectContextIntent } from "@/lib/ask/historical-context";
 import { detectLens } from "@/lib/ask/lenses";
 
@@ -22,12 +23,12 @@ export type SourceIdentity = {
   provenanceComplete: boolean;
 };
 
-const STOP = new Set(["what", "which", "when", "where", "why", "how", "does", "did", "was", "were", "are", "the", "and", "for", "with", "from", "about", "into", "that", "this", "their", "work", "role", "known", "important", "significance", "angle", "lens", "perspective", "follow", "topic", "question", ...CONTEXT_FRAMING_TERMS]);
+const STOP = new Set(["what", "which", "when", "where", "why", "how", "does", "did", "was", "were", "are", "the", "and", "for", "with", "from", "about", "into", "that", "this", "their", "work", "role", "known", "important", "significance", "angle", "lens", "perspective", "follow", "topic", "question", "find", "show", "tell", "give", "search", "look", "please", ...CONTEXT_FRAMING_TERMS]);
 const IDEA_QUESTION = /\b(?:ideas|beliefs|principles|values|visions?)\b.{0,100}\b(?:associated with|known for|did|does|hold|have|advocate|promote)\b/i;
 const IDEA_EVIDENCE = /\b(?:idea|vision|belief|philosophy|principle|value|advocat|emphasiz|teach|promot|argu|aspir|thought|dream)\w*/i;
 export const isBroadIdeaQuestion = (question: string) => IDEA_QUESTION.test(question);
-export const isBroadSignificanceQuestion = (question: string) => /\b(?:known for|why (?:is|was|are|were) .{0,80} important|main contributions?|major contributions?|significance|legacy)\b/i.test(question);
-const SIGNIFICANCE_EVIDENCE = /\b(?:founded|established|created|built|developed|discovered|invented|pioneered|introduced|led|organized|organised|advocated|contributed|transformed)\b|\b(?:is|was|became)\b.{0,100}\b(?:founder|industrialist|reformer|scientist|artist|writer|poet|educator|teacher|composer|filmmaker|researcher|entrepreneur)\b/i;
+export const isBroadSignificanceQuestion = (question: string) => isBroadImportanceQuestion(question) || /\b(?:significance|legacy)\b/i.test(question);
+const SIGNIFICANCE_EVIDENCE = /\b(?:founded|established|created|built|developed|discovered|invented|pioneered|introduced|led|organized|organised|advocated|contributed|transformed|taught|guided|wrote|composed|published|translated)\b|\b(?:is|was|became)\b.{0,100}\b(?:founder|industrialist|reformer|scientist|artist|writer|poet|educator|teacher|composer|filmmaker|researcher|entrepreneur)\b/i;
 const PRIORITY = /\b(?:first|earliest|priority|invented|discovered before|father of|pioneer(?:ed)?)\b/i;
 const CONTEXT = /\b(?:at the time|context|period|contemporar|before|after|impact|significance|compare|versus|vs\.?|differ)\b/i;
 const TEXTUAL = /\b(?:said|wrote|speech|letter|edicts?|inscriptions?|hymn|verse|chapter|mandala|kanda|teaching|primary source|original)\b/i;

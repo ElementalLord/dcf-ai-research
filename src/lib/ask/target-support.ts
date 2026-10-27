@@ -2,7 +2,7 @@ import { normalizeForMatch } from "@/lib/corpus/text";
 import type { Citation, RetrievedEvidence } from "@/lib/corpus/types";
 import { classifyQuestionScope, isBroadScope } from "./question-scope";
 
-const framing = new Set(["what", "which", "when", "where", "why", "how", "who", "explain", "describe", "summarize", "tell", "was", "were", "did", "does", "the", "and", "for", "with", "from", "into", "about", "year", "date", "in", "on", "of", "to", "by", "related", "topic", "follow", "up", "follow up", "earlier"]);
+const framing = new Set(["what", "which", "when", "where", "why", "how", "who", "explain", "describe", "summarize", "tell", "find", "show", "give", "search", "look", "please", "was", "were", "did", "does", "the", "and", "for", "with", "from", "into", "about", "year", "date", "in", "on", "of", "to", "by", "related", "topic", "follow", "up", "follow up", "earlier"]);
 const eventWords = /\b(?:award(?:ed)?|receive(?:d)?|won|winner|laureate|discover(?:ed|y)?|report(?:ed)?|observ(?:e|ed)|identif(?:y|ied)|found(?:ed)?|establish(?:ed)?|join(?:ed)?|appoint(?:ed)?|elect(?:ed)?)\b/i;
 const eventRelations: Array<[RegExp, RegExp]> = [
   [/\b(?:award|awarded|prize|medal|receive|received|won)\b/i, /\b(?:award(?:ed)?|receiv(?:e|ed)|won|winner|laureate|honou?red|earn(?:ed|ing)?)\b/i],
