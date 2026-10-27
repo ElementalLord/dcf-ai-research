@@ -21,12 +21,24 @@ const citation: AskCitation = {
 };
 
 describe("grounded Ask query context", () => {
-  it("treats a misspelled request for more depth as the preceding topic", () => {
-    const prior = { question: "What is J. R. D. Tata known for?", resolvedQuestion: "What is J. R. D. Tata known for?",
-      answer: "JRD Tata founded Tata Airlines, which later became Air India." };
-    const resolved = resolveQuestionContext("Explain this in mroe depth", ["J. R. D. Tata"], [prior]);
-    expect(resolved).toMatchObject({ depthFollowup: true, resolvedQuestion: prior.question, scope: "BROAD_SIGNIFICANCE" });
-    expect(resolved.resolvedQuestion).not.toMatch(/mroe|Follow-up to/);
+  it.each([
+    ["Explain this in mroe depth", "J. R. D. Tata", "What is J. R. D. Tata known for?"],
+    ["Could you elaborate on that?", "C. V. Raman", "Why was C. V. Raman's discovery important?"],
+    ["More details, please", "Vishvamitra", "Who was Vishvamitra?"],
+    ["Can you go deeper into it?", "Savitribai Phule", "What did Savitribai Phule accomplish?"],
+    ["Please expand on your answer", "Rabindranath Tagore", "What is Rabindranath Tagore known for?"],
+    ["Explain this in detial", "Rani Lakshmibai", "Who was Rani Lakshmibai?"],
+  ])("expands the previous topic for %s", (followup, person, priorQuestion) => {
+    const resolved = resolveQuestionContext(followup, [person], [{ question: priorQuestion, resolvedQuestion: priorQuestion }]);
+    expect(resolved.depthFollowup).toBe(true);
+    expect(resolved.resolvedQuestion).toBe(priorQuestion);
+  });
+
+  it("keeps an explicitly named new topic and standalone requests distinct from generic follow-ups", () => {
+    const history = [{ question: "What is J. R. D. Tata known for?" }];
+    expect(resolveQuestionContext("Explain Air India in more depth", ["J. R. D. Tata"], history).depthFollowup).toBe(false);
+    expect(resolveQuestionContext("Tell me more about civil aviation", ["J. R. D. Tata"], history).depthFollowup).toBe(false);
+    expect(resolveQuestionContext("Explain this in more depth", ["J. R. D. Tata"]).depthFollowup).toBe(false);
   });
 
   it("treats an empty saved reply as retryable", () => {

@@ -26,6 +26,36 @@ const QUESTION_WORDS = new Set([
   "Which", "Who", "Why", "Would",
 ]);
 
+const EXPANSION_WORDS = new Set(["more", "further", "deeper", "depth", "detail", "details", "elaborate", "expand", "explain", "clarify", "context", "continue"]);
+const CONTINUATION_FILLER = new Set(["a", "an", "the", "this", "that", "it", "its", "these", "those", "previous", "last", "same",
+  "answer", "response", "point", "topic", "about", "on", "in", "into", "of", "to", "for", "with", "from", "bit", "little",
+  "can", "could", "would", "will", "you", "your", "me", "we", "please", "what", "say", "said", "tell", "give", "provide", "go", "break", "down"]);
+
+/** Correct adjacent-letter slips in intent words without binding follow-ups to a particular typo. */
+function expansionWord(value: string): string | null {
+  if (EXPANSION_WORDS.has(value)) return value;
+  for (const word of EXPANSION_WORDS) {
+    if (value.length !== word.length) continue;
+    for (let index = 0; index < word.length - 1; index += 1) {
+      if (value === word.slice(0, index) + word[index + 1] + word[index] + word.slice(index + 2)) return word;
+    }
+  }
+  return null;
+}
+
+function asksToExpandPreviousAnswer(question: string, selected: string[]): boolean {
+  const words = question.toLowerCase().match(/\p{L}+/gu) || [];
+  const selectedWords = new Set(selected.flatMap((name) => name.toLowerCase().match(/\p{L}+/gu) || []));
+  const hasExpansion = words.some(expansionWord);
+  const hasReference = words.some((word) => ["this", "that", "it", "these", "those", "previous", "last", "same", "answer", "response"].includes(word));
+  const hasNewTopic = words.some((word) => !expansionWord(word) && !CONTINUATION_FILLER.has(word) && !selectedWords.has(word));
+  const asksForMore = words.some((word) => {
+    const intent = expansionWord(word);
+    return Boolean(intent && !["explain", "clarify", "context"].includes(intent));
+  });
+  return hasExpansion && !hasNewTopic && (hasReference || asksForMore || words.length <= 2);
+}
+
 function unique(values: string[]): string[] {
   return [...new Set(values.map((value) => value.trim()).filter(Boolean))];
 }
@@ -75,8 +105,7 @@ export function resolveQuestionContext(
   const selected = unique(selectedPersonalities);
   const recentHistory = history.slice(-MAX_CONVERSATION_QUESTIONS);
   const previous = recentHistory.at(-1);
-  const depthFollowup = Boolean(previous && /^(?:please\s+)?(?:explain|elaborate|expand|go into|tell me more)\b/i.test(question.trim())
-    && /\b(?:this|that|it|more|mroe|further|depth|detail)\b/i.test(question));
+  const depthFollowup = Boolean(previous && asksToExpandPreviousAnswer(question, selected));
   const previousAnswer = previous?.answer?.replace(/\[[CS]\d+\]/g, "").replace(/\s+/g, " ").slice(0, 800) || "";
   const namedConcept = [...previousAnswer.matchAll(/\b(?:[A-Z][\p{L}.]*\s+){1,3}(?:[Ee]ffect|[Dd]iscovery|[Ee]xperiment|[Cc]onflict|[Ss]peech|[Tt]heory)\b/gu)][0]?.[0]
     || previous?.citedConcepts?.find((concept) => /effect|discovery|experiment|conflict|battle|speech|theory/i.test(concept));
@@ -114,7 +143,7 @@ export function resolveQuestionContext(
   const rewritten = replaceReferences(question.trim(), singularSubject, pluralSubject);
   // A request for depth refers to the preceding topic. Keep that topic as the
   // factual question so search and passage validation do not look for words
-  // such as "this", "mroe", or "follow-up" in original sources.
+  // such as a pronoun, a spelling slip, or "follow-up" in original sources.
   let resolvedQuestion = depthFollowup ? (previous?.resolvedQuestion || previous?.question || rewritten).slice(0, 500) : rewritten;
   const referential = /\b(?:that|this|those|it|they|them|their|he|she|similar|same|next|earlier|later|at the time)\b/i.test(question);
   if (previous && referential && !depthFollowup) {
