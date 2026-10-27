@@ -38,6 +38,7 @@ export type EvidenceGapRequest = {
   gaps: EvidenceGap[];
   existingEvidenceIds: string[];
   maxExternalSearches: number;
+  minimumIndependentWorks?: number;
 };
 
 export type QuestionResolution = {

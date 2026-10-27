@@ -115,6 +115,7 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
   const requestId = randomUUID();
   const workId = createHash("sha256").update(`research/v1:${request.needId}:${request.gaps.map((gap) => gap.id).sort().join(":")}`).digest("hex");
   const provider = deps.provider.name;
+  const minimumIndependentWorks = Math.max(1, Math.min(3, request.minimumIndependentWorks || 1));
   if (!request.gaps.length) return blank(request, requestId, workId, "complete", provider);
   if (request.maxExternalSearches < 1 || request.maxExternalSearches > 1) return blank(request, requestId, workId, "budget_exhausted", provider, "BUDGET_LIMIT");
   if (!deps.provider.isConfigured() && !deps.openAccessSearch) return blank(request, requestId, workId, "failed", provider, "NOT_CONFIGURED");
@@ -231,6 +232,7 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
       const independentRetainableWorks = new Set(retainableFindings.map((item) => item.source.workKey)).size >= 2
         && new Set(retainableFindings.map((item) => item.source.publisherDomain)).size >= 2;
       if (!remainingGaps(request.gaps, [...existing, ...result.passages], result.passages).length
+        && new Set(result.findings.map((finding) => finding.source.workKey)).size >= minimumIndependentWorks
         && (process.env.DEMAND_AUTO_ADMISSION_ENABLED !== "true" && process.env.DEMAND_VERIFICATION_SHADOW_ENABLED !== "true"
           || independentRetainableWorks)) break;
     }

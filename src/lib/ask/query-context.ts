@@ -17,6 +17,7 @@ export type ResolvedQuestionContext = {
   broadSynthesis: boolean;
   subjectiveSuperlative: boolean;
   scope: QuestionScope;
+  depthFollowup: boolean;
 };
 
 const QUESTION_WORDS = new Set([
@@ -74,6 +75,8 @@ export function resolveQuestionContext(
   const selected = unique(selectedPersonalities);
   const recentHistory = history.slice(-MAX_CONVERSATION_QUESTIONS);
   const previous = recentHistory.at(-1);
+  const depthFollowup = Boolean(previous && /^(?:please\s+)?(?:explain|elaborate|expand|go into|tell me more)\b/i.test(question.trim())
+    && /\b(?:this|that|it|more|mroe|further|depth|detail)\b/i.test(question));
   const previousAnswer = previous?.answer?.replace(/\[[CS]\d+\]/g, "").replace(/\s+/g, " ").slice(0, 800) || "";
   const namedConcept = [...previousAnswer.matchAll(/\b(?:[A-Z][\p{L}.]*\s+){1,3}(?:[Ee]ffect|[Dd]iscovery|[Ee]xperiment|[Cc]onflict|[Ss]peech|[Tt]heory)\b/gu)][0]?.[0]
     || previous?.citedConcepts?.find((concept) => /effect|discovery|experiment|conflict|battle|speech|theory/i.test(concept));
@@ -109,9 +112,12 @@ export function resolveQuestionContext(
       : [];
   const pluralSubject = pluralSubjects.length > 1 ? pluralSubjects.join(" and ") : singularSubject;
   const rewritten = replaceReferences(question.trim(), singularSubject, pluralSubject);
-  let resolvedQuestion = rewritten;
+  // A request for depth refers to the preceding topic. Keep that topic as the
+  // factual question so search and passage validation do not look for words
+  // such as "this", "mroe", or "follow-up" in original sources.
+  let resolvedQuestion = depthFollowup ? (previous?.resolvedQuestion || previous?.question || rewritten).slice(0, 500) : rewritten;
   const referential = /\b(?:that|this|those|it|they|them|their|he|she|similar|same|next|earlier|later|at the time)\b/i.test(question);
-  if (previous && referential) {
+  if (previous && referential && !depthFollowup) {
     if (namedConcept) {
       resolvedQuestion = resolvedQuestion
         .replace(/\b(?:that|this|the)\s+(?:discovery|effect|conflict|event|work)\b/gi, namedConcept)
@@ -134,5 +140,6 @@ export function resolveQuestionContext(
     broadSynthesis: isBroadSynthesisQuestion(resolvedQuestion),
     subjectiveSuperlative: isSubjectiveSuperlativeQuestion(resolvedQuestion),
     scope: classifyQuestionScope(resolvedQuestion),
+    depthFollowup,
   };
 }

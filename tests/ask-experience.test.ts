@@ -21,6 +21,14 @@ const citation: AskCitation = {
 };
 
 describe("grounded Ask query context", () => {
+  it("treats a misspelled request for more depth as the preceding topic", () => {
+    const prior = { question: "What is J. R. D. Tata known for?", resolvedQuestion: "What is J. R. D. Tata known for?",
+      answer: "JRD Tata founded Tata Airlines, which later became Air India." };
+    const resolved = resolveQuestionContext("Explain this in mroe depth", ["J. R. D. Tata"], [prior]);
+    expect(resolved).toMatchObject({ depthFollowup: true, resolvedQuestion: prior.question, scope: "BROAD_SIGNIFICANCE" });
+    expect(resolved.resolvedQuestion).not.toMatch(/mroe|Follow-up to/);
+  });
+
   it("treats an empty saved reply as retryable", () => {
     expect(isUnusableStoredAnswer("   ", "complete")).toBe(true);
   });

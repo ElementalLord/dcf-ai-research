@@ -252,6 +252,18 @@ describe("bounded on-demand research", () => {
     expect(reads).toHaveLength(1);
   });
 
+  it("keeps reading independent works for a depth request within the same search", async () => {
+    const urls = [url, "https://archive.example.org/prism", "https://museum.example.net/prism"];
+    const { deps, calls } = fixture(urls.map((candidate) => ({ title: "Anika Sen prism effect", url: candidate, sourceProvider: "mock" })));
+    deps.read = async (source) => excerpt({ url: source.url, rightsDeclaration: null,
+      identity: authenticateSource({ url: source.url, title: `History of the prism effect at ${new URL(source.url).hostname}` }) });
+    const result = await executeDemandResearch({ ...request, minimumIndependentWorks: 3 },
+      "When did Anika Sen discover the prism effect?", [], ["Anika Sen"], deps);
+    expect(calls).toHaveLength(1);
+    expect(result.findings).toHaveLength(3);
+    expect(result.usage.sourceFetches).toBe(3);
+  });
+
   it("continues the same bounded search past an unlicensed page to an explicitly licensed work", async () => {
     const previous = process.env.DEMAND_AUTO_ADMISSION_ENABLED;
     process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";

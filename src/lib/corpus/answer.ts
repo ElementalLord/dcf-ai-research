@@ -50,6 +50,7 @@ async function answerQuestionInternal(
     configurations.map((configuration) => configuration.canonicalName),
     options.history,
   );
+  const responseStyle = queryContext.depthFollowup && options.responseStyle !== "research" ? "detailed" : options.responseStyle;
   const researchLeads: ResearchLead[] = [];
   const searchQuery = planResearchQueries(configurations[0].canonicalName, queryContext.resolvedQuestion, [], 1)[0]?.query
     || `${configurations[0].canonicalName} ${queryContext.resolvedQuestion}`;
@@ -95,7 +96,9 @@ async function answerQuestionInternal(
       const allocated = resolution.researchRequest ? Math.min(resolution.researchRequest.maxExternalSearches, demandBudget.remaining) : 0;
       demandBudget.remaining -= allocated;
       const research = resolution.researchRequest
-        ? await executeDemandResearch({ ...resolution.researchRequest, maxExternalSearches: allocated }, queryContext.resolvedQuestion, local.evidence,
+        ? await executeDemandResearch({ ...resolution.researchRequest, maxExternalSearches: allocated,
+          minimumIndependentWorks: isBroadScope(queryContext.scope) || queryContext.depthFollowup ? 3
+            : responseStyle === "detailed" || responseStyle === "research" ? 2 : 1 }, queryContext.resolvedQuestion, local.evidence,
           local.personalityAliases, productionResearchDependencies()) : null;
       if (research) {
         for (const lead of research.leads || []) {
@@ -185,7 +188,7 @@ async function answerQuestionInternal(
     const google = !resolution.researchJustified
       ? { evidence: [], requests: 0, queries: 0, latencyMs: 0, errorCategory: null }
       : await searchWithGoogleGrounding(queryContext.resolvedQuestion, id, configurations[index].canonicalName,
-        options.responseStyle === "research" ? "research" : "normal", searchPolicy, googleGaps, local.personalityAliases, searchEmphasis);
+        responseStyle === "research" ? "research" : "normal", searchPolicy, googleGaps, local.personalityAliases, searchEmphasis);
     if (google.evidence.length) local.evidence.push(...google.evidence);
     const groundedDecision = assessEvidenceSufficiency(queryContext.resolvedQuestion, local.evidence, { personalityAliases: local.personalityAliases, termAliases: local.termAliases, allParameters: local.allParameters });
     const googleUseful = google.evidence.length > 0 && groundedDecision.sufficient && fillsEvidenceGaps(resolution.gaps, local.evidence);
@@ -311,7 +314,7 @@ async function answerQuestionInternal(
   const namedTarget = !isBroadScope(queryContext.scope) && namedTargetTerms(queryContext.resolvedQuestion, targetAliases).length > 0;
   const answerEvidence = namedTarget ? evidence.filter((item) => passageAddressesTarget(queryContext.resolvedQuestion,
     item.kind === "claim" ? item.storageMode === "metadata_only" ? item.text : item.evidenceExcerpt || "" : item.text, targetAliases)) : evidence;
-  const evidenceBudget = options.responseStyle === "research" ? 14 : options.responseStyle === "detailed" ? 11 : options.responseStyle === "simple" ? 5 : isBroadScope(queryContext.scope) ? 9 : 7;
+  const evidenceBudget = responseStyle === "research" ? 14 : responseStyle === "detailed" ? 11 : responseStyle === "simple" ? 5 : isBroadScope(queryContext.scope) ? 9 : 7;
   const selected = prioritizeEvidence(queryContext.resolvedQuestion, answerEvidence, evidenceBudget);
   const bounded = buildBoundedContext(selected, evidenceBudget);
   debug.evidenceRetrievedCount = evidence.length;
@@ -352,12 +355,14 @@ async function answerQuestionInternal(
     // An earlier "not enough evidence" reply says nothing about this question; repeating it invites another refusal.
     turn.answer && !NO_EVIDENCE_REPLY.test(turn.answer) ? `DCF: ${turn.answer.replace(/\[[CS]\d+\]/g, "").slice(0, 500)}` : "",
   ].filter(Boolean).join("\n")).join("\n");
-  const identity = answerCacheIdentity(personalityIds, `${queryContext.resolvedQuestion}\n${conversation}`, debug.evidencePolicyMode || "test", bounded.selected, bounded.citations, options.responseStyle);
+  const identity = answerCacheIdentity(personalityIds, `${queryContext.resolvedQuestion}\n${conversation}`, debug.evidencePolicyMode || "test", bounded.selected, bounded.citations, responseStyle);
   debug.answerCacheKey = identity.key;
   debug.estimatedEvidenceTokens = Math.ceil(bounded.context.length / 4);
   const stopCache = stageTimer("ANSWER_CACHE");
   const hasLiveEvidence = bounded.citations.some((citation) => citation.kind === "live_web_source");
-  const liveDemandAnswer = hasLiveEvidence && process.env.DEMAND_RESEARCH_ENABLED === "true";
+  const liveDemandAnswer = hasLiveEvidence && process.env.DEMAND_RESEARCH_ENABLED === "true"
+    && !(queryContext.depthFollowup && bounded.citations.length >= 2)
+    && !(isBroadScope(queryContext.scope) && bounded.citations.length >= 3);
   const cached = hasLiveEvidence ? null : await readAnswerCache(identity.key, bounded.citations);
   debug.latenciesMs.answerCache = stopCache();
   debug.answerCacheHit = Boolean(cached);
@@ -366,7 +371,7 @@ async function answerQuestionInternal(
   let generated: { text: string; interactionId: string | null; model?: string };
   let usedLocalSynthesis = false;
   const extractive = new ExtractiveSynthesisProvider();
-  const fallback = () => extractive.generateGroundedAnswer({ prompt: "", evidence: bounded.selected, citations: bounded.citations, broad: queryContext.broadSynthesis, scope: queryContext.scope, question: queryContext.resolvedQuestion, responseStyle: options.responseStyle });
+  const fallback = () => extractive.generateGroundedAnswer({ prompt: "", evidence: bounded.selected, citations: bounded.citations, broad: queryContext.broadSynthesis, scope: queryContext.scope, question: queryContext.resolvedQuestion, responseStyle });
   const safeFallback = async () => {
     try {
       const result = await fallback();
@@ -392,7 +397,7 @@ async function answerQuestionInternal(
     }
     generated = await safeFallback();
   } else {
-    const prompt = buildSynthesisPrompt({ personality, question, resolvedQuestion: queryContext.resolvedQuestion, scope: queryContext.scope, evidenceContext: bounded.context, evidenceRecords: bounded.selected.length, responseStyle: options.responseStyle, conversation, openingTurn: !options.history?.length,
+    const prompt = buildSynthesisPrompt({ personality, question, resolvedQuestion: queryContext.resolvedQuestion, scope: queryContext.scope, evidenceContext: bounded.context, evidenceRecords: bounded.selected.length, responseStyle, conversation, openingTurn: !options.history?.length,
       lens: lens ? { label: lens.label, focus: lens.focus } : null, contextIntent, chronologyNote: chronologyGuidance(categorySlugs) });
     const diagnostics = { evidenceRecords: bounded.selected.length, evidenceCharacters: bounded.context.length,
       promptCharacters: prompt.length, estimatedPromptTokens: Math.ceil(prompt.length / 4) };
