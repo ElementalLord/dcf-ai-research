@@ -69,7 +69,7 @@ export function narrowQuery(request: EvidenceGapRequest, question: string): stri
   const plan = planResearchQueries(request.personalityName, question, [], 1)[0];
   if (detectContextIntent(question) !== "contemporaries" && (process.env.DEMAND_AUTO_ADMISSION_ENABLED === "true" || process.env.DEMAND_VERIFICATION_SHADOW_ENABLED === "true")) {
     const namedTargets = [...question.matchAll(/\b\p{Lu}[\p{L}\p{N}]+(?:\s+\p{Lu}[\p{L}\p{N}]+)+/gu)]
-      .map(([value]) => value.replace(/^(?:Did|Does|Do|Was|Were|Is|Are|What|Which|When|Where|Why|How)\s+/u, ""))
+      .map(([value]) => value.replace(/^(?:(?:Did|Does|Do|Was|Were|Is|Are|What|Which|When|Where|Why|How|About|Regarding|Selected|Personality)\s+)+/iu, ""))
       .filter((value) => !normalizeForMatch(request.personalityName).includes(normalizeForMatch(value)));
     const target = namedTargets.at(-1);
     if (target) {
@@ -113,7 +113,7 @@ function blank(request: EvidenceGapRequest, requestId: string, workId: string, s
 export async function executeDemandResearch(request: EvidenceGapRequest, question: string,
   existing: RetrievedEvidence[], aliases: string[], deps: ResearchDependencies): Promise<OnDemandResearchResult> {
   const requestId = randomUUID();
-  const workId = createHash("sha256").update(`research/v2:${request.needId}:${request.gaps.map((gap) => gap.id).sort().join(":")}`).digest("hex");
+  const workId = createHash("sha256").update(`research/v3:${request.needId}:${request.gaps.map((gap) => gap.id).sort().join(":")}`).digest("hex");
   const provider = deps.provider.name;
   const minimumIndependentWorks = Math.max(1, Math.min(3, request.minimumIndependentWorks || 1));
   if (!request.gaps.length) return blank(request, requestId, workId, "complete", provider);

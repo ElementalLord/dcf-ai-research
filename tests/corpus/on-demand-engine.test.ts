@@ -97,6 +97,21 @@ describe("bounded on-demand research", () => {
     }
   });
 
+  it("does not mistake an About subject reminder for a second named target", () => {
+    const previous = process.env.DEMAND_AUTO_ADMISSION_ENABLED;
+    process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
+    try {
+      const query = narrowQuery({ ...request, personalityName: "Rani Lakshmibai of Jhansi" },
+        "What about the administrative angle? About Rani Lakshmibai of Jhansi.");
+      expect(query).toContain("administration governance");
+      expect(query).not.toContain('"About Rani');
+      expect(query).not.toContain("open access");
+    } finally {
+      if (previous === undefined) delete process.env.DEMAND_AUTO_ADMISSION_ENABLED;
+      else process.env.DEMAND_AUTO_ADMISSION_ENABLED = previous;
+    }
+  });
+
   it("uses article-specific license snippets only as a discovery ordering hint", () => {
     const replay = JSON.parse(readFileSync(new URL("../fixtures/bose-source-selection-2026-10-23.json", import.meta.url), "utf8")) as {
       question: string; licensedCandidatesAbsentFromBraveTop20: Array<{ url: string; discoverySummary: string }> };
