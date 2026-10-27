@@ -38,6 +38,13 @@ describe("research query planning", () => {
     expect(plan.query).toContain("contributions achievements biography");
     expect(plan.query).not.toMatch(/find me it/i);
   });
+  it("searches the impact of a free-form change question without its filler words", () => {
+    const [plan] = planResearchQueries("Savitribai Phule", "what did Savitribai Phule actually change?");
+    expect(plan.query).toContain("contributions achievements biography");
+    expect(plan.query).not.toMatch(/actually|change/);
+    const [film] = planResearchQueries("Satyajit Ray", "What did Satyajit Ray change about Indian movies?");
+    expect(film.query).toMatch(/impact contributions/);
+  });
 
   it("uses a concise administration query for a paraphrased governance question", () => {
     const [plan] = planResearchQueries("Chhatrapati Shivaji Maharaj", "How did Chhatrapati Shivaji Maharaj govern his kingdom?");

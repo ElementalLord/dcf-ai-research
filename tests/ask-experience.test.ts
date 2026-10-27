@@ -32,6 +32,8 @@ describe("grounded Ask query context", () => {
     ["Show me this: what did she do that mattered?", "Savitribai Phule"],
     ["Please find me this, what did he do that was significant?", "C. V. Raman"],
     ["Tell me what he did that mattered", "Verghese Kurien"],
+    ["Hey, what did she actually change?", "Savitribai Phule"],
+    ["What did Satyajit Ray change about Indian movies?", "Satyajit Ray"],
   ])("keeps a free-form importance question broad: %s", (question, person) => {
     const resolved = resolveQuestionContext(question, [person]);
     expect(resolved.resolvedQuestion).toContain(person);

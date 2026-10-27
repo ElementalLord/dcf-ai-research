@@ -12,6 +12,8 @@ const eventRelations: Array<[RegExp, RegExp]> = [
   [/\b(?:die|died|death)\b/i, /\b(?:die|died|death|deceased|passed away)\b/i],
   [/\b(?:born|birth)\b/i, /\b(?:born|birth)\b/i],
 ];
+const requestedWork = /\bwhat (?:did|does|has)\b.{0,100}\b(?:perform|sing|play|recite|read|compose|write)\b.{0,80}\b(?:at|in|during|for)\b/i;
+const workWithObject = /\b(?:performed?|sang|played|recited?|read|composed?|wrote)\s+(?:(?:a|an|the|her|his|their)\s+)?(?:["“][^"”]{3,}|[A-Z][\p{L}'-]+|(?:[\p{L}'-]+\s+){1,4}[\p{L}'-]+)\s+(?:at|in|during|for)\b/iu;
 
 export function splitEvidenceSentences(passage: string): string[] {
   return passage.split(/(?<!\b\p{Lu}\.)(?<=[.!?])\s+/u);
@@ -28,6 +30,7 @@ function sentenceAddressesTarget(question: string, passage: string, aliases: str
   const target = namedTargetTerms(question, aliases);
   if (target.some((term) => !text.split(" ").includes(term))) return false;
   if (eventRelations.some(([inQuestion, inPassage]) => inQuestion.test(question) && !inPassage.test(passage))) return false;
+  if (requestedWork.test(question) && !workWithObject.test(passage)) return false;
   if (/\b(?:when|what year|which year|what date|date of)\b/i.test(question)
     && !/\b(?:1[0-9]{3}|20[0-9]{2})\b/.test(passage)) return false;
   return true;

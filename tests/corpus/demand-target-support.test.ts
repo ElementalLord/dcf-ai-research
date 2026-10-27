@@ -15,6 +15,15 @@ const citation = (id = "C1"): Citation => ({ id, kind: "approved_claim", title: 
   textualLayer: null, excerpt: "record" });
 
 describe("final named-target citation gate", () => {
+  it("does not mistake a performance venue for the requested work", () => {
+    const question = "What did Anika Sen perform at the United Nations?";
+    expect(passageAddressesTarget(question,
+      "The foundation listed performances at the United Nations among Anika Sen's appearances abroad.",
+      ["Anika Sen"])).toBe(false);
+    expect(passageAddressesTarget(question,
+      "Anika Sen performed the song Maithreem Bhajata at the United Nations.",
+      ["Anika Sen"])).toBe(true);
+  });
   it("reproduces the saved Raman failure and refuses its unrelated IISc citation", () => {
     const item = claim(saved.unrelatedClaim, saved.unrelatedExcerpt);
     expect(citedAnswerAddressesTarget(saved.question, `${saved.unrelatedClaim} [C1]`, [item], [citation()],

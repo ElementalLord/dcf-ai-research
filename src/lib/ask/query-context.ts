@@ -141,6 +141,7 @@ export function resolveQuestionContext(
       : [];
   const pluralSubject = pluralSubjects.length > 1 ? pluralSubjects.join(" and ") : singularSubject;
   const rewritten = replaceReferences(question.trim(), singularSubject, pluralSubject)
+    .replace(/^(?:hey|hi|hello)[,!.]?\s+/i, "")
     // Conversational lead-ins are instructions to retrieve an answer, not part
     // of the historical question or a named fact to verify in a source.
     .replace(/^(?:(?:please|can you|could you|would you)\s+)?(?:find|show|tell|give)\s+(?:me|us)\s+(?:(?:it|this|that)\s*)?[,;:]\s*(?=(?:what|who|why|how|when|where|which)\b)/i, "");

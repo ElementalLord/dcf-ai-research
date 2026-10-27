@@ -23,7 +23,7 @@ export type SourceIdentity = {
   provenanceComplete: boolean;
 };
 
-const STOP = new Set(["what", "which", "when", "where", "why", "how", "does", "did", "was", "were", "are", "the", "and", "for", "with", "from", "about", "into", "that", "this", "their", "work", "role", "known", "important", "significance", "angle", "lens", "perspective", "follow", "topic", "question", "find", "show", "tell", "give", "search", "look", "please", ...CONTEXT_FRAMING_TERMS]);
+const STOP = new Set(["what", "which", "when", "where", "why", "how", "does", "did", "was", "were", "are", "the", "and", "for", "with", "from", "about", "into", "that", "this", "their", "work", "role", "known", "important", "significance", "angle", "lens", "perspective", "follow", "topic", "question", "find", "show", "tell", "give", "search", "look", "please", "hey", "actually", "really", "change", "changed", "transform", "transformed", "reshape", "reshaped", ...CONTEXT_FRAMING_TERMS]);
 const IDEA_QUESTION = /\b(?:ideas|beliefs|principles|values|visions?)\b.{0,100}\b(?:associated with|known for|did|does|hold|have|advocate|promote)\b/i;
 const IDEA_EVIDENCE = /\b(?:idea|vision|belief|philosophy|principle|value|advocat|emphasiz|teach|promot|argu|aspir|thought|dream)\w*/i;
 export const isBroadIdeaQuestion = (question: string) => IDEA_QUESTION.test(question);
@@ -53,6 +53,10 @@ export function planResearchQueries(personality: string, question: string, gaps:
       reason: "Find original sources that document the person's requested perspective." }];
   }
   if (isBroadSignificanceQuestion(question) && !focus.length) focus.push("contributions", "achievements", "biography");
+  if (/\bwhat (?:did|does|has) .{0,80} (?:change|transform|reshape|alter|improve)\b/i.test(question) && focus.length)
+    focus.push("impact", "contributions");
+  if (/\bwhat (?:did|does|has)\b.{0,100}\b(?:perform|sing|play|recite|read|compose|write)\b.{0,80}\b(?:at|in|during|for)\b/i.test(question))
+    focus.push("repertoire", "works", "songs");
   if (detectContextIntent(question) === "contemporaries") {
     const topic = focus.join(" ") || "documented work";
     return [{ query: clean(`${personality} ${topic} peers contemporaries similar work`), intent: "context",

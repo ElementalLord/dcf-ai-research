@@ -10,7 +10,7 @@ export type QuestionScope =
 
 /** Ordinary ways people ask why someone's work mattered, including free-form follow-ups. */
 export function isBroadImportanceQuestion(text: string): boolean {
-  return /\b(?:known for|why (?:is|was|are|were) .{0,80} important|why (?:does|did) .{0,80} matter|what (?:made|makes) .{0,80} important|what (?:did|does|has) .{0,80} do (?:that|which) (?:mattered|matters|made a difference|(?:is|was|became) (?:important|significant))|what .{0,80} did (?:that|which) (?:mattered|matters|was (?:important|significant))|biggest|greatest|major contributions?|main contributions?|most significant|most important .{0,100}(?:works?|teachings?|actions?|institutions?|contributions?|discoveries?|experiments?|traditions?)|what (?:did|does|has) .{0,80} (?:accomplish|contribute))\b/i.test(text);
+  return /\b(?:known for|why (?:is|was|are|were) .{0,80} important|why (?:does|did) .{0,80} matter|what (?:made|makes) .{0,80} important|what (?:did|does|has) .{0,80} do (?:that|which) (?:mattered|matters|made a difference|(?:is|was|became) (?:important|significant))|what .{0,80} did (?:that|which) (?:mattered|matters|was (?:important|significant))|what (?:did|does|has) .{0,80} (?:change|transform|reshape|alter|improve)|biggest|greatest|major contributions?|main contributions?|most significant|most important .{0,100}(?:works?|teachings?|actions?|institutions?|contributions?|discoveries?|experiments?|traditions?)|what (?:did|does|has) .{0,80} (?:accomplish|contribute))\b/i.test(text);
 }
 
 /** Routing is deterministic and independent of model availability. */

@@ -8,6 +8,7 @@ import { canonicalizeTerms, type TermAliasRecord } from "@/lib/corpus/personalit
 import { normalizeForMatch } from "@/lib/corpus/text";
 import type { RetrievedClaim, RetrievedEvidence, RetrievedPassage } from "@/lib/corpus/types";
 import { sourceWorkKey } from "@/lib/live-research/research-quality";
+import { passageAddressesTarget } from "./target-support";
 
 export type GapType = "factual_detail" | "chronology" | "primary_source_attribution" | "scholarly_interpretation" |
   "historical_context" | "comparison" | "contested_claim" | "contemporary_observation" |
@@ -26,6 +27,7 @@ export type EvidenceGap = {
   suitableSources: string[];
   completion: string;
   contested: boolean;
+  question?: string;
 };
 
 /** Prompt 2 consumes this request; creating it performs no network operation or write. */
@@ -80,6 +82,7 @@ function questionNeeds(question: string): Array<{ key: string; type: GapType; re
   if (/\b(?:when|what year|which year|what date|date of|chronolog|timeline)\b/i.test(question)) needs.push({ key: "date", type: "chronology", requirement: "A dated event or chronology directly answering the question", suitableSources: ["dated primary record", "scholarly chronology"], completion: "A verified source explicitly dates the requested event." });
   if (/\b(?:why|how).{0,100}\b(?:important|significant|matter)|\b(?:impact|influence|significance|importance|legacy)\b/i.test(question)) needs.push({ key: "significance", type: "scholarly_interpretation", requirement: "Evidence explaining the consequence or significance of the specific subject", suitableSources: ["scholarly interpretation", "institutional history"], completion: "A qualified source connects the contribution to its consequence." });
   if (/\b(?:what|which).{0,100}\b(?:discover|contribut|invent|achiev|establish|found)|\b(?:contribution|discovery|achievement)\b/i.test(question) && !/\b(?:when|what year|which year|what date)\b/i.test(question)) needs.push({ key: "contribution", type: "factual_detail", requirement: "The specific contribution, work, or event requested", suitableSources: ["primary record", "institutional history"], completion: "An approved source directly identifies the contribution." });
+  if (/\bwhat (?:did|does|has)\b.{0,100}\b(?:perform|sing|play|recite|read|compose|write)\b.{0,80}\b(?:at|in|during|for)\b/i.test(question)) needs.push({ key: "requested_work", type: "factual_detail", requirement: "The specific work or content performed at the requested event", suitableSources: ["event program", "institutional history"], completion: "A source identifies the performed work, not only the venue." });
   if (/\b(?:compare|differ|difference|versus|vs\.?|similar|contemporar)\b/i.test(question)) needs.push({ key: "comparison", type: "comparison", requirement: "Comparable evidence for each side of the question", suitableSources: ["independent primary records", "comparative scholarship"], completion: "Independent works support both sides on the same dimension." });
   if (/\b(?:contested|disputed|conflict|disagree|first|only|earliest)\b/i.test(question)) needs.push({ key: "contested", type: "contested_claim", requirement: "Independent evidence establishing the competing accounts or priority", suitableSources: ["independent primary records", "critical scholarship"], completion: "At least two independent works represent the disagreement." });
   if (/\b(?:today|currently|now|recent|latest|202[0-9])\b/i.test(question)) needs.push({ key: "current", type: "contemporary_observation", requirement: "A dated current observation relevant to the question", suitableSources: ["current institutional record", "dated official statistics"], completion: "A dated observation is current for the requested time period." });
@@ -111,8 +114,11 @@ function eligibleEvidence(item: RetrievedEvidence, input: ResolutionInput, now: 
   return item.accessibility !== "UNREADABLE" && item.supportLevel !== "RELATED";
 }
 
-function supportsNeed(key: string, evidence: RetrievedEvidence[], now: Date): boolean {
+function supportsNeed(key: string, evidence: RetrievedEvidence[], now: Date, question = ""): boolean {
   const texts = evidence.map((item) => item.text);
+  if (key === "requested_work") return evidence.some((item) => passageAddressesTarget(question,
+    item.kind === "claim" ? item.storageMode === "metadata_only" ? item.text : item.evidenceExcerpt || "" : item.text,
+    [item.personalityName || ""]));
   if (key === "date") return texts.some((text) => /\b(?:1[0-9]{3}|20[0-9]{2})\b/.test(text));
   if (key === "significance") return texts.some((text) => /\b(?:led to|enabled|influenc\w*|impact\w*|important|significan\w*|changed|foundation|advanced|because|resulted|inspired|consequence)\b/i.test(text));
   if (key === "contribution") return texts.some((text) => /\b(?:discover\w*|contribut\w*|invent\w*|develop\w*|establish\w*|found\w*|achiev\w*|work)\b/i.test(text));
@@ -124,8 +130,8 @@ function supportsNeed(key: string, evidence: RetrievedEvidence[], now: Date): bo
 
 /** Check a bounded research result against the requirements that justified its dispatch. */
 export function fillsEvidenceGaps(gaps: EvidenceGap[], evidence: RetrievedEvidence[], now = new Date()): boolean {
-  return gaps.every((gap) => !["date", "significance", "contribution", "comparison", "contested", "current"].includes(gap.requirementKey)
-    || supportsNeed(gap.requirementKey, evidence, now));
+  return gaps.every((gap) => !["date", "significance", "contribution", "requested_work", "comparison", "contested", "current"].includes(gap.requirementKey)
+    || supportsNeed(gap.requirementKey, evidence, now, gap.question));
 }
 
 export function resolveQuestion(input: ResolutionInput): QuestionResolution {
@@ -142,14 +148,14 @@ export function resolveQuestion(input: ResolutionInput): QuestionResolution {
   const verifiedClaims = eligible.filter((item): item is RetrievedClaim => item.kind === "claim");
   const verifiedPassages = eligible.filter((item): item is RetrievedPassage => item.kind === "passage");
   const decision = assessEvidenceSufficiency(input.question, eligible, { personalityAliases: input.personalityAliases, termAliases: input.termAliases, allParameters: input.allParameters });
-  const missing = needs.filter((need) => !supportsNeed(need.key, eligible, now));
+  const missing = needs.filter((need) => !supportsNeed(need.key, eligible, now, input.question));
   const genericMissing = decision.sufficient ? [] : decision.missingDimensions.filter((dimension) => !missing.some((need) => dimension.toLowerCase().includes(need.key)));
   const gapSpecs = [...missing, ...genericMissing.map((dimension) => ({ key: dimension, type: category === "COMPARISON" ? "comparison" as const : category === "CONTESTED_OR_HISTORICAL" ? "historical_context" as const : "factual_detail" as const,
     requirement: `Evidence for ${dimension} in the question`, suitableSources: ["primary record", "scholarly source"], completion: `Verified evidence directly addresses ${dimension}.` }))];
   if (!decision.sufficient && !gapSpecs.length) gapSpecs.push({ key: "direct", type: "factual_detail", requirement: "Direct evidence answering the specific question", suitableSources: ["primary record", "scholarly source"], completion: "Verified evidence directly answers the question." });
   const contested = needs.some((need) => need.key === "contested") || category === "CONTESTED_OR_HISTORICAL";
   const gaps: EvidenceGap[] = gapSpecs.map((gap) => ({ id: hash(`gap/v1:${needId}:${gap.key}`), requirementKey: gap.key, type: gap.type, requirement: gap.requirement,
-    subjectId: input.personalityId, topic, suitableSources: gap.suitableSources, completion: gap.completion, contested }));
+    subjectId: input.personalityId, topic, suitableSources: gap.suitableSources, completion: gap.completion, contested, question: input.question }));
   const retrievalFailed = Boolean(input.retrievalErrors?.length);
   const sufficient = decision.sufficient && gaps.length === 0 && !retrievalFailed;
   const researchJustified = !sufficient && input.researchAvailable && gaps.length > 0;

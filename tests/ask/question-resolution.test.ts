@@ -24,6 +24,15 @@ const input = (question: string, evidence: ResolutionInput["evidence"], extra: P
 });
 
 describe("local-first question resolution", () => {
+  it("searches for the requested work when local evidence only names the venue", () => {
+    const question = "What did Anika Sen perform at the United Nations?";
+    const venue = passage("Anika Sen gave a performance at the United Nations.");
+    const result = resolveQuestion(input(question, [venue]));
+    expect(result.researchJustified).toBe(true);
+    expect(result.gaps.some((gap) => gap.requirementKey === "requested_work")).toBe(true);
+    const specific = resolveQuestion(input(question, [passage("Anika Sen performed the song Maithreem Bhajata at the United Nations.")]));
+    expect(specific.gaps.some((gap) => gap.requirementKey === "requested_work")).toBe(false);
+  });
   it("reuses committed machine-verified knowledge locally and excludes it after suspension", () => {
     const question = "When was Anika Sen awarded the Aurora Medal?";
     const admitted = claim("Anika Sen was awarded the Aurora Medal in 1928.", {

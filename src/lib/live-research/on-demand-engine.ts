@@ -102,7 +102,7 @@ function possibleContradiction(text: string, existing: RetrievedEvidence[], ques
 }
 
 function remainingGaps(gaps: EvidenceGap[], evidence: RetrievedEvidence[], newPassages: RetrievedPassage[]): EvidenceGap[] {
-  return gaps.filter((gap) => ["date", "significance", "contribution", "comparison", "contested", "current"].includes(gap.requirementKey)
+  return gaps.filter((gap) => ["date", "significance", "contribution", "requested_work", "comparison", "contested", "current"].includes(gap.requirementKey)
     ? !fillsEvidenceGaps([gap], evidence) : newPassages.length === 0);
 }
 
