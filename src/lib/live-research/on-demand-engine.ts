@@ -266,7 +266,9 @@ export async function executeDemandResearch(request: EvidenceGapRequest, questio
   // Fail closed on coordination errors: a finding may still support this response, but it was not stored.
   try { await deps.finishNeed(workId, requestId, result.status === "complete" ? "complete" : result.status === "failed" ? "failed" : "insufficient",
     result.usage.searchCalls, { candidates: result.candidates.length, findings: result.findings.length, errorCategory: result.usage.errorCategory },
-    result.status === "complete" ? 0 : result.status === "insufficient" ? 600 : 120); }
+    // Transient passages are usable only for this response. A long cooldown after
+    // finding partial evidence makes a repeat question lose that evidence entirely.
+    result.status === "complete" ? 0 : result.status === "insufficient" ? (result.findings.length ? 0 : 600) : 120); }
   catch { result.usage.errorCategory = "COORDINATION_FINISH_FAILED"; }
   return result;
 }

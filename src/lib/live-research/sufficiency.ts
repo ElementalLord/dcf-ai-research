@@ -1,7 +1,7 @@
 import { normalizeForMatch } from "@/lib/corpus/text";
 import type { RetrievedEvidence } from "@/lib/corpus/types";
 import { canonicalizeTerms, type TermAliasRecord } from "@/lib/corpus/personality-config";
-import { classifyQuestionScope, isBroadScope, type QuestionScope } from "@/lib/ask/question-scope";
+import { classifyQuestionScope, isBroadScope, isEnduringRelevanceQuestion, type QuestionScope } from "@/lib/ask/question-scope";
 import { detectLens, LENS_FRAMING_TERMS } from "@/lib/ask/lenses";
 import { CONTEXT_EVIDENCE, CONTEXT_FRAMING_TERMS, CONTEXT_GAP, detectContextIntent, PERIOD_EVIDENCE } from "@/lib/ask/historical-context";
 import { independentWorkCount } from "./research-quality";
@@ -82,7 +82,8 @@ export function assessEvidenceSufficiency(
   // Framing words ("angle", "at the time") name how to answer, not a fact the evidence must contain.
   const framing = new Set([...(lens ? LENS_FRAMING_TERMS : []), ...(contextIntent ? CONTEXT_FRAMING_TERMS : [])]);
   const requested = concepts(question.replace(/^Selected (?:personality|comparison set):[^.]*\.\s*/i, ""), personalityAliases, termAliases)
-    .filter((term) => !framing.has(term) && !(lens && lens.ask.test(term)));
+    .filter((term) => !framing.has(term) && !(lens && lens.ask.test(term))
+      && !(isEnduringRelevanceQuestion(question) && /^(?:people|still|read|study|remember|care|today|nowadays)$/.test(term)));
   const evidenceTokens = new Set(normalizeAliases(evidence.map((item) => [
     item.text,
     item.sourceTitle,
@@ -91,7 +92,7 @@ export function assessEvidenceSufficiency(
     item.kind === "claim" ? item.parameterName : null,
     item.kind === "claim" ? item.fieldLabel : null,
   ].filter(Boolean).join(" ")).join(" "), termAliases).split(" ").filter(Boolean));
-  const stem = (term: string) => term === "taught" || term === "teaches" ? "teach" : term === "took" || term === "takes" ? "take" : term.replace(/(ing|ers|ed)$/i, "");
+  const stem = (term: string) => term === "taught" || term === "teaches" ? "teach" : term === "took" || term === "takes" ? "take" : term.replace(/(ing|ers|ed|s)$/i, "");
   const covered = requested.filter((term) => {
     const termStem = stem(term);
     return [...evidenceTokens].some((token) => token === term || (termStem.length >= 4 && stem(token) === termStem));

@@ -107,7 +107,7 @@ describe("scope-aware grounded answers", () => {
     expect(queries.every((query) => query.includes("Rishi A") && /textual|lineage|Rigveda/.test(query))).toBe(true);
     expect(queries.some((query) => /original text|scholarly assessment/.test(query))).toBe(true);
     const prompt = buildSynthesisPrompt({ personality: "Rishi A", question: "Who is Rishi A?", resolvedQuestion: "Who is Rishi A?", scope: "BROAD_PROFILE", evidenceContext: "[C1] Claim" });
-    expect(SYNTHESIS_PROMPT_VERSION).toBe("historical_conversation_v19");
+    expect(SYNTHESIS_PROMPT_VERSION).toBe("historical_conversation_v20");
     expect(prompt).toContain("at least three useful sentences");
     expect(prompt).toContain("Avoid stacks of repeated citations");
     expect(prompt).toContain("silently review");

@@ -23,6 +23,21 @@ describe("final named-target citation gate", () => {
     expect(passageAddressesTarget(question,
       "Anika Sen performed the song Maithreem Bhajata at the United Nations.",
       ["Anika Sen"])).toBe(true);
+    expect(passageAddressesTarget(question,
+      "At the UN, Anika Sen sang Maithreem Bhajata for the delegates.",
+      ["Anika Sen"])).toBe(true);
+    expect(passageAddressesTarget(question,
+      "The hymn 'Maithreem Bhajata', which Anika Sen sang at the conclusion of her UN concert, called for peace.",
+      ["Anika Sen"])).toBe(true);
+    expect(passageAddressesTarget(question,
+      "At the UN, Anika Sen sang for the delegates.",
+      ["Anika Sen"])).toBe(false);
+    expect(passageAddressesTarget(question,
+      "Anika Sen performed before the General Assembly in New York for United Nations Day.",
+      ["Anika Sen"])).toBe(false);
+    const unrelated = claim("Anika Sen sang at the UN in 1966.", "Anika Sen sang at the UN in 1966.");
+    expect(citedAnswerAddressesTarget("What did Anika Sen sing at the UN in 1966?",
+      "She sang a devotional song. [C1]", [unrelated], [citation()], ["Anika Sen"])).toBe(false);
   });
   it("reproduces the saved Raman failure and refuses its unrelated IISc citation", () => {
     const item = claim(saved.unrelatedClaim, saved.unrelatedExcerpt);

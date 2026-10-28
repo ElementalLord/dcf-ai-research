@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { classifyQuestionScope, type QuestionScope } from "./question-scope";
+import { classifyQuestionScope, isChangeImpactQuestion, isEnduringRelevanceQuestion, type QuestionScope } from "./question-scope";
 import { detectLens } from "./lenses";
 import { detectContextIntent } from "./historical-context";
 import { assessEvidenceSufficiency } from "@/lib/live-research/sufficiency";
@@ -8,7 +8,7 @@ import { canonicalizeTerms, type TermAliasRecord } from "@/lib/corpus/personalit
 import { normalizeForMatch } from "@/lib/corpus/text";
 import type { RetrievedClaim, RetrievedEvidence, RetrievedPassage } from "@/lib/corpus/types";
 import { sourceWorkKey } from "@/lib/live-research/research-quality";
-import { passageAddressesTarget } from "./target-support";
+import { asksForPerformedWork, passageAddressesTarget } from "./target-support";
 
 export type GapType = "factual_detail" | "chronology" | "primary_source_attribution" | "scholarly_interpretation" |
   "historical_context" | "comparison" | "contested_claim" | "contemporary_observation" |
@@ -80,9 +80,9 @@ const FILLER = new Set(["what", "which", "when", "where", "why", "how", "did", "
 function questionNeeds(question: string): Array<{ key: string; type: GapType; requirement: string; suitableSources: string[]; completion: string }> {
   const needs = [] as ReturnType<typeof questionNeeds>;
   if (/\b(?:when|what year|which year|what date|date of|chronolog|timeline)\b/i.test(question)) needs.push({ key: "date", type: "chronology", requirement: "A dated event or chronology directly answering the question", suitableSources: ["dated primary record", "scholarly chronology"], completion: "A verified source explicitly dates the requested event." });
-  if (/\b(?:why|how).{0,100}\b(?:important|significant|matter)|\b(?:impact|influence|significance|importance|legacy)\b/i.test(question)) needs.push({ key: "significance", type: "scholarly_interpretation", requirement: "Evidence explaining the consequence or significance of the specific subject", suitableSources: ["scholarly interpretation", "institutional history"], completion: "A qualified source connects the contribution to its consequence." });
+  if (isEnduringRelevanceQuestion(question) || isChangeImpactQuestion(question) || /\b(?:why|how).{0,100}\b(?:important|significant|matter)|\b(?:impact|influence|significance|importance|legacy)\b/i.test(question)) needs.push({ key: "significance", type: "scholarly_interpretation", requirement: "Evidence explaining the consequence or significance of the specific subject", suitableSources: ["scholarly interpretation", "institutional history"], completion: "A qualified source connects the contribution to its consequence." });
   if (/\b(?:what|which).{0,100}\b(?:discover|contribut|invent|achiev|establish|found)|\b(?:contribution|discovery|achievement)\b/i.test(question) && !/\b(?:when|what year|which year|what date)\b/i.test(question)) needs.push({ key: "contribution", type: "factual_detail", requirement: "The specific contribution, work, or event requested", suitableSources: ["primary record", "institutional history"], completion: "An approved source directly identifies the contribution." });
-  if (/\bwhat (?:did|does|has)\b.{0,100}\b(?:perform|sing|play|recite|read|compose|write)\b.{0,80}\b(?:at|in|during|for)\b/i.test(question)) needs.push({ key: "requested_work", type: "factual_detail", requirement: "The specific work or content performed at the requested event", suitableSources: ["event program", "institutional history"], completion: "A source identifies the performed work, not only the venue." });
+  if (asksForPerformedWork(question)) needs.push({ key: "requested_work", type: "factual_detail", requirement: "The specific work or content performed at the requested event", suitableSources: ["event program", "institutional history"], completion: "A source identifies the performed work, not only the venue." });
   if (/\b(?:compare|differ|difference|versus|vs\.?|similar|contemporar)\b/i.test(question)) needs.push({ key: "comparison", type: "comparison", requirement: "Comparable evidence for each side of the question", suitableSources: ["independent primary records", "comparative scholarship"], completion: "Independent works support both sides on the same dimension." });
   if (/\b(?:contested|disputed|conflict|disagree|first|only|earliest)\b/i.test(question)) needs.push({ key: "contested", type: "contested_claim", requirement: "Independent evidence establishing the competing accounts or priority", suitableSources: ["independent primary records", "critical scholarship"], completion: "At least two independent works represent the disagreement." });
   if (/\b(?:today|currently|now|recent|latest|202[0-9])\b/i.test(question)) needs.push({ key: "current", type: "contemporary_observation", requirement: "A dated current observation relevant to the question", suitableSources: ["current institutional record", "dated official statistics"], completion: "A dated observation is current for the requested time period." });
@@ -91,6 +91,7 @@ function questionNeeds(question: string): Array<{ key: string; type: GapType; re
 
 function topicIdentity(question: string, aliases: string[], termAliases: TermAliasRecord[]): string {
   const ignored = new Set([...FILLER, ...aliases.flatMap((alias) => normalizeForMatch(alias).split(" "))]);
+  if (isEnduringRelevanceQuestion(question)) for (const word of ["people", "still", "read", "study", "remember", "care", "today", "nowadays"]) ignored.add(word);
   return [...new Set(canonicalizeTerms(question, termAliases).split(" ")
     .map((term) => term.replace(/(?:ing|ed|s)$/i, ""))
     .filter((term) => term.length > 2 && !ignored.has(term)))].sort().join(" ") || "subject";
@@ -143,7 +144,7 @@ export function resolveQuestion(input: ResolutionInput): QuestionResolution {
   const lens = detectLens(input.question)?.id || "general";
   const context = needs.some((need) => need.key === "date") ? "none" : detectContextIntent(input.question) || "none";
   const normalizedIntent = `${intent}:${lens}:${context}:${topic}`;
-  const needId = hash(`need/v1:${input.personalityId}:${normalizedIntent}`);
+  const needId = hash(`need/v3:${input.personalityId}:${normalizedIntent}`);
   const eligible = input.evidence.filter((item) => eligibleEvidence(item, input, now));
   const verifiedClaims = eligible.filter((item): item is RetrievedClaim => item.kind === "claim");
   const verifiedPassages = eligible.filter((item): item is RetrievedPassage => item.kind === "passage");

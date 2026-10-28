@@ -224,6 +224,18 @@ describe("bounded on-demand research", () => {
     expect(result.candidates[0].decision).toBe("irrelevant");
   });
 
+  it("allows fresh research when partial findings cannot be retained for a repeat answer", async () => {
+    const { deps } = fixture();
+    let cooldown: number | undefined;
+    deps.finishNeed = async (...args) => { cooldown = args[5]; };
+    const result = await executeDemandResearch({ ...request,
+      gaps: [{ ...request.gaps[0], requirementKey: "contested", type: "contested_claim" }] },
+    "Was the prism effect first?", [], ["Anika Sen"], deps);
+    expect(result.status).toBe("insufficient");
+    expect(result.findings).toHaveLength(1);
+    expect(cooldown).toBe(0);
+  });
+
   it("deduplicates mirrors of the same DOI and does not count them as independent findings", async () => {
     const mirror = "https://repository.example.edu/prism-paper";
     const { deps } = fixture([{ title: "A paper", url, sourceProvider: "mock" }, { title: "Repository copy", url: mirror, sourceProvider: "mock" }]);

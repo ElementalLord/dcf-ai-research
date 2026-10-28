@@ -379,7 +379,7 @@ describe("Ask orchestration", () => {
     expect(result.answer).toContain("Vishvamitra");
     expect(result.answer).not.toMatch(/AI response unavailable|AI synthesis is unavailable|Gemini/i);
     expect(result.citations.length).toBeGreaterThan(0);
-    expect(state.generate).toHaveBeenCalledTimes(1);
+    expect(state.generate).toHaveBeenCalledTimes(2);
   });
   it("uses a cited extractive answer when the model refuses a supported angle", async () => {
     vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini");

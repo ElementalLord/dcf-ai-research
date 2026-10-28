@@ -16,16 +16,16 @@ import { resolveQuestionContext, type ConversationQuestion } from "@/lib/ask/que
 import { abstentionMessage } from "@/lib/ask/messages";
 import { ensureOpeningIntro } from "@/lib/ask/opening-intro";
 import { buildSynthesisPrompt, SYNTHESIS_PROMPT_VERSION } from "./synthesis-prompt";
-import { isBroadScope } from "@/lib/ask/question-scope";
+import { isBroadScope, isChangeImpactQuestion, isEnduringRelevanceQuestion } from "@/lib/ask/question-scope";
 import { answerIntent, hasBroadAnswerEvidence, hasDirectLiveIdentity, prioritizeEvidence } from "@/lib/ask/evidence-priority";
 import { loadSearchPolicy } from "@/lib/live-research/search-policy";
 import { detectLens } from "@/lib/ask/lenses";
 import { chronologyGuidance, CONTEXT_SEARCH_FOCUS, detectContextIntent } from "@/lib/ask/historical-context";
 import { classifySourceAuthority } from "@/lib/sources/authority";
 import { fillsEvidenceGaps, resolveQuestion } from "@/lib/ask/question-resolution";
-import { citedAnswerAddressesTarget, namedTargetTerms, passageAddressesTarget } from "@/lib/ask/target-support";
+import { answerAddressesRequestedImpact, asksForPerformedWork, citedAnswerAddressesTarget, namedTargetTerms, passageAddressesTarget } from "@/lib/ask/target-support";
 import { executeDemandResearch, type ResearchLead } from "@/lib/live-research/on-demand-engine";
-import { planResearchQueries } from "@/lib/live-research/research-quality";
+import { assessPassageSupport, planResearchQueries } from "@/lib/live-research/research-quality";
 import { productionResearchDependencies } from "@/lib/live-research/on-demand-adapter";
 import { productionAdmissionStore, productionVerificationProvider, verifyDemandKnowledge } from "@/lib/live-research/knowledge-verification";
 import { settleResearchBudget } from "@/lib/live-research/research-budget";
@@ -166,7 +166,10 @@ async function answerQuestionInternal(
         local.debug.liveSourcesUsed = research.passages.length;
         local.debug.missingEvidenceDimensions = reusedAfterWait || admittedThisRequest ? [] : research.unresolvedGaps.map((gap) => gap.requirement);
         local.debug.unresolvedEvidenceGap = !reusedAfterWait && !admittedThisRequest && research.unresolvedGaps.length > 0;
-        local.debug.answerable = reusedAfterWait || admittedThisRequest || research.citeableNow
+        const directPartial = research.passages.some((item) => ["STRONG", "EXACT"].includes(item.supportLevel || ""))
+          && !resolution.gaps.some((gap) => gap.contested || ["date", "comparison", "contested"].includes(gap.requirementKey))
+          && !research.findings.some((finding) => finding.relation === "potential_contradiction");
+        local.debug.answerable = reusedAfterWait || admittedThisRequest || research.citeableNow || directPartial
           || (isBroadScope(queryContext.scope) && resolution.state === "partial_local");
         local.debug.coverageStatus = reusedAfterWait || admittedThisRequest || research.citeableNow ? "sufficient" : local.debug.answerable ? "partial" : "unsupported";
         local.debug.localEvidenceSufficiencyReason = admittedThisRequest ? "The newly admitted claim is available as verified local evidence." : reusedAfterWait ? "Another question completed verification; the admitted claim is now available locally." : research.status === "complete" ? "The original source supplies the missing evidence for this response; it remains unadmitted." :
@@ -339,10 +342,15 @@ async function answerQuestionInternal(
     ? mergePersonalityEvidence(retrievals.map((retrieval) => ({ personalityId: retrieval.personalityId, personalityName: retrieval.personality, evidence: retrieval.evidence })))
     : retrievals[0].evidence;
   const targetAliases = retrievals.flatMap((retrieval) => retrieval.personalityAliases);
-  const namedTarget = !isBroadScope(queryContext.scope) && namedTargetTerms(queryContext.resolvedQuestion, targetAliases).length > 0;
+  const namedTarget = !isBroadScope(queryContext.scope) && (namedTargetTerms(queryContext.resolvedQuestion, targetAliases).length > 0
+    || asksForPerformedWork(queryContext.resolvedQuestion));
   const lensEvidence = lens ? evidence.filter((item) => directlySupportsRequestedLens(queryContext.resolvedQuestion, item, targetAliases)) : evidence;
-  const answerEvidence = namedTarget ? lensEvidence.filter((item) => passageAddressesTarget(queryContext.resolvedQuestion,
-    item.kind === "claim" ? item.storageMode === "metadata_only" ? item.text : item.evidenceExcerpt || "" : item.text, targetAliases)) : lensEvidence;
+  const impactEvidence = isChangeImpactQuestion(queryContext.resolvedQuestion) || isEnduringRelevanceQuestion(queryContext.resolvedQuestion)
+    ? lensEvidence.filter((item) => ["STRONG", "EXACT"].includes(assessPassageSupport(
+      item.text,
+      queryContext.resolvedQuestion, item.personalityName || personality, targetAliases).level)) : lensEvidence;
+  const answerEvidence = namedTarget ? impactEvidence.filter((item) => passageAddressesTarget(queryContext.resolvedQuestion,
+    item.kind === "claim" ? item.storageMode === "metadata_only" ? item.text : item.evidenceExcerpt || "" : item.text, targetAliases)) : impactEvidence;
   const evidenceBudget = responseStyle === "research" ? 14 : responseStyle === "detailed" ? 11 : responseStyle === "simple" ? 5 : isBroadScope(queryContext.scope) ? 9 : 7;
   const selected = prioritizeEvidence(queryContext.resolvedQuestion, answerEvidence, evidenceBudget);
   const bounded = buildBoundedContext(selected, evidenceBudget);
@@ -431,21 +439,22 @@ async function answerQuestionInternal(
     try {
       incrementMetric("synthesisAttempted");
       generated = await provider.generateGroundedAnswer({ prompt, evidence: bounded.selected, citations: bounded.citations, broad: queryContext.broadSynthesis, scope: queryContext.scope, diagnostics });
-      if (generated.text === ABSTENTION) {
+      const initialValid = generated.text !== ABSTENTION && validateAnswerCitations(generated.text, bounded.citations)
+        && answerSentenceCount(generated.text) >= 3 && answerAddressesRequestedImpact(queryContext.resolvedQuestion, generated.text);
+      if (!initialValid) {
+        // An invented citation is a validation failure, not a draft that more
+        // model calls should be allowed to repair.
+        if (generated.text !== ABSTENTION && !validateAnswerCitations(generated.text, bounded.citations))
+          throw new Error("Invalid synthesis citations");
         console.warn("synthesis_validation", JSON.stringify({ model: generated.model || provider.model, accepted: false,
-          reason: "model_abstained_with_answerable_evidence", suppliedCitationCount: bounded.citations.length }));
-        throw new Error("Synthesis abstained despite answerable approved evidence");
-      }
-      if (generated.text !== ABSTENTION && !validateAnswerCitations(generated.text, bounded.citations)) {
-        console.warn("synthesis_validation", JSON.stringify({ model: generated.model || provider.model, accepted: false,
-          reason: "invalid_or_missing_citation", suppliedCitationCount: bounded.citations.length }));
-        throw new Error("Invalid synthesis citations");
-      }
-      if (answerSentenceCount(generated.text) < 3) {
+          reason: generated.text === ABSTENTION ? "model_abstained_with_answerable_evidence"
+            : !validateAnswerCitations(generated.text, bounded.citations) ? "invalid_or_missing_citation" : "brief_or_off_topic",
+          suppliedCitationCount: bounded.citations.length }));
         incrementMetric("synthesisAttempted");
-        const expanded = await provider.generateGroundedAnswer({ prompt: `${prompt}\n\nYour previous draft was too brief. Give at least three distinct, useful sentences grounded in the same cited evidence. Explain the central fact, its relevant context or mechanism, and its significance or limits. Do not repeat the same fact or invent details.`,
+        const expanded = await provider.generateGroundedAnswer({ prompt: `${prompt}\n\nThe earlier draft was empty, too brief, or did not answer the question. If the evidence supports a useful partial answer, give it directly rather than refusing. Write at least three distinct sentences grounded in the cited evidence. Address the exact work or effect the user asked about first, then explain its context and the specific limit of what is known. Do not substitute general biography, awards, or unrelated achievements, and do not invent details.`,
           evidence: bounded.selected, citations: bounded.citations, broad: queryContext.broadSynthesis, scope: queryContext.scope, diagnostics });
         if (expanded.text !== ABSTENTION && answerSentenceCount(expanded.text) >= 3
+          && answerAddressesRequestedImpact(queryContext.resolvedQuestion, expanded.text)
           && validateAnswerCitations(expanded.text, bounded.citations)) generated = expanded;
         else throw new Error("Synthesis remained too brief or unsupported");
       }

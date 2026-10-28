@@ -46,6 +46,25 @@ describe("research query planning", () => {
     expect(film.query).toMatch(/impact contributions/);
   });
 
+  it("turns conversational relevance, purpose, and performance requests into focused searches", () => {
+    const [relevance] = planResearchQueries("Rabindranath Tagore", "Why do people still read his poems?");
+    expect(relevance.query).toMatch(/poems influence/);
+    expect(relevance.query).not.toMatch(/people still read|archive museum university/);
+    const [purpose] = planResearchQueries("Ashoka", "Could you explain what his edicts were for?");
+    expect(purpose.query).toMatch(/Ashoka edicts purpose aims message/);
+    const [performance] = planResearchQueries("M. S. Subbulakshmi", "What did she perform at the United Nations?");
+    expect(performance.query).toMatch(/united nations program repertoire works performed/);
+    expect(performance.query).not.toMatch(/\bshe\b/i);
+  });
+
+  it("accepts a documented purpose without requiring literal question wording in the source", () => {
+    const question = "Could you explain what his edicts were for?";
+    expect(assessPassageSupport("Ashoka used his edicts to communicate dhamma and promote moral conduct among his subjects.",
+      question, "Ashoka").level).toBe("STRONG");
+    expect(assessPassageSupport("Ashoka's edicts were engraved on pillars across the empire.",
+      question, "Ashoka").level).not.toBe("STRONG");
+  });
+
   it("uses a concise administration query for a paraphrased governance question", () => {
     const [plan] = planResearchQueries("Chhatrapati Shivaji Maharaj", "How did Chhatrapati Shivaji Maharaj govern his kingdom?");
     expect(plan.query).toMatch(/administration governance/);
@@ -119,6 +138,22 @@ describe("entity and passage admission", () => {
   it("rejects the wrong Bose while accepting the configured person", () => {
     expect(entityMatch("Subhas Chandra Bose led the Indian National Army.", "Jagadish Chandra Bose", ["J. C. Bose", "Bose"]).matched).toBe(false);
     expect(entityMatch("Jagadish Chandra Bose demonstrated millimetre-wave apparatus.", "Jagadish Chandra Bose", ["J. C. Bose", "Bose"]).matched).toBe(true);
+  });
+
+  it("does not treat ordinary words before a configured surname as another person", () => {
+    const question = "What did M. S. Subbulakshmi sing at the United Nations concert?";
+    const passage = "The hymn 'Maitreem Bhajata', which Subbulakshmi sang at the conclusion of her UN concert, called for peace.";
+    expect(entityMatch(passage, "M. S. Subbulakshmi", ["Subbulakshmi"]).matched).toBe(true);
+    expect(assessPassageSupport(passage, question, "M. S. Subbulakshmi", ["Subbulakshmi"]).level).toBe("STRONG");
+    expect(entityMatch("Mira Subbulakshmi sang at the concert.", "M. S. Subbulakshmi", ["Subbulakshmi"]).matched).toBe(false);
+  });
+
+  it("distinguishes continuing influence from influences absorbed by the subject", () => {
+    const question = "Why do people still read Rabindranath Tagore's poems?";
+    expect(assessPassageSupport("Rabindranath Tagore absorbed influences from earlier poetry and folk songs.",
+      question, "Rabindranath Tagore", ["Tagore"]).level).toBe("PARTIAL");
+    expect(assessPassageSupport("Rabindranath Tagore's poetry continues to be read by new generations in India and Bangladesh.",
+      question, "Rabindranath Tagore", ["Tagore"]).level).toBe("STRONG");
   });
 
   it("does not promote a title-only mention or a merely related passage", () => {

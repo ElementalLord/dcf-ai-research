@@ -8,9 +8,19 @@ export type QuestionScope =
   | "COMPARISON"
   | "CONTESTED_OR_HISTORICAL";
 
+/** Informal questions about why a person's work remains relevant. */
+export function isEnduringRelevanceQuestion(text: string): boolean {
+  return /\bwhy\b.{0,80}\b(?:still|today|nowadays)\b.{0,100}\b(?:read|study|teach|remember|discuss|perform|use|matter|care|influenc\w*|relevant)\b|\bwhy\b.{0,80}\b(?:read|study|teach|remember|discuss|perform|use|care)\b.{0,80}\b(?:still|today|nowadays)\b/i.test(text);
+}
+
+export function isChangeImpactQuestion(text: string): boolean {
+  return /\bwhat (?:did|does|has) .{0,80} (?:change|transform|reshape|alter|improve)\b/i.test(text);
+}
+
 /** Ordinary ways people ask why someone's work mattered, including free-form follow-ups. */
 export function isBroadImportanceQuestion(text: string): boolean {
-  return /\b(?:known for|why (?:is|was|are|were) .{0,80} important|why (?:does|did) .{0,80} matter|what (?:made|makes) .{0,80} important|what (?:did|does|has) .{0,80} do (?:that|which) (?:mattered|matters|made a difference|(?:is|was|became) (?:important|significant))|what .{0,80} did (?:that|which) (?:mattered|matters|was (?:important|significant))|what (?:did|does|has) .{0,80} (?:change|transform|reshape|alter|improve)|biggest|greatest|major contributions?|main contributions?|most significant|most important .{0,100}(?:works?|teachings?|actions?|institutions?|contributions?|discoveries?|experiments?|traditions?)|what (?:did|does|has) .{0,80} (?:accomplish|contribute))\b/i.test(text);
+  return isEnduringRelevanceQuestion(text) || isChangeImpactQuestion(text)
+    || /\b(?:known for|why (?:is|was|are|were) .{0,80} important|why (?:does|did) .{0,80} matter|what (?:made|makes) .{0,80} important|what (?:did|does|has) .{0,80} do (?:that|which) (?:mattered|matters|made a difference|(?:is|was|became) (?:important|significant))|what .{0,80} did (?:that|which) (?:mattered|matters|was (?:important|significant))|biggest|greatest|major contributions?|main contributions?|most significant|most important .{0,100}(?:works?|teachings?|actions?|institutions?|contributions?|discoveries?|experiments?|traditions?)|what (?:did|does|has) .{0,80} (?:accomplish|contribute))\b/i.test(text);
 }
 
 /** Routing is deterministic and independent of model availability. */

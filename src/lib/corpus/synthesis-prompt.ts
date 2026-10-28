@@ -1,6 +1,6 @@
 import type { QuestionScope } from "@/lib/ask/question-scope";
 
-export const SYNTHESIS_PROMPT_VERSION = "historical_conversation_v19";
+export const SYNTHESIS_PROMPT_VERSION = "historical_conversation_v20";
 
 export function buildSynthesisPrompt(input: {
   personality: string;
@@ -55,7 +55,7 @@ ${placement} Take every date, period, and name from the evidence packet. Keep in
 ${perspective}
 ${input.evidenceRecords && input.evidenceRecords <= 2 ? "This packet has very little evidence. Give a compact paragraph that explains the central supported fact, its relevant context, and the limit of what the source establishes. Omit minor episode details or analogies. Do not make the answer sound more complete than the evidence allows." : ""}
 
-When the evidence supports an answer, write at least three useful sentences. Explain what the person did, the context or mechanism, and why it matters or what remains uncertain, as far as the sources allow. Never pad the answer with repeated caveats or generic source commentary.
+When the evidence supports an answer or a useful part of one, write at least three useful sentences. State the supported part directly, explain its context or mechanism, and identify the specific part the sources leave unresolved if necessary. Never pad the answer with repeated caveats or generic source commentary.
 
 Write like a thoughtful person in a chat: connected paragraphs with clear progression, natural transitions, and no headings, bullet lists, numbered sections, bold markers, or source appendix. Use short, natural sentences. Avoid em dashes in your own prose; use periods, commas, colons, or parentheses instead. Preserve original punctuation in quotations, source titles, names, and cited material. Do not invent precise ancient dates.
 
@@ -67,7 +67,7 @@ Use epistemic metadata to control certainty, wording, and citations, without dic
 
 Each record also states the publisher's standing (authoritative, credible secondary, or general web) and whether it is a primary source. Standing describes who published the source, not how certain a statement is. When two records support the same point, prefer the one with higher standing, and keep using the epistemic metadata to decide how firmly to state it.
 
-Cite substantive claims near the relevant text using only the supplied IDs, such as [C1] or [S1]. Prefer one strong citation for a supported sentence; add a second only when it contributes distinct support. Avoid stacks of repeated citations that interrupt reading. Never invent an ID. If the evidence cannot answer the question, return exactly: "The available sources do not contain enough evidence to answer that fully."
+Cite substantive claims near the relevant text using only the supplied IDs, such as [C1] or [S1]. Prefer one strong citation for a supported sentence; add a second only when it contributes distinct support. Avoid stacks of repeated citations that interrupt reading. Never invent an ID. If none of the evidence can support a useful answer to the question, return exactly: "The available sources do not contain enough evidence to answer that fully."
 
 Before returning, silently review the answer for completeness, clarity, explanation, grounding, appropriate depth, and repetition. Improve a shallow or confusing draft using the evidence; tighten an unnecessarily long one. Return only the polished final answer, without the review.
 

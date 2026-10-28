@@ -11,31 +11,42 @@ import { extractPdf } from "@/lib/corpus/source-extract";
 import { canonicalRetentionRights, hasExplicitRetentionRights } from "./retention-rights";
 import { assessPassageSupport, authenticateSource, evidenceTypeFor, isBroadIdeaQuestion, isBroadSignificanceQuestion, type PassageSupport, type SourceIdentity } from "./research-quality";
 import { pmcArticleId, readPmcOpenArticle } from "./pmc-open-access";
-import { splitEvidenceSentences } from "@/lib/ask/target-support";
+import { asksForPerformedWork, splitEvidenceSentences } from "@/lib/ask/target-support";
 import { detectLens } from "@/lib/ask/lenses";
+import { isEnduringRelevanceQuestion } from "@/lib/ask/question-scope";
 import { CONTEXT_FRAMING_TERMS } from "@/lib/ask/historical-context";
 
 const lowQualityHost = /(?:^|\.)(?:quora\.com|reddit\.com|pinterest\.[a-z.]+|blogspot\.[a-z.]+|medium\.com|wikipedia\.org|facebook\.com|instagram\.com|tiktok\.com|brainyquote\.com|goodreads\.com)$/i;
-const institutionalHost = /(?:^|\.)(?:edu|gov|ac\.[a-z]{2}|edu\.[a-z]{2}|gov\.[a-z]{2}|jstor\.org|cambridge\.org|oup\.com|oxfordacademic\.com|springer\.com|nature\.com|muse\.jhu\.edu|wiley\.com|tandfonline\.com|sagepub\.com|nobelprize\.org|ignca\.gov\.in|vedicheritage\.gov\.in|gretil\.sub\.uni-goettingen\.de|archive\.org|britannica\.com)$/i;
+const institutionalHost = /(?:^|\.)(?:edu|gov|ac\.[a-z]{2}|edu\.[a-z]{2}|gov\.[a-z]{2}|jstor\.org|cambridge\.org|oup\.com|oxfordacademic\.com|springer\.com|nature\.com|muse\.jhu\.edu|wiley\.com|tandfonline\.com|sagepub\.com|nobelprize\.org|ignca\.gov\.in|vedicheritage\.gov\.in|gretil\.sub\.uni-goettingen\.de|archive\.org|britannica\.com|poetryfoundation\.org|poetryarchive\.org)$/i;
 
 export function sourcePriority(rawUrl: string, title: string, question: string, category = "", snippet = ""): number {
   let host: string;
   try { host = new URL(rawUrl).hostname; } catch { return -100; }
   if (lowQualityHost.test(host)) return -100;
-  const terms = normalizeForMatch(question).split(" ").filter((term) => term.length >= 4 && !supportStop.has(term));
+  const terms = normalizeForMatch(question).split(" ").filter((term) => term.length >= 4 && !supportStop.has(term)
+    && !(isEnduringRelevanceQuestion(question) && /^(?:people|still|read|study|remember|care|today|nowadays)$/.test(term)));
   const normalizedTitle = normalizeForMatch(title);
-  const relevance = terms.length ? terms.filter((term) => normalizedTitle.includes(term)).length / terms.length : 0;
+  const titleHasTerm = (term: string) => normalizedTitle.includes(term)
+    || (/^(?:poems?|poetry|poetic)$/.test(term) && /\b(?:poems?|poetry|poetic)\b/.test(normalizedTitle))
+    || (/^(?:movies?|films?|cinema)$/.test(term) && /\b(?:movies?|films?|cinema)\b/.test(normalizedTitle));
+  const relevance = terms.length ? terms.filter(titleHasTerm).length / terms.length : 0;
   // Require topic overlap before publisher standing matters. Once a page is
   // relevant, prefer an identifiable publisher over a keyword-heavy profile.
   const level = category === "trusted" ? "authoritative" : classifySourceAuthority({ url: rawUrl, sourceType: category, live: true }).level;
-  const tier = level === "authoritative" ? 3 : level === "credible_secondary" || institutionalHost.test(host) || /scholarly|academic|primary|institutional/i.test(category) ? 2 : 0;
+  const tier = level === "authoritative" || (isEnduringRelevanceQuestion(question) && institutionalHost.test(host)) ? 3
+    : level === "credible_secondary" || institutionalHost.test(host) || /scholarly|academic|primary|institutional/i.test(category) ? 2 : 0;
   if (terms.length >= 2 && relevance === 0) return tier ? -1 : -10;
   // A result snippet may hint at an article's license for ordering only. The
   // original page must still declare rights before any passage is retained.
   const licenseUrl = snippet.match(/https:\/\/creativecommons\.org\/(?:licenses|publicdomain)\/[^\s)]+/i)?.[0]?.replace(/[.,;]+$/, "");
   const articleRightsHint = /\b(?:this article|this chapter|this work|article license|chapter license)\b.{0,160}creativecommons\.org\//i.test(snippet)
     && hasExplicitRetentionRights(licenseUrl);
-  return relevance * 12 + tier * 6 + (articleRightsHint ? 4 : 0);
+  // For a "what was performed" question, a result that hints at a named
+  // work deserves inspection before a high-standing catalog that lists only
+  // the event. Snippets only order reads; they never become evidence.
+  const hint = snippet.replace(/<[^>]+>/g, " ").replace(/&#(?:x27|39);/gi, "'");
+  const namedWorkHint = asksForPerformedWork(question) && /\b(?:sang|performed?|played|recited?|debuted)\b.{0,100}(?:["'“]|\b(?:song|hymn|composition|piece|poem|speech)\b)|\b(?:song|hymn|composition|piece|poem|speech)\b.{0,100}\b(?:at|in|during|concert)\b/i.test(hint);
+  return relevance * 12 + tier * 10 + (articleRightsHint ? 4 : 0) + (namedWorkHint ? 32 : 0);
 }
 
 export type CredibleSource = { url: string; domain: string; category: string; title: string };
@@ -64,7 +75,7 @@ async function readSourceText(preview: Preview): Promise<SourceText> {
   }
   if (!preview.html) return base;
   const $ = cheerio.load(preview.html);
-  const title = $("title").text().replace(/\s+/g, " ").trim().slice(0, 200);
+  const title = $("head > title").first().text().replace(/\s+/g, " ").trim().slice(0, 200);
   const meta = (key: string) => $(`meta[name="${key}"],meta[property="${key}"]`).first().attr("content")?.trim() || null;
   const identity = authenticateSource({ url: preview.finalUrl, title: meta("citation_title") || meta("dc.title") || title,
     author: meta("citation_author") || meta("dc.creator"), publisher: meta("citation_publisher") || meta("dc.publisher") || meta("og:site_name"),
@@ -190,9 +201,9 @@ export async function readGroundedExcerpt(source: CredibleSource, statement: str
   // need not share two literal search terms to be useful evidence.
   const directLensSupport = Boolean(detectLens(statement)) && best.support.level === "STRONG"
     && best.support.reason.includes("requested perspective");
-  if ((!broadProfileSupport && !directLensSupport && best.overlap < Math.min(2, terms.length)) || !["EXACT", "STRONG"].includes(best.support.level)) return null;
-  const directSentence = !(isBroadIdeaQuestion(statement) || isBroadSignificanceQuestion(statement))
-    ? bestSupportingSentence(best.context, statement, [aliases[0] || "", ...names.slice(1)]) : null;
+  const directWorkSupport = asksForPerformedWork(statement) && best.support.level === "STRONG";
+  if ((!broadProfileSupport && !directLensSupport && !directWorkSupport && best.overlap < Math.min(2, terms.length)) || !["EXACT", "STRONG"].includes(best.support.level)) return null;
+  const directSentence = bestSupportingSentence(best.context, statement, [aliases[0] || "", ...names.slice(1)]);
   const excerpt = readableEvidence(directSentence || best.context.slice(0, 600));
   if (!excerpt) return null;
   const identity = loaded.identity.title ? loaded.identity : authenticateSource({ url: loaded.finalUrl, title: loaded.title || source.title, category: source.category });

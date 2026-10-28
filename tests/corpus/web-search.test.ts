@@ -121,6 +121,21 @@ describe("Brave discovery", () => {
       .toBeGreaterThan(sourcePriority("https://profiles.example.com/leader", "How the leader organized a cooperative", question));
   });
 
+  it("reads a result hinting at the requested work before a venue-only catalog", () => {
+    const question = "What did Anika Sen perform at the United Nations?";
+    const catalog = sourcePriority("https://library.edu/catalog/record", "Anika Sen United Nations concert catalog", question, "", "Recording of the concert at the United Nations.");
+    const namedWork = sourcePriority("https://newspaper.example/story", "Anika Sen United Nations concert", question, "", "She performed the hymn 'Friendship' at this concert.");
+    expect(namedWork).toBeGreaterThan(catalog);
+  });
+
+  it("prefers a relevant literary archive over a conversational keyword page", () => {
+    const question = "Why do people still read Rabindranath Tagore's poems?";
+    expect(sourcePriority("https://poetryarchive.org/poet/rabindranath-tagore/", "Rabindranath Tagore - Poetry Archive", question))
+      .toBeGreaterThan(sourcePriority("https://generic.example/poems", "Why people still read Rabindranath Tagore poems today", question));
+    expect(sourcePriority("https://poetryarchive.org/poet/rabindranath-tagore/", "Rabindranath Tagore - Poetry Archive", "Why do people still read his poems?"))
+      .toBeGreaterThan(sourcePriority("https://timesofindia.indiatimes.com/books/tagore", "Rabindranath Tagore Poems", "Why do people still read his poems?"));
+  });
+
   it("fetches original approved content after discovery and preserves the original URL", async () => {
     const provider = new MockWebSearchProvider([result("https://example.org/original", "false snippet")]);
     const found = await discoverWebCandidates("Vishvamitra", [rule], { provider });

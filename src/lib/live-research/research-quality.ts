@@ -1,6 +1,6 @@
 import { normalizeForMatch } from "@/lib/corpus/text";
-import { passageAddressesTarget, splitEvidenceSentences } from "@/lib/ask/target-support";
-import { isBroadImportanceQuestion } from "@/lib/ask/question-scope";
+import { asksForPerformedWork, passageAddressesTarget, splitEvidenceSentences } from "@/lib/ask/target-support";
+import { isBroadImportanceQuestion, isChangeImpactQuestion, isEnduringRelevanceQuestion } from "@/lib/ask/question-scope";
 import { CONTEXT_FRAMING_TERMS, detectContextIntent } from "@/lib/ask/historical-context";
 import { detectLens } from "@/lib/ask/lenses";
 
@@ -23,7 +23,7 @@ export type SourceIdentity = {
   provenanceComplete: boolean;
 };
 
-const STOP = new Set(["what", "which", "when", "where", "why", "how", "does", "did", "was", "were", "are", "the", "and", "for", "with", "from", "about", "into", "that", "this", "their", "work", "role", "known", "important", "significance", "angle", "lens", "perspective", "follow", "topic", "question", "find", "show", "tell", "give", "search", "look", "please", "hey", "actually", "really", "change", "changed", "transform", "transformed", "reshape", "reshaped", ...CONTEXT_FRAMING_TERMS]);
+const STOP = new Set(["what", "which", "when", "where", "why", "how", "does", "did", "was", "were", "are", "the", "and", "for", "with", "from", "about", "into", "that", "this", "their", "his", "her", "him", "them", "he", "she", "they", "we", "work", "role", "known", "important", "significance", "angle", "lens", "perspective", "follow", "topic", "question", "find", "show", "tell", "give", "search", "look", "please", "hey", "actually", "really", "change", "changed", "transform", "transformed", "reshape", "reshaped", "could", "would", "should", "can", "you", "your", "explain", "describe", "more", "some", "people", ...CONTEXT_FRAMING_TERMS]);
 const IDEA_QUESTION = /\b(?:ideas|beliefs|principles|values|visions?)\b.{0,100}\b(?:associated with|known for|did|does|hold|have|advocate|promote)\b/i;
 const IDEA_EVIDENCE = /\b(?:idea|vision|belief|philosophy|principle|value|advocat|emphasiz|teach|promot|argu|aspir|thought|dream)\w*/i;
 export const isBroadIdeaQuestion = (question: string) => IDEA_QUESTION.test(question);
@@ -33,6 +33,10 @@ const PRIORITY = /\b(?:first|earliest|priority|invented|discovered before|father
 const CONTEXT = /\b(?:at the time|context|period|contemporar|before|after|impact|significance|compare|versus|vs\.?|differ)\b/i;
 const TEXTUAL = /\b(?:said|wrote|speech|letter|edicts?|inscriptions?|hymn|verse|chapter|mandala|kanda|teaching|primary source|original)\b/i;
 const SCHOLARLY = /\b(?:attributed|authorship|disputed|historical|scholars?|evidence|scientific|technical|priority|impact|influence)\b/i;
+const PURPOSE_QUESTION = /\b(?:what|which)\b.{0,100}\b(?:was|were|is|are)\s+for\b|\b(?:purpose|aim|intended to|why (?:did|does|was|were) .*?(?:create|write|issue|make))\b/i;
+const PURPOSE_EVIDENCE = /\b(?:purpose|aim(?:ed)?|intended|meant|designed|in order to|so that|used (?:it|them|the|his|her)?\s*to|communicat\w*|promot\w*|instruct\w*|teach|convey\w*)\b/i;
+export const isPurposeQuestion = (question: string) => PURPOSE_QUESTION.test(question);
+export const hasPurposeEvidence = (text: string) => PURPOSE_EVIDENCE.test(text);
 
 function clean(value: string): string {
   return value.replace(/[^\p{L}\p{N} .:'-]/gu, " ").replace(/\s+/g, " ").trim();
@@ -46,6 +50,13 @@ function focusTerms(question: string, personality: string): string[] {
 /** A small, question-directed plan. It describes missing evidence classes instead of issuing a generic name search. */
 export function planResearchQueries(personality: string, question: string, gaps: string[] = [], max = 2): ResearchQuery[] {
   const focus = focusTerms(question, personality);
+  if (isEnduringRelevanceQuestion(question)) {
+    for (const word of ["people", "still", "read", "study", "remember", "care", "today", "nowadays"]) {
+      const index = focus.indexOf(word);
+      if (index >= 0) focus.splice(index, 1);
+    }
+    focus.push("influence");
+  }
   const lens = detectLens(question);
   if (lens) {
     const topic = [...new Set([...focus.filter((term) => !lens.ask.test(term)).slice(0, 2), ...lens.retrievalTerms.slice(0, 2)])].join(" ");
@@ -53,10 +64,20 @@ export function planResearchQueries(personality: string, question: string, gaps:
       reason: "Find original sources that document the person's requested perspective." }];
   }
   if (isBroadSignificanceQuestion(question) && !focus.length) focus.push("contributions", "achievements", "biography");
-  if (/\bwhat (?:did|does|has) .{0,80} (?:change|transform|reshape|alter|improve)\b/i.test(question) && focus.length)
+  if (isChangeImpactQuestion(question) && focus.length)
     focus.push("impact", "contributions");
-  if (/\bwhat (?:did|does|has)\b.{0,100}\b(?:perform|sing|play|recite|read|compose|write)\b.{0,80}\b(?:at|in|during|for)\b/i.test(question))
-    focus.push("repertoire", "works", "songs");
+  if (isEnduringRelevanceQuestion(question) || isChangeImpactQuestion(question)) {
+    return [{ query: clean(`${personality} ${[...new Set(focus)].slice(0, 6).join(" ")}`), intent: "scholarly",
+      reason: "Find evidence of the work's influence in the area the user named." }];
+  }
+  if (!/\bknown for\b/i.test(question) && PURPOSE_QUESTION.test(question)) {
+    return [{ query: clean(`${personality} ${focus.join(" ")} purpose aims message`), intent: "institutional",
+      reason: "Find an explanation of the requested work's purpose, not only its existence or location." }];
+  }
+  if (asksForPerformedWork(question)) {
+    return [{ query: clean(`${personality} ${focus.join(" ")} program repertoire works performed`), intent: "primary",
+      reason: "Find a program or original account that names the work performed at the requested event." }];
+  }
   if (detectContextIntent(question) === "contemporaries") {
     const topic = focus.join(" ") || "documented work";
     return [{ query: clean(`${personality} ${topic} peers contemporaries similar work`), intent: "context",
@@ -122,7 +143,10 @@ export function entityMatch(text: string, canonicalName: string, aliases: string
   if (normalized.includes(` ${canonical} `) || names.some((name) => name.includes(" ") && normalized.includes(` ${name} `))) return { matched: true, reason: "Full identity appears in the source passage." };
   const parts = canonical.split(" ");
   const surname = parts.at(-1) || canonical;
-  const conflicting = new RegExp(`\\b(?!${parts[0]}\\b)[a-z]{3,}(?:\\s+[a-z]{3,})?\\s+${surname}\\b`, "i").test(normalizeForMatch(text));
+  const casedSurname = surname[0]?.toUpperCase() + surname.slice(1);
+  // A lowercase word before a surname ("which Subbulakshmi", "about Bose")
+  // is grammar, not a different person's given name.
+  const conflicting = new RegExp(`\\b[A-Z][a-z]{2,}(?:\\s+[A-Z][a-z]{2,})?\\s+${casedSurname.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`).test(text);
   if (conflicting) return { matched: false, reason: `The passage names a different person with the surname ${surname}.` };
   if (names.some((name) => !name.includes(" ") && normalized.includes(` ${name} `))) return { matched: true, reason: "A configured short-form identity appears without a conflicting full name." };
   return { matched: false, reason: "The selected person is not identified in the passage." };
@@ -140,6 +164,25 @@ export function assessPassageSupport(text: string, questionOrStatement: string, 
     level: hits ? "PARTIAL" : "RELATED", overlap,
     reason: "The passage does not establish the named target, event relationship, or requested date.",
   };
+  if (asksForPerformedWork(questionOrStatement)) return { level: "STRONG", overlap,
+    reason: "The passage names the performed work and connects it to the requested event." };
+  if (isEnduringRelevanceQuestion(questionOrStatement)) {
+    const lasting = /\b(?:inspir\w*|lasting|enduring|continu\w*|still|today|modern|generation\w*|legacy|remain\w*|relevant)\b|\binfluenc\w*\s+(?:on|over|later|subsequent|future)\b/i.test(text);
+    const literaryTopic = /\b(?:poems?|poetry|poet)\b/i.test(questionOrStatement)
+      ? /\b(?:poems?|poetry|poet)\b/i.test(text) : true;
+    return { level: lasting && literaryTopic ? "STRONG" : "PARTIAL", overlap,
+      reason: lasting && literaryTopic ? "The source identifies a continuing influence related to the requested work." : "The source does not establish why the work remains relevant." };
+  }
+  if (isChangeImpactQuestion(questionOrStatement)) {
+    const effect = /\b(?:influenc\w*|inspir\w*|transform\w*|chang\w*|reshap\w*|introduc\w*|pioneer\w*|shift\w*|enabled?|opened?|advanced?|moderniz\w*)\b/i.test(text);
+    const filmTopic = /\b(?:movies?|films?|cinema|filmmak\w*)\b/i.test(questionOrStatement)
+      ? /\b(?:movies?|films?|cinema|filmmak\w*)\b/i.test(text) : true;
+    return { level: effect && filmTopic ? "STRONG" : "PARTIAL", overlap,
+      reason: effect && filmTopic ? "The source states an effect in the requested area." : "The source names a contribution without explaining what changed." };
+  }
+  if (PURPOSE_QUESTION.test(questionOrStatement) && hits >= 1 && PURPOSE_EVIDENCE.test(text)
+    && !/\b(?:purpose|aim|intention)\s+(?:is|was)\s+(?:unknown|unclear|not known)\b/i.test(text))
+    return { level: "STRONG", overlap, reason: "The source identifies the work and states a purpose or intended message." };
   if (isBroadIdeaQuestion(questionOrStatement) && IDEA_EVIDENCE.test(text) && text.trim().length >= 70)
     return { level: "STRONG", overlap, reason: "The passage identifies the person and states a documented idea or belief." };
   const lens = detectLens(questionOrStatement);
