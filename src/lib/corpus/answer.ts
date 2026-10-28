@@ -112,7 +112,9 @@ async function answerQuestionInternal(
         }
         logStage("DEMAND_RESEARCH", { status: research.status, searches: research.usage.searchCalls,
           fetched: research.usage.sourceFetches, findings: research.findings?.length || 0,
-          unresolvedGaps: research.unresolvedGaps.length, budget: research.budgetStatus || null });
+          conflictingFindings: research.findings.filter((finding) => finding.relation === "potential_contradiction").length,
+          unresolvedGaps: research.unresolvedGaps.length, gapKeys: research.unresolvedGaps.map((gap) => gap.requirementKey).join(","),
+          budget: research.budgetStatus || null });
         if (research.status === "in_progress" || research.status === "cooldown") {
           // Another serverless request owns the lease. Give a short completed admission a chance to become local evidence.
           for (let attempt = 0; attempt < 3; attempt++) {

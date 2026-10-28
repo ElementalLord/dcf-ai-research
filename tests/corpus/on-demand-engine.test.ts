@@ -260,6 +260,17 @@ describe("bounded on-demand research", () => {
     expect(result.sufficientForVerification).toBe(false);
   });
 
+  it("does not treat a qualified 'not X but Y' explanation as a denial of the source's core claim", async () => {
+    const { deps } = fixture();
+    deps.read = async () => excerpt({ text: "Anika Sen did not publish a patent, but she discovered the prism effect in 1928." });
+    const existing: RetrievedEvidence[] = [{ kind: "passage", id: "old", chunkId: "old", sourceId: "old",
+      text: "Anika Sen discovered the prism effect in 1928.", sectionTitle: null, pageOrSection: null,
+      textualLayer: null, sourceTitle: "Archive", sourceAuthor: null, sourceInstitution: null, sourceUrl: null,
+      sourceType: null, sourceStatus: "approved", personalityId: id }];
+    const result = await executeDemandResearch(request, "When did Anika Sen discover the prism effect?", existing, ["Anika Sen"], deps);
+    expect(result.findings[0].relation).toBe("supports");
+  });
+
   it("keeps rights-uncertain passages transient", async () => {
     const { deps } = fixture();
     deps.read = async () => excerpt({ rightsDeclaration: null });

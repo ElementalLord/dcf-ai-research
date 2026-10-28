@@ -84,7 +84,9 @@ export function narrowQuery(request: EvidenceGapRequest, question: string): stri
 
 function possibleContradiction(text: string, existing: RetrievedEvidence[], question: string, aliases: string[]): boolean {
   const normalized = normalizeForMatch(text);
-  const negated = /\b(?:not|never|no evidence|did not|was not)\b/i.test(text);
+  const deniedClause = (value: string) => value.match(/\b(?:never|no evidence|did not|was not)\b[^.;,]{0,120}/i)?.[0]
+    .split(/\bbut\b/i)[0] || "";
+  const denial = deniedClause(text);
   const subjectTerms = new Set(aliases.flatMap((alias) => normalizeForMatch(alias).split(" ")));
   const stem = (term: string) => term.replace(/(?:ing|ed|s)$/i, "");
   const terms = new Set(normalized.split(" ").filter((term) => term.length >= 5 && !subjectTerms.has(term)).map(stem));
@@ -93,7 +95,11 @@ function possibleContradiction(text: string, existing: RetrievedEvidence[], ques
     const other = normalizeForMatch(item.text);
     const overlap = other.split(" ").filter((term) => terms.has(stem(term))).length;
     if (overlap < 3) return false;
-    if (negated !== /\b(?:not|never|no evidence|did not|was not)\b/i.test(item.text)) return true;
+    const otherDenial = deniedClause(item.text);
+    const affirmative = denial ? other : normalized;
+    const denialOverlap = normalizeForMatch(denial || otherDenial).split(" ")
+      .filter((term) => term.length >= 5 && !subjectTerms.has(term) && affirmative.includes(term)).length;
+    if (Boolean(denial) !== Boolean(otherDenial) && denialOverlap >= 2) return true;
     if (!/\b(?:when|what year|which year|date|dated|chronology|first|earliest|latest)\b/i.test(question)) return false;
     const years = new Set(text.match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g) || []);
     const otherYears = new Set(item.text.match(/\b(?:1[0-9]{3}|20[0-9]{2})\b/g) || []);
