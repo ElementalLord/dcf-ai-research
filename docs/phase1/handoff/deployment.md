@@ -2,7 +2,7 @@
 
 ## Current hosting assumption
 
-This is a Next.js 16 application using the Node.js production runtime (`npm run build`, then `npm run start`). The repository does not identify a hosting vendor or include a linked hosting-project file, deployment workflow, or Git remote. Use DCF's already selected hosting provider; do not select or migrate to a new platform as part of Phase 1 closeout.
+This is a Next.js 16 application using the Node.js production runtime (`npm run build`, then `npm run start`). It is deployed on Vercel from the GitHub repository; pushes to `main` deploy automatically. See [`HANDOFF.md`](../../../HANDOFF.md) for transferring the repository, Vercel project, and Supabase project to DCF.
 
 The public Explore/profile pages are generated from the checked-in portable JSON. Database-backed APIs, Resources, Ask, and research tools additionally depend on Supabase and, where enabled, external providers.
 

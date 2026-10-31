@@ -112,7 +112,7 @@ async function answerQuestionInternal(
         }
         logStage("DEMAND_RESEARCH", { status: research.status, searches: research.usage.searchCalls,
           fetched: research.usage.sourceFetches, findings: research.findings?.length || 0,
-          conflictingFindings: research.findings.filter((finding) => finding.relation === "potential_contradiction").length,
+          conflictingFindings: (research.findings || []).filter((finding) => finding.relation === "potential_contradiction").length,
           unresolvedGaps: research.unresolvedGaps.length, gapKeys: research.unresolvedGaps.map((gap) => gap.requirementKey).join(","),
           budget: research.budgetStatus || null });
         if (research.status === "in_progress" || research.status === "cooldown") {

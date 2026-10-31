@@ -74,7 +74,7 @@ Supabase changes are versioned under `supabase/migrations/` and are additive.
 
 ## Deployment
 
-The repository has no checked-in hosting-project metadata or deployment workflow. Use the project’s existing hosting account, configure the environment variables from `.env.example`, run `npm run build`, and deploy the resulting Next.js application through that account’s normal workflow. Do not expose server-only variables with a `NEXT_PUBLIC_` prefix.
+Production runs on Vercel, connected to this GitHub repository: every push to `main` deploys automatically. Environment variables from `.env.example` are set in the Vercel project settings. Do not expose server-only variables with a `NEXT_PUBLIC_` prefix. See [`HANDOFF.md`](HANDOFF.md) for ownership transfer and credential replacement.
 
 ### Controlled web discovery
 

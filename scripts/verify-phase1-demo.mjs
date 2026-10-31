@@ -13,7 +13,7 @@ if (new Set(dataset.personalities.map((person) => slug(person.name))).size !== 2
 
 const routes = [
   { route: "/", contains: "Explore the collection" },
-  { route: "/explore", contains: "Explore lives" },
+  { route: "/explore", contains: "Explore the collection" },
   ...dataset.personalities.map((person) => ({ route: `/explore/${slug(person.name)}`, contains: person.name })),
 ];
 
