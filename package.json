@@ -16,6 +16,7 @@
     "quality:report": "node scripts/create-quality-reports.mjs",
     "quality:theme": "node scripts/check-dark-theme.mjs",
     "admin:setup": "node scripts/setup-admin-access.mjs",
+    "handoff:check": "node scripts/handoff-check.mjs",
     "corpus:vishvamitra": "node scripts/vishvamitra-corpus-runner.mjs"
   },
   "dependencies": {
