@@ -14,6 +14,7 @@
     "quality:audit": "node --env-file=.env.local scripts/quality-sprint-audit.mjs",
     "quality:evaluate": "node scripts/run-quality-evaluation.mjs",
     "quality:report": "node scripts/create-quality-reports.mjs",
+    "quality:theme": "node scripts/check-dark-theme.mjs",
     "admin:setup": "node scripts/setup-admin-access.mjs",
     "corpus:vishvamitra": "node scripts/vishvamitra-corpus-runner.mjs"
   },

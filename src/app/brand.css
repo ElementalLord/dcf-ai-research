@@ -430,3 +430,30 @@ html:root:root { background: var(--brand-bg); }
   :root:root .resources-nav-tabs a { font-size: 15px; }
 }
 :root:root .resources-nav + .knowledge-section { padding-top: 4px; border-top: 0; }
+
+/* ---------- Site-wide component colours ----------
+   Dropdowns, dialogs and side panels render outside the page (at the end of
+   <body>), so page-level colour settings do not reach them. Every page is dark,
+   so the shared component tokens are set to the dark theme once, for the whole
+   site. This replaces the light defaults from globals.css. */
+:root:root {
+  color-scheme: dark;
+  --background: var(--brand-bg);
+  --foreground: var(--brand-text);
+  --card: var(--brand-surface);
+  --card-foreground: var(--brand-text);
+  --popover: var(--brand-surface);
+  --popover-foreground: var(--brand-text);
+  --primary: var(--brand-accent);
+  --primary-foreground: var(--brand-ink);
+  --secondary: var(--brand-surface-2);
+  --secondary-foreground: var(--brand-text);
+  --muted: var(--brand-surface-2);
+  --muted-foreground: var(--brand-muted);
+  --accent: var(--brand-surface-2);
+  --accent-foreground: var(--brand-text);
+  --destructive: #ff8f84;
+  --border: #26325e;
+  --input: #34416f;
+  --ring: var(--brand-accent);
+}
