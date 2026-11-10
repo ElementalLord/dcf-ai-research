@@ -15,7 +15,7 @@
   --brand-accent: #8fb0ff;
   --brand-accent-hover: #adc5ff;
   --brand-ink: #0c1a3d;
-  --brand-radius: 8px;
+  --brand-radius: 6px;
   --brand-display: var(--font-display), "Helvetica Neue", Arial, sans-serif;
   --brand-body: var(--font-body), "Helvetica Neue", Arial, sans-serif;
   --dot-sages: #b996e6;
@@ -90,25 +90,8 @@
 }
 :root:root .site-nav a:hover { color: var(--brand-text); }
 :root:root .site-nav a[aria-current="page"] { color: var(--brand-text); box-shadow: inset 0 -2px var(--brand-accent); }
-:root:root .site-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 40px;
-  padding: 0 16px;
-  color: var(--brand-ink);
-  background: var(--brand-accent);
-  border-radius: var(--brand-radius);
-  font: 650 14px/1 var(--brand-display);
-  text-decoration: none;
-  transition: background-color 150ms ease, transform 160ms var(--ease-out);
-}
-:root:root .site-cta:hover { background: var(--brand-accent-hover); }
-:root:root .site-cta:active { transform: scale(0.97); }
-:root:root body:has(.ai-page) .site-cta { display: none; }
 @media (max-width: 860px) {
   :root:root .wordmark-text small { display: none; }
-  :root:root .site-cta { display: none; }
 }
 @media (max-width: 640px) {
   :root:root .site-header-inner { gap: 16px; width: calc(100% - 32px); min-height: 60px; }
@@ -166,7 +149,7 @@
   color: var(--brand-text);
   background: var(--brand-surface);
   border: 1px solid var(--brand-line);
-  border-radius: 12px;
+  border-radius: 8px;
   box-shadow: none;
   backdrop-filter: none;
 }
@@ -204,7 +187,7 @@
   color: var(--brand-text);
   background: var(--brand-surface-2);
   border: 1px solid var(--brand-line);
-  border-radius: 12px;
+  border-radius: 8px;
   box-shadow: none;
 }
 :root:root .ai-page .chat-message-user .chat-name { color: var(--brand-muted); }
@@ -255,4 +238,63 @@
 :root:root .ai-loading-page { width: min(100% - 48px, 980px); margin: 40px auto; text-align: left; }
 :root:root .ai-loading-page h1 { margin: 0; color: var(--brand-text); font: 700 clamp(34px, 3.6vw, 48px)/1.02 var(--brand-display); letter-spacing: -0.035em; }
 :root:root .ai-loading-page > p { margin-top: 10px; color: var(--brand-muted); }
-:root:root .ai-loading-form { margin-top: 22px; background: var(--brand-surface); border: 1px solid var(--brand-line); border-radius: 12px; }
+:root:root .ai-loading-form { margin-top: 22px; background: var(--brand-surface); border: 1px solid var(--brand-line); border-radius: 8px; }
+
+/* ---------- No rubber-band bounce when scrolling past the top or bottom ---------- */
+:root:root, :root:root body { overscroll-behavior: none !important; }
+
+/* ---------- Resources uses the same navy, blue accent and fonts as the rest of the site ----------
+   Resources has its own --res-* tokens, including a green dark-mode set
+   (:root:has(.resources-page) in resources-hub.css). These selectors are more
+   specific, so the site palette applies whatever the OS colour setting is. */
+:root:root:root, :root:root:root:has(.resources-page) {
+  --res-bg: var(--brand-bg);
+  --res-surface: var(--brand-surface);
+  --res-line: var(--brand-line);
+  --res-text: var(--brand-text);
+  --res-muted: var(--brand-muted);
+  --res-accent: var(--brand-accent);
+  --res-selected: var(--brand-surface-2);
+  --res-ok: #5fcf9d;
+  --res-warn: #f0a58a;
+  --res-draft: #8d9abb;
+  --res-bad: #ff8f84;
+}
+:root:root body:has(.resources-page), :root:root .resources-page.page-shell {
+  --primary-foreground: var(--brand-ink);
+  color: var(--brand-text);
+  background: var(--brand-bg);
+  font-family: var(--brand-body);
+}
+:root:root body:has(.resources-page) .site-header { background: rgba(11, 19, 48, 0.92); border-color: var(--brand-line); }
+:root:root body:has(.resources-page) .site-nav a { color: var(--brand-muted); }
+:root:root body:has(.resources-page) .site-nav a:hover,
+:root:root body:has(.resources-page) .site-nav a[aria-current="page"] { color: var(--brand-text); }
+:root:root .resources-page :is(h1, h2, h3) { font-family: var(--brand-display); letter-spacing: -0.025em; }
+:root:root .resources-page .resources-intro h1 { font-weight: 700; letter-spacing: -0.035em; }
+:root:root .resources-page .login-form { background: var(--brand-surface); border: 1px solid var(--brand-line); }
+:root:root .resources-page .login-form input { color: var(--brand-text); background: var(--brand-bg); border-color: var(--brand-line-strong); }
+/* Primary buttons: blue with navy text, replacing the green ones. */
+:root:root :is(
+  .resources-page .login-form [data-slot="button"],
+  .resources-page .resource-list-toolbar .resource-add-button,
+  .resources-page .resource-list-toolbar .resource-add-button-claim,
+  .resources-page .claim-review-summary-top [data-slot="button"],
+  .feedback-page .feedback-filters button,
+  .resources-page.resource-state button
+) { color: var(--brand-ink); background: var(--brand-accent); border-color: var(--brand-accent); font-family: var(--brand-display); font-weight: 650; }
+:root:root :is(
+  .resources-page .login-form [data-slot="button"],
+  .resources-page .resource-list-toolbar .resource-add-button,
+  .resources-page .resource-list-toolbar .resource-add-button-claim,
+  .resources-page .claim-review-summary-top [data-slot="button"],
+  .feedback-page .feedback-filters button
+):hover { color: var(--brand-ink); background: var(--brand-accent-hover); border-color: var(--brand-accent-hover); }
+:root:root .resources-page .login-form [data-slot="button"]:disabled { color: var(--brand-muted); background: var(--brand-surface-2); border-color: var(--brand-line); opacity: 1; }
+/* Status messages: dark versions, no yellow. */
+:root:root :is(.resources-page .resource-activity, .resources-page .resource-notice) { color: #ccebd9; background: #14302a; border-color: #2f5f50; }
+:root:root .resources-page .resource-stale { color: #f6cbbb; background: #3a2526; border-color: #7a4d4a; }
+:root:root :is(.resources-page .resource-error, .resources-page .admin-access-denied) { color: #ffd6d1; background: #45262a; border-color: #8f5559; }
+:root:root :is(.resources-page .resource-source-attention, .resources-page .website-paused, .feedback-page .feedback-entry-rating, .readiness-page .state-thin) { color: #f0a58a; }
+:root:root .feedback-page .feedback-bar i { background: var(--brand-accent); }
+:root:root .readiness-page .state-usable { color: var(--brand-accent); }

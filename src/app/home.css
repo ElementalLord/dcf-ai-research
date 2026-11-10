@@ -5,7 +5,7 @@
 */
 .home {
   --home-width: min(100% - 48px, 1280px);
-  --home-radius: 20px;
+  --home-radius: 8px;
   overflow-x: clip;
   color: var(--brand-text);
   font-family: var(--brand-body);
@@ -90,7 +90,7 @@
   color: var(--brand-ink);
   background: var(--brand-accent);
   border: 1px solid var(--brand-accent);
-  border-radius: 999px;
+  border-radius: 6px;
   font: 650 16px/1 var(--brand-display);
   transition: background-color 160ms ease, transform 160ms var(--ease-out);
 }
@@ -164,7 +164,7 @@ a.bento:hover .bento-cta svg { transform: translate(2px, -2px); }
 
 .bento-ask { grid-column: span 2; }
 .bento-chat { display: grid; gap: 10px; }
-.bento-bubble { max-width: 88%; padding: 12px 16px; font-size: 15px; line-height: 1.45; border-radius: 16px; }
+.bento-bubble { max-width: 88%; padding: 12px 16px; font-size: 15px; line-height: 1.45; border-radius: 8px; }
 .bento-bubble-you { justify-self: end; background: var(--brand-surface-2); border: 1px solid var(--brand-line); border-bottom-right-radius: 4px; }
 .bento-bubble-dcf { color: var(--brand-text); background: rgba(143, 176, 255, 0.1); border: 1px solid rgba(143, 176, 255, 0.25); border-bottom-left-radius: 4px; }
 .bento-bubble i { display: inline-grid; place-items: center; width: 18px; height: 18px; margin-left: 2px; color: var(--brand-ink); background: var(--brand-accent); border-radius: 5px; font: 700 11px/1 var(--brand-body); font-style: normal; vertical-align: 1px; }
@@ -248,7 +248,7 @@ a.bento:hover .bento-stack span { margin-right: -2px; border-color: var(--brand-
   padding: 16px 20px;
   background: var(--brand-surface-2);
   border: 1px solid var(--brand-line);
-  border-radius: 14px;
+  border-radius: 8px;
 }
 .home-claim-sources li::before {
   content: "";
@@ -259,7 +259,7 @@ a.bento:hover .bento-stack span { margin-right: -2px; border-color: var(--brand-
   height: calc(50% + 12px);
   border-left: 1px dashed var(--brand-accent);
   border-bottom: 1px dashed var(--brand-accent);
-  border-bottom-left-radius: 10px;
+  border-bottom-left-radius: 6px;
 }
 .home-claim-sources span { color: var(--brand-accent); font: 600 12px/1.2 var(--brand-body); letter-spacing: 0.12em; text-transform: uppercase; }
 .home-claim-sources strong { font: 600 16px/1.35 var(--brand-display); }
@@ -289,7 +289,7 @@ a.bento:hover .bento-stack span { margin-right: -2px; border-color: var(--brand-
   .home-index-count { grid-column: 3; grid-row: 1 / span 2; }
 }
 @media (max-width: 640px) {
-  .home { --home-width: calc(100% - 32px); --home-radius: 16px; }
+  .home { --home-width: calc(100% - 32px); --home-radius: 8px; }
   .home-bento { grid-template-columns: 1fr 1fr; gap: 10px; }
   .bento { padding: 20px; }
   .bento-feature, .bento-ask, .bento-explore, .home-bento > .bento-stat:nth-child(5) { grid-column: span 2; }

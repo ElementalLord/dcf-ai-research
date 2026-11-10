@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight } from "lucide-react";
 
 const links = [{ href: "/", label: "Home" }, { href: "/explore", label: "Explore" }, { href: "/ai", label: "Ask" }, { href: "/resources", label: "Resources" }];
 
@@ -14,6 +13,5 @@ export function SiteNav() {
       <span className="wordmark-text"><strong>Inspiring Personalities</strong><small>Dharma Civilization Foundation</small></span>
     </Link>
     <nav aria-label="Main navigation" className="site-nav">{links.map(link => <Link key={link.href} href={link.href} aria-current={isCurrent(link.href) ? "page" : undefined}>{link.label}</Link>)}</nav>
-    <Link className="site-cta" href="/ai">Ask DCF <ArrowUpRight size={15} aria-hidden="true" /></Link>
   </div></header>;
 }
