@@ -1,23 +1,28 @@
 /*
-  Site theme. Loaded last by the root layout, so these tokens win over the older
+  Site theme (dark). Loaded last by the root layout, so these tokens win over the older
   defaults in globals.css.
 
-  Goals: light and calm, big readable text, strong contrast, one obvious button
+  Goals: dark and calm, big readable text, strong contrast, one obvious button
   per screen, and plain lists instead of boxes and pills.
 */
 :root {
-  --paper: #fbf8f1;
-  --card: #ffffff;
-  --ink: #1c2541;
-  --ink-soft: #4a5266;
-  --line: #e2dccd;
-  --line-strong: #c9c1ad;
-  --primary: #1c2541;
-  --primary-hover: #2c3a63;
-  --accent: #e8900c;
-  --link: #1d4ed8;
-  --focus: #e8900c;
-  --soft: #f3eee2;
+  color-scheme: dark;
+  --paper: #0e1422;
+  --card: #161e31;
+  --ink: #eef2fa;
+  --ink-soft: #b3bdd1;
+  --line: #27314a;
+  --line-strong: #3d4966;
+  --primary: #9db8ff;
+  --primary-hover: #b9ccff;
+  --on-primary: #0e1422;
+  --accent: #7fa6ff;
+  --link: #a9c4ff;
+  --focus: #a9c4ff;
+  --soft: #1c2540;
+  --placeholder: #8a94aa;
+  --disabled-bg: #2f3952;
+  --disabled-ink: #a3adc2;
   --font-display-stack: var(--font-display), "Helvetica Neue", Arial, sans-serif;
   --font-body-stack: var(--font-body), "Helvetica Neue", Arial, sans-serif;
 
@@ -30,7 +35,7 @@
   --card-foreground: var(--ink);
   --popover: var(--card);
   --popover-foreground: var(--ink);
-  --primary-foreground: #ffffff;
+  --primary-foreground: var(--on-primary);
   --secondary: var(--soft);
   --secondary-foreground: var(--ink);
   --muted: var(--soft);
@@ -89,7 +94,7 @@ body {
   place-items: center;
   height: 36px;
   padding: 0 9px;
-  color: var(--ink);
+  color: var(--on-primary);
   background: var(--accent);
   border-radius: 6px;
   font: 800 16px/1 var(--font-display-stack);
@@ -127,7 +132,7 @@ body {
   gap: 10px;
   min-height: 56px;
   padding: 0 26px;
-  color: #fff;
+  color: var(--on-primary);
   background: var(--primary);
   border: 2px solid var(--primary);
   border-radius: 10px;
@@ -189,7 +194,7 @@ body {
   place-items: center;
   width: 52px;
   height: 52px;
-  color: var(--ink);
+  color: var(--on-primary);
   background: var(--accent);
   border-radius: 50%;
   font: 800 24px/1 var(--font-display-stack);
@@ -228,7 +233,7 @@ body {
   border-radius: 12px;
   font: 400 20px/1.3 var(--font-body-stack);
 }
-.search-box input::placeholder { color: #6b7280; opacity: 1; }
+.search-box input::placeholder { color: var(--placeholder); opacity: 1; }
 .search-box input:focus { border-color: var(--ink); }
 .choice-row { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 22px; margin-top: 22px; }
 .choice-label { color: var(--ink-soft); font-weight: 700; }
@@ -302,14 +307,14 @@ body {
   --res-line: var(--line);
   --res-text: var(--ink);
   --res-muted: var(--ink-soft);
-  --res-accent: #1d4ed8;
+  --res-accent: var(--link);
   --res-selected: var(--soft);
-  --res-ok: #1f7a4d;
-  --res-warn: #9a5b00;
-  --res-draft: #5f6678;
-  --res-bad: #b3392f;
+  --res-ok: #6fd3a2;
+  --res-warn: #f0a58a;
+  --res-draft: #9aa5bd;
+  --res-bad: #ff8f84;
 }
-body:has(.resources-page) { --primary-foreground: #fff !important; font-family: var(--font-body-stack) !important; }
+body:has(.resources-page) { --primary-foreground: var(--on-primary) !important; font-family: var(--font-body-stack) !important; }
 body:has(.resources-page) .site-header { background: var(--paper); border-color: var(--line); }
 body:has(.resources-page) .site-nav a { color: var(--ink-soft); }
 body:has(.resources-page) .site-nav a[aria-current="page"] { color: var(--ink); border-color: var(--accent); }
@@ -317,8 +322,13 @@ body:has(.resources-page) .site-nav a[aria-current="page"] { color: var(--ink); 
 .resources-page .resources-intro-copy p { font-size: 19px; }
 .resources-page .resources-intro-copy p + p { margin-top: 14px; }
 .resources-page .resources-intro-copy a { color: var(--link); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
-.resources-page .login-form [data-slot="button"] { min-height: 52px !important; color: #fff !important; background: var(--primary) !important; border-color: var(--primary) !important; font-size: 18px; font-weight: 700; }
-.resources-page .login-form [data-slot="button"]:disabled { background: #8b91a3 !important; border-color: #8b91a3 !important; opacity: 1; }
+.resources-page .login-form [data-slot="button"] { min-height: 52px !important; color: var(--on-primary) !important; background: var(--primary) !important; border-color: var(--primary) !important; font-size: 18px; font-weight: 700; }
+.resources-page .login-form [data-slot="button"]:disabled { color: var(--disabled-ink) !important; background: var(--disabled-bg) !important; border-color: var(--disabled-bg) !important; opacity: 1; }
+
+/* Status messages in Resources were hard-coded for a light page. */
+.resources-page .resource-activity, .resources-page .resource-notice { color: #ccebd1; background: #1d3a2c; border-color: #3f6b52; }
+.resources-page .resource-stale { color: #f3c9b8; background: #3a2a24; border-color: #7a5546; }
+.resources-page .resource-error, .resources-page .admin-access-denied { color: #ffd6d1; background: #45262a; border-color: #8f5559; }
 
 /* ---------- Small screens ---------- */
 @media (max-width: 720px) {

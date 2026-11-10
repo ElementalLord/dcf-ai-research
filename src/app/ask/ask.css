@@ -57,7 +57,7 @@
   height: 26px;
   margin: 0 2px 0 4px;
   padding: 0 6px;
-  color: #fff;
+  color: var(--on-primary);
   background: var(--primary);
   border: 0;
   border-radius: 13px;
@@ -65,7 +65,7 @@
   vertical-align: 2px;
   cursor: pointer;
 }
-.citation-ref:hover { color: #fff; background: var(--primary-hover); }
+.citation-ref:hover { color: var(--on-primary); background: var(--primary-hover); }
 .citation-unavailable-ref { color: var(--ink-soft); background: var(--soft); cursor: default; }
 .chat-repair { display: grid; gap: 12px; justify-items: start; }
 .chat-repair button, .research-continuation a { display: inline-flex; align-items: center; gap: 6px; color: var(--link); background: none; border: 0; padding: 0; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
@@ -86,7 +86,7 @@
 .chat-thinking-track .is-current { background: var(--accent); }
 .chat-thinking small { color: var(--ink-soft); font-size: 16px; }
 
-.chat-error { margin: 18px 0 0; padding: 14px 16px; color: #8a1c12; background: #fdecea; border-left: 4px solid #c0392b; border-radius: 6px; font-size: 17px; }
+.chat-error { margin: 18px 0 0; padding: 14px 16px; color: #ffd6d1; background: #45262a; border-left: 4px solid #ff8f84; border-radius: 6px; font-size: 17px; }
 
 /* Ideas to ask: a plain list, not pills */
 .chat-suggestions, .chat-explore { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 22px; margin-top: 24px; }
@@ -141,7 +141,7 @@
   resize: vertical;
 }
 .chat-composer .question-input:focus { border-color: var(--ink); }
-.chat-composer .question-input::placeholder { color: #6b7280; }
+.chat-composer .question-input::placeholder { color: var(--placeholder); }
 .chat-composer .ask-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; }
 .chat-composer .ask-keyboard-note { margin: 0; color: var(--ink-soft); font-size: 16px; }
 .chat-composer .ask-footer > button {
@@ -151,14 +151,14 @@
   min-width: 140px;
   height: 56px;
   padding: 0 28px;
-  color: #fff;
+  color: var(--on-primary);
   background: var(--primary);
   border: 0;
   border-radius: 10px;
   font: 700 20px/1 var(--font-body-stack);
 }
 .chat-composer .ask-footer > button:hover { background: var(--primary-hover); }
-.chat-composer .ask-footer > button:disabled { color: #fff; background: #8b91a3; opacity: 1; }
+.chat-composer .ask-footer > button:disabled { color: var(--disabled-ink); background: var(--disabled-bg); opacity: 1; }
 
 /* Feedback under each answer */
 .response-feedback { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 16px; }
@@ -166,7 +166,7 @@
 .response-feedback legend { margin-bottom: 6px; color: var(--ink); font-weight: 700; }
 .response-feedback-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .response-feedback-stars { display: flex; gap: 2px; }
-.response-feedback-stars label { position: relative; display: grid; place-items: center; width: 40px; height: 44px; color: #b8b2a3; font-size: 30px; line-height: 1; cursor: pointer; }
+.response-feedback-stars label { position: relative; display: grid; place-items: center; width: 40px; height: 44px; color: #56617a; font-size: 30px; line-height: 1; cursor: pointer; }
 .response-feedback-stars input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
 .response-feedback-stars input:checked + span, .response-feedback-stars label:has(~ label input:checked) span { color: var(--accent); }
 .response-feedback-stars label:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
@@ -179,8 +179,8 @@
 .response-feedback-tags { display: flex; flex-wrap: wrap; gap: 8px 18px; }
 .response-feedback-tags label { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); cursor: pointer; }
 .response-feedback-tags input { width: 20px; height: 20px; accent-color: var(--primary); }
-.response-feedback-error { margin-top: 8px; color: #8a1c12; }
-.response-feedback-success { margin-top: 16px; color: #1f6b3a; font-weight: 700; }
+.response-feedback-error { margin-top: 8px; color: #ffb4ab; }
+.response-feedback-success { margin-top: 16px; color: #8fd8a8; font-weight: 700; }
 
 /* Choose-a-person window */
 .person-picker-dialog { width: min(100vw - 24px, 720px) !important; max-width: 720px !important; max-height: min(88dvh, 760px); padding: 0 !important; overflow: auto; background: var(--paper) !important; color: var(--ink); }
