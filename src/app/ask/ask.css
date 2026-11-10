@@ -1,5 +1,6 @@
 /* Ask a question: one column, big controls, plain chat. Uses the tokens from site.css. */
-.ai-page { max-width: 860px; }
+/* Same frame as the header and other pages; keep the reading column narrower but left-aligned. */
+.ai-page > * { max-width: 860px; }
 
 /* Setup: who and how long */
 .ask-setup { display: flex; flex-wrap: wrap; align-items: end; gap: 20px 28px; margin-top: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
@@ -25,7 +26,7 @@
 .ask-field [data-slot="select-trigger"] { min-width: 200px; font-weight: 400; }
 .ask-field [data-slot="select-trigger"]:hover, .person-picker-trigger:hover { border-color: var(--ink); }
 .person-picker-change { display: inline-flex; align-items: center; gap: 4px; color: var(--link); font-size: 16px; text-decoration: underline; text-underline-offset: 3px; }
-.ask-setup-actions { display: flex; flex-wrap: wrap; gap: 4px 22px; margin-left: auto; }
+.ask-setup-actions { display: flex; flex-wrap: wrap; gap: 4px 22px; flex-basis: 100%; }
 
 /* Conversation */
 .chat-shell { margin-top: 8px; }
