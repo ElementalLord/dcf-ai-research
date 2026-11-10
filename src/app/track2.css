@@ -850,3 +850,17 @@ body:has(.explore-error) .site-nav a:hover { color: #fff; border-color: #93b8f4;
   .home-path-card { min-height: 200px; border-left: 1px solid rgba(160, 184, 226, .2); }
   .explore-page .explore-browser { padding-inline: 0; border-radius: 0; }
 }
+
+/* Press feedback (kept last so it beats the page-level hover rules above):
+    buttons shrink slightly; large cards only shift tone (scaling a card reads as wobble). */
+.home-primary,.home-secondary {
+  transition: transform 160ms var(--ease-out), background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+@media (hover: none) {
+  .home-primary:hover,.home-secondary:hover { transform: none; }
+}
+.home-primary:active,.home-secondary:active { transform: scale(.97); }
+.home-path-card:active { background: rgba(49, 73, 122, .32); }
+@media (prefers-reduced-motion: reduce) {
+  .home-primary:active,.home-secondary:active { transform: none; }
+}

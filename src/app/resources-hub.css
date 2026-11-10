@@ -1253,23 +1253,14 @@ body:has(.resources-page) .resource-help-control { color:var(--res-accent); }
 .resources-page .claim-review-summary-top [data-slot="button"],
 .resources-page .resource-list-toolbar .resource-add-button,
 .resources-page .resource-panel-actions .resource-panel-primary[data-slot="button"] {
-  transition: transform 140ms cubic-bezier(.23,1,.32,1), background-color 140ms ease;
-}
-.resources-page .claim-review-summary-top [data-slot="button"]:active,
-.resources-page .resource-list-toolbar .resource-add-button:active,
-.resources-page .resource-panel-actions .resource-panel-primary[data-slot="button"]:active {
-  transform: scale(.97);
+  /* Press scale comes from the shared Button (Tailwind's standalone `scale` property). */
+  transition: scale 140ms var(--ease-out), background-color 140ms ease;
 }
 @media (hover: none) {
   .resources-page .resource-source-table tbody tr:hover,
   .resources-page :is(.search-rule,.discovered-source):hover { background: transparent; }
   .resources-page .resource-source-table tbody tr:active,
   .resources-page :is(.search-rule,.discovered-source):active { background: var(--res-selected); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .resources-page .claim-review-summary-top [data-slot="button"]:active,
-  .resources-page .resource-list-toolbar .resource-add-button:active,
-  .resources-page .resource-panel-actions .resource-panel-primary[data-slot="button"]:active { transform: none; }
 }
 
 /* Allow full titles and URLs to remain legible in narrow review panels. */

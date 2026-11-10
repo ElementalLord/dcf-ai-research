@@ -207,7 +207,7 @@ body:has(.explore-shell) .site-nav a:hover { color:var(--explore-text); }
   background: var(--explore-selected);
 }
 .explore-shell :is(.explore-trust a,.explore-show-sources,.explore-empty button,.explore-state a,.explore-state button) {
-  transition: transform 140ms cubic-bezier(.23,1,.32,1), background-color 140ms ease;
+  transition: transform 140ms var(--ease-out), background-color 140ms ease;
 }
 .explore-shell :is(.explore-trust a,.explore-show-sources,.explore-empty button,.explore-state a,.explore-state button):active {
   transform: scale(.97);
