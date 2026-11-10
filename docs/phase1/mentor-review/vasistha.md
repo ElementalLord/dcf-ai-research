@@ -7,44 +7,44 @@
 
 ## Profile introduction
 
-- The approved evidence presents Vasistha in more than one textual layer: Rigvedic Mandala 7 source attributions and later Ramayana narratives about a royal priest, counselor, and counterpart of Vishvamitra. [S1] [S2] [S3] [S4] _(approved claim; human_manual)_
-- A Dharmasutra is transmitted under the name Vasistha and is included in modern academic editions of the early Dharmasutra corpus. [S5] _(needs_review; awaiting human decision; ai_candidate)_
+- The approved evidence presents Vasistha in more than one textual layer: Rigvedic Mandala 7 source attributions and later Ramayana narratives about a royal priest, counselor, and counterpart of Vishvamitra. [S1] [S2] [S3] [S4] _(approved claim; corpus_evidence_review)_
+- A Dharmasutra is transmitted under the name Vasistha and is included in modern academic editions of the early Dharmasutra corpus. [S5] _(approved claim; corpus_evidence_review)_
 
 ## Important qualities
 
-- The Ramayana narrative portrays Vasistha's brahma-danda as neutralizing Visvamitra's fiery missile. [S6] _(needs_review; awaiting human decision; ai_candidate)_
-- Vasistha insists on providing hospitality not only to Visvamitra but also to his large royal retinue. [S3] _(needs_review; awaiting human decision; ai_candidate)_
-- Vasistha refuses Visvamitra's offers to purchase Shabala even for enormous quantities of cattle, silver, and wealth. [S7] _(needs_review; awaiting human decision; ai_candidate)_
-- Vasistha urges Rama to honor the wishes of his aged mother as part of righteous conduct. [S8] _(needs_review; awaiting human decision; ai_candidate)_
+- The Ramayana narrative portrays Vasistha's brahma-danda as neutralizing Visvamitra's fiery missile. [S6] _(approved claim; corpus_evidence_review)_
+- Vasistha insists on providing hospitality not only to Visvamitra but also to his large royal retinue. [S3] _(approved claim; corpus_evidence_review)_
+- Vasistha refuses Visvamitra's offers to purchase Shabala even for enormous quantities of cattle, silver, and wealth. [S7] _(approved claim; corpus_evidence_review)_
+- Vasistha urges Rama to honor the wishes of his aged mother as part of righteous conduct. [S8] _(approved claim; corpus_evidence_review)_
 
 ## Main contributions
 
-- A Dharmasutra is transmitted under the name Vasistha and is included in modern academic editions of the early Dharmasutra corpus. [S5] _(needs_review; awaiting human decision; ai_candidate)_
+- A Dharmasutra is transmitted under the name Vasistha and is included in modern academic editions of the early Dharmasutra corpus. [S5] _(approved claim; corpus_evidence_review)_
 
 ## Life and historical/social context
 
-- The approved evidence presents Vasistha in more than one textual layer: Rigvedic Mandala 7 source attributions and later Ramayana narratives about a royal priest, counselor, and counterpart of Vishvamitra. [S1] [S2] [S3] [S4] _(approved claim; human_manual)_
+- The approved evidence presents Vasistha in more than one textual layer: Rigvedic Mandala 7 source attributions and later Ramayana narratives about a royal priest, counselor, and counterpart of Vishvamitra. [S1] [S2] [S3] [S4] _(approved claim; corpus_evidence_review)_
 
 ## Challenges and limits
 
-- Ramayana passages directly support Vasistha's roles in royal counsel and in the Vishvamitra-Shabala conflict, but they do not by themselves establish a continuous biography back to the Rigvedic seer attribution. [S2] [S9] [S3] [S7] [S6] [S10] _(draft; awaiting human decision; ai_candidate)_
+- Ramayana passages directly support Vasistha's roles in royal counsel and in the Vishvamitra-Shabala conflict, but they do not by themselves establish a continuous biography back to the Rigvedic seer attribution. [S2] [S9] [S3] [S7] [S6] [S10] _(approved claim; corpus_evidence_review)_
 
 ## Leadership and relational characteristics
 
-- Before Rama departs with Visvamitra, Vasistha performs auspicious Vedic blessings for him. [S9] _(approved claim; human_manual)_
-- After Vasistha's recognition, the narrative says Visvamitra reveres Vasistha. [S10] _(needs_review; awaiting human decision; ai_candidate)_
-- At the end of Visvamitra's ascetic transformation, Visvamitra asks that Vasistha personally recognize him as a brahmarshi. [S10] _(needs_review; awaiting human decision; ai_candidate)_
-- Dasharatha consents to Rama's departure with Visvamitra after hearing Vasistha's counsel. [S11] _(needs_review; awaiting human decision; ai_candidate)_
+- After Vasistha's recognition, the narrative says Visvamitra reveres Vasistha. [S10] _(approved claim; corpus_evidence_review)_
+- At the end of Visvamitra's ascetic transformation, Visvamitra asks that Vasistha personally recognize him as a brahmarshi. [S10] _(approved claim; corpus_evidence_review)_
+- Before Rama departs with Visvamitra, Vasistha performs auspicious Vedic blessings for him. [S9] _(approved claim; corpus_evidence_review)_
+- Dasharatha consents to Rama's departure with Visvamitra after hearing Vasistha's counsel. [S11] _(approved claim; corpus_evidence_review)_
 
 ## Contested material meeting the inclusion standard
 
-- Ramayana passages directly support Vasistha's roles in royal counsel and in the Vishvamitra-Shabala conflict, but they do not by themselves establish a continuous biography back to the Rigvedic seer attribution. [S2] [S9] [S3] [S7] [S6] [S10] _(draft; awaiting human decision; ai_candidate)_
+- Ramayana passages directly support Vasistha's roles in royal counsel and in the Vishvamitra-Shabala conflict, but they do not by themselves establish a continuous biography back to the Rigvedic seer attribution. [S2] [S9] [S3] [S7] [S6] [S10] _(approved claim; corpus_evidence_review)_
 
 ## Contemporary relevance
 
-- A Dharmasutra is transmitted under the name Vasistha and is included in modern academic editions of the early Dharmasutra corpus. [S5] _(needs_review; awaiting human decision; ai_candidate)_
-- After Vasistha's recognition, the narrative says Visvamitra reveres Vasistha. [S10] _(needs_review; awaiting human decision; ai_candidate)_
-- The Ayodhya Kanda presents Vasistha as a guardian of dynastic memory by having him recite the royal genealogy when arguing for Rama's succession. [S12] _(needs_review; awaiting human decision; ai_candidate)_
+- A Dharmasutra is transmitted under the name Vasistha and is included in modern academic editions of the early Dharmasutra corpus. [S5] _(approved claim; corpus_evidence_review)_
+- After Vasistha's recognition, the narrative says Visvamitra reveres Vasistha. [S10] _(approved claim; corpus_evidence_review)_
+- The Ayodhya Kanda presents Vasistha as a guardian of dynastic memory by having him recite the royal genealogy when arguing for Rama's succession. [S12] _(approved claim; corpus_evidence_review)_
 
 ## Withheld contested or sensitive material
 
@@ -52,7 +52,6 @@ None identified by the deterministic contested-claim check.
 
 ## Unresolved concerns
 
-- 21 evidence-linked claims still await human review.
 - Structured era is not populated in the personality record; dated context remains in cited evidence statements.
 - Structured region is not populated in the personality record; geographic context remains in cited evidence statements.
 

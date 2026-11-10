@@ -7,31 +7,31 @@
 
 ## Profile introduction
 
-- Guru Nanak is conventionally dated 1469–1539; most detailed narratives of his early life and travels survive in later Sikh textual traditions. [S1] _(draft; awaiting human decision; ai_candidate)_
-- Janamsakhis agree on broad biographical elements such as family and the general outline of Guru Nanak’s life, but their agreement does not turn every detail into independently verified history. [S2] _(draft; awaiting human decision; ai_candidate)_
+- Guru Nanak is conventionally dated 1469–1539; most detailed narratives of his early life and travels survive in later Sikh textual traditions. [S1] _(approved claim; corpus_evidence_review)_
+- Janamsakhis agree on broad biographical elements such as family and the general outline of Guru Nanak’s life, but their agreement does not turn every detail into independently verified history. [S2] _(approved claim; corpus_evidence_review)_
 
 ## Important qualities
 
-- In the Mūl Mantra, Ik Oankar expresses the affirmation of the One; English paraphrases are interpretive renderings of a compact Punjabi/Gurmukhi formula. [S4] _(draft; awaiting human decision; ai_candidate)_
-- Japji asks how falsehood is overcome and answers by walking in accord with hukam; the cited formulation is an attributed scriptural teaching rather than a neutral historical report. [S5] _(draft; awaiting human decision; ai_candidate)_
-- Japji’s opening attributes fearlessness and freedom from enmity to the One; these attributes anchor Sikh accounts of divine unity. [S6] _(draft; awaiting human decision; ai_candidate)_
-- Japji’s opening frames realization through the Guru’s grace, joining divine devotion with a disciplined spiritual path. [S6] _(draft; awaiting human decision; ai_candidate)_
+- In the Mūl Mantra, Ik Oankar expresses the affirmation of the One; English paraphrases are interpretive renderings of a compact Punjabi/Gurmukhi formula. [S4] _(approved claim; corpus_evidence_review)_
+- Japji asks how falsehood is overcome and answers by walking in accord with hukam; the cited formulation is an attributed scriptural teaching rather than a neutral historical report. [S5] _(approved claim; corpus_evidence_review)_
+- Japji’s opening attributes fearlessness and freedom from enmity to the One; these attributes anchor Sikh accounts of divine unity. [S6] _(approved claim; corpus_evidence_review)_
+- Japji’s opening frames realization through the Guru’s grace, joining divine devotion with a disciplined spiritual path. [S6] _(approved claim; corpus_evidence_review)_
 
 ## Main contributions
 
-- The concept of hukam appears at the beginning of Japji, the opening composition of the Adi Granth/Guru Granth Sahib. [S5] _(draft; awaiting human decision; ai_candidate)_
-- The historiography entry identifies Bhai Gurdas’s Vars as early Sikh verse of high importance for Guru Nanak’s mission and that of his successors, though comparatively sparse in biography. [S7] _(draft; awaiting human decision; ai_candidate)_
-- The Mūl Mantra is the opening formula of the Guru Granth Sahib and recurs in whole or part at major textual openings. [S4] _(draft; awaiting human decision; ai_candidate)_
-- SGPC describes the Guru Granth Sahib’s compilation as privileging verses praising God and criticizing superstition and caste. [S8] _(draft; awaiting human decision; ai_candidate)_
-- SGPC names Japji and Asa-di-Var as Guru Nanak compositions and Punjabi literary classics within the Guru Granth Sahib. [S8] _(draft; awaiting human decision; ai_candidate)_
-- The Sangat entry connects Guru Nanak’s travels with groups of disciples who gathered to recite his hymns. [S9] _(draft; awaiting human decision; ai_candidate)_
+- The concept of hukam appears at the beginning of Japji, the opening composition of the Adi Granth/Guru Granth Sahib. [S5] _(approved claim; corpus_evidence_review)_
+- The historiography entry identifies Bhai Gurdas’s Vars as early Sikh verse of high importance for Guru Nanak’s mission and that of his successors, though comparatively sparse in biography. [S7] _(approved claim; corpus_evidence_review)_
+- The Mūl Mantra is the opening formula of the Guru Granth Sahib and recurs in whole or part at major textual openings. [S4] _(approved claim; corpus_evidence_review)_
+- SGPC describes the Guru Granth Sahib’s compilation as privileging verses praising God and criticizing superstition and caste. [S8] _(approved claim; corpus_evidence_review)_
+- SGPC names Japji and Asa-di-Var as Guru Nanak compositions and Punjabi literary classics within the Guru Granth Sahib. [S8] _(approved claim; corpus_evidence_review)_
+- The Sangat entry connects Guru Nanak’s travels with groups of disciples who gathered to recite his hymns. [S9] _(approved claim; corpus_evidence_review)_
 
 ## Life and historical/social context
 
-- Guru Nanak is conventionally dated 1469–1539; most detailed narratives of his early life and travels survive in later Sikh textual traditions. [S1] _(draft; awaiting human decision; ai_candidate)_
-- Janamsakhis agree on broad biographical elements such as family and the general outline of Guru Nanak’s life, but their agreement does not turn every detail into independently verified history. [S2] _(draft; awaiting human decision; ai_candidate)_
-- Mann notes Puratan evidence of an early Sikh self-understanding as not simply following surrounding religious practice. [S3] _(draft; awaiting human decision; ai_candidate)_
-- Mann reports that the Puratan Janamsakhi narrates four long journeys after Kartarpur; this is evidence of the Puratan tradition’s itinerary, not a standalone verification of each journey. [S3] _(draft; awaiting human decision; ai_candidate)_
+- Guru Nanak is conventionally dated 1469–1539; most detailed narratives of his early life and travels survive in later Sikh textual traditions. [S1] _(approved claim; corpus_evidence_review)_
+- Janamsakhis agree on broad biographical elements such as family and the general outline of Guru Nanak’s life, but their agreement does not turn every detail into independently verified history. [S2] _(approved claim; corpus_evidence_review)_
+- Mann notes Puratan evidence of an early Sikh self-understanding as not simply following surrounding religious practice. [S3] _(approved claim; corpus_evidence_review)_
+- Mann reports that the Puratan Janamsakhi narrates four long journeys after Kartarpur; this is evidence of the Puratan tradition’s itinerary, not a standalone verification of each journey. [S3] _(approved claim; corpus_evidence_review)_
 
 ## Challenges and limits
 
@@ -39,9 +39,9 @@ No sourcing-compliant statement selected; see unresolved concerns.
 
 ## Leadership and relational characteristics
 
-- Bhai Gurdas’s remembered list of early disciples includes Mardana, identified as a Muslim mirasi or bard; this helps explain why the Guru’s musical companionship matters in Sikh memory. [S9] _(draft; awaiting human decision; ai_candidate)_
-- Kartarpur is associated with Bhai Lehna’s instruction by Guru Nanak and his emergence as Guru Angad, the next Guru. [S1] _(draft; awaiting human decision; ai_candidate)_
-- The Kartarpur entry records the succession of Guru Angad in a reference account; it is central to Sikh memory of a non-hereditary line of Gurus. [S1] _(draft; awaiting human decision; ai_candidate)_
+- Bhai Gurdas’s remembered list of early disciples includes Mardana, identified as a Muslim mirasi or bard; this helps explain why the Guru’s musical companionship matters in Sikh memory. [S9] _(approved claim; corpus_evidence_review)_
+- Kartarpur is associated with Bhai Lehna’s instruction by Guru Nanak and his emergence as Guru Angad, the next Guru. [S1] _(approved claim; corpus_evidence_review)_
+- The Kartarpur entry records the succession of Guru Angad in a reference account; it is central to Sikh memory of a non-hereditary line of Gurus. [S1] _(approved claim; corpus_evidence_review)_
 
 ## Contested material meeting the inclusion standard
 
@@ -49,10 +49,10 @@ No sourcing-compliant statement selected; see unresolved concerns.
 
 ## Contemporary relevance
 
-- Gurinder Singh Mann interprets the early Kartarpur home-community as large enough for congregational prayer, food preparation and service, and visitors. [S3] _(draft; awaiting human decision; ai_candidate)_
-- Kartarpur became the principal early Sikh center during Guru Nanak’s final decades, where he lived with his family and a community formed around him. [S1] _(draft; awaiting human decision; ai_candidate)_
-- Mann reads Bhai Gurdas’s image of a new coin and a pure Panth as a later early-Sikh articulation of the Kartarpur community’s significance. [S3] _(draft; awaiting human decision; ai_candidate)_
-- Sangat denotes fellowship in devotion and moral formation; it also became a social unit oriented to brotherhood, equality, and seva. [S9] _(draft; awaiting human decision; ai_candidate)_
+- Gurinder Singh Mann interprets the early Kartarpur home-community as large enough for congregational prayer, food preparation and service, and visitors. [S3] _(approved claim; corpus_evidence_review)_
+- Kartarpur became the principal early Sikh center during Guru Nanak’s final decades, where he lived with his family and a community formed around him. [S1] _(approved claim; corpus_evidence_review)_
+- Mann reads Bhai Gurdas’s image of a new coin and a pure Panth as a later early-Sikh articulation of the Kartarpur community’s significance. [S3] _(approved claim; corpus_evidence_review)_
+- Sangat denotes fellowship in devotion and moral formation; it also became a social unit oriented to brotherhood, equality, and seva. [S9] _(approved claim; corpus_evidence_review)_
 
 ## Withheld contested or sensitive material
 
@@ -70,7 +70,6 @@ No sourcing-compliant statement selected; see unresolved concerns.
 ## Unresolved concerns
 
 - No sourcing-compliant profile statement for: Challenges and limits. The gap is explicit; no attribute was invented to fill it.
-- 46 evidence-linked claims still await human review.
 - 10 contested or sensitive claims were withheld because they do not meet the two-independent-source standard.
 - Structured era is not populated in the personality record; dated context remains in cited evidence statements.
 - Structured region is not populated in the personality record; geographic context remains in cited evidence statements.

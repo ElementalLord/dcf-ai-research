@@ -7,40 +7,40 @@
 
 ## Profile introduction
 
-- In the Mahabharata, Yudhishthira hears Agastya's story from the sage Lomasa during a pilgrimage narrative. [S1] _(needs_review; awaiting human decision; ai_candidate)_
-- Jamison and Brereton describe Agastya as a major Rigvedic poet known for difficult, vivid hymns. [S2] _(needs_review; awaiting human decision; ai_candidate)_
+- In the Mahabharata, Yudhishthira hears Agastya's story from the sage Lomasa during a pilgrimage narrative. [S1] _(approved claim; corpus_evidence_review)_
+- Jamison and Brereton describe Agastya as a major Rigvedic poet known for difficult, vivid hymns. [S2] _(approved claim; corpus_evidence_review)_
 
 ## Important qualities
 
-- In Yuddha Kanda 105, Agastya teaches Rama the Aditya Hridaya, a hymn to the sun, before the battle with Ravana. [S3] _(needs_review; awaiting human decision; ai_candidate)_
-- The Ramayana has Agastya instruct Rama to recite the solar praise three times. [S3] _(needs_review; awaiting human decision; ai_candidate)_
-- Jamison and Brereton connect Agastya's Indra-Maruts hymns and Lopamudra dialogue with innovation in Vedic ritual practice. [S2] _(needs_review; awaiting human decision; ai_candidate)_
-- Jamison and Brereton read the Lopamudra dialogue in Rigveda 1.179 as engaging ascetic ideals and continuation of family lineage. [S2] _(needs_review; awaiting human decision; ai_candidate)_
+- In Yuddha Kanda 105, Agastya teaches Rama the Aditya Hridaya, a hymn to the sun, before the battle with Ravana. [S3] _(approved claim; corpus_evidence_review)_
+- The Ramayana has Agastya instruct Rama to recite the solar praise three times. [S3] _(approved claim; corpus_evidence_review)_
+- Jamison and Brereton connect Agastya's Indra-Maruts hymns and Lopamudra dialogue with innovation in Vedic ritual practice. [S2] _(approved claim; corpus_evidence_review)_
+- Jamison and Brereton read the Lopamudra dialogue in Rigveda 1.179 as engaging ascetic ideals and continuation of family lineage. [S2] _(approved claim; corpus_evidence_review)_
 
 ## Main contributions
 
-- Jamison and Brereton describe Agastya as a major Rigvedic poet known for difficult, vivid hymns. [S2] _(needs_review; awaiting human decision; ai_candidate)_
-- Jamison and Brereton identify Rigveda 1.165, 1.170, and 1.171 as an Indra-Maruts sequence centered on Agastya's sacrifice. [S2] _(needs_review; awaiting human decision; ai_candidate)_
-- The Vedic Heritage Portal attributes Rigveda 1.166 to the seer Agastya Maitravaruni. [S4] _(needs_review; awaiting human decision; ai_candidate)_
-- The Vedic Heritage Portal attributes Rigveda 1.167 to the seer Agastya Maitravaruni. [S5] _(needs_review; awaiting human decision; ai_candidate)_
-- The Vedic Heritage Portal attributes Rigveda 1.168 to the seer Agastya Maitravaruni. [S6] _(needs_review; awaiting human decision; ai_candidate)_
-- The Vedic Heritage Portal attributes Rigveda 1.169 to the seer Agastya Maitravaruni. [S7] _(needs_review; awaiting human decision; ai_candidate)_
+- Jamison and Brereton describe Agastya as a major Rigvedic poet known for difficult, vivid hymns. [S2] _(approved claim; corpus_evidence_review)_
+- Jamison and Brereton identify Rigveda 1.165, 1.170, and 1.171 as an Indra-Maruts sequence centered on Agastya's sacrifice. [S2] _(approved claim; corpus_evidence_review)_
+- The Vedic Heritage Portal attributes Rigveda 1.166 to the seer Agastya Maitravaruni. [S4] _(approved claim; corpus_evidence_review)_
+- The Vedic Heritage Portal attributes Rigveda 1.167 to the seer Agastya Maitravaruni. [S5] _(approved claim; corpus_evidence_review)_
+- The Vedic Heritage Portal attributes Rigveda 1.168 to the seer Agastya Maitravaruni. [S6] _(approved claim; corpus_evidence_review)_
+- The Vedic Heritage Portal attributes Rigveda 1.169 to the seer Agastya Maitravaruni. [S7] _(approved claim; corpus_evidence_review)_
 
 ## Life and historical/social context
 
-- In the Mahabharata, Yudhishthira hears Agastya's story from the sage Lomasa during a pilgrimage narrative. [S1] _(needs_review; awaiting human decision; ai_candidate)_
+- In the Mahabharata, Yudhishthira hears Agastya's story from the sage Lomasa during a pilgrimage narrative. [S1] _(approved claim; corpus_evidence_review)_
 
 ## Challenges and limits
 
-- In his conversation with Rama, Agastya comments on Sita's decision to accompany her husband into exile. [S8] _(needs_review; awaiting human decision; ai_candidate)_
-- Jamison and Brereton describe Agastya as a major Rigvedic poet known for difficult, vivid hymns. [S2] _(needs_review; awaiting human decision; ai_candidate)_
+- In his conversation with Rama, Agastya comments on Sita's decision to accompany her husband into exile. [S8] _(approved claim; corpus_evidence_review)_
+- Jamison and Brereton describe Agastya as a major Rigvedic poet known for difficult, vivid hymns. [S2] _(approved claim; corpus_evidence_review)_
 
 ## Leadership and relational characteristics
 
-- Agastya counsels the battle-weary Rama in the confrontation with Ravana. [S3] _(needs_review; awaiting human decision; ai_candidate)_
-- Agastya directs Rama toward Panchavati as a place to dwell in the forest. [S8] _(needs_review; awaiting human decision; ai_candidate)_
-- Agastya gives Rama two inexhaustible quivers and a sword in the Ramayana account. [S9] _(needs_review; awaiting human decision; ai_candidate)_
-- Agastya receives Rama at his hermitage and gives him a divine bow in the Ramayana. [S9] _(needs_review; awaiting human decision; ai_candidate)_
+- Agastya counsels the battle-weary Rama in the confrontation with Ravana. [S3] _(approved claim; corpus_evidence_review)_
+- Agastya directs Rama toward Panchavati as a place to dwell in the forest. [S8] _(approved claim; corpus_evidence_review)_
+- Agastya gives Rama two inexhaustible quivers and a sword in the Ramayana account. [S9] _(approved claim; corpus_evidence_review)_
+- Agastya receives Rama at his hermitage and gives him a divine bow in the Ramayana. [S9] _(approved claim; corpus_evidence_review)_
 
 ## Contested material meeting the inclusion standard
 
@@ -53,15 +53,14 @@ No sourcing-compliant statement selected; see unresolved concerns.
 ## Withheld contested or sensitive material
 
 - Agastya asks Vindhya to remain low until he returns from the south; the story says he does not return. — **withheld:** contested_requires_two_independent_sources; 1 independent credible source(s).
+- The Ramayana links Agastya with the tradition that Vindhya ceased growing at his command. — **withheld:** contested_requires_two_independent_sources; 1 independent credible source(s).
 - The Ramayana recounts Agastya's defeat of Vatapi and Ilvala as an epic narrative. — **withheld:** contested_requires_two_independent_sources; 1 independent credible source(s).
 - The Mahabharata tells of the gods asking Agastya to drink the ocean so the Kalakeyas could be defeated. — **withheld:** contested_requires_two_independent_sources; 1 independent credible source(s).
 - The Mahabharata tells of Vindhya growing until it threatened the sun and moon's paths. — **withheld:** contested_requires_two_independent_sources; 1 independent credible source(s).
-- The Ramayana links Agastya with the tradition that Vindhya ceased growing at his command. — **withheld:** contested_requires_two_independent_sources; 1 independent credible source(s).
 
 ## Unresolved concerns
 
 - No sourcing-compliant profile statement for: Contemporary relevance. The gap is explicit; no attribute was invented to fill it.
-- 33 evidence-linked claims still await human review.
 - 5 contested or sensitive claims were withheld because they do not meet the two-independent-source standard.
 - Structured era is not populated in the personality record; dated context remains in cited evidence statements.
 - Structured region is not populated in the personality record; geographic context remains in cited evidence statements.

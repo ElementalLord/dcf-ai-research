@@ -1,6 +1,6 @@
 # Phase 1 Mentor review package
 
-Generated from the live database on 2026-10-15T21:55:32.407Z. Track 1 profiles and presentation mapping are recorded as approved per the Track 2 handoff. Each factual statement still carries source markers and retains its original database review status and approval origin.
+Generated from the live database on 2026-11-10T01:53:12.770Z. Track 1 profiles and presentation mapping are recorded as approved per the Track 2 handoff. Each factual statement still carries source markers and retains its original database review status and approval origin.
 
 | Personality | Approved presentation category | Profile status | Mentor decision |
 |---|---|---|---|

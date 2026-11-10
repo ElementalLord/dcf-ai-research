@@ -7,44 +7,44 @@
 
 ## Profile introduction
 
-- Jamsetji Nusserwanji Tata was born on 3 March 1839 in Navsari, Gujarat. [S1] _(draft; awaiting human decision; ai_candidate)_
-- Tata Central Archives identifies the 1875 annual report of the Central India Spinning, Weaving and Manufacturing Company among the oldest surviving Tata records. [S2] _(draft; awaiting human decision; ai_candidate)_
+- Jamsetji Nusserwanji Tata was born on 3 March 1839 in Navsari, Gujarat. [S1] _(approved claim; corpus_evidence_review)_
+- Tata Central Archives identifies the 1875 annual report of the Central India Spinning, Weaving and Manufacturing Company among the oldest surviving Tata records. [S2] _(approved claim; corpus_evidence_review)_
 
 ## Important qualities
 
-- In 1898 Tata created an endowment for the proposed science institution, converting an educational vision into a long-term financial commitment. [S1] _(draft; awaiting human decision; ai_candidate)_
-- The early problems at Empress Mills contributed to its shares falling to half their nominal value, a concrete financial risk behind later success narratives. [S4] _(draft; awaiting human decision; ai_candidate)_
-- The steel project depended on more than entrepreneurial vision: scholarship identifies geological data, technical advisers, European know-how and railway purchase contracts as enabling conditions. [S5] _(draft; awaiting human decision; ai_candidate)_
-- The Taj was a capital-intensive urban infrastructure and service venture completed in Tata’s lifetime, unlike his unfinished steel, power and science projects. [S6] _(draft; awaiting human decision; ai_candidate)_
+- In 1898 Tata created an endowment for the proposed science institution, converting an educational vision into a long-term financial commitment. [S1] _(approved claim; corpus_evidence_review)_
+- The early problems at Empress Mills contributed to its shares falling to half their nominal value, a concrete financial risk behind later success narratives. [S4] _(approved claim; corpus_evidence_review)_
+- The steel project depended on more than entrepreneurial vision: scholarship identifies geological data, technical advisers, European know-how and railway purchase contracts as enabling conditions. [S5] _(approved claim; corpus_evidence_review)_
+- The Taj was a capital-intensive urban infrastructure and service venture completed in Tata’s lifetime, unlike his unfinished steel, power and science projects. [S6] _(approved claim; corpus_evidence_review)_
 
 ## Main contributions
 
-- Around 1900 Tata sent Dorabji Tata and Shapurji Saklatvala to pursue mineral prospecting licenses across India for the steel project. [S7] _(draft; awaiting human decision; ai_candidate)_
-- Before the detailed scheme, Tata sent Padshah to study European universities for 18 months, indicating that the project sought comparative institutional knowledge rather than merely a local college. [S8] _(draft; awaiting human decision; ai_candidate)_
-- Dorabji Tata and later associates completed the hydroelectric development, which grew beyond the founder’s original scale. [S9] _(draft; awaiting human decision; ai_candidate)_
-- Empress Mills opened in Nagpur on 1 January 1877, the date Queen Victoria was proclaimed Empress of India. [S3] _(draft; awaiting human decision; ai_candidate)_
-- IISc began teaching in 1911 with General and Applied Chemistry and Electrical Technology, fields aligned with industrial and scientific capacity. [S1] _(draft; awaiting human decision; ai_candidate)_
-- IISc resulted from joint support by Tata, the Government of India and the Maharaja of Mysore, so it should not be described as a one-person creation. [S1] _(draft; awaiting human decision; ai_candidate)_
+- Around 1900 Tata sent Dorabji Tata and Shapurji Saklatvala to pursue mineral prospecting licenses across India for the steel project. [S7] _(approved claim; corpus_evidence_review)_
+- Before the detailed scheme, Tata sent Padshah to study European universities for 18 months, indicating that the project sought comparative institutional knowledge rather than merely a local college. [S8] _(approved claim; corpus_evidence_review)_
+- Dorabji Tata and later associates completed the hydroelectric development, which grew beyond the founder’s original scale. [S9] _(approved claim; corpus_evidence_review)_
+- Empress Mills opened in Nagpur on 1 January 1877, the date Queen Victoria was proclaimed Empress of India. [S3] _(approved claim; corpus_evidence_review)_
+- IISc began teaching in 1911 with General and Applied Chemistry and Electrical Technology, fields aligned with industrial and scientific capacity. [S1] _(approved claim; corpus_evidence_review)_
+- IISc resulted from joint support by Tata, the Government of India and the Maharaja of Mysore, so it should not be described as a one-person creation. [S1] _(approved claim; corpus_evidence_review)_
 
 ## Life and historical/social context
 
-- Jamsetji Nusserwanji Tata was born on 3 March 1839 in Navsari, Gujarat. [S1] _(draft; awaiting human decision; ai_candidate)_
-- Tata Central Archives identifies the 1875 annual report of the Central India Spinning, Weaving and Manufacturing Company among the oldest surviving Tata records. [S2] _(draft; awaiting human decision; ai_candidate)_
-- Tata founded a trading firm in 1868 before moving into large-scale manufacturing. [S3] _(draft; awaiting human decision; ai_candidate)_
+- Jamsetji Nusserwanji Tata was born on 3 March 1839 in Navsari, Gujarat. [S1] _(approved claim; corpus_evidence_review)_
+- Tata Central Archives identifies the 1875 annual report of the Central India Spinning, Weaving and Manufacturing Company among the oldest surviving Tata records. [S2] _(approved claim; corpus_evidence_review)_
+- Tata founded a trading firm in 1868 before moving into large-scale manufacturing. [S3] _(approved claim; corpus_evidence_review)_
 
 ## Challenges and limits
 
-- A fire that damaged the Empress Mills loom shed forced equipment renewal; Tata used the moment to replace deficient machinery. [S4] _(draft; awaiting human decision; ai_candidate)_
-- At Tata’s death in 1904, the hydroelectric plan remained at a preliminary stage rather than an operating power plant. [S9] _(draft; awaiting human decision; ai_candidate)_
-- Empress Mills initially suffered from inadequate machinery that produced poor yarn and low output; the setback shows Tata’s industrial learning was neither automatic nor costless. [S4] _(draft; awaiting human decision; ai_candidate)_
-- The early problems at Empress Mills contributed to its shares falling to half their nominal value, a concrete financial risk behind later success narratives. [S4] _(draft; awaiting human decision; ai_candidate)_
+- A fire that damaged the Empress Mills loom shed forced equipment renewal; Tata used the moment to replace deficient machinery. [S4] _(approved claim; corpus_evidence_review)_
+- At Tata’s death in 1904, the hydroelectric plan remained at a preliminary stage rather than an operating power plant. [S9] _(approved claim; corpus_evidence_review)_
+- Empress Mills initially suffered from inadequate machinery that produced poor yarn and low output; the setback shows Tata’s industrial learning was neither automatic nor costless. [S4] _(approved claim; corpus_evidence_review)_
+- The early problems at Empress Mills contributed to its shares falling to half their nominal value, a concrete financial risk behind later success narratives. [S4] _(approved claim; corpus_evidence_review)_
 
 ## Leadership and relational characteristics
 
-- In 1874 Tata floated the Central India Spinning, Weaving and Manufacturing Company, the enterprise that developed into Empress Mills. [S3] _(draft; awaiting human decision; ai_candidate)_
-- The Nagpur venture relied on collaborators including manager R. D. Tata and technical expert James Brooksby, rather than on Tata alone. [S4] _(draft; awaiting human decision; ai_candidate)_
-- For Tata, long-term strategy meant building the organizational capacity for capital-intensive industry—expertise, finance, supply systems and state relationships—not simply expanding a trading house. [S10] _(draft; awaiting human decision; ai_candidate)_
-- Tata’s site choice for Nagpur linked manufacturing strategy to inputs, rail access, water and fuel instead of treating Bombay as the only viable textile centre. [S3] _(draft; awaiting human decision; ai_candidate)_
+- In 1874 Tata floated the Central India Spinning, Weaving and Manufacturing Company, the enterprise that developed into Empress Mills. [S3] _(approved claim; corpus_evidence_review)_
+- The Nagpur venture relied on collaborators including manager R. D. Tata and technical expert James Brooksby, rather than on Tata alone. [S4] _(approved claim; corpus_evidence_review)_
+- For Tata, long-term strategy meant building the organizational capacity for capital-intensive industry—expertise, finance, supply systems and state relationships—not simply expanding a trading house. [S10] _(approved claim; corpus_evidence_review)_
+- Tata’s site choice for Nagpur linked manufacturing strategy to inputs, rail access, water and fuel instead of treating Bombay as the only viable textile centre. [S3] _(approved claim; corpus_evidence_review)_
 
 ## Contested material meeting the inclusion standard
 
@@ -52,10 +52,10 @@ No sourcing-compliant statement selected; see unresolved concerns.
 
 ## Contemporary relevance
 
-- A deputation led by Tata presented the science-university proposal to Viceroy Lord Curzon on 31 December 1898. [S8] _(draft; awaiting human decision; ai_candidate)_
-- Tata died in 1904, five years before IISc’s legal establishment and seven years before its first students, so later achievements belong to a longer collaborative institutional history. [S1] _(draft; awaiting human decision; ai_candidate)_
-- By the later colonial period, TISCO had become the British Empire’s largest integrated steel mill, demonstrating the scale eventually achieved by a project Tata had initiated but not lived to operate. [S11] _(draft; awaiting human decision; ai_candidate)_
-- Economic-history scholarship describes large factories beyond colonial port cities as scarce in nineteenth-century India, making the Nagpur mill an important but exceptional inland industrial venture. [S5] _(draft; awaiting human decision; ai_candidate)_
+- A deputation led by Tata presented the science-university proposal to Viceroy Lord Curzon on 31 December 1898. [S8] _(approved claim; corpus_evidence_review)_
+- Tata died in 1904, five years before IISc’s legal establishment and seven years before its first students, so later achievements belong to a longer collaborative institutional history. [S1] _(approved claim; corpus_evidence_review)_
+- By the later colonial period, TISCO had become the British Empire’s largest integrated steel mill, demonstrating the scale eventually achieved by a project Tata had initiated but not lived to operate. [S11] _(approved claim; corpus_evidence_review)_
+- Economic-history scholarship describes large factories beyond colonial port cities as scarce in nineteenth-century India, making the Nagpur mill an important but exceptional inland industrial venture. [S5] _(approved claim; corpus_evidence_review)_
 
 ## Withheld contested or sensitive material
 
@@ -63,7 +63,6 @@ None identified by the deterministic contested-claim check.
 
 ## Unresolved concerns
 
-- 52 evidence-linked claims still await human review.
 - Structured era is not populated in the personality record; dated context remains in cited evidence statements.
 - Structured region is not populated in the personality record; geographic context remains in cited evidence statements.
 

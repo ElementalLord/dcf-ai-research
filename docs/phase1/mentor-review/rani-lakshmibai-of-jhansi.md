@@ -7,58 +7,58 @@
 
 ## Profile introduction
 
-- Born Manikarnika, Lakshmibai married Gangadhar Rao of Jhansi in 1842 and became its Rani; her political position came from this royal marriage. [S1] _(draft; awaiting human decision; ai_candidate)_
-- Company intervention weakened princely rulers through residents, reduced revenues and territory, and disbanded forces; Lakshmibai’s dispute arose within this erosion of royal power. [S2] _(draft; awaiting human decision; ai_candidate)_
+- Born Manikarnika, Lakshmibai married Gangadhar Rao of Jhansi in 1842 and became its Rani; her political position came from this royal marriage. [S1] _(approved claim; corpus_evidence_review)_
+- Company intervention weakened princely rulers through residents, reduced revenues and territory, and disbanded forces; Lakshmibai’s dispute arose within this erosion of royal power. [S2] _(approved claim; corpus_evidence_review)_
 
 ## Important qualities
 
-- Majumdar rejected claims that Lakshmibai instigated the Jhansi mutiny, whereas colonial accounts implicated her; responsibility for the killings remains an issue requiring comparison of partisan and conflicting evidence. [S4] [S5] _(draft; awaiting human decision; ai_candidate)_
-- Lakshmibai’s June 1857 correspondence, summarized by Majumdar, describes the killing of European officers, clerks and their families by Jhansi troops; her own responsibility is disputed, rather than established by the fact that the killings occurred. [S4] _(draft; awaiting human decision; ai_candidate)_
-- Rose acknowledged that Jhansi’s defenders repeatedly repaired defenses and reopened artillery fire, showing organized resistance rather than courage alone. [S5] _(draft; awaiting human decision; ai_candidate)_
-- Rose attributed Lakshmibai’s influence to her standing, generosity to troops and perseverance after reverses; an opponent’s assessment supports leadership significance without proving tactical superiority. [S6] _(draft; awaiting human decision; ai_candidate)_
+- Majumdar rejected claims that Lakshmibai instigated the Jhansi mutiny, whereas colonial accounts implicated her; responsibility for the killings remains an issue requiring comparison of partisan and conflicting evidence. [S4] [S5] _(approved claim; corpus_evidence_review)_
+- Lakshmibai’s June 1857 correspondence, summarized by Majumdar, describes the killing of European officers, clerks and their families by Jhansi troops; her own responsibility is disputed, rather than established by the fact that the killings occurred. [S4] _(approved claim; corpus_evidence_review)_
+- Rose acknowledged that Jhansi’s defenders repeatedly repaired defenses and reopened artillery fire, showing organized resistance rather than courage alone. [S5] _(approved claim; corpus_evidence_review)_
+- Rose attributed Lakshmibai’s influence to her standing, generosity to troops and perseverance after reverses; an opponent’s assessment supports leadership significance without proving tactical superiority. [S6] _(approved claim; corpus_evidence_review)_
 
 ## Main contributions
 
-- NCERT dates Jhansi’s annexation under the Doctrine of Lapse to 1854, placing the succession dispute before the 1857 uprising. [S3] _(draft; awaiting human decision; ai_candidate)_
-- The Company denied recognition both to Jhansi’s adopted prince and to Lakshmibai as his regent, challenging her claim to political authority as well as the child’s succession. [S7] _(draft; awaiting human decision; ai_candidate)_
-- The Company’s refusal to recognize Lakshmibai’s adopted son as heir after her husband’s death threatened Jhansi’s dynastic continuity and became central to her political dispute. [S2] _(draft; awaiting human decision; ai_candidate)_
-- The Rani Mahal’s durbar hall was a place where Lakshmibai held court, illustrating political authority exercised from a royal household. [S8] _(draft; awaiting human decision; ai_candidate)_
-- Jhansi’s defenders reinforced a breach with earth-filled palisades, an example of practical defensive adaptation during the siege. [S5] _(draft; awaiting human decision; ai_candidate)_
-- Jhansi’s elevated granite fort and thick masonry made a formidable defensive position, so terrain and fortification shaped the contest as well as commanders’ decisions. [S5] _(draft; awaiting human decision; ai_candidate)_
+- After her husband’s death, Lakshmibai asked the East India Company to recognise her adopted son as heir to Jhansi; the Company refused. [S2] _(approved claim; corpus_evidence_review)_
+- NCERT dates Jhansi’s annexation under the Doctrine of Lapse to 1854, placing the succession dispute before the 1857 uprising. [S3] _(approved claim; corpus_evidence_review)_
+- The Company denied recognition both to Jhansi’s adopted prince and to Lakshmibai as his regent, challenging her claim to political authority as well as the child’s succession. [S7] _(approved claim; corpus_evidence_review)_
+- The Rani Mahal’s durbar hall was a place where Lakshmibai held court, illustrating political authority exercised from a royal household. [S8] _(approved claim; corpus_evidence_review)_
+- Jhansi’s defenders reinforced a breach with earth-filled palisades, an example of practical defensive adaptation during the siege. [S5] _(approved claim; corpus_evidence_review)_
+- Jhansi’s elevated granite fort and thick masonry made a formidable defensive position, so terrain and fortification shaped the contest as well as commanders’ decisions. [S5] _(approved claim; corpus_evidence_review)_
 
 ## Life and historical/social context
 
-- Born Manikarnika, Lakshmibai married Gangadhar Rao of Jhansi in 1842 and became its Rani; her political position came from this royal marriage. [S1] _(draft; awaiting human decision; ai_candidate)_
-- Company intervention weakened princely rulers through residents, reduced revenues and territory, and disbanded forces; Lakshmibai’s dispute arose within this erosion of royal power. [S2] _(draft; awaiting human decision; ai_candidate)_
-- Dalhousie’s governorship, 1848–1856, brought an annexation policy that threatened dynastic succession in states such as Jhansi. [S3] _(draft; awaiting human decision; ai_candidate)_
-- Jhansi was a Maratha-ruled state in Bundelkhand whose succession already depended on British recognition before Lakshmibai’s dispute with the Company. [S1] _(draft; awaiting human decision; ai_candidate)_
+- Born Manikarnika, Lakshmibai married Gangadhar Rao of Jhansi in 1842 and became its Rani; her political position came from this royal marriage. [S1] _(approved claim; corpus_evidence_review)_
+- Company intervention weakened princely rulers through residents, reduced revenues and territory, and disbanded forces; Lakshmibai’s dispute arose within this erosion of royal power. [S2] _(approved claim; corpus_evidence_review)_
+- Dalhousie’s governorship, 1848–1856, brought an annexation policy that threatened dynastic succession in states such as Jhansi. [S3] _(approved claim; corpus_evidence_review)_
+- Jhansi was a Maratha-ruled state in Bundelkhand whose succession already depended on British recognition before Lakshmibai’s dispute with the Company. [S1] _(approved claim; corpus_evidence_review)_
 
 ## Challenges and limits
 
-- Dalhousie’s governorship, 1848–1856, brought an annexation policy that threatened dynastic succession in states such as Jhansi. [S3] _(draft; awaiting human decision; ai_candidate)_
-- Nana Saheb also challenged Company treatment of an adopted successor, seeking his father’s pension; his grievance helps explain the wider dynastic setting of Lakshmibai’s resistance. [S2] _(draft; awaiting human decision; ai_candidate)_
-- The Company denied recognition both to Jhansi’s adopted prince and to Lakshmibai as his regent, challenging her claim to political authority as well as the child’s succession. [S7] _(draft; awaiting human decision; ai_candidate)_
-- The Company’s refusal to recognize Lakshmibai’s adopted son as heir after her husband’s death threatened Jhansi’s dynastic continuity and became central to her political dispute. [S2] _(draft; awaiting human decision; ai_candidate)_
+- Dalhousie’s governorship, 1848–1856, brought an annexation policy that threatened dynastic succession in states such as Jhansi. [S3] _(approved claim; corpus_evidence_review)_
+- The Company denied recognition both to Jhansi’s adopted prince and to Lakshmibai as his regent, challenging her claim to political authority as well as the child’s succession. [S7] _(approved claim; corpus_evidence_review)_
+- The uprising at Meerut on 10 May 1857 spread toward Delhi and other centers, turning military discontent into a much wider challenge to Company authority. [S2] _(approved claim; corpus_evidence_review)_
+- Majumdar rejected claims that Lakshmibai instigated the Jhansi mutiny, whereas colonial accounts implicated her; responsibility for the killings remains an issue requiring comparison of partisan and conflicting evidence. [S4] [S5] _(approved claim; corpus_evidence_review)_
 
 ## Leadership and relational characteristics
 
-- After Kalpi, the rebels moved to Gwalior, where Scindia’s troops defected on 1 June 1858; resistance gained a new base through a rupture in a pro-British ruler’s military loyalty. [S9] _(draft; awaiting human decision; ai_candidate)_
-- Lakshmibai fought alongside Tantia Tope, Nana Saheb’s general; Jhansi’s resistance became connected to other rebel forces rather than remaining a local succession dispute. [S2] _(draft; awaiting human decision; ai_candidate)_
-- Lakshmibai sought legal help from John Lang in 1854 to contest Company annexation; resistance initially included negotiation and legal argument. [S8] _(draft; awaiting human decision; ai_candidate)_
-- Nana Saheb also challenged Company treatment of an adopted successor, seeking his father’s pension; his grievance helps explain the wider dynastic setting of Lakshmibai’s resistance. [S2] _(draft; awaiting human decision; ai_candidate)_
+- After Kalpi, the rebels moved to Gwalior, where Scindia’s troops defected on 1 June 1858; resistance gained a new base through a rupture in a pro-British ruler’s military loyalty. [S9] _(approved claim; corpus_evidence_review)_
+- Lakshmibai fought alongside Tantia Tope, Nana Saheb’s general; Jhansi’s resistance became connected to other rebel forces rather than remaining a local succession dispute. [S2] _(approved claim; corpus_evidence_review)_
+- Lakshmibai sought legal help from John Lang in 1854 to contest Company annexation; resistance initially included negotiation and legal argument. [S8] _(approved claim; corpus_evidence_review)_
+- NCERT says Nana Saheb, the adopted son of Peshwa Baji Rao II, sought his father’s pension and that the Company refused; it discusses Lakshmibai’s adopted heir dispute in the same section. [S2] _(approved claim; corpus_evidence_review)_
 
 ## Contested material meeting the inclusion standard
 
-- Majumdar rejected claims that Lakshmibai instigated the Jhansi mutiny, whereas colonial accounts implicated her; responsibility for the killings remains an issue requiring comparison of partisan and conflicting evidence. [S4] [S5] _(draft; awaiting human decision; ai_candidate)_
-- The Leader’s 31 July 1858 Gwalior report dates Lakshmibai’s death to 18 June; the safest shared chronology is June 1858 near Gwalior, while retaining the rival 17 June museum date. [S10] [S9] _(draft; awaiting human decision; ai_candidate)_
-- The National Army Museum places Lakshmibai’s death at Kotah-ke-Serai near Gwalior on 17 June 1858; a contemporary Leader report gives 18 June, so the precise day should not be silently harmonized. [S9] [S10] _(draft; awaiting human decision; ai_candidate)_
+- Majumdar rejected claims that Lakshmibai instigated the Jhansi mutiny, whereas colonial accounts implicated her; responsibility for the killings remains an issue requiring comparison of partisan and conflicting evidence. [S4] [S5] _(approved claim; corpus_evidence_review)_
+- The Leader’s 31 July 1858 Gwalior report dates Lakshmibai’s death to 18 June; the safest shared chronology is June 1858 near Gwalior, while retaining the rival 17 June museum date. [S10] [S9] _(approved claim; corpus_evidence_review)_
+- The National Army Museum places Lakshmibai’s death at Kotah-ke-Serai near Gwalior on 17 June 1858; a contemporary Leader report gives 18 June, so the precise day should not be silently harmonized. [S9] [S10] _(approved claim; corpus_evidence_review)_
 
 ## Contemporary relevance
 
-- After 1857, ruling chiefs were assured that adopted heirs could succeed, but under British paramountcy; this reversed the succession policy central to Jhansi’s earlier grievance without ending colonial subordination. [S2] _(draft; awaiting human decision; ai_candidate)_
-- After the uprising, the 1858 transfer of Company power to the British Crown changed the system of imperial rule against which Lakshmibai had fought. [S2] _(draft; awaiting human decision; ai_candidate)_
-- Deshpande analyzes how Lakshmibai became an icon of heroic Indian womanhood through later narratives, separating nationalist memory from direct evidence about 1857. [S11] _(draft; awaiting human decision; ai_candidate)_
-- Lakshmibai’s memory developed through late nineteenth-century Marathi writing and mid-twentieth-century Hindi narratives, rather than remaining a fixed image after her death. [S11] _(draft; awaiting human decision; ai_candidate)_
+- After 1857, ruling chiefs were assured that adopted heirs could succeed, but under British paramountcy; this reversed the succession policy central to Jhansi’s earlier grievance without ending colonial subordination. [S2] _(approved claim; corpus_evidence_review)_
+- After the uprising, the 1858 transfer of Company power to the British Crown changed the system of imperial rule against which Lakshmibai had fought. [S2] _(approved claim; corpus_evidence_review)_
+- Deshpande analyzes how Lakshmibai became an icon of heroic Indian womanhood through later narratives, separating nationalist memory from direct evidence about 1857. [S11] _(approved claim; corpus_evidence_review)_
+- Lakshmibai’s memory developed through late nineteenth-century Marathi writing and mid-twentieth-century Hindi narratives, rather than remaining a fixed image after her death. [S11] _(approved claim; corpus_evidence_review)_
 
 ## Withheld contested or sensitive material
 
@@ -71,7 +71,6 @@
 
 ## Unresolved concerns
 
-- 53 evidence-linked claims still await human review.
 - 6 contested or sensitive claims were withheld because they do not meet the two-independent-source standard.
 - Structured era is not populated in the personality record; dated context remains in cited evidence statements.
 - Structured region is not populated in the personality record; geographic context remains in cited evidence statements.
