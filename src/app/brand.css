@@ -298,3 +298,87 @@
 :root:root :is(.resources-page .resource-source-attention, .resources-page .website-paused, .feedback-page .feedback-entry-rating, .readiness-page .state-thin) { color: #f0a58a; }
 :root:root .feedback-page .feedback-bar i { background: var(--brand-accent); }
 :root:root .readiness-page .state-usable { color: var(--brand-accent); }
+
+/* ---------- Admin tool pages (Corpus, Research, Review) ----------
+   These pages are styled with Tailwind colour utilities (bg-white, text-zinc-900,
+   and so on). Tailwind reads each colour from a CSS variable, so remapping those
+   variables inside .admin-shell gives them the site's navy theme without
+   changing any page markup. Light shades become dark and dark shades become light. */
+:root:root body:has(.admin-shell) {
+  color: var(--brand-text);
+  background: var(--brand-bg) !important;
+  font-family: var(--brand-body);
+  /* shadcn components (inputs, selects, dialogs; popovers render on body). */
+  --background: var(--brand-bg);
+  --foreground: var(--brand-text);
+  --card: var(--brand-surface);
+  --card-foreground: var(--brand-text);
+  --popover: var(--brand-surface);
+  --popover-foreground: var(--brand-text);
+  --primary: var(--brand-accent);
+  --primary-foreground: var(--brand-ink);
+  --secondary: var(--brand-surface-2);
+  --secondary-foreground: var(--brand-text);
+  --muted: var(--brand-surface-2);
+  --muted-foreground: var(--brand-muted);
+  --accent: var(--brand-surface-2);
+  --accent-foreground: var(--brand-text);
+  --border: #26325e;
+  --input: #34416f;
+  --ring: var(--brand-accent);
+}
+:root:root .admin-shell, :root:root body:has(.admin-shell) [data-slot$="-content"] {
+  color-scheme: dark;
+  --color-white: #111b3e;
+  --color-black: #f5f7ff;
+  --color-zinc-50: #0b1330;
+  --color-zinc-100: #172350;
+  --color-zinc-200: #26325e;
+  --color-zinc-300: #34416f;
+  --color-zinc-400: #7d88a8;
+  --color-zinc-500: #a3acc6;
+  --color-zinc-600: #b6bfd8;
+  --color-zinc-700: #d0d6e8;
+  --color-zinc-800: #e3e8f5;
+  --color-zinc-900: #f5f7ff;
+  --color-zinc-950: #ffffff;
+  --color-amber-50: #2a1f22;
+  --color-amber-100: #3a2a2c;
+  --color-amber-300: #7a4d4a;
+  --color-amber-500: #f0a58a;
+  --color-amber-600: #f0a58a;
+  --color-amber-800: #f6cbbb;
+  --color-amber-900: #f6cbbb;
+  --color-amber-950: #f6cbbb;
+  --color-red-50: #3a1f24;
+  --color-red-100: #45262a;
+  --color-red-700: #ffb4ab;
+  --color-red-800: #ffb4ab;
+  --color-emerald-100: #14302a;
+  --color-emerald-700: #8fd8b0;
+  --color-emerald-800: #8fd8b0;
+  --color-green-800: #8fd8b0;
+  --color-blue-50: #172350;
+  --color-blue-200: #34416f;
+  --color-blue-950: #dbe5ff;
+}
+:root:root .admin-shell :is(h1, h2, h3) { font-family: var(--brand-display); letter-spacing: -0.02em; }
+:root:root .admin-shell :is(a, button, input, select, textarea, summary):focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 2px; }
+/* Main action buttons (dark buttons in the old theme) use the site's blue. */
+:root:root .admin-shell :is(.bg-zinc-900, .bg-zinc-950, .bg-black) { color: var(--brand-ink); background: var(--brand-accent); border-color: var(--brand-accent); }
+:root:root .admin-shell :is(.bg-zinc-900, .bg-zinc-950, .bg-black):hover { background: var(--brand-accent-hover); }
+:root:root .admin-shell :is(.bg-zinc-900, .bg-zinc-950, .bg-black) * { color: inherit; }
+:root:root .admin-shell :is(input, select, textarea)::placeholder { color: #7d88a8; }
+/* Every page is navy, so the page root is too (no white strip below short pages). */
+html:root:root { background: var(--brand-bg); }
+/* Form fields: globals.css gives .input a white background; use the site's dark fields. */
+:root:root .admin-shell :is(.input, input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]), select, textarea) {
+  color: var(--brand-text);
+  background-color: var(--brand-bg);
+  border-color: #34416f;
+  border-radius: 6px;
+  box-shadow: none;
+}
+:root:root .admin-shell :is(.input, input, select, textarea):focus { border-color: var(--brand-accent); box-shadow: 0 0 0 3px rgba(143, 176, 255, 0.18); }
+:root:root .admin-shell :is(.input, input, select, textarea):disabled { color: var(--brand-muted); background-color: var(--brand-surface-2); }
+:root:root .admin-shell :is(input[type="checkbox"], input[type="radio"]) { accent-color: var(--brand-accent); }

@@ -211,7 +211,7 @@ export default function CorpusPage() {
   }
 
   return (
-    <main className="min-h-screen bg-zinc-50 text-zinc-900">
+    <main className="admin-shell min-h-screen bg-zinc-50 text-zinc-900">
       <div className="mx-auto max-w-7xl px-5 py-10">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div><p className="text-sm font-semibold uppercase tracking-wider text-zinc-500">Internal research administration</p><h1 className="mt-2 text-4xl font-bold">Source Corpus</h1><p className="mt-2 text-zinc-600">Ingest, tag, embed, search, and review evidence without exposing server credentials.</p></div>

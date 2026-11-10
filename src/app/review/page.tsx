@@ -340,7 +340,7 @@ export default function ReviewPage() {
   }
 
   return (
-    <main className="min-h-screen bg-zinc-50 text-zinc-900">
+    <main className="admin-shell min-h-screen bg-zinc-50 text-zinc-900">
       <div className="mx-auto max-w-6xl px-6 py-12">
 
         <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">

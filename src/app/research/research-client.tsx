@@ -466,7 +466,7 @@ export default function ResearchWorkspace() {
   }
 
   return (
-    <main className="min-h-screen bg-zinc-50 text-zinc-900">
+    <main className="admin-shell min-h-screen bg-zinc-50 text-zinc-900">
       <div className="mx-auto max-w-5xl px-6 py-12">
 
         <div className="mb-10">

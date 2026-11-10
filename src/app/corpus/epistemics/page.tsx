@@ -47,7 +47,7 @@ export default function EpistemicsPage() {
     setSummary(await api(`/api/corpus/epistemics?personalityId=${personalityId}&scope=${scope}`));
   });
 
-  return <main className="mx-auto max-w-7xl px-4 py-8">
+  return <main className="admin-shell mx-auto max-w-7xl px-4 py-8">
     <nav className="mb-6 flex gap-4 text-sm"><Link href="/corpus" className="underline">Corpus</Link><Link href="/corpus/reconcile" className="underline">Reconciliation</Link><Link href="/corpus/evidence" className="underline">Evidence Completion</Link></nav>
     <p className="text-sm font-semibold uppercase tracking-wider text-zinc-500">Corpus administration</p>
     <h1 className="mt-2 text-4xl font-bold">Claim Epistemics</h1>

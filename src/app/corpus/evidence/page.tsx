@@ -44,7 +44,7 @@ export default function EvidenceCompletionPage() {
     await loadRequirements();
   });
 
-  return <main className="mx-auto max-w-7xl px-4 py-8">
+  return <main className="admin-shell mx-auto max-w-7xl px-4 py-8">
     <nav className="mb-6 flex gap-4 text-sm"><Link href="/corpus" className="underline">Corpus</Link><Link href="/corpus/external" className="underline">External Research</Link><Link href="/ask" className="underline">Ask</Link></nav>
     <p className="text-sm font-semibold uppercase tracking-wider text-zinc-500">Corpus administration</p>
     <h1 className="mt-2 text-4xl font-bold">Citation-first Evidence Completion</h1>

@@ -53,7 +53,7 @@ export default function ReconcilePage() {
     setItems((old) => old.filter((entry) => entry.id !== item.id));
   });
 
-  return <main className="mx-auto max-w-7xl px-4 py-8">
+  return <main className="admin-shell mx-auto max-w-7xl px-4 py-8">
     <nav className="mb-6 flex gap-4 text-sm"><Link href="/corpus" className="underline">Corpus</Link><Link href="/corpus/evidence" className="underline">Evidence Completion</Link><Link href="/corpus/epistemics" className="underline">Epistemics</Link><Link href="/review" className="underline">Claims</Link></nav>
     <p className="text-sm font-semibold uppercase tracking-wider text-zinc-500">Corpus administration</p>
     <h1 className="mt-2 text-4xl font-bold">Evidence Reconciliation</h1>
