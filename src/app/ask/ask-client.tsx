@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent, type PointerEvent } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, ArrowUpRight, Check, ChevronDown, CircleHelp, RotateCcw } from "lucide-react";
+import "./ask.css";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -27,17 +28,11 @@ function legacyFeedbackContext(turn: Result, personalityId: string): FeedbackCon
     answerMode: "legacy_client_snapshot", provider: null, model: null, requestId: null };
 }
 type Style = "simple" | "balanced" | "detailed" | "research";
-type ResizeAxis = "width" | "height";
-type ResizeSession = { axis: ResizeAxis; pointerId: number; startX: number; startY: number; width: number; height: number };
-const CHAT_MIN_WIDTH = 700;
-const CHAT_MIN_HEIGHT = 540;
-const CHAT_MAX_HEIGHT = 1500;
-const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 const styles: Array<{ value: Style; label: string; description: string }> = [
-  { value: "simple", label: "Simple", description: "Brief and plain" },
-  { value: "balanced", label: "Balanced", description: "Answer with context" },
-  { value: "detailed", label: "Detailed", description: "More explanation" },
-  { value: "research", label: "Research", description: "Fuller evidence review" },
+  { value: "simple", label: "Short", description: "A few easy sentences" },
+  { value: "balanced", label: "Medium", description: "A clear answer with a little more" },
+  { value: "detailed", label: "Long", description: "More explaining" },
+  { value: "research", label: "Very long", description: "Looks at more sources" },
 ];
 const shortCategoryNames: Record<string, string> = {
   "Educators and Social Reformers": "Educators & Reformers",
@@ -113,17 +108,10 @@ export default function AskClient({ personalities, loadError }: { personalities:
   const [error, setError] = useState(loadError ? "People could not be loaded. Refresh the page to try again." : "");
   const [sourceId, setSourceId] = useState<string | null>(null);
   const [restored, setRestored] = useState(false);
-  const [chatWidth, setChatWidth] = useState(980);
-  const [chatHeight, setChatHeight] = useState<number | null>(null);
-  const [chatSizeRestored, setChatSizeRestored] = useState(false);
-  const [viewportWidth, setViewportWidth] = useState(1400);
-  const [viewportHeight, setViewportHeight] = useState(800);
   const submitting = useRef(false);
   const input = useRef<HTMLTextAreaElement>(null);
   const chatThread = useRef<HTMLDivElement>(null);
-  const chatPage = useRef<HTMLElement>(null);
   const suggestionsRef = useRef<HTMLDivElement>(null);
-  const resizeSession = useRef<ResizeSession | null>(null);
   const selectedCitation = sourceId ? turns[Number(sourceId.split(":")[0])]?.citations?.find(citation => citation.id === sourceId.split(":")[1]) : undefined;
   const selectedCitationNumber = sourceId ? (turns[Number(sourceId.split(":")[0])]?.citations?.findIndex(citation => citation.id === sourceId.split(":")[1]) ?? -1) : -1;
   const selectedExcerpt = readableEvidence(selectedCitation?.excerpt);
@@ -140,10 +128,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
     ? [{ label: "In its time", ask: "How was that significant for its time?" }, { label: "Who else?", ask: "Who else was doing similar work at the time?" },
       ...lenses.map(lens => ({ label: `${lens.label} angle`, ask: `What about the ${lens.label.toLowerCase()} angle?` }))]
     : lenses.map(lens => ({ label: `${lens.label} angle`, ask: `Explain ${person} from the ${lens.label.toLowerCase()} angle.` }));
-  const styleLabel = styles.find(item => item.value === style)?.label || "Balanced";
-  const chatWidthMax = Math.max(CHAT_MIN_WIDTH, viewportWidth - 24);
-  const displayedWidth = Math.min(chatWidth, chatWidthMax);
-  const displayedHeight = chatHeight ?? Math.max(CHAT_MIN_HEIGHT, viewportHeight - 60);
+  const styleLabel = styles.find(item => item.value === style)?.label || "Medium";
   const visibleSuggestions = Array.from({ length: 3 }, (_, index) => suggestionTemplates[(suggestionStart + index) % suggestionTemplates.length](person));
 
   useEffect(() => {
@@ -169,40 +154,6 @@ export default function AskClient({ personalities, loadError }: { personalities:
     catch { /* Conversation remains in this page session. */ }
   }, [conversations, restored]);
   useEffect(() => {
-    let savedWidth: string | null = null;
-    let savedHeight: string | null = null;
-    try {
-      savedWidth = window.localStorage.getItem("dcf-chat-width-v1");
-      savedHeight = window.localStorage.getItem("dcf-chat-height-v1");
-    } catch { /* Resize handles still work without storage. */ }
-    const updateViewport = () => {
-      setViewportWidth(window.innerWidth);
-      setViewportHeight(window.innerHeight);
-    };
-    updateViewport();
-    window.addEventListener("resize", updateViewport);
-    queueMicrotask(() => {
-      if (savedWidth) {
-        const width = Number(savedWidth);
-        if (Number.isFinite(width)) setChatWidth(clamp(width, CHAT_MIN_WIDTH, 2000));
-      }
-      if (savedHeight) {
-        const height = Number(savedHeight);
-        if (Number.isFinite(height)) setChatHeight(clamp(height, CHAT_MIN_HEIGHT, CHAT_MAX_HEIGHT));
-      }
-      setChatSizeRestored(true);
-    });
-    return () => window.removeEventListener("resize", updateViewport);
-  }, []);
-  useEffect(() => {
-    if (!chatSizeRestored) return;
-    try {
-      window.localStorage.setItem("dcf-chat-width-v1", String(chatWidth));
-      if (chatHeight !== null) window.localStorage.setItem("dcf-chat-height-v1", String(chatHeight));
-    } catch { /* Keep the current size for this page. */ }
-  }, [chatWidth, chatHeight, chatSizeRestored]);
-
-  useEffect(() => {
     if (!loading) return;
     const interval = window.setInterval(() => setElapsed(seconds => seconds + 1), 1000);
     return () => window.clearInterval(interval);
@@ -217,45 +168,9 @@ export default function AskClient({ personalities, loadError }: { personalities:
     return () => window.clearInterval(interval);
   }, [personId, turns.length, loading]);
   useEffect(() => {
-    const thread = chatThread.current;
-    const latest = thread?.querySelector<HTMLElement>(".chat-exchange:last-of-type");
-    if (thread && latest) thread.scrollTo({ top: latest.getBoundingClientRect().top - thread.getBoundingClientRect().top + thread.scrollTop - 18, behavior: "smooth" });
+    const latest = chatThread.current?.querySelector<HTMLElement>(".chat-exchange:last-of-type");
+    latest?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [personId, turns.length, pendingQuestion]);
-
-  function beginResize(axis: ResizeAxis, event: PointerEvent<HTMLDivElement>) {
-    if (event.pointerType === "mouse" && event.button !== 0) return;
-    const bounds = chatPage.current?.getBoundingClientRect();
-    if (!bounds) return;
-    resizeSession.current = { axis, pointerId: event.pointerId, startX: event.clientX, startY: event.clientY, width: bounds.width, height: bounds.height };
-    event.currentTarget.setPointerCapture(event.pointerId);
-    event.preventDefault();
-  }
-
-  function moveResize(event: PointerEvent<HTMLDivElement>) {
-    const drag = resizeSession.current;
-    if (!drag || drag.pointerId !== event.pointerId) return;
-    if (drag.axis === "width") setChatWidth(Math.round(clamp(drag.width + (event.clientX - drag.startX) * 2, CHAT_MIN_WIDTH, Math.max(CHAT_MIN_WIDTH, window.innerWidth - 24))));
-    else setChatHeight(Math.round(clamp(drag.height + event.clientY - drag.startY, CHAT_MIN_HEIGHT, CHAT_MAX_HEIGHT)));
-  }
-
-  function endResize(event: PointerEvent<HTMLDivElement>) {
-    if (resizeSession.current?.pointerId !== event.pointerId) return;
-    resizeSession.current = null;
-    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
-  }
-
-  function resizeWithKeyboard(axis: ResizeAxis, event: KeyboardEvent<HTMLDivElement>) {
-    const decrease = axis === "width" ? event.key === "ArrowLeft" : event.key === "ArrowUp";
-    const increase = axis === "width" ? event.key === "ArrowRight" : event.key === "ArrowDown";
-    if (!decrease && !increase && event.key !== "Home" && event.key !== "End") return;
-    event.preventDefault();
-    const min = axis === "width" ? CHAT_MIN_WIDTH : CHAT_MIN_HEIGHT;
-    const max = axis === "width" ? chatWidthMax : CHAT_MAX_HEIGHT;
-    const current = axis === "width" ? displayedWidth : displayedHeight;
-    const next = event.key === "Home" ? min : event.key === "End" ? max : clamp(current + (increase ? 40 : -40), min, max);
-    if (axis === "width") setChatWidth(next);
-    else setChatHeight(next);
-  }
 
   async function ask(event: React.FormEvent) {
     event.preventDefault();
@@ -288,42 +203,43 @@ export default function AskClient({ personalities, loadError }: { personalities:
     }
   }
 
-  return <main ref={chatPage} className="ai-page page-shell" style={{ "--chat-width": `${chatWidth}px`, ...(chatHeight === null ? {} : { "--chat-height": `${chatHeight}px` }) } as CSSProperties}>
-    <div className="ai-layout"><div className="ai-main chat-main">
-      <div className="ai-title"><h1>Ask DCF</h1><p>Ask about anyone in the collection. Every answer cites its sources, so tap a citation to see the evidence.</p></div>
-      <div className="chat-shell">
-        <div className="chat-toolbar"><div className="chat-toolbar-controls"><div className="person-control"><span>Talking about</span>
-          <button type="button" className="person-picker-trigger" aria-label={`Choose person. Current: ${person}`} aria-haspopup="dialog" aria-expanded={personPickerOpen} onClick={() => { setPersonCategory(personRecord?.category || peopleGroups[0]?.label || ""); setPersonPickerOpen(true); }} disabled={loading || !personalities.length}><span>{personId ? person : "Choose a person"}</span><ChevronDown size={16} aria-hidden="true" /></button>
-        </div><label className="depth-control">Answer depth
-          <Select value={style} onValueChange={value => setStyle(value as Style)} disabled={loading}>
-            <SelectTrigger aria-label="Answer depth"><SelectValue>{styleLabel}</SelectValue></SelectTrigger>
-            <SelectContent className="ai-select-content">{styles.map(item => <SelectItem key={item.value} value={item.value}>{item.label}: {item.description}</SelectItem>)}</SelectContent>
-          </Select>
-        </label></div><div className="chat-toolbar-actions"><button className="chat-how-to" type="button" onClick={() => setHowToOpen(true)} aria-label="How to use Ask DCF" aria-haspopup="dialog"><CircleHelp size={16} aria-hidden="true" /><span>How to use</span></button>{turns.length > 0 && <button className="chat-new" type="button" onClick={() => { setConversations(current => ({ ...current, [personId]: [] })); setSourceId(null); setError(""); input.current?.focus(); }} disabled={loading} aria-label="New chat"><RotateCcw size={14} aria-hidden="true" /><span>New chat</span></button>}</div></div>
-        <div ref={chatThread} className="chat-thread" role="log" aria-live="polite" tabIndex={0} aria-label={`Conversation about ${person}`}>
-          {!turns.length && !pendingQuestion && <div className="chat-welcome"><div><p className="chat-name">DCF</p><p>Hi! What would you like to know about {person}? Start anywhere.</p></div></div>}
+  return <main className="page ai-page">
+    <h1>Ask a question</h1>
+    <p className="lede">Pick a person, then type your question. In the answer, tap a number to see where that fact came from.</p>
+    <div className="ask-setup">
+      <div className="ask-field"><span id="person-label">Who do you want to ask about?</span>
+        <button type="button" className="person-picker-trigger" aria-labelledby="person-label person-name" aria-haspopup="dialog" aria-expanded={personPickerOpen} onClick={() => { setPersonCategory(personRecord?.category || peopleGroups[0]?.label || ""); setPersonPickerOpen(true); }} disabled={loading || !personalities.length}><span id="person-name">{personId ? person : "Choose a person"}</span><span className="person-picker-change">Change <ChevronDown size={18} aria-hidden="true" /></span></button>
+      </div>
+      <label className="ask-field">How long should the answer be?
+        <Select value={style} onValueChange={value => setStyle(value as Style)} disabled={loading}>
+          <SelectTrigger aria-label="Answer length"><SelectValue>{styleLabel}</SelectValue></SelectTrigger>
+          <SelectContent className="ai-select-content">{styles.map(item => <SelectItem key={item.value} value={item.value}>{item.label}: {item.description}</SelectItem>)}</SelectContent>
+        </Select>
+      </label>
+      <div className="ask-setup-actions"><button className="text-button" type="button" onClick={() => setHowToOpen(true)} aria-haspopup="dialog"><CircleHelp size={18} aria-hidden="true" /> How does this work?</button>{turns.length > 0 && <button className="text-button" type="button" onClick={() => { setConversations(current => ({ ...current, [personId]: [] })); setSourceId(null); setError(""); input.current?.focus(); }} disabled={loading}><RotateCcw size={16} aria-hidden="true" /> Start over</button>}</div>
+    </div>
+    <div className="chat-shell">
+        <div ref={chatThread} className="chat-thread" role="log" aria-live="polite" aria-label={`Conversation about ${person}`}>
+          {!turns.length && !pendingQuestion && <p className="chat-welcome">What would you like to know about {person}?</p>}
           {turns.map((turn, turnIndex) => <div className="chat-exchange" key={`${personId}:${turnIndex}`}>
             <div className="chat-message chat-message-user"><span className="chat-name">You</span><p>{turn.question}</p></div>
-            <article className="chat-message chat-message-assistant"><div className="chat-message-content"><span className="chat-name">DCF{turn.lens && <span className="chat-lens-tag">{turn.lens.label} angle</span>}</span>{turn.status === "research_answer" && <p>Live research · cited for this answer, not saved to Resources</p>}{isUnusableStoredAnswer(turn.answer, turn.status)
+            <article className="chat-message chat-message-assistant"><div className="chat-message-content"><span className="chat-name">Answer{turn.lens && <span className="chat-lens-tag">{turn.lens.label} angle</span>}</span>{turn.status === "research_answer" && <p className="chat-note">Found by searching the web just now. DCF has not checked these pages yet.</p>}{isUnusableStoredAnswer(turn.answer, turn.status)
               ? <div className="chat-repair"><p>{isIncompleteQuestion(turn.question) ? "That question stopped partway through. Finish it below and I can give you a useful answer." : !turn.answer.trim() ? "That earlier reply was empty. Ask it again for a complete answer." : "That earlier reply pulled in page text instead of answering. Ask it again for a fresh response."}</p><button type="button" onClick={() => { setQuestion(isIncompleteQuestion(turn.question) ? `${turn.question.trim()} ` : turn.question); input.current?.focus(); }}>{isIncompleteQuestion(turn.question) ? "Finish question" : "Ask again"}<ArrowRight size={14} aria-hidden="true" /></button></div>
               : <><Answer answer={turn.answer} show={id => setSourceId(`${turnIndex}:${id}`)} citations={turn.citations || []}/>{turn.status === "abstained" && (turn.researchLeads?.length || turn.webSearchUrl) && <div className="research-continuation"><p>{turn.researchLeads?.length ? "Pages to inspect (not verified as evidence for this answer)" : "Continue researching this question"}</p>{turn.researchLeads?.map(lead => <a key={lead.url} href={lead.url} target="_blank" rel="noopener noreferrer">{lead.title || "Source page"}<ArrowUpRight size={14} aria-hidden="true" /></a>)}{turn.webSearchUrl && <a href={turn.webSearchUrl} target="_blank" rel="noopener noreferrer">Search the web for this question<ArrowUpRight size={14} aria-hidden="true" /></a>}</div>}{turn.feedbackToken ? <ResponseFeedback key={turn.feedbackToken} token={turn.feedbackToken}/> : turn.feedbackId && <ResponseFeedback key={turn.feedbackId} legacyContext={legacyFeedbackContext(turn, personId)}/>}</>}</div></article>
           </div>)}
-          {pendingQuestion && <div className="chat-exchange chat-exchange-pending"><div className="chat-message chat-message-user"><span className="chat-name">You</span><p>{pendingQuestion}</p></div><div className="chat-message chat-message-assistant chat-thinking" role="status" aria-live="polite"><div className="chat-message-content"><span className="chat-name">DCF is thinking</span><div className="chat-thinking-line"><span className="chat-thinking-dots" aria-hidden="true"><i/><i/><i/></span><span>{elapsed < 4 ? "Reading your question" : elapsed < 14 ? "Looking through the evidence" : "Putting the answer together"}</span></div><div className="chat-thinking-track" aria-hidden="true"><span className={elapsed < 4 ? "is-current" : "is-done"}/><span className={elapsed >= 4 && elapsed < 14 ? "is-current" : elapsed >= 14 ? "is-done" : ""}/><span className={elapsed >= 14 ? "is-current" : ""}/></div><small>{elapsed >= 25 ? "This is taking a little longer than usual." : "Sources will appear right beside the facts they support."}</small></div></div></div>}
+          {pendingQuestion && <div className="chat-exchange chat-exchange-pending"><div className="chat-message chat-message-user"><span className="chat-name">You</span><p>{pendingQuestion}</p></div><div className="chat-message chat-message-assistant chat-thinking" role="status" aria-live="polite"><div className="chat-message-content"><span className="chat-name">Thinking…</span><div className="chat-thinking-line"><span className="chat-thinking-dots" aria-hidden="true"><i/><i/><i/></span><span>{elapsed < 4 ? "Reading your question" : elapsed < 14 ? "Looking through the evidence" : "Putting the answer together"}</span></div><div className="chat-thinking-track" aria-hidden="true"><span className={elapsed < 4 ? "is-current" : "is-done"}/><span className={elapsed >= 4 && elapsed < 14 ? "is-current" : elapsed >= 14 ? "is-done" : ""}/><span className={elapsed >= 14 ? "is-current" : ""}/></div><small>{elapsed >= 25 ? "This is taking a little longer than usual. Thanks for waiting." : "This can take up to a minute."}</small></div></div></div>}
         </div>
         {error && <p role="alert" className="form-error chat-error">{error}</p>}
-        {!turns.length && !loading && <div ref={suggestionsRef} className="chat-suggestions"><span>Try asking</span>{visibleSuggestions.map(value => <button type="button" key={value} onClick={() => { setQuestion(value); input.current?.focus(); }}>{value}<ArrowUpRight size={14} aria-hidden="true" /></button>)}</div>}
-        {!loading && explore.length > 0 && <div className="chat-explore" role="group" aria-label={turns.length ? "Explore further" : "Choose an angle"}><span>{turns.length ? "Explore further" : "Or choose an angle"}</span>{explore.map(item => <button type="button" key={item.label} title={item.ask} onClick={() => { setQuestion(item.ask); input.current?.focus(); }}>{item.label}</button>)}</div>}
+        {!turns.length && !loading && <div ref={suggestionsRef} className="chat-suggestions"><span>Ideas to ask</span>{visibleSuggestions.map(value => <button type="button" key={value} onClick={() => { setQuestion(value); input.current?.focus(); }}>{value}<ArrowUpRight size={16} aria-hidden="true" /></button>)}</div>}
+        {!loading && explore.length > 0 && <div className="chat-explore" role="group" aria-label={turns.length ? "Explore further" : "Choose an angle"}><span>{turns.length ? "Ask more" : "Or ask about"}</span>{explore.map(item => <button type="button" key={item.label} title={item.ask} onClick={() => { setQuestion(item.ask); input.current?.focus(); }}>{item.label}</button>)}</div>}
       <form onSubmit={ask} className="ask-form chat-composer">
-        <label className="question-label" htmlFor="question">Your question</label>
+        <label className="question-label" htmlFor="question">Type your question</label>
         <Textarea ref={input} id="question" value={question} onChange={event => setQuestion(event.target.value)} onKeyDown={event => {
           if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); event.currentTarget.form?.requestSubmit(); }
         }} placeholder={turns.length ? "Ask a follow-up…" : `Ask about ${person}…`} className="question-input" disabled={loading} />
-        <div className="ask-footer"><p className="ask-keyboard-note">Enter to ask <span aria-hidden="true">·</span> Shift+Enter for a new line</p><Button type="submit" disabled={loading || !personId || !question.trim()}>{loading ? "Thinking…" : "Send"}<ArrowRight size={16} aria-hidden="true" /></Button></div>
+        <div className="ask-footer"><p className="ask-keyboard-note">Press Enter to ask</p><Button type="submit" disabled={loading || !personId || !question.trim()}>{loading ? "Thinking…" : "Ask"}<ArrowRight size={20} aria-hidden="true" /></Button></div>
       </form>
-      <div className="chat-resize-handle chat-resize-width" role="separator" aria-orientation="vertical" aria-label="Resize chat width" aria-valuemin={CHAT_MIN_WIDTH} aria-valuemax={chatWidthMax} aria-valuenow={displayedWidth} aria-valuetext={`${displayedWidth} pixels`} tabIndex={0} title="Drag to resize chat width" onPointerDown={event => beginResize("width", event)} onPointerMove={moveResize} onPointerUp={endResize} onPointerCancel={endResize} onKeyDown={event => resizeWithKeyboard("width", event)}><span /></div>
-      <div className="chat-resize-handle chat-resize-height" role="separator" aria-orientation="horizontal" aria-label="Resize chat height" aria-valuemin={CHAT_MIN_HEIGHT} aria-valuemax={CHAT_MAX_HEIGHT} aria-valuenow={displayedHeight} aria-valuetext={`${displayedHeight} pixels`} tabIndex={0} title="Drag to resize chat height" onPointerDown={event => beginResize("height", event)} onPointerMove={moveResize} onPointerUp={endResize} onPointerCancel={endResize} onKeyDown={event => resizeWithKeyboard("height", event)}><span /></div>
-      </div>
-    </div></div>
+    </div>
     <Dialog open={personPickerOpen} onOpenChange={setPersonPickerOpen}>
       <DialogContent className="person-picker-dialog">
         <DialogHeader className="person-picker-heading"><DialogTitle>Choose a person</DialogTitle><DialogDescription>Choose a category, then a person.</DialogDescription></DialogHeader>
@@ -335,12 +251,12 @@ export default function AskClient({ personalities, loadError }: { personalities:
         </div></div>}
       </DialogContent>
     </Dialog>
-    <Sheet open={howToOpen} onOpenChange={setHowToOpen}><SheetContent className="how-to-sheet"><SheetHeader><SheetTitle>How to use Ask DCF</SheetTitle><SheetDescription>Ask about a person, follow the conversation, and check the evidence.</SheetDescription></SheetHeader><div className="how-to-sheet-body"><ol>
-      <li><strong>Choose a person.</strong> Use “Talking about” to pick who you want to explore.</li>
-      <li><strong>Set the answer depth.</strong> Choose Simple for a short reply or Research for a fuller evidence review.</li>
-      <li><strong>Ask a question.</strong> Type your own or tap a suggested question, then press Send or Enter. Use Shift+Enter for a new line.</li>
-      <li><strong>Keep exploring.</strong> Ask a follow-up or choose an angle. Tap a numbered citation in an answer to read its source details and open the original source when available.</li>
-    </ol><p>Use New chat to clear the conversation for the selected person.</p></div></SheetContent></Sheet>
+    <Sheet open={howToOpen} onOpenChange={setHowToOpen}><SheetContent className="how-to-sheet"><SheetHeader><SheetTitle>How does this work?</SheetTitle><SheetDescription>Four easy steps.</SheetDescription></SheetHeader><div className="how-to-sheet-body"><ol>
+      <li><strong>Pick a person.</strong> Tap the name button to choose who you want to learn about.</li>
+      <li><strong>Pick how long the answer should be.</strong> Short is a few easy sentences. Very long looks at more sources.</li>
+      <li><strong>Ask your question.</strong> Type it, or tap one of the ideas, then press Ask or Enter. Shift+Enter starts a new line.</li>
+      <li><strong>Check where it came from.</strong> Tap a small number in the answer to see the book or page behind that fact.</li>
+    </ol><p>Tap Start over to clear the conversation.</p></div></SheetContent></Sheet>
     <Sheet open={!!sourceId && !!selectedCitation} onOpenChange={open => { if (!open) setSourceId(null); }}><SheetContent className="source-sheet"><SheetHeader><SheetTitle>Source {selectedCitationNumber >= 0 ? selectedCitationNumber + 1 : ""}</SheetTitle><SheetDescription>{selectedCitation?.title || "Source detail"}</SheetDescription></SheetHeader><div className="source-sheet-body">{selectedCitation && selectedAuthority && <>
       <dl className="source-facts">
         <div><dt>Publisher</dt><dd>{[selectedCitation.institution, selectedCitation.author].filter(Boolean).join(" · ") || "Not recorded"}</dd></div>

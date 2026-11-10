@@ -112,9 +112,6 @@ body:has(.resources-page) {
   background-attachment: fixed;
   overscroll-behavior-y: none;
 }
-body:has(.resources-page) .site-header { background: #080e21cc; border-color: #a9bfe52e; }
-body:has(.resources-page) .wordmark,body:has(.resources-page) .site-nav a { color: #eef3ff; }
-body:has(.resources-page) .site-nav a:hover,body:has(.resources-page) .site-nav a[aria-current="page"] { color: #fff; border-color: #93b8f4; }
 .resources-page { width: min(100% - 48px, 1184px); color: #eaf0fc; }
 .resources-page .page-kicker { color: #aabce0; border-color: #ffffff25; }
 .resources-page .section-label { color: #b2c8f4; }

@@ -1,29 +1,19 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Geist, Newsreader, Source_Sans_3 } from "next/font/google";
+import { Atkinson_Hyperlegible, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
-import "./public-experience.css";
 import "./resources-hub.css";
-import "./public-flat.css";
-import "./brand.css";
+import "./site.css";
 import { SiteNav } from "@/components/site-nav";
 
-const sourceSans = Source_Sans_3({
-  variable: "--font-source-sans",
-  subsets: ["latin"],
-});
-
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-display",
-  subsets: ["latin"],
-});
-
-const geist = Geist({
+// One easy-to-read body face (designed for low-vision readers) and one display face for headings.
+const body = Atkinson_Hyperlegible({
   variable: "--font-body",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
+const display = Bricolage_Grotesque({
+  variable: "--font-display",
   subsets: ["latin"],
 });
 
@@ -34,10 +24,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${sourceSans.variable} ${newsreader.variable} ${bricolage.variable} ${geist.variable} h-full antialiased`}
-    >
+    <html lang="en" className={`${body.variable} ${display.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col" suppressHydrationWarning><SiteNav />{children}</body>
     </html>
   );
