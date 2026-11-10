@@ -1,13 +1,24 @@
 import type { Metadata } from "next";
-import { Newsreader, Source_Sans_3 } from "next/font/google";
+import { Bricolage_Grotesque, Geist, Newsreader, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import "./public-experience.css";
 import "./resources-hub.css";
 import "./public-flat.css";
+import "./brand.css";
 import { SiteNav } from "@/components/site-nav";
 
 const sourceSans = Source_Sans_3({
   variable: "--font-source-sans",
+  subsets: ["latin"],
+});
+
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-display",
+  subsets: ["latin"],
+});
+
+const geist = Geist({
+  variable: "--font-body",
   subsets: ["latin"],
 });
 
@@ -25,7 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${sourceSans.variable} ${newsreader.variable} h-full antialiased`}
+      className={`${sourceSans.variable} ${newsreader.variable} ${bricolage.variable} ${geist.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning><SiteNav />{children}</body>
     </html>

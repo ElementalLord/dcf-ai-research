@@ -576,7 +576,7 @@ export default function ResearchWorkspace() {
               <>
                 <div className="mb-6 h-3 overflow-hidden rounded-full bg-zinc-100">
                   <div
-                    className="h-full rounded-full bg-zinc-900 transition-all"
+                    className="h-full rounded-full bg-zinc-900 transition-[width] duration-300 ease-(--ease-out) motion-reduce:transition-none"
                     style={{
                       width: `${progress.overall.percentage}%`,
                     }}
