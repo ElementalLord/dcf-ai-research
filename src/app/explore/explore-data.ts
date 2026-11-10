@@ -63,7 +63,29 @@ export function approvedStatements(person: Pick<Phase1Personality, "sources" | (
   return person[key].filter((claim) => claim.reviewStatus === "approved" && claim.citations.some((citation) => person.sources.some((source) => source.id === citation.sourceId && source.sourceStatus === "approved")) && (key === "contestedAspects" || claim.evidenceType !== "uncertain"));
 }
 
-export type ExplorePerson = Phase1DiscoveryPerson & { summary: string | null; sourceCount: number; dateLabel: string | null; sortYear: number | null; angles: ProfileAngle[] };
+function uniqueByClaimId(claims: Phase1Statement[]): Phase1Statement[] {
+  const seen = new Set<string>();
+  return claims.filter((claim) => !seen.has(claim.claimId) && Boolean(seen.add(claim.claimId)));
+}
+
+export type ProfileSection = (typeof PROFILE_SECTIONS)[number] & { claims: Phase1Statement[] };
+
+// Approved claims marked "uncertain" are shown under "Disputed or uncertain" instead of their own
+// section. The same claim can be filed under several sections, so each list is deduped by claimId.
+export function profileSections(person: Pick<Phase1Personality, "sources" | (typeof PROFILE_SECTIONS)[number]["key"]>): ProfileSection[] {
+  const admittedIds = new Set(person.sources.filter((source) => source.sourceStatus === "approved").map((source) => source.id));
+  const uncertain = PROFILE_SECTIONS
+    .filter((section) => section.key !== "contestedAspects")
+    .flatMap((section) => person[section.key].filter((claim) => claim.reviewStatus === "approved" && claim.evidenceType === "uncertain" && claim.citations.some((citation) => admittedIds.has(citation.sourceId))));
+  return PROFILE_SECTIONS
+    .map((section) => ({
+      ...section,
+      claims: uniqueByClaimId(section.key === "contestedAspects" ? [...approvedStatements(person, section.key), ...uncertain] : approvedStatements(person, section.key)),
+    }))
+    .filter((section) => section.claims.length);
+}
+
+export type ExplorePerson =Phase1DiscoveryPerson & { summary: string | null; sourceCount: number; dateLabel: string | null; sortYear: number | null; angles: ProfileAngle[] };
 
 export function toExplorePerson(discovery: Phase1DiscoveryPerson, person: Phase1Personality): ExplorePerson {
   const summary = approvedStatements(person, "shortIntroduction")[0]?.text ?? null;

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import type { Phase1Source, Phase1Statement, RelatedPerson } from "@/lib/phase1/types";
-import { approvedStatements, exploreCategory, PROFILE_SECTIONS, type PublicProfilePerson } from "./explore-data";
+import { approvedStatements, exploreCategory, profileSections, type PublicProfilePerson } from "./explore-data";
 
 function sourceType(source: Phase1Source) {
   const names: Record<string, string> = {
@@ -35,13 +35,7 @@ export function ProfileClient({ person, related }: { person: PublicProfilePerson
   const [showAllSources, setShowAllSources] = useState(false);
   const [current, setCurrent] = useState<string | null>(null);
   const sources = person.sources.filter((source) => source.sourceStatus === "approved");
-  const admittedIds = new Set(sources.map((source) => source.id));
-  const uncertain = PROFILE_SECTIONS
-    .filter((section) => section.key !== "contestedAspects")
-    .flatMap((section) => person[section.key].filter((claim) => claim.reviewStatus === "approved" && claim.evidenceType === "uncertain" && claim.citations.some((citation) => admittedIds.has(citation.sourceId))));
-  const sections = PROFILE_SECTIONS
-    .map((section) => ({ ...section, claims: section.key === "contestedAspects" ? [...approvedStatements(person, section.key), ...uncertain] : approvedStatements(person, section.key) }))
-    .filter((section) => section.claims.length);
+  const sections = profileSections(person);
   const claims = sections.reduce((total, section) => total + section.claims.length, 0);
   const lede = approvedStatements(person, "shortIntroduction").slice(0, 2).map((claim) => claim.text).join(" ");
   const category = exploreCategory(person.slug);
