@@ -118,7 +118,7 @@ export default function ReviewPage() {
     useState<Claim[]>([]);
 
   const [reviewerName, setReviewerName] =
-    useState("Naitik Patel");
+    useState("");
   const [approvalOrigin, setApprovalOrigin] = useState<"human_manual" | "mentor_review">("human_manual");
 
   const [reviewNotes, setReviewNotes] =

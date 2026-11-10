@@ -28,6 +28,20 @@ Enter every value in **Vercel → dcf-ai-research → Settings → Environment V
 
 Model names and feature switches (`GEMINI_*_MODEL`, `SYNTHESIS_*`, `DEMAND_*`, `EVIDENCE_POLICY_MODE`) are also environment variables with working defaults. None of them need to change.
 
+## Before you start
+
+1. **Agree ownership in writing.** The repository has no LICENSE file. A short note between the developer and DCF should say who owns the code and content, whether the developer may show it in a portfolio, how long (if at all) the developer supports it after handoff, and the date billing moves to DCF.
+2. **Back up the database.** Take a Supabase backup (or `pg_dump`) before clicking Transfer, and keep it somewhere DCF controls.
+3. **Apply every migration.** The newest file in `supabase/migrations/` must already be applied to the live project, including `20261110030000_harden_function_privileges.sql`. Tell DCF the live database is current so nobody re-runs old files.
+4. **Close open work.** Merge or close open pull requests and delete finished branches so DCF starts from a clean `main`.
+5. **Run the readiness check** from a machine with `.env.local`:
+
+   ```bash
+   npm run handoff:check -- https://dcf-ai-research.vercel.app
+   ```
+
+   It never prints secret values. It fails if any secret file or key is in git history, a required variable is missing or malformed, a non-Supabase `NEXT_PUBLIC_` variable exists, the live site lacks the security headers, or the admin API answers anonymous calls. It warns about leftover branches and about personal commit emails, which stay visible after the transfer. If those emails matter, make the repository private rather than rewriting history.
+
 ## Transfer steps
 
 Do the steps in this order. Each one keeps the live site running.
@@ -71,6 +85,7 @@ When DCF confirms everything works on its own keys, the developer deletes their 
 ### 5. Verify
 
 ```bash
+npm run handoff:check -- https://dcf-ai-research.vercel.app
 node scripts/verify-phase1-demo.mjs https://dcf-ai-research.vercel.app
 ```
 
@@ -85,8 +100,10 @@ Then by hand:
 - [ ] Hand over any custom domain or DNS records, if one has been added.
 - [ ] Leave the DCF organizations after DCF confirms everything works.
 - [ ] Revoke personal Gemini and Brave keys and delete the local `.env.local` and `.admin-access-key`.
+- [ ] Cancel any subscriptions or billing still on a personal card (Vercel, Supabase, Google Cloud, Brave).
 
 **DCF**
+- [ ] Choose a Supabase plan that does not pause inactive projects, or check the project regularly.
 - [ ] Create the GitHub org, Vercel team and Supabase org, and invite the developer temporarily.
 - [ ] Add payment methods to Vercel, Supabase, Google Cloud (Gemini) and Brave.
 - [ ] Create new Gemini and Brave keys, rotate the Supabase key, and regenerate the admin key (step 4).
