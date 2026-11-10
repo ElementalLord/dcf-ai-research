@@ -3,7 +3,6 @@ import { Bricolage_Grotesque, Geist, Newsreader, Source_Sans_3 } from "next/font
 import "./globals.css";
 import "./public-experience.css";
 import "./resources-hub.css";
-import "./public-flat.css";
 import "./brand.css";
 import { SiteNav } from "@/components/site-nav";
 

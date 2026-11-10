@@ -466,36 +466,81 @@ body:has(.explore-shell),.explore-shell { font-family: var(--brand-body); }
 .explore-categories button[aria-pressed="true"] { background: transparent; border-color: transparent; box-shadow: inset 0 -2px var(--brand-accent); }
 .explore-toc h2 { color: var(--explore-muted); font: 600 14px/1.3 var(--brand-body); letter-spacing: 0; text-transform: none; }
 
-/* ---------- Explore and profiles, modelled on the Ask DCF page ----------
-   Same 980px centred column, 48px title, grey subtitle, and the controls sit in
-   one rounded panel like the Ask toolbar. */
-.explore-shell.explore-shell { width: min(100% - 48px, 980px) !important; max-width: 980px; padding: 0 0 72px; }
-.explore-shell .explore-intro { max-width: none; padding: 28px 0 0; }
-.explore-shell .explore-intro h1 { margin: 0; font-size: clamp(34px, 3.6vw, 48px); line-height: 1.02; letter-spacing: -.035em; }
-.explore-shell .explore-intro p { max-width: 70ch; margin-top: 10px; color: var(--brand-muted); font-size: 16px; line-height: 1.5; }
-.explore-shell .explore-browser { margin-top: 22px; padding: 0 0 22px; background: var(--brand-surface); border: 1px solid var(--brand-line); border-radius: 12px; }
-.explore-shell .explore-search { padding: 16px 22px 0; }
-.explore-shell .explore-search svg { left: 40px; margin-top: 8px; }
-.explore-shell .explore-search input { min-height: 46px; background: var(--brand-bg); border-color: var(--brand-line-strong); font-size: 15px; }
-.explore-shell .explore-categories { margin-top: 10px; padding: 0 22px; }
-.explore-shell .explore-categories button { min-height: 42px; font-size: 14px; }
-.explore-shell .explore-toolbar { padding: 14px 22px; }
-.explore-shell .explore-toolbar select,
-.explore-shell .explore-view button { background: var(--brand-bg); }
-.explore-shell :is(.explore-grid, .explore-list, .explore-timeline, .explore-empty) { margin: 0 22px; }
-.explore-shell .explore-card { min-height: 200px; background: var(--brand-surface-2); }
-.explore-shell .explore-card h2 { font-size: 22px; }
-.explore-shell .explore-crumb { margin-top: 28px; }
-.explore-shell .explore-profile-hero { padding-top: 14px; }
-.explore-shell .explore-profile-hero h1 { font-size: clamp(34px, 3.6vw, 48px); line-height: 1.02; letter-spacing: -.035em; }
-.explore-shell .explore-lede { font-size: 16px; line-height: 1.5; }
-.explore-shell .explore-trust { border-radius: 12px; }
-.explore-shell .explore-angle { background: var(--brand-surface); border-radius: 12px; }
-@media (max-width: 900px) { .explore-shell .explore-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 720px) {
-  .explore-shell.explore-shell { width: calc(100% - 32px) !important; }
-  .explore-shell .explore-search, .explore-shell .explore-categories, .explore-shell .explore-toolbar { padding-inline: 14px; }
-  .explore-shell .explore-search svg { left: 30px; }
-  .explore-shell :is(.explore-grid, .explore-list, .explore-timeline, .explore-empty) { margin: 0 14px; }
+/* ---------- Explore: bold editorial layout ----------
+   Oversized title with a glow, a large search field, and person cards with big
+   coloured initials that lift on hover. The first card is featured at double width. */
+.explore-shell .cat-sages { --cat: var(--dot-sages); }
+.explore-shell .cat-spiritual { --cat: var(--dot-spiritual); }
+.explore-shell .cat-scientists { --cat: var(--dot-scientists); }
+.explore-shell .cat-rulers { --cat: var(--dot-rulers); }
+.explore-shell .cat-cultural { --cat: var(--dot-cultural); }
+.explore-shell.explore-shell { position: relative; overflow-x: clip; }
+.explore-shell .explore-card-date { position: relative; padding-right: 96px; }
+.explore-shell .explore-card-wide .explore-card-date { padding-right: 190px; }
+.explore-shell .explore-intro { position: relative; max-width: none; padding: clamp(48px, 7vw, 96px) 0 clamp(28px, 4vw, 44px); }
+.explore-shell .explore-intro::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -80px -20vw -40px;
+  background:
+    radial-gradient(40% 60% at 75% 35%, rgba(143, 176, 255, 0.18), transparent 70%),
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 64px 64px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 64px 64px;
+  mask-image: radial-gradient(60% 70% at 60% 40%, #000 30%, transparent 80%);
+  pointer-events: none;
 }
-@media (max-width: 580px) { .explore-shell .explore-grid { grid-template-columns: 1fr; } }
+.explore-shell .explore-intro h1 { max-width: 12ch; font: 800 clamp(52px, 9vw, 132px)/0.88 var(--brand-display); letter-spacing: -0.055em; }
+.explore-shell .explore-intro p { max-width: 52ch; margin-top: 22px; color: var(--brand-muted); font-size: clamp(16px, 1.4vw, 19px); line-height: 1.55; }
+.explore-shell .explore-search input { min-height: 64px; padding-left: 58px; background: var(--brand-surface); border-color: var(--brand-line-strong); border-radius: 999px; font-size: 18px; }
+.explore-shell .explore-search svg { left: 24px; }
+.explore-shell .explore-categories { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--brand-line); }
+.explore-shell .explore-categories button { width: auto; justify-content: flex-start; gap: 8px; min-height: 42px; padding: 8px 16px; color: var(--brand-muted); background: transparent; border: 1px solid var(--brand-line-strong); border-radius: 999px; box-shadow: none; font-size: 14px; }
+.explore-shell .explore-categories button:hover { color: var(--brand-text); background: rgba(255, 255, 255, 0.05); }
+.explore-shell .explore-categories button[aria-pressed="true"] { color: var(--brand-ink); background: var(--brand-accent); border-color: var(--brand-accent); box-shadow: none; }
+.explore-shell .explore-categories button[aria-pressed="true"] small { color: var(--brand-ink); }
+.explore-shell .explore-view { border-radius: 999px; overflow: hidden; }
+.explore-shell .explore-toolbar select { border-radius: 999px; }
+.explore-shell .explore-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.explore-shell .explore-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  padding: 26px;
+  background: radial-gradient(80% 60% at 100% 0%, color-mix(in srgb, var(--cat) 16%, transparent), transparent 70%), var(--brand-surface);
+  border-radius: 20px;
+  transition: transform 260ms var(--ease-out), border-color 200ms ease, background-color 200ms ease;
+}
+.explore-shell .explore-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--cat) 55%, transparent); background: radial-gradient(80% 60% at 100% 0%, color-mix(in srgb, var(--cat) 26%, transparent), transparent 70%), var(--brand-surface-2); }
+.explore-shell .explore-card-mark {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--cat) 70%, transparent);
+  font: 800 92px/0.9 var(--brand-display);
+  letter-spacing: -0.06em;
+  pointer-events: none;
+  transition: transform 300ms var(--ease-out), -webkit-text-stroke-color 200ms ease;
+}
+.explore-shell .explore-card:hover .explore-card-mark { transform: translate(-4px, 4px) scale(1.04); }
+.explore-shell .explore-card h2 { margin-top: auto; padding-top: 72px; font-size: clamp(24px, 2.4vw, 30px); letter-spacing: -0.03em; }
+.explore-shell .explore-card p { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+.explore-shell .explore-card-wide { grid-column: span 2; }
+.explore-shell .explore-card-wide .explore-card-mark { font-size: 180px; }
+.explore-shell .explore-card-wide h2 { font-size: clamp(32px, 3.6vw, 48px); }
+.explore-shell .explore-card-wide p { max-width: 52ch; -webkit-line-clamp: 4; font-size: 16px; }
+@media (max-width: 900px) { .explore-shell .explore-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 580px) {
+  .explore-shell .explore-grid { grid-template-columns: 1fr; }
+  .explore-shell .explore-card-wide { grid-column: auto; }
+  .explore-shell .explore-card-mark, .explore-shell .explore-card-wide .explore-card-mark { font-size: 72px; }
+  .explore-shell .explore-card-date, .explore-shell .explore-card-wide .explore-card-date { padding-right: 84px; }
+  .explore-shell .explore-card h2 { padding-top: 48px; }
+  .explore-shell .explore-search input { min-height: 56px; font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .explore-shell .explore-card, .explore-shell .explore-card-mark { transition: none; }
+  .explore-shell .explore-card:hover { transform: none; }
+  .explore-shell .explore-card:hover .explore-card-mark { transform: none; }
+}

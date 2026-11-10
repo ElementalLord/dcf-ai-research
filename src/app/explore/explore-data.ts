@@ -103,3 +103,9 @@ export function toExplorePerson(discovery: Phase1DiscoveryPerson, person: Phase1
     searchText: [discovery.name, ...discovery.alternateNames, person.type, exploreCategory(person.slug).name, summary, person.era, ...angles.map((angle) => angle.title)].filter(Boolean).join(" ").toLowerCase(),
   };
 }
+
+/** Two-letter initials for a person, used as a visual mark where no portrait exists. */
+export function monogram(name: string) {
+  const words = name.replace(/\./g, " ").split(/\s+/).filter((word) => word && !["of", "the"].includes(word.toLowerCase()));
+  return ((words[0]?.[0] ?? "") + (words.length > 1 ? words[words.length - 1][0] : "")).toUpperCase();
+}
