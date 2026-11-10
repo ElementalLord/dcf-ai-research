@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { hasAdminSession } from "@/lib/admin-session";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import KnowledgeControls from "./knowledge-controls";
+import ResourcesNav from "../resources-nav";
 import "./knowledge.css";
 
 export const dynamic = "force-dynamic";
@@ -29,7 +29,7 @@ export default async function KnowledgePage({ searchParams }: { searchParams: Pr
     .select("request_limit_micro,daily_limit_micro,monthly_limit_micro,max_paid_calls,max_concurrent_jobs,research_paused,auto_admission_paused")
     .eq("id", true).maybeSingle();
   if (policyResult.error || !policyResult.data) return <main className="resources-page knowledge-page page-shell">
-    <div className="knowledge-heading"><h1>Knowledge engine</h1><Link href="/resources">Back to Resources</Link></div>
+    <ResourcesNav current="knowledge"/>
     <p className="knowledge-empty">The demand budget migration is not available in this database. Apply the validated migrations before enabling research.</p>
   </main>;
   const [snapshotResult, activityResult, decisionsResult, needsResult, sourcesResult] = await Promise.all([
@@ -56,8 +56,7 @@ export default async function KnowledgePage({ searchParams }: { searchParams: Pr
   const costPerAdmission = summary.monthlyAdmissions ? summary.monthlyCostMicro / summary.monthlyAdmissions : null;
 
   return <main className="resources-page knowledge-page page-shell">
-    <div className="knowledge-heading"><div><h1>Knowledge engine</h1><p>Question-triggered research, admission and spending.</p></div><Link href="/resources">Back to Resources</Link></div>
-    <nav className="knowledge-nav" aria-label="Resource areas"><Link href="/resources">Sources and claims</Link><Link href="/resources/feedback">Feedback</Link><Link href="/resources/readiness">Readiness</Link></nav>
+    <ResourcesNav current="knowledge"/>
     <section className="knowledge-section" aria-labelledby="knowledge-summary"><h2 id="knowledge-summary">Activity</h2>
       <dl className="knowledge-facts">
         <div><dt>Questions recorded</dt><dd>{summary.totalQuestions}</dd></div>

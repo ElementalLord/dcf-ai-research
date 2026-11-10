@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ResourcesNav from "../resources-nav";
 import { redirect } from "next/navigation";
 import { hasAdminSession } from "@/lib/admin-session";
 import { feedbackTags } from "@/lib/feedback";
@@ -45,8 +46,7 @@ export default async function FeedbackPage({ searchParams }: { searchParams: Pro
   const hrefFor = (next: number) => `/resources/feedback?${new URLSearchParams({ ...(rating && { rating }), ...(personality && { personality }), ...(tag && { tag }), ...(recent && { recent }), ...(search && { search }), page: String(next) })}`;
 
   return <main className="resources-page feedback-page page-shell">
-    <div className="resource-heading"><div><h1>Response feedback</h1><p>Ratings and comments from people using Ask DCF.</p></div><Link className="readiness-back" href="/resources">Back to Resources</Link></div>
-    <nav className="feedback-nav" aria-label="Resource areas"><Link href="/resources">Resources</Link><span aria-current="page">Feedback</span></nav>
+    <ResourcesNav current="feedback"/>
     {total ? <><section className="feedback-summary" aria-label="Rating summary"><div className="feedback-summary-total"><strong>{total}</strong><span>Total responses rated</span></div><div className="feedback-summary-total"><strong>{average!.toFixed(1)} / 5</strong><span>Average rating</span></div><div className="feedback-distribution">{[5, 4, 3, 2, 1].map(value => <div key={value}><span>{value}★</span><div className="feedback-bar" aria-label={`${distribution[value - 1]} ratings, ${Math.round(distribution[value - 1] / total * 100)} percent`}><i style={{ width: `${distribution[value - 1] / total * 100}%` }}/></div><span>{distribution[value - 1]} · {Math.round(distribution[value - 1] / total * 100)}%</span></div>)}</div></section>
       <section className="feedback-review" aria-label="Feedback review"><div className="feedback-review-heading"><h2>Review responses</h2><Link href="/resources/feedback?rating=low">Low-rated responses (1–2★)</Link></div>
         <form className="feedback-filters" action="/resources/feedback" method="get">

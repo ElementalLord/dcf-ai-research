@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
+import ResourcesNav from "../resources-nav";
 import { hasAdminSession } from "@/lib/admin-session";
 import { loadReadinessDashboard } from "@/lib/quality/dashboard";
 
@@ -13,7 +13,7 @@ export default async function ReadinessPage() {
   const counts = rows.reduce<Record<string, number>>((result, row) => { result[row.publicationState] = (result[row.publicationState] || 0) + 1; return result; }, {});
   return <main className="resources-page readiness-page page-shell">
 
-    <div className="readiness-heading"><div><h1>Personality readiness</h1><p>Live metrics for all {rows.length} personalities. Retrieval readiness is kept separate from human-verified publication readiness.</p></div><Link className="readiness-back" href="/resources">Back to Resources</Link></div>
+    <ResourcesNav current="readiness"/>
     <div className="readiness-summary">{(["STRONG","USABLE","THIN","NEEDS ATTENTION"] as const).map(state => <div key={state}><strong>{counts[state] || 0}</strong><span>{sentence(state)}</span></div>)}</div>
     <p className="readiness-scroll-hint">Scroll the table to compare all measures.</p>
     <div className="readiness-table-wrap" role="region" aria-label="Personality readiness table" tabIndex={0}><table className="readiness-table"><thead><tr><th scope="col">Person</th><th scope="col">Retrieval</th><th scope="col">Publication</th><th scope="col">Sources / domains</th><th scope="col">Primary</th><th scope="col">Passages</th><th scope="col">Claims reviewed</th><th scope="col">Evidence quality</th><th scope="col">Evaluation</th><th scope="col">Main gaps</th></tr></thead>

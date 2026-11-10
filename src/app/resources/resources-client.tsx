@@ -1,8 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import Link from "next/link";
-import { ArrowLeft, ArrowUpRight, Check, ChevronRight, FileText, Globe2, LibraryBig, LoaderCircle, LogOut, Plus, Search, UserRound, X } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Check, ChevronRight, FileText, Globe2, LibraryBig, LoaderCircle, Plus, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -16,6 +15,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import SearchSources from "./search-sources";
 import WebsiteAccess from "./website-access";
 import ResourceHelp from "./resource-help";
+import ResourcesNav from "./resources-nav";
 import ConfirmResourceChange, { type PendingResourceChange } from "./confirm-resource-change";
 import { AUTHORITY_CAVEAT, AUTHORITY_LABELS, classifySourceAuthority } from "@/lib/sources/authority";
 import { isClaimEligible } from "@/lib/corpus/approval-policy";
@@ -229,12 +229,6 @@ export default function ResourcesClient({ authorized, personalities, loadError }
       setBusy(false);
     }
   }
-  async function signOut() {
-    if (busy) return;
-    setBusy(true);
-    try { await api("/api/admin/session", { method: "DELETE" }); window.location.reload(); }
-    catch { setError("Could not sign out. Try again."); setBusy(false); }
-  }
   if (!authorized) return <main className="resources-page page-shell"><div className="resources-intro"><div className="resources-intro-copy"><h1>Resources</h1><p>Review sources and claims, and manage which websites research may search. Sign in to see current counts and controls.</p></div><form className="login-form" onSubmit={signIn}><label htmlFor="admin-token">Admin code</label><Input id="admin-token" type="password" autoComplete="off" spellCheck={false} value={token} onChange={event => { setToken(event.target.value); if (error) setError(""); }} aria-invalid={!!error} aria-describedby={error ? "admin-access-result" : undefined} required/><Button type="submit" disabled={busy || !token.trim()}>{busy ? "Checking code…" : "Open Resources"}</Button>{error && <p id="admin-access-result" className="admin-access-denied" role="alert">{error}</p>}</form></div></main>;
   const source = detail?.kind === "source" ? detail.item : null;
   const claim = detail?.kind === "claim" ? detail.item : null;
@@ -251,10 +245,7 @@ export default function ResourcesClient({ authorized, personalities, loadError }
     await mutate(() => api(target.kind === "source" ? "/api/corpus/sources" : "/api/review/update", { method: target.kind === "source" ? "PATCH" : "POST", headers: json, body: JSON.stringify(target.kind === "source" ? { sourceId: target.item.id, status, approvedByLabel: reviewer.trim(), approvalOrigin: "human_manual", approvalNote: reviewNote.trim() || undefined } : { claimId: target.item.id, status, reviewerName: reviewer.trim(), approvalOrigin: "human_manual", notes: reviewNote.trim() || undefined }) }), status === "approved" ? "Review approved." : status === "rejected" ? "Record rejected." : "Record returned to review. You can now edit it.");
   }
   return <main className="resources-page page-shell">
-    <div className="resource-heading">
-      <h1>Resources</h1>
-      <div className="resource-heading-actions"><Link className="readiness-back" href="/resources/knowledge">Knowledge engine</Link><Link className="readiness-back" href="/resources/readiness">Readiness</Link><ResourceHelp area={tab as "sources" | "claims" | "websites"}/><details className="resource-account"><summary aria-label="Account menu"><UserRound size={18} aria-hidden="true"/></summary><div><Button type="button" variant="ghost" className="resource-signout" disabled={busy} onClick={signOut}><LogOut size={16} aria-hidden="true"/> Sign out</Button></div></details></div>
-    </div>
+    <ResourcesNav current="library" actions={<ResourceHelp area={tab as "sources" | "claims" | "websites"}/>}/>
     {(activity || loading) && <div className="resource-activity" role="status" aria-live="polite"><LoaderCircle size={16} className="animate-spin"/>{activity || `Loading resources for ${selectedName}…`}</div>}
     {notice && <div className="resource-notice" role="status"><Check size={16}/>{notice}<button type="button" onClick={() => setNotice("")} aria-label="Dismiss message"><X size={15}/></button></div>}
     {stale && <p className="resource-stale" role="status">Showing the last loaded records. A recent change may not appear yet.</p>}
@@ -266,7 +257,6 @@ export default function ResourcesClient({ authorized, personalities, loadError }
         <TabsTrigger value="sources" className="resource-area-tab resource-area-tab-sources"><LibraryBig size={18} aria-hidden="true"/><span className="resource-tab-label"><strong>Sources</strong></span><span className="resource-tab-count">{loading ? "…" : sources.filter(item => item.source_status !== "rejected").length}</span></TabsTrigger>
         <TabsTrigger value="claims" className="resource-area-tab resource-area-tab-claims"><FileText size={18} aria-hidden="true"/><span className="resource-tab-label"><strong>Claims</strong></span><span className="resource-tab-count">{loading ? "…" : claims.filter(item => item.review_status !== "rejected").length}</span></TabsTrigger>
         <TabsTrigger value="websites" className="resource-area-tab resource-area-tab-websites"><Globe2 size={18} aria-hidden="true"/><span className="resource-tab-label"><strong>Web search</strong></span><span className="resource-tab-count">{websiteCounts ? websiteCounts.found : "…"}</span></TabsTrigger>
-        <Link className="resource-area-tab resource-feedback-link" href="/resources/feedback">Feedback</Link>
       </TabsList>
 
       <div className="resource-workspace"><section className="resource-main" aria-label="Resource workspace">
