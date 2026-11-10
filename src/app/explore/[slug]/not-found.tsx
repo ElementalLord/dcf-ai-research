@@ -1,4 +1,4 @@
 import Link from "next/link";
 export default function PersonNotFound() {
-  return <main className="page explore-shell empty-state"><h1>We can’t find this person</h1><p>Check the name, or look at everyone we have.</p><Link className="button" href="/explore">See all people</Link></main>;
+  return <main className="explore-shell explore-state"><h1>This person isn’t in the collection</h1><p>Check the name or browse the people we have.</p><Link href="/explore">Back to Explore</Link></main>;
 }

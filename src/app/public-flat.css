@@ -1,0 +1,134 @@
+/*
+ * Public experience: editorial, quiet, and information-first.
+ * This file is intentionally loaded last so the same visual rules govern
+ * Home and Explore.
+ */
+
+:is(body:has(.home-page), body:has(.explore-page), body:has(.profile-page)) {
+  background: linear-gradient(145deg, #070b17 0%, #0b1226 58%, #101a35 100%);
+  background-attachment: fixed;
+}
+
+:is(.home-page, .explore-page, .profile-page) {
+  width: min(100% - 64px, 1400px);
+}
+
+:is(body:has(.home-page), body:has(.explore-page), body:has(.profile-page)) .site-header {
+  background: #080d1ce8;
+  backdrop-filter: none;
+}
+
+:is(.home-page, .explore-page, .profile-page) > .mystic-backdrop,
+:is(.home-page, .explore-page, .profile-page) > .explore-constellation {
+  display: none;
+}
+
+/* Home */
+.home-paths { gap: 0; border-top: 1px solid rgba(160, 184, 226, .3); }
+.home-path-card {
+  min-height: 224px;
+  background: transparent;
+  border: 0;
+  border-right: 1px solid rgba(160, 184, 226, .2);
+  border-bottom: 1px solid rgba(160, 184, 226, .2);
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.home-path-card:first-child { border-left: 1px solid rgba(160, 184, 226, .2); }
+.home-path-card:hover { background: rgba(49, 73, 122, .2); transform: none; }
+.home-path-icon { color: #bcd1f5; background: transparent; border: 0; border-radius: 0; }
+.home-primary,.home-secondary { border-radius: 2px; box-shadow: none; }
+
+/* Explore */
+.explore-page { width: min(100% - 64px, 1400px); }
+.explore-page .explore-browser {
+  margin-top: 0;
+  padding: 34px 0 20px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(160, 184, 226, .26);
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.explore-page .explore-search input,
+.explore-page .explore-role-filter select {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(156, 181, 226, .5);
+  border-radius: 0;
+  box-shadow: none;
+}
+.explore-page .category-filter { gap: 0; padding: 8px 0 20px; border-top: 1px solid rgba(160, 184, 226, .24); }
+.explore-page .category-filter button {
+  min-height: 51px;
+  background: transparent;
+  border: 0;
+  border-right: 1px solid rgba(160, 184, 226, .18);
+  border-bottom: 1px solid rgba(160, 184, 226, .22);
+  border-radius: 0;
+}
+.explore-page .category-filter button:first-child { border-left: 1px solid rgba(160, 184, 226, .18); }
+.explore-page .category-filter button:hover { background: rgba(49, 73, 122, .2); transform: none; }
+.explore-page .category-filter button[aria-pressed="true"] { background: rgba(61, 94, 151, .3); border-color: rgba(160, 190, 240, .48); }
+.explore-page .category-active-glow { display: none; }
+.explore-page .personality-lenses span { padding: 0; background: transparent; border: 0; border-radius: 0; }
+.explore-page .personality-lenses span + span::before { content: "·"; margin-right: 7px; }
+.explore-page .explore-empty button { border-radius: 2px; }
+
+@media (max-width: 700px) {
+  :is(.home-page, .explore-page, .profile-page) { width: min(100% - 32px, 1400px); }
+  .home-paths { grid-template-columns: 1fr; }
+  .home-path-card { min-height: 200px; border-left: 1px solid rgba(160, 184, 226, .2); }
+  .explore-page { width: min(100% - 32px, 1400px); }
+  .explore-page .explore-browser { padding-inline: 0; border-radius: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-path-card,.explore-page .category-filter button { transition: none; }
+}
+
+/* Quiet visual finish for the public pages; keep their existing layout. */
+:is(body:has(.home-page), body:has(.explore-page), body:has(.profile-page)) {
+  background: #0b1221;
+}
+:is(body:has(.home-page), body:has(.explore-page), body:has(.profile-page)) .site-header {
+  background: #0b1221;
+  border-color: #ffffff29;
+}
+:is(body:has(.home-page), body:has(.explore-page), body:has(.profile-page)) .site-nav a {
+  transition: color .15s ease, border-color .15s ease;
+}
+.home-hero { min-height: 0; padding-block: clamp(62px, 7vw, 94px) 68px; }
+.home-hero h1 { font-size: clamp(50px, 6.2vw, 80px); line-height: 1.04; }
+.home-hero-copy > p { color: #c7d1e1; }
+.home-primary { background: #49618b; border-color: #7086aa; }
+.home-primary:hover { background: #58729e; transform: none; }
+.home-secondary { background: transparent; }
+.home-secondary:hover { transform: none; }
+.home-stats dd { color: #b5c2d6; font-size: 12px; letter-spacing: 0; text-transform: none; }
+.home-overview { padding-block: 62px 72px; }
+.home-path-card { min-height: 205px; padding: 22px; transition: background-color .15s ease; }
+.home-path-card strong { margin-top: 25px; }
+.home-path-card > span:nth-of-type(3) { color: #c2cde0; font-size: 14px; }
+.home-path-card > svg { right: 22px; bottom: 22px; }
+.explore-page .explore-browser { padding-top: 28px; }
+.explore-page .explore-search input,
+.explore-page .explore-role-filter select { color: #edf2fa; min-height: 44px; }
+.explore-page .explore-search input::placeholder { color: #b0bed4; }
+.explore-page .category-filter button { transition: background-color .15s ease, border-color .15s ease; }
+.explore-page .personality-entry:hover { background: #ffffff0c; }
+:is(.home-page, .explore-page, .profile-page) a:focus-visible,
+:is(.home-page, .explore-page, .profile-page) button:focus-visible,
+:is(.home-page, .explore-page, .profile-page) input:focus-visible,
+:is(.home-page, .explore-page, .profile-page) select:focus-visible {
+  outline: 2px solid #bdd0ed;
+  outline-offset: 3px;
+}
+@media (max-width: 700px) {
+  .home-hero { padding-block: 48px 54px; }
+  .home-hero h1 { font-size: clamp(42px, 10vw, 56px); }
+  .home-overview { padding-block: 48px 58px; }
+  .home-path-card { min-height: 180px; }
+}
