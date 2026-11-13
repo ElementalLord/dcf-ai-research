@@ -77,7 +77,7 @@ async function readSourceText(preview: Preview): Promise<SourceText> {
   const $ = cheerio.load(preview.html);
   const title = $("head > title").first().text().replace(/\s+/g, " ").trim().slice(0, 200);
   const meta = (key: string) => $(`meta[name="${key}"],meta[property="${key}"]`).first().attr("content")?.trim() || null;
-  const identity = authenticateSource({ url: preview.finalUrl, title: meta("citation_title") || meta("dc.title") || title,
+  const identity = authenticateSource({ url: preview.finalUrl, title: (meta("citation_title") || meta("dc.title") || title).slice(0, 300),
     author: meta("citation_author") || meta("dc.creator"), publisher: meta("citation_publisher") || meta("dc.publisher") || meta("og:site_name"),
     publicationDate: meta("citation_publication_date") || meta("citation_date") || meta("dc.date"), journal: meta("citation_journal_title"),
     doi: meta("citation_doi"), isbn: meta("citation_isbn"), sourceType: meta("citation_journal_title") ? "scholarly journal" : null });
@@ -86,7 +86,7 @@ async function readSourceText(preview: Preview): Promise<SourceText> {
     .sort((a, b) => $(b).text().length - $(a).text().length)[0];
   const root = $(chooseLargest("main,[role='main']") || chooseLargest("article") || $("body").get(0));
   const sections: SourceText["sections"] = [];
-  let heading = identity.title || title || preview.finalUrl;
+  let heading = (identity.title || title || preview.finalUrl).slice(0, 200);
   let parts: string[] = [];
   const flush = () => {
     const value = parts.join(" ").replace(/\s+/g, " ").trim().slice(0, MAX_SOURCE_CHARACTERS);
@@ -95,7 +95,8 @@ async function readSourceText(preview: Preview): Promise<SourceText> {
   };
   root.find("h1,h2,h3,h4,h5,h6,p,blockquote,li").each((_, element) => {
     const value = $(element).text().replace(/\s+/g, " ").trim();
-    if (/^h[1-6]$/.test(element.tagName)) { flush(); if (value && !/^information$/i.test(value)) heading = value; }
+    // Some pages mark whole paragraphs up as headings. A locator is a short label, not the passage.
+    if (/^h[1-6]$/.test(element.tagName)) { flush(); if (value && !/^information$/i.test(value)) heading = value.slice(0, 200); }
     else if (value.length >= 20) {
       // Keep paragraph boundaries: a name in one paragraph must not authenticate
       // an unrelated date or event in the next paragraph.

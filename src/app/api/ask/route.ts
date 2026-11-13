@@ -3,7 +3,7 @@ import { z } from "zod";
 import { answerQuestion } from "@/lib/corpus/answer";
 import { assertRequestSize, corpusErrorResponse } from "@/lib/corpus/api";
 import { CorpusError } from "@/lib/corpus/errors";
-import { newResponseId, signFeedbackContext } from "@/lib/feedback-token";
+import { newResponseId, safeFeedbackToken } from "@/lib/feedback-token";
 import { feedbackAnswerSnapshot } from "@/lib/feedback";
 import { publicRateLimit } from "@/lib/api-rate-limit";
 import { readLimitedBody, RequestBodyTooLarge } from "@/lib/limited-request-body";
@@ -39,7 +39,8 @@ export async function POST(request: NextRequest) {
       defer: (work) => after(async () => { await work().catch(() => undefined); }) });
     const { debug: _serverDiagnostics, ...publicResult } = result;
     void _serverDiagnostics;
-    const feedbackToken = signFeedbackContext({
+    // A citation from a live page can carry an over-long heading or title; that must never cost the answer.
+    const feedbackToken = safeFeedbackToken({
       responseId: newResponseId(), question: result.question,
       answer: feedbackAnswerSnapshot(result.status, result.answer),
       personalityId: ids.length === 1 ? ids[0] : null, personalityName: result.personality,
@@ -49,7 +50,7 @@ export async function POST(request: NextRequest) {
       answerMode: result.status, provider: result.debug.provider || null, model: result.debug.model || null,
       requestId: result.interactionId || null,
     });
-    return NextResponse.json({ ...publicResult, feedbackToken });
+    return NextResponse.json({ ...publicResult, ...(feedbackToken ? { feedbackToken } : {}) });
   } catch (error) {
     if (error instanceof RequestBodyTooLarge) return NextResponse.json({ error: { code: "CONTENT_TOO_LARGE", message: "The request body is too large." } }, { status: 413 });
     return corpusErrorResponse(error);
