@@ -60,6 +60,20 @@ describe("bounded on-demand research", () => {
       else process.env.DEMAND_AUTO_ADMISSION_ENABLED = previous;
     }
   });
+  it("never quotes a sentence opener plus the person's own name as a search target", () => {
+    const prior = process.env.DEMAND_AUTO_ADMISSION_ENABLED;
+    try {
+      process.env.DEMAND_AUTO_ADMISSION_ENABLED = "true";
+      const yajnavalkya = narrowQuery({ ...request, personalityName: "Yajnavalkya" }, "Explain Yajnavalkya from the historical angle.");
+      expect(yajnavalkya).not.toContain('"');
+      expect(yajnavalkya).not.toMatch(/explain/i);
+      expect(yajnavalkya).toMatch(/^Yajnavalkya /);
+      expect(narrowQuery({ ...request, personalityName: "Swami Vivekananda" }, "Describe Swami Vivekananda as a teacher.")).not.toContain('"');
+      expect(narrowQuery({ ...request, personalityName: "C. V. Raman" }, "When did C. V. Raman win the Nobel Prize?")).toContain('"Nobel Prize"');
+    } finally {
+      if (prior === undefined) delete process.env.DEMAND_AUTO_ADMISSION_ENABLED; else process.env.DEMAND_AUTO_ADMISSION_ENABLED = prior;
+    }
+  });
   it("replays the Bose discovery failure and preserves the named institution in admission search", () => {
     const replay = JSON.parse(readFileSync(new URL("../fixtures/bose-source-selection-2026-10-23.json", import.meta.url), "utf8")) as {
       question: string; previousQuery: string; observedRankedCandidates: Array<{ url: string; selectionOrder: number }>;

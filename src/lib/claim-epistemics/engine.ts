@@ -15,7 +15,8 @@ type ClaimRow = { id: string; claim_text: string; claim_kind: string | null; evi
   approval_metadata: Record<string, unknown> | null; parameter_field_id: string | null;
   claim_sources: Array<{ source_id: string; page_or_section: string | null }>; claim_chunks: Link[] };
 type SourceRow = { id: string; title: string | null; author: string | null; source_type: string | null; textual_layer: string | null; content_hash: string | null; metadata: Record<string, unknown> | null };
-type ExistingRow = { claim_id: string; epistemic_type: EpistemicType | null; type_origin: string; type_review_status: string; reviewer: string | null; reviewer_kind: string | null; review_note: string | null; reviewed_at: string | null };
+type ExistingRow = { claim_id: string; epistemic_type: EpistemicType | null; type_origin: string; type_review_status: string; reviewer: string | null; reviewer_kind: string | null; review_note: string | null; reviewed_at: string | null;
+  contract_status?: string | null; contract_satisfied?: boolean | null };
 
 async function pages<T>(query: (from: number, to: number) => PromiseLike<{ data: T[] | null; error: unknown }>): Promise<T[]> {
   const rows: T[] = [];
@@ -36,18 +37,52 @@ export function linkLevel(link: Link): PassageLevel | null {
   return link.relationship === "contradicts" ? null : "RELATED";
 }
 
+/** Statuses whose claims may be used in answers (see eligibleEvidence in ask/question-resolution). */
+export function answerUsable(row: { contract_status?: string | null; contract_satisfied?: boolean | null } | null | undefined): boolean {
+  if (!row) return false;
+  return row.contract_status === "SUPPORTED" || row.contract_status === "CONTESTED_REPRESENTED"
+    || (row.contract_status === "NEEDS_TYPE_REVIEW" && row.contract_satisfied === true);
+}
+
 /**
  * Classifies every approved claim deterministically and evaluates its evidence contract, persisting the result.
  * Human and mentor type decisions are kept; only their contract evaluation is refreshed.
  */
 export async function reassessEpistemics(personalityId: string) {
+  const { rows, evaluated } = await evaluateEpistemics(personalityId);
+  await saveEpistemics(rows);
+  return { claims: rows.length, humanKept: evaluated.filter((item) => item.human).length, versions: { classifier: CLASSIFIER_VERSION, contracts: CONTRACT_VERSION } };
+}
+
+async function saveEpistemics(rows: Array<Record<string, unknown>>) {
+  for (let index = 0; index < rows.length; index += 200) {
+    const { error } = await supabaseAdmin.from("claim_epistemics").upsert(rows.slice(index, index + 200), { onConflict: "claim_id" });
+    if (error) throw new CorpusError("DATABASE_FAILED", "Claim epistemics could not be saved.", 500, { cause: error });
+  }
+}
+
+/**
+ * Autonomous, upgrade-only refresh. Approved claims whose stored evaluation keeps them out of answers are
+ * evaluated again with the current classifier and contracts; a claim is written only when the new evaluation
+ * makes it usable. Nothing usable is ever re-blocked, and human or mentor decisions are untouched.
+ */
+export async function refreshBlockedEpistemics(personalityId: string) {
+  const { rows, previousStatus } = await evaluateEpistemics(personalityId);
+  const blocked = rows.filter((row) => !answerUsable(previousStatus.get(String(row.claim_id))));
+  const upgraded = blocked.filter((row) => answerUsable(row as { contract_status: string; contract_satisfied: boolean | null }))
+    .map((row) => ({ ...row, contract_detail: { ...(row.contract_detail as Record<string, unknown>), refreshed: "upgrade-only autonomous refresh" } }));
+  await saveEpistemics(upgraded);
+  return { evaluated: rows.length, blockedBefore: blocked.length, upgraded: upgraded.length, upgradedClaimIds: upgraded.map((row) => String(row.claim_id)) };
+}
+
+async function evaluateEpistemics(personalityId: string) {
   const [claims, parameters, existing, relations] = await Promise.all([
     pages<ClaimRow>((from, to) => supabaseAdmin.from("claims")
       .select("id,claim_text,claim_kind,evidence_type,certainty,approval_origin,approval_metadata,parameter_field_id,claim_sources(source_id,page_or_section),claim_chunks(chunk_id,relationship,confidence,link_method,metadata)")
       .eq("personality_id", personalityId).eq("review_status", "approved").order("id").range(from, to)),
     supabaseAdmin.from("parameter_fields").select("id,parameters(code)"),
     pages<ExistingRow>((from, to) => supabaseAdmin.from("claim_epistemics")
-      .select("claim_id,epistemic_type,type_origin,type_review_status,reviewer,reviewer_kind,review_note,reviewed_at").eq("personality_id", personalityId).order("claim_id").range(from, to)),
+      .select("claim_id,epistemic_type,type_origin,type_review_status,reviewer,reviewer_kind,review_note,reviewed_at,contract_status,contract_satisfied").eq("personality_id", personalityId).order("claim_id").range(from, to)),
     supabaseAdmin.from("claim_relations").select("claim_id,related_claim_id,relation"),
   ]);
   if (parameters.error || relations.error) throw new CorpusError("DATABASE_FAILED", "Claim epistemics could not be loaded.", 500, { cause: parameters.error || relations.error });
@@ -109,11 +144,7 @@ export async function reassessEpistemics(personalityId: string) {
       evaluated_at: now, updated_at: now,
     };
   });
-  for (let index = 0; index < rows.length; index += 200) {
-    const { error } = await supabaseAdmin.from("claim_epistemics").upsert(rows.slice(index, index + 200), { onConflict: "claim_id" });
-    if (error) throw new CorpusError("DATABASE_FAILED", "Claim epistemics could not be saved.", 500, { cause: error });
-  }
-  return { claims: rows.length, humanKept: evaluated.filter((item) => item.human).length, versions: { classifier: CLASSIFIER_VERSION, contracts: CONTRACT_VERSION } };
+  return { rows, evaluated, previousStatus: new Map(existing.map((row) => [row.claim_id, row])) };
 }
 
 export type TypeReviewAction = "confirm_type" | "change_type" | "mark_contested" | "mark_synthetic" | "mark_historical_inference" | "keep_unclassified";

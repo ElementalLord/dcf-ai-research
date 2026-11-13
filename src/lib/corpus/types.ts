@@ -99,6 +99,8 @@ export type RetrievedClaim = {
   /** What the claim asserts and whether its evidence meets that type's contract (claim_epistemics). */
   epistemicType?: string | null;
   contractStatus?: string | null;
+  /** For a claim whose type is unresolved: true when its evidence meets the contract of every plausible type. */
+  contractSatisfied?: boolean | null;
   personalityId?: string;
   personalityName?: string;
   parameterName: string | null;

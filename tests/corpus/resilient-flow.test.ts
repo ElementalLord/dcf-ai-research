@@ -9,7 +9,7 @@ const state = vi.hoisted(() => ({
   caches: new Map<string, Record<string, unknown>>(), checkpoints: new Map<string, Record<string, unknown>>(),
   claims: [] as Record<string, unknown>[], chunks: [] as Record<string, unknown>[],
   lexicalResultsRemaining: null as number | null,
-  recall: vi.fn(), harvest: vi.fn(),
+  recall: vi.fn(), harvest: vi.fn(), refresh: vi.fn(), refreshDue: false,
   sequence: [] as string[], google: vi.fn(), demand: vi.fn(), originalFetch: vi.fn(), extract: vi.fn(), webDiscover: vi.fn(), webConfigured: false, rulesActive: true, started: [] as string[], finished: [] as string[], vectorRpc: vi.fn(), fetch: vi.fn(), discover: vi.fn(), generate: vi.fn(), embed: vi.fn(),
 }));
 vi.mock("@/lib/corpus/personality-context", () => ({ loadPersonalityConfiguration: vi.fn(async () => ({ personalityId: "p", canonicalName: "Vishvamitra", categoryId: "category", categorySlug: "rishi", categoryName: "Rishis", aliases: [{ alias: "Vishwamitra" }], termAliases: [] })) }));
@@ -22,6 +22,7 @@ vi.mock("@/lib/live-research/cache", () => ({ fetchAndCacheApprovedPage: state.f
 vi.mock("@/lib/live-research/google-grounding", () => ({ searchWithGoogleGrounding: state.google }));
 vi.mock("@/lib/knowledge-harvest/recall", () => ({ recallKnownSources: state.recall }));
 vi.mock("@/lib/knowledge-harvest/harvest", () => ({ harvestEnabled: () => true, runHarvest: state.harvest }));
+vi.mock("@/lib/claim-epistemics/autonomous-refresh", () => ({ epistemicRefreshDue: () => state.refreshDue, refreshPersonalityEpistemics: state.refresh }));
 vi.mock("@/lib/live-research/on-demand-engine", () => ({ executeDemandResearch: state.demand }));
 vi.mock("@/lib/live-research/on-demand-adapter", () => ({ productionResearchDependencies: () => ({}) }));
 vi.mock("@/lib/live-research/web-search", () => ({ webSearchProvider: () => ({ isConfigured: () => state.webConfigured }), discoverWebCandidates: state.webDiscover }));
@@ -75,6 +76,8 @@ beforeEach(() => {
   state.google.mockResolvedValue({ evidence: [], requests: 0, queries: 0, latencyMs: 0, errorCategory: "NOT_CONFIGURED" });
   state.recall.mockResolvedValue({ passages: [], attempted: 0, failures: [] });
   state.harvest.mockResolvedValue({ stored: true });
+  state.refreshDue = false;
+  state.refresh.mockResolvedValue([]);
   state.originalFetch.mockResolvedValue({ bytes: new Uint8Array([1]), contentType: "text/html", finalUrl: "https://example.test/approved", access: { display_name: "Public primary text", default_textual_layer: "Epic narrative", default_source_type: "primary_text" } });
   state.extract.mockResolvedValue([{ title: "Valmiki Ramayana", pageOrSection: "Bala Kanda", text: "The narrative says Vishvamitra taught Rama Bala and Atibala." }]);
   state.webDiscover.mockResolvedValue({ accepted: [], rejected: [], candidates: 0, calls: 0, cacheHits: 0, latencyMs: 0, errorCategory: null });
@@ -234,6 +237,16 @@ describe("Ask orchestration", () => {
     expect(result.debug.knowledgeRecallSavedSearch).toBeUndefined();
     await deferred[0]();
     expect(state.harvest.mock.calls[0][0].recall).toEqual({ attempted: 1, failures: ["s1"], savedSearch: false });
+  });
+  it("re-evaluates the person's blocked claims after the answer when a refresh is due", async () => {
+    state.refreshDue = true;
+    const deferred: Array<() => Promise<unknown>> = [];
+    const result = await answerQuestion("How is Vishvamitra portrayed as Rama's guide?", "p", { defer: (work) => { deferred.push(work); } });
+    expect(result.status).not.toBe("abstained");
+    expect(deferred).toHaveLength(1);
+    expect(state.refresh).not.toHaveBeenCalled();
+    await deferred[0]();
+    expect(state.refresh).toHaveBeenCalledWith(["p"]);
   });
   it("neither recalls nor harvests when local evidence is sufficient", async () => {
     const deferred: Array<() => Promise<unknown>> = [];
