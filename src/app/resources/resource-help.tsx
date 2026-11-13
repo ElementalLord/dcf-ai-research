@@ -11,6 +11,13 @@ const guides: Record<Area, { name: string; groups: Group[] }> = {
   sources: {
     name: "Sources",
     groups: [
+      { title: "Work faster", controls: [
+        { label: "Needs attention", explanation: "Lists what is waiting for a decision. Choose an item to open the list already filtered to it." },
+        { label: "J or →", explanation: "With a record open, go to the next one in the current list." },
+        { label: "K or ←", explanation: "With a record open, go to the previous one." },
+        { label: "/", explanation: "Jump to the search box." },
+        { label: "Esc", explanation: "Close the open claim panel or source drawer." },
+      ] },
       { title: "Find sources", controls: [
         { label: "Person", explanation: "Choose whose source library appears in the list.", kind: "field" },
         { label: "Add source", explanation: "Create a candidate source. A title is required; publication details can be added later.", kind: "action" },
@@ -48,6 +55,13 @@ const guides: Record<Area, { name: string; groups: Group[] }> = {
   claims: {
     name: "Claims",
     groups: [
+      { title: "Work faster", controls: [
+        { label: "Needs attention", explanation: "Lists what is waiting for a decision. Choose an item to open the list already filtered to it." },
+        { label: "J or →", explanation: "With a record open, go to the next one in the current list." },
+        { label: "K or ←", explanation: "With a record open, go to the previous one." },
+        { label: "/", explanation: "Jump to the search box." },
+        { label: "Esc", explanation: "Close the open claim panel or source drawer." },
+      ] },
       { title: "Find claims", controls: [
         { label: "Person", explanation: "Choose whose claims appear in the list.", kind: "field" },
         { label: "Add claim", explanation: "Create a draft with claim text, a research field, a source, and an exact supporting excerpt.", kind: "action" },

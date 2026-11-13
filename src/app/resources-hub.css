@@ -1658,3 +1658,79 @@ body:has(.resources-page) .website-active-option { color: var(--res-text); }
   pointer-events: none;
   transform: rotate(45deg);
 }
+
+/* Usability pass, grounded in published guidance:
+   - Lead with what needs a decision; let routine status recede so exceptions stand out.
+   - Status always has a text label, never colour alone (WCAG 1.4.1).
+   - Keep the table header and topic headings in view while scrolling (NN/g: freeze headers).
+   - Repeated review work stays in context: step through records instead of closing and reopening.
+   - On phones, data comes before controls: filters fold away behind one button. */
+.resources-page .resource-overview > button { display: grid; gap: 3px; padding: 14px 18px; color: inherit; text-align: left; background: transparent; border: 0; border-radius: 0; cursor: pointer; font: inherit; }
+.resources-page .resource-overview > button + button { border-left: 1px solid var(--res-line); }
+.resources-page .resource-overview > button:hover { background: var(--res-selected); }
+.resources-page .resource-overview > button:focus-visible { outline: 2px solid var(--res-accent); outline-offset: -2px; }
+.resources-page .resource-overview > button:disabled { cursor: default; }
+.resources-page .resource-overview > button span { color: var(--res-muted); font-size: 13.5px; }
+
+.resources-page .resource-attention { margin: -8px 0 24px; padding: 14px 18px; background: var(--res-surface); border: 1px solid var(--res-line); border-left: 3px solid #f0c674; border-radius: 6px; }
+.resources-page .resource-attention.is-clear { border-left-color: #6fd3a8; }
+.resources-page .resource-attention h2 { margin: 0 0 8px; color: var(--res-text); font-size: 15px; font-weight: 650; }
+.resources-page .resource-attention ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.resources-page .resource-list-toolbar { scroll-margin-top: 16px; }
+.resources-page .resource-attention li button { display: inline-flex; align-items: center; gap: 6px; text-align: left; min-height: 36px; padding: 6px 10px 6px 12px; color: var(--res-text); background: var(--res-selected); border: 1px solid var(--res-line); border-radius: 6px; cursor: pointer; font-size: 14px; }
+.resources-page .resource-attention li button:hover { border-color: var(--res-accent); }
+.resources-page .resource-attention li button:focus-visible { outline: 2px solid var(--res-accent); outline-offset: 2px; }
+.resources-page .resource-attention li strong { font-size: 15px; }
+.resources-page .resource-attention p { display: flex; align-items: center; gap: 8px; margin: 0; color: var(--res-muted); font-size: 14px; }
+.resources-page .resource-attention p svg { flex: none; color: #6fd3a8; }
+
+/* Routine status recedes; anything that needs a decision keeps a strong tag. */
+.resources-page .resource-record-status.is-default { color: var(--res-muted); font-weight: 500; }
+.resources-page .resource-record-status.is-default::before { background: #6fd3a8; }
+/* An earlier rule forces every status colour with !important; tags that need a decision must override it to stay legible. */
+.resources-page .resource-record-status:not(.is-default) { padding: 2px 8px; color: #1b1405 !important; background: #f0c674; border-radius: 4px; }
+.resources-page .resource-record-status.source-status-rejected:not(.is-default) { color: #2a0b10 !important; background: #f2a7b3; }
+.resources-page .resource-record-status:not(.is-default)::before { background: currentColor; }
+
+/* Table: header stays visible; the open row is marked; rows show a clear hover and focus. */
+@media (min-width: 701px) {
+  .resources-page .resource-source-table-wrap { overflow: visible; }
+  .resources-page .resource-source-table thead th { position: sticky; top: 0; z-index: 2; background: var(--res-surface); box-shadow: inset 0 -1px var(--res-line); }
+}
+.resources-page .resource-source-table tbody tr[aria-selected="true"] { background: var(--res-selected); box-shadow: inset 3px 0 var(--res-accent); }
+.resources-page .resource-source-table .resource-source-open:focus-visible { outline: 2px solid var(--res-accent); outline-offset: 2px; border-radius: 3px; }
+
+/* Topic groups: headings stay in view, can be folded, and say how many claims are not yet in answers. */
+.resources-page .resource-group-controls { display: flex; justify-content: flex-end; gap: 4px; margin: 4px 0 -4px; }
+.resources-page .resource-claim-group > summary { position: sticky; top: 0; z-index: 2; background: var(--res-bg, #0b1226); }
+.resources-page .resource-claim-group > summary:focus-visible { outline: 2px solid var(--res-accent); outline-offset: -2px; }
+.resources-page .resource-group-attention { color: #f0c674; font-weight: 600; }
+.resources-page .resource-claim-record:focus-visible { outline: 2px solid var(--res-accent); outline-offset: -2px; }
+
+/* Step through records in place. */
+.resources-page .resource-panel-nav,.resource-sheet .resource-sheet-nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.resources-page .resource-panel-nav { margin-bottom: 12px; }
+.resources-page .resource-panel-nav .resource-panel-close { position: static; margin: 0; }
+.resource-stepper { display: inline-flex; align-items: center; gap: 6px; }
+.resource-stepper > span { min-width: 92px; color: var(--res-muted, #a3afca); font-size: 13px; text-align: center; font-variant-numeric: tabular-nums; }
+.resource-stepper [data-slot="button"] { width: 32px; height: 32px; padding: 0; }
+.resource-stepper-hint { padding: 1px 6px; color: var(--res-muted, #a3afca); border: 1px solid var(--res-line, #243053); border-radius: 4px; font: 11px/1.6 var(--font-geist-mono, monospace); }
+@media (pointer: coarse) { .resource-stepper-hint { display: none; } .resource-stepper [data-slot="button"] { width: 40px; height: 40px; } }
+
+/* Filters fold away on phones; on wider screens the toggle is not needed. */
+.resources-page .resource-filters-toggle { display: none; }
+@media (max-width: 700px) {
+  .resources-page .resource-filters-toggle { display: inline-flex; flex: none; height: 40px; }
+  .resources-page .resource-list-toolbar:not(.filters-open) .status-field { display: none; }
+  .resources-page .resource-list-toolbar,.resources-page .resource-list-toolbar-sources { display: flex !important; flex-wrap: wrap; align-items: end; gap: 8px; }
+  .resources-page .resource-list-toolbar .search-field { flex: 1 1 0; min-width: 0; grid-column: auto; }
+  .resources-page .resource-list-toolbar .status-field { flex: 1 1 100%; }
+  .resources-page .resource-list-toolbar .resource-add-button { flex: 1 1 100%; }
+  .resources-page .resource-overview { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+  .resources-page .resource-overview > button { padding: 10px 10px; }
+  .resources-page .resource-overview > button + button { border-left: 1px solid var(--res-line); border-top: 0; }
+  .resources-page .resource-overview > button strong { font-size: 19px; }
+  .resources-page .resource-overview > button span { font-size: 12px; line-height: 1.3; }
+  .resources-page .resource-attention li, .resources-page .resource-attention li button { width: 100%; }
+  .resources-page .resource-attention li button { justify-content: space-between; min-height: 44px; }
+}
