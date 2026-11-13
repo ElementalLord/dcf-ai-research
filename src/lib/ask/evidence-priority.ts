@@ -88,11 +88,13 @@ export function prioritizeEvidence(question: string, evidence: RetrievedEvidence
   }).sort((a, b) => b.score - a.score || a.index - b.index);
   const selected: RetrievedEvidence[] = [];
   const perSource = new Map<string, number>();
+  // Deeper answers may draw more from one source; short ones stay spread across sources.
+  const perSourceLimit = Math.max(2, Math.ceil(limit / 4));
   const seen = new Set<string>();
   for (const entry of ranked) {
     const key = entry.item.text.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").slice(0, 180);
     const source = entry.item.sourceUrl || entry.item.sourceTitle || entry.item.id;
-    if (seen.has(key) || (perSource.get(source) || 0) >= 2) continue;
+    if (seen.has(key) || (perSource.get(source) || 0) >= perSourceLimit) continue;
     selected.push(entry.item);
     seen.add(key);
     perSource.set(source, (perSource.get(source) || 0) + 1);

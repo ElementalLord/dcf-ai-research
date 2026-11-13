@@ -63,8 +63,8 @@ function builder(table: string) {
   };
   return query;
 }
-function claim(id: string, text: string, parameter = "Role") {
-  return { id, claim_text: text, claim_kind: "traditional_account", certainty: "medium", review_status: "approved", approval_origin: "human_manual", evidence_type: "traditional_narrative", parameter_fields: { id, label: "Role", parameters: { id, name: parameter, sort_order: 1 } }, claim_sources: [{ evidence_excerpt: `The original text reports: ${text}`, sources: { id: "source", title: "Public primary text", source_status: "approved", source_type: "primary_text" } }], claim_chunks: [] };
+function claim(id: string, text: string, parameter = "Role", sourceTitle = "Public primary text") {
+  return { id, claim_text: text, claim_kind: "traditional_account", certainty: "medium", review_status: "approved", approval_origin: "human_manual", evidence_type: "traditional_narrative", parameter_fields: { id, label: "Role", parameters: { id, name: parameter, sort_order: 1 } }, claim_sources: [{ evidence_excerpt: `The original text reports: ${text}`, sources: { id: sourceTitle, title: sourceTitle, source_status: "approved", source_type: "primary_text" } }], claim_chunks: [] };
 }
 function passage(text: string) {
   return { chunk_id: "chunk", source_id: "source", chunk_text: text, source_title: "Approved Ramayana", source_url: "https://example.test/approved", source_status: "approved", lexical_score: 1, textual_layer: "Epic narrative", source_type: "primary_text", metadata: { origin: "live_cache" } };
@@ -254,6 +254,47 @@ describe("Ask orchestration", () => {
     expect(result.status).not.toBe("abstained");
     expect(state.recall).not.toHaveBeenCalled();
     expect(deferred).toHaveLength(0);
+  });
+  it("gives each answer depth more evidence and a distinct writing instruction", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "fake"); vi.stubEnv("SYNTHESIS_PROVIDER", "gemini"); vi.stubEnv("ANSWER_CACHE_DISABLED", "true");
+    const facts = ["was born a king named Kaushika", "left his kingdom to practise tapas", "contended with the sage Vasistha over a wish-fulfilling cow",
+      "became a brahmarshi through long austerity", "taught Rama the Bala and Atibala mantras", "led Rama and Lakshmana to Mithila", "is credited with the Gayatri mantra",
+      "appears in the third mandala of the Rigveda", "protected sacrifices from the raksasas with Rama's help", "sent Trishanku towards heaven",
+      "is linked to the story of Shunahshepa", "fathered Shakuntala with Menaka", "gave Rama celestial weapons", "is remembered as a model of perseverance",
+      "is named among the seven great sages", "guided Rama to the bow of Shiva"];
+    state.claims = facts.map((fact, index) => claim(`f${index}`, `The text says Vishvamitra ${fact}.`, ["Role", "Tapas", "Textual contribution", "Relationships"][index % 4], `Source ${index % 5}`));
+    state.generate.mockImplementation(async () => ({ text: "Vishvamitra is presented as a king who became a sage [C1]. He taught Rama important mantras [C2]. The tradition remembers his perseverance [C3]." }));
+    const runs: Record<string, { records: number; prompt: string }> = {};
+    for (const style of ["simple", "balanced", "detailed", "research"] as const) {
+      state.generate.mockClear();
+      const result = await answerQuestion("Who is Vishvamitra?", "p", { responseStyle: style });
+      expect(result.status).toBe("complete");
+      const prompt = String(state.generate.mock.calls[0][0].contents);
+      runs[style] = { records: (prompt.split("\nEvidence:\n")[1].match(/^\[C\d+\]/gm) || []).length, prompt };
+      expect(prompt).toContain(`Answer depth: ${style.toUpperCase()}.`);
+      for (const other of ["simple", "balanced", "detailed", "research"].filter((value) => value !== style))
+        expect(prompt).not.toContain(`Answer depth: ${other.toUpperCase()}.`);
+    }
+    expect(runs.simple.records).toBeLessThan(runs.balanced.records);
+    expect(runs.balanced.records).toBeLessThan(runs.detailed.records);
+    expect(runs.detailed.records).toBeLessThan(runs.research.records);
+    expect(runs.research.prompt).toMatch(/400 to 650 words/);
+    expect(runs.simple.prompt).toMatch(/50 to 90 words/);
+  });
+  it("makes deeper answers longer when the no-AI fallback writes them", async () => {
+    const facts = ["was born a king named Kaushika", "left his kingdom to practise tapas", "contended with the sage Vasistha over a wish-fulfilling cow",
+      "became a brahmarshi through long austerity", "taught Rama the Bala and Atibala mantras", "led Rama and Lakshmana to Mithila", "is credited with the Gayatri mantra",
+      "appears in the third mandala of the Rigveda", "protected sacrifices from the raksasas with Rama's help", "sent Trishanku towards heaven"];
+    state.claims = facts.map((fact, index) => claim(`g${index}`, `The text says Vishvamitra ${fact}.`, ["Role", "Tapas", "Textual contribution", "Relationships"][index % 4], `Source ${index % 5}`));
+    const cited: Record<string, number> = {};
+    for (const style of ["simple", "balanced", "detailed", "research"] as const) {
+      const result = await answerQuestion("Who is Vishvamitra?", "p", { responseStyle: style });
+      expect(result.status).not.toBe("abstained");
+      cited[style] = result.citations.length;
+    }
+    expect(cited.simple).toBeLessThan(cited.balanced);
+    expect(cited.balanced).toBeLessThan(cited.detailed);
+    expect(cited.detailed).toBeLessThan(cited.research);
   });
   it("does not spend on Google or Brave when local evidence is sufficient", async () => {
     state.google.mockResolvedValue({ evidence: [], requests: 1, queries: 0, latencyMs: 4, errorCategory: "TIMEOUT" });

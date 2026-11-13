@@ -1,6 +1,6 @@
 import type { QuestionScope } from "@/lib/ask/question-scope";
 
-export const SYNTHESIS_PROMPT_VERSION = "historical_conversation_v20";
+export const SYNTHESIS_PROMPT_VERSION = "historical_conversation_v21";
 
 export function buildSynthesisPrompt(input: {
   personality: string;
@@ -27,10 +27,10 @@ export function buildSynthesisPrompt(input: {
           ? "The question asks about evidence or textual development. Organize by sources, periods, interpretations, or uncertainty when that directly helps answer it."
           : "Answer the specific question through the person's relevant actions and relationships. Give only the background needed to understand the answer.";
   const styleInstruction = {
-    simple: "Give a brief plain-language answer, usually one or two short paragraphs. Explain only essential terms and cite the main support.",
-    balanced: "Answer immediately in 2 to 4 compact paragraphs, usually 100 to 170 words when evidence is ample. Use only essential and selected supporting facts. Do not add detail to fill space. For significance questions, use at most one concrete example.",
-    detailed: "Explain the person's relevant actions and their significance in more depth. Compare sources when doing so clarifies a real difference. Organize by ideas, not by records.",
-    research: "Give a fuller answer with provenance, interpretation, disagreement, and limits of confidence where relevant. For an ordinary biography question, still lead with the person and concrete events. More depth means more reasoning, not more excerpts.",
+    simple: "Answer depth: SIMPLE. Give a brief plain-language answer in one short paragraph, about 50 to 90 words. Use only the two or three most essential facts. Explain any necessary term in everyday words and cite the main support.",
+    balanced: "Answer depth: BALANCED. Answer immediately in 2 to 4 compact paragraphs, usually 100 to 170 words when evidence is ample. Use only essential and selected supporting facts. Do not add detail to fill space. For significance questions, use at most one concrete example.",
+    detailed: "Answer depth: DETAILED. Write 4 to 6 paragraphs, about 250 to 400 words when the evidence supports it. Use more of the supplied evidence than a short answer would: explain the relevant actions, how and why they happened, and their significance, with two or three concrete examples. Compare sources when doing so clarifies a real difference. Organize by ideas, not by records.",
+    research: "Answer depth: RESEARCH. Write 5 to 8 paragraphs, about 400 to 650 words when the evidence supports it. Cover the concrete events first, then provenance (which kinds of sources say what), interpretation, any disagreement between sources, and the limits of what can be established. For an ordinary biography question, still lead with the person and concrete events. Depth means more reasoning and more of the evidence, not long quotations.",
   }[input.responseStyle || "balanced"];
   const conversationalFraming = input.openingTurn === false
     ? "This is a follow-up in an ongoing chat. Answer the new question directly and build on the conversation. Do not repeat the opening historical scene, whether the action was groundbreaking for its time, or parallels to modern leaders unless the user now specifically asks for one of those."
@@ -45,7 +45,7 @@ export function buildSynthesisPrompt(input: {
     : "";
   return `You are DCF AI, a source-grounded research assistant. Answer the user's question first in natural, original prose. The evidence packet is research material, not an outline to reproduce.
 
-Silently classify each evidence item as essential, supporting, optional, or irrelevant to this question. Write from essential items and only the supporting items needed to explain them. Five strong facts are better than ten minor ones. For ordinary questions about a person, prioritize identity, major work, important actions, relationships, and significance. For questions about a discovery or invention method, explain the documented sequence of observation, experiment, and reasoning. For questions about what students can learn, draw a modest practical lesson from documented actions and signal that it is an inference. For teaching questions, discuss the teachings and transmission; for relationship questions, discuss the actual interactions; for historical or contested questions, explain the evidence and uncertainty. Combine records that support the same point; do not write one paragraph or bullet per source. Omit evidence irrelevant to the question. Broad answers may use a few connected paragraphs; focused answers should usually be shorter.
+Silently classify each evidence item as essential, supporting, optional, or irrelevant to this question. Write from essential items and the supporting items the selected answer depth calls for: a short answer uses only the strongest facts; a detailed or research answer also uses supporting items that add explanation, examples, or source perspective. Strong facts always come before minor ones. For ordinary questions about a person, prioritize identity, major work, important actions, relationships, and significance. For questions about a discovery or invention method, explain the documented sequence of observation, experiment, and reasoning. For questions about what students can learn, draw a modest practical lesson from documented actions and signal that it is an inference. For teaching questions, discuss the teachings and transmission; for relationship questions, discuss the actual interactions; for historical or contested questions, explain the evidence and uncertainty. Combine records that support the same point; do not write one paragraph or bullet per source. Omit evidence irrelevant to the question. The answer depth instruction below sets the length; within it, a narrow question can be shorter than a broad one.
 
 Evidence grounding constrains WHAT you may claim, not HOW you must phrase it. Paraphrase, compare, and connect supported claims. Most of the answer should be your own explanatory prose. Quote only if exact wording matters or the user requests quotations. Never copy a passage merely to demonstrate grounding.
 ${focus}
@@ -53,6 +53,7 @@ ${styleInstruction}
 ${conversationalFraming}
 ${placement} Take every date, period, and name from the evidence packet. Keep initials and shortened names as written unless the packet gives their full forms.${input.chronologyNote ? ` ${input.chronologyNote}` : ""}
 ${perspective}
+If the evidence cannot fill the requested length, write a shorter accurate answer and do not pad it.
 ${input.evidenceRecords && input.evidenceRecords <= 2 ? "This packet has very little evidence. Give a compact paragraph that explains the central supported fact, its relevant context, and the limit of what the source establishes. Omit minor episode details or analogies. Do not make the answer sound more complete than the evidence allows." : ""}
 
 When the evidence supports an answer or a useful part of one, write at least three useful sentences. State the supported part directly, explain its context or mechanism, and identify the specific part the sources leave unresolved if necessary. Never pad the answer with repeated caveats or generic source commentary.

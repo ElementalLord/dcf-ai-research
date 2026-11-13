@@ -107,7 +107,7 @@ describe("scope-aware grounded answers", () => {
     expect(queries.every((query) => query.includes("Rishi A") && /textual|lineage|Rigveda/.test(query))).toBe(true);
     expect(queries.some((query) => /original text|scholarly assessment/.test(query))).toBe(true);
     const prompt = buildSynthesisPrompt({ personality: "Rishi A", question: "Who is Rishi A?", resolvedQuestion: "Who is Rishi A?", scope: "BROAD_PROFILE", evidenceContext: "[C1] Claim" });
-    expect(SYNTHESIS_PROMPT_VERSION).toBe("historical_conversation_v20");
+    expect(SYNTHESIS_PROMPT_VERSION).toBe("historical_conversation_v21");
     expect(prompt).toContain("at least three useful sentences");
     expect(prompt).toContain("Avoid stacks of repeated citations");
     expect(prompt).toContain("silently review");
@@ -127,7 +127,7 @@ describe("scope-aware grounded answers", () => {
     expect(followUp).toContain("Do not repeat the opening historical scene");
     expect(followUp).not.toContain("This is the first answer in the chat");
     const research = buildSynthesisPrompt({ personality: "Rishi A", question: "Who is Rishi A?", resolvedQuestion: "Who is Rishi A?", scope: "BROAD_PROFILE", evidenceContext: "[C1] Claim", responseStyle: "research" });
-    expect(research).toContain("More depth means more reasoning, not more excerpts");
+    expect(research).toContain("Depth means more reasoning and more of the evidence, not long quotations");
     const historical = buildSynthesisPrompt({ personality: "Rishi A", question: "What is historically known about Rishi A?", resolvedQuestion: "What is historically known about Rishi A?", scope: "CONTESTED_OR_HISTORICAL", evidenceContext: "[C1] Claim" });
     expect(historical).toContain("Organize by sources, periods, interpretations, or uncertainty");
   });
