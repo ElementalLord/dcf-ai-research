@@ -30,7 +30,27 @@ import { productionResearchDependencies } from "@/lib/live-research/on-demand-ad
 import { productionAdmissionStore, productionVerificationProvider, verifyDemandKnowledge } from "@/lib/live-research/knowledge-verification";
 import { settleResearchBudget } from "@/lib/live-research/research-budget";
 import { recordDemandQuestionActivity } from "@/lib/live-research/research-telemetry";
-import type { RetrievedEvidence } from "./types";
+import { isLiveOrigin, type RetrievedEvidence, type RetrievedPassage } from "./types";
+
+import { recallKnownSources } from "@/lib/knowledge-harvest/recall";
+import { harvestEnabled, runHarvest } from "@/lib/knowledge-harvest/harvest";
+import type { SearchPolicy } from "@/lib/live-research/search-policy";
+
+type AskOptions = {
+  history?: ConversationQuestion[];
+  responseStyle?: "simple" | "balanced" | "detailed" | "research";
+  /** Runs work after the response is sent (Next.js `after`). Without it, harvesting runs unawaited. */
+  defer?: (work: () => Promise<unknown>) => void;
+};
+/** What each personality's live research read, kept aside so it can be recorded after the answer. */
+type HarvestCollector = {
+  policy: SearchPolicy | null;
+  question: string;
+  entries: Array<{ personalityId: string; personalityName: string; aliases: string[]; passages: RetrievedPassage[];
+    recall: { attempted: number; failures: string[]; savedSearch: boolean } }>;
+};
+const sameLivePassage = (a: RetrievedEvidence, b: RetrievedEvidence) => a.kind === "passage" && b.kind === "passage"
+  && a.sourceUrl === b.sourceUrl && a.text === b.text;
 
 const ABSTENTION = "The available sources do not contain enough evidence to answer that fully.";
 const NO_EVIDENCE_REPLY = /sources (?:currently available )?do not (?:provide|contain) (?:reliable|enough) evidence|don't have enough evidence|couldn't verify (?:a reliable answer|that connection)/i;
@@ -40,7 +60,8 @@ const answerSentenceCount = (value: string) => value.replace(/\[[CS]\d+\]/g, "")
 async function answerQuestionInternal(
   question: string,
   personalityId: string | string[],
-  options: { history?: ConversationQuestion[]; responseStyle?: "simple" | "balanced" | "detailed" | "research" } = {},
+  options: AskOptions = {},
+  collector: HarvestCollector = { policy: null, question: "", entries: [] },
 ) {
   const personalityIds = [...new Set(Array.isArray(personalityId) ? personalityId : [personalityId])];
   const configurations = await Promise.all(personalityIds.map(loadPersonalityConfiguration));
@@ -69,11 +90,12 @@ async function answerQuestionInternal(
   const categorySlugs = configurations.map((configuration) => configuration.categorySlug);
   const withAuthority = (items: RetrievedEvidence[], rules: Awaited<typeof searchPolicyPromise>["rules"]) => {
     for (const item of items) item.authority ||= classifySourceAuthority({ url: item.sourceUrl, sourceType: item.sourceType, institution: item.sourceInstitution,
-      live: item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live" || item.origin === "pmc_oai") }, rules);
+      live: item.kind === "passage" && isLiveOrigin(item.origin) }, rules);
   };
   // Retrieve local evidence first so the single Google step can target its gaps.
   // Brave's original-source workflow runs only if grounding cannot cover them.
   const demandBudget = { remaining: 1 };
+  const recallStates = personalityIds.map(() => ({ attempted: 0, failures: [] as string[], savedSearch: false }));
   const retrievals = await Promise.all(personalityIds.map(async (id, index) => {
     const retrievalOptions = { additionalPersonalityAliases: comparisonAliases, configuration: configurations[index] };
     const [local, searchPolicy] = await Promise.all([retrieveEvidence(retrievalQuestion, id, retrievalOptions), searchPolicyPromise]);
@@ -94,6 +116,38 @@ async function answerQuestionInternal(
     local.debug.coverageStatus = resolution.sufficient ? "sufficient" : resolution.route === "partial_answer" ? "partial" : "unsupported";
     logStage("QUESTION_RESOLUTION", { state: resolution.state, gapCount: resolution.gaps.length,
       localEvidence: local.evidence.length, researchJustified: resolution.researchJustified });
+    // Before any paid search, re-read works that earlier questions already found
+    // credible for this person. The page must still supply a supporting passage.
+    if (resolution.researchJustified) {
+      const recalled = await recallKnownSources({ personalityId: id, personalityName: configurations[index].canonicalName,
+        aliases: local.personalityAliases, question: queryContext.resolvedQuestion, policy: searchPolicy })
+        .catch(() => ({ passages: [] as RetrievedPassage[], attempted: 0, failures: [] as string[] }));
+      const rescued = recalled.passages.filter((item) => !lens || directlySupportsRequestedLens(queryContext.resolvedQuestion, item, local.personalityAliases));
+      recallStates[index].attempted = recalled.attempted;
+      recallStates[index].failures = recalled.failures;
+      local.debug.knowledgeRecallAttempted = recalled.attempted;
+      local.debug.knowledgeRecallHits = rescued.length;
+      if (rescued.length) {
+        local.evidence.push(...rescued);
+        if (assessEvidenceSufficiency(queryContext.resolvedQuestion, local.evidence, {
+          personalityAliases: local.personalityAliases, termAliases: local.termAliases, allParameters: local.allParameters,
+        }).sufficient && fillsEvidenceGaps(resolution.gaps, local.evidence)) {
+          recallStates[index].savedSearch = true;
+          local.debug.knowledgeRecallSavedSearch = true;
+          local.debug.answerable = true;
+          local.debug.coverageStatus = "sufficient";
+          local.debug.unresolvedEvidenceGap = false;
+          local.debug.missingEvidenceDimensions = [];
+          local.debug.liveResearchTriggered = true;
+          local.debug.localEvidenceBeforeSearch = localEvidenceCount;
+          local.debug.liveSourcesUsed = rescued.length;
+          local.debug.localSourcesUsed = local.evidence.length - rescued.length;
+          local.debug.localEvidenceSufficiencyReason = "A source verified for an earlier question was re-read and supplies the missing evidence.";
+          withAuthority(local.evidence, searchPolicy.rules);
+          return local;
+        }
+      }
+    }
     if (process.env.DEMAND_RESEARCH_ENABLED === "true") {
       const allocated = resolution.researchRequest ? Math.min(resolution.researchRequest.maxExternalSearches, demandBudget.remaining) : 0;
       demandBudget.remaining -= allocated;
@@ -180,7 +234,7 @@ async function answerQuestionInternal(
         // The final cited-answer guard still checks the named target and date.
       }
       local.debug.localEvidenceBeforeSearch = localEvidenceCount;
-      local.debug.localSourcesUsed = local.evidence.filter((item) => item.kind === "claim" || (item.origin !== "brave_live" && item.origin !== "pmc_oai")).length;
+      local.debug.localSourcesUsed = local.evidence.filter((item) => item.kind === "claim" || !isLiveOrigin(item.origin)).length;
       // One Brave search can return only unreadable pages, or fail before search.
       // Give an unresolved need one quota-limited grounding pass before abstaining.
       const weakOnlyResearch = research?.citeableNow && research.passages.length > 0
@@ -191,7 +245,8 @@ async function answerQuestionInternal(
         const google = await searchWithGoogleGrounding(queryContext.resolvedQuestion, id, configurations[index].canonicalName,
           responseStyle === "research" ? "research" : "normal", searchPolicy, resolution.gaps.map((gap) => gap.requirement),
           local.personalityAliases, searchEmphasis);
-        const rescued = google.evidence.filter((item) => !lens || directlySupportsRequestedLens(queryContext.resolvedQuestion, item, local.personalityAliases));
+        const rescued = google.evidence.filter((item) => (!lens || directlySupportsRequestedLens(queryContext.resolvedQuestion, item, local.personalityAliases))
+          && !local.evidence.some((existing) => sameLivePassage(existing, item)));
         local.evidence.push(...rescued);
         local.debug.googleGroundedSourcesReturned = new Set(rescued.map((item) => item.sourceUrl)).size;
         local.debug.googleSearchRequests = google.requests;
@@ -222,7 +277,7 @@ async function answerQuestionInternal(
       ? { evidence: [], requests: 0, queries: 0, latencyMs: 0, errorCategory: null }
       : await searchWithGoogleGrounding(queryContext.resolvedQuestion, id, configurations[index].canonicalName,
         responseStyle === "research" ? "research" : "normal", searchPolicy, googleGaps, local.personalityAliases, searchEmphasis);
-    if (google.evidence.length) local.evidence.push(...google.evidence);
+    if (google.evidence.length) local.evidence.push(...google.evidence.filter((item) => !local.evidence.some((existing) => sameLivePassage(existing, item))));
     const groundedDecision = assessEvidenceSufficiency(queryContext.resolvedQuestion, local.evidence, { personalityAliases: local.personalityAliases, termAliases: local.termAliases, allParameters: local.allParameters });
     const googleUseful = google.evidence.length > 0 && groundedDecision.sufficient && fillsEvidenceGaps(resolution.gaps, local.evidence);
     const shouldTryBrave = resolution.researchJustified && !googleUseful;
@@ -244,7 +299,7 @@ async function answerQuestionInternal(
     } else {
       base.debug.answerable = Boolean(base.debug.answerable || resolution.route === "answer" || resolution.route === "partial_answer");
     }
-    base.debug.liveSourcesUsed = base.evidence.filter((item) => item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live" || item.origin === "pmc_oai")).length;
+    base.debug.liveSourcesUsed = base.evidence.filter((item) => item.kind === "passage" && isLiveOrigin(item.origin)).length;
     if (resolution.state !== "unsupported" && !base.debug.answerable && hasDirectLiveIdentity(queryContext.resolvedQuestion, base.evidence)) {
       base.debug.answerable = true;
       base.debug.coverageStatus = "partial";
@@ -259,10 +314,16 @@ async function answerQuestionInternal(
       base.debug.answerable = false;
       base.debug.unresolvedEvidenceGap = true;
     }
-    base.debug.localSourcesUsed = base.evidence.filter((item) => item.kind === "claim" || (item.origin !== "google_grounding" && item.origin !== "brave_live" && item.origin !== "pmc_oai")).length;
+    base.debug.localSourcesUsed = base.evidence.filter((item) => item.kind === "claim" || !isLiveOrigin(item.origin)).length;
     withAuthority(base.evidence, searchPolicy.rules);
     return base;
   }));
+  collector.policy = await searchPolicyPromise.catch(() => null);
+  collector.question = queryContext.resolvedQuestion;
+  retrievals.forEach((retrieval, index) => collector.entries.push({ personalityId: personalityIds[index],
+    personalityName: configurations[index].canonicalName, aliases: retrieval.personalityAliases,
+    passages: retrieval.evidence.filter((item): item is RetrievedPassage => item.kind === "passage" && isLiveOrigin(item.origin)),
+    recall: recallStates[index] }));
   const comparisonMode = retrievals.length > 1;
   const personality = retrievals.map((retrieval) => retrieval.personality).join(" and ");
   const parameters = [...new Map(retrievals.flatMap((retrieval) => retrieval.parameters).map((parameter) => [parameter.code, parameter])).values()];
@@ -545,12 +606,13 @@ async function answerQuestionInternal(
   };
 }
 
-export async function answerQuestion(question: string, personalityId: string | string[], options: { history?: ConversationQuestion[]; responseStyle?: "simple" | "balanced" | "detailed" | "research" } = {}) {
+export async function answerQuestion(question: string, personalityId: string | string[], options: AskOptions = {}) {
   incrementMetric("totalAskRequests");
   return withRequestUsage(async (usage) => {
     const started = performance.now();
     let result: Awaited<ReturnType<typeof answerQuestionInternal>>;
-    try { result = await answerQuestionInternal(question, personalityId, options); }
+    const collector: HarvestCollector = { policy: null, question: "", entries: [] };
+    try { result = await answerQuestionInternal(question, personalityId, options, collector); }
     catch (error) {
       if (usage.researchReservationId) await settleResearchBudget(usage).catch(() => null);
       throw error;
@@ -570,6 +632,19 @@ export async function answerQuestion(question: string, personalityId: string | s
       latencyMs: result.debug.latenciesMs.total,
     });
     console.info("ask_research_usage", JSON.stringify({ model: result.debug.model, googleSearchRequests: result.debug.googleSearchRequests || 0, googleSearchQueries: result.debug.googleSearchQueries || 0, googleErrorCategory: result.debug.googleSearchErrorCategory || null, localEvidenceBeforeSearch: result.debug.localEvidenceBeforeSearch || 0, googleGroundedSourcesReturned: result.debug.googleGroundedSourcesReturned || 0, braveTriggered: result.debug.braveTriggered || false, braveCalls: result.debug.webSearchCalls || 0, braveCacheHits: result.debug.webSearchCacheHits || 0, braveQueries: result.debug.braveQueries || [], lens: result.debug.lens || null, contextIntent: result.debug.contextIntent || null, citedProvenance: result.citations.map((citation) => ({ id: citation.id, origin: citation.kind === "live_web_source" ? "live" : "library", claimId: citation.claimId, chunkId: citation.chunkId, approvalOrigin: citation.approvalOrigin, authority: citation.authority })), liveUrlsAccepted: result.debug.liveUrlsAccepted || [], liveUrlsRejected: (result.debug.liveUrlsRejected || []).slice(0, 6), liveSourcesUsed: result.debug.liveSourcesUsed || 0, localSourcesUsed: result.debug.localSourcesUsed || 0, evidenceRetrieved: result.debug.evidenceRetrievedCount || 0, evidenceSelected: result.debug.finalSelectedEvidenceCount || 0, evidenceUsed: result.debug.evidenceUsedCount || 0, latencyMs: result.debug.latenciesMs.total }));
+    // Whenever live research ran, record what it read: credible works and the passages
+    // that supported this question. This happens after the response and cannot change it.
+    const policy = collector.policy;
+    const harvestable = collector.entries.filter((entry) => entry.passages.length || entry.recall.attempted);
+    if (policy && harvestable.length && harvestEnabled()) {
+      const durationMs = result.debug.latenciesMs.total;
+      const live = result.citations.filter((citation) => citation.kind === "live_web_source");
+      const work = () => Promise.all(harvestable.map((entry) => runHarvest({ ...entry, question: collector.question, policy,
+        rules: policy.rules, durationMs, citedChunkIds: new Set(live.filter((citation) => !citation.personalityId || citation.personalityId === entry.personalityId)
+          .map((citation) => citation.chunkId).filter((value): value is string => Boolean(value))) })));
+      if (options.defer) options.defer(work);
+      else void work().catch(() => undefined);
+    }
     if (result.debug.liveResearchTriggered) incrementMetric("liveResearchTriggers");
     if (result.debug.semanticFallbackReason && result.debug.semanticFallbackReason !== "semantic_skipped_sufficient_lexical_claim_candidates") incrementMetric("semanticFallbacks");
     return { ...result, debug: { ...result.debug, usageMetrics: usageMetrics() } };

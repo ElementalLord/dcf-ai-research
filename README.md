@@ -86,6 +86,10 @@ Apply migrations before opening `/corpus/external`. Select a personality, set a 
 
 Ask retrieves local evidence, makes one question-focused Gemini Google Search grounding call, then uses Brave and fetched original pages when grounding cannot fill the gap. `GEMINI_GROUNDING_MODEL` defaults to `gemini-3.5-flash-lite`; synthesis remains independently configured. Local evidence still works when providers fail. Balanced answers select a small set of essential and supporting evidence and usually fit in 2–4 compact paragraphs. Google summaries and Brave snippets never become evidence on their own.
 
+### Knowledge harvest
+
+Every Ask answer that uses live search also records what it read. After the response is sent, each work is scored for credibility (publisher standing, evidence type, stated identity, passage support, independent corroboration and track record) and stored with pointers to the passages that supported the question. On later questions DCF re-reads those remembered works before making any paid search. Passage text is kept only for openly licensed pages, and no question text is stored. Harvested works are never approved automatically: **Resources → Knowledge engine → Source harvest** lists them with their score breakdown, and adding one to the Library creates a candidate source for normal review. Apply `20261113010000_knowledge_harvest.sql` to enable it; without the migration Ask behaves as before. See [`docs/knowledge-harvest.md`](docs/knowledge-harvest.md).
+
 ### Free-tier resilient Ask
 
 Core ingestion, aliases, deterministic routing, lexical retrieval, approved live

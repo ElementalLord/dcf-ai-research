@@ -1,4 +1,4 @@
-import type { Citation, RetrievedEvidence } from "./types";
+import { isLiveOrigin, type Citation, type RetrievedEvidence } from "./types";
 import { truncateText } from "./text";
 import { AUTHORITY_LABELS, classifySourceAuthority } from "@/lib/sources/authority";
 
@@ -33,13 +33,13 @@ export function buildBoundedContext(
     const citationId = item.kind === "claim" ? `C${++claimIndex}` : `S${++sourceIndex}`;
     const body = truncateText(item.text, item.kind === "passage" ? 380 : 450);
     const location = item.pageOrSection || (item.kind === "passage" ? item.sectionTitle : null) || "location unspecified";
-    const live = item.kind === "passage" && (item.origin === "google_grounding" || item.origin === "brave_live" || item.origin === "pmc_oai");
+    const live = item.kind === "passage" && isLiveOrigin(item.origin);
     const authority = item.authority || classifySourceAuthority({ url: item.sourceUrl, sourceType: item.sourceType, institution: item.sourceInstitution, live });
     const passageAudit = item.kind === "passage"
       ? `; evidence type: ${item.evidenceType || "unclassified"}; passage support: ${item.supportLevel || "not classified"}; accessibility: ${item.accessibility || "readable"}; work family: ${item.workKey || "not identified"}` : "";
     const traditionalCaveat = item.kind === "passage" && item.evidenceType === "traditional_text"
       ? "\nEpistemic limit: this passage supports what the tradition states or narrates; it does not by itself establish historical occurrence." : "";
-    const metadata = `${live ? `Live web research; not DCF approved. This passage was fetched from the original source after ${item.origin === "google_grounding" ? "Google grounding" : item.origin === "pmc_oai" ? "PMC discovery" : "Brave discovery"}.\n` : ""}${item.personalityName ? `Personality: ${item.personalityName}\n` : ""}Work: ${item.sourceTitle || "not linked"}; locator: ${location}; layer: ${item.textualLayer || "unspecified"}; source type: ${item.sourceType || "unspecified"}; publisher standing: ${AUTHORITY_LABELS[authority.level]}${authority.primary ? ", primary source" : ""}${passageAudit}${traditionalCaveat}`;
+    const metadata = `${live ? `Live web research; not DCF approved. This passage was fetched from the original source after ${item.origin === "google_grounding" ? "Google grounding" : item.origin === "pmc_oai" ? "PMC discovery" : item.origin === "knowledge_recall" ? "an earlier DCF research finding" : "Brave discovery"}.\n` : ""}${item.personalityName ? `Personality: ${item.personalityName}\n` : ""}Work: ${item.sourceTitle || "not linked"}; locator: ${location}; layer: ${item.textualLayer || "unspecified"}; source type: ${item.sourceType || "unspecified"}; publisher standing: ${AUTHORITY_LABELS[authority.level]}${authority.primary ? ", primary source" : ""}${passageAudit}${traditionalCaveat}`;
     const record = item.kind === "claim"
       ? `[${citationId}] Claim / topic: ${item.parameterName || item.fieldLabel || topic || "unclassified"}\nProposition: ${body}\n${metadata}\nEpistemic: ${item.epistemicType || "unclassified"}; evidence: ${item.evidenceType}; support: ${item.contractStatus || "not classified"}; certainty: ${item.certainty || "unspecified"}; contested: ${item.epistemicType === "CONTESTED" || item.contractStatus === "CONTESTED_REPRESENTED" ? "yes" : "not marked"}${item.storageMode === "metadata_only" ? "\nOriginal source verified at admission; no source passage is stored." : item.evidenceExcerpt ? `\nSupporting passage: ${truncateText(item.evidenceExcerpt, 170)}` : ""}`
       : `[${citationId}] Supporting passage / topic: ${item.parameterNames?.join(", ") || "source passage"}\n${metadata}\nPassage: ${body}`;

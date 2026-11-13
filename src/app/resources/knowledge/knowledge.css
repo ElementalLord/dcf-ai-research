@@ -35,4 +35,21 @@
 .knowledge-controls button:hover, .knowledge-section-head button:hover { background: var(--brand-accent-hover); }
 .knowledge-controls button:disabled { opacity: .6; cursor: wait; }
 .knowledge-controls p { margin: 12px 0 0; font-size: 13px; }
+.harvest-sub { display: block; margin-top: 3px; color: var(--brand-muted); font-size: 12px; }
+.harvest-tier { display: inline-block; padding: 2px 8px; border: 1px solid var(--brand-line-strong); border-radius: 4px; font-weight: 650; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.harvest-tier-trusted { color: var(--brand-ink); background: var(--brand-accent); border-color: var(--brand-accent); }
+.harvest-tier-credible { color: var(--brand-accent); border-color: var(--brand-accent); }
+.harvest-tier-provisional, .harvest-tier-unverified { color: var(--brand-muted); }
+.harvest-why summary { cursor: pointer; list-style: none; }
+.harvest-why summary::-webkit-details-marker { display: none; }
+.harvest-why summary:focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 2px; }
+.harvest-why ul { margin: 8px 0 0; padding: 0; list-style: none; color: var(--brand-muted); font-size: 12px; min-width: 220px; }
+.harvest-why li { padding: 2px 0; }
+.harvest-actions { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.harvest-actions button { min-height: 32px; padding: 5px 10px; color: var(--brand-ink); background: var(--brand-accent); border: 1px solid var(--brand-accent); border-radius: 5px; font: 650 13px/1 var(--brand-display); cursor: pointer; white-space: nowrap; }
+.harvest-actions button:hover { background: var(--brand-accent-hover); }
+.harvest-actions button.harvest-secondary { color: var(--brand-text); background: transparent; border-color: var(--brand-line-strong); }
+.harvest-actions button.harvest-secondary:hover { background: var(--brand-surface-2); }
+.harvest-actions button:disabled { opacity: .6; cursor: wait; }
+.harvest-actions p { flex-basis: 100%; margin: 4px 0 0; color: var(--brand-muted); font-size: 12px; }
 @media (max-width: 650px) { .knowledge-heading { align-items: start; flex-direction: column; } .knowledge-facts div { min-width: 125px; } }

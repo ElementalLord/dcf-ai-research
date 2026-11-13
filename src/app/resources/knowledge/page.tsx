@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { hasAdminSession } from "@/lib/admin-session";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import KnowledgeControls from "./knowledge-controls";
+import HarvestActions from "./harvest-actions";
 import ResourcesNav from "../resources-nav";
 import "./knowledge.css";
 
@@ -18,12 +19,21 @@ type Decision = { id: string; created_at: string; outcome: string; support: stri
   reason_codes: string[]; source_work_keys: string[]; claim_id: string | null };
 type Need = { need_id: string; status: string; outcome: { errorCategory?: string } | null; retry_after: string | null; updated_at: string };
 type Source = { id: string; title: string; publisher_or_institution: string | null; url: string | null; source_status: string; rights_or_access_note: string | null };
+type HarvestSnapshot = { sources: number; trusted: number; credible: number; promotionReady: number; promoted: number; rejected: number;
+  findings: number; licensedFindings: number; runs30d: number; recallHits30d: number; searchesSaved30d: number };
+type HarvestSource = { id: string; title: string; canonical_url: string; domain: string; publisher: string | null; evidence_type: string;
+  authority_level: string; credibility_score: number; credibility_tier: string; credibility_signals: Array<{ key: string; points: number; detail: string }>;
+  retention: string; status: string; times_seen: number; times_cited: number; distinct_questions: number; recall_hits: number; last_seen_at: string };
+const HARVEST_VIEWS = { review: "Ready or active", ready: "Ready to add", trusted: "Trusted", promoted: "Added to Library", rejected: "Rejected" } as const;
+const HARVEST_STATUS: Record<string, string> = { active: "Active", promotion_ready: "Ready to add", promoted: "In Library (candidate)", rejected: "Rejected" };
+const words = (value: string) => value.replaceAll("_", " ");
 const usd = (micro: number) => `$${(micro / 1_000_000).toFixed(3)}`;
 const date = (value: string) => new Date(value).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
 
-export default async function KnowledgePage({ searchParams }: { searchParams: Promise<{ outcome?: string }> }) {
+export default async function KnowledgePage({ searchParams }: { searchParams: Promise<{ outcome?: string; harvest?: string }> }) {
   if (!(await hasAdminSession())) redirect("/resources");
   const params = await searchParams;
+  const harvestView = (params.harvest && params.harvest in HARVEST_VIEWS ? params.harvest : "review") as keyof typeof HARVEST_VIEWS;
   const outcome = ["admitted", "quarantined", "rejected", "shadow", "duplicate"].includes(params.outcome || "") ? params.outcome! : "";
   const policyResult = await supabaseAdmin.from("demand_budget_policy")
     .select("request_limit_micro,daily_limit_micro,monthly_limit_micro,max_paid_calls,max_concurrent_jobs,research_paused,auto_admission_paused")
@@ -32,6 +42,21 @@ export default async function KnowledgePage({ searchParams }: { searchParams: Pr
     <ResourcesNav current="knowledge"/>
     <p className="knowledge-empty">The demand budget migration is not available in this database. Apply the validated migrations before enabling research.</p>
   </main>;
+  // The harvest tables arrive with their own migration; the rest of this page works without them.
+  const harvestQuery = supabaseAdmin.from("knowledge_sources")
+    .select("id,title,canonical_url,domain,publisher,evidence_type,authority_level,credibility_score,credibility_tier,credibility_signals,retention,status,times_seen,times_cited,distinct_questions,recall_hits,last_seen_at");
+  const [harvestSnapshotResult, harvestSourcesResult] = await Promise.all([
+    supabaseAdmin.rpc("knowledge_harvest_snapshot"),
+    (harvestView === "ready" ? harvestQuery.eq("status", "promotion_ready")
+      : harvestView === "trusted" ? harvestQuery.eq("credibility_tier", "trusted").neq("status", "rejected")
+      : harvestView === "promoted" ? harvestQuery.eq("status", "promoted")
+      : harvestView === "rejected" ? harvestQuery.eq("status", "rejected")
+      : harvestQuery.in("status", ["promotion_ready", "active"]))
+      .order("status", { ascending: false }).order("credibility_score", { ascending: false }).order("last_seen_at", { ascending: false }).limit(50),
+  ]);
+  const harvestAvailable = !harvestSnapshotResult.error && !harvestSourcesResult.error;
+  const harvest = (harvestSnapshotResult.data || {}) as HarvestSnapshot;
+  const harvestSources = (harvestSourcesResult.data || []) as HarvestSource[];
   const [snapshotResult, activityResult, decisionsResult, needsResult, sourcesResult] = await Promise.all([
     supabaseAdmin.rpc("demand_oversight_snapshot"),
     supabaseAdmin.from("demand_question_activity").select("id,created_at,resolution_state,research_status,search_calls,verification_model_calls,admitted_count,estimated_cost_micro,latency_ms")
@@ -77,6 +102,33 @@ export default async function KnowledgePage({ searchParams }: { searchParams: Pr
         <div><dt>Cost per admitted claim this month</dt><dd>{costPerAdmission === null ? "—" : usd(costPerAdmission)}</dd></div></dl>
       <p className="knowledge-note">Costs are estimates from configured rates and reported provider tokens. Check provider billing separately.</p>
       <KnowledgeControls policy={policy}/>
+    </section>
+    <section className="knowledge-section" aria-labelledby="knowledge-harvest"><div className="knowledge-section-head"><h2 id="knowledge-harvest">Source harvest</h2>
+      {harvestAvailable && <form action="/resources/knowledge" method="get"><label>Show <select name="harvest" defaultValue={harvestView}>{Object.entries(HARVEST_VIEWS).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label><button type="submit">Filter</button></form>}</div>
+      {harvestAvailable ? <>
+        <p className="knowledge-note">Every answer that uses live search records the works it read, scores each for credibility, and remembers which passages supported the question. Remembered sources are re-read before any paid search. Nothing here is approved: adding a source to the Library creates a candidate for normal review.</p>
+        <dl className="knowledge-facts">
+          <div><dt>Works recorded</dt><dd>{harvest.sources}</dd></div>
+          <div><dt>Trusted</dt><dd>{harvest.trusted}</dd></div>
+          <div><dt>Credible</dt><dd>{harvest.credible}</dd></div>
+          <div><dt>Ready to add</dt><dd>{harvest.promotionReady}</dd></div>
+          <div><dt>Passages indexed</dt><dd>{harvest.findings}</dd></div>
+          <div><dt>Answers harvested (30 days)</dt><dd>{harvest.runs30d}</dd></div>
+          <div><dt>Paid searches avoided (30 days)</dt><dd>{harvest.searchesSaved30d}</dd></div>
+        </dl>
+        <div className="knowledge-table-wrap"><table><thead><tr><th>Work</th><th>Credibility</th><th>Type</th><th>Use</th><th>Status</th><th>Decision</th></tr></thead><tbody>
+          {harvestSources.map(row => <tr key={row.id}>
+            <td><a href={row.canonical_url} target="_blank" rel="noopener noreferrer">{row.title}</a><small className="harvest-sub">{row.publisher || row.domain}</small></td>
+            <td><details className="harvest-why"><summary><span className={`harvest-tier harvest-tier-${row.credibility_tier}`}>{row.credibility_score} · {row.credibility_tier}</span></summary>
+              <ul>{row.credibility_signals.map(signal => <li key={signal.key}>{signal.points > 0 ? "+" : ""}{signal.points} {signal.detail}</li>)}</ul></details></td>
+            <td>{words(row.evidence_type)}<small className="harvest-sub">{row.retention === "licensed_excerpt" ? "Open licence: passages kept" : "Pointer only: no text kept"}</small></td>
+            <td>{row.distinct_questions} question{row.distinct_questions === 1 ? "" : "s"} · cited {row.times_cited}<small className="harvest-sub">Reused {row.recall_hits} · last seen {date(row.last_seen_at)}</small></td>
+            <td>{HARVEST_STATUS[row.status] || row.status}</td>
+            <td><HarvestActions sourceId={row.id} status={row.status}/></td>
+          </tr>)}
+          {!harvestSources.length && <tr><td colSpan={6}>No harvested sources match this view yet. They appear after an answer uses live search.</td></tr>}
+        </tbody></table></div>
+      </> : <p className="knowledge-empty">Source harvesting is not available in this database yet. Apply the migration <code>20261113010000_knowledge_harvest.sql</code> to start recording what live search finds.</p>}
     </section>
     <section className="knowledge-section" aria-labelledby="knowledge-decisions"><div className="knowledge-section-head"><h2 id="knowledge-decisions">Verification decisions</h2>
       <form action="/resources/knowledge" method="get"><label>Outcome <select name="outcome" defaultValue={outcome}><option value="">All</option>{["admitted","quarantined","rejected","shadow","duplicate"].map(value => <option key={value} value={value}>{value}</option>)}</select></label><button type="submit">Filter</button></form></div>

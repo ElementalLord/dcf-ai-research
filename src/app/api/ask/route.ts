@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { after, NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { answerQuestion } from "@/lib/corpus/answer";
 import { assertRequestSize, corpusErrorResponse } from "@/lib/corpus/api";
@@ -34,7 +34,9 @@ export async function POST(request: NextRequest) {
       throw new CorpusError("INVALID_INPUT", "A valid personality and question are required.", 400);
     }
     const ids = parsed.data.personalityIds?.length ? parsed.data.personalityIds : [parsed.data.personalityId!];
-    const result = await answerQuestion(parsed.data.question, ids.length === 1 ? ids[0] : ids, { history: parsed.data.history, responseStyle: parsed.data.responseStyle });
+    const result = await answerQuestion(parsed.data.question, ids.length === 1 ? ids[0] : ids, { history: parsed.data.history, responseStyle: parsed.data.responseStyle,
+      // Recording what live research read happens after the answer is sent.
+      defer: (work) => after(async () => { await work().catch(() => undefined); }) });
     const { debug: _serverDiagnostics, ...publicResult } = result;
     void _serverDiagnostics;
     const feedbackToken = signFeedbackContext({
