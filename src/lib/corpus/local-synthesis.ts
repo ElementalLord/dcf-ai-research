@@ -349,6 +349,13 @@ function composePersonAnswer(entries: EvidenceWithCitation[], scope: QuestionSco
     if (options[0]) chosen.push({ slot, fact: options[0] });
   }
   const cap = responseStyle === "simple" ? 2 : responseStyle === "research" ? 6 : responseStyle === "detailed" ? 5 : 4;
+  // The slots cover the essentials. A deeper answer adds the next best supported facts up to its limit.
+  if (responseStyle === "detailed" || responseStyle === "research") {
+    const remaining = facts.filter((fact) => !chosen.some((picked) => picked.fact.citation.id === fact.citation.id))
+      .sort((a, b) => factScore(b, question) - factScore(a, question));
+    for (const fact of remaining) { if (chosen.length >= cap) break; chosen.push({ slot: "extra", fact }); }
+  }
+  const extraFacts = () => chosen.slice(0, cap).filter((part) => part.slot === "extra").map((part) => part.fact);
   const picked = chosen.slice(0, cap);
   if (!picked.length) return null;
   const bySlot = (slot: string) => picked.find((part) => part.slot === slot)?.fact;
@@ -378,6 +385,7 @@ function composePersonAnswer(entries: EvidenceWithCitation[], scope: QuestionSco
     else if (deeds.length) paragraphs.push(factSentence(deeds[0]));
     const vedic = bySlot("vedic");
     if (vedic && vedic !== identity && vedic !== development && !deeds.includes(vedic)) paragraphs.push(factSentence(vedic));
+    if (extraFacts().length) paragraphs.push(extraFacts().map(factSentence).join(" "));
   } else if (intent === "actions") {
     const [first, second, ...rest] = picked.map(({ fact }) => fact);
     paragraphs.push(second ? combineFacts(first, second) : factSentence(first));
@@ -400,6 +408,8 @@ function composePersonAnswer(entries: EvidenceWithCitation[], scope: QuestionSco
     const middle = picked.map(({ fact }) => fact).filter((fact) => fact !== beginning && fact !== recognition);
     paragraphs.push(middle[0] ? combineFacts(beginning, middle[0]) : factSentence(beginning));
     if (recognition && recognition !== beginning) paragraphs[0] += ` ${factSentence(recognition)}`;
+    const extras = extraFacts().filter((fact) => fact !== beginning && fact !== recognition && fact !== middle[0]);
+    if (extras.length) paragraphs.push(extras.map(factSentence).join(" "));
     if (!/^\b(?:In|According to|The [^,]{0,55} (?:narrates|portrays|describes))\b/i.test(paragraphs[0])) {
       const work = beginning.item.sourceTitle?.split(/\s+[—–-]\s+|,/)[0]?.trim();
       if (work && !/^source\b/i.test(work)) paragraphs[0] = `In the ${work}, ${paragraphs[0][0].toLowerCase()}${paragraphs[0].slice(1)}`;
