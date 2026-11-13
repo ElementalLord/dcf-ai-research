@@ -6,6 +6,7 @@ import { readSubjectPassages } from "@/lib/live-research/search-credibility";
 import type { SearchPolicy } from "@/lib/live-research/search-policy";
 import { buildHarvest, groupByWork, type HarvestInput, type HarvestPayload, type TrackRecord } from "./plan";
 import { passageHash, questionFingerprint } from "./topics";
+import { admitFromHarvest } from "./admission";
 
 /** On unless explicitly switched off. A database without the harvest tables simply records nothing. */
 export const harvestEnabled = () => process.env.KNOWLEDGE_HARVEST_ENABLED !== "false";
@@ -22,7 +23,9 @@ export function noteHarvestStoreError(error: { code?: string } | null | undefine
 export function resetHarvestStoreAvailability(): void { unavailableUntil = 0; }
 
 export type HarvestJob = HarvestInput & { policy: SearchPolicy };
-export type HarvestOutcome = { stored: boolean; sources: number; findings: number; newSources: number; newFindings: number; promotionReady: number; reason?: string };
+export type HarvestOutcome = { stored: boolean; sources: number; findings: number; newSources: number; newFindings: number; promotionReady: number;
+  /** Claims published without review by this harvest. */
+  admittedClaims: number; reason?: string };
 
 async function loadTrackRecords(workKeys: string[], questionHash: string): Promise<Map<string, TrackRecord>> {
   const records = new Map<string, TrackRecord>();
@@ -68,7 +71,7 @@ async function deepHarvest(job: HarvestJob, payload: HarvestPayload): Promise<Re
 
 /** Record what one Ask's live research read. Never throws: harvesting cannot affect an answer. */
 export async function runHarvest(job: HarvestJob): Promise<HarvestOutcome> {
-  const none = (reason: string): HarvestOutcome => ({ stored: false, sources: 0, findings: 0, newSources: 0, newFindings: 0, promotionReady: 0, reason });
+  const none = (reason: string): HarvestOutcome => ({ stored: false, sources: 0, findings: 0, newSources: 0, newFindings: 0, promotionReady: 0, admittedClaims: 0, reason });
   if (!harvestEnabled()) return none("disabled");
   if (!harvestStoreAvailable()) return none("store_unavailable");
   const hasRecallActivity = Boolean(job.recall?.attempted);
@@ -88,9 +91,13 @@ export async function runHarvest(job: HarvestJob): Promise<HarvestOutcome> {
     if (error || !data || typeof data !== "object") { noteHarvestStoreError(error); return none(error?.code || "write_failed"); }
     const row = data as { sources?: number; findings?: number; new_sources?: number; new_findings?: number; promotion_ready?: number };
     const outcome: HarvestOutcome = { stored: true, sources: row.sources || 0, findings: row.findings || 0,
-      newSources: row.new_sources || 0, newFindings: row.new_findings || 0, promotionReady: row.promotion_ready || 0 };
+      newSources: row.new_sources || 0, newFindings: row.new_findings || 0, promotionReady: row.promotion_ready || 0, admittedClaims: 0 };
+    // The sources are now on record with their standing; verified facts can be published from them.
+    const admission = await admitFromHarvest({ personalityId: job.personalityId, personalityName: job.personalityName,
+      question: job.question, passages: job.passages, payload }).catch(() => null);
+    outcome.admittedClaims = admission?.decisions.filter((decision) => decision.outcome === "admitted").length || 0;
     logStage("KNOWLEDGE_HARVEST", { sources: outcome.sources, findings: outcome.findings, newSources: outcome.newSources,
-      newFindings: outcome.newFindings, promotionReady: outcome.promotionReady });
+      newFindings: outcome.newFindings, promotionReady: outcome.promotionReady, admittedClaims: outcome.admittedClaims });
     return outcome;
   } catch (error) {
     return none(error instanceof Error ? error.message.slice(0, 60) : "failed");

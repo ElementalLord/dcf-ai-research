@@ -4,9 +4,9 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 type Action = "promote" | "reject" | "restore";
-const DONE: Record<Action, string> = { promote: "Added to the Library as a candidate source.", reject: "Rejected. It will not be reused.", restore: "Restored." };
+const DONE: Record<Action, string> = { promote: "Added to the Library as a candidate source.", reject: "Rejected. It will not be reused, and claims resting on it were withdrawn.", restore: "Restored." };
 
-/** Reviewer decisions for one harvested source. Promotion never approves anything; it queues the source for normal review. */
+/** Optional overrides for one harvested source. The pipeline runs without them. */
 export default function HarvestActions({ sourceId, status }: { sourceId: string; status: string }) {
   const router = useRouter();
   const [busy, setBusy] = useState<Action | null>(null);
@@ -25,7 +25,7 @@ export default function HarvestActions({ sourceId, status }: { sourceId: string;
   return <div className="harvest-actions">
     {status === "rejected"
       ? <button type="button" onClick={() => decide("restore")} disabled={Boolean(busy)}>{busy === "restore" ? "Restoring…" : "Restore"}</button>
-      : <>{status !== "promoted" && <button type="button" onClick={() => decide("promote")} disabled={Boolean(busy)}>{busy === "promote" ? "Adding…" : "Add to Library"}</button>}
+      : <>{status !== "promoted" && <button type="button" onClick={() => decide("promote")} disabled={Boolean(busy)}>{busy === "promote" ? "Adding…" : "Add as candidate"}</button>}
         <button type="button" className="harvest-secondary" onClick={() => decide("reject")} disabled={Boolean(busy)}>{busy === "reject" ? "Rejecting…" : "Reject"}</button></>}
     {message && <p role="status">{message}</p>}
   </div>;

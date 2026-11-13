@@ -20,12 +20,13 @@ type Decision = { id: string; created_at: string; outcome: string; support: stri
 type Need = { need_id: string; status: string; outcome: { errorCategory?: string } | null; retry_after: string | null; updated_at: string };
 type Source = { id: string; title: string; publisher_or_institution: string | null; url: string | null; source_status: string; rights_or_access_note: string | null };
 type HarvestSnapshot = { sources: number; trusted: number; credible: number; promotionReady: number; promoted: number; rejected: number;
-  findings: number; licensedFindings: number; runs30d: number; recallHits30d: number; searchesSaved30d: number };
+  findings: number; licensedFindings: number; runs30d: number; recallHits30d: number; searchesSaved30d: number;
+  autoClaims?: number; autoClaims30d?: number; autoHeld30d?: number; autoSuspended?: number };
 type HarvestSource = { id: string; title: string; canonical_url: string; domain: string; publisher: string | null; evidence_type: string;
   authority_level: string; credibility_score: number; credibility_tier: string; credibility_signals: Array<{ key: string; points: number; detail: string }>;
   retention: string; status: string; times_seen: number; times_cited: number; distinct_questions: number; recall_hits: number; last_seen_at: string };
-const HARVEST_VIEWS = { review: "Ready or active", ready: "Ready to add", trusted: "Trusted", promoted: "Added to Library", rejected: "Rejected" } as const;
-const HARVEST_STATUS: Record<string, string> = { active: "Active", promotion_ready: "Ready to add", promoted: "In Library (candidate)", rejected: "Rejected" };
+const HARVEST_VIEWS = { review: "Recorded, not yet in Library", ready: "Used repeatedly", trusted: "Trusted", promoted: "In Library", rejected: "Rejected" } as const;
+const HARVEST_STATUS: Record<string, string> = { active: "Recorded", promotion_ready: "Used repeatedly", promoted: "In Library", rejected: "Rejected" };
 const words = (value: string) => value.replaceAll("_", " ");
 const usd = (micro: number) => `$${(micro / 1_000_000).toFixed(3)}`;
 const date = (value: string) => new Date(value).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
@@ -106,13 +107,16 @@ export default async function KnowledgePage({ searchParams }: { searchParams: Pr
     <section className="knowledge-section" aria-labelledby="knowledge-harvest"><div className="knowledge-section-head"><h2 id="knowledge-harvest">Source harvest</h2>
       {harvestAvailable && <form action="/resources/knowledge" method="get"><label>Show <select name="harvest" defaultValue={harvestView}>{Object.entries(HARVEST_VIEWS).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label><button type="submit">Filter</button></form>}</div>
       {harvestAvailable ? <>
-        <p className="knowledge-note">Every answer that uses live search records the works it read, scores each for credibility, and remembers which passages supported the question. Remembered sources are re-read before any paid search. Nothing here is approved: adding a source to the Library creates a candidate for normal review.</p>
+        <p className="knowledge-note">This runs on its own. Every answer that uses live search records the works it read and scores each for credibility. Facts that pass every check (two independent credible works, or one trusted authoritative work, plus an exact-match and entailment check) are published as verified claims with no reviewer. Remembered sources are re-read before any paid search. The controls below are optional: rejecting a source stops its reuse and withdraws the claims that rest on it, and &ldquo;Pause automatic admission&rdquo; above stops new claims.</p>
         <dl className="knowledge-facts">
           <div><dt>Works recorded</dt><dd>{harvest.sources}</dd></div>
           <div><dt>Trusted</dt><dd>{harvest.trusted}</dd></div>
           <div><dt>Credible</dt><dd>{harvest.credible}</dd></div>
-          <div><dt>Ready to add</dt><dd>{harvest.promotionReady}</dd></div>
           <div><dt>Passages indexed</dt><dd>{harvest.findings}</dd></div>
+          <div><dt>Claims published automatically</dt><dd>{harvest.autoClaims ?? 0}</dd></div>
+          <div><dt>Published (30 days)</dt><dd>{harvest.autoClaims30d ?? 0}</dd></div>
+          <div><dt>Held back (30 days)</dt><dd>{harvest.autoHeld30d ?? 0}</dd></div>
+          <div><dt>Withdrawn</dt><dd>{harvest.autoSuspended ?? 0}</dd></div>
           <div><dt>Answers harvested (30 days)</dt><dd>{harvest.runs30d}</dd></div>
           <div><dt>Paid searches avoided (30 days)</dt><dd>{harvest.searchesSaved30d}</dd></div>
         </dl>
@@ -132,6 +136,7 @@ export default async function KnowledgePage({ searchParams }: { searchParams: Pr
     </section>
     <section className="knowledge-section" aria-labelledby="knowledge-decisions"><div className="knowledge-section-head"><h2 id="knowledge-decisions">Verification decisions</h2>
       <form action="/resources/knowledge" method="get"><label>Outcome <select name="outcome" defaultValue={outcome}><option value="">All</option>{["admitted","quarantined","rejected","shadow","duplicate"].map(value => <option key={value} value={value}>{value}</option>)}</select></label><button type="submit">Filter</button></form></div>
+      <p className="knowledge-note">Every automatic decision is listed here with its reason, including facts that were held back.</p>
       <dl className="knowledge-facts"><div><dt>Machine approved</dt><dd>{summary.machineApproved}</dd></div><div><dt>Human or Mentor approved</dt><dd>{summary.humanApproved}</dd></div>
         <div><dt>Quarantined</dt><dd>{summary.quarantined}</dd></div><div><dt>Rejected</dt><dd>{summary.rejected}</dd></div><div><dt>Suspended machine claims</dt><dd>{summary.suspendedMachine}</dd></div></dl>
       <div className="knowledge-table-wrap"><table><thead><tr><th>Time</th><th>Decision</th><th>Epistemic type</th><th>Support</th><th>Reason</th><th>Work identity</th><th>Claim</th></tr></thead><tbody>
