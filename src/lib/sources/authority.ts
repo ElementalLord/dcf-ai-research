@@ -71,7 +71,7 @@ const RESEARCH_HOST = /(?:^|\.)(?:res\.in|cnrs\.fr|mpg\.de|cern\.ch)$/i;
 const AUTHORITATIVE_HOSTS: Array<[RegExp, string]> = [
   [/(?:^|\.)(?:jstor\.org|muse\.jhu\.edu|sciencedirect\.com|pubmed\.ncbi\.nlm\.nih\.gov|projecteuclid\.org|ams\.org)$/i, "Academic journal platform"],
   [/(?:^|\.)(?:cambridge\.org|oup\.com|oxfordacademic\.com|press\.uchicago\.edu|journals\.uchicago\.edu|hup\.harvard\.edu|press\.princeton\.edu|yalebooks\.yale\.edu|mitpress\.mit\.edu|sunypress\.edu|ucpress\.edu|cup\.columbia\.edu)$/i, "University press"],
-  [/(?:^|\.)(?:springer\.com|nature\.com|wiley\.com|tandfonline\.com|sagepub\.com|brill\.com|degruyter\.com|royalsocietypublishing\.org|aps\.org|aip\.org|iop\.org|pnas\.org|science\.org|elsevier\.com|mdpi\.com|ieee\.org)$/i, "Peer-reviewed publisher"],
+  [/(?:^|\.)(?:springer\.com|nature\.com|wiley\.com|tandfonline\.com|taylorfrancis\.com|routledge\.com|palgrave\.com|sagepub\.com|brill\.com|degruyter\.com|royalsocietypublishing\.org|aps\.org|aip\.org|iop\.org|pnas\.org|science\.org|elsevier\.com|mdpi\.com|ieee\.org)$/i, "Peer-reviewed publisher"],
   [/(?:^|\.)(?:nobelprize\.org|royalsociety\.org|insa\.nic\.in|ias\.ac\.in|bori\.ac\.in|asiaticsociety\.org\.in|lms\.ac\.uk|si\.edu)$/i, "Recognized research institute or academy"],
   [/(?:^|\.)(?:loc\.gov|bl\.uk|nationalarchives\.gov\.uk|nationalarchives\.nic\.in|abhilekh-patal\.in|indianculture\.gov\.in|ndl\.gov\.in|europeana\.eu|bnf\.fr)$/i, "National library or official archive"],
   [/(?:^|\.)(?:gretil\.sub\.uni-goettingen\.de|sanskrit\.inria\.fr|vedicheritage\.gov\.in|ignca\.gov\.in|perseus\.tufts\.edu)$/i, "Institutional primary-text repository"],

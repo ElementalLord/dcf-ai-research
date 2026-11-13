@@ -60,6 +60,11 @@ describe("source credibility", () => {
     expect(assessCredibility({ ...base, trackRecord: { distinctQuestions: 3, timesCited: 2, consecutiveRecallFailures: 0 } }).score).toBe(fresh + 6);
     expect(assessCredibility({ ...base, trackRecord: { distinctQuestions: 1, timesCited: 0, consecutiveRecallFailures: 2 } }).score).toBe(fresh - 10);
   });
+  it("recognizes Routledge and Taylor & Francis as academic publishers", async () => {
+    const { classifySourceAuthority } = await import("@/lib/sources/authority");
+    for (const url of ["https://www.routledge.com/Subhas-Chandra-Bose/book/123", "https://www.taylorfrancis.com/chapters/x", "https://www.palgrave.com/book/1"])
+      expect(classifySourceAuthority({ url, live: true }).level).toBe("authoritative");
+  });
   it("maps scores to tiers at fixed thresholds", () => {
     expect([75, 74, 50, 49, 30, 29].map(credibilityTier)).toEqual(["trusted", "credible", "credible", "provisional", "provisional", "unverified"]);
   });
