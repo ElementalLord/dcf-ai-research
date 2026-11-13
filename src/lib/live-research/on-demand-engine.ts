@@ -68,9 +68,19 @@ export function narrowQuery(request: EvidenceGapRequest, question: string): stri
   // admission searches; a publisher's license is still checked on its page.
   const plan = planResearchQueries(request.personalityName, question, [], 1)[0];
   if (detectContextIntent(question) !== "contemporaries" && (process.env.DEMAND_AUTO_ADMISSION_ENABLED === "true" || process.env.DEMAND_VERIFICATION_SHADOW_ENABLED === "true")) {
+    // A named target is a proper noun other than the person: "Nobel Prize", not "Explain Yajnavalkya".
+    // Sentence-opening verbs and question words are capitalized too, and the person's own name is never a target.
+    const nameWords = new Set(normalizeForMatch(request.personalityName).split(" ").filter(Boolean));
+    const opener = /^(?:Did|Does|Do|Was|Were|Is|Are|What|Which|Who|Whom|Whose|When|Where|Why|How|About|Regarding|Selected|Personality|Explain|Describe|Tell|Show|Give|List|Summari[sz]e|Discuss|Compare|Outline|Name|Please|Can|Could|Would|Should|In|On|At|From|For|During|After|Before)$/iu;
     const namedTargets = [...question.matchAll(/\b\p{Lu}[\p{L}\p{N}]+(?:\s+\p{Lu}[\p{L}\p{N}]+)+/gu)]
-      .map(([value]) => value.replace(/^(?:(?:Did|Does|Do|Was|Were|Is|Are|What|Which|When|Where|Why|How|About|Regarding|Selected|Personality)\s+)+/iu, ""))
-      .filter((value) => !normalizeForMatch(request.personalityName).includes(normalizeForMatch(value)));
+      .map(([value]) => {
+        const words = value.split(/\s+/);
+        while (words.length && opener.test(words[0])) words.shift();
+        return words;
+      })
+      // "Bose Institute" names something else; "Yajnavalkya" alone is just the person.
+      .filter((words) => words.length >= 2 && words.some((word) => !nameWords.has(normalizeForMatch(word))))
+      .map((words) => words.join(" "));
     const target = namedTargets.at(-1);
     if (target) {
       const action = question.replace(new RegExp(request.personalityName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"), "")

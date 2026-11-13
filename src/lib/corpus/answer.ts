@@ -34,6 +34,7 @@ import { isLiveOrigin, type RetrievedEvidence, type RetrievedPassage } from "./t
 
 import { recallKnownSources } from "@/lib/knowledge-harvest/recall";
 import { harvestEnabled, runHarvest } from "@/lib/knowledge-harvest/harvest";
+import { epistemicRefreshDue, refreshPersonalityEpistemics } from "@/lib/claim-epistemics/autonomous-refresh";
 import type { SearchPolicy } from "@/lib/live-research/search-policy";
 
 type AskOptions = {
@@ -644,6 +645,14 @@ export async function answerQuestion(question: string, personalityId: string | s
           .map((citation) => citation.chunkId).filter((value): value is string => Boolean(value))) })));
       if (options.defer) options.defer(work);
       else void work().catch(() => undefined);
+    }
+    // Approved claims whose stored evaluation keeps them out of answers are re-evaluated for these people,
+    // upgrade-only, so the next question can use them. No model or search call; runs after the response.
+    const askedIds = Array.isArray(personalityId) ? personalityId : [personalityId];
+    if (askedIds.some((id) => epistemicRefreshDue(id))) {
+      const refresh = () => refreshPersonalityEpistemics(askedIds);
+      if (options.defer) options.defer(refresh);
+      else void refresh().catch(() => undefined);
     }
     if (result.debug.liveResearchTriggered) incrementMetric("liveResearchTriggers");
     if (result.debug.semanticFallbackReason && result.debug.semanticFallbackReason !== "semantic_skipped_sufficient_lexical_claim_candidates") incrementMetric("semanticFallbacks");

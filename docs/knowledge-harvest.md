@@ -75,6 +75,14 @@ Nothing below is required for the pipeline to run. In **Resources → Knowledge 
 - **Reject** on a harvested source stops its reuse and withdraws the claims that rest on it. **Restore** undoes it.
 - **Add as candidate** puts a harvested work into the Library review queue by hand.
 
+## Keeping approved claims usable
+
+Answers only use an approved claim whose evidence meets the standard for its type (`claim_epistemics.contract_status`). A claim whose type is still unresolved is also used when its evidence meets the standard of every type it could be, except for date and historicity questions.
+
+After each answer, `refreshBlockedEpistemics` re-evaluates that person's blocked claims with the current classifier and evidence contracts (at most once every six hours per person per server). It is upgrade-only: it writes a claim only when the new evaluation makes it usable, never re-blocks a usable claim, and leaves human and mentor decisions alone. It makes no model or search call.
+
+On 2026-11-13 this was run once across all 25 people: 348 approved claims left blocked by the 2026-11-10 AI-review transition became usable. The prior rows are in `corpus_verification_audit.epistemics_refresh_2026_11_13`; `scripts/rollback-epistemics-refresh-2026-11-13.sql` restores them.
+
 ## Settings
 
 | Variable | Default | Effect |
@@ -82,6 +90,7 @@ Nothing below is required for the pipeline to run. In **Resources → Knowledge 
 | `KNOWLEDGE_HARVEST_ENABLED` | on | `false` turns off both harvesting and recall |
 | `KNOWLEDGE_DEEP_HARVEST_ENABLED` | on | `false` skips the extra same-page passages |
 | `KNOWLEDGE_AUTO_ADMISSION_ENABLED` | on | `false` records sources but publishes no claims |
+| `EPISTEMIC_AUTO_REFRESH_ENABLED` | on | `false` stops the upgrade-only re-evaluation after answers |
 
 If the migrations `20261113010000_knowledge_harvest.sql` and `20261113020000_autonomous_harvest_admission.sql` have not been applied, Ask behaves exactly as before: the code detects the missing tables and stops trying for ten minutes at a time.
 

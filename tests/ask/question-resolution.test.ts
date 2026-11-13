@@ -120,4 +120,17 @@ describe("local-first question resolution", () => {
     const result = resolveQuestion(input("When did Anika Sen discover the prism effect?", [], { researchAvailable: false }));
     expect(result).toMatchObject({ route: "decline", state: "research_unavailable" });
   });
+  it("uses an unresolved-type claim only when its evidence meets every plausible type's contract", () => {
+    const question = "What did Anika Sen discover about the prism effect?";
+    const unresolved = { epistemicType: null, contractStatus: "NEEDS_TYPE_REVIEW" };
+    const robust = resolveQuestion(input(question, [claim("Anika Sen discovered the prism effect.", { ...unresolved, contractSatisfied: true })]));
+    expect(robust.verifiedClaims).toHaveLength(1);
+    const typeDependent = resolveQuestion(input(question, [claim("Anika Sen discovered the prism effect.", { ...unresolved, contractSatisfied: false })]));
+    expect(typeDependent.verifiedClaims).toHaveLength(0);
+    const stale = resolveQuestion(input(question, [claim("Anika Sen discovered the prism effect.", { ...unresolved, contractSatisfied: null })]));
+    expect(stale.verifiedClaims).toHaveLength(0);
+    // An unresolved type never settles a date or historicity, however strong its evidence.
+    const dated = resolveQuestion(input("When did Anika Sen discover the prism effect?", [claim("Anika Sen discovered the prism effect in 1928.", { ...unresolved, contractSatisfied: true })]));
+    expect(dated.verifiedClaims).toHaveLength(0);
+  });
 });

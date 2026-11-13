@@ -102,7 +102,11 @@ function eligibleEvidence(item: RetrievedEvidence, input: ResolutionInput, now: 
   if (item.kind === "claim") {
     if (!isClaimEligible(item.reviewStatus || "", item.approvalOrigin, input.policyMode)) return false;
     if (!item.sourceTitle && !item.chunkId) return false;
-    if (item.contractStatus && !["SUPPORTED", "CONTESTED_REPRESENTED"].includes(item.contractStatus)) return false;
+    // A claim whose type is unresolved is usable only when its evidence meets the contract of every type it
+    // could be, so the outcome never depends on guessing the type. It still cannot settle a date or historicity.
+    const robustUnresolved = item.contractStatus === "NEEDS_TYPE_REVIEW" && item.contractSatisfied === true;
+    if (item.contractStatus && !["SUPPORTED", "CONTESTED_REPRESENTED"].includes(item.contractStatus) && !robustUnresolved) return false;
+    if (robustUnresolved && /\b(?:when|what year|which year|what date|historically|historical fact|actually happen)\b/i.test(input.question)) return false;
     if ((item.epistemicType === "CONTESTED" || item.contractStatus === "CONTESTED_REPRESENTED")
       && !/\b(?:contested|disputed|conflict|disagree|uncertain|first|only|earliest|accounts|traditions)\b/i.test(input.question)) return false;
     if (/\b(?:when|what year|which year|what date|historically|historical fact|actually happen)\b/i.test(input.question)

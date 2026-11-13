@@ -171,6 +171,7 @@ export function rankApprovedClaims(
           evidenceType: String(row.evidence_type || "uncertain"),
           epistemicType: epistemics?.epistemic_type ? String(epistemics.epistemic_type) : null,
           contractStatus: epistemics?.contract_status ? String(epistemics.contract_status) : null,
+          contractSatisfied: typeof epistemics?.contract_satisfied === "boolean" ? epistemics.contract_satisfied : null,
           provenanceSignature: JSON.stringify({ reviewStatus: row.review_status, sources: links.map((candidate) => candidate.sources),
             support: row.claim_chunks, metadataEvidence: row.metadata_claim_evidence, mode: (row.approval_metadata as Record<string, unknown> | null)?.storage_mode }),
           personalityId: options.personalityId,
@@ -340,7 +341,7 @@ export async function retrieveEvidence(
       claim_sources(relationship, evidence_excerpt, page_or_section,
         sources(id, title, author, publisher_or_institution, source_type, url, citation, source_status)),
       claim_chunks(relationship, source_chunks(id, textual_layer)),
-      claim_epistemics(epistemic_type, contract_status),
+      claim_epistemics(epistemic_type, contract_status, contract_satisfied),
       demand_verification_decisions(outcome,support),
       metadata_claim_evidence(source_id,locator,validity_status,valid_until,
         metadata_admission_permissions(source_url,is_active))
