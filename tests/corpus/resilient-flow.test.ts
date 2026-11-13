@@ -9,6 +9,7 @@ const state = vi.hoisted(() => ({
   caches: new Map<string, Record<string, unknown>>(), checkpoints: new Map<string, Record<string, unknown>>(),
   claims: [] as Record<string, unknown>[], chunks: [] as Record<string, unknown>[],
   lexicalResultsRemaining: null as number | null,
+  recall: vi.fn(), harvest: vi.fn(),
   sequence: [] as string[], google: vi.fn(), demand: vi.fn(), originalFetch: vi.fn(), extract: vi.fn(), webDiscover: vi.fn(), webConfigured: false, rulesActive: true, started: [] as string[], finished: [] as string[], vectorRpc: vi.fn(), fetch: vi.fn(), discover: vi.fn(), generate: vi.fn(), embed: vi.fn(),
 }));
 vi.mock("@/lib/corpus/personality-context", () => ({ loadPersonalityConfiguration: vi.fn(async () => ({ personalityId: "p", canonicalName: "Vishvamitra", categoryId: "category", categorySlug: "rishi", categoryName: "Rishis", aliases: [{ alias: "Vishwamitra" }], termAliases: [] })) }));
@@ -19,6 +20,8 @@ vi.mock("@/lib/live-research/source-registry", () => ({ loadActiveSourceRules: v
 vi.mock("@/lib/live-research/live-search", () => ({ discoverApprovedUrls: state.discover }));
 vi.mock("@/lib/live-research/cache", () => ({ fetchAndCacheApprovedPage: state.fetch }));
 vi.mock("@/lib/live-research/google-grounding", () => ({ searchWithGoogleGrounding: state.google }));
+vi.mock("@/lib/knowledge-harvest/recall", () => ({ recallKnownSources: state.recall }));
+vi.mock("@/lib/knowledge-harvest/harvest", () => ({ harvestEnabled: () => true, runHarvest: state.harvest }));
 vi.mock("@/lib/live-research/on-demand-engine", () => ({ executeDemandResearch: state.demand }));
 vi.mock("@/lib/live-research/on-demand-adapter", () => ({ productionResearchDependencies: () => ({}) }));
 vi.mock("@/lib/live-research/web-search", () => ({ webSearchProvider: () => ({ isConfigured: () => state.webConfigured }), discoverWebCandidates: state.webDiscover }));
@@ -70,6 +73,8 @@ beforeEach(() => {
   state.generate.mockReset();
   state.chunks = []; state.lexicalResultsRemaining = null; state.webConfigured = false;
   state.google.mockResolvedValue({ evidence: [], requests: 0, queries: 0, latencyMs: 0, errorCategory: "NOT_CONFIGURED" });
+  state.recall.mockResolvedValue({ passages: [], attempted: 0, failures: [] });
+  state.harvest.mockResolvedValue({ stored: true });
   state.originalFetch.mockResolvedValue({ bytes: new Uint8Array([1]), contentType: "text/html", finalUrl: "https://example.test/approved", access: { display_name: "Public primary text", default_textual_layer: "Epic narrative", default_source_type: "primary_text" } });
   state.extract.mockResolvedValue([{ title: "Valmiki Ramayana", pageOrSection: "Bala Kanda", text: "The narrative says Vishvamitra taught Rama Bala and Atibala." }]);
   state.webDiscover.mockResolvedValue({ accepted: [], rejected: [], candidates: 0, calls: 0, cacheHits: 0, latencyMs: 0, errorCategory: null });
@@ -186,6 +191,56 @@ describe("Ask orchestration", () => {
     expect(result.debug.liveSourcesUsed).toBeGreaterThan(0);
     expect(state.webDiscover).not.toHaveBeenCalled();
     expect(result.citations.some((item) => item.kind === "live_web_source")).toBe(true);
+  });
+  it("records what live research read after the answer, marking the cited passage", async () => {
+    state.claims = []; state.chunks = [];
+    state.google.mockResolvedValue({ evidence: [{ kind: "passage", id: "google:solo", chunkId: "google:solo", sourceId: "google:solo", text: "Vishvamitra taught Rama the Bala and Atibala mantras.", sectionTitle: null, pageOrSection: null, textualLayer: "Epic narrative", sourceTitle: "Ramayana teaching", sourceAuthor: null, sourceInstitution: "example.test", sourceUrl: "https://example.test/teaching", sourceType: "primary_text", sourceStatus: "discovered", origin: "google_grounding", lexicalScore: 1 }], requests: 1, queries: 1, latencyMs: 3, errorCategory: null });
+    const deferred: Array<() => Promise<unknown>> = [];
+    const result = await answerQuestion("What did Vishvamitra teach Rama?", "p", { defer: (work) => { deferred.push(work); } });
+    expect(result.status).toBe("research_answer");
+    // Harvesting is handed to the caller to run after the response; it has not run yet.
+    expect(deferred).toHaveLength(1);
+    expect(state.harvest).not.toHaveBeenCalled();
+    await deferred[0]();
+    expect(state.harvest).toHaveBeenCalledTimes(1);
+    const job = state.harvest.mock.calls[0][0];
+    expect(job).toMatchObject({ personalityId: "p", personalityName: "Vishvamitra", recall: { attempted: 0, savedSearch: false } });
+    expect(job.passages.map((item: { chunkId: string }) => item.chunkId)).toEqual(["google:solo"]);
+    expect([...job.citedChunkIds]).toEqual(["google:solo"]);
+    expect(JSON.stringify(result)).not.toContain("citedChunkIds");
+  });
+  it("answers from a remembered source without any paid search", async () => {
+    state.claims = []; state.chunks = []; state.webConfigured = true;
+    state.recall.mockResolvedValue({ attempted: 1, failures: [], passages: [{ kind: "passage", id: "recall:s1:0", chunkId: "recall:s1:0", sourceId: "recall:s1", text: "Vishvamitra taught Rama the Bala and Atibala mantras.", sectionTitle: null, pageOrSection: "Bala Kanda", textualLayer: "Epic narrative", sourceTitle: "Ramayana teaching", sourceAuthor: null, sourceInstitution: "example.test", sourceUrl: "https://example.test/teaching", sourceType: "primary_text", sourceStatus: "discovered", origin: "knowledge_recall", lexicalScore: 1, supportLevel: "STRONG", accessibility: "READABLE" }] });
+    const deferred: Array<() => Promise<unknown>> = [];
+    const result = await answerQuestion("What did Vishvamitra teach Rama?", "p", { defer: (work) => { deferred.push(work); } });
+    expect(result.status).toBe("research_answer");
+    expect(result.citations).toEqual([expect.objectContaining({ kind: "live_web_source", url: "https://example.test/teaching" })]);
+    expect(result.debug).toMatchObject({ knowledgeRecallAttempted: 1, knowledgeRecallHits: 1, knowledgeRecallSavedSearch: true });
+    expect(state.google).not.toHaveBeenCalled();
+    expect(state.webDiscover).not.toHaveBeenCalled();
+    expect(state.demand).not.toHaveBeenCalled();
+    await deferred[0]();
+    expect(state.harvest.mock.calls[0][0].recall).toEqual({ attempted: 1, failures: [], savedSearch: true });
+  });
+  it("falls through to live search when a remembered source cannot be re-read", async () => {
+    state.claims = []; state.chunks = [];
+    state.recall.mockResolvedValue({ attempted: 1, failures: ["s1"], passages: [] });
+    state.google.mockResolvedValue({ evidence: [{ kind: "passage", id: "google:solo", chunkId: "google:solo", sourceId: "google:solo", text: "Vishvamitra taught Rama the Bala and Atibala mantras.", sectionTitle: null, pageOrSection: null, textualLayer: "Epic narrative", sourceTitle: "Ramayana teaching", sourceAuthor: null, sourceInstitution: "example.test", sourceUrl: "https://example.test/teaching", sourceType: "primary_text", sourceStatus: "discovered", origin: "google_grounding", lexicalScore: 1 }], requests: 1, queries: 1, latencyMs: 3, errorCategory: null });
+    const deferred: Array<() => Promise<unknown>> = [];
+    const result = await answerQuestion("What did Vishvamitra teach Rama?", "p", { defer: (work) => { deferred.push(work); } });
+    expect(result.status).toBe("research_answer");
+    expect(state.google).toHaveBeenCalledTimes(1);
+    expect(result.debug.knowledgeRecallSavedSearch).toBeUndefined();
+    await deferred[0]();
+    expect(state.harvest.mock.calls[0][0].recall).toEqual({ attempted: 1, failures: ["s1"], savedSearch: false });
+  });
+  it("neither recalls nor harvests when local evidence is sufficient", async () => {
+    const deferred: Array<() => Promise<unknown>> = [];
+    const result = await answerQuestion("How is Vishvamitra portrayed as Rama's guide?", "p", { defer: (work) => { deferred.push(work); } });
+    expect(result.status).not.toBe("abstained");
+    expect(state.recall).not.toHaveBeenCalled();
+    expect(deferred).toHaveLength(0);
   });
   it("does not spend on Google or Brave when local evidence is sufficient", async () => {
     state.google.mockResolvedValue({ evidence: [], requests: 1, queries: 0, latencyMs: 4, errorCategory: "TIMEOUT" });

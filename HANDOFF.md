@@ -32,7 +32,7 @@ Model names and feature switches (`GEMINI_*_MODEL`, `SYNTHESIS_*`, `DEMAND_*`, `
 
 1. **Agree ownership in writing.** The repository has no LICENSE file. A short note between the developer and DCF should say who owns the code and content, whether the developer may show it in a portfolio, how long (if at all) the developer supports it after handoff, and the date billing moves to DCF.
 2. **Back up the database.** Take a Supabase backup (or `pg_dump`) before clicking Transfer, and keep it somewhere DCF controls.
-3. **Apply every migration.** The newest file in `supabase/migrations/` must already be applied to the live project, including `20261110030000_harden_function_privileges.sql`. Tell DCF the live database is current so nobody re-runs old files.
+3. **Apply every migration.** The newest file in `supabase/migrations/` must already be applied to the live project, including `20261110040000_revoke_public_table_privileges.sql` `20261113010000_knowledge_harvest.sql` and `20261113020000_autonomous_harvest_admission.sql`. Tell DCF the live database is current so nobody re-runs old files.
 4. **Close open work.** Merge or close open pull requests and delete finished branches so DCF starts from a clean `main`.
 5. **Run the readiness check** from a machine with `.env.local`:
 

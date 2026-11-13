@@ -111,6 +111,18 @@ export function rankApprovedClaims(
               && record?.validity_status === "valid" && Date.parse(String(record?.valid_until || "")) > Date.now();
           });
       }
+      if (metadata?.storage_mode === "harvest_verified") {
+        // Admitted autonomously from live research: no passage is stored, so the claim stands on its
+        // recorded admission decision, an approved source for every link, and an unexpired verification.
+        const audit = (row.demand_verification_decisions as Array<Record<string, unknown>> | null) || [];
+        const supported = unwrap(row.claim_epistemics as Record<string, unknown> | Array<Record<string, unknown>> | null);
+        return row.approval_origin === "automated_evidence_verification"
+          && audit.some((decision) => decision.outcome === "admitted" && decision.support === "SUPPORTED")
+          && supported?.contract_status === "SUPPORTED"
+          && Date.parse(String(metadata.valid_until || "")) > Date.now()
+          && links.length > 0 && links.every((link) => !link.evidence_excerpt && String(link.page_or_section || "").trim().length > 0
+            && unwrap<Record<string, unknown>>(link.sources as Record<string, unknown> | null)?.source_status === "approved");
+      }
       return options.requirePassage
         ? links.some((link) => unwrap<Record<string, unknown>>(link.sources as Record<string, unknown> | null)?.source_status === "approved"
           && String(link.evidence_excerpt || "").trim().length >= 20)
@@ -153,7 +165,8 @@ export function rankApprovedClaims(
           claimKind: String(row.claim_kind || "unknown"),
           certainty: String(row.certainty || "unknown"),
           approvalOrigin: String(row.approval_origin || "imported_existing"),
-          storageMode: (row.approval_metadata as Record<string, unknown> | null)?.storage_mode === "metadata_only" ? "metadata_only" as const : "licensed_excerpt" as const,
+          // Both machine-verified modes keep no source passage; downstream treats them alike.
+          storageMode: ["metadata_only", "harvest_verified"].includes(String((row.approval_metadata as Record<string, unknown> | null)?.storage_mode)) ? "metadata_only" as const : "licensed_excerpt" as const,
           reviewStatus: String(row.review_status || ""),
           evidenceType: String(row.evidence_type || "uncertain"),
           epistemicType: epistemics?.epistemic_type ? String(epistemics.epistemic_type) : null,

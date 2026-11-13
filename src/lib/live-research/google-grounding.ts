@@ -142,7 +142,7 @@ export async function searchWithGoogleGrounding(question: string, personalityId:
       item = { ...item, text: original.text, pageOrSection: original.locator, sourceUrl: original.url, sourceInstitution: source.domain, sourceTitle: original.title, sourceType: source.category, lexicalScore: 1,
         textualLayer: original.identity.evidenceType === "traditional_text" ? "Traditional text; establishes what the text narrates, not historical occurrence" : "Original page retrieved after Google Search; interpret textual status from source",
         evidenceType: original.identity.evidenceType, supportLevel: original.supportLevel, supportReason: original.supportReason,
-        workKey: original.identity.workKey, accessibility: "READABLE",
+        workKey: original.identity.workKey, accessibility: "READABLE", rightsDeclaration: original.rightsDeclaration,
         provenance: { title: original.identity.title, author: original.identity.author, publisher: original.identity.publisher,
           publicationDate: original.identity.publicationDate, journal: original.identity.journal, doi: original.identity.doi,
           isbn: original.identity.isbn, complete: original.identity.provenanceComplete } };

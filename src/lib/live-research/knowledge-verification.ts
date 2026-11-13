@@ -25,6 +25,7 @@ export type VerificationDecision = { proposition: string; outcome: VerificationO
   reasons: string[]; claimId?: string; epistemicType: EpistemicType; workKeys: string[] };
 export type VerificationResult = { decisions: VerificationDecision[]; usage: { extractionCalls: number; verificationCalls: number; databaseCalls: number }; publicationEnabled: boolean };
 
+export type VerificationProvider = Provider;
 type Provider = { extract(input: { personality: string; findings: ResearchFinding[]; focus?: string }): Promise<AtomicCandidate[]>;
   assess(input: { candidate: AtomicCandidate; personality: string; findings: ResearchFinding[]; existing: string[] }): Promise<{
     support: SupportJudgement; supportingIndexes: number[]; equivalentExisting: boolean; conflictsExisting: boolean;
@@ -39,9 +40,9 @@ type Store = { existing(personalityId: string): Promise<ExistingClaim[]>;
   record(input: Record<string, unknown>): Promise<void> };
 
 const hash = (value: string) => createHash("sha256").update(value).digest("hex");
-const risky = /\b(?:first|earliest|only|invented|discovered|caused|led to|proved|pioneer|father of|greatest|significant|influenced)\b/i;
-const uncertainty = /\b(?:may|might|possibly|perhaps|allegedly|reportedly|appears|suggests|estimated|approximately|about|circa|disputed)\b/i;
-const numbers = (value: string) => value.match(/\b\d+(?:[.,]\d+)*\b/g) || [];
+export const risky = /\b(?:first|earliest|only|invented|discovered|caused|led to|proved|pioneer|father of|greatest|significant|influenced)\b/i;
+export const uncertainty = /\b(?:may|might|possibly|perhaps|allegedly|reportedly|appears|suggests|estimated|approximately|about|circa|disputed)\b/i;
+export const numbers = (value: string) => value.match(/\b\d+(?:[.,]\d+)*\b/g) || [];
 const propositionStopWords = new Set(["the", "a", "an", "and", "or", "was", "were", "is", "are", "in", "on", "at", "of", "to", "for", "by", "with", "from"]);
 const factWord = (word: string) => /^(?:award|awarded|receive|received|honor|honored|honour|honoured|won|earn|earned|earning)$/.test(word) ? "award" : word;
 
@@ -76,7 +77,7 @@ function adjacentNamedCoreference(passage: string, proposition: string, personal
   return null;
 }
 
-function directlyStates(passage: string, proposition: string, personality: string): boolean {
+export function directlyStates(passage: string, proposition: string, personality: string): boolean {
   const coreference = adjacentNamedCoreference(passage, proposition, personality);
   if (passage.trim().split(/\s+/).length < 7
     || (!identifiesPerson(passage, personality) && !coreference)
@@ -124,7 +125,7 @@ function retainable(finding: ResearchFinding): boolean {
   } catch { return false; }
 }
 
-function independentlyWorded(proposition: string, passage: string): boolean {
+export function independentlyWorded(proposition: string, passage: string): boolean {
   const words = (value: string) => normalizeForMatch(value).split(" ").filter(Boolean);
   const claim = words(proposition);
   const source = words(passage);
@@ -135,7 +136,7 @@ function independentlyWorded(proposition: string, passage: string): boolean {
   return true;
 }
 
-function cleanCandidate(value: AtomicCandidate, count: number): AtomicCandidate | null {
+export function cleanCandidate(value: AtomicCandidate, count: number): AtomicCandidate | null {
   if (!value || typeof value.proposition !== "string" || value.proposition.length < 18 || value.proposition.length > 350) return null;
   const indexes = Array.isArray(value.evidenceIndexes) ? [...new Set(value.evidenceIndexes.filter((index) => Number.isInteger(index) && index >= 0 && index < count))].slice(0, 4) : [];
   if (!indexes.length || !["HISTORICAL_FACT", "CONTEMPORARY_OBSERVATION", "SCIENTIFIC_PRIORITY", "CAUSAL_SIGNIFICANCE", "TEXTUAL_ASSERTION", "TRADITIONAL_NARRATIVE", "SCHOLARLY_ATTRIBUTION", "SCHOLARLY_INTERPRETATION", "HISTORICAL_INFERENCE", "CONTESTED"].includes(value.type)) return null;

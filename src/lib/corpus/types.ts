@@ -58,7 +58,9 @@ export type RetrievedPassage = {
   parameterNames?: string[];
   personalityId?: string;
   personalityName?: string;
-  origin?: "permanent" | "live_cache" | "google_grounding" | "brave_live" | "pmc_oai";
+  origin?: "permanent" | "live_cache" | "google_grounding" | "brave_live" | "pmc_oai" | "knowledge_recall";
+  /** Licence or rights statement found on the original page, when it declares one. */
+  rightsDeclaration?: string | null;
   retrievedAt?: string | null;
   cacheExpiresAt?: string | null;
   lexicalScore?: number;
@@ -76,6 +78,11 @@ export type RetrievedPassage = {
     journal?: string | null; doi?: string | null; isbn?: string | null; complete?: boolean;
   };
 };
+
+/** Passages read from the open web for this request. They are cited as live sources, never as approved Library evidence. */
+export function isLiveOrigin(origin: RetrievedPassage["origin"]): boolean {
+  return origin === "google_grounding" || origin === "brave_live" || origin === "pmc_oai" || origin === "knowledge_recall";
+}
 
 export type RetrievedClaim = {
   kind: "claim";
@@ -146,6 +153,10 @@ export type Citation = {
 };
 
 export type RetrievalDebug = {
+  /** Remembered sources re-read for this question before any paid search. */
+  knowledgeRecallAttempted?: number;
+  knowledgeRecallHits?: number;
+  knowledgeRecallSavedSearch?: boolean;
   demandEstimatedCostMicros?: number;
   demandBudgetStatus?: string;
   demandVerificationOutcomes?: string[];

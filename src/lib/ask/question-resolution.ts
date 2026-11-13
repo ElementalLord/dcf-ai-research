@@ -6,7 +6,7 @@ import { assessEvidenceSufficiency } from "@/lib/live-research/sufficiency";
 import { isClaimEligible, type EvidencePolicyMode } from "@/lib/corpus/approval-policy";
 import { canonicalizeTerms, type TermAliasRecord } from "@/lib/corpus/personality-config";
 import { normalizeForMatch } from "@/lib/corpus/text";
-import type { RetrievedClaim, RetrievedEvidence, RetrievedPassage } from "@/lib/corpus/types";
+import { isLiveOrigin, type RetrievedClaim, type RetrievedEvidence, type RetrievedPassage } from "@/lib/corpus/types";
 import { sourceWorkKey } from "@/lib/live-research/research-quality";
 import { asksForPerformedWork, passageAddressesTarget } from "./target-support";
 
@@ -110,7 +110,7 @@ function eligibleEvidence(item: RetrievedEvidence, input: ResolutionInput, now: 
     return true;
   }
   if (item.sourceStatus !== "approved") return false;
-  if (item.origin === "google_grounding" || item.origin === "brave_live" || item.origin === "pmc_oai") return false;
+  if (isLiveOrigin(item.origin)) return false;
   if (item.origin === "live_cache" && (!item.cacheExpiresAt || !Number.isFinite(Date.parse(item.cacheExpiresAt)) || new Date(item.cacheExpiresAt) <= now)) return false;
   return item.accessibility !== "UNREADABLE" && item.supportLevel !== "RELATED";
 }

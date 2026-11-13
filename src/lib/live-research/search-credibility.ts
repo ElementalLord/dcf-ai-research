@@ -213,6 +213,34 @@ export async function readGroundedExcerpt(source: CredibleSource, statement: str
     identity: { ...identity, evidenceType: identity.evidenceType === "general_web" ? evidenceTypeFor({ category: source.category }) : identity.evidenceType } };
 }
 
+export type SubjectPassage = { text: string; locator: string | null; url: string; title: string; identity: SourceIdentity; rightsDeclaration: string | null };
+const FACT_DENSITY = /\b(?:1[0-9]{3}|20[0-9]{2})\b|\b(?:founded|established|created|built|developed|discovered|invented|introduced|led|organi[sz]ed|wrote|composed|published|translated|taught|awarded|appointed|elected|born|died|married|studied|joined|served|ruled|reigned|conquered|issued)\b/gi;
+
+/** Other informative passages about the same person on a page DCF has already read.
+ * Used after an answer to record where else this work is useful; never as evidence. */
+export async function readSubjectPassages(url: string, aliases: string[], policy: SearchPolicy, limit = 4): Promise<SubjectPassage[]> {
+  const loaded = await cachedSourceText(url);
+  if (!loaded || loaded.status !== 200 || !loaded.sections.length || !searchPolicyDecision(loaded.finalUrl, policy).allowed) return [];
+  const names = [...new Set(aliases.map(normalizeForMatch).filter((name) => name.length >= 4))];
+  if (!names.length) return [];
+  const identity = loaded.identity.title ? loaded.identity : authenticateSource({ url: loaded.finalUrl, title: loaded.title });
+  const ranked: Array<{ text: string; locator: string | null; density: number }> = [];
+  for (const section of loaded.sections) {
+    const sentences = splitEvidenceSentences(section.text).map((sentence) => sentence.trim()).filter((sentence) => sentence.length >= 40);
+    for (let index = 0; index < sentences.length; index += 2) {
+      const window = readableEvidence(sentences.slice(index, index + 2).join(" ").slice(0, 600));
+      if (!window || window.length < 120) continue;
+      const normalized = ` ${normalizeForMatch(window)} `;
+      if (!names.some((name) => normalized.includes(` ${name} `))) continue;
+      const density = (window.match(FACT_DENSITY) || []).length;
+      if (density >= 2) ranked.push({ text: window, locator: section.locator, density });
+    }
+  }
+  return ranked.sort((a, b) => b.density - a.density).slice(0, Math.max(0, limit))
+    .map(({ text, locator }) => ({ text, locator, url: loaded.finalUrl, title: loaded.title || identity.title || loaded.finalUrl,
+      identity, rightsDeclaration: loaded.rightsDeclaration }));
+}
+
 export async function verifyGroundedStatement(source: CredibleSource, statement: string, aliases: string[], policy: SearchPolicy): Promise<boolean> {
   return Boolean(await readGroundedExcerpt(source, statement, aliases, policy));
 }
