@@ -68,6 +68,18 @@ describe("harvesting a real page shape", () => {
     expect(passages[0].rightsDeclaration).toBe("https://creativecommons.org/licenses/by/4.0/");
     expect(passages.every((item) => /Raman/.test(item.text) && item.text.length <= 600)).toBe(true);
   });
+  it("keeps a locator short when a page marks a whole paragraph up as a heading", async () => {
+    const { inspectSearchSource, readGroundedExcerpt } = await import("@/lib/live-research/search-credibility");
+    const messy = "https://www.nobelprize.org/messy/raman/";
+    const heading = "Raman and the long story of Indian physics in the twentieth century. ".repeat(8);
+    serve(page().replace("<h2>Research</h2>", `<h2>${heading}</h2>`).replace("<title>", `<title>${"Very long title ".repeat(40)}`)
+      .replace('content="Sir Chandrasekhara Venkata Raman – Biographical"', `content="${"Sir Chandrasekhara Venkata Raman ".repeat(20)}"`));
+    const source = await inspectSearchSource(messy, policy, "Raman");
+    const excerpt = await readGroundedExcerpt(source!, "What did C. V. Raman discover about light scattering?", names, policy);
+    expect(excerpt?.text).toContain("In 1928 Raman discovered");
+    expect(excerpt!.locator!.length).toBeLessThanOrEqual(200);
+    expect(excerpt!.identity.title!.length).toBeLessThanOrEqual(300);
+  });
   it("returns nothing for a page that never names the person or that policy blocks", async () => {
     const { readSubjectPassages } = await import("@/lib/live-research/search-credibility");
     serve(page());

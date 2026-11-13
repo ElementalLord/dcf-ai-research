@@ -19,6 +19,27 @@ export function signFeedbackContext(context: FeedbackContext) {
   return `${payload}.${signature(payload)}`;
 }
 
+/**
+ * A feedback token for an answer, or null. Live web pages supply titles, URLs and section
+ * headings of any length, so every field is cut to the stored limits first. Feedback is an
+ * extra: if a token still cannot be made, the answer is returned without one.
+ */
+export function safeFeedbackToken(context: FeedbackContext): string | null {
+  const cut = (value: string | null | undefined, max: number) => value == null ? null : value.slice(0, max);
+  try {
+    return signFeedbackContext({ ...context,
+      question: context.question.slice(0, 4_000), answer: context.answer.slice(0, 60_000),
+      personalityName: context.personalityName.slice(0, 300), answerMode: context.answerMode.slice(0, 80),
+      provider: cut(context.provider, 100), model: cut(context.model, 200), requestId: cut(context.requestId, 300),
+      citations: context.citations.slice(0, 30).map((citation) => ({ id: citation.id.slice(0, 100), kind: citation.kind.slice(0, 60),
+        title: citation.title.slice(0, 500), url: cut(citation.url, 2_000), claimId: citation.claimId?.slice(0, 100),
+        chunkId: citation.chunkId?.slice(0, 100), pageOrSection: cut(citation.pageOrSection, 300) })) });
+  } catch (error) {
+    console.warn("feedback_token_unavailable", error instanceof Error ? error.name : "unknown");
+    return null;
+  }
+}
+
 export function verifyFeedbackContext(token: string): FeedbackContext | null {
   const parts = token.split(".");
   if (parts.length !== 2 || !/^[A-Za-z0-9_-]+$/.test(parts[0]) || !/^[A-Za-z0-9_-]+$/.test(parts[1])) return null;
