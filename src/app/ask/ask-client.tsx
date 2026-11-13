@@ -74,6 +74,36 @@ function citationLabel(value: string | null | undefined, fallback: string) {
   return citationLabels[value] || value.replaceAll("_", " ").replace(/^./, letter => letter.toUpperCase());
 }
 
+function sourcePublisher(citation: AskCitation): string {
+  return [citation.institution, citation.author].filter(Boolean).join(" · ") || "Publisher not recorded";
+}
+
+/** A short label for where DCF got this evidence. */
+function sourceOrigin(citation: AskCitation): string {
+  if (citation.kind === "live_web_source") return "Live research";
+  if (citation.storageMode === "metadata_only") return "DCF Library · verified fact";
+  if (citation.kind === "approved_claim") return citation.approvalOrigin === "human_manual" || citation.approvalOrigin === "mentor_review"
+    ? "DCF Library · reviewed by a person" : "DCF Library · checked automatically";
+  return "DCF Library";
+}
+
+function sourceOriginHelp(citation: AskCitation): string {
+  if (citation.kind === "live_web_source") return "Read from the original page for this answer. DCF records where the passage came from so later questions can reuse it, and adds a fact to the Library on its own once independent credible sources confirm it.";
+  if (citation.storageMode === "metadata_only") return "A verified factual claim. DCF keeps the citation and its location, but not the source's text.";
+  if (citation.kind === "approved_claim") return citation.approvalOrigin === "human_manual" || citation.approvalOrigin === "mentor_review"
+    ? "A claim in the DCF Library that a person reviewed." : "A claim in the DCF Library that was checked automatically against its sources, not reviewed by a person.";
+  return "A passage from a source in the DCF Library. It is used as evidence, but no person has reviewed how it is interpreted here.";
+}
+
+/** Some locators are only a fragment of the quoted passage; those add nothing and are hidden. */
+function usefulLocator(citation: AskCitation, excerpt: string | null | undefined): boolean {
+  const locator = citation.pageOrSection?.trim();
+  if (!locator || locator.length > 120) return false;
+  const plain = (value: string) => value.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+  if (plain(locator) === plain(citation.title || "")) return false;
+  return !(excerpt && plain(locator).split(" ").length >= 3 && plain(excerpt).includes(plain(locator)));
+}
+
 function citationReview(citation: AskCitation): string {
   if (citation.kind === "live_web_source") return "live page, not reviewed by DCF";
   if (citation.kind === "approved_source_passage") return "library passage, interpretation not reviewed";
@@ -341,20 +371,32 @@ export default function AskClient({ personalities, loadError }: { personalities:
       <li><strong>Ask a question.</strong> Type your own or tap a suggested question, then press Send or Enter. Use Shift+Enter for a new line.</li>
       <li><strong>Keep exploring.</strong> Ask a follow-up or choose an angle. Tap a numbered citation in an answer to read its source details and open the original source when available.</li>
     </ol><p>Use New chat to clear the conversation for the selected person.</p></div></SheetContent></Sheet>
-    <Sheet open={!!sourceId && !!selectedCitation} onOpenChange={open => { if (!open) setSourceId(null); }}><SheetContent className="source-sheet"><SheetHeader><SheetTitle>Source {selectedCitationNumber >= 0 ? selectedCitationNumber + 1 : ""}</SheetTitle><SheetDescription>{selectedCitation?.title || "Source detail"}</SheetDescription></SheetHeader><div className="source-sheet-body">{selectedCitation && selectedAuthority && <>
-      <dl className="source-facts">
-        <div><dt>Publisher</dt><dd>{[selectedCitation.institution, selectedCitation.author].filter(Boolean).join(" · ") || "Not recorded"}</dd></div>
-        <div><dt>Kind of evidence</dt><dd>{selectedAuthority.primary ? <><strong>Primary source</strong><span>{PRIMARY_SOURCE_HELP}</span></> : sourceTypeName(selectedCitation.sourceType, selectedLive)}</dd></div>
-        <div><dt>Who published it</dt><dd><strong className={`authority-badge authority-${selectedAuthority.level}`}>{AUTHORITY_LABELS[selectedAuthority.level]}</strong><span>{selectedAuthority.primary && selectedAuthority.level === "general_web"
-          ? "The original text is the evidence. This copy of it is hosted on a website that is not a recognized institution, so compare it with an institutional edition when exact wording matters."
-          : `${selectedAuthority.basis ? `${selectedAuthority.basis.replace(/\.$/, "")}. ` : ""}${AUTHORITY_HELP[selectedAuthority.level]}`}</span></dd></div>
-        <div><dt>Found in</dt><dd><strong>{selectedLive ? "Live research" : "DCF Library"}</strong><span>{selectedLive ? "Fetched for this answer. DCF records where this passage came from so later questions can reuse it, and adds a fact to the Library on its own once independent credible sources confirm it." : selectedCitation.storageMode === "metadata_only" ? "Verified factual claim. DCF stores the citation and locator, but no source passage." : selectedCitation.kind === "approved_claim" ? selectedCitation.approvalOrigin === "human_manual" || selectedCitation.approvalOrigin === "mentor_review" ? "This claim was reviewed by a person." : "This claim was admitted for testing or import; it has not been reviewed by a person." : "This source passage is admitted for AI evidence. Its presence does not mean any interpretation of it was reviewed by a person."}</span></dd></div>
-        <div><dt>Where to find it</dt><dd>{selectedCitation.pageOrSection || "Specific location not recorded"}</dd></div>
-      </dl>
-      <h3 className="section-label source-section-heading">Evidence from this source</h3>
-      {selectedExcerpt ? <blockquote>{selectedExcerpt}</blockquote> : <p className="citation-unavailable">{selectedCitation.storageMode === "metadata_only" ? "No source passage is stored for this metadata-only verified claim. Check the linked original work at the locator above." : "A readable passage is unavailable for this citation. Check the original source before relying on it."}</p>}
-      <p className="source-note">{selectedCitation.evidenceType ? <><strong>Kind of statement:</strong> {citationLabel(selectedCitation.evidenceType, "Source material")}. </> : null}{AUTHORITY_CAVEAT}</p>
+    <Sheet open={!!sourceId && !!selectedCitation} onOpenChange={open => { if (!open) setSourceId(null); }}><SheetContent className="source-sheet"><SheetHeader>
+      <p className="source-kicker">Source {selectedCitationNumber >= 0 ? selectedCitationNumber + 1 : ""}</p>
+      <SheetTitle>{selectedCitation?.title || "Source detail"}</SheetTitle>
+      <SheetDescription>{selectedCitation ? sourcePublisher(selectedCitation) : ""}</SheetDescription>
+    </SheetHeader><div className="source-sheet-body">{selectedCitation && selectedAuthority && <>
+      <div className="source-tags">
+        <span className={`authority-badge authority-${selectedAuthority.level}`}>{AUTHORITY_LABELS[selectedAuthority.level]}</span>
+        <span className="source-tag">{selectedAuthority.primary ? "Primary source" : sourceTypeName(selectedCitation.sourceType, selectedLive)}</span>
+        <span className="source-tag">{sourceOrigin(selectedCitation)}</span>
+      </div>
+      <h3 className="section-label source-section-heading">What the source says</h3>
+      {selectedExcerpt ? <blockquote>{selectedExcerpt}</blockquote> : <p className="citation-unavailable">{selectedCitation.storageMode === "metadata_only" ? "DCF verified this fact against the original work but does not store its text. Open the source to read it." : "No readable passage is available. Check the original source before relying on it."}</p>}
+      {usefulLocator(selectedCitation, selectedExcerpt) && <p className="source-location"><span>Where in the source</span>{selectedCitation.pageOrSection}</p>}
       {selectedCitation.url && <a href={selectedCitation.url} target="_blank" rel="noreferrer" className="editorial-link">Open original source<span className="sr-only"> (opens in a new tab)</span> <ArrowUpRight size={16} aria-hidden="true" /></a>}
+      <details className="source-more">
+        <summary>About these labels</summary>
+        <dl className="source-facts">
+          <div><dt>Who published it</dt><dd>{selectedAuthority.primary && selectedAuthority.level === "general_web"
+            ? "The original text is the evidence, but this copy is on a website that is not a recognized institution. Compare it with an institutional edition when exact wording matters."
+            : `${selectedAuthority.basis ? `${selectedAuthority.basis.replace(/\.$/, "")}. ` : ""}${AUTHORITY_HELP[selectedAuthority.level]}`}</dd></div>
+          {selectedAuthority.primary && <div><dt>Primary source</dt><dd>{PRIMARY_SOURCE_HELP}</dd></div>}
+          <div><dt>Where DCF got it</dt><dd>{sourceOriginHelp(selectedCitation)}</dd></div>
+          {selectedCitation.evidenceType && <div><dt>Kind of statement</dt><dd>{citationLabel(selectedCitation.evidenceType, "Source material")}</dd></div>}
+        </dl>
+        <p className="source-note">{AUTHORITY_CAVEAT}</p>
+      </details>
     </>}</div></SheetContent></Sheet>
   </main>;
 }
