@@ -28,14 +28,14 @@ Closeout evaluation dated 2026-10-15; data-completeness pass 2026-11-14. Status 
 | **PASS** | Search | Name/alias priority and partial-name behavior are tested; search also matches era and region. |
 | **PASS** | Browse by era and region | Explore has Era and Region filters, and the Timeline view groups all 25 people by curated period. |
 | **PASS** | Filtering | Presentation category and reliable detailed-role filters combine with search. |
-| **PASS** | Lens selection | Every profile offers two to four evidence-backed role lenses (54 in total). Choosing one moves that role's approved claims to the top, reorders the sections and can be shared as a link (`?lens=educator`); tests confirm that every lens shows exactly the same set of facts. |
+| **PASS** | Lens selection | Every profile offers two to four evidence-backed role lenses (71 in total). Choosing one moves that role's approved claims to the top, reorders the sections and can be shared as a link (`?lens=educator`); tests confirm that every lens shows exactly the same set of facts. |
 | **PASS** | AI cannot add sources without permission | Resources › Knowledge engine has the setting “AI can add sources and facts”. When it is off, AI cannot record sources, publish claims or approve library sources; the application checks it before each write and database triggers enforce it. |
 | **PASS** | Structured profiles | All 25 static routes render supported, non-empty profile sections. |
 | **PASS** | Related-personality exploration | Deterministic related profiles include understandable shared-data reasons. |
 | **PASS** | Source transparency | Citations expose source metadata, locators, excerpts, and original URLs where available. |
 | **PASS** | Production build | Next.js production build succeeds without database credentials and emits all 25 static profile routes. |
-| **USER ACTION REQUIRED** | Deployment | Connect the repository to DCF's selected provider, configure protected environment variables, and deploy the final commit. |
-| **USER ACTION REQUIRED** | Deployed desktop/mobile smoke test | Run and record the short manual checklist in `docs/phase1/handoff/deployment.md` against the production URL. |
+| **PASS** | Deployment | The repository is connected to Vercel and `main` (commit `3a707b2`) was merged and deployed; the project owner confirmed the live site works. |
+| **PARTIAL** | Desktop/mobile smoke test | The checklist passed in full on a local production build at desktop size and on an emulated iPhone 13 (44 browser checks, 0 failures; see `testing-results.md`). The same checks have not yet been recorded against the live URL, and no physical phone, Safari or Firefox was used. Run `node scripts/qa-phase1-browser.mjs <live URL>` and fill in the live column, then mark this `PASS`. |
 
 ## Track 3 — handoff and closeout
 
@@ -53,4 +53,4 @@ Closeout evaluation dated 2026-10-15; data-completeness pass 2026-11-14. Status 
 
 ## Overall status
 
-Phase 1 implementation, knowledge deliverables, and handoff documentation are complete. Deployment and deployed desktop/mobile visual QA are the only remaining actions.
+Phase 1 implementation, knowledge deliverables, handoff documentation and testing results are complete, and the site is deployed. Remaining: record the browser checks against the live URL, and the Mentor's explicit acceptance of the 27 limited-information sections.
