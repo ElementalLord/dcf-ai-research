@@ -9,7 +9,7 @@ This is the starting point for anyone taking over the DCF Inspiring Personalitie
 Track 1 produced the approved 25-person corpus, arranged for public presentation as five groups of five. Behind each profile is a category-specific qualities framework, a source library, source passages, evidence-grounded claims, provenance, review states, lenses, and rules for handling contested material. It also produced:
 
 - an application-independent JSON dataset;
-- a repeatable exporter;
+- a repeatable exporter, plus a checked-in editorial curation (`data/phase1-curation.json`) that sets era, region and introduction, explains every section without approved evidence, and maps the DCF Rishi and Ruler parameter documents onto the matching profiles;
 - a documented schema and content pipeline;
 - a readable Mentor review package and approval record.
 
@@ -17,7 +17,7 @@ Track 1 is complete and is treated as Mentor-approved under the final project ha
 
 ### Track 2 — public demo
 
-Track 2 produced the public discovery and profile experience. Visitors can browse five categories, search and filter all 25 people, choose relevant lenses, read structured profiles, inspect citations and source details, and move to related personalities. The Resources interface supports internal research work. Ask is an additional prototype, not a required Phase 1 deliverable.
+Track 2 produced the public discovery and profile experience. Visitors can browse five categories, search and filter all 25 people by role, era and region, follow a timeline, choose relevant lenses, read structured profiles (including the Rishi or Ruler parameter view where it applies), inspect citations and source details, and move to related personalities. The Resources interface supports internal research work. Ask is an additional prototype, not a required Phase 1 deliverable.
 
 The application builds successfully and all 25 profile routes have been verified. Connecting the repository to the existing deployment provider and completing desktop/mobile checks on the deployed URL remain user actions.
 

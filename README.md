@@ -14,7 +14,7 @@ Start with [`docs/phase1/handoff/README.md`](docs/phase1/handoff/README.md) for 
 - `/ai` — optional deeper exploration through the existing Ask prototype
 - `/resources` — restricted research and editorial workspace
 
-The public collection reads `data/exports/dcf-phase1-personalities.json`. The approved five-by-five presentation mapping is maintained separately in `data/phase1-presentation.json` so the detailed research taxonomy is not overwritten. Regenerate the export from the live database with:
+The public collection reads `data/exports/dcf-phase1-personalities.json`. Era, region, introductions, section corrections, limited-information notes and the Rishi/Ruler parameter views come from `data/phase1-curation.json`, which the exporter applies automatically; to re-apply it without database access run `node scripts/apply-phase1-curation.mjs`. The approved five-by-five presentation mapping is maintained separately in `data/phase1-presentation.json` so the detailed research taxonomy is not overwritten. Regenerate the export from the live database with:
 
 ```bash
 node --env-file=.env.local scripts/export-phase1-personalities.mjs

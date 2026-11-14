@@ -3,58 +3,68 @@
 **Current category:** Warriors & Freedom Fighters<br />
 **Phase 1 presentation category:** Rulers & Freedom Fighters<br />
 **Profile status:** Complete<br />
-**Mentor approval:** Approved per Track 2 handoff
+**Mentor approval:** Approved
+
+## Era and region
+
+- **Era:** Congress president 1938–39; led the INA during World War II
+  - Subhas Chandra Bose was a leading Indian nationalist who served as Congress president in 1938–39 and later led the INA during World War II; his career joined mass politics, anti-colonial strategy and wartime alliance-making. [S5]
+  - The INA and Indian Independence League operated in Japanese-occupied Asia from 1942 to 1945, a compressed wartime setting that changed the resources and risks available to anti-colonial politics. [S3]
+- **Region:** Bengal's nationalist politics; later Europe and Japanese-occupied Asia
+  - Bose identified Chittaranjan Das as a major early political influence, situating his rise in Bengal’s Congress and nationalist networks. [S1]
+  - Bose left India in January 1941 after years of colonial imprisonment and surveillance, turning from domestic opposition to an external wartime strategy. [S6]
+  - The INA and Indian Independence League operated in Japanese-occupied Asia from 1942 to 1945, a compressed wartime setting that changed the resources and risks available to anti-colonial politics. [S3]
 
 ## Profile introduction
 
-- Bose identified Chittaranjan Das as a major early political influence, situating his rise in Bengal’s Congress and nationalist networks. [S1] _(approved claim; corpus_evidence_review)_
-- Bose left the Indian Civil Service path before taking up an appointment, a decision he presented as choosing anti-colonial political commitment over a colonial career. [S1] _(approved claim; corpus_evidence_review)_
+- Subhas Chandra Bose was a leading Indian nationalist who served as Congress president in 1938–39 and later led the INA during World War II; his career joined mass politics, anti-colonial strategy and wartime alliance-making. [S5]
+- Bose argued for complete independence rather than a limited constitutional settlement within empire. [S1]
 
-## Important qualities
+## Life and context
 
-- Bose advocated a strong central state and economic planning in post-independence reconstruction. [S1] _(approved claim; corpus_evidence_review)_
-- Bose argued for complete independence rather than a limited constitutional settlement within empire. [S1] _(approved claim; corpus_evidence_review)_
-- Bose argued that independent India would need a national army, navy and air force and rapid officer training after a colonial military hierarchy. [S4] _(approved claim; corpus_evidence_review)_
-- Bose connected national reconstruction to Indian control of military expertise and command, identifying colonial exclusion from senior ranks as an institutional problem. [S4] _(approved claim; corpus_evidence_review)_
+- Bose identified Chittaranjan Das as a major early political influence, situating his rise in Bengal’s Congress and nationalist networks. [S1]
+- Bose left the Indian Civil Service path before taking up an appointment, a decision he presented as choosing anti-colonial political commitment over a colonial career. [S1]
+- Imphal’s outcome shaped not only battlefield fortunes but the political credibility and practical scope of Japanese–INA cooperation. [S2]
+- INA mobilization operated inside Japanese-occupied Southeast Asia, so nationalist enthusiasm, coercion, material dependence and wartime propaganda must all remain visible in its history. [S3]
 
-## Main contributions
+## Qualities and values
 
-- Bose did not create the INA from nothing: an earlier INA and the Indian Independence League emerged under Rash Behari Bose, Mohan Singh and Japanese military conditions before his 1943 arrival. [S2] _(approved claim; corpus_evidence_review)_
-- Bose reorganized, expanded and became the public face of the INA, making it a military and political symbol of armed independence. [S5] _(approved claim; corpus_evidence_review)_
-- Bose sought assistance from Britain’s wartime enemies because he judged imperial war a strategic opening for Indian independence; that calculation tied his movement to Axis power. [S6] _(approved claim; corpus_evidence_review)_
-- Bose’s movement created the women’s Rani of Jhansi Regiment, symbolically expanding women’s participation; the unit performed nursing work but did not see combat. [S7] _(approved claim; corpus_evidence_review)_
-- In Germany Bose established the Indian Legion with Nazi cooperation; it was an armed anti-British project within the constraints and ideology of the Nazi war state, not evidence that all of Bose’s politics were identical with Nazism. [S7] _(approved claim; corpus_evidence_review)_
-- INA units fought alongside Japanese forces in the Arakan and Imphal campaigns and suffered heavy losses; Bose’s military importance was greater as organizer and political mobilizer than as an independent field commander. [S7] _(approved claim; corpus_evidence_review)_
+- Bose advocated a strong central state and economic planning in post-independence reconstruction. [S1]
+- Bose argued for complete independence rather than a limited constitutional settlement within empire. [S1]
+- Bose argued that independent India would need a national army, navy and air force and rapid officer training after a colonial military hierarchy. [S4]
+- Bose connected national reconstruction to Indian control of military expertise and command, identifying colonial exclusion from senior ranks as an institutional problem. [S4]
 
-## Life and historical/social context
+## Key contributions
 
-- Bose identified Chittaranjan Das as a major early political influence, situating his rise in Bengal’s Congress and nationalist networks. [S1] _(approved claim; corpus_evidence_review)_
-- Bose left the Indian Civil Service path before taking up an appointment, a decision he presented as choosing anti-colonial political commitment over a colonial career. [S1] _(approved claim; corpus_evidence_review)_
-- Imphal’s outcome shaped not only battlefield fortunes but the political credibility and practical scope of Japanese–INA cooperation. [S2] _(approved claim; corpus_evidence_review)_
-- INA mobilization operated inside Japanese-occupied Southeast Asia, so nationalist enthusiasm, coercion, material dependence and wartime propaganda must all remain visible in its history. [S3] _(approved claim; corpus_evidence_review)_
+- Bose did not create the INA from nothing: an earlier INA and the Indian Independence League emerged under Rash Behari Bose, Mohan Singh and Japanese military conditions before his 1943 arrival. [S2]
+- Bose reorganized, expanded and became the public face of the INA, making it a military and political symbol of armed independence. [S5]
+- Bose sought assistance from Britain’s wartime enemies because he judged imperial war a strategic opening for Indian independence; that calculation tied his movement to Axis power. [S6]
+- Bose’s movement created the women’s Rani of Jhansi Regiment, symbolically expanding women’s participation; the unit performed nursing work but did not see combat. [S7]
+- In Germany Bose established the Indian Legion with Nazi cooperation; it was an armed anti-British project within the constraints and ideology of the Nazi war state, not evidence that all of Bose’s politics were identical with Nazism. [S7]
+- INA units fought alongside Japanese forces in the Arakan and Imphal campaigns and suffered heavy losses; Bose’s military importance was greater as organizer and political mobilizer than as an independent field commander. [S7]
 
 ## Challenges and limits
 
-- British India Office records tracked Bose’s activities across Britain, Germany, Burma, Thailand and Japan, evidence of colonial surveillance rather than independent validation of every report. [S8] _(approved claim; corpus_evidence_review)_
-- Bose left India in January 1941 after years of colonial imprisonment and surveillance, turning from domestic opposition to an external wartime strategy. [S6] _(approved claim; corpus_evidence_review)_
+- British India Office records tracked Bose’s activities across Britain, Germany, Burma, Thailand and Japan, evidence of colonial surveillance rather than independent validation of every report. [S8]
+- Bose left India in January 1941 after years of colonial imprisonment and surveillance, turning from domestic opposition to an external wartime strategy. [S6]
 
-## Leadership and relational characteristics
+## Leadership and relationships
 
-- Bose credited Gandhi’s non-cooperation movement with historic importance while criticizing its suspension after Chauri Chaura; this was strategic disagreement, not a simple absence of respect. [S1] _(approved claim; corpus_evidence_review)_
-- Bose’s political writing linked independence to mass mobilisation and organization, helping explain why he valued uniforms, radio, ceremony and military symbolism. [S1] _(approved claim; corpus_evidence_review)_
-- Bose’s writing treated discipline and organization as political instruments for national liberation, not merely personal virtues. [S1] _(approved claim; corpus_evidence_review)_
-- Bose and Gandhi shared the objective of ending British rule but differed over timing, nonviolence, organization and how a world war altered political opportunity. [S6] _(approved claim; corpus_evidence_review)_
+- Bose credited Gandhi’s non-cooperation movement with historic importance while criticizing its suspension after Chauri Chaura; this was strategic disagreement, not a simple absence of respect. [S1]
+- Bose’s political writing linked independence to mass mobilisation and organization, helping explain why he valued uniforms, radio, ceremony and military symbolism. [S1]
+- Bose’s writing treated discipline and organization as political instruments for national liberation, not merely personal virtues. [S1]
+- Bose and Gandhi shared the objective of ending British rule but differed over timing, nonviolence, organization and how a world war altered political opportunity. [S6]
 
-## Contested material meeting the inclusion standard
+## Contested aspects
 
-No sourcing-compliant statement selected; see unresolved concerns.
+_Limited information:_ 9 contested or sensitive statements about Subhas Chandra Bose are recorded in the evidence register but withheld from the profile until each has two independent credible sources, at least one primary or scholarly. The project does not settle disputed questions by inference.
 
 ## Contemporary relevance
 
-- Bose’s long-term importance rests partly on the unresolved tension between anti-imperial nationalism, disciplined state-building, mass charisma and alliance with authoritarian Axis powers. [S5] _(approved claim; corpus_evidence_review)_
-- Congress leaders defended INA prisoners after the war, helping turn the Red Fort proceedings into a broad nationalist issue despite their earlier conflicts with Bose. [S6] _(approved claim; corpus_evidence_review)_
-- Gandhi’s acknowledgement of Bose’s patriotism coexists with profound disagreement over methods, a useful corrective to both saint-versus-traitor caricatures. [S5] _(approved claim; corpus_evidence_review)_
-- The Congress use of INA memory after 1945 was politically consequential and should be distinguished from unbroken organizational unity with Bose. [S6] _(approved claim; corpus_evidence_review)_
+- Bose’s long-term importance rests partly on the unresolved tension between anti-imperial nationalism, disciplined state-building, mass charisma and alliance with authoritarian Axis powers. [S5]
+- Congress leaders defended INA prisoners after the war, helping turn the Red Fort proceedings into a broad nationalist issue despite their earlier conflicts with Bose. [S6]
+- Gandhi’s acknowledgement of Bose’s patriotism coexists with profound disagreement over methods, a useful corrective to both saint-versus-traitor caricatures. [S5]
+- The Congress use of INA memory after 1945 was politically consequential and should be distinguished from unbroken organizational unity with Bose. [S6]
 
 ## Withheld contested or sensitive material
 
@@ -70,9 +80,8 @@ No sourcing-compliant statement selected; see unresolved concerns.
 
 ## Unresolved concerns
 
+- Approved sources do not yet support: Contested aspects. Each is shown as limited information rather than filled by inference.
 - 9 contested or sensitive claims were withheld because they do not meet the two-independent-source standard.
-- Structured era is not populated in the personality record; dated context remains in cited evidence statements.
-- Structured region is not populated in the personality record; geographic context remains in cited evidence statements.
 
 ## Sources cited in this review draft
 
@@ -84,11 +93,3 @@ No sourcing-compliant statement selected; see unresolved concerns.
 - **[S6]** Gyasuddin Siddiqi. “Sentiments and Patriotism: The Indian National Army, General Elections and the Congress’s Appropriation of the INA Legacy.” 2009. scholarly_article. <https://www.cambridge.org/core/journals/modern-asian-studies/article/abs/sentiments-and-patriotism-the-indian-national-army-general-elections-and-the-congresss-appropriation-of-the-ina-legacy/5078B65021CF091F03535E193281814A>.
 - **[S7]** Gajendra Singh. “Indian National Army (Azad Hind Fauj).” 2026. scholarly_article. <https://academic.oup.com/reference/62399/reference-article-abstract/574541864>.
 - **[S8]** British Library Archives and Manuscripts Catalogue. “India Office Records, IOR/L/PJ/12/217, File 1115/24.” n.d. institutional. <https://searcharchives.bl.uk/catalog/040-000897281>.
-
-## Mentor decision
-
-- [x] APPROVE
-- [ ] APPROVE WITH CHANGES
-- [ ] RETURN FOR REVISION
-
-Track 1 approval is recorded as complete per the Phase 1 demo handoff; this file does not invent a Mentor identity, signature, or date.

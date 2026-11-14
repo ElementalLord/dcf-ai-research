@@ -32,7 +32,7 @@ export const PROFILE_SECTIONS = [
   { key: "contestedAspects", title: "Disputed or uncertain" },
 ] as const;
 
-export type PublicProfilePerson = Pick<Phase1Personality, "slug" | "name" | "type" | "era" | "region" | "sources" | (typeof PROFILE_SECTIONS)[number]["key"]> & { angles: ProfileAngle[] };
+export type PublicProfilePerson = Pick<Phase1Personality, "slug" | "name" | "type" | "era" | "region" | "sources" | "limitedInformation" | "studyFramework" | (typeof PROFILE_SECTIONS)[number]["key"]> & { angles: ProfileAngle[] };
 
 export function publicProfilePerson(person: Phase1Personality): PublicProfilePerson {
   const sources = person.sources.filter((source) => source.sourceStatus === "approved");
@@ -46,6 +46,14 @@ export function publicProfilePerson(person: Phase1Personality): PublicProfilePer
     type: person.type,
     era: person.era,
     region: person.region,
+    limitedInformation: person.limitedInformation,
+    studyFramework: person.studyFramework && {
+      ...person.studyFramework,
+      parameters: person.studyFramework.parameters.map((parameter) => ({
+        ...parameter,
+        fields: parameter.fields.map((field) => ({ ...field, statements: publicClaims(field.statements) })),
+      })),
+    },
     angles: profileAngles(person.slug),
     sources,
     shortIntroduction: publicClaims(person.shortIntroduction),
@@ -59,8 +67,18 @@ export function publicProfilePerson(person: Phase1Personality): PublicProfilePer
   };
 }
 
+/**
+ * True when a claim should be read as uncertain. The database stores "uncertain" as the default
+ * evidence type for claims that were never classified, so the type alone does not mean doubt:
+ * most such claims carry a high or medium certainty rating from review. Only claims whose
+ * certainty is also below medium are treated as uncertain.
+ */
+export function isUncertainClaim(claim: Pick<Phase1Statement, "evidenceType" | "certainty">) {
+  return claim.evidenceType === "uncertain" && claim.certainty !== "high" && claim.certainty !== "medium";
+}
+
 export function approvedStatements(person: Pick<Phase1Personality, "sources" | (typeof PROFILE_SECTIONS)[number]["key"]>, key: (typeof PROFILE_SECTIONS)[number]["key"]): Phase1Statement[] {
-  return person[key].filter((claim) => claim.reviewStatus === "approved" && claim.citations.some((citation) => person.sources.some((source) => source.id === citation.sourceId && source.sourceStatus === "approved")) && (key === "contestedAspects" || claim.evidenceType !== "uncertain"));
+  return person[key].filter((claim) => claim.reviewStatus === "approved" && claim.citations.some((citation) => person.sources.some((source) => source.id === citation.sourceId && source.sourceStatus === "approved")) && (key === "contestedAspects" || !isUncertainClaim(claim)));
 }
 
 function uniqueByClaimId(claims: Phase1Statement[]): Phase1Statement[] {
@@ -68,29 +86,43 @@ function uniqueByClaimId(claims: Phase1Statement[]): Phase1Statement[] {
   return claims.filter((claim) => !seen.has(claim.claimId) && Boolean(seen.add(claim.claimId)));
 }
 
-export type ProfileSection = (typeof PROFILE_SECTIONS)[number] & { claims: Phase1Statement[] };
+export type ProfileSection = (typeof PROFILE_SECTIONS)[number] & { claims: Phase1Statement[]; note: string | null };
 
-// Approved claims marked "uncertain" are shown under "Disputed or uncertain" instead of their own
-// section. The same claim can be filed under several sections, so each list is deduped by claimId.
-export function profileSections(person: Pick<Phase1Personality, "sources" | (typeof PROFILE_SECTIONS)[number]["key"]>): ProfileSection[] {
+const MOVED_TO_UNCERTAIN = "The approved statements on this topic are qualified as uncertain, so they are shown under Disputed or uncertain.";
+
+// Approved claims that are uncertain (see isUncertainClaim) are shown under "Disputed or uncertain" instead of their own
+// section. Sections without approved evidence keep the dataset's limited-information note, so a
+// reader sees that the gap is known rather than that the section is missing.
+export function profileSections(person: Pick<Phase1Personality, "sources" | "limitedInformation" | (typeof PROFILE_SECTIONS)[number]["key"]>): ProfileSection[] {
   const admittedIds = new Set(person.sources.filter((source) => source.sourceStatus === "approved").map((source) => source.id));
   const uncertain = PROFILE_SECTIONS
     .filter((section) => section.key !== "contestedAspects")
-    .flatMap((section) => person[section.key].filter((claim) => claim.reviewStatus === "approved" && claim.evidenceType === "uncertain" && claim.citations.some((citation) => admittedIds.has(citation.sourceId))));
+    .flatMap((section) => person[section.key].filter((claim) => claim.reviewStatus === "approved" && isUncertainClaim(claim) && claim.citations.some((citation) => admittedIds.has(citation.sourceId))));
   return PROFILE_SECTIONS
-    .map((section) => ({
-      ...section,
-      claims: uniqueByClaimId(section.key === "contestedAspects" ? [...approvedStatements(person, section.key), ...uncertain] : approvedStatements(person, section.key)),
-    }))
-    .filter((section) => section.claims.length);
+    .map((section) => {
+      const claims = uniqueByClaimId(section.key === "contestedAspects" ? [...approvedStatements(person, section.key), ...uncertain] : approvedStatements(person, section.key));
+      const limited = section.key === "shortIntroduction" ? undefined : person.limitedInformation?.[section.key];
+      const note = claims.length ? null : limited ?? (person[section.key].length ? MOVED_TO_UNCERTAIN : null);
+      return { ...section, claims, note };
+    })
+    .filter((section) => section.claims.length || section.note);
 }
 
-export type ExplorePerson =Phase1DiscoveryPerson & { summary: string | null; sourceCount: number; dateLabel: string | null; sortYear: number | null; angles: ProfileAngle[] };
+export type ExplorePerson = Phase1DiscoveryPerson & { summary: string | null; sourceCount: number; angles: ProfileAngle[] };
+
+/** Timeline groups, in order. Each person's group comes from the curated era in the dataset. */
+export const ERA_PERIODS = [
+  "Vedic and epic tradition",
+  "Ancient (before 500 CE)",
+  "Early medieval (500–1300 CE)",
+  "Medieval to early modern (1300–1800)",
+  "19th century",
+  "20th century",
+];
 
 export function toExplorePerson(discovery: Phase1DiscoveryPerson, person: Phase1Personality): ExplorePerson {
   const summary = approvedStatements(person, "shortIntroduction")[0]?.text ?? null;
   const angles = profileAngles(person.slug);
-  // The export has no structured date field. Era is used only when the export supplies one.
   return {
     ...discovery,
     presentationCategory: exploreCategory(person.slug),
@@ -98,9 +130,7 @@ export function toExplorePerson(discovery: Phase1DiscoveryPerson, person: Phase1
     summary,
     angles,
     sourceCount: person.sources.filter((source) => source.sourceStatus === "approved").length,
-    dateLabel: person.era,
-    sortYear: null,
-    searchText: [discovery.name, ...discovery.alternateNames, person.type, exploreCategory(person.slug).name, summary, person.era, ...angles.map((angle) => angle.title)].filter(Boolean).join(" ").toLowerCase(),
+    searchText: [discovery.name, ...discovery.alternateNames, person.type, exploreCategory(person.slug).name, summary, person.era.label, person.era.period, person.region.label, ...person.region.broad, ...angles.map((angle) => angle.title)].filter(Boolean).join(" ").toLowerCase(),
   };
 }
 

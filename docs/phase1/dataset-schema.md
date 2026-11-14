@@ -39,8 +39,8 @@ Every object in `personalities` has the following fields.
 | `categories` | Yes | All current category memberships. This preserves secondary and historical structure rather than flattening it. |
 | `phase1PresentationCategory` | Yes | The Mentor-approved public Phase 1 category. The mapping is stored in `data/phase1-presentation.json` and does not replace detailed research categories. |
 | `phase1PresentationCategoryStatus` | Yes | Records the presentation mapping as `approved_per_track2_handoff`. This preserves the supplied approval state without inventing a Mentor identity, signature, or date. |
-| `era` | Optional | Structured era from the identity record. `null` means it has not been populated; dated statements may still exist in `lifeAndContext`. |
-| `region` | Optional | Structured region from the identity record. `null` means it has not been populated; geographic statements may still exist in cited profile content. |
+| `era` | Yes | Curated era object: `label` (full wording), `short` (card/timeline wording), `sortYear` (number for ordering, negative for BCE, `null` when the person is known only through undated texts), `period` (timeline group) and `supportingClaimIds` (approved claims in the `evidenceRegister` that establish it). |
+| `region` | Yes | Curated region object: `label`, `broad` (filter groups such as `South India` or `Textual tradition`) and `supportingClaimIds`. |
 | `shortIntroduction` | Yes | Up to two sourced statements selected from life/context and contribution evidence. |
 | `lifeAndContext` | Yes | Sourced statements about vocation, formation, identity, historical setting, and social context. May be empty only when the readiness audit flags a blocker. |
 | `qualitiesValues` | Yes | Sourced values, virtues, teachings, methods, disciplines, or inner qualities appropriate to the person. |
@@ -49,6 +49,8 @@ Every object in `personalities` has the following fields.
 | `leadershipRelationalCharacteristics` | Yes | Sourced leadership, mentorship, collaboration, lineage, advisory, or relational material. It may be empty when the dimension is not relevant or not sufficiently supported. |
 | `contestedAspects` | Yes | Only contested or sensitive statements that pass the enhanced sourcing rule. |
 | `contemporaryRelevance` | Yes | Sourced legacy, impact, recognition, service, or present-day relevance. |
+| `limitedInformation` | Yes | Map from section key to a plain-language note for every profile section that has no approved, sourcing-compliant statement. A section is never silently empty. |
+| `studyFramework` | Rishis and rulers | The DCF “Parameters to study Rishis” (10 parameters) or “Parameters to study Rulers / Kings” (9 parameters) applied to this person: each parameter has a `status` (`documented` or `limited`), a `note` when limited, and fields with `claimCount`, all `claimIds`, and up to four ranked `statements`. `null` for other people. |
 | `lenses` | Yes | Relevant angles inherited from the current research categories, such as `historical`, `scientific`, `spiritual`, or `leadership`. They guide interpretation; they are not factual claims. |
 | `sources` | Yes | Full metadata for every source linked to this person’s evidence register, including sources not selected into the concise profile. |
 | `citations` | Yes | Source IDs used by the concise profile sections. Join these IDs to `sources`. |
@@ -77,13 +79,29 @@ Use `sourceId` to find full author, institution, URL, citation, source type, tex
 
 A person may belong to more than one category. `isPrimary` identifies the principal current framework; secondary memberships must not be discarded. The official five Phase 1 presentation categories are deliberately separate from these research categories because the live database does not currently define an approved five-group consolidation.
 
+## Editorial curation
+
+`data/phase1-curation.json` holds the editorial layer that the database does not: era and region, the two-sentence introduction, section corrections, limited-information notes, and the Rishi/Ruler parameter mappings. `scripts/lib/phase1-curation.mjs` applies it inside the live exporter and in `node scripts/apply-phase1-curation.mjs`, which works without database access.
+
+The curation cannot add a fact. Every value references an existing claim ID (or a unique 8-character prefix) from the person's evidence register, and the script fails if that claim is not approved or does not meet the sourcing rule. Section rules it enforces:
+
+- each claim appears in at most one profile section (`shortIntroduction` excepted);
+- a claim added to `contestedAspects` must itself be classified as contested;
+- an empty section must carry a `limitedInformation` note; an empty contested section gets an automatic note that states how many contested claims were withheld.
+
+The script is idempotent: re-running it on an already curated export changes nothing.
+
+## Evidence type and uncertainty
+
+`evidenceType: "uncertain"` is the database default for a claim that was never classified, not a judgment that the claim is doubtful: 444 of the 663 such claims carry a `high` certainty rating. Treat a claim as uncertain only when its evidence type is `uncertain` and its `certainty` is below `medium`. The public site follows this rule; earlier versions filed every unclassified claim under “Disputed or uncertain”.
+
 ## Review status
 
 Profile readiness and claim approval are different:
 
 - `ready_for_mentor_review` means the exporter found a sourced introduction, at least one life/context statement, at least one contribution statement, at least eight distinct selected statements, and at least three supporting sources. An optional or inapplicable dimension may still be empty, but the gap is listed rather than filled by inference.
 - `blocked_pending_evidence_or_revision` means at least one core section lacks an eligible sourced statement.
-- `mentorApproval: approved_per_track2_handoff` records the supplied Phase 1 approval state without inventing a Mentor identity, signature, or date. A future export may use `not_recorded` when no external approval decision has been supplied.
+- `mentorApproval: approved_per_track2_handoff` records the Mentor's Phase 1 approval of the 25 profiles.
 - `profileDraftStatus` is the exporter's deterministic evidence/readiness result, not the final curatorial decision. It may remain `ready_for_mentor_review` while the separate `mentorApproval` field records the final handoff approval.
 - `selectedApprovedClaims` counts approved claims in the concise draft.
 - `selectedAwaitingReviewClaims` counts draft or needs-review claims shown transparently for the Mentor to assess.

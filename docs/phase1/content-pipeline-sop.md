@@ -133,7 +133,19 @@ Run the exporter, open `data/exports/dcf-phase1-personalities.json`, and verify:
 - Mentor status;
 - `generatedAt` and schema version.
 
-Validate the JSON independently of the web application. Keep the schema document beside the release. Never hand-edit the generated JSON; correct the database or generator and regenerate it.
+Validate the JSON independently of the web application. Keep the schema document beside the release. Never hand-edit the generated JSON; correct the database, the generator, or `data/phase1-curation.json` and regenerate it.
+
+### 16a. Curate the profile
+
+Add an entry for the person to `data/phase1-curation.json`:
+
+1. **Era and region.** Write a plain label and a short card label, choose the timeline `period` and broad `region` groups, and list the approved claim IDs that establish each. If no claim gives a date, say so in the label (for example “Rigvedic and epic textual layers (not securely dated)”) and set `sortYear` to `null`.
+2. **Introduction.** Choose the two approved claims that best say who the person was and why they matter.
+3. **Sections.** Read every section of the exported profile. Move misplaced claims with `sections.remove` and `sections.add` (a family-background claim does not belong under Qualities). Add approved claims that the automatic selection missed.
+4. **Limited information.** For a section that still has no approved evidence, write a `limitedInformation` note that says what the sources do and do not cover. Do not infer qualities from actions unless a source makes that link.
+5. **Study parameters.** If the person is a rishi or ruler, add their ID to the matching `studyFrameworks` entry. Record claim-level `claimOverrides` where the automatic field assignment is wrong, and `notes` for parameters the sources do not cover.
+
+Then run `node scripts/apply-phase1-curation.mjs` (or the full exporter) and `npm run test:run`. The script refuses any claim that is not approved or fails the sourcing rule.
 
 ## 17. Publish into the demo
 
@@ -150,6 +162,8 @@ Publish only the profile version authorized by DCF and the Mentor. Preserve cita
 - [ ] Every factual profile statement has an approved credible source.
 - [ ] Contested statements meet the two-source rule or are withheld.
 - [ ] Human review decisions and revision history are recorded.
+- [ ] Era, region, introduction and section placement curated; empty sections explained.
+- [ ] Rishi or ruler study parameters mapped where applicable.
 - [ ] Readable Mentor package generated.
 - [ ] Written, dated Mentor decision recorded.
 - [ ] Portable JSON regenerated and validated.

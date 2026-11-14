@@ -24,5 +24,5 @@ export default async function PersonalityPage({ params }: { params: Promise<{ sl
   const { slug } = await params;
   const person = getPersonBySlug(slug);
   if (!person) notFound();
-  return <ProfileClient person={publicProfilePerson(person)} related={getRelatedPeople(person).map(({ id, slug: relatedSlug, name, detailedCategory, era }) => ({ id, slug: relatedSlug, name, detailedCategory, era }))} />;
+  return <ProfileClient person={publicProfilePerson(person)} related={getRelatedPeople(person).map(({ id, slug: relatedSlug, name, detailedCategory, eraShort }) => ({ id, slug: relatedSlug, name, detailedCategory, eraShort }))} />;
 }

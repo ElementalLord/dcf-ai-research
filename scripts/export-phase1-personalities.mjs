@@ -1,6 +1,7 @@
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { createClient } from "@supabase/supabase-js";
+import { applyPhase1Curation, renderMentorReviewDocs } from "./lib/phase1-curation.mjs";
 
 const ROOT = process.cwd();
 const EXPORT_PATH = path.join(ROOT, "data/exports/dcf-phase1-personalities.json");
@@ -9,6 +10,7 @@ const DOCS_DIR = path.join(ROOT, "docs/phase1");
 const REVIEW_DIR = path.join(DOCS_DIR, "mentor-review");
 const generatedAt = new Date().toISOString();
 const presentation = JSON.parse(await readFile(PRESENTATION_PATH, "utf8"));
+const curation = JSON.parse(await readFile(path.join(ROOT, "data/phase1-curation.json"), "utf8"));
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -49,7 +51,6 @@ const sentence = (text) => {
   const clean = String(text || "").replace(/\s+/g, " ").trim();
   return !clean || /[.!?]$/.test(clean) ? clean : `${clean}.`;
 };
-const slugify = (value) => value.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const md = (value) => String(value || "").replace(/\|/g, "\\|").replace(/\r?\n/g, " ");
 const sourceDomain = (source) => {
   try { return source.url ? new URL(source.url).hostname.toLowerCase().replace(/^www\./, "") : null; }
@@ -534,6 +535,9 @@ function validateDataset(value) {
 }
 
 validateDataset(dataset);
+// Era, region, section fixes, limited-information notes and study parameters
+// come from the checked-in curation file; see docs/phase1/dataset-schema.md.
+applyPhase1Curation(dataset, curation);
 
 await mkdir(path.dirname(EXPORT_PATH), { recursive: true });
 await mkdir(DOCS_DIR, { recursive: true });
@@ -566,88 +570,9 @@ ${categoryLines.join("\n")}
 Track 1 category selection and the presentation-only mapping are recorded as approved per the Track 2 handoff. Detailed categories remain available for research and editorial use.
 `);
 
-function citationLabelMap(person) {
-  const ids = unique([
-    ...person.shortIntroduction.flatMap((item) => item.citations.map((citation) => citation.sourceId)),
-    ...Object.keys(SECTION_LABELS).flatMap((key) => (person[key === "leadershipRelational" ? "leadershipRelationalCharacteristics" : key] || []).flatMap((item) => item.citations.map((citation) => citation.sourceId))),
-  ]);
-  return new Map(ids.map((id, index) => [id, `S${index + 1}`]));
+for (const [filename, content] of Object.entries(renderMentorReviewDocs(dataset))) {
+  await writeFile(path.join(REVIEW_DIR, filename), content);
 }
-
-function statementLine(item, labels) {
-  const refs = unique(item.citations.map((citation) => labels.get(citation.sourceId))).filter(Boolean).map((label) => `[${label}]`).join(" ");
-  const state = item.reviewStatus === "approved" ? "approved claim" : `${item.reviewStatus}; awaiting human decision`;
-  return `- ${md(item.text)} ${refs} _(${state}; ${item.approvalOrigin})_`;
-}
-
-const reviewIndexRows = [];
-for (const person of exportedPeople) {
-  const filename = `${slugify(person.name)}.md`;
-  reviewIndexRows.push(`| [${md(person.name)}](./${filename}) | ${md(person.phase1PresentationCategory.name)} | ${person.reviewStatus.profileDraftStatus === "ready_for_mentor_review" ? "Complete" : "Blocked"} | Approved |`);
-  const labels = citationLabelMap(person);
-  const citedSources = [...labels.entries()].map(([sourceId, label]) => ({ label, source: sourceMap.get(sourceId) })).filter((item) => item.source);
-  const sections = [
-    ["Important qualities", person.qualitiesValues],
-    ["Main contributions", person.contributions],
-    ["Life and historical/social context", person.lifeAndContext],
-    ["Challenges and limits", person.challenges],
-    ["Leadership and relational characteristics", person.leadershipRelationalCharacteristics],
-    ["Contested material meeting the inclusion standard", person.contestedAspects],
-    ["Contemporary relevance", person.contemporaryRelevance],
-  ].map(([label, items]) => `## ${label}\n\n${items.length ? items.map((item) => statementLine(item, labels)).join("\n") : "No sourcing-compliant statement selected; see unresolved concerns."}`).join("\n\n");
-  const intro = person.shortIntroduction.length ? person.shortIntroduction.map((item) => statementLine(item, labels)).join("\n") : "No sourcing-compliant introduction could be assembled.";
-  const withheld = person.reviewStatus.sourcingStandardViolationsWithheld.length
-    ? person.reviewStatus.sourcingStandardViolationsWithheld.map((item) => `- ${md(item.text)} — **withheld:** ${item.reason}; ${item.independentSourceCount} independent credible source(s).`).join("\n")
-    : "None identified by the deterministic contested-claim check.";
-  const concerns = person.reviewStatus.unresolvedConcerns.length ? person.reviewStatus.unresolvedConcerns.map((item) => `- ${md(item)}`).join("\n") : "- None identified by the automated readiness check.";
-  const sourceList = citedSources.length ? citedSources.map(({ label, source }) => `- **[${label}]** ${md(source.author || source.publisher_or_institution || "Unknown author/institution")}. “${md(source.title)}.” ${source.publication_year || "n.d"}. ${source.source_type}. ${source.url ? `<${source.url}>` : md(source.citation)}.`).join("\n") : "- No sources selected.";
-  await writeFile(path.join(REVIEW_DIR, filename), `# ${person.name} — Mentor review draft
-
-**Current category:** ${person.type || "Uncategorized"}<br />
-**Phase 1 presentation category:** ${person.phase1PresentationCategory.name}<br />
-**Profile status:** ${person.reviewStatus.profileDraftStatus === "ready_for_mentor_review" ? "Complete" : "Blocked pending evidence or revision"}<br />
-**Mentor approval:** Approved per Track 2 handoff
-
-## Profile introduction
-
-${intro}
-
-${sections}
-
-## Withheld contested or sensitive material
-
-${withheld}
-
-## Unresolved concerns
-
-${concerns}
-
-## Sources cited in this review draft
-
-${sourceList}
-
-## Mentor decision
-
-- [x] APPROVE
-- [ ] APPROVE WITH CHANGES
-- [ ] RETURN FOR REVISION
-
-Track 1 approval is recorded as complete per the Phase 1 demo handoff; this file does not invent a Mentor identity, signature, or date.
-`);
-}
-
-await writeFile(path.join(REVIEW_DIR, "README.md"), `# Phase 1 Mentor review package
-
-Generated from the live database on ${generatedAt}. Track 1 profiles and presentation mapping are recorded as approved per the Track 2 handoff. Each factual statement still carries source markers and retains its original database review status and approval origin.
-
-| Personality | Approved presentation category | Profile status | Mentor decision |
-|---|---|---|---|
-${reviewIndexRows.join("\n")}
-
-## Approval record
-
-The Track 2 handoff records approval of all 25 profiles, the five-category mapping, framework, sourcing and contested-material decisions, portable dataset, schema, and SOP. Claim-level review provenance remains unchanged for auditability; no Mentor identity, signature, or date is generated here.
-`);
 
 const blockersList = blockedPeople.length ? blockedPeople.map((person) => `- ${person.name}: ${person.reviewStatus.unresolvedConcerns.join(" ")}`).join("\n") : "- None. All 25 profiles have enough sourcing-compliant material for a defensible review draft. Any unsupported optional dimension remains an explicit gap in the individual profile.";
 const violationsList = sourcingViolations.length ? sourcingViolations.map((item) => `- ${item.personality}: ${md(item.text)} — ${item.reason} (${item.independentSourceCount} independent credible source(s)); omitted from the review profile.`).join("\n") : "- None identified.";
