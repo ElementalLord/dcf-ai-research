@@ -40,6 +40,12 @@ After deployment, run the non-visual route check against the live origin:
 node scripts/verify-phase1-demo.mjs https://YOUR-PRODUCTION-ORIGIN
 ```
 
+Then run the automated browser version of the checklist against the same origin (needs `npm install --no-save playwright && npx playwright install chromium`), and record the result in [testing results](../testing-results.md):
+
+```bash
+node scripts/qa-phase1-browser.mjs https://YOUR-PRODUCTION-ORIGIN
+```
+
 Then complete this manual check. Test at least one profile from each of the five Phase 1 presentation categories.
 
 ### Desktop — a few minutes

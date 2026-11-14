@@ -4,8 +4,7 @@ This document distinguishes items that affect final release operations from oppo
 
 ## Phase 1 acceptance limitations
 
-- **Deployment is external.** The repository has no checked-in hosting-project association, deployment workflow, or Git remote. The current branch/commit must be connected to DCF's selected existing provider and configured there.
-- **Deployed visual QA remains outstanding.** Desktop and mobile smoke testing must be performed against the production URL after deployment. Local responsive rules and routes have been validated, but that is not a substitute for the final browser check.
+- **Deployed visual QA is not yet recorded against the live URL.** The site is deployed on Vercel. The desktop and mobile checks passed on a local production build and an emulated phone (see [testing results](../testing-results.md)); running `node scripts/qa-phase1-browser.mjs <live URL>` and filling in the live column completes it. A physical phone, Safari, Firefox and a formal accessibility audit have not been tested.
 
 These are marked `USER ACTION REQUIRED` in the final acceptance checklist.
 
