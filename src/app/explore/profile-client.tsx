@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import type { Phase1Source, Phase1Statement, RelatedPerson } from "@/lib/phase1/types";
-import { approvedStatements, exploreCategory, profileSections, type PublicProfilePerson } from "./explore-data";
+import { useState, useSyncExternalStore } from "react";
+import type { Phase1Source, Phase1Statement, Phase1StudyFramework, RelatedPerson } from "@/lib/phase1/types";
+import { applyRoleLens, approvedStatements, exploreCategory, profileSections, type PublicProfilePerson } from "./explore-data";
 
 function sourceType(source: Phase1Source) {
   const names: Record<string, string> = {
@@ -19,27 +19,65 @@ function SourceLink({ source }: { source: Phase1Source }) {
   return <a href={source.url || `#source-${source.id}`} target={source.url ? "_blank" : undefined} rel={source.url ? "noopener noreferrer" : undefined}>{source.title}</a>;
 }
 
-function Claim({ statement, sources, allOpen }: { statement: Phase1Statement; sources: Phase1Source[]; allOpen: boolean }) {
+function Claim({ statement, sources, allOpen, focus = false }: { statement: Phase1Statement; sources: Phase1Source[]; allOpen: boolean; focus?: boolean }) {
   const cited = [...new Set(statement.citations.map((citation) => citation.sourceId))]
     .map((id) => sources.find((source) => source.id === id))
     .filter((source): source is Phase1Source => Boolean(source));
 
-  return <details className="explore-claim" open={allOpen ? true : undefined} key={`${statement.claimId}-${allOpen}`}>
+  return <details className={focus ? "explore-claim is-focus" : "explore-claim"} open={allOpen ? true : undefined} key={`${statement.claimId}-${allOpen}`}>
     <summary><span>{statement.text}</span><small>{cited.length} {cited.length === 1 ? "source" : "sources"}</small></summary>
     <div className="explore-evidence">{cited.map((source) => <div key={source.id}><SourceLink source={source} /><span>{sourceType(source)}</span></div>)}</div>
   </details>;
 }
 
-export function ProfileClient({ person, related }: { person: PublicProfilePerson; related: Array<Pick<RelatedPerson, "id" | "slug" | "name" | "detailedCategory" | "era">> }) {
+const LENS_EVENT = "dcf-lens-change";
+const readLensFromUrl = () => new URLSearchParams(window.location.search).get("lens");
+function subscribeToLens(onChange: () => void) {
+  window.addEventListener(LENS_EVENT, onChange);
+  window.addEventListener("popstate", onChange);
+  return () => { window.removeEventListener(LENS_EVENT, onChange); window.removeEventListener("popstate", onChange); };
+}
+
+const FRAMEWORK_HEADINGS: Record<string, string> = { rishi: "Studied as a rishi", ruler: "Studied as a ruler" };
+
+function StudyFramework({ framework, sources, allOpen }: { framework: Phase1StudyFramework; sources: Phase1Source[]; allOpen: boolean }) {
+  const documented = framework.parameters.filter((parameter) => parameter.status === "documented").length;
+  return <section id="framework" className="explore-framework">
+    <h2>{FRAMEWORK_HEADINGS[framework.id] ?? framework.title}</h2>
+    <p>The {framework.parameters.length} parameters from DCF&apos;s {framework.title.replace(/^Parameters/, "parameters")} document. {documented} of {framework.parameters.length} are documented by approved sources; the rest are marked as limited rather than filled in.</p>
+    <ol className="explore-parameters">{framework.parameters.map((parameter) => <li key={parameter.code} className={parameter.status === "limited" ? "is-limited" : undefined}>
+      <details open={allOpen ? true : undefined} key={`${parameter.code}-${allOpen}`}>
+        <summary><span>{parameter.name}</span><small>{parameter.status === "limited" ? "Limited information" : `${parameter.claimCount} approved ${parameter.claimCount === 1 ? "claim" : "claims"}`}</small></summary>
+        {parameter.note && <p className="explore-limited">{parameter.note}</p>}
+        {parameter.fields.filter((field) => field.statements.length).map((field) => <div className="explore-parameter-field" key={field.code}>
+          <h3>{field.label}{field.claimCount > field.statements.length && <small> · showing {field.statements.length} of {field.claimCount}</small>}</h3>
+          {field.statements.map((claim) => <Claim key={`${claim.claimId}-${allOpen}`} statement={claim} sources={sources} allOpen={allOpen} />)}
+        </div>)}
+      </details>
+    </li>)}</ol>
+  </section>;
+}
+
+export function ProfileClient({ person, related }: { person: PublicProfilePerson; related: Array<Pick<RelatedPerson, "id" | "slug" | "name" | "detailedCategory" | "eraShort">> }) {
   const [allOpen, setAllOpen] = useState(false);
   const [showAllSources, setShowAllSources] = useState(false);
   const [current, setCurrent] = useState<string | null>(null);
   const sources = person.sources.filter((source) => source.sourceStatus === "approved");
-  const sections = profileSections(person);
+  // The chosen lens lives in the URL (/explore/rabindranath-tagore?lens=educator) so it can be shared.
+  const lensId = useSyncExternalStore(subscribeToLens, readLensFromUrl, () => null);
+  const chooseLens = (id: string | null) => {
+    const url = new URL(window.location.href);
+    if (id) url.searchParams.set("lens", id); else url.searchParams.delete("lens");
+    window.history.replaceState(null, "", url);
+    window.dispatchEvent(new Event(LENS_EVENT));
+  };
+  const lens = person.roleLenses.find((item) => item.id === lensId) ?? null;
+  const focusIds = new Set(lens?.focusClaimIds ?? []);
+  const sections = applyRoleLens(profileSections(person), lens);
   const claims = sections.reduce((total, section) => total + section.claims.length, 0);
   const lede = approvedStatements(person, "shortIntroduction").slice(0, 2).map((claim) => claim.text).join(" ");
   const category = exploreCategory(person.slug);
-  const firstName = person.name.startsWith("A. P. J.") ? "Kalam" : person.name.split(" ")[0];
+  const firstName = person.shortName;
   const visibleSources = showAllSources ? sources : sources.slice(0, 8);
   const lensLabel = (lens: string) => lens.replaceAll("_", " ");
 
@@ -48,7 +86,11 @@ export function ProfileClient({ person, related }: { person: PublicProfilePerson
     <header className="explore-profile-hero">
       <div>
         <h1>{person.name}</h1>
-        {person.type && <p className="explore-facts">{[person.era, person.region, person.type].filter(Boolean).join(" · ")}</p>}
+        <dl className="explore-facts">
+          <div><dt>Era</dt><dd>{person.era.label}</dd></div>
+          <div><dt>Region</dt><dd>{person.region.label}</dd></div>
+          {person.type && <div><dt>Role</dt><dd>{person.type}</dd></div>}
+        </dl>
         <p className="explore-lede">{lede || `Explore the collected sources for ${person.name}. Biographical claims are being reviewed before publication.`}</p>
       </div>
       <aside className="explore-trust" aria-label="Evidence summary">
@@ -57,11 +99,26 @@ export function ProfileClient({ person, related }: { person: PublicProfilePerson
         <Link href="/ai">Ask about {firstName}</Link>
       </aside>
     </header>
+    {person.roleLenses.length > 0 && <section className="explore-lens" aria-labelledby="lens-heading">
+      <div className="explore-lens-bar">
+        <h2 id="lens-heading">View {firstName} as</h2>
+        <div role="group" aria-label="Lens">
+          <button type="button" aria-pressed={!lens} onClick={() => chooseLens(null)}>Whole profile</button>
+          {person.roleLenses.map((item) => <button type="button" key={item.id} aria-pressed={lens?.id === item.id} onClick={() => chooseLens(item.id)}>{item.label}</button>)}
+        </div>
+      </div>
+      {lens && <div className="explore-lens-focus" aria-live="polite">
+        <p>The same approved facts, refocused: {lens.claimCount} {lens.claimCount === 1 ? "claim is" : "claims are"} about {firstName}&apos;s role as {lens.label.toLowerCase()}. They come first below, and the most relevant sections move up. Nothing is added or removed.</p>
+        <h3>Key evidence for this role</h3>
+        {lens.focusStatements.map((claim) => <Claim key={`lens-${claim.claimId}-${allOpen}`} statement={claim} sources={sources} allOpen={allOpen} focus />)}
+      </div>}
+    </section>}
     <div className="explore-profile-layout">
       <nav className="explore-toc" aria-label="On this page">
         <h2>On this page</h2>
         <a href="#angles" aria-current={current === "angles" ? "location" : undefined} onClick={() => setCurrent("angles")}>Explore by angle<span>{person.angles.length}</span></a>
-        {sections.map((section) => <a key={section.key} href={`#${section.key}`} aria-current={current === section.key ? "location" : undefined} onClick={() => setCurrent(section.key)}>{section.title}<span>{section.claims.length}</span></a>)}
+        {sections.map((section) => <a key={section.key} href={`#${section.key}`} aria-current={current === section.key ? "location" : undefined} onClick={() => setCurrent(section.key)}>{section.title}<span>{section.claims.length || "–"}</span></a>)}
+        {person.studyFramework && <a href="#framework" aria-current={current === "framework" ? "location" : undefined} onClick={() => setCurrent("framework")}>{FRAMEWORK_HEADINGS[person.studyFramework.id] ?? person.studyFramework.title}<span>{person.studyFramework.parameters.length}</span></a>}
         <a href="#sources" aria-current={current === "sources" ? "location" : undefined} onClick={() => setCurrent("sources")}>Sources<span>{sources.length}</span></a>
         {related.length > 0 && <a href="#related" aria-current={current === "related" ? "location" : undefined} onClick={() => setCurrent("related")}>Related people</a>}
       </nav>
@@ -72,7 +129,8 @@ export function ProfileClient({ person, related }: { person: PublicProfilePerson
           <div className="explore-angle-grid">{person.angles.map((angle) => <article key={angle.title} className="explore-angle"><span>{lensLabel(angle.lens)}</span><h3>{angle.title}</h3><p>{angle.question}</p></article>)}</div>
         </section>
         <div className="explore-profile-tools"><span>{claims} approved profile {claims === 1 ? "claim" : "claims"}</span>{claims > 0 && <button type="button" onClick={() => setAllOpen(!allOpen)}>{allOpen ? "Hide all evidence" : "Show all evidence"}</button>}</div>
-        {sections.length ? sections.map((section) => <section id={section.key} key={section.key} className={`explore-topic ${section.key === "contestedAspects" ? "explore-disputed" : ""}`}><h2>{section.title}</h2>{section.claims.map((claim) => <Claim key={`${claim.claimId}-${allOpen}`} statement={claim} sources={sources} allOpen={allOpen} />)}</section>) : <section className="explore-review-note"><h2>Claims in review</h2><p>The sources below are available to read. This profile has no published claims yet; Ask may use newer verified knowledge.</p></section>}
+        {sections.length ? sections.map((section) => <section id={section.key} key={section.key} className={`explore-topic ${section.key === "contestedAspects" ? "explore-disputed" : ""}`}><h2>{section.title}</h2>{section.note && <p className="explore-limited"><strong>Limited information.</strong> {section.note}</p>}{section.claims.map((claim) => <Claim key={`${claim.claimId}-${allOpen}`} statement={claim} sources={sources} allOpen={allOpen} focus={focusIds.has(claim.claimId)} />)}</section>) : <section className="explore-review-note"><h2>Claims in review</h2><p>The sources below are available to read. This profile has no published claims yet; Ask may use newer verified knowledge.</p></section>}
+        {person.studyFramework && <StudyFramework framework={person.studyFramework} sources={sources} allOpen={allOpen} />}
         <section id="sources" className="explore-source-section">
           <div className="explore-source-heading"><div><h2>Sources</h2><p>{sources.length} source {sources.length === 1 ? "record" : "records"} in this collection. Source inclusion does not mean every claim has been approved.</p></div></div>
           {sources.length ? <>
@@ -80,7 +138,7 @@ export function ProfileClient({ person, related }: { person: PublicProfilePerson
             {sources.length > 8 && <button className="explore-show-sources" type="button" aria-expanded={showAllSources} onClick={() => setShowAllSources(!showAllSources)}>{showAllSources ? "Show fewer sources" : `Show all ${sources.length} sources`}</button>}
           </> : <p>No source records are available yet.</p>}
         </section>
-        {related.length > 0 && <section id="related" className="explore-related"><h2>Related people</h2><div>{related.map((candidate) => <Link href={`/explore/${candidate.slug}`} key={candidate.id}><strong>{candidate.name}</strong><small>{candidate.detailedCategory}{candidate.era ? ` · ${candidate.era}` : ""}</small></Link>)}</div></section>}
+        {related.length > 0 && <section id="related" className="explore-related"><h2>Related people</h2><div>{related.map((candidate) => <Link href={`/explore/${candidate.slug}`} key={candidate.id}><strong>{candidate.name}</strong><small>{candidate.detailedCategory} · {candidate.eraShort}</small></Link>)}</div></section>}
       </div>
     </div>
   </main>;

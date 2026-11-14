@@ -31,6 +31,7 @@ import { productionAdmissionStore, productionVerificationProvider, verifyDemandK
 import { settleResearchBudget } from "@/lib/live-research/research-budget";
 import { recordDemandQuestionActivity } from "@/lib/live-research/research-telemetry";
 import { isLiveOrigin, type RetrievedEvidence, type RetrievedPassage } from "./types";
+import { aiMayAddKnowledge } from "@/lib/ai-knowledge-permission";
 
 import { recallKnownSources } from "@/lib/knowledge-harvest/recall";
 import { harvestEnabled, runHarvest } from "@/lib/knowledge-harvest/harvest";
@@ -187,7 +188,7 @@ async function answerQuestionInternal(
           try {
             const verification = await verifyDemandKnowledge(resolution.researchRequest, research, {
               provider: productionVerificationProvider(), store: productionAdmissionStore(),
-              enabled: process.env.DEMAND_AUTO_ADMISSION_ENABLED === "true",
+              enabled: process.env.DEMAND_AUTO_ADMISSION_ENABLED === "true" && await aiMayAddKnowledge(),
             });
             local.debug.demandVerificationOutcomes = verification.decisions.map((decision) => decision.outcome);
             local.debug.demandVerificationModelCalls = verification.usage.extractionCalls + verification.usage.verificationCalls;

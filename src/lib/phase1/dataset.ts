@@ -26,6 +26,10 @@ export function getPhase1Dataset(): Phase1Dataset {
   if (parsed.personalities.length !== 25 || parsed.phase1Presentation.categories.length !== 5) {
     throw new Error("The approved Phase 1 export must contain 25 personalities and five presentation categories.");
   }
+  const uncurated = parsed.personalities.filter((person) => !person.era?.label || !person.region?.label || !person.limitedInformation);
+  if (uncurated.length) {
+    throw new Error(`The Phase 1 export has not been curated (${uncurated.map((person) => person.name).join(", ")}). Run node scripts/apply-phase1-curation.mjs.`);
+  }
   cachedDataset = parsed;
   return parsed;
 }
@@ -35,6 +39,7 @@ export function getPhase1People(): Phase1Personality[] {
     id: person.id,
     slug: personalitySlug(person.name),
     name: person.name,
+    shortName: person.shortName,
     alternateNames: person.alternateNames,
     type: person.type,
     category: person.category,
@@ -51,6 +56,9 @@ export function getPhase1People(): Phase1Personality[] {
     leadershipRelationalCharacteristics: person.leadershipRelationalCharacteristics,
     contestedAspects: person.contestedAspects,
     contemporaryRelevance: person.contemporaryRelevance,
+    limitedInformation: person.limitedInformation,
+    studyFramework: person.studyFramework,
+    roleLenses: person.roleLenses,
     lenses: person.lenses,
     sources: person.sources,
     citations: person.citations,
@@ -65,9 +73,12 @@ export function toDiscoveryPerson(person: Phase1Personality): Phase1DiscoveryPer
     ...person.alternateNames,
     person.phase1PresentationCategory.name,
     person.type,
-    person.era,
-    person.region,
+    person.era.label,
+    person.era.period,
+    person.region.label,
+    ...person.region.broad,
     ...person.lenses,
+    ...person.roleLenses.map((lens) => lens.label),
     introduction,
     ...person.qualitiesValues.slice(0, 3).map((statement) => statement.text),
   ].filter(Boolean).join(" ").toLowerCase();
@@ -78,8 +89,12 @@ export function toDiscoveryPerson(person: Phase1Personality): Phase1DiscoveryPer
     alternateNames: person.alternateNames,
     presentationCategory: person.phase1PresentationCategory,
     detailedCategory: person.type,
-    era: person.era,
-    region: person.region,
+    era: person.era.label,
+    eraShort: person.era.short,
+    period: person.era.period,
+    sortYear: person.era.sortYear,
+    region: person.region.label,
+    regions: person.region.broad,
     lenses: person.lenses,
     introduction,
     searchText: searchable,

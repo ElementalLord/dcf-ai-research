@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { profileSections } from "@/app/explore/explore-data";
+import { applyRoleLens, isUncertainClaim, profileSections } from "@/app/explore/explore-data";
 import { getPhase1People } from "@/lib/phase1/dataset";
 import type { Phase1Personality, Phase1Source, Phase1Statement } from "@/lib/phase1/types";
 
@@ -25,8 +25,51 @@ describe("profileSections", () => {
     } as unknown as Phase1Personality;
 
     const sections = profileSections(person);
-    expect(sections.map((section) => section.key)).toEqual(["shortIntroduction", "contestedAspects"]);
+    expect(sections.map((section) => section.key)).toEqual(["shortIntroduction", "lifeAndContext", "contestedAspects"]);
+    const life = sections.find((section) => section.key === "lifeAndContext");
+    expect(life?.claims).toEqual([]);
+    expect(life?.note).toMatch(/Disputed or uncertain/);
     expect(sections.find((section) => section.key === "contestedAspects")?.claims.map((c) => c.claimId)).toEqual(["contested", "shared"]);
+  });
+
+  it("shows a limited-information note instead of hiding a section with no approved evidence", () => {
+    const person = {
+      sources: [source],
+      limitedInformation: { challenges: "No approved source documents this." },
+      shortIntroduction: [claim("intro", "scholarly_interpretation")],
+      lifeAndContext: [], qualitiesValues: [], contributions: [], leadershipRelationalCharacteristics: [],
+      challenges: [], contemporaryRelevance: [], contestedAspects: [],
+    } as unknown as Phase1Personality;
+    const sections = profileSections(person);
+    expect(sections.map((section) => section.key)).toEqual(["shortIntroduction", "challenges"]);
+    expect(sections[1].note).toBe("No approved source documents this.");
+  });
+
+  it("gives every published profile section either approved claims or an explanation", () => {
+    for (const person of getPhase1People()) {
+      const shown = new Map(profileSections(person).map((section) => [section.key, section]));
+      for (const key of ["lifeAndContext", "qualitiesValues", "contributions", "challenges", "contemporaryRelevance", "contestedAspects"] as const) {
+        const section = shown.get(key);
+        expect(section, `${person.slug} / ${key}`).toBeDefined();
+        expect(Boolean(section!.claims.length || section!.note), `${person.slug} / ${key}`).toBe(true);
+      }
+    }
+  });
+
+  it("treats the database default evidence type as unclassified unless certainty is low", () => {
+    expect(isUncertainClaim({ evidenceType: "uncertain", certainty: "high" })).toBe(false);
+    expect(isUncertainClaim({ evidenceType: "uncertain", certainty: "medium" })).toBe(false);
+    expect(isUncertainClaim({ evidenceType: "uncertain", certainty: "low" })).toBe(true);
+    expect(isUncertainClaim({ evidenceType: "scholarly_interpretation", certainty: "low" })).toBe(false);
+  });
+
+  it("does not file a well-supported profile under Disputed or uncertain", () => {
+    for (const slug of ["ashoka", "j-r-d-tata", "rabindranath-tagore", "subhas-chandra-bose"]) {
+      const person = getPhase1People().find((item) => item.slug === slug)!;
+      const sections = new Map(profileSections(person).map((section) => [section.key, section.claims.length]));
+      expect(sections.get("contributions"), slug).toBeGreaterThan(0);
+      expect(sections.get("lifeAndContext"), slug).toBeGreaterThan(0);
+    }
   });
 
   it("never repeats a claimId within a section for any published profile", () => {
@@ -37,4 +80,32 @@ describe("profileSections", () => {
       }
     }
   });
+
+  it("changes focus but never facts when a role lens is applied", () => {
+    for (const person of getPhase1People()) {
+      const base = profileSections(person);
+      const facts = (sections: typeof base) => sections.flatMap((section) => section.claims.map((claim) => `${section.key}:${claim.claimId}`)).sort();
+      expect(person.roleLenses.length, person.slug).toBeGreaterThanOrEqual(2);
+      for (const lens of person.roleLenses) {
+        const viewed = applyRoleLens(base, lens);
+        expect(facts(viewed), `${person.slug} / ${lens.id}`).toEqual(facts(base));
+        expect(viewed[0].key).toBe("shortIntroduction");
+        const focus = new Set(lens.focusClaimIds);
+        for (const section of viewed) {
+          const firstOther = section.claims.findIndex((claim) => !focus.has(claim.claimId));
+          expect(section.claims.slice(firstOther < 0 ? section.claims.length : firstOther).every((claim) => !focus.has(claim.claimId)), `${person.slug} / ${lens.id} / ${section.key}`).toBe(true);
+        }
+      }
+    }
+  });
+
+  it("orders sections differently for at least one lens of most people", () => {
+    const people = getPhase1People();
+    const changed = people.filter((person) => {
+      const base = profileSections(person).map((section) => section.key).join();
+      return person.roleLenses.some((lens) => applyRoleLens(profileSections(person), lens).map((section) => section.key).join() !== base);
+    });
+    expect(changed.length).toBeGreaterThanOrEqual(20);
+  });
 });
+

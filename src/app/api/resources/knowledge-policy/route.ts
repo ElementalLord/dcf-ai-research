@@ -3,6 +3,7 @@ import { z } from "zod";
 import { assertCorpusAdmin, assertRequestSize, corpusErrorResponse } from "@/lib/corpus/api";
 import { CorpusError } from "@/lib/corpus/errors";
 import { supabaseAdmin } from "@/lib/supabase-admin";
+import { clearAiKnowledgePermissionCache } from "@/lib/ai-knowledge-permission";
 
 const bodySchema = z.object({
   requestLimitUsd: z.number().min(0.01).max(10),
@@ -32,6 +33,7 @@ export async function PATCH(request: NextRequest) {
       updated_at: new Date().toISOString(),
     }).eq("id", true).select("id").single();
     if (error || !data) throw error || new Error("Budget policy missing");
+    clearAiKnowledgePermissionCache();
     return NextResponse.json({ saved: true });
   } catch (error) { return corpusErrorResponse(error); }
 }

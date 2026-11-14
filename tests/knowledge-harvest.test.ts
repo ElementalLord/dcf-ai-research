@@ -4,7 +4,8 @@ import { buildHarvest, groupByWork, type TrackRecord } from "@/lib/knowledge-har
 import { passageHash, questionFingerprint, topicTerms } from "@/lib/knowledge-harvest/topics";
 import type { RetrievedPassage } from "@/lib/corpus/types";
 
-const state = vi.hoisted(() => ({ rpc: vi.fn(), subject: vi.fn(), inspect: vi.fn(), read: vi.fn(), access: vi.fn() }));
+const state = vi.hoisted(() => ({ rpc: vi.fn(), subject: vi.fn(), inspect: vi.fn(), read: vi.fn(), access: vi.fn(), aiMayAdd: vi.fn(async () => true) }));
+vi.mock("@/lib/ai-knowledge-permission", () => ({ aiMayAddKnowledge: state.aiMayAdd, clearAiKnowledgePermissionCache: () => undefined }));
 vi.mock("@/lib/supabase-admin", () => ({ supabaseAdmin: { rpc: state.rpc } }));
 vi.mock("@/lib/live-research/search-credibility", () => ({ readSubjectPassages: state.subject,
   inspectSearchSource: state.inspect, readGroundedExcerpt: state.read, sourceAccess: state.access }));
@@ -133,7 +134,18 @@ describe("harvest planning", () => {
 
 describe("harvest persistence and recall", () => {
   beforeEach(async () => { (await import("@/lib/knowledge-harvest/harvest")).resetHarvestStoreAvailability(); });
-  afterEach(() => { vi.unstubAllEnvs(); Object.values(state).forEach((mock) => mock.mockReset()); });
+  afterEach(() => { vi.unstubAllEnvs(); Object.values(state).forEach((mock) => mock.mockReset()); state.aiMayAdd.mockImplementation(async () => true); });
+
+  it("records nothing when the website setting says AI cannot add sources", async () => {
+    const { runHarvest } = await import("@/lib/knowledge-harvest/harvest");
+    state.aiMayAdd.mockResolvedValue(false);
+    state.rpc.mockImplementation(async (name: string) => name === "knowledge_source_track_records" ? { data: [], error: null }
+      : { data: { sources: 1, findings: 1, new_sources: 1, new_findings: 1, promotion_ready: 0 }, error: null });
+    state.subject.mockResolvedValue([]);
+    expect(await runHarvest({ ...job([passage()], ["google:0:0"]), policy })).toMatchObject({ stored: false, reason: "ai_additions_off" });
+    expect(state.rpc.mock.calls.map(([name]) => name)).not.toContain("record_knowledge_harvest");
+    expect(state.rpc.mock.calls.map(([name]) => name)).not.toContain("admit_harvest_verified_claim");
+  });
 
   it("records the answer's sources plus additional passages from the same page", async () => {
     const { runHarvest } = await import("@/lib/knowledge-harvest/harvest");

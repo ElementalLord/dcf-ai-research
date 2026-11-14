@@ -16,7 +16,7 @@ Use the existing workflow; do not create a parallel spreadsheet, biography file,
 12. **Perform human review.** Check the exact claim, passage, source, wording, classification, and placement; record the decision and notes.
 13. **Obtain Mentor sign-off.** Present a readable profile with sources, contested material, gaps, and visible review state. Record the written decision separately from claim approval.
 14. **Generate the structured profile.** Assemble only eligible cited material and keep uncertainty visible.
-15. **Regenerate the portable dataset.** Run `node --env-file=.env.local scripts/export-phase1-personalities.mjs`, then validate counts and joins.
+15. **Curate and regenerate the portable dataset.** Add the person's era, region, introduction, section corrections and any Rishi/Ruler parameter mapping to `data/phase1-curation.json` (see SOP step 16a). Run `node --env-file=.env.local scripts/export-phase1-personalities.mjs`, then validate counts and joins.
 16. **Verify the public profile.** Confirm routing, search/filter discovery, lenses, citations, source details, related people, and responsive readability.
 17. **Publish.** Release only the DCF- and Mentor-authorized profile version and record the dataset/schema version.
 

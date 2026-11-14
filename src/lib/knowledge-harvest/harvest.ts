@@ -7,6 +7,7 @@ import type { SearchPolicy } from "@/lib/live-research/search-policy";
 import { buildHarvest, groupByWork, type HarvestInput, type HarvestPayload, type TrackRecord } from "./plan";
 import { passageHash, questionFingerprint } from "./topics";
 import { admitFromHarvest } from "./admission";
+import { aiMayAddKnowledge } from "@/lib/ai-knowledge-permission";
 
 /** On unless explicitly switched off. A database without the harvest tables simply records nothing. */
 export const harvestEnabled = () => process.env.KNOWLEDGE_HARVEST_ENABLED !== "false";
@@ -87,6 +88,8 @@ export async function runHarvest(job: HarvestJob): Promise<HarvestOutcome> {
       if (extra.length) payload = buildHarvest({ ...job, passages: [...job.passages, ...extra] }, records);
     }
     if (!payload.sources.length && !hasRecallActivity) return none("nothing_credible");
+    // Website setting: when AI may not add sources, nothing is recorded or published.
+    if (!(await aiMayAddKnowledge())) return none("ai_additions_off");
     const { data, error } = await supabaseAdmin.rpc("record_knowledge_harvest", { p_harvest: payload });
     if (error || !data || typeof data !== "object") { noteHarvestStoreError(error); return none(error?.code || "write_failed"); }
     const row = data as { sources?: number; findings?: number; new_sources?: number; new_findings?: number; promotion_ready?: number };

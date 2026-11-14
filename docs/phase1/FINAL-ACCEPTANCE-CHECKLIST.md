@@ -1,6 +1,6 @@
 # DCF Inspiring Personalities — final Phase 1 acceptance checklist
 
-Closeout evaluation dated 2026-10-15. Status values are limited to `PASS`, `PARTIAL`, `BLOCKED`, and `USER ACTION REQUIRED`.
+Closeout evaluation dated 2026-10-15; data-completeness pass 2026-11-14. Status values are limited to `PASS`, `PARTIAL`, `BLOCKED`, and `USER ACTION REQUIRED`.
 
 ## Track 1 — primary knowledge deliverable
 
@@ -14,6 +14,9 @@ Closeout evaluation dated 2026-10-15. Status values are limited to `PASS`, `PART
 | **PASS** | Portable dataset | `data/exports/dcf-phase1-personalities.json` parses independently of the application. |
 | **PASS** | Documented schema | `docs/phase1/dataset-schema.md` documents the export contract and review semantics. |
 | **PASS** | Repeatable content pipeline | `docs/phase1/content-pipeline-sop.md` and the read-only exporter document a repeatable workflow. |
+| **PASS** | Era and region for every profile | All 25 profiles carry a curated era and region, each tied to approved claims in the evidence register (`data/phase1-curation.json`). |
+| **PASS** | Every framework field filled or explained | No profile section is silently empty. 27 sections without approved evidence carry a limited-information note; empty contested sections state how many claims were withheld. |
+| **PASS** | Rishi and Ruler parameter documents applied | The 10 Rishi parameters cover Agastya, Vasistha, Vishvamitra, Yajnavalkya and Adi Shankaracharya; the 9 Ruler parameters cover Ashoka, Shivaji, Rajaraja Chola I and Rani Lakshmibai. Undocumented parameters are marked as limited. |
 | **PASS** | Mentor approval/sign-off | Treated as approved and complete under the final handoff; generated records do not invent a Mentor identity, signature, or date. |
 
 ## Track 2 — public demo
@@ -22,13 +25,15 @@ Closeout evaluation dated 2026-10-15. Status values are limited to `PASS`, `PART
 |---|---|---|
 | **PASS** | Uses real Track 1 data | Public pages read the checked-in Track 1 export and approved presentation mapping. |
 | **PASS** | Full 25-person corpus | Focused tests and route verification cover 25 unique profiles. |
-| **PASS** | Search | Name/alias priority and partial-name behavior are tested. |
+| **PASS** | Search | Name/alias priority and partial-name behavior are tested; search also matches era and region. |
+| **PASS** | Browse by era and region | Explore has Era and Region filters, and the Timeline view groups all 25 people by curated period. |
 | **PASS** | Filtering | Presentation category and reliable detailed-role filters combine with search. |
-| **PASS** | Lens selection | Profiles expose relevant exported lenses and change the focus presentation. |
+| **PASS** | Lens selection | Every profile offers two to four evidence-backed role lenses (54 in total). Choosing one moves that role's approved claims to the top, reorders the sections and can be shared as a link (`?lens=educator`); tests confirm that every lens shows exactly the same set of facts. |
+| **PASS** | AI cannot add sources without permission | Resources › Knowledge engine has the setting “AI can add sources and facts”. When it is off, AI cannot record sources, publish claims or approve library sources; the application checks it before each write and database triggers enforce it. |
 | **PASS** | Structured profiles | All 25 static routes render supported, non-empty profile sections. |
 | **PASS** | Related-personality exploration | Deterministic related profiles include understandable shared-data reasons. |
 | **PASS** | Source transparency | Citations expose source metadata, locators, excerpts, and original URLs where available. |
-| **PASS** | Production build | Next.js production build succeeds and emits all 25 static profile routes. |
+| **PASS** | Production build | Next.js production build succeeds without database credentials and emits all 25 static profile routes. |
 | **USER ACTION REQUIRED** | Deployment | Connect the repository to DCF's selected provider, configure protected environment variables, and deploy the final commit. |
 | **USER ACTION REQUIRED** | Deployed desktop/mobile smoke test | Run and record the short manual checklist in `docs/phase1/handoff/deployment.md` against the production URL. |
 

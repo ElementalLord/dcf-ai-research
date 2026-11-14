@@ -50,18 +50,81 @@ export type Phase1Source = {
   approvalOrigin: string;
 };
 
+export type Phase1SectionKey =
+  | "lifeAndContext"
+  | "qualitiesValues"
+  | "contributions"
+  | "challenges"
+  | "leadershipRelationalCharacteristics"
+  | "contestedAspects"
+  | "contemporaryRelevance";
+
+/** A structured fact (era or region) backed by approved claims in the evidence register. */
+export type Phase1Era = {
+  label: string;
+  short: string;
+  sortYear: number | null;
+  period: string;
+  supportingClaimIds: string[];
+};
+
+export type Phase1Region = {
+  label: string;
+  broad: string[];
+  supportingClaimIds: string[];
+};
+
+export type Phase1StudyField = {
+  code: string;
+  label: string;
+  claimCount: number;
+  claimIds: string[];
+  statements: Phase1Statement[];
+};
+
+export type Phase1StudyParameter = {
+  code: string;
+  name: string;
+  status: "documented" | "limited";
+  claimCount: number;
+  note: string | null;
+  fields: Phase1StudyField[];
+};
+
+/** A DCF parameter document (for example "Parameters to study Rishis") applied to one person. */
+export type Phase1StudyFramework = {
+  id: string;
+  title: string;
+  reference: string;
+  method: string;
+  parameters: Phase1StudyParameter[];
+};
+
+/** A role through which a person can be read. It reorders and highlights approved facts; it never changes them. */
+export type Phase1RoleLens = {
+  id: string;
+  label: string;
+  parameterCodes: string[];
+  claimCount: number;
+  focusClaimIds: string[];
+  focusStatements: Phase1Statement[];
+  sectionOrder: Phase1SectionKey[];
+};
+
 export type Phase1Personality = {
   id: string;
   slug: string;
   name: string;
+  /** How the site refers to the person in running text, e.g. "Shivaji" or "Tagore". */
+  shortName: string;
   alternateNames: string[];
   type: string | null;
   category: Phase1DetailedCategory | null;
   categories: Phase1DetailedCategory[];
   phase1PresentationCategory: Phase1PresentationCategory;
   phase1PresentationCategoryStatus: string;
-  era: string | null;
-  region: string | null;
+  era: Phase1Era;
+  region: Phase1Region;
   shortIntroduction: Phase1Statement[];
   lifeAndContext: Phase1Statement[];
   qualitiesValues: Phase1Statement[];
@@ -70,6 +133,9 @@ export type Phase1Personality = {
   leadershipRelationalCharacteristics: Phase1Statement[];
   contestedAspects: Phase1Statement[];
   contemporaryRelevance: Phase1Statement[];
+  limitedInformation: Partial<Record<Phase1SectionKey, string>>;
+  studyFramework: Phase1StudyFramework | null;
+  roleLenses: Phase1RoleLens[];
   lenses: string[];
   sources: Phase1Source[];
   citations: string[];
@@ -87,8 +153,12 @@ export type Phase1DiscoveryPerson = {
   alternateNames: string[];
   presentationCategory: Phase1PresentationCategory;
   detailedCategory: string | null;
-  era: string | null;
-  region: string | null;
+  era: string;
+  eraShort: string;
+  period: string;
+  sortYear: number | null;
+  region: string;
+  regions: string[];
   lenses: string[];
   introduction: string;
   searchText: string;
