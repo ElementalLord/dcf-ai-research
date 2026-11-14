@@ -66,6 +66,37 @@ _Limited information:_ 9 contested or sensitive statements about Subhas Chandra 
 - Gandhi’s acknowledgement of Bose’s patriotism coexists with profound disagreement over methods, a useful corrective to both saint-versus-traitor caricatures. [S5]
 - The Congress use of INA memory after 1945 was politically consequential and should be distinguished from unbroken organizational unity with Bose. [S6]
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### Political leader (13 approved claims)
+
+- Bose advocated a strong central state and economic planning in post-independence reconstruction. [S1]
+- Bose argued for complete independence rather than a limited constitutional settlement within empire. [S1]
+- Bose argued that independent India would need a national army, navy and air force and rapid officer training after a colonial military hierarchy. [S4]
+- Bose connected national reconstruction to Indian control of military expertise and command, identifying colonial exclusion from senior ranks as an institutional problem. [S4]
+- Bose credited Gandhi’s non-cooperation movement with historic importance while criticizing its suspension after Chauri Chaura; this was strategic disagreement, not a simple absence of respect. [S1]
+- Bose identified Chittaranjan Das as a major early political influence, situating his rise in Bengal’s Congress and nationalist networks. [S1]
+
+### Military organizer (9 approved claims)
+
+- Bose reorganized, expanded and became the public face of the INA, making it a military and political symbol of armed independence. [S5]
+- Bose’s movement created the women’s Rani of Jhansi Regiment, symbolically expanding women’s participation; the unit performed nursing work but did not see combat. [S7]
+- INA units fought alongside Japanese forces in the Arakan and Imphal campaigns and suffered heavy losses; Bose’s military importance was greater as organizer and political mobilizer than as an independent field commander. [S7]
+- Operational effectiveness was constrained by divergent INA and Japanese command protocols, theater priorities and supply conditions. [S2]
+- The first INA under Mohan Singh ended in December 1942 amid disputes with Japanese authorities, revealing that Indian agency and Japanese control were contested from the outset. [S7]
+- The Imphal campaign was the INA’s crucial chance to enter India, but Japanese logistical weakness, command tensions and Allied resistance contributed to defeat. [S2]
+
+### International strategist (8 approved claims)
+
+- British India Office records tracked Bose’s activities across Britain, Germany, Burma, Thailand and Japan, evidence of colonial surveillance rather than independent validation of every report. [S8]
+- Bose did not create the INA from nothing: an earlier INA and the Indian Independence League emerged under Rash Behari Bose, Mohan Singh and Japanese military conditions before his 1943 arrival. [S2]
+- Bose left India in January 1941 after years of colonial imprisonment and surveillance, turning from domestic opposition to an external wartime strategy. [S6]
+- Bose sought assistance from Britain’s wartime enemies because he judged imperial war a strategic opening for Indian independence; that calculation tied his movement to Axis power. [S6]
+- In Germany Bose established the Indian Legion with Nazi cooperation; it was an armed anti-British project within the constraints and ideology of the Nazi war state, not evidence that all of Bose’s politics were identical with Nazism. [S7]
+- Japanese policy makers saw Indian anti-British feeling as potentially useful to Japan’s war, so cooperation combined Bose’s anti-colonial aims with Japanese imperial interests. [S2]
+
 ## Withheld contested or sensitive material
 
 - The 1956 Shah Nawaz Committee concluded that Bose died in an air crash and that the Renkoji ashes were his; this is an official finding, not the end of disagreement. — **withheld:** contested_requires_two_independent_sources; 1 independent credible source(s).

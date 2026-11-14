@@ -572,3 +572,20 @@ body:has(.explore-shell),.explore-shell { font-family: var(--brand-body); }
   .explore-toolbar label { min-width: 0; max-width: 100%; flex: 1 1 100%; }
   .explore-toolbar select { min-width: 0; width: 100%; text-overflow: ellipsis; }
 }
+
+/* Role lenses: switch the profile's focus without changing its facts. */
+.explore-lens { padding: 20px 0 4px; border-bottom: 1px solid var(--explore-line); }
+.explore-lens-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.explore-lens-bar h2 { margin: 0; font-size: 18px; }
+.explore-lens-bar [role="group"] { display: flex; flex-wrap: wrap; gap: 6px; }
+.explore-lens-bar button { padding: 8px 14px; color: var(--explore-muted); background: transparent; border: 1px solid var(--explore-line); border-radius: 999px; cursor: pointer; font: inherit; }
+.explore-lens-bar button:hover { color: var(--explore-text); background: var(--explore-selected); }
+.explore-lens-bar button[aria-pressed="true"] { color: var(--explore-bg); background: var(--explore-accent); border-color: var(--explore-accent); font-weight: 600; }
+.explore-lens-focus { margin: 16px 0 18px; padding: 16px 18px; background: var(--explore-surface); border: 1px solid var(--explore-line); border-radius: 8px; }
+.explore-lens-focus>p { max-width: 70ch; margin: 0 0 12px; color: var(--explore-muted); }
+.explore-lens-focus h3 { margin: 0 0 4px; font-size: 15px; }
+.explore-claim.is-focus summary { box-shadow: inset 3px 0 0 var(--explore-accent); padding-left: 12px; }
+@media (max-width: 580px) {
+  .explore-lens-bar [role="group"] { flex-wrap: nowrap; overflow-x: auto; max-width: 100%; padding-bottom: 4px; }
+  .explore-lens-bar button { flex: none; }
+}

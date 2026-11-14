@@ -10,7 +10,7 @@ const sections: Array<{ id: ResourcesSection; href: string; label: string; title
   { id: "library", href: "/resources", label: "Sources & claims", title: "Sources and claims", description: "Review sources and claims, and manage which websites research may search." },
   { id: "feedback", href: "/resources/feedback", label: "Feedback", title: "Feedback", description: "Ratings and comments from people using Ask DCF." },
   { id: "readiness", href: "/resources/readiness", label: "Readiness", title: "Readiness", description: "How ready each person's profile is. Retrieval readiness is kept separate from human-verified publication readiness." },
-  { id: "knowledge", href: "/resources/knowledge", label: "Knowledge engine", title: "Knowledge engine", description: "Question-triggered research, admission and spending." },
+  { id: "knowledge", href: "/resources/knowledge", label: "Knowledge engine", title: "Knowledge engine", description: "Question-triggered research, spending, and the setting for whether AI can add sources." },
 ];
 
 /** One header and section menu shared by every Resources page, so moving between them always works the same way. */

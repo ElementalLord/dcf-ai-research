@@ -63,6 +63,35 @@ _Limited information:_ 9 contested or sensitive statements about Jagadish Chandr
 - Later interest in long-distance electrical signaling in plants has renewed attention to Bose’s questions and instruments without validating all of his explanatory language. [S5]
 - Modern reviewers commonly regard Bose as a pioneering contributor to plant electrophysiology, while differing over the scope of his conclusions. [S6]
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### Radio physicist (15 approved claims)
+
+- At Presidency College, Bose built laboratory capacity and began electromagnetic-wave research in the 1890s. [S2]
+- Bose conducted controlled research on millimeter-wave electromagnetic radiation in the 1890s. [S1]
+- Bose tested electromagnetic waves across a short-wavelength range from roughly 2.5 centimetres down to 5 millimetres. [S1]
+- Bose used semiconductor detectors in his millimeter-wave experiments, an important early instance of crystal-based radio-wave detection. [S1]
+- Bose used short radio waves to investigate reflection, refraction, and polarization, treating them with optical-style experimental methods. [S1]
+- Bose’s microwave apparatus included waveguides, horn antennas, dielectric lenses, polarizers, and detectors. [S1]
+
+### Plant physiologist (14 approved claims)
+
+- A science-history account reports that the Royal Society did not publish Bose’s plant electrical-response work for more than a decade; archival records should be consulted for the specific review history. [S5]
+- Modern histories locate plant electrical-response research before Bose as well as within his work, making the field a cumulative international development. [S3]
+- Bose argued that experiment might reveal continuities between living and non-living response, a philosophical inference that went beyond any single measurement. [S4]
+- Later interest in long-distance electrical signaling in plants has renewed attention to Bose’s questions and instruments without validating all of his explanatory language. [S5]
+- Modern reviewers commonly regard Bose as a pioneering contributor to plant electrophysiology, while differing over the scope of his conclusions. [S6]
+- Royal Society archival catalogues document formal referee reports on Bose’s plant-response papers. [S7]
+
+### Institution builder (4 approved claims)
+
+- Bose founded the Bose Research Institute in 1917, later known as Bose Institute, and served as its first director. [S2]
+- Bose Institute’s institutional history presents its founding as a commitment to cross-disciplinary research and the sharing of knowledge. [S2]
+- Bose studied in Calcutta and at Christ’s College, Cambridge, before returning to India for an academic career. [S2]
+- In 1885 Bose joined Presidency College in Calcutta as an officiating professor of physics. [S2]
+
 ## Withheld contested or sensitive material
 
 - Bose’s documented work was pioneering microwave physics and instrumentation; it should be distinguished from the separate development and commercialization of wireless telegraphy. — **withheld:** contested_requires_two_independent_sources; 1 independent credible source(s).
@@ -88,3 +117,4 @@ _Limited information:_ 9 contested or sensitive statements about Jagadish Chandr
 - **[S4]** J. C. Bose. “Response in the Living and Non-Living.” 1902. primary_text. <https://archive.org/details/responseinliving00boseuoft>.
 - **[S5]** Samantha Hill. “The Thinking Plant’s Man.” 2024. institutional. <https://www.sciencehistory.org/stories/magazine/the-thinking-plants-man/>.
 - **[S6]** A. K. Ghosh and M. S. R. Rao. “Jagdish Chandra Bose & plant neurobiology.” 2019. scholarly_article. <https://pmc.ncbi.nlm.nih.gov/articles/PMC6702694/>.
+- **[S7]** Royal Society Archives. “Catalogue of the papers and referee reports for Jagadis Chunder Bose.” n.d. institutional. <https://catalogues.royalsociety.org/CalmView/Record.aspx?id=NA7962&src=CalmView.Persons>.

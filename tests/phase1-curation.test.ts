@@ -85,4 +85,19 @@ describe("Phase 1 editorial curation", () => {
     curation.people[person.id].sections = { add: { contributions: [ineligible.id] } };
     expect(() => applyPhase1Curation(dataset, curation)).toThrow(/sourcing rule|not approved/);
   });
+
+  it("gives every person role lenses backed by at least three approved claims", () => {
+    const dataset = getPhase1Dataset() as unknown as { personalities: Array<Person & { roleLenses: Array<{ id: string; claimCount: number; focusClaimIds: string[] }> }> };
+    for (const person of dataset.personalities) {
+      expect(person.roleLenses.length, person.name).toBeGreaterThanOrEqual(2);
+      for (const lens of person.roleLenses) {
+        expect(lens.claimCount, `${person.name} / ${lens.id}`).toBeGreaterThanOrEqual(3);
+        for (const id of lens.focusClaimIds) {
+          const entry = person.evidenceRegister.find((item) => item.id === id);
+          expect(entry?.reviewStatus === "approved" && entry.profileEligibility.eligible, `${person.name} / ${lens.id} / ${id}`).toBe(true);
+        }
+      }
+    }
+  });
 });
+

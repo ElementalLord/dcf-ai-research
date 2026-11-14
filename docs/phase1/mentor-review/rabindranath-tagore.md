@@ -67,6 +67,37 @@ _Limited information:_ 2 contested or sensitive statements about Rabindranath Ta
 - Amartya Sen describes Tagore as a towering presence in Bengali culture whose writings and songs remain active in everyday cultural life in India and Bangladesh. [S4]
 - The continuing performance of Tagore’s songs is a major part of his cultural legacy across Bengal and Bangladesh, not a secondary appendix to his poetry. [S4]
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### Poet and writer (9 approved claims)
+
+- Tagore received the 1913 Nobel Prize in Literature after the English Gitanjali had attracted intense attention in Britain and beyond. [S2]
+- Tagore worked across poetry, short stories, novels, drama, essays and song, so describing him only as the author of Gitanjali obscures the range of his career. [S2]
+- The Bichitra archive preserves manuscript and printed witnesses that allow scholars to trace Tagore’s revisions instead of treating every circulated wording as stable. [S6]
+- Amartya Sen describes Tagore as a towering presence in Bengali culture whose writings and songs remain active in everyday cultural life in India and Bangladesh. [S4]
+- The continuing performance of Tagore’s songs is a major part of his cultural legacy across Bengal and Bangladesh, not a secondary appendix to his poetry. [S4]
+- Rabindra-Bhavana’s holdings document Tagore’s work in literature, correspondence, painting, music and institutional life. [S8]
+
+### Educator (6 approved claims)
+
+- Tagore founded Visva-Bharati in 1921, building on his earlier Santiniketan school. [S5]
+- Tagore opened the Brahmacharyasrama school at Santiniketan in December 1901 with only five students. [S5]
+- Visva-Bharati’s history says Tagore’s Santiniketan school held classes outdoors under trees as part of an education linking people and nature. [S5]
+- Scholars interpret Tagore’s educational thought as cosmopolitan because it joined cultural rootedness with reciprocal global exchange. [S9]
+- Tagore’s curriculum treated music, painting and dramatic performance as integral to developing the whole person, not as decorative extras. [S5]
+- Tagore’s educational experiment resisted rote learning and the separation of knowledge from nature, creativity and social responsibility. [S9]
+
+### Thinker (16 approved claims)
+
+- British India Office correspondence records Tagore’s renunciation of the knighthood in 1919 after the Punjab violence and Jallianwala Bagh massacre. [S1]
+- Gitanjali had already been repeatedly reprinted in London before the Nobel announcement, showing that its international reception preceded the prize. [S4]
+- Tagore became the first Asian Nobel laureate, a landmark in the global recognition of modern Indian literature. [S2]
+- Tagore’s Nationalism lectures emerged during the First World War, when imperial rivalry and mass national organization gave his warnings immediate historical force. [S3]
+- Gitanjali explores devotion, mortality, work, nature and freedom through lyric encounters between the finite person and a larger spiritual reality. [S7]
+- His political philosophy placed moral freedom and a shared humanity above the claims of the state, linking his humanism to his internationalism. [S3]
+
 ## Withheld contested or sensitive material
 
 - Santiniketan and Visva-Bharati should be studied as historically situated experiments with practical constraints, not treated as a finished universal model. — **withheld:** contested_requires_two_independent_sources; 1 independent credible source(s).
@@ -87,3 +118,4 @@ _Limited information:_ 2 contested or sensitive statements about Rabindranath Ta
 - **[S6]** Jadavpur University School of Cultural Texts and Records. “Bichitra: Online Tagore Variorum.” n.d. institutional. <https://bichitra.jdvu.ac.in/>.
 - **[S7]** Rabindranath Tagore. “Gitanjali (Song Offerings).” 1912. primary_text. <https://www.gutenberg.org/ebooks/7164>.
 - **[S8]** Visva-Bharati. “Rabindra-Bhavana.” n.d. institutional. <https://www.visvabharati.ac.in/home/rabindra-bhavana/>.
+- **[S9]** Journal of Philosophy of Education, Oxford University Press. “The global relevance of Tagore’s cosmopolitan educational philosophy for social justice in a post-Westphalian world.” 2023. scholarly_article. <https://academic.oup.com/jope/article/57/3/611/7250432>.

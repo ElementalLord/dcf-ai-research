@@ -61,6 +61,28 @@ _Limited information:_ 5 contested or sensitive statements about Agastya are rec
 
 _Limited information:_ The approved sources in this collection describe Agastya within Vedic and epic texts but do not yet discuss present-day relevance. The section is left empty rather than filled by interpretation.
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### Vedic poet (14 approved claims)
+
+- Jamison and Brereton describe Agastya as a major Rigvedic poet known for difficult, vivid hymns. [S5]
+- Jamison and Brereton connect Agastya's Indra-Maruts hymns and Lopamudra dialogue with innovation in Vedic ritual practice. [S5]
+- Jamison and Brereton identify Rigveda 1.165, 1.170, and 1.171 as an Indra-Maruts sequence centered on Agastya's sacrifice. [S5]
+- Jamison and Brereton read the Lopamudra dialogue in Rigveda 1.179 as engaging ascetic ideals and continuation of family lineage. [S5]
+- The Vedic Heritage Portal attributes Rigveda 1.166 to the seer Agastya Maitravaruni. [S6]
+- The Vedic Heritage Portal attributes Rigveda 1.167 to the seer Agastya Maitravaruni. [S7]
+
+### Sage in the epics (11 approved claims)
+
+- Agastya counsels the battle-weary Rama in the confrontation with Ravana. [S4]
+- Agastya directs Rama toward Panchavati as a place to dwell in the forest. [S10]
+- Agastya gives Rama two inexhaustible quivers and a sword in the Ramayana account. [S11]
+- Agastya receives Rama at his hermitage and gives him a divine bow in the Ramayana. [S11]
+- In his conversation with Rama, Agastya comments on Sita's decision to accompany her husband into exile. [S10]
+- In the Ramayana's forest book, Rama travels to Agastya's hermitage with Sita and Lakshmana. [S2]
+
 ## Parameters to study Rishis
 
 Claims tagged to the rishi framework in the database are shown under their own field. Adi Shankaracharya is researched with the spiritual-teacher framework, so his claims are mapped onto the nearest rishi parameter; he was an acharya rather than a Vedic seer, so the rishi-type field is expected to stay limited.

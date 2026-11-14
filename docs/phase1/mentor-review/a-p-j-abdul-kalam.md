@@ -64,6 +64,37 @@ _Limited information:_ 4 contested or sensitive statements about A. P. J. Abdul 
 - The President’s official profile lists Wings of Fire, India 2020, My Journey, and Ignited Minds among Kalam’s books. [S1]
 - Former president Pranab Mukherjee remembered Kalam as a widely loved 'people's President' and emphasized his rapport with children and students. [S9]
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### Scientist and engineer (9 approved claims)
+
+- As project director, Kalam led development of India's first indigenous satellite launch vehicle, SLV-III, which put Rohini into near-Earth orbit in July 1980. [S1]
+- On July 18, 1980, India's SLV-3 placed the Rohini RS-1 satellite in orbit. [S6]
+- The government's memorial account credits Kalam with leadership in the development and operationalisation of the Agni and Prithvi missile systems. [S2]
+- The presidential profile credits Kalam with helping shape the later Indian launch vehicle programme, especially the PSLV configuration. [S1]
+- The SLV-3 was a four-stage, all-solid launch vehicle designed to place roughly 40 kg payloads in low Earth orbit. [S6]
+- Kalam advocated PURA, or Providing Urban Amenities in Rural Areas, as a development model for village clusters. [S7]
+
+### Leader and public servant (23 approved claims)
+
+- Kalam served as India's eleventh president from 25 July 2002 to 25 July 2007. [S1]
+- After his ISRO career, Kalam led DRDO's Integrated Guided Missile Development Programme as its chief executive. [S1]
+- After the defence R&D role, Kalam was principal scientific adviser to the Government of India from 1999 to 2001. [S2]
+- India 2020 was co-authored by Kalam and Y. S. Rajan; its national development vision should not be credited to Kalam alone. [S4]
+- Kalam combined technical leadership with national advisory duties, including chairing the Scientific Advisory Committee to the Cabinet. [S1]
+- Kalam received the Padma Bhushan in 1981, Padma Vibhushan in 1990, and Bharat Ratna in 1997. [S1]
+
+### Educator (11 approved claims)
+
+- From November 2001, Kalam pursued teaching and research at Anna University as professor of technology and societal transformation. [S1]
+- He envisaged narrowing the rural–urban divide and improving access to water, energy, and education as measures of national development. [S3]
+- In India 2020, Kalam and Rajan linked scientific and technological strength with poverty reduction, health, education, and economic opportunity. [S4]
+- Kalam used Dhawan's response to SLV failure and success as a model of leaders taking responsibility for setbacks and sharing credit for success. [S5]
+- Kalam's development agenda combined agriculture and food processing, education and healthcare, ICT, infrastructure, and strategic technological self-reliance. [S3]
+- In 2005 Kalam said he had interacted with roughly 600,000 students in five years, reflecting the scale of his public education work. [S10]
+
 ## Withheld contested or sensitive material
 
 - The book's 2020 developed-nation horizon was a stated aspiration and proposed mission, not an established forecast or achieved result. — **withheld:** contested_requires_two_independent_sources; 1 independent credible source(s).
@@ -87,3 +118,4 @@ _Limited information:_ 4 contested or sensitive statements about A. P. J. Abdul 
 - **[S7]** A. P. J. Abdul Kalam. “Address at the National Workshop on Vision 2020 and PURA.” n.d. primary_text. <https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-inauguration-national-workshop-vision-2020-india-pura-and>.
 - **[S8]** A. P. J. Abdul Kalam. “Address at St Aloysius College.” 2003. primary_text. <https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-st-aloysius-college>.
 - **[S9]** Pranab Mukherjee. “Reminiscences of President Mukherjee on Dr. Kalam.” 2015. primary_text. <https://presidentofindia.nic.in/pranab-mukherjee/press_releases/reminiscences-president-mukherjee-former-president-india-dr-apj>.
+- **[S10]** A. P. J. Abdul Kalam. “Address to the Nation on Teachers' Day, 2005.” 2005. primary_text. <https://presidentofindia.nic.in/dr-apj-abdul-kalam/speeches/address-nation-teachers-day-2005>.

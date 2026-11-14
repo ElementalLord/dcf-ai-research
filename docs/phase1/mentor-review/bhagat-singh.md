@@ -66,6 +66,28 @@ _Limited information:_ 13 contested or sensitive statements about Bhagat Singh a
 - Bhagat Singh’s execution helped create a powerful martyr memory, but scholarship warns against allowing martyrdom to eclipse his unfinished intellectual project. [S1]
 - Bhagat Singh’s posthumous legacy is contested rather than fixed: nationalism, youth, sacrifice, socialism and dissent have all been emphasized by different later interpreters. [S1]
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### Revolutionary (12 approved claims)
+
+- Bhagat Singh advised young political workers to prioritize study, organization and work among peasants and workers over isolated heroic action. [S2]
+- Bhagat Singh and Batukeshwar Dutt stated that they threw bombs in the Central Legislative Assembly on 8 April 1929. [S5]
+- Bhagat Singh’s late writing distinguished a disciplined mass movement from individual heroics, showing a development toward organized socialist politics. [S2]
+- By accepting responsibility in the Assembly case, Bhagat Singh and Dutt used the trial as a forum for public political argument rather than seeking an apolitical escape from the event. [S5]
+- The 1929 hunger strike demanded recognition and treatment as political prisoners, not merely personal leniency. [S6]
+- The archival guide lists an address in which Bhagat Singh and comrades declined participation before the Special Tribunal in 1930. [S7]
+
+### Thinker and writer (11 approved claims)
+
+- In February 1931 Bhagat Singh defined revolution as replacing an unjust social order with a socialist order, making socialism central to his late political programme. [S2]
+- A Government of India cultural-history page identifies Bhagat Singh’s Jail Notebook as central surviving prison evidence. [S4]
+- Bhagat Singh explicitly said revolution did not mean bombs and pistols alone, rejecting the reduction of his politics to spectacular violence. [S2]
+- Bhagat Singh opposed communalism and urged a scientific, critical outlook, important evidence for interpreting his secular politics. [S2]
+- Bhagat Singh treated belief as a proposition open to criticism and evidence, making rationalism central to his late prison writing. [S3]
+- In a prison essay written in 1930, Bhagat Singh presented atheism as the outcome of inquiry and reflection rather than vanity or simple rebellion. [S3]
+
 ## Withheld contested or sensitive material
 
 - Famous sayings attributed to Bhagat Singh should not be stored as direct quotations without reliable textual evidence; his dated prison essays offer firmer grounding than quote-site circulation. — **withheld:** contested_requires_two_independent_sources; 1 independent credible source(s).

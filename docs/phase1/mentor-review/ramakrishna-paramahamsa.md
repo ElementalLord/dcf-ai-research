@@ -59,6 +59,27 @@
 - A scholarly reference entry says Vivekananda instituted the Ramakrishna Mission on 1 May 1897, organising the monks in a new Ramakrishna Math; it notes that his plan to turn the disciples into monks dedicated to social service (seva) was one he claimed Ramakrishna had intended. [S9]
 - Hinduism Today, published by a Hindu monastic order, reports that on 2 July 1995 India's Supreme Court declared that neither Ramakrishna nor Vivekananda founded an independent, non-Hindu religion, ending the Mission's attempt to claim minority-religion privileges for its schools. [S13]
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### Mystic (5 approved claims)
+
+- Scholars treat the Tantric training under the female adept Yogeshvari as formative: it helped turn his self-destructive longing into the joyful "play" (lila) of a child in the Mother's "mansion of mirth", and gave him a framework for integrating his religious experiences. [S3]
+- The Brahmo leader Pratap Chandra Mozoomdar, an admirer, wrote to Max Müller in 1895 that Ramakrishna knew no Sanskrit and perhaps not enough Bengali, attributing his wisdom to "genius and practical observation"; Müller found the judgement impartial, and the Order's biography likewise says he hardly knew how to write his name. [S6] [S2]
+- A scholarly reference entry summarises that he expanded his religious experience beyond Hinduism, first devoting three days to Allah and, years later, four to Christ, with visionary realisations he held to be the same as those of the Hindu divinities; these became the experiential basis for his claim that all religions can lead to the same realization. [S3]
+- The disciple Saradananda gives the same episode in the Master's own reported words — despair at not seeing the Mother, the sword, a vision, and then unconsciousness with "a current of intense bliss"; it is first-generation disciple testimony drawn from Ramakrishna's reminiscences. [S4]
+- The historian Narasingha Sil argues that although Ramakrishna attended a village school, most of his religious insights came from listening — to kathaks, kirtan singers and pilgrim mendicants — and from a powerful memory, not from reading scripture. [S7]
+
+### Teacher (9 approved claims)
+
+- Vivekananda said in a 1896 lecture that any word of truth or spirituality he had spoken anywhere he owed to his Master, adding "only the mistakes are mine" — his own testimony, not independent evidence of what Ramakrishna taught. [S8]
+- Scholars add that Narendranath, a Brahmo who believed in a formless God, first met Ramakrishna in 1881 (the Gospel chronology lists 1880), and was impressed by his renunciation but disturbed by his image-oriented worship of Kali and apparent lack of social concern. [S9] [S2]
+- After Ramakrishna's death Sarada became "Sarada Ma, the Holy Mother" (d. 1920), a status that scholars read as reflecting both her service to him and the power of the Divine Mother. [S3]
+- Belur Math says that after Ramakrishna's death Sarada Devi, brought to Kolkata by his disciples, began to accept spiritual seekers as her disciples, becoming in its words "the open portal to immortality for hundreds of people" and embracing all without distinction. [S10]
+- Scholars read his gospel of the truth of all religions as based less on the belief that all lead to one formless Absolute than on his own experience of divine power at work in every manifest form, in line with his saying yato mat, tato path ("as many paths as points of view"). [S3]
+- The Order says Ramakrishna wrote no book and gave no public lectures, but spoke in simple language with parables and metaphors drawn from nature and daily life, which attracted Bengal's cultural elite. [S5]
+
 ## Withheld contested or sensitive material
 
 - Writing as a historian, Sil insists that "academic history can never be hagiography", which the faithful, he says, treat as fact; he defends reasonable scholarly speculation made with explicit qualifiers. — **withheld:** contested_requires_two_independent_sources; 1 independent credible source(s).

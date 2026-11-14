@@ -70,6 +70,37 @@
 - Vishvamitra's Ramayana arc can support ethical reflection on ambition, anger, discipline, failure, and persistence, but those lessons are interpretive applications rather than direct historical facts. [S14] [S15]
 - The move from confidence in kshatriya force to pursuit of brahma-tejas can be used as a literary case study in changing one's definition of power after failure, provided it is presented as interpretation of Bala Kanda rather than a universal historical lesson. [S6] [S7]
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### Vedic seer (64 approved claims)
+
+- The Vedic Heritage Portal associates Rigveda Mandala 3, containing 62 suktas and 617 mantras, with Vishvamitra and his family; Rigveda 3.62 identifies Gathina Vishvamitra in its seer metadata for verses 1–15, including 3.62.10. [S49]
+- Mahabharata Anushasana Parva 13.4 preserves a separate Vishvamitra birth and lineage explanation built around Gadhi, Satyavati, Ruchika, ritual charu, and later brahmarshi attainment. [S1] [S2]
+- Within Bala Kanda, the Vishvamitra material is not a single episode but a sustained sequence covering his relationship with Dasharatha and Rama, Vasistha, Trishanku, Shunahshepa, Menaka/Rambha, and his final recognition. [S14] [S15]
+- Another Adi Parva narrative gives a fuller Menaka-Vishvamitra-Shakuntala birth story near the Malini river and Kanva's subsequent adoption of the child. [S16]
+- In Rigveda 3.33 the human speaker identifies himself through the Kushika lineage while requesting passage from the rivers, giving the hymn a more specific social voice than a generic nature hymn. [S17]
+- Mahabharata Adi Parva also preserves a darker Vasistha-Vishvamitra feud tradition through the Kalmashapada and Shakti episode, which should not be conflated with the Ramayana's Shabala episode. [S18]
+
+### Ascetic (59 approved claims)
+
+- At Siddhashrama Vishvamitra's ritual observance includes mauna during the sacrifice, while the princes protect the rite externally. [S8] [S9]
+- At the Ganga the party under Vishvamitra bathes, lights sacrificial fires, and makes offerings to gods and ancestors before continuing the journey. [S10] [S11]
+- A strong evidence-based inner-quality theme is perseverance toward self-mastery: after episodes of anger and setback, the Ramayana depicts remorse, renewed restraint, further tapas, and eventual Brahmarshi recognition. [S20]
+- The Trishanku cycle also shows the limits of a simple compassion reading because Vishvamitra later curses sages who refuse participation, so protection of one supplicant coexists with punitive anger toward opponents. [S22] [S23]
+- The same episode resists a one-sided saintly portrait because Vishvamitra becomes furious with his sons and curses them when they refuse his demand. [S21]
+- Bala Kanda 1.34 depicts strong familial attachment when Vishvamitra explains that he remains near the Kausiki river because of his love for his sister Satyavati. [S55] [S54]
+
+### Teacher of Rama (68 approved claims)
+
+- At dawn in Bala Kanda 1.23 Vishvamitra wakes Rama and Lakshmana and directs the next stage of their disciplined journey, reinforcing his day-to-day role as preceptor rather than only episodic adviser. [S24] [S25]
+- At Janaka's court he serves as the person who contextualizes Rama's accomplishments for the king, effectively introducing the prince's recent history before the bow episode. [S26] [S27]
+- At Mithila Vishvamitra explains to Janaka why Rama and Lakshmana have come, recounting their journey and linking the princes' visit to the desire to see Shiva's bow. [S26] [S27]
+- At the Ganga, Vishvamitra functions as both ritual participant and teacher: after bathing and making offerings, he continues explaining the river's sacred history to Rama. [S10] [S11]
+- Mahabharata Anushasana Parva preserves an alternate explanatory tradition for Vishvamitra's brahmarshi status, combining a birth-line ritual narrative with his later tapas and realization. [S1] [S2]
+- Vishvamitra gives Dasharatha strategic information about Maricha, Subahu, and their connection to Ravana while pressing the request for Rama, so the court dialogue includes threat assessment as well as spiritual authority. [S28] [S29]
+
 ## Parameters to study Rishis
 
 Claims tagged to the rishi framework in the database are shown under their own field. Adi Shankaracharya is researched with the spiritual-teacher framework, so his claims are mapped onto the nearest rishi parameter; he was an acharya rather than a Vedic seer, so the rishi-type field is expected to stay limited.

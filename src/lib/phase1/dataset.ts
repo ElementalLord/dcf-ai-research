@@ -39,6 +39,7 @@ export function getPhase1People(): Phase1Personality[] {
     id: person.id,
     slug: personalitySlug(person.name),
     name: person.name,
+    shortName: person.shortName,
     alternateNames: person.alternateNames,
     type: person.type,
     category: person.category,
@@ -57,6 +58,7 @@ export function getPhase1People(): Phase1Personality[] {
     contemporaryRelevance: person.contemporaryRelevance,
     limitedInformation: person.limitedInformation,
     studyFramework: person.studyFramework,
+    roleLenses: person.roleLenses,
     lenses: person.lenses,
     sources: person.sources,
     citations: person.citations,
@@ -76,6 +78,7 @@ export function toDiscoveryPerson(person: Phase1Personality): Phase1DiscoveryPer
     person.region.label,
     ...person.region.broad,
     ...person.lenses,
+    ...person.roleLenses.map((lens) => lens.label),
     introduction,
     ...person.qualitiesValues.slice(0, 3).map((statement) => statement.text),
   ].filter(Boolean).join(" ").toLowerCase();

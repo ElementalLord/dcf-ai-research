@@ -1,4 +1,4 @@
-import type { Phase1DiscoveryPerson, Phase1Personality, Phase1PresentationCategory, Phase1Statement } from "@/lib/phase1/types";
+import type { Phase1DiscoveryPerson, Phase1Personality, Phase1PresentationCategory, Phase1RoleLens, Phase1Statement } from "@/lib/phase1/types";
 import { profileAngles, type ProfileAngle } from "./profile-angles";
 
 export const EXPLORE_CATEGORIES: Phase1PresentationCategory[] = [
@@ -32,7 +32,7 @@ export const PROFILE_SECTIONS = [
   { key: "contestedAspects", title: "Disputed or uncertain" },
 ] as const;
 
-export type PublicProfilePerson = Pick<Phase1Personality, "slug" | "name" | "type" | "era" | "region" | "sources" | "limitedInformation" | "studyFramework" | (typeof PROFILE_SECTIONS)[number]["key"]> & { angles: ProfileAngle[] };
+export type PublicProfilePerson = Pick<Phase1Personality, "slug" | "name" | "shortName" | "type" | "era" | "region" | "sources" | "limitedInformation" | "studyFramework" | "roleLenses" | (typeof PROFILE_SECTIONS)[number]["key"]> & { angles: ProfileAngle[] };
 
 export function publicProfilePerson(person: Phase1Personality): PublicProfilePerson {
   const sources = person.sources.filter((source) => source.sourceStatus === "approved");
@@ -43,6 +43,7 @@ export function publicProfilePerson(person: Phase1Personality): PublicProfilePer
   return {
     slug: person.slug,
     name: person.name,
+    shortName: person.shortName,
     type: person.type,
     era: person.era,
     region: person.region,
@@ -54,6 +55,7 @@ export function publicProfilePerson(person: Phase1Personality): PublicProfilePer
         fields: parameter.fields.map((field) => ({ ...field, statements: publicClaims(field.statements) })),
       })),
     },
+    roleLenses: person.roleLenses.map((lens) => ({ ...lens, focusStatements: publicClaims(lens.focusStatements) })),
     angles: profileAngles(person.slug),
     sources,
     shortIntroduction: publicClaims(person.shortIntroduction),
@@ -106,6 +108,23 @@ export function profileSections(person: Pick<Phase1Personality, "sources" | "lim
       return { ...section, claims, note };
     })
     .filter((section) => section.claims.length || section.note);
+}
+
+/**
+ * Applies a role lens to already-built profile sections. Sections are reordered by how many of the
+ * lens's claims they hold, and those claims move to the top of each section. The set of statements
+ * is unchanged: a lens shifts attention, never facts.
+ */
+export function applyRoleLens(sections: ProfileSection[], lens: Pick<Phase1RoleLens, "focusClaimIds" | "sectionOrder"> | null): Array<ProfileSection & { focusCount: number }> {
+  if (!lens) return sections.map((section) => ({ ...section, focusCount: 0 }));
+  const focus = new Set(lens.focusClaimIds);
+  const position = (key: string) => key === "shortIntroduction" ? -1 : (lens.sectionOrder as string[]).indexOf(key);
+  return [...sections]
+    .sort((a, b) => position(a.key) - position(b.key))
+    .map((section) => {
+      const claims = [...section.claims.filter((claim) => focus.has(claim.claimId)), ...section.claims.filter((claim) => !focus.has(claim.claimId))];
+      return { ...section, claims, focusCount: claims.filter((claim) => focus.has(claim.claimId)).length };
+    });
 }
 
 export type ExplorePerson = Phase1DiscoveryPerson & { summary: string | null; sourceCount: number; angles: ProfileAngle[] };

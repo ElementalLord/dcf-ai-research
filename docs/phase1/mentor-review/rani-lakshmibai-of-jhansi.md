@@ -66,6 +66,37 @@
 - Deshpande analyzes how Lakshmibai became an icon of heroic Indian womanhood through later narratives, separating nationalist memory from direct evidence about 1857. [S11]
 - Lakshmibai’s memory developed through late nineteenth-century Marathi writing and mid-twentieth-century Hindi narratives, rather than remaining a fixed image after her death. [S11]
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### Ruler (7 approved claims)
+
+- Born Manikarnika, Lakshmibai married Gangadhar Rao of Jhansi in 1842 and became its Rani; her political position came from this royal marriage. [S1]
+- After her husband’s death, Lakshmibai asked the East India Company to recognise her adopted son as heir to Jhansi; the Company refused. [S2]
+- NCERT dates Jhansi’s annexation under the Doctrine of Lapse to 1854, placing the succession dispute before the 1857 uprising. [S5]
+- The Company denied recognition both to Jhansi’s adopted prince and to Lakshmibai as his regent, challenging her claim to political authority as well as the child’s succession. [S7]
+- The Rani Mahal’s durbar hall was a place where Lakshmibai held court, illustrating political authority exercised from a royal household. [S6]
+- Lakshmibai’s 14 June 1857 letter described plunder and chiefs asserting independent authority, explaining why restoring administration in Jhansi was urgent. [S8]
+
+### Warrior (14 approved claims)
+
+- Jhansi’s defenders reinforced a breach with earth-filled palisades, an example of practical defensive adaptation during the siege. [S3]
+- Jhansi’s elevated granite fort and thick masonry made a formidable defensive position, so terrain and fortification shaped the contest as well as commanders’ decisions. [S3]
+- Rose acknowledged that Jhansi’s defenders repeatedly repaired defenses and reopened artillery fire, showing organized resistance rather than courage alone. [S3]
+- Rose attributed Lakshmibai’s influence to her standing, generosity to troops and perseverance after reverses; an opponent’s assessment supports leadership significance without proving tactical superiority. [S4]
+- Lakshmibai’s position combined a queen’s dynastic claim with the reorganization and leadership of armed forces against annexation; her significance as a woman rests on exercised political and military authority, beyond a later heroic image. [S7]
+- Majumdar interprets Lakshmibai’s move to armed resistance as a decision made under growing British suspicion, rather than evidence of a settled revolutionary plan from the uprising’s beginning. [S8]
+
+### Symbol in memory (7 approved claims)
+
+- After 1857, ruling chiefs were assured that adopted heirs could succeed, but under British paramountcy; this reversed the succession policy central to Jhansi’s earlier grievance without ending colonial subordination. [S2]
+- After the uprising, the 1858 transfer of Company power to the British Crown changed the system of imperial rule against which Lakshmibai had fought. [S2]
+- Deshpande analyzes how Lakshmibai became an icon of heroic Indian womanhood through later narratives, separating nationalist memory from direct evidence about 1857. [S11]
+- Lakshmibai’s memory developed through late nineteenth-century Marathi writing and mid-twentieth-century Hindi narratives, rather than remaining a fixed image after her death. [S11]
+- Michael White’s 1901 novel compared Lakshmibai to Joan of Arc and softened her anti-colonial politics, according to Singh; that analogy reveals later literary framing rather than her own political identity. [S12]
+- The INA’s all-women Rani of Jhansi Regiment in Southeast Asia invoked Lakshmibai as an example for women’s armed participation, a concrete later use of her resistance legacy. [S13]
+
 ## Parameters to study Rulers / Kings
 
 These rulers were researched with the broader political-leader framework. Each claim is assigned to the matching ruler parameter and field by a documented rule, with individual overrides recorded in data/phase1-curation.json.
@@ -206,3 +237,5 @@ _Limited information:_ The approved sources in this collection do not yet docume
 - **[S9]** National Army Museum, London. “Decisive events of the Indian Rebellion.” n.d. institutional. <https://www.nam.ac.uk/explore/decisive-events-indian-mutiny>.
 - **[S10]** The Leader; Nineteenth-Century Serials Edition, King's College London. “The Indian Revolt: Gwalior report, 31 July 1858.” 1858. primary_text. <https://ncse.ac.uk/periodicals/l/issues/cld_31071858/page/6/>.
 - **[S11]** Prachi Deshpande. “The Making of an Indian Nationalist Archive: Lakshmibai, Jhansi, and 1857.” 2008. scholarly_article. <https://www.cambridge.org/core/journals/journal-of-asian-studies/article/abs/making-of-an-indian-nationalist-archive-lakshmibai-jhansi-and-1857/74E72394E5186C2C2AE99C7021235A5D>.
+- **[S12]** Harleen Singh. “India's Aryan Queen: Colonial Ambivalence and Race in the Mutiny.” 2014. scholarly_article. <https://www.cambridge.org/core/books/abs/rani-of-jhansi/indias-aryan-queen-colonial-ambivalence-and-race-in-the-mutiny/BF99F8118BBBC5A579168CC8F7312BA8>.
+- **[S13]** S. R. Nathan. “Foreword to Women Against the Raj: The Rani of Jhansi Regiment.” 2008. institutional. <https://www.cambridge.org/core/books/abs/women-against-the-raj/foreword/C16B790570D74BA800D068874B0112D1>.

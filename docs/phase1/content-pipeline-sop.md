@@ -143,7 +143,8 @@ Add an entry for the person to `data/phase1-curation.json`:
 2. **Introduction.** Choose the two approved claims that best say who the person was and why they matter.
 3. **Sections.** Read every section of the exported profile. Move misplaced claims with `sections.remove` and `sections.add` (a family-background claim does not belong under Qualities). Add approved claims that the automatic selection missed.
 4. **Limited information.** For a section that still has no approved evidence, write a `limitedInformation` note that says what the sources do and do not cover. Do not infer qualities from actions unless a source makes that link.
-5. **Study parameters.** If the person is a rishi or ruler, add their ID to the matching `studyFrameworks` entry. Record claim-level `claimOverrides` where the automatic field assignment is wrong, and `notes` for parameters the sources do not cover.
+5. **Role lenses.** Define two to four roles under `roleLenses`, each with the framework parameter codes that hold its evidence. A role needs at least three approved claims; if it has fewer, it is not yet supported and should not be offered.
+6. **Study parameters.** If the person is a rishi or ruler, add their ID to the matching `studyFrameworks` entry. Record claim-level `claimOverrides` where the automatic field assignment is wrong, and `notes` for parameters the sources do not cover.
 
 Then run `node scripts/apply-phase1-curation.mjs` (or the full exporter) and `npm run test:run`. The script refuses any claim that is not approved or fails the sourcing rule.
 
@@ -163,6 +164,7 @@ Publish only the profile version authorized by DCF and the Mentor. Preserve cita
 - [ ] Contested statements meet the two-source rule or are withheld.
 - [ ] Human review decisions and revision history are recorded.
 - [ ] Era, region, introduction and section placement curated; empty sections explained.
+- [ ] Role lenses defined, each backed by at least three approved claims.
 - [ ] Rishi or ruler study parameters mapped where applicable.
 - [ ] Readable Mentor package generated.
 - [ ] Written, dated Mentor decision recorded.

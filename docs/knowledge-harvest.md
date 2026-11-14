@@ -71,7 +71,7 @@ Everything that is held back is logged with its reason in `demand_verification_d
 
 Nothing below is required for the pipeline to run. In **Resources → Knowledge engine**:
 
-- **Pause automatic admission** stops new claims (the existing switch; it is enforced inside the database).
+- **AI can add sources and facts** (Resources › Knowledge engine) is the website setting for all AI additions. When it is off, AI can still search and answer, and can suggest sources for a person to review, but it cannot record sources in the registry, publish claims, or approve library sources. The application checks it before every AI write, and the triggers in `20261114010000_ai_knowledge_switch.sql` enforce it in the database, failing closed if the setting is missing. It is stored as `demand_budget_policy.auto_admission_paused` (inverted). DCF's scope requires human review, so keep it off unless the Mentor approves otherwise.
 - **Reject** on a harvested source stops its reuse and withdraws the claims that rest on it. **Restore** undoes it.
 - **Add as candidate** puts a harvested work into the Library review queue by hand.
 

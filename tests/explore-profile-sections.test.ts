@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isUncertainClaim, profileSections } from "@/app/explore/explore-data";
+import { applyRoleLens, isUncertainClaim, profileSections } from "@/app/explore/explore-data";
 import { getPhase1People } from "@/lib/phase1/dataset";
 import type { Phase1Personality, Phase1Source, Phase1Statement } from "@/lib/phase1/types";
 
@@ -80,4 +80,32 @@ describe("profileSections", () => {
       }
     }
   });
+
+  it("changes focus but never facts when a role lens is applied", () => {
+    for (const person of getPhase1People()) {
+      const base = profileSections(person);
+      const facts = (sections: typeof base) => sections.flatMap((section) => section.claims.map((claim) => `${section.key}:${claim.claimId}`)).sort();
+      expect(person.roleLenses.length, person.slug).toBeGreaterThanOrEqual(2);
+      for (const lens of person.roleLenses) {
+        const viewed = applyRoleLens(base, lens);
+        expect(facts(viewed), `${person.slug} / ${lens.id}`).toEqual(facts(base));
+        expect(viewed[0].key).toBe("shortIntroduction");
+        const focus = new Set(lens.focusClaimIds);
+        for (const section of viewed) {
+          const firstOther = section.claims.findIndex((claim) => !focus.has(claim.claimId));
+          expect(section.claims.slice(firstOther < 0 ? section.claims.length : firstOther).every((claim) => !focus.has(claim.claimId)), `${person.slug} / ${lens.id} / ${section.key}`).toBe(true);
+        }
+      }
+    }
+  });
+
+  it("orders sections differently for at least one lens of most people", () => {
+    const people = getPhase1People();
+    const changed = people.filter((person) => {
+      const base = profileSections(person).map((section) => section.key).join();
+      return person.roleLenses.some((lens) => applyRoleLens(profileSections(person), lens).map((section) => section.key).join() !== base);
+    });
+    expect(changed.length).toBeGreaterThanOrEqual(20);
+  });
 });
+

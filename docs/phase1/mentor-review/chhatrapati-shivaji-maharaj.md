@@ -64,6 +64,37 @@ _Limited information:_ 9 contested or sensitive statements about Chhatrapati Shi
 - Shivaji's image continued to be reworked in debates about regional and national identity long after his death. [S9]
 - The longer Maratha political tradition had lasting effects on administration, law, and trade in parts of India, though those later developments should not all be attributed personally to Shivaji. [S5]
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### State builder (9 approved claims)
+
+- Shivaji's 1674 coronation at Raigad publicly asserted independent kingship and made the fort a royal capital. [S3]
+- Shivaji grew up around Pune under Jijabai's care while Shahji pursued military service farther south. [S1]
+- Shivaji was the son of Shahji Bhonsla, a Maratha aristocrat and military leader, and Jijabai, whose family belonged to the Ahmadnagar nobility. [S1]
+- Gordon places Shivaji's state formation within older Maratha elite networks, shifting loyalties, and strategies of legitimacy. [S5]
+- Maharashtra Tourism identifies Torna as the first fort captured by Shivaji. [S12]
+- Maharashtra Tourism records Shivaji's capture of Purandar as part of his early expansion. [S13]
+
+### Military strategist (12 approved claims)
+
+- Shivaji's state built and held coastal fortifications, notably Sindhudurg, as part of its western-seaboard defense. [S4]
+- Maharashtra Tourism attributes Pratapgad's construction to Shivaji's order. [S6]
+- Maharashtra Tourism connects Shivaji's campaign to retake Sinhagad with Tanaji Malusare's assault. [S7]
+- The encounter with Afzal Khan and the fighting at Pratapgad became a turning point in Shivaji's struggle against Bijapur; accounts of the personal meeting require source criticism. [S8]
+- Maharashtra Tourism reports that Shivaji renamed Khilna as Vishalgad. [S14]
+- Maharashtra Tourism says Shivaji commissioned Sindhudurg as a coastal stronghold. [S15]
+
+### Diplomat (10 approved claims)
+
+- Bijapur sent Afzal Khan against Shivaji in 1659, a decisive escalation of conflict with the sultanate. [S8]
+- Shahji's service across the Ahmadnagar and Bijapur spheres placed Shivaji's family inside the shifting politics of the seventeenth-century Deccan. [S1]
+- The Mughal campaign under Mirza Raja Jai Singh forced negotiations that produced the Treaty of Purandar in 1665. [S8]
+- The Purandar settlement reduced Shivaji's fort holdings under Mughal pressure, while Raigad remained central to his territory. [S3]
+- By the 1660s, Shivaji's expansion had become a major challenge to Mughal power and prestige in the Deccan, in Richards's assessment. [S1]
+- Maharashtra Tourism identifies Shivneri Fort as Shivaji's birthplace. [S2]
+
 ## Parameters to study Rulers / Kings
 
 These rulers were researched with the broader political-leader framework. Each claim is assigned to the matching ruler parameter and field by a documented rule, with individual overrides recorded in data/phase1-curation.json.

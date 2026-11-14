@@ -64,6 +64,35 @@ _Limited information:_ 3 contested or sensitive statements about Savitribai Phul
 - Her letter of 20 April 1877 describes Satyashodhak committees and relief squads distributing essential supplies during famine, evidence of organized social service as part of the reform movement. [S3]
 - In the same 1877 letter, Savitribai reports negotiating with the Collector for detained volunteers and securing food aid, showing relief work involved dealing with colonial administrative power. [S3]
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### Educator (16 approved claims)
+
+- Savitribai taught at the Phules’ girls’ school in Bhidewada, Pune, opened in 1848, turning the idea of female education into an operating institution. [S5]
+- After Jyotirao’s death in 1890, Savitribai continued leading Satyashodhak activity; her public contribution extended beyond work performed while her husband was alive. [S1]
+- Jyotirao established the Satyashodhak Samaj in September 1873 to organize a sustained challenge to caste and religious hierarchy; this supplied the collective setting for Savitribai’s later work. [S4]
+- Savitribai served as headmistress in the Phules’ school network; her contribution included educational responsibility and organization, beyond being Jyotirao’s spouse. [S1]
+- The Phules organized education through institutions for girls and for Mahar and Mang communities, giving excluded learners continuing access rather than relying on isolated charitable lessons. [S4]
+- The university chronology records a night school in 1855, placing the Phules’ educational effort beyond girls’ schooling and within wider provision for adult learners. [S2]
+
+### Social reformer (12 approved claims)
+
+- In 1868 Jyotirao opened the household well to people denied access to public water by untouchability, an action of the Phule household against everyday caste segregation. [S2]
+- Savitribai faced opposition for teaching girls and disadvantaged caste groups; this resistance reveals that her schools challenged who was entitled to knowledge and a public role. [S4]
+- The Satyashodhak Samaj promoted low-cost marriages without priestly mediation or dowry, contesting social authority through practical changes in family institutions. [S1]
+- During Pune’s plague outbreak in 1897, Savitribai worked with her physician son Yeshwant to provide treatment and bring patients to a hospital, according to Narake. [S1]
+- Her letter of 20 April 1877 describes Satyashodhak committees and relief squads distributing essential supplies during famine, evidence of organized social service as part of the reform movement. [S3]
+- In her letter of 29 August 1868, Savitribai reports intervening against threatened violence toward a Brahman man and a Mahar woman and invoking British law to protect them; this is her attributed account of defending an inter-caste relationship. [S3]
+
+### Poet and writer (4 approved claims)
+
+- Savitribai published Kavyaphule in 1854; her writing addressed social and educational questions alongside nature and instruction, making her a thinker and author as well as a schoolteacher. [S1]
+- In NCERT’s adapted version of The Greatest Wealth, Savitribai presents knowledge as more valuable than material riches and urges concentrated study; the English text is an adaptation, not her exact original Marathi wording. [S1]
+- Narake’s NCERT essay dates Bavankashi Subodh Ratnakar to 1892; the modern introduction to the translated letters gives 1891, so the publication year should remain explicitly qualified until an edition is checked. [S1]
+- The adapted poem Learn English addresses Shudras and Ati-Shudras and links learning English to release from caste authority; it should be read as her emancipatory poetic argument, not a blanket endorsement of colonial rule. [S1]
+
 ## Withheld contested or sensitive material
 
 - O’Hanlon reports poor survival among children at the home, qualifying celebratory accounts of the institution: compassionate intentions did not remove the severe material and health risks facing infants. — **withheld:** contested_requires_two_independent_sources; 1 independent credible source(s).

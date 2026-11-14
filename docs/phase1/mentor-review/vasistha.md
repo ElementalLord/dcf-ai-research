@@ -56,6 +56,27 @@ _Limited information:_ The Vedic and Ramayana sources in this collection describ
 
 _Limited information:_ The approved sources in this collection describe Vasistha within Vedic and epic texts but do not yet discuss present-day relevance. The section is left empty rather than filled by interpretation.
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### Royal preceptor (14 approved claims)
+
+- After Vasistha's recognition, the narrative says Visvamitra reveres Vasistha. [S10]
+- At the end of Visvamitra's ascetic transformation, Visvamitra asks that Vasistha personally recognize him as a brahmarshi. [S10]
+- Before Rama departs with Visvamitra, Vasistha performs auspicious Vedic blessings for him. [S11]
+- Dasharatha consents to Rama's departure with Visvamitra after hearing Vasistha's counsel. [S9]
+- The Ayodhya Kanda presents Vasistha as a guardian of dynastic memory by having him recite the royal genealogy when arguing for Rama's succession. [S12]
+- The Ayodhya Kanda presents Vasistha as one of the central figures managing royal continuity after Dasharatha's death. [S2]
+
+### Sage of righteous conduct (5 approved claims)
+
+- Vasistha refuses Visvamitra's offers to purchase Shabala even for enormous quantities of cattle, silver, and wealth. [S6]
+- A Dharmasutra is transmitted under the name Vasistha and is included in modern academic editions of the early Dharmasutra corpus. [S8]
+- The Ramayana narrative portrays Vasistha's brahma-danda as neutralizing Visvamitra's fiery missile. [S5]
+- Vasistha insists on providing hospitality not only to Visvamitra but also to his large royal retinue. [S3]
+- Vasistha urges Rama to honor the wishes of his aged mother as part of righteous conduct. [S7]
+
 ## Parameters to study Rishis
 
 Claims tagged to the rishi framework in the database are shown under their own field. Adi Shankaracharya is researched with the spiritual-teacher framework, so his claims are mapped onto the nearest rishi parameter; he was an acharya rather than a Vedic seer, so the rishi-type field is expected to stay limited.

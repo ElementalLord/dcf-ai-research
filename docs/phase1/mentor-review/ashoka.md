@@ -62,6 +62,37 @@ _Limited information:_ 12 contested or sensitive statements about Ashoka are rec
 - India adopted the Ashoka Chakra on its national flag in 1947, a later national use of an Ashokan symbol rather than evidence of his own constitutional ideas. [S10]
 - Modern India has used Ashoka as a unifying public figure; this national symbolism is historically significant while remaining distinct from the Mauryan emperor’s own inscriptions. [S10]
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### Ruler and administrator (14 approved claims)
+
+- Major Rock Edict VI represents the king as seeking constant reports on people’s affairs, an inscriptional ideal of accessible, informed kingship. [S1]
+- Major Rock Edict II declares provision for medical treatment for people and animals within Ashoka’s dominions and among borderers. [S1]
+- Major Rock Edict II names the Cholas, Pandyas, Satyaputras, Keralaputras and Tambapanni separately from the king's own dominions. [S1]
+- Pillar Edict IV orders a three-day respite for condemned prisoners, a specific intervention in punishment that should not be mistaken for abolition of capital punishment. [S5]
+- The major rock edicts identify their issuer as Devanampiya Piyadasi, conventionally translated as the king 'Beloved of the Gods, Piyadasi.'. [S1]
+- The Maski version of Minor Rock Edict I names Devanampiya Ashoka, providing inscriptional evidence that connects the Ashoka name with the royal Devanampiya titulary used elsewhere. [S2]
+
+### Patron of dhamma (16 approved claims)
+
+- Ashoka’s dhamma language repeatedly values restraint from killing; it is an ethical policy claim that coexists with evidence of imperial punishment and administration. [S5]
+- Ashoka’s personal visits to Lumbini and Nigali Sagar are epigraphically attested, unlike many detailed episodes in later Buddhist narrative. [S6]
+- In Major Rock Edict XIII, Ashoka states remorse after Kalinga, especially over suffering caused to Brahmanas, ascetics and households. [S1]
+- In Minor Rock Edict I, the king describes himself as a Buddhist lay follower and says he had visited the sangha. [S2]
+- Pillar Edict VII includes respectful treatment of slaves and servants among the practices of dhamma, revealing a moral instruction within—not a rejection of—the social hierarchy it names. [S5]
+- The Kalinga edicts tell unconquered border peoples that the king wishes them security and happiness, a public claim about imperial conduct rather than proof that every subject experienced it that way. [S7]
+
+### Conqueror and diplomat (6 approved claims)
+
+- Ashoka presents “conquest by dhamma” as the chief kind of victory in Major Rock Edict XIII, reframing imperial success in a moral and communicative register. [S1]
+- Major Rock Edict II frames welfare measures as extending to borderlands and names a Greek king Antiochus, showing that Ashoka’s public horizon included neighboring polities. [S1]
+- Major Rock Edict XIII names Antiochus and other Hellenistic rulers in its account of dhamma victory; the wording is evidence of claimed diplomatic reach, not proof that foreign rulers adopted Ashoka’s policy. [S1]
+- Major Rock Edict XIII reports deportation and death in the Kalinga conquest; the figures are Ashoka’s own royal inscriptional claim, not an independently audited casualty count. [S1]
+- Major Rock Edict XIII says that Ashoka conquered Kalinga in his eighth regnal year, making the campaign an unusually direct subject of contemporary royal testimony. [S1]
+- Major Rock Edict XIII says that 150,000 people were deported, 100,000 killed, and many times that number died in the conquest of Kalinga. [S1]
+
 ## Parameters to study Rulers / Kings
 
 These rulers were researched with the broader political-leader framework. Each claim is assigned to the matching ruler parameter and field by a documented rule, with individual overrides recorded in data/phase1-curation.json.

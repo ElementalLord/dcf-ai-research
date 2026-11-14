@@ -59,6 +59,37 @@ _Limited information:_ 6 contested or sensitive statements about Yajnavalkya are
 - The Upanishads that preserve Yajnavalkya’s teaching were most influentially interpreted by Shankara (about 700 CE), the main proponent of non-dualist Advaita Vedanta, whose readings shaped Indian philosophy for centuries and dominated interpretation of the texts into the early twentieth century. [S8]
 - Yajnavalkya’s positions were still cited in later philosophy outside Vedanta: Black notes that the Nyaya philosopher Gangesha (about 1300 CE) appears to quote the Upanishads for the claim that karmic retribution does not bind those who know the self, a position stated by Yajnavalkya. [S8]
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### Philosopher (21 approved claims)
+
+- Brihadaranyaka 4.4.22 links knowledge of the self with renunciation: Brahmins seek the self through Vedic recitation, sacrifice, gifts, austerity and fasting; knowing it one becomes a sage, and those who desire it alone give up the wish for sons, wealth and worlds and wander as mendicants. [S4]
+- In Brihadaranyaka 3.2.13 Yajnavalkya takes his questioner Artabhaga by the hand and withdraws to discuss a question in private rather than in public; the text reports that what they spoke of was karma: one becomes good by good action and bad by bad action. [S4]
+- In Brihadaranyaka 3.7 Yajnavalkya teaches the self as the "inner controller" (antaryamin): the unseen seer, unheard hearer and unthought thinker, other than whom there is no seer, hearer or knower. [S4]
+- In Brihadaranyaka 4.2.4 Yajnavalkya tells Janaka that the self "is not this, it is not that" (neti, neti): it cannot be grasped, destroyed, attached or bound. He declares that Janaka has reached fearlessness, and the king offers him the Videhas and himself in service. [S4]
+- Yajnavalkya’s positions were still cited in later philosophy outside Vedanta: Black notes that the Nyaya philosopher Gangesha (about 1300 CE) appears to quote the Upanishads for the claim that karmic retribution does not bind those who know the self, a position stated by Yajnavalkya. [S8]
+- In Brihadaranyaka 4.4.5 Yajnavalkya states the link between action and destiny: as one acts and conducts oneself, so one becomes; and since desire shapes resolve and resolve shapes action, a person obtains what his action (karma) earns. [S4]
+
+### Debater at Janaka's court (14 approved claims)
+
+- Brihadaranyaka 4.1 opens with Janaka asking Yajnavalkya whether he has come for cattle or for subtle disputation; Yajnavalkya answers that he has come for both. [S4]
+- Brihadaranyaka 4.5.1 says Yajnavalkya had two wives: Maitreyi, called a brahmavadini (one who discourses on sacred knowledge), and Katyayani, said to have only "a woman’s knowledge". About to take up another mode of life, he proposes to settle his property between them. [S4]
+- Gargi returns in Brihadaranyaka 3.8 and tells the assembled Brahmins she will put two questions to Yajnavalkya, likening them to a warrior’s two arrows; if he answers them, she says, none of them will defeat him in debate about brahman. [S4]
+- In Brihadaranyaka 3.6, Gargi Vachaknavi asks Yajnavalkya what each level of the world is "woven" upon; when she asks what the worlds of Brahma are woven on, he warns her not to question too much lest her head fall off, and she falls silent. [S4]
+- In Brihadaranyaka Upanishad 3.1, King Janaka of Videha holds a sacrifice attended by Brahmins of the Kuru-Panchala country and stakes a thousand cows, with gold tied to their horns, to find out which of them is the most learned; this is the setting of Yajnavalkya’s great debate. [S4]
+- In Shatapatha Brahmana 11.3.1, Janaka of Videha tests Yajnavalkya on the daily fire offering (Agnihotra) by removing each possible offering in turn; Yajnavalkya answers that if nothing at all were left, truth would still be offered in faith, and the king gives him a hundred cows. [S6]
+
+### Ritual authority (19 approved claims)
+
+- "Neti neti" first occurs as a named teaching (ādeśa), "athāta ādeśo neti neti", at Shatapatha Brahmana 14.5.3.11 (Brihadaranyaka 2.3.6), in the passage that immediately precedes the Maitreyi dialogue, before Yajnavalkya begins to speak. [S5]
+- Brihadaranyaka 6.3.7 names Uddalaka Aruni as the teacher of his pupil "Vajasaneya Yajnavalkya", in the handing down of a ritual saying. [S4]
+- Shatapatha Brahmana 11.6.3 holds a short version of the contest at Janaka’s sacrifice: Janaka sets apart a thousand cows for the most learned Brahmin, Yajnavalkya has them driven off, and when challenged says he honours the most learned but simply wants the cows. [S6]
+- The Bṛhadāraṇyaka Upaniṣad’s closing lineage says that white sacrificial formulas from Āditya are declared by Yājñavalkya of the Vājasaneyi school; this is the text’s own account of the tradition. [S4]
+- The Sanskrit of the formula is "sa eṣa neti nety ātmā" ("this self is not thus, not thus"), followed by a string of negations: ungraspable, undecaying, unattached, unbound. In the Madhyandina recension it stands at Shatapatha Brahmana 14.6.11.6, because the Upanishad is transmitted as the closing part of that Brahmana. [S5]
+- Eggeling explains the White Yajurveda as a reform of older Yajus tradition: its school separated the sacrificial formulas from the explanatory prose, producing a distinct Samhita and Brahmana, and tradition ascribes the founding of this school, the Vajasaneyins, to Yajnavalkya Vajasaneya. [S1]
+
 ## Parameters to study Rishis
 
 Claims tagged to the rishi framework in the database are shown under their own field. Adi Shankaracharya is researched with the spiritual-teacher framework, so his claims are mapped onto the nearest rishi parameter; he was an acharya rather than a Vedic seer, so the rishi-type field is expected to stay limited.

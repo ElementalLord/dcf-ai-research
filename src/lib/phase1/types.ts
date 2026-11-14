@@ -100,10 +100,23 @@ export type Phase1StudyFramework = {
   parameters: Phase1StudyParameter[];
 };
 
+/** A role through which a person can be read. It reorders and highlights approved facts; it never changes them. */
+export type Phase1RoleLens = {
+  id: string;
+  label: string;
+  parameterCodes: string[];
+  claimCount: number;
+  focusClaimIds: string[];
+  focusStatements: Phase1Statement[];
+  sectionOrder: Phase1SectionKey[];
+};
+
 export type Phase1Personality = {
   id: string;
   slug: string;
   name: string;
+  /** How the site refers to the person in running text, e.g. "Shivaji" or "Tagore". */
+  shortName: string;
   alternateNames: string[];
   type: string | null;
   category: Phase1DetailedCategory | null;
@@ -122,6 +135,7 @@ export type Phase1Personality = {
   contemporaryRelevance: Phase1Statement[];
   limitedInformation: Partial<Record<Phase1SectionKey, string>>;
   studyFramework: Phase1StudyFramework | null;
+  roleLenses: Phase1RoleLens[];
   lenses: string[];
   sources: Phase1Source[];
   citations: string[];

@@ -20,6 +20,7 @@ import { EXPLORATION_BUDGET, mayExploreChild } from "./exploration-policy";
 import { rankCandidateUrls } from "./candidate-ranking";
 import { fetchDiscoveryPreview } from "./live-fetch";
 import { scopedNavigationLinks } from "./verification";
+import { aiMayAddKnowledge } from "@/lib/ai-knowledge-permission";
 
 type Run = {
   id: string; personality_id: string; status: string; queries: PlannedQuery[];
@@ -250,7 +251,7 @@ export async function stepExpansion(runId: string) {
     if (index > 0) await new Promise((resolve) => setTimeout(resolve, EXPLORATION_BUDGET.requestDelayMs));
     try {
       const result = await verifyAndAdmitCandidate({ runId, url, aliases, rules,
-        autoAdmit: process.env.ADAPTIVE_AUTO_ADMIT !== "false", parameterCode: query.parameterCode,
+        autoAdmit: process.env.ADAPTIVE_AUTO_ADMIT !== "false" && await aiMayAddKnowledge(), parameterCode: query.parameterCode,
         fetchPreview: fetchBudgetedPreview });
       const verification: Verification = result.verification;
       rules = result.rules;

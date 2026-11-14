@@ -64,6 +64,36 @@
 - The evaluation links the dairy expansion to policy changes, demand growth and supply responses, rather than a single leader or institution; it reports declining real prices in its period of study. [S7]
 - The same study estimated roughly 17 percent higher milk production over five years in its study area, associated with marketing and animal services. [S6]
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### Cooperative builder (14 approved claims)
+
+- The model’s distinctive governance claim is that milk producers own and control the cooperative tiers while employing professional managers. [S8]
+- GCMMF credits Tribhuvandas K. Patel as the cooperative’s founding chairman and Sardar Vallabhbhai Patel as a supporter; the Kaira movement preceded Kurien’s arrival. [S1]
+- IRMA was founded in 1979 to develop managers for cooperatives and other underserved rural organizations, showing how Kurien treated management talent as part of infrastructure. [S4]
+- Kurien served as founding chair of the National Dairy Development Board from 1965 to 1998, giving continuity to the national cooperative programme. [S5]
+- In Kurien’s account, trained spearhead teams helped producers form institutions they owned and controlled, then withdrew support; that approach aimed to build local capacity rather than permanent outside management. [S3]
+- IRMA emphasizes Kurien’s use of professional management in a farmer-owned enterprise; the combination made cooperative scale more viable than volunteer administration alone. [S4]
+
+### Leader of Operation Flood (12 approved claims)
+
+- NDDB reports that Phase II expanded Operation Flood from 18 to 136 milksheds and reached 290 urban markets. [S2]
+- NDDB states that Phase I of Operation Flood (1970–80) was financed by sales of EEC skimmed milk powder and butter oil donated through the World Food Programme. [S2]
+- Operation Flood began in 1970 and used village milk-producer cooperatives, urban markets and dairy services to expand milk production and marketing. [S2]
+- Phase III, 1985–96, strengthened procurement and marketing infrastructure and extended veterinary, feed and insemination services rather than simply creating new outlets. [S2]
+- In those study villages, improved marketing and competition were estimated to raise average producer milk prices by about 8 percent; the estimate is local, not a national average. [S6]
+- NDDB describes village producer cooperatives as procuring milk and providing inputs and services, with management and technology made available to members. [S2]
+
+### Technologist (5 approved claims)
+
+- IRMA credits Kurien with building supply-chain, production and marketing capabilities at Kaira; this is an institutional interpretation of a collaborative project. [S4]
+- Kurien identifies buffalo-milk powder as a pivotal technical breakthrough, because it let cooperatives preserve and market milk solids from a locally abundant source. [S3]
+- NDDB states that the National Milk Grid linked producers with urban consumers and reduced seasonal and regional price variations. [S2]
+- The village study found that crossbred cow adoption contributed too little to explain the measured production effect there; organized markets and services mattered more in that setting. [S6]
+- The evaluation identifies domestic dairy equipment and technical expertise as indirect results of the programme, extending the impact beyond milk collection. [S7]
+
 ## Withheld contested or sensitive material
 
 - The evaluation describes Operation Flood as a single-commodity development project: it could expand dairy livelihoods but could not by itself remove entrenched rural poverty. — **withheld:** contested_requires_two_independent_sources; 1 independent credible source(s).

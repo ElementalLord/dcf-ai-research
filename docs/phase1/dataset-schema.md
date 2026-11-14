@@ -49,6 +49,8 @@ Every object in `personalities` has the following fields.
 | `leadershipRelationalCharacteristics` | Yes | Sourced leadership, mentorship, collaboration, lineage, advisory, or relational material. It may be empty when the dimension is not relevant or not sufficiently supported. |
 | `contestedAspects` | Yes | Only contested or sensitive statements that pass the enhanced sourcing rule. |
 | `contemporaryRelevance` | Yes | Sourced legacy, impact, recognition, service, or present-day relevance. |
+| `shortName` | Yes | How the site refers to the person in running text (“Shivaji”, “Tagore”). |
+| `roleLenses` | Yes | Two to four roles the person can be read through (for example Tagore as poet, educator or thinker). Each has `label`, the framework `parameterCodes` that define it, `claimCount`, every `focusClaimIds`, up to six ranked `focusStatements`, and a `sectionOrder`. A lens reorders and highlights approved statements; it never adds, removes or rewrites one. Each lens must be backed by at least three approved claims. |
 | `limitedInformation` | Yes | Map from section key to a plain-language note for every profile section that has no approved, sourcing-compliant statement. A section is never silently empty. |
 | `studyFramework` | Rishis and rulers | The DCF “Parameters to study Rishis” (10 parameters) or “Parameters to study Rulers / Kings” (9 parameters) applied to this person: each parameter has a `status` (`documented` or `limited`), a `note` when limited, and fields with `claimCount`, all `claimIds`, and up to four ranked `statements`. `null` for other people. |
 | `lenses` | Yes | Relevant angles inherited from the current research categories, such as `historical`, `scientific`, `spiritual`, or `leadership`. They guide interpretation; they are not factual claims. |
@@ -88,6 +90,8 @@ The curation cannot add a fact. Every value references an existing claim ID (or 
 - each claim appears in at most one profile section (`shortIntroduction` excepted);
 - a claim added to `contestedAspects` must itself be classified as contested;
 - an empty section must carry a `limitedInformation` note; an empty contested section gets an automatic note that states how many contested claims were withheld.
+
+Role lenses are defined per person in the same file (`roleLenses`: id, label, parameter codes, optional `match`/`exclude` text patterns and pinned `claimIds`).
 
 The script is idempotent: re-running it on an already curated export changes nothing.
 

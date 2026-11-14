@@ -62,6 +62,37 @@ _Limited information:_ The approved sources in this collection describe Vivekana
 - His account of service joined sympathy for vulnerable people with a duty to resist hatred and fanaticism. [S9]
 - In his India lectures, Vivekananda called for education that builds capacity and character. [S10]
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### Monk and teacher (34 approved claims)
+
+- At the Parliament's final session, Vivekananda rejected the idea that interreligious harmony required conversion to a single faith. [S4]
+- According to Belur Math, Ramakrishna entrusted Narendra with organizing the young disciples into a monastic order. [S1]
+- Belur Math dates Narendra's meeting with Ramakrishna at Dakshineshwar to November 1881 and recounts his direct questioning of the teacher. [S1]
+- Belur Math recounts Narendra asking Ramakrishna whether he had seen God and presents Ramakrishna's response as pivotal; this is the Order's account of their relationship. [S1]
+- Belur Math recounts that Narendra questioned God's existence before meeting Ramakrishna, rather than accepting spiritual claims uncritically. [S1]
+- He proposed attention and introspection as tools for studying inner experience. [S5]
+
+### Speaker at Chicago (8 approved claims)
+
+- Vivekananda delivered his Paper on Hinduism at the Chicago Parliament on 19 September 1893. [S7]
+- Vivekananda returned to India in January 1897 and lectured across the country about religion and social uplift. [S1]
+- His final Parliament address framed religious coexistence around mutual help, assimilation, and peace rather than sectarian conflict. [S4]
+- A contemporary Chicago newspaper described strong audience applause for Vivekananda at the Parliament; this records reception, not a full assessment of his influence. [S2]
+- Belur Math records that Narendra was associated for a time with the Brahmo movement, part of his nineteenth-century religious setting. [S1]
+- Vivekananda argued that Vedantic insight belonged in active public life, not only in retreat or contemplation. [S11]
+
+### Organizer of service (14 approved claims)
+
+- After Ramakrishna's death in 1886, Narendra and fellow disciples formed a monastic brotherhood at Baranagar. [S1]
+- Before becoming a monk, Vivekananda was known as Narendra Nath Datta; he was born in Kolkata in 1863. [S1]
+- Vivekananda established Belur as the permanent centre for the monastic order associated with the Ramakrishna Math. [S1]
+- Vivekananda founded the Ramakrishna Mission on 1 May 1897 to organize teaching and service by monks and lay members. [S1]
+- Belur Math's biography presents Vivekananda as a monk and Vedanta lecturer who travelled internationally and helped establish the Ramakrishna Mission and Belur Math. [S2] [S1] [S3]
+- His account of service joined sympathy for vulnerable people with a duty to resist hatred and fanaticism. [S9]
+
 ## Withheld contested or sensitive material
 
 - The review notes tension between hierarchical and more pluralist strands in Vivekananda's presentations of religions; scholars interpret their development differently. — **withheld:** contested_requires_two_independent_sources; 1 independent credible source(s).
@@ -85,3 +116,4 @@ _Limited information:_ The approved sources in this collection describe Vivekana
 - **[S8]** A. Raghuramaraju. “Vivekananda: Cosmopolitan Vedantic Philosopher?.” n.d. scholarly_article. <https://scholarworks.iu.edu/iupjournals/index.php/jwp/article/download/6328/550/28258>.
 - **[S9]** Swami Vivekananda. “We Help Ourselves, Not the World.” n.d. primary_text. <https://www.ramakrishnavivekananda.info/vivekananda/volume_1/karma-yoga/we_help_ourselves.htm>.
 - **[S10]** Swami Vivekananda. “My Plan of Campaign.” n.d. primary_text. <https://www.ramakrishnavivekananda.info/vivekananda/volume_3/lectures_from_colombo_to_almora/my_plan_of_campaign.htm>.
+- **[S11]** Swami Vivekananda. “Practical Vedanta, Part I.” n.d. primary_text. <https://ramakrishnavivekananda.info/vivekananda/volume_2/practical_vedanta_and_other_lectures/practical_vedanta_part_i.htm>.

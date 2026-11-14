@@ -22,7 +22,7 @@ export default function KnowledgeControls({ policy }: { policy: Policy }) {
     try {
       const response = await fetch("/api/resources/knowledge-policy", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify(values) });
       if (!response.ok) throw new Error("Policy could not be saved.");
-      setMessage("Policy saved. New research requests use these limits.");
+      setMessage(values.autoAdmissionPaused ? "Saved. AI additions are off; new research uses these limits." : "Saved. AI additions are on; new research uses these limits.");
     } catch { setMessage("Policy could not be saved. Check the limits and try again."); }
     finally { setBusy(false); }
   }
@@ -35,8 +35,17 @@ export default function KnowledgeControls({ policy }: { policy: Policy }) {
       <label>Maximum paid calls<input type="number" min="1" max="8" step="1" value={values.maxPaidCalls} onChange={event => setNumber("maxPaidCalls", Number(event.target.value))} required/></label>
       <label>Concurrent research jobs<input type="number" min="1" max="100" step="1" value={values.maxConcurrentJobs} onChange={event => setNumber("maxConcurrentJobs", Number(event.target.value))} required/></label>
     </div>
-    <div className="knowledge-pause-controls"><label><input type="checkbox" checked={values.researchPaused} onChange={event => setValues(current => ({ ...current, researchPaused: event.target.checked }))}/> Pause new research</label>
-      <label><input type="checkbox" checked={values.autoAdmissionPaused} onChange={event => setValues(current => ({ ...current, autoAdmissionPaused: event.target.checked }))}/> Pause automatic admission</label></div>
+    <div className="knowledge-ai-switch">
+      <label>
+        <input type="checkbox" role="switch" aria-describedby="ai-switch-help" checked={!values.autoAdmissionPaused}
+          onChange={event => setValues(current => ({ ...current, autoAdmissionPaused: !event.target.checked }))}/>
+        <span><strong>AI can add sources and facts</strong> {values.autoAdmissionPaused ? "Off" : "On"}</span>
+      </label>
+      <p id="ai-switch-help">{values.autoAdmissionPaused
+        ? "Off: AI can still search and answer questions, and can suggest sources for a person to review, but it cannot add sources or publish facts. Only reviewed material enters the database."
+        : "On: AI may record the sources it reads and publish facts that pass its verification checks, without a reviewer. DCF's project scope requires human review, so keep this off unless the Mentor has approved it."}</p>
+    </div>
+    <div className="knowledge-pause-controls"><label><input type="checkbox" checked={values.researchPaused} onChange={event => setValues(current => ({ ...current, researchPaused: event.target.checked }))}/> Pause new research</label></div>
     <button type="submit" disabled={busy}>{busy ? "Saving…" : "Save policy"}</button>
     {message && <p role="status">{message}</p>}
   </form>;

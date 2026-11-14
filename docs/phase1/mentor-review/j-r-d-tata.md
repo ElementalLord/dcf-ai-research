@@ -63,6 +63,37 @@ _Limited information:_ No contested or sensitive claims about J. R. D. Tata are 
 - Public aviation policy expanded a national airport and route network, so Air India’s post-1953 development cannot be credited to Tata’s management alone. [S7]
 - Air India’s early international reputation became a prominent symbol of Indian technical and service capacity after independence. [S3]
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### Industrialist (12 approved claims)
+
+- At thirty-four, Tata became chairman of Tata Sons in 1938, a notably early assumption of leadership over a large industrial group. [S2]
+- Government accounts later acknowledged inefficiencies under the monopoly regime, adding policy context to the airline’s long-term history without making one leader solely responsible. [S7]
+- J. R. D. Tata chaired Tata Sons from 1938 until 1991, covering colonial rule, independence and decades of state-directed economic policy. [S1]
+- Tata stepped down as chairman of Tata Sons in 1991 after more than half a century in the role. [S1]
+- Air India’s institutional memory associates Tata with meticulous attention to service and operational detail, a reputation that should be read as corporate testimony. [S3]
+- Dilution of Tata Sons ownership left the group center with limited stakes in several affiliates, a governance weakness that complicated later strategic coordination. [S4]
+
+### Aviation pioneer (6 approved claims)
+
+- J. R. D. Tata received Indian pilot licence No. 1 in 1929, documenting his early practical commitment to aviation. [S6]
+- Although Air India was state-owned after nationalization, Tata continued as its chairman for years, an unusual bridge between private entrepreneurial origins and public ownership. [S3]
+- In 1932 Tata inaugurated a weekly air-mail service by flying the Karachi–Bombay leg of a route continuing toward Madras. [S7]
+- Tata Airlines became Air India in 1946 as the carrier expanded its public identity and international ambitions. [S3]
+- The mail operation developed into Tata Airlines, moving the enterprise from contracted mail carriage toward scheduled passenger aviation. [S3]
+- Calling Tata an aviation pioneer should not erase the pilots, engineers, postal contracts, airfields and regulators that made civil aviation possible. [S6]
+
+### Institution builder (11 approved claims)
+
+- Homi J. Bhabha, not Tata, conceived the scientific program that became the Tata Institute of Fundamental Research. [S5]
+- J. R. D. Tata and the Sir Dorabji Tata Trust supported Bhabha’s proposal, supplying institutional backing for TIFR’s founding in 1945. [S5]
+- The institution later called TISS began in 1936 before Tata became group chairman, so its founding should not be attributed personally to him. [S9]
+- The school became the Tata Institute of Social Sciences in 1944 and linked professional education with social welfare and public policy. [S9]
+- Historians divide Tata philanthropy into changing periods, challenging the idea of a single timeless social philosophy. [S8]
+- Support for IISc, TIFR and TISS illustrates a long Tata institutional strategy in science and education extending across multiple generations. [S10]
+
 ## Withheld contested or sensitive material
 
 None identified by the contested-claim check.
@@ -81,3 +112,5 @@ None identified by the contested-claim check.
 - **[S6]** Ministry of Civil Aviation, Government of India. “India’s aviation journey and Pilot Licence No. 1.” 2025. institutional. <https://www.civilaviation.gov.in/node/5992>.
 - **[S7]** Press Information Bureau, Government of India. “Journey of Civil Aviation in India.” 2007. institutional. <https://www.pib.gov.in/newsite/erelcontent.aspx?lang=2&reg=48&relid=30992>.
 - **[S8]** Mircea Raianu. “Philanthropy and the Making of a New Moral Order: A History of Developing Community.” 2022. scholarly_article. <https://link.springer.com/article/10.1007/s10551-022-05094-1>.
+- **[S9]** Tata Institute of Social Sciences. “History of the Tata Institute of Social Sciences.” n.d. institutional. <https://www.tiss.edu/view/6/about-tiss/history/>.
+- **[S10]** Shashank Shah. “Corporate Social Responsibility: A Way of Life at the Tata Group.” 2014. scholarly_article. <https://journals.sagepub.com/doi/10.1177/0971685813515591>.

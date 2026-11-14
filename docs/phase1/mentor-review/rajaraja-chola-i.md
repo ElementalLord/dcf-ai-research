@@ -57,6 +57,37 @@ _Limited information:_ 11 contested or sensitive statements about Rajaraja Chola
 - The Brihadisvara Temple at Thanjavur has been under Archaeological Survey of India protection since 1922 and is part of the UNESCO-listed Great Living Chola Temples. [S5]
 - Rajaraja’s long-term importance lies partly in how his reign became central evidence in debates about the nature of the Chola state, local power and temple-centered society. [S9]
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### Ruler and administrator (20 approved claims)
+
+- Rajaraja ordered gifts to the Tanjavur temple by himself, his sister, queens and others to be engraved on stone, making endowment publicly durable and auditable within the institution. [S6]
+- A list of shepherds assigned to supply ghee for lamps documents recurrent supply obligations behind temple worship. [S3]
+- A Tanjavur inscription lists villages obligated to supply treasurers, servants and accountants, direct evidence that the temple was a staffed administrative institution. [S4]
+- Rajaraja Chola I ruled from 985 to 1014 CE, during the phase when Chola power became the dominant force in much of southern India. [S1]
+- Village and brahmadeya assemblies appear in inscriptions as active bodies in land, irrigation, tax and endowment affairs, operating within changing royal and regional constraints. [S2]
+- A temple order assigned land produce to service personnel, showing that endowed land revenue helped sustain ritual and labor. [S7]
+
+### Conqueror (7 approved claims)
+
+- Chola inscriptions credit Rajaraja with conquest in northern Sri Lanka; this is contemporary royal testimony for a major overseas campaign, not by itself a full administrative history of the island. [S1]
+- Rajaraja’s epigraphic achievement lists claim victories in the Chera/Kerala region and against the Pandyas; the lists establish the court’s claims, while the local depth of control varied. [S1]
+- Rajaraja’s campaigns altered relations with the Cheras, Pandyas and western-Deccan powers, turning older rivalries into a wider Chola imperial field. [S1]
+- Rajaraja’s Sri Lankan and island campaigns show significant maritime capacity and logistical reach, but the surviving record does not securely document a modern-style permanent navy. [S8]
+- The Sri Lanka intervention was a consequential cross-strait war with long aftereffects; Rajaraja took the north, while the later history of Chola rule cannot be attributed to him alone. [S1]
+- Rajaraja’s achievement lists include the islands called the Twelve Thousand, conventionally associated with the Maldives; the identification and the character of Chola control remain subjects for cautious interpretation. [S1]
+
+### Temple patron (6 approved claims)
+
+- Inscriptions call the temple Dakshina Meru, a name that placed the royal Shaiva monument in a cosmological and legitimating idiom. [S5]
+- Rajaraja’s temple endowments integrated ritual service, land assignments and personnel, showing how major temples could operate as religious, economic and social institutions. [S7]
+- The foundation record identifies a royal family and donor network—Rajaraja, his sister, queens and others—rather than presenting temple patronage as the action of the king alone. [S10]
+- The inscription includes non-royal donors alongside the king, demonstrating that the monument concentrated varied patronage under a royal framework. [S6]
+- The monument preserves murals and sculptural programs alongside its architecture, making it evidence for Chola visual culture as well as royal religious patronage. [S5]
+- The Tanjavur record says 400 women performers were transferred from other Chola temples to Rajarajesvara; it is unusually detailed evidence of an institution’s personnel, not a license to generalize their individual experience. [S7]
+
 ## Parameters to study Rulers / Kings
 
 These rulers were researched with the broader political-leader framework. Each claim is assigned to the matching ruler parameter and field by a documented rule, with individual overrides recorded in data/phase1-curation.json.

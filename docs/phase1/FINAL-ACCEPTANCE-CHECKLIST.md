@@ -28,7 +28,8 @@ Closeout evaluation dated 2026-10-15; data-completeness pass 2026-11-14. Status 
 | **PASS** | Search | Name/alias priority and partial-name behavior are tested; search also matches era and region. |
 | **PASS** | Browse by era and region | Explore has Era and Region filters, and the Timeline view groups all 25 people by curated period. |
 | **PASS** | Filtering | Presentation category and reliable detailed-role filters combine with search. |
-| **PASS** | Lens selection | Profiles expose relevant exported lenses and change the focus presentation. |
+| **PASS** | Lens selection | Every profile offers two to four evidence-backed role lenses (54 in total). Choosing one moves that role's approved claims to the top, reorders the sections and can be shared as a link (`?lens=educator`); tests confirm that every lens shows exactly the same set of facts. |
+| **PASS** | AI cannot add sources without permission | Resources › Knowledge engine has the setting “AI can add sources and facts”. When it is off, AI cannot record sources, publish claims or approve library sources; the application checks it before each write and database triggers enforce it. |
 | **PASS** | Structured profiles | All 25 static routes render supported, non-empty profile sections. |
 | **PASS** | Related-personality exploration | Deterministic related profiles include understandable shared-data reasons. |
 | **PASS** | Source transparency | Citations expose source metadata, locators, excerpts, and original URLs where available. |

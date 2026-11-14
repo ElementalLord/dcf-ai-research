@@ -4,6 +4,7 @@
   "people": {
     "96abdf31-9bb6-4fa9-8e02-1508cdcba4c9": {
       "name": "A. P. J. Abdul Kalam",
+      "shortName": "Kalam",
       "era": {
         "label": "Born 1931; President of India 2002–2007",
         "short": "Born 1931",
@@ -22,10 +23,42 @@
         "supportingClaimIds": [
           "1f24f631"
         ]
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "scientist",
+          "label": "Scientist and engineer",
+          "parameterCodes": [
+            "scientific_role",
+            "discoveries",
+            "research_methods"
+          ]
+        },
+        {
+          "id": "public-leader",
+          "label": "Leader and public servant",
+          "parameterCodes": [
+            "institutions",
+            "historical_context",
+            "impact"
+          ],
+          "claimIds": [
+            "4215c7e3"
+          ]
+        },
+        {
+          "id": "educator",
+          "label": "Educator",
+          "parameterCodes": [
+            "mentorship",
+            "qualities"
+          ]
+        }
+      ]
     },
     "32e53e02-71cd-4232-9d33-247d37f039a7": {
       "name": "Adi Shankaracharya",
+      "shortName": "Shankaracharya",
       "era": {
         "label": "c. 8th century CE (traditional and scholarly dating; details of his life are uncertain)",
         "short": "c. 8th century CE",
@@ -64,10 +97,36 @@
             "fb507cbb"
           ]
         }
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "philosopher",
+          "label": "Philosopher",
+          "parameterCodes": [
+            "teachings"
+          ]
+        },
+        {
+          "id": "commentator",
+          "label": "Commentator on the texts",
+          "parameterCodes": [
+            "works"
+          ]
+        },
+        {
+          "id": "teacher",
+          "label": "Teacher of a spiritual discipline",
+          "parameterCodes": [
+            "practice",
+            "vocation",
+            "service"
+          ]
+        }
+      ]
     },
     "b7e2eac1-b06e-4296-90cf-86f58a7e6fd5": {
       "name": "Agastya",
+      "shortName": "Agastya",
       "era": {
         "label": "Rigvedic and epic textual layers (not securely dated)",
         "short": "Vedic and epic texts",
@@ -115,10 +174,36 @@
       "limitedInformation": {
         "challenges": "The Vedic and epic sources in this collection describe Agastya's hymns, counsel and gifts, but none describes obstacles or hardships he faced. Nothing is inferred.",
         "contemporaryRelevance": "The approved sources in this collection describe Agastya within Vedic and epic texts but do not yet discuss present-day relevance. The section is left empty rather than filled by interpretation."
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "vedic-poet",
+          "label": "Vedic poet",
+          "parameterCodes": [
+            "textual_contribution",
+            "philosophy"
+          ],
+          "match": "rig ?veda|vedic|jamison|seer",
+          "claimIds": [
+            "f0eb3ca3"
+          ]
+        },
+        {
+          "id": "epic-sage",
+          "label": "Sage in the epics",
+          "parameterCodes": [
+            "social_role",
+            "role",
+            "tapas_sadhana",
+            "parampara"
+          ],
+          "exclude": "rig ?veda|vedic heritage"
+        }
+      ]
     },
     "f12656ee-8f17-40da-9dd6-6163e9eb20d5": {
       "name": "Ashoka",
+      "shortName": "Ashoka",
       "era": {
         "label": "Reigned c. 268–232 BCE (conventional dating)",
         "short": "c. 268–232 BCE",
@@ -162,10 +247,41 @@
             "145b3ed1"
           ]
         }
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "administrator",
+          "label": "Ruler and administrator",
+          "parameterCodes": [
+            "governance",
+            "formation",
+            "context"
+          ],
+          "claimIds": [
+            "484c2601"
+          ]
+        },
+        {
+          "id": "dhamma",
+          "label": "Patron of dhamma",
+          "parameterCodes": [
+            "religion",
+            "leadership"
+          ]
+        },
+        {
+          "id": "conqueror",
+          "label": "Conqueror and diplomat",
+          "parameterCodes": [
+            "warfare",
+            "diplomacy"
+          ]
+        }
+      ]
     },
     "8ece70a0-5e61-488f-ab95-2e0810e65e92": {
       "name": "Bhagat Singh",
+      "shortName": "Bhagat Singh",
       "era": {
         "label": "Active in the 1920s; executed 23 March 1931",
         "short": "d. 1931",
@@ -208,10 +324,32 @@
             "3152e38b"
           ]
         }
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "revolutionary",
+          "label": "Revolutionary",
+          "parameterCodes": [
+            "politics",
+            "detention",
+            "leadership"
+          ]
+        },
+        {
+          "id": "thinker",
+          "label": "Thinker and writer",
+          "parameterCodes": [
+            "ideology"
+          ],
+          "claimIds": [
+            "de429f87"
+          ]
+        }
+      ]
     },
     "6b9a4d86-8330-4256-a749-4daf0f596128": {
       "name": "C. V. Raman",
+      "shortName": "Raman",
       "era": {
         "label": "Born 1888; Nobel Prize in Physics 1930",
         "short": "Born 1888",
@@ -240,10 +378,39 @@
       ],
       "limitedInformation": {
         "qualitiesValues": "The approved sources document Raman's discoveries, institutions and students, but none in this collection characterizes his personal qualities or values. None are inferred."
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "physicist",
+          "label": "Physicist",
+          "parameterCodes": [
+            "discoveries",
+            "research_methods",
+            "scientific_role"
+          ],
+          "claimIds": [
+            "3472e303"
+          ]
+        },
+        {
+          "id": "institution-builder",
+          "label": "Institution builder",
+          "parameterCodes": [
+            "institutions"
+          ]
+        },
+        {
+          "id": "teacher",
+          "label": "Teacher and mentor",
+          "parameterCodes": [
+            "mentorship"
+          ]
+        }
+      ]
     },
     "7d85b2ab-8c8f-4095-bd02-37dab732d2de": {
       "name": "Chhatrapati Shivaji Maharaj",
+      "shortName": "Shivaji",
       "era": {
         "label": "Mid-17th century (coronation 1674)",
         "short": "17th century",
@@ -289,10 +456,41 @@
       },
       "limitedInformation": {
         "qualitiesValues": "The approved sources describe Shivaji's campaigns, forts, diplomacy and state-building, but none in this collection characterizes his personal qualities or values. None are inferred from his actions."
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "state-builder",
+          "label": "State builder",
+          "parameterCodes": [
+            "state_building",
+            "governance",
+            "formation"
+          ],
+          "claimIds": [
+            "f44fc8ff"
+          ]
+        },
+        {
+          "id": "strategist",
+          "label": "Military strategist",
+          "parameterCodes": [
+            "warfare",
+            "forts_sea"
+          ]
+        },
+        {
+          "id": "diplomat",
+          "label": "Diplomat",
+          "parameterCodes": [
+            "diplomacy",
+            "context"
+          ]
+        }
+      ]
     },
     "845db7cc-f605-4122-b66a-a362c43e96e1": {
       "name": "Guru Nanak",
+      "shortName": "Guru Nanak",
       "era": {
         "label": "1469–1539 (conventional dating)",
         "short": "1469–1539",
@@ -338,10 +536,36 @@
             "676ae93e"
           ]
         }
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "spiritual-teacher",
+          "label": "Spiritual teacher",
+          "parameterCodes": [
+            "teachings",
+            "practice"
+          ]
+        },
+        {
+          "id": "poet",
+          "label": "Poet and composer",
+          "parameterCodes": [
+            "works"
+          ]
+        },
+        {
+          "id": "community-founder",
+          "label": "Community founder",
+          "parameterCodes": [
+            "service",
+            "lineage"
+          ]
+        }
+      ]
     },
     "8fd75b96-9049-40e2-858c-b830456032ed": {
       "name": "J. R. D. Tata",
+      "shortName": "J. R. D. Tata",
       "era": {
         "label": "Born 1904; chaired Tata Sons 1938–1991",
         "short": "Born 1904",
@@ -393,10 +617,41 @@
             "2a0fa5ee"
           ]
         }
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "industrialist",
+          "label": "Industrialist",
+          "parameterCodes": [
+            "enterprise",
+            "industry",
+            "challenges"
+          ]
+        },
+        {
+          "id": "aviator",
+          "label": "Aviation pioneer",
+          "parameterCodes": [
+            "infrastructure"
+          ],
+          "claimIds": [
+            "b2d44808"
+          ]
+        },
+        {
+          "id": "institution-builder",
+          "label": "Institution builder",
+          "parameterCodes": [
+            "institutions",
+            "science_education",
+            "social_welfare"
+          ]
+        }
+      ]
     },
     "2bbcf221-3664-4fe7-a1c7-49b6ed6b5d99": {
       "name": "Jagadish Chandra Bose",
+      "shortName": "J. C. Bose",
       "era": {
         "label": "Born 1858; research from 1885 to the founding of Bose Institute in 1917",
         "short": "Born 1858",
@@ -433,10 +688,45 @@
             "2a3129a6"
           ]
         }
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "physicist",
+          "label": "Radio physicist",
+          "parameterCodes": [
+            "discoveries",
+            "research_methods",
+            "scientific_role",
+            "historical_context",
+            "impact"
+          ],
+          "exclude": "plant|living"
+        },
+        {
+          "id": "plant-physiologist",
+          "label": "Plant physiologist",
+          "parameterCodes": [
+            "discoveries",
+            "research_methods",
+            "historical_context",
+            "impact",
+            "qualities"
+          ],
+          "match": "plant|living"
+        },
+        {
+          "id": "institution-builder",
+          "label": "Institution builder",
+          "parameterCodes": [
+            "institutions",
+            "mentorship"
+          ]
+        }
+      ]
     },
     "a04d8610-3c67-484b-988f-2ec426ff0a43": {
       "name": "Jamsetji Tata",
+      "shortName": "Jamsetji",
       "era": {
         "label": "1839–1904",
         "short": "1839–1904",
@@ -481,10 +771,42 @@
             "d471c6c3"
           ]
         }
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "industrialist",
+          "label": "Industrialist",
+          "parameterCodes": [
+            "industry",
+            "enterprise",
+            "challenges"
+          ],
+          "claimIds": [
+            "704c1256"
+          ]
+        },
+        {
+          "id": "institution-builder",
+          "label": "Institution builder",
+          "parameterCodes": [
+            "science_education",
+            "institutions"
+          ]
+        },
+        {
+          "id": "nation-builder",
+          "label": "Nation builder",
+          "parameterCodes": [
+            "national_development",
+            "infrastructure",
+            "social_welfare"
+          ]
+        }
+      ]
     },
     "98e98962-0076-4b41-b23f-2aa0e4c82b93": {
       "name": "M. S. Subbulakshmi",
+      "shortName": "M. S. Subbulakshmi",
       "era": {
         "label": "Born 1916; concert career from the 1930s",
         "short": "Born 1916",
@@ -528,10 +850,50 @@
             "cfcd69d2"
           ]
         }
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "musician",
+          "label": "Musician",
+          "parameterCodes": [
+            "musical_art",
+            "recordings",
+            "public_career",
+            "formation"
+          ]
+        },
+        {
+          "id": "devotional",
+          "label": "Devotional singer",
+          "parameterCodes": [
+            "devotional",
+            "cultural_reach"
+          ]
+        },
+        {
+          "id": "ambassador",
+          "label": "Cultural ambassador",
+          "parameterCodes": [
+            "international",
+            "recognition"
+          ],
+          "claimIds": [
+            "637d348a"
+          ]
+        },
+        {
+          "id": "public-service",
+          "label": "Public service",
+          "parameterCodes": [
+            "social_service",
+            "gender"
+          ]
+        }
+      ]
     },
     "1cad1ad4-d440-427d-bc6d-35767a2af208": {
       "name": "Rabindranath Tagore",
+      "shortName": "Tagore",
       "era": {
         "label": "Born 1861; Nobel Prize in Literature 1913",
         "short": "Born 1861",
@@ -580,10 +942,40 @@
             "9ca682e9"
           ]
         }
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "poet",
+          "label": "Poet and writer",
+          "parameterCodes": [
+            "works",
+            "cultural_practice"
+          ],
+          "claimIds": [
+            "7e210307"
+          ]
+        },
+        {
+          "id": "educator",
+          "label": "Educator",
+          "parameterCodes": [
+            "institutions"
+          ]
+        },
+        {
+          "id": "thinker",
+          "label": "Thinker",
+          "parameterCodes": [
+            "ideas",
+            "society_politics",
+            "international"
+          ]
+        }
+      ]
     },
     "a2cfad28-3f09-47e1-932c-149740c3e5cd": {
       "name": "Rajaraja Chola I",
+      "shortName": "Rajaraja",
       "era": {
         "label": "Reigned 985–1014 CE",
         "short": "r. 985–1014 CE",
@@ -630,10 +1022,41 @@
       },
       "limitedInformation": {
         "qualitiesValues": "The inscriptions and scholarship in this collection document Rajaraja's conquests, administration and temple patronage, but none characterizes his personal qualities or values. None are inferred."
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "administrator",
+          "label": "Ruler and administrator",
+          "parameterCodes": [
+            "governance",
+            "state_building",
+            "formation"
+          ],
+          "claimIds": [
+            "31305e0e"
+          ]
+        },
+        {
+          "id": "conqueror",
+          "label": "Conqueror",
+          "parameterCodes": [
+            "warfare",
+            "forts_sea",
+            "diplomacy"
+          ]
+        },
+        {
+          "id": "patron",
+          "label": "Temple patron",
+          "parameterCodes": [
+            "religion"
+          ]
+        }
+      ]
     },
     "9ef04ec3-7bf1-4210-a951-1d6da7b2fc99": {
       "name": "Ramakrishna Paramahamsa",
+      "shortName": "Ramakrishna",
       "era": {
         "label": "19th century (his best-known disciples met him in the 1880s)",
         "short": "19th century",
@@ -671,10 +1094,33 @@
             "4f33bfc4"
           ]
         }
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "mystic",
+          "label": "Mystic",
+          "parameterCodes": [
+            "practice",
+            "vocation"
+          ],
+          "claimIds": [
+            "d4303758"
+          ]
+        },
+        {
+          "id": "teacher",
+          "label": "Teacher",
+          "parameterCodes": [
+            "teachings",
+            "works",
+            "lineage"
+          ]
+        }
+      ]
     },
     "26758dfe-ffe6-4c2c-b6c5-682353713af3": {
       "name": "Rani Lakshmibai of Jhansi",
+      "shortName": "Lakshmibai",
       "era": {
         "label": "Rani of Jhansi from 1842; leader in the 1857–1858 uprising",
         "short": "Rani from 1842",
@@ -711,10 +1157,41 @@
             "9f2e8ecd"
           ]
         }
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "ruler",
+          "label": "Ruler",
+          "parameterCodes": [
+            "governance",
+            "state_building",
+            "formation"
+          ],
+          "claimIds": [
+            "8ab01197"
+          ]
+        },
+        {
+          "id": "warrior",
+          "label": "Warrior",
+          "parameterCodes": [
+            "warfare",
+            "forts_sea",
+            "leadership"
+          ]
+        },
+        {
+          "id": "symbol",
+          "label": "Symbol in memory",
+          "parameterCodes": [
+            "legacy"
+          ]
+        }
+      ]
     },
     "2abfe46e-6b67-4fba-a6c1-e5864f69bf35": {
       "name": "Satyajit Ray",
+      "shortName": "Ray",
       "era": {
         "label": "Born 1921; first film 1955; died April 1992",
         "short": "1921–1992",
@@ -751,10 +1228,39 @@
             "64e952cd"
           ]
         }
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "filmmaker",
+          "label": "Filmmaker",
+          "parameterCodes": [
+            "craft",
+            "works"
+          ],
+          "claimIds": [
+            "62335617"
+          ]
+        },
+        {
+          "id": "composer-designer",
+          "label": "Composer and designer",
+          "parameterCodes": [
+            "cultural_practice"
+          ]
+        },
+        {
+          "id": "collaborator",
+          "label": "Collaborator",
+          "parameterCodes": [
+            "relationships",
+            "institutions"
+          ]
+        }
+      ]
     },
     "7dd19728-dbbf-4288-a3ec-ddb57806b863": {
       "name": "Savitribai Phule",
+      "shortName": "Savitribai",
       "era": {
         "label": "1831–1897",
         "short": "1831–1897",
@@ -800,10 +1306,39 @@
             "77214522"
           ]
         }
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "educator",
+          "label": "Educator",
+          "parameterCodes": [
+            "education",
+            "institutions"
+          ],
+          "claimIds": [
+            "11d2f7a2"
+          ]
+        },
+        {
+          "id": "reformer",
+          "label": "Social reformer",
+          "parameterCodes": [
+            "social_reform",
+            "service"
+          ]
+        },
+        {
+          "id": "writer",
+          "label": "Poet and writer",
+          "parameterCodes": [
+            "works"
+          ]
+        }
+      ]
     },
     "1f893928-3c09-424a-b513-c62893e57cb8": {
       "name": "Srinivasa Ramanujan",
+      "shortName": "Ramanujan",
       "era": {
         "label": "Born 1887; mathematical work to 1920",
         "short": "Born 1887",
@@ -840,10 +1375,34 @@
             "97b951fd"
           ]
         }
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "mathematician",
+          "label": "Mathematician",
+          "parameterCodes": [
+            "discoveries",
+            "research_methods",
+            "scientific_role"
+          ],
+          "claimIds": [
+            "7387a37c"
+          ]
+        },
+        {
+          "id": "collaborator",
+          "label": "Collaborator with Hardy",
+          "parameterCodes": [
+            "institutions",
+            "mentorship",
+            "persistence"
+          ]
+        }
+      ]
     },
     "9984b9e1-fb87-490a-919e-59b7f8241563": {
       "name": "Subhas Chandra Bose",
+      "shortName": "Subhas Bose",
       "era": {
         "label": "Congress president 1938–39; led the INA during World War II",
         "short": "20th century",
@@ -869,10 +1428,38 @@
       "introduction": [
         "9c5eaff4",
         "b393911f"
+      ],
+      "roleLenses": [
+        {
+          "id": "political-leader",
+          "label": "Political leader",
+          "parameterCodes": [
+            "politics",
+            "ideology",
+            "formation"
+          ]
+        },
+        {
+          "id": "military-organizer",
+          "label": "Military organizer",
+          "parameterCodes": [
+            "military",
+            "institutions"
+          ]
+        },
+        {
+          "id": "strategist",
+          "label": "International strategist",
+          "parameterCodes": [
+            "international",
+            "detention"
+          ]
+        }
       ]
     },
     "2f0c9c40-1867-428c-9392-569bad7f60a2": {
       "name": "Swami Vivekananda",
+      "shortName": "Vivekananda",
       "era": {
         "label": "Born 1863; founded the Ramakrishna Mission in 1897",
         "short": "Born 1863",
@@ -914,10 +1501,41 @@
       },
       "limitedInformation": {
         "challenges": "The approved sources in this collection describe Vivekananda's teaching, travels and institutions, but none documents specific obstacles or hardships he faced. Nothing is inferred."
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "monk",
+          "label": "Monk and teacher",
+          "parameterCodes": [
+            "teachings",
+            "practice",
+            "lineage"
+          ],
+          "claimIds": [
+            "66e4eb4e"
+          ]
+        },
+        {
+          "id": "speaker",
+          "label": "Speaker at Chicago",
+          "parameterCodes": [
+            "works",
+            "context"
+          ]
+        },
+        {
+          "id": "organizer",
+          "label": "Organizer of service",
+          "parameterCodes": [
+            "service",
+            "vocation"
+          ]
+        }
+      ]
     },
     "4633d3bf-8e04-4675-999c-208f368179a5": {
       "name": "Vasistha",
+      "shortName": "Vasistha",
       "era": {
         "label": "Rigvedic and Ramayana textual layers (not securely dated)",
         "short": "Vedic and epic texts",
@@ -965,10 +1583,35 @@
       "limitedInformation": {
         "challenges": "The Vedic and Ramayana sources in this collection describe Vasistha's counsel and his conflict with Vishvamitra, but not hardships he faced. The main documented complexity, how the textual layers relate, is shown under contested aspects.",
         "contemporaryRelevance": "The approved sources in this collection describe Vasistha within Vedic and epic texts but do not yet discuss present-day relevance. The section is left empty rather than filled by interpretation."
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "preceptor",
+          "label": "Royal preceptor",
+          "parameterCodes": [
+            "social_role",
+            "role",
+            "parampara"
+          ]
+        },
+        {
+          "id": "sage",
+          "label": "Sage of righteous conduct",
+          "parameterCodes": [
+            "inner_qualities",
+            "philosophy",
+            "tapas_sadhana",
+            "textual_contribution"
+          ],
+          "claimIds": [
+            "920a1a51"
+          ]
+        }
+      ]
     },
     "9a66a004-b1ce-429d-946e-715ae059f730": {
       "name": "Verghese Kurien",
+      "shortName": "Kurien",
       "era": {
         "label": "Chaired the National Dairy Development Board 1965–1998",
         "short": "20th century",
@@ -1027,10 +1670,40 @@
             "50bd2555"
           ]
         }
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "cooperative-builder",
+          "label": "Cooperative builder",
+          "parameterCodes": [
+            "cooperative_model",
+            "institutions",
+            "people"
+          ],
+          "claimIds": [
+            "69b28cb4"
+          ]
+        },
+        {
+          "id": "operation-flood",
+          "label": "Leader of Operation Flood",
+          "parameterCodes": [
+            "operation_flood",
+            "farmer_impact"
+          ]
+        },
+        {
+          "id": "technologist",
+          "label": "Technologist",
+          "parameterCodes": [
+            "technology"
+          ]
+        }
+      ]
     },
     "2853f4ed-98b1-4ef8-9f30-30f85d42edad": {
       "name": "Vishvamitra",
+      "shortName": "Vishvamitra",
       "era": {
         "label": "Rigvedic and Ramayana textual layers (not securely dated)",
         "short": "Vedic and epic texts",
@@ -1078,10 +1751,39 @@
             "121fd80b"
           ]
         }
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "vedic-seer",
+          "label": "Vedic seer",
+          "parameterCodes": [
+            "textual_contribution"
+          ],
+          "claimIds": [
+            "6fbdb492"
+          ]
+        },
+        {
+          "id": "ascetic",
+          "label": "Ascetic",
+          "parameterCodes": [
+            "tapas_sadhana",
+            "inner_qualities"
+          ]
+        },
+        {
+          "id": "teacher",
+          "label": "Teacher of Rama",
+          "parameterCodes": [
+            "social_role",
+            "role"
+          ]
+        }
+      ]
     },
     "6ef206bf-1446-4e3d-94a6-e583f7736e62": {
       "name": "Yajnavalkya",
+      "shortName": "Yajnavalkya",
       "era": {
         "label": "Late Vedic: the Brihadaranyaka Upanishad is dated c. 700–500 BCE (a date for the text, not the person)",
         "short": "Late Vedic texts",
@@ -1123,7 +1825,33 @@
             "d76806bb"
           ]
         }
-      }
+      },
+      "roleLenses": [
+        {
+          "id": "philosopher",
+          "label": "Philosopher",
+          "parameterCodes": [
+            "philosophy",
+            "tapas_sadhana"
+          ]
+        },
+        {
+          "id": "debater",
+          "label": "Debater at Janaka's court",
+          "parameterCodes": [
+            "social_role"
+          ]
+        },
+        {
+          "id": "ritual-authority",
+          "label": "Ritual authority",
+          "parameterCodes": [
+            "textual_contribution",
+            "historical_context",
+            "parampara"
+          ]
+        }
+      ]
     }
   },
   "studyFrameworks": [

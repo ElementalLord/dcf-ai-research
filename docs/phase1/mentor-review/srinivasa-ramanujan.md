@@ -66,6 +66,28 @@ _Limited information:_ 5 contested or sensitive statements about Srinivasa Raman
 - Berndt and collaborators published five volumes explaining and proving results from Ramanujan's earlier notebooks. [S7]
 - Berndt recalls that George Andrews found Ramanujan's lost notebook at Trinity College in 1976, opening another major line of study. [S7]
 
+## Role lenses
+
+A lens reorders and highlights the approved statements below; it never adds or changes a fact.
+
+### Mathematician (18 approved claims)
+
+- Srinivasa Ramanujan was an Indian mathematician whose main contributions were to analytic number theory, alongside work on continued fractions and infinite series. [S2]
+- As a student, Ramanujan studied G. S. Carr's compendium of mathematical results, an important resource for his independent mathematical learning. [S2]
+- Hardy and Ramanujan developed an asymptotic formula for the partition function p(n). [S5]
+- Near the end of his life, Ramanujan sent Hardy examples of his new mock theta functions. [S6]
+- Ramanujan and Hardy jointly published work on coefficients of modular functions in the Royal Society's Proceedings in 1918. [S1]
+- Ramanujan published unusually effective approximations to pi in his work on modular equations. [S5]
+
+### Collaborator with Hardy (11 approved claims)
+
+- Hardy's encouraging reply led to a sustained exchange of letters with Ramanujan. [S6]
+- Ramanujan became seriously ill in 1917 and spent much of his remaining time in England in sanatoria. [S6]
+- Ramanujan entered Trinity College, Cambridge, in 1914 and developed his work with Hardy and Littlewood's guidance. [S5]
+- Ramanujan lost his Government College scholarship after concentrating on mathematics and neglecting other subjects. [S2]
+- Ramanujan sent Hardy a long list of mathematical discoveries in 1913, beginning the correspondence that changed his research opportunities. [S6]
+- Ramanujan supported himself as a clerk at the Madras Port Trust while continuing mathematical research. [S2]
+
 ## Withheld contested or sensitive material
 
 - Béla Bollobás recounts that Hardy and Littlewood found Ramanujan's first letter mixed familiar, provable, disprovable, and striking unresolved assertions. — **withheld:** contested_requires_two_independent_sources; 1 independent credible source(s).

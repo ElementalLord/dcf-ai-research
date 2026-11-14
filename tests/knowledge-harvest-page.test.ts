@@ -3,6 +3,7 @@ import type { RetrievedPassage } from "@/lib/corpus/types";
 
 const state = vi.hoisted(() => ({ preview: vi.fn(), rpc: vi.fn() }));
 vi.mock("@/lib/live-research/live-fetch", () => ({ fetchDiscoveryPreview: state.preview }));
+vi.mock("@/lib/ai-knowledge-permission", () => ({ aiMayAddKnowledge: async () => true, clearAiKnowledgePermissionCache: () => undefined }));
 vi.mock("@/lib/supabase-admin", () => ({ supabaseAdmin: { rpc: state.rpc } }));
 
 const policy = { mode: "credible_web" as const, rules: [] };

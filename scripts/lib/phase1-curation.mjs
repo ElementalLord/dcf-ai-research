@@ -234,6 +234,54 @@ function studyAssignments(person, framework) {
   return assignments;
 }
 
+
+const LENS_FOCUS_STATEMENTS = 6;
+const LENS_MIN_CLAIMS = 3;
+const LENS_SECTION_KEYS = ["lifeAndContext", "qualitiesValues", "contributions", "challenges", "leadershipRelationalCharacteristics", "contemporaryRelevance"];
+
+/**
+ * Role lenses (scope document: "a lens changes what parts of the information receive the most
+ * attention; it does not change any facts"). A lens selects the approved claims tagged to the
+ * framework parameters of that role, ranks them, and orders the profile sections by how many of
+ * those claims each holds. It never adds, removes or rewrites a statement.
+ */
+function buildRoleLenses(person, definitions) {
+  const seen = new Set();
+  return definitions.map((definition) => {
+    if (!definition.id || !definition.label || !definition.parameterCodes?.length) throw new Error(`${person.name}: a role lens needs id, label and parameterCodes.`);
+    if (seen.has(definition.id)) throw new Error(`${person.name}: duplicate role lens "${definition.id}".`);
+    seen.add(definition.id);
+    const match = definition.match ? new RegExp(definition.match, "i") : null;
+    const exclude = definition.exclude ? new RegExp(definition.exclude, "i") : null;
+    const codes = new Set(definition.parameterCodes);
+    const pinned = (definition.claimIds || []).map((ref) => resolveClaim(person, ref, `lens ${definition.id}`));
+    const tagged = person.evidenceRegister.filter((entry) => entry.reviewStatus === "approved" && entry.profileEligibility?.eligible
+      && codes.has(entry.framework?.parameterCode) && (!match || match.test(entry.text)) && (!exclude || !exclude.test(entry.text)));
+    const shown = new Set(PROFILE_SECTION_KEYS.flatMap((key) => person[key].map((statement) => statement.claimId)));
+    // Claims an editor already placed on the profile lead; then the usual evidence ranking.
+    const focus = [...pinned, ...tagged.sort((a, b) => Number(shown.has(b.id)) - Number(shown.has(a.id)) || rank(b) - rank(a) || a.text.localeCompare(b.text))]
+      .filter((entry, index, all) => all.findIndex((other) => other.id === entry.id || normalizedText(other.text) === normalizedText(entry.text)) === index);
+    if (focus.length < LENS_MIN_CLAIMS) {
+      throw new Error(`${person.name}: lens "${definition.label}" has ${focus.length} approved claims; a lens needs at least ${LENS_MIN_CLAIMS} so the role is supported by evidence.`);
+    }
+    const focusIds = new Set(focus.map((entry) => entry.id));
+    const weight = (key) => person[key].filter((statement) => focusIds.has(statement.claimId)).length;
+    const sectionOrder = LENS_SECTION_KEYS
+      .map((key, index) => ({ key, index, weight: weight(key) }))
+      .sort((a, b) => b.weight - a.weight || a.index - b.index)
+      .map((item) => item.key);
+    return {
+      id: definition.id,
+      label: definition.label,
+      parameterCodes: definition.parameterCodes,
+      claimCount: focus.length,
+      focusClaimIds: focus.map((entry) => entry.id),
+      focusStatements: focus.slice(0, LENS_FOCUS_STATEMENTS).map((entry) => statementFromEntry(person, entry, `lens ${definition.id}`)),
+      sectionOrder: [...sectionOrder, "contestedAspects"],
+    };
+  });
+}
+
 /** Explains an empty contested section from the export's own withheld-claim record. */
 function contestedNote(person) {
   const withheld = person.reviewStatus.sourcingStandardViolationsWithheld.length;
@@ -276,6 +324,8 @@ export function applyPhase1Curation(dataset, curation, { draft = false } = {}) {
     if (!entry) throw new Error(`${person.name}: no curation entry. Every Phase 1 personality needs era and region.`);
     if (entry.name !== person.name) throw new Error(`Curation entry ${person.id} is labelled "${entry.name}" but the dataset name is "${person.name}".`);
 
+    if (!entry.shortName) throw new Error(`${person.name}: shortName is required (used in "View … as" and "Ask about …").`);
+    person.shortName = entry.shortName;
     person.era = curatedFact(person, entry.era, "era");
     person.region = curatedFact(person, entry.region, "region");
     if (!person.era || !person.region) throw new Error(`${person.name}: era and region are required.`);
@@ -299,13 +349,15 @@ export function applyPhase1Curation(dataset, curation, { draft = false } = {}) {
     person.limitedInformation = limited;
 
     if (entry.lenses) person.lenses = entry.lenses;
+    person.roleLenses = buildRoleLenses(person, entry.roleLenses || []);
 
     const framework = frameworks.find((item) => item.personalityIds.includes(person.id));
     person.studyFramework = framework ? buildStudyFramework(person, framework, studyAssignments(person, framework)) : null;
 
     const sections = [...person.shortIntroduction, ...PROFILE_SECTION_KEYS.flatMap((key) => person[key])];
     const studyStatements = person.studyFramework ? person.studyFramework.parameters.flatMap((parameter) => parameter.fields.flatMap((field) => field.statements)) : [];
-    person.citations = [...new Set([...sections, ...studyStatements].flatMap((statement) => statement.citations.map((citation) => citation.sourceId)))];
+    const lensStatements = person.roleLenses.flatMap((lens) => lens.focusStatements);
+    person.citations = [...new Set([...sections, ...studyStatements, ...lensStatements].flatMap((statement) => statement.citations.map((citation) => citation.sourceId)))];
     person.reviewStatus.selectedProfileClaims = new Set(sections.map((statement) => statement.claimId)).size;
     person.reviewStatus.selectedApprovedClaims = sections.filter((statement) => statement.reviewStatus === "approved").length;
     person.reviewStatus.unresolvedConcerns = person.reviewStatus.unresolvedConcerns.filter((concern) => !/^Structured (era|region) is not populated|^No sourcing-compliant profile statement for|^Approved sources do not yet support:/.test(concern));
@@ -343,7 +395,9 @@ export function validateCuratedDataset(dataset) {
       ...person.shortIntroduction,
       ...PROFILE_SECTION_KEYS.flatMap((key) => person[key]),
       ...(person.studyFramework?.parameters.flatMap((parameter) => parameter.fields.flatMap((field) => field.statements)) || []),
+      ...(person.roleLenses || []).flatMap((lens) => lens.focusStatements),
     ];
+    if (!person.roleLenses?.length) errors.push(`${person.name}: no role lenses.`);
     for (const statement of statements) {
       if (statement.reviewStatus !== "approved") errors.push(`${person.name}: claim ${statement.claimId} is not approved.`);
       if (!statement.citations.length) errors.push(`${person.name}: claim ${statement.claimId} has no citation.`);
@@ -383,6 +437,7 @@ export function renderMentorReviewDocs(dataset) {
       const fields = parameter.fields.filter((field) => field.claimCount).map((field) => `**${md(field.label)}** (${field.claimCount} approved ${field.claimCount === 1 ? "claim" : "claims"})\n\n${field.statements.map(line).join("\n")}`).join("\n\n");
       return `### ${md(parameter.name)}\n\n${parameter.note ? `_${parameter.status === "limited" ? "Limited information" : "Note"}:_ ${md(parameter.note)}\n\n` : ""}${fields}`.trim();
     }).join("\n\n")}` : "";
+    const lensBlock = person.roleLenses.length ? `## Role lenses\n\nA lens reorders and highlights the approved statements below; it never adds or changes a fact.\n\n${person.roleLenses.map((lens) => `### ${md(lens.label)} (${lens.claimCount} approved ${lens.claimCount === 1 ? "claim" : "claims"})\n\n${lens.focusStatements.map(line).join("\n")}`).join("\n\n")}` : "";
     const withheld = person.reviewStatus.sourcingStandardViolationsWithheld.length
       ? person.reviewStatus.sourcingStandardViolationsWithheld.map((item) => `- ${md(item.text)} — **withheld:** ${item.reason}; ${item.independentSourceCount} independent credible source(s).`).join("\n")
       : "None identified by the contested-claim check.";
@@ -400,7 +455,7 @@ ${supporting(person.region)}
 
 ${intro}
 
-${sectionBlocks}${study ? `\n\n${study}` : ""}
+${sectionBlocks}${lensBlock ? `\n\n${lensBlock}` : ""}${study ? `\n\n${study}` : ""}
 
 ## Withheld contested or sensitive material
 
