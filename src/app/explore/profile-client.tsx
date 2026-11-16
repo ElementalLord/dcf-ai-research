@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useSyncExternalStore } from "react";
 import type { Phase1Source, Phase1Statement, Phase1StudyFramework, RelatedPerson } from "@/lib/phase1/types";
+import { Portrait, type PortraitData } from "@/components/portrait";
 import { applyRoleLens, approvedStatements, exploreCategory, profileSections, type PublicProfilePerson } from "./explore-data";
 
 function sourceType(source: Phase1Source) {
@@ -58,7 +59,7 @@ function StudyFramework({ framework, sources, allOpen }: { framework: Phase1Stud
   </section>;
 }
 
-export function ProfileClient({ person, related }: { person: PublicProfilePerson; related: Array<Pick<RelatedPerson, "id" | "slug" | "name" | "detailedCategory" | "eraShort">> }) {
+export function ProfileClient({ person, related, portrait = null }: { person: PublicProfilePerson; related: Array<Pick<RelatedPerson, "id" | "slug" | "name" | "detailedCategory" | "eraShort">>; portrait?: PortraitData | null }) {
   const [allOpen, setAllOpen] = useState(false);
   const [showAllSources, setShowAllSources] = useState(false);
   const [current, setCurrent] = useState<string | null>(null);
@@ -85,7 +86,11 @@ export function ProfileClient({ person, related }: { person: PublicProfilePerson
     <nav className="explore-crumb" aria-label="Breadcrumb"><Link href="/explore">Explore</Link><span aria-hidden="true">/</span><Link href={`/explore?category=${category.id}`}>{category.name}</Link></nav>
     <header className="explore-profile-hero">
       <div>
-        <h1>{person.name}</h1>
+        <div className="explore-profile-name">
+          <Portrait name={person.name} portrait={portrait} category={exploreCategory(person.slug).id} size={96} />
+          <h1>{person.name}</h1>
+        </div>
+        {portrait && <p className="portrait-credit">Portrait: <a href={portrait.source} target="_blank" rel="noopener noreferrer">{portrait.author}</a>, {portrait.license}, via Wikimedia Commons</p>}
         <dl className="explore-facts">
           <div><dt>Era</dt><dd>{person.era.label}</dd></div>
           <div><dt>Region</dt><dd>{person.region.label}</dd></div>

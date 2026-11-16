@@ -1,0 +1,132 @@
+/*
+  Ask: the guide (Sutradhar), its dot glyph, the face picker and the symbol chips.
+  Loaded after the older Ask layers; `:root:root .ai-page` raises specificity where an
+  older rule styles the same element.
+*/
+
+/* ---------- Page ---------- */
+:root:root .ai-page .chat-main .ai-title h1 { font: 500 clamp(36px, 4vw, 54px)/1.02 var(--brand-serif); letter-spacing: -0.02em; }
+:root:root .ai-page .chat-shell { background: var(--brand-surface); border-color: var(--brand-line-strong); border-radius: 26px; box-shadow: 0 5px 0 var(--key-lip); }
+:root:root .ai-page .chat-toolbar { align-items: center; gap: 12px; padding: 16px 20px; }
+:root:root .ai-page .chat-toolbar-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+:root:root .ai-page .chat-name { color: var(--brand-accent); font: 600 13px/1.3 var(--brand-body); }
+:root:root .ai-page .chat-message-user { background: var(--brand-surface-2); border-color: var(--brand-line); border-radius: 18px 18px 6px 18px; }
+
+/* ---------- Dot glyph ---------- */
+.dot-glyph { display: block; flex: none; overflow: visible; }
+.dot-glyph circle { transition: r 380ms var(--ease-out), fill 320ms ease, opacity 320ms ease; }
+.dot-glyph .off { fill: var(--brand-line-strong); opacity: 0.55; }
+.dot-glyph .on { fill: var(--brand-accent); }
+.dot-glyph .on.alt { fill: var(--dot-spiritual); }
+.dot-glyph.is-rest .on { animation: glyph-breathe 3.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes glyph-breathe { 50% { opacity: 0.55; } }
+@media (prefers-reduced-motion: reduce) { .dot-glyph circle { transition: none; } .dot-glyph.is-rest .on { animation: none; } }
+
+/* ---------- Toolbar: person key and depth ---------- */
+:root:root .ai-page .guide-person { justify-content: flex-start; gap: 10px; min-height: 50px; padding: 0 14px 0 8px; border-radius: 18px; }
+.guide-person-text { display: grid; gap: 2px; text-align: left; }
+.guide-person-text small { color: var(--brand-faint); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.guide-person-text span { max-width: 220px; overflow: hidden; font: 600 15px/1.15 var(--brand-body); text-overflow: ellipsis; }
+.guide-person > svg:last-child { color: var(--brand-muted); }
+.guide-depth.is-disabled { opacity: 0.6; pointer-events: none; }
+:root:root .ai-page .guide-depth .key { min-height: 50px; border-radius: 18px; }
+
+/* ---------- Welcome ---------- */
+.guide-welcome { display: flex; align-items: center; gap: 20px; animation: guide-in 600ms var(--ease-out) both; }
+.guide-name { margin: 0; color: var(--brand-accent); font: 600 15px/1.2 var(--brand-body); }
+.guide-name span { margin-left: 6px; color: var(--brand-faint); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.guide-hello { max-width: 60ch; margin: 6px 0 0; color: var(--brand-text); font: 400 clamp(18px, 1.7vw, 21px)/1.5 var(--brand-serif); }
+.guide-hello strong { color: var(--brand-accent); font-weight: 600; }
+@keyframes guide-in { from { opacity: 0; transform: translateY(8px); } }
+
+/* ---------- Thinking: glyph with the person's portrait beside it ---------- */
+:root:root .ai-page .guide-thinking { display: flex; align-items: center; gap: 18px; margin-top: 18px; animation: guide-in 400ms var(--ease-out) both; }
+.guide-thinking-faces { position: relative; display: flex; align-items: center; flex: none; padding: 8px; background: var(--brand-surface-2); border: 1px solid var(--brand-line); border-radius: 22px; }
+.guide-thinking-portrait { margin-left: 10px; animation: guide-bob 2.4s ease-in-out infinite; }
+@keyframes guide-bob { 50% { transform: translateY(-3px) rotate(-3deg); } }
+:root:root .ai-page .guide-thinking .chat-thinking-line { margin-top: 4px; color: var(--brand-text); font: 400 18px/1.4 var(--brand-serif); }
+:root:root .ai-page .guide-thinking small { color: var(--brand-faint); }
+@media (prefers-reduced-motion: reduce) { .guide-thinking-portrait { animation: none; } }
+
+/* ---------- Prompt and angle chips ---------- */
+.guide-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 14px 22px 16px; border-top: 1px solid var(--brand-line); }
+.guide-chips-label { display: inline-flex; align-items: center; gap: 6px; width: 100%; color: var(--brand-muted); font-size: 13px; font-weight: 600; }
+.guide-chips-label svg { color: var(--brand-accent); }
+:root:root .ai-page .guide-chips .key { min-height: 40px; padding: 0 14px; border-radius: 13px; font-size: 14px; white-space: normal; text-align: left; }
+:root:root .ai-page .guide-chips .key svg { color: var(--brand-accent); }
+:root:root .ai-page .guide-angles .key svg { color: var(--dot-scientists); }
+.guide-chips .key { animation: guide-in 420ms var(--ease-out) both; }
+.guide-chips .key:nth-of-type(2) { animation-delay: 60ms; }
+.guide-chips .key:nth-of-type(3) { animation-delay: 120ms; }
+.guide-chips .key:nth-of-type(n + 4) { animation-delay: 180ms; }
+
+/* ---------- Composer ---------- */
+:root:root .ai-page .chat-composer .guide-input { display: block; width: 100%; min-height: 58px; padding: 6px 0; color: var(--brand-text); background: transparent; border: 0; outline: none; resize: none; font: 400 17px/1.5 var(--brand-body); }
+:root:root .ai-page .chat-composer .ask-footer > button.guide-send { min-height: 46px; padding: 0 22px; color: var(--key-hot-text); background: var(--key-hot-bg); border: 1px solid var(--key-hot-lip); border-radius: 14px; box-shadow: 0 3px 0 var(--key-hot-lip); font: 650 15px/1 var(--brand-body); }
+:root:root .ai-page .chat-composer .ask-footer > button.guide-send:hover { background: var(--key-hot-bg); transform: translateY(-1px); box-shadow: 0 4px 0 var(--key-hot-lip); }
+:root:root .ai-page .chat-composer .ask-footer > button.guide-send:active { transform: translateY(3px); box-shadow: 0 0 0 var(--key-hot-lip); }
+:root:root .ai-page .chat-composer .ask-footer > button.guide-send:disabled { color: var(--brand-muted); background: var(--brand-surface-2); border-color: var(--key-lip); box-shadow: 0 3px 0 var(--key-lip); transform: none; opacity: 1; }
+
+/* ---------- Face picker ---------- */
+[data-slot="dialog-content"].picker {
+  display: block;
+  width: min(880px, calc(100vw - 24px));
+  max-width: none;
+  max-height: calc(100dvh - 32px);
+  padding: 28px 28px 30px;
+  overflow-y: auto;
+  color: var(--brand-text);
+  background: var(--brand-bg);
+  border: 1px solid var(--brand-line-strong);
+  border-radius: 28px;
+  box-shadow: 0 6px 0 var(--key-lip), 0 30px 70px rgba(50, 28, 12, 0.18);
+}
+.picker [data-slot="dialog-close"] { top: 18px; right: 18px; width: 38px; height: 38px; color: var(--key-text); background: var(--key-bg); border: 1px solid var(--key-lip); border-radius: 50%; box-shadow: 0 2px 0 var(--key-lip); }
+.picker-head [data-slot="dialog-title"] { margin: 0; font: 500 clamp(26px, 3vw, 34px)/1.1 var(--brand-serif); letter-spacing: -0.015em; }
+.picker-head [data-slot="dialog-description"] { margin-top: 4px; color: var(--brand-muted); font-size: 15px; }
+.picker-tools { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.picker-search { display: flex; flex: 1 1 260px; align-items: center; gap: 10px; height: 48px; padding: 0 16px; color: var(--brand-muted); background: var(--key-bg); border: 1px solid var(--key-lip); border-radius: 16px; box-shadow: 0 3px 0 var(--key-lip); }
+.picker-search:focus-within { border-color: var(--brand-accent-line); box-shadow: 0 3px 0 var(--brand-accent-line), 0 0 0 4px var(--brand-accent-soft); }
+.picker-search input { flex: 1; min-width: 0; color: var(--brand-text); background: transparent; border: 0; outline: none; font: 400 16px/1 var(--brand-body); }
+.picker-tools .key { min-height: 48px; border-radius: 16px; }
+.picker-fields { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.picker-fields .key { min-height: 38px; padding: 0 13px; border-radius: 12px; font-size: 14px; }
+.picker-fields .key svg { color: var(--cat); }
+.picker-fields .key[aria-pressed="true"] { background: var(--cat-soft, var(--brand-accent-soft)); }
+.picker-faces { display: grid; grid-template-columns: repeat(auto-fill, minmax(124px, 1fr)); gap: 8px; margin-top: 22px; }
+.picker-face { display: grid; justify-items: center; align-content: start; gap: 10px; padding: 14px 8px 12px; color: var(--brand-text); background: transparent; border: 0; border-radius: 20px; cursor: pointer; animation: picker-pop 420ms var(--ease-out) both; animation-delay: calc(var(--i, 0) * 22ms); transition: background-color 200ms ease, transform 260ms var(--ease-out); }
+.picker-face:hover { background: var(--cat-soft); transform: translateY(-3px); }
+.picker-face:hover .portrait { transform: scale(1.07) rotate(-3deg); }
+.picker-face:active { transform: scale(0.96); }
+.picker-face:focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 2px; }
+.picker-face[aria-pressed="true"] { background: var(--cat-soft); }
+.picker-face[aria-pressed="true"] .portrait { box-shadow: 0 0 0 3px var(--brand-bg), 0 0 0 5px var(--cat); }
+.picker-face-img { position: relative; }
+.picker-face-check { position: absolute; right: -2px; bottom: -2px; display: grid; place-items: center; width: 24px; height: 24px; color: var(--brand-ink); background: var(--brand-accent); border: 2px solid var(--brand-bg); border-radius: 50%; }
+.picker-face-name { font: 500 15.5px/1.2 var(--brand-serif); text-align: center; }
+.picker-empty { grid-column: 1 / -1; padding: 24px 0; color: var(--brand-muted); }
+@keyframes picker-pop { from { opacity: 0; transform: translateY(10px) scale(0.94); } }
+@media (prefers-reduced-motion: reduce) { .picker-face, .guide-chips .key, .guide-welcome { animation: none; } }
+
+@media (max-width: 700px) {
+  :root:root .ai-page .chat-shell { border-radius: 20px; }
+  :root:root .ai-page .chat-toolbar { flex-wrap: nowrap; padding: 12px; }
+  :root:root .ai-page .chat-toolbar-controls { flex: 1; min-width: 0; gap: 8px; }
+  :root:root .ai-page .guide-person { flex: 1 1 100%; min-width: 0; }
+  :root:root .ai-page .guide-depth { flex: 1 1 100%; min-width: 0; }
+  :root:root .ai-page .guide-depth .key { width: 100%; min-height: 44px; justify-content: flex-start; }
+  :root:root .ai-page .guide-depth .key-select-value { flex: 1; text-align: left; }
+  :root:root .ai-page :is(.chat-how-to, .chat-new) span { display: none; }
+  :root:root .ai-page .chat-toolbar-actions { align-self: flex-start; display: flex; flex-direction: column; gap: 8px; }
+  .guide-chips { flex-wrap: nowrap; padding: 10px 12px 12px; overflow-x: auto; scrollbar-width: none; }
+  .guide-chips-label { display: none; }
+  :root:root .ai-page .guide-chips .key { flex: none; min-height: 38px; white-space: nowrap; }
+  .guide-hello { font-size: 17px; }
+  .guide-welcome { align-items: flex-start; gap: 14px; }
+  .guide-welcome .dot-glyph { width: 52px; height: 52px; }
+  .guide-person-text span { max-width: 160px; }
+  [data-slot="dialog-content"].picker { padding: 22px 16px; border-radius: 22px; }
+  .picker-faces { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
+  .picker-faces .portrait { width: 60px !important; height: 60px !important; }
+}
+.picker .picker-search input, .picker .picker-search input:focus, .picker .picker-search input:focus-visible { padding: 0; border: 0; outline: none; box-shadow: none; }

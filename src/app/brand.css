@@ -1,83 +1,118 @@
 /*
   DCF brand layer. Loaded last by the root layout.
-  Warm white ground (or warm charcoal in dark mode), one terracotta accent, a grotesque
-  display face, flat surfaces.
+  Parchment ground (or warm plum night in dark mode), pastel category colours, one coral
+  accent, serif headings, tactile pastel keys.
   `:root:root` raises specificity so these rules beat the older page-scoped layers
   (globals.css, public-experience.css) without !important.
 */
-/* Light is the default. The header toggle sets <html data-theme="dark"> (see theme-toggle.tsx). */
+/* Light is the default. The header toggle sets <html data-theme="dark"> (see theme-toggle.tsx).
+
+   Colour plan (pastel, warm):
+   - Ground: parchment cream (hue ~38°, low saturation) instead of white, so pages read like paper.
+   - Ink: warm brown-black, never pure black; muted and faint steps share its hue.
+   - Accent: coral-terracotta (hue ~14°), analogous to the ground, so it warms rather than clashes.
+   - Categories: five pastels spaced around the wheel (lavender 262°, marigold 36°, powder blue 205°,
+     rose 345°, sage 138°) at matched lightness, so no field dominates. Each has a soft fill for
+     backgrounds and a deep tone (same hue) for text and dots that passes contrast on the ground.
+   - Keys: buttons are pastel "keys" with a darker lip underneath that compresses when pressed. */
 :root {
-  --brand-bg: #ffffff;
-  --brand-surface: #fafaf8;
-  --brand-surface-2: #f3f2ee;
-  --brand-surface-3: #ebe9e3;
-  --brand-line: #e8e6e1;
-  --brand-line-strong: #d4d1c9;
-  --brand-hover: rgba(28, 25, 23, 0.04);
-  --brand-hover-line: #a8a49b;
-  --brand-header: rgba(255, 255, 255, 0.9);
-  --brand-text: #1c1917;
-  --brand-muted: #66625b;
-  --brand-faint: #8c877e;
-  --brand-accent: #b4532a;
-  --brand-accent-hover: #9a4422;
-  --brand-accent-soft: rgba(180, 83, 42, 0.08);
-  --brand-accent-line: rgba(180, 83, 42, 0.28);
+  --brand-bg: #f7f2ea;
+  --brand-surface: #fcf9f4;
+  --brand-surface-2: #f0e9de;
+  --brand-surface-3: #e6dccd;
+  --brand-line: #e5dbcc;
+  --brand-line-strong: #d2c4af;
+  --brand-hover: rgba(110, 72, 40, 0.06);
+  --brand-hover-line: #b6a58c;
+  --brand-header: rgba(247, 242, 234, 0.86);
+  --brand-text: #2f2722;
+  --brand-muted: #6f6258;
+  --brand-faint: #95887b;
+  --brand-accent: #a8513a;
+  --brand-accent-hover: #8e4230;
+  --brand-accent-soft: rgba(214, 120, 92, 0.13);
+  --brand-accent-line: rgba(168, 81, 58, 0.3);
   --brand-ink: #ffffff;
+  --key-bg: #fcf9f4;
+  --key-lip: #d6c8b3;
+  --key-text: #2f2722;
+  --key-hot-bg: #f4bba4;
+  --key-hot-lip: #cf8d74;
+  --key-hot-text: #43221a;
+  --key-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset;
   --brand-ok-text: #2f5d40;
-  --brand-ok-bg: #edf5ef;
-  --brand-ok-line: #b9d4c1;
-  --brand-warn-text: #7a4b12;
-  --brand-warn-bg: #fbf3e4;
-  --brand-warn-line: #e5cc9c;
-  --brand-warn: #a3621a;
-  --brand-bad-text: #8a2f29;
-  --brand-bad-bg: #fcefed;
-  --brand-bad-line: #e6b3ad;
-  --brand-bad: #b3392f;
-  --brand-radius: 6px;
+  --brand-ok-bg: #e4f0e4;
+  --brand-ok-line: #b6d2bc;
+  --brand-warn-text: #74491a;
+  --brand-warn-bg: #f8ead2;
+  --brand-warn-line: #e3c99b;
+  --brand-warn: #9a5f1c;
+  --brand-bad-text: #86302a;
+  --brand-bad-bg: #f8e3df;
+  --brand-bad-line: #e5b2aa;
+  --brand-bad: #ad3b30;
+  --brand-radius: 10px;
   --brand-display: var(--font-display), "Helvetica Neue", Arial, sans-serif;
   --brand-body: var(--font-body), "Helvetica Neue", Arial, sans-serif;
-  --dot-sages: #7a68b0;
-  --dot-spiritual: #b07a1f;
-  --dot-scientists: #3a7ca5;
-  --dot-rulers: #b2536d;
-  --dot-cultural: #4b8a5f;
+  --brand-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
+  --brand-deva: var(--font-deva), var(--font-newsreader), serif;
+  --dot-sages: #6b58a6;
+  --dot-spiritual: #9e6223;
+  --dot-scientists: #36698b;
+  --dot-rulers: #a2465d;
+  --dot-cultural: #467a59;
+  --soft-sages: #e4ddf3;
+  --soft-spiritual: #f5e2c4;
+  --soft-scientists: #d7e7f2;
+  --soft-rulers: #f4dbe0;
+  --soft-cultural: #d9eadb;
 }
 :root[data-theme="dark"] {
-  --brand-bg: #141413;
-  --brand-surface: #1b1b19;
-  --brand-surface-2: #242421;
-  --brand-surface-3: #2d2d29;
-  --brand-line: rgba(255, 255, 255, 0.09);
-  --brand-line-strong: rgba(255, 255, 255, 0.18);
-  --brand-hover: rgba(255, 255, 255, 0.05);
-  --brand-hover-line: rgba(255, 255, 255, 0.36);
-  --brand-header: rgba(20, 20, 19, 0.9);
-  --brand-text: #edebe6;
-  --brand-muted: #a6a29a;
-  --brand-faint: #7f7b74;
-  --brand-accent: #e39469;
-  --brand-accent-hover: #edab87;
-  --brand-accent-soft: rgba(227, 148, 105, 0.1);
-  --brand-accent-line: rgba(227, 148, 105, 0.3);
-  --brand-ink: #1c1410;
-  --brand-ok-text: #b5dcc0;
-  --brand-ok-bg: #1d2a21;
-  --brand-ok-line: #3c5a45;
-  --brand-warn-text: #efcf9a;
-  --brand-warn-bg: #2d251a;
-  --brand-warn-line: #67532f;
-  --brand-warn: #e5b46a;
-  --brand-bad-text: #f6c5bf;
-  --brand-bad-bg: #321e1c;
-  --brand-bad-line: #74413c;
-  --brand-bad: #f0938a;
-  --dot-sages: #b1a2e0;
-  --dot-spiritual: #ddb064;
-  --dot-scientists: #7fb6d9;
-  --dot-rulers: #e397ad;
-  --dot-cultural: #8cc59d;
+  --brand-bg: #1d1a21;
+  --brand-surface: #25212a;
+  --brand-surface-2: #2d2833;
+  --brand-surface-3: #37313e;
+  --brand-line: rgba(255, 238, 220, 0.09);
+  --brand-line-strong: rgba(255, 238, 220, 0.18);
+  --brand-hover: rgba(255, 238, 220, 0.05);
+  --brand-hover-line: rgba(255, 238, 220, 0.34);
+  --brand-header: rgba(29, 26, 33, 0.86);
+  --brand-text: #f0e7dc;
+  --brand-muted: #b4a89b;
+  --brand-faint: #857b71;
+  --brand-accent: #f0a48c;
+  --brand-accent-hover: #f6bca9;
+  --brand-accent-soft: rgba(240, 164, 140, 0.12);
+  --brand-accent-line: rgba(240, 164, 140, 0.32);
+  --brand-ink: #2a1712;
+  --key-bg: #2f2a35;
+  --key-lip: #141117;
+  --key-text: #f0e7dc;
+  --key-hot-bg: #f0a48c;
+  --key-hot-lip: #a9644f;
+  --key-hot-text: #2a1712;
+  --key-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  --brand-ok-text: #b8dcc2;
+  --brand-ok-bg: #1f2c24;
+  --brand-ok-line: #3d5a46;
+  --brand-warn-text: #f0d09c;
+  --brand-warn-bg: #2f271c;
+  --brand-warn-line: #66532f;
+  --brand-warn: #e8b66c;
+  --brand-bad-text: #f6c6c0;
+  --brand-bad-bg: #33201f;
+  --brand-bad-line: #74423d;
+  --brand-bad: #f0948b;
+  --dot-sages: #c4b6ec;
+  --dot-spiritual: #f0c98e;
+  --dot-scientists: #9fc8e3;
+  --dot-rulers: #eeabbb;
+  --dot-cultural: #a8d4b2;
+  --soft-sages: #2f2a41;
+  --soft-spiritual: #3a2f22;
+  --soft-scientists: #22303c;
+  --soft-rulers: #3a2731;
+  --soft-cultural: #233329;
 }
 
 /* ---------- Page ground for the public pages ---------- */
@@ -383,18 +418,18 @@
 }
 :root:root[data-theme="dark"] .admin-shell, :root:root[data-theme="dark"] body:has(.admin-shell) [data-slot$="-content"] {
   color-scheme: dark;
-  --color-white: #1b1b19;
-  --color-black: #edebe6;
-  --color-zinc-50: #141413;
-  --color-zinc-100: #242421;
-  --color-zinc-200: #2f2f2b;
-  --color-zinc-300: #3d3c37;
-  --color-zinc-400: #7f7b74;
-  --color-zinc-500: #99958d;
-  --color-zinc-600: #a6a29a;
-  --color-zinc-700: #c6c3bc;
-  --color-zinc-800: #dddad4;
-  --color-zinc-900: #edebe6;
+  --color-white: #25212a;
+  --color-black: #f0e7dc;
+  --color-zinc-50: #1d1a21;
+  --color-zinc-100: #2d2833;
+  --color-zinc-200: #37313e;
+  --color-zinc-300: #463f4e;
+  --color-zinc-400: #857b71;
+  --color-zinc-500: #9d9184;
+  --color-zinc-600: #b4a89b;
+  --color-zinc-700: #cfc4b8;
+  --color-zinc-800: #e2d9ce;
+  --color-zinc-900: #f0e7dc;
   --color-zinc-950: #ffffff;
   --color-amber-50: #2d251a;
   --color-amber-100: #3a2f1f;
@@ -412,9 +447,9 @@
   --color-emerald-700: #8cc59d;
   --color-emerald-800: #b5dcc0;
   --color-green-800: #b5dcc0;
-  --color-blue-50: #242421;
-  --color-blue-200: #3d3c37;
-  --color-blue-950: #edebe6;
+  --color-blue-50: #2d2833;
+  --color-blue-200: #463f4e;
+  --color-blue-950: #f0e7dc;
 }
 :root:root .admin-shell :is(h1, h2, h3) { font-family: var(--brand-display); letter-spacing: -0.02em; }
 :root:root .admin-shell :is(a, button, input, select, textarea, summary):focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 2px; }
@@ -550,8 +585,100 @@ html:root:root { background: var(--brand-bg); }
 :root:root .readiness-page .state-strong { color: var(--dot-cultural); }
 :root:root .readiness-page .state-needs-attention { color: var(--brand-bad); }
 :root:root .form-error { color: var(--brand-bad); }
-/* `.home a { color: inherit }` would otherwise give the filled buttons body-text colour. */
-.home a.home-button { color: var(--brand-ink); }
-.home a.home-button-ghost { color: var(--brand-text); }
 /* Every page, including 404s and admin tools, sits on the theme ground. */
 :root:root body { color: var(--brand-text); background-color: var(--brand-bg); }
+
+/* ---------- Category colours (deep tone for text and dots, soft fill for surfaces) ---------- */
+.cat-sages { --cat: var(--dot-sages); --cat-soft: var(--soft-sages); }
+.cat-spiritual { --cat: var(--dot-spiritual); --cat-soft: var(--soft-spiritual); }
+.cat-scientists { --cat: var(--dot-scientists); --cat-soft: var(--soft-scientists); }
+.cat-rulers { --cat: var(--dot-rulers); --cat-soft: var(--soft-rulers); }
+.cat-cultural { --cat: var(--dot-cultural); --cat-soft: var(--soft-cultural); }
+
+/* ---------- Keys: the site's own tactile buttons ----------
+   A key sits on a darker lip. Hover lifts it a pixel; pressing sinks it onto the lip. */
+.key {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 16px;
+  color: var(--key-text);
+  background: var(--key-bg);
+  border: 1px solid var(--key-lip);
+  border-radius: 14px;
+  box-shadow: 0 3px 0 var(--key-lip), var(--key-shadow);
+  font: 600 14.5px/1.1 var(--brand-body);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 140ms var(--ease-out), box-shadow 140ms var(--ease-out), background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.key:hover { transform: translateY(-1px); box-shadow: 0 4px 0 var(--key-lip), var(--key-shadow); }
+.key:active { transform: translateY(3px); box-shadow: 0 0 0 var(--key-lip), var(--key-shadow); transition-duration: 60ms; }
+.key:focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 3px; }
+.key:disabled { opacity: 0.55; cursor: default; transform: none; }
+.key[aria-pressed="true"] { transform: translateY(2px); box-shadow: 0 1px 0 var(--key-lip), var(--key-shadow); background: var(--brand-surface-2); }
+.key small { color: var(--brand-faint); font-size: 12.5px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.key svg { flex: none; }
+.key-hot { color: var(--key-hot-text); background: var(--key-hot-bg); border-color: var(--key-hot-lip); --key-lip: var(--key-hot-lip); }
+.key-hot:hover { color: var(--key-hot-text); }
+.key-lg { min-height: 54px; padding: 0 24px; border-radius: 16px; font-size: 16px; }
+.key-round { width: 38px; min-height: 38px; padding: 0; border-radius: 50%; }
+/* Raised so page-level link colours (e.g. `.explore-shell a`) never repaint a key. */
+:root a.key, :root a.key:hover { color: var(--key-text); }
+:root a.key-hot, :root a.key-hot:hover { color: var(--key-hot-text); }
+
+/* ---------- Portraits ---------- */
+.portrait {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  overflow: hidden;
+  color: var(--cat, var(--brand-muted));
+  background: var(--cat-soft, var(--brand-surface-2));
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--brand-surface), 0 0 0 4px var(--cat-soft, var(--brand-line));
+  font-family: var(--brand-serif);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  transition: transform 300ms var(--ease-out), box-shadow 200ms ease;
+}
+.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; filter: saturate(0.9) contrast(1.02); }
+
+/* ---------- KeySelect (custom dropdown) ---------- */
+.key-select { position: relative; }
+.key-select-trigger { gap: 9px; padding: 0 14px; }
+.key-select-label { color: var(--brand-faint); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+.key-select-value { max-width: 190px; overflow: hidden; text-overflow: ellipsis; }
+.key-select-trigger.is-set { background: var(--brand-accent-soft); border-color: var(--brand-accent-line); }
+.key-select-trigger svg { color: var(--brand-muted); transition: transform 220ms var(--ease-out); }
+.key-select-trigger svg.is-flipped { transform: rotate(180deg); }
+.key-select-list {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 230px;
+  max-height: 330px;
+  margin: 0;
+  padding: 6px;
+  overflow: auto;
+  list-style: none;
+  color: var(--brand-text);
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-line-strong);
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(60, 35, 15, 0.14);
+  transform-origin: top left;
+  outline: none;
+}
+:root[data-theme="dark"] .key-select-list { box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45); }
+.key-select-list li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border-radius: 10px; font-size: 14.5px; cursor: pointer; }
+.key-select-list li.is-active { background: var(--brand-hover); }
+.key-select-list li[aria-selected="true"] { color: var(--brand-accent); font-weight: 600; }
+@media (max-width: 640px) { .key-select-list { left: 0; right: auto; min-width: min(280px, calc(100vw - 32px)); } }

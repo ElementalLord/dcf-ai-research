@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent, type PointerEvent } from "react";
-import { ArrowRight, ArrowUpRight, Check, ChevronDown, CircleHelp, RotateCcw } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { ArrowRight, ArrowUpRight, CircleHelp, RotateCcw } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { groupByCategory } from "@/lib/personality-groups";
+import { DotGlyph } from "@/components/dot-glyph";
+import { KeySelect } from "@/components/key-select";
+import { Portrait, type PortraitData } from "@/components/portrait";
+import { Arrow, CATEGORY_ICONS, Chakra, Check, Chevron, Compass, Diya, Footsteps, Lotus, Manuscript, Mountain, Orbit, Quill, Search, Seeds, Shankha, Sun, Trishula, Veena } from "@/components/vedic-icons";
+import "./ask.css";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { answerBlocks, citationAuthority, isIncompleteQuestion, isUnusableStoredAnswer, type AskCitation, type InlineAnswerPart } from "@/lib/ask/presentation";
 import { AUTHORITY_CAVEAT, AUTHORITY_HELP, AUTHORITY_LABELS, PRIMARY_SOURCE_HELP, sourceTypeName } from "@/lib/sources/authority";
@@ -15,7 +16,7 @@ import { readableEvidence } from "@/lib/corpus/readable-evidence";
 import ResponseFeedback from "./response-feedback";
 import { feedbackAnswerSnapshot, type FeedbackContext } from "@/lib/feedback";
 
-export type Personality = { id: string; canonical_name: string; category?: string | null; lenses?: Array<{ id: string; label: string }> };
+export type Personality = { id: string; canonical_name: string; category?: string | null; lenses?: Array<{ id: string; label: string }>; slug?: string; field?: string; portrait?: PortraitData | null };
 type Result = { question: string; resolvedQuestion?: string; personality: string; answer: string; citations?: AskCitation[]; status?: string; lens?: { id: string; label: string } | null; researchLeads?: Array<{ url: string; title: string }>; webSearchUrl?: string; feedbackToken?: string; feedbackId?: string };
 function legacyFeedbackContext(turn: Result, personalityId: string): FeedbackContext {
   return { responseId: turn.feedbackId!, question: turn.question,
@@ -39,28 +40,33 @@ const styles: Array<{ value: Style; label: string; description: string }> = [
   { value: "detailed", label: "Detailed", description: "More explanation" },
   { value: "research", label: "Research", description: "Fuller evidence review" },
 ];
-const shortCategoryNames: Record<string, string> = {
-  "Educators and Social Reformers": "Educators & Reformers",
-  "Monarchs and Political Leaders": "Rulers & Leaders",
-  "Musicians, Performers and Cultural Figures": "Arts & Culture",
-  "Rishis and Sages": "Rishis & Sages",
-  "Saints and Spiritual Teachers": "Saints & Teachers",
-  "Scientists and Innovators": "Scientists",
-  "Social Entrepreneurs, Institution Builders and Agricultural Leaders": "Builders & Agriculture",
-  "Warriors & Freedom Fighters": "Freedom Fighters",
-};
-const suggestionTemplates = [
-  (person: string) => `Who is ${person}?`,
-  (person: string) => `What is ${person} known for?`,
-  (person: string) => `What did ${person} do that mattered?`,
-  (person: string) => `What ideas are associated with ${person}?`,
-  (person: string) => `How did ${person} influence others?`,
-  (person: string) => `What challenges did ${person} face?`,
-  (person: string) => `What do the sources say about ${person}?`,
-  (person: string) => `What was happening in ${person}'s time?`,
-  (person: string) => `How has ${person} been remembered?`,
-  (person: string) => `What can we learn from ${person}'s life?`,
+/** The guide's name: the sutradhara is the "holder of the thread" who narrates a Sanskrit play. */
+const GUIDE = "Sutradhar";
+const FIELDS = [
+  { id: "sages", label: "Sages" }, { id: "spiritual", label: "Spiritual teachers" }, { id: "scientists", label: "Scientists & builders" },
+  { id: "rulers", label: "Rulers & fighters" }, { id: "cultural", label: "Artists" },
 ];
+type IconComponent = typeof Lotus;
+const suggestionTemplates: Array<{ ask: (person: string) => string; Icon: IconComponent }> = [
+  { ask: (person) => `Who is ${person}?`, Icon: Lotus },
+  { ask: (person) => `What is ${person} known for?`, Icon: Sun },
+  { ask: (person) => `What did ${person} do that mattered?`, Icon: Footsteps },
+  { ask: (person) => `What ideas are associated with ${person}?`, Icon: Diya },
+  { ask: (person) => `How did ${person} influence others?`, Icon: Seeds },
+  { ask: (person) => `What challenges did ${person} face?`, Icon: Mountain },
+  { ask: (person) => `What do the sources say about ${person}?`, Icon: Manuscript },
+  { ask: (person) => `What was happening in ${person}'s time?`, Icon: Chakra },
+  { ask: (person) => `How has ${person} been remembered?`, Icon: Shankha },
+  { ask: (person) => `What can we learn from ${person}'s life?`, Icon: Compass },
+];
+/** A symbol for each answer angle; unknown angles fall back to the compass. */
+const LENS_ICONS: Record<string, IconComponent> = {
+  scientific: Orbit, technological: Orbit, environmental: Seeds, agricultural: Seeds, rural_development: Seeds,
+  leadership: Trishula, military: Trishula, political: Chakra, administrative: Chakra, national: Chakra, institutional: Manuscript,
+  educational: Quill, literary: Quill, textual: Manuscript, historical: Manuscript, philosophical: Lotus, spiritual: Diya,
+  artistic: Veena, cultural: Veena, social: Footsteps, gender: Lotus, international: Compass, maritime: Compass, economic: Sun, architectural: Mountain,
+};
+const thinkingLines = ["Unrolling the palm leaves", "Reading the sources", "Tying the threads together"];
 const citationLabels: Record<string, string> = {
   primary_text: "Original text",
   secondary_source: "Scholarly source",
@@ -131,7 +137,8 @@ export default function AskClient({ personalities, loadError }: { personalities:
   const [personId, setPersonId] = useState(personalities[0]?.id || "");
   const [personPickerOpen, setPersonPickerOpen] = useState(false);
   const [howToOpen, setHowToOpen] = useState(false);
-  const [personCategory, setPersonCategory] = useState("");
+  const [pickerField, setPickerField] = useState("all");
+  const [pickerQuery, setPickerQuery] = useState("");
   const [style, setStyle] = useState<Style>("balanced");
   const [question, setQuestion] = useState("");
   const [conversations, setConversations] = useState<Record<string, Result[]>>({});
@@ -161,20 +168,20 @@ export default function AskClient({ personalities, loadError }: { personalities:
   const selectedAuthority = selectedCitation ? citationAuthority(selectedCitation) : null;
   const personRecord = personalities.find(item => item.id === personId);
   const person = personRecord?.canonical_name || "a person";
-  const peopleGroups = groupByCategory(personalities);
-  const activePeopleGroup = peopleGroups.find(group => group.label === personCategory)
-    || peopleGroups.find(group => group.people.some(item => item.id === personId)) || peopleGroups[0];
+  const pickerPeople = personalities
+    .filter(item => pickerField === "all" || item.field === pickerField)
+    .filter(item => !pickerQuery.trim() || item.canonical_name.toLowerCase().includes(pickerQuery.trim().toLowerCase()));
+  const choosePerson = (id: string) => { setPersonId(id); setPersonPickerOpen(false); setSuggestionStart(0); setQuestion(""); setSourceId(null); setError(""); };
   const lenses = personRecord?.lenses || [];
   // Follow-ups rely on the conversation for the name, so they read the way a person would ask them.
   const explore = turns.length
-    ? [{ label: "In its time", ask: "How was that significant for its time?" }, { label: "Who else?", ask: "Who else was doing similar work at the time?" },
-      ...lenses.map(lens => ({ label: `${lens.label} angle`, ask: `What about the ${lens.label.toLowerCase()} angle?` }))]
-    : lenses.map(lens => ({ label: `${lens.label} angle`, ask: `Explain ${person} from the ${lens.label.toLowerCase()} angle.` }));
-  const styleLabel = styles.find(item => item.value === style)?.label || "Balanced";
+    ? [{ label: "In its time", ask: "How was that significant for its time?", Icon: Chakra }, { label: "Who else?", ask: "Who else was doing similar work at the time?", Icon: Footsteps },
+      ...lenses.map(lens => ({ label: `${lens.label} angle`, ask: `What about the ${lens.label.toLowerCase()} angle?`, Icon: LENS_ICONS[lens.id] ?? Compass }))]
+    : lenses.map(lens => ({ label: `${lens.label} angle`, ask: `Explain ${person} from the ${lens.label.toLowerCase()} angle.`, Icon: LENS_ICONS[lens.id] ?? Compass }));
   const chatWidthMax = Math.max(CHAT_MIN_WIDTH, viewportWidth - 24);
   const displayedWidth = Math.min(chatWidth, chatWidthMax);
   const displayedHeight = chatHeight ?? Math.max(CHAT_MIN_HEIGHT, viewportHeight - 60);
-  const visibleSuggestions = Array.from({ length: 3 }, (_, index) => suggestionTemplates[(suggestionStart + index) % suggestionTemplates.length](person));
+  const visibleSuggestions = Array.from({ length: 3 }, (_, index) => { const template = suggestionTemplates[(suggestionStart + index) % suggestionTemplates.length]; return { text: template.ask(person), Icon: template.Icon }; });
 
   useEffect(() => {
     let saved: string | null = null;
@@ -322,47 +329,60 @@ export default function AskClient({ personalities, loadError }: { personalities:
     <div className="ai-layout"><div className="ai-main chat-main">
       <div className="ai-title"><h1>Ask DCF</h1><p>Ask about anyone in the collection. Every answer cites its sources, so tap a citation to see the evidence.</p></div>
       <div className="chat-shell">
-        <div className="chat-toolbar"><div className="chat-toolbar-controls"><div className="person-control"><span>Talking about</span>
-          <button type="button" className="person-picker-trigger" aria-label={`Choose person. Current: ${person}`} aria-haspopup="dialog" aria-expanded={personPickerOpen} onClick={() => { setPersonCategory(personRecord?.category || peopleGroups[0]?.label || ""); setPersonPickerOpen(true); }} disabled={loading || !personalities.length}><span>{personId ? person : "Choose a person"}</span><ChevronDown size={16} aria-hidden="true" /></button>
-        </div><label className="depth-control">Answer depth
-          <Select value={style} onValueChange={value => setStyle(value as Style)} disabled={loading}>
-            <SelectTrigger aria-label="Answer depth"><SelectValue>{styleLabel}</SelectValue></SelectTrigger>
-            <SelectContent className="ai-select-content">{styles.map(item => <SelectItem key={item.value} value={item.value}>{item.label}: {item.description}</SelectItem>)}</SelectContent>
-          </Select>
-        </label></div><div className="chat-toolbar-actions"><button className="chat-how-to" type="button" onClick={() => setHowToOpen(true)} aria-label="How to use Ask DCF" aria-haspopup="dialog"><CircleHelp size={16} aria-hidden="true" /><span>How to use</span></button>{turns.length > 0 && <button className="chat-new" type="button" onClick={() => { setConversations(current => ({ ...current, [personId]: [] })); setSourceId(null); setError(""); input.current?.focus(); }} disabled={loading} aria-label="New chat"><RotateCcw size={14} aria-hidden="true" /><span>New chat</span></button>}</div></div>
+        <div className="chat-toolbar"><div className="chat-toolbar-controls"><button type="button" className="key guide-person" aria-label={`Choose who to talk about. Current: ${person}`} aria-haspopup="dialog" aria-expanded={personPickerOpen} onClick={() => { setPickerField("all"); setPickerQuery(""); setPersonPickerOpen(true); }} disabled={loading || !personalities.length}>
+          {personRecord ? <Portrait name={person} portrait={personRecord.portrait} category={personRecord.field} size={34} /> : <Lotus size={20} />}
+          <span className="guide-person-text"><small>Talking about</small><span>{personId ? person : "Choose a person"}</span></span><Chevron size={16} />
+        </button>
+        <div className={loading ? "guide-depth is-disabled" : "guide-depth"}><KeySelect label="Depth" value={style} onChange={value => !loading && setStyle(value as Style)} options={styles.map(item => ({ value: item.value, label: `${item.label} · ${item.description}` }))} /></div></div><div className="chat-toolbar-actions"><button className="chat-how-to" type="button" onClick={() => setHowToOpen(true)} aria-label="How to use Ask DCF" aria-haspopup="dialog"><CircleHelp size={16} aria-hidden="true" /><span>How to use</span></button>{turns.length > 0 && <button className="chat-new" type="button" onClick={() => { setConversations(current => ({ ...current, [personId]: [] })); setSourceId(null); setError(""); input.current?.focus(); }} disabled={loading} aria-label="New chat"><RotateCcw size={14} aria-hidden="true" /><span>New chat</span></button>}</div></div>
         <div ref={chatThread} className="chat-thread" role="log" aria-live="polite" tabIndex={0} aria-label={`Conversation about ${person}`}>
-          {!turns.length && !pendingQuestion && <div className="chat-welcome"><div><p className="chat-name">DCF</p><p>Hi! What would you like to know about {person}? Start anywhere.</p></div></div>}
+          {!turns.length && !pendingQuestion && <div className="guide-welcome" key={personId}>
+            <DotGlyph mode="wave" size={72} label={`${GUIDE}, your guide, waving hello`} />
+            <div><p className="guide-name">{GUIDE} <span>your guide</span></p>
+              <p className="guide-hello">Namaste! I hold the thread of these stories. Ask me anything about <strong>{person}</strong>, and I&apos;ll show you exactly where every fact comes from.</p></div>
+          </div>}
           {turns.map((turn, turnIndex) => <div className="chat-exchange" key={`${personId}:${turnIndex}`}>
             <div className="chat-message chat-message-user"><span className="chat-name">You</span><p>{turn.question}</p></div>
-            <article className="chat-message chat-message-assistant"><div className="chat-message-content"><span className="chat-name">DCF{turn.lens && <span className="chat-lens-tag">{turn.lens.label} angle</span>}</span>{turn.status === "research_answer" && <p>Live research · its sources are recorded to improve future answers</p>}{isUnusableStoredAnswer(turn.answer, turn.status)
+            <article className="chat-message chat-message-assistant"><div className="chat-message-content"><span className="chat-name guide-name-inline">{GUIDE}{turn.lens && <span className="chat-lens-tag">{turn.lens.label} angle</span>}</span>{turn.status === "research_answer" && <p>Live research · its sources are recorded to improve future answers</p>}{isUnusableStoredAnswer(turn.answer, turn.status)
               ? <div className="chat-repair"><p>{isIncompleteQuestion(turn.question) ? "That question stopped partway through. Finish it below and I can give you a useful answer." : !turn.answer.trim() ? "That earlier reply was empty. Ask it again for a complete answer." : "That earlier reply pulled in page text instead of answering. Ask it again for a fresh response."}</p><button type="button" onClick={() => { setQuestion(isIncompleteQuestion(turn.question) ? `${turn.question.trim()} ` : turn.question); input.current?.focus(); }}>{isIncompleteQuestion(turn.question) ? "Finish question" : "Ask again"}<ArrowRight size={14} aria-hidden="true" /></button></div>
               : <><Answer answer={turn.answer} show={id => setSourceId(`${turnIndex}:${id}`)} citations={turn.citations || []}/>{turn.status === "abstained" && (turn.researchLeads?.length || turn.webSearchUrl) && <div className="research-continuation"><p>{turn.researchLeads?.length ? "Pages to inspect (not verified as evidence for this answer)" : "Continue researching this question"}</p>{turn.researchLeads?.map(lead => <a key={lead.url} href={lead.url} target="_blank" rel="noopener noreferrer">{lead.title || "Source page"}<ArrowUpRight size={14} aria-hidden="true" /></a>)}{turn.webSearchUrl && <a href={turn.webSearchUrl} target="_blank" rel="noopener noreferrer">Search the web for this question<ArrowUpRight size={14} aria-hidden="true" /></a>}</div>}{turn.feedbackToken ? <ResponseFeedback key={turn.feedbackToken} token={turn.feedbackToken}/> : turn.feedbackId && <ResponseFeedback key={turn.feedbackId} legacyContext={legacyFeedbackContext(turn, personId)}/>}</>}</div></article>
           </div>)}
-          {pendingQuestion && <div className="chat-exchange chat-exchange-pending"><div className="chat-message chat-message-user"><span className="chat-name">You</span><p>{pendingQuestion}</p></div><div className="chat-message chat-message-assistant chat-thinking" role="status" aria-live="polite"><div className="chat-message-content"><span className="chat-name">DCF is thinking</span><div className="chat-thinking-line"><span className="chat-thinking-dots" aria-hidden="true"><i/><i/><i/></span><span>{elapsed < 4 ? "Reading your question" : elapsed < 14 ? "Looking through the evidence" : "Putting the answer together"}</span></div><div className="chat-thinking-track" aria-hidden="true"><span className={elapsed < 4 ? "is-current" : "is-done"}/><span className={elapsed >= 4 && elapsed < 14 ? "is-current" : elapsed >= 14 ? "is-done" : ""}/><span className={elapsed >= 14 ? "is-current" : ""}/></div><small>{elapsed >= 25 ? "This is taking a little longer than usual." : "Sources will appear right beside the facts they support."}</small></div></div></div>}
+          {pendingQuestion && <div className="chat-exchange chat-exchange-pending"><div className="chat-message chat-message-user"><span className="chat-name">You</span><p>{pendingQuestion}</p></div><div className="chat-message chat-message-assistant guide-thinking" role="status" aria-live="polite"><div className="guide-thinking-faces"><DotGlyph mode="think" size={56} />{personRecord && <Portrait name={person} portrait={personRecord.portrait} category={personRecord.field} size={40} className="guide-thinking-portrait" />}</div><div className="chat-message-content"><span className="chat-name guide-name-inline">{GUIDE} is thinking about {person}</span><div className="chat-thinking-line"><span>{thinkingLines[elapsed < 4 ? 0 : elapsed < 14 ? 1 : 2]}…</span></div><div className="chat-thinking-track" aria-hidden="true"><span className={elapsed < 4 ? "is-current" : "is-done"}/><span className={elapsed >= 4 && elapsed < 14 ? "is-current" : elapsed >= 14 ? "is-done" : ""}/><span className={elapsed >= 14 ? "is-current" : ""}/></div><small>{elapsed >= 25 ? "This is taking a little longer than usual." : "Sources will appear right beside the facts they support."}</small></div></div></div>}
         </div>
         {error && <p role="alert" className="form-error chat-error">{error}</p>}
-        {!turns.length && !loading && <div ref={suggestionsRef} className="chat-suggestions"><span>Try asking</span>{visibleSuggestions.map(value => <button type="button" key={value} onClick={() => { setQuestion(value); input.current?.focus(); }}>{value}<ArrowUpRight size={14} aria-hidden="true" /></button>)}</div>}
-        {!loading && explore.length > 0 && <div className="chat-explore" role="group" aria-label={turns.length ? "Explore further" : "Choose an angle"}><span>{turns.length ? "Explore further" : "Or choose an angle"}</span>{explore.map(item => <button type="button" key={item.label} title={item.ask} onClick={() => { setQuestion(item.ask); input.current?.focus(); }}>{item.label}</button>)}</div>}
+        {!turns.length && !loading && <div ref={suggestionsRef} className="guide-chips"><span className="guide-chips-label"><Lotus size={15} />Try asking</span>{visibleSuggestions.map(({ text, Icon }) => <button type="button" className="key" key={text} onClick={() => { setQuestion(text); input.current?.focus(); }}><Icon size={17} />{text}</button>)}</div>}
+        {!loading && explore.length > 0 && <div className="guide-chips guide-angles" role="group" aria-label={turns.length ? "Explore further" : "Choose an angle"}><span className="guide-chips-label"><Compass size={15} />{turns.length ? "Explore further" : "Or choose an angle"}</span>{explore.map(({ label, ask, Icon }) => <button type="button" className="key" key={label} title={ask} onClick={() => { setQuestion(ask); input.current?.focus(); }}><Icon size={17} />{label}</button>)}</div>}
       <form onSubmit={ask} className="ask-form chat-composer">
         <label className="question-label" htmlFor="question">Your question</label>
-        <Textarea ref={input} id="question" value={question} onChange={event => setQuestion(event.target.value)} onKeyDown={event => {
+        <textarea ref={input} id="question" value={question} onChange={event => setQuestion(event.target.value)} onKeyDown={event => {
           if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); event.currentTarget.form?.requestSubmit(); }
-        }} placeholder={turns.length ? "Ask a follow-up…" : `Ask about ${person}…`} className="question-input" disabled={loading} />
-        <div className="ask-footer"><p className="ask-keyboard-note">Enter to ask <span aria-hidden="true">·</span> Shift+Enter for a new line</p><Button type="submit" disabled={loading || !personId || !question.trim()}>{loading ? "Thinking…" : "Send"}<ArrowRight size={16} aria-hidden="true" /></Button></div>
+        }} placeholder={turns.length ? "Ask a follow-up…" : `Ask about ${person}…`} className="question-input guide-input" disabled={loading} rows={2} />
+        <div className="ask-footer"><p className="ask-keyboard-note">Enter to ask <span aria-hidden="true">·</span> Shift+Enter for a new line</p><button type="submit" className="key key-hot guide-send" disabled={loading || !personId || !question.trim()}>{loading ? "Thinking…" : "Send"}<Arrow size={16} /></button></div>
       </form>
       <div className="chat-resize-handle chat-resize-width" role="separator" aria-orientation="vertical" aria-label="Resize chat width" aria-valuemin={CHAT_MIN_WIDTH} aria-valuemax={chatWidthMax} aria-valuenow={displayedWidth} aria-valuetext={`${displayedWidth} pixels`} tabIndex={0} title="Drag to resize chat width" onPointerDown={event => beginResize("width", event)} onPointerMove={moveResize} onPointerUp={endResize} onPointerCancel={endResize} onKeyDown={event => resizeWithKeyboard("width", event)}><span /></div>
       <div className="chat-resize-handle chat-resize-height" role="separator" aria-orientation="horizontal" aria-label="Resize chat height" aria-valuemin={CHAT_MIN_HEIGHT} aria-valuemax={CHAT_MAX_HEIGHT} aria-valuenow={displayedHeight} aria-valuetext={`${displayedHeight} pixels`} tabIndex={0} title="Drag to resize chat height" onPointerDown={event => beginResize("height", event)} onPointerMove={moveResize} onPointerUp={endResize} onPointerCancel={endResize} onKeyDown={event => resizeWithKeyboard("height", event)}><span /></div>
       </div>
     </div></div>
     <Dialog open={personPickerOpen} onOpenChange={setPersonPickerOpen}>
-      <DialogContent className="person-picker-dialog">
-        <DialogHeader className="person-picker-heading"><DialogTitle>Choose a person</DialogTitle><DialogDescription>Choose a category, then a person.</DialogDescription></DialogHeader>
-        <div className="person-category-grid" role="group" aria-label="Person categories">
-          {peopleGroups.map(group => <button type="button" key={group.label} className="person-category-button" aria-label={group.label} aria-pressed={group.label === activePeopleGroup?.label} onClick={() => setPersonCategory(group.label)}><span>{shortCategoryNames[group.label] || group.label}</span><small>{group.people.length}</small></button>)}
+      <DialogContent className="picker">
+        <DialogHeader className="picker-head">
+          <DialogTitle>Who shall we talk to?</DialogTitle>
+          <DialogDescription>Tap a face. Narrow it down by field or name if you like.</DialogDescription>
+        </DialogHeader>
+        <div className="picker-tools">
+          <label className="picker-search"><Search size={18} /><span className="sr-only">Find a person</span><input value={pickerQuery} onChange={event => setPickerQuery(event.target.value)} placeholder="Find a name" autoComplete="off" /></label>
+          <button type="button" className="key key-hot" onClick={() => { const pool = pickerPeople.length ? pickerPeople : personalities; const choice = pool[Math.floor(Math.random() * pool.length)]; if (choice) choosePerson(choice.id); }}><Sun size={17} />Surprise me</button>
         </div>
-        {activePeopleGroup && <div className="person-choice-section"><h3>{activePeopleGroup.label}</h3><div className="person-choice-grid">
-          {activePeopleGroup.people.map(item => <button type="button" key={item.id} className="person-choice-button" aria-pressed={item.id === personId} onClick={() => { setPersonId(item.id); setPersonPickerOpen(false); setSuggestionStart(0); setQuestion(""); setSourceId(null); setError(""); }}><span>{item.canonical_name}</span>{item.id === personId && <Check size={17} aria-hidden="true" />}</button>)}
-        </div></div>}
+        <div className="picker-fields" role="group" aria-label="Field">
+          <button type="button" className="key" aria-pressed={pickerField === "all"} onClick={() => setPickerField("all")}>Everyone</button>
+          {FIELDS.map(field => { const Icon = CATEGORY_ICONS[field.id]; return <button key={field.id} type="button" className={`key cat-${field.id}`} aria-pressed={pickerField === field.id} onClick={() => setPickerField(field.id)}><Icon size={16} />{field.label}</button>; })}
+        </div>
+        <div className="picker-faces">
+          {pickerPeople.map((item, index) => <button type="button" key={item.id} className={`picker-face cat-${item.field ?? "sages"}`} style={{ "--i": index } as CSSProperties} aria-pressed={item.id === personId} onClick={() => choosePerson(item.id)}>
+            <span className="picker-face-img"><Portrait name={item.canonical_name} portrait={item.portrait} category={item.field} size={76} />{item.id === personId && <span className="picker-face-check"><Check size={14} /></span>}</span>
+            <span className="picker-face-name">{item.canonical_name}</span>
+          </button>)}
+          {!pickerPeople.length && <p className="picker-empty">No one by that name. Try another spelling.</p>}
+        </div>
       </DialogContent>
     </Dialog>
     <Sheet open={howToOpen} onOpenChange={setHowToOpen}><SheetContent className="how-to-sheet"><SheetHeader><SheetTitle>How to use Ask DCF</SheetTitle><SheetDescription>Ask about a person, follow the conversation, and check the evidence.</SheetDescription></SheetHeader><div className="how-to-sheet-body"><ol>

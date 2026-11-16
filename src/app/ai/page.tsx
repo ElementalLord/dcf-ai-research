@@ -2,6 +2,8 @@ import AskClient, { type Personality } from "../ask/ask-client";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { relevantLenses } from "@/lib/ask/lenses";
 import { primaryCategoryName } from "@/lib/personality-groups";
+import { getPortraits, slugForName } from "@/lib/portraits";
+import { exploreCategory } from "../explore/explore-data";
 export const dynamic = "force-dynamic";
 type Row = { id: string; canonical_name: string; personality_categories: Array<{ is_primary: boolean | null; categories: { slug: string; name: string } | Array<{ slug: string; name: string }> | null }> | null };
 export default async function AiPage() {
@@ -14,5 +16,11 @@ export default async function AiPage() {
     lenses: relevantLenses((row.personality_categories || []).flatMap((membership) => Array.isArray(membership.categories) ? membership.categories : membership.categories ? [membership.categories] : []).map((category) => category.slug))
       .map((lens) => ({ id: lens.id, label: lens.label })),
   }));
-  return <AskClient personalities={personalities} loadError={error ? `Could not load personalities: ${error.message}` : ""}/>;
+  // Portraits and the five Explore fields make the picker a page of faces rather than a list of names.
+  const portraits = await getPortraits(personalities.map((person) => slugForName(person.canonical_name)));
+  const withFaces = personalities.map((person) => {
+    const slug = slugForName(person.canonical_name);
+    return { ...person, slug, field: exploreCategory(slug).id, portrait: portraits[slug] ?? null };
+  });
+  return <AskClient personalities={withFaces} loadError={error ? `Could not load personalities: ${error.message}` : ""}/>;
 }

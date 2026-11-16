@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPersonBySlug, getPhase1People, getRelatedPeople } from "@/lib/phase1/dataset";
+import { getPortraits } from "@/lib/portraits";
 import { approvedStatements, publicProfilePerson } from "../explore-data";
 import { ProfileClient } from "../profile-client";
 
@@ -24,5 +25,6 @@ export default async function PersonalityPage({ params }: { params: Promise<{ sl
   const { slug } = await params;
   const person = getPersonBySlug(slug);
   if (!person) notFound();
-  return <ProfileClient person={publicProfilePerson(person)} related={getRelatedPeople(person).map(({ id, slug: relatedSlug, name, detailedCategory, eraShort }) => ({ id, slug: relatedSlug, name, detailedCategory, eraShort }))} />;
+  const portrait = (await getPortraits([slug]))[slug] ?? null;
+  return <ProfileClient person={publicProfilePerson(person)} portrait={portrait} related={getRelatedPeople(person).map(({ id, slug: relatedSlug, name, detailedCategory, eraShort }) => ({ id, slug: relatedSlug, name, detailedCategory, eraShort }))} />;
 }

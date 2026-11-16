@@ -3,11 +3,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/theme-toggle";
 
-const links = [{ href: "/", label: "Home" }, { href: "/explore", label: "Explore" }, { href: "/ai", label: "Ask" }, { href: "/resources", label: "Resources" }];
+const links = [{ href: "/", label: "Explore" }, { href: "/ai", label: "Ask" }, { href: "/resources", label: "Resources" }];
 
 export function SiteNav() {
   const pathname = usePathname();
-  const isCurrent = (href: string) => href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`) || (href === "/ai" && pathname === "/ask");
+  const isCurrent = (href: string) => href === "/" ? pathname === "/" || pathname === "/explore" || pathname.startsWith("/explore/") : pathname === href || pathname.startsWith(`${href}/`) || (href === "/ai" && pathname === "/ask");
   return <header className="site-header"><div className="site-header-inner">
     <Link className="wordmark" href="/" aria-label="DCF Inspiring Personalities, home">
       <span className="wordmark-mark" aria-hidden="true">DCF</span>

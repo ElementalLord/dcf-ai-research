@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Geist, Newsreader, Source_Sans_3 } from "next/font/google";
+import { Bricolage_Grotesque, Geist, Newsreader, Source_Sans_3, Tiro_Devanagari_Sanskrit } from "next/font/google";
 import "./globals.css";
 import "./public-experience.css";
 import "./resources-hub.css";
@@ -22,6 +22,12 @@ const geist = Geist({
   subsets: ["latin"],
 });
 
+const deva = Tiro_Devanagari_Sanskrit({
+  variable: "--font-deva",
+  weight: "400",
+  subsets: ["devanagari", "latin"],
+});
+
 const newsreader = Newsreader({
   variable: "--font-newsreader",
   subsets: ["latin"],
@@ -36,7 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${sourceSans.variable} ${newsreader.variable} ${bricolage.variable} ${geist.variable} h-full antialiased`}
+      className={`${sourceSans.variable} ${newsreader.variable} ${bricolage.variable} ${geist.variable} ${deva.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head><script dangerouslySetInnerHTML={{ __html: themeInitScript }} /></head>
