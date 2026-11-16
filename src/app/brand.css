@@ -1,28 +1,83 @@
 /*
   DCF brand layer. Loaded last by the root layout.
-  One navy ground, one soft blue accent, a grotesque display face, flat surfaces.
+  Warm white ground (or warm charcoal in dark mode), one terracotta accent, a grotesque
+  display face, flat surfaces.
   `:root:root` raises specificity so these rules beat the older page-scoped layers
   (globals.css, public-experience.css) without !important.
 */
+/* Light is the default. The header toggle sets <html data-theme="dark"> (see theme-toggle.tsx). */
 :root {
-  --brand-bg: #0b1330;
-  --brand-surface: #111b3e;
-  --brand-surface-2: #172350;
-  --brand-line: rgba(255, 255, 255, 0.12);
-  --brand-line-strong: rgba(255, 255, 255, 0.22);
-  --brand-text: #f5f7ff;
-  --brand-muted: #b6bfd8;
-  --brand-accent: #8fb0ff;
-  --brand-accent-hover: #adc5ff;
-  --brand-ink: #0c1a3d;
+  --brand-bg: #ffffff;
+  --brand-surface: #fafaf8;
+  --brand-surface-2: #f3f2ee;
+  --brand-surface-3: #ebe9e3;
+  --brand-line: #e8e6e1;
+  --brand-line-strong: #d4d1c9;
+  --brand-hover: rgba(28, 25, 23, 0.04);
+  --brand-hover-line: #a8a49b;
+  --brand-header: rgba(255, 255, 255, 0.9);
+  --brand-text: #1c1917;
+  --brand-muted: #66625b;
+  --brand-faint: #8c877e;
+  --brand-accent: #b4532a;
+  --brand-accent-hover: #9a4422;
+  --brand-accent-soft: rgba(180, 83, 42, 0.08);
+  --brand-accent-line: rgba(180, 83, 42, 0.28);
+  --brand-ink: #ffffff;
+  --brand-ok-text: #2f5d40;
+  --brand-ok-bg: #edf5ef;
+  --brand-ok-line: #b9d4c1;
+  --brand-warn-text: #7a4b12;
+  --brand-warn-bg: #fbf3e4;
+  --brand-warn-line: #e5cc9c;
+  --brand-warn: #a3621a;
+  --brand-bad-text: #8a2f29;
+  --brand-bad-bg: #fcefed;
+  --brand-bad-line: #e6b3ad;
+  --brand-bad: #b3392f;
   --brand-radius: 6px;
   --brand-display: var(--font-display), "Helvetica Neue", Arial, sans-serif;
   --brand-body: var(--font-body), "Helvetica Neue", Arial, sans-serif;
-  --dot-sages: #b996e6;
-  --dot-spiritual: #ee8f6e;
-  --dot-scientists: #5ec0ea;
-  --dot-rulers: #e58fb5;
-  --dot-cultural: #5fcf9d;
+  --dot-sages: #7a68b0;
+  --dot-spiritual: #b07a1f;
+  --dot-scientists: #3a7ca5;
+  --dot-rulers: #b2536d;
+  --dot-cultural: #4b8a5f;
+}
+:root[data-theme="dark"] {
+  --brand-bg: #141413;
+  --brand-surface: #1b1b19;
+  --brand-surface-2: #242421;
+  --brand-surface-3: #2d2d29;
+  --brand-line: rgba(255, 255, 255, 0.09);
+  --brand-line-strong: rgba(255, 255, 255, 0.18);
+  --brand-hover: rgba(255, 255, 255, 0.05);
+  --brand-hover-line: rgba(255, 255, 255, 0.36);
+  --brand-header: rgba(20, 20, 19, 0.9);
+  --brand-text: #edebe6;
+  --brand-muted: #a6a29a;
+  --brand-faint: #7f7b74;
+  --brand-accent: #e39469;
+  --brand-accent-hover: #edab87;
+  --brand-accent-soft: rgba(227, 148, 105, 0.1);
+  --brand-accent-line: rgba(227, 148, 105, 0.3);
+  --brand-ink: #1c1410;
+  --brand-ok-text: #b5dcc0;
+  --brand-ok-bg: #1d2a21;
+  --brand-ok-line: #3c5a45;
+  --brand-warn-text: #efcf9a;
+  --brand-warn-bg: #2d251a;
+  --brand-warn-line: #67532f;
+  --brand-warn: #e5b46a;
+  --brand-bad-text: #f6c5bf;
+  --brand-bad-bg: #321e1c;
+  --brand-bad-line: #74413c;
+  --brand-bad: #f0938a;
+  --dot-sages: #b1a2e0;
+  --dot-spiritual: #ddb064;
+  --dot-scientists: #7fb6d9;
+  --dot-rulers: #e397ad;
+  --dot-cultural: #8cc59d;
 }
 
 /* ---------- Page ground for the public pages ---------- */
@@ -38,7 +93,7 @@
   top: 0;
   z-index: 40;
   color: var(--brand-text);
-  background: rgba(11, 19, 48, 0.92);
+  background: var(--brand-header);
   border-bottom: 1px solid var(--brand-line);
   box-shadow: none;
   backdrop-filter: saturate(140%) blur(10px);
@@ -118,7 +173,7 @@
 }
 .brand-button:hover { background: var(--brand-accent-hover); border-color: var(--brand-accent-hover); }
 .brand-button-quiet { color: var(--brand-text); background: transparent; border-color: var(--brand-line-strong); }
-.brand-button-quiet:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.4); }
+.brand-button-quiet:hover { background: var(--brand-hover); border-color: var(--brand-hover-line); }
 .brand-button:active { transform: scale(0.97); }
 .brand-dot { display: inline-block; flex: none; width: 9px; height: 9px; border-radius: 50%; background: var(--brand-muted); }
 .brand-dot.dot-sages { background: var(--dot-sages); }
@@ -163,7 +218,7 @@
   border-radius: var(--brand-radius);
   box-shadow: none;
 }
-:root:root .ai-page :is(.chat-toolbar .person-picker-trigger, [data-slot="select-trigger"]):hover { border-color: rgba(255, 255, 255, 0.4); background: var(--brand-bg); }
+:root:root .ai-page :is(.chat-toolbar .person-picker-trigger, [data-slot="select-trigger"]):hover { border-color: var(--brand-hover-line); background: var(--brand-bg); }
 :root:root .ai-page .chat-how-to, :root:root .ai-page .chat-new {
   color: var(--brand-muted);
   background: transparent;
@@ -171,8 +226,8 @@
   border-radius: var(--brand-radius);
   font: 600 13px/1 var(--brand-display);
 }
-:root:root .ai-page :is(.chat-how-to, .chat-new):hover { color: var(--brand-text); background: rgba(255, 255, 255, 0.06); }
-:root:root .ai-page .chat-thread { padding: 28px 28px 32px; scrollbar-color: #3a4772 transparent; }
+:root:root .ai-page :is(.chat-how-to, .chat-new):hover { color: var(--brand-text); background: var(--brand-hover); }
+:root:root .ai-page .chat-thread { padding: 28px 28px 32px; scrollbar-color: var(--brand-line-strong) transparent; }
 :root:root .ai-page .chat-welcome > div,
 :root:root .ai-page .chat-message-content {
   padding: 0;
@@ -206,13 +261,13 @@
   border-radius: var(--brand-radius);
   font-size: 14px;
 }
-:root:root .ai-page :is(.chat-suggestions, .chat-explore) button:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.4); }
+:root:root .ai-page :is(.chat-suggestions, .chat-explore) button:hover { background: var(--brand-hover); border-color: var(--brand-hover-line); }
 :root:root .ai-page :is(.chat-suggestions, .chat-explore) button svg { color: var(--brand-accent); }
 :root:root .ai-page .ask-form.chat-composer { background: transparent; border-top: 1px solid var(--brand-line); }
 :root:root .ai-page .chat-composer .question-label { color: var(--brand-muted); }
 :root:root .ai-page .chat-composer .question-input { color: var(--brand-text); font-family: var(--brand-body); }
-:root:root .ai-page .chat-composer .question-input::placeholder { color: #8d97b5; }
-:root:root .ai-page .chat-composer .ask-keyboard-note { color: #8d97b5; }
+:root:root .ai-page .chat-composer .question-input::placeholder { color: var(--brand-faint); }
+:root:root .ai-page .chat-composer .ask-keyboard-note { color: var(--brand-faint); }
 :root:root .ai-page .chat-composer .ask-footer > button {
   color: var(--brand-ink);
   background: var(--brand-accent);
@@ -222,10 +277,10 @@
   font: 650 15px/1 var(--brand-display);
 }
 :root:root .ai-page .chat-composer .ask-footer > button:hover { background: var(--brand-accent-hover); }
-:root:root .ai-page .chat-composer .ask-footer > button:disabled { color: #8d97b5; background: var(--brand-surface-2); border-color: var(--brand-line); opacity: 1; }
+:root:root .ai-page .chat-composer .ask-footer > button:disabled { color: var(--brand-faint); background: var(--brand-surface-2); border-color: var(--brand-line); opacity: 1; }
 :root:root .ai-page .chat-resize-handle span { background: var(--brand-line-strong); }
 :root:root .ai-page .source-row { background: var(--brand-surface-2); border-color: var(--brand-line-strong); border-radius: var(--brand-radius); box-shadow: none; }
-:root:root .ai-page .source-row:hover { background: #1d2c60; }
+:root:root .ai-page .source-row:hover { background: var(--brand-surface-3); }
 :root:root .source-sheet { background: var(--brand-surface); border-left: 1px solid var(--brand-line-strong) !important; }
 :root:root .source-sheet-body .section-label { color: var(--brand-accent); letter-spacing: 0; text-transform: none; }
 @media (max-width: 700px) {
@@ -243,10 +298,9 @@
 /* ---------- No rubber-band bounce when scrolling past the top or bottom ---------- */
 :root:root, :root:root body { overscroll-behavior: none !important; }
 
-/* ---------- Resources uses the same navy, blue accent and fonts as the rest of the site ----------
-   Resources has its own --res-* tokens, including a green dark-mode set
-   (:root:has(.resources-page) in resources-hub.css). These selectors are more
-   specific, so the site palette applies whatever the OS colour setting is. */
+/* ---------- Resources uses the same palette and fonts as the rest of the site ----------
+   Resources has its own --res-* tokens. These selectors are more specific, so the
+   site palette (light, or dark via the header toggle) applies there too. */
 :root:root:root, :root:root:root:has(.resources-page) {
   --res-bg: var(--brand-bg);
   --res-surface: var(--brand-surface);
@@ -255,10 +309,10 @@
   --res-muted: var(--brand-muted);
   --res-accent: var(--brand-accent);
   --res-selected: var(--brand-surface-2);
-  --res-ok: #5fcf9d;
-  --res-warn: #f0a58a;
-  --res-draft: #8d9abb;
-  --res-bad: #ff8f84;
+  --res-ok: var(--dot-cultural);
+  --res-warn: var(--brand-warn);
+  --res-draft: var(--brand-faint);
+  --res-bad: var(--brand-bad);
 }
 :root:root body:has(.resources-page), :root:root .resources-page.page-shell {
   --primary-foreground: var(--brand-ink);
@@ -266,7 +320,7 @@
   background: var(--brand-bg);
   font-family: var(--brand-body);
 }
-:root:root body:has(.resources-page) .site-header { background: rgba(11, 19, 48, 0.92); border-color: var(--brand-line); }
+:root:root body:has(.resources-page) .site-header { background: var(--brand-header); border-color: var(--brand-line); }
 :root:root body:has(.resources-page) .site-nav a { color: var(--brand-muted); }
 :root:root body:has(.resources-page) .site-nav a:hover,
 :root:root body:has(.resources-page) .site-nav a[aria-current="page"] { color: var(--brand-text); }
@@ -274,7 +328,7 @@
 :root:root .resources-page .resources-intro h1 { font-weight: 700; letter-spacing: -0.035em; }
 :root:root .resources-page .login-form { background: var(--brand-surface); border: 1px solid var(--brand-line); }
 :root:root .resources-page .login-form input { color: var(--brand-text); background: var(--brand-bg); border-color: var(--brand-line-strong); }
-/* Primary buttons: blue with navy text, replacing the green ones. */
+/* Primary buttons use the accent. */
 :root:root :is(
   .resources-page .login-form [data-slot="button"],
   .resources-page .resource-list-toolbar .resource-add-button,
@@ -291,19 +345,19 @@
   .feedback-page .feedback-filters button
 ):hover { color: var(--brand-ink); background: var(--brand-accent-hover); border-color: var(--brand-accent-hover); }
 :root:root .resources-page .login-form [data-slot="button"]:disabled { color: var(--brand-muted); background: var(--brand-surface-2); border-color: var(--brand-line); opacity: 1; }
-/* Status messages: dark versions, no yellow. */
-:root:root :is(.resources-page .resource-activity, .resources-page .resource-notice) { color: #ccebd9; background: #14302a; border-color: #2f5f50; }
-:root:root .resources-page .resource-stale { color: #f6cbbb; background: #3a2526; border-color: #7a4d4a; }
-:root:root :is(.resources-page .resource-error, .resources-page .admin-access-denied) { color: #ffd6d1; background: #45262a; border-color: #8f5559; }
-:root:root :is(.resources-page .resource-source-attention, .resources-page .website-paused, .feedback-page .feedback-entry-rating, .readiness-page .state-thin) { color: #f0a58a; }
+/* Status messages. */
+:root:root :is(.resources-page .resource-activity, .resources-page .resource-notice) { color: var(--brand-ok-text); background: var(--brand-ok-bg); border-color: var(--brand-ok-line); }
+:root:root .resources-page .resource-stale { color: var(--brand-warn-text); background: var(--brand-warn-bg); border-color: var(--brand-warn-line); }
+:root:root :is(.resources-page .resource-error, .resources-page .admin-access-denied) { color: var(--brand-bad-text); background: var(--brand-bad-bg); border-color: var(--brand-bad-line); }
+:root:root :is(.resources-page .resource-source-attention, .resources-page .website-paused, .feedback-page .feedback-entry-rating, .readiness-page .state-thin) { color: var(--brand-warn); }
 :root:root .feedback-page .feedback-bar i { background: var(--brand-accent); }
 :root:root .readiness-page .state-usable { color: var(--brand-accent); }
 
 /* ---------- Admin tool pages (Corpus, Research, Review) ----------
    These pages are styled with Tailwind colour utilities (bg-white, text-zinc-900,
    and so on). Tailwind reads each colour from a CSS variable, so remapping those
-   variables inside .admin-shell gives them the site's navy theme without
-   changing any page markup. Light shades become dark and dark shades become light. */
+   variables inside .admin-shell gives them the site palette without changing any
+   page markup. In dark mode, light shades become dark and dark shades become light. */
 :root:root body:has(.admin-shell) {
   color: var(--brand-text);
   background: var(--brand-bg) !important;
@@ -323,63 +377,63 @@
   --muted-foreground: var(--brand-muted);
   --accent: var(--brand-surface-2);
   --accent-foreground: var(--brand-text);
-  --border: #26325e;
-  --input: #34416f;
+  --border: var(--brand-line);
+  --input: var(--brand-line-strong);
   --ring: var(--brand-accent);
 }
-:root:root .admin-shell, :root:root body:has(.admin-shell) [data-slot$="-content"] {
+:root:root[data-theme="dark"] .admin-shell, :root:root[data-theme="dark"] body:has(.admin-shell) [data-slot$="-content"] {
   color-scheme: dark;
-  --color-white: #111b3e;
-  --color-black: #f5f7ff;
-  --color-zinc-50: #0b1330;
-  --color-zinc-100: #172350;
-  --color-zinc-200: #26325e;
-  --color-zinc-300: #34416f;
-  --color-zinc-400: #7d88a8;
-  --color-zinc-500: #a3acc6;
-  --color-zinc-600: #b6bfd8;
-  --color-zinc-700: #d0d6e8;
-  --color-zinc-800: #e3e8f5;
-  --color-zinc-900: #f5f7ff;
+  --color-white: #1b1b19;
+  --color-black: #edebe6;
+  --color-zinc-50: #141413;
+  --color-zinc-100: #242421;
+  --color-zinc-200: #2f2f2b;
+  --color-zinc-300: #3d3c37;
+  --color-zinc-400: #7f7b74;
+  --color-zinc-500: #99958d;
+  --color-zinc-600: #a6a29a;
+  --color-zinc-700: #c6c3bc;
+  --color-zinc-800: #dddad4;
+  --color-zinc-900: #edebe6;
   --color-zinc-950: #ffffff;
-  --color-amber-50: #2a1f22;
-  --color-amber-100: #3a2a2c;
-  --color-amber-300: #7a4d4a;
-  --color-amber-500: #f0a58a;
-  --color-amber-600: #f0a58a;
-  --color-amber-800: #f6cbbb;
-  --color-amber-900: #f6cbbb;
-  --color-amber-950: #f6cbbb;
-  --color-red-50: #3a1f24;
-  --color-red-100: #45262a;
-  --color-red-700: #ffb4ab;
-  --color-red-800: #ffb4ab;
-  --color-emerald-100: #14302a;
-  --color-emerald-700: #8fd8b0;
-  --color-emerald-800: #8fd8b0;
-  --color-green-800: #8fd8b0;
-  --color-blue-50: #172350;
-  --color-blue-200: #34416f;
-  --color-blue-950: #dbe5ff;
+  --color-amber-50: #2d251a;
+  --color-amber-100: #3a2f1f;
+  --color-amber-300: #67532f;
+  --color-amber-500: #e5b46a;
+  --color-amber-600: #e5b46a;
+  --color-amber-800: #efcf9a;
+  --color-amber-900: #efcf9a;
+  --color-amber-950: #efcf9a;
+  --color-red-50: #2c1b1a;
+  --color-red-100: #321e1c;
+  --color-red-700: #f0938a;
+  --color-red-800: #f6c5bf;
+  --color-emerald-100: #1d2a21;
+  --color-emerald-700: #8cc59d;
+  --color-emerald-800: #b5dcc0;
+  --color-green-800: #b5dcc0;
+  --color-blue-50: #242421;
+  --color-blue-200: #3d3c37;
+  --color-blue-950: #edebe6;
 }
 :root:root .admin-shell :is(h1, h2, h3) { font-family: var(--brand-display); letter-spacing: -0.02em; }
 :root:root .admin-shell :is(a, button, input, select, textarea, summary):focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 2px; }
-/* Main action buttons (dark buttons in the old theme) use the site's blue. */
+/* Main action buttons (dark zinc buttons in the markup) use the accent. */
 :root:root .admin-shell :is(.bg-zinc-900, .bg-zinc-950, .bg-black) { color: var(--brand-ink); background: var(--brand-accent); border-color: var(--brand-accent); }
 :root:root .admin-shell :is(.bg-zinc-900, .bg-zinc-950, .bg-black):hover { background: var(--brand-accent-hover); }
 :root:root .admin-shell :is(.bg-zinc-900, .bg-zinc-950, .bg-black) * { color: inherit; }
-:root:root .admin-shell :is(input, select, textarea)::placeholder { color: #7d88a8; }
-/* Every page is navy, so the page root is too (no white strip below short pages). */
+:root:root .admin-shell :is(input, select, textarea)::placeholder { color: var(--brand-faint); }
+/* The page root matches the page (no off-colour strip below short pages). */
 html:root:root { background: var(--brand-bg); }
-/* Form fields: globals.css gives .input a white background; use the site's dark fields. */
+/* Form fields use the site's field colours in both themes. */
 :root:root .admin-shell :is(.input, input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]), select, textarea) {
   color: var(--brand-text);
   background-color: var(--brand-bg);
-  border-color: #34416f;
+  border-color: var(--brand-line-strong);
   border-radius: 6px;
   box-shadow: none;
 }
-:root:root .admin-shell :is(.input, input, select, textarea):focus { border-color: var(--brand-accent); box-shadow: 0 0 0 3px rgba(143, 176, 255, 0.18); }
+:root:root .admin-shell :is(.input, input, select, textarea):focus { border-color: var(--brand-accent); box-shadow: 0 0 0 3px var(--brand-accent-soft); }
 :root:root .admin-shell :is(.input, input, select, textarea):disabled { color: var(--brand-muted); background-color: var(--brand-surface-2); }
 :root:root .admin-shell :is(input[type="checkbox"], input[type="radio"]) { accent-color: var(--brand-accent); }
 
@@ -404,7 +458,7 @@ html:root:root { background: var(--brand-bg); }
   cursor: pointer;
   transition: color 150ms ease, background-color 150ms ease;
 }
-:root:root .resources-nav-signout:hover { color: var(--brand-text); background: rgba(255, 255, 255, 0.06); }
+:root:root .resources-nav-signout:hover { color: var(--brand-text); background: var(--brand-hover); }
 :root:root .resources-nav-signout:disabled { opacity: 0.6; cursor: wait; }
 :root:root .resources-nav-tabs { display: flex; flex-wrap: wrap; gap: 4px 30px; margin-top: 26px; border-bottom: 1px solid var(--brand-line); }
 :root:root .resources-nav-tabs a {
@@ -433,11 +487,11 @@ html:root:root { background: var(--brand-bg); }
 
 /* ---------- Site-wide component colours ----------
    Dropdowns, dialogs and side panels render outside the page (at the end of
-   <body>), so page-level colour settings do not reach them. Every page is dark,
-   so the shared component tokens are set to the dark theme once, for the whole
-   site. This replaces the light defaults from globals.css. */
+   <body>), so page-level colour settings do not reach them. The shared component
+   tokens are set from the brand palette once, for the whole site, so they follow
+   the light/dark choice. This replaces the defaults from globals.css. */
 :root:root {
-  color-scheme: dark;
+  color-scheme: light;
   --background: var(--brand-bg);
   --foreground: var(--brand-text);
   --card: var(--brand-surface);
@@ -452,8 +506,52 @@ html:root:root { background: var(--brand-bg); }
   --muted-foreground: var(--brand-muted);
   --accent: var(--brand-surface-2);
   --accent-foreground: var(--brand-text);
-  --destructive: #ff8f84;
-  --border: #26325e;
-  --input: #34416f;
+  --destructive: var(--brand-bad);
+  --border: var(--brand-line);
+  --input: var(--brand-line-strong);
   --ring: var(--brand-accent);
 }
+
+:root:root[data-theme="dark"] { color-scheme: dark; }
+
+/* ---------- Theme toggle (header) ---------- */
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  color: var(--brand-muted);
+  background: transparent;
+  border: 1px solid var(--brand-line-strong);
+  border-radius: var(--brand-radius);
+  cursor: pointer;
+  transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease;
+}
+.theme-toggle:hover { color: var(--brand-text); background: var(--brand-hover); border-color: var(--brand-hover-line); }
+.theme-toggle:focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 3px; }
+.theme-toggle svg { width: 17px; height: 17px; }
+.theme-toggle .theme-icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .theme-icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .theme-icon-moon { display: none; }
+
+/* ---------- Older page layers that still carried their own navy surfaces ---------- */
+:root:root .how-to-sheet { color: var(--brand-text); background: var(--brand-surface); border-color: var(--brand-line-strong) !important; box-shadow: -12px 0 40px rgba(0, 0, 0, 0.12); }
+:root:root .how-to-sheet [data-slot="sheet-title"], :root:root .how-to-sheet-body strong { color: var(--brand-text); }
+:root:root .how-to-sheet [data-slot="sheet-description"], :root:root .how-to-sheet-body { color: var(--brand-muted); }
+:root:root .how-to-sheet [data-slot="sheet-close"] { color: var(--brand-muted); }
+:root:root .how-to-sheet [data-slot="sheet-close"]:hover { color: var(--brand-text); background: var(--brand-hover); }
+:root:root .how-to-sheet [data-slot="sheet-close"]:focus-visible { outline-color: var(--brand-accent); }
+:root:root .how-to-sheet-body p { border-top-color: var(--brand-line); }
+:root:root .resource-help-dialog-header { color: var(--brand-text); background: var(--brand-surface-2); border-bottom-color: var(--brand-line); }
+:root:root .resources-page .website-permission-chip.website-permission-on { color: var(--brand-ok-text); background: var(--brand-ok-bg); border-color: var(--brand-ok-line); }
+:root:root .resources-page .website-paused { color: var(--brand-warn); }
+:root:root .readiness-page .state-strong { color: var(--dot-cultural); }
+:root:root .readiness-page .state-needs-attention { color: var(--brand-bad); }
+:root:root .form-error { color: var(--brand-bad); }
+/* `.home a { color: inherit }` would otherwise give the filled buttons body-text colour. */
+.home a.home-button { color: var(--brand-ink); }
+.home a.home-button-ghost { color: var(--brand-text); }
+/* Every page, including 404s and admin tools, sits on the theme ground. */
+:root:root body { color: var(--brand-text); background-color: var(--brand-bg); }

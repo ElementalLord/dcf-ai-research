@@ -1,7 +1,8 @@
 #!/usr/bin/env node
-// Checks that no page, dropdown, dialog or side panel shows a white or near-white
-// background. The whole site uses a dark navy theme, so any light surface is a bug
-// (for example, a pop-up that missed the dark colour settings).
+// Checks that, with the site's dark mode switched on (the header toggle, stored as
+// localStorage "dcf-theme" = "dark"), no page, dropdown, dialog or side panel shows a
+// white or near-white background. Any light surface in dark mode is a bug (for example,
+// a pop-up that missed the theme colour settings). Light mode is the default.
 //
 // Usage:
 //   npm run quality:theme                         # checks http://localhost:3000
@@ -61,6 +62,8 @@ if (!adminCookie) console.log("DCF_ADMIN_COOKIE not set: checking public pages o
 for (const colorScheme of ["light", "dark"]) {
   const context = await browser.newContext({ viewport: { width: 1366, height: 900 }, colorScheme });
   if (adminCookie) await context.addCookies([{ name: "dcf_admin", value: adminCookie, url: origin }]);
+  // The site ignores the OS setting; dark mode is the visitor's explicit choice.
+  await context.addInitScript(() => { try { localStorage.setItem("dcf-theme", "dark"); } catch {} });
   const page = await context.newPage();
   for (const path of pages) {
     const url = origin + path;
@@ -87,7 +90,7 @@ for (const colorScheme of ["light", "dark"]) {
 }
 await browser.close();
 
-console.log(`Checked ${pages.length} pages and ${checkedPopups} pop-ups in light and dark OS mode.`);
+console.log(`Checked ${pages.length} pages and ${checkedPopups} pop-ups in dark mode, under light and dark OS settings.`);
 if (failures.length) {
   console.error(`\n${failures.length} light surface(s) found:\n- ${failures.join("\n- ")}`);
   process.exit(1);

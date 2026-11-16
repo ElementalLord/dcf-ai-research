@@ -5,6 +5,7 @@ import "./public-experience.css";
 import "./resources-hub.css";
 import "./brand.css";
 import { SiteNav } from "@/components/site-nav";
+import { themeInitScript } from "@/lib/theme";
 
 const sourceSans = Source_Sans_3({
   variable: "--font-source-sans",
@@ -36,7 +37,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${sourceSans.variable} ${newsreader.variable} ${bricolage.variable} ${geist.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head><script dangerouslySetInnerHTML={{ __html: themeInitScript }} /></head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning><SiteNav />{children}</body>
     </html>
   );

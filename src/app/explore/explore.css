@@ -1,4 +1,4 @@
-:root { --explore-bg:var(--brand-bg); --explore-surface:var(--brand-surface); --explore-line:var(--brand-line); --explore-text:var(--brand-text); --explore-muted:var(--brand-muted); --explore-accent:var(--brand-accent); --explore-selected:rgba(255,255,255,.06); --explore-amber:#f0a58a; --explore-amber-bg:#2a1f22; --explore-purple:var(--dot-sages); --explore-rust:var(--dot-spiritual); --explore-blue:var(--dot-scientists); --explore-gold:var(--dot-rulers); --explore-green:var(--dot-cultural); }
+:root { --explore-bg:var(--brand-bg); --explore-surface:var(--brand-surface); --explore-line:var(--brand-line); --explore-text:var(--brand-text); --explore-muted:var(--brand-muted); --explore-accent:var(--brand-accent); --explore-selected:var(--brand-hover); --explore-amber:var(--brand-warn); --explore-amber-bg:var(--brand-warn-bg); --explore-purple:var(--dot-sages); --explore-rust:var(--dot-spiritual); --explore-blue:var(--dot-scientists); --explore-gold:var(--dot-rulers); --explore-green:var(--dot-cultural); }
 html:has(.explore-shell) { background:var(--explore-bg); overscroll-behavior-y:none; scrollbar-gutter:stable; }
 body:has(.explore-shell) { min-height:100dvh; background:var(--explore-bg) !important; background-attachment:scroll !important; color:var(--explore-text); font-family:var(--brand-body); overscroll-behavior-y:none; }
 .explore-shell { width:min(100%,1120px) !important; max-width:1120px; min-width:0; margin:0 auto; padding:0 24px 80px; color:var(--explore-text); font:15px/1.5 var(--brand-body); }
@@ -465,7 +465,7 @@ body:has(.explore-shell),.explore-shell { font-family: var(--font-source-sans), 
   .explore-view { grid-column: 1; grid-row: auto; width: 100%; }
 }
 
-/* DCF brand finish: navy ground, grotesque display type, soft blue actions. Kept last. */
+/* DCF brand finish: flat warm ground, grotesque display type, terracotta actions. Kept last. */
 body:has(.explore-shell),.explore-shell { font-family: var(--brand-body); }
 .explore-shell h1,.explore-shell h2,.explore-shell h3,.explore-shell strong.explore-name,
 .explore-card h2,.explore-row strong,.explore-event strong,.explore-angle h3,.explore-trust strong { font-family: var(--brand-display); font-weight: 700; letter-spacing: -.02em; }
@@ -482,14 +482,13 @@ body:has(.explore-shell),.explore-shell { font-family: var(--brand-body); }
 .explore-trust a,.explore-state a,.explore-state button { color: var(--brand-ink); background: var(--brand-accent); border-color: var(--brand-accent); border-radius: 6px; }
 .explore-trust a:hover,.explore-state a:hover,.explore-state button:hover { color: var(--brand-ink); background: var(--brand-accent-hover); }
 .explore-evidence a,.explore-source-list a { color: var(--brand-accent); }
-.explore-shell select { color-scheme: dark; }
 
 .explore-shell { width: min(100% - 48px, 1280px) !important; max-width: 1280px; padding-inline: 0; }
 .explore-categories button[aria-pressed="true"] { background: transparent; border-color: transparent; box-shadow: inset 0 -2px var(--brand-accent); }
 .explore-toc h2 { color: var(--explore-muted); font: 600 14px/1.3 var(--brand-body); letter-spacing: 0; text-transform: none; }
 
 /* ---------- Explore: bold editorial layout ----------
-   Oversized title with a glow, a large search field, and person cards with big
+   Oversized title, a large search field, and person cards with big
    coloured initials that lift on hover. The first card is featured at double width. */
 .explore-shell .cat-sages { --cat: var(--dot-sages); }
 .explore-shell .cat-spiritual { --cat: var(--dot-spiritual); }
@@ -500,25 +499,13 @@ body:has(.explore-shell),.explore-shell { font-family: var(--brand-body); }
 .explore-shell .explore-card-date { position: relative; padding-right: 96px; }
 .explore-shell .explore-card-wide .explore-card-date { padding-right: 190px; }
 .explore-shell .explore-intro { position: relative; max-width: none; padding: clamp(48px, 7vw, 96px) 0 clamp(28px, 4vw, 44px); }
-.explore-shell .explore-intro::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: -80px -20vw -40px;
-  background:
-    radial-gradient(40% 60% at 75% 35%, rgba(143, 176, 255, 0.18), transparent 70%),
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 64px 64px,
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 64px 64px;
-  mask-image: radial-gradient(60% 70% at 60% 40%, #000 30%, transparent 80%);
-  pointer-events: none;
-}
 .explore-shell .explore-intro h1 { max-width: 12ch; font: 800 clamp(52px, 9vw, 132px)/0.88 var(--brand-display); letter-spacing: -0.055em; }
 .explore-shell .explore-intro p { max-width: 52ch; margin-top: 22px; color: var(--brand-muted); font-size: clamp(16px, 1.4vw, 19px); line-height: 1.55; }
 .explore-shell .explore-search input { min-height: 64px; padding-left: 58px; background: var(--brand-surface); border-color: var(--brand-line-strong); border-radius: 6px; font-size: 18px; }
 .explore-shell .explore-search svg { left: 24px; }
 .explore-shell .explore-categories { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--brand-line); }
 .explore-shell .explore-categories button { width: auto; justify-content: flex-start; gap: 8px; min-height: 42px; padding: 8px 16px; color: var(--brand-muted); background: transparent; border: 1px solid var(--brand-line-strong); border-radius: 6px; box-shadow: none; font-size: 14px; }
-.explore-shell .explore-categories button:hover { color: var(--brand-text); background: rgba(255, 255, 255, 0.05); }
+.explore-shell .explore-categories button:hover { color: var(--brand-text); background: var(--brand-hover); }
 .explore-shell .explore-categories button[aria-pressed="true"] { color: var(--brand-ink); background: var(--brand-accent); border-color: var(--brand-accent); box-shadow: none; }
 .explore-shell .explore-categories button[aria-pressed="true"] small { color: var(--brand-ink); }
 .explore-shell .explore-view { border-radius: 6px; overflow: hidden; }
@@ -529,11 +516,11 @@ body:has(.explore-shell),.explore-shell { font-family: var(--brand-body); }
   overflow: hidden;
   min-height: 300px;
   padding: 26px;
-  background: radial-gradient(80% 60% at 100% 0%, color-mix(in srgb, var(--cat) 16%, transparent), transparent 70%), var(--brand-surface);
+  background: var(--brand-surface);
   border-radius: 8px;
   transition: transform 260ms var(--ease-out), border-color 200ms ease, background-color 200ms ease;
 }
-.explore-shell .explore-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--cat) 55%, transparent); background: radial-gradient(80% 60% at 100% 0%, color-mix(in srgb, var(--cat) 26%, transparent), transparent 70%), var(--brand-surface-2); }
+.explore-shell .explore-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--cat) 55%, transparent); background: var(--brand-surface); }
 .explore-shell .explore-card-mark {
   position: absolute;
   top: 14px;

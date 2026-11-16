@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const links = [{ href: "/", label: "Home" }, { href: "/explore", label: "Explore" }, { href: "/ai", label: "Ask" }, { href: "/resources", label: "Resources" }];
 
@@ -13,5 +14,6 @@ export function SiteNav() {
       <span className="wordmark-text"><strong>Inspiring Personalities</strong><small>Dharma Civilization Foundation</small></span>
     </Link>
     <nav aria-label="Main navigation" className="site-nav">{links.map(link => <Link key={link.href} href={link.href} aria-current={isCurrent(link.href) ? "page" : undefined}>{link.label}</Link>)}</nav>
+    <ThemeToggle />
   </div></header>;
 }
