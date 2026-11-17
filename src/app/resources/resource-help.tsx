@@ -7,6 +7,28 @@ type Area = "sources" | "claims" | "websites";
 type Control = { label: string; explanation: string; kind?: "action" | "selected" | "field" | "danger" };
 type Group = { title: string; controls: Control[] };
 
+/** A plain-language walk-through shown first in each guide. */
+const startHere: Record<Area, string[]> = {
+  sources: [
+    "Choose a person at the top. The three numbers show their admitted sources, claims used in answers, and websites found.",
+    "If “Needs attention” lists anything, start there: each item opens the list already filtered to it.",
+    "Open a source to read its details, linked claims and passages. Approve it when it is a work answers may cite, or reject it.",
+    "Add source creates a candidate; it is not used until someone approves it.",
+  ],
+  claims: [
+    "Claims are single statements about a person. Only approved claims with real evidence are used in answers.",
+    "Filter to Needs review or Draft, open a claim, read its supporting excerpt, then Approve or Reject with your name.",
+    "Add claim needs the statement, a research field, a source and the exact excerpt that supports it.",
+    "Use J and K (or the arrow keys) to step through a list without closing the panel.",
+  ],
+  websites: [
+    "Web search decides where live research may look when the library is not enough.",
+    "Pick a search mode: Credible Web, Approved Sources Only, or Credible Web with your rules.",
+    "Domain rules allow, trust, block or pause whole websites. Recently found lists sites research discovered; review the strongest first.",
+    "Page access permissions control single pages or sections: whether research may find, read or import them, and whether they count as evidence.",
+  ],
+};
+
 const guides: Record<Area, { name: string; groups: Group[] }> = {
   sources: {
     name: "Sources",
@@ -143,9 +165,9 @@ const guides: Record<Area, { name: string; groups: Group[] }> = {
 export default function ResourceHelp({ area }: { area: Area }) {
   const guide = guides[area];
   const sectionId = (title: string) => `resource-guide-${area}-${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
-  const sections = ["Move between areas", ...guide.groups.map(group => group.title), "Account"];
+  const sections = ["Start here", "Move between areas", ...guide.groups.map(group => group.title), "Account"];
   return <Dialog>
-    <DialogTrigger className="resource-help-trigger" data-area={area} aria-label={`How to use ${guide.name}`}>
+    <DialogTrigger className="key resource-help-trigger" data-area={area} aria-label={`How to use ${guide.name}`}>
       <BookOpenText size={18} aria-hidden="true" />
       <span>How to use</span>
     </DialogTrigger>
@@ -156,7 +178,13 @@ export default function ResourceHelp({ area }: { area: Area }) {
       </DialogHeader>
       <div className="resource-help-content" key={area}>
         <nav className="resource-help-nav" aria-label={`${guide.name} guide sections`}>{sections.map(title => <button key={title} type="button" onClick={() => document.getElementById(sectionId(title))?.scrollIntoView({ block: "start" })}>{title}</button>)}</nav>
-        <section id={sectionId("Move between areas")} className="resource-help-group"><h3>Move between areas</h3><dl><div><dt><span className="resource-help-control">Sources</span></dt><dd>Browse and manage source records.</dd></div><div><dt><span className="resource-help-control">Claims</span></dt><dd>Review claims and their evidence.</dd></div><div><dt><span className="resource-help-control">Web search</span></dt><dd>Manage discovery rules and page access.</dd></div></dl></section>
+        <section id={sectionId("Start here")} className="resource-help-group"><h3>Start here</h3><ol className="section-help-steps">{startHere[area].map(text => <li key={text}><p>{text}</p></li>)}</ol></section>
+        <section id={sectionId("Move between areas")} className="resource-help-group"><h3>Move between areas</h3><dl>
+          <div><dt><span className="resource-help-control">Section cards</span></dt><dd>The four cards under the header switch between Sources &amp; claims, Feedback, Readiness and Knowledge engine. Each has its own How to use.</dd></div>
+          <div><dt><span className="resource-help-control">Sources</span></dt><dd>Browse and manage the books, texts and records for the chosen person.</dd></div>
+          <div><dt><span className="resource-help-control">Claims</span></dt><dd>Review the statements answers may use, with their evidence.</dd></div>
+          <div><dt><span className="resource-help-control">Web search</span></dt><dd>Manage where live research may look, and page-level access.</dd></div>
+        </dl></section>
         {guide.groups.map(group => <section id={sectionId(group.title)} key={group.title} className="resource-help-group"><h3>{group.title}</h3><dl>{group.controls.map(control => <div key={control.label}><dt><span className={`resource-help-control resource-help-control-${control.kind || "plain"}`}>{control.label}</span></dt><dd>{control.explanation}</dd></div>)}</dl></section>)}
         <section id={sectionId("Account")} className="resource-help-group"><h3>Account</h3><dl><div><dt><span className="resource-help-control">Sign out</span></dt><dd>End the Resources session on this browser.</dd></div></dl></section>
       </div>

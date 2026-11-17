@@ -34,12 +34,12 @@
   --brand-accent-line: rgba(168, 81, 58, 0.3);
   --brand-ink: #ffffff;
   --key-bg: #fcf9f4;
-  --key-lip: #d6c8b3;
+  --key-lip: #ddd1bf;
   --key-text: #2f2722;
   --key-hot-bg: #f4bba4;
   --key-hot-lip: #cf8d74;
   --key-hot-text: #43221a;
-  --key-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset;
+  --key-shadow: 0 0 0 transparent;
   --brand-ok-text: #2f5d40;
   --brand-ok-bg: #e4f0e4;
   --brand-ok-line: #b6d2bc;
@@ -86,12 +86,12 @@
   --brand-accent-line: rgba(240, 164, 140, 0.32);
   --brand-ink: #2a1712;
   --key-bg: #2f2a35;
-  --key-lip: #141117;
+  --key-lip: rgba(0, 0, 0, 0.32);
   --key-text: #f0e7dc;
   --key-hot-bg: #f0a48c;
-  --key-hot-lip: #a9644f;
+  --key-hot-lip: #c07a63;
   --key-hot-text: #2a1712;
-  --key-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  --key-shadow: 0 0 0 transparent;
   --brand-ok-text: #b8dcc2;
   --brand-ok-bg: #1f2c24;
   --brand-ok-line: #3d5a46;
@@ -359,7 +359,7 @@
 :root:root body:has(.resources-page) .site-nav a { color: var(--brand-muted); }
 :root:root body:has(.resources-page) .site-nav a:hover,
 :root:root body:has(.resources-page) .site-nav a[aria-current="page"] { color: var(--brand-text); }
-:root:root .resources-page :is(h1, h2, h3) { font-family: var(--brand-display); letter-spacing: -0.025em; }
+:root:root .resources-page :is(h1, h2, h3) { font-family: var(--brand-serif); font-weight: 500; letter-spacing: -0.01em; }
 :root:root .resources-page .resources-intro h1 { font-weight: 700; letter-spacing: -0.035em; }
 :root:root .resources-page .login-form { background: var(--brand-surface); border: 1px solid var(--brand-line); }
 :root:root .resources-page .login-form input { color: var(--brand-text); background: var(--brand-bg); border-color: var(--brand-line-strong); }
@@ -511,8 +511,9 @@ html:root:root { background: var(--brand-bg); }
 /* Inside "Sources & claims", the Sources / Claims / Web search switch is a smaller second level. */
 :root:root .resources-page .resource-tabs .resource-area-tabs { gap: 6px; padding: 4px; width: fit-content; background: var(--brand-surface); border: 1px solid var(--brand-line); border-radius: 6px; }
 :root:root .resources-page .resource-tabs .resource-area-tab { min-height: 38px; padding: 0 14px; border: 0; border-radius: 5px; box-shadow: none; }
-:root:root .resources-page .resource-tabs .resource-area-tab[data-active] { color: var(--brand-ink) !important; background: var(--brand-accent) !important; }
-:root:root .resources-page .resource-tabs .resource-area-tab[data-active] :is(*, .resource-tab-count, strong) { color: var(--brand-ink) !important; }
+:root:root .resources-page .resource-tabs .resource-area-tab[data-active] { color: var(--brand-text) !important; background: var(--key-bg) !important; box-shadow: 0 0 0 1px var(--key-lip) !important; }
+:root:root .resources-page .resource-tabs .resource-area-tab[data-active] :is(*, .resource-tab-count, strong) { color: var(--brand-text) !important; }
+:root:root .resources-page .resource-tabs .resource-area-tab[data-active] svg { color: var(--brand-accent) !important; }
 :root:root .resources-page .resource-tabs .resource-area-tab::after { display: none; }
 @media (max-width: 640px) {
   :root:root .resources-nav-tabs { gap: 2px 20px; }
@@ -608,8 +609,8 @@ html:root:root { background: var(--brand-bg); }
   color: var(--key-text);
   background: var(--key-bg);
   border: 1px solid var(--key-lip);
-  border-radius: 14px;
-  box-shadow: 0 3px 0 var(--key-lip), var(--key-shadow);
+  border-radius: 10px;
+  box-shadow: 0 2px 0 var(--key-lip);
   font: 600 14.5px/1.1 var(--brand-body);
   text-decoration: none;
   white-space: nowrap;
@@ -618,16 +619,16 @@ html:root:root { background: var(--brand-bg); }
   -webkit-user-select: none;
   user-select: none;
 }
-.key:hover { transform: translateY(-1px); box-shadow: 0 4px 0 var(--key-lip), var(--key-shadow); }
-.key:active { transform: translateY(3px); box-shadow: 0 0 0 var(--key-lip), var(--key-shadow); transition-duration: 60ms; }
+.key:hover { border-color: var(--brand-hover-line); }
+.key:active { transform: translateY(2px); box-shadow: 0 0 0 var(--key-lip); transition-duration: 60ms; }
 .key:focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 3px; }
 .key:disabled { opacity: 0.55; cursor: default; transform: none; }
-.key[aria-pressed="true"] { transform: translateY(2px); box-shadow: 0 1px 0 var(--key-lip), var(--key-shadow); background: var(--brand-surface-2); }
+.key[aria-pressed="true"] { transform: translateY(1px); box-shadow: 0 1px 0 var(--key-lip); background: var(--brand-surface-2); }
 .key small { color: var(--brand-faint); font-size: 12.5px; font-weight: 600; font-variant-numeric: tabular-nums; }
 .key svg { flex: none; }
 .key-hot { color: var(--key-hot-text); background: var(--key-hot-bg); border-color: var(--key-hot-lip); --key-lip: var(--key-hot-lip); }
 .key-hot:hover { color: var(--key-hot-text); }
-.key-lg { min-height: 54px; padding: 0 24px; border-radius: 16px; font-size: 16px; }
+.key-lg { min-height: 50px; padding: 0 22px; border-radius: 12px; font-size: 16px; }
 .key-round { width: 38px; min-height: 38px; padding: 0; border-radius: 50%; }
 /* Raised so page-level link colours (e.g. `.explore-shell a`) never repaint a key. */
 :root a.key, :root a.key:hover { color: var(--key-text); }
@@ -682,3 +683,57 @@ html:root:root { background: var(--brand-bg); }
 .key-select-list li.is-active { background: var(--brand-hover); }
 .key-select-list li[aria-selected="true"] { color: var(--brand-accent); font-weight: 600; }
 @media (max-width: 640px) { .key-select-list { left: 0; right: auto; min-width: min(280px, calc(100vw - 32px)); } }
+
+/* ---------- Resources, simplified ---------- */
+/* Signed-out page: a friendly note for visitors, then the board sign-in. */
+:root:root .res-gate { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: start; gap: clamp(24px, 4vw, 56px); padding: clamp(40px, 7vw, 88px) 0 80px; }
+.res-gate-notice { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; padding: clamp(24px, 3vw, 34px); background: var(--brand-accent-soft); border: 1px solid var(--brand-accent-line); border-radius: 22px; }
+.res-gate-icon { display: grid; place-items: center; width: 52px; height: 52px; color: var(--brand-accent); background: var(--brand-surface); border-radius: 50%; }
+.res-gate-eyebrow { margin: 4px 0 0; color: var(--brand-accent); font-size: 12.5px; font-weight: 650; letter-spacing: 0.12em; text-transform: uppercase; }
+:root:root .res-gate-notice h1 { margin: 8px 0 0; color: var(--brand-text); font: 500 clamp(28px, 3vw, 38px)/1.12 var(--brand-serif); letter-spacing: -0.015em; }
+.res-gate-notice p:not(.res-gate-eyebrow) { max-width: 56ch; margin: 12px 0 0; color: var(--brand-muted); font-size: 16px; line-height: 1.6; }
+.res-gate-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+:root:root .res-gate-form { display: grid; gap: 10px; padding: 26px; background: var(--brand-surface); border: 1px solid var(--brand-line); border-radius: 20px; }
+:root:root .res-gate-form h2 { margin: 0; font: 500 22px/1.2 var(--brand-serif); }
+.res-gate-form > p { margin: 0 0 6px; color: var(--brand-muted); font-size: 14px; line-height: 1.5; }
+.res-gate-form label { color: var(--brand-text); font-size: 13.5px; font-weight: 600; }
+@media (max-width: 860px) { :root:root .res-gate { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .res-gate-notice { grid-template-columns: 1fr; } }
+
+/* Header and section cards */
+:root:root .res-nav { padding: 30px 0 0; margin-bottom: 26px; }
+.res-nav-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.res-nav-eyebrow { margin: 0; color: var(--brand-faint); font-size: 12px; font-weight: 650; letter-spacing: 0.14em; text-transform: uppercase; }
+.res-nav-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+:root:root .res-nav .key, :root:root .resources-page .resource-help-trigger.key { min-height: 40px; padding: 0 14px; color: var(--key-text); background: var(--key-bg); border: 1px solid var(--key-lip); border-radius: 10px; box-shadow: 0 2px 0 var(--key-lip); font: 600 14px/1 var(--brand-body); }
+.res-nav-sections { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 18px 0 30px; }
+.res-nav-sections a { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 14px 16px; color: var(--brand-muted); background: var(--brand-surface); border: 1px solid var(--brand-line); border-radius: 14px; text-decoration: none; transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease; }
+.res-nav-sections a:hover { color: var(--brand-text); background: var(--brand-hover); }
+.res-nav-sections a[aria-current="page"] { color: var(--brand-text); background: var(--brand-accent-soft); border-color: var(--brand-accent-line); }
+.res-nav-sections a:focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 2px; }
+.res-nav-sections svg { flex: none; color: var(--brand-accent); }
+.res-nav-sections span { display: grid; gap: 3px; min-width: 0; }
+.res-nav-sections strong { color: var(--brand-text); font-size: 15px; font-weight: 650; }
+.res-nav-sections small { overflow: hidden; color: var(--brand-faint); font-size: 12.5px; text-overflow: ellipsis; white-space: nowrap; }
+:root:root .res-nav .res-nav-heading h1 { margin: 0; color: var(--brand-text); font: 500 clamp(32px, 3.6vw, 46px)/1.05 var(--brand-serif); letter-spacing: -0.02em; }
+.res-nav-heading p { max-width: 72ch; margin: 10px 0 0; color: var(--brand-muted); font-size: 16px; line-height: 1.55; }
+@media (max-width: 900px) { .res-nav-sections { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .res-nav-sections a { padding: 11px 12px; gap: 9px; } .res-nav-sections small { display: none; } .res-nav-sections strong { font-size: 14px; } }
+
+/* Quieter library surfaces */
+:root:root .resources-page .resource-overview { background: var(--brand-surface); border: 1px solid var(--brand-line); border-radius: 18px; box-shadow: none; }
+:root:root .resources-page .resource-overview strong { font-family: var(--brand-serif); font-weight: 500; }
+:root:root .resources-page .resource-attention { border-radius: 14px; }
+:root:root .resources-page .resource-tabs .resource-area-tabs { background: var(--brand-surface-2); border-color: var(--brand-line); border-radius: 14px; }
+:root:root .resources-page .resource-tabs .resource-area-tab { border-radius: 10px; }
+
+/* Numbered steps used by every “How to use” guide */
+.section-help-steps { display: grid; gap: 14px; margin: 0; padding: 22px 28px 30px; list-style: none; counter-reset: step; overflow-y: auto; }
+.resource-help-group .section-help-steps { padding: 4px 0 0; }
+.section-help-steps li { position: relative; padding-left: 40px; counter-increment: step; }
+.section-help-steps li::before { content: counter(step); position: absolute; top: 0; left: 0; display: grid; place-items: center; width: 26px; height: 26px; color: var(--key-hot-text); background: var(--key-hot-bg); border-radius: 8px; font: 650 13px/1 var(--brand-body); }
+.section-help-steps strong { display: block; color: var(--brand-text); font-size: 15px; }
+.section-help-steps p { margin: 3px 0 0; color: var(--brand-muted); font-size: 14.5px; line-height: 1.55; }
+[data-slot="dialog-content"].section-help-dialog { display: flex; flex-direction: column; width: min(620px, calc(100vw - 24px)); max-width: none; max-height: calc(100dvh - 40px); padding: 0; overflow: hidden; color: var(--brand-text); background: var(--brand-bg); border: 1px solid var(--brand-line-strong); border-radius: 20px; }
+:root:root .resource-help-dialog-icon { color: var(--brand-accent); background: var(--brand-accent-soft); border-color: var(--brand-accent-line); }
+:root:root .resource-help-dialog-header [data-slot="dialog-title"] { font-family: var(--brand-serif); font-weight: 500; }

@@ -342,7 +342,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
           </div>}
           {turns.map((turn, turnIndex) => <div className="chat-exchange" key={`${personId}:${turnIndex}`}>
             <div className="chat-message chat-message-user"><span className="chat-name">You</span><p>{turn.question}</p></div>
-            <article className="chat-message chat-message-assistant"><div className="chat-message-content"><span className="chat-name guide-name-inline">{GUIDE}{turn.lens && <span className="chat-lens-tag">{turn.lens.label} angle</span>}</span>{turn.status === "research_answer" && <p>Live research · its sources are recorded to improve future answers</p>}{isUnusableStoredAnswer(turn.answer, turn.status)
+            <article className="chat-message chat-message-assistant"><div className="chat-message-content"><span className="chat-name guide-name-inline">{GUIDE}{turn.lens && <span className="chat-lens-tag">{turn.lens.label} angle</span>}</span>{turn.status === "research_answer" && <p className="guide-live-note"><Compass size={16} /><span><strong>Live research.</strong> Sutradhar read web pages to answer this. Their sources are recorded so future answers can reuse them.</span></p>}{isUnusableStoredAnswer(turn.answer, turn.status)
               ? <div className="chat-repair"><p>{isIncompleteQuestion(turn.question) ? "That question stopped partway through. Finish it below and I can give you a useful answer." : !turn.answer.trim() ? "That earlier reply was empty. Ask it again for a complete answer." : "That earlier reply pulled in page text instead of answering. Ask it again for a fresh response."}</p><button type="button" onClick={() => { setQuestion(isIncompleteQuestion(turn.question) ? `${turn.question.trim()} ` : turn.question); input.current?.focus(); }}>{isIncompleteQuestion(turn.question) ? "Finish question" : "Ask again"}<ArrowRight size={14} aria-hidden="true" /></button></div>
               : <><Answer answer={turn.answer} show={id => setSourceId(`${turnIndex}:${id}`)} citations={turn.citations || []}/>{turn.status === "abstained" && (turn.researchLeads?.length || turn.webSearchUrl) && <div className="research-continuation"><p>{turn.researchLeads?.length ? "Pages to inspect (not verified as evidence for this answer)" : "Continue researching this question"}</p>{turn.researchLeads?.map(lead => <a key={lead.url} href={lead.url} target="_blank" rel="noopener noreferrer">{lead.title || "Source page"}<ArrowUpRight size={14} aria-hidden="true" /></a>)}{turn.webSearchUrl && <a href={turn.webSearchUrl} target="_blank" rel="noopener noreferrer">Search the web for this question<ArrowUpRight size={14} aria-hidden="true" /></a>}</div>}{turn.feedbackToken ? <ResponseFeedback key={turn.feedbackToken} token={turn.feedbackToken}/> : turn.feedbackId && <ResponseFeedback key={turn.feedbackId} legacyContext={legacyFeedbackContext(turn, personId)}/>}</>}</div></article>
           </div>)}
@@ -385,29 +385,34 @@ export default function AskClient({ personalities, loadError }: { personalities:
         </div>
       </DialogContent>
     </Dialog>
-    <Sheet open={howToOpen} onOpenChange={setHowToOpen}><SheetContent className="how-to-sheet"><SheetHeader><SheetTitle>How to use Ask DCF</SheetTitle><SheetDescription>Ask about a person, follow the conversation, and check the evidence.</SheetDescription></SheetHeader><div className="how-to-sheet-body"><ol>
-      <li><strong>Choose a person.</strong> Use “Talking about” to pick who you want to explore.</li>
-      <li><strong>Set the answer depth.</strong> Choose Simple for a short reply or Research for a fuller evidence review.</li>
-      <li><strong>Ask a question.</strong> Type your own or tap a suggested question, then press Send or Enter. Use Shift+Enter for a new line.</li>
-      <li><strong>Keep exploring.</strong> Ask a follow-up or choose an angle. Tap a numbered citation in an answer to read its source details and open the original source when available.</li>
-    </ol><p>Use New chat to clear the conversation for the selected person.</p></div></SheetContent></Sheet>
-    <Sheet open={!!sourceId && !!selectedCitation} onOpenChange={open => { if (!open) setSourceId(null); }}><SheetContent className="source-sheet"><SheetHeader>
-      <p className="source-kicker">Source {selectedCitationNumber >= 0 ? selectedCitationNumber + 1 : ""}</p>
+    <Sheet open={howToOpen} onOpenChange={setHowToOpen}><SheetContent className="how-to-sheet"><SheetHeader><SheetTitle>How to use Ask DCF</SheetTitle><SheetDescription>Sutradhar, your guide, answers questions about one person at a time and shows the evidence for every fact.</SheetDescription></SheetHeader><div className="how-to-sheet-body"><ol>
+      <li><strong>Pick a person.</strong> Tap the “Talking about” button to open the faces. Filter by field, type part of a name, or tap <em>Surprise me</em>. Each person keeps their own conversation.</li>
+      <li><strong>Choose a depth.</strong> <em>Simple</em> is brief and plain, <em>Balanced</em> adds context, <em>Detailed</em> explains more, and <em>Research</em> gives the fullest review of the evidence.</li>
+      <li><strong>Ask.</strong> Type a question, or tap one of the <em>Try asking</em> suggestions; they change every few seconds. Press Enter or Send. Shift+Enter starts a new line.</li>
+      <li><strong>Watch Sutradhar think.</strong> While it reads the sources, the dots draw shapes beside the person&apos;s portrait. Longer, research-depth answers can take up to a minute.</li>
+      <li><strong>Check the evidence.</strong> Tap a small number in an answer to open its source: what the source says, who published it, how DCF got it, and a link to the original.</li>
+      <li><strong>Notice live research.</strong> When the library is not enough, Sutradhar may read web pages. Those answers carry a bordered <em>Live research</em> note; treat them as less settled than library answers.</li>
+      <li><strong>Keep going.</strong> Ask a follow-up, or tap an angle under <em>Explore further</em> (for example the scientific or leadership angle). Rate an answer with the stars to help improve it.</li>
+    </ol><p>Use <strong>New chat</strong> to clear the conversation for the selected person. Conversations stay in this browser tab only.</p></div></SheetContent></Sheet>
+    <Sheet open={!!sourceId && !!selectedCitation} onOpenChange={open => { if (!open) setSourceId(null); }}><SheetContent className="guide-source"><SheetHeader className="guide-source-head">
+      <p className="guide-source-kicker"><span className="guide-source-number">{selectedCitationNumber >= 0 ? selectedCitationNumber + 1 : "·"}</span>Source{selectedLive ? " · live research" : ""}</p>
       <SheetTitle>{selectedCitation?.title || "Source detail"}</SheetTitle>
       <SheetDescription>{selectedCitation ? sourcePublisher(selectedCitation) : ""}</SheetDescription>
-    </SheetHeader><div className="source-sheet-body">{selectedCitation && selectedAuthority && <>
-      <div className="source-tags">
-        <span className={`authority-badge authority-${selectedAuthority.level}`}>{AUTHORITY_LABELS[selectedAuthority.level]}</span>
-        <span className="source-tag">{selectedAuthority.primary ? "Primary source" : sourceTypeName(selectedCitation.sourceType, selectedLive)}</span>
-        <span className="source-tag">{sourceOrigin(selectedCitation)}</span>
+    </SheetHeader><div className="guide-source-body">{selectedCitation && selectedAuthority && <>
+      <div className="guide-source-tags">
+        <span className={`guide-source-tag is-${selectedAuthority.level}`}>{AUTHORITY_LABELS[selectedAuthority.level]}</span>
+        <span className="guide-source-tag">{selectedAuthority.primary ? "Primary source" : sourceTypeName(selectedCitation.sourceType, selectedLive)}</span>
+        <span className="guide-source-tag">{sourceOrigin(selectedCitation)}</span>
       </div>
-      <h3 className="section-label source-section-heading">What the source says</h3>
-      {selectedExcerpt ? <blockquote>{selectedExcerpt}</blockquote> : <p className="citation-unavailable">{selectedCitation.storageMode === "metadata_only" ? "DCF verified this fact against the original work but does not store its text. Open the source to read it." : "No readable passage is available. Check the original source before relying on it."}</p>}
-      {usefulLocator(selectedCitation, selectedExcerpt) && <p className="source-location"><span>Where in the source</span>{selectedCitation.pageOrSection}</p>}
-      {selectedCitation.url && <a href={selectedCitation.url} target="_blank" rel="noreferrer" className="editorial-link">Open original source<span className="sr-only"> (opens in a new tab)</span> <ArrowUpRight size={16} aria-hidden="true" /></a>}
-      <details className="source-more">
-        <summary>About these labels</summary>
-        <dl className="source-facts">
+      <section className="guide-source-quote">
+        <h3><Manuscript size={16} />What the source says</h3>
+        {selectedExcerpt ? <blockquote>{selectedExcerpt}</blockquote> : <p className="guide-source-missing">{selectedCitation.storageMode === "metadata_only" ? "DCF verified this fact against the original work but does not store its text. Open the source to read it." : "No readable passage is available. Check the original source before relying on it."}</p>}
+        {usefulLocator(selectedCitation, selectedExcerpt) && <p className="guide-source-where"><span>Where in the source</span>{selectedCitation.pageOrSection}</p>}
+      </section>
+      {selectedCitation.url && <a href={selectedCitation.url} target="_blank" rel="noreferrer" className="key key-hot guide-source-open">Open the original source<span className="sr-only"> (opens in a new tab)</span><ArrowUpRight size={16} aria-hidden="true" /></a>}
+      <details className="guide-source-more">
+        <summary><span>What do these labels mean?</span><Chevron size={16} /></summary>
+        <dl>
           <div><dt>Who published it</dt><dd>{selectedAuthority.primary && selectedAuthority.level === "general_web"
             ? "The original text is the evidence, but this copy is on a website that is not a recognized institution. Compare it with an institutional edition when exact wording matters."
             : `${selectedAuthority.basis ? `${selectedAuthority.basis.replace(/\.$/, "")}. ` : ""}${AUTHORITY_HELP[selectedAuthority.level]}`}</dd></div>
@@ -415,7 +420,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
           <div><dt>Where DCF got it</dt><dd>{sourceOriginHelp(selectedCitation)}</dd></div>
           {selectedCitation.evidenceType && <div><dt>Kind of statement</dt><dd>{citationLabel(selectedCitation.evidenceType, "Source material")}</dd></div>}
         </dl>
-        <p className="source-note">{AUTHORITY_CAVEAT}</p>
+        <p className="guide-source-note">{AUTHORITY_CAVEAT}</p>
       </details>
     </>}</div></SheetContent></Sheet>
   </main>;

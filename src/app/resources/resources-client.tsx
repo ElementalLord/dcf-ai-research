@@ -2,7 +2,9 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowUpRight, Check, ChevronLeft, ChevronRight, FileText, Globe2, LibraryBig, LoaderCircle, Plus, Search, X } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Arrow as ArrowArrow, Compass, Lotus as LotusIcon } from "@/components/vedic-icons";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -291,7 +293,28 @@ export default function ResourcesClient({ authorized, personalities, loadError }
       setBusy(false);
     }
   }
-  if (!authorized) return <main className="resources-page page-shell"><div className="resources-intro"><div className="resources-intro-copy"><h1>Resources</h1><p>Review sources and claims, and manage which websites research may search. Sign in to see current counts and controls.</p></div><form className="login-form" onSubmit={signIn}><label htmlFor="admin-token">Admin code</label><Input id="admin-token" type="password" autoComplete="off" spellCheck={false} value={token} onChange={event => { setToken(event.target.value); if (error) setError(""); }} aria-invalid={!!error} aria-describedby={error ? "admin-access-result" : undefined} required/><Button type="submit" disabled={busy || !token.trim()}>{busy ? "Checking code…" : "Open Resources"}</Button>{error && <p id="admin-access-result" className="admin-access-denied" role="alert">{error}</p>}</form></div></main>;
+  if (!authorized) return <main className="resources-page page-shell res-gate">
+    <section className="res-gate-notice" aria-labelledby="res-gate-title">
+      <span className="res-gate-icon" aria-hidden="true"><Compass size={26}/></span>
+      <div>
+        <p className="res-gate-eyebrow">You&apos;ve found the back office</p>
+        <h1 id="res-gate-title">This page is for DCF board members.</h1>
+        <p>Resources is where the Dharma Civilization Foundation team checks sources, reviews claims and decides which websites research may use. If you&apos;re not on the board, you&apos;ve simply wandered behind the scenes. The good parts are out front:</p>
+        <div className="res-gate-links">
+          <Link href="/" className="key key-hot">Explore the lives<ArrowArrow/></Link>
+          <Link href="/ai" className="key"><LotusIcon/>Ask the guide</Link>
+        </div>
+      </div>
+    </section>
+    <form className="login-form res-gate-form" onSubmit={signIn}>
+      <h2>Board member sign-in</h2>
+      <p>Enter the admin code you were given. It stays on this browser for 12 hours.</p>
+      <label htmlFor="admin-token">Admin code</label>
+      <Input id="admin-token" type="password" autoComplete="off" spellCheck={false} value={token} onChange={event => { setToken(event.target.value); if (error) setError(""); }} aria-invalid={!!error} aria-describedby={error ? "admin-access-result" : undefined} required/>
+      <Button type="submit" disabled={busy || !token.trim()}>{busy ? "Checking code…" : "Open Resources"}</Button>
+      {error && <p id="admin-access-result" className="admin-access-denied" role="alert">{error}</p>}
+    </form>
+  </main>;
   const source = detail?.kind === "source" ? detail.item : null;
   const claim = detail?.kind === "claim" ? detail.item : null;
   const locked = source?.source_status === "approved" || claim?.review_status === "approved";
