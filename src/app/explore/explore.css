@@ -899,3 +899,24 @@ a.ph-figure:hover strong { text-decoration: underline; text-underline-offset: 4p
 .explore-shell.explore-shell.xp { overflow-x: visible; }
 body:has(.xp) { overflow-x: clip; }
 @media (max-width: 640px) { .xp-footer { padding: 22px 16px 28px; } }
+
+/* An ornamental divider between the two columns: two strands twisting around each other, knotted with a
+   small diamond at every crossing, fading out at both ends. Drawn as a mask so it takes the theme colour. */
+.xp-list { position: relative; column-gap: 64px; }
+.xp-list::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: calc(50% - 16px);
+  width: 32px;
+  background: var(--brand-accent);
+  opacity: 0.7;
+  pointer-events: none;
+  --xp-cord: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='64' viewBox='0 0 32 64'%3E%3Cg fill='none' stroke='%23000'%3E%3Cpath stroke-width='1.2' d='M16 0C26 8 26 24 16 32C6 40 6 56 16 64'/%3E%3Cpath stroke-width='1.2' d='M16 0C6 8 6 24 16 32C26 40 26 56 16 64'/%3E%3Cpath stroke-width='.6' stroke-dasharray='1.5 3' d='M2 0v64M30 0v64'/%3E%3Cpath stroke-width='.7' d='M16 11v10M16 43v10'/%3E%3C/g%3E%3Cg fill='%23000'%3E%3Cpath d='M16 27l4 5-4 5-4-5z'/%3E%3Cpath d='M12 32Q8 28.5 4.5 32Q8 35.5 12 32z'/%3E%3Cpath d='M20 32Q24 28.5 27.5 32Q24 35.5 20 32z'/%3E%3Ccircle cx='16' cy='0' r='2'/%3E%3Ccircle cx='16' cy='64' r='2'/%3E%3Ccircle cx='16' cy='16' r='1.4'/%3E%3Ccircle cx='16' cy='48' r='1.4'/%3E%3Ccircle cx='2' cy='32' r='1.1'/%3E%3Ccircle cx='30' cy='32' r='1.1'/%3E%3C/g%3E%3C/svg%3E");
+  -webkit-mask: var(--xp-cord) center top / 32px 64px repeat-y, linear-gradient(transparent, #000 48px, #000 calc(100% - 48px), transparent);
+  -webkit-mask-composite: source-in;
+  mask: var(--xp-cord) center top / 32px 64px repeat-y, linear-gradient(transparent, #000 48px, #000 calc(100% - 48px), transparent);
+  mask-composite: intersect;
+}
+@media (max-width: 960px) { .xp-list::before { display: none; } .xp-list { column-gap: 0; } }
