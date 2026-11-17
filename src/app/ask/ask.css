@@ -230,3 +230,11 @@
   .guide-intro .guide-hello { font-size: 16px; }
 }
 @media (prefers-reduced-motion: reduce) { .guide-intro, .guide-choose { animation: none; } }
+
+/* Prompt and angle chips take one compact line, scrolling sideways, so the answer keeps its room. */
+.guide-chips { flex-wrap: nowrap; gap: 6px; padding: 8px 16px; overflow-x: auto; scrollbar-width: none; mask-image: linear-gradient(90deg, #000 calc(100% - 32px), transparent); }
+.guide-chips::-webkit-scrollbar { display: none; }
+.guide-chips-label { flex: none; width: auto; margin-right: 4px; font-size: 12.5px; }
+:root:root .ai-page .guide-chips .key { flex: none; min-height: 32px; padding: 0 11px; gap: 6px; border-radius: 8px; font-size: 13px; white-space: nowrap; }
+:root:root .ai-page .guide-chips .key svg { width: 15px; height: 15px; }
+.guide-chips + .guide-chips { border-top-style: dashed; }
