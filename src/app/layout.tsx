@@ -31,6 +31,7 @@ const deva = Tiro_Devanagari_Sanskrit({
 const newsreader = Newsreader({
   variable: "--font-newsreader",
   subsets: ["latin"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
