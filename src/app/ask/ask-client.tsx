@@ -343,7 +343,6 @@ export default function AskClient({ personalities, loadError }: { personalities:
         <div className={loading ? "guide-depth is-disabled" : "guide-depth"}><KeySelect label="Depth" value={style} onChange={value => !loading && setStyle(value as Style)} options={styles.map(item => ({ value: item.value, label: `${item.label} · ${item.description}` }))} /></div></div><div className="chat-toolbar-actions"><button className="chat-how-to" type="button" onClick={() => setHowToOpen(true)} aria-label="How to use Ask DCF" aria-haspopup="dialog"><CircleHelp size={16} aria-hidden="true" /><span>How to use</span></button>{turns.length > 0 && <button className="chat-new" type="button" onClick={() => { setConversations(current => ({ ...current, [personId]: [] })); setSourceId(null); setError(""); input.current?.focus(); }} disabled={loading} aria-label="New chat"><RotateCcw size={14} aria-hidden="true" /><span>New chat</span></button>}</div></div>
         <div ref={chatThread} className="chat-thread" role="log" aria-live="polite" tabIndex={0} aria-label={`Conversation about ${person}`}>
           {!personId && <div className="guide-intro">
-            <DotGlyph mode="intro" size={92} label={`${GUIDE}, your guide, pointing to the person chooser`} />
             <div className="guide-intro-copy">
               <p className="guide-name">{GUIDE} <span>your guide</span></p>
               <p className="guide-hello">Namaste! I hold the thread of these stories. First, who would you like to talk about?</p>

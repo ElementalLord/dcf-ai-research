@@ -17,7 +17,7 @@ import { abstentionMessage } from "@/lib/ask/messages";
 import { ensureOpeningIntro } from "@/lib/ask/opening-intro";
 import { buildSynthesisPrompt, SYNTHESIS_PROMPT_VERSION } from "./synthesis-prompt";
 import { isBroadScope, isChangeImpactQuestion, isEnduringRelevanceQuestion } from "@/lib/ask/question-scope";
-import { answerIntent, hasBroadAnswerEvidence, hasDirectLiveIdentity, prioritizeEvidence } from "@/lib/ask/evidence-priority";
+import { answerIntent, hasBroadAnswerEvidence, hasDirectLiveIdentity, prioritizeEvidence, supportsQualifiedAnswer } from "@/lib/ask/evidence-priority";
 import { loadSearchPolicy } from "@/lib/live-research/search-policy";
 import { detectLens } from "@/lib/ask/lenses";
 import { chronologyGuidance, CONTEXT_SEARCH_FOCUS, detectContextIntent } from "@/lib/ask/historical-context";
@@ -264,6 +264,16 @@ async function answerQuestionInternal(
           local.debug.liveResearchTriggered = true;
         }
       }
+      // Research that found person-specific, on-topic sources supports a qualified answer even when
+      // it did not settle every listed requirement. Precision questions (dates, comparisons,
+      // contested or current claims) are excluded inside supportsQualifiedAnswer.
+      if (!local.debug.answerable && supportsQualifiedAnswer(queryContext.resolvedQuestion, local.evidence,
+        configurations[index].canonicalName, local.personalityAliases, resolution.gaps)) {
+        local.debug.answerable = true;
+        local.debug.coverageStatus = "partial";
+        local.debug.unresolvedEvidenceGap = true;
+        local.debug.localEvidenceSufficiencyReason = "Research found relevant sources that support a qualified answer, though not every requested detail.";
+      }
       withAuthority(local.evidence, searchPolicy.rules);
       // A failed need can be cooling down even when a broad biography has a
       // request-scoped answer available from the existing grounded search path.
@@ -312,7 +322,15 @@ async function answerQuestionInternal(
       base.debug.unresolvedEvidenceGap = true;
       base.debug.localEvidenceSufficiencyReason = "Multiple grounded records support a qualified broad answer, but not every requested dimension or ranking.";
     }
-    if (resolution.state === "research_required" && !fillsEvidenceGaps(resolution.gaps, base.evidence)) {
+    const qualified = supportsQualifiedAnswer(queryContext.resolvedQuestion, base.evidence,
+      configurations[index].canonicalName, base.personalityAliases, resolution.gaps);
+    if (!base.debug.answerable && qualified) {
+      base.debug.answerable = true;
+      base.debug.coverageStatus = "partial";
+      base.debug.unresolvedEvidenceGap = true;
+      base.debug.localEvidenceSufficiencyReason = "Research found relevant sources that support a qualified answer, though not every requested detail.";
+    }
+    if (resolution.state === "research_required" && !fillsEvidenceGaps(resolution.gaps, base.evidence) && !qualified) {
       base.debug.answerable = false;
       base.debug.unresolvedEvidenceGap = true;
     }
@@ -381,8 +399,10 @@ async function answerQuestionInternal(
     selectedPersonalities: retrievals.map((retrieval) => ({ id: retrieval.personalityId, name: retrieval.personality })),
     perPersonality: retrievals.map((retrieval) => ({ personality: retrieval.personality, debug: retrieval.debug })),
   };
+  // Strict mode still refuses a narrow question with no supporting evidence; a partial, cited answer
+  // (which states what the sources do not settle) is allowed through to synthesis and its checks.
   const strictNarrowGap = debug.evidencePolicyMode === "strict" && !isBroadScope(queryContext.scope)
-    && retrievals.some((retrieval) => retrieval.debug.coverageStatus === "partial" || retrieval.debug.coverageStatus === "unsupported");
+    && retrievals.some((retrieval) => retrieval.debug.coverageStatus === "unsupported");
   if (strictNarrowGap || retrievals.some((retrieval) => !retrieval.debug.answerable)) {
     const limitReached = retrievals.some((retrieval) => retrieval.debug.demandResearchStatus === "budget_exhausted");
     return {

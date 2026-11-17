@@ -645,7 +645,8 @@ body:has(.explore-shell),.explore-shell { font-family: var(--brand-body); }
 .xp-empty { display: grid; justify-items: start; gap: 16px; padding: 48px 0; }
 .xp-empty h3 { margin: 0; font: 500 26px/1.2 var(--brand-serif); }
 
-.xp-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; margin-top: clamp(80px, 10vw, 120px); padding: 24px 0 40px; color: var(--brand-muted); border-top: 1px solid var(--brand-line); font-size: 14px; }
+/* The footer runs edge to edge; its content lines up with the page column. */
+.xp-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; margin: clamp(80px, 10vw, 120px) calc(50% - 50vw) 0; padding: 26px max(24px, calc(50vw - 640px)) 34px; color: var(--brand-muted); background: var(--brand-surface); border-top: 1px solid var(--brand-line); font-size: 14px; }
 
 /* ---------- Timeline: a palm-leaf manuscript bound by a cord ---------- */
 .tl { position: relative; margin-top: 10px; padding: 36px 0 40px; }
@@ -756,13 +757,12 @@ body:has(.explore-shell),.explore-shell { font-family: var(--brand-body); }
 .xp .ph-title { margin: 0; color: var(--brand-text); font: 400 clamp(44px, 6vw, 84px)/0.98 var(--brand-serif); letter-spacing: -0.03em; }
 .ph-title em { color: var(--brand-accent); font-style: normal; }
 .ph-lede { max-width: 42ch; margin: 0; color: var(--brand-muted); font-size: clamp(16px, 1.4vw, 19px); line-height: 1.55; }
-.ph-caption { min-height: 84px; }
+.ph-figure { min-height: 84px; margin: 0; }
 .ph-figure { display: grid; gap: 2px; padding: 12px 16px 12px 0; color: var(--brand-text); text-decoration: none; border-left: 0; animation: ph-rise 700ms var(--ease-out) both; }
 .ph-figure-deva { color: var(--brand-accent); font: 400 22px/1.2 var(--brand-deva); }
 .ph-figure strong { font: 500 24px/1.15 var(--brand-serif); }
 .ph-figure small { color: var(--brand-muted); font-size: 13.5px; }
 a.ph-figure:hover strong { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
-.ph-figure-om .ph-figure-deva { font-size: 30px; }
 @keyframes ph-rise { from { opacity: 0; transform: translateY(10px); filter: blur(4px); } }
 .ph-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
@@ -780,7 +780,6 @@ a.ph-figure:hover strong { text-decoration: underline; text-underline-offset: 4p
   .ph-stage { position: relative; top: auto; bottom: auto; left: auto; right: auto; width: 100vw; height: min(118vw, 460px); margin-inline: calc(50% - 50vw); }
   .ph-copy { margin-top: 8px; }
   .ph-copy { max-width: none; gap: 14px; }
-  .ph-caption { min-height: 72px; }
 }
 @media (max-width: 640px) {
   .ph-actions, .ph-actions .key { width: 100%; }
@@ -800,7 +799,7 @@ a.ph-figure:hover strong { text-decoration: underline; text-underline-offset: 4p
 .pf-portrait .portrait { width: 212px !important; height: 262px !important; border-radius: 120px 120px 22px 22px; box-shadow: 0 0 0 6px var(--brand-bg), 0 0 0 7px color-mix(in srgb, var(--cat) 55%, transparent); font-size: 64px !important; }
 .pf-portrait figcaption { max-width: 220px; color: var(--brand-faint); font-size: 11.5px; line-height: 1.4; text-align: center; }
 .pf-portrait figcaption a { color: var(--brand-muted); }
-.pf-field { display: inline-flex; align-items: center; gap: 8px; margin: 0; padding: 6px 12px; color: var(--cat); background: var(--cat-soft); border-radius: 999px; font: 600 13px/1 var(--brand-body); }
+.pf-field { display: inline-flex; align-items: center; gap: 8px; margin: 0; color: var(--cat); font: 600 13px/1 var(--brand-body); letter-spacing: 0.04em; text-transform: uppercase; }
 .pf .pf-hero h1 { margin: 16px 0 0; color: var(--brand-text); font: 400 clamp(44px, 6vw, 80px)/0.98 var(--brand-serif); letter-spacing: -0.03em; }
 .pf-facts { display: flex; flex-wrap: wrap; gap: 8px 26px; margin: 20px 0 0; }
 .pf-facts div { display: flex; gap: 8px; align-items: baseline; }
@@ -847,10 +846,10 @@ a.ph-figure:hover strong { text-decoration: underline; text-underline-offset: 4p
 .pf-claim summary::-webkit-details-marker { display: none; }
 .pf-claim summary:focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 2px; border-radius: 8px; }
 .pf-claim-text { color: var(--brand-text); font: 400 18.5px/1.55 var(--brand-serif); }
-.pf-claim-count { display: inline-flex; align-items: center; gap: 6px; margin-top: 3px; padding: 5px 10px; color: var(--brand-muted); background: var(--brand-surface-2); border-radius: 999px; font: 600 12.5px/1 var(--brand-body); white-space: nowrap; transition: background-color 180ms ease, color 180ms ease; }
+.pf-claim-count { display: inline-flex; align-items: center; gap: 6px; margin-top: 5px; color: var(--brand-muted); font: 600 12.5px/1 var(--brand-body); white-space: nowrap; transition: color 180ms ease; }
 .pf-claim-count svg { transition: transform 220ms var(--ease-out); }
 .pf-claim[open] .pf-claim-count svg { transform: rotate(180deg); }
-.pf-claim summary:hover .pf-claim-count, .pf-claim[open] .pf-claim-count { color: var(--cat); background: var(--cat-soft); }
+.pf-claim summary:hover .pf-claim-count, .pf-claim[open] .pf-claim-count { color: var(--cat); }
 .pf-claim.is-focus summary { padding-left: 16px; box-shadow: inset 3px 0 0 var(--cat); }
 .pf-evidence { display: grid; gap: 10px; margin: 0 0 18px 4px; padding: 2px 0 2px 16px; list-style: none; border-left: 2px solid var(--cat-soft); animation: ph-rise 320ms var(--ease-out) both; }
 .pf-evidence li { display: grid; gap: 2px; }
@@ -894,3 +893,9 @@ a.ph-figure:hover strong { text-decoration: underline; text-underline-offset: 4p
   .pf-angles, .pf-sources, .pf-related { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { .pf-lens-focus, .pf-evidence { animation: none; } }
+
+/* The landing column must not clip its full-width pieces (the symbol stage and footer);
+   the page itself stops sideways scrolling instead. */
+.explore-shell.explore-shell.xp { overflow-x: visible; }
+body:has(.xp) { overflow-x: clip; }
+@media (max-width: 640px) { .xp-footer { padding: 22px 16px 28px; } }

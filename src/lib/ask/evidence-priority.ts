@@ -3,6 +3,7 @@ import { authorityRank } from "@/lib/sources/authority";
 import { detectLens } from "./lenses";
 import { CONTEXT_EVIDENCE, detectContextIntent } from "./historical-context";
 import { classifyQuestionScope, isBroadScope } from "./question-scope";
+import { assessPassageSupport } from "@/lib/live-research/research-quality";
 
 const stop = new Set(["what", "who", "why", "when", "where", "which", "does", "did", "was", "were", "are", "is", "the", "and", "for", "with", "about", "their", "his", "her", "major", "important", "previous", "topic", "selected", "personality"]);
 export type AnswerIntent = "identity" | "importance" | "actions" | "method" | "learning" | "relationship" | "transformation" | "teaching" | "historical" | "contested" | "specific";
@@ -108,4 +109,26 @@ export function prioritizeEvidence(question: string, evidence: RetrievedEvidence
     if (dated) selected[selected.length - (bestLive && selected.at(-1) === bestLive.item ? 2 : 1)] = dated.item;
   }
   return selected;
+}
+
+/**
+ * Whether retrieved evidence (local or live research) can support a qualified, cited answer even
+ * though it does not tick every requirement the resolver listed. This keeps the guide from giving
+ * up when research did find relevant, person-specific sources.
+ *
+ * It never applies to questions where precision is the point: dates, comparisons, contested
+ * claims, or current events. Each counted passage must name the person and address the question
+ * (see assessPassageSupport); the final citation and named-target checks still run afterwards.
+ */
+export function supportsQualifiedAnswer(question: string, evidence: RetrievedEvidence[], personalityName: string,
+  aliases: string[], gaps: Array<{ requirementKey: string; contested?: boolean }>): boolean {
+  if (gaps.some((gap) => gap.contested || ["date", "comparison", "contested", "current"].includes(gap.requirementKey))) return false;
+  const level = (text: string) => assessPassageSupport(text, question, personalityName, aliases).level;
+  const strong = evidence.filter((item) => item.text.trim().length >= 40 && (item.kind === "claim"
+    ? ["STRONG", "EXACT"].includes(level(item.text))
+    : item.sourceStatus !== "rejected" && ["STRONG", "EXACT"].includes(item.supportLevel || level(item.text))));
+  if (strong.length) return true;
+  const partial = evidence.filter((item) => item.kind === "passage" && item.sourceStatus !== "rejected"
+    && item.text.trim().length >= 60 && (item.supportLevel || level(item.text)) === "PARTIAL");
+  return new Set(partial.map((item) => item.kind === "passage" ? item.sourceUrl || item.sourceTitle : "")).size >= 2;
 }

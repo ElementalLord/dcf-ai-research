@@ -687,7 +687,7 @@ html:root:root { background: var(--brand-bg); }
 /* ---------- Resources, simplified ---------- */
 /* Signed-out page: a friendly note for visitors, then the board sign-in. */
 :root:root .res-gate { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: start; gap: clamp(24px, 4vw, 56px); padding: clamp(40px, 7vw, 88px) 0 80px; }
-.res-gate-notice { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; padding: clamp(24px, 3vw, 34px); background: var(--brand-accent-soft); border: 1px solid var(--brand-accent-line); border-radius: 12px; }
+.res-gate-notice { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; padding: clamp(24px, 3vw, 34px); background: var(--brand-surface); border: 1px solid var(--brand-line); border-radius: 12px; }
 .res-gate-icon { display: grid; place-items: center; width: 52px; height: 52px; color: var(--brand-accent); background: var(--brand-surface); border-radius: 50%; }
 .res-gate-eyebrow { margin: 4px 0 0; color: var(--brand-accent); font-size: 12.5px; font-weight: 650; letter-spacing: 0.12em; text-transform: uppercase; }
 :root:root .res-gate-notice h1 { margin: 8px 0 0; color: var(--brand-text); font: 500 clamp(28px, 3vw, 38px)/1.12 var(--brand-serif); letter-spacing: -0.015em; }
@@ -747,3 +747,8 @@ html:root:root { background: var(--brand-bg); }
 .xp-footer-brand { display: inline-flex; align-items: center; gap: 10px; }
 :root:root .res-gate-icon { width: 52px; height: 52px; padding: 0; background: none; }
 @media (prefers-reduced-motion: reduce) { :root:root .wordmark .wordmark-logo { transition: none; } }
+
+/* Long Resources lists scroll inside a capped box instead of stretching the page. */
+:root:root .readiness-table-wrap { max-height: min(620px, 72vh); overflow: auto; scrollbar-width: thin; }
+:root:root .readiness-table-wrap th { position: sticky; top: 0; z-index: 1; background: var(--brand-surface-2); }
+:root:root .feedback-page .feedback-list { max-height: min(720px, 78vh); overflow: auto; padding-right: 4px; scrollbar-width: thin; }

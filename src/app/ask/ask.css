@@ -156,11 +156,15 @@
 .guide-source-head [data-slot="sheet-title"] { margin-top: 4px; color: var(--brand-text); font: 500 24px/1.25 var(--brand-serif); letter-spacing: -0.01em; overflow-wrap: anywhere; }
 .guide-source-head [data-slot="sheet-description"] { color: var(--brand-muted); font-size: 14px; line-height: 1.45; }
 .guide-source-body { display: grid; gap: 22px; padding: 22px 28px 34px; }
-.guide-source-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.guide-source-tag { padding: 5px 11px; color: var(--brand-muted); background: var(--brand-surface-2); border: 1px solid var(--brand-line); border-radius: 999px; font-size: 13px; font-weight: 600; }
-.guide-source-tag.is-authoritative { color: var(--brand-ok-text); background: var(--brand-ok-bg); border-color: var(--brand-ok-line); }
-.guide-source-tag.is-credible_secondary { color: var(--dot-scientists); background: var(--soft-scientists); border-color: color-mix(in srgb, var(--dot-scientists) 30%, transparent); }
-.guide-source-tag.is-general_web { color: var(--brand-warn-text); background: var(--brand-warn-bg); border-color: var(--brand-warn-line); }
+/* Labels read as a quiet line of text; only the authority carries a small coloured dot. */
+.guide-source-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 0; color: var(--brand-muted); font-size: 13.5px; }
+.guide-source-tag { display: inline-flex; align-items: center; gap: 7px; color: var(--brand-muted); font-weight: 500; }
+.guide-source-tag + .guide-source-tag::before { content: "·"; margin: 0 9px; color: var(--brand-faint); }
+.guide-source-tag[class*="is-"] { color: var(--brand-text); font-weight: 600; }
+.guide-source-tag[class*="is-"]::after { content: ""; order: -1; width: 8px; height: 8px; background: var(--brand-faint); border-radius: 50%; }
+.guide-source-tag.is-authoritative::after { background: var(--dot-cultural); }
+.guide-source-tag.is-credible_secondary::after { background: var(--dot-scientists); }
+.guide-source-tag.is-general_web::after { background: var(--brand-warn); }
 .guide-source-quote h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; color: var(--brand-accent); font: 600 13px/1.2 var(--brand-body); letter-spacing: 0.06em; text-transform: uppercase; }
 .guide-source-quote blockquote { position: relative; margin: 0; padding: 18px 20px 18px 24px; color: var(--brand-text); background: var(--brand-surface); border: 1px solid var(--brand-line); border-radius: 12px; font: 400 17.5px/1.65 var(--brand-serif); overflow-wrap: anywhere; }
 .guide-source-quote blockquote::before { content: ""; position: absolute; top: 14px; bottom: 14px; left: 0; width: 3px; background: var(--brand-accent); border-radius: 0 3px 3px 0; }
@@ -186,9 +190,7 @@
 :root:root .how-to-sheet-body em { color: var(--brand-text); font-style: normal; font-weight: 600; }
 
 /* ---------- First visit: the guide points at the person chooser ---------- */
-.guide-intro { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto; align-items: center; column-gap: clamp(16px, 3vw, 28px); padding: 8px 0; animation: guide-in 600ms var(--ease-out) both; }
-.guide-intro .dot-glyph { grid-row: 1 / span 2; }
-.guide-intro .guide-choose { grid-column: 2; }
+.guide-intro { display: grid; justify-items: start; padding: 8px 0; animation: guide-in 600ms var(--ease-out) both; }
 .guide-intro-copy { display: grid; gap: 6px; min-width: 0; }
 .guide-choose {
   display: flex;
@@ -218,8 +220,7 @@
 .guide-choose > svg { flex: none; color: var(--brand-accent); }
 @keyframes guide-choose-call { 0%, 70%, 100% { box-shadow: 0 0 0 0 var(--brand-accent-soft); } 80% { box-shadow: 0 0 0 8px var(--brand-accent-soft); } }
 @media (max-width: 700px) {
-  .guide-intro .dot-glyph { grid-row: 1; width: 60px; height: 60px; }
-  .guide-intro .guide-choose { grid-column: 1 / -1; width: 100%; }
+  .guide-intro .guide-choose { width: 100%; }
   .guide-choose { gap: 12px; padding: 12px; }
   .guide-choose-faces .portrait:nth-child(n + 4) { display: none; }
   .guide-choose-text strong { font-size: 18px; }

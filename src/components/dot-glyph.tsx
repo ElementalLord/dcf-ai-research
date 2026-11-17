@@ -258,44 +258,6 @@ const book = (lines: number[]): Frame => {
   return rows.map((row, y) => lines.includes(y) ? row.slice(0, 2) + "++" + row.slice(4, 7) + "++" + row.slice(9) : row);
 };
 
-/** A hand pointing to the right, and the same hand nudged forward. */
-const POINT = art(`
-...........
-...........
-...........
-..#........
-.##########
-.##########
-.######....
-.######....
-.#####.....
-..###......
-...........`);
-const POINT_NUDGE = art(`
-...........
-...........
-...........
-...#.......
-+.#########
-+.#########
-..######...
-..######...
-..#####....
-...###.....
-...........`);
-const ARROW = art(`
-...........
-.......#...
-.......##..
-.......###.
-++#########
-++#########
-.......###.
-.......##..
-.......#...
-...........
-...........`);
-
 /* ---------- Generated pictures ---------- */
 const wheel = (offset: number) => generated((_x, _y, r, a) => r > 4.3 && r < 5.4 ? "#" : r < 1 ? "+" : r < 4.3 && near(a, Math.PI / 4, offset) ? "#" : ".");
 const sunrise = (lift: number) => generated((x, y, _r, a) => {
@@ -367,7 +329,7 @@ const SCENES: Scene[] = [
 ];
 const WAVE = [HAND_UP, HAND_LEFT, HAND_RIGHT, HAND_LEFT, HAND_RIGHT, HAND_UP];
 const REST = [BREATH, BREATH_OUT];
-export type GlyphMode = "wave" | "rest" | "think" | "intro";
+export type GlyphMode = "wave" | "rest" | "think";
 
 /** A shuffled order of scene indexes; the first never repeats the previous bag's last. */
 function shuffledBag(previous: number | null) {
@@ -380,7 +342,7 @@ function shuffledBag(previous: number | null) {
 export function DotGlyph({ mode, size = 48, label }: { mode: GlyphMode; size?: number; label?: string }) {
   const reduce = useReducedMotion();
   // The first frame is fixed so server and browser render the same markup.
-  const [frame, setFrame] = useState<Frame>(mode === "think" ? TRISHULA : mode === "wave" || mode === "intro" ? HAND_UP : BREATH);
+  const [frame, setFrame] = useState<Frame>(mode === "think" ? TRISHULA : mode === "wave" ? HAND_UP : BREATH);
   const [resting, setResting] = useState(mode === "rest");
   const timers = useRef<number[]>([]);
 
@@ -389,7 +351,7 @@ export function DotGlyph({ mode, size = 48, label }: { mode: GlyphMode; size?: n
     const later = (fn: () => void, ms: number) => { timers.current.push(window.setTimeout(fn, ms)); };
     clear();
     if (reduce) {
-      later(() => { setFrame(mode === "think" ? LOTUS_FULL : mode === "intro" ? POINT : BREATH); setResting(mode !== "think" && mode !== "intro"); }, 0);
+      later(() => { setFrame(mode === "think" ? LOTUS_FULL : BREATH); setResting(mode !== "think"); }, 0);
       return clear;
     }
     const rest = (step = 0) => { setResting(true); setFrame(REST[step % REST.length]); later(() => rest(step + 1), 1700); };
@@ -397,25 +359,6 @@ export function DotGlyph({ mode, size = 48, label }: { mode: GlyphMode; size?: n
     if (mode === "wave") {
       const wave = (step: number) => {
         if (step >= WAVE.length) { later(() => rest(), 200); return; }
-        setResting(false); setFrame(WAVE[step]); later(() => wave(step + 1), 300);
-      };
-      later(() => wave(0), 0);
-      return clear;
-    }
-    if (mode === "intro") {
-      // Greeting: a wave, a quick parade of symbols, then a hand and arrow pointing at the person chooser. Repeats gently.
-      const parade = [LOTUS_FULL, DIYA_A, TRISHULA, wheel(0), DAMARU_A, KALASH, sunrise(3), FEATHER];
-      const pointing = [POINT, POINT_NUDGE, POINT, POINT_NUDGE, ARROW, ARROW, POINT, POINT_NUDGE];
-      const loop = (round: number) => {
-        setResting(false);
-        const start = round * 3 % parade.length;
-        const shown = [parade[start], parade[(start + 1) % parade.length], parade[(start + 2) % parade.length]];
-        shown.forEach((item, step) => later(() => setFrame(item), step * 900));
-        pointing.forEach((item, step) => later(() => setFrame(item), shown.length * 900 + step * 420));
-        later(() => loop(round + 1), shown.length * 900 + pointing.length * 420 + 600);
-      };
-      const wave = (step: number) => {
-        if (step >= WAVE.length) { later(() => loop(0), 150); return; }
         setResting(false); setFrame(WAVE[step]); later(() => wave(step + 1), 300);
       };
       later(() => wave(0), 0);
