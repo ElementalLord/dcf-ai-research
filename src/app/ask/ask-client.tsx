@@ -134,7 +134,9 @@ function Answer({ answer, show, citations }: { answer: string; show: (id: string
 }
 
 export default function AskClient({ personalities, loadError }: { personalities: Personality[]; loadError: string }) {
-  const [personId, setPersonId] = useState(personalities[0]?.id || "");
+  // Nobody is chosen on arrival: the guide asks who you want to talk to. A link such as /ai?person=c-v-raman
+  // (used by "Ask Sutradhar about …" on profiles) chooses that person straight away.
+  const [personId, setPersonId] = useState("");
   const [personPickerOpen, setPersonPickerOpen] = useState(false);
   const [howToOpen, setHowToOpen] = useState(false);
   const [pickerField, setPickerField] = useState("all");
@@ -183,6 +185,11 @@ export default function AskClient({ personalities, loadError }: { personalities:
   const displayedHeight = chatHeight ?? Math.max(CHAT_MIN_HEIGHT, viewportHeight - 60);
   const visibleSuggestions = Array.from({ length: 3 }, (_, index) => { const template = suggestionTemplates[(suggestionStart + index) % suggestionTemplates.length]; return { text: template.ask(person), Icon: template.Icon }; });
 
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("person");
+    const match = requested ? personalities.find(item => item.slug === requested) : undefined;
+    if (match) queueMicrotask(() => setPersonId(match.id));
+  }, [personalities]);
   useEffect(() => {
     let saved: string | null = null;
     try {
@@ -335,7 +342,19 @@ export default function AskClient({ personalities, loadError }: { personalities:
         </button>
         <div className={loading ? "guide-depth is-disabled" : "guide-depth"}><KeySelect label="Depth" value={style} onChange={value => !loading && setStyle(value as Style)} options={styles.map(item => ({ value: item.value, label: `${item.label} · ${item.description}` }))} /></div></div><div className="chat-toolbar-actions"><button className="chat-how-to" type="button" onClick={() => setHowToOpen(true)} aria-label="How to use Ask DCF" aria-haspopup="dialog"><CircleHelp size={16} aria-hidden="true" /><span>How to use</span></button>{turns.length > 0 && <button className="chat-new" type="button" onClick={() => { setConversations(current => ({ ...current, [personId]: [] })); setSourceId(null); setError(""); input.current?.focus(); }} disabled={loading} aria-label="New chat"><RotateCcw size={14} aria-hidden="true" /><span>New chat</span></button>}</div></div>
         <div ref={chatThread} className="chat-thread" role="log" aria-live="polite" tabIndex={0} aria-label={`Conversation about ${person}`}>
-          {!turns.length && !pendingQuestion && <div className="guide-welcome" key={personId}>
+          {!personId && <div className="guide-intro">
+            <DotGlyph mode="intro" size={92} label={`${GUIDE}, your guide, pointing to the person chooser`} />
+            <div className="guide-intro-copy">
+              <p className="guide-name">{GUIDE} <span>your guide</span></p>
+              <p className="guide-hello">Namaste! I hold the thread of these stories. First, who would you like to talk about?</p>
+            </div>
+            <button type="button" className="guide-choose" onClick={() => { setPickerField("all"); setPickerQuery(""); setPersonPickerOpen(true); }} disabled={!personalities.length} aria-haspopup="dialog">
+              <span className="guide-choose-faces" aria-hidden="true">{personalities.slice(0, 5).map(item => <Portrait key={item.id} name={item.canonical_name} portrait={item.portrait} category={item.field} size={40} />)}</span>
+              <span className="guide-choose-text"><strong>Choose a person</strong><small>{personalities.length ? `${personalities.length} lives · sages, scientists, rulers, artists` : "People are loading"}</small></span>
+              <Arrow size={18} />
+            </button>
+          </div>}
+          {personId && !turns.length && !pendingQuestion && <div className="guide-welcome" key={personId}>
             <DotGlyph mode="wave" size={72} label={`${GUIDE}, your guide, waving hello`} />
             <div><p className="guide-name">{GUIDE} <span>your guide</span></p>
               <p className="guide-hello">Namaste! I hold the thread of these stories. Ask me anything about <strong>{person}</strong>, and I&apos;ll show you exactly where every fact comes from.</p></div>
@@ -349,13 +368,13 @@ export default function AskClient({ personalities, loadError }: { personalities:
           {pendingQuestion && <div className="chat-exchange chat-exchange-pending"><div className="chat-message chat-message-user"><span className="chat-name">You</span><p>{pendingQuestion}</p></div><div className="chat-message chat-message-assistant guide-thinking" role="status" aria-live="polite"><div className="guide-thinking-faces"><DotGlyph mode="think" size={56} />{personRecord && <Portrait name={person} portrait={personRecord.portrait} category={personRecord.field} size={40} className="guide-thinking-portrait" />}</div><div className="chat-message-content"><span className="chat-name guide-name-inline">{GUIDE} is thinking about {person}</span><div className="chat-thinking-line"><span>{thinkingLines[elapsed < 4 ? 0 : elapsed < 14 ? 1 : 2]}…</span></div><div className="chat-thinking-track" aria-hidden="true"><span className={elapsed < 4 ? "is-current" : "is-done"}/><span className={elapsed >= 4 && elapsed < 14 ? "is-current" : elapsed >= 14 ? "is-done" : ""}/><span className={elapsed >= 14 ? "is-current" : ""}/></div><small>{elapsed >= 25 ? "This is taking a little longer than usual." : "Sources will appear right beside the facts they support."}</small></div></div></div>}
         </div>
         {error && <p role="alert" className="form-error chat-error">{error}</p>}
-        {!turns.length && !loading && <div ref={suggestionsRef} className="guide-chips"><span className="guide-chips-label"><Lotus size={15} />Try asking</span>{visibleSuggestions.map(({ text, Icon }) => <button type="button" className="key" key={text} onClick={() => { setQuestion(text); input.current?.focus(); }}><Icon size={17} />{text}</button>)}</div>}
-        {!loading && explore.length > 0 && <div className="guide-chips guide-angles" role="group" aria-label={turns.length ? "Explore further" : "Choose an angle"}><span className="guide-chips-label"><Compass size={15} />{turns.length ? "Explore further" : "Or choose an angle"}</span>{explore.map(({ label, ask, Icon }) => <button type="button" className="key" key={label} title={ask} onClick={() => { setQuestion(ask); input.current?.focus(); }}><Icon size={17} />{label}</button>)}</div>}
+        {personId && !turns.length && !loading && <div ref={suggestionsRef} className="guide-chips"><span className="guide-chips-label"><Lotus size={15} />Try asking</span>{visibleSuggestions.map(({ text, Icon }) => <button type="button" className="key" key={text} onClick={() => { setQuestion(text); input.current?.focus(); }}><Icon size={17} />{text}</button>)}</div>}
+        {personId && !loading && explore.length > 0 && <div className="guide-chips guide-angles" role="group" aria-label={turns.length ? "Explore further" : "Choose an angle"}><span className="guide-chips-label"><Compass size={15} />{turns.length ? "Explore further" : "Or choose an angle"}</span>{explore.map(({ label, ask, Icon }) => <button type="button" className="key" key={label} title={ask} onClick={() => { setQuestion(ask); input.current?.focus(); }}><Icon size={17} />{label}</button>)}</div>}
       <form onSubmit={ask} className="ask-form chat-composer">
         <label className="question-label" htmlFor="question">Your question</label>
         <textarea ref={input} id="question" value={question} onChange={event => setQuestion(event.target.value)} onKeyDown={event => {
           if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) { event.preventDefault(); event.currentTarget.form?.requestSubmit(); }
-        }} placeholder={turns.length ? "Ask a follow-up…" : `Ask about ${person}…`} className="question-input guide-input" disabled={loading} rows={2} />
+        }} placeholder={!personId ? "Choose a person first, then ask anything…" : turns.length ? "Ask a follow-up…" : `Ask about ${person}…`} className="question-input guide-input" disabled={loading || !personId} rows={2} />
         <div className="ask-footer"><p className="ask-keyboard-note">Enter to ask <span aria-hidden="true">·</span> Shift+Enter for a new line</p><button type="submit" className="key key-hot guide-send" disabled={loading || !personId || !question.trim()}>{loading ? "Thinking…" : "Send"}<Arrow size={16} /></button></div>
       </form>
       <div className="chat-resize-handle chat-resize-width" role="separator" aria-orientation="vertical" aria-label="Resize chat width" aria-valuemin={CHAT_MIN_WIDTH} aria-valuemax={chatWidthMax} aria-valuenow={displayedWidth} aria-valuetext={`${displayedWidth} pixels`} tabIndex={0} title="Drag to resize chat width" onPointerDown={event => beginResize("width", event)} onPointerMove={moveResize} onPointerUp={endResize} onPointerCancel={endResize} onKeyDown={event => resizeWithKeyboard("width", event)}><span /></div>

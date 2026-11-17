@@ -184,3 +184,48 @@
 :root:root .how-to-sheet-body ol { gap: 16px; }
 :root:root .how-to-sheet-body li::marker { color: var(--brand-accent); font-weight: 700; }
 :root:root .how-to-sheet-body em { color: var(--brand-text); font-style: normal; font-weight: 600; }
+
+/* ---------- First visit: the guide points at the person chooser ---------- */
+.guide-intro { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto; align-items: center; column-gap: clamp(16px, 3vw, 28px); padding: 8px 0; animation: guide-in 600ms var(--ease-out) both; }
+.guide-intro .dot-glyph { grid-row: 1 / span 2; }
+.guide-intro .guide-choose { grid-column: 2; }
+.guide-intro-copy { display: grid; gap: 6px; min-width: 0; }
+.guide-choose {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: min(100%, 520px);
+  margin-top: 14px;
+  padding: 14px 18px 14px 14px;
+  color: var(--brand-text);
+  background: var(--brand-surface);
+  border: 1.5px dashed var(--brand-accent-line);
+  border-radius: 18px;
+  cursor: pointer;
+  text-align: left;
+  animation: guide-choose-call 3.2s ease-in-out infinite 1.6s;
+  transition: background-color 200ms ease, border-color 200ms ease, transform 220ms var(--ease-out);
+}
+.guide-choose:hover { background: var(--brand-accent-soft); border-style: solid; border-color: var(--brand-accent); transform: translateX(3px); }
+.guide-choose:focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 3px; }
+.guide-choose:disabled { opacity: 0.6; cursor: default; animation: none; }
+.guide-choose-faces { display: flex; flex: none; }
+.guide-choose-faces .portrait { margin-left: -10px; box-shadow: 0 0 0 2px var(--brand-surface); }
+.guide-choose-faces .portrait:first-child { margin-left: 0; }
+.guide-choose-text { display: grid; flex: 1; gap: 3px; min-width: 0; }
+.guide-choose-text strong { font: 500 20px/1.15 var(--brand-serif); }
+.guide-choose-text small { color: var(--brand-muted); font-size: 13.5px; }
+.guide-choose > svg { flex: none; color: var(--brand-accent); }
+@keyframes guide-choose-call { 0%, 70%, 100% { box-shadow: 0 0 0 0 var(--brand-accent-soft); } 80% { box-shadow: 0 0 0 8px var(--brand-accent-soft); } }
+@media (max-width: 700px) {
+  .guide-intro .dot-glyph { grid-row: 1; width: 60px; height: 60px; }
+  .guide-intro .guide-choose { grid-column: 1 / -1; width: 100%; }
+  .guide-choose { gap: 12px; padding: 12px; }
+  .guide-choose-faces .portrait:nth-child(n + 4) { display: none; }
+  .guide-choose-text strong { font-size: 18px; }
+  .guide-choose { margin-top: 10px; }
+  .guide-choose-text small { display: none; }
+  .guide-choose-faces .portrait { width: 32px !important; height: 32px !important; font-size: 10.5px !important; letter-spacing: -0.04em; }
+  .guide-intro .guide-hello { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .guide-intro, .guide-choose { animation: none; } }

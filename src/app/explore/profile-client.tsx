@@ -113,7 +113,7 @@ export function ProfileClient({ person, related, portrait = null, relatedPortrai
         </dl>
         <p className="pf-lede">{lede || `Explore the collected sources for ${person.name}. Biographical claims are being reviewed before publication.`}</p>
         <div className="pf-hero-actions">
-          <Link href="/ai" className="key key-hot">Ask Sutradhar about {firstName}<Arrow size={16} /></Link>
+          <Link href={`/ai?person=${person.slug}`} className="key key-hot">Ask Sutradhar about {firstName}<Arrow size={16} /></Link>
           <p className="pf-evidence-summary"><strong>{sources.length}</strong> {sources.length === 1 ? "source" : "sources"}<span aria-hidden="true">·</span><strong>{claims}</strong> approved {claims === 1 ? "claim" : "claims"}</p>
         </div>
       </div>
