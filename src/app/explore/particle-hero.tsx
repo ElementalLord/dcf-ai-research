@@ -97,24 +97,29 @@ export function ParticleHero({ figures }: { figures: HeroFigure[] }) {
       const w = Math.min(h * 0.82, width - 24);
       return wide ? { x: width * 0.72 - w / 2, y: (height - h) / 2, w, h } : { x: (width - w) / 2, y: height * 0.03, w, h };
     };
-    const textBox = () => {
-      // Centred on the portrait area but never past the edges of the stage.
+    const textBox = (big: boolean) => {
+      // Centred on the portrait area but never past the edges of the stage. ॐ gets the whole height.
       const box = portraitBox(); const centre = box.x + box.w / 2;
-      const w = Math.min(box.w * 1.5, 2 * (width - centre) - 48, 2 * centre - 48);
-      return { x: centre - w / 2, y: box.y + box.h * 0.22, w, h: box.h * 0.56 };
+      const w = Math.min(box.w * (big ? 1.25 : 1.5), 2 * (width - centre) - 48, 2 * centre - 48);
+      return big ? { x: centre - w / 2, y: box.y + box.h * 0.04, w, h: box.h * 0.92 } : { x: centre - w / 2, y: box.y + box.h * 0.22, w, h: box.h * 0.56 };
     };
     const step = () => Math.max(4, Math.round(Math.min(width, 1400) / 210));
 
-    const textTargets = (text: string) => {
-      const box = textBox();
+    const textTargets = (text: string, big = false) => {
+      const box = textBox(big);
       return sampleCanvas((c, w, h) => {
+        // Size by the glyph's actual ink, not the font size: ॐ only fills about half of its em box.
         const family = getComputedStyle(document.documentElement).getPropertyValue("--font-deva").trim() || "serif";
-        let size = h * 0.8;
-        c.font = `${size}px ${family}, serif`;
-        const measured = c.measureText(text).width;
-        if (measured > w * 0.94) size *= (w * 0.94) / measured;
-        c.font = `${size}px ${family}, serif`; c.fillStyle = "#000"; c.textAlign = "center"; c.textBaseline = "middle";
-        c.fillText(text, w / 2, h * 0.56);
+        c.font = `100px ${family}, serif`;
+        const ink = c.measureText(text);
+        const inkW = (ink.actualBoundingBoxLeft + ink.actualBoundingBoxRight) || ink.width;
+        const inkH = (ink.actualBoundingBoxAscent + ink.actualBoundingBoxDescent) || 100;
+        const size = 100 * Math.min((w * 0.94) / inkW, (h * 0.94) / inkH);
+        c.font = `${size}px ${family}, serif`; c.fillStyle = "#000"; c.textAlign = "left"; c.textBaseline = "alphabetic";
+        const scaled = c.measureText(text);
+        const x = (w - (scaled.actualBoundingBoxLeft + scaled.actualBoundingBoxRight)) / 2 + scaled.actualBoundingBoxLeft;
+        const y = (h - (scaled.actualBoundingBoxAscent + scaled.actualBoundingBoxDescent)) / 2 + scaled.actualBoundingBoxAscent;
+        c.fillText(text, x, y);
         return true;
       }, box, Math.max(3, step() - 1), "text");
     };
@@ -143,7 +148,7 @@ export function ParticleHero({ figures }: { figures: HeroFigure[] }) {
     };
 
     const buildScenes = () => {
-      const built: Array<{ figure: number; targets: Target[] }> = [{ figure: -1, targets: textTargets("ॐ") }];
+      const built: Array<{ figure: number; targets: Target[] }> = [{ figure: -1, targets: textTargets("ॐ", true) }];
       figures.forEach((figure, index) => {
         const image = figure.portrait ? images.get(figure.portrait.src) : null;
         const targets = image ? photoTargets(image) : [];

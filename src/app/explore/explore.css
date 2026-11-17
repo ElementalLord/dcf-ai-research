@@ -754,7 +754,7 @@ body:has(.explore-shell),.explore-shell { font-family: var(--brand-body); }
 .ph-eyebrow { display: inline-flex; align-items: center; gap: 10px; margin: 0; color: var(--brand-muted); font: 600 12.5px/1.2 var(--brand-body); letter-spacing: 0.16em; text-transform: uppercase; }
 .ph-deva { color: var(--brand-accent); font: 400 19px/1 var(--brand-deva); letter-spacing: 0; text-transform: none; }
 .xp .ph-title { margin: 0; color: var(--brand-text); font: 400 clamp(44px, 6vw, 84px)/0.98 var(--brand-serif); letter-spacing: -0.03em; }
-.ph-title em { color: var(--brand-accent); font-style: italic; }
+.ph-title em { color: var(--brand-accent); font-style: normal; }
 .ph-lede { max-width: 42ch; margin: 0; color: var(--brand-muted); font-size: clamp(16px, 1.4vw, 19px); line-height: 1.55; }
 .ph-caption { min-height: 84px; }
 .ph-figure { display: grid; gap: 2px; padding: 12px 16px 12px 0; color: var(--brand-text); text-decoration: none; border-left: 0; animation: ph-rise 700ms var(--ease-out) both; }
