@@ -109,8 +109,8 @@ export function getPersonBySlug(slug: string): Phase1Personality | null {
   return getPhase1People().find((person) => person.slug === slug) || null;
 }
 
-export function getRelatedPeople(person: Phase1Personality, limit = 3): RelatedPerson[] {
-  return getPhase1People()
+export function getRelatedPeople(person: Phase1Personality, limit = 3, pool: Phase1Personality[] = getPhase1People()): RelatedPerson[] {
+  return pool
     .filter((candidate) => candidate.id !== person.id)
     .map((candidate) => {
       const samePresentation = candidate.phase1PresentationCategory.id === person.phase1PresentationCategory.id;
@@ -123,7 +123,7 @@ export function getRelatedPeople(person: Phase1Personality, limit = 3): RelatedP
           ? `Also in ${person.phase1PresentationCategory.name}`
           : sharedLenses.length
             ? `Shares ${sharedLenses.slice(0, 2).map(formatLens).join(" and ")} lenses`
-            : "Related Phase 1 personality";
+            : "Related personality";
       return { ...toDiscoveryPerson(candidate), score, reason };
     })
     .sort((a, b) => b.score - a.score || a.name.localeCompare(b.name))

@@ -4,7 +4,7 @@ import "./explore/explore.css";
 
 export const metadata: Metadata = {
   title: "DCF Inspiring Personalities",
-  description: "Explore 25 evidence-grounded profiles across the approved DCF Phase 1 collection.",
+  description: "Explore evidence-grounded profiles of inspiring personalities in the DCF collection.",
 };
 
 // The collection is the front page; /explore shows the same page.

@@ -3,12 +3,13 @@
 import Link from "next/link";
 import { useState, type ReactNode } from "react";
 import { LogOut } from "lucide-react";
-import { Chakra, Manuscript, Seeds, Shankha } from "@/components/vedic-icons";
+import { Chakra, Footsteps, Manuscript, Seeds, Shankha } from "@/components/vedic-icons";
 import SectionHelp from "./section-help";
 
-export type ResourcesSection = "library" | "feedback" | "readiness" | "knowledge";
+export type ResourcesSection = "people" | "library" | "feedback" | "readiness" | "knowledge";
 
 const sections: Array<{ id: ResourcesSection; href: string; label: string; purpose: string; title: string; description: string; Icon: typeof Manuscript }> = [
+  { id: "people", href: "/resources/people", label: "People", purpose: "Add someone to Explore", title: "People", description: "Add a new person, give them sources and approved claims, and publish their profile to Explore and Ask.", Icon: Footsteps },
   { id: "library", href: "/resources", label: "Sources & claims", purpose: "What answers may rely on", title: "Sources and claims", description: "Check the books, texts and records behind each person, approve the statements answers may use, and choose which websites live research may read.", Icon: Manuscript },
   { id: "feedback", href: "/resources/feedback", label: "Feedback", purpose: "What readers said", title: "Feedback", description: "Star ratings and comments from people using Ask DCF. Start with low-rated answers.", Icon: Shankha },
   { id: "readiness", href: "/resources/readiness", label: "Readiness", purpose: "How complete each profile is", title: "Readiness", description: "How ready each person's profile is. Retrieval readiness (can Ask find evidence?) is kept separate from publication readiness (has a person checked it?).", Icon: Seeds },

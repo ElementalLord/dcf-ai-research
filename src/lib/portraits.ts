@@ -42,10 +42,16 @@ async function wiki<T>(params: Record<string, string>): Promise<T | null> {
 }
 
 /** Portraits for the given profile slugs, keyed by slug. People without a usable image are left out. */
-export async function getPortraits(slugs: string[]): Promise<Record<string, Portrait>> {
-  const wanted = slugs.filter((slug) => WIKIPEDIA_TITLES[slug]);
+export async function getPortraits(slugs: string[], extraTitles: Record<string, string> = {}): Promise<Record<string, Portrait>> {
+  const titles: Record<string, string> = { ...extraTitles, ...WIKIPEDIA_TITLES };
+  const wanted = [...new Set(slugs.filter((slug) => titles[slug]))];
   if (!wanted.length) return {};
-  const pages = await wiki<PageImagesResponse>({ action: "query", prop: "pageimages", piprop: "thumbnail|name", pithumbsize: "400", redirects: "1", titles: wanted.map((slug) => WIKIPEDIA_TITLES[slug]).join("|") });
+  // Wikipedia answers at most 50 titles per query, so a larger collection is looked up in batches.
+  if (wanted.length > 50) {
+    const batches = await Promise.all(Array.from({ length: Math.ceil(wanted.length / 50) }, (_, index) => getPortraits(wanted.slice(index * 50, index * 50 + 50), extraTitles)));
+    return Object.assign({}, ...batches);
+  }
+  const pages = await wiki<PageImagesResponse>({ action: "query", prop: "pageimages", piprop: "thumbnail|name", pithumbsize: "400", redirects: "1", titles: wanted.map((slug) => titles[slug]).join("|") });
   if (!pages?.query?.pages) return {};
   // Follow Wikipedia's title normalisation and redirects back to the title each slug asked for.
   const resolve = (title: string) => {
@@ -54,7 +60,7 @@ export async function getPortraits(slugs: string[]): Promise<Record<string, Port
   };
   const byTitle = new Map(pages.query.pages.map((page) => [page.title, page]));
   const found = wanted.flatMap((slug) => {
-    const page = byTitle.get(resolve(WIKIPEDIA_TITLES[slug]));
+    const page = byTitle.get(resolve(titles[slug]));
     return page?.pageimage && page.thumbnail?.source ? [{ slug, file: `File:${page.pageimage}`, src: page.thumbnail.source }] : [];
   });
   if (!found.length) return {};

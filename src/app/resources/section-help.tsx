@@ -6,6 +6,17 @@ import type { ResourcesSection } from "./resources-nav";
 
 type Step = { title: string; text: string };
 const guides: Record<Exclude<ResourcesSection, "library">, { name: string; intro: string; steps: Step[] }> = {
+  people: {
+    name: "People",
+    intro: "Adding a person takes three steps. Each step is saved, so you can stop and come back.",
+    steps: [
+      { title: "1. Add the person", text: "Choose “Add a person”. Enter the name, the Explore group, the research category (it decides which research fields claims can use), the era and the region. A Wikipedia article title gives the profile a portrait. Reading angles are pre-filled for the group; edit or remove them." },
+      { title: "2. Add sources and claims", text: "Choose “Add sources & claims”. In Sources & claims, add at least one source and approve it, then add claims that cite it and approve them. Only approved claims with an approved source appear on Explore." },
+      { title: "3. Publish", text: "When the checklist on the person's card is complete, choose “Publish to Explore”. The profile appears on Explore and the home page straight away, and in Ask. Later approvals show up within five minutes." },
+      { title: "Unpublish or edit", text: "“Unpublish” hides the profile again without deleting anything. “Edit details” changes the group, era, region, portrait or angles; changes appear immediately." },
+      { title: "The 25 curated profiles", text: "The original Phase 1 profiles are listed separately and are managed through the Phase 1 export, so they cannot be changed here." },
+    ],
+  },
   feedback: {
     name: "Feedback",
     intro: "Every star rating and comment readers leave under an Ask DCF answer lands here.",

@@ -87,9 +87,9 @@ async function api<T>(url: string, options?: RequestInit): Promise<T> {
   return data as T;
 }
 
-export default function ResourcesClient({ authorized, personalities, loadError }: { authorized: boolean; personalities: Person[]; loadError?: string }) {
+export default function ResourcesClient({ authorized, personalities, loadError, initialPersonId }: { authorized: boolean; personalities: Person[]; loadError?: string; initialPersonId?: string }) {
   const [token, setToken] = useState("");
-  const [personId, setPersonId] = useState(personalities[0]?.id || "");
+  const [personId, setPersonId] = useState(initialPersonId || personalities[0]?.id || "");
   const [tab, setTab] = useState("sources");
   const [websiteCounts, setWebsiteCounts] = useState<{ found: number; admitted: number } | null>(null);
   const [sources, setSources] = useState<Source[]>([]);

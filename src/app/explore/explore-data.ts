@@ -1,4 +1,5 @@
 import type { Phase1DiscoveryPerson, Phase1Personality, Phase1PresentationCategory, Phase1RoleLens, Phase1Statement } from "@/lib/phase1/types";
+import { ERA_PERIODS as PERIODS, type ExploreProfileSettings } from "@/lib/explore/profile-settings";
 import { profileAngles, type ProfileAngle } from "./profile-angles";
 
 export const EXPLORE_CATEGORIES: Phase1PresentationCategory[] = [
@@ -17,8 +18,15 @@ const CATEGORY_BY_SLUG: Record<string, string> = {
   "m-s-subbulakshmi": "cultural", "rabindranath-tagore": "cultural", "satyajit-ray": "cultural",
 };
 
-export function exploreCategory(slug: string) {
-  return EXPLORE_CATEGORIES.find((category) => category.id === CATEGORY_BY_SLUG[slug]) ?? EXPLORE_CATEGORIES[0];
+/** The Explore group for a person. Curated people use the fixed map; people added in Resources pass their own group. */
+export function exploreCategory(slug: string, groupId?: string | null) {
+  const id = CATEGORY_BY_SLUG[slug] ?? groupId;
+  return EXPLORE_CATEGORIES.find((category) => category.id === id) ?? EXPLORE_CATEGORIES[0];
+}
+
+/** Explore group of a dataset person: its curated mapping, or the group chosen when it was added in Resources. */
+export function groupOf(person: Pick<Phase1Personality, "slug" | "phase1PresentationCategory">) {
+  return exploreCategory(person.slug, person.phase1PresentationCategory?.id);
 }
 
 export const PROFILE_SECTIONS = [
@@ -32,9 +40,9 @@ export const PROFILE_SECTIONS = [
   { key: "contestedAspects", title: "Disputed or uncertain" },
 ] as const;
 
-export type PublicProfilePerson = Pick<Phase1Personality, "slug" | "name" | "shortName" | "type" | "era" | "region" | "sources" | "limitedInformation" | "studyFramework" | "roleLenses" | (typeof PROFILE_SECTIONS)[number]["key"]> & { angles: ProfileAngle[] };
+export type PublicProfilePerson = Pick<Phase1Personality, "slug" | "name" | "shortName" | "type" | "era" | "region" | "sources" | "limitedInformation" | "studyFramework" | "roleLenses" | (typeof PROFILE_SECTIONS)[number]["key"]> & { angles: ProfileAngle[]; group: string };
 
-export function publicProfilePerson(person: Phase1Personality): PublicProfilePerson {
+export function publicProfilePerson(person: Phase1Personality, settings: ExploreProfileSettings | null = null): PublicProfilePerson {
   const sources = person.sources.filter((source) => source.sourceStatus === "approved");
   const sourceIds = new Set(sources.map((source) => source.id));
   const publicClaims = (claims: Phase1Statement[]) => claims
@@ -56,7 +64,8 @@ export function publicProfilePerson(person: Phase1Personality): PublicProfilePer
       })),
     },
     roleLenses: person.roleLenses.map((lens) => ({ ...lens, focusStatements: publicClaims(lens.focusStatements) })),
-    angles: profileAngles(person.slug),
+    angles: settings?.angles ?? profileAngles(person.slug),
+    group: groupOf(person).id,
     sources,
     shortIntroduction: publicClaims(person.shortIntroduction),
     lifeAndContext: publicClaims(person.lifeAndContext),
@@ -130,26 +139,20 @@ export function applyRoleLens(sections: ProfileSection[], lens: Pick<Phase1RoleL
 export type ExplorePerson = Phase1DiscoveryPerson & { summary: string | null; sourceCount: number; angles: ProfileAngle[] };
 
 /** Timeline groups, in order. Each person's group comes from the curated era in the dataset. */
-export const ERA_PERIODS = [
-  "Vedic and epic tradition",
-  "Ancient (before 500 CE)",
-  "Early medieval (500–1300 CE)",
-  "Medieval to early modern (1300–1800)",
-  "19th century",
-  "20th century",
-];
+export const ERA_PERIODS: string[] = [...PERIODS];
 
-export function toExplorePerson(discovery: Phase1DiscoveryPerson, person: Phase1Personality): ExplorePerson {
+export function toExplorePerson(discovery: Phase1DiscoveryPerson, person: Phase1Personality, settings: ExploreProfileSettings | null = null): ExplorePerson {
   const summary = approvedStatements(person, "shortIntroduction")[0]?.text ?? null;
-  const angles = profileAngles(person.slug);
+  const angles = settings?.angles ?? profileAngles(person.slug);
+  const group = groupOf(person);
   return {
     ...discovery,
-    presentationCategory: exploreCategory(person.slug),
+    presentationCategory: group,
     introduction: summary ?? "",
     summary,
     angles,
     sourceCount: person.sources.filter((source) => source.sourceStatus === "approved").length,
-    searchText: [discovery.name, ...discovery.alternateNames, person.type, exploreCategory(person.slug).name, summary, person.era.label, person.era.period, person.region.label, ...person.region.broad, ...angles.map((angle) => angle.title)].filter(Boolean).join(" ").toLowerCase(),
+    searchText: [discovery.name, ...discovery.alternateNames, person.type, group.name, summary, person.era.label, person.era.period, person.region.label, ...person.region.broad, ...angles.map((angle) => angle.title)].filter(Boolean).join(" ").toLowerCase(),
   };
 }
 

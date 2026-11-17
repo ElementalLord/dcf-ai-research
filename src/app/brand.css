@@ -706,7 +706,7 @@ html:root:root { background: var(--brand-bg); }
 .res-nav-eyebrow { margin: 0; color: var(--brand-faint); font-size: 12px; font-weight: 650; letter-spacing: 0.14em; text-transform: uppercase; }
 .res-nav-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 :root:root .res-nav .key, :root:root .resources-page .resource-help-trigger.key { min-height: 40px; padding: 0 14px; color: var(--key-text); background: var(--key-bg); border: 1px solid var(--key-lip); border-radius: 10px; box-shadow: none; font: 600 14px/1 var(--brand-body); }
-.res-nav-sections { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 18px 0 30px; }
+.res-nav-sections { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin: 18px 0 30px; }
 .res-nav-sections a { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 14px 16px; color: var(--brand-muted); background: var(--brand-surface); border: 1px solid var(--brand-line); border-radius: 12px; text-decoration: none; transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease; }
 .res-nav-sections a:hover { color: var(--brand-text); background: var(--brand-hover); }
 .res-nav-sections a[aria-current="page"] { color: var(--brand-text); background: var(--brand-accent-soft); border-color: var(--brand-accent-line); }
@@ -717,6 +717,7 @@ html:root:root { background: var(--brand-bg); }
 .res-nav-sections small { overflow: hidden; color: var(--brand-faint); font-size: 12.5px; text-overflow: ellipsis; white-space: nowrap; }
 :root:root .res-nav .res-nav-heading h1 { margin: 0; color: var(--brand-text); font: 500 clamp(32px, 3.6vw, 46px)/1.05 var(--brand-serif); letter-spacing: -0.02em; }
 .res-nav-heading p { max-width: 72ch; margin: 10px 0 0; color: var(--brand-muted); font-size: 16px; line-height: 1.55; }
+@media (max-width: 1080px) { .res-nav-sections { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 900px) { .res-nav-sections { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 480px) { .res-nav-sections a { padding: 11px 12px; gap: 9px; } .res-nav-sections small { display: none; } .res-nav-sections strong { font-size: 14px; } }
 

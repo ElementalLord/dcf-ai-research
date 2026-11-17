@@ -64,7 +64,7 @@ function StudyFramework({ framework, sources, allOpen }: { framework: Phase1Stud
   </section>;
 }
 
-export function ProfileClient({ person, related, portrait = null, relatedPortraits = {} }: { person: PublicProfilePerson; related: Array<Pick<RelatedPerson, "id" | "slug" | "name" | "detailedCategory" | "eraShort">>; portrait?: PortraitData | null; relatedPortraits?: Record<string, PortraitData> }) {
+export function ProfileClient({ person, related, portrait = null, relatedPortraits = {} }: { person: PublicProfilePerson; related: Array<Pick<RelatedPerson, "id" | "slug" | "name" | "detailedCategory" | "eraShort"> & { field: string }>; portrait?: PortraitData | null; relatedPortraits?: Record<string, PortraitData> }) {
   const [allOpen, setAllOpen] = useState(false);
   const [showAllSources, setShowAllSources] = useState(false);
   const [current, setCurrent] = useState<string | null>(null);
@@ -82,7 +82,7 @@ export function ProfileClient({ person, related, portrait = null, relatedPortrai
   const sections = applyRoleLens(profileSections(person), lens);
   const claims = sections.reduce((total, section) => total + section.claims.length, 0);
   const lede = approvedStatements(person, "shortIntroduction").slice(0, 2).map((claim) => claim.text).join(" ");
-  const category = exploreCategory(person.slug);
+  const category = exploreCategory(person.slug, person.group);
   const firstName = person.shortName;
   const visibleSources = showAllSources ? sources : sources.slice(0, 8);
   const lensLabel = (lens: string) => lens.replaceAll("_", " ");
@@ -163,7 +163,7 @@ export function ProfileClient({ person, related, portrait = null, relatedPortrai
         </section>
         {related.length > 0 && <section id="related" className="pf-section">
           <h2><Footsteps size={20} />Related lives</h2>
-          <div className="pf-related">{related.map((candidate) => { const field = exploreCategory(candidate.slug).id; return <Link href={`/explore/${candidate.slug}`} key={candidate.id} className={`pf-related-card cat-${field}`}>
+          <div className="pf-related">{related.map((candidate) => { const field = candidate.field; return <Link href={`/explore/${candidate.slug}`} key={candidate.id} className={`pf-related-card cat-${field}`}>
             <Portrait name={candidate.name} portrait={relatedPortraits[candidate.slug]} category={field} size={52} />
             <span><strong>{candidate.name}</strong><small>{candidate.detailedCategory} · {candidate.eraShort}</small></span><Arrow size={16} />
           </Link>; })}</div>
