@@ -63,7 +63,7 @@ const SYMBOLS: Array<{ id: string; deva: string; name: string; meaning: string; 
 ];
 const TONES = ["--brand-accent", "--dot-spiritual", "--brand-text", "--brand-muted"];
 const HOLD_MS = 4600;
-const DRIFT_MS = 1700;
+const DRIFT_MS = 1100;
 
 /** Points on a grid where the offscreen drawing has ink. */
 function sample(box: { x: number; y: number; size: number }, step: number, paint: (c: CanvasRenderingContext2D, size: number) => void): Target[] {
@@ -186,24 +186,24 @@ export function ParticleHero() {
       frame = requestAnimationFrame(draw);
       if (!visible) return;
       const elapsed = now - phaseStart;
-      if (phase === "gather" && elapsed > 2600) { phase = "hold"; phaseStart = now; }
+      if (phase === "gather" && elapsed > 1700) { phase = "hold"; phaseStart = now; }
       else if (phase === "hold" && elapsed > HOLD_MS) { drift(); phase = "drift"; phaseStart = now; }
       else if (phase === "drift" && elapsed > DRIFT_MS) show((index + 1) % scenes.length);
       const t = now / 1000;
       context.clearRect(0, 0, width, height);
       const buckets: Particle[][] = tones.map(() => []);
       // A soft spring: low pull and strong damping, so dots glide rather than snap.
-      const pull = phase === "drift" ? 0.012 : 0.016;
+      const pull = phase === "drift" ? 0.02 : 0.026;
       for (const particle of particles) {
         particle.vx += (particle.tx - particle.x) * pull; particle.vy += (particle.ty - particle.y) * pull;
-        particle.vx *= 0.86; particle.vy *= 0.86;
+        particle.vx *= 0.84; particle.vy *= 0.84;
         if (pointer.active) {
           const dx = particle.x - pointer.x; const dy = particle.y - pointer.y; const d2 = dx * dx + dy * dy;
           if (d2 < 6400) { const d = Math.sqrt(d2) + 0.01; const push = ((6400 - d2) / 6400) * 0.9; particle.vx += (dx / d) * push; particle.vy += (dy / d) * push; }
         }
         particle.x += particle.vx + Math.sin(t * 0.9 + particle.seed) * 0.05;
         particle.y += particle.vy + Math.cos(t * 0.8 + particle.seed) * 0.05;
-        particle.size += (particle.ts - particle.size) * 0.05;
+        particle.size += (particle.ts - particle.size) * 0.08;
         buckets[particle.tt]?.push(particle);
       }
       buckets.forEach((bucket, tone) => {
