@@ -4,7 +4,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, ArrowUpRight, Check, ChevronLeft, ChevronRight, FileText, Globe2, LibraryBig, LoaderCircle, Plus, Search, X } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Arrow as ArrowArrow, Compass, Lotus as LotusIcon } from "@/components/vedic-icons";
+import { Arrow as ArrowArrow, Lotus as LotusIcon } from "@/components/vedic-icons";
+import { DcfMark } from "@/components/dcf-logo";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -295,7 +296,7 @@ export default function ResourcesClient({ authorized, personalities, loadError }
   }
   if (!authorized) return <main className="resources-page page-shell res-gate">
     <section className="res-gate-notice" aria-labelledby="res-gate-title">
-      <span className="res-gate-icon" aria-hidden="true"><Compass size={26}/></span>
+      <DcfMark size={52} className="res-gate-icon" />
       <div>
         <p className="res-gate-eyebrow">You&apos;ve found the back office</p>
         <h1 id="res-gate-title">This page is for DCF board members.</h1>

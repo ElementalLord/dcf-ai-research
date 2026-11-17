@@ -6,11 +6,11 @@
 
 /* ---------- Page ---------- */
 :root:root .ai-page .chat-main .ai-title h1 { font: 500 clamp(36px, 4vw, 54px)/1.02 var(--brand-serif); letter-spacing: -0.02em; }
-:root:root .ai-page .chat-shell { background: var(--brand-surface); border-color: var(--brand-line-strong); border-radius: 20px; box-shadow: none; }
+:root:root .ai-page .chat-shell { background: var(--brand-surface); border-color: var(--brand-line-strong); border-radius: 12px; box-shadow: none; }
 :root:root .ai-page .chat-toolbar { position: relative; z-index: 6; align-items: center; gap: 12px; padding: 16px 20px; }
 :root:root .ai-page .chat-toolbar-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 :root:root .ai-page .chat-name { color: var(--brand-accent); font: 600 13px/1.3 var(--brand-body); }
-:root:root .ai-page .chat-message-user { background: var(--brand-surface-2); border-color: var(--brand-line); border-radius: 18px 18px 6px 18px; }
+:root:root .ai-page .chat-message-user { background: var(--brand-surface-2); border-color: var(--brand-line); border-radius: 12px 18px 6px 18px; }
 
 /* ---------- Dot glyph ---------- */
 .dot-glyph { display: block; flex: none; overflow: visible; }
@@ -41,7 +41,7 @@
 
 /* ---------- Thinking: glyph with the person's portrait beside it ---------- */
 :root:root .ai-page .guide-thinking { display: flex; align-items: center; gap: 18px; margin-top: 18px; animation: guide-in 400ms var(--ease-out) both; }
-.guide-thinking-faces { position: relative; display: flex; align-items: center; flex: none; padding: 8px; background: var(--brand-surface-2); border: 1px solid var(--brand-line); border-radius: 22px; }
+.guide-thinking-faces { position: relative; display: flex; align-items: center; flex: none; padding: 8px; background: var(--brand-surface-2); border: 1px solid var(--brand-line); border-radius: 12px; }
 .guide-thinking-portrait { margin-left: 10px; animation: guide-bob 2.4s ease-in-out infinite; }
 @keyframes guide-bob { 50% { transform: translateY(-3px) rotate(-3deg); } }
 :root:root .ai-page .guide-thinking .chat-thinking-line { margin-top: 4px; color: var(--brand-text); font: 400 18px/1.4 var(--brand-serif); }
@@ -62,10 +62,10 @@
 
 /* ---------- Composer ---------- */
 :root:root .ai-page .chat-composer .guide-input { display: block; width: 100%; min-height: 58px; padding: 6px 0; color: var(--brand-text); background: transparent; border: 0; outline: none; resize: none; font: 400 17px/1.5 var(--brand-body); }
-:root:root .ai-page .chat-composer .ask-footer > button.guide-send { min-height: 46px; padding: 0 22px; color: var(--key-hot-text); background: var(--key-hot-bg); border: 1px solid var(--key-hot-lip); border-radius: 10px; box-shadow: 0 2px 0 var(--key-hot-lip); font: 650 15px/1 var(--brand-body); }
+:root:root .ai-page .chat-composer .ask-footer > button.guide-send { min-height: 46px; padding: 0 22px; color: var(--key-hot-text); background: var(--key-hot-bg); border: 1px solid var(--key-hot-lip); border-radius: 10px; box-shadow: none; font: 650 15px/1 var(--brand-body); }
 :root:root .ai-page .chat-composer .ask-footer > button.guide-send:hover { background: var(--key-hot-bg); }
-:root:root .ai-page .chat-composer .ask-footer > button.guide-send:active { transform: translateY(2px); box-shadow: 0 0 0 var(--key-hot-lip); }
-:root:root .ai-page .chat-composer .ask-footer > button.guide-send:disabled { color: var(--brand-muted); background: var(--brand-surface-2); border-color: var(--key-lip); box-shadow: 0 2px 0 var(--key-lip); transform: none; opacity: 1; }
+:root:root .ai-page .chat-composer .ask-footer > button.guide-send:active { filter: brightness(0.96); }
+:root:root .ai-page .chat-composer .ask-footer > button.guide-send:disabled { color: var(--brand-muted); background: var(--brand-surface-2); border-color: var(--key-lip); box-shadow: none; transform: none; opacity: 1; }
 
 /* ---------- Face picker ---------- */
 [data-slot="dialog-content"].picker {
@@ -78,7 +78,7 @@
   color: var(--brand-text);
   background: var(--brand-bg);
   border: 1px solid var(--brand-line-strong);
-  border-radius: 20px;
+  border-radius: 12px;
   box-shadow: 0 30px 70px rgba(50, 28, 12, 0.18);
 }
 .picker [data-slot="dialog-close"] { top: 18px; right: 18px; width: 38px; height: 38px; color: var(--key-text); background: var(--key-bg); border: 1px solid var(--key-lip); border-radius: 50%; }
@@ -94,10 +94,10 @@
 .picker-fields .key svg { color: var(--cat); }
 .picker-fields .key[aria-pressed="true"] { background: var(--cat-soft, var(--brand-accent-soft)); }
 .picker-faces { display: grid; grid-template-columns: repeat(auto-fill, minmax(124px, 1fr)); gap: 8px; margin-top: 22px; }
-.picker-face { display: grid; justify-items: center; align-content: start; gap: 10px; padding: 14px 8px 12px; color: var(--brand-text); background: transparent; border: 0; border-radius: 20px; cursor: pointer; animation: picker-pop 420ms var(--ease-out) both; animation-delay: calc(var(--i, 0) * 22ms); transition: background-color 200ms ease, transform 260ms var(--ease-out); }
-.picker-face:hover { background: var(--cat-soft); transform: translateY(-3px); }
-.picker-face:hover .portrait { transform: scale(1.07) rotate(-3deg); }
-.picker-face:active { transform: scale(0.96); }
+.picker-face { display: grid; justify-items: center; align-content: start; gap: 10px; padding: 14px 8px 12px; color: var(--brand-text); background: transparent; border: 0; border-radius: 12px; cursor: pointer; animation: picker-pop 420ms var(--ease-out) both; animation-delay: calc(var(--i, 0) * 22ms); transition: background-color 200ms ease, transform 260ms var(--ease-out); }
+.picker-face:hover { background: var(--cat-soft); }
+
+
 .picker-face:focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 2px; }
 .picker-face[aria-pressed="true"] { background: var(--cat-soft); }
 .picker-face[aria-pressed="true"] .portrait { box-shadow: 0 0 0 3px var(--brand-bg), 0 0 0 5px var(--cat); }
@@ -109,7 +109,7 @@
 @media (prefers-reduced-motion: reduce) { .picker-face, .guide-chips .key, .guide-welcome { animation: none; } }
 
 @media (max-width: 700px) {
-  :root:root .ai-page .chat-shell { border-radius: 20px; }
+  :root:root .ai-page .chat-shell { border-radius: 12px; }
   :root:root .ai-page .chat-toolbar { flex-wrap: nowrap; padding: 12px; }
   :root:root .ai-page .chat-toolbar-controls { flex: 1; min-width: 0; gap: 8px; }
   :root:root .ai-page .guide-person { flex: 1 1 100%; min-width: 0; }
@@ -125,7 +125,7 @@
   .guide-welcome { align-items: flex-start; gap: 14px; }
   .guide-welcome .dot-glyph { width: 52px; height: 52px; }
   .guide-person-text span { max-width: 160px; }
-  [data-slot="dialog-content"].picker { padding: 22px 16px; border-radius: 22px; }
+  [data-slot="dialog-content"].picker { padding: 22px 16px; border-radius: 12px; }
   .picker-faces { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
   .picker-faces .portrait { width: 60px !important; height: 60px !important; }
 }
@@ -162,7 +162,7 @@
 .guide-source-tag.is-credible_secondary { color: var(--dot-scientists); background: var(--soft-scientists); border-color: color-mix(in srgb, var(--dot-scientists) 30%, transparent); }
 .guide-source-tag.is-general_web { color: var(--brand-warn-text); background: var(--brand-warn-bg); border-color: var(--brand-warn-line); }
 .guide-source-quote h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; color: var(--brand-accent); font: 600 13px/1.2 var(--brand-body); letter-spacing: 0.06em; text-transform: uppercase; }
-.guide-source-quote blockquote { position: relative; margin: 0; padding: 18px 20px 18px 24px; color: var(--brand-text); background: var(--brand-surface); border: 1px solid var(--brand-line); border-radius: 14px; font: 400 17.5px/1.65 var(--brand-serif); overflow-wrap: anywhere; }
+.guide-source-quote blockquote { position: relative; margin: 0; padding: 18px 20px 18px 24px; color: var(--brand-text); background: var(--brand-surface); border: 1px solid var(--brand-line); border-radius: 12px; font: 400 17.5px/1.65 var(--brand-serif); overflow-wrap: anywhere; }
 .guide-source-quote blockquote::before { content: ""; position: absolute; top: 14px; bottom: 14px; left: 0; width: 3px; background: var(--brand-accent); border-radius: 0 3px 3px 0; }
 .guide-source-missing { margin: 0; padding: 14px 16px; color: var(--brand-muted); background: var(--brand-surface-2); border-radius: 12px; font-size: 14.5px; line-height: 1.55; }
 .guide-source-where { display: grid; gap: 2px; margin: 12px 0 0; color: var(--brand-text); font-size: 14px; overflow-wrap: anywhere; }
@@ -200,13 +200,13 @@
   color: var(--brand-text);
   background: var(--brand-surface);
   border: 1.5px dashed var(--brand-accent-line);
-  border-radius: 18px;
+  border-radius: 12px;
   cursor: pointer;
   text-align: left;
   animation: guide-choose-call 3.2s ease-in-out infinite 1.6s;
   transition: background-color 200ms ease, border-color 200ms ease, transform 220ms var(--ease-out);
 }
-.guide-choose:hover { background: var(--brand-accent-soft); border-style: solid; border-color: var(--brand-accent); transform: translateX(3px); }
+.guide-choose:hover { background: var(--brand-accent-soft); border-style: solid; border-color: var(--brand-accent); }
 .guide-choose:focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 3px; }
 .guide-choose:disabled { opacity: 0.6; cursor: default; animation: none; }
 .guide-choose-faces { display: flex; flex: none; }

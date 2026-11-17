@@ -3,6 +3,7 @@ import { getPortraits } from "@/lib/portraits";
 import { ExploreClient } from "./explore-client";
 import { EXPLORE_CATEGORIES, toExplorePerson } from "./explore-data";
 import { ParticleHero, type HeroFigure } from "./particle-hero";
+import { DcfMark } from "@/components/dcf-logo";
 
 /** Faces the opening animation draws, in order, with each name in Devanagari for when a portrait cannot be read. */
 const HERO_FIGURES: Array<{ slug: string; deva: string }> = [
@@ -44,7 +45,7 @@ export async function ExploreLanding({ searchParams }: { searchParams: Promise<{
       </section>
 
       <footer className="xp-footer">
-        <span>Inspiring Personalities · Dharma Civilization Foundation</span>
+        <span className="xp-footer-brand"><DcfMark size={30} />Inspiring Personalities · Dharma Civilization Foundation</span>
         <span>Portraits from Wikimedia Commons; credits on each profile.</span>
       </footer>
     </main>
