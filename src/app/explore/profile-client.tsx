@@ -80,7 +80,8 @@ export function ProfileClient({ person, related, portrait = null, relatedPortrai
   const lens = person.roleLenses.find((item) => item.id === lensId) ?? null;
   const focusIds = new Set(lens?.focusClaimIds ?? []);
   const sections = applyRoleLens(profileSections(person), lens);
-  const claims = sections.reduce((total, section) => total + section.claims.length, 0);
+  // Overview claims also appear in their own section, so each claim is counted once.
+  const claims = new Set(sections.flatMap((section) => section.claims.map((claim) => claim.claimId))).size;
   const lede = approvedStatements(person, "shortIntroduction").slice(0, 2).map((claim) => claim.text).join(" ");
   const category = exploreCategory(person.slug, person.group);
   const firstName = person.shortName;

@@ -47,6 +47,9 @@ async function api<T>(url: string, options?: RequestInit): Promise<T> {
 }
 
 const json = { "Content-Type": "application/json" };
+/** The research category a group most often uses: the first of its hints that exists, in hint order. */
+const suggestedCategory = (categories: Category[], group: ExploreGroupId) =>
+  GROUP_CATEGORY_HINT[group].map((slug) => categories.find((category) => category.slug === slug)).find(Boolean);
 const yearValue = (draft: Draft) => draft.undated || !draft.eraYear.trim() ? null : Number.parseInt(draft.eraYear, 10);
 
 /** What is missing from the form, in plain words. Empty means it can be saved. */
@@ -110,7 +113,7 @@ export default function PeopleClient() {
 
   function chooseGroup(group: ExploreGroupId) {
     setDraft((current) => {
-      const hinted = categories.find((category) => GROUP_CATEGORY_HINT[group].includes(category.slug));
+      const hinted = suggestedCategory(categories, group);
       const keepCategory = current.categoryId && categories.some((category) => category.id === current.categoryId && GROUP_CATEGORY_HINT[group].includes(category.slug));
       return {
         ...current, group,
@@ -122,7 +125,7 @@ export default function PeopleClient() {
 
   function openNew() {
     const fresh = blankDraft();
-    fresh.categoryId = categories.find((category) => GROUP_CATEGORY_HINT[fresh.group].includes(category.slug))?.id ?? "";
+    fresh.categoryId = suggestedCategory(categories, fresh.group)?.id ?? "";
     setDraft(fresh);
     setFormError("");
     setEditing("new");

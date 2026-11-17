@@ -146,10 +146,11 @@ export async function PATCH(request: NextRequest) {
     if (alternates) await saveAliases(personalityId, row.canonical_name, alternates);
     if (categoryId) {
       await categoryExists(categoryId);
-      const cleared = await supabaseAdmin.from("personality_categories").update({ is_primary: false }).eq("personality_id", personalityId);
-      if (cleared.error) throw cleared.error;
+      // The person has one research category here, so changing it replaces the old one.
       const set = await supabaseAdmin.from("personality_categories").upsert({ personality_id: personalityId, category_id: categoryId, is_primary: true });
       if (set.error) throw set.error;
+      const cleared = await supabaseAdmin.from("personality_categories").delete().eq("personality_id", personalityId).neq("category_id", categoryId);
+      if (cleared.error) throw cleared.error;
     }
     refreshExplore(personalitySlug(row.canonical_name));
     return NextResponse.json({ published: next.published });
