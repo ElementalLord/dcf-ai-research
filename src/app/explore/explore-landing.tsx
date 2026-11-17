@@ -14,14 +14,10 @@ export async function ExploreLanding({ searchParams }: { searchParams: Promise<{
   const byId = new Map(people.map((person) => [person.id, person]));
   const portraits = await getPortraits(discovery.map((person) => person.slug));
   const explorePeople = discovery.map((person) => toExplorePerson(person, byId.get(person.id)!));
-  // A source shared by several people counts once.
-  const approvedSources = new Set(discovery.flatMap((person) => byId.get(person.id)!.sources
-    .filter((source) => source.sourceStatus === "approved").map((source) => source.url || source.id)));
-  const stats = { lives: explorePeople.length, fields: EXPLORE_CATEGORIES.length, sources: approvedSources.size };
 
   return (
     <main className="explore-shell xp">
-      <ParticleHero stats={stats} />
+      <ParticleHero />
 
       <section aria-labelledby="collection-title" className="xp-collection">
         <header className="xp-section-head">

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import { Arrow, Lotus } from "@/components/vedic-icons";
 
@@ -62,7 +62,6 @@ const SYMBOLS: Array<{ id: string; deva: string; name: string; meaning: string; 
   } },
 ];
 const TONES = ["--brand-accent", "--dot-spiritual", "--brand-text", "--brand-muted"];
-const GATHER_MS = 1700;
 const HOLD_MS = 4600;
 const DRIFT_MS = 1100;
 
@@ -93,7 +92,7 @@ function sample(box: { x: number; y: number; size: number }, step: number, paint
  * gently apart, and slowly settles into the next one (ॐ, lotus, trishula, dharma chakra, lamp,
  * conch, veena). The pointer parts the dots; a click moves on to the next symbol.
  */
-export function ParticleHero({ stats }: { stats: { lives: number; fields: number; sources: number } }) {
+export function ParticleHero() {
   const reduce = useReducedMotion();
   const stage = useRef<HTMLDivElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -114,25 +113,14 @@ export function ParticleHero({ stats }: { stats: { lives: number; fields: number
     let frame = 0; let visible = true; let cancelled = false;
 
     const readTones = () => { const style = getComputedStyle(document.documentElement); tones = TONES.map((name) => style.getPropertyValue(name).trim() || "#999"); };
-    /**
-     * The square the symbol fills: right of the text on wide screens, the top of the stage on phones.
-     * Room is left underneath for the caption plate. Never past an edge.
-     */
+    /** The square the symbol fills: right of the text on wide screens, the whole stage on phones. Never past an edge. */
     const symbolBox = () => {
-      if (width <= 860) { const size = Math.max(160, Math.min(width - 64, height - 104)); return { x: (width - size) / 2, y: 12, size }; }
+      if (width <= 860) { const size = Math.min(width - 48, height - 32); return { x: (width - size) / 2, y: (height - size) / 2, size }; }
       const shell = Math.min(width - 48, 1280);
       const textRight = (width - shell) / 2 + 540;
       const room = width - textRight - 40;
-      const size = Math.max(220, Math.min(height * 0.7, room - 24));
-      return { x: textRight + (room - size) / 2, y: Math.max(16, (height - size) / 2 - 36), size };
-    };
-    /** The glow and caption plate follow the symbol's square. */
-    const place = () => {
-      const box = symbolBox();
-      host.style.setProperty("--sym-cx", `${box.x + box.size / 2}px`);
-      host.style.setProperty("--sym-cy", `${box.y + box.size / 2}px`);
-      host.style.setProperty("--sym-size", `${box.size}px`);
-      host.style.setProperty("--sym-bottom", `${box.y + box.size}px`);
+      const size = Math.max(220, Math.min(height * 0.8, room - 24));
+      return { x: textRight + (room - size) / 2, y: (height - size) / 2, size };
     };
     const build = () => {
       const box = symbolBox();
@@ -189,7 +177,6 @@ export function ParticleHero({ stats }: { stats: { lives: number; fields: number
         size: 0.8, ts: 0.8, tone: 3, tt: 3, seed: Math.random() * Math.PI * 2,
       }));
       build();
-      place();
       assign(scenes[index]);
     };
     const show = (next: number) => { index = next; assign(scenes[index]); phase = "gather"; phaseStart = performance.now(); setCurrent(index); };
@@ -199,7 +186,7 @@ export function ParticleHero({ stats }: { stats: { lives: number; fields: number
       frame = requestAnimationFrame(draw);
       if (!visible) return;
       const elapsed = now - phaseStart;
-      if (phase === "gather" && elapsed > GATHER_MS) { phase = "hold"; phaseStart = now; }
+      if (phase === "gather" && elapsed > 1700) { phase = "hold"; phaseStart = now; }
       else if (phase === "hold" && elapsed > HOLD_MS) { drift(); phase = "drift"; phaseStart = now; }
       else if (phase === "drift" && elapsed > DRIFT_MS) show((index + 1) % scenes.length);
       const t = now / 1000;
@@ -267,34 +254,23 @@ export function ParticleHero({ stats }: { stats: { lives: number; fields: number
   }, [reduce]);
 
   const symbol = SYMBOLS[current];
-  const cycle = GATHER_MS + HOLD_MS + DRIFT_MS;
   return <section className="ph" aria-labelledby="hero-title">
     <div className="ph-stage" ref={stage} onClick={() => advance.current()}>
-      <div className="ph-glow" aria-hidden="true" />
       <canvas ref={canvas} className="ph-canvas" aria-hidden="true" />
-      <div className="ph-plate">
-        <p className="ph-figure" key={symbol.id} aria-live="polite">
-          <span className="ph-figure-name"><span lang="sa" className="ph-figure-deva">{symbol.deva}</span><strong>{symbol.name}</strong></span>
-          <small>{symbol.meaning}</small>
-        </p>
-        <span className="ph-ticks" aria-hidden="true" style={{ "--ph-cycle": `${cycle}ms` } as CSSProperties}>
-          {SYMBOLS.map((item, index) => <i key={index === current ? `${item.id}-on` : item.id} className={index === current ? "is-on" : index < current ? "is-done" : undefined} />)}
-        </span>
-      </div>
     </div>
     <div className="ph-copy">
-      <p className="ph-eyebrow"><span lang="sa" className="ph-deva">प्रेरणा</span><span className="ph-eyebrow-dot" aria-hidden="true" />Dharma Civilization Foundation</p>
+      <p className="ph-eyebrow"><span lang="sa" className="ph-deva">प्रेरणा</span><span aria-hidden="true">·</span>Dharma Civilization Foundation</p>
       <h1 id="hero-title" className="ph-title">Inspiring <em>Personalities</em></h1>
       <p className="ph-lede">Sages, scientists, rulers, reformers and artists who shaped Indian civilization, each with the evidence behind every claim.</p>
+      <p className="ph-figure" key={symbol.id} aria-live="polite">
+        <span lang="sa" className="ph-figure-deva">{symbol.deva}</span>
+        <strong>{symbol.name}</strong>
+        <small>{symbol.meaning}</small>
+      </p>
       <div className="ph-actions">
-        <a href="#collection-title" className="key key-hot key-lg ph-cta">Explore the lives<Arrow size={16} /></a>
-        <Link href="/ai" className="key key-lg ph-cta-quiet"><Lotus size={18} />Ask the guide</Link>
+        <a href="#collection-title" className="key key-hot key-lg">Explore the lives<Arrow size={16} /></a>
+        <Link href="/ai" className="key key-lg"><Lotus size={18} />Ask the guide</Link>
       </div>
-      <dl className="ph-stats">
-        <div><dt>Lives</dt><dd>{stats.lives}</dd></div>
-        <div><dt>Fields</dt><dd>{stats.fields}</dd></div>
-        <div><dt>Cited sources</dt><dd>{stats.sources.toLocaleString("en-US")}</dd></div>
-      </dl>
     </div>
   </section>;
 }
