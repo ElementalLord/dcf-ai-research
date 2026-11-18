@@ -3,6 +3,7 @@ import { hasAdminSession } from "@/lib/admin-session";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { loadReadinessDashboard } from "@/lib/quality/dashboard";
 import ResourcesNav from "../resources-nav";
+import { Expandable } from "@/components/expandable";
 import "../knowledge/knowledge.css";
 
 export const dynamic = "force-dynamic";
@@ -61,18 +62,18 @@ export default async function DiagnosticsPage({ searchParams }: { searchParams: 
       <summary><h2>Profile readiness</h2><span>How much evidence each person has</span></summary>
       {readiness ? <>
         <dl className="knowledge-facts">{(["STRONG", "USABLE", "THIN", "NEEDS ATTENTION"] as const).map(state => <div key={state}><dt>{sentence(state)}</dt><dd>{counts[state] || 0}</dd></div>)}</dl>
-        <div className="knowledge-table-wrap" role="region" aria-label="Personality readiness table" tabIndex={0}><table><thead><tr><th>Person</th><th>Retrieval</th><th>Publication</th><th>Sources / domains</th><th>Primary</th><th>Passages</th><th>Claims reviewed</th><th>Evidence quality</th><th>Evaluation</th><th>Main gaps</th></tr></thead>
-          <tbody>{readiness.map(row => <tr key={row.id}><td><strong>{row.name}</strong><small className="harvest-sub">{row.metrics.authoritativeSources} authoritative · {row.metrics.externalSearches} external calls</small></td><td>{sentence(row.retrievalState)}</td><td>{sentence(row.publicationState)}</td><td>{row.metrics.sources} / {row.metrics.domains}<small className="harvest-sub">{row.domainConcentrationPercent}% from the largest domain</small></td><td>{row.metrics.primarySources}<small className="harvest-sub">{row.primaryCoveragePercent}% of sources</small></td><td>{row.metrics.passages}<small className="harvest-sub">{row.metrics.claimsWithPassages} approved claims linked</small></td><td>{row.metrics.approvedClaims + row.metrics.rejectedClaims} / {row.metrics.totalClaims}<small className="harvest-sub">{row.reviewedPercent}% decided</small></td><td>{row.evidenceQualityPercent}%</td><td>{pct(row.evaluationPassPercent)}<small className="harvest-sub">{row.metrics.evaluationQuestions ? `${pct(row.citationSupportPercent)} citation support · ${pct(row.retrievalSuccessPercent)} retrieval` : "Suite not run"}</small></td><td>{row.gaps.join(" ") || "—"}</td></tr>)}</tbody></table></div>
+        <Expandable noun="rows"><div className="knowledge-table-wrap" role="region" aria-label="Personality readiness table" tabIndex={0}><table><thead><tr><th>Person</th><th>Retrieval</th><th>Publication</th><th>Sources / domains</th><th>Primary</th><th>Passages</th><th>Claims reviewed</th><th>Evidence quality</th><th>Evaluation</th><th>Main gaps</th></tr></thead>
+          <tbody>{readiness.map(row => <tr key={row.id}><td><strong>{row.name}</strong><small className="harvest-sub">{row.metrics.authoritativeSources} authoritative · {row.metrics.externalSearches} external calls</small></td><td>{sentence(row.retrievalState)}</td><td>{sentence(row.publicationState)}</td><td>{row.metrics.sources} / {row.metrics.domains}<small className="harvest-sub">{row.domainConcentrationPercent}% from the largest domain</small></td><td>{row.metrics.primarySources}<small className="harvest-sub">{row.primaryCoveragePercent}% of sources</small></td><td>{row.metrics.passages}<small className="harvest-sub">{row.metrics.claimsWithPassages} approved claims linked</small></td><td>{row.metrics.approvedClaims + row.metrics.rejectedClaims} / {row.metrics.totalClaims}<small className="harvest-sub">{row.reviewedPercent}% decided</small></td><td>{row.evidenceQualityPercent}%</td><td>{pct(row.evaluationPassPercent)}<small className="harvest-sub">{row.metrics.evaluationQuestions ? `${pct(row.citationSupportPercent)} citation support · ${pct(row.retrievalSuccessPercent)} retrieval` : "Suite not run"}</small></td><td>{row.gaps.join(" ") || "—"}</td></tr>)}</tbody></table></div></Expandable>
         <p className="knowledge-note">A high source count alone cannot produce a strong rating: it also needs passage-level evidence, several domains, authoritative coverage, human review and measured answer quality.</p>
       </> : <Unavailable what="Readiness scores"/>}
     </details>
 
     <details className="knowledge-section diagnostics-block">
       <summary><h2>Research run log</h2><span>The last 30 questions</span></summary>
-      {activityResult.error ? <Unavailable what="The run log"/> : <div className="knowledge-table-wrap"><table><thead><tr><th>Time</th><th>Resolution</th><th>Research</th><th>Searches</th><th>Verification calls</th><th>Admitted</th><th>Estimated cost</th><th>Latency</th></tr></thead><tbody>
+      {activityResult.error ? <Unavailable what="The run log"/> : <Expandable noun="rows"><div className="knowledge-table-wrap"><table><thead><tr><th>Time</th><th>Resolution</th><th>Research</th><th>Searches</th><th>Verification calls</th><th>Admitted</th><th>Estimated cost</th><th>Latency</th></tr></thead><tbody>
         {activities.map(row => <tr key={row.id}><td>{date(row.created_at)}</td><td>{row.resolution_state || "—"}</td><td>{row.research_status || "Local"}</td><td>{row.search_calls}</td><td>{row.verification_model_calls}</td><td>{row.admitted_count}</td><td>{usd(row.estimated_cost_micro)}</td><td>{row.latency_ms} ms</td></tr>)}
         {!activities.length && <tr><td colSpan={8}>No question activity recorded yet.</td></tr>}
-      </tbody></table></div>}
+      </tbody></table></div></Expandable>}
     </details>
 
     <details className="knowledge-section diagnostics-block" open={Boolean(outcome)}>
@@ -80,26 +81,26 @@ export default async function DiagnosticsPage({ searchParams }: { searchParams: 
       <form action="/resources/diagnostics" method="get" className="diagnostics-filter"><label>Outcome <select name="outcome" defaultValue={outcome}><option value="">All</option>{OUTCOMES.map(value => <option key={value} value={value}>{value}</option>)}</select></label><button type="submit" className="key">Filter</button></form>
       {summary && <dl className="knowledge-facts"><div><dt>Machine approved</dt><dd>{summary.machineApproved}</dd></div><div><dt>Human or Mentor approved</dt><dd>{summary.humanApproved}</dd></div>
         <div><dt>Quarantined</dt><dd>{summary.quarantined}</dd></div><div><dt>Rejected</dt><dd>{summary.rejected}</dd></div><div><dt>Suspended machine claims</dt><dd>{summary.suspendedMachine}</dd></div></dl>}
-      {decisionsResult.error ? <Unavailable what="Verification decisions"/> : <div className="knowledge-table-wrap"><table><thead><tr><th>Time</th><th>Decision</th><th>Epistemic type</th><th>Support</th><th>Reason</th><th>Work identity</th><th>Claim</th></tr></thead><tbody>
+      {decisionsResult.error ? <Unavailable what="Verification decisions"/> : <Expandable noun="rows"><div className="knowledge-table-wrap"><table><thead><tr><th>Time</th><th>Decision</th><th>Epistemic type</th><th>Support</th><th>Reason</th><th>Work identity</th><th>Claim</th></tr></thead><tbody>
         {decisions.map(row => <tr key={row.id}><td>{date(row.created_at)}</td><td>{row.outcome}</td><td>{row.epistemic_type || "—"}</td><td>{row.support}</td><td>{row.reason_codes.join("; ") || "—"}</td><td>{row.source_work_keys.join(", ") || "—"}</td><td>{row.claim_id || "—"}</td></tr>)}
         {!decisions.length && <tr><td colSpan={7}>No decisions match this filter.</td></tr>}
-      </tbody></table></div>}
+      </tbody></table></div></Expandable>}
     </details>
 
     <details className="knowledge-section diagnostics-block">
       <summary><h2>Research reuse and cooldowns</h2><span>Topics waiting before they are searched again</span></summary>
-      {needsResult.error ? <Unavailable what="Research cooldowns"/> : <div className="knowledge-table-wrap"><table><thead><tr><th>Updated</th><th>Need</th><th>Status</th><th>Failure or constraint</th><th>Retry eligible</th></tr></thead><tbody>
+      {needsResult.error ? <Unavailable what="Research cooldowns"/> : <Expandable noun="rows"><div className="knowledge-table-wrap"><table><thead><tr><th>Updated</th><th>Need</th><th>Status</th><th>Failure or constraint</th><th>Retry eligible</th></tr></thead><tbody>
         {needs.map(row => <tr key={row.need_id}><td>{date(row.updated_at)}</td><td><code>{row.need_id.slice(0, 12)}</code></td><td>{row.status}</td><td>{row.outcome?.errorCategory || "—"}</td><td>{row.retry_after ? date(row.retry_after) : "Now"}</td></tr>)}
         {!needs.length && <tr><td colSpan={5}>No research needs recorded yet.</td></tr>}
-      </tbody></table></div>}
+      </tbody></table></div></Expandable>}
     </details>
 
     <details className="knowledge-section diagnostics-block">
       <summary><h2>Machine-admitted sources</h2><span>The 15 most recent</span></summary>
-      {sourcesResult.error ? <Unavailable what="Machine-admitted sources"/> : <div className="knowledge-table-wrap"><table><thead><tr><th>Source</th><th>Publisher</th><th>Status</th><th>Retention declaration</th></tr></thead><tbody>
+      {sourcesResult.error ? <Unavailable what="Machine-admitted sources"/> : <Expandable noun="rows"><div className="knowledge-table-wrap"><table><thead><tr><th>Source</th><th>Publisher</th><th>Status</th><th>Retention declaration</th></tr></thead><tbody>
         {sources.map(row => <tr key={row.id}><td>{row.url ? <a href={row.url} target="_blank" rel="noopener noreferrer">{row.title}</a> : row.title}</td><td>{row.publisher_or_institution || "—"}</td><td>{row.source_status}</td><td>{row.rights_or_access_note || "—"}</td></tr>)}
         {!sources.length && <tr><td colSpan={4}>No machine-admitted sources yet.</td></tr>}
-      </tbody></table></div>}
+      </tbody></table></div></Expandable>}
     </details>
   </main>;
 }

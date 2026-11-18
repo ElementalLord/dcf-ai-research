@@ -10,6 +10,7 @@ import {
   type ExploreGroupId, type ExploreProfileSettings,
 } from "@/lib/explore/profile-settings";
 import { monogram } from "../../explore/explore-data";
+import { Expandable } from "@/components/expandable";
 
 type Readiness = { shownClaims: number; shownSources: number; approvedClaims: number; pendingClaims: number; approvedSources: number; withheldContested: number; filledSections: string[]; emptySections: string[]; blockers: string[] };
 type Person = { id: string; name: string; slug: string; alternateNames: string[]; category: { id: string; name: string } | null; curated: boolean; edited: boolean; sourceCount: number; settings: ExploreProfileSettings | null; readiness: Readiness | null; createdAt: string };
@@ -293,14 +294,14 @@ export default function PeopleClient() {
     {people && <section className="people-section" aria-labelledby="people-added">
       <h2 id="people-added">Added in Resources <small>{added.length}</small></h2>
       {!added.length ? <p className="people-empty">No one has been added yet. Choose <strong>Add a person</strong> to start.</p>
-        : shownAdded.length ? <ul className="people-list">{shownAdded.map(renderRow)}</ul>
+        : shownAdded.length ? <Expandable count={shownAdded.length} noun="people" height={460}><ul className="people-list">{shownAdded.map(renderRow)}</ul></Expandable>
         : <p className="people-empty">No added person matches “{search}”.</p>}
     </section>}
 
     {people && <section className="people-section" aria-labelledby="people-curated">
       <h2 id="people-curated">Curated collection <small>{curated.length}</small></h2>
       <p className="people-help">Always on Explore. Editing changes how they are presented (short name, other names, era, place, group, photo and reading angles); their reviewed text stays as exported.</p>
-      {shownCurated.length ? <ul className="people-list">{shownCurated.map(renderRow)}</ul> : <p className="people-empty">No curated person matches “{search}”.</p>}
+      {shownCurated.length ? <Expandable count={shownCurated.length} noun="curated profiles" height={460}><ul className="people-list">{shownCurated.map(renderRow)}</ul></Expandable> : <p className="people-empty">No curated person matches “{search}”.</p>}
     </section>}
 
     <Dialog open={editing !== null} onOpenChange={(open) => { if (!open && !busy) setEditing(null); }}>

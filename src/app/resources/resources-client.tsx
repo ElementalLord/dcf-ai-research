@@ -1,11 +1,12 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowUpRight, Check, ChevronLeft, ChevronRight, FileText, Globe2, LibraryBig, LoaderCircle, Plus, Search, X } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Check, ChevronDown, ChevronLeft, ChevronRight, FileText, Globe2, LibraryBig, LoaderCircle, Plus, Search, X } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Arrow as ArrowArrow, Lotus as LotusIcon } from "@/components/vedic-icons";
 import { DcfMark } from "@/components/dcf-logo";
+import { Expandable } from "@/components/expandable";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -35,6 +36,8 @@ type ReviewAction = "approved" | "candidate" | "needs_review" | "rejected";
 type Confirm = { kind: "delete" } | { kind: "review"; status: ReviewAction };
 type ResearchOptions = { personalities: Array<Person & { category_id: string | null }>; categories: Array<{ id: string; parameters: Array<{ id: string; name: string; parameter_fields: Array<{ id: string; label: string }> }> }> };
 const json = { "Content-Type": "application/json" };
+/** Rows shown before the source list is expanded. */
+const SOURCE_PREVIEW = 10;
 const human = (value: string) => ({ primary_text: "Original text", institutional: "Institutional record", scholarly_article: "Scholarly article", scholarly_book: "Scholarly book", biography: "Biography", autobiography: "Autobiography", archival: "Archive", secondary_source: "Scholarly source", traditional_narrative: "Traditional account" }[value] || value.replaceAll("_", " "));
 const matchesSearch = (query: string, fields: Array<string | null | undefined>) => {
   const searchable = fields.join(" ").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
@@ -152,9 +155,10 @@ export default function ResourcesClient({ authorized, personalities, loadError, 
   const activeList = tab === "sources" ? filteredSources : filteredClaims;
   const resultLabel = tab === "sources" ? (activeList.length === 1 ? "source" : "sources") : (activeList.length === 1 ? "claim" : "claims");
   // Sources page in 24s. Claims are never paged: a page break would split a topic group.
-  const pageCount = tab === "sources" ? Math.max(1, Math.ceil(filteredSources.length / 24)) : 1;
-  const currentPage = Math.min(page, pageCount);
-  const visibleSources = filteredSources.slice((currentPage - 1) * 24, currentPage * 24);
+  // The source list starts locked to its first rows; "Show all" opens the rest. Any change of person,
+  // filter or tab resets `page` to 1, which locks it again.
+  const sourcesExpanded = page > 1;
+  const visibleSources = sourcesExpanded ? filteredSources : filteredSources.slice(0, SOURCE_PREVIEW);
   const claimGroups = Object.entries(filteredClaims.reduce<Record<string, Claim[]>>((groups, item) => {
     const name = item.parameter_fields?.label || "Unassigned";
     (groups[name] ||= []).push(item);
@@ -226,7 +230,7 @@ export default function ResourcesClient({ authorized, personalities, loadError, 
   function stepSource(delta: number) {
     const target = filteredSources[sourceIndex + delta];
     if (!target || busy || editing) return;
-    setPage(Math.floor((sourceIndex + delta) / 24) + 1);
+    if (sourceIndex + delta >= SOURCE_PREVIEW) setPage(2);
     open({ kind: "source", item: target });
   }
   function stepClaim(delta: number) {
@@ -373,14 +377,14 @@ export default function ResourcesClient({ authorized, personalities, loadError, 
         <TabsContent value="claims">
           {loading ? <LoadingRows kind="claims"/> : filteredClaims.length ? <div className={`resource-claims-layout ${selectedClaim ? "is-open" : ""}`}><div className="resource-record-list resource-claim-groups" aria-label="Claims">
             {claimGroups.length > 1 && <div className="resource-group-controls"><Button type="button" variant="ghost" size="sm" onClick={() => setCollapsedGroups(new Set())}>Expand all</Button><Button type="button" variant="ghost" size="sm" onClick={() => setCollapsedGroups(new Set(claimGroups.map(([name]) => name)))}>Collapse all</Button></div>}
-            {claimGroups.map(([category, items]) => { const waiting = items.filter(item => !answerEligible(item)).length; return <details className="resource-claim-group" key={category} open={!collapsedGroups.has(category)} onToggle={event => { const isOpen = (event.currentTarget as HTMLDetailsElement).open; setCollapsedGroups(current => { const next = new Set(current); if (isOpen) next.delete(category); else next.add(category); return next; }); }}><summary>{category}<span>{items.length} {items.length === 1 ? "claim" : "claims"}{waiting ? <b className="resource-group-attention"> · {waiting} not in answers</b> : null}</span></summary><div>{items.map(item => <button type="button" id={`claim-${item.id}`} className="resource-record resource-claim-record" key={item.id} aria-pressed={selectedClaimId === item.id} onClick={() => setSelectedClaimId(item.id)}>
+            <Expandable count={filteredClaims.length} noun="claims" height={520} forceOpen={Boolean(selectedClaimId)}>{claimGroups.map(([category, items]) => { const waiting = items.filter(item => !answerEligible(item)).length; return <details className="resource-claim-group" key={category} open={!collapsedGroups.has(category)} onToggle={event => { const isOpen = (event.currentTarget as HTMLDetailsElement).open; setCollapsedGroups(current => { const next = new Set(current); if (isOpen) next.delete(category); else next.add(category); return next; }); }}><summary>{category}<span>{items.length} {items.length === 1 ? "claim" : "claims"}{waiting ? <b className="resource-group-attention"> · {waiting} not in answers</b> : null}</span></summary><div>{items.map(item => <button type="button" id={`claim-${item.id}`} className="resource-record resource-claim-record" key={item.id} aria-pressed={selectedClaimId === item.id} onClick={() => setSelectedClaimId(item.id)}>
               <span className="resource-record-content"><strong>{item.claim_text}</strong><span className="resource-record-meta">{claimSourceCount(item)} {claimSourceCount(item) === 1 ? "source" : "sources"}</span></span>
               <span className={`resource-record-status source-status-${item.review_status} ${answerEligible(item) ? "is-default" : ""}`}>{claimReviewLabel(item)}</span><ChevronRight className="resource-record-arrow" size={18} aria-hidden="true"/>
-            </button>)}</div></details>; })}
+            </button>)}</div></details>; })}</Expandable>
           </div>{selectedClaim && <aside className="resource-claim-panel" aria-label="Selected claim" aria-live="polite"><div className="resource-panel-nav"><RecordStepper index={claimIndex} total={orderedClaims.length} noun="Claim" onStep={stepClaim}/><button type="button" className="resource-panel-close" onClick={() => setSelectedClaimId(null)} aria-label="Close claim panel" aria-keyshortcuts="Escape"><X size={16}/> Close</button></div><h3>{selectedClaim.claim_text}</h3><p className="resource-panel-category">{selectedClaim.parameter_fields?.label || "Unassigned"} · {claimReviewLabel(selectedClaim)}</p><h4>Evidence</h4>{[...new Map([...selectedClaim.claim_sources.map(link => link.sources).filter((item): item is NonNullable<typeof item> => Boolean(item)), ...selectedClaim.claim_chunks.map(link => link.source_chunks?.sources).filter((item): item is NonNullable<typeof item> => Boolean(item))].map(item => [item.id, { title: item.title, url: item.url }] as const)).entries()].map(([id, evidence]) => <div className="resource-panel-evidence" key={id}>{sourceById.has(id) ? <button type="button" onClick={() => open({ kind: "source", item: sourceById.get(id)! })}>{evidence.title}</button> : evidence.url ? <a href={evidence.url} target="_blank" rel="noreferrer">{evidence.title}</a> : <span>{evidence.title}</span>}<span>Linked source</span></div>)}{!claimSourceCount(selectedClaim) && <p className="resource-panel-note">No linked sources are recorded.</p>}<div className="resource-panel-actions">{selectedClaim.review_status === "approved" ? <Button variant="outline" disabled={busy} onClick={() => reviewSelectedClaim(selectedClaim, "needs_review")}>Move back to review</Button> : <Button className="resource-panel-primary" disabled={busy} onClick={() => reviewSelectedClaim(selectedClaim, "approved")}>Approve claim</Button>}{selectedClaim.review_status === "rejected" ? <Button variant="outline" disabled={busy} onClick={() => reviewSelectedClaim(selectedClaim, "needs_review")}>Return to review</Button> : <Button variant="outline" disabled={busy} onClick={() => reviewSelectedClaim(selectedClaim, "rejected")}>Reject claim</Button>}<Button variant="ghost" onClick={() => open({ kind: "claim", item: selectedClaim })}>Full details</Button></div><p className="resource-panel-note">Only claims verified for answers can be used in AI answers.</p></aside>}</div> : <EmptyList filtered={!!query || status !== "all"} rejected={status === "rejected"} kind="claims" person={selectedName} clear={() => { setQuery(""); setStatus("all"); setPage(1); }} add={() => void startClaim()}/>}
         </TabsContent>
         <TabsContent value="websites">{tab === "websites" && <><SearchSources onCountsChange={setWebsiteCounts}/><details className="resource-detail-disclosure" open><summary>Page access permissions</summary><WebsiteAccess/></details></>}</TabsContent>
-        {tab === "sources" && !loading && activeList.length > 24 && <div className="resource-pagination"><span>Showing {(currentPage - 1) * 24 + 1}–{Math.min(currentPage * 24, activeList.length)} of {activeList.length}</span><div><Button variant="outline" size="sm" disabled={currentPage === 1} onClick={() => { setPage(currentPage - 1); setSelectedClaimId(null); }}>Previous</Button><span>Page {currentPage} of {pageCount}</span><Button variant="outline" size="sm" disabled={currentPage === pageCount} onClick={() => { setPage(currentPage + 1); setSelectedClaimId(null); }}>Next</Button></div></div>}
+        {tab === "sources" && !loading && filteredSources.length > SOURCE_PREVIEW && <button type="button" className="resource-show-all" aria-expanded={sourcesExpanded} onClick={() => { setPage(sourcesExpanded ? 1 : 2); if (sourcesExpanded) document.getElementById("resource-list-start")?.scrollIntoView({ block: "start", behavior: "smooth" }); }}><ChevronDown size={15} aria-hidden="true" className={sourcesExpanded ? "is-flipped" : ""}/>{sourcesExpanded ? "Show fewer sources" : `Show all ${filteredSources.length} sources`}</button>}
       </section></div>
     </Tabs>
     <Sheet open={!!detail || creating} onOpenChange={open => { if (!open && !pending) closeSheet(); }}><SheetContent className="resource-sheet"><SheetHeader><SheetTitle>{creating ? "Add source" : source ? source.title : claim ? "Claim detail" : "Resource detail"}</SheetTitle><SheetDescription>{creating ? `Add a source for ${selectedName}. It will wait for review.` : source ? `${selectedName} · ${sourceReviewLabel(source)} source` : `${selectedName} · ${claim ? claimReviewLabel(claim) : "draft"} claim`}</SheetDescription></SheetHeader><div className="resource-sheet-scroll" key={creating ? "new-source" : detail ? `${detail.kind}:${detail.item.id}` : "empty"} ref={sheetScroll}>

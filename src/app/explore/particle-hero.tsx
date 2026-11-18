@@ -60,6 +60,58 @@ const SYMBOLS: Array<{ id: string; deva: string; name: string; meaning: string; 
     for (let i = 0; i < 6; i++) { const t = 30 + i * 5.4; c.beginPath(); c.moveTo(t - 4, t + 4); c.lineTo(t + 4, t - 4); c.stroke(); }
     c.globalCompositeOperation = "source-over";
   } },
+  { id: "surya", deva: "सूर्य", name: "Surya · sun", meaning: "The source of light and life, greeted at every dawn", draw: (c) => {
+    c.beginPath(); c.arc(50, 50, 19, 0, Math.PI * 2); c.fill();
+    for (let i = 0; i < 12; i++) {
+      const a = (i / 12) * Math.PI * 2; const spread = 0.13;
+      c.beginPath();
+      c.moveTo(50 + 26 * Math.cos(a - spread), 50 + 26 * Math.sin(a - spread));
+      c.lineTo(50 + (i % 2 ? 40 : 47) * Math.cos(a), 50 + (i % 2 ? 40 : 47) * Math.sin(a));
+      c.lineTo(50 + 26 * Math.cos(a + spread), 50 + 26 * Math.sin(a + spread));
+      c.closePath(); c.fill();
+    }
+  } },
+  { id: "ashvattha", deva: "अश्वत्थ", name: "Ashvattha · peepal leaf", meaning: "The sacred fig, under which the Buddha awoke", draw: (c) => {
+    c.beginPath(); c.moveTo(50, 78);
+    c.bezierCurveTo(30, 84, 6, 68, 10, 46); c.bezierCurveTo(14, 28, 34, 18, 45, 10); c.lineTo(50, 1); c.lineTo(55, 10);
+    c.bezierCurveTo(66, 18, 86, 28, 90, 46); c.bezierCurveTo(94, 68, 70, 84, 50, 78); c.fill();
+    c.lineCap = "round"; c.lineWidth = 4; c.beginPath(); c.moveTo(50, 76); c.quadraticCurveTo(50, 88, 56, 97); c.stroke();
+    c.globalCompositeOperation = "destination-out"; c.lineWidth = 2.2;
+    c.beginPath(); c.moveTo(50, 74); c.lineTo(50, 14); c.stroke();
+    for (const [y, dx] of [[62, 26], [48, 28], [34, 22]] as const) {
+      c.beginPath(); c.moveTo(50, y + 6); c.quadraticCurveTo(50 - dx / 2, y + 2, 50 - dx, y - 6); c.stroke();
+      c.beginPath(); c.moveTo(50, y + 6); c.quadraticCurveTo(50 + dx / 2, y + 2, 50 + dx, y - 6); c.stroke();
+    }
+    c.globalCompositeOperation = "source-over";
+  } },
+  { id: "kalasha", deva: "कलश", name: "Kalasha · pot", meaning: "A vessel of abundance, set at the start of every rite", draw: (c) => {
+    c.beginPath(); c.ellipse(50, 70, 28, 21, 0, 0, Math.PI * 2); c.fill();
+    c.fillRect(39, 44, 22, 8); c.fillRect(32, 40, 36, 5); c.fillRect(40, 89, 20, 7);
+    // Mango leaves fan out on either side; the coconut sits clear of them in the middle.
+    for (const angle of [-1.3, -0.8, 0.8, 1.3]) {
+      c.save(); c.translate(50, 40); c.rotate(angle);
+      c.beginPath(); c.moveTo(0, 0); c.quadraticCurveTo(-5.5, -15, 0, -30); c.quadraticCurveTo(5.5, -15, 0, 0); c.fill(); c.restore();
+    }
+    c.beginPath(); c.ellipse(50, 24, 9, 12, 0, 0, Math.PI * 2); c.fill();
+    c.globalCompositeOperation = "destination-out"; c.fillRect(22, 66, 56, 3); c.globalCompositeOperation = "source-over";
+  } },
+  { id: "ghanta", deva: "घण्टा", name: "Ghanta · bell", meaning: "Rung at the temple door to wake the mind before worship", draw: (c) => {
+    c.beginPath(); c.arc(50, 8, 6, 0, Math.PI * 2); c.fill();
+    c.fillRect(46, 12, 8, 16);
+    c.beginPath(); c.moveTo(20, 78); c.bezierCurveTo(22, 48, 30, 28, 50, 27); c.bezierCurveTo(70, 28, 78, 48, 80, 78); c.closePath(); c.fill();
+    c.fillRect(13, 76, 74, 7);
+    c.beginPath(); c.arc(50, 91, 6, 0, Math.PI * 2); c.fill();
+    c.globalCompositeOperation = "destination-out"; c.fillRect(22, 62, 56, 3); c.globalCompositeOperation = "source-over";
+  } },
+  { id: "damaru", deva: "डमरु", name: "Damaru", meaning: "The drum of Shiva, whose beat keeps the rhythm of the world", draw: (c) => {
+    c.beginPath(); c.moveTo(24, 12); c.lineTo(76, 12); c.lineTo(55, 50); c.lineTo(76, 88); c.lineTo(24, 88); c.lineTo(45, 50); c.closePath(); c.fill();
+    c.fillRect(38, 45, 24, 10);
+    c.lineWidth = 3; c.lineCap = "round";
+    c.beginPath(); c.moveTo(39, 52); c.quadraticCurveTo(24, 58, 14, 68); c.stroke();
+    c.beginPath(); c.moveTo(61, 48); c.quadraticCurveTo(76, 42, 86, 32); c.stroke();
+    c.beginPath(); c.arc(12, 70, 6, 0, Math.PI * 2); c.fill();
+    c.beginPath(); c.arc(88, 30, 6, 0, Math.PI * 2); c.fill();
+  } },
 ];
 const TONES = ["--brand-accent", "--dot-spiritual", "--brand-text", "--brand-muted"];
 const HOLD_MS = 4600;

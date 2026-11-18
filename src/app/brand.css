@@ -163,9 +163,9 @@
   font: 800 15px/1 var(--brand-display);
   letter-spacing: -0.02em;
 }
-:root:root .wordmark-text { display: grid; gap: 1px; line-height: 1.15; }
-:root:root .wordmark-text strong { font: 700 16px/1.15 var(--brand-display); letter-spacing: -0.01em; }
-:root:root .wordmark-text small { color: var(--brand-muted); font: 500 12px/1.2 var(--brand-body); }
+:root:root .wordmark-text { display: grid; gap: 3px; line-height: 1.1; }
+:root:root .wordmark-text strong { font: 500 20px/1.05 var(--brand-serif); letter-spacing: -0.012em; }
+:root:root .wordmark-text small { color: var(--brand-muted); font: 600 9.5px/1.2 var(--brand-body); letter-spacing: 0.17em; text-transform: uppercase; }
 :root:root .site-nav { display: flex; align-items: center; gap: 28px; height: 72px; margin-left: auto; }
 :root:root .site-nav a {
   display: flex;
@@ -741,10 +741,10 @@ html:root:root { background: var(--brand-bg); }
 
 /* ---------- DCF mark ---------- */
 .dcf-mark { display: block; flex: none; }
-.dcf-mark-disc { fill: var(--brand-accent); }
-.dcf-mark-petal { fill: var(--brand-bg); }
+.dcf-mark-line { stroke: var(--brand-accent); }
+.dcf-mark-dot { fill: var(--brand-accent); }
 :root:root .wordmark .wordmark-logo { transition: transform 400ms var(--ease-out); }
-:root:root .wordmark:hover .wordmark-logo { transform: rotate(-8deg); }
+:root:root .wordmark:hover .wordmark-logo { transform: translateY(-1px); }
 .xp-footer-brand { display: inline-flex; align-items: center; gap: 10px; }
 :root:root .res-gate-icon { width: 52px; height: 52px; padding: 0; background: none; }
 @media (prefers-reduced-motion: reduce) { :root:root .wordmark .wordmark-logo { transition: none; } }

@@ -4,6 +4,7 @@ import { supabaseAdmin } from "@/lib/supabase-admin";
 import KnowledgeControls from "./knowledge-controls";
 import HarvestActions from "./harvest-actions";
 import ResourcesNav from "../resources-nav";
+import { Expandable } from "@/components/expandable";
 import "./knowledge.css";
 
 export const dynamic = "force-dynamic";
@@ -93,7 +94,7 @@ export default async function KnowledgePage({ searchParams }: { searchParams: Pr
           <div><dt>Answers harvested (30 days)</dt><dd>{harvest.runs30d}</dd></div>
           <div><dt>Paid searches avoided (30 days)</dt><dd>{harvest.searchesSaved30d}</dd></div>
         </dl>
-        <div className="knowledge-table-wrap"><table><thead><tr><th>Work</th><th>Credibility</th><th>Type</th><th>Use</th><th>Status</th><th>Decision</th></tr></thead><tbody>
+        <Expandable noun="rows"><div className="knowledge-table-wrap"><table><thead><tr><th>Work</th><th>Credibility</th><th>Type</th><th>Use</th><th>Status</th><th>Decision</th></tr></thead><tbody>
           {harvestSources.map(row => <tr key={row.id}>
             <td><a href={row.canonical_url} target="_blank" rel="noopener noreferrer">{row.title}</a><small className="harvest-sub">{row.publisher || row.domain}</small></td>
             <td><details className="harvest-why"><summary><span className={`harvest-tier harvest-tier-${row.credibility_tier}`}>{row.credibility_score} · {row.credibility_tier}</span></summary>
@@ -104,7 +105,7 @@ export default async function KnowledgePage({ searchParams }: { searchParams: Pr
             <td><HarvestActions sourceId={row.id} status={row.status}/></td>
           </tr>)}
           {!harvestSources.length && <tr><td colSpan={6}>No harvested sources match this view yet. They appear after an answer uses live search.</td></tr>}
-        </tbody></table></div>
+        </tbody></table></div></Expandable>
       </> : <p className="knowledge-empty">Source harvesting is not available in this database yet. Apply the migration <code>20261113010000_knowledge_harvest.sql</code> to start recording what live search finds.</p>}
     </section>
     <p className="knowledge-note">The run log, every verification decision, research cooldowns and machine-admitted sources are in <a href="/resources/diagnostics">Extra diagnostics</a>.</p>
