@@ -96,6 +96,7 @@ export function ParticleHero() {
   const reduce = useReducedMotion();
   const stage = useRef<HTMLDivElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
+  const copy = useRef<HTMLDivElement>(null);
   const advance = useRef<() => void>(() => {});
   const [current, setCurrent] = useState(0);
 
@@ -113,14 +114,21 @@ export function ParticleHero() {
     let frame = 0; let visible = true; let cancelled = false;
 
     const readTones = () => { const style = getComputedStyle(document.documentElement); tones = TONES.map((name) => style.getPropertyValue(name).trim() || "#999"); };
-    /** The square the symbol fills: right of the text on wide screens, the whole stage on phones. Never past an edge. */
+    /**
+     * The square the symbol fills. On wide screens it takes the space between the text and the
+     * page's right edge, measured from the text itself, so it sits beside the words instead of
+     * drifting towards the window edge. On phones it fills the stage. Never past an edge.
+     */
     const symbolBox = () => {
       if (width <= 860) { const size = Math.min(width - 48, height - 32); return { x: (width - size) / 2, y: (height - size) / 2, size }; }
       const shell = Math.min(width - 48, 1280);
-      const textRight = (width - shell) / 2 + 540;
-      const room = width - textRight - 40;
-      const size = Math.max(220, Math.min(height * 0.8, room - 24));
-      return { x: textRight + (room - size) / 2, y: (height - size) / 2, size };
+      const shellRight = (width + shell) / 2;
+      const text = copy.current?.getBoundingClientRect();
+      const textRight = text ? text.right - host.getBoundingClientRect().left : (width - shell) / 2 + 560;
+      const left = textRight + Math.max(24, width * 0.03);
+      const room = shellRight - left;
+      const size = Math.max(220, Math.min(height * 0.9, room));
+      return { x: left + Math.max(0, room - size) / 2, y: (height - size) / 2, size };
     };
     const build = () => {
       const box = symbolBox();
@@ -258,7 +266,7 @@ export function ParticleHero() {
     <div className="ph-stage" ref={stage} onClick={() => advance.current()}>
       <canvas ref={canvas} className="ph-canvas" aria-hidden="true" />
     </div>
-    <div className="ph-copy">
+    <div className="ph-copy" ref={copy}>
       <p className="ph-eyebrow"><span lang="sa" className="ph-deva">प्रेरणा</span><span aria-hidden="true">·</span>Dharma Civilization Foundation</p>
       <h1 id="hero-title" className="ph-title">Inspiring <em>Personalities</em></h1>
       <p className="ph-lede">Sages, scientists, rulers, reformers and artists who shaped Indian civilization, each with the evidence behind every claim.</p>

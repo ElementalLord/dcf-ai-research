@@ -89,8 +89,9 @@
 .picker-search:focus-within { border-color: var(--brand-accent-line); box-shadow: 0 0 0 4px var(--brand-accent-soft); }
 .picker-search input { flex: 1; min-width: 0; color: var(--brand-text); background: transparent; border: 0; outline: none; font: 400 16px/1 var(--brand-body); }
 .picker-tools .key { min-height: 48px; border-radius: 12px; }
-.picker-fields { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-.picker-fields .key { min-height: 38px; padding: 0 13px; border-radius: 12px; font-size: 14px; }
+.picker-fields { display: flex; flex-wrap: nowrap; gap: 6px; margin-top: 14px; overflow-x: auto; scrollbar-width: none; }
+.picker-fields::-webkit-scrollbar { display: none; }
+.picker-fields .key { flex: none; gap: 6px; min-height: 36px; padding: 0 11px; border-radius: 12px; font-size: 14px; }
 .picker-fields .key svg { color: var(--cat); }
 .picker-fields .key[aria-pressed="true"] { background: var(--cat-soft, var(--brand-accent-soft)); }
 .picker-faces { display: grid; grid-template-columns: repeat(auto-fill, minmax(124px, 1fr)); gap: 8px; margin-top: 22px; }

@@ -11,6 +11,11 @@ import { Arrow, CATEGORY_ICONS, Close, ListLines, Manuscript, Search } from "@/c
 import { ERA_PERIODS, type ExplorePerson } from "./explore-data";
 import { ExploreTimeline } from "./explore-timeline";
 
+/** Short field names, so every filter fits on one line. The full name stays as the tooltip. */
+const SHORT_NAMES: Record<string, string> = {
+  sages: "Sages", spiritual: "Spiritual teachers", scientists: "Scientists & builders", rulers: "Rulers & fighters", cultural: "Cultural figures",
+};
+
 type Props = { people: ExplorePerson[]; categories: Phase1PresentationCategory[]; initialCategory: string; portraits: Record<string, PortraitData> };
 type View = "list" | "time";
 const ease = [0.23, 1, 0.32, 1] as const;
@@ -60,8 +65,8 @@ export function ExploreClient({ people, categories, initialCategory, portraits }
       <button type="button" className="key key-cat" aria-pressed={categoryId === "all"} onClick={() => setCategoryId("all")}>All <small>{facetMatches.length}</small></button>
       {categories.map((category) => {
         const Icon = CATEGORY_ICONS[category.id] ?? Manuscript;
-        return <button key={category.id} type="button" className={`key key-cat cat-${category.id}`} aria-pressed={categoryId === category.id} onClick={() => setCategoryId(category.id)}>
-          <Icon size={17} />{category.name}<small>{facetMatches.filter((person) => person.presentationCategory.id === category.id).length}</small>
+        return <button key={category.id} type="button" className={`key key-cat cat-${category.id}`} title={category.name} aria-pressed={categoryId === category.id} onClick={() => setCategoryId(category.id)}>
+          <Icon size={16} />{SHORT_NAMES[category.id] ?? category.name}<small>{facetMatches.filter((person) => person.presentationCategory.id === category.id).length}</small>
         </button>;
       })}
     </div>
