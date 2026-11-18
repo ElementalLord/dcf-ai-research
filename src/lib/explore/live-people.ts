@@ -71,5 +71,26 @@ export async function loadLiveProfiles({ publishedOnly, personalityIds }: { publ
   }
 }
 
+/**
+ * Edits made in Resources → People to the 25 curated profiles, keyed by person ID. Only the
+ * presentation details change (names, era, place, group, photo, angles); reviewed text stays as
+ * exported. A database failure returns no edits, so the curated collection always loads.
+ */
+export async function loadCuratedEdits(): Promise<Map<string, { settings: ExploreProfileSettings; alternateNames: string[] | null }>> {
+  try {
+    const { data, error } = await supabaseAdmin.from("personalities").select("id,alternate_names,explore_profile").in("id", [...curatedIds()]).not("explore_profile", "is", null);
+    if (error) throw error;
+    return new Map((data || []).flatMap((row) => {
+      const settings = readExploreProfile(row.explore_profile);
+      return settings ? [[row.id, { settings, alternateNames: row.alternate_names }]] : [];
+    }));
+  } catch (error) {
+    console.error("Explore: curated edits could not be loaded.", error instanceof Error ? error.message : error);
+    return new Map();
+  }
+}
+
+export const curatedEdits = cache(loadCuratedEdits);
+
 /** Published live profiles, deduplicated per request. */
 export const publishedLiveProfiles = cache(() => loadLiveProfiles({ publishedOnly: true }));

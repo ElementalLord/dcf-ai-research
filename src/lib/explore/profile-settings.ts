@@ -95,6 +95,8 @@ export const exploreProfileSchema = z.object({
     broad: z.array(z.enum(BROAD_REGIONS)).min(1).max(4),
   }),
   wikipediaTitle: text(200).nullable(),
+  /** A photo chosen in Resources (uploaded or linked). Shown instead of the Wikipedia image. */
+  photo: z.object({ url: z.string().trim().url().max(2000).refine((value) => /^https:\/\//i.test(value), "Use an https link"), credit: text(300) }).nullable().optional(),
   angles: z.array(angleSchema).max(6),
   publishedAt: z.string().nullable().optional(),
 });

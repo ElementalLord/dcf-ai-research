@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPhase1People } from "@/lib/phase1/dataset";
-import { getExplorePerson, portraitTitles } from "@/lib/explore/collection";
+import { chosenPhotos, getExplorePerson, portraitTitles } from "@/lib/explore/collection";
 import { getPortraits } from "@/lib/portraits";
 import { approvedStatements, groupOf, publicProfilePerson } from "../explore-data";
 import { ProfileClient } from "../profile-client";
@@ -34,6 +34,6 @@ export default async function PersonalityPage({ params }: { params: Promise<{ sl
   const { person, settings, related: relatedPeople, collection } = found;
   const bySlug = new Map(collection.people.map((item) => [item.slug, item]));
   const related = relatedPeople.map(({ id, slug: relatedSlug, name, detailedCategory, eraShort }) => ({ id, slug: relatedSlug, name, detailedCategory, eraShort, field: groupOf(bySlug.get(relatedSlug)!).id }));
-  const portraits = await getPortraits([slug, ...related.map((item) => item.slug)], portraitTitles(collection.settings));
+  const portraits = await getPortraits([slug, ...related.map((item) => item.slug)], portraitTitles(collection.settings), chosenPhotos(collection.settings));
   return <ProfileClient person={publicProfilePerson(person, settings)} portrait={portraits[slug] ?? null} related={related} relatedPortraits={portraits} />;
 }

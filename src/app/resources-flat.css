@@ -1,0 +1,70 @@
+/*
+ * Resources, flattened. Loaded after resources-hub.css and brand.css, so it wins over both.
+ * Hairline rules and type do the separating instead of rounded, filled cards: section nav is
+ * underlined text, summary numbers sit on the page, notices are a left rule, and every corner
+ * in the back office is near-square. Colours still come from the brand tokens, so dark mode holds.
+ */
+
+/* Corners and shadows: one rule for the whole back office, its dialogs and sheets. */
+:root:root :is(.resources-page, .people-dialog, .resource-sheet, .claim-dialog, .website-access-dialog, .search-source-dialog, .resource-review-dialog, .resource-help-dialog) :is(
+  [class*="resource-"], [class*="website-"], [class*="search-"], [class*="knowledge-"], [class*="people-"], [class*="claim-"], [class*="harvest-"],
+  [class*="feedback-"], [class*="res-nav"], [data-slot="button"], [data-slot="input"], [data-slot="select-trigger"], [data-slot="textarea"], [data-slot="tabs-list"], [data-slot="tabs-trigger"], .key, input, select, textarea
+):not(.people-row-mark, .people-preview-mark, .people-photo-preview, .portrait) {
+  border-radius: 3px;
+  box-shadow: none;
+}
+:root:root :is(.people-dialog, .resource-sheet, .claim-dialog, .website-access-dialog, .search-source-dialog, .resource-review-dialog, .resource-help-dialog) { border-radius: 4px; box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22); }
+
+/* Section switcher: a row of underlined text tabs, not five tiles. */
+:root:root .res-nav-sections { display: flex; flex-wrap: wrap; gap: 0 26px; margin: 12px 0 30px; border-bottom: 1px solid var(--brand-line); }
+:root:root .res-nav-sections a { gap: 8px; margin-bottom: -1px; padding: 12px 0 11px; background: none; border: 0; border-bottom: 2px solid transparent; border-radius: 0; }
+:root:root .res-nav-sections a:hover { background: none; border-bottom-color: var(--brand-line-strong); }
+:root:root .res-nav-sections a[aria-current="page"] { background: none; border-bottom-color: var(--brand-accent); }
+:root:root .res-nav-sections a[aria-current="page"] strong { color: var(--brand-accent); }
+:root:root .res-nav-sections small { display: none; }
+:root:root .res-nav-sections strong { font-size: 14.5px; font-weight: 600; }
+:root:root .res-nav-sections svg { width: 16px; height: 16px; }
+/* The last section is supplementary, so it sits apart at the far end. */
+:root:root .res-nav-sections a:last-child { margin-left: auto; }
+:root:root .res-nav-sections a:last-child strong { color: var(--brand-muted); font-weight: 500; }
+:root:root .res-nav-sections a:last-child[aria-current="page"] strong { color: var(--brand-accent); }
+@media (max-width: 720px) {
+  :root:root .res-nav-sections { flex-wrap: nowrap; overflow-x: auto; gap: 0 20px; scrollbar-width: none; }
+  :root:root .res-nav-sections a { flex: none; }
+  :root:root .res-nav-sections a:last-child { margin-left: 0; }
+}
+
+/* Summary numbers on the page itself, divided by thin rules. */
+:root:root .resources-page .resource-overview { padding-left: 0; padding-right: 0; background: none; border: 0; border-top: 1px solid var(--brand-line); border-bottom: 1px solid var(--brand-line); border-radius: 0; }
+:root:root .resources-page .resource-overview button { background: none; }
+:root:root .resources-page .resource-overview button:hover { background: var(--brand-hover); }
+
+/* Notices and "needs attention": a coloured left rule, no filled box. */
+:root:root .resources-page :is(.resource-attention, .resource-error) { background: none; border: 0; border-left: 3px solid var(--brand-line-strong); border-radius: 0; }
+:root:root .resources-page .resource-error { border-left-color: var(--brand-bad); }
+:root:root .resources-page .resource-attention:not(.is-clear) { border-left-color: var(--brand-warn); }
+:root:root .resources-page .resource-attention.is-clear { border-left-color: var(--brand-ok-line); }
+
+/* Sources / Claims / Web search: underlined tabs instead of a pill group. */
+:root:root .resources-page .resource-tabs .resource-area-tabs { gap: 24px; padding: 0; width: 100%; background: none; border: 0; border-bottom: 1px solid var(--brand-line); border-radius: 0; }
+:root:root .resources-page .resource-tabs .resource-area-tab { margin-bottom: -1px; padding: 10px 0; background: none; border: 0; border-bottom: 2px solid transparent; border-radius: 0; }
+:root:root .resources-page .resource-tabs .resource-area-tab[data-active], :root:root .resources-page .resource-tabs .resource-area-tab[aria-selected="true"] { background: none; border-bottom-color: var(--brand-accent); }
+:root:root .resources-page .resource-tabs .resource-area-tab::after { display: none; }
+
+/* Grouped lists and panels: ruled, not boxed. */
+:root:root .resources-page :is(.website-group, .claim-review-summary, .knowledge-controls, .resource-claim-panel, .search-sources-panel, .website-access-panel) { background: none; border-left: 0; border-right: 0; }
+:root:root .resources-page :is(.knowledge-table-wrap, .resource-source-table-wrap) { background: none; border-left: 0; border-right: 0; }
+:root:root .resources-page .knowledge-table-wrap th { background: var(--brand-bg); }
+
+/* Extra diagnostics: each table is a collapsible block with a one-line explanation. */
+.diagnostics-block > summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; cursor: pointer; list-style: none; }
+.diagnostics-block > summary::-webkit-details-marker { display: none; }
+.diagnostics-block > summary h2 { margin: 0; }
+.diagnostics-block > summary span { color: var(--brand-faint); font-size: 13.5px; }
+.diagnostics-block > summary::after { content: "Show"; margin-left: auto; color: var(--brand-accent); font-size: 13px; font-weight: 600; }
+.diagnostics-block[open] > summary::after { content: "Hide"; }
+.diagnostics-block[open] > summary { margin-bottom: 18px; }
+.diagnostics-filter { display: flex; align-items: end; gap: 8px; margin-bottom: 16px; }
+.diagnostics-filter label { display: grid; gap: 4px; color: var(--brand-muted); font-size: 13px; }
+.diagnostics-filter select { min-height: 36px; padding: 0 8px; color: var(--brand-text); background: var(--brand-bg); border: 1px solid var(--brand-line-strong); }
+.diagnostics-filter .key { min-height: 36px; }

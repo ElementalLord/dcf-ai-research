@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { ArrowUpRight, LoaderCircle, Plus, Trash2 } from "lucide-react";
+import { ArrowUpRight, LoaderCircle, Pencil, Plus, Search, Trash2, Upload } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { CATEGORY_ICONS, Check, Lotus } from "@/components/vedic-icons";
 import {
@@ -12,20 +12,25 @@ import {
 import { monogram } from "../../explore/explore-data";
 
 type Readiness = { shownClaims: number; shownSources: number; approvedClaims: number; pendingClaims: number; approvedSources: number; withheldContested: number; filledSections: string[]; emptySections: string[]; blockers: string[] };
-type Person = { id: string; name: string; slug: string; alternateNames: string[]; category: { id: string; name: string } | null; curated: boolean; settings: ExploreProfileSettings | null; readiness: Readiness | null; createdAt: string };
+type Person = { id: string; name: string; slug: string; alternateNames: string[]; category: { id: string; name: string } | null; curated: boolean; edited: boolean; sourceCount: number; settings: ExploreProfileSettings | null; readiness: Readiness | null; createdAt: string };
 type Category = { id: string; slug: string; name: string; fieldCount: number };
 type Angle = ExploreProfileSettings["angles"][number];
+type SourceRow = { url: string; title: string; sourceType: string };
+const SOURCE_TYPES: Array<[string, string]> = [["other", "Other"], ["biography", "Biography"], ["scholarly_book", "Scholarly book"], ["scholarly_article", "Scholarly article"], ["primary_text", "Original text"], ["autobiography", "Autobiography"], ["archival", "Archive"], ["institutional", "Institutional record"]];
+const blankSource = (): SourceRow => ({ url: "", title: "", sourceType: "other" });
 
 type Draft = {
   name: string; shortName: string; shortNameTouched: boolean; alternateNames: string; group: ExploreGroupId; categoryId: string;
   eraLabel: string; eraYear: string; undated: boolean; period: (typeof ERA_PERIODS)[number]; periodTouched: boolean;
   regionLabel: string; regions: string[]; wikipediaTitle: string; wikipediaTouched: boolean; angles: Angle[]; anglesTouched: boolean;
+  photoUrl: string; photoCredit: string; sources: SourceRow[];
 };
 
 const blankDraft = (): Draft => ({
   name: "", shortName: "", shortNameTouched: false, alternateNames: "", group: "scientists", categoryId: "",
   eraLabel: "", eraYear: "", undated: false, period: "20th century", periodTouched: false,
   regionLabel: "", regions: [], wikipediaTitle: "", wikipediaTouched: false, angles: fillAngles("scientists", ""), anglesTouched: false,
+  photoUrl: "", photoCredit: "", sources: [blankSource()],
 });
 
 function draftFrom(person: Person): Draft {
@@ -36,6 +41,7 @@ function draftFrom(person: Person): Draft {
     eraYear: settings.era.sortYear === null ? "" : String(settings.era.sortYear), undated: settings.era.sortYear === null,
     period: settings.era.period, periodTouched: true, regionLabel: settings.region.label, regions: settings.region.broad,
     wikipediaTitle: settings.wikipediaTitle ?? "", wikipediaTouched: true, angles: settings.angles, anglesTouched: true,
+    photoUrl: settings.photo?.url ?? "", photoCredit: settings.photo?.credit ?? "", sources: [blankSource()],
   };
 }
 
@@ -62,11 +68,20 @@ function formProblems(draft: Draft) {
   if (draft.regionLabel.trim().length < 2) problems.push("a place");
   if (!draft.regions.length) problems.push("at least one broad region");
   if (draft.angles.some((angle) => angle.title.trim().length < 2 || angle.question.trim().length < 8)) problems.push("a title and question for each reading angle (or remove it)");
+  if (draft.photoUrl.trim() && !isHttps(draft.photoUrl.trim())) problems.push("a photo link that starts with https://");
+  if (draft.sources.some((row) => row.url.trim() && !isWebAddress(row.url.trim()))) problems.push("a full web address for each source (starting with https://)");
+  if (draft.sources.some((row) => !row.url.trim() && row.title.trim().length === 1)) problems.push("a longer source title");
   return problems;
 }
 
+const isWebAddress = (value: string) => { try { return /^https?:$/.test(new URL(value).protocol); } catch { return false; } };
+const isHttps = (value: string) => isWebAddress(value) && value.toLowerCase().startsWith("https://");
+const filledSources = (draft: Draft) => draft.sources.filter((row) => row.url.trim() || row.title.trim().length >= 2)
+  .map((row) => ({ url: row.url.trim(), title: row.title.trim(), sourceType: row.sourceType }));
+
 function toPayload(draft: Draft) {
   return {
+    sources: filledSources(draft),
     alternateNames: draft.alternateNames.split(",").map((item) => item.trim()).filter(Boolean),
     categoryId: draft.categoryId,
     settings: {
@@ -75,6 +90,7 @@ function toPayload(draft: Draft) {
       era: { label: draft.eraLabel.trim(), short: shortEra(draft.eraLabel.trim()), sortYear: yearValue(draft), period: draft.period },
       region: { label: draft.regionLabel.trim(), broad: draft.regions },
       wikipediaTitle: draft.wikipediaTitle.trim() || null,
+      photo: draft.photoUrl.trim() ? { url: draft.photoUrl.trim(), credit: draft.photoCredit.trim() } : null,
       angles: draft.angles.map((angle) => ({ lens: angle.lens.trim() || "historical", title: angle.title.trim(), question: angle.question.trim() })),
     },
   };
@@ -97,6 +113,7 @@ export default function PeopleClient() {
   const [formError, setFormError] = useState("");
   const [notice, setNotice] = useState("");
   const [cardError, setCardError] = useState<{ id: string; message: string } | null>(null);
+  const [search, setSearch] = useState("");
 
   const load = useCallback(() => api<{ people: Person[]; categories: Category[] }>("/api/resources/people").then((data) => {
     setPeople(data.people);
@@ -156,12 +173,23 @@ export default function PeopleClient() {
     setFormError("");
     try {
       const payload = toPayload(draft);
+      type Saved = { sources?: { added: number; reused: number }; sourceError?: string | null };
+      const sourceNote = (result: Saved) => {
+        const count = (result.sources?.added ?? 0) + (result.sources?.reused ?? 0);
+        if (result.sourceError) return ` The details were saved, but some sources were not: ${result.sourceError}`;
+        return count ? ` ${count} ${count === 1 ? "source was" : "sources were"} added for review in Sources & claims.` : "";
+      };
       if (editing === "new") {
-        await api("/api/resources/people", { method: "POST", headers: json, body: JSON.stringify({ name: draft.name.trim(), ...payload }) });
-        setNotice(`${draft.name.trim()} was added. Next, add sources and claims, then publish.`);
+        const result = await api<Saved>("/api/resources/people", { method: "POST", headers: json, body: JSON.stringify({ name: draft.name.trim(), ...payload }) });
+        setNotice(`${draft.name.trim()} was added.${sourceNote(result)} Next, approve sources and claims, then publish.`);
       } else if (editing) {
-        await api("/api/resources/people", { method: "PATCH", headers: json, body: JSON.stringify({ personalityId: editing.id, ...payload }) });
-        setNotice(`${editing.name}: details saved.${editing.settings?.published ? " Explore shows the change now." : ""}`);
+        const { categoryId, ...rest } = payload;
+        const body = editing.curated
+          ? { personalityId: editing.id, ...rest }
+          : { personalityId: editing.id, ...rest, categoryId, ...(draft.name.trim() !== editing.name ? { name: draft.name.trim() } : {}) };
+        const result = await api<Saved>("/api/resources/people", { method: "PATCH", headers: json, body: JSON.stringify(body) });
+        const live = editing.curated || editing.settings?.published;
+        setNotice(`${draft.name.trim() || editing.name}: details saved.${live ? " Explore shows the change now." : ""}${sourceNote(result)}`);
       }
       setEditing(null);
       await load();
@@ -186,19 +214,77 @@ export default function PeopleClient() {
     }
   }
 
+  async function uploadPhoto(file: File) {
+    setFormError("");
+    if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) { setFormError("Use a JPG, PNG or WebP photo."); return; }
+    if (file.size > 4 * 1024 * 1024) { setFormError("The photo must be 4 MB or smaller."); return; }
+    setBusy("photo");
+    try {
+      const body = new FormData();
+      body.append("file", file);
+      const { url } = await api<{ url: string }>("/api/resources/people/photo", { method: "POST", body });
+      update({ photoUrl: url });
+    } catch (error) {
+      setFormError(error instanceof Error ? error.message : "The photo could not be uploaded. Try again.");
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  function openEdit(person: Person) {
+    setDraft(person.settings ? { ...draftFrom(person), name: person.name } : { ...blankDraft(), name: person.name, categoryId: person.category?.id ?? "" });
+    setFormError("");
+    setEditing(person);
+  }
+
+  function setSource(index: number, patch: Partial<SourceRow>) {
+    setDraft((current) => ({ ...current, sources: current.sources.map((row, position) => position === index ? { ...row, ...patch } : row) }));
+  }
+
   const problems = formProblems(draft);
+  const curatedEditing = editing !== null && editing !== "new" && editing.curated;
   const previewGroup = EXPLORE_GROUPS.find((group) => group.id === draft.group)!;
   const PreviewIcon = CATEGORY_ICONS[draft.group] ?? Lotus;
 
+  const matches = (person: Person) => !search.trim() || `${person.name} ${person.alternateNames.join(" ")} ${person.category?.name ?? ""}`.toLowerCase().includes(search.trim().toLowerCase());
+  const shownAdded = added.filter(matches);
+  const shownCurated = curated.filter(matches);
+
+  function renderRow(person: Person) {
+    const ready = person.readiness;
+    const live = person.curated || Boolean(person.settings?.published && !ready?.blockers.length);
+    const group = EXPLORE_GROUPS.find((item) => item.id === person.settings?.group);
+    const Icon = CATEGORY_ICONS[person.settings?.group ?? ""] ?? Lotus;
+    return <li key={person.id} className={`people-row cat-${person.settings?.group ?? "sages"}`}>
+      <span className="people-row-mark" aria-hidden="true">{person.settings?.photo
+        // eslint-disable-next-line @next/next/no-img-element -- a stored photo at its own size; no optimiser needed.
+        ? <img src={person.settings.photo.url} alt="" referrerPolicy="no-referrer" />
+        : monogram(person.name)}</span>
+      <div className="people-row-main">
+        <h3>{person.name}{person.curated && person.edited && <small className="people-tag">Edited</small>}</h3>
+        <p><Icon size={13} aria-hidden="true" />{group?.name ?? "No Explore group yet"}{person.settings ? ` · ${person.settings.era.short}` : ""}{person.category ? ` · ${person.category.name}` : ""} · {person.sourceCount} {person.sourceCount === 1 ? "source" : "sources"}</p>
+        {!person.curated && (person.settings && ready
+          ? <p className="people-row-note">{ready.approvedSources} approved {ready.approvedSources === 1 ? "source" : "sources"} · {ready.shownClaims} {ready.shownClaims === 1 ? "claim" : "claims"} ready{ready.pendingClaims ? ` · ${ready.pendingClaims} awaiting review` : ""}{ready.blockers.length && !live ? ` — to publish: ${ready.blockers.join(" ")}` : ""}</p>
+          : <p className="people-row-note">Explore details are missing. Choose Edit to add them.</p>)}
+        {cardError?.id === person.id && <p className="form-error" role="alert">{cardError.message}</p>}
+      </div>
+      {person.curated ? <span className="people-status is-live"><Check size={13} />On Explore</span> : <Status person={person} />}
+      <div className="people-actions">
+        <button type="button" className="key" onClick={() => openEdit(person)}><Pencil size={14} aria-hidden="true" />Edit</button>
+        <Link className="key" href={`/resources?person=${person.id}`}>Sources &amp; claims</Link>
+        {!person.curated && person.settings && (person.settings.published
+          ? <button type="button" className="key" disabled={busy === person.id} onClick={() => void setPublished(person, false)}>{busy === person.id ? "Hiding…" : "Unpublish"}</button>
+          : <button type="button" className="key key-hot" disabled={busy === person.id || Boolean(ready?.blockers.length)} title={ready?.blockers.join(" ")} onClick={() => void setPublished(person, true)}>{busy === person.id ? "Publishing…" : "Publish"}</button>)}
+        {live && <a className="people-link" href={`/explore/${person.slug}`} target="_blank" rel="noreferrer" aria-label={`View ${person.name} on Explore`}>View <ArrowUpRight size={14} /></a>}
+      </div>
+    </li>;
+  }
+
   return <div className="people">
-    <section className="people-steps" aria-label="How adding a person works">
-      <ol>
-        <li><span>1</span><div><strong>Add the person</strong><p>Name, group, era, region and portrait.</p></div></li>
-        <li><span>2</span><div><strong>Add sources and claims</strong><p>Approve at least one source and one claim that cites it.</p></div></li>
-        <li><span>3</span><div><strong>Publish to Explore</strong><p>The profile appears on Explore, the home page and Ask.</p></div></li>
-      </ol>
+    <div className="people-toolbar">
+      <label className="people-search"><Search size={16} aria-hidden="true" /><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Find a person" aria-label="Find a person" /></label>
       <button type="button" className="key key-hot people-add" onClick={openNew} disabled={!people}><Plus size={17} aria-hidden="true" />Add a person</button>
-    </section>
+    </div>
 
     {notice && <p className="people-notice" role="status">{notice}<button type="button" onClick={() => setNotice("")} aria-label="Dismiss">×</button></p>}
     {loadError && <p className="resource-error" role="alert">{loadError} <button type="button" className="key" onClick={() => void load()}>Retry</button></p>}
@@ -206,58 +292,56 @@ export default function PeopleClient() {
 
     {people && <section className="people-section" aria-labelledby="people-added">
       <h2 id="people-added">Added in Resources <small>{added.length}</small></h2>
-      {!added.length && <div className="people-empty"><p>No one has been added yet. Choose <strong>Add a person</strong> to start; the steps above show what happens next.</p></div>}
-      <div className="people-cards">{added.map((person) => {
-        const ready = person.readiness;
-        const live = Boolean(person.settings?.published && !ready?.blockers.length);
-        const group = EXPLORE_GROUPS.find((item) => item.id === person.settings?.group);
-        const Icon = CATEGORY_ICONS[person.settings?.group ?? ""] ?? Lotus;
-        return <article key={person.id} className={`people-card cat-${person.settings?.group ?? "sages"}`}>
-          <header>
-            <div><h3>{person.name}</h3><p><Icon size={14} />{group?.name ?? "No Explore group"}{person.settings ? ` · ${person.settings.era.short}` : ""}{person.category ? ` · ${person.category.name}` : ""}</p></div>
-            <Status person={person} />
-          </header>
-          {person.settings && ready ? <ul className="people-checklist">
-            <li className={ready.approvedSources ? "is-done" : ""}><Check size={14} aria-hidden="true" />{ready.approvedSources} approved {ready.approvedSources === 1 ? "source" : "sources"}</li>
-            <li className={ready.shownClaims ? "is-done" : ""}><Check size={14} aria-hidden="true" />{ready.shownClaims} {ready.shownClaims === 1 ? "claim" : "claims"} ready to show{ready.pendingClaims ? ` · ${ready.pendingClaims} awaiting review` : ""}</li>
-            <li className={ready.filledSections.length >= 3 ? "is-done" : "is-optional"}><Check size={14} aria-hidden="true" />{ready.filledSections.length ? `Sections covered: ${ready.filledSections.join(", ")}` : "No sections covered yet"}</li>
-            {ready.withheldContested > 0 && <li className="is-optional"><Check size={14} aria-hidden="true" />{ready.withheldContested} contested {ready.withheldContested === 1 ? "claim needs" : "claims need"} a second independent source</li>}
-          </ul> : <p className="people-card-note">Explore details are missing. Choose Edit details to add them.</p>}
-          {ready?.blockers.length && !live ? <p className="people-card-note">To publish: {ready.blockers.join(" ")}</p> : null}
-          {cardError?.id === person.id && <p className="form-error" role="alert">{cardError.message}</p>}
-          <div className="people-actions">
-            <Link className="key" href={`/resources?person=${person.id}`}>Add sources &amp; claims</Link>
-            <button type="button" className="key" onClick={() => { setDraft(person.settings ? draftFrom(person) : { ...blankDraft(), name: person.name, categoryId: person.category?.id ?? "" }); setFormError(""); setEditing(person); }}>Edit details</button>
-            {person.settings && (person.settings.published
-              ? <button type="button" className="key" disabled={busy === person.id} onClick={() => void setPublished(person, false)}>{busy === person.id ? "Hiding…" : "Unpublish"}</button>
-              : <button type="button" className="key key-hot" disabled={busy === person.id || Boolean(ready?.blockers.length)} title={ready?.blockers.join(" ")} onClick={() => void setPublished(person, true)}>{busy === person.id ? "Publishing…" : "Publish to Explore"}</button>)}
-            {live && <a className="people-link" href={`/explore/${person.slug}`} target="_blank" rel="noreferrer">View on Explore <ArrowUpRight size={14} /></a>}
-          </div>
-        </article>;
-      })}</div>
+      {!added.length ? <p className="people-empty">No one has been added yet. Choose <strong>Add a person</strong> to start.</p>
+        : shownAdded.length ? <ul className="people-list">{shownAdded.map(renderRow)}</ul>
+        : <p className="people-empty">No added person matches “{search}”.</p>}
     </section>}
 
-    {people && <details className="people-section people-curated">
-      <summary><h2>Curated collection <small>{curated.length}</small></h2></summary>
-      <p className="people-card-note">The original Phase 1 profiles come from the reviewed export and are always on Explore. Add sources and claims for them in Sources &amp; claims as usual.</p>
-      <ul>{curated.map((person) => <li key={person.id}><Link href={`/explore/${person.slug}`} target="_blank">{person.name}</Link><span>{person.category?.name}</span></li>)}</ul>
-    </details>}
+    {people && <section className="people-section" aria-labelledby="people-curated">
+      <h2 id="people-curated">Curated collection <small>{curated.length}</small></h2>
+      <p className="people-help">Always on Explore. Editing changes how they are presented (short name, other names, era, place, group, photo and reading angles); their reviewed text stays as exported.</p>
+      {shownCurated.length ? <ul className="people-list">{shownCurated.map(renderRow)}</ul> : <p className="people-empty">No curated person matches “{search}”.</p>}
+    </section>}
 
-    <Dialog open={editing !== null} onOpenChange={(open) => { if (!open && busy !== "form") setEditing(null); }}>
+    <Dialog open={editing !== null} onOpenChange={(open) => { if (!open && !busy) setEditing(null); }}>
       <DialogContent className="people-dialog">
         <DialogHeader>
           <DialogTitle>{editing === "new" ? "Add a person" : `Edit ${editing?.name ?? ""}`}</DialogTitle>
-          <DialogDescription>{editing === "new" ? "Saved as a draft. Nothing appears on Explore until you publish." : "Changes to a published person appear on Explore as soon as you save."}</DialogDescription>
+          <DialogDescription>{editing === "new" ? "Saved as a draft. Nothing appears on Explore until you publish." : curatedEditing ? "A curated profile. Changes appear on Explore as soon as you save." : "Changes to a published person appear on Explore as soon as you save."}</DialogDescription>
         </DialogHeader>
         <form className="people-form" onSubmit={(event) => { event.preventDefault(); void save(); }}>
           <fieldset>
             <legend>Who</legend>
-            <label>Full name *<input value={draft.name} onChange={(event) => setName(event.target.value)} disabled={editing !== "new"} maxLength={160} placeholder="For example, Homi J. Bhabha" autoFocus={editing === "new"} /></label>
-            {editing !== "new" && <span className="people-help">The name is fixed once the person exists, because sources and claims are linked to it.</span>}
+            <label>Full name *<input value={draft.name} onChange={(event) => setName(event.target.value)} disabled={curatedEditing} maxLength={160} placeholder="For example, Homi J. Bhabha" autoFocus={editing === "new"} /></label>
+            {curatedEditing ? <span className="people-help">Curated names are fixed, because their reviewed text and Explore address depend on them.</span>
+              : editing !== "new" && <span className="people-help">Renaming changes the Explore address. The old name is kept as another name, so search still finds it.</span>}
             <div className="people-pair">
               <label>Short name<input value={draft.shortName} onChange={(event) => update({ shortName: event.target.value, shortNameTouched: true })} maxLength={80} placeholder="Bhabha" /><span className="people-help">Used in running text, such as “Ask about Bhabha”.</span></label>
               <label>Other names<input value={draft.alternateNames} onChange={(event) => update({ alternateNames: event.target.value })} placeholder="Separate with commas" /><span className="people-help">Helps search and Ask recognise the person.</span></label>
             </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Photo</legend>
+            <div className="people-photo">
+              <span className="people-photo-preview" aria-hidden="true">{draft.photoUrl.trim() && isHttps(draft.photoUrl.trim())
+                // eslint-disable-next-line @next/next/no-img-element -- preview of the chosen photo.
+                ? <img src={draft.photoUrl.trim()} alt="" referrerPolicy="no-referrer" />
+                : monogram(draft.name.trim() || "?")}</span>
+              <div className="people-photo-controls">
+                <label className="key people-upload">{busy === "photo" ? <LoaderCircle size={15} className="animate-spin" /> : <Upload size={15} aria-hidden="true" />}{busy === "photo" ? "Uploading…" : "Upload a photo"}
+                  <input type="file" accept="image/jpeg,image/png,image/webp" disabled={busy === "photo"} onChange={(event) => { const file = event.target.files?.[0]; event.target.value = ""; if (file) void uploadPhoto(file); }} />
+                </label>
+                {draft.photoUrl && <button type="button" className="key" onClick={() => update({ photoUrl: "", photoCredit: "" })}>Remove photo</button>}
+                <span className="people-help">JPG, PNG or WebP, up to 4 MB. A square, face-centred photo looks best.</span>
+              </div>
+            </div>
+            <div className="people-pair">
+              <label>Or paste a photo link<input value={draft.photoUrl} onChange={(event) => update({ photoUrl: event.target.value })} maxLength={2000} placeholder="https://…" inputMode="url" /></label>
+              <label>Photo credit<input value={draft.photoCredit} onChange={(event) => update({ photoCredit: event.target.value })} maxLength={300} placeholder="Photographer or archive" /><span className="people-help">Shown on the profile beside the photo.</span></label>
+            </div>
+            <label>Wikipedia article (used when there is no photo)<input value={draft.wikipediaTitle} onChange={(event) => update({ wikipediaTitle: event.target.value, wikipediaTouched: true })} maxLength={200} placeholder="For example, Homi J. Bhabha" /><span className="people-help">The article&apos;s lead image becomes the portrait, credited automatically. Clear it to show initials.</span></label>
+            {draft.wikipediaTitle.trim() && <a className="people-link" href={`https://en.wikipedia.org/wiki/${encodeURIComponent(draft.wikipediaTitle.trim().replace(/ /g, "_"))}`} target="_blank" rel="noreferrer">Check the article <ArrowUpRight size={14} /></a>}
           </fieldset>
 
           <fieldset>
@@ -266,10 +350,10 @@ export default function PeopleClient() {
               const Icon = CATEGORY_ICONS[group.id] ?? Lotus;
               return <button type="button" role="radio" aria-checked={draft.group === group.id} key={group.id} className={`people-group cat-${group.id}`} onClick={() => chooseGroup(group.id)}><Icon size={18} />{group.name}</button>;
             })}</div>
-            <label>Research category *<select value={draft.categoryId} onChange={(event) => update({ categoryId: event.target.value })}>
+            <label>Research category *<select value={draft.categoryId} onChange={(event) => update({ categoryId: event.target.value })} disabled={curatedEditing}>
               <option value="" disabled>Choose a category</option>
               {categories.map((category) => <option key={category.id} value={category.id}>{category.name}{category.fieldCount ? ` (${category.fieldCount} research fields)` : ""}</option>)}
-            </select><span className="people-help">Decides which research fields claims can be filed under, and so which profile section each claim appears in.</span></label>
+            </select><span className="people-help">{curatedEditing ? "Fixed for curated profiles, because their reviewed claims are filed under it." : "Decides which research fields claims can be filed under, and so which profile section each claim appears in."}</span></label>
           </fieldset>
 
           <fieldset>
@@ -285,9 +369,15 @@ export default function PeopleClient() {
           </fieldset>
 
           <fieldset>
-            <legend>Portrait</legend>
-            <label>English Wikipedia article title<input value={draft.wikipediaTitle} onChange={(event) => update({ wikipediaTitle: event.target.value, wikipediaTouched: true })} maxLength={200} placeholder="For example, Homi J. Bhabha" /><span className="people-help">Filled in from the name. The portrait is the lead image of this article, credited automatically. Clear it to show initials instead.</span></label>
-            {draft.wikipediaTitle.trim() && <a className="people-link" href={`https://en.wikipedia.org/wiki/${encodeURIComponent(draft.wikipediaTitle.trim().replace(/ /g, "_"))}`} target="_blank" rel="noreferrer">Check the article <ArrowUpRight size={14} /></a>}
+            <legend>Sources to add <small>(optional)</small></legend>
+            <span className="people-help">{editing !== "new" && editing ? `${editing.sourceCount} already linked. ` : ""}Paste a web address, a title, or both. Each one is added for review in Sources &amp; claims; nothing is used in answers until it is approved there.</span>
+            {draft.sources.map((row, index) => <div className="people-source" key={index}>
+              <input aria-label={`Source ${index + 1} web address`} value={row.url} onChange={(event) => setSource(index, { url: event.target.value })} maxLength={2000} placeholder="https://…" inputMode="url" />
+              <input aria-label={`Source ${index + 1} title`} value={row.title} onChange={(event) => setSource(index, { title: event.target.value })} maxLength={500} placeholder="Title (optional with a link)" />
+              <select aria-label={`Source ${index + 1} type`} value={row.sourceType} onChange={(event) => setSource(index, { sourceType: event.target.value })}>{SOURCE_TYPES.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select>
+              <button type="button" className="key" aria-label={`Remove source ${index + 1}`} onClick={() => setDraft((current) => ({ ...current, sources: current.sources.length > 1 ? current.sources.filter((_, position) => position !== index) : [blankSource()] }))}><Trash2 size={15} /></button>
+            </div>)}
+            {draft.sources.length < 20 && <div className="people-angle-actions"><button type="button" className="key" onClick={() => setDraft((current) => ({ ...current, sources: [...current.sources, blankSource()] }))}><Plus size={15} />Add another source</button></div>}
           </fieldset>
 
           <fieldset>
@@ -306,14 +396,17 @@ export default function PeopleClient() {
 
           <div className={`people-preview cat-${draft.group}`} aria-label="Preview of the Explore card">
             <span className="people-preview-label">On Explore</span>
-            <span className="people-preview-mark" aria-hidden="true">{monogram(draft.name.trim() || "?")}</span>
+            <span className="people-preview-mark" aria-hidden="true">{draft.photoUrl.trim() && isHttps(draft.photoUrl.trim())
+              // eslint-disable-next-line @next/next/no-img-element -- preview of the chosen photo.
+              ? <img src={draft.photoUrl.trim()} alt="" referrerPolicy="no-referrer" />
+              : monogram(draft.name.trim() || "?")}</span>
             <span><strong>{draft.name.trim() || "Name"}</strong><small><PreviewIcon size={13} />{previewGroup.name} · {shortEra(draft.eraLabel.trim()) || "Era"} · {draft.regions[0] || "Region"}</small></span>
           </div>
 
           {formError && <p className="form-error" role="alert">{formError}</p>}
           <div className="people-form-actions">
             <button type="button" className="key" onClick={() => setEditing(null)} disabled={busy === "form"}>Cancel</button>
-            <button type="submit" className="key key-hot" disabled={busy === "form"} title={problems.length ? `Still needed: ${problems.join(", ")}` : undefined}>{busy === "form" ? "Saving…" : editing === "new" ? "Add person" : "Save details"}</button>
+            <button type="submit" className="key key-hot" disabled={busy === "form" || busy === "photo"} title={problems.length ? `Still needed: ${problems.join(", ")}` : undefined}>{busy === "form" ? "Saving…" : editing === "new" ? "Add person" : "Save changes"}</button>
           </div>
         </form>
       </DialogContent>

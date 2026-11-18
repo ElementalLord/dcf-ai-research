@@ -42,13 +42,21 @@ async function wiki<T>(params: Record<string, string>): Promise<T | null> {
 }
 
 /** Portraits for the given profile slugs, keyed by slug. People without a usable image are left out. */
-export async function getPortraits(slugs: string[], extraTitles: Record<string, string> = {}): Promise<Record<string, Portrait>> {
-  const titles: Record<string, string> = { ...extraTitles, ...WIKIPEDIA_TITLES };
+export async function getPortraits(slugs: string[], extraTitles: Record<string, string> = {}, photos: Record<string, Portrait> = {}): Promise<Record<string, Portrait>> {
+  // A photo chosen in Resources always wins; Wikipedia is only asked about everyone else.
+  const chosen = Object.fromEntries(slugs.filter((slug) => photos[slug]).map((slug) => [slug, photos[slug]]));
+  const looked = await wikipediaPortraits(slugs.filter((slug) => !photos[slug]), extraTitles);
+  return { ...looked, ...chosen };
+}
+
+async function wikipediaPortraits(slugs: string[], extraTitles: Record<string, string>): Promise<Record<string, Portrait>> {
+  // Titles set in Resources override the built-in ones, so an editor can fix a wrong portrait.
+  const titles: Record<string, string> = { ...WIKIPEDIA_TITLES, ...extraTitles };
   const wanted = [...new Set(slugs.filter((slug) => titles[slug]))];
   if (!wanted.length) return {};
   // Wikipedia answers at most 50 titles per query, so a larger collection is looked up in batches.
   if (wanted.length > 50) {
-    const batches = await Promise.all(Array.from({ length: Math.ceil(wanted.length / 50) }, (_, index) => getPortraits(wanted.slice(index * 50, index * 50 + 50), extraTitles)));
+    const batches = await Promise.all(Array.from({ length: Math.ceil(wanted.length / 50) }, (_, index) => wikipediaPortraits(wanted.slice(index * 50, index * 50 + 50), extraTitles)));
     return Object.assign({}, ...batches);
   }
   const pages = await wiki<PageImagesResponse>({ action: "query", prop: "pageimages", piprop: "thumbnail|name", pithumbsize: "400", redirects: "1", titles: wanted.map((slug) => titles[slug]).join("|") });

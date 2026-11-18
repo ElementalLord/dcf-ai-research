@@ -16,7 +16,7 @@ const origin = (process.argv[2] || "http://localhost:3000").replace(/\/$/, "");
 const adminCookie = process.env.DCF_ADMIN_COOKIE || "";
 
 const publicPages = ["/", "/explore", "/explore/swami-vivekananda", "/ai", "/resources"];
-const adminPages = ["/resources/knowledge", "/resources/feedback", "/resources/readiness", "/research", "/review",
+const adminPages = ["/resources/knowledge", "/resources/feedback", "/resources/diagnostics", "/research", "/review",
   "/corpus", "/corpus/sources", "/corpus/evidence", "/corpus/epistemics", "/corpus/external", "/corpus/onboard", "/corpus/reconcile"];
 const popupTriggers = [
   '[data-slot="select-trigger"]:visible', '[data-slot="dialog-trigger"]:visible', "button[aria-haspopup]:visible",

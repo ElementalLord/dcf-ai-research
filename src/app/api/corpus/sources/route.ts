@@ -3,7 +3,7 @@ import { z } from "zod";
 import { supabaseAdmin } from "@/lib/supabase-admin";
 import { assertCorpusAdmin, assertRequestSize, corpusErrorResponse } from "@/lib/corpus/api";
 import { CorpusError } from "@/lib/corpus/errors";
-import { normalizeSourceUrl } from "@/lib/corpus/source-dedupe";
+import { addSourceForPerson } from "@/lib/corpus/add-source";
 
 const updateSchema = z.object({
   sourceId: z.string().uuid(),
@@ -93,48 +93,9 @@ export async function POST(request: NextRequest) {
     assertRequestSize(request);
     const parsed = createSchema.safeParse(await request.json());
     if (!parsed.success) throw new CorpusError("INVALID_INPUT", "The new source record is invalid.", 400);
-    const normalizedUrl = parsed.data.url ? normalizeSourceUrl(parsed.data.url) : null;
-    if (normalizedUrl) {
-      const possibleUrls = [...new Set([
-        normalizedUrl,
-        parsed.data.url,
-        normalizedUrl.endsWith("/") ? normalizedUrl.slice(0, -1) : `${normalizedUrl}/`,
-      ].filter((value): value is string => Boolean(value)))];
-      const { data: existingRows, error: lookupError } = await supabaseAdmin
-        .from("sources")
-        .select("id, title")
-        .in("url", possibleUrls)
-        .limit(1);
-      if (lookupError) throw new CorpusError("DATABASE_FAILED", "Source duplication could not be checked.", 500, { cause: lookupError });
-      const existing = existingRows?.[0];
-      if (existing) {
-        if (parsed.data.personalityId) await supabaseAdmin.from("source_personalities").upsert({ source_id: existing.id, personality_id: parsed.data.personalityId }, { onConflict: "source_id,personality_id", ignoreDuplicates: true });
-        return NextResponse.json({ source: existing, reused: true });
-      }
-    }
-    const { data, error } = await supabaseAdmin
-      .from("sources")
-      .insert({
-        title: parsed.data.title,
-        author: parsed.data.author || null,
-        publisher_or_institution: parsed.data.publisherOrInstitution || null,
-        source_type: parsed.data.sourceType,
-        url: normalizedUrl,
-        citation: parsed.data.citation || null,
-        textual_layer: parsed.data.textualLayer || null,
-        rights_or_access_note: parsed.data.rightsOrAccessNote || null,
-        source_status: "candidate",
-        approval_origin: "human_manual",
-        ingestion_status: "not_ingested",
-      })
-      .select("id, title")
-      .single();
-    if (error) throw new CorpusError("DATABASE_FAILED", "The source record could not be created.", 500, { cause: error });
-    if (parsed.data.personalityId) {
-      const linked = await supabaseAdmin.from("source_personalities").upsert({ source_id: data.id, personality_id: parsed.data.personalityId }, { onConflict: "source_id,personality_id", ignoreDuplicates: true });
-      if (linked.error) throw new CorpusError("DATABASE_FAILED", "The source was created but could not be linked to the person.", 500, { cause: linked.error });
-    }
-    return NextResponse.json({ source: data, reused: false }, { status: 201 });
+    const { personalityId, ...source } = parsed.data;
+    const result = await addSourceForPerson(source, personalityId);
+    return NextResponse.json(result, { status: result.reused ? 200 : 201 });
   } catch (error) {
     return corpusErrorResponse(error);
   }

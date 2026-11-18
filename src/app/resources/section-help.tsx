@@ -13,8 +13,8 @@ const guides: Record<Exclude<ResourcesSection, "library">, { name: string; intro
       { title: "1. Add the person", text: "Choose “Add a person”. Enter the name, the Explore group, the research category (it decides which research fields claims can use), the era and the region. A Wikipedia article title gives the profile a portrait. Reading angles are pre-filled for the group; edit or remove them." },
       { title: "2. Add sources and claims", text: "Choose “Add sources & claims”. In Sources & claims, add at least one source and approve it, then add claims that cite it and approve them. Only approved claims with an approved source appear on Explore." },
       { title: "3. Publish", text: "When the checklist on the person's card is complete, choose “Publish to Explore”. The profile appears on Explore and the home page straight away, and in Ask. Later approvals show up within five minutes." },
-      { title: "Unpublish or edit", text: "“Unpublish” hides the profile again without deleting anything. “Edit details” changes the group, era, region, portrait or angles; changes appear immediately." },
-      { title: "The 25 curated profiles", text: "The original Phase 1 profiles are listed separately and are managed through the Phase 1 export, so they cannot be changed here." },
+      { title: "Unpublish or edit", text: "“Unpublish” hides the profile again without deleting anything. “Edit” changes the name, group, era, region, photo or angles; changes appear immediately." },
+      { title: "The 25 curated profiles", text: "The original profiles can be edited too: short name, other names, era, place, photo and reading angles. Their reviewed text stays as exported." },
     ],
   },
   feedback: {
@@ -28,16 +28,6 @@ const guides: Record<Exclude<ResourcesSection, "library">, { name: string; intro
       { title: "Act on it", text: "Fix the underlying problem in Sources & claims: add or approve a source, correct a claim, or adjust which websites research may read." },
     ],
   },
-  readiness: {
-    name: "Readiness",
-    intro: "A table of how complete each person's profile is, so you know where work is needed.",
-    steps: [
-      { title: "Read the four states", text: "Strong, Usable, Thin and Needs attention summarise every person. The counts at the top show how many people are in each." },
-      { title: "Two kinds of ready", text: "Retrieval readiness asks whether Ask can find enough evidence. Publication readiness asks whether a person has reviewed it. A profile can be strong for one and thin for the other." },
-      { title: "Compare the measures", text: "Scroll the table sideways to compare sources and domains, primary sources, passages, reviewed claims, evidence quality and evaluation results." },
-      { title: "Use Main gaps", text: "The last column says what is missing for each person. Open Sources & claims for that person to close the gap." },
-    ],
-  },
   knowledge: {
     name: "Knowledge engine",
     intro: "What live research does on its own, what it costs, and how much it is allowed to do.",
@@ -47,13 +37,22 @@ const guides: Record<Exclude<ResourcesSection, "library">, { name: string; intro
       { title: "Decide whether AI may add material", text: "“AI can add sources and facts” is off by default. Off means AI may search and suggest, but only reviewed material enters the database. Turn it on only with the Mentor's approval." },
       { title: "Pause if needed", text: "“Pause new research” stops new live research without changing any other setting." },
       { title: "Review the harvest", text: "Source harvest lists works that live answers read. Switch the view (not yet in Library, used repeatedly, trusted, in Library, rejected) and choose Add as candidate, Reject or Restore." },
-      { title: "Audit decisions", text: "Verification decisions lists every automatic decision with its reason, including facts that were held back. Filter by outcome." },
-      { title: "Reuse and cooldowns", text: "Research reuse shows questions that were answered from stored research instead of paying again, and topics cooling down before they are searched again." },
+      { title: "Need more detail?", text: "The run log, every verification decision and research cooldowns are in Extra diagnostics, the last Resources section." },
+    ],
+  },
+  diagnostics: {
+    name: "Extra diagnostics",
+    intro: "Detailed tables for troubleshooting. Nothing here needs checking day to day.",
+    steps: [
+      { title: "Profile readiness", text: "Strong, Usable, Thin and Needs attention summarise how much evidence each person has. Retrieval asks whether Ask can find evidence; Publication asks whether a person reviewed it. Main gaps says what is missing." },
+      { title: "Research run log", text: "The last 30 questions: whether each was answered from the library or by live research, how many searches it used, and what it cost." },
+      { title: "Verification decisions", text: "Every automatic decision with its reason, including facts that were held back. Filter by outcome." },
+      { title: "Cooldowns", text: "Topics that recently failed to find enough evidence wait before they are searched again, so the same paid search is not repeated." },
     ],
   },
 };
 
-/** “How to use” for the Feedback, Readiness and Knowledge engine pages. Sources & claims has its own, larger guide. */
+/** “How to use” for the Feedback and Knowledge engine pages. Sources & claims has its own, larger guide. */
 export default function SectionHelp({ section }: { section: ResourcesSection }) {
   if (section === "library") return null;
   const guide = guides[section];

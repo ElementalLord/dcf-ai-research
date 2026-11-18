@@ -18,9 +18,14 @@ const CATEGORY_BY_SLUG: Record<string, string> = {
   "m-s-subbulakshmi": "cultural", "rabindranath-tagore": "cultural", "satyajit-ray": "cultural",
 };
 
-/** The Explore group for a person. Curated people use the fixed map; people added in Resources pass their own group. */
+/**
+ * The Explore group for a person. A group chosen in Resources (for an added person, or a curated
+ * one that was edited) wins; otherwise curated people use the fixed map. The export's own long
+ * category ids are not Explore groups, so they fall through to the map.
+ */
 export function exploreCategory(slug: string, groupId?: string | null) {
-  const id = CATEGORY_BY_SLUG[slug] ?? groupId;
+  const chosen = EXPLORE_CATEGORIES.some((category) => category.id === groupId) ? groupId : null;
+  const id = chosen ?? CATEGORY_BY_SLUG[slug];
   return EXPLORE_CATEGORIES.find((category) => category.id === id) ?? EXPLORE_CATEGORIES[0];
 }
 

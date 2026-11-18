@@ -4,6 +4,7 @@ import "./globals.css";
 import "./public-experience.css";
 import "./resources-hub.css";
 import "./brand.css";
+import "./resources-flat.css";
 import { SiteNav } from "@/components/site-nav";
 import { themeInitScript } from "@/lib/theme";
 

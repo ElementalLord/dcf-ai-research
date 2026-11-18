@@ -1,4 +1,4 @@
-import { getExploreCollection, portraitTitles } from "@/lib/explore/collection";
+import { chosenPhotos, getExploreCollection, portraitTitles } from "@/lib/explore/collection";
 import { getPortraits } from "@/lib/portraits";
 import { ExploreClient } from "./explore-client";
 import { EXPLORE_CATEGORIES, toExplorePerson } from "./explore-data";
@@ -12,7 +12,7 @@ export async function ExploreLanding({ searchParams }: { searchParams: Promise<{
   // The 25 curated profiles plus anyone published from Resources → People.
   const { people, discovery, settings } = await getExploreCollection();
   const byId = new Map(people.map((person) => [person.id, person]));
-  const portraits = await getPortraits(discovery.map((person) => person.slug), portraitTitles(settings));
+  const portraits = await getPortraits(discovery.map((person) => person.slug), portraitTitles(settings), chosenPhotos(settings));
 
   return (
     <main className="explore-shell xp">

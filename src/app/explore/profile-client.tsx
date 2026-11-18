@@ -102,7 +102,9 @@ export function ProfileClient({ person, related, portrait = null, relatedPortrai
     <header className="pf-hero">
       <figure className="pf-portrait">
         <Portrait name={person.name} portrait={portrait} category={category.id} size={208} className="pf-portrait-img" />
-        {portrait && <figcaption>Portrait: <a href={portrait.source} target="_blank" rel="noopener noreferrer">{portrait.author}</a>, {portrait.license}, via Wikimedia Commons</figcaption>}
+        {portrait && (/wiki(media|pedia)\.org/i.test(portrait.source)
+          ? <figcaption>Portrait: <a href={portrait.source} target="_blank" rel="noopener noreferrer">{portrait.author}</a>, {portrait.license}, via Wikimedia Commons</figcaption>
+          : <figcaption>Photo: {portrait.author}</figcaption>)}
       </figure>
       <div className="pf-hero-copy">
         <p className="pf-field"><CategoryIcon size={16} />{category.name}</p>
