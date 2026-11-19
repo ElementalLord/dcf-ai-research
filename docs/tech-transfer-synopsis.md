@@ -2,9 +2,9 @@
 
 *For Shrikant ji and the DCF team. The step-by-step guide is in [`HANDOFF.md`](../HANDOFF.md). This page summarises it and lists the decisions we need to make together.*
 
-## The approach in one line
+## Summary
 
-We **transfer** the existing accounts to DCF rather than rebuilding anything. The database, live site, deployment history and settings stay as they are. Only the AI and search keys are replaced, because they cannot move between accounts.
+We **transfer** the existing accounts to DCF rather than rebuilding anything. The database, live site, deployment history and settings stay as they are. Only the AI and search keys are replaced, because they cannot move between accounts. For the DCF website, the recommended first step is a DCF subdomain linked from the main site's menu, which needs no code changes.
 
 ## What DCF will own
 

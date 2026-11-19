@@ -39,6 +39,6 @@ Every statement on a profile comes from a credible source, and you can open that
 - A missing section on a profile means the evidence was not good enough. It does not mean nothing happened.
 - Ask depends on paid AI and search services with daily spending limits. When a limit is reached, it falls back to showing evidence passages without a written answer.
 
-## How it is built (one paragraph)
+## How it is built
 
 The site is a Next.js web application hosted on Vercel. The research database (people, sources, passages, claims and their reviews) is in Supabase. Google Gemini writes the Ask answers, runs grounded web search and creates search embeddings. Brave Search is an optional second search provider. Explore and the profile pages are pre-built from the exported data file, so they load quickly and work even if the AI services are down. Further detail is in [`HANDOFF.md`](../HANDOFF.md) and [`docs/phase1/handoff/`](phase1/handoff/README.md).
