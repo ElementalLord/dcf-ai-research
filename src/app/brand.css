@@ -745,7 +745,6 @@ html:root:root { background: var(--brand-bg); }
 .dcf-mark-dot { fill: var(--brand-accent); }
 :root:root .wordmark .wordmark-logo { transition: transform 400ms var(--ease-out); }
 :root:root .wordmark:hover .wordmark-logo { transform: translateY(-1px); }
-.xp-footer-brand { display: inline-flex; align-items: center; gap: 10px; }
 :root:root .res-gate-icon { width: 52px; height: 52px; padding: 0; background: none; }
 @media (prefers-reduced-motion: reduce) { :root:root .wordmark .wordmark-logo { transition: none; } }
 

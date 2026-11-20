@@ -3,7 +3,7 @@ import { getPortraits } from "@/lib/portraits";
 import { ExploreClient } from "./explore-client";
 import { EXPLORE_CATEGORIES, toExplorePerson } from "./explore-data";
 import { ParticleHero } from "./particle-hero";
-import { DcfMark } from "@/components/dcf-logo";
+import { FooterFrieze } from "./footer-frieze";
 
 /** The front page of the site: an opening animation of sacred symbols, then the collection itself. */
 export async function ExploreLanding({ searchParams }: { searchParams: Promise<{ category?: string | string[] }> }) {
@@ -29,8 +29,8 @@ export async function ExploreLanding({ searchParams }: { searchParams: Promise<{
       </section>
 
       <footer className="xp-footer">
-        <span className="xp-footer-brand"><DcfMark size={30} />Inspiring Personalities · Dharma Civilization Foundation</span>
-        <span>Portraits from Wikimedia Commons; credits on each profile.</span>
+        <FooterFrieze />
+        <p className="xp-footer-credit">Portraits from Wikimedia Commons; credits on each profile.</p>
       </footer>
     </main>
   );

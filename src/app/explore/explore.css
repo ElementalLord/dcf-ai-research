@@ -648,7 +648,41 @@ body:has(.explore-shell),.explore-shell { font-family: var(--brand-body); }
 .xp-empty h3 { margin: 0; font: 500 26px/1.2 var(--brand-serif); }
 
 /* The footer runs edge to edge; its content lines up with the page column. */
-.xp-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; margin: clamp(80px, 10vw, 120px) calc(50% - 50vw) 0; padding: 26px max(24px, calc(50vw - 640px)) 34px; color: var(--brand-muted); background: var(--brand-surface); border-top: 1px solid var(--brand-line); font-size: 14px; }
+.xp-footer { display: grid; justify-items: center; gap: 6px; margin: clamp(80px, 10vw, 120px) calc(50% - 50vw) 0; padding: 22px 0 26px; overflow: hidden; color: var(--brand-faint); background: var(--brand-surface); border-top: 1px solid var(--brand-line); font-size: 12.5px; }
+.xp-footer-credit { margin: 0; padding: 0 16px; text-align: center; }
+
+/* ---------- Footer frieze: two braided strands unfurl from a turning mandala ---------- */
+.fz { display: block; width: 100%; height: 150px; --fz-a: var(--brand-accent); --fz-b: var(--dot-spiritual); }
+.fz * { vector-effect: non-scaling-stroke; }
+.fz path, .fz circle, .fz line { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.15; }
+.fz-line-a, .fz-petal, .fz-orbit { stroke: var(--fz-a); }
+.fz-line-b, .fz-flower, .fz-knot, .fz-seed { stroke: var(--fz-b); }
+.fz-line { opacity: 0.8; }
+.fz-petal-soft { opacity: 0.55; }
+.fz-knot { fill: var(--brand-surface); }
+.fz-seed { fill: var(--fz-b); stroke: none; }
+.fz-rail { stroke: var(--brand-line-strong); stroke-dasharray: 1 7; opacity: 0.8; }
+.fz-axis { stroke: var(--brand-line); stroke-dasharray: 2 10; opacity: 0.7; }
+.fz-halo { fill: var(--brand-accent-soft); stroke: none; }
+.fz-orbit { stroke-dasharray: 1 5.2; opacity: 0.7; }
+.fz-spark { fill: var(--fz-b); stroke: none; opacity: 0.85; }
+.fz-core { stroke: var(--fz-b); opacity: 0.8; }
+.fz-bindu { fill: var(--fz-a); stroke: none; }
+.fz-bindu-main { fill: var(--fz-a); animation: fz-breathe 4.8s ease-in-out infinite; }
+.fz-glint { stroke-width: 2.4; stroke-dasharray: 38 962; stroke-dashoffset: 38; opacity: 0.95; animation: fz-travel 9s cubic-bezier(.45, .05, .55, .95) infinite; }
+.fz-glint-a { stroke: var(--fz-b); }
+.fz-glint-b { stroke: var(--fz-a); animation-delay: -4.5s; }
+.fz-turn-a, .fz-turn-b { transform-origin: 0 0; }
+.fz-turn-a { animation: fz-turn 120s linear infinite; }
+.fz-turn-b { animation: fz-turn 80s linear infinite reverse; }
+.fz-bloom { animation: fz-bloom 7s ease-in-out infinite; animation-delay: calc(var(--i) * 0.16s); }
+.fz-bloom path, .fz-bloom circle { transform-box: fill-box; }
+@keyframes fz-turn { to { transform: rotate(360deg); } }
+@keyframes fz-travel { to { stroke-dashoffset: -1000; } }
+@keyframes fz-breathe { 0%, 100% { transform: scale(1); opacity: 0.9; } 50% { transform: scale(1.7); opacity: 1; } }
+@keyframes fz-bloom { 0%, 100% { opacity: 0.45; } 45% { opacity: 1; } }
+@media (max-width: 640px) { .fz { height: 120px; } }
+@media (prefers-reduced-motion: reduce) { .fz *, .fz-bindu-main { animation: none !important; } .fz-glint { display: none; } }
 
 /* ---------- Timeline: a palm-leaf manuscript bound by a cord ---------- */
 .tl { position: relative; margin-top: 10px; padding: 36px 0 40px; }
@@ -900,7 +934,6 @@ a.ph-figure:hover strong { text-decoration: underline; text-underline-offset: 4p
    the page itself stops sideways scrolling instead. */
 .explore-shell.explore-shell.xp { overflow-x: visible; }
 body:has(.xp) { overflow-x: clip; }
-@media (max-width: 640px) { .xp-footer { padding: 22px 16px 28px; } }
 
 /* An ornamental divider between the two columns: two strands twisting around each other, knotted with a
    small diamond at every crossing, fading out at both ends. Drawn as a mask so it takes the theme colour. */
