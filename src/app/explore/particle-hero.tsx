@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
-import { DcfBloom } from "./dcf-bloom";
 
 type Particle = { x: number; y: number; vx: number; vy: number; tx: number; ty: number; size: number; ts: number; tone: number; tt: number; seed: number };
 type Target = { x: number; y: number; size: number; tone: number };
@@ -318,18 +317,13 @@ export function ParticleHero() {
       <canvas ref={canvas} className="ph-canvas" aria-hidden="true" />
     </div>
     <div className="ph-copy" ref={copy}>
-      <div className="ph-lockup">
-        <DcfBloom className="ph-bloom" />
-        <div className="ph-mast">
-          <p className="ph-eyebrow"><span lang="sa" className="ph-deva">प्रेरणा</span><span aria-hidden="true">·</span>Dharma Civilization Foundation</p>
-          <h1 id="hero-title" className="ph-name"><span className="ph-name-lead">Inspiring</span> <span className="ph-name-main">Personalities</span></h1>
-          <span className="ph-rule" aria-hidden="true" />
-          <p className="ph-lede">Sages, scientists, rulers, reformers and artists who shaped Indian civilization, each with the evidence behind every claim.</p>
-        </div>
-      </div>
+      <p className="ph-kicker"><span className="ph-kicker-line" aria-hidden="true" />Dharma Civilization Foundation</p>
+      <h1 id="hero-title" className="ph-title"><span className="ph-title-top">Inspiring</span> <span className="ph-title-main">Personalities</span></h1>
+      <span className="ph-divider" aria-hidden="true" />
+      <p className="ph-lede">Sages, scientists, rulers, reformers and artists who shaped Indian civilization, each with the evidence behind every claim.</p>
       <p className="ph-figure" key={symbol.id} aria-live="polite">
-        <span lang="sa" className="ph-figure-deva">{symbol.deva}</span>
-        <strong>{symbol.name}</strong>
+        <span className="ph-figure-label">Now forming</span>
+        <span className="ph-figure-row"><span lang="sa" className="ph-figure-deva">{symbol.deva}</span><strong>{symbol.name}</strong></span>
         <small>{symbol.meaning}</small>
       </p>
     </div>
