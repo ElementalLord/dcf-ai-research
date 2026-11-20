@@ -1,9 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
-import { Arrow, Lotus } from "@/components/vedic-icons";
+import { DcfBloom } from "./dcf-bloom";
 
 type Particle = { x: number; y: number; vx: number; vy: number; tx: number; ty: number; size: number; ts: number; tone: number; tt: number; seed: number };
 type Target = { x: number; y: number; size: number; tone: number };
@@ -319,18 +318,16 @@ export function ParticleHero() {
       <canvas ref={canvas} className="ph-canvas" aria-hidden="true" />
     </div>
     <div className="ph-copy" ref={copy}>
-      <p className="ph-eyebrow"><span lang="sa" className="ph-deva">प्रेरणा</span><span aria-hidden="true">·</span>Dharma Civilization Foundation</p>
-      <h1 id="hero-title" className="ph-title">Inspiring <em>Personalities</em></h1>
-      <p className="ph-lede">Sages, scientists, rulers, reformers and artists who shaped Indian civilization, each with the evidence behind every claim.</p>
+      <h1 id="hero-title" className="sr-only">Inspiring Personalities, from the Dharma Civilization Foundation</h1>
+      <div className="ph-emblem">
+        <DcfBloom className="ph-bloom" />
+        <p className="ph-eyebrow"><span lang="sa" className="ph-deva">प्रेरणा</span><span aria-hidden="true">·</span>Dharma Civilization Foundation</p>
+      </div>
       <p className="ph-figure" key={symbol.id} aria-live="polite">
         <span lang="sa" className="ph-figure-deva">{symbol.deva}</span>
         <strong>{symbol.name}</strong>
         <small>{symbol.meaning}</small>
       </p>
-      <div className="ph-actions">
-        <a href="#collection-title" className="key key-hot key-lg">Explore the lives<Arrow size={16} /></a>
-        <Link href="/ai" className="key key-lg"><Lotus size={18} />Ask the guide</Link>
-      </div>
     </div>
   </section>;
 }

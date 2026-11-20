@@ -790,9 +790,6 @@ body:has(.explore-shell),.explore-shell { font-family: var(--brand-body); }
 .ph-copy a, .ph-copy button { pointer-events: auto; }
 .ph-eyebrow { display: inline-flex; align-items: center; gap: 10px; margin: 0; color: var(--brand-muted); font: 600 12.5px/1.2 var(--brand-body); letter-spacing: 0.16em; text-transform: uppercase; }
 .ph-deva { color: var(--brand-accent); font: 400 19px/1 var(--brand-deva); letter-spacing: 0; text-transform: none; }
-.xp .ph-title { margin: 0; color: var(--brand-text); font: 400 clamp(44px, 7vw, 104px)/0.96 var(--brand-serif); letter-spacing: -0.03em; }
-.ph-title em { color: var(--brand-accent); font-style: normal; }
-.ph-lede { max-width: 48ch; margin: 0; color: var(--brand-muted); font-size: clamp(16px, 1.4vw, 19px); line-height: 1.55; }
 .ph-figure { min-height: 84px; margin: 0; }
 .ph-figure { display: grid; gap: 2px; padding: 12px 16px 12px 0; color: var(--brand-text); text-decoration: none; border-left: 0; animation: ph-rise 700ms var(--ease-out) both; }
 .ph-figure-deva { color: var(--brand-accent); font: 400 22px/1.2 var(--brand-deva); }
@@ -800,7 +797,55 @@ body:has(.explore-shell),.explore-shell { font-family: var(--brand-body); }
 .ph-figure small { color: var(--brand-muted); font-size: 13.5px; }
 a.ph-figure:hover strong { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
 @keyframes ph-rise { from { opacity: 0; transform: translateY(10px); filter: blur(4px); } }
-.ph-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.ph-copy { justify-items: center; gap: clamp(20px, 3vw, 36px); }
+.ph-emblem { display: grid; justify-items: center; gap: 14px; }
+.ph-emblem .ph-eyebrow { flex-wrap: wrap; justify-content: center; text-align: center; }
+.ph-figure { justify-self: center; justify-items: center; padding: 0; text-align: center; }
+
+/* ---------- The living DCF emblem (dcf-bloom.tsx): petals curl in and unfurl, tendrils wind out and back ---------- */
+.ph-bloom { width: clamp(240px, 30vw, 400px); height: auto; overflow: visible; }
+.db { --db-a: var(--brand-accent); --db-b: var(--dot-spiritual); --db-ease: cubic-bezier(.65, 0, .35, 1); --db-loop: 12s; }
+.db-line path { fill: none; stroke: var(--db-a); stroke-width: 0.62; }
+.db-centre, .db-sutra { stroke: var(--db-a); }
+.db-tendril { stroke: var(--db-b) !important; stroke-width: 0.5 !important; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.db-bindu { fill: var(--db-b); }
+.db-orbit { stroke: var(--brand-line-strong); stroke-width: 0.22; stroke-dasharray: 0.12 1.35; stroke-linecap: round; transform-box: fill-box; transform-origin: center; }
+.db-orbit-b { stroke: var(--db-a); opacity: 0.45; stroke-dasharray: 0.12 2.2; }
+.db-seeds circle { fill: var(--db-b); }
+.db-seeds, .db-glow { transform-box: view-box; transform-origin: 20px 21px; }
+/* Each piece pivots where it meets the stem, so it folds like a real petal rather than shrinking. */
+.db-petal, .db-outer, .db-centre { transform-box: fill-box; }
+.db-petal-l { transform-origin: 100% 100%; }
+.db-petal-r { transform-origin: 0% 100%; }
+.db-outer-l { transform-origin: 100% 88%; }
+.db-outer-r { transform-origin: 0% 88%; }
+.db-centre { transform-origin: 50% 100%; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .db-orbit-a { animation: db-turn 90s linear infinite; }
+  .db-orbit-b { animation: db-turn 60s linear infinite reverse; }
+  .db-petal-l, .db-petal-r, .db-outer-l, .db-outer-r, .db-centre, .db-tendril, .db-bindu, .db-seeds, .db-glow { animation-duration: var(--db-loop); animation-iteration-count: infinite; animation-timing-function: var(--db-ease); }
+  .db-petal-l { animation-name: db-petal-l; }
+  .db-petal-r { animation-name: db-petal-r; }
+  .db-outer-l { animation-name: db-outer-l; }
+  .db-outer-r { animation-name: db-outer-r; }
+  .db-centre { animation-name: db-centre; }
+  .db-tendril { animation-name: db-tendril; }
+  .db-bindu { animation-name: db-bindu; }
+  .db-seeds { animation-name: db-seeds; }
+  .db-glow { animation-name: db-glow; }
+}
+@keyframes db-turn { to { transform: rotate(360deg); } }
+/* 0–8% curled tight · unfurl to 40% · rest open · curl back from 70% to 92% */
+@keyframes db-petal-l { 0%, 8% { transform: rotate(52deg) scale(.82); } 40%, 70% { transform: none; } 55% { transform: rotate(-3deg); } 92%, 100% { transform: rotate(52deg) scale(.82); } }
+@keyframes db-petal-r { 0%, 8% { transform: rotate(-52deg) scale(.82); } 40%, 70% { transform: none; } 55% { transform: rotate(3deg); } 92%, 100% { transform: rotate(-52deg) scale(.82); } }
+@keyframes db-outer-l { 0%, 14% { transform: rotate(80deg) scale(.55); opacity: 0; } 48%, 66% { transform: none; opacity: 1; } 88%, 100% { transform: rotate(80deg) scale(.55); opacity: 0; } }
+@keyframes db-outer-r { 0%, 14% { transform: rotate(-80deg) scale(.55); opacity: 0; } 48%, 66% { transform: none; opacity: 1; } 88%, 100% { transform: rotate(-80deg) scale(.55); opacity: 0; } }
+@keyframes db-centre { 0%, 4% { transform: scale(.62, .5); } 34%, 74% { transform: none; } 96%, 100% { transform: scale(.62, .5); } }
+@keyframes db-tendril { 0%, 22% { stroke-dashoffset: 1; } 56%, 64% { stroke-dashoffset: 0; } 86%, 100% { stroke-dashoffset: 1; } }
+@keyframes db-bindu { 0%, 10% { opacity: .35; transform: none; } 42%, 68% { opacity: 1; } 55% { opacity: 1; } 92%, 100% { opacity: .35; } }
+@keyframes db-seeds { 0%, 12% { opacity: 0; transform: scale(.7) rotate(-20deg); } 50%, 68% { opacity: .9; transform: none; } 90%, 100% { opacity: 0; transform: scale(.7) rotate(20deg); } }
+@keyframes db-glow { 0%, 10% { opacity: .35; transform: scale(.8); } 50%, 70% { opacity: 1; transform: none; } 94%, 100% { opacity: .35; transform: scale(.8); } }
 
 /* Two people per line */
 .xp-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
@@ -815,10 +860,10 @@ a.ph-figure:hover strong { text-decoration: underline; text-underline-offset: 4p
   .ph { display: block; min-height: 0; }
   .ph-stage { position: relative; top: auto; bottom: auto; left: auto; right: auto; width: 100vw; height: min(118vw, 460px); margin-inline: calc(50% - 50vw); }
   .ph-copy { margin-top: 8px; }
-  .ph-copy { width: auto; max-width: none; gap: 14px; }
+  .ph-copy { width: auto; max-width: none; gap: 18px; }
+  .ph-bloom { width: min(220px, 56vw); }
 }
 @media (max-width: 640px) {
-  .ph-actions, .ph-actions .key { width: 100%; }
   .xp-row-sources { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .ph-figure { animation: none; } }
