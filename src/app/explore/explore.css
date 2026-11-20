@@ -802,40 +802,50 @@ a.ph-figure:hover strong { text-decoration: underline; text-underline-offset: 4p
 .ph-emblem .ph-eyebrow { flex-wrap: wrap; justify-content: center; text-align: center; }
 .ph-figure { justify-self: center; justify-items: center; padding: 0; text-align: center; }
 
-/* ---------- The living lotus (dcf-bloom.tsx): opens from a bud and folds back, outer petals first ---------- */
-.ph-bloom { width: clamp(260px, 32vw, 430px); height: auto; overflow: visible; }
-.lb { --lb-loop: 14s; --lb-ease: cubic-bezier(.55, 0, .3, 1); }
-.lb-petal { transform: rotate(var(--o)); }
-.lb-petal-body { stroke: rgba(190, 82, 100, 0.28); stroke-width: 0.35; }
-.lb-vein { fill: none; stroke: rgba(196, 92, 110, 0.22); stroke-width: 0.35; stroke-linecap: round; }
-.lb-back .lb-vein { stroke: rgba(150, 50, 70, 0.2); }
-.lb-stamen { fill: none; stroke: #e9c26a; stroke-width: 0.55; stroke-linecap: round; }
-.lb-anther { fill: #f4d27e; }
-.lb-pod { stroke: rgba(150, 100, 30, 0.35); stroke-width: 0.35; }
-.lb-pod-top { fill: #f0cf7c; stroke: rgba(150, 100, 30, 0.3); stroke-width: 0.3; }
-.lb-seed { fill: #a8772c; }
-.lb-heart { transform-box: fill-box; transform-origin: 50% 100%; }
-.lb-ripple { fill: none; stroke: var(--brand-accent); stroke-width: 0.45; opacity: 0; transform-box: fill-box; transform-origin: center; }
-.lb-still { fill: none; stroke: var(--brand-line-strong); stroke-width: 0.4; stroke-dasharray: 0.4 2.2; stroke-linecap: round; opacity: 0.8; }
-.lb-halo { transform-box: fill-box; transform-origin: 50% 80%; }
+/* ---------- The lotus mandala (dcf-bloom.tsx): rings of petals unfurl from the DCF mark and curl back ---------- */
+.ph-bloom { width: clamp(280px, 31vw, 430px); height: auto; overflow: visible; }
+.md { --md-a: var(--brand-accent); --md-b: var(--dot-spiritual); --md-loop: 16s; --md-ease: cubic-bezier(.6, 0, .3, 1); }
+.md-body { fill: var(--brand-accent-soft); stroke: var(--md-a); stroke-width: 0.55; stroke-linejoin: round; }
+.md-outer .md-body { fill: color-mix(in srgb, var(--md-a) 5%, transparent); }
+.md-rim .md-body { fill: none; stroke: var(--md-b); stroke-width: 0.4; }
+.md-core .md-body { fill: color-mix(in srgb, var(--md-b) 14%, transparent); stroke: var(--md-b); }
+.md-contour { stroke: var(--md-b); stroke-width: 0.36; opacity: 0.9; }
+.md-vein { stroke: var(--md-a); stroke-width: 0.3; stroke-linecap: round; opacity: 0.55; }
+.md-core .md-vein { stroke: var(--md-b); }
+.md-drop { fill: var(--md-b); }
+.md-dots { stroke: var(--brand-line-strong); stroke-width: 0.6; stroke-dasharray: 0.01 2.6; stroke-linecap: round; }
+.md-dots-gold { stroke: var(--md-b); opacity: 0.55; stroke-dasharray: 0.01 3.4; }
+.md-bead { fill: var(--md-b); opacity: 0.7; }
+.md-bead-big { fill: var(--md-a); opacity: 1; }
+.md-gem { fill: var(--brand-accent-soft); stroke: var(--md-b); stroke-width: 0.4; }
+.md-heart-rim { stroke: var(--md-a); stroke-width: 0.45; stroke-dasharray: 0.01 1.5; stroke-linecap: round; }
+.md-stamen { stroke: var(--md-b); stroke-width: 0.32; }
+.md-anther { fill: var(--md-b); }
+.md-heart-fill { fill: var(--brand-bg); stroke: var(--md-a); stroke-width: 0.45; }
+.md-mark path { stroke: var(--md-a); stroke-width: 1.7; }
+.md-bindu { fill: var(--md-b); }
+.md-ring, .md-spin, .md-wash { transform-box: fill-box; transform-origin: center; }
+/* a petal folds toward the point where it meets its ring, like a leaf uncurling */
+.md-petal, .md-gem { transform-box: fill-box; transform-origin: 50% 100%; }
+.md-core { --mo: 0.55; }
 
 @media (prefers-reduced-motion: no-preference) {
-  .lb-petal { animation: lb-petal var(--lb-loop) var(--lb-ease) infinite both; animation-delay: var(--lb-delay, 0s); }
-  .lb-heart { animation: lb-heart var(--lb-loop) var(--lb-ease) 0.6s infinite both; }
-  .lb-halo { animation: lb-halo var(--lb-loop) ease-in-out infinite; }
-  .lb-ripple { animation: lb-ripple 5.2s ease-out infinite both; animation-delay: calc(var(--i) * 1.7s); }
+  .md-spin-slow { animation: md-spin 160s linear infinite; }
+  .md-spin-back { animation: md-spin 110s linear infinite reverse; }
+  .md-ring:not(.md-heart) { animation: md-turn var(--md-loop) var(--md-ease) infinite both; animation-delay: calc(var(--s) * 0.8s); }
+  .md-petal { animation: md-unfurl var(--md-loop) var(--md-ease) infinite both; animation-delay: calc(var(--s) * 0.8s); }
+  .md-gem { animation: md-gem var(--md-loop) var(--md-ease) infinite both; animation-delay: 1.6s; }
+  .md-heart { animation: md-breathe var(--md-loop) ease-in-out infinite both; }
+  .md-wash { animation: md-wash var(--md-loop) ease-in-out infinite both; }
 }
-/* bud until 10% · open by 46% · a slow breath while open · folded again by 94% */
-@keyframes lb-petal {
-  0%, 10% { transform: rotate(var(--c)) scale(var(--cs), 1); }
-  46% { transform: rotate(var(--o)); }
-  60% { transform: rotate(var(--o2)) scale(1.02); }
-  72% { transform: rotate(var(--o)); }
-  94%, 100% { transform: rotate(var(--c)) scale(var(--cs), 1); }
-}
-@keyframes lb-heart { 0%, 18% { opacity: 0; transform: scale(.55); } 48%, 68% { opacity: 1; transform: none; } 86%, 100% { opacity: 0; transform: scale(.55); } }
-@keyframes lb-halo { 0%, 10% { opacity: .4; transform: scale(.7); } 50%, 70% { opacity: 1; transform: none; } 95%, 100% { opacity: .4; transform: scale(.7); } }
-@keyframes lb-ripple { 0% { opacity: 0; transform: scale(.35); } 15% { opacity: .55; } 100% { opacity: 0; transform: scale(1.5); } }
+@keyframes md-spin { to { transform: rotate(360deg); } }
+/* closed until 6% · fully open by 32% · rests open · curls shut by 90%. The ring turns -50° in and +40° out:
+   90° apart, a whole number of petal spacings, so the loop restarts without a visible jump. */
+@keyframes md-turn { 0%, 6% { transform: rotate(-50deg) scale(.55); } 32%, 62% { transform: none; } 90%, 100% { transform: rotate(40deg) scale(.55); } }
+@keyframes md-unfurl { 0%, 6% { transform: scale(.18, .4); opacity: var(--mo, 0); } 30%, 64% { transform: none; opacity: 1; } 88%, 100% { transform: scale(.18, .4); opacity: var(--mo, 0); } }
+@keyframes md-gem { 0%, 14% { opacity: 0; transform: scale(.2); } 36%, 60% { opacity: 1; transform: none; } 84%, 100% { opacity: 0; transform: scale(.2); } }
+@keyframes md-breathe { 0%, 6% { transform: scale(.86); } 30%, 64% { transform: none; } 47% { transform: scale(1.05); } 90%, 100% { transform: scale(.86); } }
+@keyframes md-wash { 0%, 6% { opacity: .4; transform: scale(.5); } 36%, 64% { opacity: 1; transform: none; } 92%, 100% { opacity: .4; transform: scale(.5); } }
 
 /* Two people per line */
 .xp-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
@@ -851,7 +861,7 @@ a.ph-figure:hover strong { text-decoration: underline; text-underline-offset: 4p
   .ph-stage { position: relative; top: auto; bottom: auto; left: auto; right: auto; width: 100vw; height: min(118vw, 460px); margin-inline: calc(50% - 50vw); }
   .ph-copy { margin-top: 8px; }
   .ph-copy { width: auto; max-width: none; gap: 18px; }
-  .ph-bloom { width: min(220px, 56vw); }
+  .ph-bloom { width: min(250px, 64vw); }
 }
 @media (max-width: 640px) {
   .xp-row-sources { display: none; }

@@ -1,94 +1,94 @@
+import { DCF_MARK_PATHS } from "@/components/dcf-logo";
+
 /**
- * The DCF lotus as a living emblem for the top of the home page: a painted lotus, seen from the side, that opens
- * from a closed bud and folds back on a slow loop. Three rings of petals (outer first, inner last) fan out from
- * one base point; each petal is shaded from a cream heart to a pink tip and carries faint veins. A golden seed pod
- * and stamens appear as it opens, and rings spread on the water beneath.
+ * The emblem at the top of the home page: a lotus mandala drawn in the site's fine coral-and-gold line, with the
+ * DCF mark at its heart. On a slow loop its rings of petals unfurl outward from the centre, inner ring first,
+ * and curl back in again, outer ring first, while the beaded rims turn. Each petal is double-contoured with a
+ * centre vein and a drop at its tip, the way the timeline rosettes and footer frieze are drawn.
  *
- * Every petal stores its open and closed angle in CSS custom properties; one keyframe set (lb-petal in
- * explore.css) moves them all. The open flower is the resting state, so with reduced motion it simply stays open.
+ * Built from a few numbers below. The open mandala is the resting state; with reduced motion it stays open.
+ * Styles: .md-* in explore.css.
  */
 
-const BASE = { x: 100, y: 128 };
+const f = (n: number) => +n.toFixed(2);
+const around = (count: number, offset = 0) => Array.from({ length: count }, (_, i) => offset + (360 / count) * i);
 
-type Ring = { name: string; angles: number[]; length: number; width: number; closed: number; squeeze: number; fill: string; delay: number };
-// Back to front. `closed` is the fraction of the open angle a petal keeps while in bud.
+/** A petal pointing outward (up the -y axis) from radius r0 to r1, `w` wide at its fullest. */
+function petal(r0: number, r1: number, w: number) {
+  const a = r0 + (r1 - r0) * 0.28;
+  const b = r0 + (r1 - r0) * 0.72;
+  return `M0 ${f(-r0)}C${f(w)} ${f(-a)} ${f(w * 0.72)} ${f(-b)} 0 ${f(-r1)}C${f(-w * 0.72)} ${f(-b)} ${f(-w)} ${f(-a)} 0 ${f(-r0)}Z`;
+}
+
+type Ring = { name: string; count: number; offset: number; r0: number; r1: number; w: number; inner: boolean; vein: boolean; drop: boolean; stagger: number };
+// Inside out. `stagger` sets when the ring opens: the centre unfurls first.
 const RINGS: Ring[] = [
-  { name: "back", angles: [-82, -50, -17, 17, 50, 82], length: 60, width: 25, closed: 0.07, squeeze: 0.5, fill: "url(#lb-back)", delay: 0.9 },
-  { name: "mid", angles: [-64, -32, 0, 32, 64], length: 66, width: 29, closed: 0.05, squeeze: 0.5, fill: "url(#lb-mid)", delay: 0.45 },
-  { name: "front", angles: [-106, -72, -38, 38, 72, 106], length: 47, width: 30, closed: 0.12, squeeze: 0.58, fill: "url(#lb-front)", delay: 0 },
+  { name: "core", count: 8, offset: 22.5, r0: 15, r1: 42, w: 9, inner: false, vein: true, drop: false, stagger: 0 },
+  { name: "inner", count: 8, offset: 0, r0: 19, r1: 58, w: 15, inner: true, vein: true, drop: true, stagger: 1 },
+  { name: "outer", count: 16, offset: 11.25, r0: 40, r1: 82, w: 13, inner: true, vein: true, drop: true, stagger: 2 },
+  { name: "rim", count: 32, offset: 0, r0: 76, r1: 89, w: 4.2, inner: false, vein: false, drop: false, stagger: 3 },
 ];
 
-/** A lotus petal standing on its base at (0,0): full in the body, narrowing to a fine, slightly drawn-out tip. */
-const petal = (l: number, w: number) =>
-  `M0 0C${w * 0.42} ${-l * 0.06} ${w * 0.6} ${-l * 0.42} ${w * 0.36} ${-l * 0.72}C${w * 0.22} ${-l * 0.88} ${w * 0.06} ${-l * 0.97} 0 ${-l}`
-  + `C${-w * 0.06} ${-l * 0.97} ${-w * 0.22} ${-l * 0.88} ${-w * 0.36} ${-l * 0.72}C${-w * 0.6} ${-l * 0.42} ${-w * 0.42} ${-l * 0.06} 0 0Z`;
-
-/** Faint veins running from the base toward the tip. */
-const veins = (l: number, w: number) =>
-  [-0.5, -0.25, 0, 0.25, 0.5].map((k) => `M0 ${-l * 0.04}Q${k * w * 0.62} ${-l * 0.45} ${k * w * 0.2} ${-l * 0.9}`).join("");
-
-const STAMENS = Array.from({ length: 13 }, (_, i) => -54 + i * 9);
-const SEEDS = [[-6, -1], [0, -2.2], [6, -1], [-3, 1.4], [3, 1.4]];
-
-export function DcfBloom({ className = "" }: { className?: string }) {
-  const ring = (r: Ring) => (
-    <g className={`lb-ring lb-${r.name}`} style={{ ["--lb-delay" as string]: `${r.delay}s` }}>
-      {r.angles.map((a) => (
-        <g key={a} className="lb-petal" style={{ ["--o" as string]: `${a}deg`, ["--o2" as string]: `${a * 1.05}deg`, ["--c" as string]: `${a * r.closed}deg`, ["--cs" as string]: r.squeeze }}>
-          <path className="lb-petal-body" d={petal(r.length, r.width)} fill={r.fill} />
-          <path className="lb-vein" d={veins(r.length, r.width)} />
+function PetalRing({ ring }: { ring: Ring }) {
+  const { r0, r1, w } = ring;
+  return (
+    <g className={`md-ring md-${ring.name}`} style={{ ["--s" as string]: ring.stagger }}>
+      {around(ring.count, ring.offset).map((angle) => (
+        <g key={angle} transform={`rotate(${f(angle)})`}>
+          <g className="md-petal">
+            <path className="md-body" d={petal(r0, r1, w)} />
+            {ring.inner && <path className="md-contour" d={petal(r0 + (r1 - r0) * 0.16, r1 - (r1 - r0) * 0.14, w * 0.56)} />}
+            {ring.vein && <path className="md-vein" d={`M0 ${f(-r0 - (r1 - r0) * 0.1)}L0 ${f(-r1 + (r1 - r0) * 0.22)}`} />}
+            {ring.drop && <path className="md-drop" d={`M0 ${f(-r1 - 2.2)}q1.3 -2.2 0 -4.6q-1.3 2.4 0 4.6Z`} />}
+          </g>
         </g>
       ))}
     </g>
   );
+}
+
+export function DcfBloom({ className = "" }: { className?: string }) {
   return (
-    <svg className={`lb ${className}`} viewBox="0 0 200 165" aria-hidden="true" focusable="false">
+    <svg className={`md ${className}`} viewBox="-100 -100 200 200" fill="none" aria-hidden="true" focusable="false">
       <defs>
-        {/* each petal: cream heart at the base, blushing to pink at the tip; the back ring is a shade deeper */}
-        <linearGradient id="lb-front" x1="0" y1="1" x2="0" y2="0">
-          <stop offset="0" stopColor="#fff8f1" /><stop offset="0.45" stopColor="#fbd9d3" /><stop offset="1" stopColor="#ea8f96" />
-        </linearGradient>
-        <linearGradient id="lb-mid" x1="0" y1="1" x2="0" y2="0">
-          <stop offset="0" stopColor="#fff3ea" /><stop offset="0.5" stopColor="#f6c2c0" /><stop offset="1" stopColor="#df7381" />
-        </linearGradient>
-        <linearGradient id="lb-back" x1="0" y1="1" x2="0" y2="0">
-          <stop offset="0" stopColor="#f6d9d2" /><stop offset="0.55" stopColor="#e9a3a8" /><stop offset="1" stopColor="#c95a6c" />
-        </linearGradient>
-        <radialGradient id="lb-pod" cx="0.45" cy="0.35" r="0.75">
-          <stop offset="0" stopColor="#fbe3a0" /><stop offset="0.7" stopColor="#e6b553" /><stop offset="1" stopColor="#bf8a33" />
+        <radialGradient id="md-wash">
+          <stop offset="0" style={{ stopColor: "var(--brand-accent)", stopOpacity: 0.16 }} />
+          <stop offset="0.6" style={{ stopColor: "var(--brand-accent)", stopOpacity: 0.05 }} />
+          <stop offset="1" style={{ stopColor: "var(--brand-accent)", stopOpacity: 0 }} />
         </radialGradient>
-        <radialGradient id="lb-halo">
-          <stop offset="0" stopColor="#f3a6a6" stopOpacity="0.3" /><stop offset="1" stopColor="#f3a6a6" stopOpacity="0" />
-        </radialGradient>
-        <filter id="lb-soft" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="1.6" stdDeviation="1.6" floodColor="#5a1f2a" floodOpacity="0.28" />
-        </filter>
       </defs>
+      <circle className="md-wash" r="96" fill="url(#md-wash)" />
 
-      <ellipse className="lb-halo" cx={BASE.x} cy={BASE.y - 40} rx="92" ry="78" fill="url(#lb-halo)" />
-
-      {/* water: rings spreading out from the stem */}
-      <g className="lb-water" transform={`translate(${BASE.x} ${BASE.y + 6})`}>
-        {[0, 1, 2].map((i) => <ellipse key={i} className="lb-ripple" rx="40" ry="6" style={{ ["--i" as string]: i }} />)}
-        <ellipse className="lb-still" rx="58" ry="5.5" />
+      {/* the turning rims: a fine dotted circle, a band of beads, and an inner dotted orbit */}
+      <g className="md-spin md-spin-slow">
+        <circle className="md-dots" r="97" />
+        {around(48).map((a, i) => <circle key={a} className={i % 4 ? "md-bead" : "md-bead md-bead-big"} cy="-93" r={i % 4 ? 0.55 : 1.1} transform={`rotate(${a})`} />)}
       </g>
+      <g className="md-spin md-spin-back"><circle className="md-dots md-dots-gold" r="72" /></g>
 
-      <g transform={`translate(${BASE.x} ${BASE.y})`} filter="url(#lb-soft)">
-        {ring(RINGS[0])}
-        {ring(RINGS[1])}
-        {/* the heart: stamens around a golden seed pod */}
-        <g className="lb-heart">
-          {STAMENS.map((a) => (
-            <g key={a} transform={`rotate(${a})`}>
-              <path className="lb-stamen" d="M0 -14Q1.2 -22 0 -30" />
-              <circle className="lb-anther" cx="0" cy="-30.5" r="1.25" />
-            </g>
-          ))}
-          <path className="lb-pod" d="M-12 -18Q-13 -26 0 -27.5Q13 -26 12 -18Q8 -12 0 -12Q-8 -12 -12 -18Z" fill="url(#lb-pod)" />
-          <ellipse className="lb-pod-top" cy="-25" rx="10.5" ry="2.6" />
-          {SEEDS.map(([x, y]) => <circle key={`${x},${y}`} className="lb-seed" cx={x} cy={-25 + y * 0.6} r="1" />)}
+      <PetalRing ring={RINGS[3]} />
+      <PetalRing ring={RINGS[2]} />
+      {/* gold diamonds between the large petals */}
+      <g className="md-ring md-gems" style={{ ["--s" as string]: 2 }}>
+        {around(16).map((a) => <g key={a} transform={`rotate(${a})`}><path className="md-gem" d="M0 -66l1.6 2.6-1.6 2.6-1.6-2.6Z" /></g>)}
+      </g>
+      <PetalRing ring={RINGS[1]} />
+      <PetalRing ring={RINGS[0]} />
+
+      {/* the heart: a ring of stamens around the DCF lotus */}
+      <g className="md-ring md-heart" style={{ ["--s" as string]: 0 }}>
+        <circle className="md-heart-rim" r="16.5" />
+        {around(32).map((a, i) => (
+          <g key={a} transform={`rotate(${a})`}>
+            <path className="md-stamen" d={`M0 -11L0 ${i % 2 ? -14.2 : -15.4}`} />
+            <circle className="md-anther" cy={i % 2 ? -14.8 : -16} r={i % 2 ? 0.45 : 0.65} />
+          </g>
+        ))}
+        <circle className="md-heart-fill" r="10.4" />
+        <g className="md-mark" transform="translate(-7.6 -8.6) scale(0.38)" strokeLinecap="round" strokeLinejoin="round">
+          {Object.values(DCF_MARK_PATHS).map((d) => <path key={d} d={d} />)}
+          <circle className="md-bindu" cx="20" cy="18.6" r="2.1" />
         </g>
-        {ring(RINGS[2])}
       </g>
     </svg>
   );
