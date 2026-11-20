@@ -318,10 +318,14 @@ export function ParticleHero() {
       <canvas ref={canvas} className="ph-canvas" aria-hidden="true" />
     </div>
     <div className="ph-copy" ref={copy}>
-      <h1 id="hero-title" className="sr-only">Inspiring Personalities, from the Dharma Civilization Foundation</h1>
-      <div className="ph-emblem">
+      <div className="ph-lockup">
         <DcfBloom className="ph-bloom" />
-        <p className="ph-eyebrow"><span lang="sa" className="ph-deva">प्रेरणा</span><span aria-hidden="true">·</span>Dharma Civilization Foundation</p>
+        <div className="ph-mast">
+          <p className="ph-eyebrow"><span lang="sa" className="ph-deva">प्रेरणा</span><span aria-hidden="true">·</span>Dharma Civilization Foundation</p>
+          <h1 id="hero-title" className="ph-name"><span className="ph-name-lead">Inspiring</span> <span className="ph-name-main">Personalities</span></h1>
+          <span className="ph-rule" aria-hidden="true" />
+          <p className="ph-lede">Sages, scientists, rulers, reformers and artists who shaped Indian civilization, each with the evidence behind every claim.</p>
+        </div>
       </div>
       <p className="ph-figure" key={symbol.id} aria-live="polite">
         <span lang="sa" className="ph-figure-deva">{symbol.deva}</span>
