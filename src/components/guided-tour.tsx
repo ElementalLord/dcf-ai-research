@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import { ArrowLeft, ArrowRight, Compass, X } from "lucide-react";
 
 /**
- * A guided walkthrough of a Resources page: the page dims, a spotlight glides to one control at a time, and a card
+ * A guided walkthrough of a page: the page dims, a spotlight glides to one control at a time, and a card
  * beside it explains what that control does. The visitor moves with Next and Back (or the arrow keys) at their own
  * pace. The tour only points; it never clicks anything or changes a record. A step may ask the page to show a
  * different area first (`prepare`), for example switching to the Claims tab.
@@ -51,7 +51,7 @@ const findTarget = (selector?: string) => {
 };
 
 /** Render only while the tour is running; mounting starts it at the first step. */
-export function ResourceTour({ steps, onClose }: { steps: TourStep[]; onClose: () => void }) {
+export function GuidedTour({ steps, onClose }: { steps: TourStep[]; onClose: () => void }) {
   const [index, setIndex] = useState(0);
   const [gliding, setGliding] = useState(true);
   const [rect, setRect] = useState<Rect | null>(null);
@@ -190,9 +190,9 @@ export function ResourceTour({ steps, onClose }: { steps: TourStep[]; onClose: (
   );
 }
 
-/** The button that starts a tour; sits beside “How to use” in the Resources header. */
-export function TourButton({ onStart }: { onStart: () => void }) {
-  return <button type="button" className="key resource-help-trigger tour-trigger" onClick={onStart}>
-    <Compass size={17} aria-hidden="true" /><span>Take the tour</span>
+/** The button that starts a tour. In Resources it sits beside “How to use”; pass a class to style it elsewhere. */
+export function TourButton({ onStart, className = "key resource-help-trigger", label = "Take the tour" }: { onStart: () => void; className?: string; label?: string }) {
+  return <button type="button" className={`${className} tour-trigger`} onClick={onStart}>
+    <Compass size={17} aria-hidden="true" /><span>{label}</span>
   </button>;
 }

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
+import { ExploreTour } from "./explore-tour";
 
 type Particle = { x: number; y: number; vx: number; vy: number; tx: number; ty: number; size: number; ts: number; tone: number; tt: number; seed: number };
 type Target = { x: number; y: number; size: number; tone: number };
@@ -326,6 +327,7 @@ export function ParticleHero() {
         <span className="ph-figure-row"><span lang="sa" className="ph-figure-deva">{symbol.deva}</span><strong>{symbol.name}</strong></span>
         <small>{symbol.meaning}</small>
       </p>
+      <ExploreTour />
     </div>
   </section>;
 }

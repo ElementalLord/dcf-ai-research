@@ -5,6 +5,7 @@ import { useState, type ReactNode } from "react";
 import { LogOut } from "lucide-react";
 import { Chakra, Footsteps, Manuscript, Seeds, Shankha } from "@/components/vedic-icons";
 import SectionHelp from "./section-help";
+import SectionTour from "./section-tours";
 
 export type ResourcesSection = "people" | "library" | "feedback" | "knowledge" | "diagnostics";
 
@@ -41,7 +42,7 @@ export default function ResourcesNav({ current, actions }: { current: ResourcesS
     <div className="res-nav-top">
       <p className="res-nav-eyebrow">Resources · board members only</p>
       <div className="res-nav-actions">
-        {actions ?? <SectionHelp section={current} />}
+        {actions ?? <><SectionTour section={current} /><SectionHelp section={current} /></>}
         <button type="button" className="key res-nav-signout" onClick={signOut} disabled={signingOut}><LogOut size={16} aria-hidden="true" />{signingOut ? "Signing out…" : "Sign out"}</button>
       </div>
     </div>

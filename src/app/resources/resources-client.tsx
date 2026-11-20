@@ -20,7 +20,7 @@ import SearchSources from "./search-sources";
 import WebsiteAccess from "./website-access";
 import ResourceHelp from "./resource-help";
 import ResourcesNav from "./resources-nav";
-import { ResourceTour, TourButton, type TourStep } from "./resource-tour";
+import { GuidedTour, TourButton, type TourStep } from "@/components/guided-tour";
 import ConfirmResourceChange, { type PendingResourceChange } from "./confirm-resource-change";
 import { AUTHORITY_CAVEAT, AUTHORITY_LABELS, classifySourceAuthority } from "@/lib/sources/authority";
 import { isClaimEligible } from "@/lib/corpus/approval-policy";
@@ -365,7 +365,7 @@ export default function ResourcesClient({ authorized, personalities, loadError, 
   ];
   return <main className="resources-page page-shell">
     <ResourcesNav current="library" actions={<><TourButton onStart={startTour}/><ResourceHelp area={tab as "sources" | "claims" | "websites"}/></>}/>
-    {touring && <ResourceTour steps={tourSteps} onClose={endTour}/>}
+    {touring && <GuidedTour steps={tourSteps} onClose={endTour}/>}
     {(activity || loading) && <div className="resource-activity" role="status" aria-live="polite"><LoaderCircle size={16} className="animate-spin"/>{activity || `Loading resources for ${selectedName}…`}</div>}
     {notice && <div className="resource-notice" role="status"><Check size={16}/>{notice}<button type="button" onClick={() => setNotice("")} aria-label="Dismiss message"><X size={15}/></button></div>}
     {stale && <p className="resource-stale" role="status">Showing the last loaded records. A recent change may not appear yet.</p>}

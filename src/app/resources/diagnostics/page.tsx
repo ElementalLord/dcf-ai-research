@@ -58,7 +58,7 @@ export default async function DiagnosticsPage({ searchParams }: { searchParams: 
   return <main className="resources-page knowledge-page diagnostics-page page-shell">
     <ResourcesNav current="diagnostics"/>
 
-    <details className="knowledge-section diagnostics-block" open>
+    <details data-tour="readiness" className="knowledge-section diagnostics-block" open>
       <summary><h2>Profile readiness</h2><span>How much evidence each person has</span></summary>
       {readiness ? <>
         <dl className="knowledge-facts">{(["STRONG", "USABLE", "THIN", "NEEDS ATTENTION"] as const).map(state => <div key={state}><dt>{sentence(state)}</dt><dd>{counts[state] || 0}</dd></div>)}</dl>
@@ -68,7 +68,7 @@ export default async function DiagnosticsPage({ searchParams }: { searchParams: 
       </> : <Unavailable what="Readiness scores"/>}
     </details>
 
-    <details className="knowledge-section diagnostics-block">
+    <details data-tour="runs" className="knowledge-section diagnostics-block">
       <summary><h2>Research run log</h2><span>The last 30 questions</span></summary>
       {activityResult.error ? <Unavailable what="The run log"/> : <Expandable noun="rows"><div className="knowledge-table-wrap"><table><thead><tr><th>Time</th><th>Resolution</th><th>Research</th><th>Searches</th><th>Verification calls</th><th>Admitted</th><th>Estimated cost</th><th>Latency</th></tr></thead><tbody>
         {activities.map(row => <tr key={row.id}><td>{date(row.created_at)}</td><td>{row.resolution_state || "—"}</td><td>{row.research_status || "Local"}</td><td>{row.search_calls}</td><td>{row.verification_model_calls}</td><td>{row.admitted_count}</td><td>{usd(row.estimated_cost_micro)}</td><td>{row.latency_ms} ms</td></tr>)}
@@ -76,7 +76,7 @@ export default async function DiagnosticsPage({ searchParams }: { searchParams: 
       </tbody></table></div></Expandable>}
     </details>
 
-    <details className="knowledge-section diagnostics-block" open={Boolean(outcome)}>
+    <details data-tour="decisions" className="knowledge-section diagnostics-block" open={Boolean(outcome)}>
       <summary><h2>Verification decisions</h2><span>Every automatic decision and its reason</span></summary>
       <form action="/resources/diagnostics" method="get" className="diagnostics-filter"><label>Outcome <select name="outcome" defaultValue={outcome}><option value="">All</option>{OUTCOMES.map(value => <option key={value} value={value}>{value}</option>)}</select></label><button type="submit" className="key">Filter</button></form>
       {summary && <dl className="knowledge-facts"><div><dt>Machine approved</dt><dd>{summary.machineApproved}</dd></div><div><dt>Human or Mentor approved</dt><dd>{summary.humanApproved}</dd></div>
@@ -87,7 +87,7 @@ export default async function DiagnosticsPage({ searchParams }: { searchParams: 
       </tbody></table></div></Expandable>}
     </details>
 
-    <details className="knowledge-section diagnostics-block">
+    <details data-tour="cooldowns" className="knowledge-section diagnostics-block">
       <summary><h2>Research reuse and cooldowns</h2><span>Topics waiting before they are searched again</span></summary>
       {needsResult.error ? <Unavailable what="Research cooldowns"/> : <Expandable noun="rows"><div className="knowledge-table-wrap"><table><thead><tr><th>Updated</th><th>Need</th><th>Status</th><th>Failure or constraint</th><th>Retry eligible</th></tr></thead><tbody>
         {needs.map(row => <tr key={row.need_id}><td>{date(row.updated_at)}</td><td><code>{row.need_id.slice(0, 12)}</code></td><td>{row.status}</td><td>{row.outcome?.errorCategory || "—"}</td><td>{row.retry_after ? date(row.retry_after) : "Now"}</td></tr>)}
@@ -95,7 +95,7 @@ export default async function DiagnosticsPage({ searchParams }: { searchParams: 
       </tbody></table></div></Expandable>}
     </details>
 
-    <details className="knowledge-section diagnostics-block">
+    <details data-tour="machine" className="knowledge-section diagnostics-block">
       <summary><h2>Machine-admitted sources</h2><span>The 15 most recent</span></summary>
       {sourcesResult.error ? <Unavailable what="Machine-admitted sources"/> : <Expandable noun="rows"><div className="knowledge-table-wrap"><table><thead><tr><th>Source</th><th>Publisher</th><th>Status</th><th>Retention declaration</th></tr></thead><tbody>
         {sources.map(row => <tr key={row.id}><td>{row.url ? <a href={row.url} target="_blank" rel="noopener noreferrer">{row.title}</a> : row.title}</td><td>{row.publisher_or_institution || "—"}</td><td>{row.source_status}</td><td>{row.rights_or_access_note || "—"}</td></tr>)}
