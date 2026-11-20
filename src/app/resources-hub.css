@@ -1685,3 +1685,39 @@ body:has(.resources-page) .website-active-option { color: var(--res-text); }
   .resources-page .resource-attention li, .resources-page .resource-attention li button { width: 100%; }
   .resources-page .resource-attention li button { justify-content: space-between; min-height: 44px; }
 }
+
+/* ---------- Guided tour (resource-tour.tsx): a dimmed page, a spotlight that glides between controls, and a card ---------- */
+.tour-root { position: fixed; inset: 0; z-index: 200; pointer-events: none; }
+.tour-backdrop { position: absolute; inset: 0; pointer-events: auto; }
+.tour-spotlight { position: fixed; border-radius: 14px; box-shadow: 0 0 0 2px var(--brand-accent), 0 0 0 9999px rgba(20, 14, 18, 0.62); pointer-events: none; }
+.tour-spotlight::after { content: ""; position: absolute; inset: -2px; border-radius: inherit; box-shadow: 0 0 0 0 var(--brand-accent-line); animation: tour-pulse 2.4s ease-out infinite; }
+.tour-spotlight.is-gliding { transition: top 650ms cubic-bezier(.65, 0, .35, 1), left 650ms cubic-bezier(.65, 0, .35, 1), width 650ms cubic-bezier(.65, 0, .35, 1), height 650ms cubic-bezier(.65, 0, .35, 1), opacity 300ms ease; }
+.tour-spotlight.is-off { top: 50%; left: 50%; width: 0; height: 0; opacity: 0; box-shadow: 0 0 0 9999px rgba(20, 14, 18, 0.62); }
+.tour-spotlight.is-off::after { display: none; }
+@keyframes tour-pulse { 0% { box-shadow: 0 0 0 0 var(--brand-accent-line); } 70%, 100% { box-shadow: 0 0 0 14px transparent; } }
+
+.tour-card { position: fixed; display: grid; gap: 12px; width: min(400px, calc(100vw - 24px)); padding: 16px 18px 16px; color: var(--brand-text); background: var(--brand-surface); border: 1px solid var(--brand-line-strong); border-radius: 14px; box-shadow: 0 22px 60px rgba(0, 0, 0, 0.32); pointer-events: auto; transition: top 650ms cubic-bezier(.65, 0, .35, 1), left 650ms cubic-bezier(.65, 0, .35, 1); }
+.tour-card:focus { outline: none; }
+.tour-card-top { display: flex; align-items: center; gap: 10px; }
+.tour-area { color: var(--brand-accent); font-size: 12px; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; }
+.tour-count { margin-left: auto; color: var(--brand-faint); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.tour-close { display: grid; place-items: center; width: 30px; height: 30px; color: var(--brand-muted); background: transparent; border: 0; border-radius: 8px; cursor: pointer; }
+.tour-close:hover { color: var(--brand-text); background: var(--brand-hover); }
+.tour-close:focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 1px; }
+.tour-progress { height: 3px; overflow: hidden; background: var(--brand-line); border-radius: 3px; }
+.tour-progress span { display: block; height: 100%; background: var(--brand-accent); border-radius: inherit; transition: width 500ms cubic-bezier(.65, 0, .35, 1); }
+.tour-copy { display: grid; gap: 8px; animation: tour-in 420ms ease-out both; }
+.tour-copy h2 { margin: 0; font: 600 20px/1.25 var(--brand-display); letter-spacing: -0.01em; }
+.tour-body { display: grid; gap: 8px; color: var(--brand-muted); font-size: 14.5px; line-height: 1.55; }
+.tour-body p { margin: 0; }
+.tour-body b { color: var(--brand-text); font-weight: 600; }
+.tour-body kbd { display: inline-block; min-width: 22px; padding: 1px 6px; color: var(--brand-text); background: var(--brand-surface-2); border: 1px solid var(--brand-line-strong); border-bottom-width: 2px; border-radius: 5px; font: 600 12px/1.5 var(--brand-body); text-align: center; }
+.tour-keys { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.tour-keys kbd { margin-right: 4px; }
+.tour-actions { display: flex; align-items: center; gap: 10px; padding-top: 2px; }
+.tour-actions .key { display: inline-flex; align-items: center; gap: 7px; min-height: 38px; padding: 0 14px; font-size: 14px; }
+.tour-hint { margin: 0 auto; color: var(--brand-faint); font-size: 12px; }
+.tour-next { min-width: 96px; justify-content: center; }
+@keyframes tour-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (max-width: 639px) { .tour-hint { display: none; } .tour-actions { justify-content: space-between; } }
+@media (prefers-reduced-motion: reduce) { .tour-spotlight.is-gliding, .tour-card, .tour-progress span { transition: none; } .tour-spotlight::after, .tour-copy { animation: none; } }

@@ -45,7 +45,7 @@ export default function ResourcesNav({ current, actions }: { current: ResourcesS
         <button type="button" className="key res-nav-signout" onClick={signOut} disabled={signingOut}><LogOut size={16} aria-hidden="true" />{signingOut ? "Signing out…" : "Sign out"}</button>
       </div>
     </div>
-    <nav className="res-nav-sections" aria-label="Resources sections">
+    <nav className="res-nav-sections" data-tour="nav" aria-label="Resources sections">
       {sections.map(item => <Link key={item.id} href={item.href} aria-current={item.id === current ? "page" : undefined}>
         <item.Icon size={20} /><span><strong>{item.label}</strong><small>{item.purpose}</small></span>
       </Link>)}
