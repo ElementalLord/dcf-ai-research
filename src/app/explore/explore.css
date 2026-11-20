@@ -802,50 +802,40 @@ a.ph-figure:hover strong { text-decoration: underline; text-underline-offset: 4p
 .ph-emblem .ph-eyebrow { flex-wrap: wrap; justify-content: center; text-align: center; }
 .ph-figure { justify-self: center; justify-items: center; padding: 0; text-align: center; }
 
-/* ---------- The living DCF emblem (dcf-bloom.tsx): petals curl in and unfurl, tendrils wind out and back ---------- */
-.ph-bloom { width: clamp(240px, 30vw, 400px); height: auto; overflow: visible; }
-.db { --db-a: var(--brand-accent); --db-b: var(--dot-spiritual); --db-ease: cubic-bezier(.65, 0, .35, 1); --db-loop: 12s; }
-.db-line path { fill: none; stroke: var(--db-a); stroke-width: 0.62; }
-.db-centre, .db-sutra { stroke: var(--db-a); }
-.db-tendril { stroke: var(--db-b) !important; stroke-width: 0.5 !important; stroke-dasharray: 1; stroke-dashoffset: 0; }
-.db-bindu { fill: var(--db-b); }
-.db-orbit { stroke: var(--brand-line-strong); stroke-width: 0.22; stroke-dasharray: 0.12 1.35; stroke-linecap: round; transform-box: fill-box; transform-origin: center; }
-.db-orbit-b { stroke: var(--db-a); opacity: 0.45; stroke-dasharray: 0.12 2.2; }
-.db-seeds circle { fill: var(--db-b); }
-.db-seeds, .db-glow { transform-box: view-box; transform-origin: 20px 21px; }
-/* Each piece pivots where it meets the stem, so it folds like a real petal rather than shrinking. */
-.db-petal, .db-outer, .db-centre { transform-box: fill-box; }
-.db-petal-l { transform-origin: 100% 100%; }
-.db-petal-r { transform-origin: 0% 100%; }
-.db-outer-l { transform-origin: 100% 88%; }
-.db-outer-r { transform-origin: 0% 88%; }
-.db-centre { transform-origin: 50% 100%; }
+/* ---------- The living lotus (dcf-bloom.tsx): opens from a bud and folds back, outer petals first ---------- */
+.ph-bloom { width: clamp(260px, 32vw, 430px); height: auto; overflow: visible; }
+.lb { --lb-loop: 14s; --lb-ease: cubic-bezier(.55, 0, .3, 1); }
+.lb-petal { transform: rotate(var(--o)); }
+.lb-petal-body { stroke: rgba(190, 82, 100, 0.28); stroke-width: 0.35; }
+.lb-vein { fill: none; stroke: rgba(196, 92, 110, 0.22); stroke-width: 0.35; stroke-linecap: round; }
+.lb-back .lb-vein { stroke: rgba(150, 50, 70, 0.2); }
+.lb-stamen { fill: none; stroke: #e9c26a; stroke-width: 0.55; stroke-linecap: round; }
+.lb-anther { fill: #f4d27e; }
+.lb-pod { stroke: rgba(150, 100, 30, 0.35); stroke-width: 0.35; }
+.lb-pod-top { fill: #f0cf7c; stroke: rgba(150, 100, 30, 0.3); stroke-width: 0.3; }
+.lb-seed { fill: #a8772c; }
+.lb-heart { transform-box: fill-box; transform-origin: 50% 100%; }
+.lb-ripple { fill: none; stroke: var(--brand-accent); stroke-width: 0.45; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.lb-still { fill: none; stroke: var(--brand-line-strong); stroke-width: 0.4; stroke-dasharray: 0.4 2.2; stroke-linecap: round; opacity: 0.8; }
+.lb-halo { transform-box: fill-box; transform-origin: 50% 80%; }
 
 @media (prefers-reduced-motion: no-preference) {
-  .db-orbit-a { animation: db-turn 90s linear infinite; }
-  .db-orbit-b { animation: db-turn 60s linear infinite reverse; }
-  .db-petal-l, .db-petal-r, .db-outer-l, .db-outer-r, .db-centre, .db-tendril, .db-bindu, .db-seeds, .db-glow { animation-duration: var(--db-loop); animation-iteration-count: infinite; animation-timing-function: var(--db-ease); }
-  .db-petal-l { animation-name: db-petal-l; }
-  .db-petal-r { animation-name: db-petal-r; }
-  .db-outer-l { animation-name: db-outer-l; }
-  .db-outer-r { animation-name: db-outer-r; }
-  .db-centre { animation-name: db-centre; }
-  .db-tendril { animation-name: db-tendril; }
-  .db-bindu { animation-name: db-bindu; }
-  .db-seeds { animation-name: db-seeds; }
-  .db-glow { animation-name: db-glow; }
+  .lb-petal { animation: lb-petal var(--lb-loop) var(--lb-ease) infinite both; animation-delay: var(--lb-delay, 0s); }
+  .lb-heart { animation: lb-heart var(--lb-loop) var(--lb-ease) 0.6s infinite both; }
+  .lb-halo { animation: lb-halo var(--lb-loop) ease-in-out infinite; }
+  .lb-ripple { animation: lb-ripple 5.2s ease-out infinite both; animation-delay: calc(var(--i) * 1.7s); }
 }
-@keyframes db-turn { to { transform: rotate(360deg); } }
-/* 0–8% curled tight · unfurl to 40% · rest open · curl back from 70% to 92% */
-@keyframes db-petal-l { 0%, 8% { transform: rotate(52deg) scale(.82); } 40%, 70% { transform: none; } 55% { transform: rotate(-3deg); } 92%, 100% { transform: rotate(52deg) scale(.82); } }
-@keyframes db-petal-r { 0%, 8% { transform: rotate(-52deg) scale(.82); } 40%, 70% { transform: none; } 55% { transform: rotate(3deg); } 92%, 100% { transform: rotate(-52deg) scale(.82); } }
-@keyframes db-outer-l { 0%, 14% { transform: rotate(80deg) scale(.55); opacity: 0; } 48%, 66% { transform: none; opacity: 1; } 88%, 100% { transform: rotate(80deg) scale(.55); opacity: 0; } }
-@keyframes db-outer-r { 0%, 14% { transform: rotate(-80deg) scale(.55); opacity: 0; } 48%, 66% { transform: none; opacity: 1; } 88%, 100% { transform: rotate(-80deg) scale(.55); opacity: 0; } }
-@keyframes db-centre { 0%, 4% { transform: scale(.62, .5); } 34%, 74% { transform: none; } 96%, 100% { transform: scale(.62, .5); } }
-@keyframes db-tendril { 0%, 22% { stroke-dashoffset: 1; } 56%, 64% { stroke-dashoffset: 0; } 86%, 100% { stroke-dashoffset: 1; } }
-@keyframes db-bindu { 0%, 10% { opacity: .35; transform: none; } 42%, 68% { opacity: 1; } 55% { opacity: 1; } 92%, 100% { opacity: .35; } }
-@keyframes db-seeds { 0%, 12% { opacity: 0; transform: scale(.7) rotate(-20deg); } 50%, 68% { opacity: .9; transform: none; } 90%, 100% { opacity: 0; transform: scale(.7) rotate(20deg); } }
-@keyframes db-glow { 0%, 10% { opacity: .35; transform: scale(.8); } 50%, 70% { opacity: 1; transform: none; } 94%, 100% { opacity: .35; transform: scale(.8); } }
+/* bud until 10% · open by 46% · a slow breath while open · folded again by 94% */
+@keyframes lb-petal {
+  0%, 10% { transform: rotate(var(--c)) scale(var(--cs), 1); }
+  46% { transform: rotate(var(--o)); }
+  60% { transform: rotate(var(--o2)) scale(1.02); }
+  72% { transform: rotate(var(--o)); }
+  94%, 100% { transform: rotate(var(--c)) scale(var(--cs), 1); }
+}
+@keyframes lb-heart { 0%, 18% { opacity: 0; transform: scale(.55); } 48%, 68% { opacity: 1; transform: none; } 86%, 100% { opacity: 0; transform: scale(.55); } }
+@keyframes lb-halo { 0%, 10% { opacity: .4; transform: scale(.7); } 50%, 70% { opacity: 1; transform: none; } 95%, 100% { opacity: .4; transform: scale(.7); } }
+@keyframes lb-ripple { 0% { opacity: 0; transform: scale(.35); } 15% { opacity: .55; } 100% { opacity: 0; transform: scale(1.5); } }
 
 /* Two people per line */
 .xp-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
