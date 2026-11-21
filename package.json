@@ -17,6 +17,9 @@
     "quality:theme": "node scripts/check-dark-theme.mjs",
     "admin:setup": "node scripts/setup-admin-access.mjs",
     "handoff:check": "node scripts/handoff-check.mjs",
+    "db:backup": "bash scripts/supabase-db-copy.sh backup",
+    "db:restore": "bash scripts/supabase-db-copy.sh restore",
+    "storage:copy": "node scripts/supabase-storage-copy.mjs",
     "corpus:vishvamitra": "node scripts/vishvamitra-corpus-runner.mjs"
   },
   "dependencies": {

@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
+import { siteHost } from "@/lib/site-url";
 
 // Link-preview card (iMessage, WhatsApp, Slack, X, LinkedIn). Without it, apps pick the
 // first large photo on the page. Drawn in the brand palette (see brand.css).
@@ -114,7 +115,7 @@ export default async function OpengraphImage() {
             </div>
             <div style={{ flex: 1, height: 1.5, background: line }} />
             <div style={{ fontFamily: "Geist", fontSize: 22, letterSpacing: 1, color: accent }}>
-              dcf-ai-research.vercel.app
+              {siteHost}
             </div>
           </div>
         </div>

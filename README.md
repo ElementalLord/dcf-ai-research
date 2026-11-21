@@ -4,7 +4,7 @@ An evidence-grounded public collection and internal research system built with N
 
 ## Phase 1 handoff
 
-Start with [`docs/phase1/handoff/README.md`](docs/phase1/handoff/README.md) for the final non-technical project overview, repository map, operating instructions, limitations, deployment checklist, and Phase 2 recommendations. The final acceptance status is recorded in [`docs/phase1/FINAL-ACCEPTANCE-CHECKLIST.md`](docs/phase1/FINAL-ACCEPTANCE-CHECKLIST.md).
+Start with [`docs/phase1/handoff/README.md`](docs/phase1/handoff/README.md) for the final non-technical project overview, repository map, operating instructions, limitations, deployment checklist, and Phase 2 recommendations. Moving the GitHub, Vercel and Supabase accounts to DCF is covered in [`HANDOFF.md`](HANDOFF.md) and [`docs/transfer-vercel-supabase.md`](docs/transfer-vercel-supabase.md). The final acceptance status is recorded in [`docs/phase1/FINAL-ACCEPTANCE-CHECKLIST.md`](docs/phase1/FINAL-ACCEPTANCE-CHECKLIST.md).
 
 ## Phase 1 public demo
 

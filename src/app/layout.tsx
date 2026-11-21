@@ -7,6 +7,7 @@ import "./brand.css";
 import "./resources-flat.css";
 import { SiteNav } from "@/components/site-nav";
 import { themeInitScript } from "@/lib/theme";
+import { siteUrl } from "@/lib/site-url";
 
 const sourceSans = Source_Sans_3({
   variable: "--font-source-sans",
@@ -35,7 +36,7 @@ const newsreader = Newsreader({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://dcf-ai-research.vercel.app"),
+  metadataBase: siteUrl,
   title: "DCF Research AI",
   description: "Ask questions about historical and textual figures, then inspect the sources behind each answer.",
   openGraph: { siteName: "DCF Inspiring Personalities", type: "website" },

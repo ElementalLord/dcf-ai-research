@@ -2,6 +2,8 @@
 
 The plan is to **transfer** the existing GitHub repository, Vercel project and Supabase project to DCF-owned accounts, not to rebuild them. The database, deployment history, domain and environment settings all stay in place. Only the Gemini and Brave API keys are newly created, because those keys cannot be transferred between accounts.
 
+**Step-by-step for Vercel and Supabase, including what to do if a transfer is blocked:** [`docs/transfer-vercel-supabase.md`](docs/transfer-vercel-supabase.md).
+
 No passwords, API keys or payment details belong in this file or anywhere in the repository. Exchange secrets only by entering them directly into the provider dashboards.
 
 ## What exists today
@@ -31,7 +33,7 @@ Model names and feature switches (`GEMINI_*_MODEL`, `SYNTHESIS_*`, `DEMAND_*`, `
 ## Before you start
 
 1. **Agree ownership in writing.** The repository has no LICENSE file. A short note between the developer and DCF should say who owns the code and content, whether the developer may show it in a portfolio, how long (if at all) the developer supports it after handoff, and the date billing moves to DCF.
-2. **Back up the database.** Take a Supabase backup (or `pg_dump`) before clicking Transfer, and keep it somewhere DCF controls.
+2. **Back up the database.** Run `npm run db:backup -- "<session pooler URL>"` (see [Step 0 of the transfer guide](docs/transfer-vercel-supabase.md#step-0-back-up-the-database-first)) and keep the folder somewhere DCF controls.
 3. **Apply every migration.** The newest file in `supabase/migrations/` must already be applied to the live project, including `20261110040000_revoke_public_table_privileges.sql` `20261113010000_knowledge_harvest.sql` and `20261113020000_autonomous_harvest_admission.sql`. Tell DCF the live database is current so nobody re-runs old files.
 4. **Close open work.** Merge or close open pull requests and delete finished branches so DCF starts from a clean `main`.
 5. **Run the readiness check** from a machine with `.env.local`:
@@ -54,16 +56,15 @@ Do the steps in this order. Each one keeps the live site running.
 
 ### 2. Vercel project
 
-1. **DCF:** Create a Vercel team (Pro is recommended for organizational use; the Hobby plan is for personal, non-commercial projects). Add a payment method under **Team Settings → Billing**. Invite the developer as a member.
-2. **Developer:** Project → Settings → General → **Transfer Project** → select the DCF team. Environment variables, domains and deployments move with the project.
-3. **DCF:** Install the Vercel GitHub app on the DCF GitHub organization. Then, under Project → Settings → Git, confirm the project is connected to the transferred repository, and reconnect it if not.
-4. **DCF:** Push a small commit (or click **Redeploy**) and confirm that the new deployment goes live.
+Short version: DCF creates a **Pro** team with billing, invites the developer, and installs the Vercel GitHub app on its GitHub organization. The developer then uses **Project → Settings → General → Transfer Project**. Environment variables, domains, deployments and the `dcf-ai-research.vercel.app` address all move with the project. DCF checks **Settings → Git** points at the transferred repository and redeploys.
+
+Full steps, what doesn't move, and the private-repository deploy gotcha: [transfer guide, Part 1](docs/transfer-vercel-supabase.md#part-1-vercel).
 
 ### 3. Supabase project
 
-1. **DCF:** Create a Supabase organization, pick a plan, and add a payment method under **Organization → Billing**. Invite the developer as an **Owner**, since a transfer requires Owner rights in both organizations.
-2. **Developer:** Project → Settings → General → **Transfer project** → select the DCF organization. The project URL, data and keys stay the same, so the site keeps working. The transfer dialog lists any blocking requirements (for example, plan or integration limits).
-3. **DCF:** Confirm the project now appears in the DCF organization, then remove the developer's access.
+Short version: DCF creates a **Pro** organization (free projects pause when idle) and invites the developer as **Owner**. The developer then uses **Project Settings → General → Transfer project**. The URL, keys, data and photo storage stay the same, so nothing in Vercel changes.
+
+The list of things that block a transfer, and Plan B (copying into a new DCF project with `npm run db:backup`, `db:restore` and `storage:copy`): [transfer guide, Part 2](docs/transfer-vercel-supabase.md#part-2-supabase).
 
 ### 4. Replace the API keys and add billing
 
@@ -123,7 +124,9 @@ npm run dev                  # http://localhost:3000
 
 **Deploy:** Merge or push to `main` and Vercel builds automatically. Roll back with Vercel → Deployments → **Promote to Production** on an earlier deployment.
 
-**Database changes:** New SQL files go in `supabase/migrations/`. Apply them in filename order, before deploying code that depends on them. So far they have been run by hand in the Supabase SQL Editor.
+**Database changes:** New SQL files go in `supabase/migrations/`. Apply them in filename order, before deploying code that depends on them. So far they have been run by hand in the Supabase SQL Editor. The migrations start after the core tables were created, so they cannot rebuild the database from empty; `npm run db:backup` is the full copy.
+
+**Site address:** Link previews use the production domain Vercel reports, so moving teams or adding a custom domain needs no code change (`src/lib/site-url.ts`).
 
 **Costs and limits:** The database caps Gemini and Brave usage per second, day and month (see the "Abuse and provider limits" section of `README.md`). Adjust the caps in the `api_rate_policies` table to match DCF's plans.
 

@@ -45,3 +45,4 @@ next-env.d.ts
 
 # corpus admin document cache
 /.corpus-cache/
+supabase-backup-*/
