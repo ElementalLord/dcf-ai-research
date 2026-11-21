@@ -35,8 +35,11 @@ const newsreader = Newsreader({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://dcf-ai-research.vercel.app"),
   title: "DCF Research AI",
   description: "Ask questions about historical and textual figures, then inspect the sources behind each answer.",
+  openGraph: { siteName: "DCF Inspiring Personalities", type: "website" },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
