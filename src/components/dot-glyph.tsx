@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 
 /**
- * The guide's face: an 11×11 grid of dots that morphs between pictures. It waves when it first
- * greets you, rests with a slow breath, and while thinking plays a shuffled series of small
+ * The guide's face: an 11×11 grid of dots that morphs between pictures. It lights a diya when it
+ * first greets you, rests with a slow breath, and while thinking plays a shuffled series of small
  * animated scenes (a lotus opening, a flickering diya, a turning wheel, a rising sun, ॐ, …).
  * Each scene holds for a couple of seconds; between scenes the dots scatter and regather, and
  * no scene repeats until every other one has played.
@@ -27,42 +27,6 @@ function generated(test: (x: number, y: number, r: number, a: number) => "#" | "
 const near = (a: number, step: number, offset: number, width = 0.17) => { const d = ((a - offset) % step + step) % step; return Math.min(d, step - d) < width; };
 
 /* ---------- Hand-drawn pictures ---------- */
-const HAND_UP = art(`
-...#.#.#...
-...#.#.#.#.
-...#.#.#.#.
-...#.#.#.#.
-#..#######.
-##.#######.
-.#########.
-..########.
-...######..
-....####...
-....####...`);
-const HAND_LEFT = art(`
-..#.#.#....
-..#.#.#.#.+
-...#.#.#.#+
-...#.#.#.#.
-#..#######.
-##.#######.
-.#########.
-..########.
-...######..
-....####...
-....####...`);
-const HAND_RIGHT = art(`
-....#.#.#..
-+...#.#.#.#
-+..#.#.#.#.
-...#.#.#.#.
-#..#######.
-##.#######.
-.#########.
-..########.
-...######..
-....####...
-....####...`);
 const TRISHULA = art(`
 #....#....#
 #...###...#
@@ -145,6 +109,21 @@ const DIYA_C = diya(art(`
 ......+....
 .....++....
 .....+++...
+....+#+....`));
+const DIYA_UNLIT = diya(art(`
+...........
+...........
+...........
+...........`));
+const DIYA_SPARK = diya(art(`
+...........
+...........
+.....+.....
+...........`));
+const DIYA_KINDLE = diya(art(`
+...........
+...........
+.....+.....
 ....+#+....`));
 const DAMARU_A = art(`
 ###########
@@ -327,9 +306,10 @@ const SCENES: Scene[] = [
   { name: "yantra", frames: [yantra(false), yantra(true), yantra(false), yantra(true)], ms: 600 },
   { name: "om", frames: [], ms: 2400 },
 ];
-const WAVE = [HAND_UP, HAND_LEFT, HAND_RIGHT, HAND_LEFT, HAND_RIGHT, HAND_UP];
+/** Greeting: an unlit lamp catches a spark, the flame rises and flickers, then settles. */
+const GREET = [DIYA_UNLIT, DIYA_SPARK, DIYA_KINDLE, DIYA_A, DIYA_B, DIYA_A, DIYA_C, DIYA_A];
 const REST = [BREATH, BREATH_OUT];
-export type GlyphMode = "wave" | "rest" | "think";
+export type GlyphMode = "greet" | "rest" | "think";
 
 /** A shuffled order of scene indexes; the first never repeats the previous bag's last. */
 function shuffledBag(previous: number | null) {
@@ -342,7 +322,7 @@ function shuffledBag(previous: number | null) {
 export function DotGlyph({ mode, size = 48, label }: { mode: GlyphMode; size?: number; label?: string }) {
   const reduce = useReducedMotion();
   // The first frame is fixed so server and browser render the same markup.
-  const [frame, setFrame] = useState<Frame>(mode === "think" ? TRISHULA : mode === "wave" ? HAND_UP : BREATH);
+  const [frame, setFrame] = useState<Frame>(mode === "think" ? TRISHULA : mode === "greet" ? DIYA_UNLIT : BREATH);
   const [resting, setResting] = useState(mode === "rest");
   const timers = useRef<number[]>([]);
 
@@ -356,12 +336,12 @@ export function DotGlyph({ mode, size = 48, label }: { mode: GlyphMode; size?: n
     }
     const rest = (step = 0) => { setResting(true); setFrame(REST[step % REST.length]); later(() => rest(step + 1), 1700); };
     if (mode === "rest") { later(() => rest(), 0); return clear; }
-    if (mode === "wave") {
-      const wave = (step: number) => {
-        if (step >= WAVE.length) { later(() => rest(), 200); return; }
-        setResting(false); setFrame(WAVE[step]); later(() => wave(step + 1), 300);
+    if (mode === "greet") {
+      const greet = (step: number) => {
+        if (step >= GREET.length) { later(() => rest(), 600); return; }
+        setResting(false); setFrame(GREET[step]); later(() => greet(step + 1), step < 3 ? 380 : 320);
       };
-      later(() => wave(0), 0);
+      later(() => greet(0), 0);
       return clear;
     }
     // Thinking: scenes from a shuffle bag, each followed by a short scatter.

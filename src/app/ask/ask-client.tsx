@@ -354,7 +354,7 @@ export default function AskClient({ personalities, loadError }: { personalities:
             </button>
           </div>}
           {personId && !turns.length && !pendingQuestion && <div className="guide-welcome" key={personId}>
-            <DotGlyph mode="wave" size={72} label={`${GUIDE}, your guide, waving hello`} />
+            <DotGlyph mode="greet" size={72} label={`${GUIDE}, your guide, lighting a lamp`} />
             <div><p className="guide-name">{GUIDE} <span>your guide</span></p>
               <p className="guide-hello">Namaste! I hold the thread of these stories. Ask me anything about <strong>{person}</strong>, and I&apos;ll show you exactly where every fact comes from.</p></div>
           </div>}
